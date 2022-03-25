@@ -454,6 +454,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentDurationAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentDurationTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentGenreAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentGenreTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContentInstreamPositionAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -473,6 +497,18 @@ module Google
       end
       
       class ContentOutstreamPositionTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentStreamTypeAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentStreamTypeTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1822,9 +1858,15 @@ module Google
       
           property :channel_details, as: 'channelDetails', class: Google::Apis::DisplayvideoV1::ChannelAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ChannelAssignedTargetingOptionDetails::Representation
       
+          property :content_duration_details, as: 'contentDurationDetails', class: Google::Apis::DisplayvideoV1::ContentDurationAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentDurationAssignedTargetingOptionDetails::Representation
+      
+          property :content_genre_details, as: 'contentGenreDetails', class: Google::Apis::DisplayvideoV1::ContentGenreAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentGenreAssignedTargetingOptionDetails::Representation
+      
           property :content_instream_position_details, as: 'contentInstreamPositionDetails', class: Google::Apis::DisplayvideoV1::ContentInstreamPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentInstreamPositionAssignedTargetingOptionDetails::Representation
       
           property :content_outstream_position_details, as: 'contentOutstreamPositionDetails', class: Google::Apis::DisplayvideoV1::ContentOutstreamPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentOutstreamPositionAssignedTargetingOptionDetails::Representation
+      
+          property :content_stream_type_details, as: 'contentStreamTypeDetails', class: Google::Apis::DisplayvideoV1::ContentStreamTypeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentStreamTypeAssignedTargetingOptionDetails::Representation
       
           property :day_and_time_details, as: 'dayAndTimeDetails', class: Google::Apis::DisplayvideoV1::DayAndTimeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::DayAndTimeAssignedTargetingOptionDetails::Representation
       
@@ -2390,6 +2432,37 @@ module Google
         end
       end
       
+      class ContentDurationAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_duration, as: 'contentDuration'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class ContentDurationTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_duration, as: 'contentDuration'
+        end
+      end
+      
+      class ContentGenreAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :negative, as: 'negative'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class ContentGenreTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class ContentInstreamPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2419,6 +2492,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_outstream_position, as: 'contentOutstreamPosition'
+        end
+      end
+      
+      class ContentStreamTypeAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_stream_type, as: 'contentStreamType'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class ContentStreamTypeTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_stream_type, as: 'contentStreamType'
         end
       end
       
@@ -3054,6 +3142,7 @@ module Google
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :bid_strategy, as: 'bidStrategy', class: Google::Apis::DisplayvideoV1::BiddingStrategy, decorator: Google::Apis::DisplayvideoV1::BiddingStrategy::Representation
       
+          property :billable_outcome, as: 'billableOutcome'
           property :budget, as: 'budget', class: Google::Apis::DisplayvideoV1::InsertionOrderBudget, decorator: Google::Apis::DisplayvideoV1::InsertionOrderBudget::Representation
       
           property :campaign_id, :numeric_string => true, as: 'campaignId'
@@ -4166,9 +4255,15 @@ module Google
       
           property :category_details, as: 'categoryDetails', class: Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails::Representation
       
+          property :content_duration_details, as: 'contentDurationDetails', class: Google::Apis::DisplayvideoV1::ContentDurationTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentDurationTargetingOptionDetails::Representation
+      
+          property :content_genre_details, as: 'contentGenreDetails', class: Google::Apis::DisplayvideoV1::ContentGenreTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentGenreTargetingOptionDetails::Representation
+      
           property :content_instream_position_details, as: 'contentInstreamPositionDetails', class: Google::Apis::DisplayvideoV1::ContentInstreamPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentInstreamPositionTargetingOptionDetails::Representation
       
           property :content_outstream_position_details, as: 'contentOutstreamPositionDetails', class: Google::Apis::DisplayvideoV1::ContentOutstreamPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentOutstreamPositionTargetingOptionDetails::Representation
+      
+          property :content_stream_type_details, as: 'contentStreamTypeDetails', class: Google::Apis::DisplayvideoV1::ContentStreamTypeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ContentStreamTypeTargetingOptionDetails::Representation
       
           property :device_make_model_details, as: 'deviceMakeModelDetails', class: Google::Apis::DisplayvideoV1::DeviceMakeModelTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::DeviceMakeModelTargetingOptionDetails::Representation
       
