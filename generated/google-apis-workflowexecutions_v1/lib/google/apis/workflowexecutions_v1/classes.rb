@@ -198,6 +198,68 @@ module Google
         end
       end
       
+      # A message that is published by publishers and consumed by subscribers. The
+      # message must contain either a non-empty data field or at least one attribute.
+      # Note that client libraries represent this object differently depending on the
+      # language. See the corresponding [client library documentation](https://cloud.
+      # google.com/pubsub/docs/reference/libraries) for more information. See [quotas
+      # and limits] (https://cloud.google.com/pubsub/quotas) for more information
+      # about message limits.
+      class PubsubMessage
+        include Google::Apis::Core::Hashable
+      
+        # Attributes for this message. If this field is empty, the message must contain
+        # non-empty data. This can be used to filter messages on the subscription.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
+        # The message data field. If this field is empty, the message must contain at
+        # least one attribute.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # ID of this message, assigned by the server when the message is published.
+        # Guaranteed to be unique within the topic. This value may be read by a
+        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        # delivery. It must not be populated by the publisher in a `Publish` call.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # If non-empty, identifies related messages for which publish order should be
+        # respected. If a `Subscription` has `enable_message_ordering` set to `true`,
+        # messages published with the same non-empty `ordering_key` value will be
+        # delivered to subscribers in the order in which they are received by the Pub/
+        # Sub system. All `PubsubMessage`s published in a given `PublishRequest` must
+        # specify the same `ordering_key` value.
+        # Corresponds to the JSON property `orderingKey`
+        # @return [String]
+        attr_accessor :ordering_key
+      
+        # The time at which the message was published, populated by the server when it
+        # receives the `Publish` call. It must not be populated by the publisher in a `
+        # Publish` call.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @data = args[:data] if args.key?(:data)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @ordering_key = args[:ordering_key] if args.key?(:ordering_key)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+        end
+      end
+      
       # A collection of stack elements (frames) where an error occurred.
       class StackTrace
         include Google::Apis::Core::Hashable
@@ -246,6 +308,45 @@ module Google
           @position = args[:position] if args.key?(:position)
           @routine = args[:routine] if args.key?(:routine)
           @step = args[:step] if args.key?(:step)
+        end
+      end
+      
+      # Request for the TriggerPubsubExecution method.
+      class TriggerPubsubExecutionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. LINT: LEGACY_NAMES The query parameter value for
+        # __GCP_CloudEventsMode, set by the Eventarc service when configuring triggers.
+        # Corresponds to the JSON property `GCPCloudEventsMode`
+        # @return [String]
+        attr_accessor :gcp_cloud_events_mode
+      
+        # A message that is published by publishers and consumed by subscribers. The
+        # message must contain either a non-empty data field or at least one attribute.
+        # Note that client libraries represent this object differently depending on the
+        # language. See the corresponding [client library documentation](https://cloud.
+        # google.com/pubsub/docs/reference/libraries) for more information. See [quotas
+        # and limits] (https://cloud.google.com/pubsub/quotas) for more information
+        # about message limits.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::WorkflowexecutionsV1::PubsubMessage]
+        attr_accessor :message
+      
+        # Required. The subscription of the Pub/Sub push notification. Format: projects/`
+        # project`/subscriptions/`sub`
+        # Corresponds to the JSON property `subscription`
+        # @return [String]
+        attr_accessor :subscription
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_cloud_events_mode = args[:gcp_cloud_events_mode] if args.key?(:gcp_cloud_events_mode)
+          @message = args[:message] if args.key?(:message)
+          @subscription = args[:subscription] if args.key?(:subscription)
         end
       end
     end
