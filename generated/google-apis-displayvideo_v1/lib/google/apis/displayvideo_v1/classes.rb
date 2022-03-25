@@ -771,6 +771,23 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::ChannelAssignedTargetingOptionDetails]
         attr_accessor :channel_details
       
+        # Details for content duration assigned targeting option. This will be populated
+        # in the content_duration_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not
+        # supported. Remove all content duration targeting options to achieve this
+        # effect.
+        # Corresponds to the JSON property `contentDurationDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentDurationAssignedTargetingOptionDetails]
+        attr_accessor :content_duration_details
+      
+        # Details for content genre assigned targeting option. This will be populated in
+        # the content_genre_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all options is not
+        # supported. Remove all content genre targeting options to achieve this effect.
+        # Corresponds to the JSON property `contentGenreDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentGenreAssignedTargetingOptionDetails]
+        attr_accessor :content_genre_details
+      
         # Assigned content instream position targeting option details. This will be
         # populated in the content_instream_position_details field when targeting_type
         # is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
@@ -784,6 +801,15 @@ module Google
         # Corresponds to the JSON property `contentOutstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentOutstreamPositionAssignedTargetingOptionDetails]
         attr_accessor :content_outstream_position_details
+      
+        # Details for content stream type assigned targeting option. This will be
+        # populated in the content_stream_type_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting all options is not
+        # supported. Remove all content stream type targeting options to achieve this
+        # effect.
+        # Corresponds to the JSON property `contentStreamTypeDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentStreamTypeAssignedTargetingOptionDetails]
+        attr_accessor :content_stream_type_details
       
         # Representation of a segment of time defined on a specific day of the week and
         # with a start and end time. The time represented by `start_hour` must be before
@@ -1025,8 +1051,11 @@ module Google
           @carrier_and_isp_details = args[:carrier_and_isp_details] if args.key?(:carrier_and_isp_details)
           @category_details = args[:category_details] if args.key?(:category_details)
           @channel_details = args[:channel_details] if args.key?(:channel_details)
+          @content_duration_details = args[:content_duration_details] if args.key?(:content_duration_details)
+          @content_genre_details = args[:content_genre_details] if args.key?(:content_genre_details)
           @content_instream_position_details = args[:content_instream_position_details] if args.key?(:content_instream_position_details)
           @content_outstream_position_details = args[:content_outstream_position_details] if args.key?(:content_outstream_position_details)
+          @content_stream_type_details = args[:content_stream_type_details] if args.key?(:content_stream_type_details)
           @day_and_time_details = args[:day_and_time_details] if args.key?(:day_and_time_details)
           @device_make_model_details = args[:device_make_model_details] if args.key?(:device_make_model_details)
           @device_type_details = args[:device_type_details] if args.key?(:device_type_details)
@@ -2803,6 +2832,114 @@ module Google
         end
       end
       
+      # Details for content duration assigned targeting option. This will be populated
+      # in the content_duration_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not
+      # supported. Remove all content duration targeting options to achieve this
+      # effect.
+      class ContentDurationAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content duration.
+        # Corresponds to the JSON property `contentDuration`
+        # @return [String]
+        attr_accessor :content_duration
+      
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_DURATION`.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_duration = args[:content_duration] if args.key?(:content_duration)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable content duration. This will be populated in the
+      # content_duration_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_DURATION`.
+      class ContentDurationTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content duration.
+        # Corresponds to the JSON property `contentDuration`
+        # @return [String]
+        attr_accessor :content_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_duration = args[:content_duration] if args.key?(:content_duration)
+        end
+      end
+      
+      # Details for content genre assigned targeting option. This will be populated in
+      # the content_genre_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all options is not
+      # supported. Remove all content genre targeting options to achieve this effect.
+      class ContentGenreAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the content genre.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Indicates if this option is being negatively targeted.
+        # Corresponds to the JSON property `negative`
+        # @return [Boolean]
+        attr_accessor :negative
+        alias_method :negative?, :negative
+      
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_GENRE`.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @negative = args[:negative] if args.key?(:negative)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable content genre. This will be populated in the
+      # content_genre_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_GENRE`.
+      class ContentGenreTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the content genre
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Assigned content instream position targeting option details. This will be
       # populated in the content_instream_position_details field when targeting_type
       # is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
@@ -2925,6 +3062,57 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content_outstream_position = args[:content_outstream_position] if args.key?(:content_outstream_position)
+        end
+      end
+      
+      # Details for content stream type assigned targeting option. This will be
+      # populated in the content_stream_type_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting all options is not
+      # supported. Remove all content stream type targeting options to achieve this
+      # effect.
+      class ContentStreamTypeAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content stream type.
+        # Corresponds to the JSON property `contentStreamType`
+        # @return [String]
+        attr_accessor :content_stream_type
+      
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_stream_type = args[:content_stream_type] if args.key?(:content_stream_type)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable content stream type. This will be populated in the
+      # content_stream_type_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+      class ContentStreamTypeTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content stream type.
+        # Corresponds to the JSON property `contentStreamType`
+        # @return [String]
+        attr_accessor :content_stream_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_stream_type = args[:content_stream_type] if args.key?(:content_stream_type)
         end
       end
       
@@ -4382,8 +4570,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -5351,6 +5538,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::BiddingStrategy]
         attr_accessor :bid_strategy
       
+        # Immutable. The billable outcome of the insertion order.
+        # Corresponds to the JSON property `billableOutcome`
+        # @return [String]
+        attr_accessor :billable_outcome
+      
         # Settings that control how insertion order budget is allocated.
         # Corresponds to the JSON property `budget`
         # @return [Google::Apis::DisplayvideoV1::InsertionOrderBudget]
@@ -5442,6 +5634,7 @@ module Google
         def update!(**args)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @bid_strategy = args[:bid_strategy] if args.key?(:bid_strategy)
+          @billable_outcome = args[:billable_outcome] if args.key?(:billable_outcome)
           @budget = args[:budget] if args.key?(:budget)
           @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -9429,6 +9622,20 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails]
         attr_accessor :category_details
       
+        # Represents a targetable content duration. This will be populated in the
+        # content_duration_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_DURATION`.
+        # Corresponds to the JSON property `contentDurationDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentDurationTargetingOptionDetails]
+        attr_accessor :content_duration_details
+      
+        # Represents a targetable content genre. This will be populated in the
+        # content_genre_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_GENRE`.
+        # Corresponds to the JSON property `contentGenreDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentGenreTargetingOptionDetails]
+        attr_accessor :content_genre_details
+      
         # Represents a targetable content instream position, which could be used by
         # video and audio ads. This will be populated in the
         # content_instream_position_details field when targeting_type is `
@@ -9444,6 +9651,13 @@ module Google
         # Corresponds to the JSON property `contentOutstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentOutstreamPositionTargetingOptionDetails]
         attr_accessor :content_outstream_position_details
+      
+        # Represents a targetable content stream type. This will be populated in the
+        # content_stream_type_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_STREAM_TYPE`.
+        # Corresponds to the JSON property `contentStreamTypeDetails`
+        # @return [Google::Apis::DisplayvideoV1::ContentStreamTypeTargetingOptionDetails]
+        attr_accessor :content_stream_type_details
       
         # Represents a targetable device make and model. This will be populated in the
         # device_make_model_details field of a TargetingOption when targeting_type is `
@@ -9611,8 +9825,11 @@ module Google
           @business_chain_details = args[:business_chain_details] if args.key?(:business_chain_details)
           @carrier_and_isp_details = args[:carrier_and_isp_details] if args.key?(:carrier_and_isp_details)
           @category_details = args[:category_details] if args.key?(:category_details)
+          @content_duration_details = args[:content_duration_details] if args.key?(:content_duration_details)
+          @content_genre_details = args[:content_genre_details] if args.key?(:content_genre_details)
           @content_instream_position_details = args[:content_instream_position_details] if args.key?(:content_instream_position_details)
           @content_outstream_position_details = args[:content_outstream_position_details] if args.key?(:content_outstream_position_details)
+          @content_stream_type_details = args[:content_stream_type_details] if args.key?(:content_stream_type_details)
           @device_make_model_details = args[:device_make_model_details] if args.key?(:device_make_model_details)
           @device_type_details = args[:device_type_details] if args.key?(:device_type_details)
           @digital_content_label_details = args[:digital_content_label_details] if args.key?(:digital_content_label_details)
