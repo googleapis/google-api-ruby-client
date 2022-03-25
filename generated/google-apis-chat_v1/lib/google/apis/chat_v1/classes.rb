@@ -806,8 +806,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -2928,7 +2927,7 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
-        # True when the user is deleted or the user's profile is not visible.
+        # When `true`, the user is deleted or their profile is not visible.
         # Corresponds to the JSON property `isAnonymous`
         # @return [Boolean]
         attr_accessor :is_anonymous
