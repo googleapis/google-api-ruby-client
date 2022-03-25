@@ -258,6 +258,14 @@ module Google
         # @return [String]
         attr_accessor :attribute
       
+        # Optional. The operator used for matching the events with the value of the
+        # filter. If not specified, only events that have an exact key-value pair
+        # specified in the filter are matched. The only allowed value is `match-path-
+        # pattern`.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
         # Required. The value for the attribute.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -270,6 +278,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attribute = args[:attribute] if args.key?(:attribute)
+          @operator = args[:operator] if args.key?(:operator)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -1380,6 +1389,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_instance_count
       
+        # Output only. The name of service revision.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
         # Output only. Name of the service associated with a Function. The format of
         # this field is `projects/`project`/locations/`region`/services/`service``
         # Corresponds to the JSON property `service`
@@ -1428,6 +1442,7 @@ module Google
           @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+          @revision = args[:revision] if args.key?(:revision)
           @service = args[:service] if args.key?(:service)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
