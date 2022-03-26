@@ -1281,6 +1281,19 @@ module Google
         end
       end
       
+      # Configuration to drop large object values.
+      class OracleDropLargeObjects
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Oracle data source object identifier.
       class OracleObjectIdentifier
         include Google::Apis::Core::Hashable
@@ -1403,6 +1416,11 @@ module Google
       class OracleSourceConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration to drop large object values.
+        # Corresponds to the JSON property `dropLargeObjects`
+        # @return [Google::Apis::DatastreamV1::OracleDropLargeObjects]
+        attr_accessor :drop_large_objects
+      
         # Oracle database structure.
         # Corresponds to the JSON property `excludeObjects`
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
@@ -1419,6 +1437,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drop_large_objects = args[:drop_large_objects] if args.key?(:drop_large_objects)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
         end

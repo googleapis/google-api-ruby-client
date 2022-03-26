@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleDropLargeObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleObjectIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -747,6 +753,12 @@ module Google
         end
       end
       
+      class OracleDropLargeObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OracleObjectIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -787,6 +799,8 @@ module Google
       class OracleSourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drop_large_objects, as: 'dropLargeObjects', class: Google::Apis::DatastreamV1::OracleDropLargeObjects, decorator: Google::Apis::DatastreamV1::OracleDropLargeObjects::Representation
+      
           property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
