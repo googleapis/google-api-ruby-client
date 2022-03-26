@@ -1,5 +1,9 @@
 # Release history for google-apis-gkehub_v1
 
+### v0.22.0 (2022-03-26)
+
+* Regenerated from discovery document revision 20220318
+
 ### v0.21.0 (2022-02-12)
 
 * Regenerated from discovery document revision 20220204
