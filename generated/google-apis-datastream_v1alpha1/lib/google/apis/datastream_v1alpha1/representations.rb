@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleDropLargeObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleObjectIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -762,6 +768,12 @@ module Google
         end
       end
       
+      class OracleDropLargeObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class OracleObjectIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -803,6 +815,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowlist, as: 'allowlist', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
+      
+          property :drop_large_objects, as: 'dropLargeObjects', class: Google::Apis::DatastreamV1alpha1::OracleDropLargeObjects, decorator: Google::Apis::DatastreamV1alpha1::OracleDropLargeObjects::Representation
       
           property :rejectlist, as: 'rejectlist', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
       
