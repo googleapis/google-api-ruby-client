@@ -306,8 +306,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1726,6 +1725,51 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request for getting a new access token.
+      class RefreshRuntimeTokenInternalRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The VM hardware token for authenticating the VM. https://cloud.
+        # google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+        end
+      end
+      
+      # Response with a new access token.
+      class RefreshRuntimeTokenInternalResponse
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth 2.0 access token.
+        # Corresponds to the JSON property `accessToken`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # Output only. Token expiration time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
         end
       end
       

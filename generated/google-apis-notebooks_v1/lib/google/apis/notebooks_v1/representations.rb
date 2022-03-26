@@ -214,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshRuntimeTokenInternalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefreshRuntimeTokenInternalResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegisterInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -836,6 +848,21 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class RefreshRuntimeTokenInternalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_id, as: 'vmId'
+        end
+      end
+      
+      class RefreshRuntimeTokenInternalResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :expire_time, as: 'expireTime'
         end
       end
       
