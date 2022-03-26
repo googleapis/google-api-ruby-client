@@ -347,7 +347,8 @@ module Google
         #   Required. The parent, which owns this collection of pipelines. Format must be
         #   projects/`project_id`/locations/`location_name`.
         # @param [String] filter
-        #   Filter builds to be returned. See https://google.aip.dev/160 for more details.
+        #   Filter pipelines to be returned. See https://google.aip.dev/160 for more
+        #   details.
         # @param [String] order_by
         #   Field to sort by. See https://google.aip.dev/132#ordering for more details.
         # @param [Fixnum] page_size
@@ -615,7 +616,7 @@ module Google
         #   Required. The `DeliveryPipeline` which owns this collection of `Release`
         #   objects.
         # @param [String] filter
-        #   Optional. Filter builds to be returned. See https://google.aip.dev/160 for
+        #   Optional. Filter releases to be returned. See https://google.aip.dev/160 for
         #   more details.
         # @param [String] order_by
         #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
@@ -785,7 +786,7 @@ module Google
         # @param [String] parent
         #   Required. The `Release` which owns this collection of `Rollout` objects.
         # @param [String] filter
-        #   Optional. Filter builds to be returned. See https://google.aip.dev/160 for
+        #   Optional. Filter rollouts to be returned. See https://google.aip.dev/160 for
         #   more details.
         # @param [String] order_by
         #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
@@ -1169,7 +1170,7 @@ module Google
         #   Required. The parent, which owns this collection of targets. Format must be
         #   projects/`project_id`/locations/`location_name`.
         # @param [String] filter
-        #   Optional. Filter builds to be returned. See https://google.aip.dev/160 for
+        #   Optional. Filter targets to be returned. See https://google.aip.dev/160 for
         #   more details.
         # @param [String] order_by
         #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
