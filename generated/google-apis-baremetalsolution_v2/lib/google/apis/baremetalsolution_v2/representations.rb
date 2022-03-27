@@ -604,6 +604,9 @@ module Google
       
           property :location, as: 'location'
           property :name, as: 'name'
+          property :network_bandwidth, :numeric_string => true, as: 'networkBandwidth'
+          property :server_count, :numeric_string => true, as: 'serverCount'
+          property :storage_gib, :numeric_string => true, as: 'storageGib'
         end
       end
       
