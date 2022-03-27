@@ -180,7 +180,7 @@ module Google
       
         # The cpu utilization that the Autoscaler should be trying to achieve. This
         # number is on a scale from 0 (no utilization) to 100 (total utilization), and
-        # is limited between 10 and 80.
+        # is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
         # Corresponds to the JSON property `cpuUtilizationPercent`
         # @return [Fixnum]
         attr_accessor :cpu_utilization_percent
