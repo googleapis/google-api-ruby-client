@@ -218,7 +218,8 @@ module Google
         # modify the requested course or for access errors. * `NOT_FOUND` if no course
         # exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are
         # specified in the update mask or if no update mask is supplied. * `
-        # FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable
+        # FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable *
+        # InactiveCourseOwner
         # @param [String] id
         #   Identifier of the course to update. This identifier can be either the
         #   Classroom-assigned identifier or an alias.
@@ -1588,8 +1589,8 @@ module Google
         # access errors. * `NOT_FOUND` if the requested course ID does not exist. * `
         # FAILED_PRECONDITION` if the requested user's account is disabled, for the
         # following request errors: * CourseMemberLimitReached * CourseNotModifiable *
-        # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
-        # student or teacher in the course.
+        # UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if
+        # the user is already a student or teacher in the course.
         # @param [String] course_id
         #   Identifier of the course to create the student in. This identifier can be
         #   either the Classroom-assigned identifier or an alias.
@@ -1757,8 +1758,8 @@ module Google
         # if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
         # requested user's account is disabled, for the following request errors: *
         # CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
-        # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
-        # teacher or student in the course.
+        # UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if
+        # the user is already a teacher or student in the course.
         # @param [String] course_id
         #   Identifier of the course. This identifier can be either the Classroom-assigned
         #   identifier or an alias.
