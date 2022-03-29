@@ -583,6 +583,7 @@ module Google
           property :metadata_options, as: 'metadataOptions', class: Google::Apis::StoragetransferV1::MetadataOptions, decorator: Google::Apis::StoragetransferV1::MetadataOptions::Representation
       
           property :overwrite_objects_already_existing_in_sink, as: 'overwriteObjectsAlreadyExistingInSink'
+          property :overwrite_when, as: 'overwriteWhen'
         end
       end
       

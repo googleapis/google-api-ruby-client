@@ -285,8 +285,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -573,9 +572,7 @@ module Google
         end
       end
       
-      # Specifies the metadata options for running a transfer. These options only
-      # apply to transfers involving a POSIX filesystem and are ignored for other
-      # transfers.
+      # Specifies the metadata options for running a transfer.
       class MetadataOptions
         include Google::Apis::Core::Hashable
       
@@ -587,7 +584,8 @@ module Google
         attr_accessor :acl
       
         # Specifies how each file's POSIX group ID (GID) attribute should be handled by
-        # the transfer. By default, GID is not preserved.
+        # the transfer. By default, GID is not preserved. Only applicable to transfers
+        # involving POSIX file systems, and ignored for other transfers.
         # Corresponds to the JSON property `gid`
         # @return [String]
         attr_accessor :gid
@@ -601,7 +599,8 @@ module Google
         attr_accessor :kms_key
       
         # Specifies how each file's mode attribute should be handled by the transfer. By
-        # default, mode is not preserved.
+        # default, mode is not preserved. Only applicable to transfers involving POSIX
+        # file systems, and ignored for other transfers.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -614,7 +613,8 @@ module Google
         attr_accessor :storage_class
       
         # Specifies how symlinks should be handled by the transfer. By default, symlinks
-        # are not preserved.
+        # are not preserved. Only applicable to transfers involving POSIX file systems,
+        # and ignored for other transfers.
         # Corresponds to the JSON property `symlink`
         # @return [String]
         attr_accessor :symlink
@@ -634,7 +634,8 @@ module Google
         attr_accessor :time_created
       
         # Specifies how each file's POSIX user ID (UID) attribute should be handled by
-        # the transfer. By default, UID is not preserved.
+        # the transfer. By default, UID is not preserved. Only applicable to transfers
+        # involving POSIX file systems, and ignored for other transfers.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -1463,9 +1464,7 @@ module Google
         attr_accessor :delete_objects_unique_in_sink
         alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
       
-        # Specifies the metadata options for running a transfer. These options only
-        # apply to transfers involving a POSIX filesystem and are ignored for other
-        # transfers.
+        # Specifies the metadata options for running a transfer.
         # Corresponds to the JSON property `metadataOptions`
         # @return [Google::Apis::StoragetransferV1::MetadataOptions]
         attr_accessor :metadata_options
@@ -1479,6 +1478,12 @@ module Google
         attr_accessor :overwrite_objects_already_existing_in_sink
         alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
       
+        # When to overwrite objects that already exist in the sink. If not set overwrite
+        # behavior is determined by overwrite_objects_already_existing_in_sink.
+        # Corresponds to the JSON property `overwriteWhen`
+        # @return [String]
+        attr_accessor :overwrite_when
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1489,6 +1494,7 @@ module Google
           @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
           @metadata_options = args[:metadata_options] if args.key?(:metadata_options)
           @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
+          @overwrite_when = args[:overwrite_when] if args.key?(:overwrite_when)
         end
       end
       
