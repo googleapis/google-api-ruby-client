@@ -1102,9 +1102,24 @@ module Google
         attr_accessor :joined_spaces_affinity_score
       
         # 
+        # Corresponds to the JSON property `lastMessagePostedTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :last_message_posted_timestamp_micros
+      
+        # 
+        # Corresponds to the JSON property `memberMetadataCount`
+        # @return [Float]
+        attr_accessor :member_metadata_count
+      
+        # 
         # Corresponds to the JSON property `messageScore`
         # @return [Float]
         attr_accessor :message_score
+      
+        # 
+        # Corresponds to the JSON property `numAucContacts`
+        # @return [Fixnum]
+        attr_accessor :num_auc_contacts
       
         # 
         # Corresponds to the JSON property `smallContactListAffinityScore`
@@ -1120,6 +1135,11 @@ module Google
         # Corresponds to the JSON property `spaceAgeInDays`
         # @return [Float]
         attr_accessor :space_age_in_days
+      
+        # 
+        # Corresponds to the JSON property `spaceCreationTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :space_creation_timestamp_micros
       
         # 
         # Corresponds to the JSON property `topicalityScore`
@@ -1138,10 +1158,14 @@ module Google
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
           @joined_spaces_affinity_score = args[:joined_spaces_affinity_score] if args.key?(:joined_spaces_affinity_score)
+          @last_message_posted_timestamp_micros = args[:last_message_posted_timestamp_micros] if args.key?(:last_message_posted_timestamp_micros)
+          @member_metadata_count = args[:member_metadata_count] if args.key?(:member_metadata_count)
           @message_score = args[:message_score] if args.key?(:message_score)
+          @num_auc_contacts = args[:num_auc_contacts] if args.key?(:num_auc_contacts)
           @small_contact_list_affinity_score = args[:small_contact_list_affinity_score] if args.key?(:small_contact_list_affinity_score)
           @small_unjoined_spaces_affinity_score = args[:small_unjoined_spaces_affinity_score] if args.key?(:small_unjoined_spaces_affinity_score)
           @space_age_in_days = args[:space_age_in_days] if args.key?(:space_age_in_days)
+          @space_creation_timestamp_micros = args[:space_creation_timestamp_micros] if args.key?(:space_creation_timestamp_micros)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
         end
       end
@@ -5852,6 +5876,13 @@ module Google
       class UserId
         include Google::Apis::Core::Hashable
       
+        # Optional. Opaque, server-assigned ID of the user profile associated with App/
+        # user acting on behalf of the human user. This is currently only set when a 3P
+        # application is acting on the user's behalf.
+        # Corresponds to the JSON property `actingUserId`
+        # @return [String]
+        attr_accessor :acting_user_id
+      
         # Opaque, server-assigned ID of the User.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -5876,6 +5907,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acting_user_id = args[:acting_user_id] if args.key?(:acting_user_id)
           @id = args[:id] if args.key?(:id)
           @origin_app_id = args[:origin_app_id] if args.key?(:origin_app_id)
           @type = args[:type] if args.key?(:type)

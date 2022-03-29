@@ -1408,10 +1408,14 @@ module Google
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
           property :joined_spaces_affinity_score, as: 'joinedSpacesAffinityScore'
+          property :last_message_posted_timestamp_micros, :numeric_string => true, as: 'lastMessagePostedTimestampMicros'
+          property :member_metadata_count, as: 'memberMetadataCount'
           property :message_score, as: 'messageScore'
+          property :num_auc_contacts, :numeric_string => true, as: 'numAucContacts'
           property :small_contact_list_affinity_score, as: 'smallContactListAffinityScore'
           property :small_unjoined_spaces_affinity_score, as: 'smallUnjoinedSpacesAffinityScore'
           property :space_age_in_days, as: 'spaceAgeInDays'
+          property :space_creation_timestamp_micros, :numeric_string => true, as: 'spaceCreationTimestampMicros'
           property :topicality_score, as: 'topicalityScore'
         end
       end
@@ -2802,6 +2806,7 @@ module Google
       class UserId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acting_user_id, as: 'actingUserId'
           property :id, as: 'id'
           property :origin_app_id, as: 'originAppId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
       
