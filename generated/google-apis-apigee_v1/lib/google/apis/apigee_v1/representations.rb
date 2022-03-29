@@ -1967,6 +1967,7 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :service_attachment, as: 'serviceAttachment'
+          property :state, as: 'state'
         end
       end
       
