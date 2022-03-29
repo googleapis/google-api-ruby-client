@@ -2960,6 +2960,12 @@ module Google
         # @return [String]
         attr_accessor :service_attachment
       
+        # Output only. State of the endpoint attachment. Values other than `ACTIVE` mean
+        # the resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2970,6 +2976,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -8054,8 +8061,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
