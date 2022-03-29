@@ -1586,7 +1586,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema e.g. `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3394,7 +3394,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema e.g. `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
