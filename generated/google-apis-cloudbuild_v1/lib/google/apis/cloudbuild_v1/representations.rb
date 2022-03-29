@@ -22,18 +22,6 @@ module Google
   module Apis
     module CloudbuildV1
       
-      class AddBitbucketServerConnectedRepositoryRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AddBitbucketServerConnectedRepositoryResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ApprovalConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -596,23 +584,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AddBitbucketServerConnectedRepositoryRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
-      
-        end
-      end
-      
-      class AddBitbucketServerConnectedRepositoryResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config, as: 'config'
-          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
-      
-        end
       end
       
       class ApprovalConfig

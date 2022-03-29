@@ -22,56 +22,6 @@ module Google
   module Apis
     module CloudbuildV1
       
-      # RPC request object accepted by the AddBitbucketServerConnectedRepository RPC
-      # method.
-      class AddBitbucketServerConnectedRepositoryRequest
-        include Google::Apis::Core::Hashable
-      
-        # BitbucketServerRepositoryId identifies a specific repository hosted on a
-        # Bitbucket Server.
-        # Corresponds to the JSON property `connectedRepository`
-        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
-        attr_accessor :connected_repository
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
-        end
-      end
-      
-      # RPC request object returned by the AddBitbucketServerConnectedRepository RPC
-      # method.
-      class AddBitbucketServerConnectedRepositoryResponse
-        include Google::Apis::Core::Hashable
-      
-        # The name of the `BitbucketServerConfig` that added connected repository.
-        # Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
-        # config``
-        # Corresponds to the JSON property `config`
-        # @return [String]
-        attr_accessor :config
-      
-        # BitbucketServerRepositoryId identifies a specific repository hosted on a
-        # Bitbucket Server.
-        # Corresponds to the JSON property `connectedRepository`
-        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
-        attr_accessor :connected_repository
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @config = args[:config] if args.key?(:config)
-          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
-        end
-      end
-      
       # ApprovalConfig describes configuration for manual approval of a build.
       class ApprovalConfig
         include Google::Apis::Core::Hashable
@@ -1720,8 +1670,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1815,9 +1764,9 @@ module Google
         # @return [String]
         attr_accessor :revision
       
-        # The URI of the repo (optional). If unspecified, the repo from which the
-        # trigger invocation originated is assumed to be the repo from which to read the
-        # specified path.
+        # The URI of the repo. Either uri or repository can be specified. If unspecified,
+        # the repo from which the trigger invocation originated is assumed to be the
+        # repo from which to read the specified path.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2059,7 +2008,7 @@ module Google
         # @return [String]
         attr_accessor :repo_type
       
-        # The URI of the repo (required).
+        # The URI of the repo. Either uri or repository can be specified and is required.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
