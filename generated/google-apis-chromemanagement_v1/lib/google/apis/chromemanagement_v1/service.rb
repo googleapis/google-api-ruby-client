@@ -355,7 +355,7 @@ module Google
         #   account making the request.
         # @param [String] filter
         #   Optional. Only include resources that match the filter. Supported filter
-        #   fields: - org_unit_id - serial_number
+        #   fields: - org_unit_id - serial_number - device_id
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Default value is 100. Maximum value is
         #   200.
