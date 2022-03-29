@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaRecaptchaV3Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaSafetyNetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -279,6 +291,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaV3Config, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaV3Config::Representation
       
         end
       end
@@ -473,6 +493,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :site_key, as: 'siteKey'
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaRecaptchaV3Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :site_secret, as: 'siteSecret'
+          property :site_secret_set, as: 'siteSecretSet'
           property :token_ttl, as: 'tokenTtl'
         end
       end

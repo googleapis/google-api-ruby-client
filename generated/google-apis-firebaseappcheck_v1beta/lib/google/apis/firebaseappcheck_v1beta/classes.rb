@@ -200,6 +200,25 @@ module Google
         end
       end
       
+      # Response message for the BatchGetRecaptchaV3Configs method.
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # RecaptchaV3Configs retrieved.
+        # Corresponds to the JSON property `configs`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaV3Config>]
+        attr_accessor :configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+        end
+      end
+      
       # Response message for the BatchGetSafetyNetConfigs method.
       class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
         include Google::Apis::Core::Hashable
@@ -876,6 +895,55 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @site_key = args[:site_key] if args.key?(:site_key)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # An app's reCAPTCHA v3 configuration object. This configuration is used by
+      # ExchangeRecaptchaV3Token to validate reCAPTCHA tokens issued to apps by
+      # reCAPTCHA v3. It also controls certain properties of the returned App Check
+      # token, such as its ttl.
+      class GoogleFirebaseAppcheckV1betaRecaptchaV3Config
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the reCAPTCHA v3 configuration object,
+        # in the format: ``` projects/`project_number`/apps/`app_id`/recaptchaV3Config ``
+        # `
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Input only. The site secret used to identify your service for
+        # reCAPTCHA v3 verification. For security reasons, this field will never be
+        # populated in any response.
+        # Corresponds to the JSON property `siteSecret`
+        # @return [String]
+        attr_accessor :site_secret
+      
+        # Output only. Whether the `site_secret` field was previously set. Since we will
+        # never return the `site_secret` field, this field is the only way to find out
+        # whether it was previously set.
+        # Corresponds to the JSON property `siteSecretSet`
+        # @return [Boolean]
+        attr_accessor :site_secret_set
+        alias_method :site_secret_set?, :site_secret_set
+      
+        # Specifies the duration for which App Check tokens exchanged from reCAPTCHA
+        # tokens will be valid. If unset, a default value of 1 day is assumed. Must be
+        # between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @site_secret = args[:site_secret] if args.key?(:site_secret)
+          @site_secret_set = args[:site_secret_set] if args.key?(:site_secret_set)
           @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
         end
       end
