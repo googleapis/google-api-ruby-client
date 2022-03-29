@@ -130,13 +130,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceRam
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceTier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceTierConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceTierSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +293,12 @@ module Google
       end
       
       class IntroductoryPriceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDeviceTierConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +449,12 @@ module Google
       end
       
       class SystemApksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SystemFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -649,6 +703,23 @@ module Google
         end
       end
       
+      class DeviceGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_selectors, as: 'deviceSelectors', class: Google::Apis::AndroidpublisherV3::DeviceSelector, decorator: Google::Apis::AndroidpublisherV3::DeviceSelector::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class DeviceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_brand, as: 'buildBrand'
+          property :build_device, as: 'buildDevice'
+        end
+      end
+      
       class DeviceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -666,12 +737,63 @@ module Google
         end
       end
       
+      class DeviceRam
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_bytes, :numeric_string => true, as: 'maxBytes'
+          property :min_bytes, :numeric_string => true, as: 'minBytes'
+        end
+      end
+      
+      class DeviceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_ram, as: 'deviceRam', class: Google::Apis::AndroidpublisherV3::DeviceRam, decorator: Google::Apis::AndroidpublisherV3::DeviceRam::Representation
+      
+          collection :excluded_device_ids, as: 'excludedDeviceIds', class: Google::Apis::AndroidpublisherV3::DeviceId, decorator: Google::Apis::AndroidpublisherV3::DeviceId::Representation
+      
+          collection :forbidden_system_features, as: 'forbiddenSystemFeatures', class: Google::Apis::AndroidpublisherV3::SystemFeature, decorator: Google::Apis::AndroidpublisherV3::SystemFeature::Representation
+      
+          collection :included_device_ids, as: 'includedDeviceIds', class: Google::Apis::AndroidpublisherV3::DeviceId, decorator: Google::Apis::AndroidpublisherV3::DeviceId::Representation
+      
+          collection :required_system_features, as: 'requiredSystemFeatures', class: Google::Apis::AndroidpublisherV3::SystemFeature, decorator: Google::Apis::AndroidpublisherV3::SystemFeature::Representation
+      
+        end
+      end
+      
       class DeviceSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :screen_density, as: 'screenDensity'
           collection :supported_abis, as: 'supportedAbis'
           collection :supported_locales, as: 'supportedLocales'
+        end
+      end
+      
+      class DeviceTier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_group_names, as: 'deviceGroupNames'
+          property :level, as: 'level'
+        end
+      end
+      
+      class DeviceTierConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_groups, as: 'deviceGroups', class: Google::Apis::AndroidpublisherV3::DeviceGroup, decorator: Google::Apis::AndroidpublisherV3::DeviceGroup::Representation
+      
+          property :device_tier_config_id, :numeric_string => true, as: 'deviceTierConfigId'
+          property :device_tier_set, as: 'deviceTierSet', class: Google::Apis::AndroidpublisherV3::DeviceTierSet, decorator: Google::Apis::AndroidpublisherV3::DeviceTierSet::Representation
+      
+        end
+      end
+      
+      class DeviceTierSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_tiers, as: 'deviceTiers', class: Google::Apis::AndroidpublisherV3::DeviceTier, decorator: Google::Apis::AndroidpublisherV3::DeviceTier::Representation
+      
         end
       end
       
@@ -876,6 +998,15 @@ module Google
           property :introductory_price_currency_code, as: 'introductoryPriceCurrencyCode'
           property :introductory_price_cycles, as: 'introductoryPriceCycles'
           property :introductory_price_period, as: 'introductoryPricePeriod'
+        end
+      end
+      
+      class ListDeviceTierConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_tier_configs, as: 'deviceTierConfigs', class: Google::Apis::AndroidpublisherV3::DeviceTierConfig, decorator: Google::Apis::AndroidpublisherV3::DeviceTierConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1131,6 +1262,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :variants, as: 'variants', class: Google::Apis::AndroidpublisherV3::Variant, decorator: Google::Apis::AndroidpublisherV3::Variant::Representation
       
+        end
+      end
+      
+      class SystemFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

@@ -483,6 +483,59 @@ module Google
         end
       end
       
+      # LINT.IfChange A group of devices. A group is defined by a set of device
+      # selectors. A device belongs to the group if it matches any selector (logical
+      # OR).
+      class DeviceGroup
+        include Google::Apis::Core::Hashable
+      
+        # Device selectors for this group. A device matching any of the selectors is
+        # included in this group.
+        # Corresponds to the JSON property `deviceSelectors`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceSelector>]
+        attr_accessor :device_selectors
+      
+        # The name of the group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_selectors = args[:device_selectors] if args.key?(:device_selectors)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Identifier of a device.
+      class DeviceId
+        include Google::Apis::Core::Hashable
+      
+        # Value of Build.BRAND.
+        # Corresponds to the JSON property `buildBrand`
+        # @return [String]
+        attr_accessor :build_brand
+      
+        # Value of Build.DEVICE.
+        # Corresponds to the JSON property `buildDevice`
+        # @return [String]
+        attr_accessor :build_device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_brand = args[:build_brand] if args.key?(:build_brand)
+          @build_device = args[:build_device] if args.key?(:build_device)
+        end
+      end
+      
       # Characteristics of the user's device.
       class DeviceMetadata
         include Google::Apis::Core::Hashable
@@ -562,6 +615,82 @@ module Google
         end
       end
       
+      # Conditions about a device's RAM capabilities.
+      class DeviceRam
+        include Google::Apis::Core::Hashable
+      
+        # Maximum RAM in bytes (bound excluded).
+        # Corresponds to the JSON property `maxBytes`
+        # @return [Fixnum]
+        attr_accessor :max_bytes
+      
+        # Minimum RAM in bytes (bound included).
+        # Corresponds to the JSON property `minBytes`
+        # @return [Fixnum]
+        attr_accessor :min_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_bytes = args[:max_bytes] if args.key?(:max_bytes)
+          @min_bytes = args[:min_bytes] if args.key?(:min_bytes)
+        end
+      end
+      
+      # Selector for a device group. A selector consists of a set of conditions on the
+      # device that should all match (logical AND) to determine a device group
+      # eligibility. For instance, if a selector specifies RAM conditions, device
+      # model inclusion and device model exclusion, a device is considered to match if:
+      # device matches RAM conditions AND device matches one of the included device
+      # models AND device doesn't match excluded device models
+      class DeviceSelector
+        include Google::Apis::Core::Hashable
+      
+        # Conditions about a device's RAM capabilities.
+        # Corresponds to the JSON property `deviceRam`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceRam]
+        attr_accessor :device_ram
+      
+        # Device models excluded by this selector, even if they match all other
+        # conditions.
+        # Corresponds to the JSON property `excludedDeviceIds`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceId>]
+        attr_accessor :excluded_device_ids
+      
+        # A device that has any of these system features is excluded by this selector,
+        # even if it matches all other conditions.
+        # Corresponds to the JSON property `forbiddenSystemFeatures`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SystemFeature>]
+        attr_accessor :forbidden_system_features
+      
+        # Device models included by this selector.
+        # Corresponds to the JSON property `includedDeviceIds`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceId>]
+        attr_accessor :included_device_ids
+      
+        # A device needs to have all these system features to be included by the
+        # selector.
+        # Corresponds to the JSON property `requiredSystemFeatures`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SystemFeature>]
+        attr_accessor :required_system_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_ram = args[:device_ram] if args.key?(:device_ram)
+          @excluded_device_ids = args[:excluded_device_ids] if args.key?(:excluded_device_ids)
+          @forbidden_system_features = args[:forbidden_system_features] if args.key?(:forbidden_system_features)
+          @included_device_ids = args[:included_device_ids] if args.key?(:included_device_ids)
+          @required_system_features = args[:required_system_features] if args.key?(:required_system_features)
+        end
+      end
+      
       # The device spec used to generate a system APK.
       class DeviceSpec
         include Google::Apis::Core::Hashable
@@ -591,6 +720,100 @@ module Google
           @screen_density = args[:screen_density] if args.key?(:screen_density)
           @supported_abis = args[:supported_abis] if args.key?(:supported_abis)
           @supported_locales = args[:supported_locales] if args.key?(:supported_locales)
+        end
+      end
+      
+      # A single device tier. Devices matching any of the device groups in
+      # device_group_names are considered to match the tier.
+      class DeviceTier
+        include Google::Apis::Core::Hashable
+      
+        # Groups of devices included in this tier. These groups must be defined
+        # explicitly under device_groups in this configuration.
+        # Corresponds to the JSON property `deviceGroupNames`
+        # @return [Array<String>]
+        attr_accessor :device_group_names
+      
+        # The priority level of the tier. Tiers are evaluated in descending order of
+        # level: the highest level tier has the highest priority. The highest tier
+        # matching a given device is selected for that device. You should use a
+        # contiguous range of levels for your tiers in a tier set; tier levels in a tier
+        # set must be unique. For instance, if your tier set has 4 tiers (including the
+        # global fallback), you should define tiers 1, 2 and 3 in this configuration.
+        # Note: tier 0 is implicitly defined as a global fallback and selected for
+        # devices that don't match any of the tiers explicitly defined here. You mustn't
+        # define level 0 explicitly in this configuration.
+        # Corresponds to the JSON property `level`
+        # @return [Fixnum]
+        attr_accessor :level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_group_names = args[:device_group_names] if args.key?(:device_group_names)
+          @level = args[:level] if args.key?(:level)
+        end
+      end
+      
+      # LINT.IfChange Configuration describing device targeting criteria for the
+      # content of an app.
+      class DeviceTierConfig
+        include Google::Apis::Core::Hashable
+      
+        # Definition of device groups for the app.
+        # Corresponds to the JSON property `deviceGroups`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceGroup>]
+        attr_accessor :device_groups
+      
+        # Output only. The device tier config ID.
+        # Corresponds to the JSON property `deviceTierConfigId`
+        # @return [Fixnum]
+        attr_accessor :device_tier_config_id
+      
+        # A set of device tiers. A tier set determines what variation of app content
+        # gets served to a specific device, for device-targeted content. You should
+        # assign a priority level to each tier, which determines the ordering by which
+        # they are evaluated by Play. See the documentation of DeviceTier.level for more
+        # details.
+        # Corresponds to the JSON property `deviceTierSet`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceTierSet]
+        attr_accessor :device_tier_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_groups = args[:device_groups] if args.key?(:device_groups)
+          @device_tier_config_id = args[:device_tier_config_id] if args.key?(:device_tier_config_id)
+          @device_tier_set = args[:device_tier_set] if args.key?(:device_tier_set)
+        end
+      end
+      
+      # A set of device tiers. A tier set determines what variation of app content
+      # gets served to a specific device, for device-targeted content. You should
+      # assign a priority level to each tier, which determines the ordering by which
+      # they are evaluated by Play. See the documentation of DeviceTier.level for more
+      # details.
+      class DeviceTierSet
+        include Google::Apis::Core::Hashable
+      
+        # Device tiers belonging to the set.
+        # Corresponds to the JSON property `deviceTiers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceTier>]
+        attr_accessor :device_tiers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_tiers = args[:device_tiers] if args.key?(:device_tiers)
         end
       end
       
@@ -1314,6 +1537,32 @@ module Google
           @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
           @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
           @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
+        end
+      end
+      
+      # Response listing existing device tier configs.
+      class ListDeviceTierConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Device tier configs created by the developer.
+        # Corresponds to the JSON property `deviceTierConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceTierConfig>]
+        attr_accessor :device_tier_configs
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_tier_configs = args[:device_tier_configs] if args.key?(:device_tier_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2304,6 +2553,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
+      # Representation of a system feature.
+      class SystemFeature
+        include Google::Apis::Core::Hashable
+      
+        # The name of the feature.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
