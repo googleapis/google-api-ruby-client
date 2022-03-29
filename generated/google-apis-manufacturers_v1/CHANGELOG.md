@@ -1,5 +1,9 @@
 # Release history for google-apis-manufacturers_v1
 
+### v0.10.0 (2022-03-29)
+
+* Regenerated from discovery document revision 20220323
+
 ### v0.9.0 (2022-02-01)
 
 * Regenerated from discovery document revision 20220126
