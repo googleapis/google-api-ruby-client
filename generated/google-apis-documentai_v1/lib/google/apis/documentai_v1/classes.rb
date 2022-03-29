@@ -1414,7 +1414,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema e.g. `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3238,6 +3238,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Denotes that this ProcessorVersion is managed by google.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Boolean]
+        attr_accessor :google_managed
+        alias_method :google_managed?, :google_managed
+      
         # The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -3268,6 +3274,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
@@ -3786,7 +3793,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema e.g. `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5554,7 +5561,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema e.g. `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
