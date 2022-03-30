@@ -1378,6 +1378,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
+          property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
           collection :tags, as: 'tags', class: Google::Apis::BigqueryV2::Dataset::Tag, decorator: Google::Apis::BigqueryV2::Dataset::Tag::Representation
