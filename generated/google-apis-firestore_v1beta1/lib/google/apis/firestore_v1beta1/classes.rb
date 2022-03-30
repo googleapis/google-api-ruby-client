@@ -598,8 +598,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1269,6 +1268,12 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1277,6 +1282,7 @@ module Google
         def update!(**args)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @read_time = args[:read_time] if args.key?(:read_time)
         end
       end
       
@@ -1497,6 +1503,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :partition_count
       
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         # A Firestore query.
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
@@ -1511,6 +1523,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
+          @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
         end
       end
