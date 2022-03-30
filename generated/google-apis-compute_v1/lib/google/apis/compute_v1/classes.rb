@@ -3145,6 +3145,15 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # A list of locality load balancing policies to be used in order of preference.
+        # Either the policy or the customPolicy field should be set. Overrides any value
+        # set in the localityLbPolicy field. localityLbPolicies is only supported when
+        # the BackendService is referenced by a URL Map that is referenced by a target
+        # gRPC proxy that has the validateForProxyless field set to true.
+        # Corresponds to the JSON property `localityLbPolicies`
+        # @return [Array<Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfig>]
+        attr_accessor :locality_lb_policies
+      
         # The load balancing algorithm used within the scope of the locality. The
         # possible values are: - ROUND_ROBIN: This is a simple policy in which each
         # healthy backend is selected in round robin order. This is the default. -
@@ -3313,6 +3322,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @locality_lb_policies = args[:locality_lb_policies] if args.key?(:locality_lb_policies)
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
@@ -3975,6 +3985,88 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Container for either a built-in LB policy supported by gRPC or Envoy or a
+      # custom one implemented by the end user.
+      class BackendServiceLocalityLoadBalancingPolicyConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for a custom policy implemented by the user and deployed
+        # with the client.
+        # Corresponds to the JSON property `customPolicy`
+        # @return [Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy]
+        attr_accessor :custom_policy
+      
+        # The configuration for a built-in load balancing policy.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigPolicy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_policy = args[:custom_policy] if args.key?(:custom_policy)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # The configuration for a custom policy implemented by the user and deployed
+      # with the client.
+      class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+        include Google::Apis::Core::Hashable
+      
+        # An optional, arbitrary JSON object with configuration data, understood by a
+        # locally installed custom policy implementation.
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        # Identifies the custom policy. The value should match the type the custom
+        # implementation is registered with on the gRPC clients. It should follow
+        # protocol buffer message naming conventions and include the full path (e.g.
+        # myorg.CustomLbPolicy). The maximum length is 256 characters. Note that
+        # specifying the same custom policy more than once for a backend is not a valid
+        # configuration and will be rejected.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The configuration for a built-in load balancing policy.
+      class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The name of a locality load balancer policy to be used. The value should be
+        # one of the predefined ones as supported by localityLbPolicy, although at the
+        # moment only ROUND_ROBIN is supported. This field should only be populated when
+        # the customPolicy field is not used. Note that specifying the same policy more
+        # than once for a backend is not a valid configuration and will be rejected.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -8149,6 +8241,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # An optional name for the rule. This field is not a unique identifier and can
+        # be updated.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
         # [Output Only] Calculation of the complexity of a single firewall policy rule.
         # Corresponds to the JSON property `ruleTupleCount`
         # @return [Fixnum]
@@ -8193,6 +8291,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
           @priority = args[:priority] if args.key?(:priority)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
@@ -34197,7 +34296,7 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
-        # [Output Only] The range of external IPv6 addresses that are owned by this
+        # [Output Only] The external IPv6 address range that is assigned to this
         # subnetwork.
         # Corresponds to the JSON property `externalIpv6Prefix`
         # @return [String]
@@ -34226,9 +34325,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] The range of internal IPv6 addresses that are owned by this
-        # subnetwork. Note this is for general VM to VM communication, not to be
-        # confused with the ipv6_cidr_range field.
+        # [Output Only] The internal IPv6 address range that is assigned to this
+        # subnetwork.
         # Corresponds to the JSON property `internalIpv6Prefix`
         # @return [String]
         attr_accessor :internal_ipv6_prefix
@@ -34245,14 +34343,12 @@ module Google
       
         # The access type of IPv6 address this subnet holds. It's immutable and can only
         # be specified during creation or the first time the subnet is updated into
-        # IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot
-        # enable direct path.
+        # IPV4_IPV6 dual stack.
         # Corresponds to the JSON property `ipv6AccessType`
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # [Output Only] The range of internal IPv6 addresses that are owned by this
-        # subnetwork. Note this will be for private google access only eventually.
+        # [Output Only] This field is for internal use.
         # Corresponds to the JSON property `ipv6CidrRange`
         # @return [String]
         attr_accessor :ipv6_cidr_range
@@ -34293,10 +34389,8 @@ module Google
         attr_accessor :private_ip_google_access
         alias_method :private_ip_google_access?, :private_ip_google_access
       
-        # The private IPv6 google access type for the VMs in this subnet. This is an
-        # expanded field of enablePrivateV6Access. If both fields are set,
-        # privateIpv6GoogleAccess will take priority. This field can be both set at
-        # resource creation time and updated using patch.
+        # This field is for internal use. This field can be both set at resource
+        # creation time and updated using patch.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
         # @return [String]
         attr_accessor :private_ipv6_google_access
