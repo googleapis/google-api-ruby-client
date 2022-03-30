@@ -1637,6 +1637,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # [Optional] Number of hours for the max time travel for all tables in the
+        # dataset.
+        # Corresponds to the JSON property `maxTimeTravelHours`
+        # @return [Fixnum]
+        attr_accessor :max_time_travel_hours
+      
         # [Output-only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPZS`
         # @return [Boolean]
@@ -1676,6 +1682,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
+          @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @tags = args[:tags] if args.key?(:tags)
