@@ -797,6 +797,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          property :read_time, as: 'readTime'
         end
       end
       
@@ -866,6 +867,7 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           property :partition_count, :numeric_string => true, as: 'partitionCount'
+          property :read_time, as: 'readTime'
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1beta1::StructuredQuery, decorator: Google::Apis::FirestoreV1beta1::StructuredQuery::Representation
       
         end
