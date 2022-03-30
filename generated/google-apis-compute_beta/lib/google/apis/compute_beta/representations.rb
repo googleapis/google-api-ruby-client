@@ -460,6 +460,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceLocalityLoadBalancingPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceLogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5894,6 +5912,7 @@ module Google
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :threads_per_core, as: 'threadsPerCore'
+          property :visible_core_count, as: 'visibleCoreCount'
         end
       end
       
@@ -6363,6 +6382,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          collection :locality_lb_policies, as: 'localityLbPolicies', class: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfig::Representation
+      
           property :locality_lb_policy, as: 'localityLbPolicy'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::BackendServiceLogConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLogConfig::Representation
       
@@ -6525,6 +6546,31 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_policy, as: 'customPolicy', class: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy::Representation
+      
+          property :policy, as: 'policy', class: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfigPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceLocalityLoadBalancingPolicyConfigPolicy::Representation
+      
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :name, as: 'name'
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -7519,6 +7565,7 @@ module Google
           property :match, as: 'match', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcher::Representation
       
           property :priority, as: 'priority'
+          property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
@@ -7531,11 +7578,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_region_codes, as: 'destRegionCodes'
+          collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
       
+          collection :src_threat_intelligences, as: 'srcThreatIntelligences'
         end
       end
       
