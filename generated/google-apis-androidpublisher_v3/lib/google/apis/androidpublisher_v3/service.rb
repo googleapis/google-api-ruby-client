@@ -53,6 +53,9 @@ module Google
         # @param [String] package_name
         #   Package name of the app.
         # @param [Google::Apis::AndroidpublisherV3::DeviceTierConfig] device_tier_config_object
+        # @param [Boolean] allow_unknown_devices
+        #   Whether the service should accept device IDs that are unknown to Play's device
+        #   catalog.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -70,13 +73,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_application_device_tier_config(package_name, device_tier_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_application_device_tier_config(package_name, device_tier_config_object = nil, allow_unknown_devices: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/deviceTierConfigs', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::DeviceTierConfig::Representation
           command.request_object = device_tier_config_object
           command.response_representation = Google::Apis::AndroidpublisherV3::DeviceTierConfig::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::DeviceTierConfig
           command.params['packageName'] = package_name unless package_name.nil?
+          command.query['allowUnknownDevices'] = allow_unknown_devices unless allow_unknown_devices.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
