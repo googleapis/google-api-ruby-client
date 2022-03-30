@@ -454,6 +454,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceLocalityLoadBalancingPolicyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceLogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6161,6 +6179,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
+          collection :locality_lb_policies, as: 'localityLbPolicies', class: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfig, decorator: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfig::Representation
+      
           property :locality_lb_policy, as: 'localityLbPolicy'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::BackendServiceLogConfig, decorator: Google::Apis::ComputeV1::BackendServiceLogConfig::Representation
       
@@ -6322,6 +6342,31 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_policy, as: 'customPolicy', class: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy, decorator: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy::Representation
+      
+          property :policy, as: 'policy', class: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigPolicy, decorator: Google::Apis::ComputeV1::BackendServiceLocalityLoadBalancingPolicyConfigPolicy::Representation
+      
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :name, as: 'name'
+        end
+      end
+      
+      class BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -7305,6 +7350,7 @@ module Google
           property :match, as: 'match', class: Google::Apis::ComputeV1::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleMatcher::Representation
       
           property :priority, as: 'priority'
+          property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag::Representation
