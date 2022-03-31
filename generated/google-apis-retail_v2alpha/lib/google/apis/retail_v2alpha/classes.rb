@@ -308,6 +308,35 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2AddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2AddLocalInventoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response of the ImportCompletionDataRequest. If the long running operation is
       # done, this message is returned by the google.longrunning.Operations.response
       # field if the operation is successful.
@@ -550,6 +579,35 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2RemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2RemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2248,6 +2306,18 @@ module Google
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
         attr_accessor :attributes
       
+        # Input only. Supported fulfillment types. Valid fulfillment type values include
+        # commonly used types (such as pickup in store and same day delivery), and
+        # custom types. Customers have to map custom types to their display names before
+        # rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-
+        # day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "
+        # custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an
+        # invalid value other than these, an INVALID_ARGUMENT error is returned. All the
+        # elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `fulfillmentTypes`
+        # @return [Array<String>]
+        attr_accessor :fulfillment_types
+      
         # The place ID for the current set of inventory information.
         # Corresponds to the JSON property `placeId`
         # @return [String]
@@ -2265,6 +2335,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
           @place_id = args[:place_id] if args.key?(:place_id)
           @price_info = args[:price_info] if args.key?(:price_info)
         end
@@ -2297,7 +2368,8 @@ module Google
         # Language of the title/description and other string attributes. Use language
         # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
         # 639-1. This specifies the language of offers in Merchant Center that will be
-        # accepted. If empty no language filtering will be performed.
+        # accepted. If empty no language filtering will be performed. Example value: `en`
+        # .
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -5339,13 +5411,12 @@ module Google
         attr_accessor :direct_user_request
         alias_method :direct_user_request?, :direct_user_request
       
-        # The end user's IP address. Required for getting SearchResponse.
-        # sponsored_results. This field is used to extract location information for
-        # personalization. This field must be either an IPv4 address (e.g. "104.133.9.80"
-        # ) or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334").
-        # Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when
-        # using the JavaScript tag in UserEventService.CollectUserEvent or if
-        # direct_user_request is set.
+        # The end user's IP address. This field is used to extract location information
+        # for personalization. This field must be either an IPv4 address (e.g. "104.133.
+        # 9.80") or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334").
+        # Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when:
+        # * setting SearchRequest.user_info. * using the JavaScript tag in
+        # UserEventService.CollectUserEvent or if direct_user_request is set.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -5361,8 +5432,9 @@ module Google
         attr_accessor :user_agent
       
         # Highly recommended for logged-in users. Unique identifier for logged-in user,
-        # such as a user name. The field must be a UTF-8 encoded string with a length
-        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # such as a user name. Always use a hashed value for this ID. The field must be
+        # a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -5398,6 +5470,35 @@ module Google
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
       # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2betaAddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2betaAddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5753,6 +5854,35 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
