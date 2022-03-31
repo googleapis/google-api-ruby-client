@@ -3375,6 +3375,7 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_spell_correction, as: 'enableSpellCorrection'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+          property :locked, as: 'locked'
           property :name, as: 'name'
           property :security_settings, as: 'securitySettings'
           property :speech_to_text_settings, as: 'speechToTextSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SpeechToTextSettings::Representation
@@ -3788,6 +3789,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_uri, as: 'agentUri'
+          property :data_format, as: 'dataFormat'
           property :environment, as: 'environment'
         end
       end

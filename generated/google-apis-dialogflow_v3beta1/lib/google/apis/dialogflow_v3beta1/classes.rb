@@ -2879,6 +2879,13 @@ module Google
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
+        # Indiciates whether the agent is locked for changes. If the agent is locked,
+        # modifications to the agent will be rejected except for RestoreAgent.
+        # Corresponds to the JSON property `locked`
+        # @return [Boolean]
+        attr_accessor :locked
+        alias_method :locked?, :locked
+      
         # The unique identifier of the agent. Required for the Agents.UpdateAgent method.
         # Agents.CreateAgent populates the name automatically. Format: `projects//
         # locations//agents/`.
@@ -2929,6 +2936,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_spell_correction = args[:enable_spell_correction] if args.key?(:enable_spell_correction)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+          @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @speech_to_text_settings = args[:speech_to_text_settings] if args.key?(:speech_to_text_settings)
@@ -4381,6 +4389,12 @@ module Google
         # @return [String]
         attr_accessor :agent_uri
       
+        # Optional. The data format of the exported agent. If not specified, `BLOB` is
+        # assumed.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
+      
         # Optional. Environment name. If not set, draft environment is assumed. Format: `
         # projects//locations//agents//environments/`.
         # Corresponds to the JSON property `environment`
@@ -4394,6 +4408,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+          @data_format = args[:data_format] if args.key?(:data_format)
           @environment = args[:environment] if args.key?(:environment)
         end
       end
@@ -15594,8 +15609,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
