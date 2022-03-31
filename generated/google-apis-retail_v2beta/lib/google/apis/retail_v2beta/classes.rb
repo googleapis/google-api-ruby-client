@@ -308,6 +308,35 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2AddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2AddLocalInventoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response of the ImportCompletionDataRequest. If the long running operation is
       # done, this message is returned by the google.longrunning.Operations.response
       # field if the operation is successful.
@@ -550,6 +579,35 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2RemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2RemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1297,6 +1355,86 @@ module Google
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
       # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2betaAddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for AddLocalInventories method.
+      class GoogleCloudRetailV2betaAddLocalInventoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Indicates which inventory fields in the provided list of LocalInventory to
+        # update. The field is updated to the provided value. If a field is set while
+        # the place does not have a previous local inventory, the local inventory at
+        # that store is created. If a field is set while the value of that field is not
+        # provided, the original field value, if it exists, is deleted. If the mask is
+        # not set or set with empty paths, all inventory fields will be updated. If an
+        # unsupported or unknown field is provided, an INVALID_ARGUMENT error is
+        # returned and the entire update will be ignored.
+        # Corresponds to the JSON property `addMask`
+        # @return [String]
+        attr_accessor :add_mask
+      
+        # The time when the inventory updates are issued. Used to prevent out-of-order
+        # updates on local inventory fields. If not provided, the internal system time
+        # will be used.
+        # Corresponds to the JSON property `addTime`
+        # @return [String]
+        attr_accessor :add_time
+      
+        # If set to true, and the Product is not found, the local inventory will still
+        # be processed and retained for at most 1 day and processed once the Product is
+        # created. If set to false, a NOT_FOUND error is returned if the Product is not
+        # found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. A list of inventory information at difference places. Each place is
+        # identified by its place ID. At most 3000 inventories are allowed per request.
+        # Corresponds to the JSON property `localInventories`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory>]
+        attr_accessor :local_inventories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_mask = args[:add_mask] if args.key?(:add_mask)
+          @add_time = args[:add_time] if args.key?(:add_time)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @local_inventories = args[:local_inventories] if args.key?(:local_inventories)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2betaAddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2707,6 +2845,59 @@ module Google
         end
       end
       
+      # The inventory information at a place (e.g. a store) identified by a place ID.
+      class GoogleCloudRetailV2betaLocalInventory
+        include Google::Apis::Core::Hashable
+      
+        # Additional local inventory attributes, for example, store name, promotion tags,
+        # etc. This field needs to pass all below criteria, otherwise an
+        # INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The
+        # key must be a UTF-8 encoded string with a length limit of 32 characters. * The
+        # key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
+        # KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or
+        # number). * Only 1 value is allowed for each attribute. * For text values, the
+        # length limit is 256 UTF-8 characters. * The attribute does not support search.
+        # The `searchable` field should be unset or set to false. * The max summed total
+        # bytes of custom attribute keys and values per product is 5MiB.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
+        attr_accessor :attributes
+      
+        # Input only. Supported fulfillment types. Valid fulfillment type values include
+        # commonly used types (such as pickup in store and same day delivery), and
+        # custom types. Customers have to map custom types to their display names before
+        # rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-
+        # day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "
+        # custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an
+        # invalid value other than these, an INVALID_ARGUMENT error is returned. All the
+        # elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `fulfillmentTypes`
+        # @return [Array<String>]
+        attr_accessor :fulfillment_types
+      
+        # The place ID for the current set of inventory information.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # The price information of a Product.
+        # Corresponds to the JSON property `priceInfo`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo]
+        attr_accessor :price_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @fulfillment_types = args[:fulfillment_types] if args.key?(:fulfillment_types)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @price_info = args[:price_info] if args.key?(:price_info)
+        end
+      end
+      
       # Represents a link between a Merchant Center account and a branch. Once a link
       # is established, products from the linked merchant center account will be
       # streamed to the linked branch.
@@ -2734,7 +2925,8 @@ module Google
         # Language of the title/description and other string attributes. Use language
         # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
         # 639-1. This specifies the language of offers in Merchant Center that will be
-        # accepted. If empty no language filtering will be performed.
+        # accepted. If empty no language filtering will be performed. Example value: `en`
+        # .
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -3901,6 +4093,73 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for RemoveLocalInventories method.
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, and the Product is not found, the local inventory removal
+        # request will still be processed and retained for at most 1 day and processed
+        # once the Product is created. If set to false, a NOT_FOUND error is returned if
+        # the Product is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. A list of place IDs to have their inventory deleted. At most 3000
+        # place IDs are allowed per request.
+        # Corresponds to the JSON property `placeIds`
+        # @return [Array<String>]
+        attr_accessor :place_ids
+      
+        # The time when the inventory deletions are issued. Used to prevent out-of-order
+        # updates and deletions on local inventory fields. If not provided, the internal
+        # system time will be used.
+        # Corresponds to the JSON property `removeTime`
+        # @return [String]
+        attr_accessor :remove_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @place_ids = args[:place_ids] if args.key?(:place_ids)
+          @remove_time = args[:remove_time] if args.key?(:remove_time)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5591,13 +5850,12 @@ module Google
         attr_accessor :direct_user_request
         alias_method :direct_user_request?, :direct_user_request
       
-        # The end user's IP address. Required for getting SearchResponse.
-        # sponsored_results. This field is used to extract location information for
-        # personalization. This field must be either an IPv4 address (e.g. "104.133.9.80"
-        # ) or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334").
-        # Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when
-        # using the JavaScript tag in UserEventService.CollectUserEvent or if
-        # direct_user_request is set.
+        # The end user's IP address. This field is used to extract location information
+        # for personalization. This field must be either an IPv4 address (e.g. "104.133.
+        # 9.80") or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334").
+        # Otherwise, an INVALID_ARGUMENT error is returned. This should not be set when:
+        # * setting SearchRequest.user_info. * using the JavaScript tag in
+        # UserEventService.CollectUserEvent or if direct_user_request is set.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -5613,8 +5871,9 @@ module Google
         attr_accessor :user_agent
       
         # Highly recommended for logged-in users. Unique identifier for logged-in user,
-        # such as a user name. The field must be a UTF-8 encoded string with a length
-        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # such as a user name. Always use a hashed value for this ID. The field must be
+        # a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id

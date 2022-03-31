@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2AddLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2AddLocalInventoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2ImportCompletionDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +149,18 @@ module Google
       end
       
       class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2RemoveLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2RemoveLocalInventoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +365,24 @@ module Google
       end
       
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -574,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaLocalInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaMerchantCenterLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +773,24 @@ module Google
       end
       
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1039,6 +1105,18 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2AddLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2AddLocalInventoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudRetailV2ImportCompletionDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1121,6 +1199,18 @@ module Google
       end
       
       class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2RemoveLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2RemoveLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1374,6 +1464,29 @@ module Google
       end
       
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_mask, as: 'addMask'
+          property :add_time, as: 'addTime'
+          property :allow_missing, as: 'allowMissing'
+          collection :local_inventories, as: 'localInventories', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAddLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1754,6 +1867,18 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaLocalInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute::Representation
+      
+          collection :fulfillment_types, as: 'fulfillmentTypes'
+          property :place_id, as: 'placeId'
+          property :price_info, as: 'priceInfo', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPriceInfo::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2betaMerchantCenterLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2014,6 +2139,27 @@ module Google
       end
       
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          collection :place_ids, as: 'placeIds'
+          property :remove_time, as: 'removeTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

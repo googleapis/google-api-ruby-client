@@ -52,9 +52,8 @@ module Google
         end
         
         # Completes the specified prefix with keyword suggestions. This feature is only
-        # available for users who have Retail Search enabled. Please submit a form [here]
-        # (https://cloud.google.com/contact) to contact cloud sales if you are
-        # interested in using Retail Search.
+        # available for users who have Retail Search enabled. Please enable Retail
+        # Search on Cloud Console before using this feature.
         # @param [String] catalog
         #   Required. Catalog for which the completion is performed. Full resource name of
         #   catalog, such as `projects/*/locations/global/catalogs/default_catalog`.
@@ -579,9 +578,8 @@ module Google
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the added place IDs are not immediately manifested in the Product
         # queried by GetProduct or ListProducts. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -609,6 +607,51 @@ module Google
           command = make_simple_command(:post, 'v2beta/{+product}:addFulfillmentPlaces', options)
           command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAddFulfillmentPlacesRequest::Representation
           command.request_object = google_cloud_retail_v2beta_add_fulfillment_places_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningOperation
+          command.params['product'] = product unless product.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates local inventory information for a Product at a list of places, while
+        # respecting the last update timestamps of each inventory field. This process is
+        # asynchronous and does not require the Product to exist before updating
+        # inventory information. If the request is valid, the update will be enqueued
+        # and processed downstream. As a consequence, when a response is returned,
+        # updates are not immediately manifested in the Product queried by GetProduct or
+        # ListProducts. Local inventory information can only be modified using this
+        # method. CreateProduct and UpdateProduct has no effect on local inventories.
+        # This feature is only available for users who have Retail Search enabled.
+        # Please enable Retail Search on Cloud Console before using this feature.
+        # @param [String] product
+        #   Required. Full resource name of Product, such as `projects/*/locations/global/
+        #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
+        #   the caller does not have permission to access the Product, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAddLocalInventoriesRequest] google_cloud_retail_v2beta_add_local_inventories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_catalog_branch_product_local_inventories(product, google_cloud_retail_v2beta_add_local_inventories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+product}:addLocalInventories', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAddLocalInventoriesRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_add_local_inventories_request_object
           command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningOperation
           command.params['product'] = product unless product.nil?
@@ -886,9 +929,8 @@ module Google
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the removed place IDs are not immediately manifested in the Product
         # queried by GetProduct or ListProducts. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -924,6 +966,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Remove local inventory information for a Product at a list of places at a
+        # removal timestamp. This process is asynchronous. If the request is valid, the
+        # removal will be enqueued and processed downstream. As a consequence, when a
+        # response is returned, removals are not immediately manifested in the Product
+        # queried by GetProduct or ListProducts. Local inventory information can only be
+        # removed using this method. CreateProduct and UpdateProduct has no effect on
+        # local inventories. This feature is only available for users who have Retail
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
+        # @param [String] product
+        #   Required. Full resource name of Product, such as `projects/*/locations/global/
+        #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
+        #   the caller does not have permission to access the Product, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRemoveLocalInventoriesRequest] google_cloud_retail_v2beta_remove_local_inventories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_catalog_branch_product_local_inventories(product, google_cloud_retail_v2beta_remove_local_inventories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+product}:removeLocalInventories', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRemoveLocalInventoriesRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_remove_local_inventories_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningOperation
+          command.params['product'] = product unless product.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates inventory information for a Product while respecting the last update
         # timestamps of each inventory field. This process is asynchronous and does not
         # require the Product to exist before updating fulfillment information. If the
@@ -940,9 +1026,8 @@ module Google
         # SetInventoryRequest.set_mask, then any existing inventory information will be
         # preserved. Pre-existing inventory information can only be updated with
         # SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature
-        # is only available for users who have Retail Search enabled. Please submit a
-        # form [here](https://cloud.google.com/contact) to contact cloud sales if you
-        # are interested in using Retail Search.
+        # is only available for users who have Retail Search enabled. Please enable
+        # Retail Search on Cloud Console before using this feature.
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -980,9 +1065,8 @@ module Google
         # asynchronous. Partial updating is not supported. The operation is successfully
         # finished only after the imported suggestions are indexed successfully and
         # ready for serving. The process takes hours. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] parent
         #   Required. The catalog which the suggestions dataset belongs to. Format: `
         #   projects/1234/locations/global/catalogs/default_catalog`.
@@ -1325,8 +1409,8 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
-        # to contact cloud sales if you are interested in using Retail Search.
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] placement
         #   Required. The resource name of the search engine placement, such as `projects/*
         #   /locations/global/catalogs/default_catalog/placements/default_search` or `
@@ -1665,8 +1749,8 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
-        # to contact cloud sales if you are interested in using Retail Search.
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] placement
         #   Required. The resource name of the search engine placement, such as `projects/*
         #   /locations/global/catalogs/default_catalog/placements/default_search` or `
