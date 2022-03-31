@@ -52,9 +52,8 @@ module Google
         end
         
         # Completes the specified prefix with keyword suggestions. This feature is only
-        # available for users who have Retail Search enabled. Please submit a form [here]
-        # (https://cloud.google.com/contact) to contact cloud sales if you are
-        # interested in using Retail Search.
+        # available for users who have Retail Search enabled. Please enable Retail
+        # Search on Cloud Console before using this feature.
         # @param [String] catalog
         #   Required. Catalog for which the completion is performed. Full resource name of
         #   catalog, such as `projects/*/locations/global/catalogs/default_catalog`.
@@ -579,9 +578,8 @@ module Google
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the added place IDs are not immediately manifested in the Product
         # queried by GetProduct or ListProducts. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -626,8 +624,7 @@ module Google
         # ListProducts. Local inventory information can only be modified using this
         # method. CreateProduct and UpdateProduct has no effect on local inventories.
         # This feature is only available for users who have Retail Search enabled.
-        # Please submit a form [here](https://cloud.google.com/contact) to contact Cloud
-        # sales if you are interested in using Retail Search.
+        # Please enable Retail Search on Cloud Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -978,9 +975,8 @@ module Google
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the removed place IDs are not immediately manifested in the Product
         # queried by GetProduct or ListProducts. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1023,8 +1019,8 @@ module Google
         # queried by GetProduct or ListProducts. Local inventory information can only be
         # removed using this method. CreateProduct and UpdateProduct has no effect on
         # local inventories. This feature is only available for users who have Retail
-        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
-        # to contact Cloud sales if you are interested in using Retail Search.
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1076,9 +1072,8 @@ module Google
         # SetInventoryRequest.set_mask, then any existing inventory information will be
         # preserved. Pre-existing inventory information can only be updated with
         # SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature
-        # is only available for users who have Retail Search enabled. Please submit a
-        # form [here](https://cloud.google.com/contact) to contact cloud sales if you
-        # are interested in using Retail Search.
+        # is only available for users who have Retail Search enabled. Please enable
+        # Retail Search on Cloud Console before using this feature.
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -1116,9 +1111,8 @@ module Google
         # asynchronous. Partial updating is not supported. The operation is successfully
         # finished only after the imported suggestions are indexed successfully and
         # ready for serving. The process takes hours. This feature is only available for
-        # users who have Retail Search enabled. Please submit a form [here](https://
-        # cloud.google.com/contact) to contact cloud sales if you are interested in
-        # using Retail Search.
+        # users who have Retail Search enabled. Please enable Retail Search on Cloud
+        # Console before using this feature.
         # @param [String] parent
         #   Required. The catalog which the suggestions dataset belongs to. Format: `
         #   projects/1234/locations/global/catalogs/default_catalog`.
@@ -1461,8 +1455,8 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
-        # to contact cloud sales if you are interested in using Retail Search.
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] placement
         #   Required. The resource name of the search engine placement, such as `projects/*
         #   /locations/global/catalogs/default_catalog/placements/default_search` or `
@@ -1801,8 +1795,8 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
-        # to contact cloud sales if you are interested in using Retail Search.
+        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] placement
         #   Required. The resource name of the search engine placement, such as `projects/*
         #   /locations/global/catalogs/default_catalog/placements/default_search` or `
