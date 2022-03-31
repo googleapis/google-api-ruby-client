@@ -148,8 +148,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -349,6 +348,19 @@ module Google
         end
       end
       
+      # The operation metadata for importing artifacts.
+      class ImportAptArtifactsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request to import new apt artifacts.
       class ImportAptArtifactsRequest
         include Google::Apis::Core::Hashable
@@ -446,6 +458,19 @@ module Google
         def update!(**args)
           @uris = args[:uris] if args.key?(:uris)
           @use_wildcards = args[:use_wildcards] if args.key?(:use_wildcards)
+        end
+      end
+      
+      # The operation metadata for importing artifacts.
+      class ImportYumArtifactsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -999,6 +1024,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The size, in bytes, of all artifact storage in this repository.
+        # Repositories that are generally available or in public preview use this to
+        # calculate storage costs.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
         # The time when the repository was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1017,6 +1049,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maven_config = args[:maven_config] if args.key?(:maven_config)
           @name = args[:name] if args.key?(:name)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

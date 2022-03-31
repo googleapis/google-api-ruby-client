@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAptArtifactsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportAptArtifactsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class ImportYumArtifactsGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportYumArtifactsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -345,6 +357,12 @@ module Google
         end
       end
       
+      class ImportAptArtifactsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ImportAptArtifactsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -378,6 +396,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :uris, as: 'uris'
           property :use_wildcards, as: 'useWildcards'
+        end
+      end
+      
+      class ImportYumArtifactsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -529,6 +553,7 @@ module Google
           property :maven_config, as: 'mavenConfig', class: Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig::Representation
       
           property :name, as: 'name'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
         end
       end
