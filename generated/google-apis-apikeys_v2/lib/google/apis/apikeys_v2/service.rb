@@ -306,8 +306,8 @@ module Google
         # @param [String] page_token
         #   Optional. Requests a specific page of results.
         # @param [Boolean] show_deleted
-        #   Optional. Indicate that keys are marked as deleted within 30 days should also
-        #   be returned. Normally only active keys are returned.
+        #   Optional. Indicate that keys deleted in the past 30 days should also be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
