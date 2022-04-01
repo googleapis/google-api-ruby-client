@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class RestartWebServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SaveSnapshotRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -379,6 +391,14 @@ module Google
         end
       end
       
+      class LoadSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_pypi_packages_installation, as: 'skipPypiPackagesInstallation'
+          property :snapshot_path, as: 'snapshotPath'
+        end
+      end
+      
       class LoadSnapshotResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -473,6 +493,13 @@ module Google
       class RestartWebServerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SaveSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_location, as: 'snapshotLocation'
         end
       end
       
