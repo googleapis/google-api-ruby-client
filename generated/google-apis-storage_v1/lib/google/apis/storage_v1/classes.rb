@@ -46,11 +46,6 @@ module Google
         # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
         attr_accessor :cors_configurations
       
-        # The bucket's custom placement configuration for Custom Dual Regions.
-        # Corresponds to the JSON property `customPlacementConfig`
-        # @return [Google::Apis::StorageV1::Bucket::CustomPlacementConfig]
-        attr_accessor :custom_placement_config
-      
         # The default value for event-based hold on newly created objects in this bucket.
         # Event-based hold is a way to retain objects indefinitely until an event
         # occurs, signified by the hold's release. After being released, such objects
@@ -220,7 +215,6 @@ module Google
           @autoclass = args[:autoclass] if args.key?(:autoclass)
           @billing = args[:billing] if args.key?(:billing)
           @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
-          @custom_placement_config = args[:custom_placement_config] if args.key?(:custom_placement_config)
           @default_event_based_hold = args[:default_event_based_hold] if args.key?(:default_event_based_hold)
           @default_object_acl = args[:default_object_acl] if args.key?(:default_object_acl)
           @encryption = args[:encryption] if args.key?(:encryption)
@@ -334,25 +328,6 @@ module Google
             @http_method = args[:http_method] if args.key?(:http_method)
             @origin = args[:origin] if args.key?(:origin)
             @response_header = args[:response_header] if args.key?(:response_header)
-          end
-        end
-        
-        # The bucket's custom placement configuration for Custom Dual Regions.
-        class CustomPlacementConfig
-          include Google::Apis::Core::Hashable
-        
-          # The list of regional locations in which data is placed.
-          # Corresponds to the JSON property `dataLocations`
-          # @return [Array<String>]
-          attr_accessor :data_locations
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @data_locations = args[:data_locations] if args.key?(:data_locations)
           end
         end
         
