@@ -58,21 +58,21 @@ module Google
         # The version of the software running in the environment. This encapsulates both
         # the version of Cloud Composer functionality and the version of Apache Airflow.
         # It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-
-        # preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When used as
-        # input, the server also checks if the provided version is supported and denies
-        # the request for an unsupported version. The Cloud Composer portion of the
-        # image version is a full [semantic version](https://semver.org), or an alias in
-        # the form of major version number or `latest`. When an alias is provided, the
-        # server replaces it with the current Cloud Composer version that satisfies the
-        # alias. The Apache Airflow portion of the image version is a full semantic
-        # version that points to one of the supported Apache Airflow versions, or an
-        # alias in the form of only major and minor versions specified. When an alias is
-        # provided, the server replaces it with the latest Apache Airflow version that
-        # satisfies the alias and is supported in the given Cloud Composer version. In
-        # all cases, the resolved image version is stored in the same field. See also [
-        # version list](/composer/docs/concepts/versioning/composer-versions) and [
-        # versioning overview](/composer/docs/concepts/versioning/composer-versioning-
-        # overview).
+        # preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used
+        # as input, the server also checks if the provided version is supported and
+        # denies the request for an unsupported version. The Cloud Composer portion of
+        # the image version is a full [semantic version](https://semver.org), or an
+        # alias in the form of major version number or `latest`. When an alias is
+        # provided, the server replaces it with the current Cloud Composer version that
+        # satisfies the alias. The Apache Airflow portion of the image version is a full
+        # semantic version that points to one of the supported Apache Airflow versions,
+        # or an alias in the form of only major or major.minor versions specified. When
+        # an alias is provided, the server replaces it with the latest Apache Airflow
+        # version that satisfies the alias and is supported in the given Cloud Composer
+        # version. In all cases, the resolved image version is stored in the same field.
+        # See also [version list](/composer/docs/concepts/versioning/composer-versions)
+        # and [versioning overview](/composer/docs/concepts/versioning/composer-
+        # versioning-overview).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
@@ -224,8 +224,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -660,6 +659,34 @@ module Google
         end
       end
       
+      # Request to load a snapshot into a Cloud Composer environment.
+      class LoadSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not to skip installing Pypi packages when loading the environment's
+        # state.
+        # Corresponds to the JSON property `skipPypiPackagesInstallation`
+        # @return [Boolean]
+        attr_accessor :skip_pypi_packages_installation
+        alias_method :skip_pypi_packages_installation?, :skip_pypi_packages_installation
+      
+        # A Cloud Storage path to a snapshot to load, e.g.: "gs://my-bucket/snapshots/
+        # project_location_environment_timestamp".
+        # Corresponds to the JSON property `snapshotPath`
+        # @return [String]
+        attr_accessor :snapshot_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @skip_pypi_packages_installation = args[:skip_pypi_packages_installation] if args.key?(:skip_pypi_packages_installation)
+          @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
+        end
+      end
+      
       # Response to LoadSnapshotRequest.
       class LoadSnapshotResponse
         include Google::Apis::Core::Hashable
@@ -748,7 +775,7 @@ module Google
       class NodeConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If
+        # Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If
         # unspecified, defaults to 100GB. Cannot be updated. This field is supported for
         # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `diskSizeGb`
@@ -1139,6 +1166,26 @@ module Google
         end
       end
       
+      # Request to create a snapshot of a Cloud Composer environment.
+      class SaveSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "
+        # gs://my-bucket/snapshots".
+        # Corresponds to the JSON property `snapshotLocation`
+        # @return [String]
+        attr_accessor :snapshot_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_location = args[:snapshot_location] if args.key?(:snapshot_location)
+        end
+      end
+      
       # Response to SaveSnapshotRequest.
       class SaveSnapshotResponse
         include Google::Apis::Core::Hashable
@@ -1233,21 +1280,21 @@ module Google
         # The version of the software running in the environment. This encapsulates both
         # the version of Cloud Composer functionality and the version of Apache Airflow.
         # It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-
-        # preview\.[0-9]+)?)?|latest)-airflow-([0-9]+\.[0-9]+(\.[0-9]+)?)`. When used as
-        # input, the server also checks if the provided version is supported and denies
-        # the request for an unsupported version. The Cloud Composer portion of the
-        # image version is a full [semantic version](https://semver.org), or an alias in
-        # the form of major version number or `latest`. When an alias is provided, the
-        # server replaces it with the current Cloud Composer version that satisfies the
-        # alias. The Apache Airflow portion of the image version is a full semantic
-        # version that points to one of the supported Apache Airflow versions, or an
-        # alias in the form of only major and minor versions specified. When an alias is
-        # provided, the server replaces it with the latest Apache Airflow version that
-        # satisfies the alias and is supported in the given Cloud Composer version. In
-        # all cases, the resolved image version is stored in the same field. See also [
-        # version list](/composer/docs/concepts/versioning/composer-versions) and [
-        # versioning overview](/composer/docs/concepts/versioning/composer-versioning-
-        # overview).
+        # preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used
+        # as input, the server also checks if the provided version is supported and
+        # denies the request for an unsupported version. The Cloud Composer portion of
+        # the image version is a full [semantic version](https://semver.org), or an
+        # alias in the form of major version number or `latest`. When an alias is
+        # provided, the server replaces it with the current Cloud Composer version that
+        # satisfies the alias. The Apache Airflow portion of the image version is a full
+        # semantic version that points to one of the supported Apache Airflow versions,
+        # or an alias in the form of only major or major.minor versions specified. When
+        # an alias is provided, the server replaces it with the latest Apache Airflow
+        # version that satisfies the alias and is supported in the given Cloud Composer
+        # version. In all cases, the resolved image version is stored in the same field.
+        # See also [version list](/composer/docs/concepts/versioning/composer-versions)
+        # and [versioning overview](/composer/docs/concepts/versioning/composer-
+        # versioning-overview).
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
