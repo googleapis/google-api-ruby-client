@@ -50,17 +50,17 @@ module Google
         end
       end
       
-      # Parameters that a bot can use to configure how it's response is posted.
+      # Parameters that a Chat app can use to configure how it's response is posted.
       class ActionResponse
         include Google::Apis::Core::Hashable
       
-        # Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
-        # and request status code.
+        # Contains a [dialog](https://developers.google.com/chat/how-tos/dialogs) and
+        # request status code.
         # Corresponds to the JSON property `dialogAction`
         # @return [Google::Apis::ChatV1::DialogAction]
         attr_accessor :dialog_action
       
-        # The type of bot response.
+        # The type of Chat app response.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -178,8 +178,8 @@ module Google
         attr_accessor :content_type
       
         # Output only. The download URL which should be used to allow a human user to
-        # download the attachment. Bots should not use this URL to download attachment
-        # content.
+        # download the attachment. Chat apps should not use this URL to download
+        # attachment content.
         # Corresponds to the JSON property `downloadUri`
         # @return [String]
         attr_accessor :download_uri
@@ -201,7 +201,8 @@ module Google
         attr_accessor :source
       
         # Output only. The thumbnail URL which should be used to preview the attachment
-        # to a human user. Bots should not use this URL to download attachment content.
+        # to a human user. Chat apps should not use this URL to download attachment
+        # content.
         # Corresponds to the JSON property `thumbnailUri`
         # @return [String]
         attr_accessor :thumbnail_uri
@@ -462,7 +463,7 @@ module Google
       # Represents information about the user's client, such as locale, host app, and
       # platform. For Chat apps, `CommonEventObject` includes data submitted by users
       # interacting with cards, like data entered in [dialogs](https://developers.
-      # google.com/chat/how-tos/bot-dialogs).
+      # google.com/chat/how-tos/dialogs).
       class CommonEventObject
         include Google::Apis::Core::Hashable
       
@@ -473,7 +474,7 @@ module Google
         # array of `StringInput` objects. For a date-time picker, a `DateTimeInput`. For
         # a date-only picker, a `DateInput`. For a time-only picker, a `TimeInput`.
         # Corresponds with the data entered by a user on a card in a [dialog](https://
-        # developers.google.com/chat/how-tos/bot-dialogs).
+        # developers.google.com/chat/how-tos/dialogs).
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
@@ -595,12 +596,12 @@ module Google
         # Represents information about the user's client, such as locale, host app, and
         # platform. For Chat apps, `CommonEventObject` includes data submitted by users
         # interacting with cards, like data entered in [dialogs](https://developers.
-        # google.com/chat/how-tos/bot-dialogs).
+        # google.com/chat/how-tos/dialogs).
         # Corresponds to the JSON property `common`
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
       
-        # The URL the bot should redirect the user to after they have completed an
+        # The URL the Chat app should redirect the user to after they have completed an
         # authorization or configuration flow outside of Google Chat. See the [
         # Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
         # information.
@@ -608,8 +609,8 @@ module Google
         # @return [String]
         attr_accessor :config_complete_redirect_url
       
-        # The type of [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
-        # event received.
+        # The type of [dialog](https://developers.google.com/chat/how-tos/dialogs) event
+        # received.
         # Corresponds to the JSON property `dialogEventType`
         # @return [String]
         attr_accessor :dialog_event_type
@@ -620,7 +621,7 @@ module Google
         attr_accessor :event_time
       
         # True when the event is related to [dialogs](https://developers.google.com/chat/
-        # how-tos/bot-dialogs).
+        # how-tos/dialogs).
         # Corresponds to the JSON property `isDialogEvent`
         # @return [Boolean]
         attr_accessor :is_dialog_event
@@ -632,19 +633,19 @@ module Google
         attr_accessor :message
       
         # A space in Google Chat. Spaces are conversations between two or more users or
-        # 1:1 messages between a user and a Chat bot.
+        # 1:1 messages between a user and a Chat app.
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # The bot-defined key for the thread related to the event. See the thread_key
-        # field of the `spaces.message.create` request for more information.
+        # The Chat app-defined key for the thread related to the event. See the
+        # thread_key field of the `spaces.message.create` request for more information.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
       
-        # A secret value that bots can use to verify if a request is from Google. The
-        # token is randomly generated by Google, remains static, and can be obtained
+        # A secret value that Chat apps can use to verify if a request is from Google.
+        # The token is randomly generated by Google, remains static, and can be obtained
         # from the Google Chat API configuration page in the Cloud Console. Developers
         # can revoke/regenerate it if needed from the same page.
         # Corresponds to the JSON property `token`
@@ -718,8 +719,8 @@ module Google
         end
       end
       
-      # Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
-      # and request status code.
+      # Contains a [dialog](https://developers.google.com/chat/how-tos/dialogs) and
+      # request status code.
       class DialogAction
         include Google::Apis::Core::Hashable
       
@@ -825,8 +826,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The method name is used to identify which part of the form triggered the form
-        # submission. This information is echoed back to the bot as part of the card
-        # click event. The same method name can be used for several elements that
+        # submission. This information is echoed back to the Chat app as part of the
+        # card click event. The same method name can be used for several elements that
         # trigger a common behavior if desired.
         # Corresponds to the JSON property `actionMethodName`
         # @return [String]
@@ -2355,7 +2356,7 @@ module Google
         end
       end
       
-      # A matched url in a Chat message. Chat bots can unfurl matched URLs. For more
+      # A matched url in a Chat message. Chat apps can unfurl matched URLs. For more
       # information, refer to [Unfurl links](/chat/how-tos/link-unfurling).
       class MatchedUrl
         include Google::Apis::Core::Hashable
@@ -2436,7 +2437,7 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # Parameters that a bot can use to configure how it's response is posted.
+        # Parameters that a Chat app can use to configure how it's response is posted.
         # Corresponds to the JSON property `actionResponse`
         # @return [Google::Apis::ChatV1::ActionResponse]
         attr_accessor :action_response
@@ -2446,7 +2447,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
       
-        # Plain-text body of the message with all bot mentions stripped out.
+        # Plain-text body of the message with all Chat app mentions stripped out.
         # Corresponds to the JSON property `argumentText`
         # @return [String]
         attr_accessor :argument_text
@@ -2481,7 +2482,7 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
-        # A matched url in a Chat message. Chat bots can unfurl matched URLs. For more
+        # A matched url in a Chat message. Chat apps can unfurl matched URLs. For more
         # information, refer to [Unfurl links](/chat/how-tos/link-unfurling).
         # Corresponds to the JSON property `matchedUrl`
         # @return [Google::Apis::ChatV1::MatchedUrl]
@@ -2492,13 +2493,6 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # Text for generating preview chips. This text will not be displayed to the user,
-        # but any links to images, web pages, videos, etc. included here will generate
-        # preview chips.
-        # Corresponds to the JSON property `previewText`
-        # @return [String]
-        attr_accessor :preview_text
       
         # A user in Google Chat.
         # Corresponds to the JSON property `sender`
@@ -2512,12 +2506,13 @@ module Google
         attr_accessor :slash_command
       
         # A space in Google Chat. Spaces are conversations between two or more users or
-        # 1:1 messages between a user and a Chat bot.
+        # 1:1 messages between a user and a Chat app.
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # Plain-text body of the message.
+        # Plain-text body of the message. The first link to an image, video, web page,
+        # or other preview-able item generates a preview chip.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2543,7 +2538,6 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
-          @preview_text = args[:preview_text] if args.key?(:preview_text)
           @sender = args[:sender] if args.key?(:sender)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @space = args[:space] if args.key?(:space)
@@ -2689,7 +2683,7 @@ module Google
       end
       
       # A space in Google Chat. Spaces are conversations between two or more users or
-      # 1:1 messages between a user and a Chat bot.
+      # 1:1 messages between a user and a Chat app.
       class Space
         include Google::Apis::Core::Hashable
       
@@ -2705,7 +2699,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether the space is a DM between a bot and a single human.
+        # Output only. Whether the space is a DM between a Chat app and a single human.
         # Corresponds to the JSON property `singleUserBotDm`
         # @return [Boolean]
         attr_accessor :single_user_bot_dm
