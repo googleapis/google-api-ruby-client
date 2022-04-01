@@ -809,8 +809,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # Empty is empty JSON object ``.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -2715,6 +2714,13 @@ module Google
         # @return [Google::Apis::AppengineV1::ApiConfigHandler]
         attr_accessor :api_config
       
+        # app_engine_apis allows second generation runtimes to access the App Engine
+        # APIs.
+        # Corresponds to the JSON property `appEngineApis`
+        # @return [Boolean]
+        attr_accessor :app_engine_apis
+        alias_method :app_engine_apis?, :app_engine_apis
+      
         # Automatic scaling is based on request rate, response latencies, and other
         # application metrics.
         # Corresponds to the JSON property `automaticScaling`
@@ -2957,6 +2963,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_config = args[:api_config] if args.key?(:api_config)
+          @app_engine_apis = args[:app_engine_apis] if args.key?(:app_engine_apis)
           @automatic_scaling = args[:automatic_scaling] if args.key?(:automatic_scaling)
           @basic_scaling = args[:basic_scaling] if args.key?(:basic_scaling)
           @beta_settings = args[:beta_settings] if args.key?(:beta_settings)
