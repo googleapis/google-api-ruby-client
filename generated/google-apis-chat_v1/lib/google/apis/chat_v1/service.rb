@@ -64,10 +64,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -112,10 +112,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,10 +160,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -246,10 +246,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,10 +294,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -342,10 +342,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -377,7 +377,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a space.
+        # Returns a space. Requires [service account authentication](https://developers.
+        # google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the space, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAAA
@@ -408,7 +409,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists spaces the caller is a member of.
+        # Lists spaces the caller is a member of. Requires [service account
+        # authentication](https://developers.google.com/chat/api/guides/auth/service-
+        # accounts).
         # @param [Fixnum] page_size
         #   Requested page size. The value is capped at 1000. Server may return fewer
         #   results than requested. If unspecified, server will default to 100.
@@ -455,10 +458,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -490,7 +493,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a membership.
+        # Returns a membership. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the membership to be retrieved, in the form "spaces/
         #   */members/*". Example: spaces/AAAAAAAAAAAA/members/111111111111111111111
@@ -521,7 +525,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists human memberships in a space.
+        # Lists human memberships in a space. Requires [service account authentication](
+        # https://developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] parent
         #   Required. The resource name of the space for which membership list is to be
         #   fetched, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
@@ -559,7 +564,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message.
+        # Creates a message. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
@@ -571,10 +577,10 @@ module Google
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
         #   thread identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots and
-        #   webhooks from having to store the Google Chat thread ID of a thread (created
-        #   earlier by them) to post further updates to it. Has no effect if thread field,
-        #   corresponding to an existing thread, is set in message.
+        #   thread identifier will be posted into the same thread. This relieves Chat apps
+        #   and webhooks from having to store the Google Chat thread ID of a thread (
+        #   created earlier by them) to post further updates to it. Has no effect if
+        #   thread field, corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -606,7 +612,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a message.
+        # Deletes a message. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the message to be deleted, in the form "spaces/*/
         #   messages/*" Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
@@ -637,7 +644,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a message.
+        # Returns a message. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the message to be retrieved, in the form "spaces/*/
         #   messages/*". Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
@@ -668,7 +676,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a message.
+        # Updates a message. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
@@ -707,7 +716,8 @@ module Google
         end
         
         # Gets the metadata of a message attachment. The attachment data is fetched
-        # using the media API.
+        # using the media API. Requires [service account authentication](https://
+        # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
         #   Required. Resource name of the attachment, in the form "spaces/*/messages/*/
         #   attachments/*".

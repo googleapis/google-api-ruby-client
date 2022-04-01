@@ -1148,7 +1148,6 @@ module Google
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       
           property :name, as: 'name'
-          property :preview_text, as: 'previewText'
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
           property :slash_command, as: 'slashCommand', class: Google::Apis::ChatV1::SlashCommand, decorator: Google::Apis::ChatV1::SlashCommand::Representation
