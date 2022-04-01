@@ -216,6 +216,7 @@ module Google
           property :name, as: 'name'
           collection :pending_tasks, as: 'pendingTasks'
           property :premium, as: 'premium'
+          property :state, as: 'state'
           property :time_zone, as: 'timeZone', class: Google::Apis::AdsenseV2::TimeZone, decorator: Google::Apis::AdsenseV2::TimeZone::Representation
       
         end
@@ -227,6 +228,7 @@ module Google
           property :name, as: 'name'
           property :product_code, as: 'productCode'
           property :reporting_dimension_id, as: 'reportingDimensionId'
+          property :state, as: 'state'
         end
       end
       
