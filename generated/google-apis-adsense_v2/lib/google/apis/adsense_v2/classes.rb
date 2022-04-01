@@ -54,6 +54,11 @@ module Google
         attr_accessor :premium
         alias_method :premium?, :premium
       
+        # Output only. State of the account.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
         # time-zones).
         # Corresponds to the JSON property `timeZone`
@@ -71,6 +76,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pending_tasks = args[:pending_tasks] if args.key?(:pending_tasks)
           @premium = args[:premium] if args.key?(:premium)
+          @state = args[:state] if args.key?(:state)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
@@ -97,6 +103,11 @@ module Google
         # @return [String]
         attr_accessor :reporting_dimension_id
       
+        # Output only. State of the ad client.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -106,6 +117,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @product_code = args[:product_code] if args.key?(:product_code)
           @reporting_dimension_id = args[:reporting_dimension_id] if args.key?(:reporting_dimension_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
