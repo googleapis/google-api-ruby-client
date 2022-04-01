@@ -43,12 +43,6 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
-        class CustomPlacementConfig
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-        
         class Encryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -297,8 +291,6 @@ module Google
       
           collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
       
-          property :custom_placement_config, as: 'customPlacementConfig', class: Google::Apis::StorageV1::Bucket::CustomPlacementConfig, decorator: Google::Apis::StorageV1::Bucket::CustomPlacementConfig::Representation
-      
           property :default_event_based_hold, as: 'defaultEventBasedHold'
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
@@ -360,13 +352,6 @@ module Google
             collection :http_method, as: 'method'
             collection :origin, as: 'origin'
             collection :response_header, as: 'responseHeader'
-          end
-        end
-        
-        class CustomPlacementConfig
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            collection :data_locations, as: 'dataLocations'
           end
         end
         
