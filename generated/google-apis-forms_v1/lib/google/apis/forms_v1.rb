@@ -37,6 +37,15 @@ module Google
 
       # See and download all your Google Drive files
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+
+      # See, edit, create, and delete all your Google Forms forms
+      AUTH_FORMS_BODY = 'https://www.googleapis.com/auth/forms.body'
+
+      # See all your Google Forms forms
+      AUTH_FORMS_BODY_READONLY = 'https://www.googleapis.com/auth/forms.body.readonly'
+
+      # See all responses to your Google Forms forms
+      AUTH_FORMS_RESPONSES_READONLY = 'https://www.googleapis.com/auth/forms.responses.readonly'
     end
   end
 end
