@@ -2565,6 +2565,12 @@ module Google
         attr_accessor :disallow_username_substring
         alias_method :disallow_username_substring?, :disallow_username_substring
       
+        # Whether the password policy is enabled or not.
+        # Corresponds to the JSON property `enablePasswordPolicy`
+        # @return [Boolean]
+        attr_accessor :enable_password_policy
+        alias_method :enable_password_policy?, :enable_password_policy
+      
         # Minimum number of characters allowed.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
@@ -2589,6 +2595,7 @@ module Google
         def update!(**args)
           @complexity = args[:complexity] if args.key?(:complexity)
           @disallow_username_substring = args[:disallow_username_substring] if args.key?(:disallow_username_substring)
+          @enable_password_policy = args[:enable_password_policy] if args.key?(:enable_password_policy)
           @min_length = args[:min_length] if args.key?(:min_length)
           @password_change_interval = args[:password_change_interval] if args.key?(:password_change_interval)
           @reuse_interval = args[:reuse_interval] if args.key?(:reuse_interval)
