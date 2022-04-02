@@ -192,6 +192,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The time the clone job was ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -225,6 +230,7 @@ module Google
         def update!(**args)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -533,6 +539,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The time the cutover job had finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
         # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -577,6 +588,7 @@ module Google
         def update!(**args)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -702,8 +714,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       

@@ -405,6 +405,7 @@ module Google
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
       
           property :name, as: 'name'
@@ -482,6 +483,7 @@ module Google
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
       
           property :name, as: 'name'
