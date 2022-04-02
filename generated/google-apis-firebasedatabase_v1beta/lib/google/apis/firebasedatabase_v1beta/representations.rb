@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteDatabaseInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -73,6 +79,12 @@ module Google
       end
       
       class ReenableDatabaseInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteDatabaseInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

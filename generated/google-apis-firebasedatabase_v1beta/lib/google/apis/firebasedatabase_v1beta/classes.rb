@@ -124,6 +124,19 @@ module Google
         def update!(**args)
         end
       end
+      
+      # The request sent to UndeleteDatabaseInstance method.
+      class UndeleteDatabaseInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
     end
   end
 end
