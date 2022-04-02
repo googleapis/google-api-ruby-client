@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1AudioStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1BatteryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,19 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1AudioStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_device, as: 'inputDevice'
+          property :input_gain, as: 'inputGain'
+          property :input_mute, as: 'inputMute'
+          property :output_device, as: 'outputDevice'
+          property :output_mute, as: 'outputMute'
+          property :output_volume, as: 'outputVolume'
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
       class GoogleChromeManagementV1BatteryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -337,7 +356,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_owned, as: 'googleOwned'
           property :is_cws_hosted, as: 'isCwsHosted'
+          property :is_kiosk_only, as: 'isKioskOnly'
           property :is_theme, as: 'isTheme'
+          property :kiosk_enabled, as: 'kioskEnabled'
           property :min_user_count, as: 'minUserCount'
           collection :permissions, as: 'permissions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission::Representation
       
@@ -606,6 +627,8 @@ module Google
       class GoogleChromeManagementV1TelemetryDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audio_status_report, as: 'audioStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport::Representation
+      
           collection :battery_info, as: 'batteryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo::Representation
       
           collection :battery_status_report, as: 'batteryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport::Representation

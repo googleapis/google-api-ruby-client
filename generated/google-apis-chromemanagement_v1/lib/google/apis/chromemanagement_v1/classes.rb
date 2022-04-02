@@ -201,6 +201,63 @@ module Google
         end
       end
       
+      # Audio report.
+      class GoogleChromeManagementV1AudioStatusReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Active input device's name.
+        # Corresponds to the JSON property `inputDevice`
+        # @return [String]
+        attr_accessor :input_device
+      
+        # Output only. Active input device's gain in [0, 100].
+        # Corresponds to the JSON property `inputGain`
+        # @return [Fixnum]
+        attr_accessor :input_gain
+      
+        # Output only. Is active input device mute or not.
+        # Corresponds to the JSON property `inputMute`
+        # @return [Boolean]
+        attr_accessor :input_mute
+        alias_method :input_mute?, :input_mute
+      
+        # Output only. Active output device's name.
+        # Corresponds to the JSON property `outputDevice`
+        # @return [String]
+        attr_accessor :output_device
+      
+        # Output only. Is active output device mute or not.
+        # Corresponds to the JSON property `outputMute`
+        # @return [Boolean]
+        attr_accessor :output_mute
+        alias_method :output_mute?, :output_mute
+      
+        # Output only. Active output device's volume in [0, 100].
+        # Corresponds to the JSON property `outputVolume`
+        # @return [Fixnum]
+        attr_accessor :output_volume
+      
+        # Output only. Timestamp of when the sample was collected on device.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_device = args[:input_device] if args.key?(:input_device)
+          @input_gain = args[:input_gain] if args.key?(:input_gain)
+          @input_mute = args[:input_mute] if args.key?(:input_mute)
+          @output_device = args[:output_device] if args.key?(:output_device)
+          @output_mute = args[:output_mute] if args.key?(:output_mute)
+          @output_volume = args[:output_volume] if args.key?(:output_volume)
+          @report_time = args[:report_time] if args.key?(:report_time)
+        end
+      end
+      
       # Battery info
       class GoogleChromeManagementV1BatteryInfo
         include Google::Apis::Core::Hashable
@@ -430,11 +487,23 @@ module Google
         attr_accessor :is_cws_hosted
         alias_method :is_cws_hosted?, :is_cws_hosted
       
+        # Output only. Whether the app is only for Kiosk mode on Chrome OS devices
+        # Corresponds to the JSON property `isKioskOnly`
+        # @return [Boolean]
+        attr_accessor :is_kiosk_only
+        alias_method :is_kiosk_only?, :is_kiosk_only
+      
         # Output only. Whether the app or extension is a theme.
         # Corresponds to the JSON property `isTheme`
         # @return [Boolean]
         attr_accessor :is_theme
         alias_method :is_theme?, :is_theme
+      
+        # Output only. Whether this app is enabled for Kiosk mode on Chrome OS devices
+        # Corresponds to the JSON property `kioskEnabled`
+        # @return [Boolean]
+        attr_accessor :kiosk_enabled
+        alias_method :kiosk_enabled?, :kiosk_enabled
       
         # Output only. The minimum number of users using this app.
         # Corresponds to the JSON property `minUserCount`
@@ -470,7 +539,9 @@ module Google
         def update!(**args)
           @google_owned = args[:google_owned] if args.key?(:google_owned)
           @is_cws_hosted = args[:is_cws_hosted] if args.key?(:is_cws_hosted)
+          @is_kiosk_only = args[:is_kiosk_only] if args.key?(:is_kiosk_only)
           @is_theme = args[:is_theme] if args.key?(:is_theme)
+          @kiosk_enabled = args[:kiosk_enabled] if args.key?(:kiosk_enabled)
           @min_user_count = args[:min_user_count] if args.key?(:min_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
           @site_access = args[:site_access] if args.key?(:site_access)
@@ -1406,6 +1477,11 @@ module Google
       class GoogleChromeManagementV1TelemetryDevice
         include Google::Apis::Core::Hashable
       
+        # Output only. Audio reports collected periodically.
+        # Corresponds to the JSON property `audioStatusReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport>]
+        attr_accessor :audio_status_report
+      
         # Output only. Information on battery specs for the device.
         # Corresponds to the JSON property `batteryInfo`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo>]
@@ -1499,6 +1575,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
           @battery_info = args[:battery_info] if args.key?(:battery_info)
           @battery_status_report = args[:battery_status_report] if args.key?(:battery_status_report)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
