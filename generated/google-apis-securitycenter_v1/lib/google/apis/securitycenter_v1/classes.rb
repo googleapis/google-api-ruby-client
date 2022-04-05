@@ -608,6 +608,11 @@ module Google
         # @return [String]
         attr_accessor :finding_class
       
+        # Represents IAM bindings associated with the Finding.
+        # Corresponds to the JSON property `iamBindings`
+        # @return [Array<Google::Apis::SecuritycenterV1::IamBinding>]
+        attr_accessor :iam_bindings
+      
         # Represents what's commonly known as an Indicator of compromise (IoC) in
         # computer forensics. This is an artifact observed on a network or in an
         # operating system that, with high confidence, indicates a computer intrusion.
@@ -648,6 +653,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Next steps associate to the finding.
+        # Corresponds to the JSON property `nextSteps`
+        # @return [String]
+        attr_accessor :next_steps
       
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
@@ -712,12 +722,14 @@ module Google
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @mute = args[:mute] if args.key?(:mute)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
+          @next_steps = args[:next_steps] if args.key?(:next_steps)
           @parent = args[:parent] if args.key?(:parent)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
@@ -1799,6 +1811,40 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Represents a particular IAM binding, which captures a member's role addition,
+      # removal, or state.
+      class IamBinding
+        include Google::Apis::Core::Hashable
+      
+        # The action that was performed on a Binding.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A single identity requesting access for a Cloud Platform resource, e.g. "foo@
+        # google.com".
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        # Role that is assigned to "members". For example, "roles/viewer", "roles/editor"
+        # , or "roles/owner".
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @member = args[:member] if args.key?(:member)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
