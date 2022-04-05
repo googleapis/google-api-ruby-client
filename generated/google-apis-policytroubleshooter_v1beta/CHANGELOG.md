@@ -1,5 +1,10 @@
 # Release history for google-apis-policytroubleshooter_v1beta
 
+### v0.12.0 (2022-04-05)
+
+* Regenerated from discovery document revision 20220402
+* Regenerated using generator version 0.4.1
+
 ### v0.11.0 (2021-12-14)
 
 * Unspecified changes
