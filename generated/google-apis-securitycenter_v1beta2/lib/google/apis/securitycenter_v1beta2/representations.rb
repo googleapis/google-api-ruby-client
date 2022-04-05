@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IamBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Indicator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class MitreAttack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnboardingState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -319,6 +331,8 @@ module Google
       
           property :external_uri, as: 'externalUri'
           property :finding_class, as: 'findingClass'
+          collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta2::IamBinding, decorator: Google::Apis::SecuritycenterV1beta2::IamBinding::Representation
+      
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
@@ -327,6 +341,7 @@ module Google
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
+          property :next_steps, as: 'nextSteps'
           property :parent, as: 'parent'
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::SecurityMarks::Representation
@@ -508,6 +523,15 @@ module Google
         end
       end
       
+      class IamBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :member, as: 'member'
+          property :role, as: 'role'
+        end
+      end
+      
       class Indicator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -524,6 +548,14 @@ module Google
           property :primary_tactic, as: 'primaryTactic'
           collection :primary_techniques, as: 'primaryTechniques'
           property :version, as: 'version'
+        end
+      end
+      
+      class OnboardingState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :onboarding_level, as: 'onboardingLevel'
         end
       end
       

@@ -402,6 +402,11 @@ module Google
         # @return [String]
         attr_accessor :finding_class
       
+        # Represents IAM bindings associated with the Finding.
+        # Corresponds to the JSON property `iamBindings`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::IamBinding>]
+        attr_accessor :iam_bindings
+      
         # Represents what's commonly known as an Indicator of compromise (IoC) in
         # computer forensics. This is an artifact observed on a network or in an
         # operating system that, with high confidence, indicates a computer intrusion.
@@ -442,6 +447,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Next steps associate to the finding.
+        # Corresponds to the JSON property `nextSteps`
+        # @return [String]
+        attr_accessor :next_steps
       
         # The relative resource name of the source the finding belongs to. See: https://
         # cloud.google.com/apis/design/resource_names#relative_resource_name This field
@@ -506,12 +516,14 @@ module Google
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @mute = args[:mute] if args.key?(:mute)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
           @name = args[:name] if args.key?(:name)
+          @next_steps = args[:next_steps] if args.key?(:next_steps)
           @parent = args[:parent] if args.key?(:parent)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
@@ -1232,6 +1244,40 @@ module Google
         end
       end
       
+      # Represents a particular IAM binding, which captures a member's role addition,
+      # removal, or state.
+      class IamBinding
+        include Google::Apis::Core::Hashable
+      
+        # The action that was performed on a Binding.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A single identity requesting access for a Cloud Platform resource, e.g. "foo@
+        # google.com".
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        # Role that is assigned to "members". For example, "roles/viewer", "roles/editor"
+        # , or "roles/owner".
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @member = args[:member] if args.key?(:member)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
       # Represents what's commonly known as an Indicator of compromise (IoC) in
       # computer forensics. This is an artifact observed on a network or in an
       # operating system that, with high confidence, indicates a computer intrusion.
@@ -1307,6 +1353,34 @@ module Google
           @primary_tactic = args[:primary_tactic] if args.key?(:primary_tactic)
           @primary_techniques = args[:primary_techniques] if args.key?(:primary_techniques)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Resource capturing onboarding information for a given CRM resource.
+      class OnboardingState
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the OnboardingState. Format: organizations/`organization`/
+        # onboardingState Format: folders/`folder`/onboardingState Format: projects/`
+        # project`/onboardingState
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes the level a given organization, folder, or project is onboarded with
+        # SCC. If the resource wasn't onboarded, NOT_FOUND would have been thrown.
+        # Corresponds to the JSON property `onboardingLevel`
+        # @return [String]
+        attr_accessor :onboarding_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @onboarding_level = args[:onboarding_level] if args.key?(:onboarding_level)
         end
       end
       
