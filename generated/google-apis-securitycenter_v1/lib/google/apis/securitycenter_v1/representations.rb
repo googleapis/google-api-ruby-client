@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IamBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IamPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -542,6 +548,8 @@ module Google
       
           property :external_uri, as: 'externalUri'
           property :finding_class, as: 'findingClass'
+          collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1::IamBinding, decorator: Google::Apis::SecuritycenterV1::IamBinding::Representation
+      
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1::Indicator, decorator: Google::Apis::SecuritycenterV1::Indicator::Representation
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1::MitreAttack, decorator: Google::Apis::SecuritycenterV1::MitreAttack::Representation
@@ -550,6 +558,7 @@ module Google
           property :mute_initiator, as: 'muteInitiator'
           property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
+          property :next_steps, as: 'nextSteps'
           property :parent, as: 'parent'
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1::SecurityMarks::Representation
@@ -797,6 +806,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class IamBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :member, as: 'member'
+          property :role, as: 'role'
         end
       end
       
