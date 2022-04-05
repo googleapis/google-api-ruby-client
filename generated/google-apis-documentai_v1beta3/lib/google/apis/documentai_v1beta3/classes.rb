@@ -7372,7 +7372,7 @@ module Google
       # have multiple versions, pre-trained by Google internally or up-trained by the
       # customer. At a time, a processor can only have one default version version. So
       # the processor's behavior (when processing documents) is defined by a default
-      # version.
+      # version
       class GoogleCloudDocumentaiV1beta3ProcessorVersion
         include Google::Apis::Core::Hashable
       
