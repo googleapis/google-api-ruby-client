@@ -34,6 +34,12 @@ module Google
         # @return [String]
         attr_accessor :breakglass_justification
       
+        # The path to a binary authorization policy. Format: projects/`project`/
+        # platforms/cloudRun/`policy-name`
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
         # If True, indicates to use the default project's binary authorization policy.
         # If False, binary authorization will be disabled.
         # Corresponds to the JSON property `useDefault`
@@ -48,6 +54,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @breakglass_justification = args[:breakglass_justification] if args.key?(:breakglass_justification)
+          @policy = args[:policy] if args.key?(:policy)
           @use_default = args[:use_default] if args.key?(:use_default)
         end
       end
