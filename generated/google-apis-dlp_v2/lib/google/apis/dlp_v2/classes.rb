@@ -1552,6 +1552,206 @@ module Google
         end
       end
       
+      # A task to execute when a data profile has been generated.
+      class GooglePrivacyDlpV2DataProfileAction
+        include Google::Apis::Core::Hashable
+      
+        # If set, the detailed data profiles will be persisted to the location of your
+        # choice whenever updated.
+        # Corresponds to the JSON property `exportData`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Export]
+        attr_accessor :export_data
+      
+        # Send a Pub/Sub message into the given Pub/Sub topic to connect other systems
+        # to data profile generation. The message payload data will be the byte
+        # serialization of `DataProfilePubSubMessage`.
+        # Corresponds to the JSON property `pubSubNotification`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubNotification]
+        attr_accessor :pub_sub_notification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_data = args[:export_data] if args.key?(:export_data)
+          @pub_sub_notification = args[:pub_sub_notification] if args.key?(:pub_sub_notification)
+        end
+      end
+      
+      # Snapshot of the configurations used to generate the profile.
+      class GooglePrivacyDlpV2DataProfileConfigSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for setting up a job to scan resources for profile generation.
+        # Only one data profile configuration may exist per organization, folder, or
+        # project. The generated data profiles are retained according to the [data
+        # retention policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+        # Corresponds to the JSON property `dataProfileJob`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileJobConfig]
+        attr_accessor :data_profile_job
+      
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
+        # Corresponds to the JSON property `inspectConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
+        attr_accessor :inspect_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile_job = args[:data_profile_job] if args.key?(:data_profile_job)
+          @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
+        end
+      end
+      
+      # Configuration for setting up a job to scan resources for profile generation.
+      # Only one data profile configuration may exist per organization, folder, or
+      # project. The generated data profiles are retained according to the [data
+      # retention policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+      class GooglePrivacyDlpV2DataProfileJobConfig
+        include Google::Apis::Core::Hashable
+      
+        # Actions to execute at the completion of the job.
+        # Corresponds to the JSON property `dataProfileActions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileAction>]
+        attr_accessor :data_profile_actions
+      
+        # Detection logic for profile generation. Not all template features are used by
+        # profiles. FindingLimits, include_quote and exclude_info_types have no impact
+        # on data profiling. Multiple templates may be provided if there is data in
+        # multiple regions. At most one template must be specified per-region (including
+        # "global"). Each region is scanned using the applicable template. If no region-
+        # specific template is specified, but a "global" template is specified, it will
+        # be copied to that region and used instead. If no global or region-specific
+        # template is provided for a region with data, that region's data will not be
+        # scanned. For more information, see https://cloud.google.com/dlp/docs/data-
+        # profiles#data_residency.
+        # Corresponds to the JSON property `inspectTemplates`
+        # @return [Array<String>]
+        attr_accessor :inspect_templates
+      
+        # The data that will be profiled.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileLocation]
+        attr_accessor :location
+      
+        # The project that will run the scan. The DLP service account that exists within
+        # this project must have access to all resources that are profiled, and the
+        # Cloud DLP API must be enabled.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile_actions = args[:data_profile_actions] if args.key?(:data_profile_actions)
+          @inspect_templates = args[:inspect_templates] if args.key?(:inspect_templates)
+          @location = args[:location] if args.key?(:location)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # The data that will be profiled.
+      class GooglePrivacyDlpV2DataProfileLocation
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the Folder within an organization to scan.
+        # Corresponds to the JSON property `folderId`
+        # @return [Fixnum]
+        attr_accessor :folder_id
+      
+        # The ID of an organization to scan.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder_id = args[:folder_id] if args.key?(:folder_id)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+        end
+      end
+      
+      # A condition for determining whether a PubSub should be triggered.
+      class GooglePrivacyDlpV2DataProfilePubSubCondition
+        include Google::Apis::Core::Hashable
+      
+        # An expression, consisting of an operator and conditions.
+        # Corresponds to the JSON property `expressions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubExpressions]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expressions = args[:expressions] if args.key?(:expressions)
+        end
+      end
+      
+      # The message that will be published to a Pub/Sub topic. To receive a message of
+      # protocol buffer schema type, convert the message data to an object of this
+      # proto class. https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-
+      # proto-messages
+      class GooglePrivacyDlpV2DataProfilePubSubMessage
+        include Google::Apis::Core::Hashable
+      
+        # The event that caused the Pub/Sub message to be sent.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # The profile for a scanned table.
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableDataProfile]
+        attr_accessor :profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @profile = args[:profile] if args.key?(:profile)
+        end
+      end
+      
+      # Score is a summary of all elements in the data profile. A higher number means
+      # more risky.
+      class GooglePrivacyDlpV2DataRiskLevel
+        include Google::Apis::Core::Hashable
+      
+        # The score applied to the resource.
+        # Corresponds to the JSON property `score`
+        # @return [String]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # Record key for a finding in Cloud Datastore.
       class GooglePrivacyDlpV2DatastoreKey
         include Google::Apis::Core::Hashable
@@ -2297,6 +2497,28 @@ module Google
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @matching_type = args[:matching_type] if args.key?(:matching_type)
           @regex = args[:regex] if args.key?(:regex)
+        end
+      end
+      
+      # If set, the detailed data profiles will be persisted to the location of your
+      # choice whenever updated.
+      class GooglePrivacyDlpV2Export
+        include Google::Apis::Core::Hashable
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
+        # Corresponds to the JSON property `profileTable`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :profile_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile_table = args[:profile_table] if args.key?(:profile_table)
         end
       end
       
@@ -3053,6 +3275,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
+      # The infoType details for this column.
+      class GooglePrivacyDlpV2InfoTypeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
@@ -4410,6 +4651,25 @@ module Google
         end
       end
       
+      # Infotype details for other infoTypes found within a column.
+      class GooglePrivacyDlpV2OtherInfoTypeSummary
+        include Google::Apis::Core::Hashable
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_type = args[:info_type] if args.key?(:info_type)
+        end
+      end
+      
       # Cloud repository for storing output.
       class GooglePrivacyDlpV2OutputStorageConfig
         include Google::Apis::Core::Hashable
@@ -4692,6 +4952,36 @@ module Google
         end
       end
       
+      # 
+      class GooglePrivacyDlpV2ProfileStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DlpV2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        # Time when the profile generation status was updated
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
       # Message for specifying a window around a finding to apply a detection rule.
       class GooglePrivacyDlpV2Proximity
         include Google::Apis::Core::Hashable
@@ -4714,6 +5004,99 @@ module Google
         def update!(**args)
           @window_after = args[:window_after] if args.key?(:window_after)
           @window_before = args[:window_before] if args.key?(:window_before)
+        end
+      end
+      
+      # A condition consisting of a value.
+      class GooglePrivacyDlpV2PubSubCondition
+        include Google::Apis::Core::Hashable
+      
+        # The minimum data risk score that triggers the condition.
+        # Corresponds to the JSON property `minimumRiskScore`
+        # @return [String]
+        attr_accessor :minimum_risk_score
+      
+        # The minimum sensitivity level that triggers the condition.
+        # Corresponds to the JSON property `minimumSensitivityScore`
+        # @return [String]
+        attr_accessor :minimum_sensitivity_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minimum_risk_score = args[:minimum_risk_score] if args.key?(:minimum_risk_score)
+          @minimum_sensitivity_score = args[:minimum_sensitivity_score] if args.key?(:minimum_sensitivity_score)
+        end
+      end
+      
+      # An expression, consisting of an operator and conditions.
+      class GooglePrivacyDlpV2PubSubExpressions
+        include Google::Apis::Core::Hashable
+      
+        # Conditions to apply to the expression.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2PubSubCondition>]
+        attr_accessor :conditions
+      
+        # The operator to apply to the collection of conditions.
+        # Corresponds to the JSON property `logicalOperator`
+        # @return [String]
+        attr_accessor :logical_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @logical_operator = args[:logical_operator] if args.key?(:logical_operator)
+        end
+      end
+      
+      # Send a Pub/Sub message into the given Pub/Sub topic to connect other systems
+      # to data profile generation. The message payload data will be the byte
+      # serialization of `DataProfilePubSubMessage`.
+      class GooglePrivacyDlpV2PubSubNotification
+        include Google::Apis::Core::Hashable
+      
+        # How much data to include in the Pub/Sub message. If the user wishes to limit
+        # the size of the message, they can use resource_name and fetch the profile
+        # fields they wish to. Per table profile (not per column).
+        # Corresponds to the JSON property `detailOfMessage`
+        # @return [String]
+        attr_accessor :detail_of_message
+      
+        # The type of event that triggers a Pub/Sub. At most one `PubSubNotification`
+        # per EventType is permitted.
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # A condition for determining whether a PubSub should be triggered.
+        # Corresponds to the JSON property `pubsubCondition`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfilePubSubCondition]
+        attr_accessor :pubsub_condition
+      
+        # Cloud Pub/Sub topic to send notifications to. Format is projects/`project`/
+        # topics/`topic`.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail_of_message = args[:detail_of_message] if args.key?(:detail_of_message)
+          @event = args[:event] if args.key?(:event)
+          @pubsub_condition = args[:pubsub_condition] if args.key?(:pubsub_condition)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -5512,6 +5895,26 @@ module Google
         end
       end
       
+      # Score is a summary of all elements in the data profile. A higher number means
+      # more sensitive.
+      class GooglePrivacyDlpV2SensitivityScore
+        include Google::Apis::Core::Hashable
+      
+        # The score applied to the resource.
+        # Corresponds to the JSON property `score`
+        # @return [String]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # An auxiliary table containing statistical information on the relative
       # frequency of different quasi-identifiers values. It has one or several quasi-
       # identifiers columns, and one column that indicates the relative frequency of
@@ -5893,6 +6296,174 @@ module Google
         def update!(**args)
           @headers = args[:headers] if args.key?(:headers)
           @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # The profile for a scanned table.
+      class GooglePrivacyDlpV2TableDataProfile
+        include Google::Apis::Core::Hashable
+      
+        # Snapshot of the configurations used to generate the profile.
+        # Corresponds to the JSON property `configSnapshot`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileConfigSnapshot]
+        attr_accessor :config_snapshot
+      
+        # The time at which the table was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more risky.
+        # Corresponds to the JSON property `dataRiskLevel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
+        attr_accessor :data_risk_level
+      
+        # The BigQuery dataset ID.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The BigQuery location where the dataset's data is stored. See https://cloud.
+        # google.com/bigquery/docs/locations for supported locations.
+        # Corresponds to the JSON property `datasetLocation`
+        # @return [String]
+        attr_accessor :dataset_location
+      
+        # The GCP project ID that owns the BigQuery dataset.
+        # Corresponds to the JSON property `datasetProjectId`
+        # @return [String]
+        attr_accessor :dataset_project_id
+      
+        # How the table is encrypted.
+        # Corresponds to the JSON property `encryptionStatus`
+        # @return [String]
+        attr_accessor :encryption_status
+      
+        # Optional. The time when this table expires.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The number of columns skipped in the table because of an error.
+        # Corresponds to the JSON property `failedColumnCount`
+        # @return [Fixnum]
+        attr_accessor :failed_column_count
+      
+        # The resource name of the table. https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name
+        # Corresponds to the JSON property `fullResource`
+        # @return [String]
+        attr_accessor :full_resource
+      
+        # The time when this table was last modified
+        # Corresponds to the JSON property `lastModifiedTime`
+        # @return [String]
+        attr_accessor :last_modified_time
+      
+        # The name of the profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Other infoTypes found in this table's data.
+        # Corresponds to the JSON property `otherInfoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2OtherInfoTypeSummary>]
+        attr_accessor :other_info_types
+      
+        # The infoTypes predicted from this table's data.
+        # Corresponds to the JSON property `predictedInfoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeSummary>]
+        attr_accessor :predicted_info_types
+      
+        # The last time the profile was generated.
+        # Corresponds to the JSON property `profileLastGenerated`
+        # @return [String]
+        attr_accessor :profile_last_generated
+      
+        # Success or error status from the most recent profile generation attempt. May
+        # be empty if the profile is still being generated.
+        # Corresponds to the JSON property `profileStatus`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ProfileStatus]
+        attr_accessor :profile_status
+      
+        # The resource name to the project data profile for this table.
+        # Corresponds to the JSON property `projectDataProfile`
+        # @return [String]
+        attr_accessor :project_data_profile
+      
+        # The labels applied to the resource at the time the profile was generated.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels
+      
+        # How broadly a resource has been shared.
+        # Corresponds to the JSON property `resourceVisibility`
+        # @return [String]
+        attr_accessor :resource_visibility
+      
+        # Number of rows in the table when the profile was generated.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # The number of columns profiled in the table.
+        # Corresponds to the JSON property `scannedColumnCount`
+        # @return [Fixnum]
+        attr_accessor :scanned_column_count
+      
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
+        # State of a profile.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The BigQuery table ID.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        # The size of the table when the profile was generated.
+        # Corresponds to the JSON property `tableSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :table_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_snapshot = args[:config_snapshot] if args.key?(:config_snapshot)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_risk_level = args[:data_risk_level] if args.key?(:data_risk_level)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @dataset_location = args[:dataset_location] if args.key?(:dataset_location)
+          @dataset_project_id = args[:dataset_project_id] if args.key?(:dataset_project_id)
+          @encryption_status = args[:encryption_status] if args.key?(:encryption_status)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @failed_column_count = args[:failed_column_count] if args.key?(:failed_column_count)
+          @full_resource = args[:full_resource] if args.key?(:full_resource)
+          @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @name = args[:name] if args.key?(:name)
+          @other_info_types = args[:other_info_types] if args.key?(:other_info_types)
+          @predicted_info_types = args[:predicted_info_types] if args.key?(:predicted_info_types)
+          @profile_last_generated = args[:profile_last_generated] if args.key?(:profile_last_generated)
+          @profile_status = args[:profile_status] if args.key?(:profile_status)
+          @project_data_profile = args[:project_data_profile] if args.key?(:project_data_profile)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+          @resource_visibility = args[:resource_visibility] if args.key?(:resource_visibility)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @scanned_column_count = args[:scanned_column_count] if args.key?(:scanned_column_count)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
+          @state = args[:state] if args.key?(:state)
+          @table_id = args[:table_id] if args.key?(:table_id)
+          @table_size_bytes = args[:table_size_bytes] if args.key?(:table_size_bytes)
         end
       end
       
