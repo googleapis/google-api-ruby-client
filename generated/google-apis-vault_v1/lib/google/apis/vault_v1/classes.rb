@@ -482,6 +482,13 @@ module Google
       class DriveOptions
         include Google::Apis::Core::Hashable
       
+        # Set whether the results include only content encrypted with [Google Workspace
+        # Client-side encryption](https://support.google.com/a?p=cse_ov) content, only
+        # unencrypted content, or both. Defaults to both. Currently supported for Drive.
+        # Corresponds to the JSON property `clientSideEncryptedOption`
+        # @return [String]
+        attr_accessor :client_side_encrypted_option
+      
         # Set to **true** to include shared drives.
         # Corresponds to the JSON property `includeSharedDrives`
         # @return [Boolean]
@@ -507,6 +514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_side_encrypted_option = args[:client_side_encrypted_option] if args.key?(:client_side_encrypted_option)
           @include_shared_drives = args[:include_shared_drives] if args.key?(:include_shared_drives)
           @include_team_drives = args[:include_team_drives] if args.key?(:include_team_drives)
           @version_date = args[:version_date] if args.key?(:version_date)
@@ -516,8 +524,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
