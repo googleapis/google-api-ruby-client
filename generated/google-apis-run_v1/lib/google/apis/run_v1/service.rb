@@ -179,7 +179,8 @@ module Google
         # Create a new domain mapping.
         # @param [String] parent
         #   The namespace in which the domain mapping should be created. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   fully managed), replace `namespace` with the project ID or number. It takes
+        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -217,7 +218,8 @@ module Google
         # Delete a domain mapping.
         # @param [String] name
         #   The name of the domain mapping to delete. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -263,7 +265,8 @@ module Google
         # Get information about a domain mapping.
         # @param [String] name
         #   The name of the domain mapping to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,7 +297,8 @@ module Google
         # List domain mappings.
         # @param [String] parent
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   fully managed), replace `namespace` with the project ID or number. It takes
+        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -350,8 +354,9 @@ module Google
         
         # Delete an execution.
         # @param [String] name
-        #   Required. The name of the execution to delete. Replace `namespace_id` with the
-        #   project ID or number.
+        #   Required. The name of the execution to delete. Replace `namespace` with the
+        #   project ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [String] api_version
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -392,8 +397,9 @@ module Google
         
         # Get information about an execution.
         # @param [String] name
-        #   Required. The name of the execution to retrieve. Replace `namespace_id` with
-        #   the project ID or number.
+        #   Required. The name of the execution to retrieve. Replace `namespace` with the
+        #   project ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -424,7 +430,8 @@ module Google
         # List executions.
         # @param [String] parent
         #   Required. The namespace from which the executions should be listed. Replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -480,8 +487,9 @@ module Google
         
         # Create a job.
         # @param [String] parent
-        #   Required. The namespace in which the job should be created. Replace `
-        #   namespace_id` with the project ID or number.
+        #   Required. The namespace in which the job should be created. Replace `namespace`
+        #   with the project ID or number. It takes the form namespaces/`namespace`. For
+        #   example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Job] job_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -514,8 +522,9 @@ module Google
         
         # Delete a job.
         # @param [String] name
-        #   Required. The name of the job to delete. Replace `namespace_id` with the
-        #   project ID or number.
+        #   Required. The name of the job to delete. Replace `namespace` with the project
+        #   ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [String] api_version
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -556,8 +565,9 @@ module Google
         
         # Get information about a job.
         # @param [String] name
-        #   Required. The name of the job to retrieve. Replace `namespace_id` with the
-        #   project ID or number.
+        #   Required. The name of the job to retrieve. Replace `namespace` with the
+        #   project ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,7 +598,8 @@ module Google
         # List jobs.
         # @param [String] parent
         #   Required. The namespace from which the jobs should be listed. Replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -647,8 +658,9 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   Required. The name of the service being replaced. Replace `namespace_id` with
-        #   the project ID or number.
+        #   Required. The name of the service being replaced. Replace `namespace` with the
+        #   project ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Job] job_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -681,8 +693,9 @@ module Google
         
         # Trigger creation of a new execution of this job.
         # @param [String] name
-        #   Required. The name of the job to run. Replace `namespace_id` with the project
-        #   ID or number.
+        #   Required. The name of the job to run. Replace `namespace` with the project ID
+        #   or number. It takes the form namespaces/`namespace`. For example: namespaces/
+        #   PROJECT_ID
         # @param [Google::Apis::RunV1::RunJobRequest] run_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -716,7 +729,8 @@ module Google
         # Delete a revision.
         # @param [String] name
         #   The name of the revision to delete. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -762,7 +776,8 @@ module Google
         # Get information about a revision.
         # @param [String] name
         #   The name of the revision to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -793,7 +808,8 @@ module Google
         # List revisions.
         # @param [String] parent
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -850,7 +866,8 @@ module Google
         # Get information about a route.
         # @param [String] name
         #   The name of the route to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -881,7 +898,8 @@ module Google
         # List routes.
         # @param [String] parent
         #   The namespace from which the routes should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -937,12 +955,15 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   The namespace in which the service should be created. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   LINT.IfChange() The namespace in which the service should be created. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all`
+        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
+        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   create_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -977,7 +998,8 @@ module Google
         # delete the child entities like Routes, Configurations and Revisions.
         # @param [String] name
         #   The name of the service to delete. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -1023,7 +1045,8 @@ module Google
         # Get information about a service.
         # @param [String] name
         #   The name of the service to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1054,7 +1077,8 @@ module Google
         # List services.
         # @param [String] parent
         #   The namespace from which the services should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -1113,12 +1137,15 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. For Cloud Run (fully managed), replace
-        #   `namespace_id` with the project ID or number.
+        #   LINT.IfChange() The name of the service being replaced. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all`
+        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
+        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   replace_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1151,8 +1178,9 @@ module Google
         
         # Get information about a task.
         # @param [String] name
-        #   Required. The name of the task to retrieve. Replace `namespace_id` with the
-        #   project ID or number.
+        #   Required. The name of the task to retrieve. Replace `namespace` with the
+        #   project ID or number. It takes the form namespaces/`namespace`. For example:
+        #   namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1183,7 +1211,8 @@ module Google
         # List tasks.
         # @param [String] parent
         #   Required. The namespace from which the tasks should be listed. Replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -1278,8 +1307,8 @@ module Google
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
-        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
-        #   AIP-160](https://google.aip.dev/160).
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of results to return. If not set, the service selects a
         #   default.
@@ -1443,7 +1472,8 @@ module Google
         # Create a new domain mapping.
         # @param [String] parent
         #   The namespace in which the domain mapping should be created. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   fully managed), replace `namespace` with the project ID or number. It takes
+        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -1481,7 +1511,8 @@ module Google
         # Delete a domain mapping.
         # @param [String] name
         #   The name of the domain mapping to delete. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -1527,7 +1558,8 @@ module Google
         # Get information about a domain mapping.
         # @param [String] name
         #   The name of the domain mapping to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1558,7 +1590,8 @@ module Google
         # List domain mappings.
         # @param [String] parent
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   fully managed), replace `namespace` with the project ID or number. It takes
+        #   the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -1729,7 +1762,8 @@ module Google
         # Delete a revision.
         # @param [String] name
         #   The name of the revision to delete. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -1775,7 +1809,8 @@ module Google
         # Get information about a revision.
         # @param [String] name
         #   The name of the revision to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1806,7 +1841,8 @@ module Google
         # List revisions.
         # @param [String] parent
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -1863,7 +1899,8 @@ module Google
         # Get information about a route.
         # @param [String] name
         #   The name of the route to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1894,7 +1931,8 @@ module Google
         # List routes.
         # @param [String] parent
         #   The namespace from which the routes should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -1950,12 +1988,15 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   The namespace in which the service should be created. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   LINT.IfChange() The namespace in which the service should be created. For
+        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
+        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all`
+        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
+        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   create_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1990,7 +2031,8 @@ module Google
         # delete the child entities like Routes, Configurations and Revisions.
         # @param [String] name
         #   The name of the service to delete. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] dry_run
@@ -2036,7 +2078,8 @@ module Google
         # Get information about a service.
         # @param [String] name
         #   The name of the service to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace_id` with the project ID or number.
+        #   namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2111,7 +2154,8 @@ module Google
         # List services.
         # @param [String] parent
         #   The namespace from which the services should be listed. For Cloud Run (fully
-        #   managed), replace `namespace_id` with the project ID or number.
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
@@ -2170,12 +2214,15 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. For Cloud Run (fully managed), replace
-        #   `namespace_id` with the project ID or number.
+        #   LINT.IfChange() The name of the service being replaced. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all`
+        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
+        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   replace_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
