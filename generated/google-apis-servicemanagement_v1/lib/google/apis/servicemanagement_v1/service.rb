@@ -171,8 +171,9 @@ module Google
         # UndeleteService to restore the service. After 30 days, the service will be
         # permanently deleted. Operation
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -272,8 +273,9 @@ module Google
         
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] config_id
         #   Required. The id of the service configuration resource. This field must be
         #   specified for the server to return all fields, including `SourceInfo`.
@@ -465,8 +467,9 @@ module Google
         # service must exist and must have been deleted within the last 30 days.
         # Operation
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -500,8 +503,9 @@ module Google
         # 100 most recent service configurations and ones referenced by existing
         # rollouts are kept for each service. The rest will be deleted eventually.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -534,8 +538,9 @@ module Google
         
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] config_id
         #   Required. The id of the service configuration resource. This field must be
         #   specified for the server to return all fields, including `SourceInfo`.
@@ -573,8 +578,9 @@ module Google
         # Lists the history of the service configuration for a managed service, from the
         # newest to the oldest.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [Fixnum] page_size
         #   The max number of items to include in the response list. Page size is 50 if
         #   not specified. Maximum value is 100.
@@ -617,8 +623,9 @@ module Google
         # ones referenced by existing service configurtions are kept for each service.
         # The rest will be deleted eventually. Operation
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest] submit_config_source_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -768,8 +775,9 @@ module Google
         # set of 100 most recent) rollouts are kept for each service. The rest will be
         # deleted eventually. Operation
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::Rollout] rollout_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -802,8 +810,9 @@ module Google
         
         # Gets a service configuration rollout.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] rollout_id
         #   Required. The id of the rollout resource.
         # @param [String] fields
@@ -837,15 +846,14 @@ module Google
         # Lists the history of the service configuration rollouts for a managed service,
         # from the newest to the oldest.
         # @param [String] service_name
-        #   Required. The name of the service. See the [overview](/service-management/
-        #   overview) for naming requirements. For example: `example.googleapis.com`.
+        #   Required. The name of the service. See the [overview](https://cloud.google.com/
+        #   service-management/overview) for naming requirements. For example: `example.
+        #   googleapis.com`.
         # @param [String] filter
         #   Required. Use `filter` to return subset of rollouts. The following filters are
-        #   supported: -- To limit the results to only those in [status](google.api.
-        #   servicemanagement.v1.RolloutStatus) 'SUCCESS', use filter='status=SUCCESS' --
-        #   To limit the results to those in [status](google.api.servicemanagement.v1.
-        #   RolloutStatus) 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR status=
-        #   FAILED'
+        #   supported: -- To limit the results to only those in status 'SUCCESS', use
+        #   filter='status=SUCCESS' -- To limit the results to those in status 'CANCELLED'
+        #   or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
         # @param [Fixnum] page_size
         #   The max number of items to include in the response list. Page size is 50 if
         #   not specified. Maximum value is 100.
