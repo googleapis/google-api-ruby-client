@@ -163,13 +163,15 @@ module Google
       class Audio
         include Google::Apis::Core::Hashable
       
-        # Enable boosting high frequency components. The default is `false`.
+        # Enable boosting high frequency components. The default is `false`. **Note:**
+        # This field is not supported.
         # Corresponds to the JSON property `highBoost`
         # @return [Boolean]
         attr_accessor :high_boost
         alias_method :high_boost?, :high_boost
       
-        # Enable boosting low frequency components. The default is `false`.
+        # Enable boosting low frequency components. The default is `false`. **Note:**
+        # This field is not supported.
         # Corresponds to the JSON property `lowBoost`
         # @return [Boolean]
         attr_accessor :low_boost
@@ -304,7 +306,8 @@ module Google
         end
       end
       
-      # Color preprocessing configuration.
+      # Color preprocessing configuration. **Note:** This configuration is not
+      # supported.
       class Color
         include Google::Apis::Core::Hashable
       
@@ -379,7 +382,8 @@ module Google
         end
       end
       
-      # Deblock preprocessing configuration.
+      # Deblock preprocessing configuration. **Note:** This configuration is not
+      # supported.
       class Deblock
         include Google::Apis::Core::Hashable
       
@@ -406,7 +410,8 @@ module Google
         end
       end
       
-      # Denoise preprocessing configuration.
+      # Denoise preprocessing configuration. **Note:** This configuration is not
+      # supported.
       class Denoise
         include Google::Apis::Core::Hashable
       
@@ -516,8 +521,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -926,7 +930,9 @@ module Google
       
         # URI of the media. Input files must be at least 5 seconds in duration and
         # stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty,
-        # the value will be populated from `Job.input_uri`.
+        # the value is populated from `Job.input_uri`. See [Supported input and output
+        # formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-
+        # output-formats).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -975,7 +981,9 @@ module Google
         # Input only. Specify the `input_uri` to populate empty `uri` fields in each
         # element of `Job.config.inputs` or `JobTemplate.config.inputs` when using
         # template. URI of the media. Input files must be at least 5 seconds in duration
-        # and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+        # and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [
+        # Supported input and output formats](https://cloud.google.com/transcoder/docs/
+        # concepts/supported-input-and-output-formats).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -988,7 +996,9 @@ module Google
       
         # Input only. Specify the `output_uri` to populate an empty `Job.config.output.
         # uri` or `JobTemplate.config.output.uri` when using template. URI for the
-        # output file(s). For example, `gs://my-bucket/outputs/`.
+        # output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input
+        # and output formats](https://cloud.google.com/transcoder/docs/concepts/
+        # supported-input-and-output-formats).
         # Corresponds to the JSON property `outputUri`
         # @return [String]
         attr_accessor :output_uri
@@ -1240,7 +1250,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The container format. The default is `mp4` Supported container formats: - `ts`
-        # - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+        # - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also:
+        # [Supported input and output formats](https://cloud.google.com/transcoder/docs/
+        # concepts/supported-input-and-output-formats)
         # Corresponds to the JSON property `container`
         # @return [String]
         attr_accessor :container
@@ -1312,8 +1324,10 @@ module Google
       class Output
         include Google::Apis::Core::Hashable
       
-        # URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty
-        # the value is populated from `Job.output_uri`.
+        # URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty,
+        # the value is populated from `Job.output_uri`. See [Supported input and output
+        # formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-
+        # output-formats).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1400,7 +1414,8 @@ module Google
         # @return [Google::Apis::TranscoderV1::Audio]
         attr_accessor :audio
       
-        # Color preprocessing configuration.
+        # Color preprocessing configuration. **Note:** This configuration is not
+        # supported.
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::TranscoderV1::Color]
         attr_accessor :color
@@ -1411,12 +1426,14 @@ module Google
         # @return [Google::Apis::TranscoderV1::Crop]
         attr_accessor :crop
       
-        # Deblock preprocessing configuration.
+        # Deblock preprocessing configuration. **Note:** This configuration is not
+        # supported.
         # Corresponds to the JSON property `deblock`
         # @return [Google::Apis::TranscoderV1::Deblock]
         attr_accessor :deblock
       
-        # Denoise preprocessing configuration.
+        # Denoise preprocessing configuration. **Note:** This configuration is not
+        # supported.
         # Corresponds to the JSON property `denoise`
         # @return [Google::Apis::TranscoderV1::Denoise]
         attr_accessor :denoise
@@ -1726,7 +1743,7 @@ module Google
         attr_accessor :bitrate_bps
       
         # Target CRF level. Must be between 10 and 36, where 10 is the highest quality
-        # and 36 is the most efficient compression. The default is 21. *Note*: This
+        # and 36 is the most efficient compression. The default is 21. **Note:** This
         # field is not supported.
         # Corresponds to the JSON property `crfLevel`
         # @return [Fixnum]
