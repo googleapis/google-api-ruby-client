@@ -550,6 +550,7 @@ module Google
       class DriveOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_side_encrypted_option, as: 'clientSideEncryptedOption'
           property :include_shared_drives, as: 'includeSharedDrives'
           property :include_team_drives, as: 'includeTeamDrives'
           property :version_date, as: 'versionDate'
