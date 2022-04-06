@@ -826,6 +826,7 @@ module Google
           property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesV1::PlayerExperienceInfo, decorator: Google::Apis::GamesV1::PlayerExperienceInfo::Representation
       
           property :friend_status, as: 'friendStatus'
+          property :game_player_id, as: 'gamePlayerId'
           property :kind, as: 'kind'
           property :name, as: 'name', class: Google::Apis::GamesV1::Player::Name, decorator: Google::Apis::GamesV1::Player::Name::Representation
       

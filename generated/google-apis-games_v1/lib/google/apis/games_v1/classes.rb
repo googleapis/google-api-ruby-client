@@ -1646,6 +1646,11 @@ module Google
         # @return [String]
         attr_accessor :friend_status
       
+        # Per-application unique player identifier.
+        # Corresponds to the JSON property `gamePlayerId`
+        # @return [String]
+        attr_accessor :game_player_id
+      
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string `games#player`
         # Corresponds to the JSON property `kind`
@@ -1692,6 +1697,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @experience_info = args[:experience_info] if args.key?(:experience_info)
           @friend_status = args[:friend_status] if args.key?(:friend_status)
+          @game_player_id = args[:game_player_id] if args.key?(:game_player_id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
