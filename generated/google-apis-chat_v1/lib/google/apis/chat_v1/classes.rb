@@ -60,12 +60,13 @@ module Google
         # @return [Google::Apis::ChatV1::DialogAction]
         attr_accessor :dialog_action
       
-        # The type of Chat app response.
+        # Input only. The type of Chat app response.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # URL for users to auth or config. (Only for REQUEST_CONFIG response types.)
+        # Input only. URL for users to auth or config. (Only for REQUEST_CONFIG response
+        # types.)
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
