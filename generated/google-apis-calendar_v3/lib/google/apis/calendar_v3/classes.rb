@@ -1038,8 +1038,7 @@ module Google
         attr_accessor :anyone_can_add_self
         alias_method :anyone_can_add_self?, :anyone_can_add_self
       
-        # File attachments for the event. Currently only Google Drive attachments are
-        # supported.
+        # File attachments for the event.
         # In order to modify attachments the supportsAttachments request parameter
         # should be set to true.
         # There can be at most 25 attachments per event,
@@ -1629,7 +1628,8 @@ module Google
         # @return [String]
         attr_accessor :file_url
       
-        # URL link to the attachment's icon. Read-only.
+        # URL link to the attachment's icon. This field can only be modified for custom
+        # third-party attachments.
         # Corresponds to the JSON property `iconLink`
         # @return [String]
         attr_accessor :icon_link
