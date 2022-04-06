@@ -714,6 +714,7 @@ module Google
           property :build_number, as: 'buildNumber'
           property :compromised_state, as: 'compromisedState'
           property :create_time, as: 'createTime'
+          property :device_id, as: 'deviceId'
           property :device_type, as: 'deviceType'
           property :enabled_developer_options, as: 'enabledDeveloperOptions'
           property :enabled_usb_debugging, as: 'enabledUsbDebugging'

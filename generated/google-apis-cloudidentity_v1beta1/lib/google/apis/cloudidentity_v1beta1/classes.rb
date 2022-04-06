@@ -527,6 +527,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Unique identifier for the device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
         # Output only. Type of device.
         # Corresponds to the JSON property `deviceType`
         # @return [String]
@@ -655,6 +660,7 @@ module Google
           @build_number = args[:build_number] if args.key?(:build_number)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @device_id = args[:device_id] if args.key?(:device_id)
           @device_type = args[:device_type] if args.key?(:device_type)
           @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
           @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
