@@ -1667,7 +1667,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a filter.
+        # Immediately and permanently deletes the specified filter.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
