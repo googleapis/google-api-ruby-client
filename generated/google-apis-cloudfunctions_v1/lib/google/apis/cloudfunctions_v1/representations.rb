@@ -371,6 +371,7 @@ module Google
       class GenerateUploadUrlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
         end
       end
       
