@@ -51,8 +51,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Checks whether an item is accessible by specified principal. **Note:** This
-        # API requires an admin account to execute.
+        # Checks whether an item is accessible by specified principal. Principal must be
+        # a user; groups and domain values aren't supported. **Note:** This API requires
+        # an admin account to execute.
         # @param [String] name
         #   Item name, format: datasources/`source_id`/items/`item_id`
         # @param [Google::Apis::CloudsearchV1::Principal] principal_object
