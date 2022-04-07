@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class V2CloneKeyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class V2GetKeyStringResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,13 +155,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_referrers, as: 'allowedReferrers'
-        end
-      end
-      
-      class V2CloneKeyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key_id, as: 'keyId'
         end
       end
       
