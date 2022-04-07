@@ -873,6 +873,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity'
           property :partition, as: 'partition'
+          collection :sampled_data_locations, as: 'sampledDataLocations'
           property :type, as: 'type'
         end
       end
