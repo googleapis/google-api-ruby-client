@@ -2488,7 +2488,7 @@ module Google
         # @return [Float]
         attr_accessor :attribution
       
-        # Full name of the feature. For non-numerical features, will be formatted like ..
+        # The full feature name. For non-numerical features, will be formatted like `.`.
         # Overall size of feature name will always be truncated to first 120 characters.
         # Corresponds to the JSON property `featureName`
         # @return [String]
@@ -3172,7 +3172,8 @@ module Google
         end
       end
       
-      # Training info of a trial in hyperparameter tuning.
+      # Training info of a trial in [hyperparameter tuning](/bigquery-ml/docs/
+      # reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models.
       class HparamTuningTrial
         include Google::Apis::Core::Hashable
       
@@ -5120,9 +5121,11 @@ module Google
         attr_accessor :creation_time
       
         # Output only. The default trial_id to use in TVFs when the trial_id is not
-        # passed in. For single-objective hyperparameter tuning, this is the best trial
-        # id. For multi-objective hyperparameter tuning, this is the smallest trial id
-        # among all Pareto optimal trials.
+        # passed in. For single-objective [hyperparameter tuning](/bigquery-ml/docs/
+        # reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, this is
+        # the best trial ID. For multi-objective [hyperparameter tuning](/bigquery-ml/
+        # docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, this
+        # is the smallest trial ID among all Pareto optimal trials.
         # Corresponds to the JSON property `defaultTrialId`
         # @return [Fixnum]
         attr_accessor :default_trial_id
@@ -5169,7 +5172,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::HparamSearchSpaces]
         attr_accessor :hparam_search_spaces
       
-        # Output only. Trials of a hyperparameter tuning model sorted by trial_id.
+        # Output only. Trials of a [hyperparameter tuning](/bigquery-ml/docs/reference/
+        # standard-sql/bigqueryml-syntax-hp-tuning-overview) model sorted by trial_id.
         # Corresponds to the JSON property `hparamTrials`
         # @return [Array<Google::Apis::BigqueryV2::HparamTuningTrial>]
         attr_accessor :hparam_trials
@@ -5211,9 +5215,11 @@ module Google
         # @return [String]
         attr_accessor :model_type
       
-        # Output only. For single-objective hyperparameter tuning, it only contains the
-        # best trial. For multi-objective hyperparameter tuning, it contains all Pareto
-        # optimal trials sorted by trial_id.
+        # Output only. For single-objective [hyperparameter tuning](/bigquery-ml/docs/
+        # reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it only
+        # contains the best trial. For multi-objective [hyperparameter tuning](/bigquery-
+        # ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models,
+        # it contains all Pareto optimal trials sorted by trial_id.
         # Corresponds to the JSON property `optimalTrialIds`
         # @return [Array<Fixnum>]
         attr_accessor :optimal_trial_ids
@@ -6996,6 +7002,54 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_rows
       
+        # [Output-only] Number of logical bytes that are less than 90 days old.
+        # Corresponds to the JSON property `num_active_logical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_active_logical_bytes
+      
+        # [Output-only] Number of physical bytes less than 90 days old. This data is not
+        # kept in real time, and might be delayed by a few seconds to a few minutes.
+        # Corresponds to the JSON property `num_active_physical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_active_physical_bytes
+      
+        # [Output-only] Number of logical bytes that are more than 90 days old.
+        # Corresponds to the JSON property `num_long_term_logical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_long_term_logical_bytes
+      
+        # [Output-only] Number of physical bytes more than 90 days old. This data is not
+        # kept in real time, and might be delayed by a few seconds to a few minutes.
+        # Corresponds to the JSON property `num_long_term_physical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_long_term_physical_bytes
+      
+        # [Output-only] The number of partitions present in the table or materialized
+        # view. This data is not kept in real time, and might be delayed by a few
+        # seconds to a few minutes.
+        # Corresponds to the JSON property `num_partitions`
+        # @return [Fixnum]
+        attr_accessor :num_partitions
+      
+        # [Output-only] Number of physical bytes used by time travel storage (deleted or
+        # changed data). This data is not kept in real time, and might be delayed by a
+        # few seconds to a few minutes.
+        # Corresponds to the JSON property `num_time_travel_physical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_time_travel_physical_bytes
+      
+        # [Output-only] Total number of logical bytes in the table or materialized view.
+        # Corresponds to the JSON property `num_total_logical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_total_logical_bytes
+      
+        # [Output-only] The physical size of this table in bytes. This also includes
+        # storage used for time travel. This data is not kept in real time, and might be
+        # delayed by a few seconds to a few minutes.
+        # Corresponds to the JSON property `num_total_physical_bytes`
+        # @return [Fixnum]
+        attr_accessor :num_total_physical_bytes
+      
         # [TrustedTester] Range partitioning specification for this table. Only one of
         # timePartitioning and rangePartitioning should be specified.
         # Corresponds to the JSON property `rangePartitioning`
@@ -7084,6 +7138,14 @@ module Google
           @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
           @num_physical_bytes = args[:num_physical_bytes] if args.key?(:num_physical_bytes)
           @num_rows = args[:num_rows] if args.key?(:num_rows)
+          @num_active_logical_bytes = args[:num_active_logical_bytes] if args.key?(:num_active_logical_bytes)
+          @num_active_physical_bytes = args[:num_active_physical_bytes] if args.key?(:num_active_physical_bytes)
+          @num_long_term_logical_bytes = args[:num_long_term_logical_bytes] if args.key?(:num_long_term_logical_bytes)
+          @num_long_term_physical_bytes = args[:num_long_term_physical_bytes] if args.key?(:num_long_term_physical_bytes)
+          @num_partitions = args[:num_partitions] if args.key?(:num_partitions)
+          @num_time_travel_physical_bytes = args[:num_time_travel_physical_bytes] if args.key?(:num_time_travel_physical_bytes)
+          @num_total_logical_bytes = args[:num_total_logical_bytes] if args.key?(:num_total_logical_bytes)
+          @num_total_physical_bytes = args[:num_total_physical_bytes] if args.key?(:num_total_physical_bytes)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @schema = args[:schema] if args.key?(:schema)
