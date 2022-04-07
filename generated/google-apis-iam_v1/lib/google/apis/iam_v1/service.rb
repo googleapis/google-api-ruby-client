@@ -2238,7 +2238,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a ServiceAccountKey, using a public key that you provide.
+        # Uploads the public key portion of a key pair that you manage, and associates
+        # the public key with a ServiceAccount. After you upload the public key, you can
+        # use the private key from the key pair as a service account key.
         # @param [String] name
         #   The resource name of the service account in the following format: `projects/`
         #   PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `
