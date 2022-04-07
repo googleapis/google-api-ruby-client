@@ -205,8 +205,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The percentage of accepted messages that had their priority lowered from high
-        # to normal due to [app standby buckets](https://firebase.google.com/docs/cloud-
-        # messaging/concept-options#setting-the-priority-of-a-message).
+        # to normal. See [documentation for setting message priority](https://firebase.
+        # google.com/docs/cloud-messaging/android/message-priority).
         # Corresponds to the JSON property `priorityLowered`
         # @return [Float]
         attr_accessor :priority_lowered
