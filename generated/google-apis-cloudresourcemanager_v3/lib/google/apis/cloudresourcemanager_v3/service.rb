@@ -2066,6 +2066,130 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource
+        # and origin exists under the same TagValue.
+        # @param [String] parent
+        #   Required. The resource name of the TagHold's parent TagValue. Must be of the
+        #   form: `tagValues/`tag-value-id``.
+        # @param [Google::Apis::CloudresourcemanagerV3::TagHold] tag_hold_object
+        # @param [Boolean] validate_only
+        #   Optional. Set to true to perform the validations necessary for creating the
+        #   resource, but not actually perform the action.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_tag_value_tag_hold(parent, tag_hold_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/tagHolds', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::TagHold::Representation
+          command.request_object = tag_hold_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a TagHold.
+        # @param [String] name
+        #   Required. The resource name of the TagHold to delete. Must be of the form: `
+        #   tagValues/`tag-value-id`/tagHolds/`tag-hold-id``.
+        # @param [Boolean] validate_only
+        #   Optional. Set to true to perform the validations necessary for deleting the
+        #   resource, but not actually perform the action.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_tag_value_tag_hold(name, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists TagHolds under a TagValue.
+        # @param [String] parent
+        #   Required. The resource name of the parent TagValue. Must be of the form: `
+        #   tagValues/`tag-value-id``.
+        # @param [String] filter
+        #   Optional. Criteria used to select a subset of TagHolds parented by the
+        #   TagValue to return. This field follows the syntax defined by aip.dev/160; the `
+        #   holder` and `origin` fields are supported for filtering. Currently only `AND`
+        #   syntax is supported. Some example queries are: * `holder = //compute.
+        #   googleapis.com/compute/projects/myproject/regions/us-east-1/
+        #   instanceGroupManagers/instance-group` * `origin = 35678234` * `holder = //
+        #   compute.googleapis.com/compute/projects/myproject/regions/us-east-1/
+        #   instanceGroupManagers/instance-group AND origin = 35678234`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of TagHolds to return in the response. The server
+        #   allows a maximum of 300 TagHolds to return. If unspecified, the server will
+        #   use 100 as the default.
+        # @param [String] page_token
+        #   Optional. A pagination token returned from a previous call to `ListTagHolds`
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListTagHoldsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListTagHoldsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_tag_value_tag_holds(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/tagHolds', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListTagHoldsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListTagHoldsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
