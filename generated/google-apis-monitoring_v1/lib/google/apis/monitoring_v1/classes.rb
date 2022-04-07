@@ -260,6 +260,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::ColumnLayout]
         attr_accessor :column_layout
       
+        # Filters to reduce the amount of data charted based on the filter criteria.
+        # Corresponds to the JSON property `dashboardFilters`
+        # @return [Array<Google::Apis::MonitoringV1::DashboardFilter>]
+        attr_accessor :dashboard_filters
+      
         # Required. The mutable, human-readable name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -311,6 +316,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column_layout = args[:column_layout] if args.key?(:column_layout)
+          @dashboard_filters = args[:dashboard_filters] if args.key?(:dashboard_filters)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @grid_layout = args[:grid_layout] if args.key?(:grid_layout)
@@ -318,6 +324,45 @@ module Google
           @mosaic_layout = args[:mosaic_layout] if args.key?(:mosaic_layout)
           @name = args[:name] if args.key?(:name)
           @row_layout = args[:row_layout] if args.key?(:row_layout)
+        end
+      end
+      
+      # A filter to reduce the amount of data charted in relevant widgets.
+      class DashboardFilter
+        include Google::Apis::Core::Hashable
+      
+        # The specified filter type
+        # Corresponds to the JSON property `filterType`
+        # @return [String]
+        attr_accessor :filter_type
+      
+        # Required. The key for the label
+        # Corresponds to the JSON property `labelKey`
+        # @return [String]
+        attr_accessor :label_key
+      
+        # A variable-length string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # The placeholder text that can be referenced in a filter string or MQL query.
+        # If omitted, the dashboard filter will be applied to all relevant widgets in
+        # the dashboard.
+        # Corresponds to the JSON property `templateVariable`
+        # @return [String]
+        attr_accessor :template_variable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_type = args[:filter_type] if args.key?(:filter_type)
+          @label_key = args[:label_key] if args.key?(:label_key)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @template_variable = args[:template_variable] if args.key?(:template_variable)
         end
       end
       
@@ -404,8 +449,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # Empty is empty JSON object ``.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1834,8 +1878,7 @@ module Google
         # A generic empty message that you can re-use to avoid defining duplicated empty
         # messages in your APIs. A typical example is to use it as the request or the
         # response type of an API method. For instance: service Foo ` rpc Bar(google.
-        # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-        # Empty is empty JSON object ``.
+        # protobuf.Empty) returns (google.protobuf.Empty); `
         # Corresponds to the JSON property `blank`
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank

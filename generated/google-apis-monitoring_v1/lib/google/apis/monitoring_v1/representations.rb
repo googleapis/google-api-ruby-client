@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DashboardFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +383,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column_layout, as: 'columnLayout', class: Google::Apis::MonitoringV1::ColumnLayout, decorator: Google::Apis::MonitoringV1::ColumnLayout::Representation
       
+          collection :dashboard_filters, as: 'dashboardFilters', class: Google::Apis::MonitoringV1::DashboardFilter, decorator: Google::Apis::MonitoringV1::DashboardFilter::Representation
+      
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :grid_layout, as: 'gridLayout', class: Google::Apis::MonitoringV1::GridLayout, decorator: Google::Apis::MonitoringV1::GridLayout::Representation
@@ -387,6 +395,16 @@ module Google
           property :name, as: 'name'
           property :row_layout, as: 'rowLayout', class: Google::Apis::MonitoringV1::RowLayout, decorator: Google::Apis::MonitoringV1::RowLayout::Representation
       
+        end
+      end
+      
+      class DashboardFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_type, as: 'filterType'
+          property :label_key, as: 'labelKey'
+          property :string_value, as: 'stringValue'
+          property :template_variable, as: 'templateVariable'
         end
       end
       
