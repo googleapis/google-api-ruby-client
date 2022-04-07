@@ -400,7 +400,8 @@ module Google
         # @return [String]
         attr_accessor :report_time
       
-        # Output only. Sampling data for the battery.
+        # Output only. Sampling data for the battery sorted in a decreasing order of
+        # report_time.
         # Corresponds to the JSON property `sample`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatterySampleReport>]
         attr_accessor :sample
@@ -1477,7 +1478,8 @@ module Google
       class GoogleChromeManagementV1TelemetryDevice
         include Google::Apis::Core::Hashable
       
-        # Output only. Audio reports collected periodically.
+        # Output only. Audio reports collected periodically sorted in a decreasing order
+        # of report_time.
         # Corresponds to the JSON property `audioStatusReport`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AudioStatusReport>]
         attr_accessor :audio_status_report
@@ -1497,7 +1499,8 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo>]
         attr_accessor :cpu_info
       
-        # Output only. CPU status reports collected periodically.
+        # Output only. CPU status reports collected periodically sorted in a decreasing
+        # order of report_time.
         # Corresponds to the JSON property `cpuStatusReport`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuStatusReport>]
         attr_accessor :cpu_status_report
@@ -1528,7 +1531,8 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo]
         attr_accessor :memory_info
       
-        # Output only. Memory status reports collected periodically.
+        # Output only. Memory status reports collected periodically sorted decreasing by
+        # report_time.
         # Corresponds to the JSON property `memoryStatusReport`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport>]
         attr_accessor :memory_status_report
