@@ -1,0 +1,7 @@
+{
+    "api_id": "playdeveloperreporting:v1alpha1",
+    "name_pretty": "Google Play Developer Reporting API",
+    "distribution_name": "google-apis-playdeveloperreporting_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
