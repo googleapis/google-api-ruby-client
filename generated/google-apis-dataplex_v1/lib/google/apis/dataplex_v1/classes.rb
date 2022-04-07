@@ -25,8 +25,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # Empty is empty JSON object ``.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1051,6 +1050,12 @@ module Google
         # @return [String]
         attr_accessor :partition
       
+        # The locations of the data items (e.g., a Cloud Storage objects) sampled for
+        # metadata inference.
+        # Corresponds to the JSON property `sampledDataLocations`
+        # @return [Array<String>]
+        attr_accessor :sampled_data_locations
+      
         # The type of the containing entity resource.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1064,6 +1069,7 @@ module Google
         def update!(**args)
           @entity = args[:entity] if args.key?(:entity)
           @partition = args[:partition] if args.key?(:partition)
+          @sampled_data_locations = args[:sampled_data_locations] if args.key?(:sampled_data_locations)
           @type = args[:type] if args.key?(:type)
         end
       end
