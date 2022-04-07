@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTagHoldsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTagKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class TagBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagHold
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -598,6 +610,15 @@ module Google
         end
       end
       
+      class ListTagHoldsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tag_holds, as: 'tagHolds', class: Google::Apis::CloudresourcemanagerV3::TagHold, decorator: Google::Apis::CloudresourcemanagerV3::TagHold::Representation
+      
+        end
+      end
+      
       class ListTagKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -759,6 +780,17 @@ module Google
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :tag_value, as: 'tagValue'
+        end
+      end
+      
+      class TagHold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :help_link, as: 'helpLink'
+          property :holder, as: 'holder'
+          property :name, as: 'name'
+          property :origin, as: 'origin'
         end
       end
       
