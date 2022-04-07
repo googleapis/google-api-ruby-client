@@ -2717,6 +2717,14 @@ module Google
           property :num_long_term_bytes, :numeric_string => true, as: 'numLongTermBytes'
           property :num_physical_bytes, :numeric_string => true, as: 'numPhysicalBytes'
           property :num_rows, :numeric_string => true, as: 'numRows'
+          property :num_active_logical_bytes, :numeric_string => true, as: 'num_active_logical_bytes'
+          property :num_active_physical_bytes, :numeric_string => true, as: 'num_active_physical_bytes'
+          property :num_long_term_logical_bytes, :numeric_string => true, as: 'num_long_term_logical_bytes'
+          property :num_long_term_physical_bytes, :numeric_string => true, as: 'num_long_term_physical_bytes'
+          property :num_partitions, :numeric_string => true, as: 'num_partitions'
+          property :num_time_travel_physical_bytes, :numeric_string => true, as: 'num_time_travel_physical_bytes'
+          property :num_total_logical_bytes, :numeric_string => true, as: 'num_total_logical_bytes'
+          property :num_total_physical_bytes, :numeric_string => true, as: 'num_total_physical_bytes'
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
           property :require_partition_filter, as: 'requirePartitionFilter'
