@@ -830,7 +830,8 @@ module Google
         # Optional. This purchase order (PO) information is for resellers to use for
         # their company tracking usage. If a purchaseOrderId value is given, it appears
         # in the API responses and shows up in the invoice. The property accepts up to
-        # 80 plain text characters.
+        # 80 plain text characters. This is only supported for Google Workspace
+        # entitlements.
         # Corresponds to the JSON property `purchaseOrderId`
         # @return [String]
         attr_accessor :purchase_order_id
@@ -2092,7 +2093,7 @@ module Google
       end
       
       # Represents information which resellers will get as part of notification from
-      # Cloud Pub/Sub.
+      # Pub/Sub.
       class GoogleCloudChannelV1SubscriberEvent
         include Google::Apis::Core::Hashable
       
@@ -2625,7 +2626,8 @@ module Google
         # Optional. This purchase order (PO) information is for resellers to use for
         # their company tracking usage. If a purchaseOrderId value is given, it appears
         # in the API responses and shows up in the invoice. The property accepts up to
-        # 80 plain text characters.
+        # 80 plain text characters. This is only supported for Google Workspace
+        # entitlements.
         # Corresponds to the JSON property `purchaseOrderId`
         # @return [String]
         attr_accessor :purchase_order_id
@@ -2864,7 +2866,7 @@ module Google
       end
       
       # Represents information which resellers will get as part of notification from
-      # Cloud Pub/Sub.
+      # Pub/Sub.
       class GoogleCloudChannelV1alpha1SubscriberEvent
         include Google::Apis::Core::Hashable
       
@@ -3084,8 +3086,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
@@ -3257,8 +3258,8 @@ module Google
         attr_accessor :recipients
       
         # Required. CLDR region code of the country/region of the address. This is never
-        # inferred and it is up to the user to ensure the value is correct. See http://
-        # cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/
+        # inferred and it is up to the user to ensure the value is correct. See https://
+        # cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/
         # territory_information.html for details. Example: "CH" for Switzerland.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
