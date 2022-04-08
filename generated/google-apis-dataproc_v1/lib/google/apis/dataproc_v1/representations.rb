@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuxiliaryServicesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicAutoscalingAlgorithm
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNodePoolAcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNodePoolAutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNodePoolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNodePoolTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HadoopJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +335,18 @@ module Google
       end
       
       class KerberosConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubernetesClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubernetesSoftwareConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkflowGraph
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -678,6 +732,16 @@ module Google
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig::Representation
       
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig::Representation
+      
+        end
+      end
+      
+      class AuxiliaryServicesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metastore_config, as: 'metastoreConfig', class: Google::Apis::DataprocV1::MetastoreConfig, decorator: Google::Apis::DataprocV1::MetastoreConfig::Representation
+      
+          property :spark_history_server_config, as: 'sparkHistoryServerConfig', class: Google::Apis::DataprocV1::SparkHistoryServerConfig, decorator: Google::Apis::DataprocV1::SparkHistoryServerConfig::Representation
       
         end
       end
@@ -779,6 +843,8 @@ module Google
           property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterStatus, decorator: Google::Apis::DataprocV1::ClusterStatus::Representation
+      
+          property :virtual_cluster_config, as: 'virtualClusterConfig', class: Google::Apis::DataprocV1::VirtualClusterConfig, decorator: Google::Apis::DataprocV1::VirtualClusterConfig::Representation
       
         end
       end
@@ -1011,8 +1077,62 @@ module Google
       class GkeClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gke_cluster_target, as: 'gkeClusterTarget'
           property :namespaced_gke_deployment_target, as: 'namespacedGkeDeploymentTarget', class: Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget, decorator: Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget::Representation
       
+          collection :node_pool_target, as: 'nodePoolTarget', class: Google::Apis::DataprocV1::GkeNodePoolTarget, decorator: Google::Apis::DataprocV1::GkeNodePoolTarget::Representation
+      
+        end
+      end
+      
+      class GkeNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig, decorator: Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig::Representation
+      
+          property :local_ssd_count, as: 'localSsdCount'
+          property :machine_type, as: 'machineType'
+          property :min_cpu_platform, as: 'minCpuPlatform'
+          property :preemptible, as: 'preemptible'
+          property :spot, as: 'spot'
+        end
+      end
+      
+      class GkeNodePoolAcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+          property :gpu_partition_size, as: 'gpuPartitionSize'
+        end
+      end
+      
+      class GkeNodePoolAutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_node_count, as: 'maxNodeCount'
+          property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class GkeNodePoolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling, as: 'autoscaling', class: Google::Apis::DataprocV1::GkeNodePoolAutoscalingConfig, decorator: Google::Apis::DataprocV1::GkeNodePoolAutoscalingConfig::Representation
+      
+          property :config, as: 'config', class: Google::Apis::DataprocV1::GkeNodeConfig, decorator: Google::Apis::DataprocV1::GkeNodeConfig::Representation
+      
+          collection :locations, as: 'locations'
+        end
+      end
+      
+      class GkeNodePoolTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_pool, as: 'nodePool'
+          property :node_pool_config, as: 'nodePoolConfig', class: Google::Apis::DataprocV1::GkeNodePoolConfig, decorator: Google::Apis::DataprocV1::GkeNodePoolConfig::Representation
+      
+          collection :roles, as: 'roles'
         end
       end
       
@@ -1211,6 +1331,25 @@ module Google
           property :tgt_lifetime_hours, as: 'tgtLifetimeHours'
           property :truststore_password_uri, as: 'truststorePasswordUri'
           property :truststore_uri, as: 'truststoreUri'
+        end
+      end
+      
+      class KubernetesClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gke_cluster_config, as: 'gkeClusterConfig', class: Google::Apis::DataprocV1::GkeClusterConfig, decorator: Google::Apis::DataprocV1::GkeClusterConfig::Representation
+      
+          property :kubernetes_namespace, as: 'kubernetesNamespace'
+          property :kubernetes_software_config, as: 'kubernetesSoftwareConfig', class: Google::Apis::DataprocV1::KubernetesSoftwareConfig, decorator: Google::Apis::DataprocV1::KubernetesSoftwareConfig::Representation
+      
+        end
+      end
+      
+      class KubernetesSoftwareConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :component_version, as: 'componentVersion'
+          hash :properties, as: 'properties'
         end
       end
       
@@ -1728,6 +1867,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class VirtualClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auxiliary_services_config, as: 'auxiliaryServicesConfig', class: Google::Apis::DataprocV1::AuxiliaryServicesConfig, decorator: Google::Apis::DataprocV1::AuxiliaryServicesConfig::Representation
+      
+          property :kubernetes_cluster_config, as: 'kubernetesClusterConfig', class: Google::Apis::DataprocV1::KubernetesClusterConfig, decorator: Google::Apis::DataprocV1::KubernetesClusterConfig::Representation
+      
+          property :staging_bucket, as: 'stagingBucket'
         end
       end
       

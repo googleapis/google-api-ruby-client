@@ -146,6 +146,31 @@ module Google
         end
       end
       
+      # Auxiliary services configuration for a Cluster.
+      class AuxiliaryServicesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Metastore configuration.
+        # Corresponds to the JSON property `metastoreConfig`
+        # @return [Google::Apis::DataprocV1::MetastoreConfig]
+        attr_accessor :metastore_config
+      
+        # Spark History Server configuration for the workload.
+        # Corresponds to the JSON property `sparkHistoryServerConfig`
+        # @return [Google::Apis::DataprocV1::SparkHistoryServerConfig]
+        attr_accessor :spark_history_server_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metastore_config = args[:metastore_config] if args.key?(:metastore_config)
+          @spark_history_server_config = args[:spark_history_server_config] if args.key?(:spark_history_server_config)
+        end
+      end
+      
       # Basic algorithm for autoscaling.
       class BasicAutoscalingAlgorithm
         include Google::Apis::Core::Hashable
@@ -454,7 +479,7 @@ module Google
         # @return [Google::Apis::DataprocV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource.
+        # Specifies the principals requesting access for a Google Cloud resource.
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
@@ -567,6 +592,14 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::ClusterStatus>]
         attr_accessor :status_history
       
+        # Dataproc cluster config for a cluster that does not directly control the
+        # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
+        # google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-
+        # cluster).
+        # Corresponds to the JSON property `virtualClusterConfig`
+        # @return [Google::Apis::DataprocV1::VirtualClusterConfig]
+        attr_accessor :virtual_cluster_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -581,6 +614,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @status = args[:status] if args.key?(:status)
           @status_history = args[:status_history] if args.key?(:status_history)
+          @virtual_cluster_config = args[:virtual_cluster_config] if args.key?(:virtual_cluster_config)
         end
       end
       
@@ -1435,10 +1469,27 @@ module Google
       class GkeClusterConfig
         include Google::Apis::Core::Hashable
       
-        # A full, namespace-isolated deployment target for an existing GKE cluster.
+        # Optional. A target GKE cluster to deploy to. It must be in the same project
+        # and region as the Dataproc cluster (the GKE cluster can be zonal or regional).
+        # Format: 'projects/`project`/locations/`location`/clusters/`cluster_id`'
+        # Corresponds to the JSON property `gkeClusterTarget`
+        # @return [String]
+        attr_accessor :gke_cluster_target
+      
+        # Deprecated. Used only for the deprecated beta. A full, namespace-isolated
+        # deployment target for an existing GKE cluster.
         # Corresponds to the JSON property `namespacedGkeDeploymentTarget`
         # @return [Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget]
         attr_accessor :namespaced_gke_deployment_target
+      
+        # Optional. GKE NodePools where workloads will be scheduled. At least one node
+        # pool must be assigned the 'default' role. Each role can be given to only a
+        # single NodePoolTarget. All NodePools must have the same location settings. If
+        # a nodePoolTarget is not specified, Dataproc constructs a default
+        # nodePoolTarget.
+        # Corresponds to the JSON property `nodePoolTarget`
+        # @return [Array<Google::Apis::DataprocV1::GkeNodePoolTarget>]
+        attr_accessor :node_pool_target
       
         def initialize(**args)
            update!(**args)
@@ -1446,7 +1497,203 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gke_cluster_target = args[:gke_cluster_target] if args.key?(:gke_cluster_target)
           @namespaced_gke_deployment_target = args[:namespaced_gke_deployment_target] if args.key?(:namespaced_gke_deployment_target)
+          @node_pool_target = args[:node_pool_target] if args.key?(:node_pool_target)
+        end
+      end
+      
+      # Parameters that describe cluster nodes.
+      class GkeNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of hardware accelerators (https://cloud.google.com/compute/
+        # docs/gpus) to attach to each node.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig>]
+        attr_accessor :accelerators
+      
+        # Optional. The number of local SSD disks to attach to the node, which is
+        # limited by the maximum number of disks allowable per zone (see Adding Local
+        # SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+        # Corresponds to the JSON property `localSsdCount`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_count
+      
+        # Optional. The name of a Compute Engine machine type (https://cloud.google.com/
+        # compute/docs/machine-types).
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/
+        # instances/specify-min-cpu-platform) to be used by this instance. The instance
+        # may be scheduled on the specified or a newer CPU platform. Specify the
+        # friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy
+        # Bridge".
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
+        # Optional. Whether the nodes are created as preemptible VM instances (https://
+        # cloud.google.com/compute/docs/instances/preemptible).
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
+        # Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing
+        # preemptible flag.
+        # Corresponds to the JSON property `spot`
+        # @return [Boolean]
+        attr_accessor :spot
+        alias_method :spot?, :spot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+          @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @spot = args[:spot] if args.key?(:spot)
+        end
+      end
+      
+      # A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for
+      # a NodePool.
+      class GkeNodePoolAcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of accelerator cards exposed to an instance.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # The accelerator type resource namename (see GPUs on Compute Engine).
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        # Size of partitions to create on the GPU. Valid values are described in the
+        # NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/
+        # #partitioning).
+        # Corresponds to the JSON property `gpuPartitionSize`
+        # @return [String]
+        attr_accessor :gpu_partition_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
+        end
+      end
+      
+      # GkeNodePoolAutoscaling contains information the cluster autoscaler needs to
+      # adjust the size of the node pool to the current cluster usage.
+      class GkeNodePoolAutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of nodes in the NodePool. Must be >= min_node_count. Note:
+        # Quota must be sufficient to scale up the cluster.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        # The minimum number of nodes in the NodePool. Must be >= 0 and <=
+        # max_node_count.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://
+      # cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-
+      # gke-cluster).
+      class GkeNodePoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # GkeNodePoolAutoscaling contains information the cluster autoscaler needs to
+        # adjust the size of the node pool to the current cluster usage.
+        # Corresponds to the JSON property `autoscaling`
+        # @return [Google::Apis::DataprocV1::GkeNodePoolAutoscalingConfig]
+        attr_accessor :autoscaling
+      
+        # Parameters that describe cluster nodes.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DataprocV1::GkeNodeConfig]
+        attr_accessor :config
+      
+        # Optional. The list of Compute Engine zones (https://cloud.google.com/compute/
+        # docs/zones#available) where NodePool's nodes will be located.Note: Currently,
+        # only one zone may be specified.If a location is not specified during NodePool
+        # creation, Dataproc will choose a location.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
+          @config = args[:config] if args.key?(:config)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
+      # GKE NodePools that Dataproc workloads run on.
+      class GkeNodePoolTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target GKE NodePool. Format: 'projects/`project`/locations/`
+        # location`/clusters/`cluster`/nodePools/`node_pool`'
+        # Corresponds to the JSON property `nodePool`
+        # @return [String]
+        attr_accessor :node_pool
+      
+        # The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://
+        # cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-
+        # gke-cluster).
+        # Corresponds to the JSON property `nodePoolConfig`
+        # @return [Google::Apis::DataprocV1::GkeNodePoolConfig]
+        attr_accessor :node_pool_config
+      
+        # Required. The types of role for a GKE NodePool
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_pool = args[:node_pool] if args.key?(:node_pool)
+          @node_pool_config = args[:node_pool_config] if args.key?(:node_pool_config)
+          @roles = args[:roles] if args.key?(:roles)
         end
       end
       
@@ -2312,6 +2559,71 @@ module Google
         end
       end
       
+      # The configuration for running the Dataproc cluster on Kubernetes.
+      class KubernetesClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # The cluster's GKE config.
+        # Corresponds to the JSON property `gkeClusterConfig`
+        # @return [Google::Apis::DataprocV1::GkeClusterConfig]
+        attr_accessor :gke_cluster_config
+      
+        # Optional. A namespace within the Kubernetes cluster to deploy into. If this
+        # namespace does not exist, it is created. If it exists, Dataproc verifies that
+        # another Dataproc VirtualCluster is not installed into it. If not specified,
+        # the name of the Dataproc Cluster is used.
+        # Corresponds to the JSON property `kubernetesNamespace`
+        # @return [String]
+        attr_accessor :kubernetes_namespace
+      
+        # The software configuration for this Dataproc cluster running on Kubernetes.
+        # Corresponds to the JSON property `kubernetesSoftwareConfig`
+        # @return [Google::Apis::DataprocV1::KubernetesSoftwareConfig]
+        attr_accessor :kubernetes_software_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_cluster_config = args[:gke_cluster_config] if args.key?(:gke_cluster_config)
+          @kubernetes_namespace = args[:kubernetes_namespace] if args.key?(:kubernetes_namespace)
+          @kubernetes_software_config = args[:kubernetes_software_config] if args.key?(:kubernetes_software_config)
+        end
+      end
+      
+      # The software configuration for this Dataproc cluster running on Kubernetes.
+      class KubernetesSoftwareConfig
+        include Google::Apis::Core::Hashable
+      
+        # The components that should be installed in this Dataproc cluster. The key must
+        # be a string from the KubernetesComponent enumeration. The value is the version
+        # of the software to be installed. At least one entry must be specified.
+        # Corresponds to the JSON property `componentVersion`
+        # @return [Hash<String,String>]
+        attr_accessor :component_version
+      
+        # The properties to set on daemon config files.Property keys are specified in
+        # prefix:property format, for example spark:spark.kubernetes.container.image.
+        # The following are supported prefixes and their mappings: spark: spark-defaults.
+        # confFor more information, see Cluster properties (https://cloud.google.com/
+        # dataproc/docs/concepts/cluster-properties).
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_version = args[:component_version] if args.key?(:component_version)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
       # Specifies the cluster auto-delete schedule configuration.
       class LifecycleConfig
         include Google::Apis::Core::Hashable
@@ -2649,7 +2961,8 @@ module Google
         end
       end
       
-      # A full, namespace-isolated deployment target for an existing GKE cluster.
+      # Deprecated. Used only for the deprecated beta. A full, namespace-isolated
+      # deployment target for an existing GKE cluster.
       class NamespacedGkeDeploymentTarget
         include Google::Apis::Core::Hashable
       
@@ -4314,8 +4627,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the resource. Permissions with wildcards (
-        # such as '*' or 'storage.*') are not allowed. For more information see IAM
-        # Overview (https://cloud.google.com/iam/docs/overview#permissions).
+        # such as * or storage.*) are not allowed. For more information see IAM Overview
+        # (https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -4365,6 +4678,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Dataproc cluster config for a cluster that does not directly control the
+      # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
+      # google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-
+      # cluster).
+      class VirtualClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Auxiliary services configuration for a Cluster.
+        # Corresponds to the JSON property `auxiliaryServicesConfig`
+        # @return [Google::Apis::DataprocV1::AuxiliaryServicesConfig]
+        attr_accessor :auxiliary_services_config
+      
+        # The configuration for running the Dataproc cluster on Kubernetes.
+        # Corresponds to the JSON property `kubernetesClusterConfig`
+        # @return [Google::Apis::DataprocV1::KubernetesClusterConfig]
+        attr_accessor :kubernetes_cluster_config
+      
+        # Optional. A Storage bucket used to stage job dependencies, config files, and
+        # job driver console output. If you do not specify a staging bucket, Cloud
+        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # cluster's staging bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
+        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
+        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
+        # bucket.
+        # Corresponds to the JSON property `stagingBucket`
+        # @return [String]
+        attr_accessor :staging_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auxiliary_services_config = args[:auxiliary_services_config] if args.key?(:auxiliary_services_config)
+          @kubernetes_cluster_config = args[:kubernetes_cluster_config] if args.key?(:kubernetes_cluster_config)
+          @staging_bucket = args[:staging_bucket] if args.key?(:staging_bucket)
         end
       end
       
