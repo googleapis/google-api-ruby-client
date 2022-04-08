@@ -1,5 +1,9 @@
 # Release history for google-apis-mybusinessqanda_v1
 
+### v0.3.0 (2022-04-08)
+
+* Regenerated from discovery document revision 20220407
+
 ### v0.2.0 (2022-03-22)
 
 * Regenerated from discovery document revision 20220319
