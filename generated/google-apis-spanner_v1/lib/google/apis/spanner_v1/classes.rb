@@ -847,7 +847,7 @@ module Google
         end
       end
       
-      # Metadata type for the google.longrunning.Operation returned by CopyBackup.
+      # Metadata type for the operation returned by CopyBackup.
       class CopyBackupMetadata
         include Google::Apis::Core::Hashable
       
