@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretEnvVar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -547,6 +553,16 @@ module Google
         end
       end
       
+      class SecretEnvVar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :project_id, as: 'projectId'
+          property :secret, as: 'secret'
+          property :version, as: 'version'
+        end
+      end
+      
       class ServiceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -557,6 +573,8 @@ module Google
           property :max_instance_count, as: 'maxInstanceCount'
           property :min_instance_count, as: 'minInstanceCount'
           property :revision, as: 'revision'
+          collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV2alpha::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV2alpha::SecretEnvVar::Representation
+      
           property :service, as: 'service'
           property :service_account_email, as: 'serviceAccountEmail'
           property :timeout_seconds, as: 'timeoutSeconds'

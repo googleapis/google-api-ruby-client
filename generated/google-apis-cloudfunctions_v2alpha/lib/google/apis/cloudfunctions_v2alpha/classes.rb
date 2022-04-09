@@ -1335,6 +1335,50 @@ module Google
         end
       end
       
+      # Configuration for a secret environment variable. It has the information
+      # necessary to fetch the secret value from secret manager and expose it as an
+      # environment variable.
+      class SecretEnvVar
+        include Google::Apis::Core::Hashable
+      
+        # Name of the environment variable.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Project identifier (preferably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it will be populated with
+        # the function's project assuming that the secret exists in the same project as
+        # of the function.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # recommended to use a numeric version for secret environment variables as any
+        # updates to the secret value is not reflected until new instances start.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Describes the Service being deployed. Currently Supported : Cloud Run (fully
       # managed).
       class ServiceConfig
@@ -1394,6 +1438,11 @@ module Google
         # @return [String]
         attr_accessor :revision
       
+        # Secret environment variables configuration.
+        # Corresponds to the JSON property `secretEnvironmentVariables`
+        # @return [Array<Google::Apis::CloudfunctionsV2alpha::SecretEnvVar>]
+        attr_accessor :secret_environment_variables
+      
         # Output only. Name of the service associated with a Function. The format of
         # this field is `projects/`project`/locations/`region`/services/`service``
         # Corresponds to the JSON property `service`
@@ -1443,6 +1492,7 @@ module Google
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
           @revision = args[:revision] if args.key?(:revision)
+          @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
           @service = args[:service] if args.key?(:service)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
