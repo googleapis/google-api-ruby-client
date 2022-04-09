@@ -16,13 +16,13 @@ module Google
   module Apis
     module DatastoreV1beta3
       # Version of the google-apis-datastore_v1beta3 gem
-      GEM_VERSION = "0.11.0"
+      GEM_VERSION = "0.12.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220110"
+      REVISION = "20220402"
     end
   end
 end
