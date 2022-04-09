@@ -502,6 +502,41 @@ module Google
         end
       end
       
+      # Configuration for an indexed field.
+      class IndexConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the index was last modified.This is used to
+        # return the timestamp, and will be ignored if supplied during update.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The LogEntry field path to index.Note that some paths are
+        # automatically indexed, and other paths are not eligible for indexing. See
+        # indexing documentation( https://cloud.google.com/logging/docs/view/advanced-
+        # queries#indexed-fields) for details.For example: jsonPayload.request.status
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # Required. The type of data in this index.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
@@ -990,6 +1025,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # A list of indexed fields and related configuration data.
+        # Corresponds to the JSON property `indexConfigs`
+        # @return [Array<Google::Apis::LoggingV2::IndexConfig>]
+        attr_accessor :index_configs
+      
         # Output only. The bucket lifecycle state.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
@@ -1042,6 +1082,7 @@ module Google
           @cmek_settings = args[:cmek_settings] if args.key?(:cmek_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @index_configs = args[:index_configs] if args.key?(:index_configs)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
           @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
