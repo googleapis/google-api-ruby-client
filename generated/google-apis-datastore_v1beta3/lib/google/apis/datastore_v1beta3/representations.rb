@@ -416,6 +416,7 @@ module Google
       class CommitResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_time, as: 'commitTime'
           property :index_updates, as: 'indexUpdates'
           collection :mutation_results, as: 'mutationResults', class: Google::Apis::DatastoreV1beta3::MutationResult, decorator: Google::Apis::DatastoreV1beta3::MutationResult::Representation
       
@@ -447,6 +448,7 @@ module Google
           property :cursor, :base64 => true, as: 'cursor'
           property :entity, as: 'entity', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
+          property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
         end
       end
@@ -705,6 +707,7 @@ module Google
       
           collection :missing, as: 'missing', class: Google::Apis::DatastoreV1beta3::EntityResult, decorator: Google::Apis::DatastoreV1beta3::EntityResult::Representation
       
+          property :read_time, as: 'readTime'
         end
       end
       
@@ -718,6 +721,7 @@ module Google
       
           property :update, as: 'update', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
+          property :update_time, as: 'updateTime'
           property :upsert, as: 'upsert', class: Google::Apis::DatastoreV1beta3::Entity, decorator: Google::Apis::DatastoreV1beta3::Entity::Representation
       
         end
@@ -729,6 +733,7 @@ module Google
           property :conflict_detected, as: 'conflictDetected'
           property :key, as: 'key', class: Google::Apis::DatastoreV1beta3::Key, decorator: Google::Apis::DatastoreV1beta3::Key::Representation
       
+          property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
         end
       end
@@ -813,6 +818,7 @@ module Google
           collection :entity_results, as: 'entityResults', class: Google::Apis::DatastoreV1beta3::EntityResult, decorator: Google::Apis::DatastoreV1beta3::EntityResult::Representation
       
           property :more_results, as: 'moreResults'
+          property :read_time, as: 'readTime'
           property :skipped_cursor, :base64 => true, as: 'skippedCursor'
           property :skipped_results, as: 'skippedResults'
           property :snapshot_version, :numeric_string => true, as: 'snapshotVersion'
@@ -822,6 +828,7 @@ module Google
       class ReadOnly
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_time, as: 'readTime'
         end
       end
       
@@ -829,6 +836,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :read_consistency, as: 'readConsistency'
+          property :read_time, as: 'readTime'
           property :transaction, :base64 => true, as: 'transaction'
         end
       end

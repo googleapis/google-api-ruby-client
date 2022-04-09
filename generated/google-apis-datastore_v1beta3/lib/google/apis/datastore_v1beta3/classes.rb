@@ -165,6 +165,11 @@ module Google
       class CommitResponse
         include Google::Apis::Core::Hashable
       
+        # The transaction commit timestamp. Not set for non-transactional commits.
+        # Corresponds to the JSON property `commitTime`
+        # @return [String]
+        attr_accessor :commit_time
+      
         # The number of index entries updated during the commit, or zero if none were
         # updated.
         # Corresponds to the JSON property `indexUpdates`
@@ -183,6 +188,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commit_time = args[:commit_time] if args.key?(:commit_time)
           @index_updates = args[:index_updates] if args.key?(:index_updates)
           @mutation_results = args[:mutation_results] if args.key?(:mutation_results)
         end
@@ -263,6 +269,12 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Entity]
         attr_accessor :entity
       
+        # The time at which the entity was last changed. This field is set for `FULL`
+        # entity results. If this entity is missing, this field will not be set.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # The version of the entity, a strictly positive number that monotonically
         # increases with changes to the entity. This field is set for `FULL` entity
         # results. For missing entities in `LookupResponse`, this is the version of the
@@ -280,6 +292,7 @@ module Google
         def update!(**args)
           @cursor = args[:cursor] if args.key?(:cursor)
           @entity = args[:entity] if args.key?(:entity)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1147,6 +1160,11 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1beta3::EntityResult>]
         attr_accessor :missing
       
+        # The time at which these entities were read or found missing.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1156,6 +1174,7 @@ module Google
           @deferred = args[:deferred] if args.key?(:deferred)
           @found = args[:found] if args.key?(:found)
           @missing = args[:missing] if args.key?(:missing)
+          @read_time = args[:read_time] if args.key?(:read_time)
         end
       end
       
@@ -1190,6 +1209,12 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Entity]
         attr_accessor :update
       
+        # The update time of the entity that this mutation is being applied to. If this
+        # does not match the current update time on the server, the mutation conflicts.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # A Datastore data object. An entity is limited to 1 megabyte when stored. That
         # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
@@ -1207,6 +1232,7 @@ module Google
           @delete = args[:delete] if args.key?(:delete)
           @insert = args[:insert] if args.key?(:insert)
           @update = args[:update] if args.key?(:update)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @upsert = args[:upsert] if args.key?(:upsert)
         end
       end
@@ -1229,6 +1255,14 @@ module Google
         # @return [Google::Apis::DatastoreV1beta3::Key]
         attr_accessor :key
       
+        # The update time of the entity on the server after processing the mutation. If
+        # the mutation doesn't change anything on the server, then the timestamp will be
+        # the update timestamp of the current entity. This field will not be set after a
+        # 'delete'.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # The version of the entity on the server after processing the mutation. If the
         # mutation doesn't change anything on the server, then the version will be the
         # version of the current entity or, if no entity is present, a version that is
@@ -1246,6 +1280,7 @@ module Google
         def update!(**args)
           @conflict_detected = args[:conflict_detected] if args.key?(:conflict_detected)
           @key = args[:key] if args.key?(:key)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1519,6 +1554,17 @@ module Google
         # @return [String]
         attr_accessor :more_results
       
+        # Read timestamp this batch was returned from. This applies to the range of
+        # results from the query's `start_cursor` (or the beginning of the query if no
+        # cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`).
+        # In a single transaction, subsequent query result batches for the same query
+        # can have a greater timestamp. Each batch's read timestamp is valid for all
+        # preceding batches. This value will not be set for eventually consistent
+        # queries in Cloud Datastore.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         # A cursor that points to the position after the last skipped result. Will be
         # set when `skipped_results` != 0.
         # Corresponds to the JSON property `skippedCursor`
@@ -1552,6 +1598,7 @@ module Google
           @entity_result_type = args[:entity_result_type] if args.key?(:entity_result_type)
           @entity_results = args[:entity_results] if args.key?(:entity_results)
           @more_results = args[:more_results] if args.key?(:more_results)
+          @read_time = args[:read_time] if args.key?(:read_time)
           @skipped_cursor = args[:skipped_cursor] if args.key?(:skipped_cursor)
           @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
           @snapshot_version = args[:snapshot_version] if args.key?(:snapshot_version)
@@ -1562,12 +1609,18 @@ module Google
       class ReadOnly
         include Google::Apis::Core::Hashable
       
+        # Reads entities at the given time. This may not be older than 60 seconds.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @read_time = args[:read_time] if args.key?(:read_time)
         end
       end
       
@@ -1580,6 +1633,12 @@ module Google
         # Corresponds to the JSON property `readConsistency`
         # @return [String]
         attr_accessor :read_consistency
+      
+        # Reads entities as they were at the given time. This may not be older than 270
+        # seconds. This value is only supported for Cloud Firestore in Datastore mode.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
       
         # The identifier of the transaction in which to read. A transaction identifier
         # is returned by a call to Datastore.BeginTransaction.
@@ -1595,6 +1654,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @read_consistency = args[:read_consistency] if args.key?(:read_consistency)
+          @read_time = args[:read_time] if args.key?(:read_time)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
