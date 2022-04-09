@@ -419,11 +419,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. notification_parameters are information that service producers may
+        # Optional. notification_parameter are information that service producers may
         # like to include that is not relevant to Rollout. This parameter will only be
         # passed to Gamma and Cloud Logging for notification/logging purpose.
         # Corresponds to the JSON property `notificationParameters`
-        # @return [Hash<String,String>]
+        # @return [Hash<String,Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter>]
         attr_accessor :notification_parameters
       
         # Output only. Custom string attributes used primarily to expose producer-
@@ -625,6 +625,25 @@ module Google
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
+        end
+      end
+      
+      # Contains notification related data.
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Array of string values. e.g. instance's replica information.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
