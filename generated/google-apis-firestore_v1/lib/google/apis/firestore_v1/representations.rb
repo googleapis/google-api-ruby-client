@@ -22,6 +22,18 @@ module Google
   module Apis
     module FirestoreV1
       
+      class Aggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AggregationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArrayValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class CompositeFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Count
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunAggregationQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunAggregationQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +455,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredAggregationQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -488,6 +524,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Aggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :count, as: 'count', class: Google::Apis::FirestoreV1::Count, decorator: Google::Apis::FirestoreV1::Count::Representation
+      
+        end
+      end
+      
+      class AggregationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :aggregate_fields, as: 'aggregateFields', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+        end
       end
       
       class ArrayValue
@@ -588,6 +641,13 @@ module Google
           collection :filters, as: 'filters', class: Google::Apis::FirestoreV1::Filter, decorator: Google::Apis::FirestoreV1::Filter::Representation
       
           property :op, as: 'op'
+        end
+      end
+      
+      class Count
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :up_to, as: 'upTo'
         end
       end
       
@@ -1104,6 +1164,28 @@ module Google
         end
       end
       
+      class RunAggregationQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
+      
+          property :read_time, as: 'readTime'
+          property :structured_aggregation_query, as: 'structuredAggregationQuery', class: Google::Apis::FirestoreV1::StructuredAggregationQuery, decorator: Google::Apis::FirestoreV1::StructuredAggregationQuery::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
+      class RunAggregationQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_time, as: 'readTime'
+          property :result, as: 'result', class: Google::Apis::FirestoreV1::AggregationResult, decorator: Google::Apis::FirestoreV1::AggregationResult::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1121,7 +1203,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::FirestoreV1::Document, decorator: Google::Apis::FirestoreV1::Document::Representation
       
-          property :done, as: 'done'
           property :read_time, as: 'readTime'
           property :skipped_results, as: 'skippedResults'
           property :transaction, :base64 => true, as: 'transaction'
@@ -1134,6 +1215,16 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StructuredAggregationQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregations, as: 'aggregations', class: Google::Apis::FirestoreV1::Aggregation, decorator: Google::Apis::FirestoreV1::Aggregation::Representation
+      
+          property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
+      
         end
       end
       
