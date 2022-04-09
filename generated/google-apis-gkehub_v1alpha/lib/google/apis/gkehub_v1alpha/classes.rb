@@ -1869,7 +1869,7 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        # Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
