@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndexConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,15 @@ module Google
         end
       end
       
+      class IndexConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :field_path, as: 'fieldPath'
+          property :type, as: 'type'
+        end
+      end
+      
       class LabelDescriptor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,6 +595,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :index_configs, as: 'indexConfigs', class: Google::Apis::LoggingV2::IndexConfig, decorator: Google::Apis::LoggingV2::IndexConfig::Representation
+      
           property :lifecycle_state, as: 'lifecycleState'
           property :locked, as: 'locked'
           property :name, as: 'name'
