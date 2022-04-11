@@ -873,6 +873,26 @@ module Google
         end
       end
       
+      # An authentication URL configuration for the authenticator app of an identity
+      # provider.
+      class EnterpriseAuthenticationAppLinkConfig
+        include Google::Apis::Core::Hashable
+      
+        # An authentication url.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # 
       class ListEnterprisesResponse
         include Google::Apis::Core::Hashable
@@ -2154,6 +2174,16 @@ module Google
         # @return [String]
         attr_accessor :auto_update_mode
       
+        # An authentication URL configuration for the authenticator app of an identity
+        # provider. This helps to launch the identity provider's authenticator app
+        # during the authentication happening in a private app using Android WebView.
+        # Authenticator app should already be the [default handler](https://developer.
+        # android.com/training/app-links/verify-site-associations) for the
+        # authentication url on the device.
+        # Corresponds to the JSON property `enterpriseAuthenticationAppLinkConfigs`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::EnterpriseAuthenticationAppLinkConfig>]
+        attr_accessor :enterprise_authentication_app_link_configs
+      
         # A managed configuration resource contains the set of managed properties
         # defined by the app developer in the app's managed configurations schema, as
         # well as any configuration variables defined for the user.
@@ -2186,6 +2216,7 @@ module Google
         def update!(**args)
           @auto_install_policy = args[:auto_install_policy] if args.key?(:auto_install_policy)
           @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
+          @enterprise_authentication_app_link_configs = args[:enterprise_authentication_app_link_configs] if args.key?(:enterprise_authentication_app_link_configs)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
           @product_id = args[:product_id] if args.key?(:product_id)
           @track_ids = args[:track_ids] if args.key?(:track_ids)
