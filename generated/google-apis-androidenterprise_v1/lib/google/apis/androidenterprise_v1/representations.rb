@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseAuthenticationAppLinkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -780,6 +786,13 @@ module Google
         end
       end
       
+      class EnterpriseAuthenticationAppLinkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class ListEnterprisesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1120,6 +1133,8 @@ module Google
           property :auto_install_policy, as: 'autoInstallPolicy', class: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy, decorator: Google::Apis::AndroidenterpriseV1::AutoInstallPolicy::Representation
       
           property :auto_update_mode, as: 'autoUpdateMode'
+          collection :enterprise_authentication_app_link_configs, as: 'enterpriseAuthenticationAppLinkConfigs', class: Google::Apis::AndroidenterpriseV1::EnterpriseAuthenticationAppLinkConfig, decorator: Google::Apis::AndroidenterpriseV1::EnterpriseAuthenticationAppLinkConfig::Representation
+      
           property :managed_configuration, as: 'managedConfiguration', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
       
           property :product_id, as: 'productId'
