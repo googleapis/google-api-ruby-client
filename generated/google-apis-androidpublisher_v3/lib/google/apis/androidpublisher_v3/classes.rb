@@ -1169,12 +1169,13 @@ module Google
         attr_accessor :app_level_permissions
       
         # Required. Resource name for this grant, following the pattern "developers/`
-        # developer`/users/`email`/grants/`package_name`".
+        # developer`/users/`email`/grants/`package_name`". If this grant is for a draft
+        # app, the app ID will be used in this resource name instead of the package name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. The package name of the app.
+        # Immutable. The package name of the app. This will be empty for draft apps.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -2849,7 +2850,8 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # The time at which the user's access expires, if set.
+        # The time at which the user's access expires, if set. When setting this value,
+        # it must always be in the future.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
@@ -2866,7 +2868,12 @@ module Google
         attr_accessor :name
       
         # Output only. Whether there are more permissions for the user that are not
-        # represented here.
+        # represented here. This can happen if the caller does not have permission to
+        # manage all apps in the account. This is also `true` if this user is the
+        # account owner. If this field is `true`, it should be taken as a signal that
+        # this user cannot be fully managed via the API. That is, the API caller is not
+        # be able to manage all of the permissions this user holds, either because it
+        # doesn't know about them or because the user is the account owner.
         # Corresponds to the JSON property `partial`
         # @return [Boolean]
         attr_accessor :partial
