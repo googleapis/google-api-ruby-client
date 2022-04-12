@@ -162,25 +162,6 @@ module Google
         end
       end
       
-      # Response message for the BatchGetPlayIntegrityConfigs method.
-      class GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse
-        include Google::Apis::Core::Hashable
-      
-        # PlayIntegrityConfigs retrieved.
-        # Corresponds to the JSON property `configs`
-        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>]
-        attr_accessor :configs
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @configs = args[:configs] if args.key?(:configs)
-        end
-      end
-      
       # Response message for the BatchGetRecaptchaConfigs method.
       class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse
         include Google::Apis::Core::Hashable
@@ -571,27 +552,6 @@ module Google
         end
       end
       
-      # Request message for the ExchangePlayIntegrityToken method.
-      class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The [integrity verdict response token from Play Integrity](https://
-        # developer.android.com/google/play/integrity/verdict#decrypt-verify) issued to
-        # your app.
-        # Corresponds to the JSON property `playIntegrityToken`
-        # @return [String]
-        attr_accessor :play_integrity_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @play_integrity_token = args[:play_integrity_token] if args.key?(:play_integrity_token)
-        end
-      end
-      
       # Request message for the ExchangeRecaptchaEnterpriseToken method.
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
         include Google::Apis::Core::Hashable
@@ -714,48 +674,6 @@ module Google
         end
       end
       
-      # Request message for the GeneratePlayIntegrityChallenge method.
-      class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for the GeneratePlayIntegrityChallenge method.
-      class GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse
-        include Google::Apis::Core::Hashable
-      
-        # A one-time use [challenge](https://developer.android.com/google/play/integrity/
-        # verdict#protect-against-replay-attacks) for the client to pass to the Play
-        # Integrity API.
-        # Corresponds to the JSON property `challenge`
-        # @return [String]
-        attr_accessor :challenge
-      
-        # The duration from the time this challenge is minted until its expiration. This
-        # field is intended to ease client-side token management, since the client may
-        # have clock skew, but is still able to accurately measure a duration.
-        # Corresponds to the JSON property `ttl`
-        # @return [String]
-        attr_accessor :ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @challenge = args[:challenge] if args.key?(:challenge)
-          @ttl = args[:ttl] if args.key?(:ttl)
-        end
-      end
-      
       # Response message for the ListDebugTokens method.
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         include Google::Apis::Core::Hashable
@@ -811,41 +729,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
-        end
-      end
-      
-      # An app's Play Integrity configuration object. This configuration controls
-      # certain properties of the App Check token returned by
-      # ExchangePlayIntegrityToken, such as its ttl. Note that your registered SHA-256
-      # certificate fingerprints are used to validate tokens issued by the Play
-      # Integrity API; please register them via the Firebase Console or
-      # programmatically via the [Firebase Management Service](https://firebase.google.
-      # com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
-      class GoogleFirebaseAppcheckV1betaPlayIntegrityConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The relative resource name of the Play Integrity configuration
-        # object, in the format: ``` projects/`project_number`/apps/`app_id`/
-        # playIntegrityConfig ```
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Specifies the duration for which App Check tokens exchanged from Play
-        # Integrity tokens will be valid. If unset, a default value of 1 hour is assumed.
-        # Must be between 30 minutes and 7 days, inclusive.
-        # Corresponds to the JSON property `tokenTtl`
-        # @return [String]
-        attr_accessor :token_ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
         end
       end
       
