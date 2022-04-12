@@ -1763,7 +1763,9 @@ module Google
         attr_accessor :user_agent
       
         # Optional. Unique identifier for logged-in user with a length limit of 128
-        # bytes. Required only for logged-in users.
+        # bytes. Required only for logged-in users. Don't set for anonymous users. Don't
+        # set the field to the same fixed ID for different users. This mixes the event
+        # history of those users together, which results in degraded model quality.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -1772,7 +1774,9 @@ module Google
         # bytes. For example, this could be implemented with an HTTP cookie, which
         # should be able to uniquely identify a visitor on a single device. This unique
         # identifier should not change if the visitor logs in or out of the website.
-        # Maximum length 128 bytes. Cannot be empty.
+        # Maximum length 128 bytes. Cannot be empty. Don't set the field to the same
+        # fixed ID for different users. This mixes the event history of those users
+        # together, which results in degraded model quality.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -1881,8 +1885,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
