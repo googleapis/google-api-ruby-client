@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +659,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1ProcessorVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1498,6 +1510,14 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
@@ -2466,12 +2486,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :deprecation_info, as: 'deprecationInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo::Representation
+      
           property :display_name, as: 'displayName'
           property :google_managed, as: 'googleManaged'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprecation_time, as: 'deprecationTime'
+          property :replacement_processor_version, as: 'replacementProcessorVersion'
         end
       end
       

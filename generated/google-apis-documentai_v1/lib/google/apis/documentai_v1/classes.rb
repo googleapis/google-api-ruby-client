@@ -196,6 +196,25 @@ module Google
         end
       end
       
+      # The long running operation metadata for DeleteDataLabelingJob.
+      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
       # The long running operation metadata for DeleteLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3233,6 +3252,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Information about the upcoming deprecation of this processor version.
+        # Corresponds to the JSON property `deprecationInfo`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo]
+        attr_accessor :deprecation_info
+      
         # The display name of the processor version.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -3273,12 +3297,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deprecation_info = args[:deprecation_info] if args.key?(:deprecation_info)
           @display_name = args[:display_name] if args.key?(:display_name)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information about the upcoming deprecation of this processor version.
+      class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this processor version will be deprecated.
+        # Corresponds to the JSON property `deprecationTime`
+        # @return [String]
+        attr_accessor :deprecation_time
+      
+        # If set, the processor version that will be used as a replacement.
+        # Corresponds to the JSON property `replacementProcessorVersion`
+        # @return [String]
+        attr_accessor :replacement_processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprecation_time = args[:deprecation_time] if args.key?(:deprecation_time)
+          @replacement_processor_version = args[:replacement_processor_version] if args.key?(:replacement_processor_version)
         end
       end
       
