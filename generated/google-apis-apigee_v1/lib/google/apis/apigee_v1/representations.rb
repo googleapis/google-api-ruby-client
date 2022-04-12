@@ -2608,6 +2608,7 @@ module Google
       
           property :state, as: 'state'
           property :target_resource_name, as: 'targetResourceName'
+          collection :warnings, as: 'warnings'
         end
       end
       
