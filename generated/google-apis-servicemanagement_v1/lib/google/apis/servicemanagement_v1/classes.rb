@@ -238,14 +238,15 @@ module Google
         # @return [String]
         attr_accessor :jwks_uri
       
-        # Defines the locations to extract the JWT. JWT locations can be either from
-        # HTTP headers or URL query parameters. The rule is that the first match wins.
-        # The checking order is: checking all headers first, then URL query parameters.
-        # If not specified, default to use following 3 locations: 1) Authorization:
-        # Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default
-        # locations can be specified as followings: jwt_locations: - header:
-        # Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion -
-        # query: access_token
+        # Defines the locations to extract the JWT. For now it is only used by the Cloud
+        # Endpoints to store the OpenAPI extension [x-google-jwt-locations] (https://
+        # cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-
+        # locations) JWT locations can be one of HTTP headers, URL query parameters or
+        # cookies. The rule is that the first match wins. If not specified, default to
+        # use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-
+        # assertion 3) access_token query parameter Default locations can be specified
+        # as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " -
+        # header: x-goog-iap-jwt-assertion - query: access_token
         # Corresponds to the JSON property `jwtLocations`
         # @return [Array<Google::Apis::ServicemanagementV1::JwtLocation>]
         attr_accessor :jwt_locations
@@ -579,7 +580,7 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -1789,6 +1790,11 @@ module Google
       class JwtLocation
         include Google::Apis::Core::Hashable
       
+        # Specifies cookie name to extract JWT token.
+        # Corresponds to the JSON property `cookie`
+        # @return [String]
+        attr_accessor :cookie
+      
         # Specifies HTTP header name to extract JWT token.
         # Corresponds to the JSON property `header`
         # @return [String]
@@ -1815,6 +1821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cookie = args[:cookie] if args.key?(:cookie)
           @header = args[:header] if args.key?(:header)
           @query = args[:query] if args.key?(:query)
           @value_prefix = args[:value_prefix] if args.key?(:value_prefix)
@@ -3809,7 +3816,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]

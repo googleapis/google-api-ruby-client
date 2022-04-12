@@ -943,6 +943,7 @@ module Google
       class JwtLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cookie, as: 'cookie'
           property :header, as: 'header'
           property :query, as: 'query'
           property :value_prefix, as: 'valuePrefix'
