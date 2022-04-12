@@ -4309,7 +4309,8 @@ module Google
         end
       end
       
-      # 
+      # To change this message, in the same CL add a change log in go/changing-api-
+      # proto-breaks-ui
       class GoogleCloudApigeeV1ListApiProxiesResponse
         include Google::Apis::Core::Hashable
       
@@ -4824,7 +4825,8 @@ module Google
         end
       end
       
-      # 
+      # To change this message, in the same CL add a change log in go/changing-api-
+      # proto-breaks-ui
       class GoogleCloudApigeeV1ListSharedFlowsResponse
         include Google::Apis::Core::Hashable
       
@@ -5105,6 +5107,11 @@ module Google
         # @return [String]
         attr_accessor :target_resource_name
       
+        # Warnings encountered while executing the operation.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5115,6 +5122,7 @@ module Google
           @progress = args[:progress] if args.key?(:progress)
           @state = args[:state] if args.key?(:state)
           @target_resource_name = args[:target_resource_name] if args.key?(:target_resource_name)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
