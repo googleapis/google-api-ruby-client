@@ -196,6 +196,25 @@ module Google
         end
       end
       
+      # The long running operation metadata for DeleteDataLabelingJob.
+      class GoogleCloudDocumentaiUiv1beta3DeleteDataLabelingJobOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
       # The long running operation metadata for DeleteLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
         include Google::Apis::Core::Hashable
