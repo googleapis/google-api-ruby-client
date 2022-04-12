@@ -116,7 +116,7 @@ module Google
         # @return [Google::Apis::NetworkservicesV1beta1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -180,8 +180,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -2346,13 +2345,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. The endpoint filter associated with the Service Binding. The syntax
-        # is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.
-        # servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        # Corresponds to the JSON property `endpointFilter`
-        # @return [String]
-        attr_accessor :endpoint_filter
-      
         # Optional. Set of label tags associated with the ServiceBinding resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2383,7 +2375,6 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
-          @endpoint_filter = args[:endpoint_filter] if args.key?(:endpoint_filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @service = args[:service] if args.key?(:service)
@@ -2686,7 +2677,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
@@ -2840,7 +2831,7 @@ module Google
       end
       
       # RouteMatch defines the predicate used to match requests to a given action.
-      # Multiple match types are “AND”ed for evaluation. If no routeMatch field is
+      # Multiple match types are "AND"ed for evaluation. If no routeMatch field is
       # specified, this rule will unconditionally match traffic.
       class TlsRouteRouteMatch
         include Google::Apis::Core::Hashable
@@ -2883,7 +2874,7 @@ module Google
         attr_accessor :action
       
         # Required. RouteMatch defines the predicate used to match requests to a given
-        # action. Multiple match types are “OR”ed for evaluation.
+        # action. Multiple match types are "OR"ed for evaluation.
         # Corresponds to the JSON property `matches`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch>]
         attr_accessor :matches

@@ -1012,7 +1012,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
-          property :endpoint_filter, as: 'endpointFilter'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :service, as: 'service'
