@@ -1691,7 +1691,8 @@ module Google
         # Updates access for the user to the given package.
         # @param [String] name
         #   Required. Resource name for this grant, following the pattern "developers/`
-        #   developer`/users/`email`/grants/`package_name`".
+        #   developer`/users/`email`/grants/`package_name`". If this grant is for a draft
+        #   app, the app ID will be used in this resource name instead of the package name.
         # @param [Google::Apis::AndroidpublisherV3::Grant] grant_object
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
