@@ -161,14 +161,14 @@ module Google
       class AppVersion
         include Google::Apis::Core::Hashable
       
-        # True if this version is a production track.
+        # If the value is True, it indicates that this version is a production track.
         # Corresponds to the JSON property `production`
         # @return [Boolean]
         attr_accessor :production
         alias_method :production?, :production
       
-        # Track ids that the app version is published in. This doesn't include the
-        # production track (see production instead).
+        # Track identifiers that the app version is published in. This does not include
+        # the production track (see production instead).
         # Corresponds to the JSON property `trackIds`
         # @return [Array<String>]
         attr_accessor :track_ids
@@ -260,7 +260,7 @@ module Google
         attr_accessor :full_description
       
         # A link to an image that can be used as an icon for the app. This image is
-        # suitable for use at up to 512px x 512px
+        # suitable for use up to a pixel size of 512 x 512.
         # Corresponds to the JSON property `iconUrl`
         # @return [String]
         attr_accessor :icon_url
@@ -302,7 +302,7 @@ module Google
         attr_accessor :screenshot_urls
       
         # A link to a smaller image that can be used as an icon for the app. This image
-        # is suitable for use at up to 128px x 128px.
+        # is suitable for use up to a pixel size of 128 x 128.
         # Corresponds to the JSON property `smallIconUrl`
         # @return [String]
         attr_accessor :small_icon_url
@@ -1578,9 +1578,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :primary_color
       
-        # The topic that Cloud Pub/Sub notifications are published to, in the form
-        # projects/`project`/topics/`topic`. This field is only required if Pub/Sub
-        # notifications are enabled.
+        # The topic which Pub/Sub notifications are published to, in the form projects/`
+        # project`/topics/`topic`. This field is only required if Pub/Sub notifications
+        # are enabled.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -1626,7 +1626,7 @@ module Google
         # @return [String]
         attr_accessor :notification_receiver
       
-        # Hex-encoded SHA256 hash of the signing certificate of the extension app. Only
+        # Hex-encoded SHA-256 hash of the signing certificate of the extension app. Only
         # hexadecimal string representations of 64 characters are valid.If not specified,
         # the signature for the corresponding package name is obtained from the Play
         # Store instead.If this list is empty, the signature of the extension app on the
@@ -3349,6 +3349,13 @@ module Google
         attr_accessor :unmute_microphone_disabled
         alias_method :unmute_microphone_disabled?, :unmute_microphone_disabled
       
+        # Controls types of device activity logs collected from the device and reported
+        # via Pub/Sub notification (https://developers.google.com/android/management/
+        # notifications).
+        # Corresponds to the JSON property `usageLog`
+        # @return [Google::Apis::AndroidmanagementV1::UsageLog]
+        attr_accessor :usage_log
+      
         # Whether transferring files over USB is disabled.
         # Corresponds to the JSON property `usbFileTransferDisabled`
         # @return [Boolean]
@@ -3475,6 +3482,7 @@ module Google
           @tethering_config_disabled = args[:tethering_config_disabled] if args.key?(:tethering_config_disabled)
           @uninstall_apps_disabled = args[:uninstall_apps_disabled] if args.key?(:uninstall_apps_disabled)
           @unmute_microphone_disabled = args[:unmute_microphone_disabled] if args.key?(:unmute_microphone_disabled)
+          @usage_log = args[:usage_log] if args.key?(:usage_log)
           @usb_file_transfer_disabled = args[:usb_file_transfer_disabled] if args.key?(:usb_file_transfer_disabled)
           @usb_mass_storage_enabled = args[:usb_mass_storage_enabled] if args.key?(:usb_mass_storage_enabled)
           @version = args[:version] if args.key?(:version)
@@ -4092,6 +4100,35 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @header = args[:header] if args.key?(:header)
+        end
+      end
+      
+      # Controls types of device activity logs collected from the device and reported
+      # via Pub/Sub notification (https://developers.google.com/android/management/
+      # notifications).
+      class UsageLog
+        include Google::Apis::Core::Hashable
+      
+        # Specifies which log types are enabled. Note that users will receive on-device
+        # messaging when usage logging is enabled.
+        # Corresponds to the JSON property `enabledLogTypes`
+        # @return [Array<String>]
+        attr_accessor :enabled_log_types
+      
+        # Specifies which of the enabled log types can be uploaded over mobile data. By
+        # default logs are queued for upload when the device connects to WiFi.
+        # Corresponds to the JSON property `uploadOnCellularAllowed`
+        # @return [Array<String>]
+        attr_accessor :upload_on_cellular_allowed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_log_types = args[:enabled_log_types] if args.key?(:enabled_log_types)
+          @upload_on_cellular_allowed = args[:upload_on_cellular_allowed] if args.key?(:upload_on_cellular_allowed)
         end
       end
       
