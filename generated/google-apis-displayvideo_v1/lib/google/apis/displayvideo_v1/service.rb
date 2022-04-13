@@ -2179,8 +2179,8 @@ module Google
         #   targetedNegativeKeywordListId=789 AND targetedChannelId=12345` The length of
         #   this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list. Acceptable values are: * "displayName" (
-        #   default) * "entityStatus" * “flight.dateRange.endDate” * "updateTime" The
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `entityStatus` * `flight.dateRange.endDate` * `updateTime` The
         #   default sorting order is ascending. To specify descending order for a field, a
         #   suffix "desc" should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
