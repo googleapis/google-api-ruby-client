@@ -238,7 +238,7 @@ module Google
       class GoogleCloudRunV2CloudSqlInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connections, as: 'connections'
+          collection :instances, as: 'instances'
         end
       end
       
