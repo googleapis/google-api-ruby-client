@@ -1654,6 +1654,9 @@ module Google
           hash :relationships, as: 'relationships', class: Google::Apis::CloudassetV1::RelatedResources, decorator: Google::Apis::CloudassetV1::RelatedResources::Representation
       
           property :state, as: 'state'
+          collection :tag_keys, as: 'tagKeys'
+          collection :tag_value_ids, as: 'tagValueIds'
+          collection :tag_values, as: 'tagValues'
           property :update_time, as: 'updateTime'
           collection :versioned_resources, as: 'versionedResources', class: Google::Apis::CloudassetV1::VersionedResource, decorator: Google::Apis::CloudassetV1::VersionedResource::Representation
       
