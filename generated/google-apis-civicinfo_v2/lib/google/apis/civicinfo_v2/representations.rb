@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Precinct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepresentativeInfoData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -397,6 +403,26 @@ module Google
         end
       end
       
+      class Precinct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :administration_region_id, as: 'administrationRegionId'
+          collection :contest_id, as: 'contestId'
+          property :dataset_id, :numeric_string => true, as: 'datasetId'
+          collection :early_vote_site_id, as: 'earlyVoteSiteId'
+          collection :electoral_district_id, as: 'electoralDistrictId'
+          property :id, as: 'id'
+          property :mail_only, as: 'mailOnly'
+          property :name, as: 'name'
+          property :number, as: 'number'
+          collection :ocd_id, as: 'ocdId'
+          collection :polling_location_id, as: 'pollingLocationId'
+          collection :spatial_boundary_id, as: 'spatialBoundaryId'
+          property :split_name, as: 'splitName'
+          property :ward, as: 'ward'
+        end
+      end
+      
       class RepresentativeInfoData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -465,6 +491,8 @@ module Google
           collection :polling_locations, as: 'pollingLocations', class: Google::Apis::CivicinfoV2::PollingLocation, decorator: Google::Apis::CivicinfoV2::PollingLocation::Representation
       
           property :precinct_id, as: 'precinctId'
+          collection :precincts, as: 'precincts', class: Google::Apis::CivicinfoV2::Precinct, decorator: Google::Apis::CivicinfoV2::Precinct::Representation
+      
           collection :state, as: 'state', class: Google::Apis::CivicinfoV2::AdministrationRegion, decorator: Google::Apis::CivicinfoV2::AdministrationRegion::Representation
       
         end

@@ -1036,6 +1036,108 @@ module Google
       end
       
       # 
+      class Precinct
+        include Google::Apis::Core::Hashable
+      
+        # ID of the AdministrationRegion message for this precinct. Corresponds to
+        # LocalityId xml tag.
+        # Corresponds to the JSON property `administrationRegionId`
+        # @return [String]
+        attr_accessor :administration_region_id
+      
+        # ID(s) of the Contest message(s) for this precinct.
+        # Corresponds to the JSON property `contestId`
+        # @return [Array<String>]
+        attr_accessor :contest_id
+      
+        # Required. Dataset ID. What datasets our Precincts come from.
+        # Corresponds to the JSON property `datasetId`
+        # @return [Fixnum]
+        attr_accessor :dataset_id
+      
+        # ID(s) of the PollingLocation message(s) for this precinct.
+        # Corresponds to the JSON property `earlyVoteSiteId`
+        # @return [Array<String>]
+        attr_accessor :early_vote_site_id
+      
+        # ID(s) of the ElectoralDistrict message(s) for this precinct.
+        # Corresponds to the JSON property `electoralDistrictId`
+        # @return [Array<String>]
+        attr_accessor :electoral_district_id
+      
+        # Required. A unique identifier for this precinct.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Specifies if the precinct runs mail-only elections.
+        # Corresponds to the JSON property `mailOnly`
+        # @return [Boolean]
+        attr_accessor :mail_only
+        alias_method :mail_only?, :mail_only
+      
+        # Required. The name of the precinct.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The number of the precinct.
+        # Corresponds to the JSON property `number`
+        # @return [String]
+        attr_accessor :number
+      
+        # Encouraged. The OCD ID of the precinct
+        # Corresponds to the JSON property `ocdId`
+        # @return [Array<String>]
+        attr_accessor :ocd_id
+      
+        # ID(s) of the PollingLocation message(s) for this precinct.
+        # Corresponds to the JSON property `pollingLocationId`
+        # @return [Array<String>]
+        attr_accessor :polling_location_id
+      
+        # ID(s) of the SpatialBoundary message(s) for this precinct. Used to specify a
+        # geometrical boundary of the precinct.
+        # Corresponds to the JSON property `spatialBoundaryId`
+        # @return [Array<String>]
+        attr_accessor :spatial_boundary_id
+      
+        # If present, this proto corresponds to one portion of split precinct. Other
+        # portions of this precinct are guaranteed to have the same `name`. If not
+        # present, this proto represents a full precicnt.
+        # Corresponds to the JSON property `splitName`
+        # @return [String]
+        attr_accessor :split_name
+      
+        # Specifies the ward the precinct is contained within.
+        # Corresponds to the JSON property `ward`
+        # @return [String]
+        attr_accessor :ward
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administration_region_id = args[:administration_region_id] if args.key?(:administration_region_id)
+          @contest_id = args[:contest_id] if args.key?(:contest_id)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @early_vote_site_id = args[:early_vote_site_id] if args.key?(:early_vote_site_id)
+          @electoral_district_id = args[:electoral_district_id] if args.key?(:electoral_district_id)
+          @id = args[:id] if args.key?(:id)
+          @mail_only = args[:mail_only] if args.key?(:mail_only)
+          @name = args[:name] if args.key?(:name)
+          @number = args[:number] if args.key?(:number)
+          @ocd_id = args[:ocd_id] if args.key?(:ocd_id)
+          @polling_location_id = args[:polling_location_id] if args.key?(:polling_location_id)
+          @spatial_boundary_id = args[:spatial_boundary_id] if args.key?(:spatial_boundary_id)
+          @split_name = args[:split_name] if args.key?(:split_name)
+          @ward = args[:ward] if args.key?(:ward)
+        end
+      end
+      
+      # 
       class RepresentativeInfoData
         include Google::Apis::Core::Hashable
       
@@ -1266,6 +1368,12 @@ module Google
         # @return [String]
         attr_accessor :precinct_id
       
+        # The precincts that match this voter's address. Will only be returned for
+        # project IDs which have been whitelisted as "partner projects".
+        # Corresponds to the JSON property `precincts`
+        # @return [Array<Google::Apis::CivicinfoV2::Precinct>]
+        attr_accessor :precincts
+      
         # Local Election Information for the state that the voter votes in. For the US,
         # there will only be one element in this array.
         # Corresponds to the JSON property `state`
@@ -1288,6 +1396,7 @@ module Google
           @other_elections = args[:other_elections] if args.key?(:other_elections)
           @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
           @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
+          @precincts = args[:precincts] if args.key?(:precincts)
           @state = args[:state] if args.key?(:state)
         end
       end
