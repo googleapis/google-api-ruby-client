@@ -568,7 +568,7 @@ module Google
         # @return [Google::Apis::CloudassetV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -4271,6 +4271,30 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # TagKey namespaced names, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`. To
+        # search against the `tagKeys`: * use a field query. Example: - `tagKeys:"
+        # 123456789/e*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * use a free text
+        # query. Example: - `env`
+        # Corresponds to the JSON property `tagKeys`
+        # @return [Array<String>]
+        attr_accessor :tag_keys
+      
+        # TagValue IDs, in the format of tagValues/`TAG_VALUE_ID`. To search against the
+        # `tagValueIds`: * use a field query. Example: - `tagValueIds:"456"` - `
+        # tagValueIds="tagValues/456"` * use a free text query. Example: - `456`
+        # Corresponds to the JSON property `tagValueIds`
+        # @return [Array<String>]
+        attr_accessor :tag_value_ids
+      
+        # TagValue namespaced names, in the format of `ORG_ID`/`TAG_KEY_SHORT_NAME`/`
+        # TAG_VALUE_SHORT_NAME`. To search against the `tagValues`: * use a field query.
+        # Example: - `tagValues:"env"` - `tagValues:"env/prod"` - `tagValues:"123456789/
+        # env/pr*"` - `tagValues="123456789/env/prod"` * use a free text query. Example:
+        # - `prod`
+        # Corresponds to the JSON property `tagValues`
+        # @return [Array<String>]
+        attr_accessor :tag_values
+      
         # The last update timestamp of this resource, at which the resource was last
         # modified or deleted. The granularity is in seconds. Timestamp.nanos will
         # always be 0. This field is available only when the resource's Protobuf
@@ -4315,6 +4339,9 @@ module Google
           @project = args[:project] if args.key?(:project)
           @relationships = args[:relationships] if args.key?(:relationships)
           @state = args[:state] if args.key?(:state)
+          @tag_keys = args[:tag_keys] if args.key?(:tag_keys)
+          @tag_value_ids = args[:tag_value_ids] if args.key?(:tag_value_ids)
+          @tag_values = args[:tag_values] if args.key?(:tag_values)
           @update_time = args[:update_time] if args.key?(:update_time)
           @versioned_resources = args[:versioned_resources] if args.key?(:versioned_resources)
         end
