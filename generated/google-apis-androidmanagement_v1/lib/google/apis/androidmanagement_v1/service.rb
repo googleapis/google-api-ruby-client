@@ -54,17 +54,25 @@ module Google
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
         # @param [Boolean] agreement_accepted
         #   Whether the enterprise admin has seen and agreed to the managed Google Play
-        #   Agreement (https://www.android.com/enterprise/terms/). Always set this to true
-        #   when creating an EMM-managed enterprise. Do not create the enterprise until
-        #   the admin has viewed and accepted the agreement.
+        #   Agreement (https://www.android.com/enterprise/terms/). Do not set this field
+        #   for any customer-managed enterprise (https://developers.google.com/android/
+        #   management/create-enterprise#customer-managed_enterprises). Set this to field
+        #   to true for all EMM-managed enterprises (https://developers.google.com/android/
+        #   management/create-enterprise#emm-managed_enterprises).
         # @param [String] enterprise_token
-        #   The enterprise token appended to the callback URL. Only set this when creating
-        #   a customer-managed enterprise.
+        #   The enterprise token appended to the callback URL. Set this when creating a
+        #   customer-managed enterprise (https://developers.google.com/android/management/
+        #   create-enterprise#customer-managed_enterprises) and not when creating a
+        #   deprecated EMM-managed enterprise (https://developers.google.com/android/
+        #   management/create-enterprise#emm-managed_enterprises).
         # @param [String] project_id
         #   The ID of the Google Cloud Platform project which will own the enterprise.
         # @param [String] signup_url_name
-        #   The name of the SignupUrl used to sign up for the enterprise. Only set this
-        #   when creating a customer-managed enterprise.
+        #   The name of the SignupUrl used to sign up for the enterprise. Set this when
+        #   creating a customer-managed enterprise (https://developers.google.com/android/
+        #   management/create-enterprise#customer-managed_enterprises) and not when
+        #   creating a deprecated EMM-managed enterprise (https://developers.google.com/
+        #   android/management/create-enterprise#emm-managed_enterprises).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

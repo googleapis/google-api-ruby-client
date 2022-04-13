@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsageLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1262,6 +1268,8 @@ module Google
           property :tethering_config_disabled, as: 'tetheringConfigDisabled'
           property :uninstall_apps_disabled, as: 'uninstallAppsDisabled'
           property :unmute_microphone_disabled, as: 'unmuteMicrophoneDisabled'
+          property :usage_log, as: 'usageLog', class: Google::Apis::AndroidmanagementV1::UsageLog, decorator: Google::Apis::AndroidmanagementV1::UsageLog::Representation
+      
           property :usb_file_transfer_disabled, as: 'usbFileTransferDisabled'
           property :usb_mass_storage_enabled, as: 'usbMassStorageEnabled'
           property :version, :numeric_string => true, as: 'version'
@@ -1428,6 +1436,14 @@ module Google
       
           property :header, as: 'header', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
+        end
+      end
+      
+      class UsageLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_log_types, as: 'enabledLogTypes'
+          collection :upload_on_cellular_allowed, as: 'uploadOnCellularAllowed'
         end
       end
       
