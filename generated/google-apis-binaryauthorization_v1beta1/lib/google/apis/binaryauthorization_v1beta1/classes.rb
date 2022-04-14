@@ -144,8 +144,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Used to prevent updating the attestor when another request has
-        # updated it since it was retrieved.
+        # Optional. A checksum, returned by the server, that can be sent on update
+        # requests to ensure the attestor has an up-to-date value before attempting to
+        # update it. See https://google.aip.dev/154.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -253,7 +254,7 @@ module Google
         # @return [Google::Apis::BinaryauthorizationV1beta1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -573,8 +574,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Used to prevent updating the policy when another request has updated
-        # it since it was retrieved.
+        # Optional. A checksum, returned by the server, that can be sent on update
+        # requests to ensure the policy has an up-to-date value before attempting to
+        # update it. See https://google.aip.dev/154.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -742,7 +744,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
