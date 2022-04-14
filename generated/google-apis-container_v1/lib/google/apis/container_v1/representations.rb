@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeManagement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,12 @@ module Google
       end
       
       class NodeTaint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeTaints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1546,6 +1558,14 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+        end
+      end
+      
+      class NodeLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
         end
       end
       
@@ -1629,6 +1649,14 @@ module Google
           property :effect, as: 'effect'
           property :key, as: 'key'
           property :value, as: 'value'
+        end
+      end
+      
+      class NodeTaints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
+      
         end
       end
       
@@ -2047,6 +2075,8 @@ module Google
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1::NodeKubeletConfig::Representation
       
+          property :labels, as: 'labels', class: Google::Apis::ContainerV1::NodeLabels, decorator: Google::Apis::ContainerV1::NodeLabels::Representation
+      
           property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
       
           collection :locations, as: 'locations'
@@ -2054,6 +2084,10 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :tags, as: 'tags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
+      
+          property :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaints, decorator: Google::Apis::ContainerV1::NodeTaints::Representation
+      
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
       
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
