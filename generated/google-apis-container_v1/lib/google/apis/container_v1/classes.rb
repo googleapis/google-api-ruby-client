@@ -1601,8 +1601,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -2174,9 +2173,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Linux kernel parameters to be applied to the nodes and all pods running on
-        # the nodes. The following parameters are supported. net.core.netdev_max_backlog
-        # net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        # net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        # the nodes. The following parameters are supported. net.core.busy_poll net.core.
+        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
+        # net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.
+        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -3056,6 +3056,14 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
+        # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
+        # run in a pod. The value must be greater than or equal to 1024 and less than
+        # 4194304.
+        # Corresponds to the JSON property `podPidsLimit`
+        # @return [Fixnum]
+        attr_accessor :pod_pids_limit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3065,6 +3073,27 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+        end
+      end
+      
+      # Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/
+      # concepts/overview/working-with-objects/labels).
+      class NodeLabels
+        include Google::Apis::Core::Hashable
+      
+        # Map of node label keys and node label values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -3410,6 +3439,26 @@ module Google
           @effect = args[:effect] if args.key?(:effect)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/
+      # configuration/taint-and-toleration).
+      class NodeTaints
+        include Google::Apis::Core::Hashable
+      
+        # List of node taints.
+        # Corresponds to the JSON property `taints`
+        # @return [Array<Google::Apis::ContainerV1::NodeTaint>]
+        attr_accessor :taints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @taints = args[:taints] if args.key?(:taints)
         end
       end
       
@@ -5121,6 +5170,12 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeKubeletConfig]
         attr_accessor :kubelet_config
       
+        # Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/
+        # concepts/overview/working-with-objects/labels).
+        # Corresponds to the JSON property `labels`
+        # @return [Google::Apis::ContainerV1::NodeLabels]
+        attr_accessor :labels
+      
         # Parameters that can be configured on Linux nodes.
         # Corresponds to the JSON property `linuxNodeConfig`
         # @return [Google::Apis::ContainerV1::LinuxNodeConfig]
@@ -5165,6 +5220,18 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underlying VM instance.
+        # Corresponds to the JSON property `tags`
+        # @return [Google::Apis::ContainerV1::NetworkTags]
+        attr_accessor :tags
+      
+        # Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/
+        # configuration/taint-and-toleration).
+        # Corresponds to the JSON property `taints`
+        # @return [Google::Apis::ContainerV1::NodeTaints]
+        attr_accessor :taints
+      
         # These upgrade settings control the level of parallelism and the level of
         # disruption caused by an upgrade. maxUnavailable controls the number of nodes
         # that can be simultaneously unavailable. maxSurge controls the number of
@@ -5207,12 +5274,15 @@ module Google
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
+          @labels = args[:labels] if args.key?(:labels)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @tags = args[:tags] if args.key?(:tags)
+          @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
