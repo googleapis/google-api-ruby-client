@@ -1303,7 +1303,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes to a file. While you can establish a channel forchanges
+        # Subscribes to changes to a file. While you can establish a channel for changes
         # to a file on a shared drive, a change to a shared drive file won't create a
         # notification.
         # @param [String] file_id
