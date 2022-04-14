@@ -1789,6 +1789,7 @@ module Google
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
+          property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
         end
       end
       

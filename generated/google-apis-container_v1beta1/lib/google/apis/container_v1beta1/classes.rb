@@ -392,7 +392,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Enable Binary Authorization for this cluster. If enabled, all container images
-        # will be validated by Google Binauthz.
+        # will be validated by Binary Authorization.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1807,8 +1807,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -2483,9 +2482,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Linux kernel parameters to be applied to the nodes and all pods running on
-        # the nodes. The following parameters are supported. net.core.netdev_max_backlog
-        # net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max
-        # net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        # the nodes. The following parameters are supported. net.core.busy_poll net.core.
+        # busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
+        # net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.
+        # ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -3481,6 +3481,14 @@ module Google
         # @return [String]
         attr_accessor :cpu_manager_policy
       
+        # Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-
+        # limiting/#pod-pid-limits Controls the maximum number of processes allowed to
+        # run in a pod. The value must be greater than or equal to 1024 and less than
+        # 4194304.
+        # Corresponds to the JSON property `podPidsLimit`
+        # @return [Fixnum]
+        attr_accessor :pod_pids_limit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3490,6 +3498,7 @@ module Google
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
+          @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
         end
       end
       
