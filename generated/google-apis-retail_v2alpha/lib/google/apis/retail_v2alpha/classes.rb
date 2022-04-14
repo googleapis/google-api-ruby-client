@@ -1540,14 +1540,6 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule]
         attr_accessor :rule
       
-        # Required. Specifies the use case for the control. Affects what condition
-        # fields can be set. Only settable by search controls. Will default to
-        # SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one
-        # search_solution_use_case per control.
-        # Corresponds to the JSON property `searchSolutionUseCase`
-        # @return [Array<String>]
-        attr_accessor :search_solution_use_case
-      
         # Required. Immutable. The solution types that the serving config is used for.
         # Currently we support setting only one type of solution at creation time. Only `
         # SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is
@@ -1567,7 +1559,6 @@ module Google
           @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
-          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
         end
       end
@@ -3154,13 +3145,13 @@ module Google
         # The type of Products allowed to be ingested into the catalog. Acceptable
         # values are: * `primary` (default): You can ingest Products of all types. When
         # ingesting a Product, its type will default to Product.Type.PRIMARY if unset. *
-        # `variant`: You can only ingest Product.Type.VARIANT Products. This means
-        # Product.primary_product_id cannot be empty. If this field is set to an invalid
-        # value other than these, an INVALID_ARGUMENT error is returned. If this field
-        # is `variant` and merchant_center_product_id_field is `itemGroupId`, an
-        # INVALID_ARGUMENT error is returned. See [Using product levels](https://cloud.
-        # google.com/retail/recommendations-ai/docs/catalog#product-levels) for more
-        # details.
+        # `variant` (incompatible with Retail Search): You can only ingest Product.Type.
+        # VARIANT Products. This means Product.primary_product_id cannot be empty. If
+        # this field is set to an invalid value other than these, an INVALID_ARGUMENT
+        # error is returned. If this field is `variant` and
+        # merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error
+        # is returned. See [Product levels](https://cloud.google.com/retail/docs/catalog#
+        # product-levels) for more details.
         # Corresponds to the JSON property `ingestionProductType`
         # @return [String]
         attr_accessor :ingestion_product_type
@@ -3173,8 +3164,8 @@ module Google
         # the item group. If this field is set to an invalid value other than these, an
         # INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and
         # ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned.
-        # See [Using product levels](https://cloud.google.com/retail/recommendations-ai/
-        # docs/catalog#product-levels) for more details.
+        # See [Product levels](https://cloud.google.com/retail/docs/catalog#product-
+        # levels) for more details.
         # Corresponds to the JSON property `merchantCenterProductIdField`
         # @return [String]
         attr_accessor :merchant_center_product_id_field
@@ -3323,7 +3314,7 @@ module Google
         # `availability`: Double quoted Product.availability string. * `create_time` :
         # in ISO 8601 "zulu" format. Supported syntax: * Comparators (">", "<", ">=", "<=
         # ", "="). Examples: * create_time <= "2015-02-13T17:05:46Z" * availability = "
-        # IN_STOCK” * Conjunctions ("AND") Examples: * create_time <= "2015-02-13T17:05:
+        # IN_STOCK" * Conjunctions ("AND") Examples: * create_time <= "2015-02-13T17:05:
         # 46Z" AND availability = "PREORDER" * Disjunctions ("OR") Examples: *
         # create_time <= "2015-02-13T17:05:46Z" OR availability = "IN_STOCK" * Can
         # support nested queries. Examples: * (create_time <= "2015-02-13T17:05:46Z" AND
@@ -3331,7 +3322,7 @@ module Google
         # availability = "IN_STOCK") * Filter Limits: * Filter should not contain more
         # than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples
         # queries: * Delete back order products created before a timestamp. create_time <
-        # = "2015-02-13T17:05:46Z" OR availability = "BACKORDER”
+        # = "2015-02-13T17:05:46Z" OR availability = "BACKORDER"
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4175,7 +4166,8 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec]
         attr_accessor :personalization_spec
       
-        # Raw search query.
+        # Raw search query. If this field is empty, the request is considered a category
+        # browsing request and returned results are based on filter and page_categories.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -5281,10 +5273,12 @@ module Google
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
         # a visitor on a single device. This unique identifier should not change if the
-        # visitor log in/out of the website. The field must be a UTF-8 encoded string
-        # with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. The field should not contain PII or user-data. We recommend to use
-        # Google Analystics [Client ID](https://developers.google.com/analytics/
+        # visitor log in/out of the website. Don't set the field to the same fixed ID
+        # for different users. This mixes the event history of those users together,
+        # which results in degraded model quality. The field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. The field should not contain PII or user-data. We recommend
+        # to use Google Analystics [Client ID](https://developers.google.com/analytics/
         # devguides/collection/analyticsjs/field-reference#clientId) for this field.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
@@ -5432,9 +5426,11 @@ module Google
         attr_accessor :user_agent
       
         # Highly recommended for logged-in users. Unique identifier for logged-in user,
-        # such as a user name. Always use a hashed value for this ID. The field must be
-        # a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-        # INVALID_ARGUMENT error is returned.
+        # such as a user name. Don't set for anonymous users. Always use a hashed value
+        # for this ID. Don't set the field to the same fixed ID for different users.
+        # This mixes the event history of those users together, which results in
+        # degraded model quality. The field must be a UTF-8 encoded string with a length
+        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
