@@ -466,6 +466,21 @@ module Google
         # @return [String]
         attr_accessor :image
       
+        # Cloud Storage path to self-signed certificate of private registry.
+        # Corresponds to the JSON property `imageRepositoryCertPath`
+        # @return [String]
+        attr_accessor :image_repository_cert_path
+      
+        # Secret Manager secret id for password to authenticate to private registry.
+        # Corresponds to the JSON property `imageRepositoryPasswordSecretId`
+        # @return [String]
+        attr_accessor :image_repository_password_secret_id
+      
+        # Secret Manager secret id for username to authenticate to private registry.
+        # Corresponds to the JSON property `imageRepositoryUsernameSecretId`
+        # @return [String]
+        attr_accessor :image_repository_username_secret_id
+      
         # Metadata describing a template.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
@@ -484,6 +499,9 @@ module Google
         def update!(**args)
           @default_environment = args[:default_environment] if args.key?(:default_environment)
           @image = args[:image] if args.key?(:image)
+          @image_repository_cert_path = args[:image_repository_cert_path] if args.key?(:image_repository_cert_path)
+          @image_repository_password_secret_id = args[:image_repository_password_secret_id] if args.key?(:image_repository_password_secret_id)
+          @image_repository_username_secret_id = args[:image_repository_username_secret_id] if args.key?(:image_repository_username_secret_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @sdk_info = args[:sdk_info] if args.key?(:sdk_info)
         end
@@ -1988,7 +2006,8 @@ module Google
         end
       end
       
-      # Defines a job to be run by the Cloud Dataflow service.
+      # Defines a job to be run by the Cloud Dataflow service. Do not enter
+      # confidential information when you supply string values using the API.
       class Job
         include Google::Apis::Core::Hashable
       
@@ -2566,7 +2585,8 @@ module Google
       class LaunchFlexTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service.
+        # Defines a job to be run by the Cloud Dataflow service. Do not enter
+        # confidential information when you supply string values using the API.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
@@ -2581,7 +2601,9 @@ module Google
         end
       end
       
-      # Parameters to provide to the template being launched.
+      # Parameters to provide to the template being launched. Note that the [metadata
+      # in the pipeline code] (https://cloud.google.com/dataflow/docs/guides/templates/
+      # creating-templates#metadata) determines which runtime parameters are valid.
       class LaunchTemplateParameters
         include Google::Apis::Core::Hashable
       
@@ -2631,7 +2653,8 @@ module Google
       class LaunchTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service.
+        # Defines a job to be run by the Cloud Dataflow service. Do not enter
+        # confidential information when you supply string values using the API.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
@@ -3908,7 +3931,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The initial number of Google Compute Engine instnaces for the job.
+        # The initial number of Google Compute Engine instances for the job.
         # Corresponds to the JSON property `numWorkers`
         # @return [Fixnum]
         attr_accessor :num_workers
