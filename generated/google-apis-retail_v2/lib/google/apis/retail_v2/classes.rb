@@ -2109,13 +2109,13 @@ module Google
         # The type of Products allowed to be ingested into the catalog. Acceptable
         # values are: * `primary` (default): You can ingest Products of all types. When
         # ingesting a Product, its type will default to Product.Type.PRIMARY if unset. *
-        # `variant`: You can only ingest Product.Type.VARIANT Products. This means
-        # Product.primary_product_id cannot be empty. If this field is set to an invalid
-        # value other than these, an INVALID_ARGUMENT error is returned. If this field
-        # is `variant` and merchant_center_product_id_field is `itemGroupId`, an
-        # INVALID_ARGUMENT error is returned. See [Using product levels](https://cloud.
-        # google.com/retail/recommendations-ai/docs/catalog#product-levels) for more
-        # details.
+        # `variant` (incompatible with Retail Search): You can only ingest Product.Type.
+        # VARIANT Products. This means Product.primary_product_id cannot be empty. If
+        # this field is set to an invalid value other than these, an INVALID_ARGUMENT
+        # error is returned. If this field is `variant` and
+        # merchant_center_product_id_field is `itemGroupId`, an INVALID_ARGUMENT error
+        # is returned. See [Product levels](https://cloud.google.com/retail/docs/catalog#
+        # product-levels) for more details.
         # Corresponds to the JSON property `ingestionProductType`
         # @return [String]
         attr_accessor :ingestion_product_type
@@ -2128,8 +2128,8 @@ module Google
         # the item group. If this field is set to an invalid value other than these, an
         # INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and
         # ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned.
-        # See [Using product levels](https://cloud.google.com/retail/recommendations-ai/
-        # docs/catalog#product-levels) for more details.
+        # See [Product levels](https://cloud.google.com/retail/docs/catalog#product-
+        # levels) for more details.
         # Corresponds to the JSON property `merchantCenterProductIdField`
         # @return [String]
         attr_accessor :merchant_center_product_id_field
@@ -2627,7 +2627,8 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestPersonalizationSpec]
         attr_accessor :personalization_spec
       
-        # Raw search query.
+        # Raw search query. If this field is empty, the request is considered a category
+        # browsing request and returned results are based on filter and page_categories.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -3547,10 +3548,12 @@ module Google
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
         # a visitor on a single device. This unique identifier should not change if the
-        # visitor log in/out of the website. The field must be a UTF-8 encoded string
-        # with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. The field should not contain PII or user-data. We recommend to use
-        # Google Analystics [Client ID](https://developers.google.com/analytics/
+        # visitor log in/out of the website. Don't set the field to the same fixed ID
+        # for different users. This mixes the event history of those users together,
+        # which results in degraded model quality. The field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. The field should not contain PII or user-data. We recommend
+        # to use Google Analystics [Client ID](https://developers.google.com/analytics/
         # devguides/collection/analyticsjs/field-reference#clientId) for this field.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
@@ -3698,9 +3701,11 @@ module Google
         attr_accessor :user_agent
       
         # Highly recommended for logged-in users. Unique identifier for logged-in user,
-        # such as a user name. Always use a hashed value for this ID. The field must be
-        # a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-        # INVALID_ARGUMENT error is returned.
+        # such as a user name. Don't set for anonymous users. Always use a hashed value
+        # for this ID. Don't set the field to the same fixed ID for different users.
+        # This mixes the event history of those users together, which results in
+        # degraded model quality. The field must be a UTF-8 encoded string with a length
+        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
