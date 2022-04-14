@@ -1655,7 +1655,6 @@ module Google
           property :name, as: 'name'
           property :rule, as: 'rule', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRule, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRule::Representation
       
-          collection :search_solution_use_case, as: 'searchSolutionUseCase'
           collection :solution_types, as: 'solutionTypes'
         end
       end
