@@ -1119,6 +1119,9 @@ module Google
           property :default_environment, as: 'defaultEnvironment', class: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment, decorator: Google::Apis::DataflowV1b3::FlexTemplateRuntimeEnvironment::Representation
       
           property :image, as: 'image'
+          property :image_repository_cert_path, as: 'imageRepositoryCertPath'
+          property :image_repository_password_secret_id, as: 'imageRepositoryPasswordSecretId'
+          property :image_repository_username_secret_id, as: 'imageRepositoryUsernameSecretId'
           property :metadata, as: 'metadata', class: Google::Apis::DataflowV1b3::TemplateMetadata, decorator: Google::Apis::DataflowV1b3::TemplateMetadata::Representation
       
           property :sdk_info, as: 'sdkInfo', class: Google::Apis::DataflowV1b3::SdkInfo, decorator: Google::Apis::DataflowV1b3::SdkInfo::Representation
