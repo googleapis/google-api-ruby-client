@@ -873,8 +873,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>]
         attr_accessor :set_parameter_actions
       
-        # The tag used by the webhook to identify which fulfillment is being called.
-        # This field is required if `webhook` is specified.
+        # The value of this field will be populated in the WebhookRequest `
+        # fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called.
+        # The tag is typically used by the webhook service to identify which
+        # fulfillment is being called, but it could be used for other purposes. This
+        # field is required if `webhook` is specified.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -1436,7 +1439,7 @@ module Google
       class GoogleCloudDialogflowCxV3Page
         include Google::Apis::Core::Hashable
       
-        # Required. The human-readable name of the page, unique within the agent.
+        # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2592,7 +2595,10 @@ module Google
       class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo
         include Google::Apis::Core::Hashable
       
-        # Always present. The tag used to identify which fulfillment is being called.
+        # Always present. The value of the Fulfillment.tag field will be populated in
+        # this field by Dialogflow when the associated webhook is called. The tag is
+        # typically used by the webhook service to identify which fulfillment is being
+        # called, but it could be used for other purposes.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -4643,7 +4649,7 @@ module Google
         # saying "help" or "can I talk to a human?", which can be handled in a common
         # way regardless of the current page. Transition routes defined in the page have
         # higher priority than those defined in the flow. TransitionRoutes are evalauted
-        # in the following order: * TransitionRoutes with intent specified.. *
+        # in the following order: * TransitionRoutes with intent specified. *
         # TransitionRoutes with only condition specified. TransitionRoutes with intent
         # specified are inherited by pages in the flow.
         # Corresponds to the JSON property `transitionRoutes`
@@ -4952,8 +4958,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>]
         attr_accessor :set_parameter_actions
       
-        # The tag used by the webhook to identify which fulfillment is being called.
-        # This field is required if `webhook` is specified.
+        # The value of this field will be populated in the WebhookRequest `
+        # fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called.
+        # The tag is typically used by the webhook service to identify which
+        # fulfillment is being called, but it could be used for other purposes. This
+        # field is required if `webhook` is specified.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -6379,7 +6388,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1Page
         include Google::Apis::Core::Hashable
       
-        # Required. The human-readable name of the page, unique within the agent.
+        # Required. The human-readable name of the page, unique within the flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8323,7 +8332,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The human-readable name of the transition route group, unique within
-        # the Agent. The display name can be no longer than 30 characters.
+        # the flow. The display name can be no longer than 30 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8919,7 +8928,10 @@ module Google
       class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo
         include Google::Apis::Core::Hashable
       
-        # Always present. The tag used to identify which fulfillment is being called.
+        # Always present. The value of the Fulfillment.tag field will be populated in
+        # this field by Dialogflow when the associated webhook is called. The tag is
+        # typically used by the webhook service to identify which fulfillment is being
+        # called, but it could be used for other purposes.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
