@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsSourceVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelCloneJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -411,6 +417,13 @@ module Google
         end
       end
       
+      class AwsSourceVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :firmware, as: 'firmware'
+        end
+      end
+      
       class CancelCloneJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -735,6 +748,8 @@ module Google
       class MigratingVm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails::Representation
+      
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults::Representation
       
           property :compute_engine_vm_defaults, as: 'computeEngineVmDefaults', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation

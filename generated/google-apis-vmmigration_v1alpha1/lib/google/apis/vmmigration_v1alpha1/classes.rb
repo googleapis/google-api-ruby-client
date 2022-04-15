@@ -129,6 +129,25 @@ module Google
         end
       end
       
+      # Represent the source AWS VM details.
+      class AwsSourceVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The firmware type of the source VM.
+        # Corresponds to the JSON property `firmware`
+        # @return [String]
+        attr_accessor :firmware
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firmware = args[:firmware] if args.key?(:firmware)
+        end
+      end
+      
       # Request message for 'CancelCloneJob' request.
       class CancelCloneJobRequest
         include Google::Apis::Core::Hashable
@@ -1305,6 +1324,11 @@ module Google
       class MigratingVm
         include Google::Apis::Core::Hashable
       
+        # Represent the source AWS VM details.
+        # Corresponds to the JSON property `awsSourceVmDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails]
+        attr_accessor :aws_source_vm_details
+      
         # ComputeEngineTargetDefaults is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDefaults`
@@ -1425,6 +1449,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_source_vm_details = args[:aws_source_vm_details] if args.key?(:aws_source_vm_details)
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @compute_engine_vm_defaults = args[:compute_engine_vm_defaults] if args.key?(:compute_engine_vm_defaults)
           @create_time = args[:create_time] if args.key?(:create_time)
