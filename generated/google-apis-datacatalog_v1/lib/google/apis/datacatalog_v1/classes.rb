@@ -45,7 +45,7 @@ module Google
         # @return [Google::Apis::DatacatalogV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -2531,7 +2531,8 @@ module Google
       
         # Required. User-defined name of this taxonomy. The name can't start or end with
         # spaces, must contain only Unicode letters, numbers, underscores, dashes, and
-        # spaces, and be at most 200 bytes long when encoded in UTF-8.
+        # spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy
+        # display name must be unique within an organization.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2821,7 +2822,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
