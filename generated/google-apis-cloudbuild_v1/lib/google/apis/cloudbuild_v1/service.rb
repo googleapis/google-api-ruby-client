@@ -778,7 +778,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove a Bitbucket Server repository from an given BitbucketServerConfig’s
+        # Remove a Bitbucket Server repository from a given BitbucketServerConfig's
         # connected repositories. This API is experimental.
         # @param [String] config
         #   Required. The name of the `BitbucketServerConfig` to remove a connected
