@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DropLargeObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,12 +251,6 @@ module Google
       end
       
       class OracleColumn
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OracleDropLargeObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +478,12 @@ module Google
       
           property :oracle_rdbms, as: 'oracleRdbms', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
       
+        end
+      end
+      
+      class DropLargeObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -768,12 +774,6 @@ module Google
         end
       end
       
-      class OracleDropLargeObjects
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class OracleObjectIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -816,7 +816,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowlist, as: 'allowlist', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
       
-          property :drop_large_objects, as: 'dropLargeObjects', class: Google::Apis::DatastreamV1alpha1::OracleDropLargeObjects, decorator: Google::Apis::DatastreamV1alpha1::OracleDropLargeObjects::Representation
+          property :drop_large_objects, as: 'dropLargeObjects', class: Google::Apis::DatastreamV1alpha1::DropLargeObjects, decorator: Google::Apis::DatastreamV1alpha1::DropLargeObjects::Representation
       
           property :rejectlist, as: 'rejectlist', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
       
