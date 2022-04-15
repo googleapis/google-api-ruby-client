@@ -204,7 +204,7 @@ module Google
         # @return [Google::Apis::SecretmanagerV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -466,7 +466,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of SecretVersions.
+        # The total number of SecretVersions but 0 when the ListSecretsRequest.filter
+        # field is set.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -503,7 +504,8 @@ module Google
         # @return [Array<Google::Apis::SecretmanagerV1::Secret>]
         attr_accessor :secrets
       
-        # The total number of Secrets.
+        # The total number of Secrets but 0 when the ListSecretsRequest.filter field is
+        # set.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -1033,7 +1035,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
