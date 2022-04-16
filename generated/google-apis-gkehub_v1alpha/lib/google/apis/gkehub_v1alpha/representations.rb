@@ -1506,6 +1506,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :control_plane, as: 'controlPlane'
+          property :default_channel, as: 'defaultChannel'
         end
       end
       
@@ -1514,6 +1515,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :analysis_messages, as: 'analysisMessages', class: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage, decorator: Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage::Representation
       
+          property :config_api_version, as: 'configApiVersion'
           property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement::Representation
       
         end

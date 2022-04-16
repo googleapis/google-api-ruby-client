@@ -257,7 +257,7 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -3329,6 +3329,12 @@ module Google
         # @return [String]
         attr_accessor :control_plane
       
+        # Determines which release channel to use for default injection and service mesh
+        # APIs.
+        # Corresponds to the JSON property `defaultChannel`
+        # @return [String]
+        attr_accessor :default_channel
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3336,6 +3342,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
+          @default_channel = args[:default_channel] if args.key?(:default_channel)
         end
       end
       
@@ -3349,6 +3356,12 @@ module Google
         # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshAnalysisMessage>]
         attr_accessor :analysis_messages
       
+        # The API version (i.e. Istio CRD version) for configuring service mesh in this
+        # cluster. This version is influenced by the `default_channel` field.
+        # Corresponds to the JSON property `configApiVersion`
+        # @return [String]
+        attr_accessor :config_api_version
+      
         # Status of control plane management.
         # Corresponds to the JSON property `controlPlaneManagement`
         # @return [Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement]
@@ -3361,6 +3374,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_messages = args[:analysis_messages] if args.key?(:analysis_messages)
+          @config_api_version = args[:config_api_version] if args.key?(:config_api_version)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
         end
       end
@@ -3506,7 +3520,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
