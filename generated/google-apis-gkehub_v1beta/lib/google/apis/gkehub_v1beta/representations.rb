@@ -394,6 +394,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshControlPlaneManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -916,6 +940,8 @@ module Google
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec::Representation
       
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec::Representation
+      
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
       
         end
@@ -933,6 +959,8 @@ module Google
           property :metering, as: 'metering', class: Google::Apis::GkehubV1beta::MeteringMembershipState, decorator: Google::Apis::GkehubV1beta::MeteringMembershipState::Representation
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipState, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipState::Representation
+      
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1beta::ServiceMeshMembershipState, decorator: Google::Apis::GkehubV1beta::ServiceMeshMembershipState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
@@ -1054,6 +1082,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :included, as: 'included'
+        end
+      end
+      
+      class ServiceMeshControlPlaneManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::GkehubV1beta::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1beta::ServiceMeshStatusDetails::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class ServiceMeshMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane, as: 'controlPlane'
+        end
+      end
+      
+      class ServiceMeshMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement::Representation
+      
+        end
+      end
+      
+      class ServiceMeshStatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
         end
       end
       
