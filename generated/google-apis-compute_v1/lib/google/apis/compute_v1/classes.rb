@@ -4489,7 +4489,7 @@ module Google
         # @return [Google::Apis::ComputeV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -13711,14 +13711,15 @@ module Google
         # [Output Only] A bit indicating whether the managed instance group has stateful
         # configuration, that is, if you have configured any items in a stateful policy
         # or in per-instance configs. The group might report that it has no stateful
-        # config even when there is still some preserved state on a managed instance,
-        # for example, if you have deleted all PICs but not yet applied those deletions.
+        # configuration even when there is still some preserved state on a managed
+        # instance, for example, if you have deleted all PICs but not yet applied those
+        # deletions.
         # Corresponds to the JSON property `hasStatefulConfig`
         # @return [Boolean]
         attr_accessor :has_stateful_config
         alias_method :has_stateful_config?, :has_stateful_config
       
-        # [Output Only] Status of per-instance configs on the instance.
+        # [Output Only] Status of per-instance configurations on the instance.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
         attr_accessor :per_instance_configs
@@ -13738,9 +13739,9 @@ module Google
       class InstanceGroupManagerStatusStatefulPerInstanceConfigs
         include Google::Apis::Core::Hashable
       
-        # A bit indicating if all of the group's per-instance configs (listed in the
-        # output of a listPerInstanceConfigs API call) have status EFFECTIVE or there
-        # are no per-instance-configs.
+        # A bit indicating if all of the group's per-instance configurations (listed in
+        # the output of a listPerInstanceConfigs API call) have status EFFECTIVE or
+        # there are no per-instance-configs.
         # Corresponds to the JSON property `allEffective`
         # @return [Boolean]
         attr_accessor :all_effective
@@ -14194,8 +14195,8 @@ module Google
       class InstanceGroupManagersPatchPerInstanceConfigsReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -14382,8 +14383,8 @@ module Google
       class InstanceGroupManagersUpdatePerInstanceConfigsReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -24561,18 +24562,18 @@ module Google
         # Fingerprint of this per-instance config. This field can be used in optimistic
         # locking. It is ignored when inserting a per-instance config. An up-to-date
         # fingerprint must be provided in order to update an existing per-instance
-        # config or the field needs to be unset.
+        # configuration or the field needs to be unset.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
-        # The name of a per-instance config and its corresponding instance. Serves as a
-        # merge key during UpdatePerInstanceConfigs operations, that is, if a per-
-        # instance config with the same name exists then it will be updated, otherwise a
-        # new one will be created for the VM instance with the same name. An attempt to
-        # create a per-instance config for a VM instance that either doesn't exist or is
-        # not part of the group will result in an error.
+        # The name of a per-instance configuration and its corresponding instance.
+        # Serves as a merge key during UpdatePerInstanceConfigs operations, that is, if
+        # a per-instance configuration with the same name exists then it will be updated,
+        # otherwise a new one will be created for the VM instance with the same name.
+        # An attempt to create a per-instance configconfiguration for a VM instance that
+        # either doesn't exist or is not part of the group will result in an error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -24582,8 +24583,8 @@ module Google
         # @return [Google::Apis::ComputeV1::PreservedState]
         attr_accessor :preserved_state
       
-        # The status of applying this per-instance config on the corresponding managed
-        # instance.
+        # The status of applying this per-instance configuration on the corresponding
+        # managed instance.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -26499,8 +26500,8 @@ module Google
       class RegionInstanceGroupManagerPatchInstanceConfigReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -26519,8 +26520,8 @@ module Google
       class RegionInstanceGroupManagerUpdateInstanceConfigReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
         attr_accessor :per_instance_configs
