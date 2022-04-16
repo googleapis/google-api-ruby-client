@@ -382,6 +382,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshControlPlaneManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -926,6 +950,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
       
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipSpec::Representation
+      
         end
       end
       
@@ -935,6 +961,8 @@ module Google
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipState::Representation
+      
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipState, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1::FeatureState, decorator: Google::Apis::GkehubV1::FeatureState::Representation
       
@@ -1023,6 +1051,38 @@ module Google
           property :connect_version, as: 'connectVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
+        end
+      end
+      
+      class ServiceMeshControlPlaneManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::GkehubV1::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1::ServiceMeshStatusDetails::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class ServiceMeshMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane, as: 'controlPlane'
+        end
+      end
+      
+      class ServiceMeshMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1::ServiceMeshControlPlaneManagement::Representation
+      
+        end
+      end
+      
+      class ServiceMeshStatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
         end
       end
       

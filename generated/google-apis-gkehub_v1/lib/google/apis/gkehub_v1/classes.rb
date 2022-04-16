@@ -202,7 +202,7 @@ module Google
         # @return [Google::Apis::GkehubV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -1889,6 +1889,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
+        # **Service Mesh**: Spec for a single Membership for the servicemesh feature
+        # Corresponds to the JSON property `mesh`
+        # @return [Google::Apis::GkehubV1::ServiceMeshMembershipSpec]
+        attr_accessor :mesh
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1896,6 +1901,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @mesh = args[:mesh] if args.key?(:mesh)
         end
       end
       
@@ -1914,6 +1920,12 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipState]
         attr_accessor :configmanagement
       
+        # **Service Mesh**: State for a single Membership, as analyzed by the Service
+        # Mesh Hub Controller.
+        # Corresponds to the JSON property `servicemesh`
+        # @return [Google::Apis::GkehubV1::ServiceMeshMembershipState]
+        attr_accessor :servicemesh
+      
         # FeatureState describes the high-level state of a Feature. It may be used to
         # describe a Feature's state at the environ-level, or per-membershop, depending
         # on the context.
@@ -1929,6 +1941,7 @@ module Google
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -2323,6 +2336,95 @@ module Google
         end
       end
       
+      # Status of control plane management.
+      class ServiceMeshControlPlaneManagement
+        include Google::Apis::Core::Hashable
+      
+        # Explanation of state.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::GkehubV1::ServiceMeshStatusDetails>]
+        attr_accessor :details
+      
+        # LifecycleState of control plane management.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # **Service Mesh**: Spec for a single Membership for the servicemesh feature
+      class ServiceMeshMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # Enables automatic control plane management.
+        # Corresponds to the JSON property `controlPlane`
+        # @return [String]
+        attr_accessor :control_plane
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane = args[:control_plane] if args.key?(:control_plane)
+        end
+      end
+      
+      # **Service Mesh**: State for a single Membership, as analyzed by the Service
+      # Mesh Hub Controller.
+      class ServiceMeshMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # Status of control plane management.
+        # Corresponds to the JSON property `controlPlaneManagement`
+        # @return [Google::Apis::GkehubV1::ServiceMeshControlPlaneManagement]
+        attr_accessor :control_plane_management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
+        end
+      end
+      
+      # Structured and human-readable details for a status.
+      class ServiceMeshStatusDetails
+        include Google::Apis::Core::Hashable
+      
+        # A machine-readable code that further describes a broad status.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Human-readable explanation of code.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -2406,7 +2508,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
