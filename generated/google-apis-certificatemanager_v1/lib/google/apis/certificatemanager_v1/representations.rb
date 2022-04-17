@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcesCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SelfManagedCertificate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,6 +388,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class ResourcesCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificates, :numeric_string => true, as: 'certificates'
+          property :compute_time, as: 'computeTime'
+          property :name, as: 'name'
         end
       end
       
