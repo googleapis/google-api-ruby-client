@@ -874,6 +874,46 @@ module Google
         end
       end
       
+      # 
+      class ResourcesCount
+        include Google::Apis::Core::Hashable
+      
+        # The count of certificates.
+        # Corresponds to the JSON property `certificates`
+        # @return [Fixnum]
+        attr_accessor :certificates
+      
+        # Required. Input only. The time of the computation. The field is input only,
+        # used in Create and Update calls. For Update call, new values of selected
+        # resources are set if their compute_time is younger than the persisted ones, e.
+        # g.: If you support 3 types of resources: A, B and C, and you have: 'A'
+        # resource count computed at timestamp = 3 'B' resource count computed at
+        # timestamp = 10 'C' resource count computed at timestamp = 5 And you're going
+        # to update all of them with compute_time = 8, only 'A' and 'C' will be updated,
+        # as 'B' already has fresher data. For Get call a ResourcesCount instance
+        # contains the freshest values for every type.
+        # Corresponds to the JSON property `computeTime`
+        # @return [String]
+        attr_accessor :compute_time
+      
+        # The singleton resource of the resources count. Must be in the format `projects/
+        # */locations/*/resourcesCounts/single`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+          @compute_time = args[:compute_time] if args.key?(:compute_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Certificate data for a SelfManaged Certificate. SelfManaged Certificates are
       # uploaded by the user. Updating such certificates before they expire remains
       # the user's responsibility.
