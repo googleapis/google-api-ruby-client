@@ -1253,6 +1253,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists hot tablets in a cluster, within the time range provided. Hot tablets
+        # are ordered based on CPU usage.
+        # @param [String] parent
+        #   Required. The cluster name to list hot tablets. Value is in the following form:
+        #   `projects/`project`/instances/`instance`/clusters/`cluster``.
+        # @param [String] end_time
+        #   The end time to list hot tablets.
+        # @param [Fixnum] page_size
+        #   Maximum number of results per page. A page_size that is empty or zero lets the
+        #   server choose the number of items to return. A page_size which is strictly
+        #   positive will return at most that many items. A negative page_size will cause
+        #   an error. Following the first request, subsequent paginated calls do not need
+        #   a page_size field. If a page_size is set in subsequent calls, it must match
+        #   the page_size given in the first request.
+        # @param [String] page_token
+        #   The value of `next_page_token` returned by a previous call.
+        # @param [String] start_time
+        #   The start time to list hot tablets. The hot tablets in the response will have
+        #   start times between the requested start time and end time. Start time defaults
+        #   to Now if it is unset, and end time defaults to Now - 24 hours if it is unset.
+        #   The start time should be less than the end time, and the maximum allowed time
+        #   range between start time and end time is 48 hours. Start time and end time
+        #   should have values between Now and Now - 14 days.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::ListHotTabletsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::ListHotTabletsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_cluster_hot_tablets(parent, end_time: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/hotTablets', options)
+          command.response_representation = Google::Apis::BigtableadminV2::ListHotTabletsResponse::Representation
+          command.response_class = Google::Apis::BigtableadminV2::ListHotTabletsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks replication consistency based on a consistency token, that is, if
         # replication has caught up based on the conditions specified in the token and
         # the check request.

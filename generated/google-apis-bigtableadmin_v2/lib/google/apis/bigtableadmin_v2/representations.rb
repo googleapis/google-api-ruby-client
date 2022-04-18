@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HotTablet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,12 @@ module Google
       end
       
       class ListClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListHotTabletsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -708,6 +720,19 @@ module Google
         end
       end
       
+      class HotTablet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_key, as: 'endKey'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :node_cpu_usage_percent, as: 'nodeCpuUsagePercent'
+          property :start_key, as: 'startKey'
+          property :start_time, as: 'startTime'
+          property :table_name, as: 'tableName'
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -753,6 +778,15 @@ module Google
           collection :clusters, as: 'clusters', class: Google::Apis::BigtableadminV2::Cluster, decorator: Google::Apis::BigtableadminV2::Cluster::Representation
       
           collection :failed_locations, as: 'failedLocations'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListHotTabletsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hot_tablets, as: 'hotTablets', class: Google::Apis::BigtableadminV2::HotTablet, decorator: Google::Apis::BigtableadminV2::HotTablet::Representation
+      
           property :next_page_token, as: 'nextPageToken'
         end
       end
