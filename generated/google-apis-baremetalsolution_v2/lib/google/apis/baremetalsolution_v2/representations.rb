@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchInstanceProvisioningSettingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogicalInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Lun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +227,12 @@ module Google
       end
       
       class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -296,6 +320,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FetchInstanceProvisioningSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :images, as: 'images', class: Google::Apis::BaremetalsolutionV2::OsImage, decorator: Google::Apis::BaremetalsolutionV2::OsImage::Representation
+      
         end
       end
       
@@ -459,6 +491,15 @@ module Google
         end
       end
       
+      class LogicalInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :required, as: 'required'
+          property :type, as: 'type'
+        end
+      end
+      
       class Lun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -562,6 +603,18 @@ module Google
         end
       end
       
+      class OsImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_instance_types, as: 'applicableInstanceTypes'
+          property :code, as: 'code'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :supported_network_templates, as: 'supportedNetworkTemplates', class: Google::Apis::BaremetalsolutionV2::ServerNetworkTemplate, decorator: Google::Apis::BaremetalsolutionV2::ServerNetworkTemplate::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +688,16 @@ module Google
           property :crontab_spec, as: 'crontabSpec'
           property :prefix, as: 'prefix'
           property :retention_count, as: 'retentionCount'
+        end
+      end
+      
+      class ServerNetworkTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_instance_types, as: 'applicableInstanceTypes'
+          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::LogicalInterface::Representation
+      
+          property :name, as: 'name'
         end
       end
       
