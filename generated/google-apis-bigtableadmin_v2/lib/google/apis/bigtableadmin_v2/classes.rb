@@ -728,7 +728,6 @@ module Google
         # Required. The clusters to be created within the instance, mapped by desired
         # cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/
         # myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
-        # Currently, at most four clusters can be specified.
         # Corresponds to the JSON property `clusters`
         # @return [Hash<String,Google::Apis::BigtableadminV2::Cluster>]
         attr_accessor :clusters
@@ -1089,6 +1088,69 @@ module Google
         end
       end
       
+      # A tablet is a defined by a start and end key and is explained in https://cloud.
+      # google.com/bigtable/docs/overview#architecture and https://cloud.google.com/
+      # bigtable/docs/performance#optimization. A Hot tablet is a tablet that exhibits
+      # high average cpu usage during the time interval from start time to end time.
+      class HotTablet
+        include Google::Apis::Core::Hashable
+      
+        # Tablet End Key (inclusive).
+        # Corresponds to the JSON property `endKey`
+        # @return [String]
+        attr_accessor :end_key
+      
+        # Output only. The end time of the hot tablet.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The unique name of the hot tablet. Values are of the form `projects/`project`/
+        # instances/`instance`/clusters/`cluster`/hotTablets/[a-zA-Z0-9_-]*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The average CPU usage spent by a node on this tablet over the
+        # start_time to end_time time range. The percentage is the amount of CPU used by
+        # the node to serve the tablet, from 0% (tablet was not interacted with) to 100%
+        # (the node spent all cycles serving the hot tablet).
+        # Corresponds to the JSON property `nodeCpuUsagePercent`
+        # @return [Float]
+        attr_accessor :node_cpu_usage_percent
+      
+        # Tablet Start Key (inclusive).
+        # Corresponds to the JSON property `startKey`
+        # @return [String]
+        attr_accessor :start_key
+      
+        # Output only. The start time of the hot tablet.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Name of the table that contains the tablet. Values are of the form `projects/`
+        # project`/instances/`instance`/tables/_a-zA-Z0-9*`.
+        # Corresponds to the JSON property `tableName`
+        # @return [String]
+        attr_accessor :table_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_key = args[:end_key] if args.key?(:end_key)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @node_cpu_usage_percent = args[:node_cpu_usage_percent] if args.key?(:node_cpu_usage_percent)
+          @start_key = args[:start_key] if args.key?(:start_key)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @table_name = args[:table_name] if args.key?(:table_name)
+        end
+      end
+      
       # A collection of Bigtable Tables and the resources that serve them. All tables
       # in an instance are served from all Clusters in the instance.
       class Instance
@@ -1259,6 +1321,36 @@ module Google
         def update!(**args)
           @clusters = args[:clusters] if args.key?(:clusters)
           @failed_locations = args[:failed_locations] if args.key?(:failed_locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for BigtableInstanceAdmin.ListHotTablets.
+      class ListHotTabletsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of hot tablets in the tables of the requested cluster that fall within
+        # the requested time range. Hot tablets are ordered by node cpu usage percent.
+        # If there are multiple hot tablets that correspond to the same tablet within a
+        # 15-minute interval, only the hot tablet with the highest node cpu usage will
+        # be included in the response.
+        # Corresponds to the JSON property `hotTablets`
+        # @return [Array<Google::Apis::BigtableadminV2::HotTablet>]
+        attr_accessor :hot_tablets
+      
+        # Set if not all hot tablets could be returned in a single response. Pass this
+        # value to `page_token` in another request to get the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hot_tablets = args[:hot_tablets] if args.key?(:hot_tablets)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
