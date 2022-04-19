@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,7 +328,8 @@ module Google
           property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings::Representation
       
           property :name, as: 'name'
-          hash :notification_parameters, as: 'notificationParameters'
+          hash :notification_parameters, as: 'notificationParameters', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter::Representation
+      
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
       
@@ -364,6 +371,13 @@ module Google
           property :node_id, as: 'nodeId'
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
@@ -412,7 +426,6 @@ module Google
       
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
-          property :max_share_count, :numeric_string => true, as: 'maxShareCount'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
       

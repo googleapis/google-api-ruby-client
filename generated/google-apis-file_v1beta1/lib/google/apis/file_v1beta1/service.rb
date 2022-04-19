@@ -84,8 +84,8 @@ module Google
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
-        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
-        #   AIP-160](https://google.aip.dev/160).
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
         # @param [Boolean] include_unrevealed_locations
         #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
