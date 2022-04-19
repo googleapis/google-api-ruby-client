@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Connection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerThreatDetectionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -259,6 +265,17 @@ module Google
         end
       end
       
+      class Connection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_ip, as: 'destinationIp'
+          property :destination_port, as: 'destinationPort'
+          property :protocol, as: 'protocol'
+          property :source_ip, as: 'sourceIp'
+          property :source_port, as: 'sourcePort'
+        end
+      end
+      
       class ContainerThreatDetectionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -325,7 +342,10 @@ module Google
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
+          collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta2::Connection, decorator: Google::Apis::SecuritycenterV1beta2::Connection::Representation
+      
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :event_time, as: 'eventTime'
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem::Representation
       
