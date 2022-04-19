@@ -360,6 +360,50 @@ module Google
         end
       end
       
+      # Contains information about the IP connection associated with the finding.
+      class Connection
+        include Google::Apis::Core::Hashable
+      
+        # Destination IP address. Not present for sockets that are listening and not
+        # connected.
+        # Corresponds to the JSON property `destinationIp`
+        # @return [String]
+        attr_accessor :destination_ip
+      
+        # Destination port. Not present for sockets that are listening and not connected.
+        # Corresponds to the JSON property `destinationPort`
+        # @return [Fixnum]
+        attr_accessor :destination_port
+      
+        # IANA Internet Protocol Number such as TCP(6) and UDP(17).
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Source IP address.
+        # Corresponds to the JSON property `sourceIp`
+        # @return [String]
+        attr_accessor :source_ip
+      
+        # Source port.
+        # Corresponds to the JSON property `sourcePort`
+        # @return [Fixnum]
+        attr_accessor :source_port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_ip = args[:destination_ip] if args.key?(:destination_ip)
+          @destination_port = args[:destination_port] if args.key?(:destination_port)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @source_ip = args[:source_ip] if args.key?(:source_ip)
+          @source_port = args[:source_port] if args.key?(:source_port)
+        end
+      end
+      
       # CVE stands for Common Vulnerabilities and Exposures. More information: https://
       # cve.mitre.org
       class Cve
@@ -575,10 +619,20 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Contains information about the IP connection associated with the finding.
+        # Corresponds to the JSON property `connections`
+        # @return [Array<Google::Apis::SecuritycenterV1::Connection>]
+        attr_accessor :connections
+      
         # The time at which the finding was created in Security Command Center.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Contains more detail about the finding.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # The time the finding was first detected. If an existing finding is updated,
         # then this is the time the update occurred. For example, if the finding
@@ -717,7 +771,9 @@ module Google
           @access = args[:access] if args.key?(:access)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @connections = args[:connections] if args.key?(:connections)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
