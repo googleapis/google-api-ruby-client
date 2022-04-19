@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeExpr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -145,6 +151,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access'
+          collection :errors, as: 'errors', class: Google::Apis::PolicytroubleshooterV1::GoogleRpcStatus, decorator: Google::Apis::PolicytroubleshooterV1::GoogleRpcStatus::Representation
+      
           collection :explained_policies, as: 'explainedPolicies', class: Google::Apis::PolicytroubleshooterV1::GoogleCloudPolicytroubleshooterV1ExplainedPolicy, decorator: Google::Apis::PolicytroubleshooterV1::GoogleCloudPolicytroubleshooterV1ExplainedPolicy::Representation
       
         end
@@ -186,6 +194,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
