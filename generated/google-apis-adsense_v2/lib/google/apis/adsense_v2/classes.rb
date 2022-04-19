@@ -170,8 +170,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Resource name of the ad unit. Format: accounts/`account`/adclients/`
-        # adclient`/adunits/`adunit`
+        # Resource name of the ad unit. Format: accounts/`account`/adclients/`adclient`/
+        # adunits/`adunit`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -284,12 +284,12 @@ module Google
       class ContentAdsSettings
         include Google::Apis::Core::Hashable
       
-        # Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units).
+        # Required. Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units).
         # Corresponds to the JSON property `size`
         # @return [String]
         attr_accessor :size
       
-        # Type of the ad unit.
+        # Required. Type of the ad unit.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -309,7 +309,7 @@ module Google
       class CustomChannel
         include Google::Apis::Core::Hashable
       
-        # Display name of the custom channel.
+        # Required. Display name of the custom channel.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
