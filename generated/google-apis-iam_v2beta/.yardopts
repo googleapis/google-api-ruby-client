@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-iam_v2beta
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/iam_v2beta/*.rb
+lib/google/apis/iam_v2beta.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
