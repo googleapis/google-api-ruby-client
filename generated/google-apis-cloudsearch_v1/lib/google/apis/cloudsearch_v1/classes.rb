@@ -5283,6 +5283,13 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
+        # The email address of the user that invited the calling user to the room, if
+        # available. This field will only be populated for direct invites, it will be
+        # empty if the user was indirectly invited to the group.
+        # Corresponds to the JSON property `inviterEmail`
+        # @return [String]
+        attr_accessor :inviter_email
+      
         # Whether this is a space that enables guest access
         # Corresponds to the JSON property `isExternal`
         # @return [Boolean]
@@ -5314,6 +5321,7 @@ module Google
           @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @description = args[:description] if args.key?(:description)
           @group_id = args[:group_id] if args.key?(:group_id)
+          @inviter_email = args[:inviter_email] if args.key?(:inviter_email)
           @is_external = args[:is_external] if args.key?(:is_external)
           @name = args[:name] if args.key?(:name)
           @num_members = args[:num_members] if args.key?(:num_members)

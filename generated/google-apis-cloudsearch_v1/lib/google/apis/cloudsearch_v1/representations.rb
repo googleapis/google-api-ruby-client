@@ -2619,6 +2619,7 @@ module Google
           property :description, as: 'description'
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
+          property :inviter_email, as: 'inviterEmail'
           property :is_external, as: 'isExternal'
           property :name, as: 'name'
           property :num_members, as: 'numMembers'
