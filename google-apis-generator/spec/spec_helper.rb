@@ -20,23 +20,6 @@ FIXTURES_DIR = File.expand_path(File.join(SPEC_DIR, 'fixtures'))
 
 $LOAD_PATH.uniq!
 
-if defined?(JRUBY_VERSION)
-  puts 'Skipping coverage on JRuby'
-else
-  # set up coverage
-  require 'simplecov'
-  require 'coveralls'
-
-  SimpleCov.formatters = [
-    Coveralls::SimpleCov::Formatter,
-    SimpleCov::Formatter::HTMLFormatter
-  ]
-  SimpleCov.start do
-    add_filter '/spec/'
-    add_filter '/generated/'
-  end
-end
-
 require 'rspec'
 require 'webmock/rspec'
 require 'fakefs/spec_helpers'
