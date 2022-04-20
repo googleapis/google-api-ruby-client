@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2ContainerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2EnvVar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +70,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2Execution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ExecutionReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ExecutionTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ListJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2ListRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +113,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ListTasksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2RunJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2SecretKeySelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +167,24 @@ module Google
       end
       
       class GoogleCloudRunV2Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2TaskAttemptResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2TaskTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -284,6 +356,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2ContainerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_digest, as: 'imageDigest'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudRunV2EnvVar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -302,6 +382,111 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2Execution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
+          property :failed_count, as: 'failedCount'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :job, as: 'job'
+          hash :labels, as: 'labels'
+          property :launch_stage, as: 'launchStage'
+          property :name, as: 'name'
+          property :observed_generation, :numeric_string => true, as: 'observedGeneration'
+          property :parallelism, as: 'parallelism'
+          property :reconciling, as: 'reconciling'
+          property :running_count, as: 'runningCount'
+          property :start_time, as: 'startTime'
+          property :succeeded_count, as: 'succeededCount'
+          property :task_count, as: 'taskCount'
+          property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRunV2ExecutionReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRunV2ExecutionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          hash :labels, as: 'labels'
+          property :parallelism, as: 'parallelism'
+          property :task_count, as: 'taskCount'
+          property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization, decorator: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization::Representation
+      
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus::Representation
+      
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :delete_time, as: 'deleteTime'
+          property :etag, as: 'etag'
+          property :execution_count, as: 'executionCount'
+          property :expire_time, as: 'expireTime'
+          property :generation, :numeric_string => true, as: 'generation'
+          hash :labels, as: 'labels'
+          property :last_modifier, as: 'lastModifier'
+          property :latest_created_execution, as: 'latestCreatedExecution', class: Google::Apis::RunV2::GoogleCloudRunV2ExecutionReference, decorator: Google::Apis::RunV2::GoogleCloudRunV2ExecutionReference::Representation
+      
+          property :launch_stage, as: 'launchStage'
+          property :name, as: 'name'
+          property :observed_generation, :numeric_string => true, as: 'observedGeneration'
+          property :reconciling, as: 'reconciling'
+          property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate::Representation
+      
+          property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRunV2ListExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :executions, as: 'executions', class: Google::Apis::RunV2::GoogleCloudRunV2Execution, decorator: Google::Apis::RunV2::GoogleCloudRunV2Execution::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudRunV2ListJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :jobs, as: 'jobs', class: Google::Apis::RunV2::GoogleCloudRunV2Job, decorator: Google::Apis::RunV2::GoogleCloudRunV2Job::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudRunV2ListRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -316,6 +501,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::RunV2::GoogleCloudRunV2Service, decorator: Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2ListTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tasks, as: 'tasks', class: Google::Apis::RunV2::GoogleCloudRunV2Task, decorator: Google::Apis::RunV2::GoogleCloudRunV2Task::Representation
       
         end
       end
@@ -396,6 +590,14 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2RunJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class GoogleCloudRunV2SecretKeySelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -451,6 +653,72 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2Task
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :encryption_key, as: 'encryptionKey'
+          property :etag, as: 'etag'
+          property :execution, as: 'execution'
+          property :execution_environment, as: 'executionEnvironment'
+          property :expire_time, as: 'expireTime'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :index, as: 'index'
+          property :job, as: 'job'
+          hash :labels, as: 'labels'
+          property :last_attempt_result, as: 'lastAttemptResult', class: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult, decorator: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult::Representation
+      
+          property :launch_stage, as: 'launchStage'
+          property :max_retries, as: 'maxRetries'
+          property :name, as: 'name'
+          property :observed_generation, :numeric_string => true, as: 'observedGeneration'
+          property :reconciling, as: 'reconciling'
+          property :retried, as: 'retried'
+          property :service_account, as: 'serviceAccount'
+          property :start_time, as: 'startTime'
+          property :timeout, as: 'timeout'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
+      
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2TaskAttemptResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exit_code, as: 'exitCode'
+          property :status, as: 'status', class: Google::Apis::RunV2::GoogleRpcStatus, decorator: Google::Apis::RunV2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2TaskTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
+      
+          property :encryption_key, as: 'encryptionKey'
+          property :execution_environment, as: 'executionEnvironment'
+          property :max_retries, as: 'maxRetries'
+          property :service_account, as: 'serviceAccount'
+          property :timeout, as: 'timeout'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
+      
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
         end
       end
       
