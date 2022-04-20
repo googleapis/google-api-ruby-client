@@ -266,6 +266,32 @@ module Google
         end
       end
       
+      # ContainerStatus holds the information of container name and image digest value.
+      class GoogleCloudRunV2ContainerStatus
+        include Google::Apis::Core::Hashable
+      
+        # ImageDigest holds the resolved digest for the image specified, regardless of
+        # whether a tag or digest was originally specified in the Container object.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # The name of the container, if specified.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # EnvVar represents an environment variable present in a Container.
       class GoogleCloudRunV2EnvVar
         include Google::Apis::Core::Hashable
@@ -323,6 +349,522 @@ module Google
         end
       end
       
+      # Execution represents the configuration of a single execution. A execution an
+      # immutable resource that references a container image which is run to
+      # completion.
+      class GoogleCloudRunV2Execution
+        include Google::Apis::Core::Hashable
+      
+        # KRM-style annotations for the resource.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Represents time when the execution was completed. It is not
+        # guaranteed to be set in happens-before order across separate operations.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Output only. The Condition of this Execution, containing its readiness status,
+        # and detailed error information in case it did not reach the desired state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. Represents time when the execution was acknowledged by the
+        # execution controller. It is not guaranteed to be set in happens-before order
+        # across separate operations.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. For a deleted resource, the deletion time. It is only populated
+        # as a response to a Delete request.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. A system-generated fingerprint for this version of the resource.
+        # May be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted. It is only populated as a response to a Delete request.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The number of tasks which reached phase Failed.
+        # Corresponds to the JSON property `failedCount`
+        # @return [Fixnum]
+        attr_accessor :failed_count
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. The name of the parent Job.
+        # Corresponds to the JSON property `job`
+        # @return [String]
+        attr_accessor :job
+      
+        # KRM-style labels for the resource. User-provided labels are shared with Google'
+        # s billing system, so they can be used to filter, or break down billing charges
+        # by team, component, environment, state, etc. For more information, visit https:
+        # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
+        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
+        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
+        # labels are read-only, and user changes will not be preserved.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Set the launch stage to a preview stage on write to allow use of preview
+        # features in that stage. On read, describes whether the resource uses preview
+        # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
+        # https://cloud.google.com/terms/launch-stages).
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Output only. The unique name of this Execution.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The generation of this Execution. See comments in `reconciling`
+        # for additional information on reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Specifies the maximum desired number of tasks the execution
+        # should run at any given time. Must be <= task_count. The actual number of
+        # tasks running in steady state will be less than this number when ((.spec.
+        # task_count - .status.successful) < .spec.parallelism), i.e. when the work left
+        # to do is less than max parallelism. More info: https://kubernetes.io/docs/
+        # concepts/workloads/controllers/jobs-run-to-completion/
+        # Corresponds to the JSON property `parallelism`
+        # @return [Fixnum]
+        attr_accessor :parallelism
+      
+        # Output only. Indicates whether the resource's reconciliation is still in
+        # progress. See comments in `Job.reconciling` for additional information on
+        # reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The number of actively running tasks.
+        # Corresponds to the JSON property `runningCount`
+        # @return [Fixnum]
+        attr_accessor :running_count
+      
+        # Output only. Represents time when the execution started to run. It is not
+        # guaranteed to be set in happens-before order across separate operations.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The number of tasks which reached phase Succeeded.
+        # Corresponds to the JSON property `succeededCount`
+        # @return [Fixnum]
+        attr_accessor :succeeded_count
+      
+        # Output only. Specifies the desired number of tasks the execution should run.
+        # Setting to 1 means that parallelism is limited to 1 and the success of that
+        # task signals the success of the execution. More info: https://kubernetes.io/
+        # docs/concepts/workloads/controllers/jobs-run-to-completion/
+        # Corresponds to the JSON property `taskCount`
+        # @return [Fixnum]
+        attr_accessor :task_count
+      
+        # TaskTemplate describes the data a task should have when created from a
+        # template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate]
+        attr_accessor :template
+      
+        # Output only. Server assigned unique identifier for the Execution. The value is
+        # a UUID4 string and guaranteed to remain unchanged until the resource is
+        # deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @failed_count = args[:failed_count] if args.key?(:failed_count)
+          @generation = args[:generation] if args.key?(:generation)
+          @job = args[:job] if args.key?(:job)
+          @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @name = args[:name] if args.key?(:name)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @parallelism = args[:parallelism] if args.key?(:parallelism)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @running_count = args[:running_count] if args.key?(:running_count)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @succeeded_count = args[:succeeded_count] if args.key?(:succeeded_count)
+          @task_count = args[:task_count] if args.key?(:task_count)
+          @template = args[:template] if args.key?(:template)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Reference to an Execution. Use /Executions.GetExecution with the given name to
+      # get full execution including the latest status.
+      class GoogleCloudRunV2ExecutionReference
+        include Google::Apis::Core::Hashable
+      
+        # Creation timestamp of the execution.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Name of the execution.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # ExecutionTemplate describes the data an execution should have when created
+      # from a template.
+      class GoogleCloudRunV2ExecutionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # KRM-style annotations for the resource.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # KRM-style labels for the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Specifies the maximum desired number of tasks the execution should run at
+        # given time. Must be <= task_count. When the job is run, if this field is 0 or
+        # unset, the maximum possible value will be used for that execution. The actual
+        # number of tasks running in steady state will be less than this number when
+        # there are fewer tasks waiting to be completed remaining, i.e. when the work
+        # left to do is less than max parallelism.
+        # Corresponds to the JSON property `parallelism`
+        # @return [Fixnum]
+        attr_accessor :parallelism
+      
+        # Specifies the desired number of tasks the execution should run. Setting to 1
+        # means that parallelism is limited to 1 and the success of that task signals
+        # the success of the execution. More info: https://kubernetes.io/docs/concepts/
+        # workloads/controllers/jobs-run-to-completion/
+        # Corresponds to the JSON property `taskCount`
+        # @return [Fixnum]
+        attr_accessor :task_count
+      
+        # TaskTemplate describes the data a task should have when created from a
+        # template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2TaskTemplate]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @labels = args[:labels] if args.key?(:labels)
+          @parallelism = args[:parallelism] if args.key?(:parallelism)
+          @task_count = args[:task_count] if args.key?(:task_count)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # Job represents the configuration of a single job. A job an immutable resource
+      # that references a container image which is run to completion.
+      class GoogleCloudRunV2Job
+        include Google::Apis::Core::Hashable
+      
+        # KRM-style annotations for the resource. Unstructured key value map that may be
+        # set by external tools to store and arbitrary metadata. They are not queryable
+        # and should be preserved when modifying objects. Cloud Run will populate some
+        # annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces.
+        # This field follows Kubernetes annotations' namespacing, limits, and rules.
+        # More info: https://kubernetes.io/docs/user-guide/annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Settings for Binary Authorization feature.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
+        # Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
+        # Output only. The Conditions of all other associated sub-resources. They
+        # contain additional diagnostics information in case the Job does not reach its
+        # desired state. See comments in `reconciling` for additional information on
+        # reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. Status information for each of the containers specified.
+        # Corresponds to the JSON property `containerStatuses`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus>]
+        attr_accessor :container_statuses
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Output only. The deletion time.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. A system-generated fingerprint for this version of the resource.
+        # May be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Number of executions created for this job.
+        # Corresponds to the JSON property `executionCount`
+        # @return [Fixnum]
+        attr_accessor :execution_count
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # KRM-style labels for the resource. User-provided labels are shared with Google'
+        # s billing system, so they can be used to filter, or break down billing charges
+        # by team, component, environment, state, etc. For more information, visit https:
+        # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
+        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
+        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
+        # labels are read-only, and user changes will not be preserved.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Email address of the last authenticated modifier.
+        # Corresponds to the JSON property `lastModifier`
+        # @return [String]
+        attr_accessor :last_modifier
+      
+        # Reference to an Execution. Use /Executions.GetExecution with the given name to
+        # get full execution including the latest status.
+        # Corresponds to the JSON property `latestCreatedExecution`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ExecutionReference]
+        attr_accessor :latest_created_execution
+      
+        # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
+        # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
+        # `GA`. If no value is specified, GA is assumed.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # The fully qualified name of this Job. Format: projects/`project`/locations/`
+        # location`/jobs/`job`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The generation of this Job. See comments in `reconciling` for
+        # additional information on reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Returns true if the Job is currently being acted upon by the
+        # system to bring it into the desired state. When a new Job is created, or an
+        # existing one is updated, Cloud Run will asynchronously perform all necessary
+        # steps to bring the Job to the desired state. This process is called
+        # reconciliation. While reconciliation is in process, `observed_generation` and `
+        # latest_succeeded_execution`, will have transient values that might mismatch
+        # the intended state: Once reconciliation is over (and this field is false),
+        # there are two possible outcomes: reconciliation succeeded and the state
+        # matches the Job, or there was an error, and reconciliation failed. This state
+        # can be found in `terminal_condition.state`. If reconciliation succeeded, the
+        # following fields will match: `observed_generation` and `generation`, `
+        # latest_succeeded_execution` and `latest_created_execution`. If reconciliation
+        # failed, `observed_generation` and `latest_succeeded_execution` will have the
+        # state of the last succeeded execution or empty for newly created Job.
+        # Additional information on the failure can be found in `terminal_condition` and
+        # `conditions`.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # ExecutionTemplate describes the data an execution should have when created
+        # from a template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ExecutionTemplate]
+        attr_accessor :template
+      
+        # Defines a status condition for a resource.
+        # Corresponds to the JSON property `terminalCondition`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
+        attr_accessor :terminal_condition
+      
+        # Output only. Server assigned unique identifier for the Execution. The value is
+        # a UUID4 string and guaranteed to remain unchanged until the resource is
+        # deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @execution_count = args[:execution_count] if args.key?(:execution_count)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
+          @latest_created_execution = args[:latest_created_execution] if args.key?(:latest_created_execution)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @name = args[:name] if args.key?(:name)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @template = args[:template] if args.key?(:template)
+          @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message containing a list of Executions.
+      class GoogleCloudRunV2ListExecutionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting list of Executions.
+        # Corresponds to the JSON property `executions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Execution>]
+        attr_accessor :executions
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListExecutions request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @executions = args[:executions] if args.key?(:executions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message containing a list of Jobs.
+      class GoogleCloudRunV2ListJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting list of Jobs.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Job>]
+        attr_accessor :jobs
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListJobs request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message containing a list of Revisions.
       class GoogleCloudRunV2ListRevisionsResponse
         include Google::Apis::Core::Hashable
@@ -372,6 +914,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # Response message containing a list of Tasks.
+      class GoogleCloudRunV2ListTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListTasks request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting list of Tasks.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Task>]
+        attr_accessor :tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
       
@@ -734,6 +1302,34 @@ module Google
         end
       end
       
+      # Request message to create a new Execution of a Job.
+      class GoogleCloudRunV2RunJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # A system-generated fingerprint for this version of the resource. May be used
+        # to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Indicates that the request should be validated without actually deleting any
+        # resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # SecretEnvVarSource represents a source for the value of an EnvVar.
       class GoogleCloudRunV2SecretKeySelector
         include Google::Apis::Core::Hashable
@@ -1048,6 +1644,331 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Task represents a single run of a container to completion.
+      class GoogleCloudRunV2Task
+        include Google::Apis::Core::Hashable
+      
+        # KRM-style annotations for the resource.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Represents time when the Task was completed. It is not guaranteed
+        # to be set in happens-before order across separate operations.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Output only. The Condition of this Task, containing its readiness status, and
+        # detailed error information in case it did not reach the desired state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Holds the single container that defines the unit of execution for this task.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :containers
+      
+        # Output only. Represents time when the task was created by the job controller.
+        # It is not guaranteed to be set in happens-before order across separate
+        # operations.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. For a deleted resource, the deletion time. It is only populated
+        # as a response to a Delete request.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. A reference to a customer managed encryption key (CMEK) to use to
+        # encrypt this container image. For more information, go to https://cloud.google.
+        # com/run/docs/securing/using-cmek
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [String]
+        attr_accessor :encryption_key
+      
+        # Output only. A system-generated fingerprint for this version of the resource.
+        # May be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The name of the parent Execution.
+        # Corresponds to the JSON property `execution`
+        # @return [String]
+        attr_accessor :execution
+      
+        # The execution environment being used to host this Task.
+        # Corresponds to the JSON property `executionEnvironment`
+        # @return [String]
+        attr_accessor :execution_environment
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted. It is only populated as a response to a Delete request.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. Index of the Task, unique per execution, and beginning at 0.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Output only. The name of the parent Job.
+        # Corresponds to the JSON property `job`
+        # @return [String]
+        attr_accessor :job
+      
+        # KRM-style labels for the resource. User-provided labels are shared with Google'
+        # s billing system, so they can be used to filter, or break down billing charges
+        # by team, component, environment, state, etc. For more information, visit https:
+        # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
+        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
+        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
+        # labels are read-only, and user changes will not be preserved.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Result of a task attempt.
+        # Corresponds to the JSON property `lastAttemptResult`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult]
+        attr_accessor :last_attempt_result
+      
+        # Set the launch stage to a preview stage on write to allow use of preview
+        # features in that stage. On read, describes whether the resource uses preview
+        # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
+        # https://cloud.google.com/terms/launch-stages).
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Number of retries allowed per Task, before marking this Task failed.
+        # Corresponds to the JSON property `maxRetries`
+        # @return [Fixnum]
+        attr_accessor :max_retries
+      
+        # Output only. The unique name of this Task.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The generation of this Task. See comments in `Job.reconciling`
+        # for additional information on reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Indicates whether the resource's reconciliation is still in
+        # progress. See comments in `Job.reconciling` for additional information on
+        # reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The number of times this Task was retried. Tasks are retried when
+        # they fail up to the maxRetries limit.
+        # Corresponds to the JSON property `retried`
+        # @return [Fixnum]
+        attr_accessor :retried
+      
+        # Email address of the IAM service account associated with the Task of a Job.
+        # The service account represents the identity of the running task, and
+        # determines what permissions the task has. If not provided, the task will use
+        # the project's default service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Output only. Represents time when the task started to run. It is not
+        # guaranteed to be set in happens-before order across separate operations.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Max allowed time duration the Task may be active before the system will
+        # actively try to mark it failed and kill associated containers. This applies
+        # per attempt of a task, meaning each retry can run for the full timeout.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Output only. Server assigned unique identifier for the Task. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # A list of Volumes to make available to containers.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
+        attr_accessor :volumes
+      
+        # VPC Access settings. For more information on creating a VPC Connector, visit
+        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
+        # information on how to configure Cloud Run with an existing VPC Connector,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
+        attr_accessor :vpc_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @containers = args[:containers] if args.key?(:containers)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @etag = args[:etag] if args.key?(:etag)
+          @execution = args[:execution] if args.key?(:execution)
+          @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @index = args[:index] if args.key?(:index)
+          @job = args[:job] if args.key?(:job)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_attempt_result = args[:last_attempt_result] if args.key?(:last_attempt_result)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @max_retries = args[:max_retries] if args.key?(:max_retries)
+          @name = args[:name] if args.key?(:name)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @retried = args[:retried] if args.key?(:retried)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+        end
+      end
+      
+      # Result of a task attempt.
+      class GoogleCloudRunV2TaskAttemptResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The exit code of this attempt. This may be unset if the container
+        # was unable to exit cleanly with a code due to some other failure. See status
+        # field for possible failure details.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # TaskTemplate describes the data a task should have when created from a
+      # template.
+      class GoogleCloudRunV2TaskTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Holds the single container that defines the unit of execution for this task.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :containers
+      
+        # A reference to a customer managed encryption key (CMEK) to use to encrypt this
+        # container image. For more information, go to https://cloud.google.com/run/docs/
+        # securing/using-cmek
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [String]
+        attr_accessor :encryption_key
+      
+        # The execution environment being used to host this Task.
+        # Corresponds to the JSON property `executionEnvironment`
+        # @return [String]
+        attr_accessor :execution_environment
+      
+        # Number of retries allowed per Task, before marking this Task failed.
+        # Corresponds to the JSON property `maxRetries`
+        # @return [Fixnum]
+        attr_accessor :max_retries
+      
+        # Email address of the IAM service account associated with the Task of a Job.
+        # The service account represents the identity of the running task, and
+        # determines what permissions the task has. If not provided, the task will use
+        # the project's default service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Max allowed time duration the Task may be active before the system will
+        # actively try to mark it failed and kill associated containers. This applies
+        # per attempt of a task, meaning each retry can run for the full timeout.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # A list of Volumes to make available to containers.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
+        attr_accessor :volumes
+      
+        # VPC Access settings. For more information on creating a VPC Connector, visit
+        # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
+        # information on how to configure Cloud Run with an existing VPC Connector,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
+        attr_accessor :vpc_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @max_retries = args[:max_retries] if args.key?(:max_retries)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
         end
       end
       
