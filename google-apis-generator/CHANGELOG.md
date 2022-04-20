@@ -1,39 +1,36 @@
 # Release History
 
-### [0.4.1](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.4.0...google-apis-generator/v0.4.1) (2022-01-11)
+### 0.4.1 (2022-01-11)
 
+#### Bug Fixes
 
-### Bug Fixes
+* Fix field name in authorization example 
 
-* **generator:** Fix field name in authorization example ([2ac44c2](https://www.github.com/googleapis/google-api-ruby-client/commit/2ac44c2145d111033cf344c624dad4c1d3188f25))
-
-## 0.4.0 (2021-06-28)
+### 0.4.0 (2021-06-28)
 
 * Update core dependency to require at least 0.4 and allow 1.x versions
 
-## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.2.0...google-apis-generator/v0.3.0) (2021-06-01)
+### 0.3.0 (2021-06-01)
 
+#### Features
 
-### Features
+* Include repo-metadata.json in generated libraries
 
-* Include repo-metadata.json in generated libraries ([91b0f2c](https://www.github.com/googleapis/google-api-ruby-client/commit/91b0f2c17d76fedf8aa3f7c905c424fe8b64a970))
+### 0.2.0 (2021-03-07)
 
-## [0.2.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.1.2...v0.2.0) (2021-03-07)
+#### Features
 
-### Features
+* Drop support for Ruby 2.4 and add support for Ruby 3.0
 
-* Drop support for Ruby 2.4 and add support for Ruby 3.0 ([d871146](https://www.github.com/googleapis/google-api-ruby-client/commit/d871146916f3dd19a12820c03068b3861a4bc879))
-
-### Fixes
+#### Fixes
 
 * Include templates in the gem distribution.
 
-### [0.1.2](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.1.1...v0.1.2) (2021-01-19)
+### 0.1.2 (2021-01-19)
 
+#### Bug Fixes
 
-### Bug Fixes
-
-* **generator:** Update thor dependency to allow 1.x ([6d8b7a4](https://www.github.com/googleapis/google-api-ruby-client/commit/6d8b7a4a5fb7ad524aa5083beac7a67a248526fa))
+* Update thor dependency to allow 1.x
 
 ### v0.1.1 (2021-01-06)
 

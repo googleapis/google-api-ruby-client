@@ -7,7 +7,7 @@ on:
       - opened
 jobs:
   release-please-label:
-    if: "${{ github.event.sender.login == 'yoshi-code-bot' && startsWith(github.event.pull_request.title, 'chore: release ') }}"
+    if: "${{ github.event.sender.login == 'yoshi-code-bot' && startsWith(github.event.pull_request.title, 'chore(main): release ') }}"
     runs-on: ubuntu-latest
     steps:
       - name: ReleaseLabel
