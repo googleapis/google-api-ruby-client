@@ -7717,6 +7717,7 @@ module Google
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end

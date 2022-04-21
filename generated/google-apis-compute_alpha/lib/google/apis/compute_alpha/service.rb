@@ -9663,8 +9663,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates instances with per-instance configs in this managed instance group.
-        # Instances are created using the current instance template. The create
+        # Creates instances with per-instance configurations in this managed instance
+        # group. Instances are created using the current instance template. The create
         # instances operation is marked DONE if the createInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the creating or actions with the listmanagedinstances
@@ -9836,7 +9836,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes selected per-instance configs for the managed instance group.
+        # Deletes selected per-instance configurations for the managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10232,8 +10232,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all of the per-instance configs defined for the managed instance group.
-        # The orderBy query parameter is not supported.
+        # Lists all of the per-instance configurations defined for the managed instance
+        # group. The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10379,7 +10379,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts or patches per-instance configs for the managed instance group.
+        # Inserts or patches per-instance configurations for the managed instance group.
         # perInstanceConfig.name serves as a key used to distinguish whether to perform
         # insert or patch.
         # @param [String] project
@@ -11169,7 +11169,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts or updates per-instance configs for the managed instance group.
+        # Inserts or updates per-instance configurations for the managed instance group.
         # perInstanceConfig.name serves as a key used to distinguish whether to perform
         # insert or patch.
         # @param [String] project
@@ -27198,9 +27198,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates instances with per-instance configs in this regional managed instance
-        # group. Instances are created using the current instance template. The create
-        # instances operation is marked DONE if the createInstances request is
+        # Creates instances with per-instance configurations in this regional managed
+        # instance group. Instances are created using the current instance template. The
+        # create instances operation is marked DONE if the createInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the creating or actions with the listmanagedinstances
         # method.
@@ -27370,7 +27370,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes selected per-instance configs for the managed instance group.
+        # Deletes selected per-instance configurations for the managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -27759,8 +27759,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all of the per-instance configs defined for the managed instance group.
-        # The orderBy query parameter is not supported.
+        # Lists all of the per-instance configurations defined for the managed instance
+        # group. The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -27905,7 +27905,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts or patches per-instance configs for the managed instance group.
+        # Inserts or patches per-instance configurations for the managed instance group.
         # perInstanceConfig.name serves as a key used to distinguish whether to perform
         # insert or patch.
         # @param [String] project
@@ -28682,7 +28682,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts or updates per-instance configs for the managed instance group.
+        # Inserts or updates per-instance configurations for the managed instance group.
         # perInstanceConfig.name serves as a key used to distinguish whether to perform
         # insert or patch.
         # @param [String] project
