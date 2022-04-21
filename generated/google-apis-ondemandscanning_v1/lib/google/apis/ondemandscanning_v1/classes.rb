@@ -1667,6 +1667,12 @@ module Google
         # @return [String]
         attr_accessor :package_type
       
+        # The path to the jar file / go binary file. The same jar file can be in
+        # multiple locations - all of them will be listed.
+        # Corresponds to the JSON property `pathToFile`
+        # @return [Array<String>]
+        attr_accessor :path_to_file
+      
         # 
         # Corresponds to the JSON property `unused`
         # @return [String]
@@ -1688,6 +1694,7 @@ module Google
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
+          @path_to_file = args[:path_to_file] if args.key?(:path_to_file)
           @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
