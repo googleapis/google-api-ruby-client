@@ -860,6 +860,7 @@ module Google
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
           property :package_type, as: 'packageType'
+          collection :path_to_file, as: 'pathToFile'
           property :unused, as: 'unused'
           property :version, as: 'version'
         end
