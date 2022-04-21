@@ -1570,6 +1570,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1595,6 +1601,12 @@ module Google
       end
       
       class InstanceGroupManagerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1877,6 +1889,12 @@ module Google
       end
       
       class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancePropertiesPatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2260,6 +2278,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationPolicyLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2381,6 +2405,12 @@ module Google
       end
       
       class ManagedInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedInstanceAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4014,6 +4044,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterMd5AuthenticationKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8530,6 +8566,7 @@ module Google
       
           property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -8718,6 +8755,8 @@ module Google
       class InstanceGroupManager
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeBeta::InstanceGroupManagerAllInstancesConfig, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerAllInstancesConfig::Representation
+      
           collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeBeta::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerAutoHealingPolicy::Representation
       
           property :base_instance_name, as: 'baseInstanceName'
@@ -8805,6 +8844,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::ComputeBeta::InstancePropertiesPatch, decorator: Google::Apis::ComputeBeta::InstancePropertiesPatch::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8848,12 +8895,22 @@ module Google
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusAllInstancesConfig, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusAllInstancesConfig::Representation
+      
           property :autoscaler, as: 'autoscaler'
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful::Representation
       
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_revision, as: 'currentRevision'
+          property :effective, as: 'effective'
         end
       end
       
@@ -9291,6 +9348,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
@@ -9316,6 +9374,14 @@ module Google
       
           property :tags, as: 'tags', class: Google::Apis::ComputeBeta::Tags, decorator: Google::Apis::ComputeBeta::Tags::Representation
       
+        end
+      end
+      
+      class InstancePropertiesPatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -10008,7 +10074,16 @@ module Google
       class LocationPolicyLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeBeta::LocationPolicyLocationConstraints, decorator: Google::Apis::ComputeBeta::LocationPolicyLocationConstraints::Representation
+      
           property :preference, as: 'preference'
+        end
+      end
+      
+      class LocationPolicyLocationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_count, as: 'maxCount'
         end
       end
       
@@ -10244,6 +10319,8 @@ module Google
       class ManagedInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeBeta::ManagedInstanceAllInstancesConfig, decorator: Google::Apis::ComputeBeta::ManagedInstanceAllInstancesConfig::Representation
+      
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
@@ -10258,6 +10335,13 @@ module Google
       
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
+        end
+      end
+      
+      class ManagedInstanceAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revision, as: 'revision'
         end
       end
       
@@ -13058,6 +13142,8 @@ module Google
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeBeta::RouterInterface, decorator: Google::Apis::ComputeBeta::RouterInterface::Representation
       
           property :kind, as: 'kind'
+          collection :md5_authentication_keys, as: 'md5AuthenticationKeys', class: Google::Apis::ComputeBeta::RouterMd5AuthenticationKey, decorator: Google::Apis::ComputeBeta::RouterMd5AuthenticationKey::Representation
+      
           property :name, as: 'name'
           collection :nats, as: 'nats', class: Google::Apis::ComputeBeta::RouterNat, decorator: Google::Apis::ComputeBeta::RouterNat::Representation
       
@@ -13136,6 +13222,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
+          property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -13197,6 +13284,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouterMd5AuthenticationKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :name, as: 'name'
         end
       end
       
@@ -13286,12 +13381,14 @@ module Google
       
           property :ip_address, as: 'ipAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
+          property :status_reason, as: 'statusReason'
           property :uptime, as: 'uptime'
           property :uptime_seconds, as: 'uptimeSeconds'
         end
@@ -14134,6 +14231,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
@@ -15254,6 +15352,7 @@ module Google
           property :name, as: 'name'
           property :proxy_bind, as: 'proxyBind'
           property :proxy_header, as: 'proxyHeader'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
         end
