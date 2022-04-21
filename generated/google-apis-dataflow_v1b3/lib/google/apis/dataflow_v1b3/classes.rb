@@ -2085,11 +2085,11 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # The user-specified Cloud Dataflow job name. Only one Job with a given name may
-        # exist in a project at any given time. If a caller attempts to create a Job
-        # with the same name as an already-existing Job, the attempt returns the
-        # existing Job. The name must match the regular expression `[a-z]([-a-z0-9]`0,38`
-        # [a-z0-9])?`
+        # The user-specified Cloud Dataflow job name. Only one Job with a given name can
+        # exist in a project within one region at any given time. Jobs in different
+        # regions can have the same name. If a caller attempts to create a Job with the
+        # same name as an already-existing Job, the attempt returns the existing Job.
+        # The name must match the regular expression `[a-z]([-a-z0-9]`0,38`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4057,13 +4057,14 @@ module Google
         end
       end
       
-      # Defines a SDK harness container for executing Dataflow pipelines.
+      # Defines an SDK harness container for executing Dataflow pipelines.
       class SdkHarnessContainerImage
         include Google::Apis::Core::Hashable
       
-        # The set of capabilities enumerated in the above Environment proto. See also
-        # https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/
-        # beam_runner_api.proto
+        # The set of capabilities enumerated in the above Environment proto. See also [
+        # beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/
+        # pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.
+        # proto)
         # Corresponds to the JSON property `capabilities`
         # @return [Array<String>]
         attr_accessor :capabilities
