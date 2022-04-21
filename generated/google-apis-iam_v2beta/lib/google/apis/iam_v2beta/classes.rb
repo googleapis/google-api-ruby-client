@@ -99,7 +99,7 @@ module Google
         # @return [Google::Apis::IamV2beta::GoogleTypeExpr]
         attr_accessor :condition
       
-        # A single identity requesting access for a Cloud Platform resource. Follows the
+        # A single identity requesting access for a Google Cloud resource. Follows the
         # same format of Binding.members. Required
         # Corresponds to the JSON property `member`
         # @return [String]
