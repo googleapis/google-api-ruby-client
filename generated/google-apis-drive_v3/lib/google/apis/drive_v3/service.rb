@@ -564,6 +564,13 @@ module Google
         # shared drive cannot contain any untrashed items.
         # @param [String] drive_id
         #   The ID of the shared drive.
+        # @param [Boolean] allow_item_deletion
+        #   Whether any items inside the shared drive should also be deleted. This option
+        #   is only supported when useDomainAdminAccess is also set to true.
+        # @param [Boolean] use_domain_admin_access
+        #   Issue the request as a domain administrator; if set to true, then the
+        #   requester will be granted access if they are an administrator of the domain to
+        #   which the shared drive belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -583,9 +590,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_drive(drive_id, allow_item_deletion: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'drives/{driveId}', options)
           command.params['driveId'] = drive_id unless drive_id.nil?
+          command.query['allowItemDeletion'] = allow_item_deletion unless allow_item_deletion.nil?
+          command.query['useDomainAdminAccess'] = use_domain_admin_access unless use_domain_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
