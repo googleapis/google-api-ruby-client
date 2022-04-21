@@ -1328,9 +1328,10 @@ module Google
       
         # [Input Only] Specifies the parameters for a new disk that will be created
         # alongside the new instance. Use initialization parameters to create boot disks
-        # or local SSDs attached to the new instance. This property is mutually
-        # exclusive with the source property; you can only define one or the other, but
-        # not both.
+        # or local SSDs attached to the new instance. This field is persisted and
+        # returned for instanceTemplate and not returned in the context of instance.
+        # This property is mutually exclusive with the source property; you can only
+        # define one or the other, but not both.
         # Corresponds to the JSON property `initializeParams`
         # @return [Google::Apis::ComputeBeta::AttachedDiskInitializeParams]
         attr_accessor :initialize_params
@@ -1430,9 +1431,10 @@ module Google
       
       # [Input Only] Specifies the parameters for a new disk that will be created
       # alongside the new instance. Use initialization parameters to create boot disks
-      # or local SSDs attached to the new instance. This property is mutually
-      # exclusive with the source property; you can only define one or the other, but
-      # not both.
+      # or local SSDs attached to the new instance. This field is persisted and
+      # returned for instanceTemplate and not returned in the context of instance.
+      # This property is mutually exclusive with the source property; you can only
+      # define one or the other, but not both.
       class AttachedDiskInitializeParams
         include Google::Apis::Core::Hashable
       
@@ -2952,9 +2954,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_http_headers
       
-        # Names of query string parameters to include in cache keys. All other
-        # parameters will be excluded. '&' and '=' will be percent encoded and not
-        # treated as delimiters.
+        # Names of query string parameters to include in cache keys. Default parameters
+        # are always included. '&' and '=' will be percent encoded and not treated as
+        # delimiters.
         # Corresponds to the JSON property `queryStringWhitelist`
         # @return [Array<String>]
         attr_accessor :query_string_whitelist
@@ -4628,7 +4630,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -12742,6 +12744,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # [Output Only] Type of the resource. Always compute#instance for instances.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -12965,6 +12973,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -13553,6 +13562,12 @@ module Google
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
+        # Specifies configuration that overrides the instance template configuration for
+        # the group.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # The autohealing policy for this managed instance group. You can specify only
         # one value.
         # Corresponds to the JSON property `autoHealingPolicies`
@@ -13716,6 +13731,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @auto_healing_policies = args[:auto_healing_policies] if args.key?(:auto_healing_policies)
           @base_instance_name = args[:base_instance_name] if args.key?(:base_instance_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -13983,6 +13999,25 @@ module Google
       end
       
       # 
+      class InstanceGroupManagerAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents the change that you want to make to the instance properties.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::ComputeBeta::InstancePropertiesPatch]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # 
       class InstanceGroupManagerAutoHealingPolicy
         include Google::Apis::Core::Hashable
       
@@ -14134,6 +14169,11 @@ module Google
       class InstanceGroupManagerStatus
         include Google::Apis::Core::Hashable
       
+        # [Output only] Status of all-instances configuration on the group.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # [Output Only] The URL of the Autoscaler that targets this instance group
         # manager.
         # Corresponds to the JSON property `autoscaler`
@@ -14168,10 +14208,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Current all-instances configuration revision. This value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `currentRevision`
+        # @return [String]
+        attr_accessor :current_revision
+      
+        # [Output Only] A bit indicating whether this configuration has been applied to
+        # all managed instances in the group.
+        # Corresponds to the JSON property `effective`
+        # @return [Boolean]
+        attr_accessor :effective
+        alias_method :effective?, :effective
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_revision = args[:current_revision] if args.key?(:current_revision)
+          @effective = args[:effective] if args.key?(:effective)
         end
       end
       
@@ -14182,8 +14251,9 @@ module Google
         # [Output Only] A bit indicating whether the managed instance group has stateful
         # configuration, that is, if you have configured any items in a stateful policy
         # or in per-instance configs. The group might report that it has no stateful
-        # config even when there is still some preserved state on a managed instance,
-        # for example, if you have deleted all PICs but not yet applied those deletions.
+        # configuration even when there is still some preserved state on a managed
+        # instance, for example, if you have deleted all PICs but not yet applied those
+        # deletions.
         # Corresponds to the JSON property `hasStatefulConfig`
         # @return [Boolean]
         attr_accessor :has_stateful_config
@@ -14192,15 +14262,15 @@ module Google
         # [Output Only] A bit indicating whether the managed instance group has stateful
         # configuration, that is, if you have configured any items in a stateful policy
         # or in per-instance configs. The group might report that it has no stateful
-        # config even when there is still some preserved state on a managed instance,
-        # for example, if you have deleted all PICs but not yet applied those deletions.
-        # This field is deprecated in favor of has_stateful_config.
+        # configuration even when there is still some preserved state on a managed
+        # instance, for example, if you have deleted all PICs but not yet applied those
+        # deletions. This field is deprecated in favor of has_stateful_config.
         # Corresponds to the JSON property `isStateful`
         # @return [Boolean]
         attr_accessor :is_stateful
         alias_method :is_stateful?, :is_stateful
       
-        # [Output Only] Status of per-instance configs on the instance.
+        # [Output Only] Status of per-instance configurations on the instance.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
         attr_accessor :per_instance_configs
@@ -14221,9 +14291,9 @@ module Google
       class InstanceGroupManagerStatusStatefulPerInstanceConfigs
         include Google::Apis::Core::Hashable
       
-        # A bit indicating if all of the group's per-instance configs (listed in the
-        # output of a listPerInstanceConfigs API call) have status EFFECTIVE or there
-        # are no per-instance-configs.
+        # A bit indicating if all of the group's per-instance configurations (listed in
+        # the output of a listPerInstanceConfigs API call) have status EFFECTIVE or
+        # there are no per-instance-configs.
         # Corresponds to the JSON property `allEffective`
         # @return [Boolean]
         attr_accessor :all_effective
@@ -14684,8 +14754,8 @@ module Google
       class InstanceGroupManagersPatchPerInstanceConfigsReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -14932,8 +15002,8 @@ module Google
       class InstanceGroupManagersUpdatePerInstanceConfigsReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -15685,6 +15755,12 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from these properties.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -15791,6 +15867,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @display_device = args[:display_device] if args.key?(:display_device)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -15807,6 +15884,32 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Represents the change that you want to make to the instance properties.
+      class InstancePropertiesPatch
+        include Google::Apis::Core::Hashable
+      
+        # The label key-value pairs that you want to patch onto the instance.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The metadata key-value pairs that you want to patch onto the instance. For
+        # more information, see Project and instance metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -18594,6 +18697,11 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
+        # Per-zone constraints on location policy for this zone.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::ComputeBeta::LocationPolicyLocationConstraints]
+        attr_accessor :constraints
+      
         # Preference for a given location.
         # Corresponds to the JSON property `preference`
         # @return [String]
@@ -18605,7 +18713,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
           @preference = args[:preference] if args.key?(:preference)
+        end
+      end
+      
+      # Per-zone constraints on location policy for this zone.
+      class LocationPolicyLocationConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of items that are allowed to be placed in this zone. The value
+        # must be non-negative.
+        # Corresponds to the JSON property `maxCount`
+        # @return [Fixnum]
+        attr_accessor :max_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_count = args[:max_count] if args.key?(:max_count)
         end
       end
       
@@ -19473,6 +19602,12 @@ module Google
       class ManagedInstance
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Current all-instances configuration revision applied to this
+        # instance.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeBeta::ManagedInstanceAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # [Output Only] The current action that the managed instance group has scheduled
         # for the instance. Possible values: - NONE The instance is running, and the
         # managed instance group does not have any scheduled actions for this instance. -
@@ -19545,6 +19680,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
@@ -19554,6 +19690,26 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class ManagedInstanceAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Current all-instances configuration revision. This value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision = args[:revision] if args.key?(:revision)
         end
       end
       
@@ -20452,7 +20608,8 @@ module Google
         attr_accessor :network_endpoint_type
       
         # The target service url used to set up private service connection to a Google
-        # API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        # API or a PSC Producer Service Attachment. An example value is: "asia-
+        # northeast3-cloudkms.googleapis.com"
         # Corresponds to the JSON property `pscTargetService`
         # @return [String]
         attr_accessor :psc_target_service
@@ -25450,18 +25607,18 @@ module Google
         # Fingerprint of this per-instance config. This field can be used in optimistic
         # locking. It is ignored when inserting a per-instance config. An up-to-date
         # fingerprint must be provided in order to update an existing per-instance
-        # config or the field needs to be unset.
+        # configuration or the field needs to be unset.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
       
-        # The name of a per-instance config and its corresponding instance. Serves as a
-        # merge key during UpdatePerInstanceConfigs operations, that is, if a per-
-        # instance config with the same name exists then it will be updated, otherwise a
-        # new one will be created for the VM instance with the same name. An attempt to
-        # create a per-instance config for a VM instance that either doesn't exist or is
-        # not part of the group will result in an error.
+        # The name of a per-instance configuration and its corresponding instance.
+        # Serves as a merge key during UpdatePerInstanceConfigs operations, that is, if
+        # a per-instance configuration with the same name exists then it will be updated,
+        # otherwise a new one will be created for the VM instance with the same name.
+        # An attempt to create a per-instance configconfiguration for a VM instance that
+        # either doesn't exist or is not part of the group will result in an error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -25471,8 +25628,8 @@ module Google
         # @return [Google::Apis::ComputeBeta::PreservedState]
         attr_accessor :preserved_state
       
-        # The status of applying this per-instance config on the corresponding managed
-        # instance.
+        # The status of applying this per-instance configuration on the corresponding
+        # managed instance.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -27475,8 +27632,8 @@ module Google
       class RegionInstanceGroupManagerPatchInstanceConfigReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -27495,8 +27652,8 @@ module Google
       class RegionInstanceGroupManagerUpdateInstanceConfigReq
         include Google::Apis::Core::Hashable
       
-        # The list of per-instance configs to insert or patch on this managed instance
-        # group.
+        # The list of per-instance configurations to insert or patch on this managed
+        # instance group.
         # Corresponds to the JSON property `perInstanceConfigs`
         # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
         attr_accessor :per_instance_configs
@@ -30317,6 +30474,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Keys used for MD5 authentication.
+        # Corresponds to the JSON property `md5AuthenticationKeys`
+        # @return [Array<Google::Apis::ComputeBeta::RouterMd5AuthenticationKey>]
+        attr_accessor :md5_authentication_keys
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -30363,6 +30525,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
+          @md5_authentication_keys = args[:md5_authentication_keys] if args.key?(:md5_authentication_keys)
           @name = args[:name] if args.key?(:name)
           @nats = args[:nats] if args.key?(:nats)
           @network = args[:network] if args.key?(:network)
@@ -30658,6 +30821,13 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
+        # Present if MD5 authentication is enabled for the peering. Must be the name of
+        # one of the entries in the Router.md5_authentication_keys. The field must
+        # comply with RFC1035.
+        # Corresponds to the JSON property `md5AuthenticationKeyName`
+        # @return [String]
+        attr_accessor :md5_authentication_key_name
+      
         # Name of this BGP peer. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
         # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
@@ -30710,6 +30880,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
+          @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
@@ -30975,6 +31146,35 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class RouterMd5AuthenticationKey
+        include Google::Apis::Core::Hashable
+      
+        # [Input only] Value of the key. For patch and update calls, it can be skipped
+        # to copy the value from the previous configuration. This is allowed if the key
+        # with the same name existed before the operation. Maximum length is 80
+        # characters. Can only contain printable ASCII characters.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Name used to identify the key. Must be unique within a router. Must be
+        # referenced by at least one bgpPeer. Must comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -31342,6 +31542,12 @@ module Google
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
+        # Informs whether MD5 authentication is enabled on this BGP peer.
+        # Corresponds to the JSON property `md5AuthEnabled`
+        # @return [Boolean]
+        attr_accessor :md5_auth_enabled
+        alias_method :md5_auth_enabled?, :md5_auth_enabled
+      
         # Name of this BGP peer. Unique within the Routers resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -31375,6 +31581,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Indicates why particular status was returned.
+        # Corresponds to the JSON property `statusReason`
+        # @return [String]
+        attr_accessor :status_reason
+      
         # Time this session has been up. Format: 14 years, 51 weeks, 6 days, 23 hours,
         # 59 minutes, 59 seconds
         # Corresponds to the JSON property `uptime`
@@ -31396,12 +31607,14 @@ module Google
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
+          @status_reason = args[:status_reason] if args.key?(:status_reason)
           @uptime = args[:uptime] if args.key?(:uptime)
           @uptime_seconds = args[:uptime_seconds] if args.key?(:uptime_seconds)
         end
@@ -34717,6 +34930,12 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from this machine image.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -34780,6 +34999,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -39235,6 +39455,12 @@ module Google
         # @return [String]
         attr_accessor :proxy_header
       
+        # [Output Only] URL of the region where the regional TCP proxy resides. This
+        # field is not applicable to global TCP proxy.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -39258,6 +39484,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @proxy_bind = args[:proxy_bind] if args.key?(:proxy_bind)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
         end
