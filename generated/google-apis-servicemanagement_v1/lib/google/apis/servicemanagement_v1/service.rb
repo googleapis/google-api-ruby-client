@@ -851,9 +851,8 @@ module Google
         #   googleapis.com`.
         # @param [String] filter
         #   Required. Use `filter` to return subset of rollouts. The following filters are
-        #   supported: -- To limit the results to only those in status 'SUCCESS', use
-        #   filter='status=SUCCESS' -- To limit the results to those in status 'CANCELLED'
-        #   or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
+        #   supported: -- By status. For example, `filter='status=SUCCESS'` -- By strategy.
+        #   For example, `filter='strategy=TrafficPercentStrategy'`
         # @param [Fixnum] page_size
         #   The max number of items to include in the response list. Page size is 50 if
         #   not specified. Maximum value is 100.
