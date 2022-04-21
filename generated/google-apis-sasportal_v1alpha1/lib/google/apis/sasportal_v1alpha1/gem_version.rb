@@ -16,13 +16,13 @@ module Google
   module Apis
     module SasportalV1alpha1
       # Version of the google-apis-sasportal_v1alpha1 gem
-      GEM_VERSION = "0.18.0"
+      GEM_VERSION = "0.19.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220319"
+      REVISION = "20220419"
     end
   end
 end
