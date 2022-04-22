@@ -398,7 +398,10 @@ module Google
         #   behavior at `otherContacts.list`.
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to
-        #   READ_SOURCE_TYPE_CONTACT if not set.
+        #   READ_SOURCE_TYPE_CONTACT if not set. Possible values for this field are: *
+        #   READ_SOURCE_TYPE_CONTACT * READ_SOURCE_TYPE_CONTACT,READ_SOURCE_TYPE_PROFILE
+        #   Specifying READ_SOURCE_TYPE_PROFILE without specifying
+        #   READ_SOURCE_TYPE_CONTACT is not permitted.
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous response `next_sync_token`
         #   Provide this to retrieve only the resources changed since the last request.
