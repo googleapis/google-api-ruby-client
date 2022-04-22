@@ -1109,11 +1109,15 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2ProductInputConfig]
         attr_accessor :input_config
       
-        # Pub/Sub topic for receiving notification. If this field is set, when the
-        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # Full Pub/Sub topic name for receiving notification. If this field is set, when
+        # the import is finished, a notification will be sent to specified Pub/Sub topic.
         # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``. Only supported when
-        # ImportProductsRequest.reconciliation_mode is set to `FULL`.
+        # topic is `projects/`project`/topics/`topic``. It has to be within the same
+        # project as ImportProductsRequest.parent. Make sure that both `cloud-retail-
+        # customer-data-access@system.gserviceaccount.com` and `service-@gcp-sa-retail.
+        # iam.gserviceaccount.com` have the `pubsub.topics.publish` IAM permission on
+        # the topic. Only supported when ImportProductsRequest.reconciliation_mode is
+        # set to `FULL`.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -1573,7 +1577,8 @@ module Google
         attr_accessor :currency_code
       
         # Price of the product without any discount. If zero, by default set to be the
-        # price.
+        # price. If set, original_price should be greater than or equal to price,
+        # otherwise an INVALID_ARGUMENT error is thrown.
         # Corresponds to the JSON property `originalPrice`
         # @return [Float]
         attr_accessor :original_price
@@ -2578,6 +2583,21 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # The labels applied to a resource must meet the following requirements: * Each
+        # resource can have multiple labels, up to a maximum of 64. * Each label must be
+        # a key-value pair. * Keys have a minimum length of 1 character and a maximum
+        # length of 63 characters, and cannot be empty. Values can be empty, and have a
+        # maximum length of 63 characters. * Keys and values can contain only lowercase
+        # letters, numeric characters, underscores, and dashes. All characters must use
+        # UTF-8 encoding, and international characters are allowed. * The key portion of
+        # a label must be unique. However, you can use the same key with multiple
+        # resources. * Keys must start with a lowercase letter or international
+        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # A 0-indexed integer that specifies the current offset (that is, starting
         # result location, amongst the Products deemed by the API as relevant) in search
         # results. This field is only considered if page_token is unset. If this field
@@ -2701,6 +2721,7 @@ module Google
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
+          @labels = args[:labels] if args.key?(:labels)
           @offset = args[:offset] if args.key?(:offset)
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
