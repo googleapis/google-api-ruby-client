@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchDeleteVersionsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadAptArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadAptArtifactRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +275,12 @@ module Google
       end
       
       class UploadYumArtifactMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadYumArtifactMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -301,6 +319,14 @@ module Google
           property :name, as: 'name'
           property :package_name, as: 'packageName'
           property :package_type, as: 'packageType'
+        end
+      end
+      
+      class BatchDeleteVersionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failed_versions, as: 'failedVersions', class: Google::Apis::ArtifactregistryV1::Version, decorator: Google::Apis::ArtifactregistryV1::Version::Representation
+      
         end
       end
       
@@ -639,6 +665,12 @@ module Google
         end
       end
       
+      class UploadAptArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UploadAptArtifactRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -658,6 +690,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1::Operation, decorator: Google::Apis::ArtifactregistryV1::Operation::Representation
       
+        end
+      end
+      
+      class UploadYumArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
