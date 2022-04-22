@@ -1594,6 +1594,7 @@ module Google
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           property :reconciliation_mode, as: 'reconciliationMode'
           property :request_id, as: 'requestId'
+          property :skip_default_branch_protection, as: 'skipDefaultBranchProtection'
           property :update_mask, as: 'updateMask'
         end
       end
@@ -2109,6 +2110,7 @@ module Google
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec::Representation
       
           property :filter, as: 'filter'
+          hash :labels, as: 'labels'
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
           collection :page_categories, as: 'pageCategories'
