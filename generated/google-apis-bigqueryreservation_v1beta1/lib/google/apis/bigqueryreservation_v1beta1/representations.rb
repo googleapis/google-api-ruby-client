@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -120,6 +126,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          collection :preferred_tables, as: 'preferredTables', class: Google::Apis::BigqueryreservationV1beta1::TableReference, decorator: Google::Apis::BigqueryreservationV1beta1::TableReference::Representation
+      
           property :size, :numeric_string => true, as: 'size'
           property :update_time, as: 'updateTime'
         end
@@ -233,6 +241,15 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TableReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
         end
       end
     end

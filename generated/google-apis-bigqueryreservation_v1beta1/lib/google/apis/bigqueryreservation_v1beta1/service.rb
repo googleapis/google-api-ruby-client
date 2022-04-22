@@ -367,8 +367,8 @@ module Google
         # fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
         #   Output only. The resource name of the capacity commitment, e.g., `projects/
-        #   myproject/locations/US/capacityCommitments/123` For the commitment id, it must
-        #   only contain lower case alphanumeric characters or dashes.It must start with a
+        #   myproject/locations/US/capacityCommitments/123` The commitment_id must only
+        #   contain lower case alphanumeric characters or dashes. It must start with a
         #   letter and must not end with a dash. Its maximum length is 64 characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
         # @param [String] update_mask
@@ -406,8 +406,8 @@ module Google
         # Splits capacity commitment to two commitments of the same plan and `
         # commitment_end_time`. A common use case is to enable downgrading commitments.
         # For example, in order to downgrade from 10000 slots to 8000, you might split a
-        # 10000 capacity commitment into commitments of 2000 and 8000. Then, you would
-        # change the plan of the first one to `FLEX` and then delete it.
+        # 10000 capacity commitment into commitments of 2000 and 8000. Then, you delete
+        # the first one after the commitment end time passes.
         # @param [String] name
         #   Required. The resource name e.g.,: `projects/myproject/locations/US/
         #   capacityCommitments/123`
@@ -447,7 +447,7 @@ module Google
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
         #   The reservation ID. It must only contain lower case alphanumeric characters or
-        #   dashes.It must start with a letter and must not end with a dash. Its maximum
+        #   dashes. It must start with a letter and must not end with a dash. Its maximum
         #   length is 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -588,9 +588,9 @@ module Google
         # Updates an existing reservation resource.
         # @param [String] name
         #   The resource name of the reservation, e.g., `projects/*/locations/*/
-        #   reservations/team1-prod`. For the reservation id, it must only contain lower
-        #   case alphanumeric characters or dashes.It must start with a letter and must
-        #   not end with a dash. Its maximum length is 64 characters.
+        #   reservations/team1-prod`. The reservation_id must only contain lower case
+        #   alphanumeric characters or dashes. It must start with a letter and must not
+        #   end with a dash. Its maximum length is 64 characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -805,8 +805,8 @@ module Google
         # Updates an existing assignment. Only the `priority` field can be updated.
         # @param [String] name
         #   Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
-        #   reservations/team1-prod/assignments/123`. For the assignment id, it must only
-        #   contain lower case alphanumeric characters or dashes and the max length is 64
+        #   reservations/team1-prod/assignments/123`. The assignment_id must only contain
+        #   lower case alphanumeric characters or dashes and the max length is 64
         #   characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::Assignment] assignment_object
         # @param [String] update_mask
