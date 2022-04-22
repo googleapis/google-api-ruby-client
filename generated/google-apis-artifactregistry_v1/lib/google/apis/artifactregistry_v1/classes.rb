@@ -74,6 +74,25 @@ module Google
         end
       end
       
+      # The metadata of an LRO from deleting multiple versions.
+      class BatchDeleteVersionsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The versions the operation failed to delete.
+        # Corresponds to the JSON property `failedVersions`
+        # @return [Array<Google::Apis::ArtifactregistryV1::Version>]
+        attr_accessor :failed_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_versions = args[:failed_versions] if args.key?(:failed_versions)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -97,7 +116,7 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -1273,7 +1292,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
@@ -1328,6 +1347,19 @@ module Google
         end
       end
       
+      # The operation metadata for uploading artifacts.
+      class UploadAptArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request to upload an artifact.
       class UploadAptArtifactRequest
         include Google::Apis::Core::Hashable
@@ -1378,6 +1410,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The operation metadata for uploading artifacts.
+      class UploadYumArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
