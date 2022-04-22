@@ -374,6 +374,46 @@ module Google
         end
       end
       
+      # JSON payload of error messages. If the Cloud Logging API is enabled, these
+      # error messages are logged to [Google Cloud Logging](https://cloud.google.com/
+      # logging/docs).
+      class ChatAppLogEntry
+        include Google::Apis::Core::Hashable
+      
+        # The deployment that caused the error. For Chat bots built in Apps Script, this
+        # is the deployment ID defined by Apps Script.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # The unencrypted `callback_method` name that was running when the error was
+        # encountered.
+        # Corresponds to the JSON property `deploymentFunction`
+        # @return [String]
+        attr_accessor :deployment_function
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ChatV1::Status]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @deployment_function = args[:deployment_function] if args.key?(:deployment_function)
+          @error = args[:error] if args.key?(:error)
+        end
+      end
+      
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to/from color representations in various
       # languages over compactness. For example, the fields of this representation can
@@ -767,46 +807,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drive_file_id = args[:drive_file_id] if args.key?(:drive_file_id)
-        end
-      end
-      
-      # JSON payload of error messages. If the Cloud Logging API is enabled, these
-      # error messages are logged to [Google Cloud Logging](https://cloud.google.com/
-      # logging/docs).
-      class DynamiteIntegrationLogEntry
-        include Google::Apis::Core::Hashable
-      
-        # The deployment that caused the error. For Chat bots built in Apps Script, this
-        # is the deployment ID defined by Apps Script.
-        # Corresponds to the JSON property `deployment`
-        # @return [String]
-        attr_accessor :deployment
-      
-        # The unencrypted `callback_method` name that was running when the error was
-        # encountered.
-        # Corresponds to the JSON property `deploymentFunction`
-        # @return [String]
-        attr_accessor :deployment_function
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::ChatV1::Status]
-        attr_accessor :error
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deployment = args[:deployment] if args.key?(:deployment)
-          @deployment_function = args[:deployment_function] if args.key?(:deployment_function)
-          @error = args[:error] if args.key?(:error)
         end
       end
       
@@ -2701,7 +2701,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Resource name of the space, in the form "spaces/*". Example: spaces/
+        # Resource name of the space, in the form "spaces/*". Example: spaces/
         # AAAAAAAAAAAA
         # Corresponds to the JSON property `name`
         # @return [String]
