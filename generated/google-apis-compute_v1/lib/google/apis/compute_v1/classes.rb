@@ -1284,9 +1284,10 @@ module Google
       
         # [Input Only] Specifies the parameters for a new disk that will be created
         # alongside the new instance. Use initialization parameters to create boot disks
-        # or local SSDs attached to the new instance. This property is mutually
-        # exclusive with the source property; you can only define one or the other, but
-        # not both.
+        # or local SSDs attached to the new instance. This field is persisted and
+        # returned for instanceTemplate and not returned in the context of instance.
+        # This property is mutually exclusive with the source property; you can only
+        # define one or the other, but not both.
         # Corresponds to the JSON property `initializeParams`
         # @return [Google::Apis::ComputeV1::AttachedDiskInitializeParams]
         attr_accessor :initialize_params
@@ -1366,9 +1367,10 @@ module Google
       
       # [Input Only] Specifies the parameters for a new disk that will be created
       # alongside the new instance. Use initialization parameters to create boot disks
-      # or local SSDs attached to the new instance. This property is mutually
-      # exclusive with the source property; you can only define one or the other, but
-      # not both.
+      # or local SSDs attached to the new instance. This field is persisted and
+      # returned for instanceTemplate and not returned in the context of instance.
+      # This property is mutually exclusive with the source property; you can only
+      # define one or the other, but not both.
       class AttachedDiskInitializeParams
         include Google::Apis::Core::Hashable
       
@@ -2828,9 +2830,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_http_headers
       
-        # Names of query string parameters to include in cache keys. All other
-        # parameters will be excluded. '&' and '=' will be percent encoded and not
-        # treated as delimiters.
+        # Names of query string parameters to include in cache keys. Default parameters
+        # are always included. '&' and '=' will be percent encoded and not treated as
+        # delimiters.
         # Corresponds to the JSON property `queryStringWhitelist`
         # @return [Array<String>]
         attr_accessor :query_string_whitelist
@@ -19775,7 +19777,8 @@ module Google
         attr_accessor :network_endpoint_type
       
         # The target service url used to set up private service connection to a Google
-        # API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        # API or a PSC Producer Service Attachment. An example value is: "asia-
+        # northeast3-cloudkms.googleapis.com"
         # Corresponds to the JSON property `pscTargetService`
         # @return [String]
         attr_accessor :psc_target_service
