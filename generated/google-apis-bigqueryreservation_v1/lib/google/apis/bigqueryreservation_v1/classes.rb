@@ -39,8 +39,8 @@ module Google
         attr_accessor :job_type
       
         # Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
-        # reservations/team1-prod/assignments/123`. For the assignment id, it must only
-        # contain lower case alphanumeric characters or dashes and the max length is 64
+        # reservations/team1-prod/assignments/123`. The assignment_id must only contain
+        # lower case alphanumeric characters or dashes and the max length is 64
         # characters.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -74,6 +74,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Preferred tables to use BI capacity for.
+        # Corresponds to the JSON property `preferredTables`
+        # @return [Array<Google::Apis::BigqueryreservationV1::TableReference>]
+        attr_accessor :preferred_tables
+      
         # Size of a reservation, in bytes.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
@@ -91,6 +96,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @preferred_tables = args[:preferred_tables] if args.key?(:preferred_tables)
           @size = args[:size] if args.key?(:size)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -138,8 +144,8 @@ module Google
         alias_method :multi_region_auxiliary?, :multi_region_auxiliary
       
         # Output only. The resource name of the capacity commitment, e.g., `projects/
-        # myproject/locations/US/capacityCommitments/123` For the commitment id, it must
-        # only contain lower case alphanumeric characters or dashes.It must start with a
+        # myproject/locations/US/capacityCommitments/123` The commitment_id must only
+        # contain lower case alphanumeric characters or dashes. It must start with a
         # letter and must not end with a dash. Its maximum length is 64 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -361,9 +367,9 @@ module Google
         alias_method :multi_region_auxiliary?, :multi_region_auxiliary
       
         # The resource name of the reservation, e.g., `projects/*/locations/*/
-        # reservations/team1-prod`. For the reservation id, it must only contain lower
-        # case alphanumeric characters or dashes.It must start with a letter and must
-        # not end with a dash. Its maximum length is 64 characters.
+        # reservations/team1-prod`. The reservation_id must only contain lower case
+        # alphanumeric characters or dashes. It must start with a letter and must not
+        # end with a dash. Its maximum length is 64 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -371,10 +377,10 @@ module Google
         # Minimum slots available to this reservation. A slot is a unit of computational
         # power in BigQuery, and serves as the unit of parallelism. Queries using this
         # reservation might use more slots during runtime if ignore_idle_slots is set to
-        # false. If the new reservation's slot capacity exceed the project's slot
+        # false. If the new reservation's slot capacity exceeds the project's slot
         # capacity or if total slot capacity of the new reservation and its siblings
         # exceeds the project's slot capacity, the request will fail with `google.rpc.
-        # Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions
+        # Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions,
         # slot capacity constraints are checked separately for default and auxiliary
         # regions. See multi_region_auxiliary flag for more details.
         # Corresponds to the JSON property `slotCapacity`
@@ -544,6 +550,38 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Fully qualified reference to BigQuery table. Internally stored as google.cloud.
+      # bi.v1.BqTableReference.
+      class TableReference
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the dataset in the above project.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The assigned project ID of the project.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The ID of the table in the above dataset.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
     end
