@@ -97,7 +97,7 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1beta2::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -1174,7 +1174,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
@@ -1229,6 +1229,19 @@ module Google
         end
       end
       
+      # The operation metadata for uploading artifacts.
+      class UploadAptArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request to upload an artifact.
       class UploadAptArtifactRequest
         include Google::Apis::Core::Hashable
@@ -1279,6 +1292,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The operation metadata for uploading artifacts.
+      class UploadYumArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
