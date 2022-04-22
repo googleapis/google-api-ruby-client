@@ -303,7 +303,7 @@ module Google
         attr_accessor :name
       
         # Required. Id of the category that best describes the core business this
-        # location engages in.
+        # location engages in. e.g. gcid:bakery.
         # Corresponds to the JSON property `primaryCategoryId`
         # @return [String]
         attr_accessor :primary_category_id
