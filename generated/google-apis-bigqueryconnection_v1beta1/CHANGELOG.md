@@ -1,5 +1,9 @@
 # Release history for google-apis-bigqueryconnection_v1beta1
 
+### v0.13.0 (2022-04-22)
+
+* Regenerated from discovery document revision 20220415
+
 ### v0.12.0 (2022-03-25)
 
 * Regenerated from discovery document revision 20220319
