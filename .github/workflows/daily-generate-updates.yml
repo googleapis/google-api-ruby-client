@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: '02 11 * * *'
 
+permissions:
+  contents: read
+
 jobs:
   generate-updates:
     if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}

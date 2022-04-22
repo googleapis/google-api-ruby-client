@@ -11,6 +11,9 @@ on:
         description: "Extra command line arguments."
         required: false
 
+permissions:
+  contents: read
+
 jobs:
   release-please:
     if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}
