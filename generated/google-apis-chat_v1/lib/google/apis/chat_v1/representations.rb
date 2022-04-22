@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChatAppLogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,12 +131,6 @@ module Google
       end
       
       class DriveDataRef
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DynamiteIntegrationLogEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -582,6 +582,16 @@ module Google
         end
       end
       
+      class ChatAppLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :deployment_function, as: 'deploymentFunction'
+          property :error, as: 'error', class: Google::Apis::ChatV1::Status, decorator: Google::Apis::ChatV1::Status::Representation
+      
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -668,16 +678,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drive_file_id, as: 'driveFileId'
-        end
-      end
-      
-      class DynamiteIntegrationLogEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :deployment, as: 'deployment'
-          property :deployment_function, as: 'deploymentFunction'
-          property :error, as: 'error', class: Google::Apis::ChatV1::Status, decorator: Google::Apis::ChatV1::Status::Representation
-      
         end
       end
       
