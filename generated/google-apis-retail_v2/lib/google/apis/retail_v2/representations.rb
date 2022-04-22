@@ -1496,6 +1496,7 @@ module Google
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec::Representation
       
           property :filter, as: 'filter'
+          hash :labels, as: 'labels'
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
           collection :page_categories, as: 'pageCategories'
