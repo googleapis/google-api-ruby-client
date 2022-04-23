@@ -1770,7 +1770,7 @@ module Google
         # @return [Google::Apis::MonitoringV1::TimeSeriesFilterRatio]
         attr_accessor :time_series_filter_ratio
       
-        # A query used to fetch time series.
+        # A query used to fetch time series with MQL.
         # Corresponds to the JSON property `timeSeriesQueryLanguage`
         # @return [String]
         attr_accessor :time_series_query_language
