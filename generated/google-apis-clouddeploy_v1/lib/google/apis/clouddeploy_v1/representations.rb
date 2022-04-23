@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeliveryPipelineNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,7 +208,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReleaseNotificationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseRenderEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rollout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutNotificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -245,6 +269,12 @@ module Google
       end
       
       class TargetArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetNotificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +407,15 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DeliveryPipelineNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_pipeline, as: 'deliveryPipeline'
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -580,6 +619,23 @@ module Google
         end
       end
       
+      class ReleaseNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :release, as: 'release'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ReleaseRenderEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :release, as: 'release'
+        end
+      end
+      
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -600,6 +656,18 @@ module Google
           property :state, as: 'state'
           property :target_id, as: 'targetId'
           property :uid, as: 'uid'
+        end
+      end
+      
+      class RolloutNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :release_uid, as: 'releaseUid'
+          property :rollout, as: 'rollout'
+          property :target_id, as: 'targetId'
+          property :type, as: 'type'
         end
       end
       
@@ -674,6 +742,15 @@ module Google
           property :artifact_uri, as: 'artifactUri'
           property :manifest_path, as: 'manifestPath'
           property :skaffold_config_path, as: 'skaffoldConfigPath'
+        end
+      end
+      
+      class TargetNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :target, as: 'target'
+          property :type, as: 'type'
         end
       end
       
