@@ -170,7 +170,7 @@ module Google
         # @return [Google::Apis::ClouddeployV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -443,6 +443,39 @@ module Google
           @serial_pipeline = args[:serial_pipeline] if args.key?(:serial_pipeline)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/deliverypipeline_notification"
+      # Platform Log event that describes the failure to send delivery pipeline status
+      # change Pub/Sub notification.
+      class DeliveryPipelineNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `Delivery Pipeline`.
+        # Corresponds to the JSON property `deliveryPipeline`
+        # @return [String]
+        attr_accessor :delivery_pipeline
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_pipeline = args[:delivery_pipeline] if args.key?(:delivery_pipeline)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1277,6 +1310,66 @@ module Google
         end
       end
       
+      # Payload proto for "clouddeploy.googleapis.com/release_notification" Platform
+      # Log event that describes the failure to send release status change Pub/Sub
+      # notification.
+      class ReleaseNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The name of the `Release`.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @release = args[:release] if args.key?(:release)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/release_render" Platform Log
+      # event that describes the render status change.
+      class ReleaseRenderEvent
+        include Google::Apis::Core::Hashable
+      
+        # Debug message for when a render transition occurs. Provides further details as
+        # rendering progresses through render states.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The name of the `Release`.
+        # Corresponds to the JSON property `release`
+        # @return [String]
+        attr_accessor :release
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @release = args[:release] if args.key?(:release)
+        end
+      end
+      
       # A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains
       # information around a specific deployment to a `Target`.
       class Rollout
@@ -1405,6 +1498,57 @@ module Google
           @state = args[:state] if args.key?(:state)
           @target_id = args[:target_id] if args.key?(:target_id)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/rollout_notification" Platform
+      # Log event that describes the failure to send rollout status change Pub/Sub
+      # notification.
+      class RolloutNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Unique identifier of the `Release`.
+        # Corresponds to the JSON property `releaseUid`
+        # @return [String]
+        attr_accessor :release_uid
+      
+        # The name of the `Rollout`.
+        # Corresponds to the JSON property `rollout`
+        # @return [String]
+        attr_accessor :rollout
+      
+        # ID of the `Target` that the rollout is deployed to.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release_uid = args[:release_uid] if args.key?(:release_uid)
+          @rollout = args[:rollout] if args.key?(:rollout)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1724,6 +1868,39 @@ module Google
         end
       end
       
+      # Payload proto for "clouddeploy.googleapis.com/target_notification" Platform
+      # Log event that describes the failure to send target status change Pub/Sub
+      # notification.
+      class TargetNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The name of the `Target`.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Details of rendering for a single target.
       class TargetRender
         include Google::Apis::Core::Hashable
@@ -1797,7 +1974,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
