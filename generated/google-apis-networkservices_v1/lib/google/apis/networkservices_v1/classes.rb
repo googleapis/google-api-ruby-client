@@ -506,6 +506,33 @@ module Google
         end
       end
       
+      # Response returned by the ListServiceBindings method.
+      class ListServiceBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ServiceBinding resources.
+        # Corresponds to the JSON property `serviceBindings`
+        # @return [Array<Google::Apis::NetworkservicesV1::ServiceBinding>]
+        attr_accessor :service_bindings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -766,6 +793,58 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # ServiceBinding is the resource that defines a Service Directory Service to be
+      # used in a BackendService resource.
+      class ServiceBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Set of label tags associated with the ServiceBinding resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the ServiceBinding resource. It matches pattern `projects/*/
+        # locations/global/serviceBindings/service_binding_name>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The full service directory service name of the format /projects/*/
+        # locations/*/namespaces/*/services/*
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service = args[:service] if args.key?(:service)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
