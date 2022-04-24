@@ -333,7 +333,7 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -859,9 +859,8 @@ module Google
         # Bigtable service account associated with the project that contains this
         # cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the
         # CMEK key. 2) Only regional keys can be used and the region of the CMEK key
-        # must match the region of the cluster. 3) All clusters within an instance must
-        # use the same CMEK key. Values are of the form `projects/`project`/locations/`
-        # location`/keyRings/`keyring`/cryptoKeys/`key``
+        # must match the region of the cluster. Values are of the form `projects/`
+        # project`/locations/`location`/keyRings/`keyring`/cryptoKeys/`key``
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2238,7 +2237,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
