@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StopInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubmitProvisioningConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -345,6 +351,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
       
+          property :os_image, as: 'osImage'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -739,6 +746,12 @@ module Google
         end
       end
       
+      class StopInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SubmitProvisioningConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -782,6 +795,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
           property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
+          property :emergency_size_gib, :numeric_string => true, as: 'emergencySizeGib'
           property :id, as: 'id'
           hash :labels, as: 'labels'
           property :name, as: 'name'
