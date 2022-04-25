@@ -3111,6 +3111,32 @@ module Google
         end
       end
       
+      # Configuration of all network bandwidth tiers
+      class NetworkPerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the network bandwidth tier for the NodePool for traffic to external/
+        # public IP addresses.
+        # Corresponds to the JSON property `externalIpEgressBandwidthTier`
+        # @return [String]
+        attr_accessor :external_ip_egress_bandwidth_tier
+      
+        # Specifies the total network bandwidth tier for the NodePool.
+        # Corresponds to the JSON property `totalEgressBandwidthTier`
+        # @return [String]
+        attr_accessor :total_egress_bandwidth_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_ip_egress_bandwidth_tier = args[:external_ip_egress_bandwidth_tier] if args.key?(:external_ip_egress_bandwidth_tier)
+          @total_egress_bandwidth_tier = args[:total_egress_bandwidth_tier] if args.key?(:total_egress_bandwidth_tier)
+        end
+      end
+      
       # Configuration options for the NetworkPolicy feature. https://kubernetes.io/
       # docs/concepts/services-networking/networkpolicies/
       class NetworkPolicy
@@ -3572,6 +3598,11 @@ module Google
         attr_accessor :create_pod_range
         alias_method :create_pod_range?, :create_pod_range
       
+        # Configuration of all network bandwidth tiers
+        # Corresponds to the JSON property `networkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1beta1::NetworkPerformanceConfig]
+        attr_accessor :network_performance_config
+      
         # The IP address range for pod IPs in this node pool. Only applicable if `
         # create_pod_range` is true. Set to blank to have a range chosen with the
         # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
@@ -3599,6 +3630,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end

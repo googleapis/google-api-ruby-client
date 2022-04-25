@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkPerformanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1706,6 +1712,14 @@ module Google
         end
       end
       
+      class NetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ip_egress_bandwidth_tier, as: 'externalIpEgressBandwidthTier'
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
+        end
+      end
+      
       class NetworkPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1814,6 +1828,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_pod_range, as: 'createPodRange'
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig::Representation
+      
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_range, as: 'podRange'
         end
