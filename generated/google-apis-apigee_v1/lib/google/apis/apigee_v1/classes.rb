@@ -692,7 +692,7 @@ module Google
         attr_accessor :read_only
         alias_method :read_only?, :read_only
       
-        # Output only. List of revisons defined for the API proxy.
+        # Output only. List of revisions defined for the API proxy.
         # Corresponds to the JSON property `revision`
         # @return [Array<String>]
         attr_accessor :revision
