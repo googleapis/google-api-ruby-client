@@ -384,6 +384,20 @@ module Google
         end
       end
       
+      # File returned to https://developers.google.com/search-ads/v2/reference/reports/
+      # getIdMappingFile.
+      class IdMappingFile
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A DoubleClick Search report. This object contains the report request, some
       # report metadata such as currency code, and the generated report rows or report
       # files.

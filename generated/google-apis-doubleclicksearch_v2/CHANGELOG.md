@@ -1,5 +1,10 @@
 # Release history for google-apis-doubleclicksearch_v2
 
+### v0.8.0 (2022-04-26)
+
+* Regenerated from discovery document revision 20220420
+* Regenerated using generator version 0.4.1
+
 ### v0.7.0 (2021-12-14)
 
 * Unspecified changes
