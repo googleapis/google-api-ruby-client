@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdMappingFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Report
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -199,6 +205,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class IdMappingFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -299,6 +299,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Downloads a csv file(encoded in UTF-8) that contains ID mappings between
+        # legacy SA360 and new SA360. The file includes all children entities of the
+        # given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist
+        # in both legacy SA360 and new SA360.
+        # @param [Fixnum] agency_id
+        #   Legacy SA360 agency ID.
+        # @param [Fixnum] advertiser_id
+        #   Legacy SA360 advertiser ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::IdMappingFile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DoubleclicksearchV2::IdMappingFile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_report_id_mapping_file(agency_id, advertiser_id, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping', options)
+          else
+            command = make_download_command(:get, 'doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping', options)
+            command.download_dest = download_dest
+          end
+          command.response_representation = Google::Apis::DoubleclicksearchV2::IdMappingFile::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::IdMappingFile
+          command.params['agencyId'] = agency_id unless agency_id.nil?
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Inserts a report request into the reporting system.
         # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
