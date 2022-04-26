@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1ChannelPartnerRepricingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1CustomerRepricingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1EduData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,18 @@ module Google
       end
       
       class GoogleCloudChannelV1ListChannelPartnerLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1PercentageAdjustment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1Period
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +383,30 @@ module Google
       end
       
       class GoogleCloudChannelV1RenewalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RepricingAdjustment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RepricingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RepricingConfigEntitlementGranularity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -562,6 +616,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeDate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDecimal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeMoney
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -645,6 +711,16 @@ module Google
           property :name, as: 'name'
           property :public_id, as: 'publicId'
           property :reseller_cloud_identity_id, as: 'resellerCloudIdentityId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudChannelV1ChannelPartnerRepricingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :repricing_config, as: 'repricingConfig', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -766,6 +842,16 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1CustomerRepricingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :repricing_config, as: 'repricingConfig', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudChannelV1EduData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -822,6 +908,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :channel_partner_links, as: 'channelPartnerLinks', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerLink, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channel_partner_repricing_configs, as: 'channelPartnerRepricingConfigs', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customer_repricing_configs, as: 'customerRepricingConfigs', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1013,6 +1117,14 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1PercentageAdjustment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage, as: 'percentage', class: Google::Apis::CloudchannelV1::GoogleTypeDecimal, decorator: Google::Apis::CloudchannelV1::GoogleTypeDecimal::Representation
+      
+        end
+      end
+      
       class GoogleCloudChannelV1Period
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1147,6 +1259,42 @@ module Google
       
           property :payment_plan, as: 'paymentPlan'
           property :resize_unit_count, as: 'resizeUnitCount'
+        end
+      end
+      
+      class GoogleCloudChannelV1RepricingAdjustment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage_adjustment, as: 'percentageAdjustment', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1PercentageAdjustment, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1PercentageAdjustment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudChannelV1RepricingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment, as: 'adjustment', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment::Representation
+      
+          property :channel_partner_granularity, as: 'channelPartnerGranularity', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity::Representation
+      
+          property :effective_invoice_month, as: 'effectiveInvoiceMonth', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :entitlement_granularity, as: 'entitlementGranularity', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigEntitlementGranularity, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigEntitlementGranularity::Representation
+      
+          property :rebilling_basis, as: 'rebillingBasis'
+        end
+      end
+      
+      class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudChannelV1RepricingConfigEntitlementGranularity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entitlement, as: 'entitlement'
         end
       end
       
@@ -1466,6 +1614,22 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class GoogleTypeDecimal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       

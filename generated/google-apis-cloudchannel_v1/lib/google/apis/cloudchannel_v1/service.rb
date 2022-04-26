@@ -493,6 +493,247 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a ChannelPartnerRepricingConfig. Call this method to set modifications
+        # for a specific ChannelPartner's bill. You can only create configs if the
+        # RepricingConfig.effective_invoice_month is a future month. If needed, you can
+        # create a config for the current month, with some restrictions. When creating a
+        # config for a future month, make sure there are no existing configs for that
+        # RepricingConfig.effective_invoice_month. The following restrictions are for
+        # creating configs in the current month. * This functionality is reserved for
+        # recovering from an erroneous config, and should not be used for regular
+        # business cases. * The new config will not modify exports used with other
+        # configs. Changes to the config may be immediate, but may take up to 24 hours. *
+        # There is a limit of ten configs for any ChannelPartner or RepricingConfig.
+        # effective_invoice_month. * The contained ChannelPartnerRepricingConfig.
+        # repricing_config vaule must be different from the value used in the current
+        # config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the
+        # account making the request and the account being queried are different. *
+        # INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also
+        # displays if the updated config is for the current month or past months. *
+        # NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is
+        # not associated with the given account. * INTERNAL: Any non-user error related
+        # to technical issues in the backend. In this case, contact Cloud Channel
+        # support. Return Value: If successful, the updated
+        # ChannelPartnerRepricingConfig resource, otherwise returns an error.
+        # @param [String] parent
+        #   Required. The resource name of the ChannelPartner that will receive the
+        #   repricing config. Parent uses the format: accounts/`account_id`/
+        #   channelPartnerLinks/`channel_partner_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig] google_cloud_channel_v1_channel_partner_repricing_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_channel_partner_link_channel_partner_repricing_config(parent, google_cloud_channel_v1_channel_partner_repricing_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/channelPartnerRepricingConfigs', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+          command.request_object = google_cloud_channel_v1_channel_partner_repricing_config_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the given ChannelPartnerRepricingConfig permanently. You can only
+        # delete configs if their RepricingConfig.effective_invoice_month is set to a
+        # date after the current month. Possible error codes: * PERMISSION_DENIED: The
+        # account making the request does not own this customer. * INVALID_ARGUMENT:
+        # Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+        # ChannelPartnerRepricingConfig is active or in the past. * NOT_FOUND: No
+        # ChannelPartnerRepricingConfig found for the name in the request.
+        # @param [String] name
+        #   Required. The resource name of the channel partner repricing config rule to
+        #   delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_channel_partner_link_channel_partner_repricing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about how a Distributor modifies their bill before sending it
+        # to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
+        # making the request and the account being queried are different. * NOT_FOUND:
+        # The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user
+        # error related to technical issues in the backend. In this case, contact Cloud
+        # Channel support. Return Value: If successful, the
+        # ChannelPartnerRepricingConfig resource, otherwise returns an error.
+        # @param [String] name
+        #   Required. The resource name of the ChannelPartnerRepricingConfig Format:
+        #   accounts/`account_id`/channelPartnerLinks/`channel_partner_id`/
+        #   channelPartnerRepricingConfigs/`id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_channel_partner_link_channel_partner_repricing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about how a Reseller modifies their bill before sending it
+        # to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
+        # making the request and the account being queried are different. * NOT_FOUND:
+        # The ChannelPartnerRepricingConfig specified does not exist or is not
+        # associated with the given account. * INTERNAL: Any non-user error related to
+        # technical issues in the backend. In this case, contact Cloud Channel support.
+        # Return Value: If successful, the ChannelPartnerRepricingConfig resources. The
+        # data for each resource is displayed in the ascending order of: * channel
+        # partner ID * RepricingConfig.effective_invoice_month *
+        # ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an error.
+        # @param [String] parent
+        #   Required. The resource name of the account's ChannelPartnerLink. Parent uses
+        #   the format: accounts/`account_id`/channelPartnerLinks/`channel_partner_id`.
+        #   Supports accounts/`account_id`/channelPartnerLinks/- to retrieve configs for
+        #   all channel partners.
+        # @param [String] filter
+        #   Optional. A filter for [CloudChannelService.ListChannelPartnerRepricingConfigs]
+        #   results (channel_partner_link only). You can use this filter when you support
+        #   a BatchGet-like query. To use the filter, you must set `parent=accounts/`
+        #   account_id`/channelPartnerLinks/-`. Example: `channel_partner_link = accounts/
+        #   account_id/channelPartnerLinks/c1` OR `channel_partner_link = accounts/
+        #   account_id/channelPartnerLinks/c2`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of repricing configs to return. The service may
+        #   return fewer than this value. If unspecified, returns a maximum of 50 rules.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results beyond the first page.
+        #   Obtained through ListChannelPartnerRepricingConfigsResponse.next_page_token of
+        #   the previous CloudChannelService.ListChannelPartnerRepricingConfigs call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_channel_partner_link_channel_partner_repricing_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/channelPartnerRepricingConfigs', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a ChannelPartnerRepricingConfig. Call this method to set modifications
+        # for a specific ChannelPartner's bill. This method overwrites the existing
+        # CustomerRepricingConfig. You can only update configs if the RepricingConfig.
+        # effective_invoice_month is a future month. To make changes to configs for the
+        # current month, use CreateChannelPartnerRepricingConfig, taking note of its
+        # restrictions. You cannot update the RepricingConfig.effective_invoice_month.
+        # When updating a config in the future: * This config must already exist.
+        # Possible Error Codes: * PERMISSION_DENIED: If the account making the request
+        # and the account being queried are different. * INVALID_ARGUMENT: Missing or
+        # invalid required parameters in the request. Also displays if the updated
+        # config is for the current month or past months. * NOT_FOUND: The
+        # ChannelPartnerRepricingConfig specified does not exist or is not associated
+        # with the given account. * INTERNAL: Any non-user error related to technical
+        # issues in the backend. In this case, contact Cloud Channel support. Return
+        # Value: If successful, the updated ChannelPartnerRepricingConfig resource,
+        # otherwise returns an error.
+        # @param [String] name
+        #   Output only. Resource name of the ChannelPartnerRepricingConfig. Format:
+        #   accounts/`account_id`/channelPartnerLinks/`channel_partner_id`/
+        #   channelPartnerRepricingConfigs/`id`.
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig] google_cloud_channel_v1_channel_partner_repricing_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_channel_partner_link_channel_partner_repricing_config(name, google_cloud_channel_v1_channel_partner_repricing_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+          command.request_object = google_cloud_channel_v1_channel_partner_repricing_config_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Customer resource under the reseller or distributor account.
         # Possible error codes: * PERMISSION_DENIED: The reseller account making the
         # request is different from the reseller account in the API request. *
@@ -1241,6 +1482,244 @@ module Google
           command.response_representation = Google::Apis::CloudchannelV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a CustomerRepricingConfig. Call this method to set modifications for a
+        # specific customer's bill. You can only create configs if the RepricingConfig.
+        # effective_invoice_month is a future month. If needed, you can create a config
+        # for the current month, with some restrictions. When creating a config for a
+        # future month, make sure there are no existing configs for that RepricingConfig.
+        # effective_invoice_month. The following restrictions are for creating configs
+        # in the current month. * This functionality is reserved for recovering from an
+        # erroneous config, and should not be used for regular business cases. * The new
+        # config will not modify exports used with other configs. Changes to the config
+        # may be immediate, but may take up to 24 hours. * There is a limit of ten
+        # configs for any RepricingConfig.EntitlementGranularity.entitlement or
+        # RepricingConfig.effective_invoice_month. * The contained
+        # CustomerRepricingConfig.repricing_config vaule must be different from the
+        # value used in the current config for a RepricingConfig.EntitlementGranularity.
+        # entitlement. Possible Error Codes: * PERMISSION_DENIED: If the account making
+        # the request and the account being queried are different. * INVALID_ARGUMENT:
+        # Missing or invalid required parameters in the request. Also displays if the
+        # updated config is for the current month or past months. * NOT_FOUND: The
+        # CustomerRepricingConfig specified does not exist or is not associated with the
+        # given account. * INTERNAL: Any non-user error related to technical issues in
+        # the backend. In this case, contact Cloud Channel support. Return Value: If
+        # successful, the updated CustomerRepricingConfig resource, otherwise returns an
+        # error.
+        # @param [String] parent
+        #   Required. The resource name of the customer that will receive this repricing
+        #   config. Parent uses the format: accounts/`account_id`/customers/`customer_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig] google_cloud_channel_v1_customer_repricing_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_customer_customer_repricing_config(parent, google_cloud_channel_v1_customer_repricing_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customerRepricingConfigs', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
+          command.request_object = google_cloud_channel_v1_customer_repricing_config_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the given CustomerRepricingConfig permanently. You can only delete
+        # configs if their RepricingConfig.effective_invoice_month is set to a date
+        # after the current month. Possible error codes: * PERMISSION_DENIED: The
+        # account making the request does not own this customer. * INVALID_ARGUMENT:
+        # Required request parameters are missing or invalid. * FAILED_PRECONDITION: The
+        # CustomerRepricingConfig is active or in the past. * NOT_FOUND: No
+        # CustomerRepricingConfig found for the name in the request.
+        # @param [String] name
+        #   Required. The resource name of the customer repricing config rule to delete.
+        #   Format: accounts/`account_id`/customers/`customer_id`/customerRepricingConfigs/
+        #   `id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_customer_customer_repricing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about how a Reseller modifies their bill before sending it to
+        # a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making
+        # the request and the account being queried are different. * NOT_FOUND: The
+        # CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related
+        # to technical issues in the backend. In this case, contact Cloud Channel
+        # support. Return Value: If successful, the CustomerRepricingConfig resource,
+        # otherwise returns an error.
+        # @param [String] name
+        #   Required. The resource name of the CustomerRepricingConfig. Format: accounts/`
+        #   account_id`/customers/`customer_id`/customerRepricingConfigs/`id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_customer_customer_repricing_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about how a Reseller modifies their bill before sending it
+        # to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account
+        # making the request and the account being queried are different. * NOT_FOUND:
+        # The CustomerRepricingConfig specified does not exist or is not associated with
+        # the given account. * INTERNAL: Any non-user error related to technical issues
+        # in the backend. In this case, contact Cloud Channel support. Return Value: If
+        # successful, the CustomerRepricingConfig resources. The data for each resource
+        # is displayed in the ascending order of: * customer ID * RepricingConfig.
+        # EntitlementGranularity.entitlement * RepricingConfig.effective_invoice_month *
+        # CustomerRepricingConfig.update_time If unsuccessful, returns an error.
+        # @param [String] parent
+        #   Required. The resource name of the customer. Parent uses the format: accounts/`
+        #   account_id`/customers/`customer_id`. Supports accounts/`account_id`/customers/-
+        #   to retrieve configs for all customers.
+        # @param [String] filter
+        #   Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs]
+        #   results (customer only). You can use this filter when you support a BatchGet-
+        #   like query. To use the filter, you must set `parent=accounts/`account_id`/
+        #   customers/-`. Example: customer = accounts/account_id/customers/c1 OR customer
+        #   = accounts/account_id/customers/c2.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of repricing configs to return. The service may
+        #   return fewer than this value. If unspecified, returns a maximum of 50 rules.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results beyond the first page.
+        #   Obtained through ListCustomerRepricingConfigsResponse.next_page_token of the
+        #   previous CloudChannelService.ListCustomerRepricingConfigs call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomerRepricingConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomerRepricingConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_customer_customer_repricing_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/customerRepricingConfigs', options)
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomerRepricingConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a CustomerRepricingConfig. Call this method to set modifications for a
+        # specific customer's bill. This method overwrites the existing
+        # CustomerRepricingConfig. You can only update configs if the RepricingConfig.
+        # effective_invoice_month is a future month. To make changes to configs for the
+        # current month, use CreateCustomerRepricingConfig, taking note of its
+        # restrictions. You cannot update the RepricingConfig.effective_invoice_month.
+        # When updating a config in the future: * This config must already exist.
+        # Possible Error Codes: * PERMISSION_DENIED: If the account making the request
+        # and the account being queried are different. * INVALID_ARGUMENT: Missing or
+        # invalid required parameters in the request. Also displays if the updated
+        # config is for the current month or past months. * NOT_FOUND: The
+        # CustomerRepricingConfig specified does not exist or is not associated with the
+        # given account. * INTERNAL: Any non-user error related to technical issues in
+        # the backend. In this case, contact Cloud Channel support. Return Value: If
+        # successful, the updated CustomerRepricingConfig resource, otherwise returns an
+        # error.
+        # @param [String] name
+        #   Output only. Resource name of the CustomerRepricingConfig. Format: accounts/`
+        #   account_id`/customers/`customer_id`/customerRepricingConfigs/`id`.
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig] google_cloud_channel_v1_customer_repricing_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_customer_customer_repricing_config(name, google_cloud_channel_v1_customer_repricing_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
+          command.request_object = google_cloud_channel_v1_customer_repricing_config_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

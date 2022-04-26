@@ -305,6 +305,42 @@ module Google
         end
       end
       
+      # Configuration for how a distributor will rebill a channel partner (also known
+      # as a distributor-authorized reseller).
+      class GoogleCloudChannelV1ChannelPartnerRepricingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of the ChannelPartnerRepricingConfig. Format:
+        # accounts/`account_id`/channelPartnerLinks/`channel_partner_id`/
+        # channelPartnerRepricingConfigs/`id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for repricing a Google bill over a period of time.
+        # Corresponds to the JSON property `repricingConfig`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig]
+        attr_accessor :repricing_config
+      
+        # Output only. Timestamp of an update to the repricing rule. If `update_time` is
+        # after RepricingConfig.effective_invoice_month then it indicates this was set
+        # mid-month.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @repricing_config = args[:repricing_config] if args.key?(:repricing_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Request message for CloudChannelService.CheckCloudIdentityAccountsExist.
       class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
         include Google::Apis::Core::Hashable
@@ -746,6 +782,40 @@ module Google
         end
       end
       
+      # Configuration for how a reseller will reprice a Customer.
+      class GoogleCloudChannelV1CustomerRepricingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of the CustomerRepricingConfig. Format: accounts/`
+        # account_id`/customers/`customer_id`/customerRepricingConfigs/`id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for repricing a Google bill over a period of time.
+        # Corresponds to the JSON property `repricingConfig`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfig]
+        attr_accessor :repricing_config
+      
+        # Output only. Timestamp of an update to the repricing rule. If `update_time` is
+        # after RepricingConfig.effective_invoice_month then it indicates this was set
+        # mid-month.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @repricing_config = args[:repricing_config] if args.key?(:repricing_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Required Edu Attributes
       class GoogleCloudChannelV1EduData
         include Google::Apis::Core::Hashable
@@ -978,6 +1048,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel_partner_links = args[:channel_partner_links] if args.key?(:channel_partner_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for CloudChannelService.ListChannelPartnerRepricingConfigs.
+      class GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The repricing configs for this channel partner.
+        # Corresponds to the JSON property `channelPartnerRepricingConfigs`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1ChannelPartnerRepricingConfig>]
+        attr_accessor :channel_partner_repricing_configs
+      
+        # A token to retrieve the next page of results. Pass to
+        # ListChannelPartnerRepricingConfigsRequest.page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_partner_repricing_configs = args[:channel_partner_repricing_configs] if args.key?(:channel_partner_repricing_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for CloudChannelService.ListCustomerRepricingConfigs.
+      class GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The repricing configs for this channel partner.
+        # Corresponds to the JSON property `customerRepricingConfigs`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1CustomerRepricingConfig>]
+        attr_accessor :customer_repricing_configs
+      
+        # A token to retrieve the next page of results. Pass to
+        # ListCustomerRepricingConfigsRequest.page_token to obtain that page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_repricing_configs = args[:customer_repricing_configs] if args.key?(:customer_repricing_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1598,6 +1720,29 @@ module Google
         end
       end
       
+      # An adjustment that applies a flat markup or markdown to an entire bill.
+      class GoogleCloudChannelV1PercentageAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `percentage`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDecimal]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
       # Represents period in days/months/years.
       class GoogleCloudChannelV1Period
         include Google::Apis::Core::Hashable
@@ -2028,6 +2173,111 @@ module Google
           @payment_cycle = args[:payment_cycle] if args.key?(:payment_cycle)
           @payment_plan = args[:payment_plan] if args.key?(:payment_plan)
           @resize_unit_count = args[:resize_unit_count] if args.key?(:resize_unit_count)
+        end
+      end
+      
+      # A type that represents the various adjustments you can apply to a bill.
+      class GoogleCloudChannelV1RepricingAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # An adjustment that applies a flat markup or markdown to an entire bill.
+        # Corresponds to the JSON property `percentageAdjustment`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1PercentageAdjustment]
+        attr_accessor :percentage_adjustment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage_adjustment = args[:percentage_adjustment] if args.key?(:percentage_adjustment)
+        end
+      end
+      
+      # Configuration for repricing a Google bill over a period of time.
+      class GoogleCloudChannelV1RepricingConfig
+        include Google::Apis::Core::Hashable
+      
+        # A type that represents the various adjustments you can apply to a bill.
+        # Corresponds to the JSON property `adjustment`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment]
+        attr_accessor :adjustment
+      
+        # Applies the repricing configuration at the channel partner level. The channel
+        # partner value is derived from the resource name. Takes an empty json object.
+        # Corresponds to the JSON property `channelPartnerGranularity`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]
+        attr_accessor :channel_partner_granularity
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `effectiveInvoiceMonth`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :effective_invoice_month
+      
+        # Applies the repricing configuration at the entitlement level.
+        # Corresponds to the JSON property `entitlementGranularity`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigEntitlementGranularity]
+        attr_accessor :entitlement_granularity
+      
+        # Required. The RebillingBasis to use for this bill. Specifies the relative cost
+        # based on repricing costs you will apply.
+        # Corresponds to the JSON property `rebillingBasis`
+        # @return [String]
+        attr_accessor :rebilling_basis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment = args[:adjustment] if args.key?(:adjustment)
+          @channel_partner_granularity = args[:channel_partner_granularity] if args.key?(:channel_partner_granularity)
+          @effective_invoice_month = args[:effective_invoice_month] if args.key?(:effective_invoice_month)
+          @entitlement_granularity = args[:entitlement_granularity] if args.key?(:entitlement_granularity)
+          @rebilling_basis = args[:rebilling_basis] if args.key?(:rebilling_basis)
+        end
+      end
+      
+      # Applies the repricing configuration at the channel partner level. The channel
+      # partner value is derived from the resource name. Takes an empty json object.
+      class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Applies the repricing configuration at the entitlement level.
+      class GoogleCloudChannelV1RepricingConfigEntitlementGranularity
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the entitlement. Format: accounts/`account_id`/customers/`
+        # customer_id`/entitlements/`entitlement_id`
+        # Corresponds to the JSON property `entitlement`
+        # @return [String]
+        attr_accessor :entitlement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entitlement = args[:entitlement] if args.key?(:entitlement)
         end
       end
       
@@ -3135,6 +3385,103 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # A representation of a decimal value, such as 2.5. Clients may convert values
+      # into language-native decimal formats, such as Java's BigDecimal or Python's
+      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+      # org/3/library/decimal.html
+      class GoogleTypeDecimal
+        include Google::Apis::Core::Hashable
+      
+        # The decimal value, as a string. The string representation consists of an
+        # optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of
+        # zero or more decimal digits ("the integer"), optionally followed by a fraction,
+        # optionally followed by an exponent. The fraction consists of a decimal point
+        # followed by zero or more decimal digits. The string must contain at least one
+        # digit in either the integer or the fraction. The number formed by the sign,
+        # the integer and the fraction is referred to as the significand. The exponent
+        # consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or
+        # more decimal digits. Services **should** normalize decimal values before
+        # storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`).
+        # - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing
+        # the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an
+        # explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform
+        # additional normalization based on its own needs and the internal decimal
+        # implementation selected, such as shifting the decimal point and exponent value
+        # together (example: `2.5e-1` <-> `0.25`). Additionally, services **may**
+        # preserve trailing zeroes in the fraction to indicate increased precision, but
+        # are not required to do so. Note that only the `.` character is supported to
+        # divide the integer and the fraction; `,` **should not** be supported
+        # regardless of locale. Additionally, thousand separators **should not** be
+        # supported. If a service does support them, values **must** be normalized. The
+        # ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-
+        # '; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [
+        # Sign] Digits; Digits = ` '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' |
+        # '9' `; Services **should** clearly document the range of supported values, the
+        # maximum supported precision (total number of digits), and, if applicable, the
+        # scale (number of digits after the decimal point), as well as how it behaves
+        # when receiving out-of-bounds values. Services **may** choose to accept values
+        # passed as input even when the value has a higher precision or scale than the
+        # service supports, and **should** round the value to fit the supported scale.
+        # Alternatively, the service **may** error with `400 Bad Request` (`
+        # INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should**
+        # error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service
+        # receives a value outside of the supported range.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
