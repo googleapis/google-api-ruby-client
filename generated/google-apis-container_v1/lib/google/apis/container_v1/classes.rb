@@ -2408,6 +2408,27 @@ module Google
         end
       end
       
+      # ManagedPrometheusConfig defines the configuration for Google Cloud Managed
+      # Service for Prometheus.
+      class ManagedPrometheusConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable Managed Collection.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # The authentication information for accessing the master endpoint.
       # Authentication can be done using HTTP basic auth or using client certificates.
       class MasterAuth
@@ -2612,6 +2633,12 @@ module Google
         # @return [Google::Apis::ContainerV1::MonitoringComponentConfig]
         attr_accessor :component_config
       
+        # ManagedPrometheusConfig defines the configuration for Google Cloud Managed
+        # Service for Prometheus.
+        # Corresponds to the JSON property `managedPrometheusConfig`
+        # @return [Google::Apis::ContainerV1::ManagedPrometheusConfig]
+        attr_accessor :managed_prometheus_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2619,6 +2646,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @component_config = args[:component_config] if args.key?(:component_config)
+          @managed_prometheus_config = args[:managed_prometheus_config] if args.key?(:managed_prometheus_config)
         end
       end
       
@@ -2696,6 +2724,25 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @service_external_ips_config = args[:service_external_ips_config] if args.key?(:service_external_ips_config)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # Configuration of all network bandwidth tiers
+      class NetworkPerformanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the total network bandwidth tier for the NodePool.
+        # Corresponds to the JSON property `totalEgressBandwidthTier`
+        # @return [String]
+        attr_accessor :total_egress_bandwidth_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_egress_bandwidth_tier = args[:total_egress_bandwidth_tier] if args.key?(:total_egress_bandwidth_tier)
         end
       end
       
@@ -3152,6 +3199,11 @@ module Google
         attr_accessor :create_pod_range
         alias_method :create_pod_range?, :create_pod_range
       
+        # Configuration of all network bandwidth tiers
+        # Corresponds to the JSON property `networkPerformanceConfig`
+        # @return [Google::Apis::ContainerV1::NetworkPerformanceConfig]
+        attr_accessor :network_performance_config
+      
         # The IP address range for pod IPs in this node pool. Only applicable if `
         # create_pod_range` is true. Set to blank to have a range chosen with the
         # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
@@ -3179,6 +3231,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
         end

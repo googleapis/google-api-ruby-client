@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedPrometheusConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,12 @@ module Google
       end
       
       class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkPerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1400,6 +1412,13 @@ module Google
         end
       end
       
+      class ManagedPrometheusConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class MasterAuth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1458,6 +1477,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1::MonitoringComponentConfig, decorator: Google::Apis::ContainerV1::MonitoringComponentConfig::Representation
       
+          property :managed_prometheus_config, as: 'managedPrometheusConfig', class: Google::Apis::ContainerV1::ManagedPrometheusConfig, decorator: Google::Apis::ContainerV1::ManagedPrometheusConfig::Representation
+      
         end
       end
       
@@ -1476,6 +1497,13 @@ module Google
           property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1::ServiceExternalIPsConfig::Representation
       
           property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class NetworkPerformanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
         end
       end
       
@@ -1583,6 +1611,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_pod_range, as: 'createPodRange'
+          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::NetworkPerformanceConfig::Representation
+      
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
           property :pod_range, as: 'podRange'
         end
