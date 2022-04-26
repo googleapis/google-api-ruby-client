@@ -180,7 +180,7 @@ module Google
         attr_accessor :affected_services
       
         # Approximate number of affected users in the given group that match the filter
-        # criteria. Users are distinguished by data in the `ErrorContext` of the
+        # criteria. Users are distinguished by data in the ErrorContext of the
         # individual error events, such as their login name or their remote IP address
         # in case of HTTP requests. The number of affected users can be zero even if the
         # number of errors is non-zero if no data was provided from which the affected
@@ -420,8 +420,8 @@ module Google
         # Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-
         # backtrace). * **C#**: Must be the return value of [`Exception.ToString()`](
         # https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). * **
-        # PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)` and
-        # contain the result of [`(string)$exception`](http://php.net/manual/en/
+        # PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal error|Warning): "`
+        # and contain the result of [`(string)$exception`](https://php.net/manual/en/
         # exception.tostring.php). * **Go**: Must be the return value of [`runtime.Stack(
         # )`](https://golang.org/pkg/runtime/debug/#Stack).
         # Corresponds to the JSON property `message`
