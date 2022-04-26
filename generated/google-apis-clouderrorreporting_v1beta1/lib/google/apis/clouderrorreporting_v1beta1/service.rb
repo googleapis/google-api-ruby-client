@@ -206,7 +206,7 @@ module Google
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return per response. Default is 20.
         # @param [String] page_token
-        #   Optional. A `next_page_token` provided by a previous response. To view
+        #   Optional. A next_page_token provided by a previous response. To view
         #   additional results, pass this token along with the identical query parameters
         #   as the first request.
         # @param [String] service_filter_resource_type
@@ -221,8 +221,8 @@ module Google
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
         # @param [String] timed_count_duration
-        #   Optional. The preferred duration for a single returned `TimedCount`. If not
-        #   set, no timed counts are returned.
+        #   Optional. The preferred duration for a single returned TimedCount. If not set,
+        #   no timed counts are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -264,10 +264,8 @@ module Google
         # Get the specified group.
         # @param [String] group_name
         #   Required. The group resource name. Written as `projects/`projectID`/groups/`
-        #   group_name``. Call [`groupStats.list`](https://cloud.google.com/error-
-        #   reporting/reference/rest/v1beta1/projects.groupStats/list) to return a list of
-        #   groups belonging to this project. Example: `projects/my-project-123/groups/my-
-        #   group`
+        #   group_name``. Call groupStats.list to return a list of groups belonging to
+        #   this project. Example: `projects/my-project-123/groups/my-group`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
