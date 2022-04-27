@@ -962,7 +962,7 @@ module Google
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
         #   create_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1144,7 +1144,7 @@ module Google
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
         #   replace_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1995,7 +1995,7 @@ module Google
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
         #   create_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2221,7 +2221,7 @@ module Google
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/v1/internal_service.proto:
+        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
         #   replace_internal_service_request)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
