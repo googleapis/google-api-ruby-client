@@ -22,6 +22,12 @@ module Google
   module Apis
     module AdmobV1beta
       
+      class AdSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdUnit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class GenerateNetworkReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +202,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_source_id, as: 'adSourceId'
+          property :name, as: 'name'
+          property :title, as: 'title'
+        end
+      end
+      
       class AdUnit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -286,6 +307,15 @@ module Google
       
           property :row, as: 'row', class: Google::Apis::AdmobV1beta::ReportRow, decorator: Google::Apis::AdmobV1beta::ReportRow::Representation
       
+        end
+      end
+      
+      class ListAdSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_sources, as: 'adSources', class: Google::Apis::AdmobV1beta::AdSource, decorator: Google::Apis::AdmobV1beta::AdSource::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

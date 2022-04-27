@@ -118,6 +118,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List the ad sources.
+        # @param [String] parent
+        #   Required. The parent which owns this collection of ad sources. Format:
+        #   accounts/`publisher_id`
+        # @param [Fixnum] page_size
+        #   The maximum number of ad sources to return. If unspecified or 0, at most 1000
+        #   ad sources will be returned. The maximum value is 10,000; values above 10,000
+        #   will be coerced to 10,000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListAdSources` call. Provide this to
+        #   retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdmobV1beta::ListAdSourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdmobV1beta::ListAdSourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_ad_sources(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/adSources', options)
+          command.response_representation = Google::Apis::AdmobV1beta::ListAdSourcesResponse::Representation
+          command.response_class = Google::Apis::AdmobV1beta::ListAdSourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List the ad units under the specified AdMob account.
         # @param [String] parent
         #   Required. Resource name of the account to list ad units for. Example: accounts/
