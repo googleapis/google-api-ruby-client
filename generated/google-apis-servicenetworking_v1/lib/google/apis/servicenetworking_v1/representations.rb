@@ -847,6 +847,7 @@ module Google
           property :producer_network, as: 'producerNetwork'
           collection :reserved_ranges, as: 'reservedRanges', class: Google::Apis::ServicenetworkingV1::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange, decorator: Google::Apis::ServicenetworkingV1::GoogleCloudServicenetworkingV1ConsumerConfigReservedRange::Representation
       
+          collection :used_ip_ranges, as: 'usedIpRanges'
           property :vpc_sc_reference_architecture_enabled, as: 'vpcScReferenceArchitectureEnabled'
         end
       end
