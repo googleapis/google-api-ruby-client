@@ -351,8 +351,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # URL of a thumbnail image (photo) of the device. e.g. https://lh3.
-        # googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
+        # URL of a thumbnail image (photo) of the device.
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
