@@ -488,7 +488,7 @@ module Google
         attr_accessor :is_cws_hosted
         alias_method :is_cws_hosted?, :is_cws_hosted
       
-        # Output only. Whether the app is only for Kiosk mode on Chrome OS devices
+        # Output only. Whether the app is only for Kiosk mode on ChromeOS devices
         # Corresponds to the JSON property `isKioskOnly`
         # @return [Boolean]
         attr_accessor :is_kiosk_only
@@ -500,7 +500,7 @@ module Google
         attr_accessor :is_theme
         alias_method :is_theme?, :is_theme
       
-        # Output only. Whether this app is enabled for Kiosk mode on Chrome OS devices
+        # Output only. Whether this app is enabled for Kiosk mode on ChromeOS devices
         # Corresponds to the JSON property `kioskEnabled`
         # @return [Boolean]
         attr_accessor :kiosk_enabled
@@ -1511,7 +1511,7 @@ module Google
         attr_accessor :customer
       
         # Output only. The unique Directory API ID of the device. This value is the same
-        # as the Admin Console's Directory API ID in the Chrome OS Devices tab
+        # as the Admin Console's Directory API ID in the ChromeOS Devices tab
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -1558,7 +1558,7 @@ module Google
         attr_accessor :os_update_status
       
         # Output only. Device serial number. This value is the same as the Admin Console'
-        # s Serial Number in the Chrome OS Devices tab.
+        # s Serial Number in the ChromeOS Devices tab.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
