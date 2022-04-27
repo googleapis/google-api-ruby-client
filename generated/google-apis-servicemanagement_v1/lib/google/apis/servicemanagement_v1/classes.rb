@@ -2084,7 +2084,7 @@ module Google
         attr_accessor :producer_project_id
       
         # The name of the service. See the [overview](https://cloud.google.com/service-
-        # management/overview) for naming requirements.
+        # infrastructure/docs/overview) for naming requirements.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
