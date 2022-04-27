@@ -329,7 +329,7 @@ module Google
         # @return [Google::Apis::HealthcareV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -878,6 +878,16 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset
       
+        # Cloud Storage location to read the JSON cloud.healthcare.deidentify.
+        # DeidentifyConfig from, overriding the default config. Must be of the form `gs:/
+        # /`bucket_id`/path/to/object`. The Cloud Storage location must grant the Cloud
+        # IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare
+        # Service Agent service account. Only one of `config` and `gcs_config_uri` can
+        # be specified.
+        # Corresponds to the JSON property `gcsConfigUri`
+        # @return [String]
+        attr_accessor :gcs_config_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -886,6 +896,7 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @destination_dataset = args[:destination_dataset] if args.key?(:destination_dataset)
+          @gcs_config_uri = args[:gcs_config_uri] if args.key?(:gcs_config_uri)
         end
       end
       
@@ -916,6 +927,16 @@ module Google
         # @return [Google::Apis::HealthcareV1::DicomFilterConfig]
         attr_accessor :filter_config
       
+        # Cloud Storage location to read the JSON cloud.healthcare.deidentify.
+        # DeidentifyConfig from, overriding the default config. Must be of the form `gs:/
+        # /`bucket_id`/path/to/object`. The Cloud Storage location must grant the Cloud
+        # IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare
+        # Service Agent service account. Only one of `config` and `gcs_config_uri` can
+        # be specified.
+        # Corresponds to the JSON property `gcsConfigUri`
+        # @return [String]
+        attr_accessor :gcs_config_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -925,6 +946,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @destination_store = args[:destination_store] if args.key?(:destination_store)
           @filter_config = args[:filter_config] if args.key?(:filter_config)
+          @gcs_config_uri = args[:gcs_config_uri] if args.key?(:gcs_config_uri)
         end
       end
       
@@ -950,6 +972,16 @@ module Google
         # @return [String]
         attr_accessor :destination_store
       
+        # Cloud Storage location to read the JSON cloud.healthcare.deidentify.
+        # DeidentifyConfig from, overriding the default config. Must be of the form `gs:/
+        # /`bucket_id`/path/to/object`. The Cloud Storage location must grant the Cloud
+        # IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare
+        # Service Agent service account. Only one of `config` and `gcs_config_uri` can
+        # be specified.
+        # Corresponds to the JSON property `gcsConfigUri`
+        # @return [String]
+        attr_accessor :gcs_config_uri
+      
         # Filter configuration.
         # Corresponds to the JSON property `resourceFilter`
         # @return [Google::Apis::HealthcareV1::FhirFilter]
@@ -963,6 +995,7 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @destination_store = args[:destination_store] if args.key?(:destination_store)
+          @gcs_config_uri = args[:gcs_config_uri] if args.key?(:gcs_config_uri)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
         end
       end
@@ -4203,7 +4236,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
