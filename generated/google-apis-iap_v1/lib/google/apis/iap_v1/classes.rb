@@ -555,7 +555,7 @@ module Google
       class ListTunnelDestGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be send as `page_token` to retrieve the next page. If this
+        # A token that you can send as `page_token` to retrieve the next page. If this
         # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]

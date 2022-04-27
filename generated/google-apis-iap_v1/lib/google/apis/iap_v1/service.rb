@@ -335,13 +335,13 @@ module Google
         
         # Creates a new TunnelDestGroup.
         # @param [String] parent
-        #   Required. GCP Project number/id and location. In the following format:
-        #   projects/`project_number/id`/iap_tunnel/locations/`location`.
+        #   Required. Google Cloud Project ID and location. In the following format: `
+        #   projects/`project_number/id`/iap_tunnel/locations/`location``.
         # @param [Google::Apis::IapV1::TunnelDestGroup] tunnel_dest_group_object
         # @param [String] tunnel_dest_group_id
-        #   Required. The ID to use for the TunnelDestGroup, which will become the final
-        #   component of the resource name. This value should be 4-63 characters, and
-        #   valid characters are /a-z-/.
+        #   Required. The ID to use for the TunnelDestGroup, which becomes the final
+        #   component of the resource name. This value must be 4-63 characters, and valid
+        #   characters are `a-z-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -374,9 +374,9 @@ module Google
         
         # Deletes a TunnelDestGroup.
         # @param [String] name
-        #   Required. Name of the TunnelDestGroup to be deleted. In the following format:
+        #   Required. Name of the TunnelDestGroup to delete. In the following format: `
         #   projects/`project_number/id`/iap_tunnel/locations/`location`/destGroups/`
-        #   dest_group`.
+        #   dest_group``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -406,9 +406,9 @@ module Google
         
         # Retrieves an existing TunnelDestGroup.
         # @param [String] name
-        #   Required. Name of the TunnelDestGroup to be fetched. In the following format:
+        #   Required. Name of the TunnelDestGroup to be fetched. In the following format: `
         #   projects/`project_number/id`/iap_tunnel/locations/`location`/destGroups/`
-        #   dest_group`.
+        #   dest_group``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,16 +437,16 @@ module Google
         end
         
         # Lists the existing TunnelDestGroups. To group across all locations, use a `-`
-        # as the location ID. For example: /v1/projects/123/iap_tunnel/locations/-/
-        # destGroups
+        # as the location ID. For example: `/v1/projects/123/iap_tunnel/locations/-/
+        # destGroups`
         # @param [String] parent
-        #   Required. GCP Project number/id and location. In the following format:
-        #   projects/`project_number/id`/iap_tunnel/locations/`location`. A `-` can be
+        #   Required. Google Cloud Project ID and location. In the following format: `
+        #   projects/`project_number/id`/iap_tunnel/locations/`location``. A `-` can be
         #   used for the location to group across all locations.
         # @param [Fixnum] page_size
-        #   The maximum number of groups to return. The service may return fewer than this
-        #   value. If unspecified, at most 100 groups will be returned. The maximum value
-        #   is 1000; values above 1000 will be coerced to 1000.
+        #   The maximum number of groups to return. The service might return fewer than
+        #   this value. If unspecified, at most 100 groups are returned. The maximum value
+        #   is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   A page token, received from a previous `ListTunnelDestGroups` call. Provide
         #   this to retrieve the subsequent page. When paginating, all other parameters
@@ -487,9 +487,9 @@ module Google
         #   the project.
         # @param [Google::Apis::IapV1::TunnelDestGroup] tunnel_dest_group_object
         # @param [String] update_mask
-        #   The field mask specifying which IAP settings should be updated. If omitted,
-        #   then all of the settings are updated. See https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   A field mask that specifies which IAP settings to update. If omitted, then all
+        #   of the settings are updated. See https://developers.google.com/protocol-
+        #   buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
