@@ -22,6 +22,38 @@ module Google
   module Apis
     module AdmobV1beta
       
+      # Definition of a mediation ad source.
+      class AdSource
+        include Google::Apis::Core::Hashable
+      
+        # ID of this ad source.
+        # Corresponds to the JSON property `adSourceId`
+        # @return [String]
+        attr_accessor :ad_source_id
+      
+        # Resource name of this ad source. Format is: accounts/`publisher_id`/adSources/`
+        # ad_source_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Display name of this ad source.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_source_id = args[:ad_source_id] if args.key?(:ad_source_id)
+          @name = args[:name] if args.key?(:name)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Describes an AdMob ad unit.
       class AdUnit
         include Google::Apis::Core::Hashable
@@ -407,6 +439,32 @@ module Google
           @footer = args[:footer] if args.key?(:footer)
           @header = args[:header] if args.key?(:header)
           @row = args[:row] if args.key?(:row)
+        end
+      end
+      
+      # Response for the ListAdSourcesRequest.
+      class ListAdSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ad sources.
+        # Corresponds to the JSON property `adSources`
+        # @return [Array<Google::Apis::AdmobV1beta::AdSource>]
+        attr_accessor :ad_sources
+      
+        # Used to set the `page_token` in the `ListAdSourcesRequest` to retrieve the
+        # next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_sources = args[:ad_sources] if args.key?(:ad_sources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
