@@ -1038,6 +1038,7 @@ module Google
           property :config, as: 'config', class: Google::Apis::HealthcareV1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1::DeidentifyConfig::Representation
       
           property :destination_dataset, as: 'destinationDataset'
+          property :gcs_config_uri, as: 'gcsConfigUri'
         end
       end
       
@@ -1049,6 +1050,7 @@ module Google
           property :destination_store, as: 'destinationStore'
           property :filter_config, as: 'filterConfig', class: Google::Apis::HealthcareV1::DicomFilterConfig, decorator: Google::Apis::HealthcareV1::DicomFilterConfig::Representation
       
+          property :gcs_config_uri, as: 'gcsConfigUri'
         end
       end
       
@@ -1058,6 +1060,7 @@ module Google
           property :config, as: 'config', class: Google::Apis::HealthcareV1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1::DeidentifyConfig::Representation
       
           property :destination_store, as: 'destinationStore'
+          property :gcs_config_uri, as: 'gcsConfigUri'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::HealthcareV1::FhirFilter, decorator: Google::Apis::HealthcareV1::FhirFilter::Representation
       
         end
