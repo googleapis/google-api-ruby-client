@@ -264,8 +264,6 @@ module Google
         #   If set to true, and if the Job does not exist, it will create a new one.
         #   Caller must have both create and update permissions for this call if this is
         #   set to true.
-        # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or updating any resources.
@@ -286,7 +284,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_job(name, google_cloud_run_v2_job_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_job(name, google_cloud_run_v2_job_object = nil, allow_missing: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Job::Representation
           command.request_object = google_cloud_run_v2_job_object
@@ -294,7 +292,6 @@ module Google
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -917,8 +914,6 @@ module Google
         #   If set to true, and if the Service does not exist, it will create a new one.
         #   Caller must have both create and update permissions for this call if this is
         #   set to true.
-        # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or updating any resources.
@@ -939,7 +934,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
           command.request_object = google_cloud_run_v2_service_object
@@ -947,7 +942,6 @@ module Google
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -302,7 +302,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :breakglass_justification, as: 'breakglassJustification'
-          property :policy, as: 'policy'
           property :use_default, as: 'useDefault'
         end
       end
