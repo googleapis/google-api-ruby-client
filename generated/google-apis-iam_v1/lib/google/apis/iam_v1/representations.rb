@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Saml
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +713,13 @@ module Google
         end
       end
       
+      class Saml
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idp_metadata_xml, as: 'idpMetadataXml'
+        end
+      end
+      
       class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -863,6 +876,8 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :oidc, as: 'oidc', class: Google::Apis::IamV1::Oidc, decorator: Google::Apis::IamV1::Oidc::Representation
+      
+          property :saml, as: 'saml', class: Google::Apis::IamV1::Saml, decorator: Google::Apis::IamV1::Saml::Representation
       
           property :state, as: 'state'
         end

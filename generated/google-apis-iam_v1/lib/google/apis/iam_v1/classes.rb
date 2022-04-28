@@ -1322,6 +1322,36 @@ module Google
         end
       end
       
+      # Represents an SAML 2.0 identity provider.
+      class Saml
+        include Google::Apis::Core::Hashable
+      
+        # Required. SAML Identity provider configuration metadata xml doc. The xml
+        # document should comply with [SAML 2.0 specification](https://www.oasis-open.
+        # org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf).
+        # The max size of the acceptable xml document will be bounded to 128k characters.
+        # The metadata xml document should satisfy the following constraints: 1) Must
+        # contain an Identity Provider Entity ID. 2) Must contain at least one non-
+        # expired signing key certificate. 3) For each signing key: a) Valid from should
+        # be no more than 7 days from now. b) Valid to should be no more than 10 years
+        # in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml.
+        # When updating the provider's metadata xml, at lease one non-expired signing
+        # key must overlap with the existing metadata. This requirement is skipped if
+        # there are no non-expired signing keys present in the existing metadata
+        # Corresponds to the JSON property `idpMetadataXml`
+        # @return [String]
+        attr_accessor :idp_metadata_xml
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_metadata_xml = args[:idp_metadata_xml] if args.key?(:idp_metadata_xml)
+        end
+      end
+      
       # An IAM service account. A service account is an account for an application or
       # a virtual machine (VM) instance, not a person. You can use a service account
       # to call Google APIs. To learn more, read the [overview of service accounts](
@@ -1996,6 +2026,11 @@ module Google
         # @return [Google::Apis::IamV1::Oidc]
         attr_accessor :oidc
       
+        # Represents an SAML 2.0 identity provider.
+        # Corresponds to the JSON property `saml`
+        # @return [Google::Apis::IamV1::Saml]
+        attr_accessor :saml
+      
         # Output only. The state of the provider.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2015,6 +2050,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
+          @saml = args[:saml] if args.key?(:saml)
           @state = args[:state] if args.key?(:state)
         end
       end
