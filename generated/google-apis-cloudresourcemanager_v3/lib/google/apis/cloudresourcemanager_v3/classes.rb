@@ -424,6 +424,59 @@ module Google
         end
       end
       
+      # An EffectiveTag represents a tag that applies to a resource during policy
+      # evaluation. Tags can be either directly bound to a resource or inherited from
+      # its ancestor. EffectiveTag contains the name and namespaced_name of the tag
+      # value and tag key, with additional fields of `inherited` to indicate the
+      # inheritance status of the effective tag.
+      class EffectiveTag
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the inheritance status of a tag value attached to the given resource.
+        # If the tag value is inherited from one of the resource's ancestors, inherited
+        # will be true. If false, then the tag value is directly attached to the
+        # resource, inherited will be false.
+        # Corresponds to the JSON property `inherited`
+        # @return [Boolean]
+        attr_accessor :inherited
+        alias_method :inherited?, :inherited
+      
+        # The namespaced_name of the TagKey, in the format of ``organization_id`/`
+        # tag_key_short_name``
+        # Corresponds to the JSON property `namespacedTagKey`
+        # @return [String]
+        attr_accessor :namespaced_tag_key
+      
+        # Namespaced name of the TagValue. Must be in the format ``organization_id`/`
+        # tag_key_short_name`/`tag_value_short_name``.
+        # Corresponds to the JSON property `namespacedTagValue`
+        # @return [String]
+        attr_accessor :namespaced_tag_value
+      
+        # The name of the TagKey, in the format `tagKeys/`id``, such as `tagKeys/123`.
+        # Corresponds to the JSON property `tagKey`
+        # @return [String]
+        attr_accessor :tag_key
+      
+        # Resource name for TagValue in the format `tagValues/456`.
+        # Corresponds to the JSON property `tagValue`
+        # @return [String]
+        attr_accessor :tag_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inherited = args[:inherited] if args.key?(:inherited)
+          @namespaced_tag_key = args[:namespaced_tag_key] if args.key?(:namespaced_tag_key)
+          @namespaced_tag_value = args[:namespaced_tag_value] if args.key?(:namespaced_tag_value)
+          @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @tag_value = args[:tag_value] if args.key?(:tag_value)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -726,6 +779,36 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @reason = args[:reason] if args.key?(:reason)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
+        end
+      end
+      
+      # The response of ListEffectiveTags.
+      class ListEffectiveTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A possibly paginated list of effective tags for the specified resource.
+        # Corresponds to the JSON property `effectiveTags`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::EffectiveTag>]
+        attr_accessor :effective_tags
+      
+        # Pagination token. If the result set is too large to fit in a single response,
+        # this token is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results. When `next_page_token` is not filled in,
+        # there is no next page and the list returned is the last page in the result set.
+        # Pagination tokens have a limited lifetime.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_tags = args[:effective_tags] if args.key?(:effective_tags)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
