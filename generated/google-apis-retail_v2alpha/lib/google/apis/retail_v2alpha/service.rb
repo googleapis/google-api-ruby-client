@@ -1419,15 +1419,12 @@ module Google
         # Makes a recommendation prediction.
         # @param [String] placement
         #   Required. Full resource name of the format: `name=projects/*/locations/global/
-        #   catalogs/default_catalog/servingConfigs/*` or `name=projects/*/locations/
-        #   global/catalogs/default_catalog/placements/*`. We recommend using the `
-        #   servingConfigs` resource. `placements` is a legacy resource. The ID of the
-        #   Recommendations AI serving config or placement. Before you can request
-        #   predictions from your model, you must create at least one serving config or
-        #   placement for it. For more information, see [Managing serving configurations] (
-        #   https://cloud.google.com/retail/docs/manage-configs). The full list of
-        #   available serving configs can be seen at https://console.cloud.google.com/ai/
-        #   retail/catalogs/default_catalog/configs
+        #   catalogs/default_catalog/placements/*` The ID of the Recommendations AI
+        #   placement. Before you can request predictions from your model, you must create
+        #   at least one placement for it. For more information, see [Managing placements](
+        #   https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
+        #   The full list of available placements can be seen at https://console.cloud.
+        #   google.com/recommendation/catalogs/default_catalog/placements
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictRequest] google_cloud_retail_v2alpha_predict_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1462,12 +1459,10 @@ module Google
         # Search enabled. Please enable Retail Search on Cloud Console before using this
         # feature.
         # @param [String] placement
-        #   Required. The resource name of the Retail Search serving config, such as `
-        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
-        #   default_serving_config` or the name of the legacy placement resource, such as `
-        #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
-        #   . This field is used to identify the serving configuration name and the set of
-        #   models that will be used to make the search.
+        #   Required. The resource name of the search engine placement, such as `projects/*
+        #   /locations/global/catalogs/default_catalog/placements/default_search`. This
+        #   field is used to identify the serving configuration name and the set of models
+        #   that will be used to make the search.
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest] google_cloud_retail_v2alpha_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1722,48 +1717,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Makes a recommendation prediction.
-        # @param [String] placement
-        #   Required. Full resource name of the format: `name=projects/*/locations/global/
-        #   catalogs/default_catalog/servingConfigs/*` or `name=projects/*/locations/
-        #   global/catalogs/default_catalog/placements/*`. We recommend using the `
-        #   servingConfigs` resource. `placements` is a legacy resource. The ID of the
-        #   Recommendations AI serving config or placement. Before you can request
-        #   predictions from your model, you must create at least one serving config or
-        #   placement for it. For more information, see [Managing serving configurations] (
-        #   https://cloud.google.com/retail/docs/manage-configs). The full list of
-        #   available serving configs can be seen at https://console.cloud.google.com/ai/
-        #   retail/catalogs/default_catalog/configs
-        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictRequest] google_cloud_retail_v2alpha_predict_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def predict_project_location_catalog_serving_config(placement, google_cloud_retail_v2alpha_predict_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2alpha/{+placement}:predict', options)
-          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictRequest::Representation
-          command.request_object = google_cloud_retail_v2alpha_predict_request_object
-          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictResponse::Representation
-          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPredictResponse
-          command.params['placement'] = placement unless placement.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Disables a Control on the specified ServingConfig. The control is removed from
         # the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for
         # the ServingConfig.
@@ -1796,46 +1749,6 @@ module Google
           command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
           command.params['servingConfig'] = serving_config unless serving_config.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please enable Retail Search on Cloud Console before using this
-        # feature.
-        # @param [String] placement
-        #   Required. The resource name of the Retail Search serving config, such as `
-        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
-        #   default_serving_config` or the name of the legacy placement resource, such as `
-        #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
-        #   . This field is used to identify the serving configuration name and the set of
-        #   models that will be used to make the search.
-        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest] google_cloud_retail_v2alpha_search_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_catalog_serving_configs(placement, google_cloud_retail_v2alpha_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2alpha/{+placement}:search', options)
-          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest::Representation
-          command.request_object = google_cloud_retail_v2alpha_search_request_object
-          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse::Representation
-          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse
-          command.params['placement'] = placement unless placement.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

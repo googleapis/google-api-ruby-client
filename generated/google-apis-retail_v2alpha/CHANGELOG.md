@@ -1,5 +1,9 @@
 # Release history for google-apis-retail_v2alpha
 
+### v0.38.0 (2022-04-28)
+
+* Regenerated from discovery document revision 20220421
+
 ### v0.37.0 (2022-04-22)
 
 * Regenerated from discovery document revision 20220414
