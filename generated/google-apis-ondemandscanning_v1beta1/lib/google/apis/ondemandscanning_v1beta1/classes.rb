@@ -908,6 +908,26 @@ module Google
         end
       end
       
+      # Indicates the location at which a package was found.
+      class FileLocation
+        include Google::Apis::Core::Hashable
+      
+        # For jars that are contained inside .war files, this filepath can indicate the
+        # path to war file combined with the path to jar file.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+        end
+      end
+      
       # A set of properties that uniquely identify a given Docker image.
       class Fingerprint
         include Google::Apis::Core::Hashable
@@ -1637,6 +1657,17 @@ module Google
         # @return [String]
         attr_accessor :cpe_uri
       
+        # The path to the jar file / go binary file.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::FileLocation>]
+        attr_accessor :file_location
+      
+        # HashDigest stores the SHA512 hash digest of the jar file if the package is of
+        # type Maven. This field will be unset for non Maven packages.
+        # Corresponds to the JSON property `hashDigest`
+        # @return [String]
+        attr_accessor :hash_digest
+      
         # The OS affected by a vulnerability This field is deprecated and the
         # information is in cpe_uri
         # Corresponds to the JSON property `os`
@@ -1659,12 +1690,6 @@ module Google
         # @return [String]
         attr_accessor :package_type
       
-        # The path to the jar file / go binary file. The same jar file can be in
-        # multiple locations - all of them will be listed.
-        # Corresponds to the JSON property `pathToFile`
-        # @return [Array<String>]
-        attr_accessor :path_to_file
-      
         # 
         # Corresponds to the JSON property `unused`
         # @return [String]
@@ -1682,11 +1707,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @file_location = args[:file_location] if args.key?(:file_location)
+          @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
           @os = args[:os] if args.key?(:os)
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
-          @path_to_file = args[:path_to_file] if args.key?(:path_to_file)
           @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
