@@ -50,6 +50,47 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Return a list of effective tags for the given cloud resource, as specified in `
+        # parent`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of effective tags to return in the response. The
+        #   server allows a maximum of 300 effective tags to return in a single page. If
+        #   unspecified, the server will use 100 as the default.
+        # @param [String] page_token
+        #   Optional. A pagination token returned from a previous call to `
+        #   ListEffectiveTags` that indicates from where this listing should continue.
+        # @param [String] parent
+        #   Required. The full resource name of a resource for which you want to list the
+        #   effective tags. E.g. "//cloudresourcemanager.googleapis.com/projects/123"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListEffectiveTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListEffectiveTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_effective_tags(page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/effectiveTags', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListEffectiveTagsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListEffectiveTagsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a folder in the resource hierarchy. Returns an `Operation` which can
         # be used to track the progress of the folder creation workflow. Upon success,
         # the `Operation.response` field will be populated with the created Folder. In
