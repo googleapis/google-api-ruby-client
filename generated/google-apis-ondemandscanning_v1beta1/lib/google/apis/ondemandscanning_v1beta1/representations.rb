@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Fingerprint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +656,13 @@ module Google
         end
       end
       
+      class FileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+        end
+      end
+      
       class Fingerprint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -856,11 +869,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpe_uri, as: 'cpeUri'
+          collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1beta1::FileLocation, decorator: Google::Apis::OndemandscanningV1beta1::FileLocation::Representation
+      
+          property :hash_digest, as: 'hashDigest'
           property :os, as: 'os'
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
           property :package_type, as: 'packageType'
-          collection :path_to_file, as: 'pathToFile'
           property :unused, as: 'unused'
           property :version, as: 'version'
         end
