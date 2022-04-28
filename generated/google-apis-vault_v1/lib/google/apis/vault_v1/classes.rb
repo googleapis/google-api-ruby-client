@@ -1561,6 +1561,11 @@ module Google
         # @return [Google::Apis::VaultV1::SharedDriveInfo]
         attr_accessor :shared_drive_info
       
+        # The published site URLs of new Google Sites to search
+        # Corresponds to the JSON property `sitesUrlInfo`
+        # @return [Google::Apis::VaultV1::SitesUrlInfo]
+        attr_accessor :sites_url_info
+      
         # The start time for the search query. Specify in GMT. The value is rounded to
         # 12 AM on the specified date.
         # Corresponds to the JSON property `startTime`
@@ -1610,6 +1615,7 @@ module Google
           @org_unit_info = args[:org_unit_info] if args.key?(:org_unit_info)
           @search_method = args[:search_method] if args.key?(:search_method)
           @shared_drive_info = args[:shared_drive_info] if args.key?(:shared_drive_info)
+          @sites_url_info = args[:sites_url_info] if args.key?(:sites_url_info)
           @start_time = args[:start_time] if args.key?(:start_time)
           @team_drive_info = args[:team_drive_info] if args.key?(:team_drive_info)
           @terms = args[:terms] if args.key?(:terms)
@@ -1778,6 +1784,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @shared_drive_ids = args[:shared_drive_ids] if args.key?(:shared_drive_ids)
+        end
+      end
+      
+      # The published site URLs of new Google Sites to search
+      class SitesUrlInfo
+        include Google::Apis::Core::Hashable
+      
+        # A list of published site URLs.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @urls = args[:urls] if args.key?(:urls)
         end
       end
       
