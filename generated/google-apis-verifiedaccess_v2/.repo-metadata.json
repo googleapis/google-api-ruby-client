@@ -1,0 +1,7 @@
+{
+    "api_id": "verifiedaccess:v2",
+    "name_pretty": "Chrome Verified Access API",
+    "distribution_name": "google-apis-verifiedaccess_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
