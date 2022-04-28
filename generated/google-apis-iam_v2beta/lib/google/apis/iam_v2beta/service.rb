@@ -54,7 +54,7 @@ module Google
         # Creates a policy.
         # @param [String] parent
         #   Required. The resource that the policy is attached to, along with the kind of
-        #   policy to create. Format: `policies/`attachment-point`/denypolicies` The
+        #   policy to create. Format: `policies/`attachment_point`/denypolicies` The
         #   attachment point is identified by its URL-encoded full resource name, which
         #   means that the forward-slash character, `/`, must be written as `%2F`. For
         #   example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/
@@ -99,7 +99,7 @@ module Google
         # Deletes a policy. This action is permanent.
         # @param [String] name
         #   Required. The resource name of the policy to delete. Format: `policies/`
-        #   attachment-point`/denypolicies/`policy-id`` Use the URL-encoded full resource
+        #   attachment_point`/denypolicies/`policy_id`` Use the URL-encoded full resource
         #   name, which means that the forward-slash character, `/`, must be written as `%
         #   2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%
         #   2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the
@@ -141,7 +141,7 @@ module Google
         # Gets a policy.
         # @param [String] name
         #   Required. The resource name of the policy to retrieve. Format: `policies/`
-        #   attachment-point`/denypolicies/`policy-id`` Use the URL-encoded full resource
+        #   attachment_point`/denypolicies/`policy_id`` Use the URL-encoded full resource
         #   name, which means that the forward-slash character, `/`, must be written as `%
         #   2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%
         #   2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the
@@ -179,7 +179,7 @@ module Google
         # omitted.
         # @param [String] parent
         #   Required. The resource that the policy is attached to, along with the kind of
-        #   policy to list. Format: `policies/`attachment-point`/denypolicies` The
+        #   policy to list. Format: `policies/`attachment_point`/denypolicies` The
         #   attachment point is identified by its URL-encoded full resource name, which
         #   means that the forward-slash character, `/`, must be written as `%2F`. For
         #   example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/
@@ -227,7 +227,7 @@ module Google
         # pattern helps prevent conflicts between concurrent updates.
         # @param [String] name
         #   Immutable. The resource name of the `Policy`, which must be unique. Format: `
-        #   policies/`attachment-point`/denypolicies/`policy-id`` The attachment point is
+        #   policies/`attachment_point`/denypolicies/`policy_id`` The attachment point is
         #   identified by its URL-encoded full resource name, which means that the forward-
         #   slash character, `/`, must be written as `%2F`. For example, `policies/
         #   cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-
