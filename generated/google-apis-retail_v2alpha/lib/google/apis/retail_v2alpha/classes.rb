@@ -1567,12 +1567,13 @@ module Google
       class GoogleCloudRetailV2alphaCustomAttribute
         include Google::Apis::Core::Hashable
       
-        # This field will only be used when AttributesConfig.attribute_config_level of
-        # the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute
-        # values are indexed, so that it can be filtered, faceted or boosted in
-        # SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.
-        # filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more
-        # details.
+        # This field is normally ignored unless AttributesConfig.attribute_config_level
+        # of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
+        # You may learn more on [configuration mode] (https://cloud.google.com/retail/
+        # docs/attribute-config#config-modes). if true, custom attribute values are
+        # indexed, so that it can be filtered, faceted or boosted in SearchService.
+        # Search. This field is ignored in a UserEvent. See SearchRequest.filter,
+        # SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
         # Corresponds to the JSON property `indexable`
         # @return [Boolean]
         attr_accessor :indexable
@@ -1585,11 +1586,13 @@ module Google
         # @return [Array<Float>]
         attr_accessor :numbers
       
-        # This field will only be used when AttributesConfig.attribute_config_level of
-        # the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute
-        # values are searchable by text queries in SearchService.Search. This field is
-        # ignored in a UserEvent. Only set if type text is set. Otherwise, a
-        # INVALID_ARGUMENT error is returned.
+        # This field is normally ignored unless AttributesConfig.attribute_config_level
+        # of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
+        # You may learn more on [configuration mode] (https://cloud.google.com/retail/
+        # docs/attribute-config#config-modes). If true, custom attribute values are
+        # searchable by text queries in SearchService.Search. This field is ignored in a
+        # UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error
+        # is returned.
         # Corresponds to the JSON property `searchable`
         # @return [Boolean]
         attr_accessor :searchable
@@ -4609,7 +4612,9 @@ module Google
         # @return [String]
         attr_accessor :attribution_token
       
-        # If spell correction applies, the corrected query. Otherwise, empty.
+        # Contains the spell corrected query, if found. If the spell correction type is
+        # AUTOMATIC, then the search results will be based on corrected_query, otherwise
+        # the original query will be used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
@@ -5247,9 +5252,9 @@ module Google
         # @return [String]
         attr_accessor :page_view_id
       
-        # The main product details related to the event. This field is required for the
-        # following event types: * `add-to-cart` * `detail-page-view` * `purchase-
-        # complete` * `search` In a `search` event, this field represents the products
+        # The main product details related to the event. This field is optional except
+        # for the following event types: * `add-to-cart` * `detail-page-view` * `
+        # purchase-complete` In a `search` event, this field represents the products
         # returned to the end user on the current page (the end user may have not
         # finished browsing the whole page yet). When a new page is returned to the end
         # user, after pagination/filtering/ordering even for the same query, a new `
