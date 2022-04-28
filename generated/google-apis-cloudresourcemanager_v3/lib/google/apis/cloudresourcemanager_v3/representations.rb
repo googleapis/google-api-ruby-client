@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class Lien
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEffectiveTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -500,6 +512,17 @@ module Google
         end
       end
       
+      class EffectiveTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inherited, as: 'inherited'
+          property :namespaced_tag_key, as: 'namespacedTagKey'
+          property :namespaced_tag_value, as: 'namespacedTagValue'
+          property :tag_key, as: 'tagKey'
+          property :tag_value, as: 'tagValue'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -571,6 +594,15 @@ module Google
           property :parent, as: 'parent'
           property :reason, as: 'reason'
           collection :restrictions, as: 'restrictions'
+        end
+      end
+      
+      class ListEffectiveTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_tags, as: 'effectiveTags', class: Google::Apis::CloudresourcemanagerV3::EffectiveTag, decorator: Google::Apis::CloudresourcemanagerV3::EffectiveTag::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
