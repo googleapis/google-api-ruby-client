@@ -10004,7 +10004,6 @@ module Google
           property :initial_delay_sec, as: 'initialDelaySec'
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
-          property :update_instances, as: 'updateInstances'
         end
       end
       
@@ -10018,6 +10017,7 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_update_on_repair, as: 'forceUpdateOnRepair'
           property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
       
         end
@@ -11163,6 +11163,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsArpEntry::Representation
       
+          property :bundle_aggregation_type, as: 'bundleAggregationType'
+          property :bundle_operational_status, as: 'bundleOperationalStatus'
           collection :links, as: 'links', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkStatus::Representation
       
           property :mac_address, as: 'macAddress'
@@ -11205,6 +11207,7 @@ module Google
       
           property :macsec, as: 'macsec', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus::Representation
       
+          property :operational_status, as: 'operationalStatus'
           property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower::Representation
       
           property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower::Representation
@@ -14431,6 +14434,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          hash :resource_policies, as: 'resourcePolicies'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
