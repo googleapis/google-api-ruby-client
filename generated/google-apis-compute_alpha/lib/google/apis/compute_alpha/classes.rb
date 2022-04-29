@@ -15291,7 +15291,7 @@ module Google
         # @return [String]
         attr_accessor :instance_group
       
-        # Instance lifecycle policy for this Instance Group Manager.
+        # The repair policy for this managed instance group.
         # Corresponds to the JSON property `instanceLifecyclePolicy`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicy]
         attr_accessor :instance_lifecycle_policy
@@ -15748,11 +15748,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::FixedOrPercent]
         attr_accessor :max_unavailable
       
-        # 
-        # Corresponds to the JSON property `updateInstances`
-        # @return [String]
-        attr_accessor :update_instances
-      
         def initialize(**args)
            update!(**args)
         end
@@ -15763,7 +15758,6 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
-          @update_instances = args[:update_instances] if args.key?(:update_instances)
         end
       end
       
@@ -15796,6 +15790,16 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
+        # A bit indicating whether to forcefully apply the group's latest configuration
+        # when repairing a VM. Valid options are: - NO (default): If configuration
+        # updates are available, they are not forcefully applied during repair. However,
+        # if you've set up a proactive type of update policy, then configuration updates
+        # are applied as usual. - YES: If configuration updates are available, they are
+        # applied during repair.
+        # Corresponds to the JSON property `forceUpdateOnRepair`
+        # @return [String]
+        attr_accessor :force_update_on_repair
+      
         # The configuration for metadata based readiness signal sent by the instance
         # during initialization when stopping / suspending an instance. The Instance
         # Group Manager will wait for a signal that indicates successful initialization
@@ -15816,6 +15820,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
           @metadata_based_readiness_signal = args[:metadata_based_readiness_signal] if args.key?(:metadata_based_readiness_signal)
         end
       end
@@ -20172,6 +20177,16 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::InterconnectDiagnosticsArpEntry>]
         attr_accessor :arp_caches
       
+        # The aggregation type of the bundle interface.
+        # Corresponds to the JSON property `bundleAggregationType`
+        # @return [String]
+        attr_accessor :bundle_aggregation_type
+      
+        # The operational status of the bundle interface.
+        # Corresponds to the JSON property `bundleOperationalStatus`
+        # @return [String]
+        attr_accessor :bundle_operational_status
+      
         # A list of InterconnectDiagnostics.LinkStatus objects, describing the status
         # for each link on the Interconnect.
         # Corresponds to the JSON property `links`
@@ -20190,6 +20205,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @arp_caches = args[:arp_caches] if args.key?(:arp_caches)
+          @bundle_aggregation_type = args[:bundle_aggregation_type] if args.key?(:bundle_aggregation_type)
+          @bundle_operational_status = args[:bundle_operational_status] if args.key?(:bundle_operational_status)
           @links = args[:links] if args.key?(:links)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
         end
@@ -20318,6 +20335,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus]
         attr_accessor :macsec
       
+        # The operational status of the link.
+        # Corresponds to the JSON property `operationalStatus`
+        # @return [String]
+        attr_accessor :operational_status
+      
         # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
         # value and status of the received light level.
         # Corresponds to the JSON property `receivingOpticalPower`
@@ -20341,6 +20363,7 @@ module Google
           @google_demarc = args[:google_demarc] if args.key?(:google_demarc)
           @lacp_status = args[:lacp_status] if args.key?(:lacp_status)
           @macsec = args[:macsec] if args.key?(:macsec)
+          @operational_status = args[:operational_status] if args.key?(:operational_status)
           @receiving_optical_power = args[:receiving_optical_power] if args.key?(:receiving_optical_power)
           @transmitting_optical_power = args[:transmitting_optical_power] if args.key?(:transmitting_optical_power)
         end
@@ -32776,6 +32799,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Resource policies to be added to this reservation. The key is defined by user,
+        # and the value is resource policy url. This is to define placement policy with
+        # reservation.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_policies
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -32834,6 +32864,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -35595,7 +35626,7 @@ module Google
         attr_accessor :enable_endpoint_independent_mapping
         alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
       
-        # List of Natted endpoint types supported by the Nat Gateway. If the list is
+        # List of NAT-ted endpoint types supported by the Nat Gateway. If the list is
         # empty, then it will be equivalent to include ENDPOINT_TYPE_VM
         # Corresponds to the JSON property `endpointTypes`
         # @return [Array<String>]
