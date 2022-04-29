@@ -260,11 +260,11 @@ module Google
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-      # DateTime * google.protobuf.Timestamp
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -306,11 +306,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::Date]
         attr_accessor :end_date
@@ -318,11 +318,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::ManagedidentitiesV1alpha1::Date]
         attr_accessor :start_date
@@ -484,8 +484,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -772,11 +771,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. notification_parameters are information that service producers may
+        # Optional. notification_parameter are information that service producers may
         # like to include that is not relevant to Rollout. This parameter will only be
         # passed to Gamma and Cloud Logging for notification/logging purpose.
         # Corresponds to the JSON property `notificationParameters`
-        # @return [Hash<String,String>]
+        # @return [Hash<String,Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter>]
         attr_accessor :notification_parameters
       
         # Output only. Custom string attributes used primarily to expose producer-
@@ -978,6 +977,25 @@ module Google
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
+        end
+      end
+      
+      # Contains notification related data.
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Array of string values. e.g. instance's replica information.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
