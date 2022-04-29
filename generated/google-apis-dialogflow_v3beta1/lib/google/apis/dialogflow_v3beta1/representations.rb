@@ -1282,6 +1282,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4642,6 +4648,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_settings, as: 'audioExportSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings::Representation
+      
           property :deidentify_template, as: 'deidentifyTemplate'
           property :display_name, as: 'displayName'
           property :insights_export_settings, as: 'insightsExportSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings::Representation
@@ -4652,6 +4660,16 @@ module Google
           property :redaction_scope, as: 'redactionScope'
           property :redaction_strategy, as: 'redactionStrategy'
           property :retention_window_days, as: 'retentionWindowDays'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_export_pattern, as: 'audioExportPattern'
+          property :audio_format, as: 'audioFormat'
+          property :enable_audio_redaction, as: 'enableAudioRedaction'
+          property :gcs_bucket, as: 'gcsBucket'
         end
       end
       

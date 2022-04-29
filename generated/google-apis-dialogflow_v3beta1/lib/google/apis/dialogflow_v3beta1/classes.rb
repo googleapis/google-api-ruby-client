@@ -7524,6 +7524,11 @@ module Google
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
         include Google::Apis::Core::Hashable
       
+        # Settings for exporting audio.
+        # Corresponds to the JSON property `audioExportSettings`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings]
+        attr_accessor :audio_export_settings
+      
         # [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this
         # template to define de-identification configuration for the content. The `DLP
         # De-identify Templates Reader` role is needed on the Dialogflow service
@@ -7603,6 +7608,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_export_settings = args[:audio_export_settings] if args.key?(:audio_export_settings)
           @deidentify_template = args[:deidentify_template] if args.key?(:deidentify_template)
           @display_name = args[:display_name] if args.key?(:display_name)
           @insights_export_settings = args[:insights_export_settings] if args.key?(:insights_export_settings)
@@ -7612,6 +7618,46 @@ module Google
           @redaction_scope = args[:redaction_scope] if args.key?(:redaction_scope)
           @redaction_strategy = args[:redaction_strategy] if args.key?(:redaction_strategy)
           @retention_window_days = args[:retention_window_days] if args.key?(:retention_window_days)
+        end
+      end
+      
+      # Settings for exporting audio.
+      class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings
+        include Google::Apis::Core::Hashable
+      
+        # Filename pattern for exported audio.
+        # Corresponds to the JSON property `audioExportPattern`
+        # @return [String]
+        attr_accessor :audio_export_pattern
+      
+        # File format for exported audio file. Currently only in telephony recordings.
+        # Corresponds to the JSON property `audioFormat`
+        # @return [String]
+        attr_accessor :audio_format
+      
+        # Enable audio redaction if it is true.
+        # Corresponds to the JSON property `enableAudioRedaction`
+        # @return [Boolean]
+        attr_accessor :enable_audio_redaction
+        alias_method :enable_audio_redaction?, :enable_audio_redaction
+      
+        # Cloud Storage bucket to export audio record to. You need to grant `service-@
+        # gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in
+        # this bucket.
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_export_pattern = args[:audio_export_pattern] if args.key?(:audio_export_pattern)
+          @audio_format = args[:audio_format] if args.key?(:audio_format)
+          @enable_audio_redaction = args[:enable_audio_redaction] if args.key?(:enable_audio_redaction)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
         end
       end
       
