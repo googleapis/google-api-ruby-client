@@ -159,14 +159,14 @@ module Google
         # Creates a new BackupPlan in a given location.
         # @param [String] parent
         #   Required. The location within which to create the BackupPlan. Format: projects/
-        #   `project`/locations/`location`
+        #   */locations/*
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] backup_plan_id
         #   Required. The client-provided short name for the BackupPlan resource. This
-        #   name must: a. be between 1 and 63 characters long (inclusive) b. consist of
-        #   only lower-case ASCII letters, numbers, and dashes c. start with a lower-case
-        #   letter d. end with a lower-case letter or number e. be unique within the set
-        #   of BackupPlans in this location
+        #   name must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of
+        #   BackupPlans in this location
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,11 +199,11 @@ module Google
         
         # Deletes an existing BackupPlan.
         # @param [String] name
-        #   Required. Fully qualified BackupPlan name. Format: projects/`project`/
-        #   locations/`location`/backupPlans/`backup_plan`
+        #   Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/
+        #   backupPlans/*
         # @param [String] etag
-        #   If provided, this value must match the value currently assigned to the target
-        #   resource.
+        #   If provided, this value must match the current value of the target BackupPlan'
+        #   s etag field or the request is rejected.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -234,8 +234,8 @@ module Google
         
         # Retrieve the details of a single BackupPlan.
         # @param [String] name
-        #   Required. Fully qualified BackupPlan name. Format: projects/`project`/
-        #   locations/`location`/backupPlans/`backup_plan`
+        #   Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/
+        #   backupPlans/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,11 +310,11 @@ module Google
         # Lists BackupPlans in a given location.
         # @param [String] parent
         #   Required. The location that contains the BackupPlans to list. Format: projects/
-        #   `project`/locations/`location`
+        #   */locations/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
@@ -358,8 +358,8 @@ module Google
         
         # Update a BackupPlan.
         # @param [String] name
-        #   Output only. [Output Only] The full name of the BackupPlan resource. Format:
-        #   projects/*/locations/*/backupPlans/*
+        #   Output only. The full name of the BackupPlan resource. Format: projects/*/
+        #   locations/*/backupPlans/*
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the BackupPlan
@@ -476,15 +476,15 @@ module Google
         
         # Creates a Backup for the given BackupPlan.
         # @param [String] parent
-        #   Required. The BackupPlan within which to create the Backup. Format: projects/`
-        #   project`/locations/`location`/backupPlans/`backup_plan`
+        #   Required. The BackupPlan within which to create the Backup. Format: projects/*/
+        #   locations/*/backupPlans/*
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] backup_id
-        #   The client-provided short name for the Backup resource. This name must: a. be
-        #   between 1 and 63 characters long (inclusive) b. consist of only lower-case
-        #   ASCII letters, numbers, and dashes c. start with a lower-case letter d. end
-        #   with a lower-case letter or number e. be unique within the set of Backups in
-        #   this BackupPlan
+        #   The client-provided short name for the Backup resource. This name must: - be
+        #   between 1 and 63 characters long (inclusive) - consist of only lower-case
+        #   ASCII letters, numbers, and dashes - start with a lower-case letter - end with
+        #   a lower-case letter or number - be unique within the set of Backups in this
+        #   BackupPlan
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -517,13 +517,14 @@ module Google
         
         # Deletes an existing Backup.
         # @param [String] name
-        #   Required. Name of the Backup resource. Format: projects/`project`/locations/`
-        #   location`/backupPlans/`backup_plan`/backups/`backup`
+        #   Required. Name of the Backup resource. Format: projects/*/locations/*/
+        #   backupPlans/*/backups/*
         # @param [String] etag
-        #   etag, if provided, it must match the server's etag for the delete to happen.
+        #   If provided, this value must match the current value of the target Backup's
+        #   etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any volumeBackups below this backup will also be deleted.
-        #   Otherwise, the request will only succeed if the backup has no volumeBackups.
+        #   If set to true, any VolumeBackups below this Backup will also be deleted.
+        #   Otherwise, the request will only succeed if the Backup has no VolumeBackups.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -555,8 +556,8 @@ module Google
         
         # Retrieve the details of a single Backup.
         # @param [String] name
-        #   Required. Full name of the Backup resource. Format: projects/`project`/
-        #   locations/`location`/backupPlans/`backup_plan`/backups/`backup`
+        #   Required. Full name of the Backup resource. Format: projects/*/locations/*/
+        #   backupPlans/*/backups/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -630,12 +631,12 @@ module Google
         
         # Lists the Backups for a given BackupPlan.
         # @param [String] parent
-        #   Required. The BackupPlan that contains the Backups to list. Format: projects/`
-        #   project`/locations/`location`/backupPlans/`backup_plan`
+        #   Required. The BackupPlan that contains the Backups to list. Format: projects/*/
+        #   locations/*/backupPlans/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
@@ -795,9 +796,8 @@ module Google
         
         # Retrieve the details of a single VolumeBackup.
         # @param [String] name
-        #   Required. Full name of the VolumeBackup resource. Format: projects/`project`/
-        #   locations/`location`/backupPlans/`backup_plan`/backups/`backup`/volumeBackups/`
-        #   volume_backup`
+        #   Required. Full name of the VolumeBackup resource. Format: projects/*/locations/
+        #   */backupPlans/*/backups/*/volumeBackups/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -872,11 +872,11 @@ module Google
         # Lists the VolumeBackups for a given Backup.
         # @param [String] parent
         #   Required. The Backup that contains the VolumeBackups to list. Format: projects/
-        #   `project`/locations/`location`/backupPlans/`backup_plan`/backups/`backup`
+        #   */locations/*/backupPlans/*/backups/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
@@ -1112,14 +1112,14 @@ module Google
         # Creates a new RestorePlan in a given location.
         # @param [String] parent
         #   Required. The location within which to create the RestorePlan. Format:
-        #   projects/`project`/locations/`location`
+        #   projects/*/locations/*
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] restore_plan_id
         #   Required. The client-provided short name for the RestorePlan resource. This
-        #   name must: a. be between 1 and 63 characters long (inclusive) b. consist of
-        #   only lower-case ASCII letters, numbers, and dashes c. start with a lower-case
-        #   letter d. end with a lower-case letter or number e. be unique within the set
-        #   of RestorePlans in this location
+        #   name must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of
+        #   RestorePlans in this location
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1152,14 +1152,14 @@ module Google
         
         # Deletes an existing RestorePlan.
         # @param [String] name
-        #   Required. Fully qualified RestorePlan name. Format: projects/`project`/
-        #   locations/`location`/restorePlans/`restore_plan`
+        #   Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/
+        #   restorePlans/*
         # @param [String] etag
-        #   If provided, this value must match the value currently assigned to the target
-        #   resource.
+        #   If provided, this value must match the current value of the target RestorePlan'
+        #   s etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any restores below this restorePlan will also be deleted.
-        #   Otherwise, the request will only succeed if the restorePlan has no restores.
+        #   If set to true, any Restores below this RestorePlan will also be deleted.
+        #   Otherwise, the request will only succeed if the RestorePlan has no Restores.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1191,8 +1191,8 @@ module Google
         
         # Retrieve the details of a single RestorePlan.
         # @param [String] name
-        #   Required. Fully qualified RestorePlan name. Format: projects/`project`/
-        #   locations/`location`/restorePlans/`restore_plan`
+        #   Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/
+        #   restorePlans/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1267,11 +1267,11 @@ module Google
         # Lists RestorePlans in a given location.
         # @param [String] parent
         #   Required. The location that contains the RestorePlans to list. Format:
-        #   projects/`project`/locations/`location`
+        #   projects/*/locations/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
@@ -1315,8 +1315,8 @@ module Google
         
         # Update a RestorePlan.
         # @param [String] name
-        #   Output only. [Output Only] The full name of the RestorePlan resource. Format:
-        #   projects/*/locations/*/restorePlans/*
+        #   Output only. The full name of the RestorePlan resource. Format: projects/*/
+        #   locations/*/restorePlans/*.
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the RestorePlan
@@ -1433,14 +1433,14 @@ module Google
         # Creates a new Restore for the given RestorePlan.
         # @param [String] parent
         #   Required. The RestorePlan within which to create the Restore. Format: projects/
-        #   `project`/locations/`location`/restorePlans/`restore_plan`
+        #   */locations/*/restorePlans/*
         # @param [Google::Apis::GkebackupV1::Restore] restore_object
         # @param [String] restore_id
         #   Required. The client-provided short name for the Restore resource. This name
-        #   must: a. be between 1 and 63 characters long (inclusive) b. consist of only
-        #   lower-case ASCII letters, numbers, and dashes c. start with a lower-case
-        #   letter d. end with a lower-case letter or number e. be unique within the set
-        #   of Restores in this RestorePlan.
+        #   must: - be between 1 and 63 characters long (inclusive) - consist of only
+        #   lower-case ASCII letters, numbers, and dashes - start with a lower-case letter
+        #   - end with a lower-case letter or number - be unique within the set of
+        #   Restores in this RestorePlan.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1473,13 +1473,14 @@ module Google
         
         # Deletes an existing Restore.
         # @param [String] name
-        #   Required. Full name of the Restore Format: projects/`project`/locations/`
-        #   location`/restorePlans/`restore_plan`/restores/`restore`
+        #   Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/
+        #   */restores/*
         # @param [String] etag
-        #   etag, if provided, it must match the server's etag for delete to happen.
+        #   If provided, this value must match the current value of the target Restore's
+        #   etag field or the request is rejected.
         # @param [Boolean] force
-        #   If set to true, any volumeRestores below this restore will also be deleted.
-        #   Otherwise, the request will only succeed if the restore has no volumeRestores.
+        #   If set to true, any VolumeRestores below this restore will also be deleted.
+        #   Otherwise, the request will only succeed if the restore has no VolumeRestores.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1511,8 +1512,8 @@ module Google
         
         # Retrieves the details of a single Restore.
         # @param [String] name
-        #   Required. Name of the restore resource. Format: projects/`project`/locations/`
-        #   location`/restorePlans/`restore_plan`/restores/`restore`
+        #   Required. Name of the restore resource. Format: projects/*/locations/*/
+        #   restorePlans/*/restores/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1587,11 +1588,11 @@ module Google
         # Lists the Restores for a given RestorePlan.
         # @param [String] parent
         #   Required. The RestorePlan that contains the Restores to list. Format: projects/
-        #   `project`/locations/`location`/restorePlans/`restore_plan`
+        #   */locations/*/restorePlans/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
@@ -1751,9 +1752,8 @@ module Google
         
         # Retrieve the details of a single VolumeRestore.
         # @param [String] name
-        #   Required. Full name of the VolumeRestore resource. Format: projects/`project`/
-        #   locations/`location`/restorePlans/`restore_plan`/restores/`restore`/
-        #   volumeRestores/`volume_restore`
+        #   Required. Full name of the VolumeRestore resource. Format: projects/*/
+        #   locations/*/restorePlans/*/restores/*/volumeRestores/*
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1828,12 +1828,11 @@ module Google
         # Lists the VolumeRestores for a given Restore.
         # @param [String] parent
         #   Required. The Restore that contains the VolumeRestores to list. Format:
-        #   projects/`project`/locations/`location`/restorePlans/`restore_plan`/restores/`
-        #   restore`
+        #   projects/*/locations/*/restorePlans/*/restores/*
         # @param [String] filter
-        #   List filter.
+        #   Field match expression used to filter the results.
         # @param [String] order_by
-        #   Sort results.
+        #   Field by which to sort the results.
         # @param [Fixnum] page_size
         #   The target number of results to return in a single response. If not specified,
         #   a default value will be chosen by the service. Note that the response may
