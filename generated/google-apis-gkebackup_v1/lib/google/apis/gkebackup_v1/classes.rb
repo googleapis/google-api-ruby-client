@@ -116,27 +116,26 @@ module Google
         # @return [String]
         attr_accessor :complete_time
       
-        # Output only. cluster config backup size in bytes.
+        # Output only. The size of the config backup in bytes.
         # Corresponds to the JSON property `configBackupSizeBytes`
         # @return [Fixnum]
         attr_accessor :config_backup_size_bytes
       
-        # Output only. Whether or not the Backup contains Kubernetes Secrets. Inherited
-        # from the parent BackupPlan's backup_config.include_secrets.
+        # Output only. Whether or not the Backup contains Kubernetes Secrets. Controlled
+        # by the parent BackupPlan's include_secrets value.
         # Corresponds to the JSON property `containsSecrets`
         # @return [Boolean]
         attr_accessor :contains_secrets
         alias_method :contains_secrets?, :contains_secrets
       
-        # Output only. Whether or not the Backup contains volume data. Inherited from
-        # the parent BackupPlan's backup_config.include_volume_data.
+        # Output only. Whether or not the Backup contains volume data. Controlled by the
+        # parent BackupPlan's include_volume_data value.
         # Corresponds to the JSON property `containsVolumeData`
         # @return [Boolean]
         attr_accessor :contains_volume_data
         alias_method :contains_volume_data?, :contains_volume_data
       
-        # Output only. [Output Only] The timestamp when this Backup resource was created
-        # - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        # Output only. The timestamp when this Backup resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -144,11 +143,9 @@ module Google
         # Minimum age for this Backup (in days). If this field is set to a non-zero
         # value, the Backup will be "locked" against deletion (either manual or
         # automatic deletion) for the number of days provided (measured from the
-        # creation time of the Backup). This value is inherited from the parent
-        # BackupPlan's retention_policy.backup_delete_lock_days value and may only be
-        # increased (either at creation time or in a subsequent update). This field MUST
-        # be an integer value between 0-90 (inclusive). Default: inherited from
-        # BackupPlan.
+        # creation time of the Backup). MUST be an integer value between 0-90 (inclusive)
+        # . Defaults to parent BackupPlan's backup_delete_lock_days setting and may only
+        # be increased (either at creation time or in a subsequent update).
         # Corresponds to the JSON property `deleteLockDays`
         # @return [Fixnum]
         attr_accessor :delete_lock_days
@@ -175,8 +172,8 @@ module Google
         # is strongly suggested that systems make use of the `etag` in the read-modify-
         # write cycle to perform backup updates in order to avoid race conditions: An `
         # etag` is returned in the response to `GetBackup`, and systems are expected to
-        # put that etag in the request to `UpdateBackup` to ensure that their change
-        # will be applied to the same version.
+        # put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure
+        # that their change will be applied to the same version of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -210,12 +207,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :resource_count
       
-        # The age (in days) after which this Backup will be automatically deleted. If
-        # not specified at Backup creation time, this value is inherited from the parent
-        # BackupPlan's retention_policy.backup_retain_days value. Once a Backup is
-        # created, this value may only be increased. This must be an integer value >= 0.
-        # If 0, no automatic deletion will occur for this Backup. If not 0, this must be
-        # >= delete_lock_days. Default: inherited from BackupPlan.
+        # The age (in days) after which this Backup will be automatically deleted. Must
+        # be an integer value >= 0: - If 0, no automatic deletion will occur for this
+        # Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created,
+        # this value may only be increased. Defaults to the parent BackupPlan's
+        # backup_retain_days value.
         # Corresponds to the JSON property `retainDays`
         # @return [Fixnum]
         attr_accessor :retain_days
@@ -253,15 +249,13 @@ module Google
         # @return [String]
         attr_accessor :state_reason
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID4]
-        # (https://en.wikipedia.org/wiki/Universally_unique_identifier)
+        # Output only. Server generated global unique identifier of [UUID4](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier)
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this Backup resource was last
-        # updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this Backup resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -378,24 +372,22 @@ module Google
         attr_accessor :backup_schedule
       
         # Required. Immutable. The source cluster from which Backups will be created via
-        # this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2.
-        # projects/*/zones/*/clusters/*
+        # this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/
+        # */zones/*/clusters/*
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
-        # Output only. [Output Only] The timestamp when this BackupPlan resource was
-        # created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this BackupPlan resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
         # This flag indicates whether this BackupPlan has been deactivated. Setting this
         # field to True locks the BackupPlan such that no further updates will be
-        # allowed, including the deactivated field. It also prevents any new Backups
-        # from being created via this BackupPlan (including scheduled Backups). Default:
-        # False
+        # allowed (except deletes), including the deactivated field itself. It also
+        # prevents any new Backups from being created via this BackupPlan (including
+        # scheduled Backups). Default: False
         # Corresponds to the JSON property `deactivated`
         # @return [Boolean]
         attr_accessor :deactivated
@@ -411,8 +403,9 @@ module Google
         # It is strongly suggested that systems make use of the 'etag' in the read-
         # modify-write cycle to perform BackupPlan updates in order to avoid race
         # conditions: An `etag` is returned in the response to `GetBackupPlan`, and
-        # systems are expected to put that etag in the request to `UpdateBackupPlan` to
-        # ensure that their change will be applied to the same version.
+        # systems are expected to put that etag in the request to `UpdateBackupPlan` or `
+        # DeleteBackupPlan` to ensure that their change will be applied to the same
+        # version of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -422,36 +415,30 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. [Output Only] The full name of the BackupPlan resource. Format:
-        # projects/*/locations/*/backupPlans/*
+        # Output only. The full name of the BackupPlan resource. Format: projects/*/
+        # locations/*/backupPlans/*
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. [Output Only] Represents the number of Kubernetes Pods backed up
-        # in the last successful Backup created underneath this BackupPlan.
+        # Output only. The number of Kubernetes Pods backed up in the last successful
+        # Backup created via this BackupPlan.
         # Corresponds to the JSON property `protectedPodCount`
         # @return [Fixnum]
         attr_accessor :protected_pod_count
       
-        # RentionPolicy is an inner message type to define: 1. Minimum age for Backups
-        # created via this BackupPlan - deletion (either manual or automatic) of Backups
-        # younger than this age will be blocked 2. Default maximum age of Backups
-        # created via this BackupPlan, after which automatic deletion will occur 3. Lock
-        # to disallow any changes to any RetentionPolicy settings
+        # RetentionPolicy defines a Backup retention policy for a BackupPlan.
         # Corresponds to the JSON property `retentionPolicy`
         # @return [Google::Apis::GkebackupV1::RetentionPolicy]
         attr_accessor :retention_policy
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID](
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this BackupPlan resource was
-        # last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this BackupPlan resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -563,9 +550,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :backup_crd_versions
       
-        # The source cluster from which this Backup was created. Possible formats: 1.
-        # projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* This will
-        # be the same value as the parent BackupPlan's cluster field.
+        # The source cluster from which this Backup was created. Valid formats: -
+        # projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is
+        # inherited from the parent BackupPlan's cluster field.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
@@ -637,8 +624,8 @@ module Google
       class EncryptionKey
         include Google::Apis::Core::Hashable
       
-        # Google Cloud KMS encryption key. Format: projects//locations//keyRings//
-        # cryptoKeys/
+        # Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/
+        # cryptoKeys/*
         # Corresponds to the JSON property `gcpKmsEncryptionKey`
         # @return [String]
         attr_accessor :gcp_kms_encryption_key
@@ -879,14 +866,14 @@ module Google
       class ListBackupPlansResponse
         include Google::Apis::Core::Hashable
       
-        # The list of BackupPlans.
+        # The list of BackupPlans matching the given criteria.
         # Corresponds to the JSON property `backupPlans`
         # @return [Array<Google::Apis::GkebackupV1::BackupPlan>]
         attr_accessor :backup_plans
       
-        # A token which may be sent as `page_token` in a subsequent `ListBackupPlans`
-        # call to retrieve the next page of results. If this field is omitted or empty,
-        # then there are no more results to return.
+        # A token which may be sent as page_token in a subsequent `ListBackupPlans` call
+        # to retrieve the next page of results. If this field is omitted or empty, then
+        # there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -912,13 +899,13 @@ module Google
       class ListBackupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of restore resources within the parent.
+        # The list of Backups matching the given criteria.
         # Corresponds to the JSON property `backups`
         # @return [Array<Google::Apis::GkebackupV1::Backup>]
         attr_accessor :backups
       
-        # A token which may be sent as `page_token` in a subsequent `ListBackups` call
-        # to retrieve the next page of results. If this field is omitted or empty, then
+        # A token which may be sent as page_token in a subsequent `ListBackups` call to
+        # retrieve the next page of results. If this field is omitted or empty, then
         # there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -964,14 +951,14 @@ module Google
       class ListRestorePlansResponse
         include Google::Apis::Core::Hashable
       
-        # A token which may be sent as `page_token` in a subsequent `ListRestorePlans`
+        # A token which may be sent as page_token in a subsequent `ListRestorePlans`
         # call to retrieve the next page of results. If this field is omitted or empty,
         # then there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of RestorePlans.
+        # The list of RestorePlans matching the given criteria.
         # Corresponds to the JSON property `restorePlans`
         # @return [Array<Google::Apis::GkebackupV1::RestorePlan>]
         attr_accessor :restore_plans
@@ -997,14 +984,14 @@ module Google
       class ListRestoresResponse
         include Google::Apis::Core::Hashable
       
-        # A token which may be sent as `page_token` in a subsequent `ListRestores` call
-        # to retrieve the next page of results. If this field is omitted or empty, then
+        # A token which may be sent as page_token in a subsequent `ListRestores` call to
+        # retrieve the next page of results. If this field is omitted or empty, then
         # there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of restore resources within the parent.
+        # The list of Restores matching the given criteria.
         # Corresponds to the JSON property `restores`
         # @return [Array<Google::Apis::GkebackupV1::Restore>]
         attr_accessor :restores
@@ -1030,14 +1017,14 @@ module Google
       class ListVolumeBackupsResponse
         include Google::Apis::Core::Hashable
       
-        # A token which may be sent as `page_token` in a subsequent `ListVolumeBackups`
+        # A token which may be sent as page_token in a subsequent `ListVolumeBackups`
         # call to retrieve the next page of results. If this field is omitted or empty,
         # then there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of VolumeBackups resources within the parent.
+        # The list of VolumeBackups matching the given criteria.
         # Corresponds to the JSON property `volumeBackups`
         # @return [Array<Google::Apis::GkebackupV1::VolumeBackup>]
         attr_accessor :volume_backups
@@ -1057,14 +1044,14 @@ module Google
       class ListVolumeRestoresResponse
         include Google::Apis::Core::Hashable
       
-        # A token which may be sent as `page_token` in a subsequent `ListVolumeRestores`
+        # A token which may be sent as page_token in a subsequent `ListVolumeRestores`
         # call to retrieve the next page of results. If this field is omitted or empty,
         # then there are no more results to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of VolumeRestores resources within the parent.
+        # The list of VolumeRestores matching the given criteria.
         # Corresponds to the JSON property `volumeRestores`
         # @return [Array<Google::Apis::GkebackupV1::VolumeRestore>]
         attr_accessor :volume_restores
@@ -1349,29 +1336,27 @@ module Google
       class Restore
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The Backup used as the source from which this Restore
-        # will restore. Note that this Backup must be a sub-resource of the RestorePlan'
-        # s backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        # Required. Immutable. A reference to the Backup used as the source from which
+        # this Restore will restore. Note that this Backup must be a sub-resource of the
+        # RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/
+        # backups/*.
         # Corresponds to the JSON property `backup`
         # @return [String]
         attr_accessor :backup
       
         # Output only. The target cluster into which this Restore will restore data.
-        # Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/
-        # clusters/* Inherited from parent RestorePlan's cluster field.
+        # Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/
+        # clusters/* Inherited from parent RestorePlan's cluster value.
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
-        # Output only. When the restore operation either successfully completed or
-        # failed.
+        # Output only. Timestamp of when the restore operation completed.
         # Corresponds to the JSON property `completeTime`
         # @return [String]
         attr_accessor :complete_time
       
-        # Output only. [Output Only] The timestamp when this Restore resource was
-        # created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this Restore resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1386,13 +1371,13 @@ module Google
         # is strongly suggested that systems make use of the `etag` in the read-modify-
         # write cycle to perform restore updates in order to avoid race conditions: An `
         # etag` is returned in the response to `GetRestore`, and systems are expected to
-        # put that etag in the request to `UpdateRestore` to ensure that their change
-        # will be applied to the same version.
+        # put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure
+        # that their change will be applied to the same version of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # GCP Labels.
+        # A set of custom labels supplied by user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1403,17 +1388,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Number of resources excluded in this restore action.
+        # Output only. Number of resources excluded during the restore execution.
         # Corresponds to the JSON property `resourcesExcludedCount`
         # @return [Fixnum]
         attr_accessor :resources_excluded_count
       
-        # Output only. Number of resources failed to be restored in this restore action.
+        # Output only. Number of resources that failed to be restored during the restore
+        # execution.
         # Corresponds to the JSON property `resourcesFailedCount`
         # @return [Fixnum]
         attr_accessor :resources_failed_count
       
-        # Output only. Number of resources restored in this restore action.
+        # Output only. Number of resources restored during the restore execution.
         # Corresponds to the JSON property `resourcesRestoredCount`
         # @return [Fixnum]
         attr_accessor :resources_restored_count
@@ -1434,20 +1420,18 @@ module Google
         # @return [String]
         attr_accessor :state_reason
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID](
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this Restore resource was last
-        # updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this Restore resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Number of volumes restored in this restore action.
+        # Output only. Number of volumes restored during the restore execution.
         # Corresponds to the JSON property `volumesRestoredCount`
         # @return [Fixnum]
         attr_accessor :volumes_restored_count
@@ -1504,8 +1488,7 @@ module Google
       
         # Defines the behavior for handling the situation where sets of namespaced
         # resources being restored already exist in the target cluster. This MUST be set
-        # to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any
-        # namespaced restoration is configured via namespaced_resource_restore_scope .
+        # to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `namespacedResourceRestoreMode`
         # @return [String]
         attr_accessor :namespaced_resource_restore_mode
@@ -1558,24 +1541,22 @@ module Google
       class RestorePlan
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The BackupPlan from which Backups may be used as the
-        # source for Restores created via this RestorePlan. Format: projects/*/locations/
-        # */backupPlans/*.
+        # Required. Immutable. A reference to the BackupPlan from which Backups may be
+        # used as the source for Restores created via this RestorePlan. Format: projects/
+        # */locations/*/backupPlans/*.
         # Corresponds to the JSON property `backupPlan`
         # @return [String]
         attr_accessor :backup_plan
       
         # Required. Immutable. The target cluster into which Restores created via this
         # RestorePlan will restore data. NOTE: the cluster's region must be the same as
-        # the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2.
-        # projects/*/zones/*/clusters/*
+        # the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/
+        # */zones/*/clusters/*
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
       
-        # Output only. [Output Only] The timestamp when this RestorePlan resource was
-        # created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this RestorePlan resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1590,8 +1571,9 @@ module Google
         # is strongly suggested that systems make use of the `etag` in the read-modify-
         # write cycle to perform restore updates in order to avoid race conditions: An `
         # etag` is returned in the response to `GetRestorePlan`, and systems are
-        # expected to put that etag in the request to `UpdateRestorePlan` to ensure that
-        # their change will be applied to the same version.
+        # expected to put that etag in the request to `UpdateRestorePlan` or `
+        # DeleteRestorePlan` to ensure that their change will be applied to the same
+        # version of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1601,8 +1583,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. [Output Only] The full name of the RestorePlan resource. Format:
-        # projects/*/locations/*/restorePlans/*
+        # Output only. The full name of the RestorePlan resource. Format: projects/*/
+        # locations/*/restorePlans/*.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1612,15 +1594,13 @@ module Google
         # @return [Google::Apis::GkebackupV1::RestoreConfig]
         attr_accessor :restore_config
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID](
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this RestorePlan resource was
-        # last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this RestorePlan resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1644,18 +1624,14 @@ module Google
         end
       end
       
-      # RentionPolicy is an inner message type to define: 1. Minimum age for Backups
-      # created via this BackupPlan - deletion (either manual or automatic) of Backups
-      # younger than this age will be blocked 2. Default maximum age of Backups
-      # created via this BackupPlan, after which automatic deletion will occur 3. Lock
-      # to disallow any changes to any RetentionPolicy settings
+      # RetentionPolicy defines a Backup retention policy for a BackupPlan.
       class RetentionPolicy
         include Google::Apis::Core::Hashable
       
         # Minimum age for Backups created via this BackupPlan (in days). This field MUST
-        # be an integer value between 0-90(inclusive). A Backup created under this
-        # BackupPlan will NOT be deletable until it reaches Backup's create_time +
-        # backup_delete_lock_days. Updating this field of a BackupPlan does NOT affect
+        # be an integer value between 0-90 (inclusive). A Backup created under this
+        # BackupPlan will NOT be deletable until it reaches Backup's (create_time +
+        # backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect
         # existing Backups under it. Backups created AFTER a successful update will
         # inherit the new value. Default: 0 (no delete blocking)
         # Corresponds to the JSON property `backupDeleteLockDays`
@@ -1664,14 +1640,12 @@ module Google
       
         # The default maximum age of a Backup created via this BackupPlan. This field
         # MUST be an integer value >= 0. If specified, a Backup created under this
-        # BackupPlan will be automatically deleted after its age reaches create_time +
-        # backup_retain_days. If not specified, Backups created under this BackupPlan
+        # BackupPlan will be automatically deleted after its age reaches (create_time +
+        # backup_retain_days). If not specified, Backups created under this BackupPlan
         # will NOT be subject to automatic deletion. Updating this field does NOT affect
         # existing Backups under it. Backups created AFTER a successful update will
-        # automatically pick up the new value. NOTE: Specifying a backup_retain_days
-        # smaller than backup_delete_lock_days at creation/updating time will be
-        # considered as invalid, and the request will be rejected immediately. Default:
-        # 0 (no automatic deletion)
+        # automatically pick up the new value. NOTE: backup_retain_days must be >=
+        # backup_delete_lock_days. Default: 0 (no automatic deletion)
         # Corresponds to the JSON property `backupRetainDays`
         # @return [Fixnum]
         attr_accessor :backup_retain_days
@@ -1701,8 +1675,9 @@ module Google
       class Schedule
         include Google::Apis::Core::Hashable
       
-        # A standard cron-style string that defines a repeating schedule for creating
-        # Backups via this BackupPlan.
+        # A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
+        # repeating schedule for creating Backups via this BackupPlan. Default (empty):
+        # no automatic backup creation will occur.
         # Corresponds to the JSON property `cronSchedule`
         # @return [String]
         attr_accessor :cron_schedule
@@ -1891,16 +1866,13 @@ module Google
       class VolumeBackup
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output Only] The timestamp when the associated underlying volume
-        # backup operation completes - can be converted to and from [RFC3339](https://
-        # www.ietf.org/rfc/rfc3339.txt)
+        # Output only. The timestamp when the associated underlying volume backup
+        # operation completed.
         # Corresponds to the JSON property `completeTime`
         # @return [String]
         attr_accessor :complete_time
       
-        # Output only. [Output Only] The timestamp when this VolumeBackup resource was
-        # created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this VolumeBackup resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1915,10 +1887,7 @@ module Google
         # help prevent simultaneous updates of a volume backup from overwriting each
         # other. It is strongly suggested that systems make use of the `etag` in the
         # read-modify-write cycle to perform volume backup updates in order to avoid
-        # race conditions: An `etag` is returned in the response to `GetVolumeBackup',
-        # and systems are expected to put that etag in the request to `
-        # UpdateVolumeBackup` to ensure that their change will be applied to the same
-        # version.
+        # race conditions.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1928,9 +1897,8 @@ module Google
         # @return [String]
         attr_accessor :format
       
-        # Output only. [Output Only] The full name of the VolumeBackup resource. Format:
-        # projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/* Note that the
-        # last segment of the name will have the format: 'pvc-'.
+        # Output only. The full name of the VolumeBackup resource. Format: projects/*/
+        # locations/*/backupPlans/*/backups/*/volumeBackups/*.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1960,22 +1928,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_bytes
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID](
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this VolumeBackup resource was
-        # last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this VolumeBackup resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
         # Output only. A storage system-specific opaque handle to the underlying volume
-        # backup. This field is interpreted by the volume backup and restore drivers
-        # running in the GKE cluster and not by the service.
+        # backup.
         # Corresponds to the JSON property `volumeBackupHandle`
         # @return [String]
         attr_accessor :volume_backup_handle
@@ -2007,16 +1972,13 @@ module Google
       class VolumeRestore
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output Only] The timestamp when the associated underlying volume
-        # restoration completed - can be converted to and from [RFC3339](https://www.
-        # ietf.org/rfc/rfc3339.txt)
+        # Output only. The timestamp when the associated underlying volume restoration
+        # completed.
         # Corresponds to the JSON property `completeTime`
         # @return [String]
         attr_accessor :complete_time
       
-        # Output only. [Output Only] The timestamp when this VolumeRestore resource was
-        # created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this VolumeRestore resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2025,22 +1987,18 @@ module Google
         # help prevent simultaneous updates of a volume restore from overwriting each
         # other. It is strongly suggested that systems make use of the `etag` in the
         # read-modify-write cycle to perform volume restore updates in order to avoid
-        # race conditions: An `etag` is returned in the response to `GetVolumeRestore',
-        # and systems are expected to put that etag in the request to `
-        # UpdateVolumeRestore` to ensure that their change will be applied to the same
-        # version.
+        # race conditions.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Output only. Full name of the VolumeRestore resource. Format: projects/*/
-        # locations/*/restorePlans/*/restores/*/volumeRestores/* Note that the last
-        # segment of the name will have the format: 'pvc-'.
+        # locations/*/restorePlans/*/restores/*/volumeRestores/*.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current state of this VolumeRestore
+        # Output only. The current state of this VolumeRestore.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2056,30 +2014,26 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedName]
         attr_accessor :target_pvc
       
-        # Output only. [Output Only] Server generated global unique identifier of [UUID](
-        # https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+        # Output only. Server generated global unique identifier of [UUID](https://en.
+        # wikipedia.org/wiki/Universally_unique_identifier) format.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output Only] The timestamp when this VolumeRestore resource was
-        # last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/
-        # rfc3339.txt)
+        # Output only. The timestamp when this VolumeRestore resource was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
         # Output only. The full name of the VolumeBackup from which the volume will be
         # restored. Format: projects/*/locations/*/backupPlans/*/backups/*/volumeBackups/
-        # *
+        # *.
         # Corresponds to the JSON property `volumeBackup`
         # @return [String]
         attr_accessor :volume_backup
       
         # Output only. A storage system-specific opaque handler to the underlying volume
-        # created for the target PVC from the volume backup. This field is interpreted
-        # by the volume backup and restore drivers running in the GKE cluster and not by
-        # the service.
+        # created for the target PVC from the volume backup.
         # Corresponds to the JSON property `volumeHandle`
         # @return [String]
         attr_accessor :volume_handle
