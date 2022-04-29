@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -506,7 +512,8 @@ module Google
           property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings::Representation
       
           property :name, as: 'name'
-          hash :notification_parameters, as: 'notificationParameters'
+          hash :notification_parameters, as: 'notificationParameters', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter::Representation
+      
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
       
@@ -548,6 +555,13 @@ module Google
           property :node_id, as: 'nodeId'
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
         end
       end
       
