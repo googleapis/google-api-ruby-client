@@ -8525,6 +8525,12 @@ module Google
       class FirewallPolicyRuleMatcher
         include Google::Apis::Core::Hashable
       
+        # Address groups which should be matched against the traffic destination.
+        # Maximum number of destination address groups is 10.
+        # Corresponds to the JSON property `destAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :dest_address_groups
+      
         # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
         # 5000.
         # Corresponds to the JSON property `destIpRanges`
@@ -8549,6 +8555,12 @@ module Google
         # Corresponds to the JSON property `layer4Configs`
         # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config>]
         attr_accessor :layer4_configs
+      
+        # Address groups which should be matched against the traffic source. Maximum
+        # number of source address groups is 10.
+        # Corresponds to the JSON property `srcAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :src_address_groups
       
         # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         # Corresponds to the JSON property `srcIpRanges`
@@ -8582,10 +8594,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
+          @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
@@ -8881,6 +8895,14 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
+        # This is used in PSC consumer ForwardingRule to control whether it should try
+        # to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this
+        # field.
+        # Corresponds to the JSON property `noAutomateDnsZone`
+        # @return [Boolean]
+        attr_accessor :no_automate_dns_zone
+        alias_method :no_automate_dns_zone?, :no_automate_dns_zone
+      
         # This field can be used only if: - Load balancing scheme is one of EXTERNAL,
         # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or
         # SCTP. Packets addressed to ports in the specified range will be forwarded to
@@ -9002,6 +9024,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
+          @no_automate_dns_zone = args[:no_automate_dns_zone] if args.key?(:no_automate_dns_zone)
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
@@ -21782,6 +21805,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_mtu
       
+        # Which IP version(s) of traffic and routes are allowed to be imported or
+        # exported between peer networks. The default value is IPV4_ONLY.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
         # peering is `ACTIVE` when there's a matching configuration in the peer network.
         # Corresponds to the JSON property `state`
@@ -21808,6 +21837,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @peer_mtu = args[:peer_mtu] if args.key?(:peer_mtu)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
         end
@@ -31210,6 +31240,12 @@ module Google
         attr_accessor :enable_endpoint_independent_mapping
         alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
       
+        # List of NAT-ted endpoint types supported by the Nat Gateway. If the list is
+        # empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        # Corresponds to the JSON property `endpointTypes`
+        # @return [Array<String>]
+        attr_accessor :endpoint_types
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -31317,6 +31353,7 @@ module Google
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
+          @endpoint_types = args[:endpoint_types] if args.key?(:endpoint_types)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)

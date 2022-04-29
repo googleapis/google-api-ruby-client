@@ -7613,11 +7613,13 @@ module Google
       class FirewallPolicyRuleMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_ip_ranges, as: 'destIpRanges'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
       
+          collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_ip_ranges, as: 'srcIpRanges'
           collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
@@ -7674,6 +7676,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
+          property :no_automate_dns_zone, as: 'noAutomateDnsZone'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
@@ -10855,6 +10858,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :peer_mtu, as: 'peerMtu'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
         end
@@ -13301,6 +13305,7 @@ module Google
           collection :drain_nat_ips, as: 'drainNatIps'
           property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
+          collection :endpoint_types, as: 'endpointTypes'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
       
