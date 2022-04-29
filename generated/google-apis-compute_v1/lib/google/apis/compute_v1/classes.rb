@@ -3270,6 +3270,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # URLs of networkservices.ServiceBinding resources. Can only be set if load
+        # balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and
+        # health checks must be both empty.
+        # Corresponds to the JSON property `serviceBindings`
+        # @return [Array<String>]
+        attr_accessor :service_bindings
+      
         # Type of session affinity to use. The default is NONE. Only NONE and
         # HEADER_FIELD are supported when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy that has validateForProxyless field set to
@@ -3338,6 +3345,7 @@ module Google
           @security_policy = args[:security_policy] if args.key?(:security_policy)
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -8631,6 +8639,14 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
+        # This is used in PSC consumer ForwardingRule to control whether it should try
+        # to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this
+        # field.
+        # Corresponds to the JSON property `noAutomateDnsZone`
+        # @return [Boolean]
+        attr_accessor :no_automate_dns_zone
+        alias_method :no_automate_dns_zone?, :no_automate_dns_zone
+      
         # This field can be used only if: - Load balancing scheme is one of EXTERNAL,
         # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or
         # SCTP. Packets addressed to ports in the specified range will be forwarded to
@@ -8742,6 +8758,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
+          @no_automate_dns_zone = args[:no_automate_dns_zone] if args.key?(:no_automate_dns_zone)
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
@@ -20823,6 +20840,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :peer_mtu
       
+        # Which IP version(s) of traffic and routes are allowed to be imported or
+        # exported between peer networks. The default value is IPV4_ONLY.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
         # peering is `ACTIVE` when there's a matching configuration in the peer network.
         # Corresponds to the JSON property `state`
@@ -20849,6 +20872,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @peer_mtu = args[:peer_mtu] if args.key?(:peer_mtu)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
         end
@@ -29941,6 +29965,12 @@ module Google
         attr_accessor :enable_endpoint_independent_mapping
         alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
       
+        # List of NAT-ted endpoint types supported by the Nat Gateway. If the list is
+        # empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        # Corresponds to the JSON property `endpointTypes`
+        # @return [Array<String>]
+        attr_accessor :endpoint_types
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -30048,6 +30078,7 @@ module Google
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
+          @endpoint_types = args[:endpoint_types] if args.key?(:endpoint_types)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)

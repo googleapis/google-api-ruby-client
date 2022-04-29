@@ -6198,6 +6198,7 @@ module Google
           property :security_settings, as: 'securitySettings', class: Google::Apis::ComputeV1::SecuritySettings, decorator: Google::Apis::ComputeV1::SecuritySettings::Representation
       
           property :self_link, as: 'selfLink'
+          collection :service_bindings, as: 'serviceBindings'
           property :session_affinity, as: 'sessionAffinity'
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
       
@@ -7419,6 +7420,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
+          property :no_automate_dns_zone, as: 'noAutomateDnsZone'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
@@ -10425,6 +10427,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :peer_mtu, as: 'peerMtu'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
         end
@@ -12778,6 +12781,7 @@ module Google
           collection :drain_nat_ips, as: 'drainNatIps'
           property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
+          collection :endpoint_types, as: 'endpointTypes'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::RouterNatLogConfig, decorator: Google::Apis::ComputeV1::RouterNatLogConfig::Representation
       
