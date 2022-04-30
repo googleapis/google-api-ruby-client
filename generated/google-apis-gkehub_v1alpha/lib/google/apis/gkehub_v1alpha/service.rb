@@ -54,10 +54,14 @@ module Google
         # @param [String] parent
         #   Required. The organization or project to list for Fleets under, in the format `
         #   organizations/*/locations/*` or `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of fleets to return. The service may return fewer
+        #   than this value. If unspecified, at most 200 fleets will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListFleets` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListFleets` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListFleets` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListFleets` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -75,11 +79,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_fleets(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_fleets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/fleets', options)
           command.response_representation = Google::Apis::GkehubV1alpha::ListFleetsResponse::Representation
           command.response_class = Google::Apis::GkehubV1alpha::ListFleetsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -606,10 +611,14 @@ module Google
         # @param [String] parent
         #   Required. The organization or project to list for Fleets under, in the format `
         #   organizations/*/locations/*` or `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of fleets to return. The service may return fewer
+        #   than this value. If unspecified, at most 200 fleets will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListFleets` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListFleets` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListFleets` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListFleets` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -627,11 +636,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_fleets(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_fleets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/fleets', options)
           command.response_representation = Google::Apis::GkehubV1alpha::ListFleetsResponse::Representation
           command.response_class = Google::Apis::GkehubV1alpha::ListFleetsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
