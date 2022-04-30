@@ -187,7 +187,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -747,8 +747,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1822,10 +1821,7 @@ module Google
         # @return [String]
         attr_accessor :schema_gcs_bucket
       
-        # Output only. The name of the Service Directory service name. Used for Private
-        # Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-
-        # testing/locations/us-central1/namespaces/istio-system/services/istio-
-        # ingressgateway-connectors"
+        # Output only. The name of the Service Directory service name.
         # Corresponds to the JSON property `serviceDirectory`
         # @return [String]
         attr_accessor :service_directory
@@ -2057,7 +2053,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
