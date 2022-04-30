@@ -211,8 +211,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -375,11 +374,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The instance_type of this instance of format: projects/`project_id`/
-        # locations/`location_id`/instanceTypes/`instance_type_id`. Instance Type
-        # represents a high-level tier or SKU of the service that this instance belong
-        # to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along
-        # with 'software_versions' to determine whether instance needs an update or not.
+        # Optional. The instance_type of this instance of format: projects/`
+        # project_number`/locations/`location_id`/instanceTypes/`instance_type_id`.
+        # Instance Type represents a high-level tier or SKU of the service that this
+        # instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses '
+        # instance_type' along with 'software_versions' to determine whether instance
+        # needs an update or not.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
@@ -411,10 +411,12 @@ module Google
         # @return [Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form: `projects/`project_id|
-        # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
-        # project_id or project_number can be used, but keep it consistent with other
-        # APIs (e.g. RescheduleUpdate)
+        # Unique name of the resource. It uses the form: `projects/`project_number`/
+        # locations/`location_id`/instances/`instance_id`` Note: This name is passed,
+        # stored and logged across the rollout system. So use of consumer project_id or
+        # any other consumer PII in the name is strongly discouraged for wipeout (go/
+        # wipeout) compliance. See go/elysium/project_ids#storage-guidance for more
+        # details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1447,6 +1449,33 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Request for RescheduleMaintenance.
+      class RescheduleMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as
+        # well.
+        # Corresponds to the JSON property `rescheduleType`
+        # @return [String]
+        attr_accessor :reschedule_type
+      
+        # Timestamp when the maintenance shall be rescheduled to if reschedule_type=
+        # SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:19:00.094Z`.
+        # Corresponds to the JSON property `scheduleTime`
+        # @return [String]
+        attr_accessor :schedule_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
+          @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
         end
       end
       
