@@ -262,6 +262,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceAuthMethod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceOidcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KubernetesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -833,6 +857,54 @@ module Google
         end
       end
       
+      class IdentityServiceAuthMethod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1::IdentityServiceOidcConfig::Representation
+      
+          property :proxy, as: 'proxy'
+        end
+      end
+      
+      class IdentityServiceMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auth_methods, as: 'authMethods', class: Google::Apis::GkehubV1::IdentityServiceAuthMethod, decorator: Google::Apis::GkehubV1::IdentityServiceAuthMethod::Representation
+      
+        end
+      end
+      
+      class IdentityServiceMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason'
+          property :installed_version, as: 'installedVersion'
+          property :member_config, as: 'memberConfig', class: Google::Apis::GkehubV1::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipSpec::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class IdentityServiceOidcConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_authority_data, as: 'certificateAuthorityData'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :deploy_cloud_console_proxy, as: 'deployCloudConsoleProxy'
+          property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
+          property :extra_params, as: 'extraParams'
+          property :group_prefix, as: 'groupPrefix'
+          property :groups_claim, as: 'groupsClaim'
+          property :issuer_uri, as: 'issuerUri'
+          property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
+          property :scopes, as: 'scopes'
+          property :user_claim, as: 'userClaim'
+          property :user_prefix, as: 'userPrefix'
+        end
+      end
+      
       class KubernetesMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -950,6 +1022,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
       
+          property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipSpec::Representation
+      
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipSpec::Representation
       
         end
@@ -961,6 +1035,8 @@ module Google
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipState::Representation
+      
+          property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1::IdentityServiceMembershipState, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipState::Representation
       
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1::ServiceMeshMembershipState, decorator: Google::Apis::GkehubV1::ServiceMeshMembershipState::Representation
       
