@@ -299,6 +299,7 @@ module Google
       class EventTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           collection :event_filters, as: 'eventFilters', class: Google::Apis::CloudfunctionsV2alpha::EventFilter, decorator: Google::Apis::CloudfunctionsV2alpha::EventFilter::Representation
       
           property :event_type, as: 'eventType'
