@@ -287,6 +287,13 @@ module Google
       class EventTrigger
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the channel associated with the trigger in `projects/`
+        # project`/locations/`location`/channels/`channel`` format. You must provide a
+        # channel to receive events from Eventarc SaaS partners.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Criteria used to filter events.
         # Corresponds to the JSON property `eventFilters`
         # @return [Array<Google::Apis::CloudfunctionsV2beta::EventFilter>]
@@ -341,6 +348,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @event_filters = args[:event_filters] if args.key?(:event_filters)
           @event_type = args[:event_type] if args.key?(:event_type)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
