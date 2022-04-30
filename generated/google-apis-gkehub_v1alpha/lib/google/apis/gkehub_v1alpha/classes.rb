@@ -2131,7 +2131,8 @@ module Google
         attr_accessor :fleets
       
         # A token, which can be sent as `page_token` to retrieve the next page. If this
-        # field is omitted, there are no subsequent pages.
+        # field is omitted, there are no subsequent pages. The token is only valid for
+        # 1h.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
