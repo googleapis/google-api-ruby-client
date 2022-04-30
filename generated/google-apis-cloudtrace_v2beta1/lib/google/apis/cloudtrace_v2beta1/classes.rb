@@ -69,8 +69,8 @@ module Google
       class OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The destination for writing trace data. Currently only BigQuery is supported.
-        # E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        # The destination for writing trace data. Supported formats include: "bigquery.
+        # googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
