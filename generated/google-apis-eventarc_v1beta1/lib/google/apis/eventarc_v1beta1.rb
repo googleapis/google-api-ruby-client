@@ -21,7 +21,7 @@ module Google
   module Apis
     # Eventarc API
     #
-    # 
+    # Build event-driven applications on Google Cloud Platform.
     #
     # @see https://cloud.google.com/eventarc
     module EventarcV1beta1
