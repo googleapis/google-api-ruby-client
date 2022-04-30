@@ -947,7 +947,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -1644,7 +1644,7 @@ module Google
         attr_accessor :max_time_travel_hours
       
         # [Output-only] Reserved for future use.
-        # Corresponds to the JSON property `satisfiesPZS`
+        # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
@@ -5054,6 +5054,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_refresh_time
       
+        # [Optional] Max staleness of data that could be returned when materizlized view
+        # is queried (formatted as Google SQL Interval type).
+        # Corresponds to the JSON property `maxStaleness`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :max_staleness
+      
         # [Required] A query whose result is persisted.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -5073,6 +5080,7 @@ module Google
         def update!(**args)
           @enable_refresh = args[:enable_refresh] if args.key?(:enable_refresh)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
           @query = args[:query] if args.key?(:query)
           @refresh_interval_ms = args[:refresh_interval_ms] if args.key?(:refresh_interval_ms)
         end
@@ -6245,6 +6253,50 @@ module Google
         end
       end
       
+      # Options for a remote user-defined function.
+      class RemoteFunctionOptions
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified name of the user-provided connection object which holds the
+        # authentication information to send requests to the remote service. projects/`
+        # project_id`/locations/`location_id`/connections/`connection_id`
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Endpoint of the user-provided remote service (e.g. a function url in Google
+        # Cloud Functions).
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Max number of rows in each batch sent to the remote service. If absent or if 0,
+        # it means no limit.
+        # Corresponds to the JSON property `maxBatchingRows`
+        # @return [Fixnum]
+        attr_accessor :max_batching_rows
+      
+        # User-defined context as a set of key/value pairs, which will be sent as
+        # function invocation context together with batched arguments in the requests to
+        # the remote service. The total number of bytes of keys and values must be less
+        # than 8KB.
+        # Corresponds to the JSON property `userDefinedContext`
+        # @return [Hash<String,String>]
+        attr_accessor :user_defined_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @max_batching_rows = args[:max_batching_rows] if args.key?(:max_batching_rows)
+          @user_defined_context = args[:user_defined_context] if args.key?(:user_defined_context)
+        end
+      end
+      
       # A user-defined function or a stored procedure.
       class Routine
         include Google::Apis::Core::Hashable
@@ -6306,6 +6358,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
+        # Options for a remote user-defined function.
+        # Corresponds to the JSON property `remoteFunctionOptions`
+        # @return [Google::Apis::BigqueryV2::RemoteFunctionOptions]
+        attr_accessor :remote_function_options
+      
         # A table type
         # Corresponds to the JSON property `returnTableType`
         # @return [Google::Apis::BigqueryV2::StandardSqlTableType]
@@ -6356,6 +6413,7 @@ module Google
           @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
           @language = args[:language] if args.key?(:language)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @remote_function_options = args[:remote_function_options] if args.key?(:remote_function_options)
           @return_table_type = args[:return_table_type] if args.key?(:return_table_type)
           @return_type = args[:return_type] if args.key?(:return_type)
           @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
@@ -7364,9 +7422,21 @@ module Google
       
         # Optional. Collation specification of the field. It only can be set on string
         # type field.
-        # Corresponds to the JSON property `collationSpec`
+        # Corresponds to the JSON property `collation`
         # @return [String]
-        attr_accessor :collation_spec
+        attr_accessor :collation
+      
+        # Optional. A SQL expression to specify the default value for this field. It can
+        # only be set for top level fields (columns). You can use struct or array
+        # expression to specify default value for the entire struct or array. The valid
+        # SQL expressions are: - Literals for all data types, including STRUCT and ARRAY.
+        # - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE -
+        # CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct
+        # or array composed with the above allowed functions, for example, [CURRENT_DATE(
+        # ), DATE '2020-01-01']
+        # Corresponds to the JSON property `defaultValueExpression`
+        # @return [String]
+        attr_accessor :default_value_expression
       
         # [Optional] The field description. The maximum length is 1,024 characters.
         # Corresponds to the JSON property `description`
@@ -7448,7 +7518,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @categories = args[:categories] if args.key?(:categories)
-          @collation_spec = args[:collation_spec] if args.key?(:collation_spec)
+          @collation = args[:collation] if args.key?(:collation)
+          @default_value_expression = args[:default_value_expression] if args.key?(:default_value_expression)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
           @max_length = args[:max_length] if args.key?(:max_length)
@@ -7728,7 +7799,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]

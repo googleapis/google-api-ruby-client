@@ -736,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoteFunctionOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Routine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1379,7 +1385,7 @@ module Google
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :location, as: 'location'
           property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
-          property :satisfies_pzs, as: 'satisfiesPZS'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           collection :tags, as: 'tags', class: Google::Apis::BigqueryV2::Dataset::Tag, decorator: Google::Apis::BigqueryV2::Dataset::Tag::Representation
       
@@ -2228,6 +2234,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_refresh, as: 'enableRefresh'
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
+          property :max_staleness, :base64 => true, as: 'maxStaleness'
           property :query, as: 'query'
           property :refresh_interval_ms, :numeric_string => true, as: 'refreshIntervalMs'
         end
@@ -2517,6 +2524,16 @@ module Google
         end
       end
       
+      class RemoteFunctionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection'
+          property :endpoint, as: 'endpoint'
+          property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
+          hash :user_defined_context, as: 'userDefinedContext'
+        end
+      end
+      
       class Routine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2530,6 +2547,8 @@ module Google
           collection :imported_libraries, as: 'importedLibraries'
           property :language, as: 'language'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
+          property :remote_function_options, as: 'remoteFunctionOptions', class: Google::Apis::BigqueryV2::RemoteFunctionOptions, decorator: Google::Apis::BigqueryV2::RemoteFunctionOptions::Representation
+      
           property :return_table_type, as: 'returnTableType', class: Google::Apis::BigqueryV2::StandardSqlTableType, decorator: Google::Apis::BigqueryV2::StandardSqlTableType::Representation
       
           property :return_type, as: 'returnType', class: Google::Apis::BigqueryV2::StandardSqlDataType, decorator: Google::Apis::BigqueryV2::StandardSqlDataType::Representation
@@ -2807,7 +2826,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :categories, as: 'categories', class: Google::Apis::BigqueryV2::TableFieldSchema::Categories, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Categories::Representation
       
-          property :collation_spec, as: 'collationSpec'
+          property :collation, as: 'collation'
+          property :default_value_expression, as: 'defaultValueExpression'
           property :description, as: 'description'
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
