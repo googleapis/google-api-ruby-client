@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RescheduleMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -648,6 +654,14 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class RescheduleMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule_type, as: 'rescheduleType'
+          property :schedule_time, as: 'scheduleTime'
         end
       end
       
