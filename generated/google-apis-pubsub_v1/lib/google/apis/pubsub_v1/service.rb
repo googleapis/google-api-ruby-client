@@ -472,10 +472,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the configuration details of a snapshot. Snapshots are used in Seek
-        # operations, which allow you to manage message acknowledgments in bulk. That is,
-        # you can set the acknowledgment state of messages in an existing subscription
-        # to the state captured by a snapshot.
+        # Gets the configuration details of a snapshot. Snapshots are used in [Seek](
+        # https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow
+        # you to manage message acknowledgments in bulk. That is, you can set the
+        # acknowledgment state of messages in an existing subscription to the state
+        # captured by a snapshot.
         # @param [String] snapshot
         #   Required. The name of the snapshot to get. Format is `projects/`project`/
         #   snapshots/`snap``.
@@ -592,10 +593,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing snapshot. Snapshots are used in Seek operations, which
-        # allow you to manage message acknowledgments in bulk. That is, you can set the
-        # acknowledgment state of messages in an existing subscription to the state
-        # captured by a snapshot.
+        # Updates an existing snapshot. Snapshots are used in [Seek](https://cloud.
+        # google.com/pubsub/docs/replay-overview) operations, which allow you to manage
+        # message acknowledgments in bulk. That is, you can set the acknowledgment state
+        # of messages in an existing subscription to the state captured by a snapshot.
         # @param [String] name
         #   The name of the snapshot.
         # @param [Google::Apis::PubsubV1::UpdateSnapshotRequest] update_snapshot_request_object
