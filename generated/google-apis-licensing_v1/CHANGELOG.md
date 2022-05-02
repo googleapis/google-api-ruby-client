@@ -1,5 +1,9 @@
 # Release history for google-apis-licensing_v1
 
+### v0.9.0 (2022-05-02)
+
+* Regenerated from discovery document revision 20220430
+
 ### v0.8.0 (2022-03-22)
 
 * Regenerated from discovery document revision 20220319
