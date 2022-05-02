@@ -22,8 +22,8 @@ module Google
     module LicensingV1
       # Enterprise License Manager API
       #
-      # The Google Enterprise License Manager API's allows you to license apps for all
-      #  the users of a domain managed by you.
+      # The Google Enterprise License Manager API lets you manage Google Workspace and
+      #  related licenses for all users of a customer that you manage.
       #
       # @example
       #    require 'google/apis/licensing_v1'
@@ -177,9 +177,8 @@ module Google
         #   A product's unique identifier. For more information about products in this
         #   version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   Customer's `customerId`. A previous version of this API accepted the primary
-        #   domain name as a value for this field. If the customer is suspended, the
-        #   server returns an error.
+        #   The customer's unique ID as defined in the Admin console, such as `C00000000`.
+        #   If the customer is suspended, the server returns an error.
         # @param [Fixnum] max_results
         #   The `maxResults` query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
@@ -227,9 +226,8 @@ module Google
         #   A product SKU's unique identifier. For more information about available SKUs
         #   in this version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   Customer's `customerId`. A previous version of this API accepted the primary
-        #   domain name as a value for this field. If the customer is suspended, the
-        #   server returns an error.
+        #   The customer's unique ID as defined in the Admin console, such as `C00000000`.
+        #   If the customer is suspended, the server returns an error.
         # @param [Fixnum] max_results
         #   The `maxResults` query string determines how many entries are returned on each
         #   page of a large response. This is an optional parameter. The value must be a
