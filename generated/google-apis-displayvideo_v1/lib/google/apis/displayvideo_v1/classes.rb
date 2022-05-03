@@ -2817,7 +2817,8 @@ module Google
       class ContactInfoList
         include Google::Apis::Core::Hashable
       
-        # A list of ContactInfo objects defining Customer Match audience members.
+        # A list of ContactInfo objects defining Customer Match audience members. The
+        # size of contact_infos mustn't be greater than 500,000.
         # Corresponds to the JSON property `contactInfos`
         # @return [Array<Google::Apis::DisplayvideoV1::ContactInfo>]
         attr_accessor :contact_infos
@@ -3626,8 +3627,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::UniversalAdId]
         attr_accessor :universal_ad_id
       
-        # Output only. The timestamp when the creative was last updated. Assigned by the
-        # system.
+        # Output only. The timestamp when the creative was last updated, either by the
+        # user or system (e.g. creative review). Assigned by the system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -7764,7 +7765,8 @@ module Google
       class MobileDeviceIdList
         include Google::Apis::Core::Hashable
       
-        # A list of mobile device IDs defining Customer Match audience members.
+        # A list of mobile device IDs defining Customer Match audience members. The size
+        # of mobile_device_ids mustn't be greater than 500,000.
         # Corresponds to the JSON property `mobileDeviceIds`
         # @return [Array<String>]
         attr_accessor :mobile_device_ids

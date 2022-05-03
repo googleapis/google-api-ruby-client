@@ -1,5 +1,9 @@
 # Release history for google-apis-displayvideo_v1
 
+### v0.31.0 (2022-05-03)
+
+* Regenerated from discovery document revision 20220429
+
 ### v0.30.0 (2022-04-13)
 
 * Regenerated from discovery document revision 20220411
