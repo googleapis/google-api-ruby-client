@@ -49,10 +49,17 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Used by partners to list products that can be resold to their customers. It
-        # should be called directly by the partner using service accounts.
+        # To retrieve the products that can be resold by the partner. It should be
+        # autenticated with a service account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
+        # @param [String] filter
+        #   Optional. Specifies the filters for the products results. The syntax defined
+        #   in the EBNF grammar: https://google.aip.dev/assets/misc/ebnf-filtering.txt. An
+        #   error will be thrown if any specified parameter is not supported. Currently,
+        #   it can only be used by Youtube partners. Allowed parameters are: - regionCodes
+        #   - zipCode - eligibilityId Multiple parameters can be specified, for example: "
+        #   regionCodes=US zipCode=94043 eligibilityId=2022H1Campaign"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of products to return. The service may return
         #   fewer than this value. If unspecified, at most 50 products will be returned.
@@ -78,11 +85,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_partner_products(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_partner_products(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/products', options)
           command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse::Representation
           command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -90,16 +98,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used by partners to list promotions, such as free trial, that can be applied
-        # on subscriptions. It should be called directly by the partner using service
-        # accounts.
+        # To find eligible promotions for the current user. The API requires user
+        # authorization via OAuth. The user is inferred from the authenticated OAuth
+        # credential.
+        # @param [String] parent
+        #   Required. The parent, the partner that can resell. Format: partners/`partner`
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest] google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_partner_promotion_eligible(parent, google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/promotions:findEligible', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest::Representation
+          command.request_object = google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # To retrieve the promotions, such as free trial, that can be used by the
+        # partner. It should be autenticated with a service account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [String] filter
         #   Optional. Specifies the filters for the promotion results. The syntax defined
-        #   in the EBNF grammar: https://google.aip.dev/assets/misc/ebnf-filtering.txt.
-        #   Examples: - applicable_products: "sku1" - region_codes: "US" -
-        #   applicable_products: "sku1" AND region_codes: "US"
+        #   in the EBNF grammar: https://google.aip.dev/assets/misc/ebnf-filtering.txt. An
+        #   error will be thrown if the specified parameter(s) is not supported. Currently,
+        #   it can only be used by Youtube partners. Allowed parameters are: -
+        #   region_codes: "US" - zip_code: "94043" - eligibility_id: "2022H1Campaign"
+        #   Multiple parameters can be specified, for example: "region_codes=US zip_code=
+        #   94043 eligibility_id=2022H1Campaign"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of promotions to return. The service may return
         #   fewer than this value. If unspecified, at most 50 products will be returned.
