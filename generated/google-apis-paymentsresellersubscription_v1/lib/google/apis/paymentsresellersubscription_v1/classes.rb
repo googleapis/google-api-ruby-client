@@ -222,6 +222,74 @@ module Google
       end
       
       # 
+      class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the filters for the promotion results. The syntax defined
+        # in the EBNF grammar: https://google.aip.dev/assets/misc/ebnf-filtering.txt. An
+        # error will be thrown if any specified parameter is not supported. Currently,
+        # it can only be used by Youtube partners. Allowed parameters are: - regionCodes
+        # - zipCode - eligibilityId - applicableProducts Multiple parameters can be
+        # specified, for example: "regionCodes=US zipCode=94043 eligibilityId=
+        # 2022H1Campaign", or "applicableProducts=partners/p1/products/product2"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The maximum number of promotions to return. The service may return
+        # fewer than this value. If unspecified, at most 50 products will be returned.
+        # The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A page token, received from a previous `ListPromotions` call.
+        # Provide this to retrieve the subsequent page. When paginating, all other
+        # parameters provided to `ListPromotions` must match the call that provided the
+        # page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+        end
+      end
+      
+      # Response containing the found promotions for the current user.
+      class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The promotions for the current user.
+        # Corresponds to the JSON property `promotions`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Promotion>]
+        attr_accessor :promotions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @promotions = args[:promotions] if args.key?(:promotions)
+        end
+      end
+      
+      # 
       class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
         include Google::Apis::Core::Hashable
       
