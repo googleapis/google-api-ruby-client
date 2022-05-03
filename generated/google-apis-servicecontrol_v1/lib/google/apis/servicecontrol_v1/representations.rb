@@ -675,7 +675,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_id, as: 'consumerId'
           property :end_time, as: 'endTime'
-          collection :extensions, as: 'extensions'
           property :importance, as: 'importance'
           hash :labels, as: 'labels'
           collection :log_entries, as: 'logEntries', class: Google::Apis::ServicecontrolV1::LogEntry, decorator: Google::Apis::ServicecontrolV1::LogEntry::Representation
