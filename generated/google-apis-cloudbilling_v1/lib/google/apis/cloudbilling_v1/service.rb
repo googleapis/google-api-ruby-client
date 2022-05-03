@@ -128,8 +128,9 @@ module Google
         # given to billing account [viewers](https://cloud.google.com/billing/docs/how-
         # to/billing-access).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -258,8 +259,9 @@ module Google
         # the account, which is often given to billing account [administrators](https://
         # cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudbillingV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -294,8 +296,9 @@ module Google
         # resource and a set of permissions as input and returns the subset of the input
         # permissions that the caller is allowed for that resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudbillingV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
