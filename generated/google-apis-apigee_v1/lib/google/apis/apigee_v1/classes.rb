@@ -5267,6 +5267,13 @@ module Google
         # @return [String]
         attr_accessor :analytics_region
       
+        # Output only. Apigee Project ID associated with the organization. Use this
+        # project to allowlist Apigee in the Service Attachment when using private
+        # service connect with Apigee.
+        # Corresponds to the JSON property `apigeeProjectId`
+        # @return [String]
+        attr_accessor :apigee_project_id
+      
         # Not used by Apigee.
         # Corresponds to the JSON property `attributes`
         # @return [Array<String>]
@@ -5404,6 +5411,7 @@ module Google
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
+          @apigee_project_id = args[:apigee_project_id] if args.key?(:apigee_project_id)
           @attributes = args[:attributes] if args.key?(:attributes)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @billing_type = args[:billing_type] if args.key?(:billing_type)
@@ -7662,8 +7670,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class GoogleIamV1AuditConfig
         include Google::Apis::Core::Hashable
       
