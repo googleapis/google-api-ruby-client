@@ -1407,11 +1407,6 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Unimplemented.
-        # Corresponds to the JSON property `extensions`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :extensions
-      
         # DO NOT USE. This is an experimental field.
         # Corresponds to the JSON property `importance`
         # @return [String]
@@ -1499,7 +1494,6 @@ module Google
         def update!(**args)
           @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
           @end_time = args[:end_time] if args.key?(:end_time)
-          @extensions = args[:extensions] if args.key?(:extensions)
           @importance = args[:importance] if args.key?(:importance)
           @labels = args[:labels] if args.key?(:labels)
           @log_entries = args[:log_entries] if args.key?(:log_entries)
