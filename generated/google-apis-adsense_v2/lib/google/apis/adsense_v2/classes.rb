@@ -91,8 +91,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Product code of the ad client. For example, "AFC" for AdSense for
-        # Content.
+        # Output only. Reporting product code of the ad client. For example, "AFC" for
+        # AdSense for Content. Corresponds to the `PRODUCT_CODE` dimension, and present
+        # only if the ad client supports reporting.
         # Corresponds to the JSON property `productCode`
         # @return [String]
         attr_accessor :product_code
