@@ -385,8 +385,8 @@ module Google
         attr_accessor :operation_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1287,8 +1287,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //developers.google.com/console/help/new/#projectnumber). This field has been
-        # deprecated and replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1391,8 +1391,8 @@ module Google
         attr_accessor :parent
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the parent field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1444,8 +1444,8 @@ module Google
         attr_accessor :parent
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //developers.google.com/console/help/new/#projectnumber). This field has been
-        # deprecated and replaced by the parent field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4029,8 +4029,8 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4250,8 +4250,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4305,8 +4305,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //developers.google.com/console/help/new/#projectnumber). This field has been
-        # deprecated and replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4362,8 +4362,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4416,8 +4416,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4471,8 +4471,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4519,7 +4519,7 @@ module Google
         attr_accessor :name
       
         # Required. The Google Developers Console [project ID or project number](https://
-        # support.google.com/cloud/answer/6158840).
+        # cloud.google.com/resource-manager/docs/creating-managing-projects).
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4566,8 +4566,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4628,8 +4628,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4678,8 +4678,8 @@ module Google
         attr_accessor :network_policy
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //developers.google.com/console/help/new/#projectnumber). This field has been
-        # deprecated and replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4735,8 +4735,8 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4794,8 +4794,8 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4850,8 +4850,8 @@ module Google
         attr_accessor :node_pool_id
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -4950,8 +4950,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //developers.google.com/console/help/new/#projectnumber). This field has been
-        # deprecated and replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -5104,8 +5104,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -5165,8 +5165,8 @@ module Google
         attr_accessor :name
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -5267,8 +5267,8 @@ module Google
         attr_accessor :node_version
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
-        # //support.google.com/cloud/answer/6158840). This field has been deprecated and
-        # replaced by the name field.
+        # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
+        # field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
