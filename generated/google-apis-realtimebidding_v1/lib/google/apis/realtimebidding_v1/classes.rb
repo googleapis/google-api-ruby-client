@@ -257,6 +257,88 @@ module Google
         end
       end
       
+      # A request to approve a batch of publisher connections.
+      class BatchApprovePublisherConnectionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the publishers with which connections will be approved.
+        # In the pattern `bidders/`bidder`/publisherConnections/`publisher`` where ``
+        # bidder`` is the account ID of the bidder, and ``publisher`` is the ads.txt/app-
+        # ads.txt publisher ID.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # A response for the request to approve a batch of publisher connections.
+      class BatchApprovePublisherConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The publisher connections that have been approved.
+        # Corresponds to the JSON property `publisherConnections`
+        # @return [Array<Google::Apis::RealtimebiddingV1::PublisherConnection>]
+        attr_accessor :publisher_connections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher_connections = args[:publisher_connections] if args.key?(:publisher_connections)
+        end
+      end
+      
+      # A request to reject a batch of publisher connections.
+      class BatchRejectPublisherConnectionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the publishers with whom connection will be rejected.
+        # In the pattern `bidders/`bidder`/publisherConnections/`publisher`` where ``
+        # bidder`` is the account ID of the bidder, and ``publisher`` is the ads.txt/app-
+        # ads.txt publisher ID.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # A response for the request to reject a batch of publisher connections.
+      class BatchRejectPublisherConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The publisher connections that have been rejected.
+        # Corresponds to the JSON property `publisherConnections`
+        # @return [Array<Google::Apis::RealtimebiddingV1::PublisherConnection>]
+        attr_accessor :publisher_connections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publisher_connections = args[:publisher_connections] if args.key?(:publisher_connections)
+        end
+      end
+      
       # Bidder settings.
       class Bidder
         include Google::Apis::Core::Hashable
@@ -1276,6 +1358,33 @@ module Google
         end
       end
       
+      # A response to a request for listing publisher connections.
+      class ListPublisherConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # ListPublisherConnectionsRequest.pageToken field in the subsequent call to the `
+        # ListPublisherConnections` method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of publisher connections.
+        # Corresponds to the JSON property `publisherConnections`
+        # @return [Array<Google::Apis::RealtimebiddingV1::PublisherConnection>]
+        attr_accessor :publisher_connections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @publisher_connections = args[:publisher_connections] if args.key?(:publisher_connections)
+        end
+      end
+      
       # The list user list response.
       class ListUserListsResponse
         include Google::Apis::Core::Hashable
@@ -1781,6 +1890,56 @@ module Google
           @user_list_targeting = args[:user_list_targeting] if args.key?(:user_list_targeting)
           @vertical_targeting = args[:vertical_targeting] if args.key?(:vertical_targeting)
           @web_targeting = args[:web_targeting] if args.key?(:web_targeting)
+        end
+      end
+      
+      # An Open Bidding exchange's connection to a publisher. This is initiated by the
+      # publisher for the bidder to review. If approved by the bidder, this means that
+      # the bidder agrees to receive bid requests from the publisher.
+      class PublisherConnection
+        include Google::Apis::Core::Hashable
+      
+        # Whether the publisher has been approved by the bidder.
+        # Corresponds to the JSON property `biddingState`
+        # @return [String]
+        attr_accessor :bidding_state
+      
+        # Output only. The time at which the publisher initiated a connection with the
+        # bidder (irrespective of if or when the bidder approves it). This is
+        # subsequently updated if the publisher revokes and re-initiates the connection.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Publisher display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Name of the publisher connection. This follows the pattern `
+        # bidders/`bidder`/publisherConnections/`publisher``, where ``bidder``
+        # represents the account ID of the bidder, and ``publisher`` is the ads.txt/app-
+        # ads.txt publisher ID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether the publisher is an Ad Manager or AdMob publisher.
+        # Corresponds to the JSON property `publisherPlatform`
+        # @return [String]
+        attr_accessor :publisher_platform
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bidding_state = args[:bidding_state] if args.key?(:bidding_state)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @publisher_platform = args[:publisher_platform] if args.key?(:publisher_platform)
         end
       end
       

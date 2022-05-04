@@ -64,6 +64,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchApprovePublisherConnectionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchApprovePublisherConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchRejectPublisherConnectionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchRejectPublisherConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bidder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPublisherConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListUserListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +293,12 @@ module Google
       end
       
       class PretargetingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublisherConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,6 +431,36 @@ module Google
           property :mobile_app_category_targeting, as: 'mobileAppCategoryTargeting', class: Google::Apis::RealtimebiddingV1::NumericTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::NumericTargetingDimension::Representation
       
           property :mobile_app_targeting, as: 'mobileAppTargeting', class: Google::Apis::RealtimebiddingV1::StringTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::StringTargetingDimension::Representation
+      
+        end
+      end
+      
+      class BatchApprovePublisherConnectionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
+      class BatchApprovePublisherConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :publisher_connections, as: 'publisherConnections', class: Google::Apis::RealtimebiddingV1::PublisherConnection, decorator: Google::Apis::RealtimebiddingV1::PublisherConnection::Representation
+      
+        end
+      end
+      
+      class BatchRejectPublisherConnectionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
+      class BatchRejectPublisherConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :publisher_connections, as: 'publisherConnections', class: Google::Apis::RealtimebiddingV1::PublisherConnection, decorator: Google::Apis::RealtimebiddingV1::PublisherConnection::Representation
       
         end
       end
@@ -661,6 +727,15 @@ module Google
         end
       end
       
+      class ListPublisherConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :publisher_connections, as: 'publisherConnections', class: Google::Apis::RealtimebiddingV1::PublisherConnection, decorator: Google::Apis::RealtimebiddingV1::PublisherConnection::Representation
+      
+        end
+      end
+      
       class ListUserListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -786,6 +861,17 @@ module Google
       
           property :web_targeting, as: 'webTargeting', class: Google::Apis::RealtimebiddingV1::StringTargetingDimension, decorator: Google::Apis::RealtimebiddingV1::StringTargetingDimension::Representation
       
+        end
+      end
+      
+      class PublisherConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bidding_state, as: 'biddingState'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :publisher_platform, as: 'publisherPlatform'
         end
       end
       
