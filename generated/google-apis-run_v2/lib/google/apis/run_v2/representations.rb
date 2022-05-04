@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRunV2ContainerStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRunV2EnvVar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,9 +310,7 @@ module Google
       class GoogleCloudRunV2Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain_mapping_reason, as: 'domainMappingReason'
           property :execution_reason, as: 'executionReason'
-          property :internal_reason, as: 'internalReason'
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
@@ -351,14 +343,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
-          property :name, as: 'name'
-        end
-      end
-      
-      class GoogleCloudRunV2ContainerStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_digest, as: 'imageDigest'
           property :name, as: 'name'
         end
       end
@@ -441,8 +425,6 @@ module Google
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
-      
-          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus::Representation
       
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
@@ -527,8 +509,6 @@ module Google
           hash :annotations, as: 'annotations'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
-          property :confidential, as: 'confidential'
-          property :container_concurrency, as: 'containerConcurrency'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :create_time, as: 'createTime'
@@ -541,6 +521,7 @@ module Google
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :log_uri, as: 'logUri'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
@@ -570,13 +551,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
-          property :confidential, as: 'confidential'
-          property :container_concurrency, as: 'containerConcurrency'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
           hash :labels, as: 'labels'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :revision, as: 'revision'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
