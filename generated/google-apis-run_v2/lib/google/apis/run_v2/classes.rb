@@ -78,20 +78,10 @@ module Google
       class GoogleCloudRunV2Condition
         include Google::Apis::Core::Hashable
       
-        # A reason for the domain mapping condition.
-        # Corresponds to the JSON property `domainMappingReason`
-        # @return [String]
-        attr_accessor :domain_mapping_reason
-      
         # A reason for the execution condition.
         # Corresponds to the JSON property `executionReason`
         # @return [String]
         attr_accessor :execution_reason
-      
-        # A reason for the internal condition.
-        # Corresponds to the JSON property `internalReason`
-        # @return [String]
-        attr_accessor :internal_reason
       
         # Last time the condition transitioned from one status to another.
         # Corresponds to the JSON property `lastTransitionTime`
@@ -137,9 +127,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @domain_mapping_reason = args[:domain_mapping_reason] if args.key?(:domain_mapping_reason)
           @execution_reason = args[:execution_reason] if args.key?(:execution_reason)
-          @internal_reason = args[:internal_reason] if args.key?(:internal_reason)
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
@@ -185,8 +173,9 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2EnvVar>]
         attr_accessor :env
       
-        # Required. URL of the Container image in Google Container Registry or Docker
-        # More info: https://kubernetes.io/docs/concepts/containers/images
+        # Required. URL of the Container image in Google Container Registry or Google
+        # Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/
+        # images
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -255,32 +244,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_port = args[:container_port] if args.key?(:container_port)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # ContainerStatus holds the information of container name and image digest value.
-      class GoogleCloudRunV2ContainerStatus
-        include Google::Apis::Core::Hashable
-      
-        # ImageDigest holds the resolved digest for the image specified, regardless of
-        # whether a tag or digest was originally specified in the Container object.
-        # Corresponds to the JSON property `imageDigest`
-        # @return [String]
-        attr_accessor :image_digest
-      
-        # The name of the container, if specified.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_digest = args[:image_digest] if args.key?(:image_digest)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -645,11 +608,6 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
-        # Output only. Status information for each of the containers specified.
-        # Corresponds to the JSON property `containerStatuses`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus>]
-        attr_accessor :container_statuses
-      
         # Output only. The creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -784,7 +742,6 @@ module Google
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
           @conditions = args[:conditions] if args.key?(:conditions)
-          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
@@ -983,17 +940,6 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
-        # Indicates whether Confidential Cloud Run is enabled in this Revision.
-        # Corresponds to the JSON property `confidential`
-        # @return [Boolean]
-        attr_accessor :confidential
-        alias_method :confidential?, :confidential
-      
-        # Sets the maximum number of requests that each serving instance can receive.
-        # Corresponds to the JSON property `containerConcurrency`
-        # @return [Fixnum]
-        attr_accessor :container_concurrency
-      
         # Holds the single container that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
@@ -1064,6 +1010,11 @@ module Google
         # Corresponds to the JSON property `logUri`
         # @return [String]
         attr_accessor :log_uri
+      
+        # Sets the maximum number of requests that each serving instance can receive.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
       
         # Output only. The unique name of this Revision.
         # Corresponds to the JSON property `name`
@@ -1140,8 +1091,6 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @conditions = args[:conditions] if args.key?(:conditions)
-          @confidential = args[:confidential] if args.key?(:confidential)
-          @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
@@ -1153,6 +1102,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1202,17 +1152,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Enables Confidential Cloud Run in Revisions created using this template.
-        # Corresponds to the JSON property `confidential`
-        # @return [Boolean]
-        attr_accessor :confidential
-        alias_method :confidential?, :confidential
-      
-        # Sets the maximum number of requests that each serving instance can receive.
-        # Corresponds to the JSON property `containerConcurrency`
-        # @return [Fixnum]
-        attr_accessor :container_concurrency
-      
         # Holds the single container that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
@@ -1235,6 +1174,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Sets the maximum number of requests that each serving instance can receive.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
       
         # The unique name for the revision. If this field is omitted, it will be
         # automatically generated based on the Service name.
@@ -1280,12 +1224,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
-          @confidential = args[:confidential] if args.key?(:confidential)
-          @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @labels = args[:labels] if args.key?(:labels)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @revision = args[:revision] if args.key?(:revision)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1476,7 +1419,9 @@ module Google
         attr_accessor :expire_time
       
         # Output only. A number that monotonically increases every time the user
-        # modifies the desired state.
+        # modifies the desired state. Please note that unlike v1, this is an int64 value.
+        # As with most Google APIs, its JSON representation will be a `string` instead
+        # of an `integer`.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
@@ -1535,7 +1480,9 @@ module Google
       
         # Output only. The generation of this Service currently serving traffic. See
         # comments in `reconciling` for additional information on reconciliation process
-        # in Cloud Run.
+        # in Cloud Run. Please note that unlike v1, this is an int64 value. As with most
+        # Google APIs, its JSON representation will be a `string` instead of an `integer`
+        # .
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
         attr_accessor :observed_generation
@@ -2194,8 +2141,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class GoogleIamV1AuditConfig
         include Google::Apis::Core::Hashable
       
