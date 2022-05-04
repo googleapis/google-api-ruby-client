@@ -484,6 +484,34 @@ module Google
         end
       end
       
+      # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
+      # port.
+      class GrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1444,6 +1472,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
+        # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
+        # port.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::RunV1alpha1::GrpcAction]
+        attr_accessor :grpc
+      
         # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
         # requests.
         # Corresponds to the JSON property `httpGet`
@@ -1494,6 +1528,7 @@ module Google
         def update!(**args)
           @exec = args[:exec] if args.key?(:exec)
           @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
+          @grpc = args[:grpc] if args.key?(:grpc)
           @http_get = args[:http_get] if args.key?(:http_get)
           @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)

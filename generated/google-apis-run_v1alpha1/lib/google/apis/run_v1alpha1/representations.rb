@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrpcAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -355,6 +361,14 @@ module Google
         end
       end
       
+      class GrpcAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :service, as: 'service'
+        end
+      end
+      
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -564,6 +578,8 @@ module Google
           property :exec, as: 'exec', class: Google::Apis::RunV1alpha1::ExecAction, decorator: Google::Apis::RunV1alpha1::ExecAction::Representation
       
           property :failure_threshold, as: 'failureThreshold'
+          property :grpc, as: 'grpc', class: Google::Apis::RunV1alpha1::GrpcAction, decorator: Google::Apis::RunV1alpha1::GrpcAction::Representation
+      
           property :http_get, as: 'httpGet', class: Google::Apis::RunV1alpha1::HttpGetAction, decorator: Google::Apis::RunV1alpha1::HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'
