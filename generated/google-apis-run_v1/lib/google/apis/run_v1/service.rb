@@ -955,15 +955,13 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   LINT.IfChange() The namespace in which the service should be created. For
-        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
-        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The namespace in which the service should be created. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
-        #   create_internal_service_request)
+        #   values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1137,15 +1135,13 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   LINT.IfChange() The name of the service being replaced. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The name of the service being replaced. For Cloud Run (fully managed), replace
+        #   `namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
-        #   replace_internal_service_request)
+        #   values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1988,15 +1984,13 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   LINT.IfChange() The namespace in which the service should be created. For
-        #   Cloud Run (fully managed), replace `namespace` with the project ID or number.
-        #   It takes the form namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The namespace in which the service should be created. For Cloud Run (fully
+        #   managed), replace `namespace` with the project ID or number. It takes the form
+        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
-        #   create_internal_service_request)
+        #   values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2214,15 +2208,13 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   LINT.IfChange() The name of the service being replaced. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The name of the service being replaced. For Cloud Run (fully managed), replace
+        #   `namespace` with the project ID or number. It takes the form namespaces/`
+        #   namespace`. For example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
-        #   values without persisting the request. Supported values: `all` LINT.ThenChange(
-        #   //depot/google3/google/cloud/serverless/internal/internal_service.proto:
-        #   replace_internal_service_request)
+        #   values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

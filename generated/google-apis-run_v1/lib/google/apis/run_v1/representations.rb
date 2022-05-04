@@ -100,12 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContainerStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DomainMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +173,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -674,14 +674,6 @@ module Google
         end
       end
       
-      class ContainerStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_digest, as: 'imageDigest'
-          property :name, as: 'name'
-        end
-      end
-      
       class DomainMapping
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -825,6 +817,14 @@ module Google
         end
       end
       
+      class GrpcAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :service, as: 'service'
+        end
+      end
+      
       class GoogleCloudRunV1Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -891,8 +891,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
-      
-          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV1::ContainerStatus, decorator: Google::Apis::RunV1::ContainerStatus::Representation
       
           property :execution_count, as: 'executionCount'
           property :latest_created_execution, as: 'latestCreatedExecution', class: Google::Apis::RunV1::ExecutionReference, decorator: Google::Apis::RunV1::ExecutionReference::Representation
@@ -1111,6 +1109,8 @@ module Google
           property :exec, as: 'exec', class: Google::Apis::RunV1::ExecAction, decorator: Google::Apis::RunV1::ExecAction::Representation
       
           property :failure_threshold, as: 'failureThreshold'
+          property :grpc, as: 'grpc', class: Google::Apis::RunV1::GrpcAction, decorator: Google::Apis::RunV1::GrpcAction::Representation
+      
           property :http_get, as: 'httpGet', class: Google::Apis::RunV1::HttpGetAction, decorator: Google::Apis::RunV1::HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'

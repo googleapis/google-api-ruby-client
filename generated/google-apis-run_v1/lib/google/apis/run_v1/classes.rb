@@ -54,8 +54,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -653,32 +653,6 @@ module Google
         end
       end
       
-      # ContainerStatus holds the information of container name and image digest value.
-      class ContainerStatus
-        include Google::Apis::Core::Hashable
-      
-        # ImageDigest holds the resolved digest for the image specified, regardless of
-        # whether a tag or digest was originally specified in the Container object.
-        # Corresponds to the JSON property `imageDigest`
-        # @return [String]
-        attr_accessor :image_digest
-      
-        # The name of the container, if specified.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_digest = args[:image_digest] if args.key?(:image_digest)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # Resource to hold the state and status of a user's domain mapping. NOTE: This
       # resource is currently in Beta.
       class DomainMapping
@@ -1213,6 +1187,34 @@ module Google
         end
       end
       
+      # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
+      # port.
+      class GrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # Condition defines a generic condition for a Resource.
       class GoogleCloudRunV1Condition
         include Google::Apis::Core::Hashable
@@ -1453,13 +1455,6 @@ module Google
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
       
-        # Status information for each of the specified containers. The status includes
-        # the resolved digest for specified images, which occurs during creation of the
-        # job.
-        # Corresponds to the JSON property `containerStatuses`
-        # @return [Array<Google::Apis::RunV1::ContainerStatus>]
-        attr_accessor :container_statuses
-      
         # Number of executions created for this job.
         # Corresponds to the JSON property `executionCount`
         # @return [Fixnum]
@@ -1483,7 +1478,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conditions = args[:conditions] if args.key?(:conditions)
-          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
           @execution_count = args[:execution_count] if args.key?(:execution_count)
           @latest_created_execution = args[:latest_created_execution] if args.key?(:latest_created_execution)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
@@ -2403,6 +2397,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
+        # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
+        # port.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::RunV1::GrpcAction]
+        attr_accessor :grpc
+      
         # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
         # requests.
         # Corresponds to the JSON property `httpGet`
@@ -2453,6 +2453,7 @@ module Google
         def update!(**args)
           @exec = args[:exec] if args.key?(:exec)
           @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
+          @grpc = args[:grpc] if args.key?(:grpc)
           @http_get = args[:http_get] if args.key?(:http_get)
           @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
