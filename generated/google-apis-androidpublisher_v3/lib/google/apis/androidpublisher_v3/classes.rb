@@ -1864,7 +1864,7 @@ module Google
         # @return [String]
         attr_accessor :order_id
       
-        # The inapp product SKU.
+        # The inapp product SKU. May not be present.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1881,7 +1881,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
-        # The purchase token generated to identify this purchase.
+        # The purchase token generated to identify this purchase. May not be present.
         # Corresponds to the JSON property `purchaseToken`
         # @return [String]
         attr_accessor :purchase_token
@@ -1895,7 +1895,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_type
       
-        # The quantity associated with the purchase of the inapp product.
+        # The quantity associated with the purchase of the inapp product. If not present,
+        # the quantity is 1.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
