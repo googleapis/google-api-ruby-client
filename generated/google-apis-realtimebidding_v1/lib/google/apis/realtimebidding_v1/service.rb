@@ -784,6 +784,162 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Batch approves multiple publisher connections.
+        # @param [String] parent
+        #   Required. The bidder for whom publisher connections will be approved. Format: `
+        #   bidders/`bidder`` where ``bidder`` is the account ID of the bidder.
+        # @param [Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsRequest] batch_approve_publisher_connections_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_approve_publisher_connections(parent, batch_approve_publisher_connections_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/publisherConnections:batchApprove', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsRequest::Representation
+          command.request_object = batch_approve_publisher_connections_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::BatchApprovePublisherConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch rejects multiple publisher connections.
+        # @param [String] parent
+        #   Required. The bidder for whom publisher connections will be rejected. Format: `
+        #   bidders/`bidder`` where ``bidder`` is the account ID of the bidder.
+        # @param [Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsRequest] batch_reject_publisher_connections_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_reject_publisher_connections(parent, batch_reject_publisher_connections_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/publisherConnections:batchReject', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsRequest::Representation
+          command.request_object = batch_reject_publisher_connections_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::BatchRejectPublisherConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a publisher connection.
+        # @param [String] name
+        #   Required. Name of the publisher whose connection information is to be
+        #   retrieved. In the pattern `bidders/`bidder`/publisherConnections/`publisher``
+        #   where ``bidder`` is the account ID of the bidder, and ``publisher`` is the ads.
+        #   txt/app-ads.txt publisher ID. See publisherConnection.name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::PublisherConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::PublisherConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_bidder_publisher_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::PublisherConnection::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::PublisherConnection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists publisher connections for a given bidder.
+        # @param [String] parent
+        #   Required. Name of the bidder for which publishers have initiated connections.
+        #   The pattern for this resource is `bidders/`bidder`` where ``bidder``
+        #   represents the account ID of the bidder.
+        # @param [String] filter
+        #   Query string to filter publisher connections. Connections can be filtered by `
+        #   displayName`, `publisherPlatform`, and `biddingState`. If no filter is
+        #   specified, all publisher connections will be returned. Example: 'displayName="
+        #   Great Publisher*" AND publisherPlatform=ADMOB AND biddingState != PENDING' See
+        #   https://google.aip.dev/160 for more information about filtering syntax.
+        # @param [String] order_by
+        #   Order specification by which results should be sorted. If no sort order is
+        #   specified, the results will be returned in an arbitrary order. Currently
+        #   results can be sorted by `createTime`. Example: 'createTime DESC'.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server may return fewer results than requested (due
+        #   to timeout constraint) even if more are available via another call. If
+        #   unspecified, the server will pick an appropriate default. Acceptable values
+        #   are 1 to 5000, inclusive.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListPublisherConnectionsResponse.nextPageToken returned
+        #   from the previous call to the 'ListPublisherConnections' method.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::ListPublisherConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::ListPublisherConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_bidder_publisher_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/publisherConnections', options)
+          command.response_representation = Google::Apis::RealtimebiddingV1::ListPublisherConnectionsResponse::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::ListPublisherConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a buyer account by its name.
         # @param [String] name
         #   Required. Name of the buyer to get. Format: `buyers/`buyerId``
