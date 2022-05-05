@@ -551,6 +551,11 @@ module Google
         # @return [String]
         attr_accessor :free_trial_end_time
       
+        # Required. The line items of the subscription.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>]
+        attr_accessor :line_items
+      
         # Output only. Response only. Resource name of the subscription. It will have
         # the format of "partners/`partner_id`/subscriptions/`subscription_id`"
         # Corresponds to the JSON property `name`
@@ -570,14 +575,24 @@ module Google
         # @return [String]
         attr_accessor :processing_state
       
-        # Required. Required. Resource name that identifies the purchased products. The
-        # format will be 'partners/`partner_id`/products/`product_id`'.
+        # Required. Deprecated: consider using `line_items` as the input. Required.
+        # Resource name that identifies the purchased products. The format will be '
+        # partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `products`
         # @return [Array<String>]
         attr_accessor :products
       
-        # Optional. Optional. Resource name that identifies one or more promotions that
-        # can be applied on the product. A typical promotion for a subscription is Free
+        # Optional. Subscription-level promotions. Only free trial is supported on this
+        # level. It determines the first renewal time of the subscription to be the end
+        # of the free trial period. Specify the promotion resource name only when used
+        # as input.
+        # Corresponds to the JSON property `promotionSpecs`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
+        attr_accessor :promotion_specs
+      
+        # Optional. Deprecated: consider using the top-level `promotion_specs` as the
+        # input. Optional. Resource name that identifies one or more promotions that can
+        # be applied on the product. A typical promotion for a subscription is Free
         # trial. The format will be 'partners/`partner_id`/promotions/`promotion_id`'.
         # Corresponds to the JSON property `promotions`
         # @return [Array<String>]
@@ -635,10 +650,12 @@ module Google
           @cycle_end_time = args[:cycle_end_time] if args.key?(:cycle_end_time)
           @end_user_entitled = args[:end_user_entitled] if args.key?(:end_user_entitled)
           @free_trial_end_time = args[:free_trial_end_time] if args.key?(:free_trial_end_time)
+          @line_items = args[:line_items] if args.key?(:line_items)
           @name = args[:name] if args.key?(:name)
           @partner_user_token = args[:partner_user_token] if args.key?(:partner_user_token)
           @processing_state = args[:processing_state] if args.key?(:processing_state)
           @products = args[:products] if args.key?(:products)
+          @promotion_specs = args[:promotion_specs] if args.key?(:promotion_specs)
           @promotions = args[:promotions] if args.key?(:promotions)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
           @renewal_time = args[:renewal_time] if args.key?(:renewal_time)
@@ -665,6 +682,88 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Individual line item definition of a subscription. Next id: 5
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
+        include Google::Apis::Core::Hashable
+      
+        # Output only. It is set only if the line item has its own free trial applied.
+        # End time of the line item free trial period, in ISO 8061 format. For example, "
+        # 2019-08-31T17:28:54.564Z". It will be set the same as createTime if no free
+        # trial promotion is specified.
+        # Corresponds to the JSON property `lineItemFreeTrialEndTime`
+        # @return [String]
+        attr_accessor :line_item_free_trial_end_time
+      
+        # Optional. The promotions applied on the line item. It can be: - a free trial
+        # promotion, which overrides the subscription-level free trial promotion. - an
+        # introductory pricing promotion. When used as input in Create or Provision API,
+        # specify its resource name only.
+        # Corresponds to the JSON property `lineItemPromotionSpecs`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
+        attr_accessor :line_item_promotion_specs
+      
+        # Required. Product resource name that identifies one the line item The format
+        # is 'partners/`partner_id`/products/`product_id`'.
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        # Output only. The state of the line item.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
+          @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
+          @product = args[:product] if args.key?(:product)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Describes the spec for one promotion.
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Describes the length of a period of a time.
+        # Corresponds to the JSON property `freeTrialDuration`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
+        attr_accessor :free_trial_duration
+      
+        # The details of a introductory pricing promotion.
+        # Corresponds to the JSON property `introductoryPricingDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails]
+        attr_accessor :introductory_pricing_details
+      
+        # Required. Promotion resource name that identifies a promotion. The format is '
+        # partners/`partner_id`/promotions/`promotion_id`'.
+        # Corresponds to the JSON property `promotion`
+        # @return [String]
+        attr_accessor :promotion
+      
+        # Output only. The type of the promotion for the spec.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @free_trial_duration = args[:free_trial_duration] if args.key?(:free_trial_duration)
+          @introductory_pricing_details = args[:introductory_pricing_details] if args.key?(:introductory_pricing_details)
+          @promotion = args[:promotion] if args.key?(:promotion)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
