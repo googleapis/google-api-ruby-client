@@ -5727,6 +5727,14 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters]
         attr_accessor :assist_query_params
       
+        # Additional parameters to be put into Dialogflow CX session parameters. To
+        # remove a parameter from the session, clients should explicitly set the
+        # parameter value to null. Note: this field should only be used if you are
+        # connecting to a Dialogflow CX agent.
+        # Corresponds to the JSON property `cxParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :cx_parameters
+      
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `` can trigger a personalized welcome
         # response. The parameter `name` may be used by the agent in the response: `"
@@ -5766,6 +5774,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
+          @cx_parameters = args[:cx_parameters] if args.key?(:cx_parameters)
           @event_input = args[:event_input] if args.key?(:event_input)
           @query_params = args[:query_params] if args.key?(:query_params)
           @reply_audio_config = args[:reply_audio_config] if args.key?(:reply_audio_config)
