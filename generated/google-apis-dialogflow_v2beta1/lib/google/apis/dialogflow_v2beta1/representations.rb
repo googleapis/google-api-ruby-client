@@ -2392,6 +2392,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5097,6 +5109,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
       
+          hash :cx_parameters, as: 'cxParameters'
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput::Representation
       
           property :message_send_time, as: 'messageSendTime'
@@ -6677,6 +6690,8 @@ module Google
       
           property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff::Representation
       
+          property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio::Representation
+      
           hash :payload, as: 'payload'
           property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall::Representation
       
@@ -6695,6 +6710,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :segments, as: 'segments', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          property :audio, :base64 => true, as: 'audio'
+          property :uri, as: 'uri'
         end
       end
       

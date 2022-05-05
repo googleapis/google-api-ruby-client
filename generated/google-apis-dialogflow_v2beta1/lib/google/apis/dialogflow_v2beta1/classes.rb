@@ -8748,6 +8748,14 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
         attr_accessor :assist_query_params
       
+        # Additional parameters to be put into Dialogflow CX session parameters. To
+        # remove a parameter from the session, clients should explicitly set the
+        # parameter value to null. Note: this field should only be used if you are
+        # connecting to a Dialogflow CX agent.
+        # Corresponds to the JSON property `cxParameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :cx_parameters
+      
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `` can trigger a personalized welcome
         # response. The parameter `name` may be used by the agent in the response: `"
@@ -8800,6 +8808,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
+          @cx_parameters = args[:cx_parameters] if args.key?(:cx_parameters)
           @event_input = args[:event_input] if args.key?(:event_input)
           @message_send_time = args[:message_send_time] if args.key?(:message_send_time)
           @query_params = args[:query_params] if args.key?(:query_params)
@@ -14541,6 +14550,12 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff]
         attr_accessor :live_agent_handoff
       
+        # Represents an audio message that is composed of both segments synthesized from
+        # the Dialogflow agent prompts and ones hosted externally at the specified URIs.
+        # Corresponds to the JSON property `mixedAudio`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio]
+        attr_accessor :mixed_audio
+      
         # Returns a response containing a custom, platform-specific payload.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
@@ -14565,6 +14580,7 @@ module Google
         def update!(**args)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
+          @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
           @payload = args[:payload] if args.key?(:payload)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
@@ -14607,6 +14623,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Represents an audio message that is composed of both segments synthesized from
+      # the Dialogflow agent prompts and ones hosted externally at the specified URIs.
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio
+        include Google::Apis::Core::Hashable
+      
+        # Segments this audio response is composed of.
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # Represents one segment of audio.
+      class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment
+        include Google::Apis::Core::Hashable
+      
+        # Whether the playback of this segment can be interrupted by the end user's
+        # speech and the client should then start the next Dialogflow request.
+        # Corresponds to the JSON property `allowPlaybackInterruption`
+        # @return [Boolean]
+        attr_accessor :allow_playback_interruption
+        alias_method :allow_playback_interruption?, :allow_playback_interruption
+      
+        # Raw audio synthesized from the Dialogflow agent's response using the output
+        # config specified in the request.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Client-specific URI that points to an audio clip accessible to the client.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
+          @audio = args[:audio] if args.key?(:audio)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
