@@ -1453,7 +1453,7 @@ module Google
       class GoogleChromeManagementV1StorageStatusReport
         include Google::Apis::Core::Hashable
       
-        # Output only. Reports on disk
+        # Output only. Reports on disk.
         # Corresponds to the JSON property `disk`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DiskInfo>]
         attr_accessor :disk
