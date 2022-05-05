@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrafeasV1FileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -692,6 +698,13 @@ module Google
         end
       end
       
+      class GrafeasV1FileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+        end
+      end
+      
       class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -890,6 +903,8 @@ module Google
           property :affected_version, as: 'affectedVersion', class: Google::Apis::OndemandscanningV1::Version, decorator: Google::Apis::OndemandscanningV1::Version::Representation
       
           property :effective_severity, as: 'effectiveSeverity'
+          collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation, decorator: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation::Representation
+      
           property :fix_available, as: 'fixAvailable'
           property :fixed_cpe_uri, as: 'fixedCpeUri'
           property :fixed_package, as: 'fixedPackage'
