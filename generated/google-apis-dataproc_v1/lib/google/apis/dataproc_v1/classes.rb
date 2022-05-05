@@ -58,6 +58,31 @@ module Google
         end
       end
       
+      # Configuration for using injectable credentials or service account
+      class AuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Authentication type for session execution.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Specific injectable credentials authentication parameters
+        # Corresponds to the JSON property `injectableCredentialsConfig`
+        # @return [Google::Apis::DataprocV1::InjectableCredentialsConfig]
+        attr_accessor :injectable_credentials_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @injectable_credentials_config = args[:injectable_credentials_config] if args.key?(:injectable_credentials_config)
+        end
+      end
+      
       # Autoscaling Policy config associated with the cluster.
       class AutoscalingConfig
         include Google::Apis::Core::Hashable
@@ -479,7 +504,7 @@ module Google
         # @return [Google::Apis::DataprocV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource.
+        # Specifies the principals requesting access for a Google Cloud resource.
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
@@ -592,10 +617,9 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::ClusterStatus>]
         attr_accessor :status_history
       
-        # Dataproc cluster config for a cluster that does not directly control the
+        # The Dataproc cluster config for a cluster that does not directly control the
         # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-        # google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-
-        # cluster).
+        # google.com/dataproc/docs/guides/dpgke/dataproc-gke).
         # Corresponds to the JSON property `virtualClusterConfig`
         # @return [Google::Apis::DataprocV1::VirtualClusterConfig]
         attr_accessor :virtual_cluster_config
@@ -640,7 +664,7 @@ module Google
         # @return [String]
         attr_accessor :config_bucket
       
-        # Contains dataproc metric config.
+        # Dataproc metric config.
         # Corresponds to the JSON property `dataprocMetricConfig`
         # @return [Google::Apis::DataprocV1::DataprocMetricConfig]
         attr_accessor :dataproc_metric_config
@@ -765,7 +789,7 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :hdfs_metrics
       
-        # The YARN metrics.
+        # YARN metrics.
         # Corresponds to the JSON property `yarnMetrics`
         # @return [Hash<String,Fixnum>]
         attr_accessor :yarn_metrics
@@ -999,11 +1023,11 @@ module Google
         end
       end
       
-      # Contains dataproc metric config.
+      # Dataproc metric config.
       class DataprocMetricConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Metrics to be enabled.
+        # Required. Metrics to enable.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::DataprocV1::Metric>]
         attr_accessor :metrics
@@ -1482,11 +1506,11 @@ module Google
         # @return [Google::Apis::DataprocV1::NamespacedGkeDeploymentTarget]
         attr_accessor :namespaced_gke_deployment_target
       
-        # Optional. GKE NodePools where workloads will be scheduled. At least one node
-        # pool must be assigned the 'default' role. Each role can be given to only a
-        # single NodePoolTarget. All NodePools must have the same location settings. If
-        # a nodePoolTarget is not specified, Dataproc constructs a default
-        # nodePoolTarget.
+        # Optional. GKE node pools where workloads will be scheduled. At least one node
+        # pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a
+        # GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT
+        # GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All
+        # node pools must have the same location settings.
         # Corresponds to the JSON property `nodePoolTarget`
         # @return [Array<Google::Apis::DataprocV1::GkeNodePoolTarget>]
         attr_accessor :node_pool_target
@@ -1536,7 +1560,10 @@ module Google
         attr_accessor :min_cpu_platform
       
         # Optional. Whether the nodes are created as preemptible VM instances (https://
-        # cloud.google.com/compute/docs/instances/preemptible).
+        # cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot
+        # be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if
+        # the CONTROLLER role is not assigned (the DEFAULT node pool will assume the
+        # CONTROLLER role).
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
@@ -1565,7 +1592,7 @@ module Google
       end
       
       # A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for
-      # a NodePool.
+      # a node pool.
       class GkeNodePoolAcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -1603,13 +1630,13 @@ module Google
       class GkeNodePoolAutoscalingConfig
         include Google::Apis::Core::Hashable
       
-        # The maximum number of nodes in the NodePool. Must be >= min_node_count. Note:
-        # Quota must be sufficient to scale up the cluster.
+        # The maximum number of nodes in the node pool. Must be >= min_node_count, and
+        # must be > 0. Note: Quota must be sufficient to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # The minimum number of nodes in the NodePool. Must be >= 0 and <=
+        # The minimum number of nodes in the node pool. Must be >= 0 and <=
         # max_node_count.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
@@ -1626,9 +1653,9 @@ module Google
         end
       end
       
-      # The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://
-      # cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-
-      # gke-cluster).
+      # The configuration of a GKE node pool used by a Dataproc-on-GKE cluster (https:/
+      # /cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-
+      # on-gke-cluster).
       class GkeNodePoolConfig
         include Google::Apis::Core::Hashable
       
@@ -1644,9 +1671,11 @@ module Google
         attr_accessor :config
       
         # Optional. The list of Compute Engine zones (https://cloud.google.com/compute/
-        # docs/zones#available) where NodePool's nodes will be located.Note: Currently,
-        # only one zone may be specified.If a location is not specified during NodePool
-        # creation, Dataproc will choose a location.
+        # docs/zones#available) where node pool nodes associated with a Dataproc on GKE
+        # virtual cluster will be located.Note: All node pools associated with a virtual
+        # cluster must be located in the same region as the virtual cluster, and they
+        # must be located in the same zone within that region.If a location is not
+        # specified during node pool creation, Dataproc on GKE will choose the zone.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -1663,24 +1692,24 @@ module Google
         end
       end
       
-      # GKE NodePools that Dataproc workloads run on.
+      # GKE node pools that Dataproc workloads run on.
       class GkeNodePoolTarget
         include Google::Apis::Core::Hashable
       
-        # Required. The target GKE NodePool. Format: 'projects/`project`/locations/`
+        # Required. The target GKE node pool. Format: 'projects/`project`/locations/`
         # location`/clusters/`cluster`/nodePools/`node_pool`'
         # Corresponds to the JSON property `nodePool`
         # @return [String]
         attr_accessor :node_pool
       
-        # The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://
-        # cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-
-        # gke-cluster).
+        # The configuration of a GKE node pool used by a Dataproc-on-GKE cluster (https:/
+        # /cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-
+        # on-gke-cluster).
         # Corresponds to the JSON property `nodePoolConfig`
         # @return [Google::Apis::DataprocV1::GkeNodePoolConfig]
         attr_accessor :node_pool_config
       
-        # Required. The types of role for a GKE NodePool
+        # Required. The roles associated with the GKE node pool.
         # Corresponds to the JSON property `roles`
         # @return [Array<String>]
         attr_accessor :roles
@@ -1878,6 +1907,19 @@ module Google
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @credentials_ciphertext = args[:credentials_ciphertext] if args.key?(:credentials_ciphertext)
+        end
+      end
+      
+      # Specific injectable credentials authentication parameters
+      class InjectableCredentialsConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2934,18 +2976,18 @@ module Google
         end
       end
       
-      # Metric source to enable along with any optional metrics for this source that
-      # override the dataproc defaults
+      # The metric source to enable, with any optional metrics, to override Dataproc
+      # default metrics.
       class Metric
         include Google::Apis::Core::Hashable
       
-        # Optional. Optional Metrics to override the dataproc default metrics configured
-        # for the metric source
+        # Optional. Optional Metrics to override the Dataproc default metrics configured
+        # for the metric source.
         # Corresponds to the JSON property `metricOverrides`
         # @return [Array<String>]
         attr_accessor :metric_overrides
       
-        # Required. MetricSource that should be enabled
+        # Required. MetricSource to enable.
         # Corresponds to the JSON property `metricSource`
         # @return [String]
         attr_accessor :metric_source
@@ -3730,6 +3772,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
+        # Configuration for using injectable credentials or service account
+        # Corresponds to the JSON property `sessionAuthenticationConfig`
+        # @return [Google::Apis::DataprocV1::AuthenticationConfig]
+        attr_accessor :session_authentication_config
+      
         # Optional. Version of the batch runtime.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -3743,6 +3790,7 @@ module Google
         def update!(**args)
           @container_image = args[:container_image] if args.key?(:container_image)
           @properties = args[:properties] if args.key?(:properties)
+          @session_authentication_config = args[:session_authentication_config] if args.key?(:session_authentication_config)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4627,8 +4675,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the resource. Permissions with wildcards (
-        # such as '*' or 'storage.*') are not allowed. For more information see IAM
-        # Overview (https://cloud.google.com/iam/docs/overview#permissions).
+        # such as * or storage.*) are not allowed. For more information see IAM Overview
+        # (https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -4681,10 +4729,9 @@ module Google
         end
       end
       
-      # Dataproc cluster config for a cluster that does not directly control the
+      # The Dataproc cluster config for a cluster that does not directly control the
       # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-      # google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-
-      # cluster).
+      # google.com/dataproc/docs/guides/dpgke/dataproc-gke).
       class VirtualClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -4698,8 +4745,8 @@ module Google
         # @return [Google::Apis::DataprocV1::KubernetesClusterConfig]
         attr_accessor :kubernetes_cluster_config
       
-        # Optional. A Storage bucket used to stage job dependencies, config files, and
-        # job driver console output. If you do not specify a staging bucket, Cloud
+        # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
+        # and job driver console output. If you do not specify a staging bucket, Cloud
         # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
