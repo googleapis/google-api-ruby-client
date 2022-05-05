@@ -421,9 +421,8 @@ module Google
       
       # Common Vulnerability Scoring System. For details, see https://www.first.org/
       # cvss/specification-document This is a message we will try to use for storing
-      # multiple versions of CVSS. The intention is that as new versions of CVSS
-      # scores get added, we will be able to modify this message rather than adding
-      # new protos for each new version of the score.
+      # various versions of CVSS rather than making a separate proto for storing a
+      # specific version.
       class Cvss
         include Google::Apis::Core::Hashable
       
@@ -1031,6 +1030,26 @@ module Google
         def update!(**args)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Indicates the location at which a package was found.
+      class GrafeasV1FileLocation
+        include Google::Apis::Core::Hashable
+      
+        # For jars that are contained inside .war files, this filepath can indicate the
+        # path to war file combined with the path to jar file.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
         end
       end
       
@@ -1754,6 +1773,11 @@ module Google
         # @return [String]
         attr_accessor :effective_severity
       
+        # The location at which this package was found.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Array<Google::Apis::OndemandscanningV1::GrafeasV1FileLocation>]
+        attr_accessor :file_location
+      
         # Output only. Whether a fix is available for this package.
         # Corresponds to the JSON property `fixAvailable`
         # @return [Boolean]
@@ -1792,6 +1816,7 @@ module Google
           @affected_package = args[:affected_package] if args.key?(:affected_package)
           @affected_version = args[:affected_version] if args.key?(:affected_version)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @file_location = args[:file_location] if args.key?(:file_location)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @fixed_cpe_uri = args[:fixed_cpe_uri] if args.key?(:fixed_cpe_uri)
           @fixed_package = args[:fixed_package] if args.key?(:fixed_package)
@@ -2530,9 +2555,8 @@ module Google
       
         # Common Vulnerability Scoring System. For details, see https://www.first.org/
         # cvss/specification-document This is a message we will try to use for storing
-        # multiple versions of CVSS. The intention is that as new versions of CVSS
-        # scores get added, we will be able to modify this message rather than adding
-        # new protos for each new version of the score.
+        # various versions of CVSS rather than making a separate proto for storing a
+        # specific version.
         # Corresponds to the JSON property `cvssv3`
         # @return [Google::Apis::OndemandscanningV1::Cvss]
         attr_accessor :cvssv3
