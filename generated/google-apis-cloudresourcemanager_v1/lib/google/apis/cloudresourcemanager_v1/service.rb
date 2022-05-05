@@ -538,8 +538,9 @@ module Google
         # the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
         # specified organization
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -712,8 +713,9 @@ module Google
         # permission `resourcemanager.organizations.setIamPolicy` on the specified
         # organization
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -784,8 +786,9 @@ module Google
         # resource` field should be the organization's resource name, e.g. "
         # organizations/123". There are no permissions required for making this API call.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1038,8 +1041,9 @@ module Google
         # structure and identification, see [Resource Names](https://cloud.google.com/
         # apis/design/resource_names).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1273,8 +1277,9 @@ module Google
         # inaccessible. Authorization requires the Google IAM permission `
         # resourcemanager.projects.setIamPolicy` on the project
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1346,8 +1351,9 @@ module Google
         # see [Resource Names](https://cloud.google.com/apis/design/resource_names).
         # There are no permissions required for making this API call.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::CloudresourcemanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
