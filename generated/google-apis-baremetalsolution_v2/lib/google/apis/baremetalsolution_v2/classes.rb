@@ -82,12 +82,14 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); `
-      class Empty
+      # Message for detach specific LUN from an Instance.
+      class DetachLunRequest
         include Google::Apis::Core::Hashable
+      
+        # Required. Name of the Lun to detach.
+        # Corresponds to the JSON property `lun`
+        # @return [String]
+        attr_accessor :lun
       
         def initialize(**args)
            update!(**args)
@@ -95,6 +97,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @lun = args[:lun] if args.key?(:lun)
         end
       end
       
@@ -540,63 +543,6 @@ module Google
         end
       end
       
-      # Response message containing the list of snapshot schedule policies.
-      class ListSnapshotSchedulePoliciesResponse
-        include Google::Apis::Core::Hashable
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The snapshot schedule policies registered in this project.
-        # Corresponds to the JSON property `snapshotSchedulePolicies`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy>]
-        attr_accessor :snapshot_schedule_policies
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @snapshot_schedule_policies = args[:snapshot_schedule_policies] if args.key?(:snapshot_schedule_policies)
-        end
-      end
-      
-      # Response message containing the list of storage volume snapshots.
-      class ListVolumeSnapshotsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token identifying a page of results from the server.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        # The list of storage volumes.
-        # Corresponds to the JSON property `volumeSnapshots`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::VolumeSnapshot>]
-        attr_accessor :volume_snapshots
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-          @volume_snapshots = args[:volume_snapshots] if args.key?(:volume_snapshots)
-        end
-      end
-      
       # Response message containing the list of storage volumes.
       class ListVolumesResponse
         include Google::Apis::Core::Hashable
@@ -846,6 +792,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # List of IP address reservations in this network. When updating this field, an
+        # error will be generated if a reservation conflicts with an IP address already
+        # allocated to a physical server.
+        # Corresponds to the JSON property `reservations`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NetworkAddressReservation>]
+        attr_accessor :reservations
+      
         # IP range for reserved for services (e.g. NFS).
         # Corresponds to the JSON property `servicesCidr`
         # @return [String]
@@ -883,6 +836,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
           @name = args[:name] if args.key?(:name)
+          @reservations = args[:reservations] if args.key?(:reservations)
           @services_cidr = args[:services_cidr] if args.key?(:services_cidr)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
@@ -919,6 +873,40 @@ module Google
           @address = args[:address] if args.key?(:address)
           @existing_network_id = args[:existing_network_id] if args.key?(:existing_network_id)
           @network_id = args[:network_id] if args.key?(:network_id)
+        end
+      end
+      
+      # A reservation of one or more addresses in a network.
+      class NetworkAddressReservation
+        include Google::Apis::Core::Hashable
+      
+        # The last address of this reservation block, inclusive. I.e., for cases when
+        # reservations are only single addresses, end_address and start_address will be
+        # the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        # Corresponds to the JSON property `endAddress`
+        # @return [String]
+        attr_accessor :end_address
+      
+        # A note about this reservation, intended for human consumption.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        # The first address of this reservation block. Must be specified as a single
+        # IPv4 address, e.g. 10.1.2.2.
+        # Corresponds to the JSON property `startAddress`
+        # @return [String]
+        attr_accessor :start_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_address = args[:end_address] if args.key?(:end_address)
+          @note = args[:note] if args.key?(:note)
+          @start_address = args[:start_address] if args.key?(:start_address)
         end
       end
       
@@ -1422,50 +1410,6 @@ module Google
         end
       end
       
-      # Message for restoring a volume snapshot.
-      class RestoreVolumeSnapshotRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A snapshot schedule.
-      class Schedule
-        include Google::Apis::Core::Hashable
-      
-        # A crontab-like specification that the schedule uses to take snapshots.
-        # Corresponds to the JSON property `crontabSpec`
-        # @return [String]
-        attr_accessor :crontab_spec
-      
-        # A list of snapshot names created in this schedule.
-        # Corresponds to the JSON property `prefix`
-        # @return [String]
-        attr_accessor :prefix
-      
-        # The maximum number of snapshots to retain in this schedule.
-        # Corresponds to the JSON property `retentionCount`
-        # @return [Fixnum]
-        attr_accessor :retention_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @crontab_spec = args[:crontab_spec] if args.key?(:crontab_spec)
-          @prefix = args[:prefix] if args.key?(:prefix)
-          @retention_count = args[:retention_count] if args.key?(:retention_count)
-        end
-      end
-      
       # Network template.
       class ServerNetworkTemplate
         include Google::Apis::Core::Hashable
@@ -1537,56 +1481,6 @@ module Google
           @reserved_space_percent = args[:reserved_space_percent] if args.key?(:reserved_space_percent)
           @reserved_space_remaining_gib = args[:reserved_space_remaining_gib] if args.key?(:reserved_space_remaining_gib)
           @reserved_space_used_percent = args[:reserved_space_used_percent] if args.key?(:reserved_space_used_percent)
-        end
-      end
-      
-      # A snapshot schedule policy.
-      class SnapshotSchedulePolicy
-        include Google::Apis::Core::Hashable
-      
-        # The description of the snapshot schedule policy.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # An identifier for the snapshot schedule policy, generated by the backend.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Labels as key value pairs.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Output only. The name of the snapshot schedule policy.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The snapshot schedules contained in this policy. You can specify a maximum of
-        # 5 schedules.
-        # Corresponds to the JSON property `schedules`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::Schedule>]
-        attr_accessor :schedules
-      
-        # The state of the snapshot schedule policy.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @id = args[:id] if args.key?(:id)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @schedules = args[:schedules] if args.key?(:schedules)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1953,55 +1847,6 @@ module Google
           @snapshots_enabled = args[:snapshots_enabled] if args.key?(:snapshots_enabled)
           @type = args[:type] if args.key?(:type)
           @user_note = args[:user_note] if args.key?(:user_note)
-        end
-      end
-      
-      # Snapshot registered for a given storage volume.
-      class VolumeSnapshot
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The creation time of the storage volume snapshot.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The description of the storage volume snapshot.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # An identifier for the snapshot, generated by the backend.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Output only. The name of the storage volume snapshot.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The size of the storage volume snapshot, in bytes.
-        # Corresponds to the JSON property `sizeBytes`
-        # @return [Fixnum]
-        attr_accessor :size_bytes
-      
-        # The storage volume this snapshot belongs to.
-        # Corresponds to the JSON property `storageVolume`
-        # @return [String]
-        attr_accessor :storage_volume
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @id = args[:id] if args.key?(:id)
-          @name = args[:name] if args.key?(:name)
-          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
-          @storage_volume = args[:storage_volume] if args.key?(:storage_volume)
         end
       end
     end
