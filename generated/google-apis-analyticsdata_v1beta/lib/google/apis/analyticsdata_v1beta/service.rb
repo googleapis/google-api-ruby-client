@@ -256,11 +256,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The Google Analytics Realtime API returns a customized report of realtime
-        # event data for your property. These reports show events and usage from the
-        # last 30 minutes. For a guide to constructing realtime requests & understanding
-        # responses, see [Creating a Realtime Report](https://developers.google.com/
-        # analytics/devguides/reporting/data/v1/realtime-basics).
+        # Returns a customized report of realtime event data for your property. Events
+        # appear in realtime reports seconds after they have been sent to the Google
+        # Analytics. Realtime reports show events and usage data for the periods of time
+        # ranging from the present moment to 30 minutes ago (up to 60 minutes for Google
+        # Analytics 360 properties). For a guide to constructing realtime requests &
+        # understanding responses, see [Creating a Realtime Report](https://developers.
+        # google.com/analytics/devguides/reporting/data/v1/realtime-basics).
         # @param [String] property
         #   A Google Analytics GA4 property identifier whose events are tracked. Specified
         #   in the URL path and not the body. To learn more, see [where to find your
