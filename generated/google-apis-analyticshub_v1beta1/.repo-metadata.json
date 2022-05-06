@@ -1,0 +1,7 @@
+{
+    "api_id": "analyticshub:v1beta1",
+    "name_pretty": "Analytics Hub API",
+    "distribution_name": "google-apis-analyticshub_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
