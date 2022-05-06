@@ -154,6 +154,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Detach LUN from Instance.
+        # @param [String] instance
+        #   Required. Name of the instance.
+        # @param [Google::Apis::BaremetalsolutionV2::DetachLunRequest] detach_lun_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def detach_instance_lun(instance, detach_lun_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+instance}:detachLun', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::DetachLunRequest::Representation
+          command.request_object = detach_lun_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get details about a single server.
         # @param [String] name
         #   Required. Name of the resource.
@@ -787,178 +820,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a snapshot schedule policy in the specified project.
-        # @param [String] parent
-        #   Required. The parent project and location containing the
-        #   SnapshotSchedulePolicy.
-        # @param [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy] snapshot_schedule_policy_object
-        # @param [String] snapshot_schedule_policy_id
-        #   Required. Snapshot policy ID
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_snapshot_schedule_policy(parent, snapshot_schedule_policy_object = nil, snapshot_schedule_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/snapshotSchedulePolicies', options)
-          command.request_representation = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-          command.request_object = snapshot_schedule_policy_object
-          command.response_representation = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy
-          command.params['parent'] = parent unless parent.nil?
-          command.query['snapshotSchedulePolicyId'] = snapshot_schedule_policy_id unless snapshot_schedule_policy_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Delete a named snapshot schedule policy.
-        # @param [String] name
-        #   Required. The name of the snapshot schedule policy to delete.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_snapshot_schedule_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::Empty::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get details of a single snapshot schedule policy.
-        # @param [String] name
-        #   Required. Name of the resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_snapshot_schedule_policy(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List snapshot schedule policies in a given project and location.
-        # @param [String] parent
-        #   Required. The parent project containing the Snapshot Schedule Policies.
-        # @param [String] filter
-        #   List filter.
-        # @param [Fixnum] page_size
-        #   The maximum number of items to return.
-        # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::ListSnapshotSchedulePoliciesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::ListSnapshotSchedulePoliciesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_snapshot_schedule_policies(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/snapshotSchedulePolicies', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::ListSnapshotSchedulePoliciesResponse::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::ListSnapshotSchedulePoliciesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Update a snapshot schedule policy in the specified project.
-        # @param [String] name
-        #   Output only. The name of the snapshot schedule policy.
-        # @param [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy] snapshot_schedule_policy_object
-        # @param [String] update_mask
-        #   Required. The list of fields to update.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_snapshot_schedule_policy(name, snapshot_schedule_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v2/{+name}', options)
-          command.request_representation = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-          command.request_object = snapshot_schedule_policy_object
-          command.response_representation = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Get details of a single storage volume.
         # @param [String] name
         #   Required. Name of the resource.
@@ -1133,169 +994,6 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Create a storage volume snapshot in a containing volume.
-        # @param [String] parent
-        #   Required. The volume to snapshot.
-        # @param [Google::Apis::BaremetalsolutionV2::VolumeSnapshot] volume_snapshot_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::VolumeSnapshot] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::VolumeSnapshot]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_volume_snapshot(parent, volume_snapshot_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/snapshots', options)
-          command.request_representation = Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
-          command.request_object = volume_snapshot_object
-          command.response_representation = Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::VolumeSnapshot
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a storage volume snapshot for a given volume.
-        # @param [String] name
-        #   Required. The name of the snapshot to delete.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_volume_snapshot(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::Empty::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Get details of a single storage volume snapshot.
-        # @param [String] name
-        #   Required. Name of the resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::VolumeSnapshot] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::VolumeSnapshot]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_volume_snapshot(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::VolumeSnapshot
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List storage volume snapshots for given storage volume.
-        # @param [String] parent
-        #   Required. Parent value for ListVolumesRequest.
-        # @param [Fixnum] page_size
-        #   Requested page size. The server might return fewer items than requested. If
-        #   unspecified, server will pick an appropriate default.
-        # @param [String] page_token
-        #   A token identifying a page of results from the server.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::ListVolumeSnapshotsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::ListVolumeSnapshotsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_volume_snapshots(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/snapshots', options)
-          command.response_representation = Google::Apis::BaremetalsolutionV2::ListVolumeSnapshotsResponse::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::ListVolumeSnapshotsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Restore a storage volume snapshot to its containing volume.
-        # @param [String] volume_snapshot
-        #   Required. Name of the resource.
-        # @param [Google::Apis::BaremetalsolutionV2::RestoreVolumeSnapshotRequest] restore_volume_snapshot_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BaremetalsolutionV2::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_volume_snapshot(volume_snapshot, restore_volume_snapshot_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+volumeSnapshot}:restoreVolumeSnapshot', options)
-          command.request_representation = Google::Apis::BaremetalsolutionV2::RestoreVolumeSnapshotRequest::Representation
-          command.request_object = restore_volume_snapshot_request_object
-          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
-          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
-          command.params['volumeSnapshot'] = volume_snapshot unless volume_snapshot.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

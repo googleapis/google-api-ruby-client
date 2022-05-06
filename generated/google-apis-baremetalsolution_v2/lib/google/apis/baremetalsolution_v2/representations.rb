@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class DetachLunRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,18 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSnapshotSchedulePoliciesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListVolumeSnapshotsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListVolumesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +143,12 @@ module Google
       end
       
       class NetworkAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAddressReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,18 +214,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RestoreVolumeSnapshotRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Schedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,12 +221,6 @@ module Google
       end
       
       class SnapshotReservationDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SnapshotSchedulePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VolumeSnapshot
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AllowedClient
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -323,9 +293,10 @@ module Google
         end
       end
       
-      class Empty
+      class DetachLunRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :lun, as: 'lun'
         end
       end
       
@@ -458,25 +429,6 @@ module Google
         end
       end
       
-      class ListSnapshotSchedulePoliciesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :snapshot_schedule_policies, as: 'snapshotSchedulePolicies', class: Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy, decorator: Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
-      
-        end
-      end
-      
-      class ListVolumeSnapshotsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-          collection :volume_snapshots, as: 'volumeSnapshots', class: Google::Apis::BaremetalsolutionV2::VolumeSnapshot, decorator: Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
-      
-        end
-      end
-      
       class ListVolumesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -540,6 +492,8 @@ module Google
           hash :labels, as: 'labels'
           collection :mac_address, as: 'macAddress'
           property :name, as: 'name'
+          collection :reservations, as: 'reservations', class: Google::Apis::BaremetalsolutionV2::NetworkAddressReservation, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddressReservation::Representation
+      
           property :services_cidr, as: 'servicesCidr'
           property :state, as: 'state'
           property :type, as: 'type'
@@ -555,6 +509,15 @@ module Google
           property :address, as: 'address'
           property :existing_network_id, as: 'existingNetworkId'
           property :network_id, as: 'networkId'
+        end
+      end
+      
+      class NetworkAddressReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_address, as: 'endAddress'
+          property :note, as: 'note'
+          property :start_address, as: 'startAddress'
         end
       end
       
@@ -683,21 +646,6 @@ module Google
         end
       end
       
-      class RestoreVolumeSnapshotRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Schedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :crontab_spec, as: 'crontabSpec'
-          property :prefix, as: 'prefix'
-          property :retention_count, as: 'retentionCount'
-        end
-      end
-      
       class ServerNetworkTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -715,19 +663,6 @@ module Google
           property :reserved_space_percent, as: 'reservedSpacePercent'
           property :reserved_space_remaining_gib, :numeric_string => true, as: 'reservedSpaceRemainingGib'
           property :reserved_space_used_percent, as: 'reservedSpaceUsedPercent'
-        end
-      end
-      
-      class SnapshotSchedulePolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :id, as: 'id'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          collection :schedules, as: 'schedules', class: Google::Apis::BaremetalsolutionV2::Schedule, decorator: Google::Apis::BaremetalsolutionV2::Schedule::Representation
-      
-          property :state, as: 'state'
         end
       end
       
@@ -827,18 +762,6 @@ module Google
           property :snapshots_enabled, as: 'snapshotsEnabled'
           property :type, as: 'type'
           property :user_note, as: 'userNote'
-        end
-      end
-      
-      class VolumeSnapshot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :id, as: 'id'
-          property :name, as: 'name'
-          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
-          property :storage_volume, as: 'storageVolume'
         end
       end
     end
