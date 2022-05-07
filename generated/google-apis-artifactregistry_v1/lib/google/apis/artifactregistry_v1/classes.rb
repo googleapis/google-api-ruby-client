@@ -80,7 +80,7 @@ module Google
       
         # The versions the operation failed to delete.
         # Corresponds to the JSON property `failedVersions`
-        # @return [Array<Google::Apis::ArtifactregistryV1::Version>]
+        # @return [Array<String>]
         attr_accessor :failed_versions
       
         def initialize(**args)

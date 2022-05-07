@@ -325,8 +325,7 @@ module Google
       class BatchDeleteVersionsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :failed_versions, as: 'failedVersions', class: Google::Apis::ArtifactregistryV1::Version, decorator: Google::Apis::ArtifactregistryV1::Version::Representation
-      
+          collection :failed_versions, as: 'failedVersions'
         end
       end
       
