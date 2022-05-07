@@ -735,7 +735,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abort, as: 'abort', class: Google::Apis::NetworkmanagementV1beta1::AbortInfo, decorator: Google::Apis::NetworkmanagementV1beta1::AbortInfo::Representation
       
-          property :app_engine_version_info, as: 'appEngineVersionInfo', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo::Representation
+          property :app_engine_version, as: 'appEngineVersion', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo::Representation
       
           property :causes_drop, as: 'causesDrop'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo::Representation

@@ -1781,9 +1781,9 @@ module Google
         attr_accessor :abort
       
         # For display only. Metadata associated with an App Engine version.
-        # Corresponds to the JSON property `appEngineVersionInfo`
+        # Corresponds to the JSON property `appEngineVersion`
         # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo]
-        attr_accessor :app_engine_version_info
+        attr_accessor :app_engine_version
       
         # This is a step that leads to the final state Drop.
         # Corresponds to the JSON property `causesDrop`
@@ -1897,7 +1897,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
-          @app_engine_version_info = args[:app_engine_version_info] if args.key?(:app_engine_version_info)
+          @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
