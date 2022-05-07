@@ -148,8 +148,9 @@ module Google
         
         # Gets the IAM policy for the specified Access Context Manager access policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::AccesscontextmanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -262,8 +263,9 @@ module Google
         # policy controls the set of users who can perform specific operations on the
         # Access Context Manager access policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::AccesscontextmanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -298,8 +300,9 @@ module Google
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
         # ServicePerimeter. This method does not support other resources.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -568,8 +571,9 @@ module Google
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
         # ServicePerimeter. This method does not support other resources.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -869,8 +873,9 @@ module Google
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
         # ServicePerimeter. This method does not support other resources.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
