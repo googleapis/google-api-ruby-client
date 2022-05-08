@@ -2596,6 +2596,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec]
         attr_accessor :execution_spec
       
+        # Status of the task execution (e.g. Jobs).
+        # Corresponds to the JSON property `executionStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionStatus]
+        attr_accessor :execution_status
+      
         # Optional. User-defined labels for the task.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2643,6 +2648,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @execution_spec = args[:execution_spec] if args.key?(:execution_spec)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @spark = args[:spark] if args.key?(:spark)
@@ -2674,6 +2680,13 @@ module Google
         # @return [String]
         attr_accessor :max_job_execution_lifetime
       
+        # Optional. The project in which jobs are run. By default, the project
+        # containing the Lake is used. If a project is provided, the executionspec.
+        # service_account must belong to this same project.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
         # Required. Service account to use to execute a task. If not provided, the
         # default Compute service account for the project is used.
         # Corresponds to the JSON property `serviceAccount`
@@ -2688,7 +2701,33 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @max_job_execution_lifetime = args[:max_job_execution_lifetime] if args.key?(:max_job_execution_lifetime)
+          @project = args[:project] if args.key?(:project)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Status of the task execution (e.g. Jobs).
+      class GoogleCloudDataplexV1TaskExecutionStatus
+        include Google::Apis::Core::Hashable
+      
+        # A job represents an instance of a task.
+        # Corresponds to the JSON property `latestJob`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Job]
+        attr_accessor :latest_job
+      
+        # Output only. Last update time of the status.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_job = args[:latest_job] if args.key?(:latest_job)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -3353,7 +3392,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleTypeExpr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource.
+        # Specifies the principals requesting access for a Google Cloud resource.
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
@@ -3551,8 +3590,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the resource. Permissions with wildcards (
-        # such as '*' or 'storage.*') are not allowed. For more information see IAM
-        # Overview (https://cloud.google.com/iam/docs/overview#permissions).
+        # such as * or storage.*) are not allowed. For more information see IAM Overview
+        # (https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
