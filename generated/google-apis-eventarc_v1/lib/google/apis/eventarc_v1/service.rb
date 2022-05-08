@@ -240,6 +240,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new channel in a particular project and location.
+        # @param [String] parent
+        #   Required. The parent collection in which to add this channel.
+        # @param [Google::Apis::EventarcV1::Channel] channel_object
+        # @param [String] channel_id
+        #   Required. The user-provided ID to be assigned to the channel.
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_channel(parent, channel_object = nil, channel_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/channels', options)
+          command.request_representation = Google::Apis::EventarcV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['channelId'] = channel_id unless channel_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a single channel.
+        # @param [String] name
+        #   Required. The name of the channel to be deleted.
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_channel(name, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a single Channel.
+        # @param [String] name
+        #   Required. The name of the channel to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_channel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::Channel::Representation
+          command.response_class = Google::Apis::EventarcV1::Channel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -279,6 +383,96 @@ module Google
           command.response_class = Google::Apis::EventarcV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List channels.
+        # @param [String] parent
+        #   Required. The parent collection to list channels on.
+        # @param [String] order_by
+        #   The sorting order of the resources returned. Value should be a comma-separated
+        #   list of fields. The default sorting order is ascending. To specify descending
+        #   order for a field, append a `desc` suffix; for example: `name desc, channel_id`
+        #   .
+        # @param [Fixnum] page_size
+        #   The maximum number of channels to return on each page. Note: The service may
+        #   send fewer.
+        # @param [String] page_token
+        #   The page token; provide the value from the `next_page_token` field in a
+        #   previous `ListChannels` call to retrieve the subsequent page. When paginating,
+        #   all other parameters provided to `ListChannels` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListChannelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListChannelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_channels(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/channels', options)
+          command.response_representation = Google::Apis::EventarcV1::ListChannelsResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListChannelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a single channel.
+        # @param [String] name
+        #   Required. The resource name of the channel. Must be unique within the location
+        #   on the project and must be in `projects/`project`/locations/`location`/
+        #   channels/`channel_id`` format.
+        # @param [Google::Apis::EventarcV1::Channel] channel_object
+        # @param [String] update_mask
+        #   The fields to be updated; only fields explicitly provided are updated. If no
+        #   field mask is provided, all provided fields in the request are updated. To
+        #   update all fields, provide a field mask of "*".
+        # @param [Boolean] validate_only
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_channel(name, channel_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::EventarcV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::EventarcV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

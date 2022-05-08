@@ -35,8 +35,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -161,6 +161,79 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # A representation of the Channel resource. A Channel is a resource on which
+      # event providers publish their events. The published events are delivered
+      # through the transport associated with the channel. Note that a channel is
+      # associated with exactly one event provider.
+      class Channel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The activation token for the channel. The token must be used by
+        # the provider to register the channel for publishing.
+        # Corresponds to the JSON property `activationToken`
+        # @return [String]
+        attr_accessor :activation_token
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The resource name of the channel. Must be unique within the location
+        # on the project and must be in `projects/`project`/locations/`location`/
+        # channels/`channel_id`` format.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the event provider (e.g. Eventarc SaaS partner) associated with
+        # the channel. This provider will be granted permissions to publish events to
+        # the channel. Format: `projects/`project`/locations/`location`/providers/`
+        # provider_id``.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. The name of the Pub/Sub topic created and managed by Eventarc
+        # system as a transport for the event delivery. Format: `projects/`project`/
+        # topics/`topic_id``.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        # Output only. The state of a Channel.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Server assigned unique identifier for the channel. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_token = args[:activation_token] if args.key?(:activation_token)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -615,6 +688,38 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The response message for the `ListChannels` method.
+      class ListChannelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested channels, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `channels`
+        # @return [Array<Google::Apis::EventarcV1::Channel>]
+        attr_accessor :channels
+      
+        # A page token that can be sent to ListChannels to request the next page. If
+        # this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channels = args[:channels] if args.key?(:channels)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1088,6 +1193,13 @@ module Google
       class Trigger
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the channel associated with the trigger in `projects/`
+        # project`/locations/`location`/channels/`channel`` format. You must provide a
+        # channel to receive events from Eventarc SaaS partners.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Output only. The creation time.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1161,6 +1273,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @etag = args[:etag] if args.key?(:etag)
