@@ -122,8 +122,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -1881,6 +1881,12 @@ module Google
         attr_accessor :deploy_cloud_console_proxy
         alias_method :deploy_cloud_console_proxy?, :deploy_cloud_console_proxy
       
+        # Enable access token.
+        # Corresponds to the JSON property `enableAccessToken`
+        # @return [Boolean]
+        attr_accessor :enable_access_token
+        alias_method :enable_access_token?, :enable_access_token
+      
         # Output only. Encrypted OIDC Client secret
         # Corresponds to the JSON property `encryptedClientSecret`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1939,6 +1945,7 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @deploy_cloud_console_proxy = args[:deploy_cloud_console_proxy] if args.key?(:deploy_cloud_console_proxy)
+          @enable_access_token = args[:enable_access_token] if args.key?(:enable_access_token)
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @extra_params = args[:extra_params] if args.key?(:extra_params)
           @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
