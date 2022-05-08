@@ -1122,6 +1122,7 @@ module Google
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
           property :deploy_cloud_console_proxy, as: 'deployCloudConsoleProxy'
+          property :enable_access_token, as: 'enableAccessToken'
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :extra_params, as: 'extraParams'
           property :group_prefix, as: 'groupPrefix'
