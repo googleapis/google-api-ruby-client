@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1TaskExecutionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1TaskInfrastructureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1291,6 +1297,8 @@ module Google
           property :display_name, as: 'displayName'
           property :execution_spec, as: 'executionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionSpec::Representation
       
+          property :execution_status, as: 'executionStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskExecutionStatus::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :spark, as: 'spark', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskSparkTaskConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskSparkTaskConfig::Representation
@@ -1308,7 +1316,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
           property :max_job_execution_lifetime, as: 'maxJobExecutionLifetime'
+          property :project, as: 'project'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudDataplexV1TaskExecutionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_job, as: 'latestJob', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Job, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Job::Representation
+      
+          property :update_time, as: 'updateTime'
         end
       end
       
