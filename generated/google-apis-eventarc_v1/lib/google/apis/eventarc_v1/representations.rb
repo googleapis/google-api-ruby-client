@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +226,20 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class Channel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_token, as: 'activationToken'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :provider, as: 'provider'
+          property :pubsub_topic, as: 'pubsubTopic'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -328,6 +354,16 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class ListChannelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channels, as: 'channels', class: Google::Apis::EventarcV1::Channel, decorator: Google::Apis::EventarcV1::Channel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -448,6 +484,7 @@ module Google
       class Trigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           property :create_time, as: 'createTime'
           property :destination, as: 'destination', class: Google::Apis::EventarcV1::Destination, decorator: Google::Apis::EventarcV1::Destination::Representation
       
