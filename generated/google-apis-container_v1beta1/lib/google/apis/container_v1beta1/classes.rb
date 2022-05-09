@@ -398,6 +398,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Mode of operation for binauthz policy evaluation. Currently the only options
+        # are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        # Corresponds to the JSON property `evaluationMode`
+        # @return [String]
+        attr_accessor :evaluation_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -405,6 +411,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
         end
       end
       
