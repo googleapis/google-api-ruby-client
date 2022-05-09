@@ -89,8 +89,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -512,6 +512,12 @@ module Google
         # @return [Google::Apis::ClouddeployV1::DefaultPool]
         attr_accessor :default_pool
       
+        # Optional. Execution timeout for a Cloud Build Execution. This must be between
+        # 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        # Corresponds to the JSON property `executionTimeout`
+        # @return [String]
+        attr_accessor :execution_timeout
+      
         # Execution using a private Cloud Build pool.
         # Corresponds to the JSON property `privatePool`
         # @return [Google::Apis::ClouddeployV1::PrivatePool]
@@ -544,6 +550,7 @@ module Google
         def update!(**args)
           @artifact_storage = args[:artifact_storage] if args.key?(:artifact_storage)
           @default_pool = args[:default_pool] if args.key?(:default_pool)
+          @execution_timeout = args[:execution_timeout] if args.key?(:execution_timeout)
           @private_pool = args[:private_pool] if args.key?(:private_pool)
           @service_account = args[:service_account] if args.key?(:service_account)
           @usages = args[:usages] if args.key?(:usages)

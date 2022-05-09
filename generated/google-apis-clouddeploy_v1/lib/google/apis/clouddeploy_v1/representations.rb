@@ -431,6 +431,7 @@ module Google
           property :artifact_storage, as: 'artifactStorage'
           property :default_pool, as: 'defaultPool', class: Google::Apis::ClouddeployV1::DefaultPool, decorator: Google::Apis::ClouddeployV1::DefaultPool::Representation
       
+          property :execution_timeout, as: 'executionTimeout'
           property :private_pool, as: 'privatePool', class: Google::Apis::ClouddeployV1::PrivatePool, decorator: Google::Apis::ClouddeployV1::PrivatePool::Representation
       
           property :service_account, as: 'serviceAccount'
