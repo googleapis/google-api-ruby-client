@@ -60,8 +60,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -141,7 +141,7 @@ module Google
         # @return [Google::Apis::DatafusionV1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -224,11 +224,55 @@ module Google
         end
       end
       
+      # DNS peering configuration. These configurations are used to create DNS peering
+      # with the customer Cloud DNS.
+      class DnsPeering
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional description of the dns zone.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The dns name suffix of the zone.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Required. The resource name of the dns peering zone. Format: projects/`project`
+        # /locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional target network to which dns peering should happen.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Optional. Optional target project to which dns peering should happen.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @domain = args[:domain] if args.key?(:domain)
+          @name = args[:name] if args.key?(:name)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -238,6 +282,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Confirguration of PubSubEventWriter.
+      class EventPublishConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Option to enable Event Publishing.
+        # Corresponds to the JSON property `eventPublishEnabled`
+        # @return [Boolean]
+        attr_accessor :event_publish_enabled
+        alias_method :event_publish_enabled?, :event_publish_enabled
+      
+        # Project name.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Required. Pub/Sub Topic.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_publish_enabled = args[:event_publish_enabled] if args.key?(:event_publish_enabled)
+          @project = args[:project] if args.key?(:project)
+          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -367,6 +443,11 @@ module Google
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
+        # Confirguration of PubSubEventWriter.
+        # Corresponds to the JSON property `eventPublishConfig`
+        # @return [Google::Apis::DatafusionV1::EventPublishConfig]
+        attr_accessor :event_publish_config
+      
         # Output only. Cloud Storage bucket generated by Data Fusion in the customer
         # project.
         # Corresponds to the JSON property `gcsBucket`
@@ -481,6 +562,7 @@ module Google
           @enable_rbac = args[:enable_rbac] if args.key?(:enable_rbac)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
+          @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -522,6 +604,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_versions = args[:available_versions] if args.key?(:available_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for list DNS peerings.
+      class ListDnsPeeringsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of dns peering.
+        # Corresponds to the JSON property `dnsPeerings`
+        # @return [Array<Google::Apis::DatafusionV1::DnsPeering>]
+        attr_accessor :dns_peerings
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peerings = args[:dns_peerings] if args.key?(:dns_peerings)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1023,7 +1131,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
