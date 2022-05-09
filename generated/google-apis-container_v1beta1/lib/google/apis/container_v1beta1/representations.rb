@@ -987,6 +987,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :evaluation_mode, as: 'evaluationMode'
         end
       end
       
