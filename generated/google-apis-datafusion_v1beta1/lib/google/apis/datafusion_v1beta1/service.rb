@@ -90,8 +90,8 @@ module Google
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
-        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
-        #   AIP-160](https://google.aip.dev/160).
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
         # @param [Boolean] include_unrevealed_locations
         #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
@@ -266,8 +266,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -433,8 +434,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::DatafusionV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -471,8 +473,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::DatafusionV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -539,10 +542,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add DNS peering on the given resource.
+        # Creates DNS peering on the given resource.
         # @param [String] parent
         #   Required. The resource on which DNS peering will be created.
         # @param [Google::Apis::DatafusionV1beta1::DnsPeering] dns_peering_object
+        # @param [String] dns_peering_id
+        #   Required. The name of the peering to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -560,19 +565,20 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_instance_dns_peering(parent, dns_peering_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_instance_dns_peering(parent, dns_peering_object = nil, dns_peering_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings', options)
           command.request_representation = Google::Apis::DatafusionV1beta1::DnsPeering::Representation
           command.request_object = dns_peering_object
           command.response_representation = Google::Apis::DatafusionV1beta1::DnsPeering::Representation
           command.response_class = Google::Apis::DatafusionV1beta1::DnsPeering
           command.params['parent'] = parent unless parent.nil?
+          command.query['dnsPeeringId'] = dns_peering_id unless dns_peering_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Remove DNS peering on the given resource.
+        # Deletes DNS peering on the given resource.
         # @param [String] name
         #   Required. The name of the DNS peering zone to delete. Format: projects/`
         #   project`/locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
@@ -603,14 +609,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List DNS peering for a given resource.
+        # Lists DNS peerings for a given resource.
         # @param [String] parent
         #   Required. The parent, which owns this collection of dns peerings. Format:
         #   projects/`project`/locations/`location`/instances/`instance`
         # @param [Fixnum] page_size
         #   The maximum number of dns peerings to return. The service may return fewer
-        #   than this value. If unspecified, at most 10 dns peerings will be returned. The
-        #   maximum value is 50; values above 50 will be coerced to 50.
+        #   than this value. If unspecified, at most 50 dns peerings will be returned. The
+        #   maximum value is 200; values above 200 will be coerced to 200.
         # @param [String] page_token
         #   A page token, received from a previous `ListDnsPeerings` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided
@@ -647,8 +653,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -734,8 +741,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::DatafusionV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -772,8 +780,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::DatafusionV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
