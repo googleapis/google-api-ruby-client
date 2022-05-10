@@ -1857,6 +1857,7 @@ module Google
           property :keep_with_next, as: 'keepWithNext'
           property :line_spacing, as: 'lineSpacing'
           property :named_style_type, as: 'namedStyleType'
+          property :page_break_before, as: 'pageBreakBefore'
           property :shading, as: 'shading', class: Google::Apis::DocsV1::Shading, decorator: Google::Apis::DocsV1::Shading::Representation
       
           property :space_above, as: 'spaceAbove', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
@@ -1888,6 +1889,7 @@ module Google
           property :keep_with_next_suggested, as: 'keepWithNextSuggested'
           property :line_spacing_suggested, as: 'lineSpacingSuggested'
           property :named_style_type_suggested, as: 'namedStyleTypeSuggested'
+          property :page_break_before_suggested, as: 'pageBreakBeforeSuggested'
           property :shading_suggestion_state, as: 'shadingSuggestionState', class: Google::Apis::DocsV1::ShadingSuggestionState, decorator: Google::Apis::DocsV1::ShadingSuggestionState::Representation
       
           property :space_above_suggested, as: 'spaceAboveSuggested'
