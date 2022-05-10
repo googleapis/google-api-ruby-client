@@ -120,10 +120,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an Apigee organization. Only supported for SubscriptionType TRIAL.
+        # Delete an Apigee organization. For organizations with BillingType EVALUATION,
+        # an immediate deletion is performed. For paid organizations, a soft-deletion is
+        # performed. The organization can be restored within the soft-deletion period -
+        # which can be controlled using the retention field in the request.
         # @param [String] name
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``
+        # @param [String] retention
+        #   Optional. This setting is only applicable for organizations that are soft-
+        #   deleted (i.e. BillingType is not EVALUATION). It controls how long
+        #   Organization data will be retained after the initial delete operation
+        #   completes. During this period, the Organization may be restored to its last
+        #   known state. After this period, the Organization will no longer be able to be
+        #   restored.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -141,11 +151,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization(name, retention: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['retention'] = retention unless retention.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -396,43 +407,6 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SyncAuthorization::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SyncAuthorization
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Tests the permissions of a user on an organization, and returns a subset of
-        # permissions that the user has on the organization. If the organization does
-        # not exist, an empty permission set is returned (a NOT_FOUND error is not
-        # returned).
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def test_organization_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest::Representation
-          command.request_object = google_iam_v1_test_iam_permissions_request_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsResponse
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4124,8 +4098,9 @@ module Google
         # api-platform/system-administration/manage-users-roles). You must have the `
         # apigee.environments.getIamPolicy` permission to call this API.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -4202,8 +4177,9 @@ module Google
         # administration/manage-users-roles). You must have the `apigee.environments.
         # setIamPolicy` permission to call this API.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ApigeeV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4271,8 +4247,9 @@ module Google
         # permissions that the user has on the environment. If the environment does not
         # exist, an empty permission set is returned (a NOT_FOUND error is not returned).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
