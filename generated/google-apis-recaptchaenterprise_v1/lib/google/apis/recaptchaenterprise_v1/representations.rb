@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -330,6 +336,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_secret_key, as: 'legacySecretKey'
         end
       end
       
