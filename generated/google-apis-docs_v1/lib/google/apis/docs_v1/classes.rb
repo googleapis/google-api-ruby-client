@@ -3312,6 +3312,13 @@ module Google
         # @return [String]
         attr_accessor :named_style_type
       
+        # Whether the current paragraph should always start at the beginning of a page.
+        # If unset, the value is inherited from the parent.
+        # Corresponds to the JSON property `pageBreakBefore`
+        # @return [Boolean]
+        attr_accessor :page_break_before
+        alias_method :page_break_before?, :page_break_before
+      
         # The shading of a paragraph.
         # Corresponds to the JSON property `shading`
         # @return [Google::Apis::DocsV1::Shading]
@@ -3360,6 +3367,7 @@ module Google
           @keep_with_next = args[:keep_with_next] if args.key?(:keep_with_next)
           @line_spacing = args[:line_spacing] if args.key?(:line_spacing)
           @named_style_type = args[:named_style_type] if args.key?(:named_style_type)
+          @page_break_before = args[:page_break_before] if args.key?(:page_break_before)
           @shading = args[:shading] if args.key?(:shading)
           @space_above = args[:space_above] if args.key?(:space_above)
           @space_below = args[:space_below] if args.key?(:space_below)
@@ -3470,6 +3478,12 @@ module Google
         attr_accessor :named_style_type_suggested
         alias_method :named_style_type_suggested?, :named_style_type_suggested
       
+        # Indicates if there was a suggested change to page_break_before.
+        # Corresponds to the JSON property `pageBreakBeforeSuggested`
+        # @return [Boolean]
+        attr_accessor :page_break_before_suggested
+        alias_method :page_break_before_suggested?, :page_break_before_suggested
+      
         # A mask that indicates which of the fields on the base Shading have been
         # changed in this suggested change. For any field set to true, there is a new
         # suggested value.
@@ -3517,6 +3531,7 @@ module Google
           @keep_with_next_suggested = args[:keep_with_next_suggested] if args.key?(:keep_with_next_suggested)
           @line_spacing_suggested = args[:line_spacing_suggested] if args.key?(:line_spacing_suggested)
           @named_style_type_suggested = args[:named_style_type_suggested] if args.key?(:named_style_type_suggested)
+          @page_break_before_suggested = args[:page_break_before_suggested] if args.key?(:page_break_before_suggested)
           @shading_suggestion_state = args[:shading_suggestion_state] if args.key?(:shading_suggestion_state)
           @space_above_suggested = args[:space_above_suggested] if args.key?(:space_above_suggested)
           @space_below_suggested = args[:space_below_suggested] if args.key?(:space_below_suggested)
