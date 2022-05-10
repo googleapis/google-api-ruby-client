@@ -1871,8 +1871,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageToken>]
         attr_accessor :tokens
       
-        # Transformation matrices that were applied to the original document image to
-        # produce Page.image.
+        # Transformation matrices (both already applied and not) to the original
+        # document image to produce Page.image.
         # Corresponds to the JSON property `transforms`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageMatrix>]
         attr_accessor :transforms
@@ -2247,6 +2247,14 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageMatrix
         include Google::Apis::Core::Hashable
       
+        # Has the transformation already been applied to the current Document? Needed to
+        # disambiguate pre-processing transformations already applied vs transformations
+        # added at annotation time by HITL operators.
+        # Corresponds to the JSON property `applied`
+        # @return [Boolean]
+        attr_accessor :applied
+        alias_method :applied?, :applied
+      
         # Number of columns in the matrix.
         # Corresponds to the JSON property `cols`
         # @return [Fixnum]
@@ -2277,6 +2285,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applied = args[:applied] if args.key?(:applied)
           @cols = args[:cols] if args.key?(:cols)
           @data = args[:data] if args.key?(:data)
           @rows = args[:rows] if args.key?(:rows)
@@ -3716,8 +3725,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageToken>]
         attr_accessor :tokens
       
-        # Transformation matrices that were applied to the original document image to
-        # produce Page.image.
+        # Transformation matrices (both already applied and not) to the original
+        # document image to produce Page.image.
         # Corresponds to the JSON property `transforms`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageMatrix>]
         attr_accessor :transforms
@@ -4092,6 +4101,14 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageMatrix
         include Google::Apis::Core::Hashable
       
+        # Has the transformation already been applied to the current Document? Needed to
+        # disambiguate pre-processing transformations already applied vs transformations
+        # added at annotation time by HITL operators.
+        # Corresponds to the JSON property `applied`
+        # @return [Boolean]
+        attr_accessor :applied
+        alias_method :applied?, :applied
+      
         # Number of columns in the matrix.
         # Corresponds to the JSON property `cols`
         # @return [Fixnum]
@@ -4122,6 +4139,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applied = args[:applied] if args.key?(:applied)
           @cols = args[:cols] if args.key?(:cols)
           @data = args[:data] if args.key?(:data)
           @rows = args[:rows] if args.key?(:rows)

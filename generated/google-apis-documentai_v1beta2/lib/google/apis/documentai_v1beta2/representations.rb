@@ -1882,6 +1882,7 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageMatrix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied, as: 'applied'
           property :cols, as: 'cols'
           property :data, :base64 => true, as: 'data'
           property :rows, as: 'rows'
@@ -2409,6 +2410,7 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageMatrix
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied, as: 'applied'
           property :cols, as: 'cols'
           property :data, :base64 => true, as: 'data'
           property :rows, as: 'rows'
