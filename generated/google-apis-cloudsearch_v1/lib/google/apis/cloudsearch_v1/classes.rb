@@ -279,7 +279,7 @@ module Google
       
       # Proto representation of a custom emoji. May be used in both APIs and in
       # Spanner, but certain fields should be restricted to one or the other. See the
-      # per-field documentation for details. NEXT_TAG: 11
+      # per-field documentation for details. NEXT_TAG: 13
       class CustomEmoji
         include Google::Apis::Core::Hashable
       
@@ -289,6 +289,12 @@ module Google
         # Corresponds to the JSON property `blobId`
         # @return [String]
         attr_accessor :blob_id
+      
+        # Content type of the file used to upload the emoji. Used for takeout. Written
+        # to Spanner when the emoji is created.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
       
         # Time when the Emoji was created, in microseconds. This field may be present in
         # Spanner, within the server, or in public APIs.
@@ -300,6 +306,13 @@ module Google
         # Corresponds to the JSON property `creatorUserId`
         # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :creator_user_id
+      
+        # Output only. A short-lived URL clients can use for directly accessing a custom
+        # emoji image. This field is intended for API consumption, and should *never* be
+        # persisted to Spanner.
+        # Corresponds to the JSON property `ephemeralUrl`
+        # @return [String]
+        attr_accessor :ephemeral_url
       
         # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
         # Corresponds to the JSON property `ownerCustomerId`
@@ -346,8 +359,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @content_type = args[:content_type] if args.key?(:content_type)
           @create_time_micros = args[:create_time_micros] if args.key?(:create_time_micros)
           @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @ephemeral_url = args[:ephemeral_url] if args.key?(:ephemeral_url)
           @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @read_token = args[:read_token] if args.key?(:read_token)
           @shortcode = args[:shortcode] if args.key?(:shortcode)
@@ -1102,9 +1117,14 @@ module Google
         attr_accessor :joined_spaces_affinity_score
       
         # 
-        # Corresponds to the JSON property `lastMessagePostedTimestampMicros`
+        # Corresponds to the JSON property `lastMessagePostedTimestampSecs`
         # @return [Fixnum]
-        attr_accessor :last_message_posted_timestamp_micros
+        attr_accessor :last_message_posted_timestamp_secs
+      
+        # 
+        # Corresponds to the JSON property `lastReadTimestampSecs`
+        # @return [Fixnum]
+        attr_accessor :last_read_timestamp_secs
       
         # 
         # Corresponds to the JSON property `memberMetadataCount`
@@ -1137,9 +1157,9 @@ module Google
         attr_accessor :space_age_in_days
       
         # 
-        # Corresponds to the JSON property `spaceCreationTimestampMicros`
+        # Corresponds to the JSON property `spaceCreationTimestampSecs`
         # @return [Fixnum]
-        attr_accessor :space_creation_timestamp_micros
+        attr_accessor :space_creation_timestamp_secs
       
         # 
         # Corresponds to the JSON property `topicalityScore`
@@ -1158,14 +1178,15 @@ module Google
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
           @joined_spaces_affinity_score = args[:joined_spaces_affinity_score] if args.key?(:joined_spaces_affinity_score)
-          @last_message_posted_timestamp_micros = args[:last_message_posted_timestamp_micros] if args.key?(:last_message_posted_timestamp_micros)
+          @last_message_posted_timestamp_secs = args[:last_message_posted_timestamp_secs] if args.key?(:last_message_posted_timestamp_secs)
+          @last_read_timestamp_secs = args[:last_read_timestamp_secs] if args.key?(:last_read_timestamp_secs)
           @member_metadata_count = args[:member_metadata_count] if args.key?(:member_metadata_count)
           @message_score = args[:message_score] if args.key?(:message_score)
           @num_auc_contacts = args[:num_auc_contacts] if args.key?(:num_auc_contacts)
           @small_contact_list_affinity_score = args[:small_contact_list_affinity_score] if args.key?(:small_contact_list_affinity_score)
           @small_unjoined_spaces_affinity_score = args[:small_unjoined_spaces_affinity_score] if args.key?(:small_unjoined_spaces_affinity_score)
           @space_age_in_days = args[:space_age_in_days] if args.key?(:space_age_in_days)
-          @space_creation_timestamp_micros = args[:space_creation_timestamp_micros] if args.key?(:space_creation_timestamp_micros)
+          @space_creation_timestamp_secs = args[:space_creation_timestamp_secs] if args.key?(:space_creation_timestamp_secs)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
         end
       end
@@ -1195,7 +1216,7 @@ module Google
       
         # Proto representation of a custom emoji. May be used in both APIs and in
         # Spanner, but certain fields should be restricted to one or the other. See the
-        # per-field documentation for details. NEXT_TAG: 11
+        # per-field documentation for details. NEXT_TAG: 13
         # Corresponds to the JSON property `customEmoji`
         # @return [Google::Apis::CloudsearchV1::CustomEmoji]
         attr_accessor :custom_emoji

@@ -1169,9 +1169,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_id, as: 'blobId'
+          property :content_type, as: 'contentType'
           property :create_time_micros, :numeric_string => true, as: 'createTimeMicros'
           property :creator_user_id, as: 'creatorUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
+          property :ephemeral_url, as: 'ephemeralUrl'
           property :owner_customer_id, as: 'ownerCustomerId', class: Google::Apis::CloudsearchV1::CustomerId, decorator: Google::Apis::CloudsearchV1::CustomerId::Representation
       
           property :read_token, as: 'readToken'
@@ -1408,14 +1410,15 @@ module Google
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
           property :joined_spaces_affinity_score, as: 'joinedSpacesAffinityScore'
-          property :last_message_posted_timestamp_micros, :numeric_string => true, as: 'lastMessagePostedTimestampMicros'
+          property :last_message_posted_timestamp_secs, :numeric_string => true, as: 'lastMessagePostedTimestampSecs'
+          property :last_read_timestamp_secs, :numeric_string => true, as: 'lastReadTimestampSecs'
           property :member_metadata_count, as: 'memberMetadataCount'
           property :message_score, as: 'messageScore'
           property :num_auc_contacts, :numeric_string => true, as: 'numAucContacts'
           property :small_contact_list_affinity_score, as: 'smallContactListAffinityScore'
           property :small_unjoined_spaces_affinity_score, as: 'smallUnjoinedSpacesAffinityScore'
           property :space_age_in_days, as: 'spaceAgeInDays'
-          property :space_creation_timestamp_micros, :numeric_string => true, as: 'spaceCreationTimestampMicros'
+          property :space_creation_timestamp_secs, :numeric_string => true, as: 'spaceCreationTimestampSecs'
           property :topicality_score, as: 'topicalityScore'
         end
       end
