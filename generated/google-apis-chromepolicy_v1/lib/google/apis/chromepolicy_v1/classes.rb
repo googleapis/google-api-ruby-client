@@ -349,8 +349,9 @@ module Google
         # @return [String]
         attr_accessor :field
       
-        # Output only. Provides a list of fields and the values they must have for this
-        # field to be allowed to be set.
+        # Output only. Provides a list of fields and values. At least one of the fields
+        # must have the corresponding value in order for this field to be allowed to be
+        # set.
         # Corresponds to the JSON property `fieldDependencies`
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies>]
         attr_accessor :field_dependencies
