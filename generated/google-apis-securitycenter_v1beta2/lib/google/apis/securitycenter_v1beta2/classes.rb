@@ -1480,7 +1480,8 @@ module Google
         attr_accessor :log_sink_project
       
         # The resource name of the SecurityCenterSettings. Format: organizations/`
-        # organization`/securityCenterSettings
+        # organization`/securityCenterSettings Format: folders/`folder`/
+        # securityCenterSettings Format: projects/`project`/securityCenterSettings
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
