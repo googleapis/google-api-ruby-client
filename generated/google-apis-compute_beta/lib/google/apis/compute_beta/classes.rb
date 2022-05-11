@@ -8713,21 +8713,26 @@ module Google
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
-        # IP address that this forwarding rule serves. When a client sends traffic to
-        # this IP address, the forwarding rule directs the traffic to the target that
-        # you specify in the forwarding rule. If you don't specify a reserved IP address,
-        # an ephemeral IP address is assigned. Methods for specifying an IP address: *
-        # IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.
-        # googleapis.com/compute/v1/projects/project_id/regions/region /addresses/
-        # address-name * Partial URL or by name, as in: - projects/project_id/regions/
-        # region/addresses/address-name - regions/region/addresses/address-name - global/
-        # addresses/address-name - address-name The loadBalancingScheme and the
-        # forwarding rule's target determine the type of IP address that you can use.
-        # For detailed information, see [IP address specifications](https://cloud.google.
-        # com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
-        # validateForProxyless field set to true. For Private Service Connect forwarding
-        # rules that forward traffic to Google APIs, IP address must be provided.
+        # IP address for which this forwarding rule accepts traffic. When a client sends
+        # traffic to this IP address, the forwarding rule directs the traffic to the
+        # referenced target or backendService. While creating a forwarding rule,
+        # specifying an IPAddress is required under the following circumstances: - When
+        # the target is set to targetGrpcProxy and validateForProxyless is set to true,
+        # the IPAddress should be set to 0.0.0.0. - When the target is a Private Service
+        # Connect Google APIs bundle, you must specify an IPAddress. Otherwise, you can
+        # optionally specify an IP address that references an existing static (reserved)
+        # IP address resource. When omitted, Google Cloud assigns an ephemeral IP
+        # address. Use one of the following formats to specify an IP address while
+        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * Full
+        # resource URL, as in https://www.googleapis.com/compute/v1/projects/project_id/
+        # regions/region /addresses/address-name * Partial URL or by name, as in: -
+        # projects/project_id/regions/region/addresses/address-name - regions/region/
+        # addresses/address-name - global/addresses/address-name - address-name The
+        # forwarding rule's target or backendService, and in most cases, also the
+        # loadBalancingScheme, determine the type of IP address that you can use. For
+        # detailed information, see [IP address specifications](https://cloud.google.com/
+        # load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When
+        # reading an IPAddress, the API always returns the IP address number.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -10936,10 +10941,10 @@ module Google
       
         # The list of host patterns to match. They must be valid hostnames with optional
         # port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
-        # In that case, * must be the first character and must be followed in the
-        # pattern by either - or .. * based matching is not supported when the URL map
-        # is bound to a target gRPC proxy that has the validateForProxyless field set to
-        # true.
+        # In that case, * must be the first character, and if followed by anything, the
+        # immediate following character must be either - or .. * based matching is not
+        # supported when the URL map is bound to a target gRPC proxy that has the
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
@@ -14383,12 +14388,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_ready_sec
       
-        # Minimal action to be taken on an instance. You can specify either RESTART to
-        # restart existing instances or REPLACE to delete and create new instances from
-        # the target template. If you specify a RESTART, the Updater will attempt to
-        # perform that action only. However, if the Updater determines that the minimal
-        # action you specify is not enough to perform the update, it might perform a
-        # more disruptive action.
+        # Minimal action to be taken on an instance. Use this option to minimize
+        # disruption as much as possible or to apply a more disruptive action than is
+        # necessary. - To limit disruption as much as possible, set the minimal action
+        # to REFRESH. If your update requires a more disruptive action, Compute Engine
+        # performs the necessary action to execute the update. - To apply a more
+        # disruptive action than is strictly necessary, set the minimal action to
+        # RESTART or REPLACE. For example, Compute Engine does not need to restart a VM
+        # to change its metadata. But if your application reads instance metadata only
+        # when a VM is restarted, you can set the minimal action to RESTART in order to
+        # pick up metadata changes.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
@@ -29547,9 +29556,9 @@ module Google
       class ResourcePolicyGroupPlacementPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of availability domains instances will be spread across. If two
-        # instances are in different availability domain, they will not be put in the
-        # same low latency network
+        # The number of availability domains to spread instances across. If two
+        # instances are in different availability domain, they are not in the same low
+        # latency network.
         # Corresponds to the JSON property `availabilityDomainCount`
         # @return [Fixnum]
         attr_accessor :availability_domain_count
@@ -29559,7 +29568,9 @@ module Google
         # @return [String]
         attr_accessor :collocation
       
-        # Number of vms in this placement group
+        # Number of VMs in this placement group. Google does not recommend that you use
+        # this field unless you use a compact policy and you want your policy to work
+        # only if it contains this exact number of VMs.
         # Corresponds to the JSON property `vmCount`
         # @return [Fixnum]
         attr_accessor :vm_count
@@ -35567,6 +35578,136 @@ module Google
       end
       
       # 
+      class SslPoliciesAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of SslPoliciesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::SslPoliciesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#sslPolicyAggregatedList for
+        # lists of SSL Policies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class SslPoliciesList
         include Google::Apis::Core::Hashable
       
@@ -35703,6 +35844,97 @@ module Google
         end
       end
       
+      # 
+      class SslPoliciesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of SslPolicies contained in this scope.
+        # Corresponds to the JSON property `sslPolicies`
+        # @return [Array<Google::Apis::ComputeBeta::SslPolicy>]
+        attr_accessor :ssl_policies
+      
+        # Informational warning which replaces the list of SSL policies when the list is
+        # empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_policies = args[:ssl_policies] if args.key?(:ssl_policies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of SSL policies when the list is
+        # empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Represents an SSL Policy resource. Use SSL policies to control the SSL
       # features, such as versions and cipher suites, offered by an HTTPS or SSL Proxy
       # load balancer. For more information, read SSL Policy Concepts.
@@ -35779,6 +36011,12 @@ module Google
         # @return [String]
         attr_accessor :profile
       
+        # [Output Only] URL of the region where the regional SSL policy resides. This
+        # field is not applicable to global SSL policies.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -35806,6 +36044,7 @@ module Google
           @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
           @name = args[:name] if args.key?(:name)
           @profile = args[:profile] if args.key?(:profile)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @warnings = args[:warnings] if args.key?(:warnings)
         end

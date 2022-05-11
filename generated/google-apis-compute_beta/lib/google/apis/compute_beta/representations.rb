@@ -4630,6 +4630,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslPoliciesAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslPoliciesList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4650,6 +4668,24 @@ module Google
       
       class SslPoliciesListAvailableFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -14386,6 +14422,40 @@ module Google
         end
       end
       
+      class SslPoliciesAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::SslPoliciesScopedList, decorator: Google::Apis::ComputeBeta::SslPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SslPoliciesAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class SslPoliciesList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14425,6 +14495,34 @@ module Google
         end
       end
       
+      class SslPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssl_policies, as: 'sslPolicies', class: Google::Apis::ComputeBeta::SslPolicy, decorator: Google::Apis::ComputeBeta::SslPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning, decorator: Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SslPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class SslPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14438,6 +14536,7 @@ module Google
           property :min_tls_version, as: 'minTlsVersion'
           property :name, as: 'name'
           property :profile, as: 'profile'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeBeta::SslPolicy::Warning, decorator: Google::Apis::ComputeBeta::SslPolicy::Warning::Representation
       
