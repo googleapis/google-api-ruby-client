@@ -2349,6 +2349,32 @@ module Google
         end
       end
       
+      # Digest information.
+      class Digest
+        include Google::Apis::Core::Hashable
+      
+        # `SHA1`, `SHA512` etc.
+        # Corresponds to the JSON property `algo`
+        # @return [String]
+        attr_accessor :algo
+      
+        # Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex
+        # encoding.
+        # Corresponds to the JSON property `digestValue`
+        # @return [String]
+        attr_accessor :digest_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algo = args[:algo] if args.key?(:algo)
+          @digest_value = args[:digest_value] if args.key?(:digest_value)
+        end
+      end
+      
       # Provides information about the scan status of a discovered resource.
       class Discovered
         include Google::Apis::Core::Hashable
@@ -2785,6 +2811,26 @@ module Google
         end
       end
       
+      # Indicates the location at which a package was found.
+      class FileLocation
+        include Google::Apis::Core::Hashable
+      
+        # For jars that are contained inside .war files, this filepath can indicate the
+        # path to war file combined with the path to jar file.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+        end
+      end
+      
       # FileNote represents an SPDX File Information section: https://spdx.github.io/
       # spdx-spec/4-file-information/
       class FileNote
@@ -2858,8 +2904,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
-        # 315-declared-license
+        # License information.
         # Corresponds to the JSON property `licenseConcluded`
         # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_concluded
@@ -3343,6 +3388,24 @@ module Google
       class Installation
         include Google::Apis::Core::Hashable
       
+        # Output only. The CPU architecture for which packages in this distribution
+        # channel were built. Architecture will be blank for language packages.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Output only. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/)
+        # denoting the package manager version distributing a package. The cpe_uri will
+        # be blank for language packages.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # License information.
+        # Corresponds to the JSON property `license`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::License]
+        attr_accessor :license
+      
         # All of the places within the filesystem versions of this package have been
         # found.
         # Corresponds to the JSON property `location`
@@ -3354,14 +3417,33 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The type of package; whether native or non native (e.g., ruby
+        # gems, node.js packages, etc.).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @license = args[:license] if args.key?(:license)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @package_type = args[:package_type] if args.key?(:package_type)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3390,8 +3472,7 @@ module Google
         end
       end
       
-      # License information: https://spdx.github.io/spdx-spec/3-package-information/#
-      # 315-declared-license
+      # License information.
       class License
         include Google::Apis::Core::Hashable
       
@@ -3400,8 +3481,10 @@ module Google
         # @return [String]
         attr_accessor :comments
       
-        # Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-
-        # expressions/
+        # Often a single license can be used to represent the licensing terms. Sometimes
+        # it is necessary to include a choice of one or more licenses or some
+        # combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.
+        # 1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
@@ -3524,8 +3607,8 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the
-        # package manager version distributing a package.
+        # Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)
+        # denoting the package manager version distributing a package.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -4073,15 +4156,68 @@ module Google
       class Package
         include Google::Apis::Core::Hashable
       
+        # The CPU architecture for which packages in this distribution channel were
+        # built. Architecture will be blank for language packages.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the
+        # package manager version distributing a package. The cpe_uri will be blank for
+        # language packages.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # The description of this package.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Hash value, typically a file digest, that allows unique identification a
+        # specific package.
+        # Corresponds to the JSON property `digest`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Digest>]
+        attr_accessor :digest
+      
         # The various channels by which a package is distributed.
         # Corresponds to the JSON property `distribution`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Distribution>]
         attr_accessor :distribution
       
+        # License information.
+        # Corresponds to the JSON property `license`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::License]
+        attr_accessor :license
+      
+        # A freeform text denoting the maintainer of this package.
+        # Corresponds to the JSON property `maintainer`
+        # @return [String]
+        attr_accessor :maintainer
+      
         # The name of the package.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The type of package; whether native or non native (e.g., ruby gems, node.js
+        # packages, etc.).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        # The homepage for this package.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -4089,8 +4225,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @description = args[:description] if args.key?(:description)
+          @digest = args[:digest] if args.key?(:digest)
           @distribution = args[:distribution] if args.key?(:distribution)
+          @license = args[:license] if args.key?(:license)
+          @maintainer = args[:maintainer] if args.key?(:maintainer)
           @name = args[:name] if args.key?(:name)
+          @package_type = args[:package_type] if args.key?(:package_type)
+          @url = args[:url] if args.key?(:url)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4155,8 +4300,7 @@ module Google
         # @return [String]
         attr_accessor :home_page
       
-        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
-        # 315-declared-license
+        # License information.
         # Corresponds to the JSON property `licenseDeclared`
         # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_declared
@@ -4257,8 +4401,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
-        # 315-declared-license
+        # License information.
         # Corresponds to the JSON property `licenseConcluded`
         # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_concluded
@@ -5503,6 +5646,11 @@ module Google
         # @return [String]
         attr_accessor :cpe_uri
       
+        # The file location at which this package was found.
+        # Corresponds to the JSON property `fileLocation`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::FileLocation>]
+        attr_accessor :file_location
+      
         # The package being described.
         # Corresponds to the JSON property `package`
         # @return [String]
@@ -5523,6 +5671,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @file_location = args[:file_location] if args.key?(:file_location)
           @package = args[:package] if args.key?(:package)
           @version = args[:version] if args.key?(:version)
         end
@@ -5536,6 +5685,17 @@ module Google
         # Corresponds to the JSON property `cvssScore`
         # @return [Float]
         attr_accessor :cvss_score
+      
+        # Common Vulnerability Scoring System.
+        # Corresponds to the JSON property `cvssV2`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
+        attr_accessor :cvss_v2
+      
+        # A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/
+        # index.html
+        # Corresponds to the JSON property `cwe`
+        # @return [Array<String>]
+        attr_accessor :cwe
       
         # All information about the package to specifically identify this vulnerability.
         # One entry per (version range and cpe_uri) the package vulnerability has
@@ -5556,6 +5716,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
+          @cwe = args[:cwe] if args.key?(:cwe)
           @details = args[:details] if args.key?(:details)
           @severity = args[:severity] if args.key?(:severity)
         end

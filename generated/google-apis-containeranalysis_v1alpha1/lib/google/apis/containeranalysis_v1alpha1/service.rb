@@ -161,8 +161,9 @@ module Google
         # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
         # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -285,8 +286,9 @@ module Google
         # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
         # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -326,8 +328,9 @@ module Google
         # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
         # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -511,8 +514,9 @@ module Google
         # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
         # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -702,8 +706,9 @@ module Google
         # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
         # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -743,8 +748,9 @@ module Google
         # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
         # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1061,8 +1067,9 @@ module Google
         # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
         # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1185,8 +1192,9 @@ module Google
         # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
         # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1226,8 +1234,9 @@ module Google
         # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
         # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
