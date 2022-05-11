@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cvss
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CvsSv3
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Digest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Discovered
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +365,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Envelope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnvelopeSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -890,6 +914,24 @@ module Google
         end
       end
       
+      class Cvss
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :authentication, as: 'authentication'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploitability_score, as: 'exploitabilityScore'
+          property :impact_score, as: 'impactScore'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
+        end
+      end
+      
       class CvsSv3
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1301,6 +1343,14 @@ module Google
         end
       end
       
+      class Digest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algo, as: 'algo'
+          property :digest_value, as: 'digestValue'
+        end
+      end
+      
       class Discovered
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1358,6 +1408,24 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Envelope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, :base64 => true, as: 'payload'
+          property :payload_type, as: 'payloadType'
+          collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1beta1::EnvelopeSignature, decorator: Google::Apis::ContaineranalysisV1beta1::EnvelopeSignature::Representation
+      
+        end
+      end
+      
+      class EnvelopeSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keyid, as: 'keyid'
+          property :sig, :base64 => true, as: 'sig'
         end
       end
       
@@ -1609,9 +1677,16 @@ module Google
       class Installation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1beta1::License, decorator: Google::Apis::ContaineranalysisV1beta1::License::Representation
+      
           collection :location, as: 'location', class: Google::Apis::ContaineranalysisV1beta1::Location, decorator: Google::Apis::ContaineranalysisV1beta1::Location::Representation
       
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1beta1::Version, decorator: Google::Apis::ContaineranalysisV1beta1::Version::Representation
+      
         end
       end
       
@@ -1754,6 +1829,8 @@ module Google
       
           property :discovered, as: 'discovered', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1DiscoveryDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1DiscoveryDetails::Representation
       
+          property :envelope, as: 'envelope', class: Google::Apis::ContaineranalysisV1beta1::Envelope, decorator: Google::Apis::ContaineranalysisV1beta1::Envelope::Representation
+      
           property :installation, as: 'installation', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1PackageDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1PackageDetails::Representation
       
           property :intoto, as: 'intoto', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoDetails::Representation
@@ -1781,9 +1858,21 @@ module Google
       class Package
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :description, as: 'description'
+          collection :digest, as: 'digest', class: Google::Apis::ContaineranalysisV1beta1::Digest, decorator: Google::Apis::ContaineranalysisV1beta1::Digest::Representation
+      
           collection :distribution, as: 'distribution', class: Google::Apis::ContaineranalysisV1beta1::Distribution, decorator: Google::Apis::ContaineranalysisV1beta1::Distribution::Representation
       
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1beta1::License, decorator: Google::Apis::ContaineranalysisV1beta1::License::Representation
+      
+          property :maintainer, as: 'maintainer'
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :url, as: 'url'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1beta1::Version, decorator: Google::Apis::ContaineranalysisV1beta1::Version::Representation
+      
         end
       end
       
@@ -2014,8 +2103,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1beta1::Cvss, decorator: Google::Apis::ContaineranalysisV1beta1::Cvss::Representation
+      
           property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1beta1::CvsSv3, decorator: Google::Apis::ContaineranalysisV1beta1::CvsSv3::Representation
       
+          collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
           property :severity, as: 'severity'
