@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class License
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -774,6 +780,14 @@ module Google
         end
       end
       
+      class License
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comments, as: 'comments'
+          property :expression, as: 'expression'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -916,9 +930,16 @@ module Google
       class PackageOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :license, as: 'license', class: Google::Apis::OndemandscanningV1beta1::License, decorator: Google::Apis::OndemandscanningV1beta1::License::Representation
+      
           collection :location, as: 'location', class: Google::Apis::OndemandscanningV1beta1::Location, decorator: Google::Apis::OndemandscanningV1beta1::Location::Representation
       
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :version, as: 'version', class: Google::Apis::OndemandscanningV1beta1::Version, decorator: Google::Apis::OndemandscanningV1beta1::Version::Representation
+      
         end
       end
       
