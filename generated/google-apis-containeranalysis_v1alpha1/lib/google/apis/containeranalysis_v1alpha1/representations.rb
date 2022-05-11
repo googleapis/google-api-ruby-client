@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Digest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Discovered
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,12 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1378,6 +1390,14 @@ module Google
         end
       end
       
+      class Digest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algo, as: 'algo'
+          property :digest_value, as: 'digestValue'
+        end
+      end
+      
       class Discovered
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1485,6 +1505,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::ContaineranalysisV1alpha1::HashProp, decorator: Google::Apis::ContaineranalysisV1alpha1::HashProp::Representation
       
+        end
+      end
+      
+      class FileLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
         end
       end
       
@@ -1658,9 +1685,16 @@ module Google
       class Installation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1alpha1::License, decorator: Google::Apis::ContaineranalysisV1alpha1::License::Representation
+      
           collection :location, as: 'location', class: Google::Apis::ContaineranalysisV1alpha1::Location, decorator: Google::Apis::ContaineranalysisV1alpha1::Location::Representation
       
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
+      
         end
       end
       
@@ -1858,9 +1892,21 @@ module Google
       class Package
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :description, as: 'description'
+          collection :digest, as: 'digest', class: Google::Apis::ContaineranalysisV1alpha1::Digest, decorator: Google::Apis::ContaineranalysisV1alpha1::Digest::Representation
+      
           collection :distribution, as: 'distribution', class: Google::Apis::ContaineranalysisV1alpha1::Distribution, decorator: Google::Apis::ContaineranalysisV1alpha1::Distribution::Representation
       
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1alpha1::License, decorator: Google::Apis::ContaineranalysisV1alpha1::License::Representation
+      
+          property :maintainer, as: 'maintainer'
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :url, as: 'url'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
+      
         end
       end
       
@@ -2203,6 +2249,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpe_uri, as: 'cpeUri'
+          collection :file_location, as: 'fileLocation', class: Google::Apis::ContaineranalysisV1alpha1::FileLocation, decorator: Google::Apis::ContaineranalysisV1alpha1::FileLocation::Representation
+      
           property :package, as: 'package'
           property :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
       
@@ -2213,6 +2261,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_v2, as: 'cvssV2', class: Google::Apis::ContaineranalysisV1alpha1::Cvss, decorator: Google::Apis::ContaineranalysisV1alpha1::Cvss::Representation
+      
+          collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1alpha1::Detail, decorator: Google::Apis::ContaineranalysisV1alpha1::Detail::Representation
       
           property :severity, as: 'severity'
