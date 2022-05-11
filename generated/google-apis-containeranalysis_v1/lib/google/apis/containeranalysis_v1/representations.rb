@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Digest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiscoveryNote
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +509,12 @@ module Google
       end
       
       class Layer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class License
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1363,6 +1375,14 @@ module Google
         end
       end
       
+      class Digest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algo, as: 'algo'
+          property :digest_value, as: 'digestValue'
+        end
+      end
+      
       class DiscoveryNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1600,6 +1620,14 @@ module Google
         end
       end
       
+      class License
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comments, as: 'comments'
+          property :expression, as: 'expression'
+        end
+      end
+      
       class ListNoteOccurrencesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1759,18 +1787,37 @@ module Google
       class PackageNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :description, as: 'description'
+          collection :digest, as: 'digest', class: Google::Apis::ContaineranalysisV1::Digest, decorator: Google::Apis::ContaineranalysisV1::Digest::Representation
+      
           collection :distribution, as: 'distribution', class: Google::Apis::ContaineranalysisV1::Distribution, decorator: Google::Apis::ContaineranalysisV1::Distribution::Representation
       
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1::License, decorator: Google::Apis::ContaineranalysisV1::License::Representation
+      
+          property :maintainer, as: 'maintainer'
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :url, as: 'url'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1::Version, decorator: Google::Apis::ContaineranalysisV1::Version::Representation
+      
         end
       end
       
       class PackageOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :cpe_uri, as: 'cpeUri'
+          property :license, as: 'license', class: Google::Apis::ContaineranalysisV1::License, decorator: Google::Apis::ContaineranalysisV1::License::Representation
+      
           collection :location, as: 'location', class: Google::Apis::ContaineranalysisV1::Location, decorator: Google::Apis::ContaineranalysisV1::Location::Representation
       
           property :name, as: 'name'
+          property :package_type, as: 'packageType'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1::Version, decorator: Google::Apis::ContaineranalysisV1::Version::Representation
+      
         end
       end
       
