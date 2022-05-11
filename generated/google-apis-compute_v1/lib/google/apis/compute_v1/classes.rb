@@ -8457,21 +8457,26 @@ module Google
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
-        # IP address that this forwarding rule serves. When a client sends traffic to
-        # this IP address, the forwarding rule directs the traffic to the target that
-        # you specify in the forwarding rule. If you don't specify a reserved IP address,
-        # an ephemeral IP address is assigned. Methods for specifying an IP address: *
-        # IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.
-        # googleapis.com/compute/v1/projects/project_id/regions/region /addresses/
-        # address-name * Partial URL or by name, as in: - projects/project_id/regions/
-        # region/addresses/address-name - regions/region/addresses/address-name - global/
-        # addresses/address-name - address-name The loadBalancingScheme and the
-        # forwarding rule's target determine the type of IP address that you can use.
-        # For detailed information, see [IP address specifications](https://cloud.google.
-        # com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        # Must be set to `0.0.0.0` when the target is targetGrpcProxy that has
-        # validateForProxyless field set to true. For Private Service Connect forwarding
-        # rules that forward traffic to Google APIs, IP address must be provided.
+        # IP address for which this forwarding rule accepts traffic. When a client sends
+        # traffic to this IP address, the forwarding rule directs the traffic to the
+        # referenced target or backendService. While creating a forwarding rule,
+        # specifying an IPAddress is required under the following circumstances: - When
+        # the target is set to targetGrpcProxy and validateForProxyless is set to true,
+        # the IPAddress should be set to 0.0.0.0. - When the target is a Private Service
+        # Connect Google APIs bundle, you must specify an IPAddress. Otherwise, you can
+        # optionally specify an IP address that references an existing static (reserved)
+        # IP address resource. When omitted, Google Cloud assigns an ephemeral IP
+        # address. Use one of the following formats to specify an IP address while
+        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * Full
+        # resource URL, as in https://www.googleapis.com/compute/v1/projects/project_id/
+        # regions/region /addresses/address-name * Partial URL or by name, as in: -
+        # projects/project_id/regions/region/addresses/address-name - regions/region/
+        # addresses/address-name - global/addresses/address-name - address-name The
+        # forwarding rule's target or backendService, and in most cases, also the
+        # loadBalancingScheme, determine the type of IP address that you can use. For
+        # detailed information, see [IP address specifications](https://cloud.google.com/
+        # load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When
+        # reading an IPAddress, the API always returns the IP address number.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -10657,10 +10662,10 @@ module Google
       
         # The list of host patterns to match. They must be valid hostnames with optional
         # port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
-        # In that case, * must be the first character and must be followed in the
-        # pattern by either - or .. * based matching is not supported when the URL map
-        # is bound to a target gRPC proxy that has the validateForProxyless field set to
-        # true.
+        # In that case, * must be the first character, and if followed by anything, the
+        # immediate following character must be either - or .. * based matching is not
+        # supported when the URL map is bound to a target gRPC proxy that has the
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
@@ -13821,12 +13826,16 @@ module Google
         # @return [Google::Apis::ComputeV1::FixedOrPercent]
         attr_accessor :max_unavailable
       
-        # Minimal action to be taken on an instance. You can specify either RESTART to
-        # restart existing instances or REPLACE to delete and create new instances from
-        # the target template. If you specify a RESTART, the Updater will attempt to
-        # perform that action only. However, if the Updater determines that the minimal
-        # action you specify is not enough to perform the update, it might perform a
-        # more disruptive action.
+        # Minimal action to be taken on an instance. Use this option to minimize
+        # disruption as much as possible or to apply a more disruptive action than is
+        # necessary. - To limit disruption as much as possible, set the minimal action
+        # to REFRESH. If your update requires a more disruptive action, Compute Engine
+        # performs the necessary action to execute the update. - To apply a more
+        # disruptive action than is strictly necessary, set the minimal action to
+        # RESTART or REPLACE. For example, Compute Engine does not need to restart a VM
+        # to change its metadata. But if your application reads instance metadata only
+        # when a VM is restarted, you can set the minimal action to RESTART in order to
+        # pick up metadata changes.
         # Corresponds to the JSON property `minimalAction`
         # @return [String]
         attr_accessor :minimal_action
@@ -28352,9 +28361,9 @@ module Google
       class ResourcePolicyGroupPlacementPolicy
         include Google::Apis::Core::Hashable
       
-        # The number of availability domains instances will be spread across. If two
-        # instances are in different availability domain, they will not be put in the
-        # same low latency network
+        # The number of availability domains to spread instances across. If two
+        # instances are in different availability domain, they are not in the same low
+        # latency network.
         # Corresponds to the JSON property `availabilityDomainCount`
         # @return [Fixnum]
         attr_accessor :availability_domain_count
@@ -28364,7 +28373,9 @@ module Google
         # @return [String]
         attr_accessor :collocation
       
-        # Number of vms in this placement group
+        # Number of VMs in this placement group. Google does not recommend that you use
+        # this field unless you use a compact policy and you want your policy to work
+        # only if it contains this exact number of VMs.
         # Corresponds to the JSON property `vmCount`
         # @return [Fixnum]
         attr_accessor :vm_count
@@ -35783,6 +35794,25 @@ module Google
       end
       
       # 
+      class TargetHttpsProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetHttpsProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
+        end
+      end
+      
+      # 
       class TargetHttpsProxiesSetQuicOverrideRequest
         include Google::Apis::Core::Hashable
       
@@ -35844,6 +35874,13 @@ module Google
         # Corresponds to the JSON property `authorizationPolicy`
         # @return [String]
         attr_accessor :authorization_policy
+      
+        # URL of a certificate map that identifies a certificate map associated with the
+        # given target proxy. This field can only be set for global target proxies. If
+        # set, sslCertificates will be ignored.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -35965,6 +36002,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -37253,6 +37291,25 @@ module Google
       end
       
       # 
+      class TargetSslProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetSslProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
+        end
+      end
+      
+      # 
       class TargetSslProxiesSetProxyHeaderRequest
         include Google::Apis::Core::Hashable
       
@@ -37299,6 +37356,13 @@ module Google
       # information, read Using Target Proxies.
       class TargetSslProxy
         include Google::Apis::Core::Hashable
+      
+        # URL of a certificate map that identifies a certificate map associated with the
+        # given target proxy. This field can only be set for global target proxies. If
+        # set, sslCertificates will be ignored.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -37370,6 +37434,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
