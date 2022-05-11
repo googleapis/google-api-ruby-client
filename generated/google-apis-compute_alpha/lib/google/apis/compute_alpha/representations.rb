@@ -16062,6 +16062,7 @@ module Google
           property :architecture, as: 'architecture'
           property :auto_created, as: 'autoCreated'
           property :chain_name, as: 'chainName'
+          property :creation_size_bytes, :numeric_string => true, as: 'creationSizeBytes'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
