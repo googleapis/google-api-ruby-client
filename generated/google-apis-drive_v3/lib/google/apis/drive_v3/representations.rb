@@ -485,6 +485,7 @@ module Google
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_rename, as: 'canRename'
             property :can_rename_drive, as: 'canRenameDrive'
+            property :can_reset_drive_restrictions, as: 'canResetDriveRestrictions'
             property :can_share, as: 'canShare'
             property :can_trash_children, as: 'canTrashChildren'
           end
@@ -908,6 +909,7 @@ module Google
             property :can_remove_children, as: 'canRemoveChildren'
             property :can_rename, as: 'canRename'
             property :can_rename_team_drive, as: 'canRenameTeamDrive'
+            property :can_reset_team_drive_restrictions, as: 'canResetTeamDriveRestrictions'
             property :can_share, as: 'canShare'
             property :can_trash_children, as: 'canTrashChildren'
           end
