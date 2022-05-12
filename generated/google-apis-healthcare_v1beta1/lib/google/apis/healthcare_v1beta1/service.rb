@@ -4691,7 +4691,11 @@ module Google
         #   resourcelist.html)). Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] profile
-        #   A profile that this resource should be validated against.
+        #   The canonical URL of a profile that this resource should be validated against.
+        #   For example, to validate a Patient resource against the US Core Patient
+        #   profile this parameter would be `http://hl7.org/fhir/us/core/
+        #   StructureDefinition/us-core-patient`. A StructureDefinition with this
+        #   canonical URL must exist in the FHIR store.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
