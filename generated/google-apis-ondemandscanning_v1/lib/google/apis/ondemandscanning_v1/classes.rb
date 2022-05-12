@@ -1278,6 +1278,34 @@ module Google
         end
       end
       
+      # License information.
+      class License
+        include Google::Apis::Core::Hashable
+      
+        # Comments
+        # Corresponds to the JSON property `comments`
+        # @return [String]
+        attr_accessor :comments
+      
+        # Often a single license can be used to represent the licensing terms. Sometimes
+        # it is necessary to include a choice of one or more licenses or some
+        # combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.
+        # 1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comments = args[:comments] if args.key?(:comments)
+          @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1335,8 +1363,7 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
-        # denoting the package manager version distributing a package.
+        # Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -1829,16 +1856,45 @@ module Google
       class PackageOccurrence
         include Google::Apis::Core::Hashable
       
-        # Required. All of the places within the filesystem versions of this package
-        # have been found.
+        # Output only. The CPU architecture for which packages in this distribution
+        # channel were built. Architecture will be blank for language packages.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Output only. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/)
+        # denoting the package manager version distributing a package. The cpe_uri will
+        # be blank for language packages.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # License information.
+        # Corresponds to the JSON property `license`
+        # @return [Google::Apis::OndemandscanningV1::License]
+        attr_accessor :license
+      
+        # All of the places within the filesystem versions of this package have been
+        # found.
         # Corresponds to the JSON property `location`
         # @return [Array<Google::Apis::OndemandscanningV1::Location>]
         attr_accessor :location
       
-        # Output only. The name of the installed package.
+        # Required. Output only. The name of the installed package.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The type of package; whether native or non native (e.g., ruby
+        # gems, node.js packages, etc.).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        # Version contains structured information about the version of a package.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::OndemandscanningV1::Version]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -1846,8 +1902,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @license = args[:license] if args.key?(:license)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @package_type = args[:package_type] if args.key?(:package_type)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
