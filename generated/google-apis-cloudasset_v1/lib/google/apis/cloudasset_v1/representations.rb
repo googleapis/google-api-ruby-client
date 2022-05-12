@@ -544,18 +544,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RelatedAsset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RelatedAssets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RelatedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,12 +551,6 @@ module Google
       end
       
       class RelatedResources
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RelationshipAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,8 +730,6 @@ module Google
           collection :org_policy, as: 'orgPolicy', class: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy, decorator: Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy::Representation
       
           property :os_inventory, as: 'osInventory', class: Google::Apis::CloudassetV1::Inventory, decorator: Google::Apis::CloudassetV1::Inventory::Representation
-      
-          property :related_assets, as: 'relatedAssets', class: Google::Apis::CloudassetV1::RelatedAssets, decorator: Google::Apis::CloudassetV1::RelatedAssets::Representation
       
           property :resource, as: 'resource', class: Google::Apis::CloudassetV1::Resource, decorator: Google::Apis::CloudassetV1::Resource::Representation
       
@@ -1573,25 +1553,6 @@ module Google
         end
       end
       
-      class RelatedAsset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :ancestors, as: 'ancestors'
-          property :asset, as: 'asset'
-          property :asset_type, as: 'assetType'
-        end
-      end
-      
-      class RelatedAssets
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :assets, as: 'assets', class: Google::Apis::CloudassetV1::RelatedAsset, decorator: Google::Apis::CloudassetV1::RelatedAsset::Representation
-      
-          property :relationship_attributes, as: 'relationshipAttributes', class: Google::Apis::CloudassetV1::RelationshipAttributes, decorator: Google::Apis::CloudassetV1::RelationshipAttributes::Representation
-      
-        end
-      end
-      
       class RelatedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1605,16 +1566,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :related_resources, as: 'relatedResources', class: Google::Apis::CloudassetV1::RelatedResource, decorator: Google::Apis::CloudassetV1::RelatedResource::Representation
       
-        end
-      end
-      
-      class RelationshipAttributes
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          property :source_resource_type, as: 'sourceResourceType'
-          property :target_resource_type, as: 'targetResourceType'
-          property :type, as: 'type'
         end
       end
       
