@@ -281,7 +281,7 @@ module Google
       
       # Metadata related to the progress of the AddFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddFulfillmentPlaces method.
+      # ProductService.AddFulfillmentPlaces method.
       class GoogleCloudRetailV2AddFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -294,7 +294,7 @@ module Google
         end
       end
       
-      # Request message for AddFulfillmentPlaces method.
+      # Request message for ProductService.AddFulfillmentPlaces method.
       class GoogleCloudRetailV2AddFulfillmentPlacesRequest
         include Google::Apis::Core::Hashable
       
@@ -351,7 +351,8 @@ module Google
       end
       
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
-      # no meaningful response populated from the AddFulfillmentPlaces method.
+      # no meaningful response populated from the ProductService.AddFulfillmentPlaces
+      # method.
       class GoogleCloudRetailV2AddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -366,7 +367,7 @@ module Google
       
       # Metadata related to the progress of the AddLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddLocalInventories method.
+      # ProductService.AddLocalInventories method.
       class GoogleCloudRetailV2AddLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -379,7 +380,7 @@ module Google
         end
       end
       
-      # Request message for AddLocalInventories method.
+      # Request message for ProductService.AddLocalInventories method.
       class GoogleCloudRetailV2AddLocalInventoriesRequest
         include Google::Apis::Core::Hashable
       
@@ -430,8 +431,9 @@ module Google
         end
       end
       
-      # Response of the AddLocalInventories API. Currently empty because there is no
-      # meaningful response populated from the AddLocalInventories method.
+      # Response of the ProductService.AddLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # AddLocalInventories method.
       class GoogleCloudRetailV2AddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -776,11 +778,12 @@ module Google
       
         # This field is normally ignored unless AttributesConfig.attribute_config_level
         # of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
-        # You may learn more on [configuration mode] (https://cloud.google.com/retail/
-        # docs/attribute-config#config-modes). if true, custom attribute values are
-        # indexed, so that it can be filtered, faceted or boosted in SearchService.
-        # Search. This field is ignored in a UserEvent. See SearchRequest.filter,
-        # SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+        # For information about product-level attribute configuration, see [
+        # Configuration modes](https://cloud.google.com/retail/docs/attribute-config#
+        # config-modes). If true, custom attribute values are indexed, so that they can
+        # be filtered, faceted or boosted in SearchService.Search. This field is ignored
+        # in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and
+        # SearchRequest.boost_spec for more details.
         # Corresponds to the JSON property `indexable`
         # @return [Boolean]
         attr_accessor :indexable
@@ -795,11 +798,11 @@ module Google
       
         # This field is normally ignored unless AttributesConfig.attribute_config_level
         # of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
-        # You may learn more on [configuration mode] (https://cloud.google.com/retail/
-        # docs/attribute-config#config-modes). If true, custom attribute values are
-        # searchable by text queries in SearchService.Search. This field is ignored in a
-        # UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error
-        # is returned.
+        # For information about product-level attribute configuration, see [
+        # Configuration modes](https://cloud.google.com/retail/docs/attribute-config#
+        # config-modes). If true, custom attribute values are searchable by text queries
+        # in SearchService.Search. This field is ignored in a UserEvent. Only set if
+        # type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `searchable`
         # @return [Boolean]
         attr_accessor :searchable
@@ -1413,7 +1416,7 @@ module Google
         # The labels applied to a resource must meet the following requirements: * Each
         # resource can have multiple labels, up to a maximum of 64. * Each label must be
         # a key-value pair. * Keys have a minimum length of 1 character and a maximum
-        # length of 63 characters, and cannot be empty. Values can be empty, and have a
+        # length of 63 characters and cannot be empty. Values can be empty and have a
         # maximum length of 63 characters. * Keys and values can contain only lowercase
         # letters, numeric characters, underscores, and dashes. All characters must use
         # UTF-8 encoding, and international characters are allowed. * The key portion of
@@ -1541,9 +1544,9 @@ module Google
         attr_accessor :id
       
         # Additional product metadata / annotations. Possible values: * `product`: JSON
-        # representation of the product. Will be set if `returnProduct` is set to true
-        # in `PredictRequest.params`. * `score`: Prediction score in double value. Will
-        # be set if `returnScore` is set to true in `PredictRequest.params`.
+        # representation of the product. Is set if `returnProduct` is set to true in `
+        # PredictRequest.params`. * `score`: Prediction score in double value. Is set if
+        # `returnScore` is set to true in `PredictRequest.params`.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
@@ -1906,9 +1909,9 @@ module Google
         # attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION,
         # the following fields are always returned in SearchResponse by default: * name
         # For Type.VARIANT, the following fields are always returned in by default: *
-        # name * color_info Maximum number of paths is 30. Otherwise, an
+        # name * color_info The maximum number of paths is 30. Otherwise, an
         # INVALID_ARGUMENT error is returned. Note: Returning more fields in
-        # SearchResponse may increase response payload size and serving latency.
+        # SearchResponse can increase response payload size and serving latency.
         # Corresponds to the JSON property `retrievableFields`
         # @return [String]
         attr_accessor :retrievable_fields
@@ -2589,7 +2592,7 @@ module Google
         # The labels applied to a resource must meet the following requirements: * Each
         # resource can have multiple labels, up to a maximum of 64. * Each label must be
         # a key-value pair. * Keys have a minimum length of 1 character and a maximum
-        # length of 63 characters, and cannot be empty. Values can be empty, and have a
+        # length of 63 characters and cannot be empty. Values can be empty and have a
         # maximum length of 63 characters. * Keys and values can contain only lowercase
         # letters, numeric characters, underscores, and dashes. All characters must use
         # UTF-8 encoding, and international characters are allowed. * The key portion of
@@ -2667,6 +2670,11 @@ module Google
         # @return [String]
         attr_accessor :search_mode
       
+        # The specification for query spell correction.
+        # Corresponds to the JSON property `spellCorrectionSpec`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestSpellCorrectionSpec]
+        attr_accessor :spell_correction_spec
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo]
@@ -2682,8 +2690,8 @@ module Google
         # the store ID. Supported keys are: * colorFamilies * price * originalPrice *
         # discount * variantId * inventory(place_id,price) * inventory(place_id,
         # original_price) * inventory(place_id,attributes.key), where key is any key in
-        # the Product.inventories.attributes map. * attributes.key, where key is any key
-        # in the Product.attributes map. * pickupInStore.id, where id is any
+        # the Product.local_inventories.attributes map. * attributes.key, where key is
+        # any key in the Product.attributes map. * pickupInStore.id, where id is any
         # FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
         # shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.
         # type "ship-to-store". * sameDayDelivery.id, where id is any FulfillmentInfo.
@@ -2734,6 +2742,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @search_mode = args[:search_mode] if args.key?(:search_mode)
+          @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -3037,6 +3046,26 @@ module Google
         end
       end
       
+      # The specification for query spell correction.
+      class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The mode under which spell correction should take effect to replace the
+        # original search query. Default to Mode.AUTO.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
       # Response message for SearchService.Search method.
       class GoogleCloudRetailV2SearchResponse
         include Google::Apis::Core::Hashable
@@ -3055,8 +3084,8 @@ module Google
         attr_accessor :attribution_token
       
         # Contains the spell corrected query, if found. If the spell correction type is
-        # AUTOMATIC, then the search results will be based on corrected_query, otherwise
-        # the original query will be used for search.
+        # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
+        # original query will be used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
@@ -3085,8 +3114,8 @@ module Google
         attr_accessor :query_expansion_info
       
         # The URI of a customer-defined redirect page. If redirect action is triggered,
-        # no search will be performed, and only redirect_uri and attribution_token will
-        # be set in the response.
+        # no search is performed, and only redirect_uri and attribution_token are set in
+        # the response.
         # Corresponds to the JSON property `redirectUri`
         # @return [String]
         attr_accessor :redirect_uri
@@ -3751,7 +3780,7 @@ module Google
       
       # Metadata related to the progress of the AddFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddFulfillmentPlaces method.
+      # ProductService.AddFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -3765,7 +3794,8 @@ module Google
       end
       
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
-      # no meaningful response populated from the AddFulfillmentPlaces method.
+      # no meaningful response populated from the ProductService.AddFulfillmentPlaces
+      # method.
       class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -3780,7 +3810,7 @@ module Google
       
       # Metadata related to the progress of the AddLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddLocalInventories method.
+      # ProductService.AddLocalInventories method.
       class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -3793,8 +3823,9 @@ module Google
         end
       end
       
-      # Response of the AddLocalInventories API. Currently empty because there is no
-      # meaningful response populated from the AddLocalInventories method.
+      # Response of the ProductService.AddLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # AddLocalInventories method.
       class GoogleCloudRetailV2alphaAddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -4317,7 +4348,7 @@ module Google
       
       # Metadata related to the progress of the AddFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddFulfillmentPlaces method.
+      # ProductService.AddFulfillmentPlaces method.
       class GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -4331,7 +4362,8 @@ module Google
       end
       
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
-      # no meaningful response populated from the AddFulfillmentPlaces method.
+      # no meaningful response populated from the ProductService.AddFulfillmentPlaces
+      # method.
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -4346,7 +4378,7 @@ module Google
       
       # Metadata related to the progress of the AddLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # AddLocalInventories method.
+      # ProductService.AddLocalInventories method.
       class GoogleCloudRetailV2betaAddLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -4359,8 +4391,9 @@ module Google
         end
       end
       
-      # Response of the AddLocalInventories API. Currently empty because there is no
-      # meaningful response populated from the AddLocalInventories method.
+      # Response of the ProductService.AddLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # AddLocalInventories method.
       class GoogleCloudRetailV2betaAddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
