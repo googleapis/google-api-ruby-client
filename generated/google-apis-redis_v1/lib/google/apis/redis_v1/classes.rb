@@ -330,6 +330,12 @@ module Google
         # @return [Google::Apis::RedisV1::MaintenanceSchedule]
         attr_accessor :maintenance_schedule
       
+        # Optional. The self service update maintenance version. The version is date
+        # based such as "20210712_00_00".
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
+      
         # Required. Redis memory size in GiB.
         # Corresponds to the JSON property `memorySizeGb`
         # @return [Fixnum]
@@ -480,6 +486,7 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
           @nodes = args[:nodes] if args.key?(:nodes)
