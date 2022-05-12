@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2SearchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1508,6 +1514,8 @@ module Google
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec::Representation
       
           property :search_mode, as: 'searchMode'
+          property :spell_correction_spec, as: 'spellCorrectionSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestSpellCorrectionSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestSpellCorrectionSpec::Representation
+      
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo::Representation
       
           collection :variant_rollup_keys, as: 'variantRollupKeys'
@@ -1576,6 +1584,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition, as: 'condition'
           property :pin_unexpanded_results, as: 'pinUnexpandedResults'
+        end
+      end
+      
+      class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
