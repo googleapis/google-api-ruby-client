@@ -437,6 +437,7 @@ module Google
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :hostname, as: 'hostname'
           hash :labels, as: 'labels'
           property :license_type, as: 'licenseType'
           property :machine_type, as: 'machineType'
@@ -463,6 +464,7 @@ module Google
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
+          property :hostname, as: 'hostname'
           hash :labels, as: 'labels'
           property :license_type, as: 'licenseType'
           property :machine_type, as: 'machineType'
