@@ -285,6 +285,7 @@ module Google
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1beta1::MaintenanceSchedule, decorator: Google::Apis::RedisV1beta1::MaintenanceSchedule::Representation
       
+          property :maintenance_version, as: 'maintenanceVersion'
           property :memory_size_gb, as: 'memorySizeGb'
           property :name, as: 'name'
           collection :nodes, as: 'nodes', class: Google::Apis::RedisV1beta1::NodeInfo, decorator: Google::Apis::RedisV1beta1::NodeInfo::Representation
