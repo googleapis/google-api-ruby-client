@@ -16,13 +16,13 @@ module Google
   module Apis
     module BinaryauthorizationV1beta1
       # Version of the google-apis-binaryauthorization_v1beta1 gem
-      GEM_VERSION = "0.17.0"
+      GEM_VERSION = "0.18.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220408"
+      REVISION = "20220506"
     end
   end
 end
