@@ -882,6 +882,12 @@ module Google
           attr_accessor :can_rename_drive
           alias_method :can_rename_drive?, :can_rename_drive
         
+          # Whether the current user can reset the shared drive restrictions to defaults.
+          # Corresponds to the JSON property `canResetDriveRestrictions`
+          # @return [Boolean]
+          attr_accessor :can_reset_drive_restrictions
+          alias_method :can_reset_drive_restrictions?, :can_reset_drive_restrictions
+        
           # Whether the current user can share files or folders in this shared drive.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
@@ -916,6 +922,7 @@ module Google
             @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_rename_drive = args[:can_rename_drive] if args.key?(:can_rename_drive)
+            @can_reset_drive_restrictions = args[:can_reset_drive_restrictions] if args.key?(:can_reset_drive_restrictions)
             @can_share = args[:can_share] if args.key?(:can_share)
             @can_trash_children = args[:can_trash_children] if args.key?(:can_trash_children)
           end
@@ -2944,6 +2951,12 @@ module Google
           attr_accessor :can_rename_team_drive
           alias_method :can_rename_team_drive?, :can_rename_team_drive
         
+          # Whether the current user can reset the Team Drive restrictions to defaults.
+          # Corresponds to the JSON property `canResetTeamDriveRestrictions`
+          # @return [Boolean]
+          attr_accessor :can_reset_team_drive_restrictions
+          alias_method :can_reset_team_drive_restrictions?, :can_reset_team_drive_restrictions
+        
           # Whether the current user can share files or folders in this Team Drive.
           # Corresponds to the JSON property `canShare`
           # @return [Boolean]
@@ -2979,6 +2992,7 @@ module Google
             @can_remove_children = args[:can_remove_children] if args.key?(:can_remove_children)
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_rename_team_drive = args[:can_rename_team_drive] if args.key?(:can_rename_team_drive)
+            @can_reset_team_drive_restrictions = args[:can_reset_team_drive_restrictions] if args.key?(:can_reset_team_drive_restrictions)
             @can_share = args[:can_share] if args.key?(:can_share)
             @can_trash_children = args[:can_trash_children] if args.key?(:can_trash_children)
           end
