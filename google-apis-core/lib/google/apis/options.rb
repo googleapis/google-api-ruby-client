@@ -29,6 +29,7 @@ module Google
       :authorization,
       :retries,
       :max_elapsed_time,
+      :base_interval,
       :header,
       :normalize_unicode,
       :skip_serialization,
@@ -69,6 +70,8 @@ module Google
       #   @return [Fixnum] Number of times to retry requests on server error.
       # @!attribute [rw] max_elapsed_time
       #   @return [Fixnum] Total time in seconds that requests are allowed to keep being retried.
+      # @!attribute [rw] base_interval
+      #   @return [Float] The initial interval in seconds between tries.
       # @!attribute [rw] header
       #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
       # @!attribute [rw] normalize_unicode
@@ -110,6 +113,7 @@ module Google
     ClientOptions.default.transparent_gzip_decompression = true
     RequestOptions.default.retries = 0
     RequestOptions.default.max_elapsed_time = 900
+    RequestOptions.default.base_interval = 1
     RequestOptions.default.normalize_unicode = false
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false

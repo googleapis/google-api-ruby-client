@@ -152,7 +152,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       expect(Retriable).to receive(:retriable).with(
         tries: Google::Apis::RequestOptions.default.retries + 1,
         max_elapsed_time: Google::Apis::RequestOptions.default.max_elapsed_time,
-        base_interval: 1,
+        base_interval: Google::Apis::RequestOptions.default.base_interval,
         multiplier: 2,
         on: described_class::RETRIABLE_ERRORS).and_call_original
       allow(Retriable).to receive(:retriable).and_call_original
