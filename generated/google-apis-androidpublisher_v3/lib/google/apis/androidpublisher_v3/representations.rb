@@ -22,6 +22,24 @@ module Google
   module Apis
     module AndroidpublisherV3
       
+      class AcquisitionTargetingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivateBasePlanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivateSubscriptionOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Apk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +82,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArchiveSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoRenewingBasePlanType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoRenewingPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasePlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +113,18 @@ module Google
       end
       
       class BundlesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelSurveyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CanceledStateContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeactivateBasePlanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeactivateSubscriptionOfferRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeobfuscationFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +191,12 @@ module Google
       end
       
       class DeveloperComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeveloperInitiatedCancellation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +263,12 @@ module Google
       end
       
       class ExpansionFilesUploadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalAccountIdentifiers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +382,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSubscriptionOffersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,13 +424,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrateBasePlanPricesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrateBasePlanPricesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OfferTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OtherRegionsBasePlanConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OtherRegionsSubscriptionOfferConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OtherRegionsSubscriptionOfferPhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OtherRegionsSubscriptionOfferPhasePrices
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PausedStateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrepaidBasePlanType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrepaidPlan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -364,7 +514,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionalBasePlanConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalPriceMigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalSubscriptionOfferConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalSubscriptionOfferPhaseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionalTaxRateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionsVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplacementCancellation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,6 +586,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscribeWithGoogleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscriptionCancelSurveyResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +610,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscriptionListing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionOfferPhase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionOfferTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscriptionPriceChange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +641,18 @@ module Google
       end
       
       class SubscriptionPurchase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionPurchaseLineItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionPurchaseV2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +689,24 @@ module Google
       end
       
       class SystemFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SystemInitiatedCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetingRuleScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestPurchase
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeTargetingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +773,12 @@ module Google
       end
       
       class UserComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserInitiatedCancellation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -542,6 +806,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcquisitionTargetingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope', class: Google::Apis::AndroidpublisherV3::TargetingRuleScope, decorator: Google::Apis::AndroidpublisherV3::TargetingRuleScope::Representation
+      
+        end
+      end
+      
+      class ActivateBasePlanRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ActivateSubscriptionOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Apk
@@ -604,6 +888,48 @@ module Google
         end
       end
       
+      class ArchiveSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AutoRenewingBasePlanType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_period_duration, as: 'billingPeriodDuration'
+          property :grace_period_duration, as: 'gracePeriodDuration'
+          property :legacy_compatible, as: 'legacyCompatible'
+          property :proration_mode, as: 'prorationMode'
+          property :resubscribe_state, as: 'resubscribeState'
+        end
+      end
+      
+      class AutoRenewingPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_renew_enabled, as: 'autoRenewEnabled'
+        end
+      end
+      
+      class BasePlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_renewing_base_plan_type, as: 'autoRenewingBasePlanType', class: Google::Apis::AndroidpublisherV3::AutoRenewingBasePlanType, decorator: Google::Apis::AndroidpublisherV3::AutoRenewingBasePlanType::Representation
+      
+          property :base_plan_id, as: 'basePlanId'
+          collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
+      
+          property :other_regions_config, as: 'otherRegionsConfig', class: Google::Apis::AndroidpublisherV3::OtherRegionsBasePlanConfig, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsBasePlanConfig::Representation
+      
+          property :prepaid_base_plan_type, as: 'prepaidBasePlanType', class: Google::Apis::AndroidpublisherV3::PrepaidBasePlanType, decorator: Google::Apis::AndroidpublisherV3::PrepaidBasePlanType::Representation
+      
+          collection :regional_configs, as: 'regionalConfigs', class: Google::Apis::AndroidpublisherV3::RegionalBasePlanConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalBasePlanConfig::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class Bundle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -619,6 +945,28 @@ module Google
           collection :bundles, as: 'bundles', class: Google::Apis::AndroidpublisherV3::Bundle, decorator: Google::Apis::AndroidpublisherV3::Bundle::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class CancelSurveyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :reason_user_input, as: 'reasonUserInput'
+        end
+      end
+      
+      class CanceledStateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :developer_initiated_cancellation, as: 'developerInitiatedCancellation', class: Google::Apis::AndroidpublisherV3::DeveloperInitiatedCancellation, decorator: Google::Apis::AndroidpublisherV3::DeveloperInitiatedCancellation::Representation
+      
+          property :replacement_cancellation, as: 'replacementCancellation', class: Google::Apis::AndroidpublisherV3::ReplacementCancellation, decorator: Google::Apis::AndroidpublisherV3::ReplacementCancellation::Representation
+      
+          property :system_initiated_cancellation, as: 'systemInitiatedCancellation', class: Google::Apis::AndroidpublisherV3::SystemInitiatedCancellation, decorator: Google::Apis::AndroidpublisherV3::SystemInitiatedCancellation::Representation
+      
+          property :user_initiated_cancellation, as: 'userInitiatedCancellation', class: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation, decorator: Google::Apis::AndroidpublisherV3::UserInitiatedCancellation::Representation
+      
         end
       end
       
@@ -679,6 +1027,18 @@ module Google
         end
       end
       
+      class DeactivateBasePlanRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeactivateSubscriptionOfferRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeobfuscationFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -700,6 +1060,12 @@ module Google
           property :last_modified, as: 'lastModified', class: Google::Apis::AndroidpublisherV3::Timestamp, decorator: Google::Apis::AndroidpublisherV3::Timestamp::Representation
       
           property :text, as: 'text'
+        end
+      end
+      
+      class DeveloperInitiatedCancellation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -810,6 +1176,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expansion_file, as: 'expansionFile', class: Google::Apis::AndroidpublisherV3::ExpansionFile, decorator: Google::Apis::AndroidpublisherV3::ExpansionFile::Representation
       
+        end
+      end
+      
+      class ExternalAccountIdentifiers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_account_id, as: 'externalAccountId'
+          property :obfuscated_external_account_id, as: 'obfuscatedExternalAccountId'
+          property :obfuscated_external_profile_id, as: 'obfuscatedExternalProfileId'
         end
       end
       
@@ -1010,6 +1385,24 @@ module Google
         end
       end
       
+      class ListSubscriptionOffersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscription_offers, as: 'subscriptionOffers', class: Google::Apis::AndroidpublisherV3::SubscriptionOffer, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOffer::Representation
+      
+        end
+      end
+      
+      class ListSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::AndroidpublisherV3::Subscription, decorator: Google::Apis::AndroidpublisherV3::Subscription::Representation
+      
+        end
+      end
+      
       class ListUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1056,6 +1449,22 @@ module Google
         end
       end
       
+      class MigrateBasePlanPricesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regional_price_migrations, as: 'regionalPriceMigrations', class: Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig::Representation
+      
+          property :regions_version, as: 'regionsVersion', class: Google::Apis::AndroidpublisherV3::RegionsVersion, decorator: Google::Apis::AndroidpublisherV3::RegionsVersion::Representation
+      
+        end
+      end
+      
+      class MigrateBasePlanPricesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1065,12 +1474,80 @@ module Google
         end
       end
       
+      class OfferTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag, as: 'tag'
+        end
+      end
+      
+      class OtherRegionsBasePlanConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eur_price, as: 'eurPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :new_subscriber_availability, as: 'newSubscriberAvailability'
+          property :usd_price, as: 'usdPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class OtherRegionsSubscriptionOfferConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :other_regions_new_subscriber_availability, as: 'otherRegionsNewSubscriberAvailability'
+        end
+      end
+      
+      class OtherRegionsSubscriptionOfferPhaseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :absolute_discounts, as: 'absoluteDiscounts', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices::Representation
+      
+          property :other_regions_prices, as: 'otherRegionsPrices', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices::Representation
+      
+          property :relative_discount, as: 'relativeDiscount'
+        end
+      end
+      
+      class OtherRegionsSubscriptionOfferPhasePrices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eur_price, as: 'eurPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :usd_price, as: 'usdPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
       class PageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result_per_page, as: 'resultPerPage'
           property :start_index, as: 'startIndex'
           property :total_results, as: 'totalResults'
+        end
+      end
+      
+      class PausedStateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_resume_time, as: 'autoResumeTime'
+        end
+      end
+      
+      class PrepaidBasePlanType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_period_duration, as: 'billingPeriodDuration'
+          property :time_extension, as: 'timeExtension'
+        end
+      end
+      
+      class PrepaidPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_extend_after_time, as: 'allowExtendAfterTime'
         end
       end
       
@@ -1109,11 +1586,62 @@ module Google
         end
       end
       
+      class RegionalBasePlanConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_subscriber_availability, as: 'newSubscriberAvailability'
+          property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RegionalPriceMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oldest_allowed_price_version_time, as: 'oldestAllowedPriceVersionTime'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RegionalSubscriptionOfferConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_subscriber_availability, as: 'newSubscriberAvailability'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RegionalSubscriptionOfferPhaseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :absolute_discount, as: 'absoluteDiscount', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :relative_discount, as: 'relativeDiscount'
+        end
+      end
+      
       class RegionalTaxRateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eligible_for_streaming_service_tax_rate, as: 'eligibleForStreamingServiceTaxRate'
           property :tax_tier, as: 'taxTier'
+        end
+      end
+      
+      class RegionsVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
+      end
+      
+      class ReplacementCancellation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1163,6 +1691,32 @@ module Google
         end
       end
       
+      class SubscribeWithGoogleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+          property :family_name, as: 'familyName'
+          property :given_name, as: 'givenName'
+          property :profile_id, as: 'profileId'
+          property :profile_name, as: 'profileName'
+        end
+      end
+      
+      class Subscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archived, as: 'archived'
+          collection :base_plans, as: 'basePlans', class: Google::Apis::AndroidpublisherV3::BasePlan, decorator: Google::Apis::AndroidpublisherV3::BasePlan::Representation
+      
+          collection :listings, as: 'listings', class: Google::Apis::AndroidpublisherV3::SubscriptionListing, decorator: Google::Apis::AndroidpublisherV3::SubscriptionListing::Representation
+      
+          property :package_name, as: 'packageName'
+          property :product_id, as: 'productId'
+          property :tax_and_compliance_settings, as: 'taxAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings::Representation
+      
+        end
+      end
+      
       class SubscriptionCancelSurveyResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1176,6 +1730,59 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_expiry_time_millis, :numeric_string => true, as: 'desiredExpiryTimeMillis'
           property :expected_expiry_time_millis, :numeric_string => true, as: 'expectedExpiryTimeMillis'
+        end
+      end
+      
+      class SubscriptionListing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :benefits, as: 'benefits'
+          property :description, as: 'description'
+          property :language_code, as: 'languageCode'
+          property :title, as: 'title'
+        end
+      end
+      
+      class SubscriptionOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :offer_id, as: 'offerId'
+          collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
+      
+          property :other_regions_config, as: 'otherRegionsConfig', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferConfig, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferConfig::Representation
+      
+          property :package_name, as: 'packageName'
+          collection :phases, as: 'phases', class: Google::Apis::AndroidpublisherV3::SubscriptionOfferPhase, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOfferPhase::Representation
+      
+          property :product_id, as: 'productId'
+          collection :regional_configs, as: 'regionalConfigs', class: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferConfig::Representation
+      
+          property :state, as: 'state'
+          property :targeting, as: 'targeting', class: Google::Apis::AndroidpublisherV3::SubscriptionOfferTargeting, decorator: Google::Apis::AndroidpublisherV3::SubscriptionOfferTargeting::Representation
+      
+        end
+      end
+      
+      class SubscriptionOfferPhase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :other_regions_config, as: 'otherRegionsConfig', class: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseConfig, decorator: Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseConfig::Representation
+      
+          property :recurrence_count, as: 'recurrenceCount'
+          collection :regional_configs, as: 'regionalConfigs', class: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseConfig, decorator: Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseConfig::Representation
+      
+        end
+      end
+      
+      class SubscriptionOfferTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquisition_rule, as: 'acquisitionRule', class: Google::Apis::AndroidpublisherV3::AcquisitionTargetingRule, decorator: Google::Apis::AndroidpublisherV3::AcquisitionTargetingRule::Representation
+      
+          property :upgrade_rule, as: 'upgradeRule', class: Google::Apis::AndroidpublisherV3::UpgradeTargetingRule, decorator: Google::Apis::AndroidpublisherV3::UpgradeTargetingRule::Representation
+      
         end
       end
       
@@ -1226,6 +1833,43 @@ module Google
         end
       end
       
+      class SubscriptionPurchaseLineItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_renewing_plan, as: 'autoRenewingPlan', class: Google::Apis::AndroidpublisherV3::AutoRenewingPlan, decorator: Google::Apis::AndroidpublisherV3::AutoRenewingPlan::Representation
+      
+          property :expiry_time, as: 'expiryTime'
+          property :prepaid_plan, as: 'prepaidPlan', class: Google::Apis::AndroidpublisherV3::PrepaidPlan, decorator: Google::Apis::AndroidpublisherV3::PrepaidPlan::Representation
+      
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class SubscriptionPurchaseV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement_state, as: 'acknowledgementState'
+          property :canceled_state_context, as: 'canceledStateContext', class: Google::Apis::AndroidpublisherV3::CanceledStateContext, decorator: Google::Apis::AndroidpublisherV3::CanceledStateContext::Representation
+      
+          property :external_account_identifiers, as: 'externalAccountIdentifiers', class: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers, decorator: Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers::Representation
+      
+          property :kind, as: 'kind'
+          property :latest_order_id, as: 'latestOrderId'
+          collection :line_items, as: 'lineItems', class: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem, decorator: Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem::Representation
+      
+          property :linked_purchase_token, as: 'linkedPurchaseToken'
+          property :paused_state_context, as: 'pausedStateContext', class: Google::Apis::AndroidpublisherV3::PausedStateContext, decorator: Google::Apis::AndroidpublisherV3::PausedStateContext::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :start_time, as: 'startTime'
+          property :subscribe_with_google_info, as: 'subscribeWithGoogleInfo', class: Google::Apis::AndroidpublisherV3::SubscribeWithGoogleInfo, decorator: Google::Apis::AndroidpublisherV3::SubscribeWithGoogleInfo::Representation
+      
+          property :subscription_state, as: 'subscriptionState'
+          property :test_purchase, as: 'testPurchase', class: Google::Apis::AndroidpublisherV3::TestPurchase, decorator: Google::Apis::AndroidpublisherV3::TestPurchase::Representation
+      
+        end
+      end
+      
       class SubscriptionPurchasesAcknowledgeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1269,6 +1913,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class SystemInitiatedCancellation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TargetingRuleScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :specific_subscription_in_app, as: 'specificSubscriptionInApp'
+        end
+      end
+      
+      class TestPurchase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1345,6 +2008,16 @@ module Google
         end
       end
       
+      class UpgradeTargetingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_period_duration, as: 'billingPeriodDuration'
+          property :once_per_user, as: 'oncePerUser'
+          property :scope, as: 'scope', class: Google::Apis::AndroidpublisherV3::TargetingRuleScope, decorator: Google::Apis::AndroidpublisherV3::TargetingRuleScope::Representation
+      
+        end
+      end
+      
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1376,6 +2049,15 @@ module Google
           property :text, as: 'text'
           property :thumbs_down_count, as: 'thumbsDownCount'
           property :thumbs_up_count, as: 'thumbsUpCount'
+        end
+      end
+      
+      class UserInitiatedCancellation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_survey_result, as: 'cancelSurveyResult', class: Google::Apis::AndroidpublisherV3::CancelSurveyResult, decorator: Google::Apis::AndroidpublisherV3::CancelSurveyResult::Representation
+      
+          property :cancel_time, as: 'cancelTime'
         end
       end
       

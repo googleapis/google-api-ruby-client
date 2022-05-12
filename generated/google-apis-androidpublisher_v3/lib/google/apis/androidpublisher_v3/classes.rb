@@ -22,6 +22,52 @@ module Google
   module Apis
     module AndroidpublisherV3
       
+      # Represents a targeting rule of the form: User never had `scope` before.
+      class AcquisitionTargetingRule
+        include Google::Apis::Core::Hashable
+      
+        # Defines the scope of subscriptions which a targeting rule can match to target
+        # offers to users based on past or current entitlement.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingRuleScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Request message for ActivateBasePlan.
+      class ActivateBasePlanRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for ActivateSubscriptionOffer.
+      class ActivateSubscriptionOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information about an APK. The resource for ApksService.
       class Apk
         include Google::Apis::Core::Hashable
@@ -206,6 +252,159 @@ module Google
         end
       end
       
+      # Request message for ArchiveSubscription.
+      class ArchiveSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents a base plan that automatically renews at the end of its
+      # subscription period.
+      class AutoRenewingBasePlanType
+        include Google::Apis::Core::Hashable
+      
+        # Required. Subscription period, specified in ISO 8601 format. For a list of
+        # acceptable billing periods, refer to the help center.
+        # Corresponds to the JSON property `billingPeriodDuration`
+        # @return [String]
+        attr_accessor :billing_period_duration
+      
+        # Grace period of the subscription, specified in ISO 8601 format. Acceptable
+        # values are P0D (zero days), P3D (3 days), P7D (7 days), P14D (14 days), and
+        # P30D (30 days). If not specified, a default value will be used based on the
+        # recurring period duration.
+        # Corresponds to the JSON property `gracePeriodDuration`
+        # @return [String]
+        attr_accessor :grace_period_duration
+      
+        # Whether the renewing base plan is compatible with legacy version of the Play
+        # Billing Library (prior to version 3) or not. Only one renewing base plan can
+        # be marked as legacy compatible for a given subscription.
+        # Corresponds to the JSON property `legacyCompatible`
+        # @return [Boolean]
+        attr_accessor :legacy_compatible
+        alias_method :legacy_compatible?, :legacy_compatible
+      
+        # The proration mode for the base plan determines what happens when a user
+        # switches to this plan from another base plan. If unspecified, defaults to
+        # CHARGE_ON_NEXT_BILLING_DATE.
+        # Corresponds to the JSON property `prorationMode`
+        # @return [String]
+        attr_accessor :proration_mode
+      
+        # Whether users should be able to resubscribe to this base plan in Google Play
+        # surfaces. Defaults to RESUBSCRIBE_STATE_ACTIVE if not specified.
+        # Corresponds to the JSON property `resubscribeState`
+        # @return [String]
+        attr_accessor :resubscribe_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
+          @grace_period_duration = args[:grace_period_duration] if args.key?(:grace_period_duration)
+          @legacy_compatible = args[:legacy_compatible] if args.key?(:legacy_compatible)
+          @proration_mode = args[:proration_mode] if args.key?(:proration_mode)
+          @resubscribe_state = args[:resubscribe_state] if args.key?(:resubscribe_state)
+        end
+      end
+      
+      # Information related to an auto renewing plan.
+      class AutoRenewingPlan
+        include Google::Apis::Core::Hashable
+      
+        # If the subscription is currently set to auto-renew, e.g. the user has not
+        # canceled the subscription
+        # Corresponds to the JSON property `autoRenewEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_renew_enabled
+        alias_method :auto_renew_enabled?, :auto_renew_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
+        end
+      end
+      
+      # A single base plan for a subscription.
+      class BasePlan
+        include Google::Apis::Core::Hashable
+      
+        # Represents a base plan that automatically renews at the end of its
+        # subscription period.
+        # Corresponds to the JSON property `autoRenewingBasePlanType`
+        # @return [Google::Apis::AndroidpublisherV3::AutoRenewingBasePlanType]
+        attr_accessor :auto_renewing_base_plan_type
+      
+        # Required. Immutable. The unique identifier of this base plan. Must be unique
+        # within the subscription, and conform with RFC-1034. That is, this ID can only
+        # contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at
+        # most 63 characters.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # List of up to 20 custom tags specified for this base plan, and returned to the
+        # app through the billing library. Subscription offers for this base plan will
+        # also receive these offer tags in the billing library.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OfferTag>]
+        attr_accessor :offer_tags
+      
+        # Pricing information for any new locations Play may launch in.
+        # Corresponds to the JSON property `otherRegionsConfig`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsBasePlanConfig]
+        attr_accessor :other_regions_config
+      
+        # Represents a base plan that does not automatically renew at the end of the
+        # base plan, and must be manually renewed by the user.
+        # Corresponds to the JSON property `prepaidBasePlanType`
+        # @return [Google::Apis::AndroidpublisherV3::PrepaidBasePlanType]
+        attr_accessor :prepaid_base_plan_type
+      
+        # Region-specific information for this base plan.
+        # Corresponds to the JSON property `regionalConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalBasePlanConfig>]
+        attr_accessor :regional_configs
+      
+        # Output only. The state of the base plan, i.e. whether it's active. Draft and
+        # inactive base plans can be activated or deleted. Active base plans can be made
+        # inactive. Inactive base plans can be canceled. This field cannot be changed by
+        # updating the resource. Use the dedicated endpoints instead.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_renewing_base_plan_type = args[:auto_renewing_base_plan_type] if args.key?(:auto_renewing_base_plan_type)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @other_regions_config = args[:other_regions_config] if args.key?(:other_regions_config)
+          @prepaid_base_plan_type = args[:prepaid_base_plan_type] if args.key?(:prepaid_base_plan_type)
+          @regional_configs = args[:regional_configs] if args.key?(:regional_configs)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Information about an app bundle. The resource for BundlesService.
       class Bundle
         include Google::Apis::Core::Hashable
@@ -262,6 +461,69 @@ module Google
         def update!(**args)
           @bundles = args[:bundles] if args.key?(:bundles)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Result of the cancel survey when the subscription was canceled by the user.
+      class CancelSurveyResult
+        include Google::Apis::Core::Hashable
+      
+        # The reason the user selected in the cancel survey.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Only set for CANCEL_SURVEY_REASON_OTHERS. This is the user's freeform response
+        # to the survey.
+        # Corresponds to the JSON property `reasonUserInput`
+        # @return [String]
+        attr_accessor :reason_user_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_user_input = args[:reason_user_input] if args.key?(:reason_user_input)
+        end
+      end
+      
+      # Information specific to a subscription in canceled state.
+      class CanceledStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Information specific to cancellations initiated by developers.
+        # Corresponds to the JSON property `developerInitiatedCancellation`
+        # @return [Google::Apis::AndroidpublisherV3::DeveloperInitiatedCancellation]
+        attr_accessor :developer_initiated_cancellation
+      
+        # Information specific to cancellations caused by subscription replacement.
+        # Corresponds to the JSON property `replacementCancellation`
+        # @return [Google::Apis::AndroidpublisherV3::ReplacementCancellation]
+        attr_accessor :replacement_cancellation
+      
+        # Information specific to cancellations initiated by Google system.
+        # Corresponds to the JSON property `systemInitiatedCancellation`
+        # @return [Google::Apis::AndroidpublisherV3::SystemInitiatedCancellation]
+        attr_accessor :system_initiated_cancellation
+      
+        # Information specific to cancellations initiated by users.
+        # Corresponds to the JSON property `userInitiatedCancellation`
+        # @return [Google::Apis::AndroidpublisherV3::UserInitiatedCancellation]
+        attr_accessor :user_initiated_cancellation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @developer_initiated_cancellation = args[:developer_initiated_cancellation] if args.key?(:developer_initiated_cancellation)
+          @replacement_cancellation = args[:replacement_cancellation] if args.key?(:replacement_cancellation)
+          @system_initiated_cancellation = args[:system_initiated_cancellation] if args.key?(:system_initiated_cancellation)
+          @user_initiated_cancellation = args[:user_initiated_cancellation] if args.key?(:user_initiated_cancellation)
         end
       end
       
@@ -417,6 +679,32 @@ module Google
         end
       end
       
+      # Request message for DeactivateBasePlan.
+      class DeactivateBasePlanRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for DeactivateSubscriptionOffer.
+      class DeactivateSubscriptionOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a deobfuscation file.
       class DeobfuscationFile
         include Google::Apis::Core::Hashable
@@ -480,6 +768,19 @@ module Google
         def update!(**args)
           @last_modified = args[:last_modified] if args.key?(:last_modified)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Information specific to cancellations initiated by developers.
+      class DeveloperInitiatedCancellation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -861,6 +1162,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expansion_file = args[:expansion_file] if args.key?(:expansion_file)
+        end
+      end
+      
+      # User account identifier in the third-party service.
+      class ExternalAccountIdentifiers
+        include Google::Apis::Core::Hashable
+      
+        # User account identifier in the third-party service. Only present if account
+        # linking happened as part of the subscription purchase flow.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # account in your app. Present for the following purchases: * If account linking
+        # happened as part of the subscription purchase flow. * It was specified using
+        # https://developer.android.com/reference/com/android/billingclient/api/
+        # BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_external_account_id
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # profile in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedprofileid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_external_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
+          @obfuscated_external_account_id = args[:obfuscated_external_account_id] if args.key?(:obfuscated_external_account_id)
+          @obfuscated_external_profile_id = args[:obfuscated_external_profile_id] if args.key?(:obfuscated_external_profile_id)
         end
       end
       
@@ -1567,6 +1907,58 @@ module Google
         end
       end
       
+      # Response message for ListSubscriptionOffers.
+      class ListSubscriptionOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The subscription offers from the specified subscription.
+        # Corresponds to the JSON property `subscriptionOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOffer>]
+        attr_accessor :subscription_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscription_offers = args[:subscription_offers] if args.key?(:subscription_offers)
+        end
+      end
+      
+      # Response message for ListSubscriptions.
+      class ListSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The subscriptions from the specified app.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Subscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
       # A response containing one or more users with access to an account.
       class ListUsersResponse
         include Google::Apis::Core::Hashable
@@ -1718,6 +2110,44 @@ module Google
         end
       end
       
+      # Request message for MigrateBasePlanPrices.
+      class MigrateBasePlanPricesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The regional prices to update.
+        # Corresponds to the JSON property `regionalPriceMigrations`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalPriceMigrationConfig>]
+        attr_accessor :regional_price_migrations
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regional_price_migrations = args[:regional_price_migrations] if args.key?(:regional_price_migrations)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+        end
+      end
+      
+      # Response message for MigrateBasePlanPrices.
+      class MigrateBasePlanPricesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents an amount of money with its currency type.
       class Money
         include Google::Apis::Core::Hashable
@@ -1754,6 +2184,146 @@ module Google
         end
       end
       
+      # Represents a custom tag specified for base plans and subscription offers.
+      class OfferTag
+        include Google::Apis::Core::Hashable
+      
+        # Must conform with RFC-1034. That is, this string can only contain lower-case
+        # letters (a-z), numbers (0-9), and hyphens (-), and be at most 20 characters.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Pricing information for any new locations Play may launch in.
+      class OtherRegionsBasePlanConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `eurPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :eur_price
+      
+        # Whether the base plan is available for new subscribers in any new locations
+        # Play may launch in. If not specified, this will default to false.
+        # Corresponds to the JSON property `newSubscriberAvailability`
+        # @return [Boolean]
+        attr_accessor :new_subscriber_availability
+        alias_method :new_subscriber_availability?, :new_subscriber_availability
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `usdPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :usd_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eur_price = args[:eur_price] if args.key?(:eur_price)
+          @new_subscriber_availability = args[:new_subscriber_availability] if args.key?(:new_subscriber_availability)
+          @usd_price = args[:usd_price] if args.key?(:usd_price)
+        end
+      end
+      
+      # Configuration for any new locations Play may launch in specified on a
+      # subscription offer.
+      class OtherRegionsSubscriptionOfferConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the subscription offer in any new locations Play may launch in the
+        # future. If not specified, this will default to false.
+        # Corresponds to the JSON property `otherRegionsNewSubscriberAvailability`
+        # @return [Boolean]
+        attr_accessor :other_regions_new_subscriber_availability
+        alias_method :other_regions_new_subscriber_availability?, :other_regions_new_subscriber_availability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @other_regions_new_subscriber_availability = args[:other_regions_new_subscriber_availability] if args.key?(:other_regions_new_subscriber_availability)
+        end
+      end
+      
+      # Configuration for any new locations Play may launch in for a single offer
+      # phase.
+      class OtherRegionsSubscriptionOfferPhaseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Pricing information for any new locations Play may launch in.
+        # Corresponds to the JSON property `absoluteDiscounts`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices]
+        attr_accessor :absolute_discounts
+      
+        # Pricing information for any new locations Play may launch in.
+        # Corresponds to the JSON property `otherRegionsPrices`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhasePrices]
+        attr_accessor :other_regions_prices
+      
+        # The fraction of the base plan price prorated over the phase duration that the
+        # user pays for this offer phase. For example, if the base plan price for this
+        # region is $12 for a period of 1 year, then a 50% discount for a phase of a
+        # duration of 3 months would correspond to a price of $1.50. The discount must
+        # be specified as a fraction strictly larger than 0 and strictly smaller than 1.
+        # The resulting price will be rounded to the nearest billable unit (e.g. cents
+        # for USD). The relative discount is considered invalid if the discounted price
+        # ends up being smaller than the minimum price allowed in any new locations Play
+        # may launch in.
+        # Corresponds to the JSON property `relativeDiscount`
+        # @return [Float]
+        attr_accessor :relative_discount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolute_discounts = args[:absolute_discounts] if args.key?(:absolute_discounts)
+          @other_regions_prices = args[:other_regions_prices] if args.key?(:other_regions_prices)
+          @relative_discount = args[:relative_discount] if args.key?(:relative_discount)
+        end
+      end
+      
+      # Pricing information for any new locations Play may launch in.
+      class OtherRegionsSubscriptionOfferPhasePrices
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `eurPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :eur_price
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `usdPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :usd_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eur_price = args[:eur_price] if args.key?(:eur_price)
+          @usd_price = args[:usd_price] if args.key?(:usd_price)
+        end
+      end
+      
       # Information about the current page. List operations that supports paging
       # return only one "page" of results. This protocol buffer message describes the
       # page that has been returned.
@@ -1786,6 +2356,73 @@ module Google
           @result_per_page = args[:result_per_page] if args.key?(:result_per_page)
           @start_index = args[:start_index] if args.key?(:start_index)
           @total_results = args[:total_results] if args.key?(:total_results)
+        end
+      end
+      
+      # Information specific to a subscription in paused state.
+      class PausedStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Time at which the subscription will be automatically resumed.
+        # Corresponds to the JSON property `autoResumeTime`
+        # @return [String]
+        attr_accessor :auto_resume_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_resume_time = args[:auto_resume_time] if args.key?(:auto_resume_time)
+        end
+      end
+      
+      # Represents a base plan that does not automatically renew at the end of the
+      # base plan, and must be manually renewed by the user.
+      class PrepaidBasePlanType
+        include Google::Apis::Core::Hashable
+      
+        # Required. Subscription period, specified in ISO 8601 format. For a list of
+        # acceptable billing periods, refer to the help center.
+        # Corresponds to the JSON property `billingPeriodDuration`
+        # @return [String]
+        attr_accessor :billing_period_duration
+      
+        # Whether users should be able to extend this prepaid base plan in Google Play
+        # surfaces. Defaults to TIME_EXTENSION_ACTIVE if not specified.
+        # Corresponds to the JSON property `timeExtension`
+        # @return [String]
+        attr_accessor :time_extension
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
+          @time_extension = args[:time_extension] if args.key?(:time_extension)
+        end
+      end
+      
+      # Information related to a prepaid plan.
+      class PrepaidPlan
+        include Google::Apis::Core::Hashable
+      
+        # After this time, the subscription is allowed for a new top-up purchase. Not
+        # present if the subscription is already extended by a top-up purchase.
+        # Corresponds to the JSON property `allowExtendAfterTime`
+        # @return [String]
+        attr_accessor :allow_extend_after_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_extend_after_time = args[:allow_extend_after_time] if args.key?(:allow_extend_after_time)
         end
       end
       
@@ -1949,6 +2586,145 @@ module Google
         end
       end
       
+      # Configuration for a base plan specific to a region.
+      class RegionalBasePlanConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the base plan in the specified region is available for new subscribers.
+        # Existing subscribers will not have their subscription canceled if this value
+        # is set to false. If not specified, this will default to false.
+        # Corresponds to the JSON property `newSubscriberAvailability`
+        # @return [Boolean]
+        attr_accessor :new_subscriber_availability
+        alias_method :new_subscriber_availability?, :new_subscriber_availability
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price
+      
+        # Required. Region code this configuration applies to, as defined by ISO 3166-2,
+        # e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_subscriber_availability = args[:new_subscriber_availability] if args.key?(:new_subscriber_availability)
+          @price = args[:price] if args.key?(:price)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Configuration for a price migration.
+      class RegionalPriceMigrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cutoff time for historical prices that subscribers can remain
+        # paying. Subscribers who are on a price that was created before this cutoff
+        # time will be migrated to the currently-offered price. These subscribers will
+        # receive a notification that they will be paying a different price. Subscribers
+        # who do not agree to the new price will have their subscription ended at the
+        # next renewal.
+        # Corresponds to the JSON property `oldestAllowedPriceVersionTime`
+        # @return [String]
+        attr_accessor :oldest_allowed_price_version_time
+      
+        # Required. Region code this configuration applies to, as defined by ISO 3166-2,
+        # e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oldest_allowed_price_version_time = args[:oldest_allowed_price_version_time] if args.key?(:oldest_allowed_price_version_time)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Configuration for a subscription offer in a single region.
+      class RegionalSubscriptionOfferConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the subscription offer in the specified region is available for new
+        # subscribers. Existing subscribers will not have their subscription cancelled
+        # if this value is set to false. If not specified, this will default to false.
+        # Corresponds to the JSON property `newSubscriberAvailability`
+        # @return [Boolean]
+        attr_accessor :new_subscriber_availability
+        alias_method :new_subscriber_availability?, :new_subscriber_availability
+      
+        # Required. Immutable. Region code this configuration applies to, as defined by
+        # ISO 3166-2, e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_subscriber_availability = args[:new_subscriber_availability] if args.key?(:new_subscriber_availability)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Configuration for a single phase of a subscription offer in a single region.
+      class RegionalSubscriptionOfferPhaseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `absoluteDiscount`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :absolute_discount
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price
+      
+        # Required. Immutable. The region to which this config applies.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # The fraction of the base plan price prorated over the phase duration that the
+        # user pays for this offer phase. For example, if the base plan price for this
+        # region is $12 for a period of 1 year, then a 50% discount for a phase of a
+        # duration of 3 months would correspond to a price of $1.50. The discount must
+        # be specified as a fraction strictly larger than 0 and strictly smaller than 1.
+        # The resulting price will be rounded to the nearest billable unit (e.g. cents
+        # for USD). The relative discount is considered invalid if the discounted price
+        # ends up being smaller than the minimum price allowed in this region.
+        # Corresponds to the JSON property `relativeDiscount`
+        # @return [Float]
+        attr_accessor :relative_discount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolute_discount = args[:absolute_discount] if args.key?(:absolute_discount)
+          @price = args[:price] if args.key?(:price)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @relative_discount = args[:relative_discount] if args.key?(:relative_discount)
+        end
+      end
+      
       # Specified details about taxation in a given geographical region.
       class RegionalTaxRateInfo
         include Google::Apis::Core::Hashable
@@ -1976,6 +2752,39 @@ module Google
         def update!(**args)
           @eligible_for_streaming_service_tax_rate = args[:eligible_for_streaming_service_tax_rate] if args.key?(:eligible_for_streaming_service_tax_rate)
           @tax_tier = args[:tax_tier] if args.key?(:tax_tier)
+        end
+      end
+      
+      # The version of the available regions being used for the specified resource.
+      class RegionsVersion
+        include Google::Apis::Core::Hashable
+      
+        # Required. A string representing version of the available regions being used
+        # for the specified resource.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Information specific to cancellations caused by subscription replacement.
+      class ReplacementCancellation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2117,6 +2926,107 @@ module Google
         end
       end
       
+      # Information associated with purchases made with 'Subscribe with Google'.
+      class SubscribeWithGoogleInfo
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the user when the subscription was purchased.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        # The family name of the user when the subscription was purchased.
+        # Corresponds to the JSON property `familyName`
+        # @return [String]
+        attr_accessor :family_name
+      
+        # The given name of the user when the subscription was purchased.
+        # Corresponds to the JSON property `givenName`
+        # @return [String]
+        attr_accessor :given_name
+      
+        # The Google profile id of the user when the subscription was purchased.
+        # Corresponds to the JSON property `profileId`
+        # @return [String]
+        attr_accessor :profile_id
+      
+        # The profile name of the user when the subscription was purchased.
+        # Corresponds to the JSON property `profileName`
+        # @return [String]
+        attr_accessor :profile_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @family_name = args[:family_name] if args.key?(:family_name)
+          @given_name = args[:given_name] if args.key?(:given_name)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @profile_name = args[:profile_name] if args.key?(:profile_name)
+        end
+      end
+      
+      # A single subscription for an app.
+      class Subscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether this subscription is archived. Archived subscriptions are
+        # not available to any subscriber any longer, cannot be updated, and are not
+        # returned in list requests unless the show archived flag is passed in.
+        # Corresponds to the JSON property `archived`
+        # @return [Boolean]
+        attr_accessor :archived
+        alias_method :archived?, :archived
+      
+        # The set of base plans for this subscription. Represents the prices and
+        # duration of the subscription if no other offers apply.
+        # Corresponds to the JSON property `basePlans`
+        # @return [Array<Google::Apis::AndroidpublisherV3::BasePlan>]
+        attr_accessor :base_plans
+      
+        # Required. List of localized listings for this subscription. Must contain at
+        # least an entry for the default language of the parent app.
+        # Corresponds to the JSON property `listings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionListing>]
+        attr_accessor :listings
+      
+        # Immutable. Package name of the parent app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Immutable. Unique product ID of the product. Unique within the parent app.
+        # Product IDs must be composed of lower-case letters (a-z), numbers (0-9),
+        # underscores (_) and dots (.). It must start with a lower-case letter or number,
+        # and be between 1 and 40 (inclusive) characters in length.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Details about taxation, Google Play policy and legal compliance for
+        # subscription products.
+        # Corresponds to the JSON property `taxAndComplianceSettings`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
+        attr_accessor :tax_and_compliance_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archived = args[:archived] if args.key?(:archived)
+          @base_plans = args[:base_plans] if args.key?(:base_plans)
+          @listings = args[:listings] if args.key?(:listings)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @tax_and_compliance_settings = args[:tax_and_compliance_settings] if args.key?(:tax_and_compliance_settings)
+        end
+      end
+      
       # Information provided by the user when they complete the subscription
       # cancellation flow (cancellation reason survey).
       class SubscriptionCancelSurveyResult
@@ -2172,6 +3082,199 @@ module Google
         def update!(**args)
           @desired_expiry_time_millis = args[:desired_expiry_time_millis] if args.key?(:desired_expiry_time_millis)
           @expected_expiry_time_millis = args[:expected_expiry_time_millis] if args.key?(:expected_expiry_time_millis)
+        end
+      end
+      
+      # The consumer-visible metadata of a subscription.
+      class SubscriptionListing
+        include Google::Apis::Core::Hashable
+      
+        # A list of benefits shown to the user on platforms such as the Play Store and
+        # in restoration flows in the language of this listing. Plain text. Ordered list
+        # of at most four benefits.
+        # Corresponds to the JSON property `benefits`
+        # @return [Array<String>]
+        attr_accessor :benefits
+      
+        # The description of this subscription in the language of this listing. Maximum
+        # length - 80 characters. Plain text.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The language of this listing, as defined by BCP-47, e.g. "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The title of this subscription in the language of this listing.
+        # Plain text.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @benefits = args[:benefits] if args.key?(:benefits)
+          @description = args[:description] if args.key?(:description)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A single, temporary offer
+      class SubscriptionOffer
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The ID of the base plan to which this offer is an
+        # extension.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # Required. Immutable. Unique ID of this subscription offer. Must be unique
+        # within the base plan.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # List of up to 20 custom tags specified for this offer, and returned to the app
+        # through the billing library.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OfferTag>]
+        attr_accessor :offer_tags
+      
+        # Configuration for any new locations Play may launch in specified on a
+        # subscription offer.
+        # Corresponds to the JSON property `otherRegionsConfig`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferConfig]
+        attr_accessor :other_regions_config
+      
+        # Required. Immutable. The package name of the app the parent subscription
+        # belongs to.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The phases of this subscription offer. Must contain at least one
+        # entry, and may contain at most five. Users will always receive all these
+        # phases in the specified order. Phases may not be added, removed, or reordered
+        # after initial creation.
+        # Corresponds to the JSON property `phases`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionOfferPhase>]
+        attr_accessor :phases
+      
+        # Required. Immutable. The ID of the parent subscription this offer belongs to.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The region-specific configuration of this offer. Must contain at
+        # least one entry.
+        # Corresponds to the JSON property `regionalConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferConfig>]
+        attr_accessor :regional_configs
+      
+        # Output only. The current state of this offer. Can be changed using Activate
+        # and Deactivate actions. NB: the base plan state supersedes this state, so an
+        # active offer may not be available if the base plan is not active.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Defines the rule a user needs to satisfy to receive this offer.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionOfferTargeting]
+        attr_accessor :targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @other_regions_config = args[:other_regions_config] if args.key?(:other_regions_config)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @phases = args[:phases] if args.key?(:phases)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @regional_configs = args[:regional_configs] if args.key?(:regional_configs)
+          @state = args[:state] if args.key?(:state)
+          @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # A single phase of a subscription offer.
+      class SubscriptionOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        # Required. The duration of a single recurrence of this phase. Specified in ISO
+        # 8601 format.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Configuration for any new locations Play may launch in for a single offer
+        # phase.
+        # Corresponds to the JSON property `otherRegionsConfig`
+        # @return [Google::Apis::AndroidpublisherV3::OtherRegionsSubscriptionOfferPhaseConfig]
+        attr_accessor :other_regions_config
+      
+        # Required. The number of times this phase repeats. If this offer phase is not
+        # free, each recurrence charges the user the price of this offer phase.
+        # Corresponds to the JSON property `recurrenceCount`
+        # @return [Fixnum]
+        attr_accessor :recurrence_count
+      
+        # Required. The region-specific configuration of this offer phase. This list
+        # must contain exactly one entry for each region for which the subscription
+        # offer has a regional config.
+        # Corresponds to the JSON property `regionalConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalSubscriptionOfferPhaseConfig>]
+        attr_accessor :regional_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @other_regions_config = args[:other_regions_config] if args.key?(:other_regions_config)
+          @recurrence_count = args[:recurrence_count] if args.key?(:recurrence_count)
+          @regional_configs = args[:regional_configs] if args.key?(:regional_configs)
+        end
+      end
+      
+      # Defines the rule a user needs to satisfy to receive this offer.
+      class SubscriptionOfferTargeting
+        include Google::Apis::Core::Hashable
+      
+        # Represents a targeting rule of the form: User never had `scope` before.
+        # Corresponds to the JSON property `acquisitionRule`
+        # @return [Google::Apis::AndroidpublisherV3::AcquisitionTargetingRule]
+        attr_accessor :acquisition_rule
+      
+        # Represents a targeting rule of the form: User currently has `scope` [with
+        # billing period `billing_period`].
+        # Corresponds to the JSON property `upgradeRule`
+        # @return [Google::Apis::AndroidpublisherV3::UpgradeTargetingRule]
+        attr_accessor :upgrade_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acquisition_rule = args[:acquisition_rule] if args.key?(:acquisition_rule)
+          @upgrade_rule = args[:upgrade_rule] if args.key?(:upgrade_rule)
         end
       end
       
@@ -2450,6 +3553,147 @@ module Google
         end
       end
       
+      # Item-level info for a subscription purchase.
+      class SubscriptionPurchaseLineItem
+        include Google::Apis::Core::Hashable
+      
+        # Information related to an auto renewing plan.
+        # Corresponds to the JSON property `autoRenewingPlan`
+        # @return [Google::Apis::AndroidpublisherV3::AutoRenewingPlan]
+        attr_accessor :auto_renewing_plan
+      
+        # Time at which the subscription expired or will expire unless the access is
+        # extended (ex. renews).
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
+        # Information related to a prepaid plan.
+        # Corresponds to the JSON property `prepaidPlan`
+        # @return [Google::Apis::AndroidpublisherV3::PrepaidPlan]
+        attr_accessor :prepaid_plan
+      
+        # The purchased product ID (for example, 'monthly001').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # Indicates the status of a user's subscription purchase.
+      class SubscriptionPurchaseV2
+        include Google::Apis::Core::Hashable
+      
+        # The acknowledgement state of the subscription.
+        # Corresponds to the JSON property `acknowledgementState`
+        # @return [String]
+        attr_accessor :acknowledgement_state
+      
+        # Information specific to a subscription in canceled state.
+        # Corresponds to the JSON property `canceledStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::CanceledStateContext]
+        attr_accessor :canceled_state_context
+      
+        # User account identifier in the third-party service.
+        # Corresponds to the JSON property `externalAccountIdentifiers`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers]
+        attr_accessor :external_account_identifiers
+      
+        # This kind represents a SubscriptionPurchaseV2 object in the androidpublisher
+        # service.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The order id of the latest order associated with the purchase of the
+        # subscription. For autoRenewing subscription, this is the order id of signup
+        # order if it is not renewed yet, or the last recurring order id (success,
+        # pending, or declined order). For prepaid subscription, this is the order id
+        # associated with the queried purchase token.
+        # Corresponds to the JSON property `latestOrderId`
+        # @return [String]
+        attr_accessor :latest_order_id
+      
+        # Item-level info for a subscription purchase. The items in the same purchase
+        # should be either all with AutoRenewingPlan or all with PrepaidPlan.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SubscriptionPurchaseLineItem>]
+        attr_accessor :line_items
+      
+        # The purchase token of the old subscription if this subscription is one of the
+        # following: * Re-signup of a canceled but non-lapsed subscription * Upgrade/
+        # downgrade from a previous subscription. * Convert from prepaid to auto
+        # renewing subscription. * Convert from an auto renewing subscription to prepaid.
+        # * Topup a prepaid subscription.
+        # Corresponds to the JSON property `linkedPurchaseToken`
+        # @return [String]
+        attr_accessor :linked_purchase_token
+      
+        # Information specific to a subscription in paused state.
+        # Corresponds to the JSON property `pausedStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::PausedStateContext]
+        attr_accessor :paused_state_context
+      
+        # ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+        # subscription was granted.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Time at which the subscription was granted. Not set for pending subscriptions (
+        # subscription was created but awaiting payment during signup).
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Information associated with purchases made with 'Subscribe with Google'.
+        # Corresponds to the JSON property `subscribeWithGoogleInfo`
+        # @return [Google::Apis::AndroidpublisherV3::SubscribeWithGoogleInfo]
+        attr_accessor :subscribe_with_google_info
+      
+        # The current state of the subscription.
+        # Corresponds to the JSON property `subscriptionState`
+        # @return [String]
+        attr_accessor :subscription_state
+      
+        # Whether this subscription purchase is a test purchase.
+        # Corresponds to the JSON property `testPurchase`
+        # @return [Google::Apis::AndroidpublisherV3::TestPurchase]
+        attr_accessor :test_purchase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
+          @canceled_state_context = args[:canceled_state_context] if args.key?(:canceled_state_context)
+          @external_account_identifiers = args[:external_account_identifiers] if args.key?(:external_account_identifiers)
+          @kind = args[:kind] if args.key?(:kind)
+          @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
+          @line_items = args[:line_items] if args.key?(:line_items)
+          @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
+          @paused_state_context = args[:paused_state_context] if args.key?(:paused_state_context)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @subscribe_with_google_info = args[:subscribe_with_google_info] if args.key?(:subscribe_with_google_info)
+          @subscription_state = args[:subscription_state] if args.key?(:subscription_state)
+          @test_purchase = args[:test_purchase] if args.key?(:test_purchase)
+        end
+      end
+      
       # Request for the purchases.subscriptions.acknowledge API.
       class SubscriptionPurchasesAcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -2574,6 +3818,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information specific to cancellations initiated by Google system.
+      class SystemInitiatedCancellation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Defines the scope of subscriptions which a targeting rule can match to target
+      # offers to users based on past or current entitlement.
+      class TargetingRuleScope
+        include Google::Apis::Core::Hashable
+      
+        # The scope of the current targeting rule is the subscription with the specified
+        # subscription ID. Must be a subscription within the same parent app.
+        # Corresponds to the JSON property `specificSubscriptionInApp`
+        # @return [String]
+        attr_accessor :specific_subscription_in_app
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @specific_subscription_in_app = args[:specific_subscription_in_app] if args.key?(:specific_subscription_in_app)
+        end
+      end
+      
+      # Whether this subscription purchase is a test purchase.
+      class TestPurchase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2832,6 +4123,43 @@ module Google
         end
       end
       
+      # Represents a targeting rule of the form: User currently has `scope` [with
+      # billing period `billing_period`].
+      class UpgradeTargetingRule
+        include Google::Apis::Core::Hashable
+      
+        # The specific billing period duration, specified in ISO 8601 format, that a
+        # user must be currently subscribed to to be eligible for this rule. If not
+        # specified, users subscribed to any billing period are matched.
+        # Corresponds to the JSON property `billingPeriodDuration`
+        # @return [String]
+        attr_accessor :billing_period_duration
+      
+        # Limit this offer to only once per user. If set to true, a user can never be
+        # eligible for this offer again if they ever subscribed to this offer.
+        # Corresponds to the JSON property `oncePerUser`
+        # @return [Boolean]
+        attr_accessor :once_per_user
+        alias_method :once_per_user?, :once_per_user
+      
+        # Defines the scope of subscriptions which a targeting rule can match to target
+        # offers to users based on past or current entitlement.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::AndroidpublisherV3::TargetingRuleScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
+          @once_per_user = args[:once_per_user] if args.key?(:once_per_user)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # A user resource.
       class User
         include Google::Apis::Core::Hashable
@@ -2988,6 +4316,33 @@ module Google
           @text = args[:text] if args.key?(:text)
           @thumbs_down_count = args[:thumbs_down_count] if args.key?(:thumbs_down_count)
           @thumbs_up_count = args[:thumbs_up_count] if args.key?(:thumbs_up_count)
+        end
+      end
+      
+      # Information specific to cancellations initiated by users.
+      class UserInitiatedCancellation
+        include Google::Apis::Core::Hashable
+      
+        # Result of the cancel survey when the subscription was canceled by the user.
+        # Corresponds to the JSON property `cancelSurveyResult`
+        # @return [Google::Apis::AndroidpublisherV3::CancelSurveyResult]
+        attr_accessor :cancel_survey_result
+      
+        # The time at which the subscription was canceled by the user. The user might
+        # still have access to the subscription after this time. Use line_items.
+        # expiry_time to determine if a user still has access.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_survey_result = args[:cancel_survey_result] if args.key?(:cancel_survey_result)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
         end
       end
       
