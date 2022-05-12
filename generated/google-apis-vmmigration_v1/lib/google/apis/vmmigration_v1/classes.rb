@@ -288,6 +288,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # The hostname to assign to the VM.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
         # A map of labels to associate with the VM.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -362,6 +367,7 @@ module Google
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -407,6 +413,11 @@ module Google
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # The hostname to assign to the VM.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
       
         # A map of labels to associate with the VM.
         # Corresponds to the JSON property `labels`
@@ -481,6 +492,7 @@ module Google
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @labels = args[:labels] if args.key?(:labels)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
