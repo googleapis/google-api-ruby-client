@@ -380,7 +380,7 @@ module Google
       class ChatAppLogEntry
         include Google::Apis::Core::Hashable
       
-        # The deployment that caused the error. For Chat bots built in Apps Script, this
+        # The deployment that caused the error. For Chat apps built in Apps Script, this
         # is the deployment ID defined by Apps Script.
         # Corresponds to the JSON property `deployment`
         # @return [String]
@@ -2362,9 +2362,9 @@ module Google
         end
       end
       
-      # A matched url in a Chat message. Chat apps can unfurl matched URLs. For more
-      # information, refer to [Unfurl links](https://developers.google.com/chat/how-
-      # tos/link-unfurling).
+      # A matched url in a Chat message. Chat apps can preview matched URLs. For more
+      # information, refer to [Preview links](https://developers.google.com/chat/how-
+      # tos/preview-links).
       class MatchedUrl
         include Google::Apis::Core::Hashable
       
@@ -2402,12 +2402,13 @@ module Google
         end
       end
       
-      # Represents a membership relation in Google Chat.
+      # Represents a membership relation in Google Chat, such as whether a user or
+      # Chat app is invited to, part of, or absent from a space.
       class Membership
         include Google::Apis::Core::Hashable
       
-        # Output only. The creation time of the membership a.k.a. the time at which the
-        # member joined the space, if applicable.
+        # Output only. The creation time of the membership, such as when a member joined
+        # or was invited to join a space.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2417,7 +2418,7 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
       
-        # 
+        # Resource name of the membership. Format: spaces/`space`/members/`member`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2489,9 +2490,9 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
-        # A matched url in a Chat message. Chat apps can unfurl matched URLs. For more
-        # information, refer to [Unfurl links](https://developers.google.com/chat/how-
-        # tos/link-unfurling).
+        # A matched url in a Chat message. Chat apps can preview matched URLs. For more
+        # information, refer to [Preview links](https://developers.google.com/chat/how-
+        # tos/preview-links).
         # Corresponds to the JSON property `matchedUrl`
         # @return [Google::Apis::ChatV1::MatchedUrl]
         attr_accessor :matched_url
@@ -2701,8 +2702,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the space, in the form "spaces/*". Example: spaces/
-        # AAAAAAAAAAAA
+        # Resource name of the space. Format: spaces/`space`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2713,14 +2713,14 @@ module Google
         attr_accessor :single_user_bot_dm
         alias_method :single_user_bot_dm?, :single_user_bot_dm
       
-        # Output only. Output only. Whether the messages are threaded in this space.
+        # Output only. Whether messages are threaded in this space.
         # Corresponds to the JSON property `threaded`
         # @return [Boolean]
         attr_accessor :threaded
         alias_method :threaded?, :threaded
       
-        # Output only. Deprecated: Use `single_user_bot_dm` instead. Output only. The
-        # type of a space.
+        # Output only. Deprecated: Use `single_user_bot_dm` or `space_type` (developer
+        # preview) instead. The type of a space.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

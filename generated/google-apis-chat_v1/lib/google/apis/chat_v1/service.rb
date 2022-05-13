@@ -362,8 +362,8 @@ module Google
         # Returns a space. Requires [service account authentication](https://developers.
         # google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
-        #   Required. Resource name of the space, in the form "spaces/*". Example: spaces/
-        #   AAAAAAAAAAAA
+        #   Required. Resource name of the space, in the form "spaces/*". Format: spaces/`
+        #   space`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -475,8 +475,8 @@ module Google
         # Returns a membership. Requires [service account authentication](https://
         # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
-        #   Required. Resource name of the membership to be retrieved, in the form "spaces/
-        #   */members/*". Example: spaces/AAAAAAAAAAAA/members/111111111111111111111
+        #   Required. Resource name of the membership to retrieve. Format: spaces/`space`/
+        #   members/`member`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,8 +507,8 @@ module Google
         # Lists human memberships in a space. Requires [service account authentication](
         # https://developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] parent
-        #   Required. The resource name of the space for which membership list is to be
-        #   fetched, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
+        #   Required. The resource name of the space for which to fetch a membership list.
+        #   Format: spaces/`space`
         # @param [Fixnum] page_size
         #   Requested page size. The value is capped at 1000. Server may return fewer
         #   results than requested. If unspecified, server will default to 100.
