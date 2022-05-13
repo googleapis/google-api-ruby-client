@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterIstio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,24 @@ module Google
       end
       
       class GetNotificationChannelVerificationCodeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNamespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +754,14 @@ module Google
         end
       end
       
+      class CloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
       class ClusterIstio
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -964,6 +996,39 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class GkeNamespace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :location, as: 'location'
+          property :namespace_name, as: 'namespaceName'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GkeService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :location, as: 'location'
+          property :namespace_name, as: 'namespaceName'
+          property :project_id, as: 'projectId'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
+      class GkeWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :location, as: 'location'
+          property :namespace_name, as: 'namespaceName'
+          property :project_id, as: 'projectId'
+          property :top_level_controller_name, as: 'topLevelControllerName'
+          property :top_level_controller_type, as: 'topLevelControllerType'
         end
       end
       
@@ -1461,11 +1526,19 @@ module Google
       
           property :cloud_endpoints, as: 'cloudEndpoints', class: Google::Apis::MonitoringV3::CloudEndpoints, decorator: Google::Apis::MonitoringV3::CloudEndpoints::Representation
       
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::MonitoringV3::CloudRun, decorator: Google::Apis::MonitoringV3::CloudRun::Representation
+      
           property :cluster_istio, as: 'clusterIstio', class: Google::Apis::MonitoringV3::ClusterIstio, decorator: Google::Apis::MonitoringV3::ClusterIstio::Representation
       
           property :custom, as: 'custom', class: Google::Apis::MonitoringV3::Custom, decorator: Google::Apis::MonitoringV3::Custom::Representation
       
           property :display_name, as: 'displayName'
+          property :gke_namespace, as: 'gkeNamespace', class: Google::Apis::MonitoringV3::GkeNamespace, decorator: Google::Apis::MonitoringV3::GkeNamespace::Representation
+      
+          property :gke_service, as: 'gkeService', class: Google::Apis::MonitoringV3::GkeService, decorator: Google::Apis::MonitoringV3::GkeService::Representation
+      
+          property :gke_workload, as: 'gkeWorkload', class: Google::Apis::MonitoringV3::GkeWorkload, decorator: Google::Apis::MonitoringV3::GkeWorkload::Representation
+      
           property :istio_canonical_service, as: 'istioCanonicalService', class: Google::Apis::MonitoringV3::IstioCanonicalService, decorator: Google::Apis::MonitoringV3::IstioCanonicalService::Representation
       
           property :mesh_istio, as: 'meshIstio', class: Google::Apis::MonitoringV3::MeshIstio, decorator: Google::Apis::MonitoringV3::MeshIstio::Representation

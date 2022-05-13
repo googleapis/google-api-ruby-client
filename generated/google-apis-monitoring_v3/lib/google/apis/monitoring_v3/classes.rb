@@ -179,9 +179,9 @@ module Google
       
         # Required if the policy exists. The resource name for this policy. The format
         # is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
-        # ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
-        # created. When calling the alertPolicies.create method, do not include the name
-        # field in the alerting policy passed as part of the request.
+        # ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
+        # When calling the alertPolicies.create method, do not include the name field in
+        # the alerting policy passed as part of the request.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -460,6 +460,35 @@ module Google
         end
       end
       
+      # Cloud Run service. Learn more at https://cloud.google.com/run.
+      class CloudRun
+        include Google::Apis::Core::Hashable
+      
+        # The location the service is run. Corresponds to the location resource label in
+        # the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/
+        # api/resources#tag_cloud_run_revision
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the Cloud Run service. Corresponds to the service_name resource
+        # label in the cloud_run_revision monitored resource: https://cloud.google.com/
+        # monitoring/api/resources#tag_cloud_run_revision
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @service_name = args[:service_name] if args.key?(:service_name)
+        end
+      end
+      
       # Istio service scoped to a single Kubernetes cluster. Learn more at https://
       # istio.io. Clusters running OSS Istio will have their services ingested as this
       # type.
@@ -708,11 +737,11 @@ module Google
       
         # Required if the condition exists. The unique resource name for this condition.
         # Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/
-        # conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring
-        # when the condition is created as part of a new or updated alerting policy.When
+        # conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when
+        # the condition is created as part of a new or updated alerting policy.When
         # calling the alertPolicies.create method, do not include the name field in the
-        # conditions of the requested alerting policy. Stackdriver Monitoring creates
-        # the condition identifiers and includes them in the new policy.When calling the
+        # conditions of the requested alerting policy. Cloud Monitoring creates the
+        # condition identifiers and includes them in the new policy.When calling the
         # alertPolicies.update method to update a policy, including a condition name
         # causes the existing condition to be updated. Conditions without names are
         # added to the updated policy. Existing conditions are deleted if they are not
@@ -1371,6 +1400,147 @@ module Google
         end
       end
       
+      # GKE Namespace. The field names correspond to the resource metadata labels on
+      # monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+      class GkeNamespace
+        include Google::Apis::Core::Hashable
+      
+        # The name of the parent cluster.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The location of the parent cluster. This may be a zone or region.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of this namespace.
+        # Corresponds to the JSON property `namespaceName`
+        # @return [String]
+        attr_accessor :namespace_name
+      
+        # Output only. The project this resource lives in. For legacy services migrated
+        # from the Custom type, this may be a distinct project from the one parenting
+        # the service itself.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @location = args[:location] if args.key?(:location)
+          @namespace_name = args[:namespace_name] if args.key?(:namespace_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # GKE Service. The "service" here represents a Kubernetes service object (https:/
+      # /kubernetes.io/docs/concepts/services-networking/service). The field names
+      # correspond to the resource labels on k8s_service monitored resources: https://
+      # cloud.google.com/monitoring/api/resources#tag_k8s_service
+      class GkeService
+        include Google::Apis::Core::Hashable
+      
+        # The name of the parent cluster.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The location of the parent cluster. This may be a zone or region.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the parent namespace.
+        # Corresponds to the JSON property `namespaceName`
+        # @return [String]
+        attr_accessor :namespace_name
+      
+        # Output only. The project this resource lives in. For legacy services migrated
+        # from the Custom type, this may be a distinct project from the one parenting
+        # the service itself.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The name of this service.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @location = args[:location] if args.key?(:location)
+          @namespace_name = args[:namespace_name] if args.key?(:namespace_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @service_name = args[:service_name] if args.key?(:service_name)
+        end
+      end
+      
+      # A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to
+      # the metadata labels on monitored resources that fall under a workload (e.g.
+      # k8s_container, k8s_pod).
+      class GkeWorkload
+        include Google::Apis::Core::Hashable
+      
+        # The name of the parent cluster.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The location of the parent cluster. This may be a zone or region.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the parent namespace.
+        # Corresponds to the JSON property `namespaceName`
+        # @return [String]
+        attr_accessor :namespace_name
+      
+        # Output only. The project this resource lives in. For legacy services migrated
+        # from the Custom type, this may be a distinct project from the one parenting
+        # the service itself.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The name of this workload.
+        # Corresponds to the JSON property `topLevelControllerName`
+        # @return [String]
+        attr_accessor :top_level_controller_name
+      
+        # The type of this workload (e.g. "Deployment" or "DaemonSet")
+        # Corresponds to the JSON property `topLevelControllerType`
+        # @return [String]
+        attr_accessor :top_level_controller_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @location = args[:location] if args.key?(:location)
+          @namespace_name = args[:namespace_name] if args.key?(:namespace_name)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @top_level_controller_name = args[:top_level_controller_name] if args.key?(:top_level_controller_name)
+          @top_level_controller_type = args[:top_level_controller_type] if args.key?(:top_level_controller_type)
+        end
+      end
+      
       # Range of numerical values within min and max.
       class GoogleMonitoringV3Range
         include Google::Apis::Core::Hashable
@@ -1580,7 +1750,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The checker's human-readable name. The display name should be unique within a
-        # Stackdriver Workspace in order to make it easier to identify; however,
+        # Cloud Monitoring Metrics Scope in order to make it easier to identify; however,
         # uniqueness is not enforced.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1594,8 +1764,8 @@ module Google
       
         # A unique resource name for this InternalChecker. The format is: projects/[
         # PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [
-        # PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
-        # check config associated with the internal checker.
+        # PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the
+        # Uptime check config associated with the internal checker.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1607,7 +1777,7 @@ module Google
         attr_accessor :network
       
         # The GCP project ID where the internal checker lives. Not necessary the same as
-        # the Workspace project.
+        # the Metrics Scope project.
         # Corresponds to the JSON property `peerProjectId`
         # @return [String]
         attr_accessor :peer_project_id
@@ -3449,6 +3619,11 @@ module Google
         # @return [Google::Apis::MonitoringV3::CloudEndpoints]
         attr_accessor :cloud_endpoints
       
+        # Cloud Run service. Learn more at https://cloud.google.com/run.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::MonitoringV3::CloudRun]
+        attr_accessor :cloud_run
+      
         # Istio service scoped to a single Kubernetes cluster. Learn more at https://
         # istio.io. Clusters running OSS Istio will have their services ingested as this
         # type.
@@ -3466,6 +3641,27 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # GKE Namespace. The field names correspond to the resource metadata labels on
+        # monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        # Corresponds to the JSON property `gkeNamespace`
+        # @return [Google::Apis::MonitoringV3::GkeNamespace]
+        attr_accessor :gke_namespace
+      
+        # GKE Service. The "service" here represents a Kubernetes service object (https:/
+        # /kubernetes.io/docs/concepts/services-networking/service). The field names
+        # correspond to the resource labels on k8s_service monitored resources: https://
+        # cloud.google.com/monitoring/api/resources#tag_k8s_service
+        # Corresponds to the JSON property `gkeService`
+        # @return [Google::Apis::MonitoringV3::GkeService]
+        attr_accessor :gke_service
+      
+        # A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to
+        # the metadata labels on monitored resources that fall under a workload (e.g.
+        # k8s_container, k8s_pod).
+        # Corresponds to the JSON property `gkeWorkload`
+        # @return [Google::Apis::MonitoringV3::GkeWorkload]
+        attr_accessor :gke_workload
       
         # Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.
         # 8 will have their services ingested as this type.
@@ -3508,9 +3704,13 @@ module Google
         def update!(**args)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
           @cloud_endpoints = args[:cloud_endpoints] if args.key?(:cloud_endpoints)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @cluster_istio = args[:cluster_istio] if args.key?(:cluster_istio)
           @custom = args[:custom] if args.key?(:custom)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @gke_namespace = args[:gke_namespace] if args.key?(:gke_namespace)
+          @gke_service = args[:gke_service] if args.key?(:gke_service)
+          @gke_workload = args[:gke_workload] if args.key?(:gke_workload)
           @istio_canonical_service = args[:istio_canonical_service] if args.key?(:istio_canonical_service)
           @mesh_istio = args[:mesh_istio] if args.key?(:mesh_istio)
           @name = args[:name] if args.key?(:name)
@@ -4169,8 +4369,8 @@ module Google
         attr_accessor :content_matchers
       
         # A human-friendly name for the Uptime check configuration. The display name
-        # should be unique within a Stackdriver Workspace in order to make it easier to
-        # identify; however, uniqueness is not enforced. Required.
+        # should be unique within a Cloud Monitoring Workspace in order to make it
+        # easier to identify; however, uniqueness is not enforced. Required.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

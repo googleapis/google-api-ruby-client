@@ -383,10 +383,11 @@ module Google
         #   in which to create the alerting policy. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which
         #   the alerting policy will be written, not the name of the created policy. |name|
-        #   must be a host project of a workspace, otherwise INVALID_ARGUMENT error will
-        #   return. The alerting policy that is returned will have a name that contains a
-        #   normalized representation of this name as a prefix but adds a suffix of the
-        #   form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
+        #   must be a host project of a Metrics Scope, otherwise INVALID_ARGUMENT error
+        #   will return. The alerting policy that is returned will have a name that
+        #   contains a normalized representation of this name as a prefix but adds a
+        #   suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in
+        #   the container.
         # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -541,9 +542,9 @@ module Google
         # @param [String] name
         #   Required if the policy exists. The resource name for this policy. The format
         #   is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
-        #   ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
-        #   created. When calling the alertPolicies.create method, do not include the name
-        #   field in the alerting policy passed as part of the request.
+        #   ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created.
+        #   When calling the alertPolicies.create method, do not include the name field in
+        #   the alerting policy passed as part of the request.
         # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
         # @param [String] update_mask
         #   Optional. A list of alerting policy field names. If this field is not empty,
@@ -591,9 +592,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stackdriver Monitoring Agent only: Creates a new time series.This method is
-        # only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.
-        # create instead.
+        # Cloud Monitoring Agent only: Creates a new time series.This method is only for
+        # use by the Cloud Monitoring Agent. Use projects.timeSeries.create instead.
         # @param [String] name
         #   The project (https://cloud.google.com/monitoring/api/v3#project_name) in which
         #   to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -1982,7 +1982,7 @@ module Google
         # Create a Service.
         # @param [String] parent
         #   Required. Resource name (https://cloud.google.com/monitoring/api/v3#
-        #   project_name) of the parent workspace. The format is: projects/[
+        #   project_name) of the parent Metrics Scope. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] service_id
@@ -2080,24 +2080,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Services for this workspace.
+        # List Services for this Metrics Scope.
         # @param [String] parent
         #   Required. Resource name of the parent containing the listed services, either a
         #   project (https://cloud.google.com/monitoring/api/v3#project_name) or a
-        #   Monitoring Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER]
+        #   Monitoring Metrics Scope. The formats are: projects/[PROJECT_ID_OR_NUMBER]
         #   workspaces/[HOST_PROJECT_ID_OR_NUMBER]
         # @param [String] filter
-        #   A filter specifying what Services to return. The filter currently supports the
-        #   following fields: - `identifier_case` - `app_engine.module_id` - `
-        #   cloud_endpoints.service` (reserved for future use) - `mesh_istio.mesh_uid` - `
-        #   mesh_istio.service_namespace` - `mesh_istio.service_name` - `cluster_istio.
-        #   location` (deprecated) - `cluster_istio.cluster_name` (deprecated) - `
-        #   cluster_istio.service_namespace` (deprecated) - `cluster_istio.service_name` (
-        #   deprecated) identifier_case refers to which option in the identifier oneof is
-        #   populated. For example, the filter identifier_case = "CUSTOM" would match all
-        #   services with a value for the custom field. Valid options are "CUSTOM", "
-        #   APP_ENGINE", "MESH_ISTIO", plus "CLUSTER_ISTIO" (deprecated) and "
-        #   CLOUD_ENDPOINTS" (reserved for future use).
+        #   A filter specifying what Services to return. The filter supports filtering on
+        #   a particular service-identifier type or one of its attributes.To filter on a
+        #   particular service-identifier type, the identifier_case refers to which option
+        #   in the identifier field is populated. For example, the filter identifier_case =
+        #   "CUSTOM" would match all services with a value for the custom field. Valid
+        #   options include "CUSTOM", "APP_ENGINE", "MESH_ISTIO", and the other options
+        #   listed at https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#
+        #   ServiceTo filter on an attribute of a service-identifier type, apply the
+        #   filter name by using the snake case of the service-identifier type and the
+        #   attribute of that service-identifier type, and join the two with a period. For
+        #   example, to filter by the meshUid field of the MeshIstio service-identifier
+        #   type, you must filter on mesh_istio.mesh_uid = "123" to match all services
+        #   with mesh UID "123". Service-identifier types and their attributes are
+        #   described at https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services#
+        #   Service
         # @param [Fixnum] page_size
         #   A non-negative number that is the maximum number of results to return. When 0,
         #   use default page size.
@@ -2283,7 +2287,7 @@ module Google
         # List the ServiceLevelObjectives for the given Service.
         # @param [String] parent
         #   Required. Resource name of the parent containing the listed SLOs, either a
-        #   project or a Monitoring Workspace. The formats are: projects/[
+        #   project or a Monitoring Metrics Scope. The formats are: projects/[
         #   PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] workspaces/[
         #   HOST_PROJECT_ID_OR_NUMBER]/services/-
         # @param [String] filter
