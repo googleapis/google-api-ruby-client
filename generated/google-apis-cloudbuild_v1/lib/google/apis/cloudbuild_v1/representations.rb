@@ -871,6 +871,7 @@ module Google
       
           property :id, as: 'id'
           collection :ignored_files, as: 'ignoredFiles'
+          property :include_build_logs, as: 'includeBuildLogs'
           collection :included_files, as: 'includedFiles'
           property :name, as: 'name'
           property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::CloudbuildV1::PubsubConfig, decorator: Google::Apis::CloudbuildV1::PubsubConfig::Representation
