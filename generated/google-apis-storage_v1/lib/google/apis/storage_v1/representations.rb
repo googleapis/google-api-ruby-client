@@ -427,7 +427,9 @@ module Google
                 property :days_since_noncurrent_time, as: 'daysSinceNoncurrentTime'
                 property :is_live, as: 'isLive'
                 property :matches_pattern, as: 'matchesPattern'
+                collection :matches_prefix, as: 'matchesPrefix'
                 collection :matches_storage_class, as: 'matchesStorageClass'
+                collection :matches_suffix, as: 'matchesSuffix'
                 property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: Date
             
                 property :num_newer_versions, as: 'numNewerVersions'
