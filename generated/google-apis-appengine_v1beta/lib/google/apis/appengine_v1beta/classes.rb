@@ -2800,8 +2800,8 @@ module Google
         # @return [Google::Apis::AppengineV1beta::ApiConfigHandler]
         attr_accessor :api_config
       
-        # app_engine_apis allows second generation runtimes to access the App Engine
-        # APIs.
+        # Allows App Engine second generation runtimes to access the legacy bundled
+        # services.
         # Corresponds to the JSON property `appEngineApis`
         # @return [Boolean]
         attr_accessor :app_engine_apis
