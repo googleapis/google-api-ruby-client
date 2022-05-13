@@ -574,12 +574,24 @@ module Google
               # @return [String]
               attr_accessor :matches_pattern
             
+              # List of object name prefixes. This condition will be satisfied when at least
+              # one of the prefixes exactly matches the beginning of the object name.
+              # Corresponds to the JSON property `matchesPrefix`
+              # @return [Array<String>]
+              attr_accessor :matches_prefix
+            
               # Objects having any of the storage classes specified by this condition will be
               # matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE,
               # STANDARD, and DURABLE_REDUCED_AVAILABILITY.
               # Corresponds to the JSON property `matchesStorageClass`
               # @return [Array<String>]
               attr_accessor :matches_storage_class
+            
+              # List of object name suffixes. This condition will be satisfied when at least
+              # one of the suffixes exactly matches the end of the object name.
+              # Corresponds to the JSON property `matchesSuffix`
+              # @return [Array<String>]
+              attr_accessor :matches_suffix
             
               # A date in RFC 3339 format with only the date part (for instance, "2013-01-15").
               # This condition is satisfied when the noncurrent time on an object is before
@@ -608,7 +620,9 @@ module Google
                 @days_since_noncurrent_time = args[:days_since_noncurrent_time] if args.key?(:days_since_noncurrent_time)
                 @is_live = args[:is_live] if args.key?(:is_live)
                 @matches_pattern = args[:matches_pattern] if args.key?(:matches_pattern)
+                @matches_prefix = args[:matches_prefix] if args.key?(:matches_prefix)
                 @matches_storage_class = args[:matches_storage_class] if args.key?(:matches_storage_class)
+                @matches_suffix = args[:matches_suffix] if args.key?(:matches_suffix)
                 @noncurrent_time_before = args[:noncurrent_time_before] if args.key?(:noncurrent_time_before)
                 @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
               end
