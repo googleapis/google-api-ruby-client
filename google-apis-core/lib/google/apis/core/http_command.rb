@@ -101,8 +101,9 @@ module Google
           begin
             Retriable.retriable tries: options.retries + 1,
                                 max_elapsed_time: options.max_elapsed_time,
-                                base_interval: 1,
-                                multiplier: 2,
+                                base_interval: options.base_interval,
+                                max_interval: options.max_interval,
+                                multiplier: options.multiplier,
                                 on: RETRIABLE_ERRORS do |try|
               # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
               # auth to be re-attempted without having to retry all sorts of other failures like

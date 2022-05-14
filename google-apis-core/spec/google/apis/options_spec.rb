@@ -42,6 +42,9 @@ RSpec.describe Google::Apis::RequestOptions do
   it 'sets default values' do
     expect(defaults.retries).to eq(5) # Overriden in spec_helper.rb
     expect(defaults.max_elapsed_time).to eq(900)
+    expect(defaults.base_interval).to eq(1)
+    expect(defaults.max_interval).to eq(60)
+    expect(defaults.multiplier).to eq(2)
     expect(defaults.normalize_unicode).to be false
     expect(defaults.skip_serialization).to be false
     expect(defaults.skip_deserialization).to be false
