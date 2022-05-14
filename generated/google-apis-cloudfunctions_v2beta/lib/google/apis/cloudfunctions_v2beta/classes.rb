@@ -1355,9 +1355,8 @@ module Google
         attr_accessor :key
       
         # Project identifier (preferably project number but can also be the project ID)
-        # of the project that contains the secret. If not set, it will be populated with
-        # the function's project assuming that the secret exists in the same project as
-        # of the function.
+        # of the project that contains the secret. If not set, it is assumed that the
+        # secret is in the same project as the function.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
