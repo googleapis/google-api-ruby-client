@@ -388,7 +388,7 @@ module Google
         #   fields: - org_unit_id - serial_number - device_id
         # @param [Fixnum] page_size
         #   Maximum number of results to return. Default value is 100. Maximum value is
-        #   200.
+        #   1000.
         # @param [String] page_token
         #   Token to specify next page in the list.
         # @param [String] read_mask
