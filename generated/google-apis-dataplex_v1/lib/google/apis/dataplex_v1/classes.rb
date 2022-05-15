@@ -2766,13 +2766,15 @@ module Google
       class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources
         include Google::Apis::Core::Hashable
       
-        # Optional. Total number of job executors.
+        # Optional. Total number of job executors. Executor Count should be between 2
+        # and 100. Default=2
         # Corresponds to the JSON property `executorsCount`
         # @return [Fixnum]
         attr_accessor :executors_count
       
         # Optional. Max configurable executors. If max_executors_count > executors_count,
-        # then auto-scaling is enabled.
+        # then auto-scaling is enabled. Max Executor Count should be between 2 and 1000.
+        # Default=1000
         # Corresponds to the JSON property `maxExecutorsCount`
         # @return [Fixnum]
         attr_accessor :max_executors_count
