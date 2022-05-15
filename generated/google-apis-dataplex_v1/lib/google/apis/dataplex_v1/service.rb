@@ -1116,6 +1116,13 @@ module Google
         #   Required. The resource name of the parent environment: projects/`
         #   project_number`/locations/`location_id`/lakes/`lake_id`/environment/`
         #   environment_id`
+        # @param [String] filter
+        #   Optional. Filter request. The following mode filter is supported to return
+        #   only the sessions belonging to the requester when the mode is USER and return
+        #   sessions of all the users when the mode is ADMIN. When no filter is sent
+        #   default to USER mode. NOTE: When the mode is ADMIN, the requester should have
+        #   dataplex.environments.listAllSessions permission to list all sessions, in
+        #   absence of the permission, the request fails.mode = ADMIN | USER
         # @param [Fixnum] page_size
         #   Optional. Maximum number of sessions to return. The service may return fewer
         #   than this value. If unspecified, at most 10 sessions will be returned. The
@@ -1141,11 +1148,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_lake_environment_sessions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_lake_environment_sessions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/sessions', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListSessionsResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListSessionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
