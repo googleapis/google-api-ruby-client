@@ -1,5 +1,11 @@
 # Release History
 
+### 0.5.0 (2022-05-15)
+
+#### Features
+
+* Add support for retry options to be configurable
+
 ### 0.4.2 (2022-01-21)
 
 #### Bug Fixes
