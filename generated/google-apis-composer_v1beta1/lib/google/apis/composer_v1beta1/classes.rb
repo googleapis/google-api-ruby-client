@@ -132,16 +132,16 @@ module Google
         end
       end
       
-      # CidrBlock contains an optional name and one CIDR block.
+      # CIDR block with an optional name.
       class CidrBlock
         include Google::Apis::Core::Hashable
       
-        # cidr_block must be specified in CIDR notation.
+        # CIDR block that must be specified in CIDR notation.
         # Corresponds to the JSON property `cidrBlock`
         # @return [String]
         attr_accessor :cidr_block
       
-        # display_name is a field for users to identify CIDR blocks.
+        # User-defined name that identifies the CIDR block.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -747,13 +747,12 @@ module Google
       class MasterAuthorizedNetworksConfig
         include Google::Apis::Core::Hashable
       
-        # cidr_blocks define up to 50 external networks that could access Kubernetes
-        # master through HTTPS.
+        # Up to 50 external networks that could access Kubernetes master through HTTPS.
         # Corresponds to the JSON property `cidrBlocks`
         # @return [Array<Google::Apis::ComposerV1beta1::CidrBlock>]
         attr_accessor :cidr_blocks
       
-        # Whether or not master authorized networks is enabled.
+        # Whether or not master authorized networks feature is enabled.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
