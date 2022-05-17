@@ -537,6 +537,11 @@ module Google
         # @return [String]
         attr_accessor :ocd_division_id
       
+        # 
+        # Corresponds to the JSON property `shapeLookupBehavior`
+        # @return [String]
+        attr_accessor :shape_lookup_behavior
+      
         def initialize(**args)
            update!(**args)
         end
@@ -547,6 +552,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @ocd_division_id = args[:ocd_division_id] if args.key?(:ocd_division_id)
+          @shape_lookup_behavior = args[:shape_lookup_behavior] if args.key?(:shape_lookup_behavior)
         end
       end
       
