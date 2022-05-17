@@ -1220,6 +1220,7 @@ module Google
       class MetricRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dynamic_metric_costs, as: 'dynamicMetricCosts'
           hash :metric_costs, as: 'metricCosts'
           property :selector, as: 'selector'
         end
