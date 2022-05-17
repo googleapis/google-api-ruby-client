@@ -16,13 +16,13 @@ module Google
   module Apis
     module ApigatewayV1beta
       # Version of the google-apis-apigateway_v1beta gem
-      GEM_VERSION = "0.15.0"
+      GEM_VERSION = "0.16.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220406"
+      REVISION = "20220504"
     end
   end
 end
