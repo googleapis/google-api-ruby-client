@@ -2449,6 +2449,7 @@ module Google
       class GoogleCloudDocumentaiV1ProcessRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_mask, as: 'fieldMask'
           property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document::Representation
       
           property :raw_document, as: 'rawDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument::Representation
