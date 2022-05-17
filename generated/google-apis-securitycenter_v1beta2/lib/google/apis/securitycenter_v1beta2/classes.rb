@@ -1486,6 +1486,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Timestamp of when the customer organization was onboarded to SCC.
+        # Corresponds to the JSON property `onboardingTime`
+        # @return [String]
+        attr_accessor :onboarding_time
+      
         # The organization level service account to be used for security center
         # components.
         # Corresponds to the JSON property `orgServiceAccount`
@@ -1500,6 +1505,7 @@ module Google
         def update!(**args)
           @log_sink_project = args[:log_sink_project] if args.key?(:log_sink_project)
           @name = args[:name] if args.key?(:name)
+          @onboarding_time = args[:onboarding_time] if args.key?(:onboarding_time)
           @org_service_account = args[:org_service_account] if args.key?(:org_service_account)
         end
       end
