@@ -537,28 +537,6 @@ module Google
         end
       end
       
-      # Secret key used in legacy reCAPTCHA only. Should be used when integrating with
-      # a 3rd party which is still using legacy reCAPTCHA.
-      class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
-        include Google::Apis::Core::Hashable
-      
-        # The secret key (also known as shared secret) authorizes communication between
-        # your application backend and the reCAPTCHA Enterprise server to create an
-        # assessment. The secret key needs to be kept safe for security purposes.
-        # Corresponds to the JSON property `legacySecretKey`
-        # @return [String]
-        attr_accessor :legacy_secret_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @legacy_secret_key = args[:legacy_secret_key] if args.key?(:legacy_secret_key)
-        end
-      end
-      
       # Risk analysis result for an event.
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
