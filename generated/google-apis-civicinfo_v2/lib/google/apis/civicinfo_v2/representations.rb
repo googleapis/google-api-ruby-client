@@ -285,6 +285,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :name, as: 'name'
           property :ocd_division_id, as: 'ocdDivisionId'
+          property :shape_lookup_behavior, as: 'shapeLookupBehavior'
         end
       end
       
