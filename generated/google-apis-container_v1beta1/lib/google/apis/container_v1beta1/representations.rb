@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProtectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PubSub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -868,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1121,8 @@ module Google
           property :private_cluster, as: 'privateCluster'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
+          property :protect_config, as: 'protectConfig', class: Google::Apis::ContainerV1beta1::ProtectConfig, decorator: Google::Apis::ContainerV1beta1::ProtectConfig::Representation
+      
           property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1beta1::ReleaseChannel, decorator: Google::Apis::ContainerV1beta1::ReleaseChannel::Representation
       
           hash :resource_labels, as: 'resourceLabels'
@@ -1212,6 +1226,8 @@ module Google
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
           property :desired_private_ipv6_google_access, as: 'desiredPrivateIpv6GoogleAccess'
+          property :desired_protect_config, as: 'desiredProtectConfig', class: Google::Apis::ContainerV1beta1::ProtectConfig, decorator: Google::Apis::ContainerV1beta1::ProtectConfig::Representation
+      
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1beta1::ReleaseChannel, decorator: Google::Apis::ContainerV1beta1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
@@ -1446,11 +1462,13 @@ module Google
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
           property :create_subnetwork, as: 'createSubnetwork'
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
+          property :stack_type, as: 'stackType'
           property :subnetwork_name, as: 'subnetworkName'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
@@ -1990,6 +2008,14 @@ module Google
         end
       end
       
+      class ProtectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workload_config, as: 'workloadConfig', class: Google::Apis::ContainerV1beta1::WorkloadConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadConfig::Representation
+      
+        end
+      end
+      
       class PubSub
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2473,6 +2499,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_certificates, as: 'enableCertificates'
+        end
+      end
+      
+      class WorkloadConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audit_mode, as: 'auditMode'
         end
       end
       

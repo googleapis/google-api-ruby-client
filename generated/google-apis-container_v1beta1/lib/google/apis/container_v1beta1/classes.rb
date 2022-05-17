@@ -885,6 +885,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
+        # ProtectConfig defines the flags needed to enable/disable features for the
+        # Protect API.
+        # Corresponds to the JSON property `protectConfig`
+        # @return [Google::Apis::ContainerV1beta1::ProtectConfig]
+        attr_accessor :protect_config
+      
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
         # to a release channel, Google maintains both the master version and the node
@@ -1040,6 +1046,7 @@ module Google
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
           @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @protect_config = args[:protect_config] if args.key?(:protect_config)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
@@ -1332,6 +1339,12 @@ module Google
         # @return [String]
         attr_accessor :desired_private_ipv6_google_access
       
+        # ProtectConfig defines the flags needed to enable/disable features for the
+        # Protect API.
+        # Corresponds to the JSON property `desiredProtectConfig`
+        # @return [Google::Apis::ContainerV1beta1::ProtectConfig]
+        attr_accessor :desired_protect_config
+      
         # ReleaseChannel indicates which release channel a cluster is subscribed to.
         # Release channels are arranged in order of risk. When a cluster is subscribed
         # to a release channel, Google maintains both the master version and the node
@@ -1419,6 +1432,7 @@ module Google
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
+          @desired_protect_config = args[:desired_protect_config] if args.key?(:desired_protect_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
@@ -2185,6 +2199,11 @@ module Google
         attr_accessor :create_subnetwork
         alias_method :create_subnetwork?, :create_subnetwork
       
+        # The ipv6 access type (internal or external) when create_subnetwork is true
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
         # This field is deprecated, use node_ipv4_cidr_block.
         # Corresponds to the JSON property `nodeIpv4Cidr`
         # @return [String]
@@ -2225,6 +2244,11 @@ module Google
         # Corresponds to the JSON property `servicesSecondaryRangeName`
         # @return [String]
         attr_accessor :services_secondary_range_name
+      
+        # IP stack type
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
       
         # A custom subnetwork name to be used if `create_subnetwork` is true. If this
         # field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -2274,11 +2298,13 @@ module Google
           @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
           @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
           @create_subnetwork = args[:create_subnetwork] if args.key?(:create_subnetwork)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @node_ipv4_cidr = args[:node_ipv4_cidr] if args.key?(:node_ipv4_cidr)
           @node_ipv4_cidr_block = args[:node_ipv4_cidr_block] if args.key?(:node_ipv4_cidr_block)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
           @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
           @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subnetwork_name = args[:subnetwork_name] if args.key?(:subnetwork_name)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
@@ -4225,6 +4251,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # ProtectConfig defines the flags needed to enable/disable features for the
+      # Protect API.
+      class ProtectConfig
+        include Google::Apis::Core::Hashable
+      
+        # WorkloadConfig defines the flags to enable or disable the workload
+        # configurations for the cluster.
+        # Corresponds to the JSON property `workloadConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadConfig]
+        attr_accessor :workload_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workload_config = args[:workload_config] if args.key?(:workload_config)
         end
       end
       
@@ -6188,6 +6235,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_certificates = args[:enable_certificates] if args.key?(:enable_certificates)
+        end
+      end
+      
+      # WorkloadConfig defines the flags to enable or disable the workload
+      # configurations for the cluster.
+      class WorkloadConfig
+        include Google::Apis::Core::Hashable
+      
+        # Sets which mode of auditing should be used for the cluster's workloads.
+        # Corresponds to the JSON property `auditMode`
+        # @return [String]
+        attr_accessor :audit_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_mode = args[:audit_mode] if args.key?(:audit_mode)
         end
       end
       
