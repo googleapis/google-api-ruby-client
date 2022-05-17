@@ -7242,6 +7242,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
       
+        # Specifies which fields to include in ProcessResponse's document.
+        # Corresponds to the JSON property `fieldMask`
+        # @return [String]
+        attr_accessor :field_mask
+      
         # Document represents the canonical document resource in Document AI. It is an
         # interchange format that provides insights into documents and allows for
         # collaboration between users and Document AI to iterate and optimize for
@@ -7269,6 +7274,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @field_mask = args[:field_mask] if args.key?(:field_mask)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
           @raw_document = args[:raw_document] if args.key?(:raw_document)
           @skip_human_review = args[:skip_human_review] if args.key?(:skip_human_review)
