@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CidrBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MasterAuthorizedNetworksConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +215,14 @@ module Google
         end
       end
       
+      class CidrBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr_block, as: 'cidrBlock'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class DatabaseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -258,6 +278,8 @@ module Google
           property :environment_size, as: 'environmentSize'
           property :gke_cluster, as: 'gkeCluster'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComposerV1::MaintenanceWindow, decorator: Google::Apis::ComposerV1::MaintenanceWindow::Representation
+      
+          property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ComposerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ComposerV1::MasterAuthorizedNetworksConfig::Representation
       
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1::NodeConfig, decorator: Google::Apis::ComposerV1::NodeConfig::Representation
       
@@ -335,6 +357,15 @@ module Google
         end
       end
       
+      class MasterAuthorizedNetworksConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cidr_blocks, as: 'cidrBlocks', class: Google::Apis::ComposerV1::CidrBlock, decorator: Google::Apis::ComposerV1::CidrBlock::Representation
+      
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -392,6 +423,7 @@ module Google
           property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
           property :enable_private_environment, as: 'enablePrivateEnvironment'
+          property :enable_privately_used_public_ips, as: 'enablePrivatelyUsedPublicIps'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1::PrivateClusterConfig::Representation
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'

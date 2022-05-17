@@ -96,6 +96,31 @@ module Google
         end
       end
       
+      # CIDR block with an optional name.
+      class CidrBlock
+        include Google::Apis::Core::Hashable
+      
+        # CIDR block that must be specified in CIDR notation.
+        # Corresponds to the JSON property `cidrBlock`
+        # @return [String]
+        attr_accessor :cidr_block
+      
+        # User-defined name that identifies the CIDR block.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
@@ -315,6 +340,14 @@ module Google
         # @return [Google::Apis::ComposerV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
+        # Configuration options for the master authorized networks feature. Enabled
+        # master authorized networks will disallow all external traffic to access
+        # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        # Google Compute Engine Public IPs and Google Prod IPs.
+        # Corresponds to the JSON property `masterAuthorizedNetworksConfig`
+        # @return [Google::Apis::ComposerV1::MasterAuthorizedNetworksConfig]
+        attr_accessor :master_authorized_networks_config
+      
         # The configuration information for the Kubernetes Engine nodes running the
         # Apache Airflow software.
         # Corresponds to the JSON property `nodeConfig`
@@ -371,6 +404,7 @@ module Google
           @environment_size = args[:environment_size] if args.key?(:environment_size)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
@@ -622,6 +656,35 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @recurrence = args[:recurrence] if args.key?(:recurrence)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configuration options for the master authorized networks feature. Enabled
+      # master authorized networks will disallow all external traffic to access
+      # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+      # Google Compute Engine Public IPs and Google Prod IPs.
+      class MasterAuthorizedNetworksConfig
+        include Google::Apis::Core::Hashable
+      
+        # Up to 50 external networks that could access Kubernetes master through HTTPS.
+        # Corresponds to the JSON property `cidrBlocks`
+        # @return [Array<Google::Apis::ComposerV1::CidrBlock>]
+        attr_accessor :cidr_blocks
+      
+        # Whether or not master authorized networks feature is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -938,6 +1001,14 @@ module Google
         attr_accessor :enable_private_environment
         alias_method :enable_private_environment?, :enable_private_environment
       
+        # Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `
+        # IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.
+        # service_ipv4_cidr_block`.
+        # Corresponds to the JSON property `enablePrivatelyUsedPublicIps`
+        # @return [Boolean]
+        attr_accessor :enable_privately_used_public_ips
+        alias_method :enable_privately_used_public_ips?, :enable_privately_used_public_ips
+      
         # Configuration options for the private GKE cluster in a Cloud Composer
         # environment.
         # Corresponds to the JSON property `privateClusterConfig`
@@ -970,6 +1041,7 @@ module Google
           @cloud_composer_network_ipv4_reserved_range = args[:cloud_composer_network_ipv4_reserved_range] if args.key?(:cloud_composer_network_ipv4_reserved_range)
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
+          @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
