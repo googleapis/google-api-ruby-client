@@ -1478,8 +1478,8 @@ module Google
         attr_accessor :overwrite_objects_already_existing_in_sink
         alias_method :overwrite_objects_already_existing_in_sink?, :overwrite_objects_already_existing_in_sink
       
-        # When to overwrite objects that already exist in the sink. If not set overwrite
-        # behavior is determined by overwrite_objects_already_existing_in_sink.
+        # When to overwrite objects that already exist in the sink. If not set,
+        # overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         # Corresponds to the JSON property `overwriteWhen`
         # @return [String]
         attr_accessor :overwrite_when
