@@ -16,13 +16,13 @@ module Google
   module Apis
     module ServiceconsumermanagementV1
       # Version of the google-apis-serviceconsumermanagement_v1 gem
-      GEM_VERSION = "0.18.0"
+      GEM_VERSION = "0.19.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220405"
+      REVISION = "20220513"
     end
   end
 end
