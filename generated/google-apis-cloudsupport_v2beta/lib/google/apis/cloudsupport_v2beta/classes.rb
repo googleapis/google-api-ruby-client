@@ -269,7 +269,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The unique ID for a classification. Must be specified for case creation.
+        # The unique ID for a classification. Must be specified for case creation. To
+        # retrieve valid classification IDs for case creation, use `caseClassifications.
+        # search`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
