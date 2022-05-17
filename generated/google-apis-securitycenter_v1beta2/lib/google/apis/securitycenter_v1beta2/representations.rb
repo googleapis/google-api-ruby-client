@@ -592,6 +592,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :log_sink_project, as: 'logSinkProject'
           property :name, as: 'name'
+          property :onboarding_time, as: 'onboardingTime'
           property :org_service_account, as: 'orgServiceAccount'
         end
       end
