@@ -21,7 +21,8 @@ module Google
   module Apis
     # Google Workspace Alert Center API
     #
-    # Manages alerts on issues affecting your domain.
+    # Manages alerts on issues affecting your domain. Note: The current version of
+    # this API (v1beta1) is available to all Google Workspace customers.
     #
     # @see https://developers.google.com/admin-sdk/alertcenter/
     module AlertcenterV1beta1
