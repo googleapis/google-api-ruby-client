@@ -492,27 +492,32 @@ module Google
         end
       end
       
-      # Common Vulnerability Scoring System.
+      # Common Vulnerability Scoring System. This message is compatible with CVSS v2
+      # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
+      # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
+      # details, see https://www.first.org/cvss/specification-document CVSS v3
+      # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
       class Cvss
         include Google::Apis::Core::Hashable
       
-        # 
+        # Defined in CVSS v3, CVSS v2
         # Corresponds to the JSON property `attackComplexity`
         # @return [String]
         attr_accessor :attack_complexity
       
         # Base Metrics Represents the intrinsic characteristics of a vulnerability that
-        # are constant over time and across user environments.
+        # are constant over time and across user environments. Defined in CVSS v3, CVSS
+        # v2
         # Corresponds to the JSON property `attackVector`
         # @return [String]
         attr_accessor :attack_vector
       
-        # 
+        # Defined in CVSS v2
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # 
+        # Defined in CVSS v3, CVSS v2
         # Corresponds to the JSON property `availabilityImpact`
         # @return [String]
         attr_accessor :availability_impact
@@ -522,7 +527,7 @@ module Google
         # @return [Float]
         attr_accessor :base_score
       
-        # 
+        # Defined in CVSS v3, CVSS v2
         # Corresponds to the JSON property `confidentialityImpact`
         # @return [String]
         attr_accessor :confidentiality_impact
@@ -537,22 +542,22 @@ module Google
         # @return [Float]
         attr_accessor :impact_score
       
-        # 
+        # Defined in CVSS v3, CVSS v2
         # Corresponds to the JSON property `integrityImpact`
         # @return [String]
         attr_accessor :integrity_impact
       
-        # 
+        # Defined in CVSS v3
         # Corresponds to the JSON property `privilegesRequired`
         # @return [String]
         attr_accessor :privileges_required
       
-        # 
+        # Defined in CVSS v3
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
       
-        # 
+        # Defined in CVSS v3
         # Corresponds to the JSON property `userInteraction`
         # @return [String]
         attr_accessor :user_interaction
@@ -5583,7 +5588,11 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
-        # Common Vulnerability Scoring System.
+        # Common Vulnerability Scoring System. This message is compatible with CVSS v2
+        # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
+        # details, see https://www.first.org/cvss/specification-document CVSS v3
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
         # Corresponds to the JSON property `cvssV3`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v3
@@ -5686,7 +5695,11 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
-        # Common Vulnerability Scoring System.
+        # Common Vulnerability Scoring System. This message is compatible with CVSS v2
+        # and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3
+        # details, see https://www.first.org/cvss/specification-document CVSS v3
+        # calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
         # Corresponds to the JSON property `cvssV2`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
         attr_accessor :cvss_v2
