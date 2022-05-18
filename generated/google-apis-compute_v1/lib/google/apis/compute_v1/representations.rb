@@ -9694,6 +9694,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :locations, as: 'locations', class: Google::Apis::ComputeV1::LocationPolicyLocation, decorator: Google::Apis::ComputeV1::LocationPolicyLocation::Representation
       
+          property :target_shape, as: 'targetShape'
         end
       end
       
