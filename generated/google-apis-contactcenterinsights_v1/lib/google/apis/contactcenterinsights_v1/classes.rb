@@ -213,8 +213,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Name of the query record. Format: projects/`project`/locations/`location`/
-        # queryRecords/`query_record`
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
         # Corresponds to the JSON property `queryRecord`
         # @return [String]
         attr_accessor :query_record
@@ -1406,8 +1406,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Name of the query record. Format: projects/`project`/locations/`location`/
-        # queryRecords/`query_record`.
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
         # Corresponds to the JSON property `queryRecord`
         # @return [String]
         attr_accessor :query_record
@@ -2343,8 +2343,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Name of the query record. Format: projects/`project`/locations/`location`/
-        # queryRecords/`query_record`
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
         # Corresponds to the JSON property `queryRecord`
         # @return [String]
         attr_accessor :query_record
@@ -2384,8 +2384,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Name of the query record. Format: projects/`project`/locations/`location`/
-        # queryRecords/`query_record`
+        # The name of the answer record. Format: projects/`project`/locations/`location`/
+        # answerRecords/`answer_record`
         # Corresponds to the JSON property `queryRecord`
         # @return [String]
         attr_accessor :query_record
