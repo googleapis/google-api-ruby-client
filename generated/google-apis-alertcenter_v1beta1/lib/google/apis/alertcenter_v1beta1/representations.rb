@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrimaryAdminChangedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SsoProfileCreatedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SsoProfileDeletedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SsoProfileUpdatedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SensitiveAdminAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Settings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +329,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuperAdminPasswordResetEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -726,6 +762,15 @@ module Google
         end
       end
       
+      class PrimaryAdminChangedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :previous_admin_email, as: 'previousAdminEmail'
+          property :updated_admin_email, as: 'updatedAdminEmail'
+        end
+      end
+      
       class ReportingRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -780,6 +825,46 @@ module Google
         end
       end
       
+      class SsoProfileCreatedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inbound_sso_profile_name, as: 'inboundSsoProfileName'
+        end
+      end
+      
+      class SsoProfileDeletedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inbound_sso_profile_name, as: 'inboundSsoProfileName'
+        end
+      end
+      
+      class SsoProfileUpdatedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inbound_sso_profile_changes, as: 'inboundSsoProfileChanges'
+          property :inbound_sso_profile_name, as: 'inboundSsoProfileName'
+        end
+      end
+      
+      class SensitiveAdminAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor_email, as: 'actorEmail'
+          property :event_time, as: 'eventTime'
+          property :primary_admin_changed_event, as: 'primaryAdminChangedEvent', class: Google::Apis::AlertcenterV1beta1::PrimaryAdminChangedEvent, decorator: Google::Apis::AlertcenterV1beta1::PrimaryAdminChangedEvent::Representation
+      
+          property :sso_profile_created_event, as: 'ssoProfileCreatedEvent', class: Google::Apis::AlertcenterV1beta1::SsoProfileCreatedEvent, decorator: Google::Apis::AlertcenterV1beta1::SsoProfileCreatedEvent::Representation
+      
+          property :sso_profile_deleted_event, as: 'ssoProfileDeletedEvent', class: Google::Apis::AlertcenterV1beta1::SsoProfileDeletedEvent, decorator: Google::Apis::AlertcenterV1beta1::SsoProfileDeletedEvent::Representation
+      
+          property :sso_profile_updated_event, as: 'ssoProfileUpdatedEvent', class: Google::Apis::AlertcenterV1beta1::SsoProfileUpdatedEvent, decorator: Google::Apis::AlertcenterV1beta1::SsoProfileUpdatedEvent::Representation
+      
+          property :super_admin_password_reset_event, as: 'superAdminPasswordResetEvent', class: Google::Apis::AlertcenterV1beta1::SuperAdminPasswordResetEvent, decorator: Google::Apis::AlertcenterV1beta1::SuperAdminPasswordResetEvent::Representation
+      
+        end
+      end
+      
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -801,6 +886,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SuperAdminPasswordResetEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_email, as: 'userEmail'
         end
       end
       
