@@ -2238,21 +2238,21 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # Errors reported for this deployment. Populated only when state == ERROR. This
-        # field is not populated in List APIs.
+        # Errors reported for this deployment. Populated only when state == ERROR. **
+        # Note**: This field is displayed only when viewing deployment status.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::ApigeeV1::GoogleRpcStatus>]
         attr_accessor :errors
       
-        # Status reported by each runtime instance. This field is not populated in List
-        # APIs.
+        # Status reported by each runtime instance. **Note**: This field is displayed
+        # only when viewing deployment status.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatus>]
         attr_accessor :instances
       
-        # Status reported by runtime pods. This field is not populated for List APIs. **
-        # Note**: **This field is deprecated**. Runtime versions 1.3 and above report
-        # instance level status rather than pod status.
+        # Status reported by runtime pods. **Note**: **This field is deprecated**.
+        # Runtime versions 1.3 and above report instance level status rather than pod
+        # status.
         # Corresponds to the JSON property `pods`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus>]
         attr_accessor :pods
@@ -2266,8 +2266,8 @@ module Google
         # conflicts does not cause the state to be `ERROR`, but it will mean that some
         # of the deployment's base paths are not routed to its environment. If the
         # conflicts change, the state will transition to `PROGRESSING` until the latest
-        # configuration is rolled out to all instances. This field is not populated in
-        # List APIs.
+        # configuration is rolled out to all instances. **Note**: This field is
+        # displayed only when viewing deployment status.
         # Corresponds to the JSON property `routeConflicts`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
         attr_accessor :route_conflicts
@@ -2278,7 +2278,8 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Current state of the deployment. This field is not populated in List APIs.
+        # Current state of the deployment. **Note**: This field is displayed only when
+        # viewing deployment status.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5439,6 +5440,12 @@ module Google
       class GoogleCloudApigeeV1OrganizationProjectMapping
         include Google::Apis::Core::Hashable
       
+        # Output only. The Google Cloud region where control plane data is located. For
+        # more information, see https://cloud.google.com/about/locations/.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Name of the Apigee organization.
         # Corresponds to the JSON property `organization`
         # @return [String]
@@ -5461,6 +5468,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @organization = args[:organization] if args.key?(:organization)
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_ids = args[:project_ids] if args.key?(:project_ids)

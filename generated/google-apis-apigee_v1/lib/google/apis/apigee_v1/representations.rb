@@ -2683,6 +2683,7 @@ module Google
       class GoogleCloudApigeeV1OrganizationProjectMapping
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
           property :organization, as: 'organization'
           property :project_id, as: 'projectId'
           collection :project_ids, as: 'projectIds'
