@@ -1361,6 +1361,38 @@ module Google
         end
       end
       
+      # Event occurred when primary admin changed in customer's account. The event are
+      # being received from insight forwarder
+      class PrimaryAdminChangedEvent
+        include Google::Apis::Core::Hashable
+      
+        # domain in which actioned occurred
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Email of person who was the primary admin before the action
+        # Corresponds to the JSON property `previousAdminEmail`
+        # @return [String]
+        attr_accessor :previous_admin_email
+      
+        # Email of person who is the primary admin after the action
+        # Corresponds to the JSON property `updatedAdminEmail`
+        # @return [String]
+        attr_accessor :updated_admin_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @previous_admin_email = args[:previous_admin_email] if args.key?(:previous_admin_email)
+          @updated_admin_email = args[:updated_admin_email] if args.key?(:updated_admin_email)
+        end
+      end
+      
       # Alerts from Reporting Rules configured by Admin.
       class ReportingRule
         include Google::Apis::Core::Hashable
@@ -1557,6 +1589,132 @@ module Google
         end
       end
       
+      # Event occurred when SSO Profile created in customer's account. The event are
+      # being received from insight forwarder
+      class SsoProfileCreatedEvent
+        include Google::Apis::Core::Hashable
+      
+        # sso profile name which got created
+        # Corresponds to the JSON property `inboundSsoProfileName`
+        # @return [String]
+        attr_accessor :inbound_sso_profile_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_sso_profile_name = args[:inbound_sso_profile_name] if args.key?(:inbound_sso_profile_name)
+        end
+      end
+      
+      # Event occurred when SSO Profile deleted in customer's account. The event are
+      # being received from insight forwarder
+      class SsoProfileDeletedEvent
+        include Google::Apis::Core::Hashable
+      
+        # sso profile name which got deleted
+        # Corresponds to the JSON property `inboundSsoProfileName`
+        # @return [String]
+        attr_accessor :inbound_sso_profile_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_sso_profile_name = args[:inbound_sso_profile_name] if args.key?(:inbound_sso_profile_name)
+        end
+      end
+      
+      # Event occurred when SSO Profile updated in customer's account. The event are
+      # being received from insight forwarder
+      class SsoProfileUpdatedEvent
+        include Google::Apis::Core::Hashable
+      
+        # changes made to sso profile
+        # Corresponds to the JSON property `inboundSsoProfileChanges`
+        # @return [String]
+        attr_accessor :inbound_sso_profile_changes
+      
+        # sso profile name which got updated
+        # Corresponds to the JSON property `inboundSsoProfileName`
+        # @return [String]
+        attr_accessor :inbound_sso_profile_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_sso_profile_changes = args[:inbound_sso_profile_changes] if args.key?(:inbound_sso_profile_changes)
+          @inbound_sso_profile_name = args[:inbound_sso_profile_name] if args.key?(:inbound_sso_profile_name)
+        end
+      end
+      
+      # Alert that is triggered when Sensitive Admin Action occur in customer account.
+      class SensitiveAdminAction
+        include Google::Apis::Core::Hashable
+      
+        # Email of person who performed the action
+        # Corresponds to the JSON property `actorEmail`
+        # @return [String]
+        attr_accessor :actor_email
+      
+        # The time at which event occurred
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Event occurred when primary admin changed in customer's account. The event are
+        # being received from insight forwarder
+        # Corresponds to the JSON property `primaryAdminChangedEvent`
+        # @return [Google::Apis::AlertcenterV1beta1::PrimaryAdminChangedEvent]
+        attr_accessor :primary_admin_changed_event
+      
+        # Event occurred when SSO Profile created in customer's account. The event are
+        # being received from insight forwarder
+        # Corresponds to the JSON property `ssoProfileCreatedEvent`
+        # @return [Google::Apis::AlertcenterV1beta1::SsoProfileCreatedEvent]
+        attr_accessor :sso_profile_created_event
+      
+        # Event occurred when SSO Profile deleted in customer's account. The event are
+        # being received from insight forwarder
+        # Corresponds to the JSON property `ssoProfileDeletedEvent`
+        # @return [Google::Apis::AlertcenterV1beta1::SsoProfileDeletedEvent]
+        attr_accessor :sso_profile_deleted_event
+      
+        # Event occurred when SSO Profile updated in customer's account. The event are
+        # being received from insight forwarder
+        # Corresponds to the JSON property `ssoProfileUpdatedEvent`
+        # @return [Google::Apis::AlertcenterV1beta1::SsoProfileUpdatedEvent]
+        attr_accessor :sso_profile_updated_event
+      
+        # Event occurred when password was reset for super admin in customer's account.
+        # The event are being received from insight forwarder
+        # Corresponds to the JSON property `superAdminPasswordResetEvent`
+        # @return [Google::Apis::AlertcenterV1beta1::SuperAdminPasswordResetEvent]
+        attr_accessor :super_admin_password_reset_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor_email = args[:actor_email] if args.key?(:actor_email)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @primary_admin_changed_event = args[:primary_admin_changed_event] if args.key?(:primary_admin_changed_event)
+          @sso_profile_created_event = args[:sso_profile_created_event] if args.key?(:sso_profile_created_event)
+          @sso_profile_deleted_event = args[:sso_profile_deleted_event] if args.key?(:sso_profile_deleted_event)
+          @sso_profile_updated_event = args[:sso_profile_updated_event] if args.key?(:sso_profile_updated_event)
+          @super_admin_password_reset_event = args[:super_admin_password_reset_event] if args.key?(:super_admin_password_reset_event)
+        end
+      end
+      
       # Customer-level settings.
       class Settings
         include Google::Apis::Core::Hashable
@@ -1631,6 +1789,26 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Event occurred when password was reset for super admin in customer's account.
+      # The event are being received from insight forwarder
+      class SuperAdminPasswordResetEvent
+        include Google::Apis::Core::Hashable
+      
+        # email of person whose password was reset
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_email = args[:user_email] if args.key?(:user_email)
         end
       end
       
