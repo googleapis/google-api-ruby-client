@@ -12388,8 +12388,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # The type of the image used to create this disk. The default and only value is
-        # RAW
+        # The type of the image used to create this disk. The default and only valid
+        # value is RAW.
         # Corresponds to the JSON property `sourceType`
         # @return [String]
         attr_accessor :source_type
