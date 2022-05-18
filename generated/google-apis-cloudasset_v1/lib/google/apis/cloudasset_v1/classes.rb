@@ -278,6 +278,24 @@ module Google
         # @return [Google::Apis::CloudassetV1::Inventory]
         attr_accessor :os_inventory
       
+        # An asset identifier in Google Cloud which contains its name, type and
+        # ancestors. An asset can be any resource in the Google Cloud [resource
+        # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
+        # resource-hierarchy), a resource outside the Google Cloud resource hierarchy (
+        # such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+        # Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types) for more information.
+        # Corresponds to the JSON property `relatedAsset`
+        # @return [Google::Apis::CloudassetV1::RelatedAsset]
+        attr_accessor :related_asset
+      
+        # DEPRECATED. This message only presents for the purpose of backward-
+        # compatibility. The server will never populate this message in responses. The
+        # detailed related assets with the `relationship_type`.
+        # Corresponds to the JSON property `relatedAssets`
+        # @return [Google::Apis::CloudassetV1::RelatedAssets]
+        attr_accessor :related_assets
+      
         # A representation of a Google Cloud resource.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::CloudassetV1::Resource]
@@ -316,6 +334,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @org_policy = args[:org_policy] if args.key?(:org_policy)
           @os_inventory = args[:os_inventory] if args.key?(:os_inventory)
+          @related_asset = args[:related_asset] if args.key?(:related_asset)
+          @related_assets = args[:related_assets] if args.key?(:related_assets)
           @resource = args[:resource] if args.key?(:resource)
           @service_perimeter = args[:service_perimeter] if args.key?(:service_perimeter)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3853,6 +3873,89 @@ module Google
         end
       end
       
+      # An asset identifier in Google Cloud which contains its name, type and
+      # ancestors. An asset can be any resource in the Google Cloud [resource
+      # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
+      # resource-hierarchy), a resource outside the Google Cloud resource hierarchy (
+      # such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+      # Cloud IAM policy). See [Supported asset types](https://cloud.google.com/asset-
+      # inventory/docs/supported-asset-types) for more information.
+      class RelatedAsset
+        include Google::Apis::Core::Hashable
+      
+        # The ancestors of an asset in Google Cloud [resource hierarchy](https://cloud.
+        # google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+        # represented as a list of relative resource names. An ancestry path starts with
+        # the closest ancestor in the hierarchy and ends at root. Example: `["projects/
+        # 123456789", "folders/5432", "organizations/1234"]`
+        # Corresponds to the JSON property `ancestors`
+        # @return [Array<String>]
+        attr_accessor :ancestors
+      
+        # The full name of the asset. Example: `//compute.googleapis.com/projects/
+        # my_project_123/zones/zone1/instances/instance1` See [Resource names](https://
+        # cloud.google.com/apis/design/resource_names#full_resource_name) for more
+        # information.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported
+        # asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types) for more information.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # The unique identifier of the relationship type. Example: `
+        # INSTANCE_TO_INSTANCEGROUP`
+        # Corresponds to the JSON property `relationshipType`
+        # @return [String]
+        attr_accessor :relationship_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ancestors = args[:ancestors] if args.key?(:ancestors)
+          @asset = args[:asset] if args.key?(:asset)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @relationship_type = args[:relationship_type] if args.key?(:relationship_type)
+        end
+      end
+      
+      # DEPRECATED. This message only presents for the purpose of backward-
+      # compatibility. The server will never populate this message in responses. The
+      # detailed related assets with the `relationship_type`.
+      class RelatedAssets
+        include Google::Apis::Core::Hashable
+      
+        # The peer resources of the relationship.
+        # Corresponds to the JSON property `assets`
+        # @return [Array<Google::Apis::CloudassetV1::RelatedAsset>]
+        attr_accessor :assets
+      
+        # DEPRECATED. This message only presents for the purpose of backward-
+        # compatibility. The server will never populate this message in responses. The
+        # relationship attributes which include `type`, `source_resource_type`, `
+        # target_resource_type` and `action`.
+        # Corresponds to the JSON property `relationshipAttributes`
+        # @return [Google::Apis::CloudassetV1::RelationshipAttributes]
+        attr_accessor :relationship_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assets = args[:assets] if args.key?(:assets)
+          @relationship_attributes = args[:relationship_attributes] if args.key?(:relationship_attributes)
+        end
+      end
+      
       # The detailed related resource.
       class RelatedResource
         include Google::Apis::Core::Hashable
@@ -3895,6 +3998,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @related_resources = args[:related_resources] if args.key?(:related_resources)
+        end
+      end
+      
+      # DEPRECATED. This message only presents for the purpose of backward-
+      # compatibility. The server will never populate this message in responses. The
+      # relationship attributes which include `type`, `source_resource_type`, `
+      # target_resource_type` and `action`.
+      class RelationshipAttributes
+        include Google::Apis::Core::Hashable
+      
+        # The detail of the relationship, e.g. `contains`, `attaches`
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The source asset type. Example: `compute.googleapis.com/Instance`
+        # Corresponds to the JSON property `sourceResourceType`
+        # @return [String]
+        attr_accessor :source_resource_type
+      
+        # The target asset type. Example: `compute.googleapis.com/Disk`
+        # Corresponds to the JSON property `targetResourceType`
+        # @return [String]
+        attr_accessor :target_resource_type
+      
+        # The unique identifier of the relationship type. Example: `
+        # INSTANCE_TO_INSTANCEGROUP`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @source_resource_type = args[:source_resource_type] if args.key?(:source_resource_type)
+          @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
