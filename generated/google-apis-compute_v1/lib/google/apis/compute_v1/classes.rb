@@ -12028,8 +12028,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # The type of the image used to create this disk. The default and only value is
-        # RAW
+        # The type of the image used to create this disk. The default and only valid
+        # value is RAW.
         # Corresponds to the JSON property `sourceType`
         # @return [String]
         attr_accessor :source_type
@@ -17904,6 +17904,11 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeV1::LocationPolicyLocation>]
         attr_accessor :locations
       
+        # Strategy for distributing VMs across zones in a region.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17911,6 +17916,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
         end
       end
       
