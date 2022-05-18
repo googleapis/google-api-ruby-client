@@ -2483,9 +2483,8 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
-        # Output only. The time at which the message was last updated in Google Chat
-        # server. If the message was never updated, this field will be same as
-        # create_time.
+        # Output only. The time at which the message was last updated. If the message
+        # was never updated, this field matches `create_time`.
         # Corresponds to the JSON property `lastUpdateTime`
         # @return [String]
         attr_accessor :last_update_time
