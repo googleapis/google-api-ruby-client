@@ -523,9 +523,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk import of multiple Products. Request processing may be synchronous. No
-        # partial updating is supported. Non-existing items are created. Note that it is
-        # possible for a subset of the Products to be successfully updated.
+        # Bulk import of multiple Products. Request processing may be synchronous. Non-
+        # existing items are created. Note that it is possible for a subset of the
+        # Products to be successfully updated.
         # @param [String] parent
         #   Required. `projects/1234/locations/global/catalogs/default_catalog/branches/
         #   default_branch` If no updateMask is specified, requires products.create
