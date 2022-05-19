@@ -10986,6 +10986,7 @@ module Google
           property :operational_status, as: 'operationalStatus'
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
+          property :remote_location, as: 'remoteLocation'
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'

@@ -13965,8 +13965,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # The type of the image used to create this disk. The default and only value is
-        # RAW
+        # The type of the image used to create this disk. The default and only valid
+        # value is RAW.
         # Corresponds to the JSON property `sourceType`
         # @return [String]
         attr_accessor :source_type
@@ -19320,6 +19320,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_link_count
       
+        # Indicates that this is a Cross-Cloud Interconnect. This field specifies the
+        # location outside of Google's network that the interconnect is connected to.
+        # Corresponds to the JSON property `remoteLocation`
+        # @return [String]
+        attr_accessor :remote_location
+      
         # Target number of physical links in the link bundle, as requested by the
         # customer.
         # Corresponds to the JSON property `requestedLinkCount`
@@ -19384,6 +19390,7 @@ module Google
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
+          @remote_location = args[:remote_location] if args.key?(:remote_location)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
