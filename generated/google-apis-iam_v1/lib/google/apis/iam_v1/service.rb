@@ -2090,8 +2090,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a ServiceAccountKey. A disabled service account key can be enabled
-        # through EnableServiceAccountKey.
+        # Disable a ServiceAccountKey. A disabled service account key can be re-enabled
+        # with EnableServiceAccountKey.
         # @param [String] name
         #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
