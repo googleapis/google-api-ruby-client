@@ -178,6 +178,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveAndroidAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveIosAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveWebAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchFirebaseAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +473,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics_property_id, as: 'analyticsPropertyId'
+        end
+      end
+      
+      class RemoveAndroidAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RemoveIosAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RemoveWebAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
