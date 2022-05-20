@@ -130,12 +130,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateGitLabConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreateWorkerPoolOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,12 +143,6 @@ module Google
       end
       
       class DeleteGitHubEnterpriseConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeleteGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,12 +359,6 @@ module Google
       end
       
       class UpdateGitHubEnterpriseConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -639,15 +621,6 @@ module Google
         end
       end
       
-      class CreateGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
-        end
-      end
-      
       class CreateWorkerPoolOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -672,15 +645,6 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
-        end
-      end
-      
-      class DeleteGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -1030,15 +994,6 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
-        end
-      end
-      
-      class UpdateGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
