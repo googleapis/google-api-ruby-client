@@ -42,6 +42,63 @@ module Google
         end
       end
       
+      # Configuration for a BigQuery subscription.
+      class BigQueryConfig
+        include Google::Apis::Core::Hashable
+      
+        # When true and use_topic_schema is true, any fields that are a part of the
+        # topic schema that are not part of the BigQuery table schema are dropped when
+        # writing to BigQuery. Otherwise, the schemas must be kept in sync and any
+        # messages with extra fields are not written and remain in the subscription's
+        # backlog.
+        # Corresponds to the JSON property `dropUnknownFields`
+        # @return [Boolean]
+        attr_accessor :drop_unknown_fields
+        alias_method :drop_unknown_fields?, :drop_unknown_fields
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The name of the table to which to write data, of the form `projectId`:`
+        # datasetId`.`tableId`
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # When true, use the topic's schema as the columns to write to in BigQuery, if
+        # it exists.
+        # Corresponds to the JSON property `useTopicSchema`
+        # @return [Boolean]
+        attr_accessor :use_topic_schema
+        alias_method :use_topic_schema?, :use_topic_schema
+      
+        # When true, write the subscription name, message_id, publish_time, attributes,
+        # and ordering_key to additional columns in the table. The subscription name,
+        # message_id, and publish_time fields are put in their own columns while all
+        # other message properties (other than data) are written to a JSON object in the
+        # attributes column.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drop_unknown_fields = args[:drop_unknown_fields] if args.key?(:drop_unknown_fields)
+          @state = args[:state] if args.key?(:state)
+          @table = args[:table] if args.key?(:table)
+          @use_topic_schema = args[:use_topic_schema] if args.key?(:use_topic_schema)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1169,6 +1226,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
+        # Configuration for a BigQuery subscription.
+        # Corresponds to the JSON property `bigqueryConfig`
+        # @return [Google::Apis::PubsubV1::BigQueryConfig]
+        attr_accessor :bigquery_config
+      
         # Dead lettering is done on a best effort basis. The same message might be dead
         # lettered multiple times. If validation on any of the fields fails at
         # subscription creation/updation, the create/update subscription request will
@@ -1303,6 +1365,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
           @enable_exactly_once_delivery = args[:enable_exactly_once_delivery] if args.key?(:enable_exactly_once_delivery)

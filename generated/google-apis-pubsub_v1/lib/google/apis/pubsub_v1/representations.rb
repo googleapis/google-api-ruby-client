@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -290,6 +296,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ack_ids, as: 'ackIds'
+        end
+      end
+      
+      class BigQueryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drop_unknown_fields, as: 'dropUnknownFields'
+          property :state, as: 'state'
+          property :table, as: 'table'
+          property :use_topic_schema, as: 'useTopicSchema'
+          property :write_metadata, as: 'writeMetadata'
         end
       end
       
@@ -566,6 +583,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::PubsubV1::BigQueryConfig, decorator: Google::Apis::PubsubV1::BigQueryConfig::Representation
+      
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
       
           property :detached, as: 'detached'
