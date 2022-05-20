@@ -1386,6 +1386,82 @@ module Google
         end
       end
       
+      # Configuration for a single version.
+      class SecretVersion
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file under the mount path where the secret value for this
+        # version will be fetched and made available. For example, setting the
+        # mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret
+        # value file at `/etc/secrets/secret_foo`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # preferable to use `latest` version with secret volumes as secret value changes
+        # are reflected immediately.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a secret volume. It has the information necessary to fetch
+      # the secret value from secret manager and make it available as files mounted at
+      # the requested paths within the application container.
+      class SecretVolume
+        include Google::Apis::Core::Hashable
+      
+        # The path within the container to mount the secret volume. For example, setting
+        # the mount_path as `/etc/secrets` would mount the secret value files under the `
+        # /etc/secrets` directory. This directory will also be completely shadowed and
+        # unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Project identifier (preferably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it is assumed that the
+        # secret is in the same project as the function.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # List of secret versions to mount for this secret. If empty, the `latest`
+        # version of the secret will be made available in a file named after the secret
+        # under the mount point.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::CloudfunctionsV2beta::SecretVersion>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
       # Describes the Service being deployed. Currently Supported : Cloud Run (fully
       # managed).
       class ServiceConfig
@@ -1450,6 +1526,11 @@ module Google
         # @return [Array<Google::Apis::CloudfunctionsV2beta::SecretEnvVar>]
         attr_accessor :secret_environment_variables
       
+        # Secret volumes configuration.
+        # Corresponds to the JSON property `secretVolumes`
+        # @return [Array<Google::Apis::CloudfunctionsV2beta::SecretVolume>]
+        attr_accessor :secret_volumes
+      
         # Output only. Name of the service associated with a Function. The format of
         # this field is `projects/`project`/locations/`region`/services/`service``
         # Corresponds to the JSON property `service`
@@ -1500,6 +1581,7 @@ module Google
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
           @revision = args[:revision] if args.key?(:revision)
           @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
+          @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
           @service = args[:service] if args.key?(:service)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)

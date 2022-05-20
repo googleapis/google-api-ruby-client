@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretVolume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,6 +576,25 @@ module Google
         end
       end
       
+      class SecretVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SecretVolume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :project_id, as: 'projectId'
+          property :secret, as: 'secret'
+          collection :versions, as: 'versions', class: Google::Apis::CloudfunctionsV2beta::SecretVersion, decorator: Google::Apis::CloudfunctionsV2beta::SecretVersion::Representation
+      
+        end
+      end
+      
       class ServiceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -575,6 +606,8 @@ module Google
           property :min_instance_count, as: 'minInstanceCount'
           property :revision, as: 'revision'
           collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV2beta::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV2beta::SecretEnvVar::Representation
+      
+          collection :secret_volumes, as: 'secretVolumes', class: Google::Apis::CloudfunctionsV2beta::SecretVolume, decorator: Google::Apis::CloudfunctionsV2beta::SecretVolume::Representation
       
           property :service, as: 'service'
           property :service_account_email, as: 'serviceAccountEmail'
