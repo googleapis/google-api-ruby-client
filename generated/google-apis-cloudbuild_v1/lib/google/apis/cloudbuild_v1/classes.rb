@@ -1484,38 +1484,6 @@ module Google
         end
       end
       
-      # Metadata for `CreateGitLabConfig` operation.
-      class CreateGitLabConfigOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Time the operation was completed.
-        # Corresponds to the JSON property `completeTime`
-        # @return [String]
-        attr_accessor :complete_time
-      
-        # Time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The resource name of the GitLabConfig to be created. Format: `projects/`
-        # project`/locations/`location`/gitlabConfigs/`id``.
-        # Corresponds to the JSON property `gitlabConfig`
-        # @return [String]
-        attr_accessor :gitlab_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_time = args[:complete_time] if args.key?(:complete_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
-        end
-      end
-      
       # Metadata for the `CreateWorkerPool` operation.
       class CreateWorkerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1609,38 +1577,6 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
-        end
-      end
-      
-      # Metadata for `DeleteGitLabConfig` operation.
-      class DeleteGitLabConfigOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Time the operation was completed.
-        # Corresponds to the JSON property `completeTime`
-        # @return [String]
-        attr_accessor :complete_time
-      
-        # Time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The resource name of the GitLabConfig to be created. Format: `projects/`
-        # project`/locations/`location`/gitlabConfigs/`id``.
-        # Corresponds to the JSON property `gitlabConfig`
-        # @return [String]
-        attr_accessor :gitlab_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_time = args[:complete_time] if args.key?(:complete_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -3616,38 +3552,6 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
-        end
-      end
-      
-      # Metadata for `UpdateGitLabConfig` operation.
-      class UpdateGitLabConfigOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Time the operation was completed.
-        # Corresponds to the JSON property `completeTime`
-        # @return [String]
-        attr_accessor :complete_time
-      
-        # Time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The resource name of the GitLabConfig to be created. Format: `projects/`
-        # project`/locations/`location`/gitlabConfigs/`id``.
-        # Corresponds to the JSON property `gitlabConfig`
-        # @return [String]
-        attr_accessor :gitlab_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @complete_time = args[:complete_time] if args.key?(:complete_time)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
