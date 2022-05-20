@@ -855,7 +855,7 @@ module Google
       
         # Details for assigned gender targeting option. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
-        # TARTGETING_TYPE_GENDER`.
+        # TARGETING_TYPE_GENDER`.
         # Corresponds to the JSON property `genderDetails`
         # @return [Google::Apis::DisplayvideoV1::GenderAssignedTargetingOptionDetails]
         attr_accessor :gender_details
@@ -951,7 +951,7 @@ module Google
       
         # Details for assigned parental status targeting option. This will be populated
         # in the details field of an AssignedTargetingOption when targeting_type is `
-        # TARTGETING_TYPE_PARENTAL_STATUS`.
+        # TARGETING_TYPE_PARENTAL_STATUS`.
         # Corresponds to the JSON property `parentalStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::ParentalStatusAssignedTargetingOptionDetails]
         attr_accessor :parental_status_details
@@ -2818,7 +2818,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of ContactInfo objects defining Customer Match audience members. The
-        # size of contact_infos mustn't be greater than 500,000.
+        # size of members after splitting the contact_infos mustn't be greater than 500,
+        # 000.
         # Corresponds to the JSON property `contactInfos`
         # @return [Array<Google::Apis::DisplayvideoV1::ContactInfo>]
         attr_accessor :contact_infos
@@ -3780,6 +3781,17 @@ module Google
         # @return [String]
         attr_accessor :entity_status
       
+        # Output only. The custom bidding model readiness state for each advertiser who
+        # have access. This field may only include the state of the queried advertiser
+        # if the algorithm [`owner`](/display-video/api/reference/rest/v1/
+        # customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a
+        # partner and is being retrieved using an advertiser [`accessor`](/display-video/
+        # api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.
+        # oneof_accessor).
+        # Corresponds to the JSON property `modelReadiness`
+        # @return [Array<Google::Apis::DisplayvideoV1::CustomBiddingModelReadinessState>]
+        attr_accessor :model_readiness
+      
         # Output only. The resource name of the custom bidding algorithm.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3813,9 +3825,36 @@ module Google
           @custom_bidding_algorithm_type = args[:custom_bidding_algorithm_type] if args.key?(:custom_bidding_algorithm_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @model_readiness = args[:model_readiness] if args.key?(:model_readiness)
           @name = args[:name] if args.key?(:name)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
           @shared_advertiser_ids = args[:shared_advertiser_ids] if args.key?(:shared_advertiser_ids)
+        end
+      end
+      
+      # The custom bidding algorithm model readiness state for a single shared
+      # advertiser.
+      class CustomBiddingModelReadinessState
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the advertiser with access to the custom bidding algorithm.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # The readiness state of custom bidding model.
+        # Corresponds to the JSON property `readinessState`
+        # @return [String]
+        attr_accessor :readiness_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @readiness_state = args[:readiness_state] if args.key?(:readiness_state)
         end
       end
       
@@ -5149,7 +5188,7 @@ module Google
       
       # Details for assigned gender targeting option. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
-      # TARTGETING_TYPE_GENDER`.
+      # TARGETING_TYPE_GENDER`.
       class GenderAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -8345,7 +8384,7 @@ module Google
       
       # Details for assigned parental status targeting option. This will be populated
       # in the details field of an AssignedTargetingOption when targeting_type is `
-      # TARTGETING_TYPE_PARENTAL_STATUS`.
+      # TARGETING_TYPE_PARENTAL_STATUS`.
       class ParentalStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       

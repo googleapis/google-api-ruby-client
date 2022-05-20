@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomBiddingModelReadinessState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomBiddingScript
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2653,9 +2659,19 @@ module Google
           property :custom_bidding_algorithm_type, as: 'customBiddingAlgorithmType'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
+          collection :model_readiness, as: 'modelReadiness', class: Google::Apis::DisplayvideoV1::CustomBiddingModelReadinessState, decorator: Google::Apis::DisplayvideoV1::CustomBiddingModelReadinessState::Representation
+      
           property :name, as: 'name'
           property :partner_id, :numeric_string => true, as: 'partnerId'
           collection :shared_advertiser_ids, as: 'sharedAdvertiserIds'
+        end
+      end
+      
+      class CustomBiddingModelReadinessState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :readiness_state, as: 'readinessState'
         end
       end
       
