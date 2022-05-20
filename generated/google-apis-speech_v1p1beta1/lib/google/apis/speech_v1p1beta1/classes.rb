@@ -721,7 +721,9 @@ module Google
         # Which model to select for the given request. Select the model best suited to
         # your domain to get best results. If a model is not explicitly specified, then
         # we auto-select a model based on the parameters in the RecognitionConfig. *
-        # Model* *Description* command_and_search Best for short queries such as voice
+        # Model* *Description* latest_long Best for long form content like media or
+        # conversation. latest_short Best for short form content like commands or single
+        # shot directed speech. command_and_search Best for short queries such as voice
         # commands or voice search. phone_call Best for audio that originated from a
         # phone call (typically recorded at an 8khz sampling rate). video Best for audio
         # that originated from video or includes multiple speakers. Ideally the audio is
