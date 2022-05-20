@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonPathMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +844,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          property :json_path_matcher, as: 'jsonPathMatcher', class: Google::Apis::MonitoringV3::JsonPathMatcher, decorator: Google::Apis::MonitoringV3::JsonPathMatcher::Representation
+      
           property :matcher, as: 'matcher'
         end
       end
@@ -1086,6 +1094,14 @@ module Google
           property :canonical_service, as: 'canonicalService'
           property :canonical_service_namespace, as: 'canonicalServiceNamespace'
           property :mesh_uid, as: 'meshUid'
+        end
+      end
+      
+      class JsonPathMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_matcher, as: 'jsonMatcher'
+          property :json_path, as: 'jsonPath'
         end
       end
       

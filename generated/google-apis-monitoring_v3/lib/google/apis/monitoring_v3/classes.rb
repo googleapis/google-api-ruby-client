@@ -781,6 +781,13 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # Information needed to perform a JSONPath content match. Used for
+        # ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::
+        # NOT_MATCHES_JSON_PATH.
+        # Corresponds to the JSON property `jsonPathMatcher`
+        # @return [Google::Apis::MonitoringV3::JsonPathMatcher]
+        attr_accessor :json_path_matcher
+      
         # The type of content matcher that will be applied to the server output,
         # compared to the content string when the check is run.
         # Corresponds to the JSON property `matcher`
@@ -794,6 +801,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @json_path_matcher = args[:json_path_matcher] if args.key?(:json_path_matcher)
           @matcher = args[:matcher] if args.key?(:matcher)
         end
       end
@@ -1837,6 +1845,35 @@ module Google
           @canonical_service = args[:canonical_service] if args.key?(:canonical_service)
           @canonical_service_namespace = args[:canonical_service_namespace] if args.key?(:canonical_service_namespace)
           @mesh_uid = args[:mesh_uid] if args.key?(:mesh_uid)
+        end
+      end
+      
+      # Information needed to perform a JSONPath content match. Used for
+      # ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::
+      # NOT_MATCHES_JSON_PATH.
+      class JsonPathMatcher
+        include Google::Apis::Core::Hashable
+      
+        # The type of JSONPath match that will be applied to the JSON output (
+        # ContentMatcher.content)
+        # Corresponds to the JSON property `jsonMatcher`
+        # @return [String]
+        attr_accessor :json_matcher
+      
+        # JSONPath within the response output pointing to the expected ContentMatcher::
+        # content to match against.
+        # Corresponds to the JSON property `jsonPath`
+        # @return [String]
+        attr_accessor :json_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_matcher = args[:json_matcher] if args.key?(:json_matcher)
+          @json_path = args[:json_path] if args.key?(:json_path)
         end
       end
       
