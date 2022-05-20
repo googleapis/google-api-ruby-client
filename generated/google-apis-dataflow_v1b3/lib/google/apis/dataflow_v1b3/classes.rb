@@ -1490,10 +1490,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # If true, save a heap dump before killing a thread or process which is GC
-        # thrashing or out of memory. The location of the heap file will either be
-        # echoed back to the user, or the user will be given the opportunity to download
-        # the heap file.
+        # If true, when processing time is spent almost entirely on garbage collection (
+        # GC), saves a heap dump before ending the thread or process. If false, ends the
+        # thread or process without saving a heap dump. Does not save a heap dump when
+        # the Java Virtual Machine (JVM) has an out of memory error during processing.
+        # The location of the heap file is either echoed back to the user, or the user
+        # is given the opportunity to download the heap file.
         # Corresponds to the JSON property `dumpHeapOnOom`
         # @return [Boolean]
         attr_accessor :dump_heap_on_oom
@@ -1550,9 +1552,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_workers
       
-        # Cloud Storage bucket (directory) to upload heap dumps to the given location.
-        # Enabling this implies that heap dumps should be generated on OOM (
-        # dump_heap_on_oom is set to true).
+        # Cloud Storage bucket (directory) to upload heap dumps to. Enabling this field
+        # implies that `dump_heap_on_oom` is set to true.
         # Corresponds to the JSON property `saveHeapDumpsToGcsPath`
         # @return [String]
         attr_accessor :save_heap_dumps_to_gcs_path
