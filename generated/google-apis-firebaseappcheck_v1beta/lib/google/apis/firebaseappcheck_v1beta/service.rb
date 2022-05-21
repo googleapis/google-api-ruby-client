@@ -360,9 +360,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This method has been renamed to ExchangeRecaptchaV3Token. Validates a [
-        # reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3).
-        # If valid, returns an AppCheckToken.
+        # Validates a [reCAPTCHA v3 response token](https://developers.google.com/
+        # recaptcha/docs/v3). If valid, returns an AppCheckToken.
         # @param [String] app
         #   Required. The relative resource name of the web app, in the format: ```
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
@@ -1077,10 +1076,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config.
-        # Please use BatchGetRecaptchaV3Configs instead. Atomically gets the
-        # RecaptchaConfigs for the specified list of apps. For security reasons, the `
-        # site_secret` field is never populated in the response.
+        # Atomically gets the RecaptchaConfigs for the specified list of apps. For
+        # security reasons, the `site_secret` field is never populated in the response.
         # @param [String] parent
         #   Required. The parent project name shared by all RecaptchaConfigs being
         #   retrieved, in the format ``` projects/`project_number` ``` The parent
@@ -1118,10 +1115,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config.
-        # Please use GetRecaptchaV3Config instead. Gets the RecaptchaConfig for the
-        # specified app. For security reasons, the `site_secret` field is never
-        # populated in the response.
+        # Gets the RecaptchaConfig for the specified app. For security reasons, the `
+        # site_secret` field is never populated in the response.
         # @param [String] name
         #   Required. The relative resource name of the RecaptchaConfig, in the format: ```
         #   projects/`project_number`/apps/`app_id`/recaptchaConfig ```
@@ -1152,11 +1147,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RecaptchaConfig REST resource has been renamed to RecaptchaV3Config.
-        # Please use UpdateRecaptchaV3Config instead. Updates the RecaptchaConfig for
-        # the specified app. While this configuration is incomplete or invalid, the app
-        # will be unable to exchange reCAPTCHA tokens for App Check tokens. For security
-        # reasons, the `site_secret` field is never populated in the response.
+        # Updates the RecaptchaConfig for the specified app. While this configuration is
+        # incomplete or invalid, the app will be unable to exchange reCAPTCHA tokens for
+        # App Check tokens. For security reasons, the `site_secret` field is never
+        # populated in the response.
         # @param [String] name
         #   Required. The relative resource name of the reCAPTCHA v3 configuration object,
         #   in the format: ``` projects/`project_number`/apps/`app_id`/recaptchaConfig ```

@@ -61,10 +61,9 @@ module Google
       class GoogleFirebaseAppcheckV1betaAppCheckToken
         include Google::Apis::Core::Hashable
       
-        # This field has been renamed to `token`. An App Check token. App Check tokens
-        # are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing claims that
-        # identify the attested app and Firebase project. This token is used to access
-        # Firebase services protected by App Check.
+        # An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
+        # html/rfc7519) containing claims that identify the attested app and Firebase
+        # project. This token is used to access Firebase services protected by App Check.
         # Corresponds to the JSON property `attestationToken`
         # @return [String]
         attr_accessor :attestation_token
@@ -927,10 +926,10 @@ module Google
         end
       end
       
-      # This REST resource has been renamed to RecaptchaV3Config. An app's reCAPTCHA
-      # v3 configuration object. This configuration is used by ExchangeRecaptchaToken
-      # to validate reCAPTCHA tokens issued to apps by reCAPTCHA v3. It also controls
-      # certain properties of the returned `AppCheckToken`, such as its ttl.
+      # An app's reCAPTCHA v3 configuration object. This configuration is used by
+      # ExchangeRecaptchaToken to validate reCAPTCHA tokens issued to apps by
+      # reCAPTCHA v3. It also controls certain properties of the returned `
+      # AppCheckToken`, such as its ttl.
       class GoogleFirebaseAppcheckV1betaRecaptchaConfig
         include Google::Apis::Core::Hashable
       
