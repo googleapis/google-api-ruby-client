@@ -323,6 +323,7 @@ module Google
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
       
           property :os_image, as: 'osImage'
+          property :pod, as: 'pod'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -734,6 +735,7 @@ module Google
           property :id, as: 'id'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :pod, as: 'pod'
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :snapshot_auto_delete_behavior, as: 'snapshotAutoDeleteBehavior'
