@@ -182,6 +182,13 @@ module Google
         # @return [String]
         attr_accessor :os_image
       
+        # Immutable. Pod name. Pod is an independent part of infrastructure. Instance
+        # can be connected to the assets (networks, volumes) allocated in the same pod
+        # only.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
         # The state of the server.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -208,6 +215,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @os_image = args[:os_image] if args.key?(:os_image)
+          @pod = args[:pod] if args.key?(:pod)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1702,6 +1710,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Immutable. Pod name.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
         # The space remaining in the storage volume for new LUNs, in GiB, excluding
         # space reserved for snapshots.
         # Corresponds to the JSON property `remainingSpaceGib`
@@ -1756,6 +1769,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @pod = args[:pod] if args.key?(:pod)
           @remaining_space_gib = args[:remaining_space_gib] if args.key?(:remaining_space_gib)
           @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
           @snapshot_auto_delete_behavior = args[:snapshot_auto_delete_behavior] if args.key?(:snapshot_auto_delete_behavior)
