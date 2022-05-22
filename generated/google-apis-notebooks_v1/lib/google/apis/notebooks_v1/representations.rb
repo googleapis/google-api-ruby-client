@@ -990,6 +990,7 @@ module Google
       
           property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
           property :post_startup_script, as: 'postStartupScript'
+          property :post_startup_script_behavior, as: 'postStartupScriptBehavior'
           property :upgradeable, as: 'upgradeable'
         end
       end
