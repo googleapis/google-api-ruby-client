@@ -1,5 +1,9 @@
 # Release history for google-apis-domains_v1
 
+### v0.5.0 (2022-05-22)
+
+* Regenerated from discovery document revision 20220517
+
 ### v0.4.0 (2022-03-14)
 
 * Regenerated from discovery document revision 20220308
