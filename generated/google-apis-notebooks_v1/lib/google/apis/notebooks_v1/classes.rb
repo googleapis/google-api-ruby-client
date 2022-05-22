@@ -2208,6 +2208,11 @@ module Google
         # @return [String]
         attr_accessor :post_startup_script
       
+        # Behavior for the post startup script.
+        # Corresponds to the JSON property `postStartupScriptBehavior`
+        # @return [String]
+        attr_accessor :post_startup_script_behavior
+      
         # Output only. Bool indicating whether an newer image is available in an image
         # family.
         # Corresponds to the JSON property `upgradeable`
@@ -2229,6 +2234,7 @@ module Google
           @kernels = args[:kernels] if args.key?(:kernels)
           @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
+          @post_startup_script_behavior = args[:post_startup_script_behavior] if args.key?(:post_startup_script_behavior)
           @upgradeable = args[:upgradeable] if args.key?(:upgradeable)
         end
       end
@@ -3132,7 +3138,7 @@ module Google
         attr_accessor :image_name
       
         # Required. The name of the Google Cloud project that this VM image belongs to.
-        # Format: `projects/`project_id``
+        # Format: ``project_id``
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
