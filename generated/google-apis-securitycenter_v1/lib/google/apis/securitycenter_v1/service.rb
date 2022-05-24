@@ -1779,7 +1779,7 @@ module Google
         # Creates a notification config.
         # @param [String] parent
         #   Required. Resource name of the new notification config's parent. Its format is
-        #   "organizations/[organization_id]".
+        #   "organizations/[organization_id]" or "projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -1880,7 +1880,7 @@ module Google
         # Lists notification configs.
         # @param [String] parent
         #   Required. Name of the organization to list notification configs. Its format is
-        #   "organizations/[organization_id]".
+        #   "organizations/[organization_id]" or "projects/[project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
