@@ -279,6 +279,11 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Optional. The available maintenance versions that an instance could update to.
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # Optional. The network connect mode of the Redis instance. If not provided, the
         # connect mode defaults to DIRECT_PEERING.
         # Corresponds to the JSON property `connectMode`
@@ -296,6 +301,12 @@ module Google
         # Corresponds to the JSON property `currentLocationId`
         # @return [String]
         attr_accessor :current_location_id
+      
+        # Optional. The KMS key reference that the customer provides when trying to
+        # create the instance.
+        # Corresponds to the JSON property `customerManagedKey`
+        # @return [String]
+        attr_accessor :customer_managed_key
       
         # An arbitrary and optional user-provided name for the instance.
         # Corresponds to the JSON property `displayName`
@@ -460,6 +471,11 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # Optional. reasons that causes instance in "SUSPENDED" state.
+        # Corresponds to the JSON property `suspensionReasons`
+        # @return [Array<String>]
+        attr_accessor :suspension_reasons
+      
         # Required. The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -480,9 +496,11 @@ module Google
           @alternative_location_id = args[:alternative_location_id] if args.key?(:alternative_location_id)
           @auth_enabled = args[:auth_enabled] if args.key?(:auth_enabled)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_location_id = args[:current_location_id] if args.key?(:current_location_id)
+          @customer_managed_key = args[:customer_managed_key] if args.key?(:customer_managed_key)
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
           @labels = args[:labels] if args.key?(:labels)
@@ -507,6 +525,7 @@ module Google
           @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tier = args[:tier] if args.key?(:tier)
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
         end
