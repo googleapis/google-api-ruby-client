@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Compliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,18 @@ module Google
       end
       
       class Connection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Contact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -64,7 +82,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventThreatDetectionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExfilResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Exfiltration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Process
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +305,15 @@ module Google
         end
       end
       
+      class Compliance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+          property :standard, as: 'standard'
+          property :version, as: 'version'
+        end
+      end
+      
       class Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -273,6 +330,21 @@ module Google
           property :protocol, as: 'protocol'
           property :source_ip, as: 'sourceIp'
           property :source_port, as: 'sourcePort'
+        end
+      end
+      
+      class Contact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class ContactDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contacts, as: 'contacts', class: Google::Apis::SecuritycenterV1beta2::Contact, decorator: Google::Apis::SecuritycenterV1beta2::Contact::Representation
+      
         end
       end
       
@@ -324,6 +396,14 @@ module Google
         end
       end
       
+      class EnvironmentVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :val, as: 'val'
+        end
+      end
+      
       class EventThreatDetectionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -335,6 +415,36 @@ module Google
         end
       end
       
+      class ExfilResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :components, as: 'components'
+          property :name, as: 'name'
+        end
+      end
+      
+      class Exfiltration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sources, as: 'sources', class: Google::Apis::SecuritycenterV1beta2::ExfilResource, decorator: Google::Apis::SecuritycenterV1beta2::ExfilResource::Representation
+      
+          collection :targets, as: 'targets', class: Google::Apis::SecuritycenterV1beta2::ExfilResource, decorator: Google::Apis::SecuritycenterV1beta2::ExfilResource::Representation
+      
+        end
+      end
+      
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :hashed_size, :numeric_string => true, as: 'hashedSize'
+          property :partially_hashed, as: 'partiallyHashed'
+          property :path, as: 'path'
+          property :sha256, as: 'sha256'
+          property :size, :numeric_string => true, as: 'size'
+        end
+      end
+      
       class Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -342,11 +452,17 @@ module Google
       
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
+          collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta2::Compliance, decorator: Google::Apis::SecuritycenterV1beta2::Compliance::Representation
+      
           collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta2::Connection, decorator: Google::Apis::SecuritycenterV1beta2::Connection::Representation
+      
+          hash :contacts, as: 'contacts', class: Google::Apis::SecuritycenterV1beta2::ContactDetails, decorator: Google::Apis::SecuritycenterV1beta2::ContactDetails::Representation
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
+          property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta2::Exfiltration, decorator: Google::Apis::SecuritycenterV1beta2::Exfiltration::Representation
+      
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem::Representation
       
           property :external_uri, as: 'externalUri'
@@ -363,6 +479,8 @@ module Google
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
           property :parent, as: 'parent'
+          collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
+      
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::SecurityMarks::Representation
       
@@ -576,6 +694,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :onboarding_level, as: 'onboardingLevel'
+        end
+      end
+      
+      class Process
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :arguments_truncated, as: 'argumentsTruncated'
+          property :binary, as: 'binary', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
+      
+          collection :env_variables, as: 'envVariables', class: Google::Apis::SecuritycenterV1beta2::EnvironmentVariable, decorator: Google::Apis::SecuritycenterV1beta2::EnvironmentVariable::Representation
+      
+          property :env_variables_truncated, as: 'envVariablesTruncated'
+          collection :libraries, as: 'libraries', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
+      
+          property :parent_pid, :numeric_string => true, as: 'parentPid'
+          property :pid, :numeric_string => true, as: 'pid'
+          property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
+      
         end
       end
       
