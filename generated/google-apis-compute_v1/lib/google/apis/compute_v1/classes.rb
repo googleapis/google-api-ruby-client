@@ -3013,9 +3013,9 @@ module Google
         # internal HTTP(S) load balancers and Traffic Director and requires
         # GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is
         # non-persistent and lasts only until the end of the browser session (or
-        # equivalent). The maximum allowed value is one day (86,400). Not supported when
-        # the backend service is referenced by a URL map that is bound to target gRPC
-        # proxy that has validateForProxyless field set to true.
+        # equivalent). The maximum allowed value is two weeks (1,209,600). Not supported
+        # when the backend service is referenced by a URL map that is bound to target
+        # gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -30997,8 +30997,8 @@ module Google
       
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
-        # only possible behavior is TERMINATE. For more information, see Set VM
-        # availability policies.
+        # only possible behavior is TERMINATE. For more information, see Set VM host
+        # maintenance policy.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
