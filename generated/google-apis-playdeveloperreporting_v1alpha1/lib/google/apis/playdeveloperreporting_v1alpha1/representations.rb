@@ -240,6 +240,7 @@ module Google
           property :dimension, as: 'dimension'
           property :int64_value, :numeric_string => true, as: 'int64Value'
           property :string_value, as: 'stringValue'
+          property :value_label, as: 'valueLabel'
         end
       end
       
