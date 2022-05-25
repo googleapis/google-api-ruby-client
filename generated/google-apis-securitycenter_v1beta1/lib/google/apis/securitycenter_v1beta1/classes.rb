@@ -314,6 +314,38 @@ module Google
         end
       end
       
+      # Contains compliance information about a security standard indicating unmet
+      # recommendations.
+      class Compliance
+        include Google::Apis::Core::Hashable
+      
+        # e.g. A.12.4.1
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        # e.g. "cis", "pci", "owasp", etc.
+        # Corresponds to the JSON property `standard`
+        # @return [String]
+        attr_accessor :standard
+      
+        # e.g. 1.1
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ids = args[:ids] if args.key?(:ids)
+          @standard = args[:standard] if args.key?(:standard)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Contains information about the IP connection associated with the finding.
       class Connection
         include Google::Apis::Core::Hashable
@@ -355,6 +387,44 @@ module Google
           @protocol = args[:protocol] if args.key?(:protocol)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
           @source_port = args[:source_port] if args.key?(:source_port)
+        end
+      end
+      
+      # Representa a single contact's email address
+      class Contact
+        include Google::Apis::Core::Hashable
+      
+        # An email address e.g. "person123@company.com"
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # The details pertaining to specific contacts
+      class ContactDetails
+        include Google::Apis::Core::Hashable
+      
+        # A list of contacts
+        # Corresponds to the JSON property `contacts`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Contact>]
+        attr_accessor :contacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
         end
       end
       
@@ -491,6 +561,89 @@ module Google
         end
       end
       
+      # EnvironmentVariable is a name-value pair to store env variables for Process.
+      class EnvironmentVariable
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name as a JSON encoded string.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Environment variable value as a JSON encoded string.
+        # Corresponds to the JSON property `val`
+        # @return [String]
+        attr_accessor :val
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @val = args[:val] if args.key?(:val)
+        end
+      end
+      
+      # Resource that has been exfiltrated or exfiltrated_to.
+      class ExfilResource
+        include Google::Apis::Core::Hashable
+      
+        # Subcomponents of the asset that is exfiltrated - these could be URIs used
+        # during exfiltration, table names, databases, filenames, etc. For example,
+        # multiple tables may be exfiltrated from the same CloudSQL instance, or
+        # multiple files from the same Cloud Storage bucket.
+        # Corresponds to the JSON property `components`
+        # @return [Array<String>]
+        attr_accessor :components
+      
+        # Resource’s URI (https://google.aip.dev/122#full-resource-names)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @components = args[:components] if args.key?(:components)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Exfiltration represents a data exfiltration attempt of one or more source(s)
+      # to one or more target(s). Source(s) represent the source of data that is
+      # exfiltrated, and Target(s) represents the destination the data was copied to.
+      class Exfiltration
+        include Google::Apis::Core::Hashable
+      
+        # If there are multiple sources, then the data is considered “joined” between
+        # them. For instance, BigQuery can join multiple tables, and each table would be
+        # considered a source.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::ExfilResource>]
+        attr_accessor :sources
+      
+        # If there are multiple targets, each target would get a complete copy of the “
+        # joined” source data.
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::ExfilResource>]
+        attr_accessor :targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sources = args[:sources] if args.key?(:sources)
+          @targets = args[:targets] if args.key?(:targets)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -545,6 +698,61 @@ module Google
         end
       end
       
+      # File information about the related binary/library used by an executable, or
+      # the script used by a script interpreter
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # Prefix of the file contents as a JSON encoded string. (Currently only
+        # populated for Malicious Script Executed findings.)
+        # Corresponds to the JSON property `contents`
+        # @return [String]
+        attr_accessor :contents
+      
+        # The length in bytes of the file prefix that was hashed. If hashed_size == size,
+        # any hashes reported represent the entire file.
+        # Corresponds to the JSON property `hashedSize`
+        # @return [Fixnum]
+        attr_accessor :hashed_size
+      
+        # True when the hash covers only a prefix of the file.
+        # Corresponds to the JSON property `partiallyHashed`
+        # @return [Boolean]
+        attr_accessor :partially_hashed
+        alias_method :partially_hashed?, :partially_hashed
+      
+        # Absolute path of the file as a JSON encoded string.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # SHA256 hash of the first hashed_size bytes of the file encoded as a hex string.
+        # If hashed_size == size, hash_sha256 represents the SHA256 hash of the entire
+        # file.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
+        # Size of the file in bytes.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @hashed_size = args[:hashed_size] if args.key?(:hashed_size)
+          @partially_hashed = args[:partially_hashed] if args.key?(:partially_hashed)
+          @path = args[:path] if args.key?(:path)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
       # Security Command Center finding. A finding is a record of assessment data like
       # security, risk, health, or privacy, that is ingested into Security Command
       # Center for presentation, notification, analysis, policy testing, and
@@ -573,10 +781,26 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Contains compliance information for security standards associated to the
+        # finding.
+        # Corresponds to the JSON property `compliances`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Compliance>]
+        attr_accessor :compliances
+      
         # Contains information about the IP connection associated with the finding.
         # Corresponds to the JSON property `connections`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::Connection>]
         attr_accessor :connections
+      
+        # Output only. Map containing the point of contacts for the given finding. The
+        # key represents the type of contact, while the value contains a list of all the
+        # contacts that pertain. Please refer to: https://cloud.google.com/resource-
+        # manager/docs/managing-notification-contacts#notification-categories ` “
+        # security”: `contact: `email: “person1@company.com”` contact: `email: “person2@
+        # company.com”` `
+        # Corresponds to the JSON property `contacts`
+        # @return [Hash<String,Google::Apis::SecuritycenterV1beta1::ContactDetails>]
+        attr_accessor :contacts
       
         # The time at which the finding was created in Security Command Center.
         # Corresponds to the JSON property `createTime`
@@ -597,6 +821,13 @@ module Google
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
+      
+        # Exfiltration represents a data exfiltration attempt of one or more source(s)
+        # to one or more target(s). Source(s) represent the source of data that is
+        # exfiltrated, and Target(s) represents the destination the data was copied to.
+        # Corresponds to the JSON property `exfiltration`
+        # @return [Google::Apis::SecuritycenterV1beta1::Exfiltration]
+        attr_accessor :exfiltration
       
         # Output only. Third party SIEM/SOAR fields within SCC, contains external system
         # information and external system finding fields.
@@ -675,6 +906,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Represents operating system processes associated with the Finding.
+        # Corresponds to the JSON property `processes`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Process>]
+        attr_accessor :processes
+      
         # For findings on Google Cloud resources, the full resource name of the Google
         # Cloud resource this finding is for. See: https://cloud.google.com/apis/design/
         # resource_names#full_resource_name When the finding is for a non-Google Cloud
@@ -725,10 +961,13 @@ module Google
           @access = args[:access] if args.key?(:access)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
+          @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
+          @contacts = args[:contacts] if args.key?(:contacts)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
+          @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
@@ -741,6 +980,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
           @parent = args[:parent] if args.key?(:parent)
+          @processes = args[:processes] if args.key?(:processes)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
           @severity = args[:severity] if args.key?(:severity)
@@ -2338,6 +2578,77 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Represents an operating system process.
+      class Process
+        include Google::Apis::Core::Hashable
+      
+        # Process arguments as JSON encoded strings.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # True if arguments is incomplete.
+        # Corresponds to the JSON property `argumentsTruncated`
+        # @return [Boolean]
+        attr_accessor :arguments_truncated
+        alias_method :arguments_truncated?, :arguments_truncated
+      
+        # File information about the related binary/library used by an executable, or
+        # the script used by a script interpreter
+        # Corresponds to the JSON property `binary`
+        # @return [Google::Apis::SecuritycenterV1beta1::File]
+        attr_accessor :binary
+      
+        # Process environment variables.
+        # Corresponds to the JSON property `envVariables`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::EnvironmentVariable>]
+        attr_accessor :env_variables
+      
+        # True if env_variables is incomplete.
+        # Corresponds to the JSON property `envVariablesTruncated`
+        # @return [Boolean]
+        attr_accessor :env_variables_truncated
+        alias_method :env_variables_truncated?, :env_variables_truncated
+      
+        # File information for libraries loaded by the process.
+        # Corresponds to the JSON property `libraries`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::File>]
+        attr_accessor :libraries
+      
+        # The parent process id.
+        # Corresponds to the JSON property `parentPid`
+        # @return [Fixnum]
+        attr_accessor :parent_pid
+      
+        # The process id.
+        # Corresponds to the JSON property `pid`
+        # @return [Fixnum]
+        attr_accessor :pid
+      
+        # File information about the related binary/library used by an executable, or
+        # the script used by a script interpreter
+        # Corresponds to the JSON property `script`
+        # @return [Google::Apis::SecuritycenterV1beta1::File]
+        attr_accessor :script
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @arguments_truncated = args[:arguments_truncated] if args.key?(:arguments_truncated)
+          @binary = args[:binary] if args.key?(:binary)
+          @env_variables = args[:env_variables] if args.key?(:env_variables)
+          @env_variables_truncated = args[:env_variables_truncated] if args.key?(:env_variables_truncated)
+          @libraries = args[:libraries] if args.key?(:libraries)
+          @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
+          @pid = args[:pid] if args.key?(:pid)
+          @script = args[:script] if args.key?(:script)
         end
       end
       
