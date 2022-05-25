@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InvalidateApprovalRequestMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListApprovalRequestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -177,6 +183,7 @@ module Google
           property :approve_time, as: 'approveTime'
           property :auto_approved, as: 'autoApproved'
           property :expire_time, as: 'expireTime'
+          property :invalidate_time, as: 'invalidateTime'
           property :signature_info, as: 'signatureInfo', class: Google::Apis::AccessapprovalV1::SignatureInfo, decorator: Google::Apis::AccessapprovalV1::SignatureInfo::Representation
       
         end
@@ -207,6 +214,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_product, as: 'cloudProduct'
           property :enrollment_level, as: 'enrollmentLevel'
+        end
+      end
+      
+      class InvalidateApprovalRequestMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

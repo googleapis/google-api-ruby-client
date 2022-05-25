@@ -309,6 +309,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # If set, denotes the timestamp at which the approval is invalidated.
+        # Corresponds to the JSON property `invalidateTime`
+        # @return [String]
+        attr_accessor :invalidate_time
+      
         # Information about the digital signature of the resource.
         # Corresponds to the JSON property `signatureInfo`
         # @return [Google::Apis::AccessapprovalV1::SignatureInfo]
@@ -323,6 +328,7 @@ module Google
           @approve_time = args[:approve_time] if args.key?(:approve_time)
           @auto_approved = args[:auto_approved] if args.key?(:auto_approved)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @invalidate_time = args[:invalidate_time] if args.key?(:invalidate_time)
           @signature_info = args[:signature_info] if args.key?(:signature_info)
         end
       end
@@ -424,6 +430,19 @@ module Google
         def update!(**args)
           @cloud_product = args[:cloud_product] if args.key?(:cloud_product)
           @enrollment_level = args[:enrollment_level] if args.key?(:enrollment_level)
+        end
+      end
+      
+      # Request to invalidate an existing approval.
+      class InvalidateApprovalRequestMessage
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
