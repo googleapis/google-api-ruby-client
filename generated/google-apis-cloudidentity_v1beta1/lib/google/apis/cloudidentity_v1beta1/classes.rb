@@ -922,32 +922,6 @@ module Google
         end
       end
       
-      # Message containing first admin invitation info for customers
-      class FirstAdminInvitationInfo
-        include Google::Apis::Core::Hashable
-      
-        # Optional. To enable First Admin Invitation for Domained Customer
-        # Corresponds to the JSON property `isFirstAdmin`
-        # @return [Boolean]
-        attr_accessor :is_first_admin
-        alias_method :is_first_admin?, :is_first_admin
-      
-        # Optional. Domain information of first admin invited
-        # Corresponds to the JSON property `primaryDomain`
-        # @return [String]
-        attr_accessor :primary_domain
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_first_admin = args[:is_first_admin] if args.key?(:is_first_admin)
-          @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
-        end
-      end
-      
       # The response message for MembershipsService.GetMembershipGraph.
       class GetMembershipGraphResponse
         include Google::Apis::Core::Hashable
@@ -2756,18 +2730,12 @@ module Google
       class SendUserInvitationRequest
         include Google::Apis::Core::Hashable
       
-        # Message containing first admin invitation info for customers
-        # Corresponds to the JSON property `firstAdminInvitationInfo`
-        # @return [Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo]
-        attr_accessor :first_admin_invitation_info
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @first_admin_invitation_info = args[:first_admin_invitation_info] if args.key?(:first_admin_invitation_info)
         end
       end
       
