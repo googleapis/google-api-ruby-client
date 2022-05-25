@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -216,6 +222,8 @@ module Google
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
       
           property :name, as: 'name'
+          property :private_password_leak_verification, as: 'privatePasswordLeakVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification::Representation
+      
           property :risk_analysis, as: 'riskAnalysis', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis::Representation
       
           property :token_properties, as: 'tokenProperties', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenProperties, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenProperties::Representation
@@ -315,6 +323,16 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :encrypted_leak_match_prefixes, as: 'encryptedLeakMatchPrefixes'
+          property :encrypted_user_credentials_hash, :base64 => true, as: 'encryptedUserCredentialsHash'
+          property :lookup_hash_prefix, :base64 => true, as: 'lookupHashPrefix'
+          property :reencrypted_user_credentials_hash, :base64 => true, as: 'reencryptedUserCredentialsHash'
         end
       end
       
