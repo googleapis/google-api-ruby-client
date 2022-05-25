@@ -140,6 +140,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Private password leak verification info.
+        # Corresponds to the JSON property `privatePasswordLeakVerification`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification]
+        attr_accessor :private_password_leak_verification
+      
         # Risk analysis result for an event.
         # Corresponds to the JSON property `riskAnalysis`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RiskAnalysis]
@@ -159,6 +164,7 @@ module Google
           @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
           @event = args[:event] if args.key?(:event)
           @name = args[:name] if args.key?(:name)
+          @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
           @token_properties = args[:token_properties] if args.key?(:token_properties)
         end
@@ -485,6 +491,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Private password leak verification info.
+      class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of prefixes of the encrypted potential password leaks that
+        # matched the given parameters. They should be compared with the client-side
+        # decryption prefix of `reencrypted_user_credentials_hash`
+        # Corresponds to the JSON property `encryptedLeakMatchPrefixes`
+        # @return [Array<String>]
+        attr_accessor :encrypted_leak_match_prefixes
+      
+        # Optional. Encrypted Scrypt hash of the canonicalized username+password. It is
+        # re-encrypted by the server and returned through `
+        # reencrypted_user_credentials_hash`.
+        # Corresponds to the JSON property `encryptedUserCredentialsHash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_user_credentials_hash
+      
+        # Optional. Exactly 26-bit prefix of the SHA-256 hash of the canonicalized
+        # username. It is used to look up password leaks associated with that hash
+        # prefix.
+        # Corresponds to the JSON property `lookupHashPrefix`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :lookup_hash_prefix
+      
+        # Output only. Corresponds to the re-encryption of the `
+        # encrypted_user_credentials_hash` field. Used to match potential password leaks
+        # within `encrypted_leak_match_prefixes`.
+        # Corresponds to the JSON property `reencryptedUserCredentialsHash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :reencrypted_user_credentials_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encrypted_leak_match_prefixes = args[:encrypted_leak_match_prefixes] if args.key?(:encrypted_leak_match_prefixes)
+          @encrypted_user_credentials_hash = args[:encrypted_user_credentials_hash] if args.key?(:encrypted_user_credentials_hash)
+          @lookup_hash_prefix = args[:lookup_hash_prefix] if args.key?(:lookup_hash_prefix)
+          @reencrypted_user_credentials_hash = args[:reencrypted_user_credentials_hash] if args.key?(:reencrypted_user_credentials_hash)
         end
       end
       
