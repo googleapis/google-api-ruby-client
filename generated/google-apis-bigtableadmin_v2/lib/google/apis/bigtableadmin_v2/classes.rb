@@ -185,6 +185,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :cpu_utilization_percent
       
+        # The storage utilization that the Autoscaler should be trying to achieve. This
+        # number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and
+        # between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will
+        # return INVALID_ARGUMENT error. If this value is set to 0, it will be treated
+        # as if it were set to the default value: 2560 for SSD, 8192 for HDD.
+        # Corresponds to the JSON property `storageUtilizationGibPerNode`
+        # @return [Fixnum]
+        attr_accessor :storage_utilization_gib_per_node
+      
         def initialize(**args)
            update!(**args)
         end
@@ -192,6 +201,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpu_utilization_percent = args[:cpu_utilization_percent] if args.key?(:cpu_utilization_percent)
+          @storage_utilization_gib_per_node = args[:storage_utilization_gib_per_node] if args.key?(:storage_utilization_gib_per_node)
         end
       end
       
