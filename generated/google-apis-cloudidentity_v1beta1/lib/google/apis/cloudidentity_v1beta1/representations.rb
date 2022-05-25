@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FirstAdminInvitationInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GetMembershipGraphResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -805,14 +799,6 @@ module Google
         end
       end
       
-      class FirstAdminInvitationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_first_admin, as: 'isFirstAdmin'
-          property :primary_domain, as: 'primaryDomain'
-        end
-      end
-      
       class GetMembershipGraphResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1343,8 +1329,6 @@ module Google
       class SendUserInvitationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_admin_invitation_info, as: 'firstAdminInvitationInfo', class: Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo, decorator: Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo::Representation
-      
         end
       end
       
