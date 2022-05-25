@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BackendMetastore
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,12 +100,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Federation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HiveMetastoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +125,6 @@ module Google
       end
       
       class ListBackupsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListFederationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -325,14 +307,6 @@ module Google
         end
       end
       
-      class BackendMetastore
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metastore_type, as: 'metastoreType'
-          property :name, as: 'name'
-        end
-      end
-      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -422,23 +396,6 @@ module Google
         end
       end
       
-      class Federation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :backend_metastores, as: 'backendMetastores', class: Google::Apis::MetastoreV1alpha::BackendMetastore, decorator: Google::Apis::MetastoreV1alpha::BackendMetastore::Representation
-      
-          property :create_time, as: 'createTime'
-          property :endpoint_uri, as: 'endpointUri'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :state_message, as: 'stateMessage'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-          property :version, as: 'version'
-        end
-      end
-      
       class HiveMetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -481,16 +438,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backups, as: 'backups', class: Google::Apis::MetastoreV1alpha::Backup, decorator: Google::Apis::MetastoreV1alpha::Backup::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListFederationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :federations, as: 'federations', class: Google::Apis::MetastoreV1alpha::Federation, decorator: Google::Apis::MetastoreV1alpha::Federation::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
