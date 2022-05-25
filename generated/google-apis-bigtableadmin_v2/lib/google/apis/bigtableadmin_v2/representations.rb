@@ -472,6 +472,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_utilization_percent, as: 'cpuUtilizationPercent'
+          property :storage_utilization_gib_per_node, as: 'storageUtilizationGibPerNode'
         end
       end
       
