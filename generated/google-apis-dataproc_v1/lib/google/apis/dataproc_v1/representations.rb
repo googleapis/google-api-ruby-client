@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthenticationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AutoscalingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,12 +269,6 @@ module Google
       end
       
       class InjectCredentialsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InjectableCredentialsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -723,15 +711,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_count, as: 'acceleratorCount'
           property :accelerator_type_uri, as: 'acceleratorTypeUri'
-        end
-      end
-      
-      class AuthenticationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authentication_type, as: 'authenticationType'
-          property :injectable_credentials_config, as: 'injectableCredentialsConfig', class: Google::Apis::DataprocV1::InjectableCredentialsConfig, decorator: Google::Apis::DataprocV1::InjectableCredentialsConfig::Representation
-      
         end
       end
       
@@ -1200,12 +1179,6 @@ module Google
         end
       end
       
-      class InjectableCredentialsConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class InstanceGroupAutoscalingPolicyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1668,8 +1641,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_image, as: 'containerImage'
           hash :properties, as: 'properties'
-          property :session_authentication_config, as: 'sessionAuthenticationConfig', class: Google::Apis::DataprocV1::AuthenticationConfig, decorator: Google::Apis::DataprocV1::AuthenticationConfig::Representation
-      
           property :version, as: 'version'
         end
       end
