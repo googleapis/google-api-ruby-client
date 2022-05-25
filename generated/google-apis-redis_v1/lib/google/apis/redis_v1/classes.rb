@@ -294,6 +294,12 @@ module Google
         # @return [String]
         attr_accessor :current_location_id
       
+        # Optional. The KMS key reference that the customer provides when trying to
+        # create the instance.
+        # Corresponds to the JSON property `customerManagedKey`
+        # @return [String]
+        attr_accessor :customer_managed_key
+      
         # An arbitrary and optional user-provided name for the instance.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -329,12 +335,6 @@ module Google
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::RedisV1::MaintenanceSchedule]
         attr_accessor :maintenance_schedule
-      
-        # Optional. The self service update maintenance version. The version is date
-        # based such as "20210712_00_00".
-        # Corresponds to the JSON property `maintenanceVersion`
-        # @return [String]
-        attr_accessor :maintenance_version
       
         # Required. Redis memory size in GiB.
         # Corresponds to the JSON property `memorySizeGb`
@@ -457,6 +457,11 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # Optional. reasons that causes instance in "SUSPENDED" state.
+        # Corresponds to the JSON property `suspensionReasons`
+        # @return [Array<String>]
+        attr_accessor :suspension_reasons
+      
         # Required. The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -480,13 +485,13 @@ module Google
           @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_location_id = args[:current_location_id] if args.key?(:current_location_id)
+          @customer_managed_key = args[:customer_managed_key] if args.key?(:customer_managed_key)
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
           @labels = args[:labels] if args.key?(:labels)
           @location_id = args[:location_id] if args.key?(:location_id)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
-          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
           @nodes = args[:nodes] if args.key?(:nodes)
@@ -504,6 +509,7 @@ module Google
           @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tier = args[:tier] if args.key?(:tier)
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
         end
