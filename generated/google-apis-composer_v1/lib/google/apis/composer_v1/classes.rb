@@ -700,6 +700,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+        # nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all
+        # destination addresses, except between pods traffic. See: https://cloud.google.
+        # com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        # Corresponds to the JSON property `enableIpMasqAgent`
+        # @return [Boolean]
+        attr_accessor :enable_ip_masq_agent
+        alias_method :enable_ip_masq_agent?, :enable_ip_masq_agent
+      
         # Configuration for controlling how IPs are allocated in the GKE cluster running
         # the Apache Airflow software.
         # Corresponds to the JSON property `ipAllocationPolicy`
@@ -795,6 +804,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @enable_ip_masq_agent = args[:enable_ip_masq_agent] if args.key?(:enable_ip_masq_agent)
           @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
           @location = args[:location] if args.key?(:location)
           @machine_type = args[:machine_type] if args.key?(:machine_type)

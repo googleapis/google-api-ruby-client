@@ -370,6 +370,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, as: 'diskSizeGb'
+          property :enable_ip_masq_agent, as: 'enableIpMasqAgent'
           property :ip_allocation_policy, as: 'ipAllocationPolicy', class: Google::Apis::ComposerV1::IpAllocationPolicy, decorator: Google::Apis::ComposerV1::IpAllocationPolicy::Representation
       
           property :location, as: 'location'
