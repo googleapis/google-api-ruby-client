@@ -274,9 +274,11 @@ module Google
           property :alternative_location_id, as: 'alternativeLocationId'
           property :auth_enabled, as: 'authEnabled'
           property :authorized_network, as: 'authorizedNetwork'
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :connect_mode, as: 'connectMode'
           property :create_time, as: 'createTime'
           property :current_location_id, as: 'currentLocationId'
+          property :customer_managed_key, as: 'customerManagedKey'
           property :display_name, as: 'displayName'
           property :host, as: 'host'
           hash :labels, as: 'labels'
@@ -306,6 +308,7 @@ module Google
       
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
+          collection :suspension_reasons, as: 'suspensionReasons'
           property :tier, as: 'tier'
           property :transit_encryption_mode, as: 'transitEncryptionMode'
         end
