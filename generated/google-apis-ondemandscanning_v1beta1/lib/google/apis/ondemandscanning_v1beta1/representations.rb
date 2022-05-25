@@ -196,37 +196,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaBuilder
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaCompleteness
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaConfigSource
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaInvocation
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaMaterial
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GrafeasV1SlsaProvenance02SlsaMetadata
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,7 +400,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SlsaProvenance02
+      class SlsaProvenanceZeroTwo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -752,14 +752,14 @@ module Google
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaBuilder
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaCompleteness
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
@@ -768,7 +768,7 @@ module Google
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaConfigSource
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :digest, as: 'digest'
@@ -777,17 +777,17 @@ module Google
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaInvocation
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :config_source, as: 'configSource', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaConfigSource, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaConfigSource::Representation
+          property :config_source, as: 'configSource', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource::Representation
       
           hash :environment, as: 'environment'
           hash :parameters, as: 'parameters'
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaMaterial
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :digest, as: 'digest'
@@ -795,13 +795,13 @@ module Google
         end
       end
       
-      class GrafeasV1SlsaProvenance02SlsaMetadata
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_finished_on, as: 'buildFinishedOn'
           property :build_invocation_id, as: 'buildInvocationId'
           property :build_started_on, as: 'buildStartedOn'
-          property :completeness, as: 'completeness', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaCompleteness, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaCompleteness::Representation
+          property :completeness, as: 'completeness', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness::Representation
       
           property :reproducible, as: 'reproducible'
         end
@@ -857,7 +857,7 @@ module Google
       
           property :slsa_provenance, as: 'slsaProvenance', class: Google::Apis::OndemandscanningV1beta1::SlsaProvenance, decorator: Google::Apis::OndemandscanningV1beta1::SlsaProvenance::Representation
       
-          property :slsa_provenance02, as: 'slsaProvenance02', class: Google::Apis::OndemandscanningV1beta1::SlsaProvenance02, decorator: Google::Apis::OndemandscanningV1beta1::SlsaProvenance02::Representation
+          property :slsa_provenance_zero_two, as: 'slsaProvenanceZeroTwo', class: Google::Apis::OndemandscanningV1beta1::SlsaProvenanceZeroTwo, decorator: Google::Apis::OndemandscanningV1beta1::SlsaProvenanceZeroTwo::Representation
       
           collection :subject, as: 'subject', class: Google::Apis::OndemandscanningV1beta1::Subject, decorator: Google::Apis::OndemandscanningV1beta1::Subject::Representation
       
@@ -1128,18 +1128,18 @@ module Google
         end
       end
       
-      class SlsaProvenance02
+      class SlsaProvenanceZeroTwo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :build_config, as: 'buildConfig'
           property :build_type, as: 'buildType'
-          property :builder, as: 'builder', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaBuilder, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaBuilder::Representation
+          property :builder, as: 'builder', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder::Representation
       
-          property :invocation, as: 'invocation', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaInvocation, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaInvocation::Representation
+          property :invocation, as: 'invocation', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation::Representation
       
-          collection :materials, as: 'materials', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaMaterial, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaMaterial::Representation
+          collection :materials, as: 'materials', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial::Representation
       
-          property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaMetadata, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenance02SlsaMetadata::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata::Representation
       
         end
       end
