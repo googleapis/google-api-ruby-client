@@ -222,6 +222,15 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
+        # Optional. Human-friendly label for the value, always in English. For example, '
+        # Spain' for the 'ES' country code. Whereas the dimension value is stable, this
+        # value label is subject to change. Do not assume that the (value, value_label)
+        # relationship is stable. For example, the ISO country code 'MK' changed its
+        # name recently to 'North Macedonia'.
+        # Corresponds to the JSON property `valueLabel`
+        # @return [String]
+        attr_accessor :value_label
+      
         def initialize(**args)
            update!(**args)
         end
@@ -231,6 +240,7 @@ module Google
           @dimension = args[:dimension] if args.key?(:dimension)
           @int64_value = args[:int64_value] if args.key?(:int64_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+          @value_label = args[:value_label] if args.key?(:value_label)
         end
       end
       
