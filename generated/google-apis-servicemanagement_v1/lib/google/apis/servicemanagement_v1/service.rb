@@ -354,7 +354,7 @@ module Google
         #   Management implementation accepts the following forms: - project:
         # @param [Fixnum] page_size
         #   The max number of items to include in the response list. Page size is 50 if
-        #   not specified. Maximum value is 100.
+        #   not specified. Maximum value is 500.
         # @param [String] page_token
         #   Token identifying which result to start with; returned by a previous list call.
         # @param [String] producer_project_id
