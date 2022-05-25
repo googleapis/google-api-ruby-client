@@ -270,8 +270,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -392,8 +393,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -430,8 +432,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -642,8 +645,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -828,8 +832,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -866,8 +871,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1258,8 +1264,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1461,8 +1468,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1499,8 +1507,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2741,8 +2750,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -3054,8 +3064,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3138,8 +3149,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4086,8 +4098,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -4318,8 +4331,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4356,8 +4370,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4594,11 +4609,13 @@ module Google
         #   String of comma-delimited FHIR resource types. If provided, only resources of
         #   the specified resource type(s) are returned.
         # @param [String] end_
-        #   The response includes records prior to the end date. If no end date is
-        #   provided, all records subsequent to the start date are in scope.
+        #   The response includes records prior to the end date. The date uses the format
+        #   YYYY-MM-DD. If no end date is provided, all records subsequent to the start
+        #   date are in scope.
         # @param [String] start
-        #   The response includes records subsequent to the start date. If no start date
-        #   is provided, all records prior to the end date are in scope.
+        #   The response includes records subsequent to the start date. The date uses the
+        #   format YYYY-MM-DD. If no start date is provided, all records prior to the end
+        #   date are in scope.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5663,8 +5680,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -5865,8 +5883,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5903,8 +5922,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::HealthcareV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
