@@ -3325,9 +3325,9 @@ module Google
         # internal HTTP(S) load balancers and Traffic Director and requires
         # GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is
         # non-persistent and lasts only until the end of the browser session (or
-        # equivalent). The maximum allowed value is one day (86,400). Not supported when
-        # the backend service is referenced by a URL map that is bound to target gRPC
-        # proxy that has validateForProxyless field set to true.
+        # equivalent). The maximum allowed value is two weeks (1,209,600). Not supported
+        # when the backend service is referenced by a URL map that is bound to target
+        # gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -36771,8 +36771,8 @@ module Google
       
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
-        # only possible behavior is TERMINATE. For more information, see Set VM
-        # availability policies.
+        # only possible behavior is TERMINATE. For more information, see Set VM host
+        # maintenance policy.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
@@ -37359,6 +37359,11 @@ module Google
       class SecurityPolicyAdaptiveProtectionConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration options for Adaptive Protection auto-deploy feature.
+        # Corresponds to the JSON property `autoDeployConfig`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig]
+        attr_accessor :auto_deploy_config
+      
         # Configuration options for L7 DDoS detection.
         # Corresponds to the JSON property `layer7DdosDefenseConfig`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
@@ -37370,7 +37375,45 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_deploy_config = args[:auto_deploy_config] if args.key?(:auto_deploy_config)
           @layer7_ddos_defense_config = args[:layer7_ddos_defense_config] if args.key?(:layer7_ddos_defense_config)
+        end
+      end
+      
+      # Configuration options for Adaptive Protection auto-deploy feature.
+      class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # 
+        # Corresponds to the JSON property `expirationSec`
+        # @return [Fixnum]
+        attr_accessor :expiration_sec
+      
+        # 
+        # Corresponds to the JSON property `impactedBaselineThreshold`
+        # @return [Float]
+        attr_accessor :impacted_baseline_threshold
+      
+        # 
+        # Corresponds to the JSON property `loadThreshold`
+        # @return [Float]
+        attr_accessor :load_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @expiration_sec = args[:expiration_sec] if args.key?(:expiration_sec)
+          @impacted_baseline_threshold = args[:impacted_baseline_threshold] if args.key?(:impacted_baseline_threshold)
+          @load_threshold = args[:load_threshold] if args.key?(:load_threshold)
         end
       end
       

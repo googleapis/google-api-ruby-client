@@ -4858,6 +4858,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15554,8 +15560,20 @@ module Google
       class SecurityPolicyAdaptiveProtectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_deploy_config, as: 'autoDeployConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig::Representation
+      
           property :layer7_ddos_defense_config, as: 'layer7DdosDefenseConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig::Representation
       
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_threshold, as: 'confidenceThreshold'
+          property :expiration_sec, as: 'expirationSec'
+          property :impacted_baseline_threshold, as: 'impactedBaselineThreshold'
+          property :load_threshold, as: 'loadThreshold'
         end
       end
       
