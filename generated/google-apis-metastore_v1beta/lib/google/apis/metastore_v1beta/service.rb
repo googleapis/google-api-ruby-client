@@ -123,136 +123,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a metastore federation in a project and location.
-        # @param [String] parent
-        #   Required. The relative resource name of the location in which to create a
-        #   federation service, in the following form:projects/`project_number`/locations/`
-        #   location_id`.
-        # @param [Google::Apis::MetastoreV1beta::Federation] federation_object
-        # @param [String] federation_id
-        #   Required. The ID of the metastore federation, which is used as the final
-        #   component of the metastore federation's name.This value must be between 2 and
-        #   63 characters long inclusive, begin with a letter, end with a letter or number,
-        #   and consist of alpha-numeric ASCII characters or hyphens.
-        # @param [String] request_id
-        #   Optional. A request ID. Specify a unique request ID to allow the server to
-        #   ignore the request if it has completed. The server will ignore subsequent
-        #   requests that provide a duplicate request ID for at least 60 minutes after the
-        #   first request.For example, if an initial request times out, followed by
-        #   another request with the same request ID, the server ignores the second
-        #   request to prevent the creation of duplicate commitments.The request ID must
-        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
-        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MetastoreV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_federation(parent, federation_object = nil, federation_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta/{+parent}/federations', options)
-          command.request_representation = Google::Apis::MetastoreV1beta::Federation::Representation
-          command.request_object = federation_object
-          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
-          command.response_class = Google::Apis::MetastoreV1beta::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['federationId'] = federation_id unless federation_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a single federation.
-        # @param [String] name
-        #   Required. The relative resource name of the metastore federation to delete, in
-        #   the following form:projects/`project_number`/locations/`location_id`/
-        #   federations/`federation_id`.
-        # @param [String] request_id
-        #   Optional. A request ID. Specify a unique request ID to allow the server to
-        #   ignore the request if it has completed. The server will ignore subsequent
-        #   requests that provide a duplicate request ID for at least 60 minutes after the
-        #   first request.For example, if an initial request times out, followed by
-        #   another request with the same request ID, the server ignores the second
-        #   request to prevent the creation of duplicate commitments.The request ID must
-        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
-        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MetastoreV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_federation(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
-          command.response_class = Google::Apis::MetastoreV1beta::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the details of a single federation.
-        # @param [String] name
-        #   Required. The relative resource name of the metastore federation to retrieve,
-        #   in the following form:projects/`project_number`/locations/`location_id`/
-        #   federations/`federation_id`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MetastoreV1beta::Federation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MetastoreV1beta::Federation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_federation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta/{+name}', options)
-          command.response_representation = Google::Apis::MetastoreV1beta::Federation::Representation
-          command.response_class = Google::Apis::MetastoreV1beta::Federation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -292,114 +168,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists federations in a project and location.
-        # @param [String] parent
-        #   Required. The relative resource name of the location of metastore federations
-        #   to list, in the following form: projects/`project_number`/locations/`
-        #   location_id`.
-        # @param [String] filter
-        #   Optional. The filter to apply to list results.
-        # @param [String] order_by
-        #   Optional. Specify the ordering of results as described in Sorting Order (https:
-        #   //cloud.google.com/apis/design/design_patterns#sorting_order). If not
-        #   specified, the results will be sorted in the default order.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of federations to return. The response may
-        #   contain less than the maximum number. If unspecified, no more than 500
-        #   services are returned. The maximum value is 1000; values above 1000 are
-        #   changed to 1000.
-        # @param [String] page_token
-        #   Optional. A page token, received from a previous ListFederationServices call.
-        #   Provide this token to retrieve the subsequent page.To retrieve the first page,
-        #   supply an empty page token.When paginating, other parameters provided to
-        #   ListFederationServices must match the call that provided the page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MetastoreV1beta::ListFederationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MetastoreV1beta::ListFederationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_federations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta/{+parent}/federations', options)
-          command.response_representation = Google::Apis::MetastoreV1beta::ListFederationsResponse::Representation
-          command.response_class = Google::Apis::MetastoreV1beta::ListFederationsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the fields of a federation.
-        # @param [String] name
-        #   Immutable. The relative resource name of the federation, of the form: projects/
-        #   `project_number`/locations/`location_id`/federations/`federation_id``.
-        # @param [Google::Apis::MetastoreV1beta::Federation] federation_object
-        # @param [String] request_id
-        #   Optional. A request ID. Specify a unique request ID to allow the server to
-        #   ignore the request if it has completed. The server will ignore subsequent
-        #   requests that provide a duplicate request ID for at least 60 minutes after the
-        #   first request.For example, if an initial request times out, followed by
-        #   another request with the same request ID, the server ignores the second
-        #   request to prevent the creation of duplicate commitments.The request ID must
-        #   be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#
-        #   Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        # @param [String] update_mask
-        #   Required. A field mask used to specify the fields to be overwritten in the
-        #   metastore federation resource by the update. Fields specified in the
-        #   update_mask are relative to the resource (not to the full request). A field is
-        #   overwritten if it is in the mask.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MetastoreV1beta::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::MetastoreV1beta::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_federation(name, federation_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta/{+name}', options)
-          command.request_representation = Google::Apis::MetastoreV1beta::Federation::Representation
-          command.request_object = federation_object
-          command.response_representation = Google::Apis::MetastoreV1beta::Operation::Representation
-          command.response_class = Google::Apis::MetastoreV1beta::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -436,8 +211,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -741,8 +517,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -959,8 +736,9 @@ module Google
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -997,8 +775,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1157,8 +936,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1253,8 +1033,9 @@ module Google
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1291,8 +1072,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1326,8 +1108,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1371,8 +1154,9 @@ module Google
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1409,8 +1193,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1444,8 +1229,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1489,8 +1275,9 @@ module Google
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1527,8 +1314,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::MetastoreV1beta::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
