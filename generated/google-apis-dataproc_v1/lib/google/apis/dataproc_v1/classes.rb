@@ -58,31 +58,6 @@ module Google
         end
       end
       
-      # Configuration for using injectable credentials or service account
-      class AuthenticationConfig
-        include Google::Apis::Core::Hashable
-      
-        # Authentication type for session execution.
-        # Corresponds to the JSON property `authenticationType`
-        # @return [String]
-        attr_accessor :authentication_type
-      
-        # Specific injectable credentials authentication parameters
-        # Corresponds to the JSON property `injectableCredentialsConfig`
-        # @return [Google::Apis::DataprocV1::InjectableCredentialsConfig]
-        attr_accessor :injectable_credentials_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
-          @injectable_credentials_config = args[:injectable_credentials_config] if args.key?(:injectable_credentials_config)
-        end
-      end
-      
       # Autoscaling Policy config associated with the cluster.
       class AutoscalingConfig
         include Google::Apis::Core::Hashable
@@ -1907,19 +1882,6 @@ module Google
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @credentials_ciphertext = args[:credentials_ciphertext] if args.key?(:credentials_ciphertext)
-        end
-      end
-      
-      # Specific injectable credentials authentication parameters
-      class InjectableCredentialsConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3772,11 +3734,6 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :properties
       
-        # Configuration for using injectable credentials or service account
-        # Corresponds to the JSON property `sessionAuthenticationConfig`
-        # @return [Google::Apis::DataprocV1::AuthenticationConfig]
-        attr_accessor :session_authentication_config
-      
         # Optional. Version of the batch runtime.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -3790,7 +3747,6 @@ module Google
         def update!(**args)
           @container_image = args[:container_image] if args.key?(:container_image)
           @properties = args[:properties] if args.key?(:properties)
-          @session_authentication_config = args[:session_authentication_config] if args.key?(:session_authentication_config)
           @version = args[:version] if args.key?(:version)
         end
       end
