@@ -3630,6 +3630,31 @@ module Google
         end
       end
       
+      # Updates the number of pinned table header rows in a table.
+      class PinTableHeaderRowsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The number of table rows to pin, where 0 implies that all rows are unpinned.
+        # Corresponds to the JSON property `pinnedHeaderRowsCount`
+        # @return [Fixnum]
+        attr_accessor :pinned_header_rows_count
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `tableStartLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :table_start_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pinned_header_rows_count = args[:pinned_header_rows_count] if args.key?(:pinned_header_rows_count)
+          @table_start_location = args[:table_start_location] if args.key?(:table_start_location)
+        end
+      end
+      
       # An object that is tethered to a Paragraph and positioned relative to the
       # beginning of the paragraph. A PositionedObject contains an EmbeddedObject such
       # as an image.
@@ -4087,6 +4112,11 @@ module Google
         # @return [Google::Apis::DocsV1::MergeTableCellsRequest]
         attr_accessor :merge_table_cells
       
+        # Updates the number of pinned table header rows in a table.
+        # Corresponds to the JSON property `pinTableHeaderRows`
+        # @return [Google::Apis::DocsV1::PinTableHeaderRowsRequest]
+        attr_accessor :pin_table_header_rows
+      
         # Replaces all instances of text matching a criteria with replace text.
         # Corresponds to the JSON property `replaceAllText`
         # @return [Google::Apis::DocsV1::ReplaceAllTextRequest]
@@ -4176,6 +4206,7 @@ module Google
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @merge_table_cells = args[:merge_table_cells] if args.key?(:merge_table_cells)
+          @pin_table_header_rows = args[:pin_table_header_rows] if args.key?(:pin_table_header_rows)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @replace_image = args[:replace_image] if args.key?(:replace_image)
           @replace_named_range_content = args[:replace_named_range_content] if args.key?(:replace_named_range_content)
@@ -5673,6 +5704,18 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :min_row_height
       
+        # Whether the row cannot overflow across page or column boundaries.
+        # Corresponds to the JSON property `preventOverflow`
+        # @return [Boolean]
+        attr_accessor :prevent_overflow
+        alias_method :prevent_overflow?, :prevent_overflow
+      
+        # Whether the row is a table header.
+        # Corresponds to the JSON property `tableHeader`
+        # @return [Boolean]
+        attr_accessor :table_header
+        alias_method :table_header?, :table_header
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5680,6 +5723,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @min_row_height = args[:min_row_height] if args.key?(:min_row_height)
+          @prevent_overflow = args[:prevent_overflow] if args.key?(:prevent_overflow)
+          @table_header = args[:table_header] if args.key?(:table_header)
         end
       end
       
