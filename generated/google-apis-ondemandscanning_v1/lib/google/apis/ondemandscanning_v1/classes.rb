@@ -1055,7 +1055,7 @@ module Google
       
       # Identifies the entity that executed the recipe, which is trusted to have
       # correctly performed the operation and populated this provenance.
-      class GrafeasV1SlsaProvenance02SlsaBuilder
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
         include Google::Apis::Core::Hashable
       
         # 
@@ -1075,7 +1075,7 @@ module Google
       
       # Indicates that the builder claims certain fields in this message to be
       # complete.
-      class GrafeasV1SlsaProvenance02SlsaCompleteness
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
         include Google::Apis::Core::Hashable
       
         # 
@@ -1110,7 +1110,7 @@ module Google
       
       # Describes where the config file that kicked off the build came from. This is
       # effectively a pointer to the source where buildConfig came from.
-      class GrafeasV1SlsaProvenance02SlsaConfigSource
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
         include Google::Apis::Core::Hashable
       
         # 
@@ -1141,13 +1141,13 @@ module Google
       end
       
       # Identifies the event that kicked off the build.
-      class GrafeasV1SlsaProvenance02SlsaInvocation
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
         include Google::Apis::Core::Hashable
       
         # Describes where the config file that kicked off the build came from. This is
         # effectively a pointer to the source where buildConfig came from.
         # Corresponds to the JSON property `configSource`
-        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaConfigSource]
+        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource]
         attr_accessor :config_source
       
         # 
@@ -1174,7 +1174,7 @@ module Google
       
       # The collection of artifacts that influenced the build including sources,
       # dependencies, build tools, base images, and so on.
-      class GrafeasV1SlsaProvenance02SlsaMaterial
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
         include Google::Apis::Core::Hashable
       
         # 
@@ -1199,7 +1199,7 @@ module Google
       end
       
       # Other properties of the build.
-      class GrafeasV1SlsaProvenance02SlsaMetadata
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
         include Google::Apis::Core::Hashable
       
         # 
@@ -1220,7 +1220,7 @@ module Google
         # Indicates that the builder claims certain fields in this message to be
         # complete.
         # Corresponds to the JSON property `completeness`
-        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaCompleteness]
+        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness]
         attr_accessor :completeness
       
         # 
@@ -1403,9 +1403,9 @@ module Google
         attr_accessor :slsa_provenance
       
         # See full explanation of fields at slsa.dev/provenance/v0.2.
-        # Corresponds to the JSON property `slsaProvenance02`
-        # @return [Google::Apis::OndemandscanningV1::SlsaProvenance02]
-        attr_accessor :slsa_provenance02
+        # Corresponds to the JSON property `slsaProvenanceZeroTwo`
+        # @return [Google::Apis::OndemandscanningV1::SlsaProvenanceZeroTwo]
+        attr_accessor :slsa_provenance_zero_two
       
         # 
         # Corresponds to the JSON property `subject`
@@ -1422,7 +1422,7 @@ module Google
           @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
           @provenance = args[:provenance] if args.key?(:provenance)
           @slsa_provenance = args[:slsa_provenance] if args.key?(:slsa_provenance)
-          @slsa_provenance02 = args[:slsa_provenance02] if args.key?(:slsa_provenance02)
+          @slsa_provenance_zero_two = args[:slsa_provenance_zero_two] if args.key?(:slsa_provenance_zero_two)
           @subject = args[:subject] if args.key?(:subject)
         end
       end
@@ -2447,7 +2447,7 @@ module Google
       end
       
       # See full explanation of fields at slsa.dev/provenance/v0.2.
-      class SlsaProvenance02
+      class SlsaProvenanceZeroTwo
         include Google::Apis::Core::Hashable
       
         # 
@@ -2463,22 +2463,22 @@ module Google
         # Identifies the entity that executed the recipe, which is trusted to have
         # correctly performed the operation and populated this provenance.
         # Corresponds to the JSON property `builder`
-        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaBuilder]
+        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder]
         attr_accessor :builder
       
         # Identifies the event that kicked off the build.
         # Corresponds to the JSON property `invocation`
-        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaInvocation]
+        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation]
         attr_accessor :invocation
       
         # 
         # Corresponds to the JSON property `materials`
-        # @return [Array<Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaMaterial>]
+        # @return [Array<Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>]
         attr_accessor :materials
       
         # Other properties of the build.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenance02SlsaMetadata]
+        # @return [Google::Apis::OndemandscanningV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata]
         attr_accessor :metadata
       
         def initialize(**args)
