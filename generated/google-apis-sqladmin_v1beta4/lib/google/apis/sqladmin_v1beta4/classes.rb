@@ -774,7 +774,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Any scheduled maintenancce for this instance.
+        # Any scheduled maintenance for this instance.
         # Corresponds to the JSON property `scheduledMaintenance`
         # @return [Google::Apis::SqladminV1beta4::SqlScheduledMaintenance]
         attr_accessor :scheduled_maintenance
@@ -3134,7 +3134,7 @@ module Google
         end
       end
       
-      # Any scheduled maintenancce for this instance.
+      # Any scheduled maintenance for this instance.
       class SqlScheduledMaintenance
         include Google::Apis::Core::Hashable
       
