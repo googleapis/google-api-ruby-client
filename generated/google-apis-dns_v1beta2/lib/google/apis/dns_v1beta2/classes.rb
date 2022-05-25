@@ -1794,6 +1794,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :gke_clusters_per_managed_zone
       
+        # Maximum allowed number of GKE clusters per policy.
+        # Corresponds to the JSON property `gkeClustersPerPolicy`
+        # @return [Fixnum]
+        attr_accessor :gke_clusters_per_policy
+      
         # Maximum allowed number of GKE clusters per response policy.
         # Corresponds to the JSON property `gkeClustersPerResponsePolicy`
         # @return [Fixnum]
@@ -1835,6 +1840,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :networks_per_policy
       
+        # Maximum allowed number of networks per response policy.
+        # Corresponds to the JSON property `networksPerResponsePolicy`
+        # @return [Fixnum]
+        attr_accessor :networks_per_response_policy
+      
         # Maximum allowed number of consumer peering zones per target network owned by
         # this producer project
         # Corresponds to the JSON property `peeringZonesPerTargetNetwork`
@@ -1850,6 +1860,11 @@ module Google
         # Corresponds to the JSON property `resourceRecordsPerRrset`
         # @return [Fixnum]
         attr_accessor :resource_records_per_rrset
+      
+        # Maximum allowed number of response policies per project.
+        # Corresponds to the JSON property `responsePolicies`
+        # @return [Fixnum]
+        attr_accessor :response_policies
       
         # Maximum allowed number of rules per response policy.
         # Corresponds to the JSON property `responsePolicyRulesPerResponsePolicy`
@@ -1900,6 +1915,7 @@ module Google
         def update!(**args)
           @dns_keys_per_managed_zone = args[:dns_keys_per_managed_zone] if args.key?(:dns_keys_per_managed_zone)
           @gke_clusters_per_managed_zone = args[:gke_clusters_per_managed_zone] if args.key?(:gke_clusters_per_managed_zone)
+          @gke_clusters_per_policy = args[:gke_clusters_per_policy] if args.key?(:gke_clusters_per_policy)
           @gke_clusters_per_response_policy = args[:gke_clusters_per_response_policy] if args.key?(:gke_clusters_per_response_policy)
           @items_per_routing_policy = args[:items_per_routing_policy] if args.key?(:items_per_routing_policy)
           @kind = args[:kind] if args.key?(:kind)
@@ -1908,9 +1924,11 @@ module Google
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
+          @networks_per_response_policy = args[:networks_per_response_policy] if args.key?(:networks_per_response_policy)
           @peering_zones_per_target_network = args[:peering_zones_per_target_network] if args.key?(:peering_zones_per_target_network)
           @policies = args[:policies] if args.key?(:policies)
           @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
+          @response_policies = args[:response_policies] if args.key?(:response_policies)
           @response_policy_rules_per_response_policy = args[:response_policy_rules_per_response_policy] if args.key?(:response_policy_rules_per_response_policy)
           @rrset_additions_per_change = args[:rrset_additions_per_change] if args.key?(:rrset_additions_per_change)
           @rrset_deletions_per_change = args[:rrset_deletions_per_change] if args.key?(:rrset_deletions_per_change)
