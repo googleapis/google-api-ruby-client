@@ -360,7 +360,7 @@ module Google
         # options.
         # @param [String] name
         #   Required. Immutable. The fully qualified resource name of the attribute config.
-        #   Format: "projects/*/locations/*/catalogs/*/attributesConfig"
+        #   Format: `projects/*/locations/*/catalogs/*/attributesConfig`
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAttributesConfig] google_cloud_retail_v2beta_attributes_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided AttributesConfig to update. The
@@ -398,8 +398,8 @@ module Google
         
         # Updates the CompletionConfigs.
         # @param [String] name
-        #   Required. Immutable. Fully qualified name projects/*/locations/*/catalogs/*/
-        #   completionConfig
+        #   Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/
+        #   completionConfig`
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionConfig] google_cloud_retail_v2beta_completion_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided CompletionConfig to update. The
