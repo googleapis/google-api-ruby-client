@@ -1300,8 +1300,9 @@ module Google
         #   private properties. This parameter might be repeated multiple times to return
         #   events that match all given constraints.
         # @param [String] q
-        #   Free text search terms to find events that match these terms in any field,
-        #   except for extended properties. Optional.
+        #   Free text search terms to find events that match these terms in the following
+        #   fields: summary, description, location, attendee's displayName, attendee's
+        #   email. Optional.
         # @param [Array<String>, String] shared_extended_property
         #   Extended properties constraint specified as propertyName=value. Matches only
         #   shared properties. This parameter might be repeated multiple times to return
@@ -1681,8 +1682,9 @@ module Google
         #   private properties. This parameter might be repeated multiple times to return
         #   events that match all given constraints.
         # @param [String] q
-        #   Free text search terms to find events that match these terms in any field,
-        #   except for extended properties. Optional.
+        #   Free text search terms to find events that match these terms in the following
+        #   fields: summary, description, location, attendee's displayName, attendee's
+        #   email. Optional.
         # @param [Array<String>, String] shared_extended_property
         #   Extended properties constraint specified as propertyName=value. Matches only
         #   shared properties. This parameter might be repeated multiple times to return
