@@ -2658,6 +2658,16 @@ module Google
         # @return [String]
         attr_accessor :require_password_unlock
       
+        # Controls whether a unified lock is allowed for the device and the work profile,
+        # on devices running Android 9 and above with a work profile. This can be set
+        # only if password_scope is set to SCOPE_PROFILE, the policy will be rejected
+        # otherwise. If user has not set a separate work lock and this field is set to
+        # REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with
+        # nonComplianceReason set to USER_ACTION.
+        # Corresponds to the JSON property `unifiedLockSettings`
+        # @return [String]
+        attr_accessor :unified_lock_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2677,6 +2687,7 @@ module Google
           @password_quality = args[:password_quality] if args.key?(:password_quality)
           @password_scope = args[:password_scope] if args.key?(:password_scope)
           @require_password_unlock = args[:require_password_unlock] if args.key?(:require_password_unlock)
+          @unified_lock_settings = args[:unified_lock_settings] if args.key?(:unified_lock_settings)
         end
       end
       

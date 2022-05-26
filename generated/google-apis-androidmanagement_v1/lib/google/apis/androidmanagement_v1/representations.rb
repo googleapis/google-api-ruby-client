@@ -1120,6 +1120,7 @@ module Google
           property :password_quality, as: 'passwordQuality'
           property :password_scope, as: 'passwordScope'
           property :require_password_unlock, as: 'requirePasswordUnlock'
+          property :unified_lock_settings, as: 'unifiedLockSettings'
         end
       end
       
