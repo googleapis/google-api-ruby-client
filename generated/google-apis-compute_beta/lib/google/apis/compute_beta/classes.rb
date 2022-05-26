@@ -3137,9 +3137,9 @@ module Google
         # internal HTTP(S) load balancers and Traffic Director and requires
         # GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is
         # non-persistent and lasts only until the end of the browser session (or
-        # equivalent). The maximum allowed value is one day (86,400). Not supported when
-        # the backend service is referenced by a URL map that is bound to target gRPC
-        # proxy that has validateForProxyless field set to true.
+        # equivalent). The maximum allowed value is two weeks (1,209,600). Not supported
+        # when the backend service is referenced by a URL map that is bound to target
+        # gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -32298,8 +32298,8 @@ module Google
       
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
-        # only possible behavior is TERMINATE. For more information, see Set VM
-        # availability policies.
+        # only possible behavior is TERMINATE. For more information, see Set VM host
+        # maintenance policy.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
@@ -32846,6 +32846,11 @@ module Google
       class SecurityPolicyAdaptiveProtectionConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration options for Adaptive Protection auto-deploy feature.
+        # Corresponds to the JSON property `autoDeployConfig`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig]
+        attr_accessor :auto_deploy_config
+      
         # Configuration options for L7 DDoS detection.
         # Corresponds to the JSON property `layer7DdosDefenseConfig`
         # @return [Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig]
@@ -32857,7 +32862,45 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_deploy_config = args[:auto_deploy_config] if args.key?(:auto_deploy_config)
           @layer7_ddos_defense_config = args[:layer7_ddos_defense_config] if args.key?(:layer7_ddos_defense_config)
+        end
+      end
+      
+      # Configuration options for Adaptive Protection auto-deploy feature.
+      class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # 
+        # Corresponds to the JSON property `expirationSec`
+        # @return [Fixnum]
+        attr_accessor :expiration_sec
+      
+        # 
+        # Corresponds to the JSON property `impactedBaselineThreshold`
+        # @return [Float]
+        attr_accessor :impacted_baseline_threshold
+      
+        # 
+        # Corresponds to the JSON property `loadThreshold`
+        # @return [Float]
+        attr_accessor :load_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @expiration_sec = args[:expiration_sec] if args.key?(:expiration_sec)
+          @impacted_baseline_threshold = args[:impacted_baseline_threshold] if args.key?(:impacted_baseline_threshold)
+          @load_threshold = args[:load_threshold] if args.key?(:load_threshold)
         end
       end
       
@@ -34701,6 +34744,16 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
+        # [Output Only] URL of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicy`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy
+      
+        # [Output Only] ID of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicyId`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy_id
+      
         # [Output Only] The status of the snapshot. This can be CREATING, DELETING,
         # FAILED, READY, or UPLOADING.
         # Corresponds to the JSON property `status`
@@ -34760,6 +34813,8 @@ module Google
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
+          @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
+          @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
           @status = args[:status] if args.key?(:status)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
