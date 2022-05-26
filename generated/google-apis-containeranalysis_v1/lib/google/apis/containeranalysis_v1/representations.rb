@@ -454,6 +454,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HashProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +689,12 @@ module Google
       end
       
       class SlsaProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenanceZeroTwo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1526,6 +1568,61 @@ module Google
         end
       end
       
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+        end
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
+          property :materials, as: 'materials'
+          property :parameters, as: 'parameters'
+        end
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :entry_point, as: 'entryPoint'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_source, as: 'configSource', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource::Representation
+      
+          hash :environment, as: 'environment'
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_finished_on, as: 'buildFinishedOn'
+          property :build_invocation_id, as: 'buildInvocationId'
+          property :build_started_on, as: 'buildStartedOn'
+          property :completeness, as: 'completeness', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness::Representation
+      
+          property :reproducible, as: 'reproducible'
+        end
+      end
+      
       class HashProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1591,6 +1688,8 @@ module Google
           property :provenance, as: 'provenance', class: Google::Apis::ContaineranalysisV1::InTotoProvenance, decorator: Google::Apis::ContaineranalysisV1::InTotoProvenance::Representation
       
           property :slsa_provenance, as: 'slsaProvenance', class: Google::Apis::ContaineranalysisV1::SlsaProvenance, decorator: Google::Apis::ContaineranalysisV1::SlsaProvenance::Representation
+      
+          property :slsa_provenance_zero_two, as: 'slsaProvenanceZeroTwo', class: Google::Apis::ContaineranalysisV1::SlsaProvenanceZeroTwo, decorator: Google::Apis::ContaineranalysisV1::SlsaProvenanceZeroTwo::Representation
       
           collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1::Subject, decorator: Google::Apis::ContaineranalysisV1::Subject::Representation
       
@@ -1921,6 +2020,22 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ContaineranalysisV1::SlsaMetadata, decorator: Google::Apis::ContaineranalysisV1::SlsaMetadata::Representation
       
           property :recipe, as: 'recipe', class: Google::Apis::ContaineranalysisV1::SlsaRecipe, decorator: Google::Apis::ContaineranalysisV1::SlsaRecipe::Representation
+      
+        end
+      end
+      
+      class SlsaProvenanceZeroTwo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :build_config, as: 'buildConfig'
+          property :build_type, as: 'buildType'
+          property :builder, as: 'builder', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder::Representation
+      
+          property :invocation, as: 'invocation', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata, decorator: Google::Apis::ContaineranalysisV1::GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata::Representation
       
         end
       end
