@@ -3237,6 +3237,201 @@ module Google
         end
       end
       
+      # Identifies the entity that executed the recipe, which is trusted to have
+      # correctly performed the operation and populated this provenance.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder
+        include Google::Apis::Core::Hashable
+      
+        # URI indicating the builder’s identity.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Indicates that the builder claims certain fields in this message to be
+      # complete.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness
+        include Google::Apis::Core::Hashable
+      
+        # If true, the builder claims that invocation.environment is complete.
+        # Corresponds to the JSON property `environment`
+        # @return [Boolean]
+        attr_accessor :environment
+        alias_method :environment?, :environment
+      
+        # If true, the builder claims that materials is complete.
+        # Corresponds to the JSON property `materials`
+        # @return [Boolean]
+        attr_accessor :materials
+        alias_method :materials?, :materials
+      
+        # If true, the builder claims that invocation.parameters is complete.
+        # Corresponds to the JSON property `parameters`
+        # @return [Boolean]
+        attr_accessor :parameters
+        alias_method :parameters?, :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
+          @materials = args[:materials] if args.key?(:materials)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Describes where the config file that kicked off the build came from. This is
+      # effectively a pointer to the source where buildConfig came from.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource
+        include Google::Apis::Core::Hashable
+      
+        # Collection of cryptographic digests for the contents of the artifact specified
+        # by invocation.configSource.uri.
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # String identifying the entry point into the build.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # URI indicating the identity of the source of the config.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Identifies the event that kicked off the build.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
+        include Google::Apis::Core::Hashable
+      
+        # Describes where the config file that kicked off the build came from. This is
+        # effectively a pointer to the source where buildConfig came from.
+        # Corresponds to the JSON property `configSource`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource]
+        attr_accessor :config_source
+      
+        # Any other builder-controlled inputs necessary for correctly evaluating the
+        # build.
+        # Corresponds to the JSON property `environment`
+        # @return [Hash<String,Object>]
+        attr_accessor :environment
+      
+        # Collection of all external inputs that influenced the build on top of
+        # invocation.configSource.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_source = args[:config_source] if args.key?(:config_source)
+          @environment = args[:environment] if args.key?(:environment)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # The collection of artifacts that influenced the build including sources,
+      # dependencies, build tools, base images, and so on.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial
+        include Google::Apis::Core::Hashable
+      
+        # Collection of cryptographic digests for the contents of this artifact.
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # The method by which this artifact was referenced during the build.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Other properties of the build.
+      class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of when the build completed.
+        # Corresponds to the JSON property `buildFinishedOn`
+        # @return [String]
+        attr_accessor :build_finished_on
+      
+        # Identifies this particular build invocation, which can be useful for finding
+        # associated logs or other ad-hoc analysis.
+        # Corresponds to the JSON property `buildInvocationId`
+        # @return [String]
+        attr_accessor :build_invocation_id
+      
+        # The timestamp of when the build started.
+        # Corresponds to the JSON property `buildStartedOn`
+        # @return [String]
+        attr_accessor :build_started_on
+      
+        # Indicates that the builder claims certain fields in this message to be
+        # complete.
+        # Corresponds to the JSON property `completeness`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness]
+        attr_accessor :completeness
+      
+        # If true, the builder claims that running invocation on materials will produce
+        # bit-for-bit identical output.
+        # Corresponds to the JSON property `reproducible`
+        # @return [Boolean]
+        attr_accessor :reproducible
+        alias_method :reproducible?, :reproducible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_finished_on = args[:build_finished_on] if args.key?(:build_finished_on)
+          @build_invocation_id = args[:build_invocation_id] if args.key?(:build_invocation_id)
+          @build_started_on = args[:build_started_on] if args.key?(:build_started_on)
+          @completeness = args[:completeness] if args.key?(:completeness)
+          @reproducible = args[:reproducible] if args.key?(:reproducible)
+        end
+      end
+      
       # A SourceContext is a reference to a tree of files. A SourceContext together
       # with a path point to a unique revision of a single file or directory.
       class GoogleDevtoolsContaineranalysisV1alpha1SourceContext
@@ -3360,7 +3555,7 @@ module Google
         # @return [String]
         attr_accessor :predicate_type
       
-        # provenance is a predicate of type intotoprovenance
+        # Generic Grafeas provenance.
         # Corresponds to the JSON property `provenance`
         # @return [Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance]
         attr_accessor :provenance
@@ -3369,6 +3564,12 @@ module Google
         # Corresponds to the JSON property `slsaProvenance`
         # @return [Google::Apis::ContaineranalysisV1alpha1::SlsaProvenance]
         attr_accessor :slsa_provenance
+      
+        # SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See
+        # full explanation of fields at slsa.dev/provenance/v0.2.
+        # Corresponds to the JSON property `slsaProvenanceZeroTwo`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::SlsaProvenanceZeroTwo]
+        attr_accessor :slsa_provenance_zero_two
       
         # subject is the subjects of the intoto statement
         # Corresponds to the JSON property `subject`
@@ -3385,6 +3586,7 @@ module Google
           @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
           @provenance = args[:provenance] if args.key?(:provenance)
           @slsa_provenance = args[:slsa_provenance] if args.key?(:slsa_provenance)
+          @slsa_provenance_zero_two = args[:slsa_provenance_zero_two] if args.key?(:slsa_provenance_zero_two)
           @subject = args[:subject] if args.key?(:subject)
         end
       end
@@ -5126,6 +5328,58 @@ module Google
           @materials = args[:materials] if args.key?(:materials)
           @metadata = args[:metadata] if args.key?(:metadata)
           @recipe = args[:recipe] if args.key?(:recipe)
+        end
+      end
+      
+      # SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See
+      # full explanation of fields at slsa.dev/provenance/v0.2.
+      class SlsaProvenanceZeroTwo
+        include Google::Apis::Core::Hashable
+      
+        # Lists the steps in the build.
+        # Corresponds to the JSON property `buildConfig`
+        # @return [Hash<String,Object>]
+        attr_accessor :build_config
+      
+        # URI indicating what type of build was performed.
+        # Corresponds to the JSON property `buildType`
+        # @return [String]
+        attr_accessor :build_type
+      
+        # Identifies the entity that executed the recipe, which is trusted to have
+        # correctly performed the operation and populated this provenance.
+        # Corresponds to the JSON property `builder`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder]
+        attr_accessor :builder
+      
+        # Identifies the event that kicked off the build.
+        # Corresponds to the JSON property `invocation`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation]
+        attr_accessor :invocation
+      
+        # The collection of artifacts that influenced the build including sources,
+        # dependencies, build tools, base images, and so on.
+        # Corresponds to the JSON property `materials`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>]
+        attr_accessor :materials
+      
+        # Other properties of the build.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_config = args[:build_config] if args.key?(:build_config)
+          @build_type = args[:build_type] if args.key?(:build_type)
+          @builder = args[:builder] if args.key?(:builder)
+          @invocation = args[:invocation] if args.key?(:invocation)
+          @materials = args[:materials] if args.key?(:materials)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
