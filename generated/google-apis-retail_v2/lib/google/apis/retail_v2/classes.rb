@@ -2983,10 +2983,11 @@ module Google
         # Only get facet for the given restricted values. For example, when using "
         # pickupInStore" as key and set restricted values to ["store123", "store456"],
         # only facets for "store123" and "store456" are returned. Only supported on
-        # textual fields and fulfillments. Maximum is 20. Must be set for the
-        # fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery *
-        # nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3
-        # * customFulfillment4 * customFulfillment5
+        # predefined textual fields, custom textual attributes and fulfillments. Maximum
+        # is 20. Must be set for the fulfillment facet keys: * pickupInStore *
+        # shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 *
+        # customFulfillment2 * customFulfillment3 * customFulfillment4 *
+        # customFulfillment5
         # Corresponds to the JSON property `restrictedValues`
         # @return [Array<String>]
         attr_accessor :restricted_values
