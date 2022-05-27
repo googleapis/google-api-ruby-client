@@ -1190,6 +1190,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EnvironmentVersionConfig>]
         attr_accessor :version_configs
       
+        # Configuration for webhooks.
+        # Corresponds to the JSON property `webhookConfig`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3EnvironmentWebhookConfig]
+        attr_accessor :webhook_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1202,6 +1207,7 @@ module Google
           @test_cases_config = args[:test_cases_config] if args.key?(:test_cases_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_configs = args[:version_configs] if args.key?(:version_configs)
+          @webhook_config = args[:webhook_config] if args.key?(:webhook_config)
         end
       end
       
@@ -1257,6 +1263,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for webhooks.
+      class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+        include Google::Apis::Core::Hashable
+      
+        # The list of webhooks to override for the agent environment. The webhook must
+        # exist in the agent. You can override fields in `generic_web_service` and `
+        # service_directory`.
+        # Corresponds to the JSON property `webhookOverrides`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3Webhook>]
+        attr_accessor :webhook_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @webhook_overrides = args[:webhook_overrides] if args.key?(:webhook_overrides)
         end
       end
       
@@ -6873,6 +6900,11 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>]
         attr_accessor :version_configs
       
+        # Configuration for webhooks.
+        # Corresponds to the JSON property `webhookConfig`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig]
+        attr_accessor :webhook_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6885,6 +6917,7 @@ module Google
           @test_cases_config = args[:test_cases_config] if args.key?(:test_cases_config)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_configs = args[:version_configs] if args.key?(:version_configs)
+          @webhook_config = args[:webhook_config] if args.key?(:webhook_config)
         end
       end
       
@@ -6940,6 +6973,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for webhooks.
+      class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig
+        include Google::Apis::Core::Hashable
+      
+        # The list of webhooks to override for the agent environment. The webhook must
+        # exist in the agent. You can override fields in `generic_web_service` and `
+        # service_directory`.
+        # Corresponds to the JSON property `webhookOverrides`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1Webhook>]
+        attr_accessor :webhook_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @webhook_overrides = args[:webhook_overrides] if args.key?(:webhook_overrides)
         end
       end
       
@@ -8910,6 +8964,115 @@ module Google
         end
       end
       
+      # Webhooks host the developer's business logic. During a session, webhooks allow
+      # the developer to use the data extracted by Dialogflow's natural language
+      # processing to generate dynamic responses, validate collected data, or trigger
+      # actions on the backend.
+      class GoogleCloudDialogflowCxV3beta1Webhook
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the webhook is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Required. The human-readable name of the webhook, unique within the agent.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents configuration for a generic web service.
+        # Corresponds to the JSON property `genericWebService`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService]
+        attr_accessor :generic_web_service
+      
+        # The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook
+        # method. Webhooks.CreateWebhook populates the name automatically. Format: `
+        # projects//locations//agents//webhooks/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents configuration for a [Service Directory](https://cloud.google.com/
+        # service-directory) service.
+        # Corresponds to the JSON property `serviceDirectory`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig]
+        attr_accessor :service_directory
+      
+        # Webhook execution timeout. Execution is considered failed if Dialogflow doesn'
+        # t receive a response from webhook at the end of the timeout period. Defaults
+        # to 5 seconds, maximum allowed timeout is 30 seconds.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @generic_web_service = args[:generic_web_service] if args.key?(:generic_web_service)
+          @name = args[:name] if args.key?(:name)
+          @service_directory = args[:service_directory] if args.key?(:service_directory)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Represents configuration for a generic web service.
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies a list of allowed custom CA certificates (in DER format)
+        # for HTTPS verification. This overrides the default SSL trust store. If this is
+        # empty or unspecified, Dialogflow will use Google's default trust store to
+        # verify certificates. N.B. Make sure the HTTPS server certificates are signed
+        # with "subject alt name". For instance a certificate can be self-signed using
+        # the following command, ``` openssl x509 -req -days 200 -in example.com.csr \ -
+        # signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\
+        # nsubjectAltName='DNS:www.example.com'") ```
+        # Corresponds to the JSON property `allowedCaCerts`
+        # @return [Array<String>]
+        attr_accessor :allowed_ca_certs
+      
+        # The password for HTTP Basic authentication.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The HTTP request headers to send together with webhook requests.
+        # Corresponds to the JSON property `requestHeaders`
+        # @return [Hash<String,String>]
+        attr_accessor :request_headers
+      
+        # Required. The webhook URI for receiving POST requests. It must use https
+        # protocol.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The user name for HTTP Basic authentication.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
+          @password = args[:password] if args.key?(:password)
+          @request_headers = args[:request_headers] if args.key?(:request_headers)
+          @uri = args[:uri] if args.key?(:uri)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # The request message for a webhook call. The request is sent as a JSON object
       # and the field names will be presented in camel cases.
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
@@ -9197,6 +9360,35 @@ module Google
         def update!(**args)
           @merge_behavior = args[:merge_behavior] if args.key?(:merge_behavior)
           @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Represents configuration for a [Service Directory](https://cloud.google.com/
+      # service-directory) service.
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents configuration for a generic web service.
+        # Corresponds to the JSON property `genericWebService`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService]
+        attr_accessor :generic_web_service
+      
+        # Required. The name of [Service Directory](https://cloud.google.com/service-
+        # directory) service. Format: `projects//locations//namespaces//services/`. `
+        # Location ID` of the service directory must be the same as the location of the
+        # agent.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generic_web_service = args[:generic_web_service] if args.key?(:generic_web_service)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
