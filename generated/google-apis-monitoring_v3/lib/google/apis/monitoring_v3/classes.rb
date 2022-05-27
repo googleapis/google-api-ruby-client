@@ -269,8 +269,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the App Engine module underlying this service. Corresponds to the
-        # module_id resource label in the gae_app monitored resource: https://cloud.
-        # google.com/monitoring/api/resources#tag_gae_app
+        # module_id resource label in the gae_app monitored resource (https://cloud.
+        # google.com/monitoring/api/resources#tag_gae_app).
         # Corresponds to the JSON property `moduleId`
         # @return [String]
         attr_accessor :module_id
@@ -444,8 +444,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the Cloud Endpoints service underlying this service. Corresponds
-        # to the service resource label in the api monitored resource: https://cloud.
-        # google.com/monitoring/api/resources#tag_api
+        # to the service resource label in the api monitored resource (https://cloud.
+        # google.com/monitoring/api/resources#tag_api).
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -465,15 +465,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The location the service is run. Corresponds to the location resource label in
-        # the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/
-        # api/resources#tag_cloud_run_revision
+        # the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/
+        # api/resources#tag_cloud_run_revision).
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
         # The name of the Cloud Run service. Corresponds to the service_name resource
-        # label in the cloud_run_revision monitored resource: https://cloud.google.com/
-        # monitoring/api/resources#tag_cloud_run_revision
+        # label in the cloud_run_revision monitored resource (https://cloud.google.com/
+        # monitoring/api/resources#tag_cloud_run_revision).
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
@@ -1409,7 +1409,8 @@ module Google
       end
       
       # GKE Namespace. The field names correspond to the resource metadata labels on
-      # monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+      # monitored resources that fall under a namespace (for example, k8s_container or
+      # k8s_pod).
       class GkeNamespace
         include Google::Apis::Core::Hashable
       
@@ -1450,8 +1451,8 @@ module Google
       
       # GKE Service. The "service" here represents a Kubernetes service object (https:/
       # /kubernetes.io/docs/concepts/services-networking/service). The field names
-      # correspond to the resource labels on k8s_service monitored resources: https://
-      # cloud.google.com/monitoring/api/resources#tag_k8s_service
+      # correspond to the resource labels on k8s_service monitored resources (https://
+      # cloud.google.com/monitoring/api/resources#tag_k8s_service).
       class GkeService
         include Google::Apis::Core::Hashable
       
@@ -1497,8 +1498,8 @@ module Google
       end
       
       # A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to
-      # the metadata labels on monitored resources that fall under a workload (e.g.
-      # k8s_container, k8s_pod).
+      # the metadata labels on monitored resources that fall under a workload (for
+      # example, k8s_container or k8s_pod).
       class GkeWorkload
         include Google::Apis::Core::Hashable
       
@@ -1529,7 +1530,7 @@ module Google
         # @return [String]
         attr_accessor :top_level_controller_name
       
-        # The type of this workload (e.g. "Deployment" or "DaemonSet")
+        # The type of this workload (for example, "Deployment" or "DaemonSet")
         # Corresponds to the JSON property `topLevelControllerType`
         # @return [String]
         attr_accessor :top_level_controller_type
@@ -3680,22 +3681,23 @@ module Google
         attr_accessor :display_name
       
         # GKE Namespace. The field names correspond to the resource metadata labels on
-        # monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        # monitored resources that fall under a namespace (for example, k8s_container or
+        # k8s_pod).
         # Corresponds to the JSON property `gkeNamespace`
         # @return [Google::Apis::MonitoringV3::GkeNamespace]
         attr_accessor :gke_namespace
       
         # GKE Service. The "service" here represents a Kubernetes service object (https:/
         # /kubernetes.io/docs/concepts/services-networking/service). The field names
-        # correspond to the resource labels on k8s_service monitored resources: https://
-        # cloud.google.com/monitoring/api/resources#tag_k8s_service
+        # correspond to the resource labels on k8s_service monitored resources (https://
+        # cloud.google.com/monitoring/api/resources#tag_k8s_service).
         # Corresponds to the JSON property `gkeService`
         # @return [Google::Apis::MonitoringV3::GkeService]
         attr_accessor :gke_service
       
         # A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to
-        # the metadata labels on monitored resources that fall under a workload (e.g.
-        # k8s_container, k8s_pod).
+        # the metadata labels on monitored resources that fall under a workload (for
+        # example, k8s_container or k8s_pod).
         # Corresponds to the JSON property `gkeWorkload`
         # @return [Google::Apis::MonitoringV3::GkeWorkload]
         attr_accessor :gke_workload
