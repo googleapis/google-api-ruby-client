@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3EventHandler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +460,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3Webhook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +509,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -587,6 +611,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -928,6 +958,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1Webhook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -965,6 +1007,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2837,6 +2885,8 @@ module Google
           property :update_time, as: 'updateTime'
           collection :version_configs, as: 'versionConfigs', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EnvironmentVersionConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EnvironmentVersionConfig::Representation
       
+          property :webhook_config, as: 'webhookConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EnvironmentWebhookConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3EnvironmentWebhookConfig::Representation
+      
         end
       end
       
@@ -2853,6 +2903,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :webhook_overrides, as: 'webhookOverrides', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Webhook, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3Webhook::Representation
+      
         end
       end
       
@@ -3391,6 +3449,31 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3Webhook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebService, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebService::Representation
+      
+          property :name, as: 'name'
+          property :service_directory, as: 'serviceDirectory', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig::Representation
+      
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookGenericWebService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_ca_certs, as: 'allowedCaCerts'
+          property :password, as: 'password'
+          hash :request_headers, as: 'requestHeaders'
+          property :uri, as: 'uri'
+          property :username, as: 'username'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3WebhookRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3471,6 +3554,15 @@ module Google
           property :merge_behavior, as: 'mergeBehavior'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebService, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3WebhookGenericWebService::Representation
+      
+          property :service, as: 'service'
         end
       end
       
@@ -3607,6 +3699,8 @@ module Google
           property :update_time, as: 'updateTime'
           collection :version_configs, as: 'versionConfigs', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig::Representation
       
+          property :webhook_config, as: 'webhookConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig::Representation
+      
         end
       end
       
@@ -3623,6 +3717,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :webhook_overrides, as: 'webhookOverrides', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Webhook, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Webhook::Representation
+      
         end
       end
       
@@ -4161,6 +4263,31 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1Webhook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService::Representation
+      
+          property :name, as: 'name'
+          property :service_directory, as: 'serviceDirectory', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig::Representation
+      
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_ca_certs, as: 'allowedCaCerts'
+          property :password, as: 'password'
+          hash :request_headers, as: 'requestHeaders'
+          property :uri, as: 'uri'
+          property :username, as: 'username'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4241,6 +4368,15 @@ module Google
           property :merge_behavior, as: 'mergeBehavior'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService::Representation
+      
+          property :service, as: 'service'
         end
       end
       
