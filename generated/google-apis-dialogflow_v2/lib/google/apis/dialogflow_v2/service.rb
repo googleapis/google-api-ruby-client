@@ -3001,11 +3001,6 @@ module Google
         # @param [String] parent
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
-        # @param [String] filter
-        #   Required. Filters to restrict results to specific answer records. Filter on
-        #   answer record type. Currently predicates on `type` is supported, valid values
-        #   are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more information about filtering, see [
-        #   API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
@@ -3030,12 +3025,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_answer_records(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_answer_records(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/answerRecords', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListAnswerRecordsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListAnswerRecordsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -7338,11 +7332,6 @@ module Google
         # @param [String] parent
         #   Required. The project to list all answer records for in reverse chronological
         #   order. Format: `projects//locations/`.
-        # @param [String] filter
-        #   Required. Filters to restrict results to specific answer records. Filter on
-        #   answer record type. Currently predicates on `type` is supported, valid values
-        #   are `ARTICLE_ANSWER`, `FAQ_ANSWER`. For more information about filtering, see [
-        #   API Filtering](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of records to return in a single page. The server
         #   may return fewer records than this. If unspecified, we use 10. The maximum is
@@ -7367,12 +7356,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_answer_records(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_answer_records(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/answerRecords', options)
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListAnswerRecordsResponse::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListAnswerRecordsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
