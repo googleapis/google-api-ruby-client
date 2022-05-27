@@ -762,6 +762,12 @@ module Google
       class FetchInventoryResponse
         include Google::Apis::Core::Hashable
       
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # Output only. The timestamp when the source was last queried (if the result is
         # from the cache).
         # Corresponds to the JSON property `updateTime`
@@ -779,6 +785,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware_vms = args[:vmware_vms] if args.key?(:vmware_vms)
         end
