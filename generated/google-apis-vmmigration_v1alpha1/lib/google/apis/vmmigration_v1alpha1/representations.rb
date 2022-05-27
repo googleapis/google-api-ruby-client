@@ -593,6 +593,7 @@ module Google
       class FetchInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           property :update_time, as: 'updateTime'
           property :vmware_vms, as: 'vmwareVms', class: Google::Apis::VmmigrationV1alpha1::VmwareVmsDetails, decorator: Google::Apis::VmmigrationV1alpha1::VmwareVmsDetails::Representation
       
