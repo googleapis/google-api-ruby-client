@@ -3781,9 +3781,9 @@ module Google
         # @return [String]
         attr_accessor :entity_status
       
-        # Output only. The custom bidding model readiness state for each advertiser who
-        # have access. This field may only include the state of the queried advertiser
-        # if the algorithm [`owner`](/display-video/api/reference/rest/v1/
+        # Output only. The state of custom bidding model readiness for each advertiser
+        # who has access. This field may only include the state of the queried
+        # advertiser if the algorithm [`owner`](/display-video/api/reference/rest/v1/
         # customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a
         # partner and is being retrieved using an advertiser [`accessor`](/display-video/
         # api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.
@@ -3837,7 +3837,7 @@ module Google
       class CustomBiddingModelReadinessState
         include Google::Apis::Core::Hashable
       
-        # The unique ID of the advertiser with access to the custom bidding algorithm.
+        # The unique ID of the relevant advertiser.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -4603,6 +4603,134 @@ module Google
         # Update properties of this object
         def update!(**args)
           @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
+        end
+      end
+      
+      # Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
+      class EditGuaranteedOrderReadAccessorsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The advertisers to add as read accessors to the guaranteed order.
+        # Corresponds to the JSON property `addedAdvertisers`
+        # @return [Array<Fixnum>]
+        attr_accessor :added_advertisers
+      
+        # Required. The partner context in which the change is being made.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        # Whether to give all advertisers of the read/write accessor partner read access
+        # to the guaranteed order. Only applicable if read_write_partner_id is set in
+        # the guaranteed order.
+        # Corresponds to the JSON property `readAccessInherited`
+        # @return [Boolean]
+        attr_accessor :read_access_inherited
+        alias_method :read_access_inherited?, :read_access_inherited
+      
+        # The advertisers to remove as read accessors to the guaranteed order.
+        # Corresponds to the JSON property `removedAdvertisers`
+        # @return [Array<Fixnum>]
+        attr_accessor :removed_advertisers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_advertisers = args[:added_advertisers] if args.key?(:added_advertisers)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @read_access_inherited = args[:read_access_inherited] if args.key?(:read_access_inherited)
+          @removed_advertisers = args[:removed_advertisers] if args.key?(:removed_advertisers)
+        end
+      end
+      
+      # 
+      class EditGuaranteedOrderReadAccessorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether all advertisers of read_write_partner_id have read access to the
+        # guaranteed order.
+        # Corresponds to the JSON property `readAccessInherited`
+        # @return [Boolean]
+        attr_accessor :read_access_inherited
+        alias_method :read_access_inherited?, :read_access_inherited
+      
+        # The IDs of advertisers with read access to the guaranteed order.
+        # Corresponds to the JSON property `readAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :read_advertiser_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_access_inherited = args[:read_access_inherited] if args.key?(:read_access_inherited)
+          @read_advertiser_ids = args[:read_advertiser_ids] if args.key?(:read_advertiser_ids)
+        end
+      end
+      
+      # Request message for InventorySourceService.
+      # EditInventorySourceReadWriteAccessors.
+      class EditInventorySourceReadWriteAccessorsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Update to the list of advertisers with read/write access to the inventory
+        # source.
+        # Corresponds to the JSON property `advertisersUpdate`
+        # @return [Google::Apis::DisplayvideoV1::EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate]
+        attr_accessor :advertisers_update
+      
+        # Set the partner context as read/write accessor of the inventory source. This
+        # will remove all other current read/write advertiser accessors.
+        # Corresponds to the JSON property `assignPartner`
+        # @return [Boolean]
+        attr_accessor :assign_partner
+        alias_method :assign_partner?, :assign_partner
+      
+        # Required. The partner context by which the accessors change is being made.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertisers_update = args[:advertisers_update] if args.key?(:advertisers_update)
+          @assign_partner = args[:assign_partner] if args.key?(:assign_partner)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+        end
+      end
+      
+      # Update to the list of advertisers with read/write access to the inventory
+      # source.
+      class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
+        include Google::Apis::Core::Hashable
+      
+        # The advertisers to add.
+        # Corresponds to the JSON property `addedAdvertisers`
+        # @return [Array<Fixnum>]
+        attr_accessor :added_advertisers
+      
+        # The advertisers to remove.
+        # Corresponds to the JSON property `removedAdvertisers`
+        # @return [Array<Fixnum>]
+        attr_accessor :removed_advertisers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_advertisers = args[:added_advertisers] if args.key?(:added_advertisers)
+          @removed_advertisers = args[:removed_advertisers] if args.key?(:removed_advertisers)
         end
       end
       
@@ -5458,6 +5586,161 @@ module Google
         end
       end
       
+      # A guaranteed order. Guaranteed orders are parent entity of guaranteed
+      # inventory sources. When creating a guaranteed inventory source, a guaranteed
+      # order ID must be assigned to the inventory source.
+      class GuaranteedOrder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of default advertiser of the guaranteed order. The default
+        # advertiser is either the read_write_advertiser_id or, if that is not set, the
+        # first advertiser listed in read_advertiser_ids. Otherwise, there is no default
+        # advertiser.
+        # Corresponds to the JSON property `defaultAdvertiserId`
+        # @return [Fixnum]
+        attr_accessor :default_advertiser_id
+      
+        # The ID of the default campaign that is assigned to the guaranteed order. The
+        # default campaign must belong to the default advertiser.
+        # Corresponds to the JSON property `defaultCampaignId`
+        # @return [Fixnum]
+        attr_accessor :default_campaign_id
+      
+        # Required. The display name of the guaranteed order. Must be UTF-8 encoded with
+        # a maximum size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Immutable. The exchange where the guaranteed order originated.
+        # Corresponds to the JSON property `exchange`
+        # @return [String]
+        attr_accessor :exchange
+      
+        # Output only. The unique identifier of the guaranteed order. The guaranteed
+        # order IDs have the format ``exchange`-`legacy_guaranteed_order_id``.
+        # Corresponds to the JSON property `guaranteedOrderId`
+        # @return [String]
+        attr_accessor :guaranteed_order_id
+      
+        # Output only. The legacy ID of the guaranteed order. Assigned by the original
+        # exchange. The legacy ID is unique within one exchange, but is not guaranteed
+        # to be unique across all guaranteed orders. This ID is used in SDF and UI.
+        # Corresponds to the JSON property `legacyGuaranteedOrderId`
+        # @return [String]
+        attr_accessor :legacy_guaranteed_order_id
+      
+        # Output only. The resource name of the guaranteed order.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The publisher name of the guaranteed order. Must be UTF-8 encoded
+        # with a maximum size of 240 bytes.
+        # Corresponds to the JSON property `publisherName`
+        # @return [String]
+        attr_accessor :publisher_name
+      
+        # Whether all advertisers of read_write_partner_id have read access to the
+        # guaranteed order. Only applicable if read_write_partner_id is set. If True,
+        # overrides read_advertiser_ids.
+        # Corresponds to the JSON property `readAccessInherited`
+        # @return [Boolean]
+        attr_accessor :read_access_inherited
+        alias_method :read_access_inherited?, :read_access_inherited
+      
+        # The IDs of advertisers with read access to the guaranteed order. This field
+        # must not include the advertiser assigned to read_write_advertiser_id if it is
+        # set. All advertisers in this field must belong to read_write_partner_id or the
+        # same partner as read_write_advertiser_id.
+        # Corresponds to the JSON property `readAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :read_advertiser_ids
+      
+        # The advertiser with read/write access to the guaranteed order. This is also
+        # the default advertiser of the guaranteed order.
+        # Corresponds to the JSON property `readWriteAdvertiserId`
+        # @return [Fixnum]
+        attr_accessor :read_write_advertiser_id
+      
+        # The partner with read/write access to the guaranteed order.
+        # Corresponds to the JSON property `readWritePartnerId`
+        # @return [Fixnum]
+        attr_accessor :read_write_partner_id
+      
+        # The status settings of the guaranteed order.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DisplayvideoV1::GuaranteedOrderStatus]
+        attr_accessor :status
+      
+        # Output only. The timestamp when the guaranteed order was last updated.
+        # Assigned by the system.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_advertiser_id = args[:default_advertiser_id] if args.key?(:default_advertiser_id)
+          @default_campaign_id = args[:default_campaign_id] if args.key?(:default_campaign_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @exchange = args[:exchange] if args.key?(:exchange)
+          @guaranteed_order_id = args[:guaranteed_order_id] if args.key?(:guaranteed_order_id)
+          @legacy_guaranteed_order_id = args[:legacy_guaranteed_order_id] if args.key?(:legacy_guaranteed_order_id)
+          @name = args[:name] if args.key?(:name)
+          @publisher_name = args[:publisher_name] if args.key?(:publisher_name)
+          @read_access_inherited = args[:read_access_inherited] if args.key?(:read_access_inherited)
+          @read_advertiser_ids = args[:read_advertiser_ids] if args.key?(:read_advertiser_ids)
+          @read_write_advertiser_id = args[:read_write_advertiser_id] if args.key?(:read_write_advertiser_id)
+          @read_write_partner_id = args[:read_write_partner_id] if args.key?(:read_write_partner_id)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The status settings of the guaranteed order.
+      class GuaranteedOrderStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The configuration status of the guaranteed order. Acceptable
+        # values are `PENDING` and `COMPLETED`. A guaranteed order must be configured (
+        # fill in the required fields, choose creatives, and select a default campaign)
+        # before it can serve. Currently the configuration action can only be performed
+        # via UI.
+        # Corresponds to the JSON property `configStatus`
+        # @return [String]
+        attr_accessor :config_status
+      
+        # The user-provided reason for pausing this guaranteed order. Must be UTF-8
+        # encoded with a maximum length of 100 bytes. Only applicable when entity_status
+        # is set to `ENTITY_STATUS_PAUSED`.
+        # Corresponds to the JSON property `entityPauseReason`
+        # @return [String]
+        attr_accessor :entity_pause_reason
+      
+        # Whether or not the guaranteed order is servable. Acceptable values are `
+        # ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`.
+        # Default value is `ENTITY_STATUS_ACTIVE`.
+        # Corresponds to the JSON property `entityStatus`
+        # @return [String]
+        attr_accessor :entity_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_status = args[:config_status] if args.key?(:config_status)
+          @entity_pause_reason = args[:entity_pause_reason] if args.key?(:entity_pause_reason)
+          @entity_status = args[:entity_status] if args.key?(:entity_status)
+        end
+      end
+      
       # Details for assigned household income targeting option. This will be populated
       # in the details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_HOUSEHOLD_INCOME`.
@@ -5936,10 +6219,23 @@ module Google
         # @return [String]
         attr_accessor :exchange
       
+        # Immutable. The ID of the guaranteed order that this inventory source belongs
+        # to. Only applicable when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`
+        # .
+        # Corresponds to the JSON property `guaranteedOrderId`
+        # @return [String]
+        attr_accessor :guaranteed_order_id
+      
         # Output only. The unique ID of the inventory source. Assigned by the system.
         # Corresponds to the JSON property `inventorySourceId`
         # @return [Fixnum]
         attr_accessor :inventory_source_id
+      
+        # Output only. The product type of the inventory source, denoting the way
+        # through which it sells inventory.
+        # Corresponds to the JSON property `inventorySourceProductType`
+        # @return [String]
+        attr_accessor :inventory_source_product_type
       
         # Denotes the type of the inventory source.
         # Corresponds to the JSON property `inventorySourceType`
@@ -5961,10 +6257,34 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::RateDetails]
         attr_accessor :rate_details
       
+        # Output only. The IDs of advertisers with read-only access to the inventory
+        # source.
+        # Corresponds to the JSON property `readAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :read_advertiser_ids
+      
+        # Output only. The IDs of partners with read-only access to the inventory source.
+        # All advertisers of partners in this field inherit read-only access to the
+        # inventory source.
+        # Corresponds to the JSON property `readPartnerIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :read_partner_ids
+      
+        # The partner or advertisers with access to the inventory source.
+        # Corresponds to the JSON property `readWriteAccessors`
+        # @return [Google::Apis::DisplayvideoV1::InventorySourceAccessors]
+        attr_accessor :read_write_accessors
+      
         # The status related settings of the inventory source.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::DisplayvideoV1::InventorySourceStatus]
         attr_accessor :status
+      
+        # Immutable. The unique ID of the sub-site property assigned to this inventory
+        # source.
+        # Corresponds to the JSON property `subSitePropertyId`
+        # @return [Fixnum]
+        attr_accessor :sub_site_property_id
       
         # A time range.
         # Corresponds to the JSON property `timeRange`
@@ -5989,14 +6309,83 @@ module Google
           @delivery_method = args[:delivery_method] if args.key?(:delivery_method)
           @display_name = args[:display_name] if args.key?(:display_name)
           @exchange = args[:exchange] if args.key?(:exchange)
+          @guaranteed_order_id = args[:guaranteed_order_id] if args.key?(:guaranteed_order_id)
           @inventory_source_id = args[:inventory_source_id] if args.key?(:inventory_source_id)
+          @inventory_source_product_type = args[:inventory_source_product_type] if args.key?(:inventory_source_product_type)
           @inventory_source_type = args[:inventory_source_type] if args.key?(:inventory_source_type)
           @name = args[:name] if args.key?(:name)
           @publisher_name = args[:publisher_name] if args.key?(:publisher_name)
           @rate_details = args[:rate_details] if args.key?(:rate_details)
+          @read_advertiser_ids = args[:read_advertiser_ids] if args.key?(:read_advertiser_ids)
+          @read_partner_ids = args[:read_partner_ids] if args.key?(:read_partner_ids)
+          @read_write_accessors = args[:read_write_accessors] if args.key?(:read_write_accessors)
           @status = args[:status] if args.key?(:status)
+          @sub_site_property_id = args[:sub_site_property_id] if args.key?(:sub_site_property_id)
           @time_range = args[:time_range] if args.key?(:time_range)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The partner or advertisers with access to the inventory source.
+      class InventorySourceAccessors
+        include Google::Apis::Core::Hashable
+      
+        # The advertisers with access to the inventory source.
+        # Corresponds to the JSON property `advertisers`
+        # @return [Google::Apis::DisplayvideoV1::InventorySourceAccessorsAdvertiserAccessors]
+        attr_accessor :advertisers
+      
+        # The partner with access to the inventory source.
+        # Corresponds to the JSON property `partner`
+        # @return [Google::Apis::DisplayvideoV1::InventorySourceAccessorsPartnerAccessor]
+        attr_accessor :partner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertisers = args[:advertisers] if args.key?(:advertisers)
+          @partner = args[:partner] if args.key?(:partner)
+        end
+      end
+      
+      # The advertisers with access to the inventory source.
+      class InventorySourceAccessorsAdvertiserAccessors
+        include Google::Apis::Core::Hashable
+      
+        # The IDs of the advertisers.
+        # Corresponds to the JSON property `advertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :advertiser_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_ids = args[:advertiser_ids] if args.key?(:advertiser_ids)
+        end
+      end
+      
+      # The partner with access to the inventory source.
+      class InventorySourceAccessorsPartnerAccessor
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the partner.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
         end
       end
       
@@ -7091,6 +7480,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_audiences = args[:google_audiences] if args.key?(:google_audiences)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListGuaranteedOrdersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of guaranteed orders. This list will be absent if empty.
+        # Corresponds to the JSON property `guaranteedOrders`
+        # @return [Array<Google::Apis::DisplayvideoV1::GuaranteedOrder>]
+        attr_accessor :guaranteed_orders
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListGuaranteedOrders` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guaranteed_orders = args[:guaranteed_orders] if args.key?(:guaranteed_orders)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -8388,7 +8804,7 @@ module Google
       class ParentalStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The parental status of the audience.
+        # The parental status of the audience. Output only in v1. Required in v2.
         # Corresponds to the JSON property `parentalStatus`
         # @return [String]
         attr_accessor :parental_status
@@ -9423,7 +9839,7 @@ module Google
         # @return [String]
         attr_accessor :excluded_targeting_option_id
       
-        # An enum for the DV360 Sensitive category content classifier. Output only in v1.
+        # Output only. An enum for the DV360 Sensitive category content classifier.
         # Corresponds to the JSON property `sensitiveCategory`
         # @return [String]
         attr_accessor :sensitive_category
