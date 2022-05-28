@@ -62,7 +62,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The name of the table to which to write data, of the form `projectId`:`
+        # The name of the table to which to write data, of the form `projectId`.`
         # datasetId`.`tableId`
         # Corresponds to the JSON property `table`
         # @return [String]
