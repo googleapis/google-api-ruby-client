@@ -724,6 +724,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EditGuaranteedOrderReadAccessorsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditGuaranteedOrderReadAccessorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditInventorySourceReadWriteAccessorsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +898,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GuaranteedOrder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuaranteedOrderStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HouseholdIncomeAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,6 +959,24 @@ module Google
       end
       
       class InventorySource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventorySourceAccessors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventorySourceAccessorsAdvertiserAccessors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventorySourceAccessorsPartnerAccessor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1091,6 +1145,12 @@ module Google
       end
       
       class ListGoogleAudiencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGuaranteedOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2897,6 +2957,42 @@ module Google
         end
       end
       
+      class EditGuaranteedOrderReadAccessorsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :added_advertisers, as: 'addedAdvertisers'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :read_access_inherited, as: 'readAccessInherited'
+          collection :removed_advertisers, as: 'removedAdvertisers'
+        end
+      end
+      
+      class EditGuaranteedOrderReadAccessorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_access_inherited, as: 'readAccessInherited'
+          collection :read_advertiser_ids, as: 'readAdvertiserIds'
+        end
+      end
+      
+      class EditInventorySourceReadWriteAccessorsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertisers_update, as: 'advertisersUpdate', class: Google::Apis::DisplayvideoV1::EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate, decorator: Google::Apis::DisplayvideoV1::EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate::Representation
+      
+          property :assign_partner, as: 'assignPartner'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+        end
+      end
+      
+      class EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :added_advertisers, as: 'addedAdvertisers'
+          collection :removed_advertisers, as: 'removedAdvertisers'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3125,6 +3221,36 @@ module Google
         end
       end
       
+      class GuaranteedOrder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_advertiser_id, :numeric_string => true, as: 'defaultAdvertiserId'
+          property :default_campaign_id, :numeric_string => true, as: 'defaultCampaignId'
+          property :display_name, as: 'displayName'
+          property :exchange, as: 'exchange'
+          property :guaranteed_order_id, as: 'guaranteedOrderId'
+          property :legacy_guaranteed_order_id, as: 'legacyGuaranteedOrderId'
+          property :name, as: 'name'
+          property :publisher_name, as: 'publisherName'
+          property :read_access_inherited, as: 'readAccessInherited'
+          collection :read_advertiser_ids, as: 'readAdvertiserIds'
+          property :read_write_advertiser_id, :numeric_string => true, as: 'readWriteAdvertiserId'
+          property :read_write_partner_id, :numeric_string => true, as: 'readWritePartnerId'
+          property :status, as: 'status', class: Google::Apis::DisplayvideoV1::GuaranteedOrderStatus, decorator: Google::Apis::DisplayvideoV1::GuaranteedOrderStatus::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GuaranteedOrderStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_status, as: 'configStatus'
+          property :entity_pause_reason, as: 'entityPauseReason'
+          property :entity_status, as: 'entityStatus'
+        end
+      end
+      
       class HouseholdIncomeAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3241,17 +3367,48 @@ module Google
           property :delivery_method, as: 'deliveryMethod'
           property :display_name, as: 'displayName'
           property :exchange, as: 'exchange'
+          property :guaranteed_order_id, as: 'guaranteedOrderId'
           property :inventory_source_id, :numeric_string => true, as: 'inventorySourceId'
+          property :inventory_source_product_type, as: 'inventorySourceProductType'
           property :inventory_source_type, as: 'inventorySourceType'
           property :name, as: 'name'
           property :publisher_name, as: 'publisherName'
           property :rate_details, as: 'rateDetails', class: Google::Apis::DisplayvideoV1::RateDetails, decorator: Google::Apis::DisplayvideoV1::RateDetails::Representation
       
+          collection :read_advertiser_ids, as: 'readAdvertiserIds'
+          collection :read_partner_ids, as: 'readPartnerIds'
+          property :read_write_accessors, as: 'readWriteAccessors', class: Google::Apis::DisplayvideoV1::InventorySourceAccessors, decorator: Google::Apis::DisplayvideoV1::InventorySourceAccessors::Representation
+      
           property :status, as: 'status', class: Google::Apis::DisplayvideoV1::InventorySourceStatus, decorator: Google::Apis::DisplayvideoV1::InventorySourceStatus::Representation
       
+          property :sub_site_property_id, :numeric_string => true, as: 'subSitePropertyId'
           property :time_range, as: 'timeRange', class: Google::Apis::DisplayvideoV1::TimeRange, decorator: Google::Apis::DisplayvideoV1::TimeRange::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InventorySourceAccessors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertisers, as: 'advertisers', class: Google::Apis::DisplayvideoV1::InventorySourceAccessorsAdvertiserAccessors, decorator: Google::Apis::DisplayvideoV1::InventorySourceAccessorsAdvertiserAccessors::Representation
+      
+          property :partner, as: 'partner', class: Google::Apis::DisplayvideoV1::InventorySourceAccessorsPartnerAccessor, decorator: Google::Apis::DisplayvideoV1::InventorySourceAccessorsPartnerAccessor::Representation
+      
+        end
+      end
+      
+      class InventorySourceAccessorsAdvertiserAccessors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advertiser_ids, as: 'advertiserIds'
+        end
+      end
+      
+      class InventorySourceAccessorsPartnerAccessor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_id, :numeric_string => true, as: 'partnerId'
         end
       end
       
@@ -3547,6 +3704,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :google_audiences, as: 'googleAudiences', class: Google::Apis::DisplayvideoV1::GoogleAudience, decorator: Google::Apis::DisplayvideoV1::GoogleAudience::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGuaranteedOrdersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guaranteed_orders, as: 'guaranteedOrders', class: Google::Apis::DisplayvideoV1::GuaranteedOrder, decorator: Google::Apis::DisplayvideoV1::GuaranteedOrder::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
