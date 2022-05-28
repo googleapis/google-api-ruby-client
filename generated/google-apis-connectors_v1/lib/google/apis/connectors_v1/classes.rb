@@ -308,6 +308,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Enum options. To be populated if `ValueType` is `ENUM`
+        # Corresponds to the JSON property `enumOptions`
+        # @return [Array<Google::Apis::ConnectorsV1::EnumOption>]
+        attr_accessor :enum_options
+      
         # Key of the config variable.
         # Corresponds to the JSON property `key`
         # @return [String]
@@ -348,6 +353,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enum_options = args[:enum_options] if args.key?(:enum_options)
           @key = args[:key] if args.key?(:key)
           @required = args[:required] if args.key?(:required)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
@@ -757,6 +763,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EnumOption definition
+      class EnumOption
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the option.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Id of the option.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
