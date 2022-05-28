@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudtasksV2beta3
       # Version of the google-apis-cloudtasks_v2beta3 gem
-      GEM_VERSION = "0.16.0"
+      GEM_VERSION = "0.17.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220428"
+      REVISION = "20220520"
     end
   end
 end
