@@ -507,6 +507,7 @@ module Google
         # @param [Google::Apis::BaremetalsolutionV2::Network] network_object
         # @param [String] update_mask
         #   The list of fields to update. The only currently supported fields are: `labels`
+        #   , `reservations`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

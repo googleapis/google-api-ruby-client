@@ -120,6 +120,76 @@ module Google
         end
       end
       
+      # Each logical interface represents a logical abstraction of the underlying
+      # physical interface (for eg. bond, nic) of the instance. Each logical interface
+      # can effectively map to multiple network-IP pairs and still be mapped to one
+      # underlying physical interface.
+      class GoogleCloudBaremetalsolutionV2LogicalInterface
+        include Google::Apis::Core::Hashable
+      
+        # The index of the logical interface mapping to the index of the hardware bond
+        # or nic on the chosen network template.
+        # Corresponds to the JSON property `interfaceIndex`
+        # @return [Fixnum]
+        attr_accessor :interface_index
+      
+        # List of logical network interfaces within a logical interface.
+        # Corresponds to the JSON property `logicalNetworkInterfaces`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface>]
+        attr_accessor :logical_network_interfaces
+      
+        # Interface name. This is of syntax or and forms part of the network template
+        # name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interface_index = args[:interface_index] if args.key?(:interface_index)
+          @logical_network_interfaces = args[:logical_network_interfaces] if args.key?(:logical_network_interfaces)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Logical interface.
+      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
+        include Google::Apis::Core::Hashable
+      
+        # Interface name. This is not a globally unique identifier. Name is unique only
+        # inside the ServerNetworkTemplate. This is of syntax or and forms part of the
+        # network template name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If true, interface must have network connected.
+        # Corresponds to the JSON property `required`
+        # @return [Boolean]
+        attr_accessor :required
+        alias_method :required?, :required
+      
+        # Interface type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @required = args[:required] if args.key?(:required)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A server.
       class Instance
         include Google::Apis::Core::Hashable
@@ -153,6 +223,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # List of logical interfaces for the instance. The number of logical interfaces
+        # will be the same as number of hardware bond/nic on the chosen network template.
+        # For the non-multivlan configurations (for eg, existing servers) that use
+        # existing default network template (bondaa-bondaa), both the Instance.networks
+        # field and the Instance.logical_interfaces fields will be filled to ensure
+        # backward compatibility. For the others, only Instance.logical_interfaces will
+        # be filled.
+        # Corresponds to the JSON property `logicalInterfaces`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface>]
+        attr_accessor :logical_interfaces
+      
         # List of LUNs associated with this server.
         # Corresponds to the JSON property `luns`
         # @return [Array<Google::Apis::BaremetalsolutionV2::Lun>]
@@ -171,6 +252,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Instance network template name. For eg, bondaa-bondaa, bondab-nic, etc.
+        # Generally, the template name follows the syntax of "bond" or "nic".
+        # Corresponds to the JSON property `networkTemplate`
+        # @return [String]
+        attr_accessor :network_template
       
         # List of networks associated with this server.
         # Corresponds to the JSON property `networks`
@@ -210,9 +297,11 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interactive_serial_console_enabled = args[:interactive_serial_console_enabled] if args.key?(:interactive_serial_console_enabled)
           @labels = args[:labels] if args.key?(:labels)
+          @logical_interfaces = args[:logical_interfaces] if args.key?(:logical_interfaces)
           @luns = args[:luns] if args.key?(:luns)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @name = args[:name] if args.key?(:name)
+          @network_template = args[:network_template] if args.key?(:network_template)
           @networks = args[:networks] if args.key?(:networks)
           @os_image = args[:os_image] if args.key?(:os_image)
           @pod = args[:pod] if args.key?(:pod)
@@ -254,10 +343,28 @@ module Google
         # @return [String]
         attr_accessor :instance_type
       
+        # List of logical interfaces for the instance. The number of logical interfaces
+        # will be the same as number of hardware bond/nic on the chosen network template.
+        # Filled if InstanceConfig.multivlan_config is true.
+        # Corresponds to the JSON property `logicalInterfaces`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface>]
+        attr_accessor :logical_interfaces
+      
         # Output only. The name of the instance config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The type of network configuration on the instance.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [String]
+        attr_accessor :network_config
+      
+        # Server network template name. Filled if InstanceConfig.multivlan_config is
+        # true.
+        # Corresponds to the JSON property `networkTemplate`
+        # @return [String]
+        attr_accessor :network_template
       
         # OS image to initialize the instance. [Available images](https://cloud.google.
         # com/bare-metal/docs/bms-planning#server_configurations)
@@ -287,7 +394,10 @@ module Google
           @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @logical_interfaces = args[:logical_interfaces] if args.key?(:logical_interfaces)
           @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @network_template = args[:network_template] if args.key?(:network_template)
           @os_image = args[:os_image] if args.key?(:os_image)
           @private_network = args[:private_network] if args.key?(:private_network)
           @user_note = args[:user_note] if args.key?(:user_note)
@@ -629,26 +739,36 @@ module Google
         end
       end
       
-      # Logical interface.
-      class LogicalInterface
+      # Each logical network interface is effectively a network and IP pair.
+      class LogicalNetworkInterface
         include Google::Apis::Core::Hashable
       
-        # Interface name. This is not a globally unique identifier. Name is unique only
-        # inside the ServerNetworkTemplate.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # If true, interface must have network connected.
-        # Corresponds to the JSON property `required`
+        # Whether this interface is the default gateway for the instance. Only one
+        # interface can be the default gateway for the instance.
+        # Corresponds to the JSON property `defaultGateway`
         # @return [Boolean]
-        attr_accessor :required
-        alias_method :required?, :required
+        attr_accessor :default_gateway
+        alias_method :default_gateway?, :default_gateway
       
-        # Interface type.
-        # Corresponds to the JSON property `type`
+        # An identifier for the `Network`, generated by the backend.
+        # Corresponds to the JSON property `id`
         # @return [String]
-        attr_accessor :type
+        attr_accessor :id
+      
+        # IP address in the network
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Name of the network
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Type of network.
+        # Corresponds to the JSON property `networkType`
+        # @return [String]
+        attr_accessor :network_type
       
         def initialize(**args)
            update!(**args)
@@ -656,9 +776,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @required = args[:required] if args.key?(:required)
-          @type = args[:type] if args.key?(:type)
+          @default_gateway = args[:default_gateway] if args.key?(:default_gateway)
+          @id = args[:id] if args.key?(:id)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @network = args[:network] if args.key?(:network)
+          @network_type = args[:network_type] if args.key?(:network_type)
         end
       end
       
@@ -960,7 +1082,7 @@ module Google
         attr_accessor :type
       
         # User note field, it can be used by customers to add additional information for
-        # the BMS Ops team (b/194021617).
+        # the BMS Ops team .
         # Corresponds to the JSON property `userNote`
         # @return [String]
         attr_accessor :user_note
@@ -1284,7 +1406,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # A generated buganizer id to track provisioning request.
+        # A generated ticket id to track provisioning request.
         # Corresponds to the JSON property `ticketId`
         # @return [String]
         attr_accessor :ticket_id
@@ -1429,10 +1551,13 @@ module Google
       
         # Logical interfaces.
         # Corresponds to the JSON property `logicalInterfaces`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::LogicalInterface>]
+        # @return [Array<Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>]
         attr_accessor :logical_interfaces
       
-        # Output only. Template's unique name.
+        # Output only. Template's unique name. The full resource name follows the
+        # pattern: `projects/`project`/locations/`location`/serverNetworkTemplate/`
+        # server_network_template`` Generally, the `server_network_template` follows the
+        # syntax of "bond" or "nic".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1839,7 +1964,7 @@ module Google
         attr_accessor :type
       
         # User note field, it can be used by customers to add additional information for
-        # the BMS Ops team (b/194021617).
+        # the BMS Ops team .
         # Corresponds to the JSON property `userNote`
         # @return [String]
         attr_accessor :user_note
