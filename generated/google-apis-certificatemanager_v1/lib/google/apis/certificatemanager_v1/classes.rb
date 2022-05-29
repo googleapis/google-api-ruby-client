@@ -874,7 +874,9 @@ module Google
         end
       end
       
-      # 
+      # ResourcesCount represents the resource that stores aggregated project's info
+      # in the given location, e.g.: total number of certificates assigned to the
+      # project.
       class ResourcesCount
         include Google::Apis::Core::Hashable
       
