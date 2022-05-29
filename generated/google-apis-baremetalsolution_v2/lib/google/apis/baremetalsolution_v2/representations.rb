@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBaremetalsolutionV2LogicalInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,7 +130,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogicalInterface
+      class LogicalNetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -308,6 +320,25 @@ module Google
         end
       end
       
+      class GoogleCloudBaremetalsolutionV2LogicalInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interface_index, as: 'interfaceIndex'
+          collection :logical_network_interfaces, as: 'logicalNetworkInterfaces', class: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface, decorator: Google::Apis::BaremetalsolutionV2::LogicalNetworkInterface::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :required, as: 'required'
+          property :type, as: 'type'
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -316,10 +347,13 @@ module Google
           property :id, as: 'id'
           property :interactive_serial_console_enabled, as: 'interactiveSerialConsoleEnabled'
           hash :labels, as: 'labels'
+          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface::Representation
+      
           collection :luns, as: 'luns', class: Google::Apis::BaremetalsolutionV2::Lun, decorator: Google::Apis::BaremetalsolutionV2::Lun::Representation
       
           property :machine_type, as: 'machineType'
           property :name, as: 'name'
+          property :network_template, as: 'networkTemplate'
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
       
           property :os_image, as: 'osImage'
@@ -338,7 +372,11 @@ module Google
           property :hyperthreading, as: 'hyperthreading'
           property :id, as: 'id'
           property :instance_type, as: 'instanceType'
+          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface::Representation
+      
           property :name, as: 'name'
+          property :network_config, as: 'networkConfig'
+          property :network_template, as: 'networkTemplate'
           property :os_image, as: 'osImage'
           property :private_network, as: 'privateNetwork', class: Google::Apis::BaremetalsolutionV2::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddress::Representation
       
@@ -451,12 +489,14 @@ module Google
         end
       end
       
-      class LogicalInterface
+      class LogicalNetworkInterface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :required, as: 'required'
-          property :type, as: 'type'
+          property :default_gateway, as: 'defaultGateway'
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+          property :network, as: 'network'
+          property :network_type, as: 'networkType'
         end
       end
       
@@ -651,7 +691,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :applicable_instance_types, as: 'applicableInstanceTypes'
-          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::LogicalInterface::Representation
+          collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface::Representation
       
           property :name, as: 'name'
         end
