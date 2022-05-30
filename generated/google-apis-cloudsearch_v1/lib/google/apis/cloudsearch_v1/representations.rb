@@ -1173,6 +1173,7 @@ module Google
           property :create_time_micros, :numeric_string => true, as: 'createTimeMicros'
           property :creator_user_id, as: 'creatorUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
+          property :delete_time_micros, :numeric_string => true, as: 'deleteTimeMicros'
           property :ephemeral_url, as: 'ephemeralUrl'
           property :owner_customer_id, as: 'ownerCustomerId', class: Google::Apis::CloudsearchV1::CustomerId, decorator: Google::Apis::CloudsearchV1::CustomerId::Representation
       
