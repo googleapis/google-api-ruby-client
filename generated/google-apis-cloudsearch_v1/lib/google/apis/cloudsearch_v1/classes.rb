@@ -279,7 +279,7 @@ module Google
       
       # Proto representation of a custom emoji. May be used in both APIs and in
       # Spanner, but certain fields should be restricted to one or the other. See the
-      # per-field documentation for details. NEXT_TAG: 13
+      # per-field documentation for details. NEXT_TAG: 14
       class CustomEmoji
         include Google::Apis::Core::Hashable
       
@@ -306,6 +306,13 @@ module Google
         # Corresponds to the JSON property `creatorUserId`
         # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :creator_user_id
+      
+        # Time when the emoji was deleted, in microseconds. This field may be present in
+        # Spanner, within the server, or in public APIs. Only present if the emoji has
+        # been deleted.
+        # Corresponds to the JSON property `deleteTimeMicros`
+        # @return [Fixnum]
+        attr_accessor :delete_time_micros
       
         # Output only. A short-lived URL clients can use for directly accessing a custom
         # emoji image. This field is intended for API consumption, and should *never* be
@@ -362,6 +369,7 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @create_time_micros = args[:create_time_micros] if args.key?(:create_time_micros)
           @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @delete_time_micros = args[:delete_time_micros] if args.key?(:delete_time_micros)
           @ephemeral_url = args[:ephemeral_url] if args.key?(:ephemeral_url)
           @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
           @read_token = args[:read_token] if args.key?(:read_token)
@@ -1216,7 +1224,7 @@ module Google
       
         # Proto representation of a custom emoji. May be used in both APIs and in
         # Spanner, but certain fields should be restricted to one or the other. See the
-        # per-field documentation for details. NEXT_TAG: 13
+        # per-field documentation for details. NEXT_TAG: 14
         # Corresponds to the JSON property `customEmoji`
         # @return [Google::Apis::CloudsearchV1::CustomEmoji]
         attr_accessor :custom_emoji
@@ -1516,7 +1524,8 @@ module Google
       class FacetResult
         include Google::Apis::Core::Hashable
       
-        # FacetBuckets for values in response containing at least a single result.
+        # FacetBuckets for values in response containing at least a single result with
+        # the corresponding filter.
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::CloudsearchV1::FacetBucket>]
         attr_accessor :buckets
