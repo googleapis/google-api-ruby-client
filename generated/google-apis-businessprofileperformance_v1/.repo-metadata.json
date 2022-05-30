@@ -1,0 +1,7 @@
+{
+    "api_id": "businessprofileperformance:v1",
+    "name_pretty": "Business Profile Performance API",
+    "distribution_name": "google-apis-businessprofileperformance_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
