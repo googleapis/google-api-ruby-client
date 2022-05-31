@@ -1404,6 +1404,13 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1EgressTo
         include Google::Apis::Core::Hashable
       
+        # A list of external resources that are allowed to be accessed. A request
+        # matches if it contains an external resource in this list (Example: s3://bucket/
+        # path). Currently '*' is not allowed.
+        # Corresponds to the JSON property `externalResources`
+        # @return [Array<String>]
+        attr_accessor :external_resources
+      
         # A list of ApiOperations allowed to be performed by the sources specified in
         # the corresponding EgressFrom. A request matches if it uses an operation/
         # service in this list.
@@ -1426,6 +1433,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_resources = args[:external_resources] if args.key?(:external_resources)
           @operations = args[:operations] if args.key?(:operations)
           @resources = args[:resources] if args.key?(:resources)
         end
