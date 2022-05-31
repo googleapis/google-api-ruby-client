@@ -1757,6 +1757,22 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. A purpose denotes that this Tag is intended for use in policies of a
+        # specific policy engine, and will involve that policy engine in management
+        # operations involving this Tag. A purpose does not grant a policy engine
+        # exclusive rights to the Tag, and it may be referenced by other policy engines.
+        # A purpose cannot be changed once set.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        # Optional. Purpose data corresponds to the policy system that the tag is
+        # intended for. See documentation for `Purpose` for formatting of this field.
+        # Purpose data cannot be changed once set.
+        # Corresponds to the JSON property `purposeData`
+        # @return [Hash<String,String>]
+        attr_accessor :purpose_data
+      
         # Required. Immutable. The user friendly name for a TagKey. The short name
         # should be unique for TagKeys within the same tag namespace. The short name
         # must be 1-63 characters, beginning and ending with an alphanumeric character ([
@@ -1783,6 +1799,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @namespaced_name = args[:namespaced_name] if args.key?(:namespaced_name)
           @parent = args[:parent] if args.key?(:parent)
+          @purpose = args[:purpose] if args.key?(:purpose)
+          @purpose_data = args[:purpose_data] if args.key?(:purpose_data)
           @short_name = args[:short_name] if args.key?(:short_name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

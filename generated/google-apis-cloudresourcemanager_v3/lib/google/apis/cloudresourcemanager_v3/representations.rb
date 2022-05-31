@@ -835,6 +835,8 @@ module Google
           property :name, as: 'name'
           property :namespaced_name, as: 'namespacedName'
           property :parent, as: 'parent'
+          property :purpose, as: 'purpose'
+          hash :purpose_data, as: 'purposeData'
           property :short_name, as: 'shortName'
           property :update_time, as: 'updateTime'
         end
