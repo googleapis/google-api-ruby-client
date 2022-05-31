@@ -1561,6 +1561,157 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates key value entries in a org, env or apis scoped key value map.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_api_keyvaluemap_entry(parent, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entries', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a key value entry from an org, environment or apis scoped key value
+        # map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to delete the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_api_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map
+        #   entry/value. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_api_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists key value entries for key values maps scoped to an organization,
+        # environment, or API proxy.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use
+        #   one of the following formats in your request: `organizations/`organization`/
+        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
+        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
+        #   organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of key value entries to return. If unspecified, at
+        #   most 100 entries will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, a key value entry returned from a previous call that can
+        #   use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_api_keyvaluemap_entries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entries', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an API proxy revision and all policies, resources, endpoints, and
         # revisions associated with it. The API proxy revision must be undeployed before
         # you can delete it.
@@ -5911,6 +6062,157 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates key value entries in a org, env or apis scoped key value map.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_environment_keyvaluemap_entry(parent, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entries', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a key value entry from an org, environment or apis scoped key value
+        # map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to delete the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_environment_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map
+        #   entry/value. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists key value entries for key values maps scoped to an organization,
+        # environment, or API proxy.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use
+        #   one of the following formats in your request: `organizations/`organization`/
+        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
+        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
+        #   organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of key value entries to return. If unspecified, at
+        #   most 100 entries will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, a key value entry returned from a previous call that can
+        #   use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_keyvaluemap_entries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entries', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Similar to GetStats except that the response is less verbose.
         # @param [String] name
         #   Required. Resource name for which the interactive query will be executed. Use
@@ -8062,6 +8364,157 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates key value entries in a org, env or apis scoped key value map.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to create the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_keyvaluemap_entry(parent, google_cloud_apigee_v1_key_value_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/entries', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_entry_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a key value entry from an org, environment or apis scoped key value
+        # map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to delete the key value map
+        #   entry. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map
+        #   entry/value. Use one of the following formats in your request: `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
+        #   keyvaluemap`/entries/`entry``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_keyvaluemap_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists key value entries for key values maps scoped to an organization,
+        # environment, or API proxy.
+        # @param [String] parent
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use
+        #   one of the following formats in your request: `organizations/`organization`/
+        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
+        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
+        #   organization`/keyvaluemaps/`keyvaluemap``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of key value entries to return. If unspecified, at
+        #   most 100 entries will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, a key value entry returned from a previous call that can
+        #   use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_keyvaluemap_entries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entries', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListKeyValueEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1KeyValueEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1KeyValueMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +713,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListKeyValueEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2281,6 +2293,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1KeyValueEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleCloudApigeeV1KeyValueMap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2482,6 +2502,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListKeyValueEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :key_value_entries, as: 'keyValueEntries', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
