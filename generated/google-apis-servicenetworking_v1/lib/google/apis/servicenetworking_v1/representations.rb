@@ -702,6 +702,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :check_service_networking_use_permission, as: 'checkServiceNetworkingUsePermission'
+          property :compute_idempotency_window, as: 'computeIdempotencyWindow'
           property :consumer, as: 'consumer'
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
@@ -716,6 +717,7 @@ module Google
       
           property :subnetwork, as: 'subnetwork'
           collection :subnetwork_users, as: 'subnetworkUsers'
+          property :use_custom_compute_idempotency_window, as: 'useCustomComputeIdempotencyWindow'
         end
       end
       
