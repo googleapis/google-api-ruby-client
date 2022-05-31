@@ -4169,6 +4169,34 @@ module Google
         end
       end
       
+      # Key value map pair where the value represents the data associated with the
+      # corresponding key.
+      class GoogleCloudApigeeV1KeyValueEntry
+        include Google::Apis::Core::Hashable
+      
+        # Resource URI that can be used to identify the scope of the key value map
+        # entries.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Data or payload that is being retrieved and associated with the
+        # unique key.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Collection of key/value string pairs.
       class GoogleCloudApigeeV1KeyValueMap
         include Google::Apis::Core::Hashable
@@ -4732,6 +4760,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The request structure for listing Key value map keys and its corrresponding
+      # values.
+      class GoogleCloudApigeeV1ListKeyValueEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # One or more key value map keys and values.
+        # Corresponds to the JSON property `keyValueEntries`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry>]
+        attr_accessor :key_value_entries
+      
+        # Token that can be sent as `next_page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_value_entries = args[:key_value_entries] if args.key?(:key_value_entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
