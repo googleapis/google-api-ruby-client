@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FhirNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FhirOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1579,6 +1585,14 @@ module Google
         end
       end
       
+      class FhirNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_topic, as: 'pubsubTopic'
+          property :send_full_resource, as: 'sendFullResource'
+        end
+      end
+      
       class FhirOutput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1596,6 +1610,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
+      
+          collection :notification_configs, as: 'notificationConfigs', class: Google::Apis::HealthcareV1beta1::FhirNotificationConfig, decorator: Google::Apis::HealthcareV1beta1::FhirNotificationConfig::Representation
       
           property :search_config, as: 'searchConfig', class: Google::Apis::HealthcareV1beta1::SearchConfig, decorator: Google::Apis::HealthcareV1beta1::SearchConfig::Representation
       
