@@ -1,6 +1,6 @@
 # Release history for google-apis-apigee_v1
 
-### v0.47.0 (2022-05-31)
+### v0.47.0 (2022-06-02)
 
 * Regenerated from discovery document revision 20220527
 
