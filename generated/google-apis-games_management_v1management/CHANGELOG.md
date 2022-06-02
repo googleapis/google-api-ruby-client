@@ -1,5 +1,9 @@
 # Release history for google-apis-games_management_v1management
 
+### v0.8.0 (2022-06-02)
+
+* Regenerated using generator version 0.4.1
+
 ### v0.7.0 (2021-12-16)
 
 * Unspecified changes
