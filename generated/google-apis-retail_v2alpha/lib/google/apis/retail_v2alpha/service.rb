@@ -127,8 +127,8 @@ module Google
         
         # Gets an AttributesConfig.
         # @param [String] name
-        #   Required. Full AttributesConfig resource name. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,8 +439,8 @@ module Google
         # Adds the specified CatalogAttribute to the AttributesConfig. If the
         # CatalogAttribute to add already exists, an ALREADY_EXISTS error is returned.
         # @param [String] attributes_config
-        #   Required. Full AttributesConfig resource name. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddCatalogAttributeRequest] google_cloud_retail_v2alpha_add_catalog_attribute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -474,8 +474,8 @@ module Google
         # Removes the specified CatalogAttribute from the AttributesConfig. If the
         # CatalogAttribute to remove does not exist, a NOT_FOUND error is returned.
         # @param [String] attributes_config
-        #   Required. Full AttributesConfig resource name. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest] google_cloud_retail_v2alpha_remove_catalog_attribute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -510,8 +510,8 @@ module Google
         # the catalog attribute with the same CatalogAttribute.key. If the
         # CatalogAttribute to replace does not exist, a NOT_FOUND error is returned.
         # @param [String] attributes_config
-        #   Required. Full AttributesConfig resource name. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest] google_cloud_retail_v2alpha_replace_catalog_attribute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1152,8 +1152,8 @@ module Google
         # Creates a Control. If the Control to create already exists, an ALREADY_EXISTS
         # error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent catalog. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`
+        #   Required. Full resource name of parent catalog. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id``
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] google_cloud_retail_v2alpha_control_object
         # @param [String] control_id
         #   Required. The ID to use for the Control, which will become the final component
@@ -1192,9 +1192,9 @@ module Google
         # Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error
         # is returned.
         # @param [String] name
-        #   Required. The resource name of the Control to delete. Format: projects/`
+        #   Required. The resource name of the Control to delete. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/controls/`
-        #   control_id`
+        #   control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1224,9 +1224,9 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to delete. Format: projects/`
+        #   Required. The resource name of the Control to delete. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/controls/`
-        #   control_id`
+        #   control_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1256,8 +1256,8 @@ module Google
         
         # Lists all Controls linked to this catalog.
         # @param [String] parent
-        #   Required. The catalog resource name. Format: projects/`project_number`/
-        #   locations/`location_id`/catalogs/`catalog_id`
+        #   Required. The catalog resource name. Format: `projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id``
         # @param [String] filter
         #   Optional. A filter to apply on the list results. Supported features: * List
         #   all the products under the parent branch if filter is unset. * List controls
@@ -1303,8 +1303,8 @@ module Google
         # INVALID_ARGUMENT is returned. If the Control to delete does not exist, a
         # NOT_FOUND error is returned.
         # @param [String] name
-        #   Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
-        #   controls/*
+        #   Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
+        #   controls/*`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] google_cloud_retail_v2alpha_control_object
         # @param [String] update_mask
         #   Indicates which fields in the provided Control to update. The following are
@@ -1419,8 +1419,8 @@ module Google
         
         # Makes a recommendation prediction.
         # @param [String] placement
-        #   Required. Full resource name of the format: `name=projects/*/locations/global/
-        #   catalogs/default_catalog/placements/*` The ID of the Recommendations AI
+        #   Required. Full resource name of the format: ``name=projects/*/locations/global/
+        #   catalogs/default_catalog/placements/*`` The ID of the Recommendations AI
         #   placement. Before you can request predictions from your model, you must create
         #   at least one placement for it. For more information, see [Managing placements](
         #   https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
@@ -1537,8 +1537,8 @@ module Google
         # Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a
         # Catalog, otherwise a FAILED_PRECONDITION error is returned.
         # @param [String] parent
-        #   Required. Full resource name of parent. Format: projects/`project_number`/
-        #   locations/`location_id`/catalogs/`catalog_id`
+        #   Required. Full resource name of parent. Format: `projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id``
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] google_cloud_retail_v2alpha_serving_config_object
         # @param [String] serving_config_id
         #   Required. The ID to use for the ServingConfig, which will become the final
@@ -1681,8 +1681,8 @@ module Google
         
         # Updates a ServingConfig.
         # @param [String] name
-        #   Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
-        #   servingConfig/*
+        #   Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
+        #   servingConfig/*`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] google_cloud_retail_v2alpha_serving_config_object
         # @param [String] update_mask
         #   Indicates which fields in the provided ServingConfig to update. The following
