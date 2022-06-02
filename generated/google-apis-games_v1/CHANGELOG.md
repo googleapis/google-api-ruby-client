@@ -1,5 +1,9 @@
 # Release history for google-apis-games_v1
 
+### v0.13.0 (2022-06-02)
+
+* Regenerated from discovery document revision 20220525
+
 ### v0.12.0 (2022-04-06)
 
 * Regenerated from discovery document revision 20220330
