@@ -1,5 +1,9 @@
 # Release history for google-apis-adsense_v2
 
+### v0.17.0 (2022-06-02)
+
+* Unspecified changes
+
 ### v0.16.0 (2022-05-03)
 
 * Regenerated from discovery document revision 20220503
