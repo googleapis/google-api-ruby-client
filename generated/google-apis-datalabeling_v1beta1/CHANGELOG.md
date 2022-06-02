@@ -1,5 +1,9 @@
 # Release history for google-apis-datalabeling_v1beta1
 
+### v0.11.0 (2022-06-02)
+
+* Unspecified changes
+
 ### v0.10.0 (2022-03-23)
 
 * Regenerated from discovery document revision 20220319
