@@ -1003,6 +1003,7 @@ module Google
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
           property :package_type, as: 'packageType'
+          collection :patched_cve, as: 'patchedCve'
           property :unused, as: 'unused'
           property :version, as: 'version'
         end
