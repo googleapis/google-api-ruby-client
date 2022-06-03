@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamV1betaWorkloadIdentityPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV2betaDenyRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -140,6 +146,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :binding_deltas, as: 'bindingDeltas', class: Google::Apis::IamV2beta::GoogleIamV1BindingDelta, decorator: Google::Apis::IamV2beta::GoogleIamV1BindingDelta::Representation
       
+        end
+      end
+      
+      class GoogleIamV1betaWorkloadIdentityPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -163,6 +163,19 @@ module Google
         end
       end
       
+      # Metadata for long-running WorkloadIdentityPool operations.
+      class GoogleIamV1betaWorkloadIdentityPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A deny rule in an IAM deny policy.
       class GoogleIamV2betaDenyRule
         include Google::Apis::Core::Hashable
