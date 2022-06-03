@@ -1181,7 +1181,7 @@ module Google
       end
       
       # This reservation type allows to pre allocate specific instance configuration.
-      # Next ID: 5
+      # Next ID: 6
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
@@ -4096,7 +4096,7 @@ module Google
         # service. The value of the field must be in [0, 1]. This configures the
         # sampling rate of requests to the load balancer where 1.0 means all logged
         # requests are reported and 0.0 means no logged requests are reported. The
-        # default value is 1.0.
+        # default value is 0.0.
         # Corresponds to the JSON property `sampleRate`
         # @return [Float]
         attr_accessor :sample_rate
@@ -9849,9 +9849,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2.
-        # Exactly one of the protocol-specific health check field must be specified,
-        # which must match type field.
+        # Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or
+        # GRPC. Exactly one of the protocol-specific health check fields must be
+        # specified, which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -27512,7 +27512,7 @@ module Google
         attr_accessor :share_settings
       
         # This reservation type allows to pre allocate specific instance configuration.
-        # Next ID: 5
+        # Next ID: 6
         # Corresponds to the JSON property `specificReservation`
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuReservation]
         attr_accessor :specific_reservation
@@ -39123,20 +39123,67 @@ module Google
       class UsableSubnetwork
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The external IPv6 address range that is assigned to this
+        # subnetwork.
+        # Corresponds to the JSON property `externalIpv6Prefix`
+        # @return [String]
+        attr_accessor :external_ipv6_prefix
+      
+        # [Output Only] The internal IPv6 address range that is assigned to this
+        # subnetwork.
+        # Corresponds to the JSON property `internalIpv6Prefix`
+        # @return [String]
+        attr_accessor :internal_ipv6_prefix
+      
         # The range of internal addresses that are owned by this subnetwork.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
+      
+        # The access type of IPv6 address this subnet holds. It's immutable and can only
+        # be specified during creation or the first time the subnet is updated into
+        # IPV4_IPV6 dual stack.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
       
         # Network URL.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
+        # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
+        # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+        # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
+        # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
+        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
+        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        # The role of subnetwork. Currently, this field is only used when purpose =
+        # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
+        # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
+        # Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to
+        # ACTIVE or is currently draining. This field can be updated with a patch
+        # request.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
         # Secondary IP ranges.
         # Corresponds to the JSON property `secondaryIpRanges`
         # @return [Array<Google::Apis::ComputeV1::UsableSubnetworkSecondaryRange>]
         attr_accessor :secondary_ip_ranges
+      
+        # The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are
+        # assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can
+        # be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used.
+        # This field can be both set at resource creation time and updated using patch.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
       
         # Subnetwork URL.
         # Corresponds to the JSON property `subnetwork`
@@ -39149,9 +39196,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_ipv6_prefix = args[:external_ipv6_prefix] if args.key?(:external_ipv6_prefix)
+          @internal_ipv6_prefix = args[:internal_ipv6_prefix] if args.key?(:internal_ipv6_prefix)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @network = args[:network] if args.key?(:network)
+          @purpose = args[:purpose] if args.key?(:purpose)
+          @role = args[:role] if args.key?(:role)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
