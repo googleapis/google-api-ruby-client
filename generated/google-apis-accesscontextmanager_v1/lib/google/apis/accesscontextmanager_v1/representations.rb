@@ -455,6 +455,7 @@ module Google
       class EgressTo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_resources, as: 'externalResources'
           collection :operations, as: 'operations', class: Google::Apis::AccesscontextmanagerV1::ApiOperation, decorator: Google::Apis::AccesscontextmanagerV1::ApiOperation::Representation
       
           collection :resources, as: 'resources'
