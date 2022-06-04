@@ -2335,6 +2335,11 @@ module Google
         # @return [Array<Google::Apis::LoggingV2::SourceReference>]
         attr_accessor :source_reference
       
+        # Stackdriver Trace span identifier for this request.
+        # Corresponds to the JSON property `spanId`
+        # @return [String]
+        attr_accessor :span_id
+      
         # Time when the request started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -2417,6 +2422,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @response_size = args[:response_size] if args.key?(:response_size)
           @source_reference = args[:source_reference] if args.key?(:source_reference)
+          @span_id = args[:span_id] if args.key?(:span_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @task_name = args[:task_name] if args.key?(:task_name)

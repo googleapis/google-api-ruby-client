@@ -834,6 +834,7 @@ module Google
           property :response_size, :numeric_string => true, as: 'responseSize'
           collection :source_reference, as: 'sourceReference', class: Google::Apis::LoggingV2::SourceReference, decorator: Google::Apis::LoggingV2::SourceReference::Representation
       
+          property :span_id, as: 'spanId'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :task_name, as: 'taskName'
