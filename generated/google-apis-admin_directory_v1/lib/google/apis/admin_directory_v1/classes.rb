@@ -2183,14 +2183,14 @@ module Google
       class Group
         include Google::Apis::Core::Hashable
       
-        # Value is `true` if this group was created by an administrator rather than a
-        # user.
+        # Read-only. Value is `true` if this group was created by an administrator
+        # rather than a user.
         # Corresponds to the JSON property `adminCreated`
         # @return [Boolean]
         attr_accessor :admin_created
         alias_method :admin_created?, :admin_created
       
-        # List of a group's alias email addresses.
+        # Read-only. A list of a group's alias email addresses.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
@@ -2224,8 +2224,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The unique ID of a group. A group `id` can be used as a group request URI's `
-        # groupKey`.
+        # Read-only. The unique ID of a group. A group `id` can be used as a group
+        # request URI's `groupKey`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2241,11 +2241,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # List of the group's non-editable alias email addresses that are outside of the
-        # account's primary domain or subdomains. These are functioning email addresses
-        # used by the group. This is a read-only property returned in the API's response
-        # for a group. If edited in a group's POST or PUT request, the edit is ignored
-        # by the API service.
+        # Read-only. A list of the group's non-editable alias email addresses that are
+        # outside of the account's primary domain or subdomains. These are functioning
+        # email addresses used by the group. This is a read-only property returned in
+        # the API's response for a group. If edited in a group's POST or PUT request,
+        # the edit is ignored by the API service.
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
