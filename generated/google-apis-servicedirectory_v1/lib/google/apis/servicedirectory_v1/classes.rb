@@ -558,13 +558,15 @@ module Google
         # have port number larger than 8080 * `name>projects/my-project/locations/us-
         # east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c`
         # returns endpoints that have name that is alphabetically later than the string,
-        # so "endpoint-e" is returned but "endpoint-a" is not * `annotations.owner!=sd
-        # AND annotations.foo=bar` returns endpoints that have `owner` in annotation key
-        # but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar`
-        # returns an empty list. Note that endpoint doesn't have a field called "
-        # doesnotexist". Since the filter does not match any endpoint, it returns no
-        # results For more information about filtering, see [API Filtering](https://aip.
-        # dev/160).
+        # so "endpoint-e" is returned but "endpoint-a" is not * `name=projects/my-
+        # project/locations/us-central1/namespaces/my-namespace/services/my-service/
+        # endpoints/ep-1` returns the endpoint that has an endpoint_id equal to `ep-1` *
+        # `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `
+        # owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `
+        # doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a
+        # field called "doesnotexist". Since the filter does not match any endpoint, it
+        # returns no results For more information about filtering, see [API Filtering](
+        # https://aip.dev/160).
         # Corresponds to the JSON property `endpointFilter`
         # @return [String]
         attr_accessor :endpoint_filter
