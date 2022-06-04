@@ -44,6 +44,17 @@ module Google
         # @return [String]
         attr_accessor :gpu_partition_size
       
+        # GPUSharingConfig represents the GPU sharing configuration for Hardware
+        # Accelerators.
+        # Corresponds to the JSON property `gpuSharingConfig`
+        # @return [Google::Apis::ContainerV1beta1::GpuSharingConfig]
+        attr_accessor :gpu_sharing_config
+      
+        # The number of time-shared GPU resources to expose for each physical GPU.
+        # Corresponds to the JSON property `maxTimeSharedClientsPerGpu`
+        # @return [Fixnum]
+        attr_accessor :max_time_shared_clients_per_gpu
+      
         def initialize(**args)
            update!(**args)
         end
@@ -53,6 +64,8 @@ module Google
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
+          @gpu_sharing_config = args[:gpu_sharing_config] if args.key?(:gpu_sharing_config)
+          @max_time_shared_clients_per_gpu = args[:max_time_shared_clients_per_gpu] if args.key?(:max_time_shared_clients_per_gpu)
         end
       end
       
@@ -830,9 +843,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
-        # clusters do not recognize parameters in `NodeConfig`. Use
-        # AutoprovisioningNodePoolDefaults instead.
+        # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+        # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+        # instead.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
         attr_accessor :node_config
@@ -1882,6 +1895,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # GPUSharingConfig represents the GPU sharing configuration for Hardware
+      # Accelerators.
+      class GpuSharingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of GPU sharing strategy to enable on the GPU node.
+        # Corresponds to the JSON property `gpuSharingStrategy`
+        # @return [String]
+        attr_accessor :gpu_sharing_strategy
+      
+        # The max number of containers that can share a physical GPU.
+        # Corresponds to the JSON property `maxSharedClientsPerGpu`
+        # @return [Fixnum]
+        attr_accessor :max_shared_clients_per_gpu
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gpu_sharing_strategy = args[:gpu_sharing_strategy] if args.key?(:gpu_sharing_strategy)
+          @max_shared_clients_per_gpu = args[:max_shared_clients_per_gpu] if args.key?(:max_shared_clients_per_gpu)
         end
       end
       
@@ -3240,9 +3279,9 @@ module Google
         end
       end
       
-      # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
-      # clusters do not recognize parameters in `NodeConfig`. Use
-      # AutoprovisioningNodePoolDefaults instead.
+      # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+      # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+      # instead.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
@@ -3702,9 +3741,9 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
         attr_accessor :conditions
       
-        # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
-        # clusters do not recognize parameters in `NodeConfig`. Use
-        # AutoprovisioningNodePoolDefaults instead.
+        # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+        # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+        # instead.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
         attr_accessor :config
