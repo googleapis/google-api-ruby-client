@@ -4408,6 +4408,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyDiskConsistencyGroupPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyGroupPlacementPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7207,6 +7213,7 @@ module Google
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeAlpha::Subsetting, decorator: Google::Apis::ComputeAlpha::Subsetting::Representation
       
           property :timeout_sec, as: 'timeoutSec'
+          property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
       
@@ -14613,6 +14620,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :disk_consistency_group_policy, as: 'diskConsistencyGroupPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyDiskConsistencyGroupPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyDiskConsistencyGroupPolicy::Representation
+      
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -14673,6 +14682,12 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyDiskConsistencyGroupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -17827,10 +17842,16 @@ module Google
       class UsableSubnetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ipv6_prefix, as: 'externalIpv6Prefix'
+          property :internal_ipv6_prefix, as: 'internalIpv6Prefix'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :network, as: 'network'
+          property :purpose, as: 'purpose'
+          property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeAlpha::UsableSubnetworkSecondaryRange, decorator: Google::Apis::ComputeAlpha::UsableSubnetworkSecondaryRange::Representation
       
+          property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
         end
       end
