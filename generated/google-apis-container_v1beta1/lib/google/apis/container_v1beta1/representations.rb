@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GpuSharingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -898,6 +904,9 @@ module Google
           property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
           property :gpu_partition_size, as: 'gpuPartitionSize'
+          property :gpu_sharing_config, as: 'gpuSharingConfig', class: Google::Apis::ContainerV1beta1::GpuSharingConfig, decorator: Google::Apis::ContainerV1beta1::GpuSharingConfig::Representation
+      
+          property :max_time_shared_clients_per_gpu, :numeric_string => true, as: 'maxTimeSharedClientsPerGpu'
         end
       end
       
@@ -1368,6 +1377,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_type, as: 'eventType'
+        end
+      end
+      
+      class GpuSharingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gpu_sharing_strategy, as: 'gpuSharingStrategy'
+          property :max_shared_clients_per_gpu, :numeric_string => true, as: 'maxSharedClientsPerGpu'
         end
       end
       
