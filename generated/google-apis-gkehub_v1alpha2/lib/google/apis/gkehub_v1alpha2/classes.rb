@@ -22,6 +22,27 @@ module Google
   module Apis
     module GkehubV1alpha2
       
+      # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+      class ApplianceCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Self-link of the GCP resource for the Appliance Cluster. For
+        # example: //transferappliance.googleapis.com/projects/my-project/locations/us-
+        # west1-a/appliances/my-appliance
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -836,6 +857,11 @@ module Google
       class MembershipEndpoint
         include Google::Apis::Core::Hashable
       
+        # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+        # Corresponds to the JSON property `applianceCluster`
+        # @return [Google::Apis::GkehubV1alpha2::ApplianceCluster]
+        attr_accessor :appliance_cluster
+      
         # EdgeCluster contains information specific to Google Edge Clusters.
         # Corresponds to the JSON property `edgeCluster`
         # @return [Google::Apis::GkehubV1alpha2::EdgeCluster]
@@ -876,6 +902,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appliance_cluster = args[:appliance_cluster] if args.key?(:appliance_cluster)
           @edge_cluster = args[:edge_cluster] if args.key?(:edge_cluster)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
