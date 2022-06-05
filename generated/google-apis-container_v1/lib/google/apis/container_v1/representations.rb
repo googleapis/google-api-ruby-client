@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GpuSharingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +790,8 @@ module Google
           property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
           property :accelerator_type, as: 'acceleratorType'
           property :gpu_partition_size, as: 'gpuPartitionSize'
+          property :gpu_sharing_config, as: 'gpuSharingConfig', class: Google::Apis::ContainerV1::GpuSharingConfig, decorator: Google::Apis::ContainerV1::GpuSharingConfig::Representation
+      
         end
       end
       
@@ -1190,6 +1198,14 @@ module Google
         end
       end
       
+      class GpuSharingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gpu_sharing_strategy, as: 'gpuSharingStrategy'
+          property :max_shared_clients_per_gpu, :numeric_string => true, as: 'maxSharedClientsPerGpu'
+        end
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1538,6 +1554,8 @@ module Google
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ContainerV1::AdvancedMachineFeatures, decorator: Google::Apis::ContainerV1::AdvancedMachineFeatures::Representation
       
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
+          property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
+      
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
@@ -2099,6 +2117,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
+          property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
+      
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1::VirtualNic, decorator: Google::Apis::ContainerV1::VirtualNic::Representation

@@ -44,6 +44,12 @@ module Google
         # @return [String]
         attr_accessor :gpu_partition_size
       
+        # GPUSharingConfig represents the GPU sharing configuration for Hardware
+        # Accelerators.
+        # Corresponds to the JSON property `gpuSharingConfig`
+        # @return [Google::Apis::ContainerV1::GpuSharingConfig]
+        attr_accessor :gpu_sharing_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -53,6 +59,7 @@ module Google
           @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @gpu_partition_size = args[:gpu_partition_size] if args.key?(:gpu_partition_size)
+          @gpu_sharing_config = args[:gpu_sharing_config] if args.key?(:gpu_sharing_config)
         end
       end
       
@@ -770,9 +777,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
-        # clusters do not recognize parameters in `NodeConfig`. Use
-        # AutoprovisioningNodePoolDefaults instead.
+        # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+        # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+        # instead.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :node_config
@@ -1640,6 +1647,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # GPUSharingConfig represents the GPU sharing configuration for Hardware
+      # Accelerators.
+      class GpuSharingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The type of GPU sharing strategy to enable on the GPU node.
+        # Corresponds to the JSON property `gpuSharingStrategy`
+        # @return [String]
+        attr_accessor :gpu_sharing_strategy
+      
+        # The max number of containers that can share a physical GPU.
+        # Corresponds to the JSON property `maxSharedClientsPerGpu`
+        # @return [Fixnum]
+        attr_accessor :max_shared_clients_per_gpu
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gpu_sharing_strategy = args[:gpu_sharing_strategy] if args.key?(:gpu_sharing_strategy)
+          @max_shared_clients_per_gpu = args[:max_shared_clients_per_gpu] if args.key?(:max_shared_clients_per_gpu)
         end
       end
       
@@ -2822,9 +2855,9 @@ module Google
         end
       end
       
-      # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
-      # clusters do not recognize parameters in `NodeConfig`. Use
-      # AutoprovisioningNodePoolDefaults instead.
+      # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+      # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+      # instead.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
@@ -2847,6 +2880,12 @@ module Google
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
+      
+        # ConfidentialNodes is configuration for the confidential nodes feature, which
+        # makes nodes run on confidential VMs.
+        # Corresponds to the JSON property `confidentialNodes`
+        # @return [Google::Apis::ContainerV1::ConfidentialNodes]
+        attr_accessor :confidential_nodes
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
         # disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -3030,6 +3069,7 @@ module Google
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
+          @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
@@ -3264,9 +3304,9 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :conditions
       
-        # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
-        # clusters do not recognize parameters in `NodeConfig`. Use
-        # AutoprovisioningNodePoolDefaults instead.
+        # Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not
+        # recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults
+        # instead.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :config
@@ -5209,6 +5249,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
+        # ConfidentialNodes is configuration for the confidential nodes feature, which
+        # makes nodes run on confidential VMs.
+        # Corresponds to the JSON property `confidentialNodes`
+        # @return [Google::Apis::ContainerV1::ConfidentialNodes]
+        attr_accessor :confidential_nodes
+      
         # GcfsConfig contains configurations of Google Container File System (image
         # streaming).
         # Corresponds to the JSON property `gcfsConfig`
@@ -5330,6 +5376,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
