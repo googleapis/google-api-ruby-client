@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplianceCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementOciConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementOperatorState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class ConfigManagementPolicyController
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementPolicyControllerMonitoring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -724,6 +742,13 @@ module Google
         end
       end
       
+      class ApplianceCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +863,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
+      
+          property :oci, as: 'oci', class: Google::Apis::GkehubV1alpha::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementOciConfig::Representation
       
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
@@ -1001,6 +1028,17 @@ module Google
         end
       end
       
+      class ConfigManagementOciConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_service_account_email, as: 'gcpServiceAccountEmail'
+          property :policy_dir, as: 'policyDir'
+          property :secret_type, as: 'secretType'
+          property :sync_repo, as: 'syncRepo'
+          property :sync_wait_secs, :numeric_string => true, as: 'syncWaitSecs'
+        end
+      end
+      
       class ConfigManagementOperatorState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1018,9 +1056,18 @@ module Google
           property :enabled, as: 'enabled'
           collection :exemptable_namespaces, as: 'exemptableNamespaces'
           property :log_denies_enabled, as: 'logDeniesEnabled'
+          property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerMonitoring, decorator: Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerMonitoring::Representation
+      
           property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
+        end
+      end
+      
+      class ConfigManagementPolicyControllerMonitoring
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backends, as: 'backends'
         end
       end
       
@@ -1354,6 +1401,8 @@ module Google
       class MembershipEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_cluster, as: 'applianceCluster', class: Google::Apis::GkehubV1alpha::ApplianceCluster, decorator: Google::Apis::GkehubV1alpha::ApplianceCluster::Representation
+      
           property :edge_cluster, as: 'edgeCluster', class: Google::Apis::GkehubV1alpha::EdgeCluster, decorator: Google::Apis::GkehubV1alpha::EdgeCluster::Representation
       
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1alpha::GkeCluster, decorator: Google::Apis::GkehubV1alpha::GkeCluster::Representation
