@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtendSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudManagedidentitiesV1OpMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state'
@@ -460,6 +467,15 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExtendSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :file_contents, :base64 => true, as: 'fileContents'
+          property :gcs_path, as: 'gcsPath'
         end
       end
       
