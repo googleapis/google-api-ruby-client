@@ -929,8 +929,8 @@ module Google
         
         # Makes a recommendation prediction.
         # @param [String] placement
-        #   Required. Full resource name of the format: `name=projects/*/locations/global/
-        #   catalogs/default_catalog/placements/*` The ID of the Recommendations AI
+        #   Required. Full resource name of the format: ``name=projects/*/locations/global/
+        #   catalogs/default_catalog/placements/*`` The ID of the Recommendations AI
         #   placement. Before you can request predictions from your model, you must create
         #   at least one placement for it. For more information, see [Managing placements](
         #   https://cloud.google.com/retail/recommendations-ai/docs/manage-placements).
