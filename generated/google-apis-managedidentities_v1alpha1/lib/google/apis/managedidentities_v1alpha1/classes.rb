@@ -55,6 +55,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. A short description of the backup.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Optional. Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -94,6 +99,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -126,7 +132,7 @@ module Google
         # @return [Google::Apis::ManagedidentitiesV1alpha1::Expr]
         attr_accessor :condition
       
-        # Specifies the principals requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Google Cloud resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -551,6 +557,40 @@ module Google
         end
       end
       
+      # ExtendSchemaRequest is the request message for ExtendSchema method.
+      class ExtendSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Description for Schema Change.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # File uploaded as a byte stream input.
+        # Corresponds to the JSON property `fileContents`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :file_contents
+      
+        # File stored in Cloud Storage bucket and represented in the form projects/`
+        # project_id`/buckets/`bucket_name`/objects/`object_name` File should be in the
+        # same project as the domain.
+        # Corresponds to the JSON property `gcsPath`
+        # @return [String]
+        attr_accessor :gcs_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @file_contents = args[:file_contents] if args.key?(:file_contents)
+          @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudManagedidentitiesV1OpMetadata
         include Google::Apis::Core::Hashable
@@ -727,11 +767,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The instance_type of this instance of format: projects/`project_id`/
-        # locations/`location_id`/instanceTypes/`instance_type_id`. Instance Type
-        # represents a high-level tier or SKU of the service that this instance belong
-        # to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along
-        # with 'software_versions' to determine whether instance needs an update or not.
+        # Optional. The instance_type of this instance of format: projects/`
+        # project_number`/locations/`location_id`/instanceTypes/`instance_type_id`.
+        # Instance Type represents a high-level tier or SKU of the service that this
+        # instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses '
+        # instance_type' along with 'software_versions' to determine whether instance
+        # needs an update or not.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
@@ -763,10 +804,12 @@ module Google
         # @return [Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form: `projects/`project_id|
-        # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
-        # project_id or project_number can be used, but keep it consistent with other
-        # APIs (e.g. RescheduleUpdate)
+        # Unique name of the resource. It uses the form: `projects/`project_number`/
+        # locations/`location_id`/instances/`instance_id`` Note: This name is passed,
+        # stored and logged across the rollout system. So use of consumer project_id or
+        # any other consumer PII in the name is strongly discouraged for wipeout (go/
+        # wipeout) compliance. See go/elysium/project_ids#storage-guidance for more
+        # details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2027,7 +2070,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # (such as `*` or `storage.*`) are not allowed. For more information see [IAM
         # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
