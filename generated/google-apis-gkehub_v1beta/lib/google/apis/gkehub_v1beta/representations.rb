@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementOciConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementOperatorState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class ConfigManagementPolicyController
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementPolicyControllerMonitoring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +664,8 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
+          property :oci, as: 'oci', class: Google::Apis::GkehubV1beta::ConfigManagementOciConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementOciConfig::Representation
+      
           property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
         end
@@ -813,6 +827,17 @@ module Google
         end
       end
       
+      class ConfigManagementOciConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_service_account_email, as: 'gcpServiceAccountEmail'
+          property :policy_dir, as: 'policyDir'
+          property :secret_type, as: 'secretType'
+          property :sync_repo, as: 'syncRepo'
+          property :sync_wait_secs, :numeric_string => true, as: 'syncWaitSecs'
+        end
+      end
+      
       class ConfigManagementOperatorState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -830,8 +855,17 @@ module Google
           property :enabled, as: 'enabled'
           collection :exemptable_namespaces, as: 'exemptableNamespaces'
           property :log_denies_enabled, as: 'logDeniesEnabled'
+          property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1beta::ConfigManagementPolicyControllerMonitoring, decorator: Google::Apis::GkehubV1beta::ConfigManagementPolicyControllerMonitoring::Representation
+      
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
+        end
+      end
+      
+      class ConfigManagementPolicyControllerMonitoring
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backends, as: 'backends'
         end
       end
       
