@@ -1,5 +1,9 @@
 # Release history for google-apis-civicinfo_v2
 
+### v0.11.0 (2022-06-06)
+
+* Regenerated using generator version 0.5.0
+
 ### v0.10.0 (2022-05-17)
 
 * Regenerated from discovery document revision 20220516
