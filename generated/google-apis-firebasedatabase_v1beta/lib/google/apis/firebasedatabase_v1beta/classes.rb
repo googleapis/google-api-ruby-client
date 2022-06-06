@@ -28,7 +28,7 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique hostname of the database.
+        # Output only. Output Only. The globally unique hostname of the database.
         # Corresponds to the JSON property `databaseUrl`
         # @return [String]
         attr_accessor :database_url
@@ -39,19 +39,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The resource name of the project this instance belongs to. For example: `
-        # projects/`project-number``.
+        # Output only. The resource name of the project this instance belongs to. For
+        # example: `projects/`project-number``.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
       
-        # The database's lifecycle state. Read-only.
+        # Output only. The database's lifecycle state. Read-only.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The database instance type. On creation only USER_DATABASE is allowed, which
-        # is also the default when omitted.
+        # Immutable. The database instance type. On creation only USER_DATABASE is
+        # allowed, which is also the default when omitted.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
