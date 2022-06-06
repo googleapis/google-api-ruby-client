@@ -1043,6 +1043,20 @@ module Google
         # @return [String]
         attr_accessor :encoding
       
+        # The minimum (inclusive) revision allowed for validating messages. If empty or
+        # not present, allow any revision to be validated against last_revision or any
+        # revision created before.
+        # Corresponds to the JSON property `firstRevisionId`
+        # @return [String]
+        attr_accessor :first_revision_id
+      
+        # The maximum (inclusive) revision allowed for validating messages. If empty or
+        # not present, allow any revision to be validated against first_revision or any
+        # revision created after.
+        # Corresponds to the JSON property `lastRevisionId`
+        # @return [String]
+        attr_accessor :last_revision_id
+      
         # Required. The name of the schema that messages published should be validated
         # against. Format is `projects/`project`/schemas/`schema``. The value of this
         # field will be `_deleted-schema_` if the schema has been deleted.
@@ -1057,6 +1071,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encoding = args[:encoding] if args.key?(:encoding)
+          @first_revision_id = args[:first_revision_id] if args.key?(:first_revision_id)
+          @last_revision_id = args[:last_revision_id] if args.key?(:last_revision_id)
           @schema = args[:schema] if args.key?(:schema)
         end
       end
