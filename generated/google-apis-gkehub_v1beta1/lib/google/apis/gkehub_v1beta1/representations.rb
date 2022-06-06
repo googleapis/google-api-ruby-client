@@ -22,6 +22,12 @@ module Google
   module Apis
     module GkehubV1beta1
       
+      class ApplianceCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplianceCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -423,6 +436,8 @@ module Google
       class MembershipEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_cluster, as: 'applianceCluster', class: Google::Apis::GkehubV1beta1::ApplianceCluster, decorator: Google::Apis::GkehubV1beta1::ApplianceCluster::Representation
+      
           property :edge_cluster, as: 'edgeCluster', class: Google::Apis::GkehubV1beta1::EdgeCluster, decorator: Google::Apis::GkehubV1beta1::EdgeCluster::Representation
       
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1beta1::GkeCluster, decorator: Google::Apis::GkehubV1beta1::GkeCluster::Representation
