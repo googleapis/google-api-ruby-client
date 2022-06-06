@@ -543,6 +543,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encoding, as: 'encoding'
+          property :first_revision_id, as: 'firstRevisionId'
+          property :last_revision_id, as: 'lastRevisionId'
           property :schema, as: 'schema'
         end
       end
