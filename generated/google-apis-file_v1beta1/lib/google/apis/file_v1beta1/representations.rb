@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSharesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSnapshotsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Share
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +263,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -419,6 +432,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'
@@ -426,6 +441,9 @@ module Google
       
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :max_capacity_gb, :numeric_string => true, as: 'maxCapacityGb'
+          property :max_share_count, :numeric_string => true, as: 'maxShareCount'
+          property :multi_share_enabled, as: 'multiShareEnabled'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
       
@@ -472,6 +490,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FileV1beta1::Operation, decorator: Google::Apis::FileV1beta1::Operation::Representation
       
+        end
+      end
+      
+      class ListSharesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :shares, as: 'shares', class: Google::Apis::FileV1beta1::Share, decorator: Google::Apis::FileV1beta1::Share::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -589,6 +617,21 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::FileV1beta1::TimeOfDay, decorator: Google::Apis::FileV1beta1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class Share
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :mount_name, as: 'mountName'
+          property :name, as: 'name'
+          collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
+      
+          property :state, as: 'state'
         end
       end
       
