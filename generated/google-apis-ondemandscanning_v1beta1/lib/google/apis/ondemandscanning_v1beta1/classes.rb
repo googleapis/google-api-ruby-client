@@ -1932,6 +1932,12 @@ module Google
         # @return [String]
         attr_accessor :package_type
       
+        # CVEs that this package is no longer vulnerable to go/drydock-dd-custom-binary-
+        # scanning
+        # Corresponds to the JSON property `patchedCve`
+        # @return [Array<String>]
+        attr_accessor :patched_cve
+      
         # 
         # Corresponds to the JSON property `unused`
         # @return [String]
@@ -1955,6 +1961,7 @@ module Google
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
           @package_type = args[:package_type] if args.key?(:package_type)
+          @patched_cve = args[:patched_cve] if args.key?(:patched_cve)
           @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
