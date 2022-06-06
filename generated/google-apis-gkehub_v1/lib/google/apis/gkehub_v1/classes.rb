@@ -177,6 +177,27 @@ module Google
         end
       end
       
+      # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+      class ApplianceCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Self-link of the GCP resource for the Appliance Cluster. For
+        # example: //transferappliance.googleapis.com/projects/my-project/locations/us-
+        # west1-a/appliances/my-appliance
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -458,6 +479,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementGitConfig]
         attr_accessor :git
       
+        # OCI repo configuration for a single cluster
+        # Corresponds to the JSON property `oci`
+        # @return [Google::Apis::GkehubV1::ConfigManagementOciConfig]
+        attr_accessor :oci
+      
         # Set to true to enable the Config Sync admission webhook to prevent drifts. If
         # set to `false`, disables the Config Sync admission webhook and does not
         # prevent drifts.
@@ -480,6 +506,7 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
+          @oci = args[:oci] if args.key?(:oci)
           @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
         end
@@ -1003,6 +1030,52 @@ module Google
         end
       end
       
+      # OCI repo configuration for a single cluster
+      class ConfigManagementOciConfig
+        include Google::Apis::Core::Hashable
+      
+        # The GCP Service Account Email used for auth when secret_type is
+        # gcpServiceAccount.
+        # Corresponds to the JSON property `gcpServiceAccountEmail`
+        # @return [String]
+        attr_accessor :gcp_service_account_email
+      
+        # The absolute path of the directory that contains the local resources. Default:
+        # the root directory of the image.
+        # Corresponds to the JSON property `policyDir`
+        # @return [String]
+        attr_accessor :policy_dir
+      
+        # Type of secret configured for access to the Git repo.
+        # Corresponds to the JSON property `secretType`
+        # @return [String]
+        attr_accessor :secret_type
+      
+        # The OCI image repository URL for the package to sync from. e.g. `LOCATION-
+        # docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
+        # Corresponds to the JSON property `syncRepo`
+        # @return [String]
+        attr_accessor :sync_repo
+      
+        # Period in seconds between consecutive syncs. Default: 15.
+        # Corresponds to the JSON property `syncWaitSecs`
+        # @return [Fixnum]
+        attr_accessor :sync_wait_secs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_service_account_email = args[:gcp_service_account_email] if args.key?(:gcp_service_account_email)
+          @policy_dir = args[:policy_dir] if args.key?(:policy_dir)
+          @secret_type = args[:secret_type] if args.key?(:secret_type)
+          @sync_repo = args[:sync_repo] if args.key?(:sync_repo)
+          @sync_wait_secs = args[:sync_wait_secs] if args.key?(:sync_wait_secs)
+        end
+      end
+      
       # State information for an ACM's Operator
       class ConfigManagementOperatorState
         include Google::Apis::Core::Hashable
@@ -1063,6 +1136,13 @@ module Google
         attr_accessor :log_denies_enabled
         alias_method :log_denies_enabled?, :log_denies_enabled
       
+        # PolicyControllerMonitoring specifies the backends Policy Controller should
+        # export metrics to. For example, to specify metrics should be exported to Cloud
+        # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::GkehubV1::ConfigManagementPolicyControllerMonitoring]
+        attr_accessor :monitoring
+      
         # Enables the ability to use Constraint Templates that reference to objects
         # other than the object currently being evaluated.
         # Corresponds to the JSON property `referentialRulesEnabled`
@@ -1086,8 +1166,31 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
+        end
+      end
+      
+      # PolicyControllerMonitoring specifies the backends Policy Controller should
+      # export metrics to. For example, to specify metrics should be exported to Cloud
+      # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+      class ConfigManagementPolicyControllerMonitoring
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the list of backends Policy Controller will export to. An empty list
+        # would effectively disable metrics export.
+        # Corresponds to the JSON property `backends`
+        # @return [Array<String>]
+        attr_accessor :backends
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backends = args[:backends] if args.key?(:backends)
         end
       end
       
@@ -2166,6 +2269,11 @@ module Google
       class MembershipEndpoint
         include Google::Apis::Core::Hashable
       
+        # ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
+        # Corresponds to the JSON property `applianceCluster`
+        # @return [Google::Apis::GkehubV1::ApplianceCluster]
+        attr_accessor :appliance_cluster
+      
         # EdgeCluster contains information specific to Google Edge Clusters.
         # Corresponds to the JSON property `edgeCluster`
         # @return [Google::Apis::GkehubV1::EdgeCluster]
@@ -2205,6 +2313,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appliance_cluster = args[:appliance_cluster] if args.key?(:appliance_cluster)
           @edge_cluster = args[:edge_cluster] if args.key?(:edge_cluster)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
