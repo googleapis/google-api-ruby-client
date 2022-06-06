@@ -47,6 +47,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :download_bytes
       
+        # Immutable. KMS key name used for data encryption.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -104,6 +109,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -722,6 +728,18 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This
+        # capacity can be increased up to `max_capacity_gb` GB in multipliers of `
+        # capacity_step_size_gb` GB.
+        # Corresponds to the JSON property `capacityGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_gb
+      
+        # Output only. The increase/decrease capacity step size.
+        # Corresponds to the JSON property `capacityStepSizeGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_step_size_gb
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -753,6 +771,24 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Output only. The max capacity of the instance.
+        # Corresponds to the JSON property `maxCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :max_capacity_gb
+      
+        # Output only. The max number of shares allowed.
+        # Corresponds to the JSON property `maxShareCount`
+        # @return [Fixnum]
+        attr_accessor :max_share_count
+      
+        # Indicates whether this instance uses a multi-share configuration with which it
+        # can have more than one file-share or none at all. File-shares are added,
+        # updated and removed through the separate file-share APIs.
+        # Corresponds to the JSON property `multiShareEnabled`
+        # @return [Boolean]
+        attr_accessor :multi_share_enabled
+        alias_method :multi_share_enabled?, :multi_share_enabled
       
         # Output only. The resource name of the instance, in the format `projects/`
         # project_id`/locations/`location_id`/instances/`instance_id``.
@@ -799,12 +835,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
+          @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
+          @max_capacity_gb = args[:max_capacity_gb] if args.key?(:max_capacity_gb)
+          @max_share_count = args[:max_share_count] if args.key?(:max_share_count)
+          @multi_share_enabled = args[:multi_share_enabled] if args.key?(:multi_share_enabled)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -934,6 +975,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # ListSharesResponse is the result of ListSharesRequest.
+      class ListSharesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of shares in the project for the specified instance.
+        # Corresponds to the JSON property `shares`
+        # @return [Array<Google::Apis::FileV1beta1::Share>]
+        attr_accessor :shares
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @shares = args[:shares] if args.key?(:shares)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1421,6 +1494,71 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A Cloud Filestore share.
+      class Share
+        include Google::Apis::Core::Hashable
+      
+        # File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3
+        # bytes. Must be greater than 0.
+        # Corresponds to the JSON property `capacityGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_gb
+      
+        # Output only. The time when the share was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of the share with 2048 characters or less. Requests with longer
+        # descriptions will be rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The mount name of the share. Must be 63 characters or less and consist of
+        # uppercase or lowercase letters, numbers, and underscores.
+        # Corresponds to the JSON property `mountName`
+        # @return [String]
+        attr_accessor :mount_name
+      
+        # Output only. The resource name of the share, in the format `projects/`
+        # project_id`/locations/`location_id`/instances/`instance_id`/shares/`share_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Nfs Export Options. There is a limit of 10 export options per file share.
+        # Corresponds to the JSON property `nfsExportOptions`
+        # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
+        attr_accessor :nfs_export_options
+      
+        # Output only. The share state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @mount_name = args[:mount_name] if args.key?(:mount_name)
+          @name = args[:name] if args.key?(:name)
+          @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
