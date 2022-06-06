@@ -578,6 +578,190 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a share.
+        # @param [String] parent
+        #   Required. The Filestore Instance to create the share for, in the format `
+        #   projects/`project_id`/locations/`location`/instances/`instance_id``
+        # @param [Google::Apis::FileV1beta1::Share] share_object
+        # @param [String] share_id
+        #   Required. The ID to use for the share. The ID must be unique within the
+        #   specified instance. This value must start with a lowercase letter followed by
+        #   up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_instance_share(parent, share_object = nil, share_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/shares', options)
+          command.request_representation = Google::Apis::FileV1beta1::Share::Representation
+          command.request_object = share_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['shareId'] = share_id unless share_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a share.
+        # @param [String] name
+        #   Required. The share resource name, in the format `projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`/share/`share_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_instance_share(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific share.
+        # @param [String] name
+        #   Required. The share resource name, in the format `projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`/shares/`share_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Share] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Share]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_share(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1beta1::Share::Representation
+          command.response_class = Google::Apis::FileV1beta1::Share
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all shares for a specified instance.
+        # @param [String] parent
+        #   Required. The instance for which to retrieve share information, in the format `
+        #   projects/`project_id`/locations/`location`/instances/`instance_id``.
+        # @param [String] filter
+        #   List filter.
+        # @param [String] order_by
+        #   Sort results. Supported values are "name", "name desc" or "" (unsorted).
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::ListSharesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::ListSharesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_shares(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/shares', options)
+          command.response_representation = Google::Apis::FileV1beta1::ListSharesResponse::Representation
+          command.response_class = Google::Apis::FileV1beta1::ListSharesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the settings of a specific share.
+        # @param [String] name
+        #   Output only. The resource name of the share, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id`/shares/`share_id``.
+        # @param [Google::Apis::FileV1beta1::Share] share_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. The elements of the repeated paths field may only include these fields:
+        #   * "description" * "capacity_gb" * "labels" * "nfs_export_options"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_instance_share(name, share_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FileV1beta1::Share::Representation
+          command.request_object = share_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a snapshot.
         # @param [String] parent
         #   Required. The Filestore Instance to create the snapshots of, in the format `
