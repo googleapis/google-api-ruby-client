@@ -1,5 +1,9 @@
 # Release history for google-apis-acceleratedmobilepageurl_v1
 
+### v0.8.0 (2022-06-07)
+
+* Regenerated using generator version 0.5.0
+
 ### v0.7.0 (2021-12-14)
 
 * Unspecified changes
