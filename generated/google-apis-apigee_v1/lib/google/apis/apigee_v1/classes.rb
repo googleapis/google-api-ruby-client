@@ -4201,8 +4201,9 @@ module Google
       class GoogleCloudApigeeV1KeyValueMap
         include Google::Apis::Core::Hashable
       
-        # Optional. Flag that specifies whether entry values will be encrypted. Enable
-        # to encrypt entry values.
+        # Optional. Flag that specifies whether entry values will be encrypted. You must
+        # set this value to `true`. Apigee X and hybrid do not support unencrytped key
+        # value maps.
         # Corresponds to the JSON property `encrypted`
         # @return [Boolean]
         attr_accessor :encrypted
