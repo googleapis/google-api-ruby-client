@@ -2734,6 +2734,33 @@ module Google
         end
       end
       
+      # Represents Pub/Sub messages about updates to a Channel Partner. You can
+      # retrieve updated values through the ChannelPartnerLinks API.
+      class GoogleCloudChannelV1alpha1ChannelPartnerEvent
+        include Google::Apis::Core::Hashable
+      
+        # Resource name for the Channel Partner Link. Channel_partner uses the format:
+        # accounts/`account_id`/channelPartnerLinks/`channel_partner_id`
+        # Corresponds to the JSON property `channelPartner`
+        # @return [String]
+        attr_accessor :channel_partner
+      
+        # Type of event performed on the Channel Partner.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_partner = args[:channel_partner] if args.key?(:channel_partner)
+          @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
       # Commitment settings for commitment-based offers.
       class GoogleCloudChannelV1alpha1CommitmentSettings
         include Google::Apis::Core::Hashable
@@ -3120,6 +3147,12 @@ module Google
       class GoogleCloudChannelV1alpha1SubscriberEvent
         include Google::Apis::Core::Hashable
       
+        # Represents Pub/Sub messages about updates to a Channel Partner. You can
+        # retrieve updated values through the ChannelPartnerLinks API.
+        # Corresponds to the JSON property `channelPartnerEvent`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ChannelPartnerEvent]
+        attr_accessor :channel_partner_event
+      
         # Represents Pub/Sub message content describing customer update.
         # Corresponds to the JSON property `customerEvent`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CustomerEvent]
@@ -3136,6 +3169,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel_partner_event = args[:channel_partner_event] if args.key?(:channel_partner_event)
           @customer_event = args[:customer_event] if args.key?(:customer_event)
           @entitlement_event = args[:entitlement_event] if args.key?(:entitlement_event)
         end
