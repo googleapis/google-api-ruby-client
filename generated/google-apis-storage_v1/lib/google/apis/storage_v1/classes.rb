@@ -502,7 +502,8 @@ module Google
               # @return [String]
               attr_accessor :storage_class
             
-              # Type of the action. Currently, only Delete and SetStorageClass are supported.
+              # Type of the action. Currently, only Delete, SetStorageClass, and
+              # AbortIncompleteMultipartUpload are supported.
               # Corresponds to the JSON property `type`
               # @return [String]
               attr_accessor :type
