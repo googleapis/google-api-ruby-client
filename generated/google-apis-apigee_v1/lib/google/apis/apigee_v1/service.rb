@@ -1561,13 +1561,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates key value entries in a org, env or apis scoped key value map.
+        # Creates key value entries in a key value map scoped to an organization,
+        # environment, or API proxy.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
-        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1598,15 +1599,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a key value entry from an org, environment or apis scoped key value
-        # map.
+        # Deletes a key value entry from a key value map scoped to an organization,
+        # environment, or API proxy. **Note:** After you delete the key value entry, the
+        # policy consuming the entry will continue to function with its cached values
+        # for a few minutes. This is expected behavior.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1637,11 +1640,11 @@ module Google
         # Get the Key value entry value for org, env or apis scoped Key value map.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
-        #   entry/value. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry/value. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1672,17 +1675,17 @@ module Google
         # Lists key value entries for key values maps scoped to an organization,
         # environment, or API proxy.
         # @param [String] parent
-        #   Required. Scope as indicated by the URI in which to list key value maps. Use
-        #   one of the following formats in your request: `organizations/`organization`/
-        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
-        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
-        #   organization`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use **
+        #   one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
         # @param [String] page_token
-        #   Optional. Page token, a key value entry returned from a previous call that can
-        #   use to retrieve the next page.
+        #   Optional. Page token. If provides, must be a valid key value entry returned
+        #   from a previous call that can be used to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4150,7 +4153,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an environment from an organization.
+        # Deletes an environment from an organization. **Note**: You must delete all key
+        # value maps and key value entries before you can delete an environment.
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -6062,13 +6066,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates key value entries in a org, env or apis scoped key value map.
+        # Creates key value entries in a key value map scoped to an organization,
+        # environment, or API proxy.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
-        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6099,15 +6104,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a key value entry from an org, environment or apis scoped key value
-        # map.
+        # Deletes a key value entry from a key value map scoped to an organization,
+        # environment, or API proxy. **Note:** After you delete the key value entry, the
+        # policy consuming the entry will continue to function with its cached values
+        # for a few minutes. This is expected behavior.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6138,11 +6145,11 @@ module Google
         # Get the Key value entry value for org, env or apis scoped Key value map.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
-        #   entry/value. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry/value. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6173,17 +6180,17 @@ module Google
         # Lists key value entries for key values maps scoped to an organization,
         # environment, or API proxy.
         # @param [String] parent
-        #   Required. Scope as indicated by the URI in which to list key value maps. Use
-        #   one of the following formats in your request: `organizations/`organization`/
-        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
-        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
-        #   organization`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use **
+        #   one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
         # @param [String] page_token
-        #   Optional. Page token, a key value entry returned from a previous call that can
-        #   use to retrieve the next page.
+        #   Optional. Page token. If provides, must be a valid key value entry returned
+        #   from a previous call that can be used to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8369,13 +8376,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates key value entries in a org, env or apis scoped key value map.
+        # Creates key value entries in a key value map scoped to an organization,
+        # environment, or API proxy.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`
-        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` `
-        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `
+        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
+        #   keyvaluemap`` * `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueEntry] google_cloud_apigee_v1_key_value_entry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8406,15 +8414,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a key value entry from an org, environment or apis scoped key value
-        # map.
+        # Deletes a key value entry from a key value map scoped to an organization,
+        # environment, or API proxy. **Note:** After you delete the key value entry, the
+        # policy consuming the entry will continue to function with its cached values
+        # for a few minutes. This is expected behavior.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
-        #   entry. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8445,11 +8455,11 @@ module Google
         # Get the Key value entry value for org, env or apis scoped Key value map.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
-        #   entry/value. Use one of the following formats in your request: `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`entry``. `
-        #   organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry`` `organizations/`organization`/keyvaluemaps/`
-        #   keyvaluemap`/entries/`entry``.
+        #   entry/value. Use **one** of the following structures in your request: * `
+        #   organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap`/entries/`
+        #   entry``. * `organizations/`organization`/environments/`environment`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry`` * `organizations/`organization`/
+        #   keyvaluemaps/`keyvaluemap`/entries/`entry``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8480,17 +8490,17 @@ module Google
         # Lists key value entries for key values maps scoped to an organization,
         # environment, or API proxy.
         # @param [String] parent
-        #   Required. Scope as indicated by the URI in which to list key value maps. Use
-        #   one of the following formats in your request: `organizations/`organization`/
-        #   apis/`api`/keyvaluemaps/`keyvaluemap``. `organizations/`organization`/
-        #   environments/`environment`/keyvaluemaps/`keyvaluemap`` `organizations/`
-        #   organization`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Scope as indicated by the URI in which to list key value maps. Use **
+        #   one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of key value entries to return. If unspecified, at
         #   most 100 entries will be returned.
         # @param [String] page_token
-        #   Optional. Page token, a key value entry returned from a previous call that can
-        #   use to retrieve the next page.
+        #   Optional. Page token. If provides, must be a valid key value entry returned
+        #   from a previous call that can be used to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
