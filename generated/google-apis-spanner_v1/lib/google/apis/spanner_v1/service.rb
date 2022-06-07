@@ -1717,6 +1717,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists Cloud Spanner database roles.
+        # @param [String] parent
+        #   Required. The database whose roles should be listed. Values are of the form `
+        #   projects//instances//databases//databaseRoles`.
+        # @param [Fixnum] page_size
+        #   Number of database roles to be returned in the response. If 0 or less,
+        #   defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a next_page_token from a previous
+        #   ListDatabaseRolesResponse.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListDatabaseRolesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListDatabaseRolesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_database_database_roles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databaseRoles', options)
+          command.response_representation = Google::Apis::SpannerV1::ListDatabaseRolesResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListDatabaseRolesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
