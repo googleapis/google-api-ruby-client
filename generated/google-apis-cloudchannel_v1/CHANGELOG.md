@@ -1,7 +1,8 @@
 # Release history for google-apis-cloudchannel_v1
 
-### v0.20.0 (2022-06-03)
+### v0.20.0 (2022-06-07)
 
+* Regenerated from discovery document revision 20220604
 * Regenerated using generator version 0.5.0
 
 ### v0.19.0 (2022-04-26)
