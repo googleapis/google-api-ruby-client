@@ -3250,6 +3250,46 @@ module Google
         end
       end
       
+      # 
+      class IndexUnusedReason
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Specifies the base table involved in the reason that no search
+        # index was used.
+        # Corresponds to the JSON property `base_table`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table
+      
+        # [Output-only] Specifies the high-level reason for the scenario when no search
+        # index was used.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # [Output-only] Specifies the name of the unused search index, if available.
+        # Corresponds to the JSON property `index_name`
+        # @return [String]
+        attr_accessor :index_name
+      
+        # [Output-only] Free form human-readable reason for the scenario when no search
+        # index was used.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @code = args[:code] if args.key?(:code)
+          @index_name = args[:index_name] if args.key?(:index_name)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # An array of int.
       class IntArray
         include Google::Apis::Core::Hashable
@@ -4677,6 +4717,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
+        # [Output-only] Search query specific statistics.
+        # Corresponds to the JSON property `searchStatistics`
+        # @return [Google::Apis::BigqueryV2::SearchStatistics]
+        attr_accessor :search_statistics
+      
         # The type of query statement, if valid. Possible values (new values might be
         # added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
         # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
@@ -4766,6 +4811,7 @@ module Google
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @schema = args[:schema] if args.key?(:schema)
+          @search_statistics = args[:search_statistics] if args.key?(:search_statistics)
           @statement_type = args[:statement_type] if args.key?(:statement_type)
           @timeline = args[:timeline] if args.key?(:timeline)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
@@ -6662,6 +6708,33 @@ module Google
         def update!(**args)
           @evaluation_kind = args[:evaluation_kind] if args.key?(:evaluation_kind)
           @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
+        end
+      end
+      
+      # 
+      class SearchStatistics
+        include Google::Apis::Core::Hashable
+      
+        # When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why
+        # index was not used in all or part of the search query. If index_usage_mode is
+        # FULLLY_USED, this field is not populated.
+        # Corresponds to the JSON property `indexUnusedReason`
+        # @return [Array<Google::Apis::BigqueryV2::IndexUnusedReason>]
+        attr_accessor :index_unused_reason
+      
+        # Specifies index usage mode for the query.
+        # Corresponds to the JSON property `indexUsageMode`
+        # @return [String]
+        attr_accessor :index_usage_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_unused_reason = args[:index_unused_reason] if args.key?(:index_unused_reason)
+          @index_usage_mode = args[:index_usage_mode] if args.key?(:index_usage_mode)
         end
       end
       

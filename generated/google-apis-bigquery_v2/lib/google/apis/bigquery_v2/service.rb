@@ -1386,6 +1386,10 @@ module Google
         # @param [String] selected_fields
         #   List of fields to return (comma-separated). If unspecified, all fields are
         #   returned
+        # @param [String] view
+        #   Specifies the view that determines which table information is returned. By
+        #   default, basic table information and storage statistics (STORAGE_STATS) are
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1405,7 +1409,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_table(project_id, dataset_id, table_id, selected_fields: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_table(project_id, dataset_id, table_id, selected_fields: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
@@ -1413,6 +1417,7 @@ module Google
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
           command.query['selectedFields'] = selected_fields unless selected_fields.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
