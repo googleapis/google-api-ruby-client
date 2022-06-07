@@ -544,8 +544,10 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
-        # Required. The cluster name. Cluster names within a project must be unique.
-        # Names of deleted clusters can be reused.
+        # Required. The cluster name, which must be unique within a project. The name
+        # must start with a lowercase letter, and can contain up to 51 lowercase letters,
+        # numbers, and hyphens. It cannot end with a hyphen. The name of a deleted
+        # cluster can be reused.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
@@ -1512,6 +1514,15 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig>]
         attr_accessor :accelerators
       
+        # Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/
+        # compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk
+        # attached to each node in the node pool. Specify the key using the following
+        # format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/
+        # cryptoKeys/KEY_NAME.
+        # Corresponds to the JSON property `bootDiskKmsKey`
+        # @return [String]
+        attr_accessor :boot_disk_kms_key
+      
         # Optional. The number of local SSD disks to attach to the node, which is
         # limited by the maximum number of disks allowable per zone (see Adding Local
         # SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
@@ -1558,6 +1569,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -3047,6 +3059,41 @@ module Google
         end
       end
       
+      # indicating a list of workers of same type
+      class NodePool
+        include Google::Apis::Core::Hashable
+      
+        # Required. A unique id of the node pool. Primary and Secondary workers can be
+        # specified using special reserved ids PRIMARY_WORKER_POOL and
+        # SECONDARY_WORKER_POOL respectively. Aux node pools can be referenced using
+        # corresponding pool id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of instances to be repaired. These instances must belong to specified
+        # node pool.
+        # Corresponds to the JSON property `instanceNames`
+        # @return [Array<String>]
+        attr_accessor :instance_names
+      
+        # Required. Repair action to take on specified resources of the node pool.
+        # Corresponds to the JSON property `repairAction`
+        # @return [String]
+        attr_accessor :repair_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @instance_names = args[:instance_names] if args.key?(:instance_names)
+          @repair_action = args[:repair_action] if args.key?(:repair_action)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3665,6 +3712,13 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
+        # Optional. Node pools and corresponding repair action to be taken. All node
+        # pools should be unique in this request. i.e. Multiple entries for the same
+        # node pool id are not allowed.
+        # Corresponds to the JSON property `nodePools`
+        # @return [Array<Google::Apis::DataprocV1::NodePool>]
+        attr_accessor :node_pools
+      
         # Optional. A unique ID used to identify the request. If the server receives two
         # RepairClusterRequests with the same ID, the second request is ignored, and the
         # first google.longrunning.Operation created and stored in the backend is
@@ -3683,6 +3737,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @node_pools = args[:node_pools] if args.key?(:node_pools)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end

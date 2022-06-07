@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1090,6 +1096,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig, decorator: Google::Apis::DataprocV1::GkeNodePoolAcceleratorConfig::Representation
       
+          property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :local_ssd_count, as: 'localSsdCount'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -1480,6 +1487,15 @@ module Google
         end
       end
       
+      class NodePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :instance_names, as: 'instanceNames'
+          property :repair_action, as: 'repairAction'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1623,6 +1639,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_uuid, as: 'clusterUuid'
+          collection :node_pools, as: 'nodePools', class: Google::Apis::DataprocV1::NodePool, decorator: Google::Apis::DataprocV1::NodePool::Representation
+      
           property :request_id, as: 'requestId'
         end
       end
