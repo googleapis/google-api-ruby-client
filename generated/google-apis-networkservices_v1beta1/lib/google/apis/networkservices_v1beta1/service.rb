@@ -225,8 +225,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -350,8 +351,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -388,8 +390,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -423,7 +426,7 @@ module Google
         # Creates a new Gateway in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the Gateway. Must be in the format `projects/*
-        #   /locations/global`.
+        #   /locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::Gateway] gateway_object
         # @param [String] gateway_id
         #   Required. Short name of the Gateway resource to be created.
@@ -460,7 +463,7 @@ module Google
         # Deletes a single Gateway.
         # @param [String] name
         #   Required. A name of the Gateway to delete. Must be in the format `projects/*/
-        #   locations/global/gateways/*`.
+        #   locations/*/gateways/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -491,7 +494,7 @@ module Google
         # Gets details of a single Gateway.
         # @param [String] name
         #   Required. A name of the Gateway to get. Must be in the format `projects/*/
-        #   locations/global/gateways/*`.
+        #   locations/*/gateways/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -522,8 +525,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -566,7 +570,7 @@ module Google
         # Lists Gateways in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the Gateways should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of Gateways to return per call.
         # @param [String] page_token
@@ -605,7 +609,7 @@ module Google
         # Updates the parameters of a single Gateway.
         # @param [String] name
         #   Required. Name of the Gateway resource. It matches pattern `projects/*/
-        #   locations/global/gateways/`.
+        #   locations/*/gateways/`.
         # @param [Google::Apis::NetworkservicesV1beta1::Gateway] gateway_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -647,8 +651,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -685,8 +690,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1177,8 +1183,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1302,8 +1309,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1340,8 +1348,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1624,8 +1633,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1708,8 +1718,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1746,8 +1757,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworkservicesV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

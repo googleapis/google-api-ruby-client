@@ -35,8 +35,8 @@ module Google
       # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
       # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
       # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
-      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
-      # DATA_WRITE logging.
+      # exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com`
+      # from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -387,7 +387,7 @@ module Google
         attr_accessor :labels
       
         # Required. Name of the Gateway resource. It matches pattern `projects/*/
-        # locations/global/gateways/`.
+        # locations/*/gateways/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2489,6 +2489,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Gateways defines a list of gateways this TcpRoute is attached to, as
+        # one of the routing rules to route the requests served by the gateway. Each
+        # gateway reference should match the pattern: `projects/*/locations/global/
+        # gateways/`
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
         # Optional. Set of label tags associated with the TcpRoute resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2533,6 +2541,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @gateways = args[:gateways] if args.key?(:gateways)
           @labels = args[:labels] if args.key?(:labels)
           @meshes = args[:meshes] if args.key?(:meshes)
           @name = args[:name] if args.key?(:name)
