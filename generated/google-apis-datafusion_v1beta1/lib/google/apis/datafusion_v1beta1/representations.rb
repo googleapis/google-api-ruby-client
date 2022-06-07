@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventPublishConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -278,6 +284,14 @@ module Google
         end
       end
       
+      class EventPublishConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :topic, as: 'topic'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -316,6 +330,8 @@ module Google
           property :enable_rbac, as: 'enableRbac'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
+          property :event_publish_config, as: 'eventPublishConfig', class: Google::Apis::DatafusionV1beta1::EventPublishConfig, decorator: Google::Apis::DatafusionV1beta1::EventPublishConfig::Representation
+      
           property :gcs_bucket, as: 'gcsBucket'
           hash :labels, as: 'labels'
           property :name, as: 'name'
