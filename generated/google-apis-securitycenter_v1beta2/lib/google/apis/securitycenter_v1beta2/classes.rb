@@ -78,17 +78,18 @@ module Google
       class Compliance
         include Google::Apis::Core::Hashable
       
-        # e.g. A.12.4.1
+        # Policies within the standard/benchmark e.g. A.12.4.1
         # Corresponds to the JSON property `ids`
         # @return [Array<String>]
         attr_accessor :ids
       
-        # e.g. "cis", "pci", "owasp", etc.
+        # Refers to industry wide standards or benchmarks e.g. "cis", "pci", "owasp",
+        # etc.
         # Corresponds to the JSON property `standard`
         # @return [String]
         attr_accessor :standard
       
-        # e.g. 1.1
+        # Version of the standard/benchmark e.g. 1.1
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -413,7 +414,8 @@ module Google
         end
       end
       
-      # EnvironmentVariable is a name-value pair to store env variables for Process.
+      # EnvironmentVariable is a name-value pair to store environment variables for
+      # Process.
       class EnvironmentVariable
         include Google::Apis::Core::Hashable
       
@@ -492,7 +494,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :components
       
-        # Resource’s URI (https://google.aip.dev/122#full-resource-names)
+        # Resource's URI (https://google.aip.dev/122#full-resource-names)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -508,21 +510,21 @@ module Google
         end
       end
       
-      # Exfiltration represents a data exfiltration attempt of one or more source(s)
-      # to one or more target(s). Source(s) represent the source of data that is
-      # exfiltrated, and Target(s) represents the destination the data was copied to.
+      # Exfiltration represents a data exfiltration attempt of one or more sources to
+      # one or more targets. Sources represent the source of data that is exfiltrated,
+      # and Targets represents the destination the data was copied to.
       class Exfiltration
         include Google::Apis::Core::Hashable
       
-        # If there are multiple sources, then the data is considered “joined” between
+        # If there are multiple sources, then the data is considered "joined" between
         # them. For instance, BigQuery can join multiple tables, and each table would be
         # considered a source.
         # Corresponds to the JSON property `sources`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::ExfilResource>]
         attr_accessor :sources
       
-        # If there are multiple targets, each target would get a complete copy of the “
-        # joined” source data.
+        # If there are multiple targets, each target would get a complete copy of the "
+        # joined" source data.
         # Corresponds to the JSON property `targets`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::ExfilResource>]
         attr_accessor :targets
@@ -567,8 +569,7 @@ module Google
         attr_accessor :path
       
         # SHA256 hash of the first hashed_size bytes of the file encoded as a hex string.
-        # If hashed_size == size, hash_sha256 represents the SHA256 hash of the entire
-        # file.
+        # If hashed_size == size, sha256 represents the SHA256 hash of the entire file.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -662,9 +663,9 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Exfiltration represents a data exfiltration attempt of one or more source(s)
-        # to one or more target(s). Source(s) represent the source of data that is
-        # exfiltrated, and Target(s) represents the destination the data was copied to.
+        # Exfiltration represents a data exfiltration attempt of one or more sources to
+        # one or more targets. Sources represent the source of data that is exfiltrated,
+        # and Targets represents the destination the data was copied to.
         # Corresponds to the JSON property `exfiltration`
         # @return [Google::Apis::SecuritycenterV1beta2::Exfiltration]
         attr_accessor :exfiltration
@@ -1689,7 +1690,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
-        # True if arguments is incomplete.
+        # True if `args` is incomplete.
         # Corresponds to the JSON property `argumentsTruncated`
         # @return [Boolean]
         attr_accessor :arguments_truncated
@@ -1706,7 +1707,7 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::EnvironmentVariable>]
         attr_accessor :env_variables
       
-        # True if env_variables is incomplete.
+        # True if `env_variables` is incomplete.
         # Corresponds to the JSON property `envVariablesTruncated`
         # @return [Boolean]
         attr_accessor :env_variables_truncated
