@@ -445,6 +445,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_links, as: 'dynamicLinks'
           property :function, as: 'function'
+          property :function_region, as: 'functionRegion'
           property :glob, as: 'glob'
           property :path, as: 'path'
           property :regex, as: 'regex'

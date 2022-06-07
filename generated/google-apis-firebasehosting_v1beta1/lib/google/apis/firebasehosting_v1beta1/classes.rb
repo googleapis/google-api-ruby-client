@@ -878,6 +878,12 @@ module Google
         # @return [String]
         attr_accessor :function
       
+        # Optional. Specify a Cloud region for rewritten Functions invocations. If not
+        # provided, defaults to us-central1.
+        # Corresponds to the JSON property `functionRegion`
+        # @return [String]
+        attr_accessor :function_region
+      
         # The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#
         # glob_pattern_matching) to match against the request URL path.
         # Corresponds to the JSON property `glob`
@@ -911,6 +917,7 @@ module Google
         def update!(**args)
           @dynamic_links = args[:dynamic_links] if args.key?(:dynamic_links)
           @function = args[:function] if args.key?(:function)
+          @function_region = args[:function_region] if args.key?(:function_region)
           @glob = args[:glob] if args.key?(:glob)
           @path = args[:path] if args.key?(:path)
           @regex = args[:regex] if args.key?(:regex)
