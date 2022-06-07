@@ -23,7 +23,7 @@ module Google
       # Business Profile Performance API
       #
       # The Business Profile Performance API allows merchants to fetch performance
-      #  insights about their business profile on Google.
+      #  reports about their business profile on Google.
       #
       # @example
       #    require 'google/apis/businessprofileperformance_v1'
@@ -51,12 +51,12 @@ module Google
         end
         
         # Returns the values for each date from a given time range that are associated
-        # with the specific daily metric. Example request: GET https://
+        # with the specific daily metric. Example request: `GET https://
         # businessprofileperformance.googleapis.com/v1/locations/12345:
         # getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.
         # year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&
         # daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.
-        # end_date.day=31
+        # end_date.day=31`
         # @param [String] name
         #   Required. The location for which the time series should be fetched. Format:
         #   locations/`location_id` where location_id is an unobfuscated listing id.
@@ -133,10 +133,10 @@ module Google
         
         # Returns the search keywords used to find a business in search or maps. Each
         # search keyword is accompanied by impressions which are aggregated on a monthly
-        # basis. Example request: GET https://businessprofileperformance.googleapis.com/
+        # basis. Example request: `GET https://businessprofileperformance.googleapis.com/
         # v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.
         # start_month.year=2022&monthly_range.start_month.month=1&monthly_range.
-        # end_month.year=2022&monthly_range.end_month.month=3
+        # end_month.year=2022&monthly_range.end_month.month=3`
         # @param [String] parent
         #   Required. The location for which the time series should be fetched. Format:
         #   locations/`location_id` where location_id is an unobfuscated listing id.
