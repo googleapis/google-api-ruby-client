@@ -209,6 +209,51 @@ module Google
         end
       end
       
+      # The attribution settings used for a given property. This is a singleton
+      # resource.
+      class GoogleAnalyticsAdminV1alphaAttributionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The lookback window configuration for acquisition conversion events.
+        # The default window size is 30 days.
+        # Corresponds to the JSON property `acquisitionConversionEventLookbackWindow`
+        # @return [String]
+        attr_accessor :acquisition_conversion_event_lookback_window
+      
+        # Output only. Resource name of this attribution settings resource. Format:
+        # properties/`property_id`/attributionSettings Example: "properties/1000/
+        # attributionSettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The lookback window for all other, non-acquisition conversion events.
+        # The default window size is 90 days.
+        # Corresponds to the JSON property `otherConversionEventLookbackWindow`
+        # @return [String]
+        attr_accessor :other_conversion_event_lookback_window
+      
+        # Required. The reporting attribution model used to calculate conversion credit
+        # in this property's reports. Changing the attribution model will apply to both
+        # historical and future data. These changes will be reflected in reports with
+        # conversion and revenue data. User and session data will be unaffected.
+        # Corresponds to the JSON property `reportingAttributionModel`
+        # @return [String]
+        attr_accessor :reporting_attribution_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acquisition_conversion_event_lookback_window = args[:acquisition_conversion_event_lookback_window] if args.key?(:acquisition_conversion_event_lookback_window)
+          @name = args[:name] if args.key?(:name)
+          @other_conversion_event_lookback_window = args[:other_conversion_event_lookback_window] if args.key?(:other_conversion_event_lookback_window)
+          @reporting_attribution_model = args[:reporting_attribution_model] if args.key?(:reporting_attribution_model)
+        end
+      end
+      
       # Read-only resource used to summarize a principal's effective roles.
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         include Google::Apis::Core::Hashable
@@ -494,6 +539,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount]
         attr_accessor :account
       
+        # The attribution settings used for a given property. This is a singleton
+        # resource.
+        # Corresponds to the JSON property `attributionSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings]
+        attr_accessor :attribution_settings
+      
         # A conversion event in a Google Analytics property.
         # Corresponds to the JSON property `conversionEvent`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent]
@@ -564,6 +615,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
+          @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
