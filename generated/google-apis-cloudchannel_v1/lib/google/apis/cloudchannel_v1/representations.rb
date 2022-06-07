@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1alpha1ChannelPartnerEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1alpha1CommitmentSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1438,6 +1444,14 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1alpha1ChannelPartnerEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_partner, as: 'channelPartner'
+          property :event_type, as: 'eventType'
+        end
+      end
+      
       class GoogleCloudChannelV1alpha1CommitmentSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1541,6 +1555,8 @@ module Google
       class GoogleCloudChannelV1alpha1SubscriberEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_partner_event, as: 'channelPartnerEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ChannelPartnerEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ChannelPartnerEvent::Representation
+      
           property :customer_event, as: 'customerEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CustomerEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1CustomerEvent::Representation
       
           property :entitlement_event, as: 'entitlementEvent', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1EntitlementEvent, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1EntitlementEvent::Representation
