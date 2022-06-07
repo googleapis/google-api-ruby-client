@@ -1042,6 +1042,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :gateways, as: 'gateways'
           hash :labels, as: 'labels'
           collection :meshes, as: 'meshes'
           property :name, as: 'name'
