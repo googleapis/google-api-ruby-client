@@ -260,7 +260,7 @@ module Google
         # Deletes the schema of a data source. **Note:** This API requires an admin or
         # service account to execute.
         # @param [String] name
-        #   Name of the data source to delete Schema. Format: datasources/`source_id`
+        #   The name of the data source to delete Schema. Format: datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -295,7 +295,7 @@ module Google
         # Gets the schema of a data source. **Note:** This API requires an admin or
         # service account to execute.
         # @param [String] name
-        #   Name of the data source to get Schema. Format: datasources/`source_id`
+        #   The name of the data source to get Schema. Format: datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -332,7 +332,7 @@ module Google
         # the entire schema. **Note:** This API requires an admin or service account to
         # execute.
         # @param [String] name
-        #   Name of the data source to update Schema. Format: datasources/`source_id`
+        #   The name of the data source to update Schema. Format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::UpdateSchemaRequest] update_schema_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -367,11 +367,11 @@ module Google
         # admin or service account to execute. The service account used is the one
         # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Required. Name of the item to delete. Format: datasources/`source_id`/items/`
-        #   item_id`
+        #   Required. The name of the item to delete. Format: datasources/`source_id`/
+        #   items/`item_id`
         # @param [String] connector_name
-        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
-        #   `ID`
+        #   The name of connector making this call. Format: datasources/`source_id`/
+        #   connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -422,7 +422,7 @@ module Google
         # This API requires an admin or service account to execute. The service account
         # used is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to delete items in a queue. Format: datasources/`
+        #   The name of the Data Source to delete items in a queue. Format: datasources/`
         #   source_id`
         # @param [Google::Apis::CloudsearchV1::DeleteQueueItemsRequest] delete_queue_items_request_object
         # @param [String] fields
@@ -458,10 +458,11 @@ module Google
         # to execute. The service account used is the one whitelisted in the
         # corresponding data source.
         # @param [String] name
-        #   Name of the item to get info. Format: datasources/`source_id`/items/`item_id`
+        #   The name of the item to get info. Format: datasources/`source_id`/items/`
+        #   item_id`
         # @param [String] connector_name
-        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
-        #   `ID`
+        #   The name of connector making this call. Format: datasources/`source_id`/
+        #   connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -500,8 +501,8 @@ module Google
         # an admin or service account to execute. The service account used is the one
         # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Item. Format: datasources/`source_id`/items/`item_id` This is a
-        #   required field. The maximum length is 1536 characters.
+        #   The name of the Item. Format: datasources/`source_id`/items/`item_id` This is
+        #   a required field. The maximum length is 1536 characters.
         # @param [Google::Apis::CloudsearchV1::IndexItemRequest] index_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -536,7 +537,7 @@ module Google
         # account to execute. The service account used is the one whitelisted in the
         # corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to list Items. Format: datasources/`source_id`
+        #   The name of the Data Source to list Items. Format: datasources/`source_id`
         # @param [Boolean] brief
         #   When set to true, the indexing system only populates the following fields:
         #   name, version, queue. metadata.hash, metadata.title, metadata.
@@ -546,8 +547,8 @@ module Google
         #   itemStatus.repositoryError.type, If this value is false, then all the fields
         #   are populated in Item.
         # @param [String] connector_name
-        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
-        #   `ID`
+        #   The name of connector making this call. Format: datasources/`source_id`/
+        #   connectors/`ID`
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -599,7 +600,7 @@ module Google
         # admin or service account to execute. The service account used is the one
         # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to poll items. Format: datasources/`source_id`
+        #   The name of the Data Source to poll items. Format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::PollItemsRequest] poll_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -634,7 +635,7 @@ module Google
         # an admin or service account to execute. The service account used is the one
         # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the item to push into the indexing queue. Format: datasources/`
+        #   The name of the item to push into the indexing queue. Format: datasources/`
         #   source_id`/items/`ID` This is a required field. The maximum length is 1536
         #   characters.
         # @param [Google::Apis::CloudsearchV1::PushItemRequest] push_item_request_object
@@ -672,7 +673,8 @@ module Google
         # restarted. This API requires an admin or service account to execute. The
         # service account used is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to unreserve all items. Format: datasources/`source_id`
+        #   The name of the Data Source to unreserve all items. Format: datasources/`
+        #   source_id`
         # @param [Google::Apis::CloudsearchV1::UnreserveItemsRequest] unreserve_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -708,8 +710,8 @@ module Google
         # API requires an admin or service account to execute. The service account used
         # is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Item to start a resumable upload. Format: datasources/`source_id`/
-        #   items/`item_id`. The maximum length is 1536 bytes.
+        #   The name of the Item to start a resumable upload. Format: datasources/`
+        #   source_id`/items/`item_id`. The maximum length is 1536 bytes.
         # @param [Google::Apis::CloudsearchV1::StartUploadItemRequest] start_upload_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1099,7 +1101,7 @@ module Google
         
         # Deletes a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource. Format: datasources/`source_id`.
+        #   The name of the datasource. Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -1133,7 +1135,7 @@ module Google
         
         # Gets a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource resource. Format: datasources/`source_id`.
+        #   The name of the datasource resource. Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -1205,8 +1207,8 @@ module Google
         
         # Updates a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource resource. Format: datasources/`source_id`. The name is
-        #   ignored when creating a datasource.
+        #   The name of the datasource resource. Format: datasources/`source_id`. The name
+        #   is ignored when creating a datasource.
         # @param [Google::Apis::CloudsearchV1::UpdateDataSourceRequest] update_data_source_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1307,7 +1309,8 @@ module Google
         # Gets the specified search application. **Note:** This API requires an admin
         # account to execute.
         # @param [String] name
-        #   Name of the search application. Format: searchapplications/`application_id`.
+        #   The name of the search application. Format: searchapplications/`application_id`
+        #   .
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -1416,7 +1419,8 @@ module Google
         # Updates a search application. **Note:** This API requires an admin account to
         # execute.
         # @param [String] name
-        #   Name of the Search Application. Format: searchapplications/`application_id`.
+        #   The name of the Search Application. Format: searchapplications/`application_id`
+        #   .
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
