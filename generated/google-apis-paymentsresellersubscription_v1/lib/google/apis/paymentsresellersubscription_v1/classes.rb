@@ -54,7 +54,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # LINT.IfChange A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -112,7 +112,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # LINT.IfChange A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -517,7 +517,7 @@ module Google
         end
       end
       
-      # A Subscription resource managed by 3P Partners.
+      # LINT.IfChange A Subscription resource managed by 3P Partners.
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         include Google::Apis::Core::Hashable
       
@@ -685,9 +685,14 @@ module Google
         end
       end
       
-      # Individual line item definition of a subscription. Next id: 5
+      # Individual line item definition of a subscription. Next id: 6
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         include Google::Apis::Core::Hashable
+      
+        # Output only. Description of this line item.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
       
         # Output only. It is set only if the line item has its own free trial applied.
         # End time of the line item free trial period, in ISO 8061 format. For example, "
@@ -722,6 +727,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
           @product = args[:product] if args.key?(:product)
@@ -812,7 +818,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # A Subscription resource managed by 3P Partners.
+        # LINT.IfChange A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription

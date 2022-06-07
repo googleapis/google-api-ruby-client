@@ -365,6 +365,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :line_item_free_trial_end_time, as: 'lineItemFreeTrialEndTime'
           collection :line_item_promotion_specs, as: 'lineItemPromotionSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec::Representation
       
