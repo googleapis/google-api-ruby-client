@@ -4479,6 +4479,13 @@ module Google
       class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey
         include Google::Apis::Core::Hashable
       
+        # Whether to make facet keys case insensitive when getting faceting values with
+        # prefixes or contains.
+        # Corresponds to the JSON property `caseInsensitive`
+        # @return [Boolean]
+        attr_accessor :case_insensitive
+        alias_method :case_insensitive?, :case_insensitive
+      
         # Only get facet values that contains the given strings. For example, suppose "
         # categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe".
         # If set "contains" to "Shoe", the "categories" facet will give only "Women >
@@ -4561,6 +4568,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @case_insensitive = args[:case_insensitive] if args.key?(:case_insensitive)
           @contains = args[:contains] if args.key?(:contains)
           @intervals = args[:intervals] if args.key?(:intervals)
           @key = args[:key] if args.key?(:key)
