@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityPoolProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -861,6 +867,12 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class WorkloadIdentityPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
