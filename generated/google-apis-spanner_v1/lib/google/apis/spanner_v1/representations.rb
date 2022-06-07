@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Delete
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class ListDatabaseOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatabaseRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -874,6 +886,13 @@ module Google
         end
       end
       
+      class DatabaseRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class Delete
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,6 +1151,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
       
+        end
+      end
+      
+      class ListDatabaseRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_roles, as: 'databaseRoles', class: Google::Apis::SpannerV1::DatabaseRole, decorator: Google::Apis::SpannerV1::DatabaseRole::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1576,6 +1604,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approximate_last_use_time, as: 'approximateLastUseTime'
           property :create_time, as: 'createTime'
+          property :creator_role, as: 'creatorRole'
           hash :labels, as: 'labels'
           property :name, as: 'name'
         end
