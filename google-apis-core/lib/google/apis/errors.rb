@@ -66,7 +66,11 @@ module Google
     class ClientError < Error
     end
 
-    # A 4xx class HTTP error occurred.
+    # A 408 HTTP error occurred.
+    class RequestTimeOutError < ClientError
+    end
+
+    # A 429 HTTP error occurred.
     class RateLimitError < Error
     end
 
