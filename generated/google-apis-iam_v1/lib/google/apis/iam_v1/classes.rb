@@ -1933,6 +1933,19 @@ module Google
         end
       end
       
+      # Metadata for long-running WorkloadIdentityPool operations.
+      class WorkloadIdentityPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A configuration for an external identity provider.
       class WorkloadIdentityPoolProvider
         include Google::Apis::Core::Hashable
