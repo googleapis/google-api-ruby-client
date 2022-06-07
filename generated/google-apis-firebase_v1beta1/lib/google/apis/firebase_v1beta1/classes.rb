@@ -968,111 +968,6 @@ module Google
       end
       
       # 
-      class RemoveAndroidAppRequest
-        include Google::Apis::Core::Hashable
-      
-        # If set to true, and the App is not found, the request will succeed but no
-        # action will be taken on the server.
-        # Corresponds to the JSON property `allowMissing`
-        # @return [Boolean]
-        attr_accessor :allow_missing
-        alias_method :allow_missing?, :allow_missing
-      
-        # Checksum provided in the AndroidApp entity, which if provided ensures the
-        # client has an up-to-date value before proceeding.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # If set to true, only validate the request and do not delete the app.
-        # Corresponds to the JSON property `validateOnly`
-        # @return [Boolean]
-        attr_accessor :validate_only
-        alias_method :validate_only?, :validate_only
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
-          @etag = args[:etag] if args.key?(:etag)
-          @validate_only = args[:validate_only] if args.key?(:validate_only)
-        end
-      end
-      
-      # 
-      class RemoveIosAppRequest
-        include Google::Apis::Core::Hashable
-      
-        # If set to true, and the App is not found, the request will succeed but no
-        # action will be taken on the server.
-        # Corresponds to the JSON property `allowMissing`
-        # @return [Boolean]
-        attr_accessor :allow_missing
-        alias_method :allow_missing?, :allow_missing
-      
-        # Checksum provided in the IosApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # If set to true, only validate the request and do not delete the app.
-        # Corresponds to the JSON property `validateOnly`
-        # @return [Boolean]
-        attr_accessor :validate_only
-        alias_method :validate_only?, :validate_only
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
-          @etag = args[:etag] if args.key?(:etag)
-          @validate_only = args[:validate_only] if args.key?(:validate_only)
-        end
-      end
-      
-      # 
-      class RemoveWebAppRequest
-        include Google::Apis::Core::Hashable
-      
-        # If set to true, and the App is not found, the request will succeed but no
-        # action will be taken on the server.
-        # Corresponds to the JSON property `allowMissing`
-        # @return [Boolean]
-        attr_accessor :allow_missing
-        alias_method :allow_missing?, :allow_missing
-      
-        # Checksum provided in the WebApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # If set to true, only validate the request and do not delete the app.
-        # Corresponds to the JSON property `validateOnly`
-        # @return [Boolean]
-        attr_accessor :validate_only
-        alias_method :validate_only?, :validate_only
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
-          @etag = args[:etag] if args.key?(:etag)
-          @validate_only = args[:validate_only] if args.key?(:validate_only)
-        end
-      end
-      
-      # 
       class SearchFirebaseAppsResponse
         include Google::Apis::Core::Hashable
       
@@ -1281,9 +1176,9 @@ module Google
         # @return [String]
         attr_accessor :api_key_id
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
-        # This identifier should be treated as an opaque token, as the data format is
-        # not specified.
+        # Output only. Immutable. The globally unique, Firebase-assigned identifier for
+        # the `WebApp`. This identifier should be treated as an opaque token, as the
+        # data format is not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -1311,8 +1206,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
-        # the `WebApp`.
+        # Output only. Immutable. A user-assigned unique identifier of the parent
+        # FirebaseProject for the `WebApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

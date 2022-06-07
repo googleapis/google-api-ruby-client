@@ -750,44 +750,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified AndroidApp from the project.
-        # @param [String] name
-        #   Required. The resource name of the AndroidApp, in the format: projects/
-        #   PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier,
-        #   the Unique Resource from Sub-Collection access pattern may be used here, in
-        #   the format: projects/-/androidApps/APP_ID Refer to the AndroidApp [name](../
-        #   projects.androidApps#AndroidApp.FIELDS.name) field for details about
-        #   PROJECT_IDENTIFIER and APP_ID values.
-        # @param [Google::Apis::FirebaseV1beta1::RemoveAndroidAppRequest] remove_android_app_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseV1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseV1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_android_app(name, remove_android_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+name}:remove', options)
-          command.request_representation = Google::Apis::FirebaseV1beta1::RemoveAndroidAppRequest::Representation
-          command.request_object = remove_android_app_request_object
-          command.response_representation = Google::Apis::FirebaseV1beta1::Operation::Representation
-          command.response_class = Google::Apis::FirebaseV1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Adds a ShaCertificate to the specified AndroidApp.
         # @param [String] parent
         #   The resource name of the parent AndroidApp to which to add a ShaCertificate,
@@ -1215,44 +1177,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified IosApp from the project.
-        # @param [String] name
-        #   Required. The resource name of the IosApp, in the format: projects/
-        #   PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the
-        #   Unique Resource from Sub-Collection access pattern may be used here, in the
-        #   format: projects/-/iosApps/APP_ID Refer to the IosApp [name](../projects.
-        #   iosApps#IosApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
-        #   APP_ID values.
-        # @param [Google::Apis::FirebaseV1beta1::RemoveIosAppRequest] remove_ios_app_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseV1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseV1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_ios_app(name, remove_ios_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+name}:remove', options)
-          command.request_representation = Google::Apis::FirebaseV1beta1::RemoveIosAppRequest::Representation
-          command.request_object = remove_ios_app_request_object
-          command.response_representation = Google::Apis::FirebaseV1beta1::Operation::Representation
-          command.response_class = Google::Apis::FirebaseV1beta1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Requests the creation of a new WebApp in the specified FirebaseProject. The
         # result of this call is an `Operation` which can be used to track the
         # provisioning process. The `Operation` is automatically deleted after
@@ -1445,44 +1369,6 @@ module Google
           command.response_class = Google::Apis::FirebaseV1beta1::WebApp
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Removes the specified WebApp from the project.
-        # @param [String] name
-        #   Required. The resource name of the WebApp, in the format: projects/
-        #   PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the
-        #   Unique Resource from Sub-Collection access pattern may be used here, in the
-        #   format: projects/-/webApps/APP_ID Refer to the WebApp [name](../projects.
-        #   webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and
-        #   APP_ID values.
-        # @param [Google::Apis::FirebaseV1beta1::RemoveWebAppRequest] remove_web_app_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseV1beta1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseV1beta1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_web_app(name, remove_web_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+name}:remove', options)
-          command.request_representation = Google::Apis::FirebaseV1beta1::RemoveWebAppRequest::Representation
-          command.request_object = remove_web_app_request_object
-          command.response_representation = Google::Apis::FirebaseV1beta1::Operation::Representation
-          command.response_class = Google::Apis::FirebaseV1beta1::Operation
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
