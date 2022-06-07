@@ -252,8 +252,7 @@ module Google
       class EventPublishConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :event_publish_enabled, as: 'eventPublishEnabled'
-          property :project, as: 'project'
+          property :enabled, as: 'enabled'
           property :topic, as: 'topic'
         end
       end

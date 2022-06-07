@@ -290,17 +290,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Option to enable Event Publishing.
-        # Corresponds to the JSON property `eventPublishEnabled`
+        # Corresponds to the JSON property `enabled`
         # @return [Boolean]
-        attr_accessor :event_publish_enabled
-        alias_method :event_publish_enabled?, :event_publish_enabled
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
       
-        # Project name.
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
-        # Required. Pub/Sub Topic.
+        # Required. The resource name of the Pub/Sub topic. Format: projects/`project_id`
+        # /topics/`topic_id`
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -311,8 +307,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @event_publish_enabled = args[:event_publish_enabled] if args.key?(:event_publish_enabled)
-          @project = args[:project] if args.key?(:project)
+          @enabled = args[:enabled] if args.key?(:enabled)
           @topic = args[:topic] if args.key?(:topic)
         end
       end
