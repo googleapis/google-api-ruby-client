@@ -1561,6 +1561,7 @@ module Google
       class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_insensitive, as: 'caseInsensitive'
           collection :contains, as: 'contains'
           collection :intervals, as: 'intervals', class: Google::Apis::RetailV2::GoogleCloudRetailV2Interval, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2Interval::Representation
       
