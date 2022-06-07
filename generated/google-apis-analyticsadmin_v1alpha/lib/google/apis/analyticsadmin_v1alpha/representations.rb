@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaAttributionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -456,6 +462,16 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaAttributionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquisition_conversion_event_lookback_window, as: 'acquisitionConversionEventLookbackWindow'
+          property :name, as: 'name'
+          property :other_conversion_event_lookback_window, as: 'otherConversionEventLookbackWindow'
+          property :reporting_attribution_model, as: 'reportingAttributionModel'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaAuditUserLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +570,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount::Representation
+      
+          property :attribution_settings, as: 'attributionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings::Representation
       
           property :conversion_event, as: 'conversionEvent', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent::Representation
       
