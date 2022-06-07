@@ -180,7 +180,7 @@ module Google
         end
       end
       
-      # Options for boolean properties.
+      # The options for boolean properties.
       class BooleanPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -623,8 +623,8 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::GSuitePrincipal>]
         attr_accessor :items_visibility
       
-        # Name of the datasource resource. Format: datasources/`source_id`. The name is
-        # ignored when creating a datasource.
+        # The name of the datasource resource. Format: datasources/`source_id`. The name
+        # is ignored when creating a datasource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -814,7 +814,7 @@ module Google
         end
       end
       
-      # Options for date properties.
+      # The options for date properties.
       class DatePropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -879,8 +879,8 @@ module Google
       class DeleteQueueItemsRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -890,7 +890,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
       
-        # Name of a queue to delete items from.
+        # The name of a queue to delete items from.
         # Corresponds to the JSON property `queue`
         # @return [String]
         attr_accessor :queue
@@ -973,7 +973,7 @@ module Google
         end
       end
       
-      # Options for double properties.
+      # The options for double properties.
       class DoublePropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -1279,7 +1279,7 @@ module Google
         end
       end
       
-      # Options for enum properties, which allow you to define a restricted set of
+      # The options for enum properties, which allow you to define a restricted set of
       # strings to match user queries, set rankings for those string values, and
       # define an operator name to be paired with those strings so that users can
       # narrow results to only items with a specific value. For example, for items in
@@ -1495,7 +1495,7 @@ module Google
         # @return [String]
         attr_accessor :object_type
       
-        # Name of the operator chosen for faceting. @see cloudsearch.
+        # The name of the operator chosen for faceting. @see cloudsearch.
         # SchemaPropertyOptions
         # Corresponds to the JSON property `operatorName`
         # @return [String]
@@ -1535,7 +1535,7 @@ module Google
         # @return [String]
         attr_accessor :object_type
       
-        # Name of the operator chosen for faceting. @see cloudsearch.
+        # The name of the operator chosen for faceting. @see cloudsearch.
         # SchemaPropertyOptions
         # Corresponds to the JSON property `operatorName`
         # @return [String]
@@ -1563,7 +1563,7 @@ module Google
       class FieldViolation
         include Google::Apis::Core::Hashable
       
-        # Description of the error.
+        # The description of the error.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2084,7 +2084,7 @@ module Google
         end
       end
       
-      # Options for html properties.
+      # The options for html properties.
       class HtmlPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -2198,8 +2198,8 @@ module Google
       class IndexItemRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -2304,7 +2304,7 @@ module Google
         end
       end
       
-      # Options for integer properties.
+      # The options for integer properties.
       class IntegerPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -2407,7 +2407,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Access control list information for the item. For more information see [Map
-        # ACLs](/cloud-search/docs/guides/acls).
+        # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
         # Corresponds to the JSON property `acl`
         # @return [Google::Apis::CloudsearchV1::ItemAcl]
         attr_accessor :acl
@@ -2419,7 +2419,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::ItemContent]
         attr_accessor :content
       
-        # Type for this item.
+        # The type for this item.
         # Corresponds to the JSON property `itemType`
         # @return [String]
         attr_accessor :item_type
@@ -2429,8 +2429,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::ItemMetadata]
         attr_accessor :metadata
       
-        # Name of the Item. Format: datasources/`source_id`/items/`item_id` This is a
-        # required field. The maximum length is 1536 characters.
+        # The name of the Item. Format: datasources/`source_id`/items/`item_id` This is
+        # a required field. The maximum length is 1536 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2490,7 +2490,7 @@ module Google
       end
       
       # Access control list information for the item. For more information see [Map
-      # ACLs](/cloud-search/docs/guides/acls).
+      # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
       class ItemAcl
         include Google::Apis::Core::Hashable
       
@@ -2510,8 +2510,8 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::Principal>]
         attr_accessor :denied_readers
       
-        # Name of the item to inherit the Access Permission List (ACL) from. Note: ACL
-        # inheritance *only* provides access permissions to child items and does not
+        # The name of the item to inherit the Access Permission List (ACL) from. Note:
+        # ACL inheritance *only* provides access permissions to child items and does not
         # define structural relationships, nor does it provide convenient ways to delete
         # large groups of items. Deleting an ACL parent from the index only alters the
         # access permissions of child items that reference the parent in the
@@ -3118,7 +3118,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The read-only display name formatted according to the locale specified by the
-        # viewer's account or the Accept-Language HTTP header.
+        # viewer's account or the `Accept-Language` HTTP header.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3215,7 +3215,7 @@ module Google
       class ObjectDefinition
         include Google::Apis::Core::Hashable
       
-        # Name for the object, which then defines its type. Item indexing requests
+        # The name for the object, which then defines its type. Item indexing requests
         # should set the objectType field equal to this value. For example, if *name* is
         # *Document*, then indexing requests for items of type Document should set
         # objectType equal to *Document*. Each object definition must be uniquely named
@@ -3312,7 +3312,7 @@ module Google
         end
       end
       
-      # Options for object properties.
+      # The options for object properties.
       class ObjectPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -3443,8 +3443,9 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::EmailAddress>]
         attr_accessor :email_addresses
       
-        # The resource name of the person to provide information about. See People.get
-        # from Google People API.
+        # The resource name of the person to provide information about. See [`People.get`
+        # ](https://developers.google.com/people/api/rest/v1/people/get) from the Google
+        # People API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3502,8 +3503,8 @@ module Google
       class PollItemsRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -3609,7 +3610,7 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # Description of the error.
+        # The description of the error.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
@@ -3636,12 +3637,12 @@ module Google
       class PropertyDefinition
         include Google::Apis::Core::Hashable
       
-        # Options for boolean properties.
+        # The options for boolean properties.
         # Corresponds to the JSON property `booleanPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::BooleanPropertyOptions]
         attr_accessor :boolean_property_options
       
-        # Options for date properties.
+        # The options for date properties.
         # Corresponds to the JSON property `datePropertyOptions`
         # @return [Google::Apis::CloudsearchV1::DatePropertyOptions]
         attr_accessor :date_property_options
@@ -3651,12 +3652,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::PropertyDisplayOptions]
         attr_accessor :display_options
       
-        # Options for double properties.
+        # The options for double properties.
         # Corresponds to the JSON property `doublePropertyOptions`
         # @return [Google::Apis::CloudsearchV1::DoublePropertyOptions]
         attr_accessor :double_property_options
       
-        # Options for enum properties, which allow you to define a restricted set of
+        # The options for enum properties, which allow you to define a restricted set of
         # strings to match user queries, set rankings for those string values, and
         # define an operator name to be paired with those strings so that users can
         # narrow results to only items with a specific value. For example, for items in
@@ -3668,19 +3669,19 @@ module Google
         # @return [Google::Apis::CloudsearchV1::EnumPropertyOptions]
         attr_accessor :enum_property_options
       
-        # Options for html properties.
+        # The options for html properties.
         # Corresponds to the JSON property `htmlPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::HtmlPropertyOptions]
         attr_accessor :html_property_options
       
-        # Options for integer properties.
+        # The options for integer properties.
         # Corresponds to the JSON property `integerPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::IntegerPropertyOptions]
         attr_accessor :integer_property_options
       
         # Indicates that the property can be used for generating facets. Cannot be true
         # for properties whose type is object. IsReturnable must be true to set this
-        # option. Only supported for Boolean, Enum, and Text properties.
+        # option. Only supported for boolean, enum, and text properties.
         # Corresponds to the JSON property `isFacetable`
         # @return [Boolean]
         attr_accessor :is_facetable
@@ -3711,7 +3712,7 @@ module Google
         # Indicates that the property can be used for sorting. Cannot be true for
         # properties that are repeatable. Cannot be true for properties whose type is
         # object. IsReturnable must be true to set this option. Only supported for
-        # Boolean, Date, Double, Integer, and Timestamp properties.
+        # boolean, date, double, integer, and timestamp properties.
         # Corresponds to the JSON property `isSortable`
         # @return [Boolean]
         attr_accessor :is_sortable
@@ -3744,17 +3745,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Options for object properties.
+        # The options for object properties.
         # Corresponds to the JSON property `objectPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::ObjectPropertyOptions]
         attr_accessor :object_property_options
       
-        # Options for text properties.
+        # The options for text properties.
         # Corresponds to the JSON property `textPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::TextPropertyOptions]
         attr_accessor :text_property_options
       
-        # Options for timestamp properties.
+        # The options for timestamp properties.
         # Corresponds to the JSON property `timestampPropertyOptions`
         # @return [Google::Apis::CloudsearchV1::TimestampPropertyOptions]
         attr_accessor :timestamp_property_options
@@ -3822,9 +3823,10 @@ module Google
         # @return [String]
         attr_accessor :content_hash
       
-        # Metadata hash of the item according to the repository. If specified, this is
-        # used to determine how to modify this item's status. Setting this field and the
-        # type field results in argument error. The maximum length is 2048 characters.
+        # The metadata hash of the item according to the repository. If specified, this
+        # is used to determine how to modify this item's status. Setting this field and
+        # the type field results in argument error. The maximum length is 2048
+        # characters.
         # Corresponds to the JSON property `metadataHash`
         # @return [String]
         attr_accessor :metadata_hash
@@ -3836,7 +3838,7 @@ module Google
         # @return [String]
         attr_accessor :payload
       
-        # Queue to which this item belongs to. The default queue is chosen if this field
+        # Queue to which this item belongs. The `default` queue is chosen if this field
         # is not specified. The maximum length is 512 characters.
         # Corresponds to the JSON property `queue`
         # @return [String]
@@ -3880,8 +3882,8 @@ module Google
       class PushItemRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -4122,8 +4124,8 @@ module Google
         # @return [String]
         attr_accessor :less_than_operator_name
       
-        # Name of the object corresponding to the operator. This field is only filled
-        # for schema-specific operators, and is unset for common operators.
+        # The name of the object corresponding to the operator. This field is only
+        # filled for schema-specific operators, and is unset for common operators.
         # Corresponds to the JSON property `objectType`
         # @return [String]
         attr_accessor :object_type
@@ -4133,7 +4135,7 @@ module Google
         # @return [String]
         attr_accessor :operator_name
       
-        # Type of the operator.
+        # The type of the operator.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4226,7 +4228,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_status_code
       
-        # Type of error.
+        # The type of error.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4600,7 +4602,8 @@ module Google
         attr_accessor :enable_audit_log
         alias_method :enable_audit_log?, :enable_audit_log
       
-        # Name of the Search Application. Format: searchapplications/`application_id`.
+        # The name of the Search Application. Format: searchapplications/`application_id`
+        # .
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5095,8 +5098,8 @@ module Google
       class SortOptions
         include Google::Apis::Core::Hashable
       
-        # Name of the operator corresponding to the field to sort on. The corresponding
-        # property must be marked as sortable.
+        # The name of the operator corresponding to the field to sort on. The
+        # corresponding property must be marked as sortable.
         # Corresponds to the JSON property `operatorName`
         # @return [String]
         attr_accessor :operator_name
@@ -5382,8 +5385,8 @@ module Google
       class StartUploadItemRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -5584,8 +5587,8 @@ module Google
         # If true, the text value is tokenized as one atomic value in operator searches
         # and facet matches. For example, if the operator name is "genre" and the value
         # is "science-fiction" the query restrictions "genre:science" and "genre:fiction"
-        # doesn't match the item; "genre:science-fiction" does. Value matching is case-
-        # sensitive and does not remove special characters. If false, the text is
+        # doesn't match the item; "genre:science-fiction" does. Text value matching is
+        # case-sensitive and does not remove special characters. If false, the text is
         # tokenized. For example, if the value is "science-fiction" the queries "genre:
         # science" and "genre:fiction" matches the item.
         # Corresponds to the JSON property `exactMatchWithOperator`
@@ -5616,7 +5619,7 @@ module Google
         end
       end
       
-      # Options for text properties.
+      # The options for text properties.
       class TextPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -5713,7 +5716,7 @@ module Google
         end
       end
       
-      # Options for timestamp properties.
+      # The options for timestamp properties.
       class TimestampPropertyOptions
         include Google::Apis::Core::Hashable
       
@@ -5801,8 +5804,8 @@ module Google
       class UnreserveItemsRequest
         include Google::Apis::Core::Hashable
       
-        # Name of connector making this call. Format: datasources/`source_id`/connectors/
-        # `ID`
+        # The name of connector making this call. Format: datasources/`source_id`/
+        # connectors/`ID`
         # Corresponds to the JSON property `connectorName`
         # @return [String]
         attr_accessor :connector_name
@@ -5812,7 +5815,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
         attr_accessor :debug_options
       
-        # Name of a queue to unreserve items from.
+        # The name of a queue to unreserve items from.
         # Corresponds to the JSON property `queue`
         # @return [String]
         attr_accessor :queue
@@ -5895,7 +5898,7 @@ module Google
       class UploadItemRef
         include Google::Apis::Core::Hashable
       
-        # Name of the content reference. The maximum length is 2048 characters.
+        # The name of the content reference. The maximum length is 2048 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
