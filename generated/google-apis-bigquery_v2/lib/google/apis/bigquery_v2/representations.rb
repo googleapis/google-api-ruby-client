@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndexUnusedReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +791,12 @@ module Google
       end
       
       class ScriptStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1797,6 +1809,17 @@ module Google
         end
       end
       
+      class IndexUnusedReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_table, as: 'base_table', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :code, as: 'code'
+          property :index_name, as: 'index_name'
+          property :message, as: 'message'
+        end
+      end
+      
       class IntArray
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2135,6 +2158,8 @@ module Google
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage::Representation
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
+      
+          property :search_statistics, as: 'searchStatistics', class: Google::Apis::BigqueryV2::SearchStatistics, decorator: Google::Apis::BigqueryV2::SearchStatistics::Representation
       
           property :statement_type, as: 'statementType'
           collection :timeline, as: 'timeline', class: Google::Apis::BigqueryV2::QueryTimelineSample, decorator: Google::Apis::BigqueryV2::QueryTimelineSample::Representation
@@ -2625,6 +2650,15 @@ module Google
           property :evaluation_kind, as: 'evaluationKind'
           collection :stack_frames, as: 'stackFrames', class: Google::Apis::BigqueryV2::ScriptStackFrame, decorator: Google::Apis::BigqueryV2::ScriptStackFrame::Representation
       
+        end
+      end
+      
+      class SearchStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :index_unused_reason, as: 'indexUnusedReason', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
+      
+          property :index_usage_mode, as: 'indexUsageMode'
         end
       end
       
