@@ -22,7 +22,7 @@ module Google
     # Business Profile Performance API
     #
     # The Business Profile Performance API allows merchants to fetch performance
-    # insights about their business profile on Google.
+    # reports about their business profile on Google.
     #
     # @see https://developers.google.com/my-business/
     module BusinessprofileperformanceV1
