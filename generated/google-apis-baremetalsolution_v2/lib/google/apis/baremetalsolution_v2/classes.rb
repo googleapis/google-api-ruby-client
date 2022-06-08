@@ -128,7 +128,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The index of the logical interface mapping to the index of the hardware bond
-        # or nic on the chosen network template.
+        # or nic on the chosen network template. This field is deprecated.
         # Corresponds to the JSON property `interfaceIndex`
         # @return [Fixnum]
         attr_accessor :interface_index
@@ -1066,6 +1066,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The JumboFramesEnabled option for customer to set.
+        # Corresponds to the JSON property `jumboFramesEnabled`
+        # @return [Boolean]
+        attr_accessor :jumbo_frames_enabled
+        alias_method :jumbo_frames_enabled?, :jumbo_frames_enabled
+      
         # Output only. The name of the network config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1109,6 +1115,7 @@ module Google
           @cidr = args[:cidr] if args.key?(:cidr)
           @gcp_service = args[:gcp_service] if args.key?(:gcp_service)
           @id = args[:id] if args.key?(:id)
+          @jumbo_frames_enabled = args[:jumbo_frames_enabled] if args.key?(:jumbo_frames_enabled)
           @name = args[:name] if args.key?(:name)
           @service_cidr = args[:service_cidr] if args.key?(:service_cidr)
           @type = args[:type] if args.key?(:type)
@@ -1228,6 +1235,11 @@ module Google
         # @return [String]
         attr_accessor :nfs_share_id
       
+        # The requested size, in GiB.
+        # Corresponds to the JSON property `requestedSizeGib`
+        # @return [Fixnum]
+        attr_accessor :requested_size_gib
+      
         # The state of the NFS share.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1248,6 +1260,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @nfs_share_id = args[:nfs_share_id] if args.key?(:nfs_share_id)
+          @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
           @state = args[:state] if args.key?(:state)
           @volume = args[:volume] if args.key?(:volume)
         end
@@ -1421,6 +1434,12 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::VolumeConfig>]
         attr_accessor :volumes
       
+        # If true, VPC SC is enabled for the cluster.
+        # Corresponds to the JSON property `vpcScEnabled`
+        # @return [Boolean]
+        attr_accessor :vpc_sc_enabled
+        alias_method :vpc_sc_enabled?, :vpc_sc_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1438,6 +1457,7 @@ module Google
           @ticket_id = args[:ticket_id] if args.key?(:ticket_id)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_sc_enabled = args[:vpc_sc_enabled] if args.key?(:vpc_sc_enabled)
         end
       end
       
@@ -1537,6 +1557,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for emergency resize Volume.
+      class ResizeVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # New Volume size, in GiB.
+        # Corresponds to the JSON property `sizeGib`
+        # @return [Fixnum]
+        attr_accessor :size_gib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gib = args[:size_gib] if args.key?(:size_gib)
         end
       end
       
@@ -1827,6 +1866,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Maximum size volume can be expanded to in case of evergency, in GiB.
+        # Corresponds to the JSON property `maxSizeGib`
+        # @return [Fixnum]
+        attr_accessor :max_size_gib
+      
         # Output only. The resource name of this `Volume`. Resource names are schemeless
         # URIs that follow the conventions in https://cloud.google.com/apis/design/
         # resource_names. Format: `projects/`project`/locations/`location`/volumes/`
@@ -1834,6 +1878,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Originally requested size, in GiB.
+        # Corresponds to the JSON property `originallyRequestedSizeGib`
+        # @return [Fixnum]
+        attr_accessor :originally_requested_size_gib
       
         # Immutable. Pod name.
         # Corresponds to the JSON property `pod`
@@ -1893,7 +1942,9 @@ module Google
           @emergency_size_gib = args[:emergency_size_gib] if args.key?(:emergency_size_gib)
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
+          @max_size_gib = args[:max_size_gib] if args.key?(:max_size_gib)
           @name = args[:name] if args.key?(:name)
+          @originally_requested_size_gib = args[:originally_requested_size_gib] if args.key?(:originally_requested_size_gib)
           @pod = args[:pod] if args.key?(:pod)
           @remaining_space_gib = args[:remaining_space_gib] if args.key?(:remaining_space_gib)
           @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
