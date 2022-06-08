@@ -964,6 +964,11 @@ module Google
       class ExecutionReference
         include Google::Apis::Core::Hashable
       
+        # Optional. Completion timestamp of the execution.
+        # Corresponds to the JSON property `completionTimestamp`
+        # @return [String]
+        attr_accessor :completion_timestamp
+      
         # Optional. Creation timestamp of the execution.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -980,6 +985,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completion_timestamp = args[:completion_timestamp] if args.key?(:completion_timestamp)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @name = args[:name] if args.key?(:name)
         end
