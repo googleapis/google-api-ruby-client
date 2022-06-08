@@ -765,6 +765,7 @@ module Google
       class ExecutionReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_timestamp, as: 'completionTimestamp'
           property :creation_timestamp, as: 'creationTimestamp'
           property :name, as: 'name'
         end
