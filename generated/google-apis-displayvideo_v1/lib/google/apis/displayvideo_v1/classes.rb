@@ -5747,7 +5747,7 @@ module Google
       class HouseholdIncomeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The household income of the audience.
+        # The household income of the audience. Output only in v1. Required in v2.
         # Corresponds to the JSON property `householdIncome`
         # @return [String]
         attr_accessor :household_income
