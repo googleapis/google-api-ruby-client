@@ -2363,11 +2363,11 @@ module Google
         # @return [String]
         attr_accessor :algo
       
-        # Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex
-        # encoding.
-        # Corresponds to the JSON property `digestValue`
+        # Value of the digest.
+        # Corresponds to the JSON property `digestBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :digest_value
+        attr_accessor :digest_bytes
       
         def initialize(**args)
            update!(**args)
@@ -2376,7 +2376,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @algo = args[:algo] if args.key?(:algo)
-          @digest_value = args[:digest_value] if args.key?(:digest_value)
+          @digest_bytes = args[:digest_bytes] if args.key?(:digest_bytes)
         end
       end
       
