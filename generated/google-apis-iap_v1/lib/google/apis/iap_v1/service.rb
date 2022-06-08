@@ -341,7 +341,7 @@ module Google
         # @param [String] tunnel_dest_group_id
         #   Required. The ID to use for the TunnelDestGroup, which becomes the final
         #   component of the resource name. This value must be 4-63 characters, and valid
-        #   characters are `a-z-`.
+        #   characters are `[a-z]-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -484,7 +484,7 @@ module Google
         # Updates a TunnelDestGroup.
         # @param [String] name
         #   Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within
-        #   the project.
+        #   the project and contain only lower case letters (a-z) and dashes (-).
         # @param [Google::Apis::IapV1::TunnelDestGroup] tunnel_dest_group_object
         # @param [String] update_mask
         #   A field mask that specifies which IAP settings to update. If omitted, then all
