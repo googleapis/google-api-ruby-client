@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClearAppsDataParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClearAppsDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Command
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEnrollmentTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OncWifiContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,7 +352,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PasswordPoliciesContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PasswordRequirements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerAppResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +449,12 @@ module Google
       end
       
       class SoftwareInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpecificNonComplianceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -656,9 +698,28 @@ module Google
         end
       end
       
+      class ClearAppsDataParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :package_names, as: 'packageNames'
+        end
+      end
+      
+      class ClearAppsDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results', class: Google::Apis::AndroidmanagementV1::PerAppResult, decorator: Google::Apis::AndroidmanagementV1::PerAppResult::Representation
+      
+        end
+      end
+      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :clear_apps_data_params, as: 'clearAppsDataParams', class: Google::Apis::AndroidmanagementV1::ClearAppsDataParams, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataParams::Representation
+      
+          property :clear_apps_data_status, as: 'clearAppsDataStatus', class: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :duration, as: 'duration'
           property :error_code, as: 'errorCode'
@@ -959,6 +1020,15 @@ module Google
         end
       end
       
+      class ListEnrollmentTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrollment_tokens, as: 'enrollmentTokens', class: Google::Apis::AndroidmanagementV1::EnrollmentToken, decorator: Google::Apis::AndroidmanagementV1::EnrollmentToken::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListEnterprisesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1064,6 +1134,9 @@ module Google
           property :non_compliance_reason, as: 'nonComplianceReason'
           property :package_name, as: 'packageName'
           property :setting_name, as: 'settingName'
+          property :specific_non_compliance_context, as: 'specificNonComplianceContext', class: Google::Apis::AndroidmanagementV1::SpecificNonComplianceContext, decorator: Google::Apis::AndroidmanagementV1::SpecificNonComplianceContext::Representation
+      
+          property :specific_non_compliance_reason, as: 'specificNonComplianceReason'
         end
       end
       
@@ -1082,6 +1155,13 @@ module Google
           collection :certificate_references, as: 'certificateReferences'
           property :content_provider_endpoint, as: 'contentProviderEndpoint', class: Google::Apis::AndroidmanagementV1::ContentProviderEndpoint, decorator: Google::Apis::AndroidmanagementV1::ContentProviderEndpoint::Representation
       
+        end
+      end
+      
+      class OncWifiContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wifi_guid, as: 'wifiGuid'
         end
       end
       
@@ -1104,6 +1184,13 @@ module Google
         end
       end
       
+      class PasswordPoliciesContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password_policy_scope, as: 'passwordPolicyScope'
+        end
+      end
+      
       class PasswordRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1121,6 +1208,13 @@ module Google
           property :password_scope, as: 'passwordScope'
           property :require_password_unlock, as: 'requirePasswordUnlock'
           property :unified_lock_settings, as: 'unifiedLockSettings'
+        end
+      end
+      
+      class PerAppResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clearing_result, as: 'clearingResult'
         end
       end
       
@@ -1372,6 +1466,16 @@ module Google
           property :primary_language_code, as: 'primaryLanguageCode'
           property :security_patch_level, as: 'securityPatchLevel'
           property :system_update_info, as: 'systemUpdateInfo', class: Google::Apis::AndroidmanagementV1::SystemUpdateInfo, decorator: Google::Apis::AndroidmanagementV1::SystemUpdateInfo::Representation
+      
+        end
+      end
+      
+      class SpecificNonComplianceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :onc_wifi_context, as: 'oncWifiContext', class: Google::Apis::AndroidmanagementV1::OncWifiContext, decorator: Google::Apis::AndroidmanagementV1::OncWifiContext::Representation
+      
+          property :password_policies_context, as: 'passwordPoliciesContext', class: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext, decorator: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext::Representation
       
         end
       end
