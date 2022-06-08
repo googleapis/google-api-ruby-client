@@ -606,7 +606,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an enrollment token for a given enterprise.
+        # Creates an enrollment token for a given enterprise. It's up to the caller's
+        # responsibility to manage the lifecycle of newly created tokens and deleting
+        # them when they're not intended to be used anymore. Once an enrollment token
+        # has been created, it's not possible to retrieve the token's content anymore
+        # using AM API. It is recommended for EMMs to securely store the token if it's
+        # intended to be reused.
         # @param [String] parent
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Google::Apis::AndroidmanagementV1::EnrollmentToken] enrollment_token_object
@@ -666,6 +671,83 @@ module Google
           command.response_representation = Google::Apis::AndroidmanagementV1::Empty::Representation
           command.response_class = Google::Apis::AndroidmanagementV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an active, unexpired enrollment token. Only a partial view of
+        # EnrollmentToken is returned: all the fields but name and expiration_timestamp
+        # are empty. This method is meant to help manage active enrollment tokens
+        # lifecycle. For security reasons, it's recommended to delete active enrollment
+        # tokens as soon as they're not intended to be used anymore.
+        # @param [String] name
+        #   Required. The name of the enrollment token in the form enterprises/`
+        #   enterpriseId`/enrollmentTokens/`enrollmentTokenId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::EnrollmentToken] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::EnrollmentToken]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_enterprise_enrollment_token(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::EnrollmentToken::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::EnrollmentToken
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists active, unexpired enrollment tokens for a given enterprise. The list
+        # items contain only a partial view of EnrollmentToken: all the fields but name
+        # and expiration_timestamp are empty. This method is meant to help manage active
+        # enrollment tokens lifecycle. For security reasons, it's recommended to delete
+        # active enrollment tokens as soon as they're not intended to be used anymore.
+        # @param [String] parent
+        #   Required. The name of the enterprise in the form enterprises/`enterpriseId`.
+        # @param [Fixnum] page_size
+        #   The requested page size. The service may return fewer than this value. If
+        #   unspecified, at most 10 items will be returned. The maximum value is 100;
+        #   values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   A token identifying a page of results returned by the server.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::ListEnrollmentTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::ListEnrollmentTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_enterprise_enrollment_tokens(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/enrollmentTokens', options)
+          command.response_representation = Google::Apis::AndroidmanagementV1::ListEnrollmentTokensResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::ListEnrollmentTokensResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
