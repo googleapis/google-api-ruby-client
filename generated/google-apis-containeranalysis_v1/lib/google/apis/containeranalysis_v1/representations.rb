@@ -1421,7 +1421,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :algo, as: 'algo'
-          property :digest_value, as: 'digestValue'
+          property :digest_bytes, :base64 => true, as: 'digestBytes'
         end
       end
       
