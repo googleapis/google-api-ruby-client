@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResizeVolumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +575,7 @@ module Google
           property :cidr, as: 'cidr'
           property :gcp_service, as: 'gcpService'
           property :id, as: 'id'
+          property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
           property :name, as: 'name'
           property :service_cidr, as: 'serviceCidr'
           property :type, as: 'type'
@@ -609,6 +616,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :nfs_share_id, as: 'nfsShareId'
+          property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :state, as: 'state'
           property :volume, as: 'volume'
         end
@@ -655,6 +663,7 @@ module Google
           property :update_time, as: 'updateTime'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::VolumeConfig, decorator: Google::Apis::BaremetalsolutionV2::VolumeConfig::Representation
       
+          property :vpc_sc_enabled, as: 'vpcScEnabled'
         end
       end
       
@@ -684,6 +693,13 @@ module Google
       class ResetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResizeVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gib, :numeric_string => true, as: 'sizeGib'
         end
       end
       
@@ -774,7 +790,9 @@ module Google
           property :emergency_size_gib, :numeric_string => true, as: 'emergencySizeGib'
           property :id, as: 'id'
           hash :labels, as: 'labels'
+          property :max_size_gib, :numeric_string => true, as: 'maxSizeGib'
           property :name, as: 'name'
+          property :originally_requested_size_gib, :numeric_string => true, as: 'originallyRequestedSizeGib'
           property :pod, as: 'pod'
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
