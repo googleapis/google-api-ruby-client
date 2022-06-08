@@ -497,6 +497,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Creation timestamp of the execution.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Creation timestamp of the execution.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -512,6 +517,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
         end

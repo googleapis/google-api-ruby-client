@@ -399,6 +399,7 @@ module Google
       class GoogleCloudRunV2ExecutionReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
           property :create_time, as: 'createTime'
           property :name, as: 'name'
         end
