@@ -1984,7 +1984,7 @@ module Google
         end
       end
       
-      # Next ID: 15
+      # Next ID: 16
       class NamespacedDebugInput
         include Google::Apis::Core::Hashable
       
@@ -2095,6 +2095,13 @@ module Google
         # @return [Hash<String,Boolean>]
         attr_accessor :forced_rollouts
       
+        # If set to ALL_OFF, organic selection will be disabled; if set to ALL_ON,
+        # organic selection will be disabled, and only select launch experiments will
+        # receive traffic. See go/mendel-aoao-runtime-design.
+        # Corresponds to the JSON property `testingMode`
+        # @return [String]
+        attr_accessor :testing_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2115,6 +2122,7 @@ module Google
           @disable_organic_selection = args[:disable_organic_selection] if args.key?(:disable_organic_selection)
           @forced_flags = args[:forced_flags] if args.key?(:forced_flags)
           @forced_rollouts = args[:forced_rollouts] if args.key?(:forced_rollouts)
+          @testing_mode = args[:testing_mode] if args.key?(:testing_mode)
         end
       end
       
