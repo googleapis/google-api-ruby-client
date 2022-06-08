@@ -119,10 +119,10 @@ module Google
         # @return [String]
         attr_accessor :cookie_domain
       
-        # Configuration for RCTokens generated for CSM workloads protected by IAP.
-        # RCTokens are IAP generated JWTs that can be verified at the application. The
-        # RCToken is primarily used for ISTIO deployments, and can be scoped to a single
-        # mesh by configuring the audience field accordingly
+        # Configuration for RCTokens generated for service mesh workloads protected by
+        # IAP. RCTokens are IAP generated JWTs that can be verified at the application.
+        # The RCToken is primarily used for service mesh deployments, and can be scoped
+        # to a single mesh by configuring the audience field accordingly
         # Corresponds to the JSON property `csmSettings`
         # @return [Google::Apis::IapV1::CsmSettings]
         attr_accessor :csm_settings
@@ -273,10 +273,10 @@ module Google
         end
       end
       
-      # Configuration for RCTokens generated for CSM workloads protected by IAP.
-      # RCTokens are IAP generated JWTs that can be verified at the application. The
-      # RCToken is primarily used for ISTIO deployments, and can be scoped to a single
-      # mesh by configuring the audience field accordingly
+      # Configuration for RCTokens generated for service mesh workloads protected by
+      # IAP. RCTokens are IAP generated JWTs that can be verified at the application.
+      # The RCToken is primarily used for service mesh deployments, and can be scoped
+      # to a single mesh by configuring the audience field accordingly
       class CsmSettings
         include Google::Apis::Core::Hashable
       
@@ -784,7 +784,7 @@ module Google
         # @return [String]
         attr_accessor :max_age
       
-        # Reauth method required by the policy.
+        # Reauth method requested.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -985,7 +985,7 @@ module Google
         attr_accessor :fqdns
       
         # Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within
-        # the project.
+        # the project and contain only lower case letters (a-z) and dashes (-).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
