@@ -861,6 +861,7 @@ module Google
           property :disable_organic_selection, as: 'disableOrganicSelection'
           hash :forced_flags, as: 'forcedFlags'
           hash :forced_rollouts, as: 'forcedRollouts'
+          property :testing_mode, as: 'testingMode'
         end
       end
       
