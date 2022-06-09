@@ -3136,7 +3136,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :services
       
-        # Describes policy settings that need to be applied to a newly created tenant
+        # Describes policy settings that can be applied to a newly created tenant
         # project.
         # Corresponds to the JSON property `tenantProjectPolicy`
         # @return [Google::Apis::ServiceconsumermanagementV1::TenantProjectPolicy]
@@ -3157,14 +3157,13 @@ module Google
         end
       end
       
-      # Describes policy settings that need to be applied to a newly created tenant
+      # Describes policy settings that can be applied to a newly created tenant
       # project.
       class TenantProjectPolicy
         include Google::Apis::Core::Hashable
       
         # Policy bindings to be applied to the tenant project, in addition to the 'roles/
-        # owner' role granted to the Service Consumer Management service account. At
-        # least one binding must have the role `roles/owner`.
+        # owner' role granted to the Service Consumer Management service account.
         # Corresponds to the JSON property `policyBindings`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::PolicyBinding>]
         attr_accessor :policy_bindings
