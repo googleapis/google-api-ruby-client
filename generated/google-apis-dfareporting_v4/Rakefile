@@ -1,0 +1,28 @@
+require "bundler/gem_tasks"
+task :release_gem do
+  Rake::Task["build"].invoke
+  Rake::Task["release:rubygem_push"].invoke
+end
+
+require 'rake/clean'
+CLOBBER.include('coverage', 'doc')
+CLEAN.include('.yardoc')
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+
+begin
+	require 'yard'
+	require 'yard/rake/yardoc_task'
+	YARD::Rake::YardocTask.new do |t|
+  	t.files   = ['lib/**/*.rb', 'generated/**/*.rb']
+  	t.options = ['--verbose', '--markup', 'markdown']
+	end
+rescue LoadError
+  task :yard
+  puts "YARD not available"
+end
+
+task :ci => [:spec, :yard, :build]
+
+task :default => :ci
