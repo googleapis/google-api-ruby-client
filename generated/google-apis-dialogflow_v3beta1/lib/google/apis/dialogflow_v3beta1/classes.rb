@@ -3050,7 +3050,7 @@ module Google
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
-        # Indiciates whether the agent is locked for changes. If the agent is locked,
+        # Indicates whether the agent is locked for changes. If the agent is locked,
         # modifications to the agent will be rejected except for RestoreAgent.
         # Corresponds to the JSON property `locked`
         # @return [Boolean]
