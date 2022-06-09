@@ -9078,6 +9078,22 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
         attr_accessor :assist_query_params
       
+        # Represents the natural language speech audio to be processed.
+        # Corresponds to the JSON property `audioInput`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AudioInput]
+        attr_accessor :audio_input
+      
+        # The unique identifier of the CX page to override the `current_page` in the
+        # session. Format: `projects//locations//agents//flows//pages/`. If `
+        # cx_current_page` is specified, the previous state of the session will be
+        # ignored by Dialogflow CX, including the previous page and the previous session
+        # parameters. In most cases, `cx_current_page` and `cx_parameters` should be
+        # configured together to direct a session to a specific state. Note: this field
+        # should only be used if you are connecting to a Dialogflow CX agent.
+        # Corresponds to the JSON property `cxCurrentPage`
+        # @return [String]
+        attr_accessor :cx_current_page
+      
         # Additional parameters to be put into Dialogflow CX session parameters. To
         # remove a parameter from the session, clients should explicitly set the
         # parameter value to null. Note: this field should only be used if you are
@@ -9138,6 +9154,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
+          @audio_input = args[:audio_input] if args.key?(:audio_input)
+          @cx_current_page = args[:cx_current_page] if args.key?(:cx_current_page)
           @cx_parameters = args[:cx_parameters] if args.key?(:cx_parameters)
           @event_input = args[:event_input] if args.key?(:event_input)
           @message_send_time = args[:message_send_time] if args.key?(:message_send_time)
@@ -9418,6 +9436,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @documents_metadata_filters = args[:documents_metadata_filters] if args.key?(:documents_metadata_filters)
+        end
+      end
+      
+      # Represents the natural language speech audio to be processed.
+      class GoogleCloudDialogflowV2beta1AudioInput
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language speech audio to be processed. A single request
+        # can contain up to 1 minute of speech audio data. The transcribed text cannot
+        # contain more than 256 bytes.
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # Instructs the speech recognizer on how to process the audio content.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio = args[:audio] if args.key?(:audio)
+          @config = args[:config] if args.key?(:config)
         end
       end
       

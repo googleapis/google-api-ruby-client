@@ -1552,6 +1552,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1AudioInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1AutomatedAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5245,6 +5251,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
       
+          property :audio_input, as: 'audioInput', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AudioInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AudioInput::Representation
+      
+          property :cx_current_page, as: 'cxCurrentPage'
           hash :cx_parameters, as: 'cxParameters'
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput::Representation
       
@@ -5326,6 +5335,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :documents_metadata_filters, as: 'documentsMetadataFilters'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AudioInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio, :base64 => true, as: 'audio'
+          property :config, as: 'config', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputAudioConfig::Representation
+      
         end
       end
       
