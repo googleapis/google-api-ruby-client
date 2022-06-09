@@ -119,7 +119,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists creatives.
+        # Lists creatives as they are at the time of the initial request. This call may
+        # take multiple hours to complete. For large, paginated requests, this method
+        # returns a snapshot of creatives at the time of request for the first page. `
+        # lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives
+        # on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/
+        # pubsub/docs/overview) to view the latest status.
         # @param [String] parent
         #   Required. Name of the parent buyer that owns the creatives. The pattern for
         #   this resource is either `buyers/`buyerAccountId`` or `bidders/`bidderAccountId`
@@ -1117,7 +1122,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists creatives.
+        # Lists creatives as they are at the time of the initial request. This call may
+        # take multiple hours to complete. For large, paginated requests, this method
+        # returns a snapshot of creatives at the time of request for the first page. `
+        # lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives
+        # on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/
+        # pubsub/docs/overview) to view the latest status.
         # @param [String] parent
         #   Required. Name of the parent buyer that owns the creatives. The pattern for
         #   this resource is either `buyers/`buyerAccountId`` or `bidders/`bidderAccountId`
