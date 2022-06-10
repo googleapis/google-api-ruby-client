@@ -868,7 +868,8 @@ module Google
         #   CLOUD_SQL_INSTANCE'. By default, each expression is an AND expression. However,
         #   you can include AND and OR expressions explicitly.
         # @param [Fixnum] max_results
-        #   The maximum number of results to return per response.
+        #   The maximum number of instances to return. The service may return fewer than
+        #   this value. The maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.
