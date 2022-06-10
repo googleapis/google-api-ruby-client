@@ -8817,6 +8817,7 @@ module Google
           property :instance_group, as: 'instanceGroup'
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
+          property :list_managed_instances_results, as: 'listManagedInstancesResults'
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       

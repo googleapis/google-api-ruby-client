@@ -13675,6 +13675,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Pagination behavior of the listManagedInstances API method for this managed
+        # instance group.
+        # Corresponds to the JSON property `listManagedInstancesResults`
+        # @return [String]
+        attr_accessor :list_managed_instances_results
+      
         # The name of the managed instance group. The name must be 1-63 characters long,
         # and comply with RFC1035.
         # Corresponds to the JSON property `name`
@@ -13772,6 +13778,7 @@ module Google
           @instance_group = args[:instance_group] if args.key?(:instance_group)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
+          @list_managed_instances_results = args[:list_managed_instances_results] if args.key?(:list_managed_instances_results)
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
