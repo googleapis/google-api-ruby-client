@@ -4776,8 +4776,8 @@ module Google
         
         # Updates the HL7v2 store.
         # @param [String] name
-        #   Resource name of the HL7v2 store, of the form `projects/`project_id`/datasets/`
-        #   dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        #   Resource name of the HL7v2 store, of the form `projects/`project_id`/locations/
+        #   `location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
         # @param [Google::Apis::HealthcareV1::Hl7V2Store] hl7_v2_store_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
@@ -5127,9 +5127,9 @@ module Google
         # request are merged with the existing set of labels. Existing labels with the
         # same keys are updated.
         # @param [String] name
-        #   Resource name of the Message, of the form `projects/`project_id`/datasets/`
-        #   dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`message_id``. Assigned by
-        #   the server.
+        #   Resource name of the Message, of the form `projects/`project_id`/locations/`
+        #   location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`
+        #   message_id``. Assigned by the server.
         # @param [Google::Apis::HealthcareV1::Message] message_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
