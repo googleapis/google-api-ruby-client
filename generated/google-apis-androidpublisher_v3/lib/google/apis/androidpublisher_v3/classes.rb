@@ -2760,7 +2760,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A string representing version of the available regions being used
-        # for the specified resource.
+        # for the specified resource. The current version is 2022/01.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
