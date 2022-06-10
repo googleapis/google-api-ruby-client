@@ -16554,7 +16554,6 @@ module Google
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
-          collection :private_ipv6_google_access_service_accounts, as: 'privateIpv6GoogleAccessServiceAccounts'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :reserved_internal_range, as: 'reservedInternalRange'
