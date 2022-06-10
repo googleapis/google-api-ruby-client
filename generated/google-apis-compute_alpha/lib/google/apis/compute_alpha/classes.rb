@@ -15328,8 +15328,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Pagination behavior of listManagedInstances API method for this Managed
-        # Instance Group.
+        # Pagination behavior of the listManagedInstances API method for this managed
+        # instance group.
         # Corresponds to the JSON property `listManagedInstancesResults`
         # @return [String]
         attr_accessor :list_managed_instances_results
@@ -41274,16 +41274,6 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly.
-        # The service accounts can be used to selectively turn on Private IPv6 Google
-        # Access only on the VMs primary service account matching the value. This value
-        # only takes effect when PrivateIpv6GoogleAccess is
-        # ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or
-        # ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        # Corresponds to the JSON property `privateIpv6GoogleAccessServiceAccounts`
-        # @return [Array<String>]
-        attr_accessor :private_ipv6_google_access_service_accounts
-      
         # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
         # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
@@ -41388,7 +41378,6 @@ module Google
           @network = args[:network] if args.key?(:network)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
-          @private_ipv6_google_access_service_accounts = args[:private_ipv6_google_access_service_accounts] if args.key?(:private_ipv6_google_access_service_accounts)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
