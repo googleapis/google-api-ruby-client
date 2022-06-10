@@ -2141,6 +2141,18 @@ module Google
       class FhirStore
         include Google::Apis::Core::Hashable
       
+        # Enable parsing of references within complex FHIR data types such as Extensions.
+        # If this value is set to ENABLED, then features like referential integrity and
+        # Bundle reference rewriting apply to all references. If this flag has not been
+        # specified the behavior of the FHIR store will not change, references in
+        # complex data types will not be parsed. New stores will have this value set to
+        # ENABLED after a notification period. Warning: turning on this flag causes
+        # processing existing resources to fail if they contain references to non-
+        # existent resources.
+        # Corresponds to the JSON property `complexDataTypeReferenceParsing`
+        # @return [String]
+        attr_accessor :complex_data_type_reference_parsing
+      
         # If true, overrides the default search behavior for this FHIR store to `
         # handling=strict` which returns an error for unrecognized search parameters. If
         # false, uses the FHIR specification default `handling=lenient` which ignores
@@ -2257,6 +2269,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @complex_data_type_reference_parsing = args[:complex_data_type_reference_parsing] if args.key?(:complex_data_type_reference_parsing)
           @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
@@ -3094,8 +3107,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Resource name of the HL7v2 store, of the form `projects/`project_id`/datasets/`
-        # dataset_id`/hl7V2Stores/`hl7v2_store_id``.
+        # Resource name of the HL7v2 store, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3558,7 +3571,9 @@ module Google
       class KmsWrappedCryptoKey
         include Google::Apis::Core::Hashable
       
-        # Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        # Required. The resource name of the KMS CryptoKey to use for unwrapping. For
+        # example, `projects/`project_id`/locations/`location_id`/keyRings/`keyring`/
+        # cryptoKeys/`key``.
         # Corresponds to the JSON property `cryptoKey`
         # @return [String]
         attr_accessor :crypto_key
@@ -4083,9 +4098,9 @@ module Google
         # @return [String]
         attr_accessor :message_type
       
-        # Resource name of the Message, of the form `projects/`project_id`/datasets/`
-        # dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`message_id``. Assigned by
-        # the server.
+        # Resource name of the Message, of the form `projects/`project_id`/locations/`
+        # location_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/messages/`
+        # message_id``. Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
