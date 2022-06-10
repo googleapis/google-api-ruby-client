@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SshPublicKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -360,6 +366,8 @@ module Google
           property :oauth2_client_credentials, as: 'oauth2ClientCredentials', class: Google::Apis::ConnectorsV1::Oauth2ClientCredentials, decorator: Google::Apis::ConnectorsV1::Oauth2ClientCredentials::Representation
       
           property :oauth2_jwt_bearer, as: 'oauth2JwtBearer', class: Google::Apis::ConnectorsV1::Oauth2JwtBearer, decorator: Google::Apis::ConnectorsV1::Oauth2JwtBearer::Representation
+      
+          property :ssh_public_key, as: 'sshPublicKey', class: Google::Apis::ConnectorsV1::SshPublicKey, decorator: Google::Apis::ConnectorsV1::SshPublicKey::Representation
       
           property :user_password, as: 'userPassword', class: Google::Apis::ConnectorsV1::UserPassword, decorator: Google::Apis::ConnectorsV1::UserPassword::Representation
       
@@ -429,7 +437,6 @@ module Google
           property :connector_version, as: 'connectorVersion'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
-          collection :egress_backends, as: 'egressBackends'
           property :envoy_image_location, as: 'envoyImageLocation'
           property :image_location, as: 'imageLocation'
           hash :labels, as: 'labels'
@@ -801,6 +808,7 @@ module Google
           property :control_plane_subscription, as: 'controlPlaneSubscription'
           property :control_plane_topic, as: 'controlPlaneTopic'
           property :location_id, as: 'locationId'
+          property :name, as: 'name'
           property :runtime_endpoint, as: 'runtimeEndpoint'
           property :schema_gcs_bucket, as: 'schemaGcsBucket'
           property :service_directory, as: 'serviceDirectory'
@@ -838,6 +846,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_id, as: 'fieldId'
           property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class SshPublicKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_type, as: 'certType'
+          property :password, as: 'password', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :ssh_client_cert, as: 'sshClientCert', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :username, as: 'username'
         end
       end
       

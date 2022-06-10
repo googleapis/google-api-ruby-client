@@ -120,6 +120,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Oauth2JwtBearer]
         attr_accessor :oauth2_jwt_bearer
       
+        # SSH Public Key.
+        # Corresponds to the JSON property `sshPublicKey`
+        # @return [Google::Apis::ConnectorsV1::SshPublicKey]
+        attr_accessor :ssh_public_key
+      
         # Parameters to support Username and Password Authentication.
         # Corresponds to the JSON property `userPassword`
         # @return [Google::Apis::ConnectorsV1::UserPassword]
@@ -135,6 +140,7 @@ module Google
           @auth_type = args[:auth_type] if args.key?(:auth_type)
           @oauth2_client_credentials = args[:oauth2_client_credentials] if args.key?(:oauth2_client_credentials)
           @oauth2_jwt_bearer = args[:oauth2_jwt_bearer] if args.key?(:oauth2_jwt_bearer)
+          @ssh_public_key = args[:ssh_public_key] if args.key?(:ssh_public_key)
           @user_password = args[:user_password] if args.key?(:user_password)
         end
       end
@@ -392,11 +398,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. Outbound domains/hosts needs to be allowlisted.
-        # Corresponds to the JSON property `egressBackends`
-        # @return [Array<String>]
-        attr_accessor :egress_backends
-      
         # Output only. GCR location where the envoy image is stored. formatted like: gcr.
         # io/`bucketName`/`imageName`
         # Corresponds to the JSON property `envoyImageLocation`
@@ -468,7 +469,6 @@ module Google
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
-          @egress_backends = args[:egress_backends] if args.key?(:egress_backends)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
@@ -1842,6 +1842,11 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Output only. Resource name of the form: `projects/*/locations/*/runtimeConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Output only. The endpoint of the connectors runtime ingress.
         # Corresponds to the JSON property `runtimeEndpoint`
         # @return [String]
@@ -1873,6 +1878,7 @@ module Google
           @control_plane_subscription = args[:control_plane_subscription] if args.key?(:control_plane_subscription)
           @control_plane_topic = args[:control_plane_topic] if args.key?(:control_plane_topic)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @name = args[:name] if args.key?(:name)
           @runtime_endpoint = args[:runtime_endpoint] if args.key?(:runtime_endpoint)
           @schema_gcs_bucket = args[:schema_gcs_bucket] if args.key?(:schema_gcs_bucket)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
@@ -2000,6 +2006,43 @@ module Google
         def update!(**args)
           @field_id = args[:field_id] if args.key?(:field_id)
           @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # 
+      class SshPublicKey
+        include Google::Apis::Core::Hashable
+      
+        # Format of SSH Client cert.
+        # Corresponds to the JSON property `certType`
+        # @return [String]
+        attr_accessor :cert_type
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :password
+      
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `sshClientCert`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :ssh_client_cert
+      
+        # The user account used to authenticate.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_type = args[:cert_type] if args.key?(:cert_type)
+          @password = args[:password] if args.key?(:password)
+          @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
