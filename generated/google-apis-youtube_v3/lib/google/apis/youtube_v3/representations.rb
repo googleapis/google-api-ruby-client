@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cuepoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1862,6 +1868,17 @@ module Google
           property :smsa_rating, as: 'smsaRating'
           property :tvpg_rating, as: 'tvpgRating'
           property :yt_rating, as: 'ytRating'
+        end
+      end
+      
+      class Cuepoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cue_type, as: 'cueType'
+          property :duration_secs, as: 'durationSecs'
+          property :id, as: 'id'
+          property :insertion_offset_time_ms, :numeric_string => true, as: 'insertionOffsetTimeMs'
+          property :walltime_ms, :numeric_string => true, as: 'walltimeMs'
         end
       end
       

@@ -2861,6 +2861,53 @@ module Google
         end
       end
       
+      # Note that there may be a 5-second end-point resolution issue. For instance, if
+      # a cuepoint comes in for 22:03:27, we may stuff the cuepoint into 22:03:25 or
+      # 22:03:30, depending. This is an artifact of HLS.
+      class Cuepoint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `cueType`
+        # @return [String]
+        attr_accessor :cue_type
+      
+        # The duration of this cuepoint.
+        # Corresponds to the JSON property `durationSecs`
+        # @return [Fixnum]
+        attr_accessor :duration_secs
+      
+        # The identifier for cuepoint resource.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The time when the cuepoint should be inserted by offset to the broadcast
+        # actual start time.
+        # Corresponds to the JSON property `insertionOffsetTimeMs`
+        # @return [Fixnum]
+        attr_accessor :insertion_offset_time_ms
+      
+        # The wall clock time at which the cuepoint should be inserted. Only one of
+        # insertion_offset_time_ms and walltime_ms may be set at a time.
+        # Corresponds to the JSON property `walltimeMs`
+        # @return [Fixnum]
+        attr_accessor :walltime_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cue_type = args[:cue_type] if args.key?(:cue_type)
+          @duration_secs = args[:duration_secs] if args.key?(:duration_secs)
+          @id = args[:id] if args.key?(:id)
+          @insertion_offset_time_ms = args[:insertion_offset_time_ms] if args.key?(:insertion_offset_time_ms)
+          @walltime_ms = args[:walltime_ms] if args.key?(:walltime_ms)
+        end
+      end
+      
       # 
       class Entity
         include Google::Apis::Core::Hashable
