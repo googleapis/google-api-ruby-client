@@ -1083,6 +1083,38 @@ module Google
         end
       end
       
+      # Response message for 'ListReplicationCycles' request.
+      class ListReplicationCyclesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The list of replication cycles response.
+        # Corresponds to the JSON property `replicationCycles`
+        # @return [Array<Google::Apis::VmmigrationV1::ReplicationCycle>]
+        attr_accessor :replication_cycles
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @replication_cycles = args[:replication_cycles] if args.key?(:replication_cycles)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for 'ListSources' request.
       class ListSourcesResponse
         include Google::Apis::Core::Hashable
