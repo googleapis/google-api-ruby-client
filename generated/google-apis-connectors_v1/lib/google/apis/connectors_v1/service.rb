@@ -386,10 +386,10 @@ module Google
         #   locations/`location`/connections/`connection`
         # @param [Google::Apis::ConnectorsV1::Connection] connection_object
         # @param [String] update_mask
-        #   Field mask is used to specify the fields to be overwritten in the Connection
-        #   resource by the update. The fields specified in the update_mask are relative
-        #   to the resource, not the full request. A field will be overwritten if it is in
-        #   the mask. If the user does not provide a mask then all fields will be
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   Connection resource by the update. The fields specified in the update_mask are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then all fields will be
         #   overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
