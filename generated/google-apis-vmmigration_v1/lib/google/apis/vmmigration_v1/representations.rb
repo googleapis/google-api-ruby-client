@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReplicationCyclesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -638,6 +644,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VmmigrationV1::Operation, decorator: Google::Apis::VmmigrationV1::Operation::Representation
       
+        end
+      end
+      
+      class ListReplicationCyclesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :replication_cycles, as: 'replicationCycles', class: Google::Apis::VmmigrationV1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1::ReplicationCycle::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
