@@ -22,6 +22,12 @@ module Google
   module Apis
     module VmmigrationV1alpha1
       
+      class AdaptingOsStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddGroupMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloneStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComputeEngineTargetDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +107,12 @@ module Google
       end
       
       class CutoverJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CutoverStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +155,12 @@ module Google
       end
       
       class InitializingReplicationStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantiatingMigratedVmStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +209,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReplicationCyclesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreparingVmDisksStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveGroupMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +335,12 @@ module Google
       end
       
       class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShuttingDownSourceVmStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdaptingOsStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AddGroupMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -450,13 +498,30 @@ module Google
           property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
       
           property :name, as: 'name'
           property :state, as: 'state'
           property :state_time, as: 'stateTime'
+          collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::CloneStep, decorator: Google::Apis::VmmigrationV1alpha1::CloneStep::Representation
+      
           property :target_details, as: 'targetDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
       
+        end
+      end
+      
+      class CloneStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapting_os, as: 'adaptingOs', class: Google::Apis::VmmigrationV1alpha1::AdaptingOsStep, decorator: Google::Apis::VmmigrationV1alpha1::AdaptingOsStep::Representation
+      
+          property :end_time, as: 'endTime'
+          property :instantiating_migrated_vm, as: 'instantiatingMigratedVm', class: Google::Apis::VmmigrationV1alpha1::InstantiatingMigratedVmStep, decorator: Google::Apis::VmmigrationV1alpha1::InstantiatingMigratedVmStep::Representation
+      
+          property :preparing_vm_disks, as: 'preparingVmDisks', class: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep, decorator: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep::Representation
+      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -534,6 +599,7 @@ module Google
           property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
       
           property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
       
           property :name, as: 'name'
@@ -542,8 +608,28 @@ module Google
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :state_time, as: 'stateTime'
+          collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::CutoverStep, decorator: Google::Apis::VmmigrationV1alpha1::CutoverStep::Representation
+      
           property :target_details, as: 'targetDetails', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
       
+        end
+      end
+      
+      class CutoverStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :final_sync, as: 'finalSync', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
+          property :instantiating_migrated_vm, as: 'instantiatingMigratedVm', class: Google::Apis::VmmigrationV1alpha1::InstantiatingMigratedVmStep, decorator: Google::Apis::VmmigrationV1alpha1::InstantiatingMigratedVmStep::Representation
+      
+          property :preparing_vm_disks, as: 'preparingVmDisks', class: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep, decorator: Google::Apis::VmmigrationV1alpha1::PreparingVmDisksStep::Representation
+      
+          property :previous_replication_cycle, as: 'previousReplicationCycle', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
+          property :shutting_down_source_vm, as: 'shuttingDownSourceVm', class: Google::Apis::VmmigrationV1alpha1::ShuttingDownSourceVmStep, decorator: Google::Apis::VmmigrationV1alpha1::ShuttingDownSourceVmStep::Representation
+      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -623,6 +709,12 @@ module Google
         end
       end
       
+      class InstantiatingMigratedVmStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -696,6 +788,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VmmigrationV1alpha1::Operation, decorator: Google::Apis::VmmigrationV1alpha1::Operation::Representation
       
+        end
+      end
+      
+      class ListReplicationCyclesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :replication_cycles, as: 'replicationCycles', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -845,6 +947,12 @@ module Google
         end
       end
       
+      class PreparingVmDisksStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RemoveGroupMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -865,6 +973,8 @@ module Google
       class ReplicationCycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
           property :progress, as: 'progress'
           property :progress_percent, as: 'progressPercent'
           property :start_time, as: 'startTime'
@@ -901,6 +1011,12 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class ShuttingDownSourceVmStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
