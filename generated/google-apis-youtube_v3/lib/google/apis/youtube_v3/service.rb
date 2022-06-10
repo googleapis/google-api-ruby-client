@@ -3819,6 +3819,86 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Insert cuepoints in a broadcast
+        # @param [String] id
+        #   Broadcast to insert ads to, or equivalently `external_video_id` for internal
+        #   use.
+        # @param [String] on_behalf_of_content_owner
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] on_behalf_of_content_owner_channel
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
+        #   parameter is intended for YouTube content partners that own and manage many
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
+        # @param [Array<String>, String] part
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
+        # @param [String] resource_cue_type
+        # @param [Fixnum] resource_duration_secs
+        #   The duration of this cuepoint.
+        # @param [String] resource_id
+        #   The identifier for cuepoint resource.
+        # @param [Fixnum] resource_insertion_offset_time_ms
+        #   The time when the cuepoint should be inserted by offset to the broadcast
+        #   actual start time.
+        # @param [Fixnum] resource_walltime_ms
+        #   The wall clock time at which the cuepoint should be inserted. Only one of
+        #   insertion_offset_time_ms and walltime_ms may be set at a time.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::Cuepoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::Cuepoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_youtube_v3_live_broadcast_cuepoint(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, resource_cue_type: nil, resource_duration_secs: nil, resource_id: nil, resource_insertion_offset_time_ms: nil, resource_walltime_ms: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/liveBroadcasts/cuepoint', options)
+          command.response_representation = Google::Apis::YoutubeV3::Cuepoint::Representation
+          command.response_class = Google::Apis::YoutubeV3::Cuepoint
+          command.query['id'] = id unless id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['resource.cueType'] = resource_cue_type unless resource_cue_type.nil?
+          command.query['resource.durationSecs'] = resource_duration_secs unless resource_duration_secs.nil?
+          command.query['resource.id'] = resource_id unless resource_id.nil?
+          command.query['resource.insertionOffsetTimeMs'] = resource_insertion_offset_time_ms unless resource_insertion_offset_time_ms.nil?
+          command.query['resource.walltimeMs'] = resource_walltime_ms unless resource_walltime_ms.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
