@@ -1098,7 +1098,8 @@ module Google
         # @return [Google::Apis::TranscoderV1::PubsubDestination]
         attr_accessor :pubsub_destination
       
-        # List of output sprite sheets.
+        # List of output sprite sheets. Spritesheets require at least one VideoStream in
+        # the Jobconfig.
         # Corresponds to the JSON property `spriteSheets`
         # @return [Array<Google::Apis::TranscoderV1::SpriteSheet>]
         attr_accessor :sprite_sheets
