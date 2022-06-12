@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChannelConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListChannelConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StateCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +256,18 @@ module Google
           property :provider, as: 'provider'
           property :pubsub_topic, as: 'pubsubTopic'
           property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ChannelConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_token, as: 'activationToken'
+          property :channel, as: 'channel'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -357,6 +387,16 @@ module Google
         end
       end
       
+      class ListChannelConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channel_connections, as: 'channelConnections', class: Google::Apis::EventarcV1::ChannelConnection, decorator: Google::Apis::EventarcV1::ChannelConnection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListChannelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,6 +499,14 @@ module Google
         end
       end
       
+      class StateCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -485,6 +533,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
+          hash :conditions, as: 'conditions', class: Google::Apis::EventarcV1::StateCondition, decorator: Google::Apis::EventarcV1::StateCondition::Representation
+      
           property :create_time, as: 'createTime'
           property :destination, as: 'destination', class: Google::Apis::EventarcV1::Destination, decorator: Google::Apis::EventarcV1::Destination::Representation
       
