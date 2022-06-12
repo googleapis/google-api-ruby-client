@@ -237,6 +237,62 @@ module Google
         end
       end
       
+      # A representation of the ChannelConnection resource. A ChannelConnection is a
+      # resource which event providers create during the activation process to
+      # establish a connection between the provider and the subscriber channel.
+      class ChannelConnection
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Activation token for the channel. The token will be used during
+        # the creation of ChannelConnection to bind the channel with the provider
+        # project. This field will not be stored in the provider resource.
+        # Corresponds to the JSON property `activationToken`
+        # @return [String]
+        attr_accessor :activation_token
+      
+        # Required. The name of the connected subscriber Channel. This is a weak
+        # reference to avoid cross project and cross accounts references. This must be
+        # in `projects/`project`/location/`location`/channels/`channel_id`` format.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The name of the connection.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. / Output only. Server assigned ID of the resource. The server
+        # guarantees uniqueness and immutability until deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_token = args[:activation_token] if args.key?(:activation_token)
+          @channel = args[:channel] if args.key?(:channel)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Represents a Cloud Run destination.
       class CloudRun
         include Google::Apis::Core::Hashable
@@ -691,6 +747,38 @@ module Google
         end
       end
       
+      # The response message for the `ListChannelConnections` method.
+      class ListChannelConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested channel connections, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `channelConnections`
+        # @return [Array<Google::Apis::EventarcV1::ChannelConnection>]
+        attr_accessor :channel_connections
+      
+        # A page token that can be sent to ListChannelConnections to request the next
+        # page. If this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_connections = args[:channel_connections] if args.key?(:channel_connections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for the `ListChannels` method.
       class ListChannelsResponse
         include Google::Apis::Core::Hashable
@@ -1129,6 +1217,31 @@ module Google
         end
       end
       
+      # A condition that is part of the trigger state computation.
+      class StateCondition
+        include Google::Apis::Core::Hashable
+      
+        # The canonical code of the condition.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Human-readable message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -1199,6 +1312,11 @@ module Google
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
+      
+        # Output only. The reason(s) why a trigger is in FAILED state.
+        # Corresponds to the JSON property `conditions`
+        # @return [Hash<String,Google::Apis::EventarcV1::StateCondition>]
+        attr_accessor :conditions
       
         # Output only. The creation time.
         # Corresponds to the JSON property `createTime`
@@ -1274,6 +1392,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @channel = args[:channel] if args.key?(:channel)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @etag = args[:etag] if args.key?(:etag)
