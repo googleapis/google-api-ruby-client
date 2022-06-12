@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshDataPlaneManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshFeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1663,6 +1669,15 @@ module Google
         end
       end
       
+      class ServiceMeshDataPlaneManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class ServiceMeshFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1686,6 +1701,8 @@ module Google
       
           property :config_api_version, as: 'configApiVersion'
           property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement::Representation
+      
+          property :data_plane_management, as: 'dataPlaneManagement', class: Google::Apis::GkehubV1alpha::ServiceMeshDataPlaneManagement, decorator: Google::Apis::GkehubV1alpha::ServiceMeshDataPlaneManagement::Representation
       
         end
       end
