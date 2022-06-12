@@ -3609,6 +3609,31 @@ module Google
         end
       end
       
+      # Status of data plane management. Only reported per-member.
+      class ServiceMeshDataPlaneManagement
+        include Google::Apis::Core::Hashable
+      
+        # Explanation of the status.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::GkehubV1alpha::ServiceMeshStatusDetails>]
+        attr_accessor :details
+      
+        # Lifecycle status of data plane management.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
       # Controller.
       class ServiceMeshFeatureState
@@ -3676,6 +3701,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ServiceMeshControlPlaneManagement]
         attr_accessor :control_plane_management
       
+        # Status of data plane management. Only reported per-member.
+        # Corresponds to the JSON property `dataPlaneManagement`
+        # @return [Google::Apis::GkehubV1alpha::ServiceMeshDataPlaneManagement]
+        attr_accessor :data_plane_management
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3685,6 +3715,7 @@ module Google
           @analysis_messages = args[:analysis_messages] if args.key?(:analysis_messages)
           @config_api_version = args[:config_api_version] if args.key?(:config_api_version)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
+          @data_plane_management = args[:data_plane_management] if args.key?(:data_plane_management)
         end
       end
       
