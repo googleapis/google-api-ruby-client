@@ -482,8 +482,113 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. Returns an empty policy if the
-        # resource exists and does not have a policy set.
+        # Create a content.
+        # @param [String] parent
+        #   Required. The resource name of the parent lake: projects/`project_id`/
+        #   locations/`location_id`/lakes/`lake_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content] google_cloud_dataplex_v1_content_object
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_lake_content(parent, google_cloud_dataplex_v1_content_object = nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/content', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          command.request_object = google_cloud_dataplex_v1_content_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content
+          command.params['parent'] = parent unless parent.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a content.
+        # @param [String] name
+        #   Required. The resource name of the content: projects/`project_id`/locations/`
+        #   location_id`/lakes/`lake_id`/content/`content_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_lake_content(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::Empty::Representation
+          command.response_class = Google::Apis::DataplexV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a content resource.
+        # @param [String] name
+        #   Required. The resource name of the content: projects/`project_id`/locations/`
+        #   location_id`/lakes/`lake_id`/content/`content_id`
+        # @param [String] view
+        #   Optional. Specify content view to make a partial request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_lake_content(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a contentitem resource. A NOT_FOUND error
+        # is returned if the resource does not exist. An empty policy is returned if the
+        # resource exists but does not have a policy set on it.Caller must have Google
+        # IAM dataplex.content.getIamPolicy permission on the resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See Resource
         #   names (https://cloud.google.com/apis/design/resource_names) for the
@@ -527,9 +632,97 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
-        # errors.
+        # List content.
+        # @param [String] parent
+        #   Required. The resource name of the parent lake: projects/`project_id`/
+        #   locations/`location_id`/lakes/`lake_id`
+        # @param [String] filter
+        #   Optional. Filter request. Filters are case-sensitive. The following formats
+        #   are supported:labels.key1 = "value1" labels:key1 type = "NOTEBOOK" type = "
+        #   SQL_SCRIPT"These restrictions can be coinjoined with AND, OR and NOT
+        #   conjunctions.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of content to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 content will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListContent call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListContent must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_lake_contents(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/content', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListContentResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListContentResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a content. Only supports full resource update.
+        # @param [String] name
+        #   Output only. The relative resource name of the content, of the form: projects/`
+        #   project_id`/locations/`location_id`/lakes/`lake_id`/content/`content_id`
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content] google_cloud_dataplex_v1_content_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the request, but do not perform mutations. The default
+        #   is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Content]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_lake_content(name, google_cloud_dataplex_v1_content_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          command.request_object = google_cloud_dataplex_v1_content_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1Content
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified contentitem resource. Replaces
+        # any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy
+        # permission on the resource.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See Resource
         #   names (https://cloud.google.com/apis/design/resource_names) for the
@@ -564,11 +757,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. If the
-        # resource does not exist, this will return an empty set of permissions, not a
-        # NOT_FOUND error.Note: This operation is designed to be used for building
-        # permission-aware UIs and command-line tools, not for authorization checking.
-        # This operation may "fail open" without warning.
+        # Returns the caller's permissions on a resource. If the resource does not exist,
+        # an empty set of permissions is returned (a NOT_FOUND error is not returned).A
+        # caller is not required to have Google IAM permission to make this request.Note:
+        # This operation is designed to be used for building permission-aware UIs and
+        # command-line tools, not for authorization checking. This operation may "fail
+        # open" without warning.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See
         #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
@@ -706,6 +900,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the access control policy for a contentitem resource. A NOT_FOUND error
+        # is returned if the resource does not exist. An empty policy is returned if the
+        # resource exists but does not have a policy set on it.Caller must have Google
+        # IAM dataplex.content.getIamPolicy permission on the resource.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected.Requests for policies with any conditional role bindings must specify
+        #   version 3. Policies with no conditional role bindings may specify any valid
+        #   value or leave the field unset.The policy in the response might use the policy
+        #   version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1.To learn which resources support
+        #   conditions in their IAM policies, see the IAM documentation (https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_lake_contentitem_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List content.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_id`/
@@ -789,6 +1030,83 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified contentitem resource. Replaces
+        # any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy
+        # permission on the resource.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See Resource
+        #   names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::DataplexV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_lake_contentitem_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the caller's permissions on a resource. If the resource does not exist,
+        # an empty set of permissions is returned (a NOT_FOUND error is not returned).A
+        # caller is not required to have Google IAM permission to make this request.Note:
+        # This operation is designed to be used for building permission-aware UIs and
+        # command-line tools, not for authorization checking. This operation may "fail
+        # open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See
+        #   Resource names (https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_lake_contentitem_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsRequest::Representation
+          command.request_object = google_iam_v1_test_iam_permissions_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
