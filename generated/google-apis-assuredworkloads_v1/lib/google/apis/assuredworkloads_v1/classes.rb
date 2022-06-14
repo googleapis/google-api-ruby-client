@@ -85,6 +85,39 @@ module Google
         end
       end
       
+      # Request for restricting list of available resources in Workload environment.
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of restriction for using gcp products in the Workload
+        # environment.
+        # Corresponds to the JSON property `restrictionType`
+        # @return [String]
+        attr_accessor :restriction_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restriction_type = args[:restriction_type] if args.key?(:restriction_type)
+        end
+      end
+      
+      # Response for restricting the list of allowed resources.
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An Workload object for managing highly regulated workloads of cloud customers.
       class GoogleCloudAssuredworkloadsV1Workload
         include Google::Apis::Core::Hashable

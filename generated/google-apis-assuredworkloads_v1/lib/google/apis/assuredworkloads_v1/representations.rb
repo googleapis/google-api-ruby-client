@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1Workload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -224,6 +236,19 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :workloads, as: 'workloads', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restriction_type, as: 'restrictionType'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
