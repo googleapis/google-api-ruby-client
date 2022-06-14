@@ -2000,6 +2000,7 @@ module Google
           property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :forward_proxy_uri, as: 'forwardProxyUri'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
@@ -2022,6 +2023,7 @@ module Google
           hash :feature_flags, as: 'featureFlags'
           collection :flowhooks, as: 'flowhooks', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig::Representation
       
+          property :forward_proxy_uri, as: 'forwardProxyUri'
           property :gateway_config_location, as: 'gatewayConfigLocation'
           collection :keystores, as: 'keystores', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeystoreConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeystoreConfig::Representation
       
