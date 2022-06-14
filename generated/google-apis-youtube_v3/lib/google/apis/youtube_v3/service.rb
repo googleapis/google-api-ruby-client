@@ -3128,18 +3128,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::ThirdPartyLink] parsed result object
+        # @yieldparam result [Google::Apis::YoutubeV3::ThirdPartyLinkListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::YoutubeV3::ThirdPartyLink]
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLinkListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_third_party_links(part, external_channel_id: nil, linking_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/v3/thirdPartyLinks', options)
-          command.response_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
-          command.response_class = Google::Apis::YoutubeV3::ThirdPartyLink
+          command.response_representation = Google::Apis::YoutubeV3::ThirdPartyLinkListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::ThirdPartyLinkListResponse
           command.query['externalChannelId'] = external_channel_id unless external_channel_id.nil?
           command.query['linkingToken'] = linking_token unless linking_token.nil?
           command.query['part'] = part unless part.nil?

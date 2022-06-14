@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThirdPartyLinkListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ThirdPartyLinkSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2993,6 +2999,16 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::YoutubeV3::ThirdPartyLinkStatus, decorator: Google::Apis::YoutubeV3::ThirdPartyLinkStatus::Representation
       
+        end
+      end
+      
+      class ThirdPartyLinkListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::ThirdPartyLink, decorator: Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       
