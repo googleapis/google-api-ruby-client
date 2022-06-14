@@ -403,12 +403,14 @@ module Google
         # @return [Array<Google::Apis::CertificatemanagerV1::IpConfig>]
         attr_accessor :ip_configs
       
-        # A name must be in the format `projects/*/locations/*/targetHttpsProxies/*`.
+        # This field returns the resource name in the following format: `//compute.
+        # googleapis.com/projects/*/global/targetHttpsProxies/*`.
         # Corresponds to the JSON property `targetHttpsProxy`
         # @return [String]
         attr_accessor :target_https_proxy
       
-        # A name must be in the format `projects/*/locations/*/targetSslProxies/*`.
+        # This field returns the resource name in the following format: `//compute.
+        # googleapis.com/projects/*/global/targetSslProxies/*`.
         # Corresponds to the JSON property `targetSslProxy`
         # @return [String]
         attr_accessor :target_ssl_proxy
