@@ -29,7 +29,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # Manage your AdWords campaigns
+      # See, edit, create, and delete your Google Ads accounts and data.
       AUTH_ADWORDS = 'https://www.googleapis.com/auth/adwords'
     end
   end
