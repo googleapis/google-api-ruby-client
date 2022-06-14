@@ -3313,7 +3313,10 @@ module Google
         attr_accessor :named_style_type
       
         # Whether the current paragraph should always start at the beginning of a page.
-        # If unset, the value is inherited from the parent.
+        # If unset, the value is inherited from the parent. Attempting to update
+        # page_break_before for paragraphs in unsupported regions, including Table,
+        # Header, Footer and Footnote, can result in an invalid document state which
+        # returns a 400 bad request error.
         # Corresponds to the JSON property `pageBreakBefore`
         # @return [Boolean]
         attr_accessor :page_break_before
@@ -6071,10 +6074,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The fields that should be updated. At least one field must be specified. The
-        # root `paragraph_style` is implied and should not be specified. For example, to
-        # update the paragraph style's alignment property, set `fields` to `"alignment"`.
-        # To reset a property to its default value, include its field name in the field
-        # mask but leave the field itself unset.
+        # root `paragraph_style` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field. For example, to update the
+        # paragraph style's alignment property, set `fields` to `"alignment"`. To reset
+        # a property to its default value, include its field name in the field mask but
+        # leave the field itself unset.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
