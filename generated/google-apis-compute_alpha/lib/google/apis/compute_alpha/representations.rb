@@ -1822,6 +1822,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerResizeRequestStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerResizeRequestsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStandbyPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3912,6 +3942,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9953,6 +9989,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abandoning, as: 'abandoning'
           property :creating, as: 'creating'
+          property :creating_atomically, as: 'creatingAtomically'
           property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
           property :none, as: 'none'
@@ -10061,6 +10098,66 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstanceGroupManagerList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerResizeRequestsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequest, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -13883,6 +13980,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class QueuingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :valid_until_duration, as: 'validUntilDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
+          property :valid_until_time, as: 'validUntilTime'
         end
       end
       
