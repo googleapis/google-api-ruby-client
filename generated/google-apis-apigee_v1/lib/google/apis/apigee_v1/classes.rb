@@ -3049,6 +3049,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Url of the forward proxy to be applied to the runtime instances in
+        # this environment. Must be in the format of `scheme`://`hostname`:`port`. Note
+        # that scheme must be one of "http" or "https", and port must be supplied.
+        # Corresponds to the JSON property `forwardProxyUri`
+        # @return [String]
+        attr_accessor :forward_proxy_uri
+      
         # Output only. Last modification time of this environment as milliseconds since
         # epoch.
         # Corresponds to the JSON property `lastModifiedAt`
@@ -3084,6 +3091,7 @@ module Google
           @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @forward_proxy_uri = args[:forward_proxy_uri] if args.key?(:forward_proxy_uri)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
@@ -3131,6 +3139,13 @@ module Google
         # Corresponds to the JSON property `flowhooks`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig>]
         attr_accessor :flowhooks
+      
+        # The forward proxy's url to be used by the runtime. When set, runtime will send
+        # requests to the target via the given forward proxy. This is only used by
+        # programmable gateways.
+        # Corresponds to the JSON property `forwardProxyUri`
+        # @return [String]
+        attr_accessor :forward_proxy_uri
       
         # The location for the gateway config blob as a URI, e.g. a Cloud Storage URI.
         # This is only used by Envoy-based gateways.
@@ -3212,6 +3227,7 @@ module Google
           @deployments = args[:deployments] if args.key?(:deployments)
           @feature_flags = args[:feature_flags] if args.key?(:feature_flags)
           @flowhooks = args[:flowhooks] if args.key?(:flowhooks)
+          @forward_proxy_uri = args[:forward_proxy_uri] if args.key?(:forward_proxy_uri)
           @gateway_config_location = args[:gateway_config_location] if args.key?(:gateway_config_location)
           @keystores = args[:keystores] if args.key?(:keystores)
           @name = args[:name] if args.key?(:name)
