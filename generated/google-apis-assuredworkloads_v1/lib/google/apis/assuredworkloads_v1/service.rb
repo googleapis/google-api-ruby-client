@@ -317,6 +317,46 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Restrict the list of resources allowed in the Workload environment. The
+        # current list of allowed products can be found at https://cloud.google.com/
+        # assured-workloads/docs/supported-products In addition to assuredworkloads.
+        # workload.update permission, the user should also have orgpolicy.policy.set
+        # permission on the folder resource to use this functionality.
+        # @param [String] name
+        #   Required. The resource name of the Workload. This is the workloads's relative
+        #   path in the API, formatted as "organizations/`organization_id`/locations/`
+        #   location_id`/workloads/`workload_id`". For example, "organizations/123/
+        #   locations/us-east1/workloads/assured-workload-1".
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest] google_cloud_assuredworkloads_v1_restrict_allowed_resources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restrict_organization_location_workload_allowed_resources(name, google_cloud_assuredworkloads_v1_restrict_allowed_resources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:restrictAllowedResources', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_restrict_allowed_resources_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
