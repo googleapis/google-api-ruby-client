@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnvironmentVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemoryHashSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MitreAttack
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class Process
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +305,12 @@ module Google
       end
       
       class WebSecurityScannerSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YaraRuleSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -393,6 +417,14 @@ module Google
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :type, as: 'type'
+        end
+      end
+      
+      class Detection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary, as: 'binary'
+          property :percent_pages_matched, as: 'percentPagesMatched'
         end
       end
       
@@ -675,6 +707,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domains, as: 'domains'
           collection :ip_addresses, as: 'ipAddresses'
+          collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta2::ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta2::ProcessSignature::Representation
+      
+        end
+      end
+      
+      class MemoryHashSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binary_family, as: 'binaryFamily'
+          collection :detections, as: 'detections', class: Google::Apis::SecuritycenterV1beta2::Detection, decorator: Google::Apis::SecuritycenterV1beta2::Detection::Representation
+      
         end
       end
       
@@ -709,9 +752,20 @@ module Google
           property :env_variables_truncated, as: 'envVariablesTruncated'
           collection :libraries, as: 'libraries', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
       
+          property :name, as: 'name'
           property :parent_pid, :numeric_string => true, as: 'parentPid'
           property :pid, :numeric_string => true, as: 'pid'
           property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
+      
+        end
+      end
+      
+      class ProcessSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_hash_signature, as: 'memoryHashSignature', class: Google::Apis::SecuritycenterV1beta2::MemoryHashSignature, decorator: Google::Apis::SecuritycenterV1beta2::MemoryHashSignature::Representation
+      
+          property :yara_rule_signature, as: 'yaraRuleSignature', class: Google::Apis::SecuritycenterV1beta2::YaraRuleSignature, decorator: Google::Apis::SecuritycenterV1beta2::YaraRuleSignature::Representation
       
         end
       end
@@ -793,6 +847,13 @@ module Google
           property :name, as: 'name'
           property :service_enablement_state, as: 'serviceEnablementState'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class YaraRuleSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :yara_rule, as: 'yaraRule'
         end
       end
     end
