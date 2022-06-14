@@ -5482,6 +5482,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmEndpointNatMappingsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -15931,8 +15937,21 @@ module Google
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
           property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
+          collection :rule_mappings, as: 'ruleMappings', class: Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings, decorator: Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings::Representation
+      
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'
+        end
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
+          collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
+          property :num_total_nat_ports, as: 'numTotalNatPorts'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       
