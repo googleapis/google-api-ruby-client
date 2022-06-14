@@ -2546,6 +2546,177 @@ module Google
         end
       end
       
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiV1DocumentSchema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show to users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityType>]
+        attr_accessor :entity_types
+      
+        # Metadata for global schema behavior.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiV1DocumentSchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # The entity type that this type is derived from. For now, one and only one
+        # should be set.
+        # Corresponds to the JSON property `baseTypes`
+        # @return [Array<String>]
+        attr_accessor :base_types
+      
+        # User defined name for the type.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Defines the a list of enum values.
+        # Corresponds to the JSON property `enumValues`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues]
+        attr_accessor :enum_values
+      
+        # Name of the type. It must be unique within the schema file and cannot be a '
+        # Common Type'. Besides that we use the following naming conventions: - *use
+        # snake_casing* - name matching is case-insensitive - Maximum 64 characters. -
+        # Must start with a letter. - Allowed characters: ASCII letters [a-z0-9_-]. (For
+        # backward compatibility internal infrastructure and tooling can handle any
+        # ascii character) - The '/' is sometimes used to denote a property of a type.
+        # For example line_item/amount. This convention is deprecated, but will still be
+        # honored for backward compatibility.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describing the nested structure, or composition of an entity.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_types = args[:base_types] if args.key?(:base_types)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enum_values = args[:enum_values] if args.key?(:enum_values)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Defines the a list of enum values.
+      class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues
+        include Google::Apis::Core::Hashable
+      
+        # The individual values that this enum values type can include.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines properties that can be part of the entity type.
+      class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
+        include Google::Apis::Core::Hashable
+      
+        # The name of the property. Follows the same guidelines as the EntityType name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Occurrence type limits the number of instances an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # A reference to the value type of the property. This type is subject to the
+        # same conventions as the `Entity.base_types` field.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Metadata for global schema behavior.
+      class GoogleCloudDocumentaiV1DocumentSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If true, on a given page, there can be multiple `document` annotations
+        # covering it.
+        # Corresponds to the JSON property `documentAllowMultipleLabels`
+        # @return [Boolean]
+        attr_accessor :document_allow_multiple_labels
+        alias_method :document_allow_multiple_labels?, :document_allow_multiple_labels
+      
+        # If true, a `document` entity type can be applied to subdocument ( splitting).
+        # Otherwise, it can only be applied to the entire document (classification).
+        # Corresponds to the JSON property `documentSplitter`
+        # @return [Boolean]
+        attr_accessor :document_splitter
+        alias_method :document_splitter?, :document_splitter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_allow_multiple_labels = args[:document_allow_multiple_labels] if args.key?(:document_allow_multiple_labels)
+          @document_splitter = args[:document_splitter] if args.key?(:document_splitter)
+        end
+      end
+      
       # For a large document, sharding may be performed to produce several document
       # shards. Each document shard contains this field to detail which shard it is.
       class GoogleCloudDocumentaiV1DocumentShardInfo
@@ -3429,6 +3600,11 @@ module Google
       class GoogleCloudDocumentaiV1ReviewDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `documentSchema`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
+        attr_accessor :document_schema
+      
         # Whether the validation should be performed on the ad-hoc review request.
         # Corresponds to the JSON property `enableSchemaValidation`
         # @return [Boolean]
@@ -3454,6 +3630,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @document_schema = args[:document_schema] if args.key?(:document_schema)
           @enable_schema_validation = args[:enable_schema_validation] if args.key?(:enable_schema_validation)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
           @priority = args[:priority] if args.key?(:priority)
@@ -3464,10 +3641,21 @@ module Google
       class GoogleCloudDocumentaiV1ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
-        # The Cloud Storage uri for the human reviewed document.
+        # The Cloud Storage uri for the human reviewed document if the review is
+        # succeeded.
         # Corresponds to the JSON property `gcsDestination`
         # @return [String]
         attr_accessor :gcs_destination
+      
+        # The reason why the review is rejected by reviewer.
+        # Corresponds to the JSON property `rejectionReason`
+        # @return [String]
+        attr_accessor :rejection_reason
+      
+        # The state of the review operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -3476,6 +3664,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -7621,10 +7811,21 @@ module Google
       class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
-        # The Cloud Storage uri for the human reviewed document.
+        # The Cloud Storage uri for the human reviewed document if the review is
+        # succeeded.
         # Corresponds to the JSON property `gcsDestination`
         # @return [String]
         attr_accessor :gcs_destination
+      
+        # The reason why the review is rejected by reviewer.
+        # Corresponds to the JSON property `rejectionReason`
+        # @return [String]
+        attr_accessor :rejection_reason
+      
+        # The state of the review operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -7633,6 +7834,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
