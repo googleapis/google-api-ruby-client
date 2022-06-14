@@ -1598,6 +1598,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination'
+          property :rejection_reason, as: 'rejectionReason'
+          property :state, as: 'state'
         end
       end
       
@@ -2878,6 +2880,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination'
+          property :rejection_reason, as: 'rejectionReason'
+          property :state, as: 'state'
         end
       end
       

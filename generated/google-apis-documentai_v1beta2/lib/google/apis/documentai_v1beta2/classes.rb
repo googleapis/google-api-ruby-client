@@ -1278,10 +1278,21 @@ module Google
       class GoogleCloudDocumentaiV1ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
-        # The Cloud Storage uri for the human reviewed document.
+        # The Cloud Storage uri for the human reviewed document if the review is
+        # succeeded.
         # Corresponds to the JSON property `gcsDestination`
         # @return [String]
         attr_accessor :gcs_destination
+      
+        # The reason why the review is rejected by reviewer.
+        # Corresponds to the JSON property `rejectionReason`
+        # @return [String]
+        attr_accessor :rejection_reason
+      
+        # The state of the review operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -1290,6 +1301,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -5668,10 +5681,21 @@ module Google
       class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse
         include Google::Apis::Core::Hashable
       
-        # The Cloud Storage uri for the human reviewed document.
+        # The Cloud Storage uri for the human reviewed document if the review is
+        # succeeded.
         # Corresponds to the JSON property `gcsDestination`
         # @return [String]
         attr_accessor :gcs_destination
+      
+        # The reason why the review is rejected by reviewer.
+        # Corresponds to the JSON property `rejectionReason`
+        # @return [String]
+        attr_accessor :rejection_reason
+      
+        # The state of the review operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -5680,6 +5704,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
