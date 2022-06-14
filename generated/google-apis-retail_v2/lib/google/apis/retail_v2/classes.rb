@@ -2918,8 +2918,8 @@ module Google
       class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey
         include Google::Apis::Core::Hashable
       
-        # Whether to make facet keys case insensitive when getting faceting values with
-        # prefixes or contains.
+        # True to make facet keys case insensitive when getting faceting values with
+        # prefixes or contains; false otherwise.
         # Corresponds to the JSON property `caseInsensitive`
         # @return [Boolean]
         attr_accessor :case_insensitive
