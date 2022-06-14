@@ -7068,6 +7068,38 @@ module Google
         end
       end
       
+      # 
+      class ThirdPartyLinkListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::ThirdPartyLink>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # thirdPartyLinkListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Basic information about a third party account link, including its type and
       # type-specific information.
       class ThirdPartyLinkSnippet
