@@ -1,5 +1,11 @@
 # Release History
 
+### 0.6.0 (2022-06-06)
+
+#### Features
+
+* Update core dependency to at least 0.5
+
 ### 0.5.0 (2022-06-02)
 
 #### Features
