@@ -41598,6 +41598,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_total_nat_ports
       
+        # Information about mappings provided by rules in this NAT.
+        # Corresponds to the JSON property `ruleMappings`
+        # @return [Array<Google::Apis::ComputeBeta::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>]
+        attr_accessor :rule_mappings
+      
         # Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP
         # range. Examples: "10.33.4.55/32", or "192.168.5.0/24".
         # Corresponds to the JSON property `sourceAliasIpRange`
@@ -41619,8 +41624,59 @@ module Google
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
           @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @rule_mappings = args[:rule_mappings] if args.key?(:rule_mappings)
           @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
           @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)
+        end
+      end
+      
+      # Contains information of NAT Mappings provided by a NAT Rule.
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        include Google::Apis::Core::Hashable
+      
+        # List of all drain IP:port-range mappings assigned to this interface by this
+        # rule. These ranges are inclusive, that is, both the first and the last ports
+        # can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `drainNatIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ip_port_ranges
+      
+        # A list of all IP:port-range mappings assigned to this interface by this rule.
+        # These ranges are inclusive, that is, both the first and the last ports can be
+        # used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `natIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :nat_ip_port_ranges
+      
+        # Total number of drain ports across all NAT IPs allocated to this interface by
+        # this rule. It equals the aggregated port number in the field
+        # drain_nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalDrainNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_drain_nat_ports
+      
+        # Total number of ports across all NAT IPs allocated to this interface by this
+        # rule. It equals the aggregated port number in the field nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_nat_ports
+      
+        # Rule number of the NAT Rule.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drain_nat_ip_port_ranges = args[:drain_nat_ip_port_ranges] if args.key?(:drain_nat_ip_port_ranges)
+          @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
+          @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       
