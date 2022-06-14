@@ -546,6 +546,31 @@ module Google
         end
       end
       
+      # Memory hash detection contributing to the binary family match.
+      class Detection
+        include Google::Apis::Core::Hashable
+      
+        # The name of the binary associated with the memory hash signature detection.
+        # Corresponds to the JSON property `binary`
+        # @return [String]
+        attr_accessor :binary
+      
+        # The percentage of memory page hashes in the signature that were matched.
+        # Corresponds to the JSON property `percentPagesMatched`
+        # @return [Float]
+        attr_accessor :percent_pages_matched
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary = args[:binary] if args.key?(:binary)
+          @percent_pages_matched = args[:percent_pages_matched] if args.key?(:percent_pages_matched)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -2171,6 +2196,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_addresses
       
+        # The list of matched signatures indicating that the given process is present in
+        # the environment.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::ProcessSignature>]
+        attr_accessor :signatures
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2179,6 +2210,7 @@ module Google
         def update!(**args)
           @domains = args[:domains] if args.key?(:domains)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @signatures = args[:signatures] if args.key?(:signatures)
         end
       end
       
@@ -2335,6 +2367,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # A signature corresponding to memory page hashes.
+      class MemoryHashSignature
+        include Google::Apis::Core::Hashable
+      
+        # The binary family.
+        # Corresponds to the JSON property `binaryFamily`
+        # @return [String]
+        attr_accessor :binary_family
+      
+        # The list of memory hash detections contributing to the binary family match.
+        # Corresponds to the JSON property `detections`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Detection>]
+        attr_accessor :detections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binary_family = args[:binary_family] if args.key?(:binary_family)
+          @detections = args[:detections] if args.key?(:detections)
         end
       end
       
@@ -2619,6 +2676,12 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta1::File>]
         attr_accessor :libraries
       
+        # The process name visible in utilities like top and ps; it can be accessed via /
+        # proc/[pid]/comm and changed with prctl(PR_SET_NAME).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The parent process id.
         # Corresponds to the JSON property `parentPid`
         # @return [Fixnum]
@@ -2647,9 +2710,35 @@ module Google
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @env_variables_truncated = args[:env_variables_truncated] if args.key?(:env_variables_truncated)
           @libraries = args[:libraries] if args.key?(:libraries)
+          @name = args[:name] if args.key?(:name)
           @parent_pid = args[:parent_pid] if args.key?(:parent_pid)
           @pid = args[:pid] if args.key?(:pid)
           @script = args[:script] if args.key?(:script)
+        end
+      end
+      
+      # Indicates what signature matched this process.
+      class ProcessSignature
+        include Google::Apis::Core::Hashable
+      
+        # A signature corresponding to memory page hashes.
+        # Corresponds to the JSON property `memoryHashSignature`
+        # @return [Google::Apis::SecuritycenterV1beta1::MemoryHashSignature]
+        attr_accessor :memory_hash_signature
+      
+        # A signature corresponding to a YARA rule.
+        # Corresponds to the JSON property `yaraRuleSignature`
+        # @return [Google::Apis::SecuritycenterV1beta1::YaraRuleSignature]
+        attr_accessor :yara_rule_signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memory_hash_signature = args[:memory_hash_signature] if args.key?(:memory_hash_signature)
+          @yara_rule_signature = args[:yara_rule_signature] if args.key?(:yara_rule_signature)
         end
       end
       
@@ -3005,6 +3094,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cve = args[:cve] if args.key?(:cve)
+        end
+      end
+      
+      # A signature corresponding to a YARA rule.
+      class YaraRuleSignature
+        include Google::Apis::Core::Hashable
+      
+        # The name of the YARA rule.
+        # Corresponds to the JSON property `yaraRule`
+        # @return [String]
+        attr_accessor :yara_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @yara_rule = args[:yara_rule] if args.key?(:yara_rule)
         end
       end
     end
