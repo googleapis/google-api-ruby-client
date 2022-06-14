@@ -15499,6 +15499,14 @@ module Google
         attr_accessor :creating
       
         # [Output Only] The number of instances that the managed instance group will
+        # attempt to create atomically, in a batch mode. If the desired count of
+        # instances can not be created, entire batch will be deleted and the group will
+        # decrease its targetSize value accordingly.
+        # Corresponds to the JSON property `creatingAtomically`
+        # @return [Fixnum]
+        attr_accessor :creating_atomically
+      
+        # [Output Only] The number of instances that the managed instance group will
         # attempt to create. The group attempts to create each instance only once. If
         # the group fails to create any of these instances, it decreases the group's
         # targetSize value accordingly.
@@ -15578,6 +15586,7 @@ module Google
         def update!(**args)
           @abandoning = args[:abandoning] if args.key?(:abandoning)
           @creating = args[:creating] if args.key?(:creating)
+          @creating_atomically = args[:creating_atomically] if args.key?(:creating_atomically)
           @creating_without_retries = args[:creating_without_retries] if args.key?(:creating_without_retries)
           @deleting = args[:deleting] if args.key?(:deleting)
           @none = args[:none] if args.key?(:none)
@@ -15929,6 +15938,239 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # InstanceGroupManagerResizeRequest represents a request to create a number of
+      # VMs: either immediately or by queuing the request for the specified time. This
+      # resize request is nested under InstanceGroupManager and the VMs created by
+      # this request are added to the owning InstanceGroupManager.
+      class InstanceGroupManagerResizeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The count of instances to create as part of this resize request.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # [Output Only] The creation timestamp for this resize request in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] A unique identifier for this resource type. The server generates
+        # this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] The resource type, which is always compute#
+        # instanceGroupManagerResizeRequest for resize requests.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of this resize request. The name must be 1-63 characters long, and
+        # comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Queuing parameters for the requested deferred capacity.
+        # Corresponds to the JSON property `queuingPolicy`
+        # @return [Google::Apis::ComputeAlpha::QueuingPolicy]
+        attr_accessor :queuing_policy
+      
+        # [Output Only] The URL for this resize request. The server defines this URL.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output only] Current state of the request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # [Output only] Status of the request. The Status message is aligned with
+        # QueuedResource.status. ResizeRequest.queuing_policy contains the queuing
+        # policy as provided by the user; it could have either valid_until_time or
+        # valid_until_duration. ResizeRequest.status.queuing_policy always contains
+        # absolute time as calculated by the server when the request is queued.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestStatus]
+        attr_accessor :status
+      
+        # [Output Only] The URL of a zone where the resize request is located.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerResizeRequestStatus
+        include Google::Apis::Core::Hashable
+      
+        # Queuing parameters for the requested deferred capacity.
+        # Corresponds to the JSON property `queuingPolicy`
+        # @return [Google::Apis::ComputeAlpha::QueuingPolicy]
+        attr_accessor :queuing_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
+        end
+      end
+      
+      # [Output Only] A list of resize requests.
+      class InstanceGroupManagerResizeRequestsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of resize request resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequest>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#
+        # instanceGroupManagerResizeRequestList for a list of resize requests.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -30839,6 +31081,34 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Queuing parameters for the requested deferred capacity.
+      class QueuingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `validUntilDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :valid_until_duration
+      
+        # Absolute deadline for waiting for capacity in RFC3339 text format.
+        # Corresponds to the JSON property `validUntilTime`
+        # @return [String]
+        attr_accessor :valid_until_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @valid_until_duration = args[:valid_until_duration] if args.key?(:valid_until_duration)
+          @valid_until_time = args[:valid_until_time] if args.key?(:valid_until_time)
         end
       end
       
