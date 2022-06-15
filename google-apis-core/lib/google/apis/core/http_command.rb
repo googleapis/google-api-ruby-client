@@ -27,7 +27,10 @@ module Google
       class HttpCommand
         include Logging
 
-        RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError]
+        RETRIABLE_ERRORS = [Google::Apis::ServerError,
+                            Google::Apis::RateLimitError,
+                            Google::Apis::TransmissionError,
+                            Google::Apis::RequestTimeOutError]
 
         begin
           require 'opencensus'
@@ -225,6 +228,9 @@ module Google
           when 429
             message ||= 'Rate limit exceeded'
             raise Google::Apis::RateLimitError.new(message, status_code: status, header: header, body: body)
+          when 408
+            message ||= 'Request time out'
+            raise Google::Apis::RequestTimeOutError.new(message, status_code: status, header: header, body: body)
           when 304, 400, 402...500
             message ||= 'Invalid request'
             raise Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)
@@ -278,7 +284,7 @@ module Google
             rescue Google::Apis::Error => e
               err = e
             end
-          elsif err.is_a?(HTTPClient::TimeoutError) || err.is_a?(SocketError)
+          elsif err.is_a?(HTTPClient::TimeoutError) || err.is_a?(SocketError) || err.is_a?(HTTPClient::KeepAliveDisconnected) || err.is_a?(Errno::ECONNREFUSED) || err.is_a?(Errno::ETIMEDOUT)
             err = Google::Apis::TransmissionError.new(err)
           end
           block.call(nil, err) if block_given?

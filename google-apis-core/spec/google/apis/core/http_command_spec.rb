@@ -473,12 +473,40 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
   end
 
+  it 'should raise transmission error instead of connection reset' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(HTTPClient::KeepAliveDisconnected)
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+  end
+
+  it 'should raise transmission error instead of connection timeout' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(Errno::ETIMEDOUT)
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+  end
+
+  it 'should raise transmission error instead of connection refused' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(Errno::ECONNREFUSED)
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+  end
+
   it 'should raise rate limit error for 429 status codes' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [429, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     command.options.retries = 0
     expect { command.execute(client) }.to raise_error(Google::Apis::RateLimitError)
   end
+
+  it 'should raise request timeout error for 408 status codes' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [408, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::RequestTimeOutError)
+  end  
 
   it 'should not normalize unicode values by default' do
     stub_request(:get, 'https://www.googleapis.com/Cafe%CC%81').to_return(status: [200, ''])
