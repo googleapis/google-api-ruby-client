@@ -1,5 +1,11 @@
 # Release History
 
+### 0.6.0 (2022-06-15)
+
+#### Features
+
+* add few more errors as retriable errors
+
 ### 0.5.0 (2022-05-15)
 
 #### Features
