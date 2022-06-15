@@ -1440,6 +1440,32 @@ module Google
         end
       end
       
+      # Indicates a language package available between this package and the customer's
+      # resource artifact.
+      class LanguagePackageDependency
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `package`
+        # @return [String]
+        attr_accessor :package
+      
+        # 
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package = args[:package] if args.key?(:package)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Layer holds metadata specific to a layer of a Docker image.
       class Layer
         include Google::Apis::Core::Hashable
@@ -1899,6 +1925,13 @@ module Google
         # @return [String]
         attr_accessor :cpe_uri
       
+        # The dependency chain between this package and the user's artifact. List in
+        # order from the customer's package under review first, to the current package
+        # last. Inclusive of the original package and the current package.
+        # Corresponds to the JSON property `dependencyChain`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::LanguagePackageDependency>]
+        attr_accessor :dependency_chain
+      
         # The path to the jar file / go binary file.
         # Corresponds to the JSON property `fileLocation`
         # @return [Array<Google::Apis::OndemandscanningV1beta1::FileLocation>]
@@ -1955,6 +1988,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
           @os = args[:os] if args.key?(:os)
