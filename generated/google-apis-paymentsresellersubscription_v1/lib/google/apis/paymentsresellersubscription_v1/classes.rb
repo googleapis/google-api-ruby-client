@@ -54,7 +54,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # LINT.IfChange A Subscription resource managed by 3P Partners.
+        # A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -112,7 +112,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # LINT.IfChange A Subscription resource managed by 3P Partners.
+        # A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
@@ -517,7 +517,7 @@ module Google
         end
       end
       
-      # LINT.IfChange A Subscription resource managed by 3P Partners.
+      # A Subscription resource managed by 3P Partners.
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         include Google::Apis::Core::Hashable
       
@@ -818,7 +818,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
         include Google::Apis::Core::Hashable
       
-        # LINT.IfChange A Subscription resource managed by 3P Partners.
+        # A Subscription resource managed by 3P Partners.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
         attr_accessor :subscription
