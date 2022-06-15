@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2InfoTypeCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2InfoTypeDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2181,9 +2187,20 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2InfoTypeCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :industry_category, as: 'industryCategory'
+          property :location_category, as: 'locationCategory'
+          property :type_category, as: 'typeCategory'
+        end
+      end
+      
       class GooglePrivacyDlpV2InfoTypeDescription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeCategory, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeCategory::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
