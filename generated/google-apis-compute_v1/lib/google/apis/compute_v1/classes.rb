@@ -12393,6 +12393,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # [Output Only] Type of the resource. Always compute#instance for instances.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -12599,6 +12605,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -15159,6 +15166,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from these properties.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -15254,6 +15267,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -17924,6 +17938,11 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
+        # Per-zone constraints on location policy for this zone.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::ComputeV1::LocationPolicyLocationConstraints]
+        attr_accessor :constraints
+      
         # Preference for a given location.
         # Corresponds to the JSON property `preference`
         # @return [String]
@@ -17935,7 +17954,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
           @preference = args[:preference] if args.key?(:preference)
+        end
+      end
+      
+      # Per-zone constraints on location policy for this zone.
+      class LocationPolicyLocationConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of items that are allowed to be placed in this zone. The value
+        # must be non-negative.
+        # Corresponds to the JSON property `maxCount`
+        # @return [Fixnum]
+        attr_accessor :max_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_count = args[:max_count] if args.key?(:max_count)
         end
       end
       
@@ -33343,6 +33383,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance. Supported options are "STOP" and "
+        # NONE". The default value is "NONE" if it is not specified.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from this machine image.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -33401,6 +33447,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -39446,6 +39493,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_total_nat_ports
       
+        # Information about mappings provided by rules in this NAT.
+        # Corresponds to the JSON property `ruleMappings`
+        # @return [Array<Google::Apis::ComputeV1::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>]
+        attr_accessor :rule_mappings
+      
         # Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP
         # range. Examples: "10.33.4.55/32", or "192.168.5.0/24".
         # Corresponds to the JSON property `sourceAliasIpRange`
@@ -39467,8 +39519,59 @@ module Google
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
           @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @rule_mappings = args[:rule_mappings] if args.key?(:rule_mappings)
           @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
           @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)
+        end
+      end
+      
+      # Contains information of NAT Mappings provided by a NAT Rule.
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        include Google::Apis::Core::Hashable
+      
+        # List of all drain IP:port-range mappings assigned to this interface by this
+        # rule. These ranges are inclusive, that is, both the first and the last ports
+        # can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `drainNatIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ip_port_ranges
+      
+        # A list of all IP:port-range mappings assigned to this interface by this rule.
+        # These ranges are inclusive, that is, both the first and the last ports can be
+        # used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `natIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :nat_ip_port_ranges
+      
+        # Total number of drain ports across all NAT IPs allocated to this interface by
+        # this rule. It equals the aggregated port number in the field
+        # drain_nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalDrainNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_drain_nat_ports
+      
+        # Total number of ports across all NAT IPs allocated to this interface by this
+        # rule. It equals the aggregated port number in the field nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_nat_ports
+      
+        # Rule number of the NAT Rule.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drain_nat_ip_port_ranges = args[:drain_nat_ip_port_ranges] if args.key?(:drain_nat_ip_port_ranges)
+          @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
+          @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       

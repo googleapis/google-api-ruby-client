@@ -2206,6 +2206,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationPolicyLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5231,6 +5237,12 @@ module Google
       end
       
       class VmEndpointNatMappingsInterfaceNatMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8305,6 +8317,7 @@ module Google
       
           property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -9020,6 +9033,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
@@ -9701,7 +9715,16 @@ module Google
       class LocationPolicyLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeV1::LocationPolicyLocationConstraints, decorator: Google::Apis::ComputeV1::LocationPolicyLocationConstraints::Representation
+      
           property :preference, as: 'preference'
+        end
+      end
+      
+      class LocationPolicyLocationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_count, as: 'maxCount'
         end
       end
       
@@ -13646,6 +13669,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
@@ -15179,8 +15203,21 @@ module Google
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
           property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
+          collection :rule_mappings, as: 'ruleMappings', class: Google::Apis::ComputeV1::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings, decorator: Google::Apis::ComputeV1::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings::Representation
+      
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'
+        end
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
+          collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
+          property :num_total_nat_ports, as: 'numTotalNatPorts'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       
