@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LanguagePackageDependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Layer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -872,6 +878,14 @@ module Google
         end
       end
       
+      class LanguagePackageDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package, as: 'package'
+          property :version, as: 'version'
+        end
+      end
+      
       class Layer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -996,6 +1010,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpe_uri, as: 'cpeUri'
+          collection :dependency_chain, as: 'dependencyChain', class: Google::Apis::OndemandscanningV1::LanguagePackageDependency, decorator: Google::Apis::OndemandscanningV1::LanguagePackageDependency::Representation
+      
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::FileLocation, decorator: Google::Apis::OndemandscanningV1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
