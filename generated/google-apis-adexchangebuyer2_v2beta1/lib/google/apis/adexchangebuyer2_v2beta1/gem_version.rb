@@ -16,13 +16,13 @@ module Google
   module Apis
     module Adexchangebuyer2V2beta1
       # Version of the google-apis-adexchangebuyer2_v2beta1 gem
-      GEM_VERSION = "0.16.0"
+      GEM_VERSION = "0.17.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.5.0"
+      GENERATOR_VERSION = "0.6.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220321"
+      REVISION = "20220615"
     end
   end
 end
