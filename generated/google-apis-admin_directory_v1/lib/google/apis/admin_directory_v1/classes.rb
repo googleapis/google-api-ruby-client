@@ -3302,7 +3302,10 @@ module Google
       class RoleAssignment
         include Google::Apis::Core::Hashable
       
-        # The unique ID of the user this role is assigned to.
+        # The unique ID of the entity this role is assigned to—either the `user_id` of a
+        # user or the `uniqueId` of a service account, as defined in [Identity and
+        # Access Management (IAM)](https://cloud.google.com/iam/docs/reference/rest/v1/
+        # projects.serviceAccounts).
         # Corresponds to the JSON property `assignedTo`
         # @return [String]
         attr_accessor :assigned_to
