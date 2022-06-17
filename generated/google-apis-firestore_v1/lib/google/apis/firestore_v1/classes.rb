@@ -982,6 +982,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The TTL (time-to-live) configuration for documents that have this `Field` set.
+        # Storing a timestamp value into a TTL-enabled field will be treated as the
+        # document's absolute expiration time. Using any other data type or leaving the
+        # field absent will disable the TTL for the individual document.
+        # Corresponds to the JSON property `ttlConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfig]
+        attr_accessor :ttl_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -990,6 +998,7 @@ module Google
         def update!(**args)
           @index_config = args[:index_config] if args.key?(:index_config)
           @name = args[:name] if args.key?(:name)
+          @ttl_config = args[:ttl_config] if args.key?(:ttl_config)
         end
       end
       
@@ -1038,6 +1047,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Information about an TTL configuration change.
+        # Corresponds to the JSON property `ttlConfigDelta`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfigDelta]
+        attr_accessor :ttl_config_delta
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1051,6 +1065,7 @@ module Google
           @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @ttl_config_delta = args[:ttl_config_delta] if args.key?(:ttl_config_delta)
         end
       end
       
@@ -1466,6 +1481,47 @@ module Google
         end
       end
       
+      # The TTL (time-to-live) configuration for documents that have this `Field` set.
+      # Storing a timestamp value into a TTL-enabled field will be treated as the
+      # document's absolute expiration time. Using any other data type or leaving the
+      # field absent will disable the TTL for the individual document.
+      class GoogleFirestoreAdminV1TtlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the TTL configuration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information about an TTL configuration change.
+      class GoogleFirestoreAdminV1TtlConfigDelta
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how the TTL configuration is changing.
+        # Corresponds to the JSON property `changeType`
+        # @return [String]
+        attr_accessor :change_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_type = args[:change_type] if args.key?(:change_type)
+        end
+      end
+      
       # Metadata related to the update database operation.
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -1621,6 +1677,12 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1629,6 +1691,7 @@ module Google
         def update!(**args)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @read_time = args[:read_time] if args.key?(:read_time)
         end
       end
       
@@ -1921,6 +1984,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :partition_count
       
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
         # A Firestore query.
         # Corresponds to the JSON property `structuredQuery`
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
@@ -1935,6 +2004,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
+          @read_time = args[:read_time] if args.key?(:read_time)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
         end
       end
