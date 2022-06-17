@@ -1665,15 +1665,6 @@ module Google
       class MetricRule
         include Google::Apis::Core::Hashable
       
-        # Metrics to update when the selected methods are called. The key of the map is
-        # the metric name, the value is the DynamicCostType to specify how to calculate
-        # the cost from the request. The cost amount will be increased for the metric
-        # against which the quota limits are defined. It is only implemented in CloudESF(
-        # go/cloudesf)
-        # Corresponds to the JSON property `dynamicMetricCosts`
-        # @return [Hash<String,String>]
-        attr_accessor :dynamic_metric_costs
-      
         # Metrics to update when the selected methods are called, and the associated
         # cost applied to each metric. The key of the map is the metric name, and the
         # values are the amount increased for the metric against which the quota limits
@@ -1694,7 +1685,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dynamic_metric_costs = args[:dynamic_metric_costs] if args.key?(:dynamic_metric_costs)
           @metric_costs = args[:metric_costs] if args.key?(:metric_costs)
           @selector = args[:selector] if args.key?(:selector)
         end
