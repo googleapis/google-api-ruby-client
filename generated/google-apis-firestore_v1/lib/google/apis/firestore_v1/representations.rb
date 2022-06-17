@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1TtlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1TtlConfigDelta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +785,8 @@ module Google
           property :index_config, as: 'indexConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexConfig::Representation
       
           property :name, as: 'name'
+          property :ttl_config, as: 'ttlConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfig::Representation
+      
         end
       end
       
@@ -789,6 +803,8 @@ module Google
       
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :ttl_config_delta, as: 'ttlConfigDelta', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfigDelta, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfigDelta::Representation
+      
         end
       end
       
@@ -909,6 +925,20 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1TtlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1TtlConfigDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_type, as: 'changeType'
+        end
+      end
+      
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -955,6 +985,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          property :read_time, as: 'readTime'
         end
       end
       
@@ -1044,6 +1075,7 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           property :partition_count, :numeric_string => true, as: 'partitionCount'
+          property :read_time, as: 'readTime'
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
       
         end
