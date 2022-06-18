@@ -1240,6 +1240,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_cluster, as: 'adminCluster'
           property :cluster_missing, as: 'clusterMissing'
+          property :cluster_type, as: 'clusterType'
           property :resource_link, as: 'resourceLink'
         end
       end
