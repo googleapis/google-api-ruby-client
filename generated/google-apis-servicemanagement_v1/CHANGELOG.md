@@ -1,5 +1,9 @@
 # Release history for google-apis-servicemanagement_v1
 
+### v0.29.0 (2022-06-18)
+
+* Regenerated using generator version 0.7.0
+
 ### v0.28.0 (2022-06-06)
 
 * Regenerated using generator version 0.5.0
