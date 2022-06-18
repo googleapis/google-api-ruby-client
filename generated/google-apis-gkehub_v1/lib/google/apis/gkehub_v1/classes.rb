@@ -2531,6 +2531,11 @@ module Google
         attr_accessor :cluster_missing
         alias_method :cluster_missing?, :cluster_missing
       
+        # Immutable. The on prem cluster's type.
+        # Corresponds to the JSON property `clusterType`
+        # @return [String]
+        attr_accessor :cluster_type
+      
         # Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For
         # example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/
         # vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
@@ -2547,6 +2552,7 @@ module Google
         def update!(**args)
           @admin_cluster = args[:admin_cluster] if args.key?(:admin_cluster)
           @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
