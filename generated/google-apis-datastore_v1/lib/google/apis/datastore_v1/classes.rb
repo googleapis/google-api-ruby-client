@@ -26,6 +26,11 @@ module Google
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
       
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
         # Required. A list of keys with incomplete key paths for which to allocate IDs.
         # No key may be reserved/read-only.
         # Corresponds to the JSON property `keys`
@@ -38,6 +43,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @keys = args[:keys] if args.key?(:keys)
         end
       end
@@ -86,6 +92,11 @@ module Google
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
       
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
         # Options for beginning a new transaction. Transactions can be created
         # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
         # ReadOptions.new_transaction in read requests.
@@ -99,6 +110,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @transaction_options = args[:transaction_options] if args.key?(:transaction_options)
         end
       end
@@ -126,6 +138,11 @@ module Google
       # The request for Datastore.Commit.
       class CommitRequest
         include Google::Apis::Core::Hashable
+      
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
       
         # The type of commit to perform. Defaults to `TRANSACTIONAL`.
         # Corresponds to the JSON property `mode`
@@ -155,6 +172,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @mode = args[:mode] if args.key?(:mode)
           @mutations = args[:mutations] if args.key?(:mutations)
           @transaction = args[:transaction] if args.key?(:transaction)
@@ -198,7 +216,7 @@ module Google
       class CompositeFilter
         include Google::Apis::Core::Hashable
       
-        # The list of filters to combine. Must contain at least one filter.
+        # The list of filters to combine. Requires: * At least one filter is present.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DatastoreV1::Filter>]
         attr_accessor :filters
@@ -1414,6 +1432,11 @@ module Google
       class LookupRequest
         include Google::Apis::Core::Hashable
       
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
         # Required. Keys of entities to look up.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
@@ -1430,6 +1453,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @keys = args[:keys] if args.key?(:keys)
           @read_options = args[:read_options] if args.key?(:read_options)
         end
@@ -1597,6 +1621,11 @@ module Google
       class PartitionId
         include Google::Apis::Core::Hashable
       
+        # If not empty, the ID of the database to which the entities belong.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
         # If not empty, the ID of the namespace to which the entities belong.
         # Corresponds to the JSON property `namespaceId`
         # @return [String]
@@ -1613,6 +1642,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @namespace_id = args[:namespace_id] if args.key?(:namespace_id)
           @project_id = args[:project_id] if args.key?(:project_id)
         end
@@ -2024,6 +2054,11 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
         # Required. The transaction identifier, returned by a call to Datastore.
         # BeginTransaction.
         # Corresponds to the JSON property `transaction`
@@ -2037,6 +2072,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -2057,6 +2093,11 @@ module Google
       # The request for Datastore.RunQuery.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
+      
+        # If not empty, the ID of the database against which to make the request.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
       
         # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
@@ -2093,6 +2134,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @query = args[:query] if args.key?(:query)

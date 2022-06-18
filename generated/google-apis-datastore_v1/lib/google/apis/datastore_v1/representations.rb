@@ -421,6 +421,7 @@ module Google
       class AllocateIdsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
       
         end
@@ -445,6 +446,7 @@ module Google
       class BeginTransactionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           property :transaction_options, as: 'transactionOptions', class: Google::Apis::DatastoreV1::TransactionOptions, decorator: Google::Apis::DatastoreV1::TransactionOptions::Representation
       
         end
@@ -460,6 +462,7 @@ module Google
       class CommitRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           property :mode, as: 'mode'
           collection :mutations, as: 'mutations', class: Google::Apis::DatastoreV1::Mutation, decorator: Google::Apis::DatastoreV1::Mutation::Representation
       
@@ -822,6 +825,7 @@ module Google
       class LookupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
       
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1::ReadOptions, decorator: Google::Apis::DatastoreV1::ReadOptions::Representation
@@ -872,6 +876,7 @@ module Google
       class PartitionId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           property :namespace_id, as: 'namespaceId'
           property :project_id, as: 'projectId'
         end
@@ -997,6 +1002,7 @@ module Google
       class RollbackRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -1010,6 +1016,7 @@ module Google
       class RunQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1::GqlQuery, decorator: Google::Apis::DatastoreV1::GqlQuery::Representation
       
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
