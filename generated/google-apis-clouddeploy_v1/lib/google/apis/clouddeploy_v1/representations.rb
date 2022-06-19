@@ -22,6 +22,18 @@ module Google
   module Apis
     module ClouddeployV1
       
+      class AbandonReleaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AbandonReleaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AbandonReleaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AbandonReleaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AnthosCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -405,6 +429,7 @@ module Google
           property :name, as: 'name'
           property :serial_pipeline, as: 'serialPipeline', class: Google::Apis::ClouddeployV1::SerialPipeline, decorator: Google::Apis::ClouddeployV1::SerialPipeline::Representation
       
+          property :suspended, as: 'suspended'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -594,6 +619,7 @@ module Google
       class Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :abandoned, as: 'abandoned'
           hash :annotations, as: 'annotations'
           collection :build_artifacts, as: 'buildArtifacts', class: Google::Apis::ClouddeployV1::BuildArtifact, decorator: Google::Apis::ClouddeployV1::BuildArtifact::Representation
       
