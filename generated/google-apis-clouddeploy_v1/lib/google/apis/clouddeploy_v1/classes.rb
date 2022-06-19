@@ -22,6 +22,32 @@ module Google
   module Apis
     module ClouddeployV1
       
+      # The request object used by `AbandonRelease`.
+      class AbandonReleaseRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response object for `AbandonRelease`.
+      class AbandonReleaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information specifying an Anthos Cluster.
       class AnthosCluster
         include Google::Apis::Core::Hashable
@@ -417,6 +443,13 @@ module Google
         # @return [Google::Apis::ClouddeployV1::SerialPipeline]
         attr_accessor :serial_pipeline
       
+        # When suspended, no new releases or rollouts can be created, but in-progress
+        # ones will complete.
+        # Corresponds to the JSON property `suspended`
+        # @return [Boolean]
+        attr_accessor :suspended
+        alias_method :suspended?, :suspended
+      
         # Output only. Unique identifier of the `DeliveryPipeline`.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -441,6 +474,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @serial_pipeline = args[:serial_pipeline] if args.key?(:serial_pipeline)
+          @suspended = args[:suspended] if args.key?(:suspended)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1183,6 +1217,12 @@ module Google
       class Release
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates whether this is an abandoned release.
+        # Corresponds to the JSON property `abandoned`
+        # @return [Boolean]
+        attr_accessor :abandoned
+        alias_method :abandoned?, :abandoned
+      
         # User annotations. These attributes can only be set and used by the user, and
         # not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for
         # more details such as format and size limitations.
@@ -1296,6 +1336,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @abandoned = args[:abandoned] if args.key?(:abandoned)
           @annotations = args[:annotations] if args.key?(:annotations)
           @build_artifacts = args[:build_artifacts] if args.key?(:build_artifacts)
           @create_time = args[:create_time] if args.key?(:create_time)
