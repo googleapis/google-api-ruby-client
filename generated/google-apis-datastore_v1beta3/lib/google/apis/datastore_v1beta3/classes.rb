@@ -198,7 +198,7 @@ module Google
       class CompositeFilter
         include Google::Apis::Core::Hashable
       
-        # The list of filters to combine. Must contain at least one filter.
+        # The list of filters to combine. Requires: * At least one filter is present.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DatastoreV1beta3::Filter>]
         attr_accessor :filters
