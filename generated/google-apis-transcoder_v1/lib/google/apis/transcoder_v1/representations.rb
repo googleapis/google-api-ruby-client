@@ -481,6 +481,7 @@ module Google
           property :error, as: 'error', class: Google::Apis::TranscoderV1::Status, decorator: Google::Apis::TranscoderV1::Status::Representation
       
           property :input_uri, as: 'inputUri'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :output_uri, as: 'outputUri'
           property :start_time, as: 'startTime'
@@ -521,6 +522,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::TranscoderV1::JobConfig, decorator: Google::Apis::TranscoderV1::JobConfig::Representation
       
+          hash :labels, as: 'labels'
           property :name, as: 'name'
         end
       end

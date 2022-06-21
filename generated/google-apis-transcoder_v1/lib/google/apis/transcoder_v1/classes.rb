@@ -988,6 +988,12 @@ module Google
         # @return [String]
         attr_accessor :input_uri
       
+        # The labels associated with this job. You can use these to organize and group
+        # your jobs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name of the job. Format: `projects/`project_number`/locations/`
         # location`/jobs/`job``
         # Corresponds to the JSON property `name`
@@ -1038,6 +1044,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -1132,6 +1139,12 @@ module Google
         # @return [Google::Apis::TranscoderV1::JobConfig]
         attr_accessor :config
       
+        # The labels associated with this job template. You can use these to organize
+        # and group your job templates.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The resource name of the job template. Format: `projects/`project_number`/
         # locations/`location`/jobTemplates/`job_template``
         # Corresponds to the JSON property `name`
@@ -1145,6 +1158,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
         end
       end
