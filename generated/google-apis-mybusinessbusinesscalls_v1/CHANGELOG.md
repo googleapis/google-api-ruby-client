@@ -1,5 +1,10 @@
 # Release history for google-apis-mybusinessbusinesscalls_v1
 
+### v0.4.0 (2022-06-21)
+
+* Regenerated from discovery document revision 20220619
+* Regenerated using generator version 0.7.0
+
 ### v0.3.0 (2022-06-05)
 
 * Regenerated using generator version 0.5.0
