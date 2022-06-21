@@ -3460,6 +3460,11 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::Name>]
         attr_accessor :person_names
       
+        # The person's phone numbers
+        # Corresponds to the JSON property `phoneNumbers`
+        # @return [Array<Google::Apis::CloudsearchV1::PhoneNumber>]
+        attr_accessor :phone_numbers
+      
         # A person's read-only photo. A picture shown next to the person's name to help
         # others recognize the person in search results.
         # Corresponds to the JSON property `photos`
@@ -3476,7 +3481,33 @@ module Google
           @name = args[:name] if args.key?(:name)
           @obfuscated_id = args[:obfuscated_id] if args.key?(:obfuscated_id)
           @person_names = args[:person_names] if args.key?(:person_names)
+          @phone_numbers = args[:phone_numbers] if args.key?(:phone_numbers)
           @photos = args[:photos] if args.key?(:photos)
+        end
+      end
+      
+      # A person's Phone Number
+      class PhoneNumber
+        include Google::Apis::Core::Hashable
+      
+        # The phone number of the person.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
