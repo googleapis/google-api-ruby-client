@@ -640,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PhoneNumber
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Photo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2085,8 +2091,18 @@ module Google
           property :obfuscated_id, as: 'obfuscatedId'
           collection :person_names, as: 'personNames', class: Google::Apis::CloudsearchV1::Name, decorator: Google::Apis::CloudsearchV1::Name::Representation
       
+          collection :phone_numbers, as: 'phoneNumbers', class: Google::Apis::CloudsearchV1::PhoneNumber, decorator: Google::Apis::CloudsearchV1::PhoneNumber::Representation
+      
           collection :photos, as: 'photos', class: Google::Apis::CloudsearchV1::Photo, decorator: Google::Apis::CloudsearchV1::Photo::Representation
       
+        end
+      end
+      
+      class PhoneNumber
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
+          property :type, as: 'type'
         end
       end
       
