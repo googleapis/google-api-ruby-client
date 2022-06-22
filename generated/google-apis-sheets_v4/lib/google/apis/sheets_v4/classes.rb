@@ -2627,7 +2627,7 @@ module Google
         # @return [String]
         attr_accessor :horizontal_alignment
       
-        # How a hyperlink, if it exists, should be displayed in the cell.
+        # If one exists, how a hyperlink should be displayed in the cell.
         # Corresponds to the JSON property `hyperlinkDisplayType`
         # @return [String]
         attr_accessor :hyperlink_display_type
