@@ -129,6 +129,35 @@ module Google
         end
       end
       
+      # Represents a backend metastore for the federation.
+      class BackendMetastore
+        include Google::Apis::Core::Hashable
+      
+        # The type of the backend metastore.
+        # Corresponds to the JSON property `metastoreType`
+        # @return [String]
+        attr_accessor :metastore_type
+      
+        # The relative resource name of the metastore that is being federated. The
+        # formats of the relative resource names for the currently supported metastores
+        # are listed below: Dataplex: projects/`project_id`/locations/`location`/lakes/`
+        # lake_id` BigQuery: projects/`project_id` Dataproc Metastore: projects/`
+        # project_id`/locations/`location`/services/`service_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metastore_type = args[:metastore_type] if args.key?(:metastore_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The details of a backup resource.
       class Backup
         include Google::Apis::Core::Hashable
@@ -499,6 +528,87 @@ module Google
         end
       end
       
+      # Represents a federation of multiple backend metastores.
+      class Federation
+        include Google::Apis::Core::Hashable
+      
+        # A map from BackendMetastore rank to BackendMetastores from which the
+        # federation service serves metadata at query time. The map key is an integer
+        # that represents the order in which BackendMetastores should be evaluated to
+        # resolve database names at query time. A BackendMetastore with a lower number
+        # will be evaluated before a BackendMetastore with a higher number.
+        # Corresponds to the JSON property `backendMetastores`
+        # @return [Hash<String,Google::Apis::MetastoreV1beta::BackendMetastore>]
+        attr_accessor :backend_metastores
+      
+        # Output only. The time when the metastore federation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The federation endpoint.
+        # Corresponds to the JSON property `endpointUri`
+        # @return [String]
+        attr_accessor :endpoint_uri
+      
+        # User-defined labels for the metastore federation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The relative resource name of the federation, of the form: projects/
+        # `project_number`/locations/`location_id`/federations/`federation_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the federation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information about the current state of the metastore
+        # federation, if available.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # Output only. The globally unique resource identifier of the metastore
+        # federation.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the metastore federation was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Immutable. The Apache Hive metastore version of the federation. All backend
+        # metastore versions must be compatible with the federation version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_metastores = args[:backend_metastores] if args.key?(:backend_metastores)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Specifies configuration information specific to running Hive metastore
       # software as the metastore service.
       class HiveMetastoreConfig
@@ -663,6 +773,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListFederations
+      class ListFederationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The services in the specified location.
+        # Corresponds to the JSON property `federations`
+        # @return [Array<Google::Apis::MetastoreV1beta::Federation>]
+        attr_accessor :federations
+      
+        # A token that can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @federations = args[:federations] if args.key?(:federations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
