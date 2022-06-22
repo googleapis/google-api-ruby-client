@@ -1484,24 +1484,24 @@ module Google
         # @return [Google::Apis::RunV1alpha1::HttpGetAction]
         attr_accessor :http_get
       
-        # (Optional) Number of seconds after the container has started before liveness
-        # probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for
-        # liveness probe is 3600. Max value for startup probe is 240. More info: https://
-        # kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        # (Optional) Number of seconds after the container has started before the probe
+        # is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
+        # liveness probe is 3600. Maximum value for startup probe is 240. More info:
+        # https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
+        # probes
         # Corresponds to the JSON property `initialDelaySeconds`
         # @return [Fixnum]
         attr_accessor :initial_delay_seconds
       
         # (Optional) How often (in seconds) to perform the probe. Default to 10 seconds.
-        # Minimum value is 1. Max value for liveness probe is 3600. Max value for
-        # startup probe is 240. Must be greater or equal than timeout_seconds.
+        # Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value
+        # for startup probe is 240. Must be greater or equal than timeout_seconds.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
       
         # (Optional) Minimum consecutive successes for the probe to be considered
-        # successful after having failed. Defaults to 1. Must be 1 for liveness and
-        # startup Probes.
+        # successful after having failed. Must be 1 if set.
         # Corresponds to the JSON property `successThreshold`
         # @return [Fixnum]
         attr_accessor :success_threshold
