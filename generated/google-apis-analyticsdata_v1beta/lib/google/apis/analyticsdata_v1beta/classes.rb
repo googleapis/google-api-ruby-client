@@ -713,8 +713,10 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::BetweenFilter]
         attr_accessor :between_filter
       
-        # The dimension name or metric name. Must be a name defined in dimensions or
-        # metrics.
+        # The dimension name or metric name. In most methods, dimensions & metrics can
+        # be used for the first time in this field. However in a RunPivotReportRequest,
+        # this field must be additionally specified by name in the RunPivotReportRequest'
+        # s dimensions or metrics.
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
