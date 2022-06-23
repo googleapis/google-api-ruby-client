@@ -928,6 +928,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExchangedPeeringRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1264,6 +1270,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1487,6 +1499,18 @@ module Google
       end
       
       class HealthStatusForNetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HelpLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2722,6 +2746,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalizedMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2886,6 +2916,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -3534,6 +3570,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -3958,6 +4000,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotaExceededInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RbacPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3971,6 +4019,12 @@ module Google
       end
       
       class Region
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionAddressesMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5009,6 +5063,12 @@ module Google
       end
       
       class SecurityPolicyRuleRateLimitOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8238,6 +8298,15 @@ module Google
         end
       end
       
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadatas, as: 'metadatas'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class ExchangedPeeringRoute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8532,6 +8601,7 @@ module Google
           property :priority, as: 'priority'
           property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
+          property :security_profile_group, as: 'securityProfileGroup'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
@@ -8897,6 +8967,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+        end
+      end
+      
+      class GlobalAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
         end
       end
       
@@ -9325,6 +9403,22 @@ module Google
           property :health_check_service, as: 'healthCheckService', class: Google::Apis::ComputeAlpha::HealthCheckServiceReference, decorator: Google::Apis::ComputeAlpha::HealthCheckServiceReference::Representation
       
           property :health_state, as: 'healthState'
+        end
+      end
+      
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::ComputeAlpha::HelpLink, decorator: Google::Apis::ComputeAlpha::HelpLink::Representation
+      
+        end
+      end
+      
+      class HelpLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
         end
       end
       
@@ -10722,6 +10816,7 @@ module Google
           property :name, as: 'name'
           property :properties, as: 'properties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
       
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :source_instance, as: 'sourceInstance'
@@ -11700,6 +11795,14 @@ module Google
         end
       end
       
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
+        end
+      end
+      
       class LocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12016,8 +12119,24 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt::Errors::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt::Errors::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
             end
           end
         end
@@ -13236,8 +13355,24 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::Operation::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::Operation::Error::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
             end
           end
         end
@@ -14002,6 +14137,16 @@ module Google
         end
       end
       
+      class QuotaExceededInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :limit, as: 'limit'
+          property :limit_name, as: 'limitName'
+          property :metric_name, as: 'metricName'
+        end
+      end
+      
       class RbacPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14040,6 +14185,14 @@ module Google
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
           collection :zones, as: 'zones'
+        end
+      end
+      
+      class RegionAddressesMoveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :destination_address, as: 'destinationAddress'
         end
       end
       
@@ -15877,10 +16030,20 @@ module Google
           property :enforce_on_key, as: 'enforceOnKey'
           property :enforce_on_key_name, as: 'enforceOnKeyName'
           property :exceed_action, as: 'exceedAction'
+          property :exceed_action_rpc_status, as: 'exceedActionRpcStatus', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsRpcStatus, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsRpcStatus::Representation
+      
           property :exceed_redirect_options, as: 'exceedRedirectOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRedirectOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRedirectOptions::Representation
       
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
         end
       end
       
