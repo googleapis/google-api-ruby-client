@@ -2505,6 +2505,7 @@ module Google
           property :active_units, :numeric_string => true, as: 'activeUnits'
           property :completed_units, :numeric_string => true, as: 'completedUnits'
           property :elapsed_ms, :numeric_string => true, as: 'elapsedMs'
+          property :estimated_runnable_units, :numeric_string => true, as: 'estimatedRunnableUnits'
           property :pending_units, :numeric_string => true, as: 'pendingUnits'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
         end
@@ -2764,6 +2765,7 @@ module Google
           property :location, as: 'location'
           property :materialized_view, as: 'materializedView', class: Google::Apis::BigqueryV2::MaterializedViewDefinition, decorator: Google::Apis::BigqueryV2::MaterializedViewDefinition::Representation
       
+          property :max_staleness, :base64 => true, as: 'maxStaleness'
           property :model, as: 'model', class: Google::Apis::BigqueryV2::ModelDefinition, decorator: Google::Apis::BigqueryV2::ModelDefinition::Representation
       
           property :num_bytes, :numeric_string => true, as: 'numBytes'
@@ -3024,9 +3026,11 @@ module Google
           property :loss_type, as: 'lossType'
           property :max_iterations, :numeric_string => true, as: 'maxIterations'
           property :max_parallel_trials, :numeric_string => true, as: 'maxParallelTrials'
+          property :max_time_series_length, :numeric_string => true, as: 'maxTimeSeriesLength'
           property :max_tree_depth, :numeric_string => true, as: 'maxTreeDepth'
           property :min_relative_progress, as: 'minRelativeProgress'
           property :min_split_loss, as: 'minSplitLoss'
+          property :min_time_series_length, :numeric_string => true, as: 'minTimeSeriesLength'
           property :min_tree_child_weight, :numeric_string => true, as: 'minTreeChildWeight'
           property :model_uri, as: 'modelUri'
           property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
@@ -3042,8 +3046,10 @@ module Google
           property :time_series_data_column, as: 'timeSeriesDataColumn'
           property :time_series_id_column, as: 'timeSeriesIdColumn'
           collection :time_series_id_columns, as: 'timeSeriesIdColumns'
+          property :time_series_length_fraction, as: 'timeSeriesLengthFraction'
           property :time_series_timestamp_column, as: 'timeSeriesTimestampColumn'
           property :tree_method, as: 'treeMethod'
+          property :trend_smoothing_window_size, :numeric_string => true, as: 'trendSmoothingWindowSize'
           property :user_column, as: 'userColumn'
           property :wals_alpha, as: 'walsAlpha'
           property :warm_start, as: 'warmStart'

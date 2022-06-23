@@ -6129,6 +6129,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :elapsed_ms
       
+        # Units of work that can be scheduled immediately. Providing additional slots
+        # for these units of work will speed up the query, provided no other query in
+        # the reservation needs additional slots.
+        # Corresponds to the JSON property `estimatedRunnableUnits`
+        # @return [Fixnum]
+        attr_accessor :estimated_runnable_units
+      
         # Total parallel units of work remaining for the active stages.
         # Corresponds to the JSON property `pendingUnits`
         # @return [Fixnum]
@@ -6148,6 +6155,7 @@ module Google
           @active_units = args[:active_units] if args.key?(:active_units)
           @completed_units = args[:completed_units] if args.key?(:completed_units)
           @elapsed_ms = args[:elapsed_ms] if args.key?(:elapsed_ms)
+          @estimated_runnable_units = args[:estimated_runnable_units] if args.key?(:estimated_runnable_units)
           @pending_units = args[:pending_units] if args.key?(:pending_units)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
         end
@@ -7101,6 +7109,13 @@ module Google
         # @return [Google::Apis::BigqueryV2::MaterializedViewDefinition]
         attr_accessor :materialized_view
       
+        # [Optional] Max staleness of data that could be returned when table or
+        # materialized view is queried (formatted as Google SQL Interval type).
+        # Corresponds to the JSON property `maxStaleness`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :max_staleness
+      
         # [Output-only, Beta] Present iff this table represents a ML model. Describes
         # the training information for the model, and it is required to run 'PREDICT'
         # queries.
@@ -7264,6 +7279,7 @@ module Google
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
+          @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
           @model = args[:model] if args.key?(:model)
           @num_bytes = args[:num_bytes] if args.key?(:num_bytes)
           @num_long_term_bytes = args[:num_long_term_bytes] if args.key?(:num_long_term_bytes)
@@ -8182,6 +8198,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_parallel_trials
       
+        # Get truncated length by last n points in time series. Use separately from
+        # time_series_length_fraction and min_time_series_length.
+        # Corresponds to the JSON property `maxTimeSeriesLength`
+        # @return [Fixnum]
+        attr_accessor :max_time_series_length
+      
         # Maximum depth of a tree for boosted tree models.
         # Corresponds to the JSON property `maxTreeDepth`
         # @return [Fixnum]
@@ -8197,6 +8219,12 @@ module Google
         # Corresponds to the JSON property `minSplitLoss`
         # @return [Float]
         attr_accessor :min_split_loss
+      
+        # Set fast trend ARIMA_PLUS model minimum training length. Use in pair with
+        # time_series_length_fraction.
+        # Corresponds to the JSON property `minTimeSeriesLength`
+        # @return [Fixnum]
+        attr_accessor :min_time_series_length
       
         # Minimum sum of instance weight needed in a child for boosted tree models.
         # Corresponds to the JSON property `minTreeChildWeight`
@@ -8274,6 +8302,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :time_series_id_columns
       
+        # Get truncated length by fraction in time series.
+        # Corresponds to the JSON property `timeSeriesLengthFraction`
+        # @return [Float]
+        attr_accessor :time_series_length_fraction
+      
         # Column to be designated as time series timestamp for ARIMA model.
         # Corresponds to the JSON property `timeSeriesTimestampColumn`
         # @return [String]
@@ -8283,6 +8316,11 @@ module Google
         # Corresponds to the JSON property `treeMethod`
         # @return [String]
         attr_accessor :tree_method
+      
+        # The smoothing window size for the trend component of the time series.
+        # Corresponds to the JSON property `trendSmoothingWindowSize`
+        # @return [Fixnum]
+        attr_accessor :trend_smoothing_window_size
       
         # User column specified for matrix factorization models.
         # Corresponds to the JSON property `userColumn`
@@ -8346,9 +8384,11 @@ module Google
           @loss_type = args[:loss_type] if args.key?(:loss_type)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
           @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
+          @max_time_series_length = args[:max_time_series_length] if args.key?(:max_time_series_length)
           @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
+          @min_time_series_length = args[:min_time_series_length] if args.key?(:min_time_series_length)
           @min_tree_child_weight = args[:min_tree_child_weight] if args.key?(:min_tree_child_weight)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
@@ -8363,8 +8403,10 @@ module Google
           @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
           @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
           @time_series_id_columns = args[:time_series_id_columns] if args.key?(:time_series_id_columns)
+          @time_series_length_fraction = args[:time_series_length_fraction] if args.key?(:time_series_length_fraction)
           @time_series_timestamp_column = args[:time_series_timestamp_column] if args.key?(:time_series_timestamp_column)
           @tree_method = args[:tree_method] if args.key?(:tree_method)
+          @trend_smoothing_window_size = args[:trend_smoothing_window_size] if args.key?(:trend_smoothing_window_size)
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)
