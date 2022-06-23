@@ -200,9 +200,9 @@ module Google
         # @return [String]
         attr_accessor :api_key_id
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the `
-        # AndroidApp`. This identifier should be treated as an opaque token, as the data
-        # format is not specified.
+        # Output only. Immutable. The globally unique, Firebase-assigned identifier for
+        # the `AndroidApp`. This identifier should be treated as an opaque token, as the
+        # data format is not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -231,8 +231,8 @@ module Google
         # @return [String]
         attr_accessor :package_name
       
-        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
-        # the `AndroidApp`.
+        # Output only. Immutable. A user-assigned unique identifier of the parent
+        # FirebaseProject for the `AndroidApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -509,9 +509,9 @@ module Google
         # @return [String]
         attr_accessor :api_key_id
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`.
-        # This identifier should be treated as an opaque token, as the data format is
-        # not specified.
+        # Output only. Immutable. The globally unique, Firebase-assigned identifier for
+        # the `IosApp`. This identifier should be treated as an opaque token, as the
+        # data format is not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -546,8 +546,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
-        # the `IosApp`.
+        # Output only. Immutable. A user-assigned unique identifier of the parent
+        # FirebaseProject for the `IosApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
