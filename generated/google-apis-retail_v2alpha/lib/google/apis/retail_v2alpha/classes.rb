@@ -1114,6 +1114,14 @@ module Google
         attr_accessor :key
       
         # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # if RECOMMENDATIONS_FILTERING_ENABLED, attribute values are filterable for
+        # recommendations. This option works for categorical features only, does not
+        # work for numerical features, inventory filtering.
+        # Corresponds to the JSON property `recommendationsFilteringOption`
+        # @return [String]
+        attr_accessor :recommendations_filtering_option
+      
+        # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
         # if SEARCHABLE_ENABLED, attribute values are searchable by text queries in
         # SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical,
         # attribute values will not be searchable by text queries in SearchService.
@@ -1138,6 +1146,7 @@ module Google
           @in_use = args[:in_use] if args.key?(:in_use)
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key = args[:key] if args.key?(:key)
+          @recommendations_filtering_option = args[:recommendations_filtering_option] if args.key?(:recommendations_filtering_option)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
           @type = args[:type] if args.key?(:type)
         end
@@ -1297,14 +1306,16 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig]
         attr_accessor :denylist_input_config
       
-        # Output only. LRO corresponding to the latest allowlist import. Can use
-        # GetOperation API to retrieve the latest state of the Long Running Operation.
+        # Output only. Name of the LRO corresponding to the latest allowlist import. Can
+        # use GetOperation API to retrieve the latest state of the Long Running
+        # Operation.
         # Corresponds to the JSON property `lastAllowlistImportOperation`
         # @return [String]
         attr_accessor :last_allowlist_import_operation
       
-        # Output only. LRO corresponding to the latest denylist import. Can use
-        # GetOperation API to retrieve the latest state of the Long Running Operation.
+        # Output only. Name of the LRO corresponding to the latest denylist import. Can
+        # use GetOperation API to retrieve the latest state of the Long Running
+        # Operation.
         # Corresponds to the JSON property `lastDenylistImportOperation`
         # @return [String]
         attr_accessor :last_denylist_import_operation
@@ -2459,7 +2470,11 @@ module Google
         # only want results strictly matching the filters, set `strictFiltering` to True
         # in `PredictRequest.params` to receive empty results instead. Note that the API
         # will never return items with storageStatus of "EXPIRED" or "DELETED"
-        # regardless of filter choices.
+        # regardless of filter choices. If `filterSyntaxV2` is set to true under the `
+        # params` field, then attribute based expressions are expected instead of the
+        # above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND
+        # NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors:
+        # ANY("Red") OR categories: ANY("Phones"))
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2508,7 +2523,9 @@ module Google
         # price. * `diversityLevel`: String. Default empty. If set to be non-empty, then
         # it needs to be one of `'no-diversity', 'low-diversity', 'medium-diversity', '
         # high-diversity', 'auto-diversity'`. This gives request-level control and
-        # adjusts prediction results based on product category.
+        # adjusts prediction results based on product category. * `filterSyntaxV2`:
+        # Boolean. False by default. If set to true, the `filter` field will be
+        # interpreteted according to the new, attribute-based syntax.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
