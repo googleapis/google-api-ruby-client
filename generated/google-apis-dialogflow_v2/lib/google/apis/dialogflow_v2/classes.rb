@@ -2630,7 +2630,9 @@ module Google
       end
       
       # The request message for a webhook call. The request is sent as a JSON object
-      # and the field names will be presented in camel cases.
+      # and the field names will be presented in camel cases. You may see undocumented
+      # fields in an actual request. These fields are used internally by Dialogflow
+      # and should be ignored.
       class GoogleCloudDialogflowCxV3WebhookRequest
         include Google::Apis::Core::Hashable
       
@@ -5556,7 +5558,9 @@ module Google
       end
       
       # The request message for a webhook call. The request is sent as a JSON object
-      # and the field names will be presented in camel cases.
+      # and the field names will be presented in camel cases. You may see undocumented
+      # fields in an actual request. These fields are used internally by Dialogflow
+      # and should be ignored.
       class GoogleCloudDialogflowCxV3beta1WebhookRequest
         include Google::Apis::Core::Hashable
       
@@ -6092,7 +6096,8 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Represents the natural language text to be processed.
+        # ============================================================================
+        # Auxiliary proto messages. Represents the natural language text to be processed.
         # Corresponds to the JSON property `textInput`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
         attr_accessor :text_input
@@ -11430,7 +11435,8 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput]
         attr_accessor :event
       
-        # Represents the natural language text to be processed.
+        # ============================================================================
+        # Auxiliary proto messages. Represents the natural language text to be processed.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
         attr_accessor :text
@@ -11546,7 +11552,8 @@ module Google
         alias_method :all_required_params_present?, :all_required_params_present
       
         # Indicates whether the conversational query triggers a cancellation for slot
-        # filling.
+        # filling. For more information, see the [cancel slot filling documentation](
+        # https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
         # Corresponds to the JSON property `cancelsSlotFilling`
         # @return [Boolean]
         attr_accessor :cancels_slot_filling
@@ -12287,7 +12294,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :context_size
       
-        # Represents the natural language text to be processed.
+        # ============================================================================
+        # Auxiliary proto messages. Represents the natural language text to be processed.
         # Corresponds to the JSON property `currentTextInput`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2TextInput]
         attr_accessor :current_text_input
@@ -12469,7 +12477,8 @@ module Google
         end
       end
       
-      # Represents the natural language text to be processed.
+      # ============================================================================
+      # Auxiliary proto messages. Represents the natural language text to be processed.
       class GoogleCloudDialogflowV2TextInput
         include Google::Apis::Core::Hashable
       
@@ -15439,7 +15448,8 @@ module Google
         alias_method :all_required_params_present?, :all_required_params_present
       
         # Indicates whether the conversational query triggers a cancellation for slot
-        # filling.
+        # filling. For more information, see the [cancel slot filling documentation](
+        # https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
         # Corresponds to the JSON property `cancelsSlotFilling`
         # @return [Boolean]
         attr_accessor :cancels_slot_filling
