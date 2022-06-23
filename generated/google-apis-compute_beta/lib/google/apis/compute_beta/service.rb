@@ -9911,7 +9911,9 @@ module Google
         # group is performing on the instance. For example, if the group is still
         # creating an instance, the currentAction is CREATING. If a previous action
         # failed, the list displays the errors for that failed action. The orderBy query
-        # parameter is not supported.
+        # parameter is not supported. The `pageToken` query parameter is supported only
+        # in the alpha and beta API and only if the group's `listManagedInstancesResults`
+        # field is set to `PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -26100,6 +26102,9 @@ module Google
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
         # has scheduled for its instances. The orderBy query parameter is not supported.
+        # The `pageToken` query parameter is supported only in the alpha and beta API
+        # and only if the group's `listManagedInstancesResults` field is set to `
+        # PAGINATED`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
