@@ -29,6 +29,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1alpha1'
 
+      # Read, create, update, and delete your SAS Portal data.
+      AUTH_SASPORTAL = 'https://www.googleapis.com/auth/sasportal'
+
       # See your primary Google Account email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
     end
