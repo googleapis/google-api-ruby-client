@@ -1548,6 +1548,7 @@ module Google
           property :in_use, as: 'inUse'
           property :indexable_option, as: 'indexableOption'
           property :key, as: 'key'
+          property :recommendations_filtering_option, as: 'recommendationsFilteringOption'
           property :searchable_option, as: 'searchableOption'
           property :type, as: 'type'
         end
