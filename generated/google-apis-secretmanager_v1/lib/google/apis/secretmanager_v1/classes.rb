@@ -864,6 +864,18 @@ module Google
         # @return [String]
         attr_accessor :ttl
       
+        # Optional. Mapping from version alias to version name. A version alias is a
+        # string with a maximum length of 63 characters and can contain uppercase and
+        # lowercase letters, numerals, and the hyphen (`-`) and underscore ('_')
+        # characters. An alias string must start with a letter and cannot be the string '
+        # latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        # Version-Alias pairs will be viewable via GetSecret and modifiable via
+        # UpdateSecret. At launch Access by Allias will only be supported on
+        # GetSecretVersion and AccessSecretVersion.
+        # Corresponds to the JSON property `versionAliases`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :version_aliases
+      
         def initialize(**args)
            update!(**args)
         end
@@ -879,6 +891,7 @@ module Google
           @rotation = args[:rotation] if args.key?(:rotation)
           @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)
+          @version_aliases = args[:version_aliases] if args.key?(:version_aliases)
         end
       end
       

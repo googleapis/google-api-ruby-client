@@ -444,6 +444,7 @@ module Google
           collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
       
           property :ttl, as: 'ttl'
+          hash :version_aliases, as: 'versionAliases'
         end
       end
       
