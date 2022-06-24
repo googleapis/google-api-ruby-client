@@ -560,6 +560,7 @@ module Google
           property :crypto_key_version, as: 'cryptoKeyVersion'
           property :import_job, as: 'importJob'
           property :rsa_aes_wrapped_key, :base64 => true, as: 'rsaAesWrappedKey'
+          property :wrapped_key, :base64 => true, as: 'wrappedKey'
         end
       end
       
