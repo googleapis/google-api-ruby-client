@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvisioningConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +652,19 @@ module Google
         end
       end
       
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class ProvisioningConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -659,6 +678,7 @@ module Google
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::NetworkConfig, decorator: Google::Apis::BaremetalsolutionV2::NetworkConfig::Representation
       
           property :state, as: 'state'
+          property :status_message, as: 'statusMessage'
           property :ticket_id, as: 'ticketId'
           property :update_time, as: 'updateTime'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::VolumeConfig, decorator: Google::Apis::BaremetalsolutionV2::VolumeConfig::Representation
