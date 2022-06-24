@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnableServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Endpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -810,6 +816,12 @@ module Google
         end
       end
       
+      class EnableServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1077,7 +1089,6 @@ module Google
       class MetricRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :dynamic_metric_costs, as: 'dynamicMetricCosts'
           hash :metric_costs, as: 'metricCosts'
           property :selector, as: 'selector'
         end
