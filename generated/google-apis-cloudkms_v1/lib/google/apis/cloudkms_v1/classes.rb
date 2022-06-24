@@ -1271,8 +1271,9 @@ module Google
         # @return [String]
         attr_accessor :import_job
       
-        # Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or
-        # RSA_OAEP_4096_SHA1_AES_256. This field contains the concatenation of two
+        # Optional. Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or
+        # RSA_OAEP_4096_SHA1_AES_256 or RSA_OAEP_3072_SHA256_AES_256 or
+        # RSA_OAEP_4096_SHA256_AES_256. This field contains the concatenation of two
         # wrapped keys: 1. An ephemeral AES-256 wrapping key wrapped with the public_key
         # using RSAES-OAEP with SHA-1/SHA-256, MGF1 with SHA-1/SHA-256, and an empty
         # label. 2. The key to be imported, wrapped with the ephemeral AES-256 key using
@@ -1286,6 +1287,25 @@ module Google
         # @return [String]
         attr_accessor :rsa_aes_wrapped_key
       
+        # Optional. Wrapped key material produced with (RSA_OAEP_3072_SHA1_AES_256 or
+        # RSA_OAEP_4096_SHA1_AES_256 or RSA_OAEP_3072_SHA256_AES_256 or
+        # RSA_OAEP_4096_SHA256_AES_256) for which, this field contains the concatenation
+        # of: 1. An ephemeral AES-256 wrapping key wrapped with the public_key using
+        # RSAES-OAEP with SHA-1/SHA-256, MGF1 with SHA-1/SHA-256, and an empty label. 2.
+        # The key to be imported, wrapped with the ephemeral AES-256 key using AES-KWP (
+        # RFC 5649), or (RSA_OAEP_3072_SHA256 or RSA_OAEP_4096_SHA256) for which, this
+        # field contains the key to be imported, wrapped with the public_key using RSAES-
+        # OAEP with SHA-256, MGF1 with SHA-256, and an empty label. If importing
+        # symmetric key material, it is expected that the unwrapped key contains plain
+        # bytes. If importing asymmetric key material, it is expected that the unwrapped
+        # key is in PKCS#8-encoded DER format (the PrivateKeyInfo structure from RFC
+        # 5208). This format is the same as the format produced by PKCS#11 mechanism
+        # CKM_RSA_AES_KEY_WRAP.
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1296,6 +1316,7 @@ module Google
           @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
           @import_job = args[:import_job] if args.key?(:import_job)
           @rsa_aes_wrapped_key = args[:rsa_aes_wrapped_key] if args.key?(:rsa_aes_wrapped_key)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
         end
       end
       
