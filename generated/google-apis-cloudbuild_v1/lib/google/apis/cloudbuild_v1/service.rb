@@ -1592,7 +1592,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs a `BuildTrigger` at a particular source revision.
+        # Runs a `BuildTrigger` at a particular source revision. To run a regional or
+        # global trigger, use the POST request that includes the location endpoint in
+        # the path. The POST request that does not include the location endpoint in the
+        # path can only be used when running global triggers.
         # @param [String] name
         #   The name of the `Trigger` to run. Format: `projects/`project`/locations/`
         #   location`/triggers/`trigger``
@@ -2058,7 +2061,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs a `BuildTrigger` at a particular source revision.
+        # Runs a `BuildTrigger` at a particular source revision. To run a regional or
+        # global trigger, use the POST request that includes the location endpoint in
+        # the path. The POST request that does not include the location endpoint in the
+        # path can only be used when running global triggers.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] trigger_id
