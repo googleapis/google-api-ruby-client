@@ -29,6 +29,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # Private Service: https://www.googleapis.com/auth/cloud-identity
+      AUTH_CLOUD_IDENTITY = 'https://www.googleapis.com/auth/cloud-identity'
+
       # Private Service: https://www.googleapis.com/auth/cloud-identity.devices
       AUTH_CLOUD_IDENTITY_DEVICES = 'https://www.googleapis.com/auth/cloud-identity.devices'
 
