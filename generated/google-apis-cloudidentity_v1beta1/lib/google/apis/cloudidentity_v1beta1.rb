@@ -29,6 +29,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
+      # Private Service: https://www.googleapis.com/auth/cloud-identity
+      AUTH_CLOUD_IDENTITY = 'https://www.googleapis.com/auth/cloud-identity'
+
       # Private Service: https://www.googleapis.com/auth/cloud-identity.devices
       AUTH_CLOUD_IDENTITY_DEVICES = 'https://www.googleapis.com/auth/cloud-identity.devices'
 
@@ -43,6 +46,12 @@ module Google
 
       # See any Cloud Identity Groups that you can access, including group members and their emails
       AUTH_CLOUD_IDENTITY_GROUPS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.groups.readonly'
+
+      # See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+      AUTH_CLOUD_IDENTITY_USERINVITATIONS = 'https://www.googleapis.com/auth/cloud-identity.userinvitations'
+
+      # See, send, or cancel any Cloud Identity UserInvitations to join your organization to users
+      AUTH_CLOUD_IDENTITY_USERINVITATIONS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.userinvitations.readonly'
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
