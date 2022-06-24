@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CostManagementConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1065,6 +1071,8 @@ module Google
       
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
       
+          property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1beta1::CostManagementConfig, decorator: Google::Apis::ContainerV1beta1::CostManagementConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
@@ -1192,6 +1200,8 @@ module Google
       
           property :desired_cluster_telemetry, as: 'desiredClusterTelemetry', class: Google::Apis::ContainerV1beta1::ClusterTelemetry, decorator: Google::Apis::ContainerV1beta1::ClusterTelemetry::Representation
       
+          property :desired_cost_management_config, as: 'desiredCostManagementConfig', class: Google::Apis::ContainerV1beta1::CostManagementConfig, decorator: Google::Apis::ContainerV1beta1::CostManagementConfig::Representation
+      
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1beta1::DatabaseEncryption, decorator: Google::Apis::ContainerV1beta1::DatabaseEncryption::Representation
       
           property :desired_datapath_provider, as: 'desiredDatapathProvider'
@@ -1283,6 +1293,13 @@ module Google
       end
       
       class ConsumptionMeteringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class CostManagementConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'

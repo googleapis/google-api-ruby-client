@@ -598,6 +598,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Configuration for fine-grained cost management feature.
+        # Corresponds to the JSON property `costManagementConfig`
+        # @return [Google::Apis::ContainerV1beta1::CostManagementConfig]
+        attr_accessor :cost_management_config
+      
         # [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.
         # org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
@@ -1015,6 +1020,7 @@ module Google
           @cluster_telemetry = args[:cluster_telemetry] if args.key?(:cluster_telemetry)
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
@@ -1179,6 +1185,11 @@ module Google
         # Corresponds to the JSON property `desiredClusterTelemetry`
         # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
         attr_accessor :desired_cluster_telemetry
+      
+        # Configuration for fine-grained cost management feature.
+        # Corresponds to the JSON property `desiredCostManagementConfig`
+        # @return [Google::Apis::ContainerV1beta1::CostManagementConfig]
+        attr_accessor :desired_cost_management_config
       
         # Configuration of etcd encryption.
         # Corresponds to the JSON property `desiredDatabaseEncryption`
@@ -1419,6 +1430,7 @@ module Google
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
+          @desired_cost_management_config = args[:desired_cost_management_config] if args.key?(:desired_cost_management_config)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
@@ -1548,6 +1560,26 @@ module Google
       
         # Whether to enable consumption metering for this cluster. If enabled, a second
         # BigQuery table will be created to hold resource consumption records.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for fine-grained cost management feature.
+      class CostManagementConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the feature is enabled or not.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
