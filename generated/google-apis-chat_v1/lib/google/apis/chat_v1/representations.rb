@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1AppUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1BorderStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCardV1ExtraData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCardV1Grid
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +263,12 @@ module Google
       end
       
       class GoogleAppsCardV1ImageCropStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCardV1Intent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -715,6 +733,16 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1AppUri
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_intent, as: 'androidIntent', class: Google::Apis::ChatV1::GoogleAppsCardV1Intent, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Intent::Representation
+      
+          property :companion_uri, as: 'companionUri'
+          property :ios_uri, as: 'iosUri'
+        end
+      end
+      
       class GoogleAppsCardV1BorderStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -837,6 +865,14 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1ExtraData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleAppsCardV1Grid
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -904,6 +940,15 @@ module Google
         end
       end
       
+      class GoogleAppsCardV1Intent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extra_data, as: 'extraData', class: Google::Apis::ChatV1::GoogleAppsCardV1ExtraData, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ExtraData::Representation
+      
+          property :intent_action, as: 'intentAction'
+        end
+      end
+      
       class GoogleAppsCardV1OnClick
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -921,6 +966,8 @@ module Google
       class GoogleAppsCardV1OpenLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_uri, as: 'appUri', class: Google::Apis::ChatV1::GoogleAppsCardV1AppUri, decorator: Google::Apis::ChatV1::GoogleAppsCardV1AppUri::Representation
+      
           property :on_close, as: 'onClose'
           property :open_as, as: 'openAs'
           property :url, as: 'url'
