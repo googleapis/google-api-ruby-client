@@ -64,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Imu
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatLng
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LatLngBounds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPhotoSequencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPhotosResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Measurement3d
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +125,12 @@ module Google
       end
       
       class PhotoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PhotoSequence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -189,11 +219,33 @@ module Google
         end
       end
       
+      class Imu
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accel_mpsps, as: 'accelMpsps', class: Google::Apis::StreetviewpublishV1::Measurement3d, decorator: Google::Apis::StreetviewpublishV1::Measurement3d::Representation
+      
+          collection :gyro_rps, as: 'gyroRps', class: Google::Apis::StreetviewpublishV1::Measurement3d, decorator: Google::Apis::StreetviewpublishV1::Measurement3d::Representation
+      
+          collection :mag_ut, as: 'magUt', class: Google::Apis::StreetviewpublishV1::Measurement3d, decorator: Google::Apis::StreetviewpublishV1::Measurement3d::Representation
+      
+        end
+      end
+      
       class LatLng
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
+        end
+      end
+      
+      class LatLngBounds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :northeast, as: 'northeast', class: Google::Apis::StreetviewpublishV1::LatLng, decorator: Google::Apis::StreetviewpublishV1::LatLng::Representation
+      
+          property :southwest, as: 'southwest', class: Google::Apis::StreetviewpublishV1::LatLng, decorator: Google::Apis::StreetviewpublishV1::LatLng::Representation
+      
         end
       end
       
@@ -205,12 +257,31 @@ module Google
         end
       end
       
+      class ListPhotoSequencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :photo_sequences, as: 'photoSequences', class: Google::Apis::StreetviewpublishV1::Operation, decorator: Google::Apis::StreetviewpublishV1::Operation::Representation
+      
+        end
+      end
+      
       class ListPhotosResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :photos, as: 'photos', class: Google::Apis::StreetviewpublishV1::Photo, decorator: Google::Apis::StreetviewpublishV1::Photo::Representation
       
+        end
+      end
+      
+      class Measurement3d
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capture_time, as: 'captureTime'
+          property :x, as: 'x'
+          property :y, as: 'y'
+          property :z, as: 'z'
         end
       end
       
@@ -264,6 +335,31 @@ module Google
       
           property :status, as: 'status', class: Google::Apis::StreetviewpublishV1::Status, decorator: Google::Apis::StreetviewpublishV1::Status::Representation
       
+        end
+      end
+      
+      class PhotoSequence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capture_time_override, as: 'captureTimeOverride'
+          property :distance_meters, as: 'distanceMeters'
+          property :failure_reason, as: 'failureReason'
+          property :filename, as: 'filename'
+          property :gps_source, as: 'gpsSource'
+          property :id, as: 'id'
+          property :imu, as: 'imu', class: Google::Apis::StreetviewpublishV1::Imu, decorator: Google::Apis::StreetviewpublishV1::Imu::Representation
+      
+          collection :photos, as: 'photos', class: Google::Apis::StreetviewpublishV1::Photo, decorator: Google::Apis::StreetviewpublishV1::Photo::Representation
+      
+          property :processing_state, as: 'processingState'
+          collection :raw_gps_timeline, as: 'rawGpsTimeline', class: Google::Apis::StreetviewpublishV1::Pose, decorator: Google::Apis::StreetviewpublishV1::Pose::Representation
+      
+          property :sequence_bounds, as: 'sequenceBounds', class: Google::Apis::StreetviewpublishV1::LatLngBounds, decorator: Google::Apis::StreetviewpublishV1::LatLngBounds::Representation
+      
+          property :upload_reference, as: 'uploadReference', class: Google::Apis::StreetviewpublishV1::UploadRef, decorator: Google::Apis::StreetviewpublishV1::UploadRef::Representation
+      
+          property :upload_time, as: 'uploadTime'
+          property :view_count, :numeric_string => true, as: 'viewCount'
         end
       end
       
