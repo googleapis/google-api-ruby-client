@@ -446,6 +446,37 @@ module Google
         end
       end
       
+      # A domain that the calling user manages in Google Domains.
+      class Domain
+        include Google::Apis::Core::Hashable
+      
+        # The domain name. Unicode domain names are expressed in Punycode format.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # The state of this domain as a `Registration` resource.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `yearlyPrice`
+        # @return [Google::Apis::DomainsV1beta1::Money]
+        attr_accessor :yearly_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @yearly_price = args[:yearly_price] if args.key?(:yearly_price)
+        end
+      end
+      
       # Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for
       # a domain. It contains a digest (hash) of a DNSKEY record that must be present
       # in the domain's DNS zone.
@@ -628,6 +659,32 @@ module Google
           @ds_records = args[:ds_records] if args.key?(:ds_records)
           @ds_state = args[:ds_state] if args.key?(:ds_state)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
+        end
+      end
+      
+      # Request for the `ImportDomain` method.
+      class ImportDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The domain name. Unicode domain names must be expressed in Punycode
+        # format.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # Set of labels associated with the `Registration`.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -1181,7 +1238,11 @@ module Google
         # registrar to unlock the domain for transfer and retrieve the domain's transfer
         # authorization code. Then call `RetrieveTransferParameters` to confirm that the
         # domain is unlocked and to get values needed to build a call to `TransferDomain`
-        # .
+        # . Finally, you can create a new `Registration` by importing an existing domain
+        # managed with [Google Domains](https://domains.google/). First, call `
+        # RetrieveImportableDomains` to list domains to which the calling user has
+        # sufficient access. Then call `ImportDomain` on any domain names you want to
+        # use with Cloud Domains.
         # Corresponds to the JSON property `registration`
         # @return [Google::Apis::DomainsV1beta1::Registration]
         attr_accessor :registration
@@ -1269,7 +1330,11 @@ module Google
       # registrar to unlock the domain for transfer and retrieve the domain's transfer
       # authorization code. Then call `RetrieveTransferParameters` to confirm that the
       # domain is unlocked and to get values needed to build a call to `TransferDomain`
-      # .
+      # . Finally, you can create a new `Registration` by importing an existing domain
+      # managed with [Google Domains](https://domains.google/). First, call `
+      # RetrieveImportableDomains` to list domains to which the calling user has
+      # sufficient access. Then call `ImportDomain` on any domain names you want to
+      # use with Cloud Domains.
       class Registration
         include Google::Apis::Core::Hashable
       
@@ -1332,6 +1397,12 @@ module Google
         # @return [Google::Apis::DomainsV1beta1::ContactSettings]
         attr_accessor :pending_contact_settings
       
+        # Output only. The reason the domain registration failed. Only set for domains
+        # in REGISTRATION_FAILED state.
+        # Corresponds to the JSON property `registerFailureReason`
+        # @return [String]
+        attr_accessor :register_failure_reason
+      
         # Output only. The state of the `Registration`
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1342,6 +1413,12 @@ module Google
         # Corresponds to the JSON property `supportedPrivacy`
         # @return [Array<String>]
         attr_accessor :supported_privacy
+      
+        # Output only. The reason the domain transfer failed. Only set for domains in
+        # TRANSFER_FAILED state.
+        # Corresponds to the JSON property `transferFailureReason`
+        # @return [String]
+        attr_accessor :transfer_failure_reason
       
         def initialize(**args)
            update!(**args)
@@ -1359,8 +1436,10 @@ module Google
           @management_settings = args[:management_settings] if args.key?(:management_settings)
           @name = args[:name] if args.key?(:name)
           @pending_contact_settings = args[:pending_contact_settings] if args.key?(:pending_contact_settings)
+          @register_failure_reason = args[:register_failure_reason] if args.key?(:register_failure_reason)
           @state = args[:state] if args.key?(:state)
           @supported_privacy = args[:supported_privacy] if args.key?(:supported_privacy)
+          @transfer_failure_reason = args[:transfer_failure_reason] if args.key?(:transfer_failure_reason)
         end
       end
       
@@ -1374,6 +1453,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response for the `RetrieveImportableDomains` method.
+      class RetrieveImportableDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of domains that the calling user manages in Google Domains.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::DomainsV1beta1::Domain>]
+        attr_accessor :domains
+      
+        # When present, there are more results to retrieve. Set `page_token` to this
+        # value on a subsequent call to get the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1592,7 +1697,11 @@ module Google
         # registrar to unlock the domain for transfer and retrieve the domain's transfer
         # authorization code. Then call `RetrieveTransferParameters` to confirm that the
         # domain is unlocked and to get values needed to build a call to `TransferDomain`
-        # .
+        # . Finally, you can create a new `Registration` by importing an existing domain
+        # managed with [Google Domains](https://domains.google/). First, call `
+        # RetrieveImportableDomains` to list domains to which the calling user has
+        # sufficient access. Then call `ImportDomain` on any domain names you want to
+        # use with Cloud Domains.
         # Corresponds to the JSON property `registration`
         # @return [Google::Apis::DomainsV1beta1::Registration]
         attr_accessor :registration
@@ -1631,6 +1740,11 @@ module Google
         # @return [String]
         attr_accessor :current_registrar
       
+        # The URL of registrar that currently manages the domain.
+        # Corresponds to the JSON property `currentRegistrarUri`
+        # @return [String]
+        attr_accessor :current_registrar_uri
+      
         # The domain name. Unicode domain names are expressed in Punycode format.
         # Corresponds to the JSON property `domainName`
         # @return [String]
@@ -1665,6 +1779,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_registrar = args[:current_registrar] if args.key?(:current_registrar)
+          @current_registrar_uri = args[:current_registrar_uri] if args.key?(:current_registrar_uri)
           @domain_name = args[:domain_name] if args.key?(:domain_name)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
           @supported_privacy = args[:supported_privacy] if args.key?(:supported_privacy)
