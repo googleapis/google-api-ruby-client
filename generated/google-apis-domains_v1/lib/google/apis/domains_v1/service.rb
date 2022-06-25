@@ -458,6 +458,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports a domain name from [Google Domains](https://domains.google/) for use
+        # in Cloud Domains. To transfer a domain from another registrar, use the `
+        # TransferDomain` method instead. Since individual users can own domains in
+        # Google Domains, the calling user must have ownership permission on the domain.
+        # @param [String] parent
+        #   Required. The parent resource of the Registration. Must be in the format `
+        #   projects/*/locations/*`.
+        # @param [Google::Apis::DomainsV1::ImportDomainRequest] import_domain_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_registration_domain(parent, import_domain_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/registrations:import', options)
+          command.request_representation = Google::Apis::DomainsV1::ImportDomainRequest::Representation
+          command.request_object = import_domain_request_object
+          command.response_representation = Google::Apis::DomainsV1::Operation::Representation
+          command.response_class = Google::Apis::DomainsV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the `Registration` resources in a project.
         # @param [String] parent
         #   Required. The project and location from which to list `Registration`s,
@@ -663,6 +700,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists domain names from [Google Domains](https://domains.google/) that can be
+        # imported to Cloud Domains using the `ImportDomain` method. Since individual
+        # users can own domains in Google Domains, the list of domains returned depends
+        # on the individual user making the call. Domains supported by Google Domains,
+        # but not supported by Cloud Domains, are not returned.
+        # @param [String] location
+        #   Required. The location. Must be in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Maximum number of results to return.
+        # @param [String] page_token
+        #   When set to the `next_page_token` from a prior response, provides the next
+        #   page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DomainsV1::RetrieveImportableDomainsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DomainsV1::RetrieveImportableDomainsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_registration_importable_domains(location, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+location}/registrations:retrieveImportableDomains', options)
+          command.response_representation = Google::Apis::DomainsV1::RetrieveImportableDomainsResponse::Representation
+          command.response_class = Google::Apis::DomainsV1::RetrieveImportableDomainsResponse
+          command.params['location'] = location unless location.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets parameters needed to register a new domain name, including price and up-
         # to-date availability. Use the returned values to call `RegisterDomain`.
         # @param [String] location
@@ -699,8 +777,9 @@ module Google
         end
         
         # Gets parameters needed to transfer a domain name from another registrar to
-        # Cloud Domains. For domains managed by Google Domains, transferring to Cloud
-        # Domains is not supported. Use the returned values to call `TransferDomain`.
+        # Cloud Domains. For domains already managed by [Google Domains](https://domains.
+        # google/), use `ImportDomain` instead. Use the returned values to call `
+        # TransferDomain`.
         # @param [String] location
         #   Required. The location. Must be in the format `projects/*/locations/*`.
         # @param [String] domain_name
@@ -847,20 +926,20 @@ module Google
         end
         
         # Transfers a domain name from another registrar to Cloud Domains. For domains
-        # managed by Google Domains, transferring to Cloud Domains is not supported.
-        # Before calling this method, go to the domain's current registrar to unlock the
-        # domain for transfer and retrieve the domain's transfer authorization code.
-        # Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
-        # and to get values needed to build a call to this method. A successful call
-        # creates a `Registration` resource in state `TRANSFER_PENDING`. It can take
-        # several days to complete the transfer process. The registrant can often speed
-        # up this process by approving the transfer through the current registrar,
-        # either by clicking a link in an email from the registrar or by visiting the
-        # registrar's website. A few minutes after transfer approval, the resource
-        # transitions to state `ACTIVE`, indicating that the transfer was successful. If
-        # the transfer is rejected or the request expires without being approved, the
-        # resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can
-        # safely delete the resource and retry the transfer.
+        # already managed by [Google Domains](https://domains.google/), use `
+        # ImportDomain` instead. Before calling this method, go to the domain's current
+        # registrar to unlock the domain for transfer and retrieve the domain's transfer
+        # authorization code. Then call `RetrieveTransferParameters` to confirm that the
+        # domain is unlocked and to get values needed to build a call to this method. A
+        # successful call creates a `Registration` resource in state `TRANSFER_PENDING`.
+        # It can take several days to complete the transfer process. The registrant can
+        # often speed up this process by approving the transfer through the current
+        # registrar, either by clicking a link in an email from the registrar or by
+        # visiting the registrar's website. A few minutes after transfer approval, the
+        # resource transitions to state `ACTIVE`, indicating that the transfer was
+        # successful. If the transfer is rejected or the request expires without being
+        # approved, the resource can end up in state `TRANSFER_FAILED`. If transfer
+        # fails, you can safely delete the resource and retry the transfer.
         # @param [String] parent
         #   Required. The parent resource of the `Registration`. Must be in the format `
         #   projects/*/locations/*`.
