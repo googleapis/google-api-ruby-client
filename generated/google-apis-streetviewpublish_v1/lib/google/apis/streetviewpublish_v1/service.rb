@@ -261,6 +261,208 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # After the client finishes uploading the PhotoSequence with the returned
+        # UploadRef, CreatePhotoSequence extracts a sequence of 360 photos from a video
+        # or Extensible Device Metadata (XDM, http://www.xdm.org/) to be published to
+        # Street View on Google Maps. `CreatePhotoSequence` returns an Operation, with
+        # the PhotoSequence Id set in the `Operation.name` field. This method returns
+        # the following error codes: * google.rpc.Code.INVALID_ARGUMENT if the request
+        # is malformed. * google.rpc.Code.NOT_FOUND if the upload reference does not
+        # exist.
+        # @param [Google::Apis::StreetviewpublishV1::PhotoSequence] photo_sequence_object
+        # @param [String] input_type
+        #   Required. The input form of PhotoSequence.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StreetviewpublishV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StreetviewpublishV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_photo_sequence(photo_sequence_object = nil, input_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/photoSequence', options)
+          command.request_representation = Google::Apis::StreetviewpublishV1::PhotoSequence::Representation
+          command.request_object = photo_sequence_object
+          command.response_representation = Google::Apis::StreetviewpublishV1::Operation::Representation
+          command.response_class = Google::Apis::StreetviewpublishV1::Operation
+          command.query['inputType'] = input_type unless input_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a PhotoSequence and its metadata. This method returns the following
+        # error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did
+        # not create the requested photo sequence. * google.rpc.Code.NOT_FOUND if the
+        # photo sequence ID does not exist. * google.rpc.Code.FAILED_PRECONDITION if the
+        # photo sequence ID is not yet finished processing.
+        # @param [String] sequence_id
+        #   Required. ID of the PhotoSequence.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StreetviewpublishV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StreetviewpublishV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_photo_sequence(sequence_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/photoSequence/{sequenceId}', options)
+          command.response_representation = Google::Apis::StreetviewpublishV1::Empty::Representation
+          command.response_class = Google::Apis::StreetviewpublishV1::Empty
+          command.params['sequenceId'] = sequence_id unless sequence_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the metadata of the specified PhotoSequence via the Operation interface.
+        # This method returns the following three types of responses: * `Operation.done`
+        # = false, if the processing of PhotoSequence is not finished yet. * `Operation.
+        # done` = true and `Operation.error` is populated, if there was an error in
+        # processing. * `Operation.done` = true and `Operation.response` is poulated,
+        # which contains a PhotoSequence message. This method returns the following
+        # error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did
+        # not create the requested PhotoSequence. * google.rpc.Code.NOT_FOUND if the
+        # requested PhotoSequence does not exist.
+        # @param [String] sequence_id
+        #   Required. ID of the photo sequence.
+        # @param [String] filter
+        #   Optional. The filter expression. For example: `published_status=PUBLISHED`.
+        #   The filters supported are: `published_status`. See https://google.aip.dev/160
+        #   for more information.
+        # @param [String] view
+        #   Specifies if a download URL for the photo sequence should be returned in `
+        #   download_url` of individual photos in the PhotoSequence response. > Note:
+        #   Currently not implemented.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StreetviewpublishV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StreetviewpublishV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_photo_sequence(sequence_id, filter: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/photoSequence/{sequenceId}', options)
+          command.response_representation = Google::Apis::StreetviewpublishV1::Operation::Representation
+          command.response_class = Google::Apis::StreetviewpublishV1::Operation
+          command.params['sequenceId'] = sequence_id unless sequence_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an upload session to start uploading photo sequence data. The upload
+        # URL of the returned UploadRef is used to upload the data for the `
+        # photoSequence`. After the upload is complete, the UploadRef is used with
+        # CreatePhotoSequence to create the PhotoSequence object entry.
+        # @param [Google::Apis::StreetviewpublishV1::Empty] empty_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StreetviewpublishV1::UploadRef] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StreetviewpublishV1::UploadRef]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_photo_sequence_upload(empty_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/photoSequence:startUpload', options)
+          command.request_representation = Google::Apis::StreetviewpublishV1::Empty::Representation
+          command.request_object = empty_object
+          command.response_representation = Google::Apis::StreetviewpublishV1::UploadRef::Representation
+          command.response_class = Google::Apis::StreetviewpublishV1::UploadRef
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the PhotoSequences that belong to the user, in descending
+        # CreatePhotoSequence timestamp order.
+        # @param [String] filter
+        #   Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The
+        #   filters supported are: `imagery_type`, `processing_state`, `min_latitude`, `
+        #   max_latitude`, `min_longitude`, `max_longitude`, and `filename_query`. See
+        #   https://google.aip.dev/160 for more information. Filename queries should sent
+        #   as a Phrase in order to support multple words and special characters by adding
+        #   escaped quotes. Ex: filename_query="example of a phrase.mp4"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of photo sequences to return. `pageSize` must be
+        #   non-negative. If `pageSize` is zero or is not provided, the default page size
+        #   of 100 is used. The number of photo sequences returned in the response may be
+        #   less than `pageSize` if the number of matches is less than `pageSize`. This is
+        #   currently unimplemented but is in process.
+        # @param [String] page_token
+        #   Optional. The nextPageToken value returned from a previous ListPhotoSequences
+        #   request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StreetviewpublishV1::ListPhotoSequencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StreetviewpublishV1::ListPhotoSequencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_photo_sequences(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/photoSequences', options)
+          command.response_representation = Google::Apis::StreetviewpublishV1::ListPhotoSequencesResponse::Representation
+          command.response_class = Google::Apis::StreetviewpublishV1::ListPhotoSequencesResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos
         # fails, either critical fields are missing or there is an authentication error.
         # Even if BatchDeletePhotos succeeds, individual photos in the batch may have
