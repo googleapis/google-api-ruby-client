@@ -306,7 +306,7 @@ module Google
       
         # A set of features that Security Token Service supports, in addition to the
         # standard OAuth 2.0 token exchange, formatted as a serialized JSON object of
-        # Options.
+        # Options. The size of the parameter value must not exceed 4096 characters.
         # Corresponds to the JSON property `options`
         # @return [String]
         attr_accessor :options
