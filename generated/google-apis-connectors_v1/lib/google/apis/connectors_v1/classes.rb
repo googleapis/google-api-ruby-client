@@ -120,7 +120,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Oauth2JwtBearer]
         attr_accessor :oauth2_jwt_bearer
       
-        # SSH Public Key.
+        # Parameters to support Ssh public key Authentication.
         # Corresponds to the JSON property `sshPublicKey`
         # @return [Google::Apis::ConnectorsV1::SshPublicKey]
         attr_accessor :ssh_public_key
@@ -398,6 +398,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Outbound domains/hosts needs to be allowlisted.
+        # Corresponds to the JSON property `egressBackends`
+        # @return [Array<String>]
+        attr_accessor :egress_backends
+      
         # Output only. GCR location where the envoy image is stored. formatted like: gcr.
         # io/`bucketName`/`imageName`
         # Corresponds to the JSON property `envoyImageLocation`
@@ -469,6 +474,7 @@ module Google
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @egress_backends = args[:egress_backends] if args.key?(:egress_backends)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
@@ -1842,11 +1848,6 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Output only. Resource name of the form: `projects/*/locations/*/runtimeConfig`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # Output only. The endpoint of the connectors runtime ingress.
         # Corresponds to the JSON property `runtimeEndpoint`
         # @return [String]
@@ -1878,7 +1879,6 @@ module Google
           @control_plane_subscription = args[:control_plane_subscription] if args.key?(:control_plane_subscription)
           @control_plane_topic = args[:control_plane_topic] if args.key?(:control_plane_topic)
           @location_id = args[:location_id] if args.key?(:location_id)
-          @name = args[:name] if args.key?(:name)
           @runtime_endpoint = args[:runtime_endpoint] if args.key?(:runtime_endpoint)
           @schema_gcs_bucket = args[:schema_gcs_bucket] if args.key?(:schema_gcs_bucket)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
@@ -2009,7 +2009,7 @@ module Google
         end
       end
       
-      # 
+      # Parameters to support Ssh public key Authentication.
       class SshPublicKey
         include Google::Apis::Core::Hashable
       
