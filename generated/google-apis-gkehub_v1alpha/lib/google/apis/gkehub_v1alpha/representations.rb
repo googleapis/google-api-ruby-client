@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyControllerMonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyControllerTemplateLibraryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1572,6 +1578,8 @@ module Google
           collection :exemptable_namespaces, as: 'exemptableNamespaces'
           property :install_spec, as: 'installSpec'
           property :log_denies_enabled, as: 'logDeniesEnabled'
+          property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1alpha::PolicyControllerMonitoringConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMonitoringConfig::Representation
+      
           property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig::Representation
@@ -1613,6 +1621,13 @@ module Google
           property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1alpha::PolicyControllerHubState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerHubState::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class PolicyControllerMonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backends, as: 'backends'
         end
       end
       
