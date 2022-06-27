@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BloggerV3
-      # Blogger API v3
+      # Blogger API
       #
       # The Blogger API provides access to posts, comments and pages of a Blogger blog.
       #

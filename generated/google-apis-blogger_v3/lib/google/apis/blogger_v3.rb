@@ -19,13 +19,13 @@ require 'google/apis/blogger_v3/gem_version.rb'
 
 module Google
   module Apis
-    # Blogger API v3
+    # Blogger API
     #
     # The Blogger API provides access to posts, comments and pages of a Blogger blog.
     #
     # @see https://developers.google.com/blogger/docs/3.0/getting_started
     module BloggerV3
-      # Version of the Blogger API v3 this client connects to.
+      # Version of the Blogger API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V3'
 
