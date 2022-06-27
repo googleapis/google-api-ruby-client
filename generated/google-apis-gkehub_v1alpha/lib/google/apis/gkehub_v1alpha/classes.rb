@@ -3273,6 +3273,13 @@ module Google
         attr_accessor :log_denies_enabled
         alias_method :log_denies_enabled?, :log_denies_enabled
       
+        # MonitoringConfig specifies the backends Policy Controller should export
+        # metrics to. For example, to specify metrics should be exported to Cloud
+        # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMonitoringConfig]
+        attr_accessor :monitoring
+      
         # Enables the ability to mutate resources using Policy Controller.
         # Corresponds to the JSON property `mutationEnabled`
         # @return [Boolean]
@@ -3301,6 +3308,7 @@ module Google
           @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
           @install_spec = args[:install_spec] if args.key?(:install_spec)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
           @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_config = args[:template_library_config] if args.key?(:template_library_config)
@@ -3418,6 +3426,28 @@ module Google
           @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
           @policy_controller_hub_state = args[:policy_controller_hub_state] if args.key?(:policy_controller_hub_state)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # MonitoringConfig specifies the backends Policy Controller should export
+      # metrics to. For example, to specify metrics should be exported to Cloud
+      # Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
+      class PolicyControllerMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the list of backends Policy Controller will export to. An empty list
+        # would effectively disable metrics export.
+        # Corresponds to the JSON property `backends`
+        # @return [Array<String>]
+        attr_accessor :backends
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backends = args[:backends] if args.key?(:backends)
         end
       end
       
