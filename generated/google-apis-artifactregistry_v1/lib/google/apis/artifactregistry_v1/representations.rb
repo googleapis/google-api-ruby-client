@@ -148,7 +148,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMavenArtifactsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNpmPackagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPackagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPythonPackagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,7 +196,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MavenRepositoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NpmPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -209,6 +239,12 @@ module Google
       end
       
       class ProjectSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PythonPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -500,11 +536,38 @@ module Google
         end
       end
       
+      class ListMavenArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::ArtifactregistryV1::MavenArtifact, decorator: Google::Apis::ArtifactregistryV1::MavenArtifact::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListNpmPackagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :npm_packages, as: 'npmPackages', class: Google::Apis::ArtifactregistryV1::NpmPackage, decorator: Google::Apis::ArtifactregistryV1::NpmPackage::Representation
+      
+        end
+      end
+      
       class ListPackagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :packages, as: 'packages', class: Google::Apis::ArtifactregistryV1::Package, decorator: Google::Apis::ArtifactregistryV1::Package::Representation
+      
+        end
+      end
+      
+      class ListPythonPackagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :python_packages, as: 'pythonPackages', class: Google::Apis::ArtifactregistryV1::PythonPackage, decorator: Google::Apis::ArtifactregistryV1::PythonPackage::Representation
       
         end
       end
@@ -547,11 +610,36 @@ module Google
         end
       end
       
+      class MavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :create_time, as: 'createTime'
+          property :group_id, as: 'groupId'
+          property :name, as: 'name'
+          property :pom_uri, as: 'pomUri'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+        end
+      end
+      
       class MavenRepositoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_snapshot_overwrites, as: 'allowSnapshotOverwrites'
           property :version_policy, as: 'versionPolicy'
+        end
+      end
+      
+      class NpmPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          collection :tags, as: 'tags'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
         end
       end
       
@@ -598,6 +686,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :legacy_redirection_state, as: 'legacyRedirectionState'
           property :name, as: 'name'
+        end
+      end
+      
+      class PythonPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :update_time, as: 'updateTime'
+          property :uri, as: 'uri'
+          property :version, as: 'version'
         end
       end
       
