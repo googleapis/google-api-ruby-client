@@ -1631,17 +1631,55 @@ module Google
         end
       end
       
+      # ContainerHealthDetails reflects the health details of a container.
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
+        include Google::Apis::Core::Hashable
+      
+        # The version of the current config.
+        # Corresponds to the JSON property `currentConfigVersion`
+        # @return [String]
+        attr_accessor :current_config_version
+      
+        # The latest error message.
+        # Corresponds to the JSON property `errorMsg`
+        # @return [String]
+        attr_accessor :error_msg
+      
+        # The version of the expected config.
+        # Corresponds to the JSON property `expectedConfigVersion`
+        # @return [String]
+        attr_accessor :expected_config_version
+      
+        # The extended status. Such as ExitCode, StartedAt, FinishedAt, etc.
+        # Corresponds to the JSON property `extendedStatus`
+        # @return [Hash<String,String>]
+        attr_accessor :extended_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_config_version = args[:current_config_version] if args.key?(:current_config_version)
+          @error_msg = args[:error_msg] if args.key?(:error_msg)
+          @expected_config_version = args[:expected_config_version] if args.key?(:expected_config_version)
+          @extended_status = args[:extended_status] if args.key?(:extended_status)
+        end
+      end
+      
       # ImageConfig defines the control plane images to run.
       class GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig
         include Google::Apis::Core::Hashable
       
         # The stable image that the remote agent will fallback to if the target image
-        # fails.
+        # fails. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1
         # Corresponds to the JSON property `stableImage`
         # @return [String]
         attr_accessor :stable_image
       
         # The initial image the remote agent will attempt to run for the control plane.
+        # Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1
         # Corresponds to the JSON property `targetImage`
         # @return [String]
         attr_accessor :target_image
@@ -1724,6 +1762,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pubsub_subscription = args[:pubsub_subscription] if args.key?(:pubsub_subscription)
+        end
+      end
+      
+      # RemoteAgentDetails reflects the details of a remote agent.
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1834,6 +1885,59 @@ module Google
           @status = args[:status] if args.key?(:status)
           @sub = args[:sub] if args.key?(:sub)
           @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have been cancelled successfully have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
