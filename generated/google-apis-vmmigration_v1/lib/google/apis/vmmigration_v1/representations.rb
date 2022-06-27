@@ -396,6 +396,7 @@ module Google
       class AwsSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
           property :firmware, as: 'firmware'
         end
       end
