@@ -1,6 +1,6 @@
 {
     "api_id": "blogger:v2",
-    "name_pretty": "Blogger API v3",
+    "name_pretty": "Blogger API",
     "distribution_name": "google-apis-blogger_v2",
     "language": "ruby",
     "library_type": "REST"
