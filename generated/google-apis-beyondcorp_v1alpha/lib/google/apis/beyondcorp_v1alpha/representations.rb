@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +293,12 @@ module Google
       end
       
       class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -892,6 +910,16 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_config_version, as: 'currentConfigVersion'
+          property :error_msg, as: 'errorMsg'
+          property :expected_config_version, as: 'expectedConfigVersion'
+          hash :extended_status, as: 'extendedStatus'
+        end
+      end
+      
       class GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -925,6 +953,12 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -952,6 +986,18 @@ module Google
           collection :sub, as: 'sub', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo::Representation
       
           property :time, as: 'time'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
