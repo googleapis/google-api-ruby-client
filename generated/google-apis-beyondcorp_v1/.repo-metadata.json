@@ -1,0 +1,7 @@
+{
+    "api_id": "beyondcorp:v1",
+    "name_pretty": "BeyondCorp API",
+    "distribution_name": "google-apis-beyondcorp_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
