@@ -146,6 +146,11 @@ module Google
       class AwsSourceVmDetails
         include Google::Apis::Core::Hashable
       
+        # The total size of the disks being migrated in bytes.
+        # Corresponds to the JSON property `committedStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_bytes
+      
         # The firmware type of the source VM.
         # Corresponds to the JSON property `firmware`
         # @return [String]
@@ -157,6 +162,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
           @firmware = args[:firmware] if args.key?(:firmware)
         end
       end
