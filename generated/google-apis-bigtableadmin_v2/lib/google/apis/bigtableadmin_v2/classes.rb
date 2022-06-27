@@ -2282,6 +2282,51 @@ module Google
         end
       end
       
+      # Metadata type for the operation returned by google.bigtable.admin.v2.
+      # BigtableTableAdmin.UndeleteTable.
+      class UndeleteTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was cancelled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of the table being restored.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for google.bigtable.admin.v2.BigtableTableAdmin.UndeleteTable
+      class UndeleteTableRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A GcRule which deletes cells matching any of the given rules.
       class Union
         include Google::Apis::Core::Hashable
