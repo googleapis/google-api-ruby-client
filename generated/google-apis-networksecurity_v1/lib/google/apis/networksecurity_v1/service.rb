@@ -84,8 +84,8 @@ module Google
         #   The resource that owns the locations collection, if applicable.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
-        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
-        #   AIP-160](https://google.aip.dev/160).
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of results to return. If not set, the service selects a
         #   default.
@@ -227,8 +227,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -352,8 +353,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -390,8 +392,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -526,8 +529,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -651,8 +655,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -689,8 +694,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -975,8 +981,9 @@ module Google
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The maximum policy version that will be used to format the policy.
         #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
@@ -1100,8 +1107,9 @@ module Google
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1138,8 +1146,9 @@ module Google
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See the
-        #   operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
         # @param [Google::Apis::NetworksecurityV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
