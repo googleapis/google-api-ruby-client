@@ -687,6 +687,58 @@ module Google
         end
       end
       
+      # The response from listing maven artifacts.
+      class ListMavenArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The maven artifacts returned.
+        # Corresponds to the JSON property `mavenArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::MavenArtifact>]
+        attr_accessor :maven_artifacts
+      
+        # The token to retrieve the next page of artifacts, or empty if there are no
+        # more artifacts to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response from listing npm packages.
+      class ListNpmPackagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of artifacts, or empty if there are no
+        # more artifacts to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The npm packages returned.
+        # Corresponds to the JSON property `npmPackages`
+        # @return [Array<Google::Apis::ArtifactregistryV1::NpmPackage>]
+        attr_accessor :npm_packages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
+        end
+      end
+      
       # The response from listing packages.
       class ListPackagesResponse
         include Google::Apis::Core::Hashable
@@ -710,6 +762,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @packages = args[:packages] if args.key?(:packages)
+        end
+      end
+      
+      # The response from listing python packages.
+      class ListPythonPackagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of artifacts, or empty if there are no
+        # more artifacts to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The python packages returned.
+        # Corresponds to the JSON property `pythonPackages`
+        # @return [Array<Google::Apis::ArtifactregistryV1::PythonPackage>]
+        attr_accessor :python_packages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
       
@@ -838,6 +916,67 @@ module Google
         end
       end
       
+      # MavenArtifact represents a maven artifact.
+      class MavenArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Artifact ID for the artifact.
+        # Corresponds to the JSON property `artifactId`
+        # @return [String]
+        attr_accessor :artifact_id
+      
+        # Output only. Time the artifact was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Group ID for the artifact. Example: com.google.guava
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Required. registry_location, project_id, repository_name and maven_artifact
+        # forms a unique artifact For example, "projects/test-project/locations/us-west4/
+        # repositories/test-repo/mavenArtifacts/ com.google.guava:guava:31.0-jre", where
+        # "us-west4" is the registry_location, "test-project" is the project_id, "test-
+        # repo" is the repository_name and "com.google.guava:guava:31.0-jre" is the
+        # maven artifact.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. URL to access the pom file of the artifact. Example: us-west4-maven.
+        # pkg.dev/test-project/test-repo/com/google/guava/guava/31.0/guava-31.0.pom
+        # Corresponds to the JSON property `pomUri`
+        # @return [String]
+        attr_accessor :pom_uri
+      
+        # Output only. Time the artifact was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Version of this artifact.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @name = args[:name] if args.key?(:name)
+          @pom_uri = args[:pom_uri] if args.key?(:pom_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # MavenRepositoryConfig is maven related repository details. Provides additional
       # configuration details for repositories of the maven format type.
       class MavenRepositoryConfig
@@ -862,6 +1001,59 @@ module Google
         def update!(**args)
           @allow_snapshot_overwrites = args[:allow_snapshot_overwrites] if args.key?(:allow_snapshot_overwrites)
           @version_policy = args[:version_policy] if args.key?(:version_policy)
+        end
+      end
+      
+      # NpmPackage represents an npm artifact.
+      class NpmPackage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time the package was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. registry_location, project_id, repository_name and npm_package forms
+        # a unique package For example, "projects/test-project/locations/us-west4/
+        # repositories/test-repo/npmPackages/ npm_test:1.0.0", where "us-west4" is the
+        # registry_location, "test-project" is the project_id, "test-repo" is the
+        # repository_name and npm_test:1.0.0" is the npm package.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Package for the artifact.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Tags attached to this package.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Output only. Time the package was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Version of this package.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @tags = args[:tags] if args.key?(:tags)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1092,6 +1284,61 @@ module Google
         def update!(**args)
           @legacy_redirection_state = args[:legacy_redirection_state] if args.key?(:legacy_redirection_state)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # PythonPackage represents a python artifact.
+      class PythonPackage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time the package was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. registry_location, project_id, repository_name and python_package
+        # forms a unique package name:`projects//locations//repository//pythonPackages/`.
+        # For example, "projects/test-project/locations/us-west4/repositories/test-repo/
+        # pythonPackages/ python_package:1.0.0", where "us-west4" is the
+        # registry_location, "test-project" is the project_id, "test-repo" is the
+        # repository_name and python_package:1.0.0" is the python package.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Package for the artifact.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Output only. Time the package was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. URL to access the package. Example: us-west4-python.pkg.dev/test-
+        # project/test-repo/python_package/file-name-1.0.0.tar.gz
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Version of this package.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @uri = args[:uri] if args.key?(:uri)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
