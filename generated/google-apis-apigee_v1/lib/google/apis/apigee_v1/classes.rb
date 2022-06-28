@@ -257,6 +257,11 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig]
         attr_accessor :advanced_api_ops_config
       
+        # Configurations of the API Security add-on.
+        # Corresponds to the JSON property `apiSecurityConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig]
+        attr_accessor :api_security_config
+      
         # Configuration for the Connectors Platform add-on.
         # Corresponds to the JSON property `connectorsPlatformConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig]
@@ -279,6 +284,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_api_ops_config = args[:advanced_api_ops_config] if args.key?(:advanced_api_ops_config)
+          @api_security_config = args[:api_security_config] if args.key?(:api_security_config)
           @connectors_platform_config = args[:connectors_platform_config] if args.key?(:connectors_platform_config)
           @integration_config = args[:integration_config] if args.key?(:integration_config)
           @monetization_config = args[:monetization_config] if args.key?(:monetization_config)
@@ -925,6 +931,33 @@ module Google
         end
       end
       
+      # Configurations of the API Security add-on.
+      class GoogleCloudApigeeV1ApiSecurityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the API security add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Time at which the API Security add-on expires in in milliseconds
+        # since epoch. If unspecified, the add-on will never expire.
+        # Corresponds to the JSON property `expiresAt`
+        # @return [Fixnum]
+        attr_accessor :expires_at
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @expires_at = args[:expires_at] if args.key?(:expires_at)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1App
         include Google::Apis::Core::Hashable
@@ -1514,6 +1547,102 @@ module Google
         def update!(**args)
           @match_wild_cards = args[:match_wild_cards] if args.key?(:match_wild_cards)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request for ComputeEnvironmentScores.
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filters are used to filter scored components. Return all the
+        # components if no filter is mentioned. Example: [` "scorePath": "/org@myorg/
+        # envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/source" `, ` "scorePath": "
+        # /org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/target", `]
+        # This will return components with path: "/org@myorg/envgroup@myenvgroup/env@
+        # myenv/proxies/proxy@myproxy/source" OR "/org@myorg/envgroup@myenvgroup/env@
+        # myenv/proxies/proxy@myproxy/target"
+        # Corresponds to the JSON property `filters`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter>]
+        attr_accessor :filters
+      
+        # Optional. The maximum number of subcomponents to be returned in a single page.
+        # The service may return fewer than this value. If unspecified, at most 100
+        # subcomponents will be returned in a single page.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A token that can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeInterval]
+        attr_accessor :time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filters = args[:filters] if args.key?(:filters)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @time_range = args[:time_range] if args.key?(:time_range)
+        end
+      end
+      
+      # Filter scores by component path. Used custom filter instead of AIP-160 as the
+      # use cases are highly constrained and predictable.
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Return scores for this component. Example: "/org@myorg/envgroup@
+        # myenvgroup/env@myenv/proxies/proxy@myproxy/source"
+        # Corresponds to the JSON property `scorePath`
+        # @return [String]
+        attr_accessor :score_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_path = args[:score_path] if args.key?(:score_path)
+        end
+      end
+      
+      # Response for ComputeEnvironmentScores.
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # A page token, received from a previous `ComputeScore` call. Provide this to
+        # retrieve the subsequent page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of scores. One score per day.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Score>]
+        attr_accessor :scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scores = args[:scores] if args.key?(:scores)
         end
       end
       
@@ -4898,6 +5027,88 @@ module Google
         end
       end
       
+      # Response for ListSecurityProfileRevisions.
+      class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of security profile revisions. The revisions may be attached or
+        # unattached to any environment.
+        # Corresponds to the JSON property `securityProfiles`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile>]
+        attr_accessor :security_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profiles = args[:security_profiles] if args.key?(:security_profiles)
+        end
+      end
+      
+      # Response for ListSecurityProfiles.
+      class GoogleCloudApigeeV1ListSecurityProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of security profiles in the organization. The profiles may be attached or
+        # unattached to any environment. This will return latest revision of each
+        # profile.
+        # Corresponds to the JSON property `securityProfiles`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile>]
+        attr_accessor :security_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_profiles = args[:security_profiles] if args.key?(:security_profiles)
+        end
+      end
+      
+      # The response for SecurityReports.
+      class GoogleCloudApigeeV1ListSecurityReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If the number of security reports exceeded the page size requested, the token
+        # can be used to fetch the next page in a subsequent call. If the response is
+        # the last page and there are no more reports to return this field is left empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The security reports belong to requested resource name.
+        # Corresponds to the JSON property `securityReports`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport>]
+        attr_accessor :security_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_reports = args[:security_reports] if args.key?(:security_reports)
+        end
+      end
+      
       # To change this message, in the same CL add a change log in go/changing-api-
       # proto-breaks-ui
       class GoogleCloudApigeeV1ListSharedFlowsResponse
@@ -6895,6 +7106,699 @@ module Google
         end
       end
       
+      # Represents Security Score.
+      class GoogleCloudApigeeV1Score
+        include Google::Apis::Core::Hashable
+      
+        # Component is an individual security element that is scored.
+        # Corresponds to the JSON property `component`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent]
+        attr_accessor :component
+      
+        # List of all the drilldown score components.
+        # Corresponds to the JSON property `subcomponents`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent>]
+        attr_accessor :subcomponents
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeInterval]
+        attr_accessor :time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component = args[:component] if args.key?(:component)
+          @subcomponents = args[:subcomponents] if args.key?(:subcomponents)
+          @time_range = args[:time_range] if args.key?(:time_range)
+        end
+      end
+      
+      # Component is an individual security element that is scored.
+      class GoogleCloudApigeeV1ScoreComponent
+        include Google::Apis::Core::Hashable
+      
+        # Time when score was calculated.
+        # Corresponds to the JSON property `calculateTime`
+        # @return [String]
+        attr_accessor :calculate_time
+      
+        # Time in the requested time period when data was last captured to compute the
+        # score.
+        # Corresponds to the JSON property `dataCaptureTime`
+        # @return [String]
+        attr_accessor :data_capture_time
+      
+        # List of paths for next components.
+        # Corresponds to the JSON property `drilldownPaths`
+        # @return [Array<String>]
+        attr_accessor :drilldown_paths
+      
+        # List of recommendations to improve API security.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendation>]
+        attr_accessor :recommendations
+      
+        # Score for the component.
+        # Corresponds to the JSON property `score`
+        # @return [Fixnum]
+        attr_accessor :score
+      
+        # Path of the component. Example: /org@myorg/envgroup@myenvgroup/proxies/proxy@
+        # myproxy
+        # Corresponds to the JSON property `scorePath`
+        # @return [String]
+        attr_accessor :score_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculate_time = args[:calculate_time] if args.key?(:calculate_time)
+          @data_capture_time = args[:data_capture_time] if args.key?(:data_capture_time)
+          @drilldown_paths = args[:drilldown_paths] if args.key?(:drilldown_paths)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+          @score = args[:score] if args.key?(:score)
+          @score_path = args[:score_path] if args.key?(:score_path)
+        end
+      end
+      
+      # Recommendation based on security concerns and score.
+      class GoogleCloudApigeeV1ScoreComponentRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Actions for the recommendation to improve the security score.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationAction>]
+        attr_accessor :actions
+      
+        # Description of the recommendation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Potential impact of this recommendation on the overall score. This denotes how
+        # important this recommendation is to improve the score.
+        # Corresponds to the JSON property `impact`
+        # @return [Fixnum]
+        attr_accessor :impact
+      
+        # Title represents recommendation title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @description = args[:description] if args.key?(:description)
+          @impact = args[:impact] if args.key?(:impact)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Action to improve security score.
+      class GoogleCloudApigeeV1ScoreComponentRecommendationAction
+        include Google::Apis::Core::Hashable
+      
+        # Action context are all the relevant details for the action.
+        # Corresponds to the JSON property `actionContext`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext]
+        attr_accessor :action_context
+      
+        # Description of the action.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_context = args[:action_context] if args.key?(:action_context)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Action context are all the relevant details for the action.
+      class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext
+        include Google::Apis::Core::Hashable
+      
+        # Documentation link for the action.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+        end
+      end
+      
+      # Represents a SecurityProfile resource.
+      class GoogleCloudApigeeV1SecurityProfile
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the security profile.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # List of environments attached to security profile.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironment>]
+        attr_accessor :environments
+      
+        # Output only. Maximum security score that can be generated by this profile.
+        # Corresponds to the JSON property `maxScore`
+        # @return [Fixnum]
+        attr_accessor :max_score
+      
+        # Output only. Minimum security score that can be generated by this profile.
+        # Corresponds to the JSON property `minScore`
+        # @return [Fixnum]
+        attr_accessor :min_score
+      
+        # Immutable. Name of the security profile resource. Format: organizations/`org`/
+        # securityProfiles/`profile`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when revision was created.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Output only. Revision ID of the security profile.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # Output only. The time when revision was published. Once published, the
+        # security profile revision cannot be updated further and can be attached to
+        # environments.
+        # Corresponds to the JSON property `revisionPublishTime`
+        # @return [String]
+        attr_accessor :revision_publish_time
+      
+        # Output only. The time when revision was updated.
+        # Corresponds to the JSON property `revisionUpdateTime`
+        # @return [String]
+        attr_accessor :revision_update_time
+      
+        # List of profile scoring configs in this revision.
+        # Corresponds to the JSON property `scoringConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileScoringConfig>]
+        attr_accessor :scoring_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environments = args[:environments] if args.key?(:environments)
+          @max_score = args[:max_score] if args.key?(:max_score)
+          @min_score = args[:min_score] if args.key?(:min_score)
+          @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @revision_publish_time = args[:revision_publish_time] if args.key?(:revision_publish_time)
+          @revision_update_time = args[:revision_update_time] if args.key?(:revision_update_time)
+          @scoring_configs = args[:scoring_configs] if args.key?(:scoring_configs)
+        end
+      end
+      
+      # Environment information of attached environments. Scoring an environment is
+      # enabled only if it is attached to a security profile.
+      class GoogleCloudApigeeV1SecurityProfileEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time at which environment was attached to the security profile.
+        # Corresponds to the JSON property `attachTime`
+        # @return [String]
+        attr_accessor :attach_time
+      
+        # Output only. Name of the environment.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attach_time = args[:attach_time] if args.key?(:attach_time)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
+      # Represents a SecurityProfileEnvironmentAssociation resource.
+      class GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when environment was attached to the security profile.
+        # Corresponds to the JSON property `attachTime`
+        # @return [String]
+        attr_accessor :attach_time
+      
+        # Immutable. Name of the profile-environment association resource. Format:
+        # organizations/`org`/securityProfiles/`profile`/environments/`env`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision ID of the security profile.
+        # Corresponds to the JSON property `securityProfileRevisionId`
+        # @return [Fixnum]
+        attr_accessor :security_profile_revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attach_time = args[:attach_time] if args.key?(:attach_time)
+          @name = args[:name] if args.key?(:name)
+          @security_profile_revision_id = args[:security_profile_revision_id] if args.key?(:security_profile_revision_id)
+        end
+      end
+      
+      # Security configurations to manage scoring.
+      class GoogleCloudApigeeV1SecurityProfileScoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Description of the config.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Path of the component config used for scoring.
+        # Corresponds to the JSON property `scorePath`
+        # @return [String]
+        attr_accessor :score_path
+      
+        # Title of the config.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @score_path = args[:score_path] if args.key?(:score_path)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # SecurityReport saves all the information about the created security report.
+      class GoogleCloudApigeeV1SecurityReport
+        include Google::Apis::Core::Hashable
+      
+        # Creation time of the query.
+        # Corresponds to the JSON property `created`
+        # @return [String]
+        attr_accessor :created
+      
+        # Display Name specified by the user.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Hostname is available only when query is executed at host level.
+        # Corresponds to the JSON property `envgroupHostname`
+        # @return [String]
+        attr_accessor :envgroup_hostname
+      
+        # Error is set when query fails.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # ExecutionTime is available only after the query is completed.
+        # Corresponds to the JSON property `executionTime`
+        # @return [String]
+        attr_accessor :execution_time
+      
+        # Metadata for the security report.
+        # Corresponds to the JSON property `queryParams`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata]
+        attr_accessor :query_params
+      
+        # Report Definition ID.
+        # Corresponds to the JSON property `reportDefinitionId`
+        # @return [String]
+        attr_accessor :report_definition_id
+      
+        # Contains informations about the security report results.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultMetadata]
+        attr_accessor :result
+      
+        # ResultFileSize is available only after the query is completed.
+        # Corresponds to the JSON property `resultFileSize`
+        # @return [String]
+        attr_accessor :result_file_size
+      
+        # ResultRows is available only after the query is completed.
+        # Corresponds to the JSON property `resultRows`
+        # @return [Fixnum]
+        attr_accessor :result_rows
+      
+        # Self link of the query. Example: `/organizations/myorg/environments/myenv/
+        # securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if
+        # query is running at host level: `/organizations/myorg/hostSecurityReports/
+        # 9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        # Corresponds to the JSON property `self`
+        # @return [String]
+        attr_accessor :self
+      
+        # Query state could be "enqueued", "running", "completed", "failed".
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Last updated timestamp for the query.
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created = args[:created] if args.key?(:created)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @envgroup_hostname = args[:envgroup_hostname] if args.key?(:envgroup_hostname)
+          @error = args[:error] if args.key?(:error)
+          @execution_time = args[:execution_time] if args.key?(:execution_time)
+          @query_params = args[:query_params] if args.key?(:query_params)
+          @report_definition_id = args[:report_definition_id] if args.key?(:report_definition_id)
+          @result = args[:result] if args.key?(:result)
+          @result_file_size = args[:result_file_size] if args.key?(:result_file_size)
+          @result_rows = args[:result_rows] if args.key?(:result_rows)
+          @self = args[:self] if args.key?(:self)
+          @state = args[:state] if args.key?(:state)
+          @updated = args[:updated] if args.key?(:updated)
+        end
+      end
+      
+      # Metadata for the security report.
+      class GoogleCloudApigeeV1SecurityReportMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Dimensions of the SecurityReport.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # End timestamp of the query range.
+        # Corresponds to the JSON property `endTimestamp`
+        # @return [String]
+        attr_accessor :end_timestamp
+      
+        # Metrics of the SecurityReport. Example: ["name:bot_count,func:sum,alias:
+        # sum_bot_count"]
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<String>]
+        attr_accessor :metrics
+      
+        # MIME type / Output format.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Start timestamp of the query range.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [String]
+        attr_accessor :start_timestamp
+      
+        # Query GroupBy time unit. Example: "seconds", "minute", "hour"
+        # Corresponds to the JSON property `timeUnit`
+        # @return [String]
+        attr_accessor :time_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @time_unit = args[:time_unit] if args.key?(:time_unit)
+        end
+      end
+      
+      # Body structure when user makes a request to create a security report.
+      class GoogleCloudApigeeV1SecurityReportQuery
+        include Google::Apis::Core::Hashable
+      
+        # Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to
+        # the `,` (comma) character. Supported delimiter characters include comma (`,`),
+        # pipe (`|`), and tab (`\t`).
+        # Corresponds to the JSON property `csvDelimiter`
+        # @return [String]
+        attr_accessor :csv_delimiter
+      
+        # A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-
+        # reference#dimensions
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # Security Report display name which users can specify.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Hostname needs to be specified if query intends to run at host level. This
+        # field is only allowed when query is submitted by CreateHostSecurityReport
+        # where analytics data will be grouped by organization and hostname.
+        # Corresponds to the JSON property `envgroupHostname`
+        # @return [String]
+        attr_accessor :envgroup_hostname
+      
+        # Boolean expression that can be used to filter data. Filter expressions can be
+        # combined using AND/OR terms and should be fully parenthesized to avoid
+        # ambiguity. See Analytics metrics, dimensions, and filters reference https://
+        # docs.apigee.com/api-platform/analytics/analytics-reference for more
+        # information on the fields available to filter on. For more information on the
+        # tokens that you use to build filter expressions, see Filter expression syntax.
+        # https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-
+        # expression-syntax
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Time unit used to group the result set. Valid values include: second, minute,
+        # hour, day, week, or month. If a query includes groupByTimeUnit, then the
+        # result is an aggregation based on the specified time unit and the resultant
+        # timestamp does not include milliseconds precision. If a query omits
+        # groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
+        # Corresponds to the JSON property `groupByTimeUnit`
+        # @return [String]
+        attr_accessor :group_by_time_unit
+      
+        # Maximum number of rows that can be returned in the result.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        # A list of Metrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQueryMetric>]
+        attr_accessor :metrics
+      
+        # Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the
+        # delimiter for CSV output using the csvDelimiter property.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Report Definition ID.
+        # Corresponds to the JSON property `reportDefinitionId`
+        # @return [String]
+        attr_accessor :report_definition_id
+      
+        # Required. Time range for the query. Can use the following predefined strings
+        # to specify the time range: `last60minutes` `last24hours` `last7days` Or,
+        # specify the timeRange as a structure describing start and end timestamps in
+        # the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": ` "start": "2018-
+        # 07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" `
+        # Corresponds to the JSON property `timeRange`
+        # @return [Object]
+        attr_accessor :time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_delimiter = args[:csv_delimiter] if args.key?(:csv_delimiter)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @envgroup_hostname = args[:envgroup_hostname] if args.key?(:envgroup_hostname)
+          @filter = args[:filter] if args.key?(:filter)
+          @group_by_time_unit = args[:group_by_time_unit] if args.key?(:group_by_time_unit)
+          @limit = args[:limit] if args.key?(:limit)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @report_definition_id = args[:report_definition_id] if args.key?(:report_definition_id)
+          @time_range = args[:time_range] if args.key?(:time_range)
+        end
+      end
+      
+      # Metric of the Query
+      class GoogleCloudApigeeV1SecurityReportQueryMetric
+        include Google::Apis::Core::Hashable
+      
+        # Aggregation function: avg, min, max, or sum.
+        # Corresponds to the JSON property `aggregationFunction`
+        # @return [String]
+        attr_accessor :aggregation_function
+      
+        # Alias for the metric. Alias will be used to replace metric name in query
+        # results.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Required. Metric name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # One of `+`, `-`, `/`, `%`, `*`.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Operand value should be provided when operator is set.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_function = args[:aggregation_function] if args.key?(:aggregation_function)
+          @alias = args[:alias] if args.key?(:alias)
+          @name = args[:name] if args.key?(:name)
+          @operator = args[:operator] if args.key?(:operator)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Contains informations about the security report results.
+      class GoogleCloudApigeeV1SecurityReportResultMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Expire_time is set to 7 days after report creation. Query result
+        # will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00"
+        # Corresponds to the JSON property `expires`
+        # @return [String]
+        attr_accessor :expires
+      
+        # Self link of the query results. Example: `/organizations/myorg/environments/
+        # myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or
+        # following format if query is running at host level: `/organizations/myorg/
+        # hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+        # Corresponds to the JSON property `self`
+        # @return [String]
+        attr_accessor :self
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expires = args[:expires] if args.key?(:expires)
+          @self = args[:self] if args.key?(:self)
+        end
+      end
+      
+      # The response for security report result view APIs.
+      class GoogleCloudApigeeV1SecurityReportResultView
+        include Google::Apis::Core::Hashable
+      
+        # Error code when there is a failure.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # Error message when there is a failure.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Metadata for the security report.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata]
+        attr_accessor :metadata
+      
+        # Rows of security report result. Each row is a JSON object. Example: `sum(
+        # message_count): 1, developer_app: "(not set)",…`
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Object>]
+        attr_accessor :rows
+      
+        # State of retrieving ResultView.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @rows = args[:rows] if args.key?(:rows)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ServiceIssuersMapping
         include Google::Apis::Core::Hashable
@@ -8318,6 +9222,36 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class GoogleTypeInterval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
