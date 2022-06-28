@@ -792,6 +792,11 @@ module Google
         # @return [String]
         attr_accessor :compliance_regime
       
+        # Represents the Compliance Status of this workload
+        # Corresponds to the JSON property `complianceStatus`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus]
+        attr_accessor :compliance_status
+      
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -889,6 +894,7 @@ module Google
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
@@ -923,6 +929,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Represents the Compliance Status of this workload
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Count of active Violations in the Workload.
+        # Corresponds to the JSON property `activeViolationCount`
+        # @return [Fixnum]
+        attr_accessor :active_violation_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_violation_count = args[:active_violation_count] if args.key?(:active_violation_count)
         end
       end
       

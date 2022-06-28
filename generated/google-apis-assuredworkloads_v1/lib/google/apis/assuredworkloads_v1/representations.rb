@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,8 @@ module Google
           property :cjis_settings, as: 'cjisSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCjisSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCjisSettings::Representation
       
           property :compliance_regime, as: 'complianceRegime'
+          property :compliance_status, as: 'complianceStatus', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :enable_sovereign_controls, as: 'enableSovereignControls'
@@ -467,6 +475,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_violation_count, as: 'activeViolationCount'
         end
       end
       
