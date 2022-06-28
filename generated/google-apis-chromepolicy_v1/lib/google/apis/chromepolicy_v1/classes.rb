@@ -958,7 +958,8 @@ module Google
         # @return [String]
         attr_accessor :package
       
-        # The syntax of the proto file. The supported values are "proto2" and "proto3".
+        # The syntax of the proto file. The supported values are "proto2", "proto3", and
+        # "editions". If `edition` is present, this value must be "editions".
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
