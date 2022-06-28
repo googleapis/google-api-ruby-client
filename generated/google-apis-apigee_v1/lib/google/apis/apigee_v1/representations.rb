@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiSecurityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1CommonNameConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +772,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSharedFlowsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1072,96 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1Score
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendationAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileScoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportQueryMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportResultMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportResultView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ServiceIssuersMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,6 +1366,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeMoney
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1312,6 +1450,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_api_ops_config, as: 'advancedApiOpsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig::Representation
+      
+          property :api_security_config, as: 'apiSecurityConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiSecurityConfig::Representation
       
           property :connectors_platform_config, as: 'connectorsPlatformConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig::Representation
       
@@ -1467,6 +1607,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ApiSecurityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :expires_at, :numeric_string => true, as: 'expiresAt'
+        end
+      end
+      
       class GoogleCloudApigeeV1App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1613,6 +1761,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :match_wild_cards, as: 'matchWildCards'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filters, as: 'filters', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :time_range, as: 'timeRange', class: Google::Apis::ApigeeV1::GoogleTypeInterval, decorator: Google::Apis::ApigeeV1::GoogleTypeInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score_path, as: 'scorePath'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ComputeEnvironmentScoresResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scores, as: 'scores', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Score, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Score::Representation
+      
         end
       end
       
@@ -2552,6 +2728,33 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profiles, as: 'securityProfiles', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_profiles, as: 'securityProfiles', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListSecurityReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_reports, as: 'securityReports', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSharedFlowsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3062,6 +3265,184 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1Score
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component, as: 'component', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent::Representation
+      
+          collection :subcomponents, as: 'subcomponents', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponent::Representation
+      
+          property :time_range, as: 'timeRange', class: Google::Apis::ApigeeV1::GoogleTypeInterval, decorator: Google::Apis::ApigeeV1::GoogleTypeInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculate_time, as: 'calculateTime'
+          property :data_capture_time, as: 'dataCaptureTime'
+          collection :drilldown_paths, as: 'drilldownPaths'
+          collection :recommendations, as: 'recommendations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendation::Representation
+      
+          property :score, as: 'score'
+          property :score_path, as: 'scorePath'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationAction, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationAction::Representation
+      
+          property :description, as: 'description'
+          property :impact, as: 'impact'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendationAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_context, as: 'actionContext', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext::Representation
+      
+          property :description, as: 'description'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :documentation_link, as: 'documentationLink'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :environments, as: 'environments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironment::Representation
+      
+          property :max_score, as: 'maxScore'
+          property :min_score, as: 'minScore'
+          property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
+          property :revision_publish_time, as: 'revisionPublishTime'
+          property :revision_update_time, as: 'revisionUpdateTime'
+          collection :scoring_configs, as: 'scoringConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileScoringConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileScoringConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attach_time, as: 'attachTime'
+          property :environment, as: 'environment'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attach_time, as: 'attachTime'
+          property :name, as: 'name'
+          property :security_profile_revision_id, :numeric_string => true, as: 'securityProfileRevisionId'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileScoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :score_path, as: 'scorePath'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created, as: 'created'
+          property :display_name, as: 'displayName'
+          property :envgroup_hostname, as: 'envgroupHostname'
+          property :error, as: 'error'
+          property :execution_time, as: 'executionTime'
+          property :query_params, as: 'queryParams', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata::Representation
+      
+          property :report_definition_id, as: 'reportDefinitionId'
+          property :result, as: 'result', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultMetadata::Representation
+      
+          property :result_file_size, as: 'resultFileSize'
+          property :result_rows, :numeric_string => true, as: 'resultRows'
+          property :self, as: 'self'
+          property :state, as: 'state'
+          property :updated, as: 'updated'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :end_timestamp, as: 'endTimestamp'
+          collection :metrics, as: 'metrics'
+          property :mime_type, as: 'mimeType'
+          property :start_timestamp, as: 'startTimestamp'
+          property :time_unit, as: 'timeUnit'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_delimiter, as: 'csvDelimiter'
+          collection :dimensions, as: 'dimensions'
+          property :display_name, as: 'displayName'
+          property :envgroup_hostname, as: 'envgroupHostname'
+          property :filter, as: 'filter'
+          property :group_by_time_unit, as: 'groupByTimeUnit'
+          property :limit, as: 'limit'
+          collection :metrics, as: 'metrics', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQueryMetric, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQueryMetric::Representation
+      
+          property :mime_type, as: 'mimeType'
+          property :report_definition_id, as: 'reportDefinitionId'
+          property :time_range, as: 'timeRange'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportQueryMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_function, as: 'aggregationFunction'
+          property :alias, as: 'alias'
+          property :name, as: 'name'
+          property :operator, as: 'operator'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportResultMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expires, as: 'expires'
+          property :self, as: 'self'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityReportResultView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :error, as: 'error'
+          property :metadata, as: 'metadata', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportMetadata::Representation
+      
+          collection :rows, as: 'rows'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudApigeeV1ServiceIssuersMapping
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3404,6 +3785,14 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleTypeInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
