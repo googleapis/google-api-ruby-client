@@ -237,6 +237,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. The lifecycle state of the App.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -249,6 +254,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @package_name = args[:package_name] if args.key?(:package_name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -411,6 +417,11 @@ module Google
         # @return [String]
         attr_accessor :platform
       
+        # Output only. The lifecycle state of the App.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -422,6 +433,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @namespace = args[:namespace] if args.key?(:namespace)
           @platform = args[:platform] if args.key?(:platform)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -552,6 +564,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. The lifecycle state of the App.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The Apple Developer Team ID associated with the App in the App Store.
         # Corresponds to the JSON property `teamId`
         # @return [String]
@@ -570,6 +587,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
           @team_id = args[:team_id] if args.key?(:team_id)
         end
       end
@@ -1212,6 +1230,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. The lifecycle state of the App.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`
         # . This identifier is only used to populate the `namespace` value for the `
         # WebApp`. For most use cases, use `appId` to identify or reference the App. The
@@ -1233,6 +1256,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @state = args[:state] if args.key?(:state)
           @web_id = args[:web_id] if args.key?(:web_id)
         end
       end

@@ -522,6 +522,9 @@ module Google
         # @param [String] page_token
         #   Token returned from a previous call to `SearchFirebaseApps` indicating where
         #   in the set of Apps to resume listing.
+        # @param [Boolean] show_deleted
+        #   Controls whether Apps in the DELETED state should be returned. Defaults to
+        #   false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -539,7 +542,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_apps(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_apps(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}:searchApps', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::SearchFirebaseAppsResponse::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::SearchFirebaseAppsResponse
@@ -547,6 +550,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -676,6 +680,9 @@ module Google
         # @param [String] page_token
         #   Token returned from a previous call to `ListAndroidApps` indicating where in
         #   the set of Apps to resume listing.
+        # @param [Boolean] show_deleted
+        #   Controls whether Apps in the DELETED state should be returned. Defaults to
+        #   false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -693,13 +700,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_android_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_android_apps(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/androidApps', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::ListAndroidAppsResponse::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::ListAndroidAppsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -719,7 +727,7 @@ module Google
         # @param [Google::Apis::FirebaseV1beta1::AndroidApp] android_app_object
         # @param [String] update_mask
         #   Specifies which fields to update. Note that the fields `name`, `app_id`, `
-        #   project_id`, and `package_name` are all immutable.
+        #   project_id`, `package_name`, and `state` are all immutable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1103,6 +1111,9 @@ module Google
         # @param [String] page_token
         #   Token returned from a previous call to `ListIosApps` indicating where in the
         #   set of Apps to resume listing.
+        # @param [Boolean] show_deleted
+        #   Controls whether Apps in the DELETED state should be returned. Defaults to
+        #   false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1120,13 +1131,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_ios_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_ios_apps(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/iosApps', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::ListIosAppsResponse::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::ListIosAppsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1146,7 +1158,7 @@ module Google
         # @param [Google::Apis::FirebaseV1beta1::IosApp] ios_app_object
         # @param [String] update_mask
         #   Specifies which fields to update. Note that the fields `name`, `appId`, `
-        #   projectId`, and `bundleId` are all immutable.
+        #   projectId`, `bundleId`, and `state` are all immutable
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1300,6 +1312,9 @@ module Google
         # @param [String] page_token
         #   Token returned from a previous call to `ListWebApps` indicating where in the
         #   set of Apps to resume listing.
+        # @param [Boolean] show_deleted
+        #   Controls whether Apps in the DELETED state should be returned. Defaults to
+        #   false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1317,13 +1332,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_web_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_web_apps(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/webApps', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::ListWebAppsResponse::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::ListWebAppsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1342,8 +1358,8 @@ module Google
         #   ).
         # @param [Google::Apis::FirebaseV1beta1::WebApp] web_app_object
         # @param [String] update_mask
-        #   Specifies which fields to update. Note that the fields `name`, `appId`, and `
-        #   projectId` are all immutable.
+        #   Specifies which fields to update. Note that the fields `name`, `appId`, `
+        #   projectId` and `state` are all immutable
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

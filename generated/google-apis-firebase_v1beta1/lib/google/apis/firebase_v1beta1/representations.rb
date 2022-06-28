@@ -273,6 +273,7 @@ module Google
           property :name, as: 'name'
           property :package_name, as: 'packageName'
           property :project_id, as: 'projectId'
+          property :state, as: 'state'
         end
       end
       
@@ -315,6 +316,7 @@ module Google
           property :name, as: 'name'
           property :namespace, as: 'namespace'
           property :platform, as: 'platform'
+          property :state, as: 'state'
         end
       end
       
@@ -341,6 +343,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :state, as: 'state'
           property :team_id, as: 'teamId'
         end
       end
@@ -515,6 +518,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :state, as: 'state'
           property :web_id, as: 'webId'
         end
       end
