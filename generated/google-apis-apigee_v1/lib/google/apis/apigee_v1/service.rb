@@ -6874,6 +6874,197 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Submit a report request to be processed in the background. If the submission
+        # succeeds, the API returns a 200 status and an ID that refer to the report
+        # request. In addition to the HTTP status 200, the `state` of "enqueued" means
+        # that the request succeeded.
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org`/
+        #   environments/`env``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQuery] google_cloud_apigee_v1_security_report_query_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_environment_security_report(parent, google_cloud_apigee_v1_security_report_query_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityReports', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQuery::Representation
+          command.request_object = google_cloud_apigee_v1_security_report_query_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get security report status If the query is still in progress, the `state` is
+        # set to "running" After the query has completed successfully, `state` is set to
+        # "completed"
+        # @param [String] name
+        #   Required. Name of the security report to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/securityReports/`reportId``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_security_report(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # After the query is completed, use this API to retrieve the results as file. If
+        # the request succeeds, and there is a non-zero result set, the result is
+        # downloaded to the client as a zipped JSON file. The name of the downloaded
+        # file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-
+        # 0f30-46d6-ae6f-318d0cb961bd.zip`
+        # @param [String] name
+        #   Required. Name of the security report result to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/securityReports/`reportId`/result`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_security_report_result(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # After the query is completed, use this API to view the query result when
+        # result size is small.
+        # @param [String] name
+        #   Required. Name of the security report result view to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/securityReports/`reportId`/resultView`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_security_report_result_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of Security Reports
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org`/
+        #   environments/`env``.
+        # @param [String] dataset
+        #   Filter response list by dataset. Example: `api`, `mint`
+        # @param [String] from
+        #   Filter response list by returning security reports that created after this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
+        # @param [Fixnum] page_size
+        #   The maximum number of security report to return in the list response.
+        # @param [String] page_token
+        #   Token returned from the previous list response to fetch the next page.
+        # @param [String] status
+        #   Filter response list by security reports status.
+        # @param [String] submitted_by
+        #   Filter response list by user who submitted queries.
+        # @param [String] to
+        #   Filter response list by returning security reports that created before this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_security_reports(parent, dataset: nil, from: nil, page_size: nil, page_token: nil, status: nil, submitted_by: nil, to: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityReports', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataset'] = dataset unless dataset.nil?
+          command.query['from'] = from unless from.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['status'] = status unless status.nil?
+          command.query['submittedBy'] = submitted_by unless submitted_by.nil?
+          command.query['to'] = to unless to.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all deployments of a shared flow in an environment.
         # @param [String] parent
         #   Required. Name representing a shared flow in an environment in the following
@@ -7624,6 +7815,198 @@ module Google
           command.query['envgroupHostname'] = envgroup_hostname unless envgroup_hostname.nil?
           command.query['from'] = from unless from.nil?
           command.query['inclQueriesWithoutReport'] = incl_queries_without_report unless incl_queries_without_report.nil?
+          command.query['status'] = status unless status.nil?
+          command.query['submittedBy'] = submitted_by unless submitted_by.nil?
+          command.query['to'] = to unless to.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submit a query at host level to be processed in the background. If the
+        # submission of the query succeeds, the API returns a 201 status and an ID that
+        # refer to the query. In addition to the HTTP status 201, the `state` of "
+        # enqueued" means that the request succeeded.
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQuery] google_cloud_apigee_v1_security_report_query_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_host_security_report(parent, google_cloud_apigee_v1_security_report_query_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/hostSecurityReports', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportQuery::Representation
+          command.request_object = google_cloud_apigee_v1_security_report_query_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get status of a query submitted at host level. If the query is still in
+        # progress, the `state` is set to "running" After the query has completed
+        # successfully, `state` is set to "completed"
+        # @param [String] name
+        #   Required. Name of the security report to get. Must be of the form `
+        #   organizations/`org`/securityReports/`reportId``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_security_report(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # After the query is completed, use this API to retrieve the results. If the
+        # request succeeds, and there is a non-zero result set, the result is downloaded
+        # to the client as a zipped JSON file. The name of the downloaded file will be:
+        # OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-
+        # 318d0cb961bd.zip`
+        # @param [String] name
+        #   Required. Name of the security report result to get. Must be of the form `
+        #   organizations/`org`/securityReports/`reportId`/result`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_security_report_result(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # After the query is completed, use this API to view the query result when
+        # result size is small.
+        # @param [String] name
+        #   Required. Name of the security report result view to get. Must be of the form `
+        #   organizations/`org`/securityReports/`reportId`/resultView`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_host_security_report_result_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityReportResultView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return a list of Security Reports at host level.
+        # @param [String] parent
+        #   Required. The parent resource name. Must be of the form `organizations/`org``.
+        # @param [String] dataset
+        #   Filter response list by dataset. Example: `api`, `mint`
+        # @param [String] envgroup_hostname
+        #   Required. Filter response list by hostname.
+        # @param [String] from
+        #   Filter response list by returning security reports that created after this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
+        # @param [Fixnum] page_size
+        #   The maximum number of security report to return in the list response.
+        # @param [String] page_token
+        #   Token returned from the previous list response to fetch the next page.
+        # @param [String] status
+        #   Filter response list by security report status.
+        # @param [String] submitted_by
+        #   Filter response list by user who submitted queries.
+        # @param [String] to
+        #   Filter response list by returning security reports that created before this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_host_security_reports(parent, dataset: nil, envgroup_hostname: nil, from: nil, page_size: nil, page_token: nil, status: nil, submitted_by: nil, to: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/hostSecurityReports', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityReportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataset'] = dataset unless dataset.nil?
+          command.query['envgroupHostname'] = envgroup_hostname unless envgroup_hostname.nil?
+          command.query['from'] = from unless from.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['status'] = status unless status.nil?
           command.query['submittedBy'] = submitted_by unless submitted_by.nil?
           command.query['to'] = to unless to.nil?
@@ -8857,6 +9240,222 @@ module Google
           command.request_object = google_cloud_apigee_v1_custom_report_object
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if
+        # security profile is not present for the specified organization.
+        # @param [String] name
+        #   Required. Security profile in the following format: `organizations/`org`/
+        #   securityProfiles/`profile`'. Profile may optionally contain revision ID. If
+        #   revision ID is not provided, the response will contain latest revision by
+        #   default. Example: organizations/testOrg/securityProfiles/testProfile@5
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ListSecurityProfiles lists all the security profiles associated with the org
+        # including attached and unattached profiles.
+        # @param [String] parent
+        #   Required. For a specific organization, list of all the security profiles.
+        #   Format: `organizations/`org``
+        # @param [Fixnum] page_size
+        #   The maximum number of profiles to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 profiles will be returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListSecurityProfiles` call. Provide
+        #   this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_profiles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityProfiles', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ListSecurityProfileRevisions lists all the revisions of the security profile.
+        # @param [String] name
+        #   Required. For a specific profile, list all the revisions. Format: `
+        #   organizations/`org`/securityProfiles/`profile``
+        # @param [Fixnum] page_size
+        #   The maximum number of profile revisions to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 revisions will be returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListSecurityProfileRevisions` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_profile_revisions(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ComputeEnvironmentScores calculates scores for requested time range for the
+        # specified security profile and environment.
+        # @param [String] profile_environment
+        #   Required. Name of organization and environment and profile id for which score
+        #   needs to be computed. Format: organizations/`org`/securityProfiles/`profile`/
+        #   environments/`env`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresRequest] google_cloud_apigee_v1_compute_environment_scores_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compute_organization_security_profile_environment_environment_scores(profile_environment, google_cloud_apigee_v1_compute_environment_scores_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+profileEnvironment}:computeEnvironmentScores', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresRequest::Representation
+          command.request_object = google_cloud_apigee_v1_compute_environment_scores_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ComputeEnvironmentScoresResponse
+          command.params['profileEnvironment'] = profile_environment unless profile_environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # CreateSecurityProfileEnvironmentAssociation creates profile environment
+        # association i.e. attaches environment to security profile.
+        # @param [String] parent
+        #   Required. Name of organization and security profile ID. Format: organizations/`
+        #   org`/securityProfiles/`profile`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation] google_cloud_apigee_v1_security_profile_environment_association_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_security_profile_environment(parent, google_cloud_apigee_v1_security_profile_environment_association_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/environments', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation::Representation
+          command.request_object = google_cloud_apigee_v1_security_profile_environment_association_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # DeleteSecurityProfileEnvironmentAssociation removes profile environment
+        # association i.e. detaches environment from security profile.
+        # @param [String] name
+        #   Required. The name of the environment attachment to delete. Format:
+        #   organizations/`org`/securityProfiles/`profile`/environments/`env`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_profile_environment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
