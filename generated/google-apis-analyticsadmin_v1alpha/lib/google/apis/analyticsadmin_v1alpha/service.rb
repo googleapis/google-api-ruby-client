@@ -1011,6 +1011,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a customized report of data access records. The report provides
+        # records of each time a user reads Google Analytics reporting data. Access
+        # records are retained for up to 2 years. Data Access Reports can be requested
+        # for a property. The property must be in Google Analytics 360. This method is
+        # only available to Administrators. These data access records include GA4 UI
+        # Reporting, GA4 UI Explorations, GA4 Data API, and other products like Firebase
+        # & Admob that can retrieve data from Google Analytics through a linkage. These
+        # records don't include property configuration changes like adding a stream or
+        # changing a property's time zone. For configuration change history, see [
+        # searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/
+        # config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+        # @param [String] entity
+        #   The Data Access Report is requested for this property. For example if "123" is
+        #   your GA4 property ID, then entity should be "properties/123".
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest] google_analytics_admin_v1alpha_run_access_report_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_property_access_report(entity, google_analytics_admin_v1alpha_run_access_report_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+entity}:runAccessReport', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_run_access_report_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaRunAccessReportResponse
+          command.params['entity'] = entity unless entity.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates attribution settings on a property.
         # @param [String] name
         #   Output only. Resource name of this attribution settings resource. Format:
