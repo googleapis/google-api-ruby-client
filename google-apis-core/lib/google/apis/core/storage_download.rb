@@ -25,6 +25,9 @@ module Google
 
         # Execute the upload request once. Overrides the default implementation to handle streaming/chunking
         # of file content.
+        # Note: This method is overriden from DownloadCommand in order to respond back with 
+        # http header. All changes made to `execute_once` of DownloadCommand, should be made 
+        # here too.
         #
         # @private
         # @param [HTTPClient] client
@@ -77,6 +80,8 @@ module Google
             result = @download_io
           end
           check_status(http_res.status.to_i, http_res.header, http_res.body)
+          # In case of file download in storage, we need to respond back with http 
+          # header along with the actual object.
           success([result, http_res], &block)
         rescue => e
           @download_io.flush if @download_io.respond_to?(:flush)
