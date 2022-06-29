@@ -16,13 +16,13 @@ module Google
   module Apis
     module RecommenderV1
       # Version of the google-apis-recommender_v1 gem
-      GEM_VERSION = "0.20.0"
+      GEM_VERSION = "0.21.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.7.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220327"
+      REVISION = "20220626"
     end
   end
 end
