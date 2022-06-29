@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlueGreenInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BlueGreenSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,12 @@ module Google
       end
       
       class CompleteIpRotationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompleteNodePoolUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -688,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardRolloutPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,6 +737,12 @@ module Google
       end
       
       class UpdateClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +910,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :evaluation_mode, as: 'evaluationMode'
+        end
+      end
+      
+      class BlueGreenInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blue_instance_group_urls, as: 'blueInstanceGroupUrls'
+          property :blue_pool_deletion_start_time, as: 'bluePoolDeletionStartTime'
+          collection :green_instance_group_urls, as: 'greenInstanceGroupUrls'
+          property :green_pool_version, as: 'greenPoolVersion'
+          property :phase, as: 'phase'
+        end
+      end
+      
+      class BlueGreenSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_pool_soak_duration, as: 'nodePoolSoakDuration'
+          property :standard_rollout_policy, as: 'standardRolloutPolicy', class: Google::Apis::ContainerV1::StandardRolloutPolicy, decorator: Google::Apis::ContainerV1::StandardRolloutPolicy::Representation
+      
         end
       end
       
@@ -1099,6 +1149,12 @@ module Google
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class CompleteNodePoolUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1660,6 +1716,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :update_info, as: 'updateInfo', class: Google::Apis::ContainerV1::UpdateInfo, decorator: Google::Apis::ContainerV1::UpdateInfo::Representation
+      
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
       
           property :version, as: 'version'
@@ -1679,8 +1737,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoprovisioned, as: 'autoprovisioned'
           property :enabled, as: 'enabled'
+          property :location_policy, as: 'locationPolicy'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+          property :total_max_node_count, as: 'totalMaxNodeCount'
+          property :total_min_node_count, as: 'totalMinNodeCount'
         end
       end
       
@@ -1846,6 +1907,7 @@ module Google
           property :name, as: 'name'
           property :node_pool_id, as: 'nodePoolId'
           property :project_id, as: 'projectId'
+          property :respect_pdb, as: 'respectPdb'
           property :zone, as: 'zone'
         end
       end
@@ -2051,6 +2113,15 @@ module Google
         end
       end
       
+      class StandardRolloutPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_node_count, as: 'batchNodeCount'
+          property :batch_percentage, as: 'batchPercentage'
+          property :batch_soak_duration, as: 'batchSoakDuration'
+        end
+      end
+      
       class StartIpRotationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2102,6 +2173,14 @@ module Google
         end
       end
       
+      class UpdateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blue_green_info, as: 'blueGreenInfo', class: Google::Apis::ContainerV1::BlueGreenInfo, decorator: Google::Apis::ContainerV1::BlueGreenInfo::Representation
+      
+        end
+      end
+      
       class UpdateMasterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2132,6 +2211,8 @@ module Google
       
           collection :locations, as: 'locations'
           property :name, as: 'name'
+          property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
+      
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
@@ -2173,8 +2254,11 @@ module Google
       class UpgradeSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :blue_green_settings, as: 'blueGreenSettings', class: Google::Apis::ContainerV1::BlueGreenSettings, decorator: Google::Apis::ContainerV1::BlueGreenSettings::Representation
+      
           property :max_surge, as: 'maxSurge'
           property :max_unavailable, as: 'maxUnavailable'
+          property :strategy, as: 'strategy'
         end
       end
       

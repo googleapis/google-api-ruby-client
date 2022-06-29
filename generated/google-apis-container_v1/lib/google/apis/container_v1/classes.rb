@@ -312,6 +312,23 @@ module Google
         # upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (
         # upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the
         # same time. This ensures that there are always at least 4 nodes available.
+        # These upgrade settings configure the upgrade strategy for the node pool. Use
+        # strategy to switch between the strategies applied to the node pool. If the
+        # strategy is ROLLING, use max_surge and max_unavailable to control the level of
+        # parallelism and the level of disruption caused by upgrade. 1. maxSurge
+        # controls the number of additional nodes that can be added to the node pool
+        # temporarily for the time of the upgrade to increase the number of available
+        # nodes. 2. maxUnavailable controls the number of nodes that can be
+        # simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the
+        # level of parallelism (how many nodes are being upgraded at the same time). If
+        # the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-
+        # green upgrade related settings. 1. standard_rollout_policy is the default
+        # policy. The policy is used to control the way blue pool gets drained. The
+        # draining is executed in the batch mode. The batch size could be specified as
+        # either percentage of the node pool size or the number of nodes.
+        # batch_soak_duration is the soak time after each batch gets drained. 2.
+        # node_pool_soak_duration is the soak time after all blue nodes are drained.
+        # After this period, the blue pool nodes will be deleted.
         # Corresponds to the JSON property `upgradeSettings`
         # @return [Google::Apis::ContainerV1::UpgradeSettings]
         attr_accessor :upgrade_settings
@@ -379,6 +396,78 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @evaluation_mode = args[:evaluation_mode] if args.key?(:evaluation_mode)
+        end
+      end
+      
+      # Information relevant to blue-green upgrade.
+      class BlueGreenInfo
+        include Google::Apis::Core::Hashable
+      
+        # The resource URLs of the [managed instance groups] (/compute/docs/instance-
+        # groups/creating-groups-of-managed-instances) associated with blue pool.
+        # Corresponds to the JSON property `blueInstanceGroupUrls`
+        # @return [Array<String>]
+        attr_accessor :blue_instance_group_urls
+      
+        # Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Corresponds to the JSON property `bluePoolDeletionStartTime`
+        # @return [String]
+        attr_accessor :blue_pool_deletion_start_time
+      
+        # The resource URLs of the [managed instance groups] (/compute/docs/instance-
+        # groups/creating-groups-of-managed-instances) associated with green pool.
+        # Corresponds to the JSON property `greenInstanceGroupUrls`
+        # @return [Array<String>]
+        attr_accessor :green_instance_group_urls
+      
+        # Version of green pool.
+        # Corresponds to the JSON property `greenPoolVersion`
+        # @return [String]
+        attr_accessor :green_pool_version
+      
+        # Current blue-green upgrade phase.
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blue_instance_group_urls = args[:blue_instance_group_urls] if args.key?(:blue_instance_group_urls)
+          @blue_pool_deletion_start_time = args[:blue_pool_deletion_start_time] if args.key?(:blue_pool_deletion_start_time)
+          @green_instance_group_urls = args[:green_instance_group_urls] if args.key?(:green_instance_group_urls)
+          @green_pool_version = args[:green_pool_version] if args.key?(:green_pool_version)
+          @phase = args[:phase] if args.key?(:phase)
+        end
+      end
+      
+      # Settings for blue-green upgrade.
+      class BlueGreenSettings
+        include Google::Apis::Core::Hashable
+      
+        # Time needed after draining entire blue pool. After this period, blue pool will
+        # be cleaned up.
+        # Corresponds to the JSON property `nodePoolSoakDuration`
+        # @return [String]
+        attr_accessor :node_pool_soak_duration
+      
+        # Standard rollout policy is the default policy for blue-green.
+        # Corresponds to the JSON property `standardRolloutPolicy`
+        # @return [Google::Apis::ContainerV1::StandardRolloutPolicy]
+        attr_accessor :standard_rollout_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_pool_soak_duration = args[:node_pool_soak_duration] if args.key?(:node_pool_soak_duration)
+          @standard_rollout_policy = args[:standard_rollout_policy] if args.key?(:standard_rollout_policy)
         end
       end
       
@@ -1324,6 +1413,20 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # CompleteNodePoolUpgradeRequest sets the name of target node pool to complete
+      # upgrade.
+      class CompleteNodePoolUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3321,7 +3424,8 @@ module Google
       
         # [Output only] The resource URLs of the [managed instance groups](https://cloud.
         # google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
-        # associated with this node pool.
+        # associated with this node pool. During the node pool blue-green upgrade
+        # operation, the URLs contain both blue and green resources.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
@@ -3378,6 +3482,12 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # UpdateInfo contains resource (instance groups, etc), status and other
+        # intermediate information relevant to a node pool upgrade.
+        # Corresponds to the JSON property `updateInfo`
+        # @return [Google::Apis::ContainerV1::UpdateInfo]
+        attr_accessor :update_info
+      
         # These upgrade settings control the level of parallelism and the level of
         # disruption caused by an upgrade. maxUnavailable controls the number of nodes
         # that can be simultaneously unavailable. maxSurge controls the number of
@@ -3392,6 +3502,23 @@ module Google
         # upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (
         # upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the
         # same time. This ensures that there are always at least 4 nodes available.
+        # These upgrade settings configure the upgrade strategy for the node pool. Use
+        # strategy to switch between the strategies applied to the node pool. If the
+        # strategy is ROLLING, use max_surge and max_unavailable to control the level of
+        # parallelism and the level of disruption caused by upgrade. 1. maxSurge
+        # controls the number of additional nodes that can be added to the node pool
+        # temporarily for the time of the upgrade to increase the number of available
+        # nodes. 2. maxUnavailable controls the number of nodes that can be
+        # simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the
+        # level of parallelism (how many nodes are being upgraded at the same time). If
+        # the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-
+        # green upgrade related settings. 1. standard_rollout_policy is the default
+        # policy. The policy is used to control the way blue pool gets drained. The
+        # draining is executed in the batch mode. The batch size could be specified as
+        # either percentage of the node pool size or the number of nodes.
+        # batch_soak_duration is the soak time after each batch gets drained. 2.
+        # node_pool_soak_duration is the soak time after all blue nodes are drained.
+        # After this period, the blue pool nodes will be deleted.
         # Corresponds to the JSON property `upgradeSettings`
         # @return [Google::Apis::ContainerV1::UpgradeSettings]
         attr_accessor :upgrade_settings
@@ -3421,6 +3548,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @update_info = args[:update_info] if args.key?(:update_info)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @version = args[:version] if args.key?(:version)
         end
@@ -3464,6 +3592,11 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Location policy used when scaling up a nodepool.
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [String]
+        attr_accessor :location_policy
+      
         # Maximum number of nodes for one location in the NodePool. Must be >=
         # min_node_count. There has to be enough quota to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
@@ -3476,6 +3609,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_node_count
       
+        # Maximum number of nodes in the node pool. Must be greater than
+        # total_min_node_count. There has to be enough quota to scale up the cluster.
+        # The total_*_node_count fields are mutually exclusive with the *_node_count
+        # fields.
+        # Corresponds to the JSON property `totalMaxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :total_max_node_count
+      
+        # Minimum number of nodes in the node pool. Must be greater than 1 less than
+        # total_max_node_count. The total_*_node_count fields are mutually exclusive
+        # with the *_node_count fields.
+        # Corresponds to the JSON property `totalMinNodeCount`
+        # @return [Fixnum]
+        attr_accessor :total_min_node_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3484,8 +3632,11 @@ module Google
         def update!(**args)
           @autoprovisioned = args[:autoprovisioned] if args.key?(:autoprovisioned)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+          @total_max_node_count = args[:total_max_node_count] if args.key?(:total_max_node_count)
+          @total_min_node_count = args[:total_min_node_count] if args.key?(:total_min_node_count)
         end
       end
       
@@ -4082,6 +4233,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Option for rollback to ignore the PodDisruptionBudget. Default value is false.
+        # Corresponds to the JSON property `respectPdb`
+        # @return [Boolean]
+        attr_accessor :respect_pdb
+        alias_method :respect_pdb?, :respect_pdb
+      
         # Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.
         # com/compute/docs/zones#available) in which the cluster resides. This field has
         # been deprecated and replaced by the name field.
@@ -4099,6 +4256,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @respect_pdb = args[:respect_pdb] if args.key?(:respect_pdb)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -4979,6 +5137,38 @@ module Google
         end
       end
       
+      # Standard rollout policy is the default policy for blue-green.
+      class StandardRolloutPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Number of blue nodes to drain in a batch.
+        # Corresponds to the JSON property `batchNodeCount`
+        # @return [Fixnum]
+        attr_accessor :batch_node_count
+      
+        # Percentage of the bool pool nodes to drain in a batch. The range of this field
+        # should be (0.0, 1.0].
+        # Corresponds to the JSON property `batchPercentage`
+        # @return [Float]
+        attr_accessor :batch_percentage
+      
+        # Soak time after each batch gets drained. Default to zero.
+        # Corresponds to the JSON property `batchSoakDuration`
+        # @return [String]
+        attr_accessor :batch_soak_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_node_count = args[:batch_node_count] if args.key?(:batch_node_count)
+          @batch_percentage = args[:batch_percentage] if args.key?(:batch_percentage)
+          @batch_soak_duration = args[:batch_soak_duration] if args.key?(:batch_soak_duration)
+        end
+      end
+      
       # StartIPRotationRequest creates a new IP for the cluster and then performs a
       # node upgrade on each node pool to point to the new IP.
       class StartIpRotationRequest
@@ -5184,6 +5374,26 @@ module Google
         end
       end
       
+      # UpdateInfo contains resource (instance groups, etc), status and other
+      # intermediate information relevant to a node pool upgrade.
+      class UpdateInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information relevant to blue-green upgrade.
+        # Corresponds to the JSON property `blueGreenInfo`
+        # @return [Google::Apis::ContainerV1::BlueGreenInfo]
+        attr_accessor :blue_green_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blue_green_info = args[:blue_green_info] if args.key?(:blue_green_info)
+        end
+      end
+      
       # UpdateMasterRequest updates the master of the cluster.
       class UpdateMasterRequest
         include Google::Apis::Core::Hashable
@@ -5302,6 +5512,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Parameters for node pool-level network config.
+        # Corresponds to the JSON property `nodeNetworkConfig`
+        # @return [Google::Apis::ContainerV1::NodeNetworkConfig]
+        attr_accessor :node_network_config
+      
         # Deprecated. The name of the node pool to upgrade. This field has been
         # deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
@@ -5352,6 +5567,23 @@ module Google
         # upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (
         # upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the
         # same time. This ensures that there are always at least 4 nodes available.
+        # These upgrade settings configure the upgrade strategy for the node pool. Use
+        # strategy to switch between the strategies applied to the node pool. If the
+        # strategy is ROLLING, use max_surge and max_unavailable to control the level of
+        # parallelism and the level of disruption caused by upgrade. 1. maxSurge
+        # controls the number of additional nodes that can be added to the node pool
+        # temporarily for the time of the upgrade to increase the number of available
+        # nodes. 2. maxUnavailable controls the number of nodes that can be
+        # simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the
+        # level of parallelism (how many nodes are being upgraded at the same time). If
+        # the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-
+        # green upgrade related settings. 1. standard_rollout_policy is the default
+        # policy. The policy is used to control the way blue pool gets drained. The
+        # draining is executed in the batch mode. The batch size could be specified as
+        # either percentage of the node pool size or the number of nodes.
+        # batch_soak_duration is the soak time after each batch gets drained. 2.
+        # node_pool_soak_duration is the soak time after all blue nodes are drained.
+        # After this period, the blue pool nodes will be deleted.
         # Corresponds to the JSON property `upgradeSettings`
         # @return [Google::Apis::ContainerV1::UpgradeSettings]
         attr_accessor :upgrade_settings
@@ -5385,6 +5617,7 @@ module Google
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
+          @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -5503,8 +5736,30 @@ module Google
       # upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (
       # upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the
       # same time. This ensures that there are always at least 4 nodes available.
+      # These upgrade settings configure the upgrade strategy for the node pool. Use
+      # strategy to switch between the strategies applied to the node pool. If the
+      # strategy is ROLLING, use max_surge and max_unavailable to control the level of
+      # parallelism and the level of disruption caused by upgrade. 1. maxSurge
+      # controls the number of additional nodes that can be added to the node pool
+      # temporarily for the time of the upgrade to increase the number of available
+      # nodes. 2. maxUnavailable controls the number of nodes that can be
+      # simultaneously unavailable. 3. (maxUnavailable + maxSurge) determines the
+      # level of parallelism (how many nodes are being upgraded at the same time). If
+      # the strategy is BLUE_GREEN, use blue_green_settings to configure the blue-
+      # green upgrade related settings. 1. standard_rollout_policy is the default
+      # policy. The policy is used to control the way blue pool gets drained. The
+      # draining is executed in the batch mode. The batch size could be specified as
+      # either percentage of the node pool size or the number of nodes.
+      # batch_soak_duration is the soak time after each batch gets drained. 2.
+      # node_pool_soak_duration is the soak time after all blue nodes are drained.
+      # After this period, the blue pool nodes will be deleted.
       class UpgradeSettings
         include Google::Apis::Core::Hashable
+      
+        # Settings for blue-green upgrade.
+        # Corresponds to the JSON property `blueGreenSettings`
+        # @return [Google::Apis::ContainerV1::BlueGreenSettings]
+        attr_accessor :blue_green_settings
       
         # The maximum number of nodes that can be created beyond the current size of the
         # node pool during the upgrade process.
@@ -5518,14 +5773,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_unavailable
       
+        # Update strategy of the node pool.
+        # Corresponds to the JSON property `strategy`
+        # @return [String]
+        attr_accessor :strategy
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @blue_green_settings = args[:blue_green_settings] if args.key?(:blue_green_settings)
           @max_surge = args[:max_surge] if args.key?(:max_surge)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+          @strategy = args[:strategy] if args.key?(:strategy)
         end
       end
       
