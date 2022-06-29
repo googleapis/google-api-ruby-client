@@ -744,6 +744,11 @@ module Google
         # @return [Float]
         attr_accessor :altitude
       
+        # Time of the GPS record since UTC epoch.
+        # Corresponds to the JSON property `gpsRecordTimestampUnixEpoch`
+        # @return [String]
+        attr_accessor :gps_record_timestamp_unix_epoch
+      
         # The following pose parameters pertain to the center of the photo. They match
         # https://developers.google.com/streetview/spherical-metadata. Compass heading,
         # measured at the center of the photo in degrees clockwise from North. Value
@@ -786,6 +791,7 @@ module Google
         def update!(**args)
           @accuracy_meters = args[:accuracy_meters] if args.key?(:accuracy_meters)
           @altitude = args[:altitude] if args.key?(:altitude)
+          @gps_record_timestamp_unix_epoch = args[:gps_record_timestamp_unix_epoch] if args.key?(:gps_record_timestamp_unix_epoch)
           @heading = args[:heading] if args.key?(:heading)
           @lat_lng_pair = args[:lat_lng_pair] if args.key?(:lat_lng_pair)
           @level = args[:level] if args.key?(:level)
