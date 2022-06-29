@@ -335,6 +335,25 @@ module Google
           command
         end
 
+        # Create a new storage download command. This is specifically for storage because
+        # we want to return response header too in the response.
+        #
+        # @param [symbol] method
+        #   HTTP method for uploading (typically :get)
+        # @param [String] path
+        #  Additional path to download endpoint, appended to API base path
+        # @param [Hash, Google::Apis::RequestOptions] options
+        #  Request-specific options
+        # @return [Google::Apis::Core::StorageDownloadCommand]
+        def make_storage_download_command(method, path, options)
+          template = Addressable::Template.new(root_url + base_path + path)
+          command = StorageDownloadCommand.new(method, template, client_version: client_version)
+          command.options = request_options.merge(options)
+          command.query['alt'] = 'media'
+          apply_command_defaults(command)
+          command
+        end
+
         # Create a new command.
         #
         # @param [symbol] method

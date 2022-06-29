@@ -65,6 +65,13 @@ def <%= api_method.generated_name %>(<% for param in api_method.required_paramet
     command = make_download_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
     command.download_dest = download_dest
   end
+<% elsif api_method.supports_media_download? && api.name == 'Storage' %>
+  if download_dest.nil?
+    command = make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
+  else
+    command = make_storage_download_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
+    command.download_dest = download_dest
+  end
 <% else -%>
   command = make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
 <% end -%>
