@@ -120,7 +120,7 @@ module Google
         end
 
         def ensure_valid_command(command)
-          if command.is_a?(Google::Apis::Core::BaseUploadCommand) || command.is_a?(Google::Apis::Core::DownloadCommand)
+          if command.is_a?(Google::Apis::Core::BaseUploadCommand) || command.is_a?(Google::Apis::Core::DownloadCommand) || command.is_a?(Google::Apis::Core::StorageDownloadCommand)
             fail Google::Apis::ClientError, 'Can not include media requests in batch'
           end
           fail Google::Apis::ClientError, 'Invalid command object' unless command.is_a?(HttpCommand)
