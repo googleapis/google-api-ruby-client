@@ -1,7 +1,8 @@
 # Release history for google-apis-container_v1
 
-### v0.33.0 (2022-06-29)
+### v0.33.0 (2022-06-30)
 
+* Regenerated using generator version 0.8.0
 * Regenerated from discovery document revision 20220615
 
 ### v0.32.0 (2022-06-18)
