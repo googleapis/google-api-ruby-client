@@ -367,7 +367,7 @@ module Google
         attr_accessor :name
       
         # Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset`
-        # must exist the `Release` to be created.
+        # must exist for the `Release` to be created.
         # Corresponds to the JSON property `rulesetName`
         # @return [String]
         attr_accessor :ruleset_name
