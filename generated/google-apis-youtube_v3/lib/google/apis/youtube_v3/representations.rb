@@ -1882,6 +1882,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cue_type, as: 'cueType'
           property :duration_secs, as: 'durationSecs'
+          property :etag, as: 'etag'
           property :id, as: 'id'
           property :insertion_offset_time_ms, :numeric_string => true, as: 'insertionOffsetTimeMs'
           property :walltime_ms, :numeric_string => true, as: 'walltimeMs'
