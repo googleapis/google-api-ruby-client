@@ -1749,10 +1749,11 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_object(bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        
           if download_dest.nil?
             command = make_simple_command(:get, 'b/{bucket}/o/{object}', options)
           else
-            command = make_download_command(:get, 'b/{bucket}/o/{object}', options)
+            command = make_storage_download_command(:get, 'b/{bucket}/o/{object}', options)
             command.download_dest = download_dest
           end
           command.response_representation = Google::Apis::StorageV1::Object::Representation
