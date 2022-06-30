@@ -1,5 +1,11 @@
 # Release History
 
+### 0.7.0 (2022-06-30)
+
+#### Features
+
+* Add storage specific download to respond with http header 
+
 ### 0.6.0 (2022-06-15)
 
 #### Features
