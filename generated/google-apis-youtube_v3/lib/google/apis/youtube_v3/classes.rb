@@ -2877,6 +2877,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :duration_secs
       
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The identifier for cuepoint resource.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -2902,6 +2907,7 @@ module Google
         def update!(**args)
           @cue_type = args[:cue_type] if args.key?(:cue_type)
           @duration_secs = args[:duration_secs] if args.key?(:duration_secs)
+          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @insertion_offset_time_ms = args[:insertion_offset_time_ms] if args.key?(:insertion_offset_time_ms)
           @walltime_ms = args[:walltime_ms] if args.key?(:walltime_ms)
