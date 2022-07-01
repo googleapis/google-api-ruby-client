@@ -1108,7 +1108,10 @@ module Google
         attr_accessor :indexable_option
       
         # Required. Attribute name. For example: `color`, `brands`, `attributes.
-        # custom_attribute`, such as `attributes.xyz`.
+        # custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute
+        # name can contain only alpha-numeric characters and underscores. For example,
+        # an attribute named `attributes.abc_xyz` can be indexed, but an attribute named
+        # `attributes.abc-xyz` cannot be indexed.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
