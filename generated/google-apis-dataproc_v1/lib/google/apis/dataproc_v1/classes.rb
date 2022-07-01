@@ -818,6 +818,11 @@ module Google
       class ClusterOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Child operation ids
+        # Corresponds to the JSON property `childOperationIds`
+        # @return [Array<String>]
+        attr_accessor :child_operation_ids
+      
         # Output only. Name of the cluster for the operation.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
@@ -864,6 +869,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @child_operation_ids = args[:child_operation_ids] if args.key?(:child_operation_ids)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @description = args[:description] if args.key?(:description)
@@ -1004,7 +1010,7 @@ module Google
       class DataprocMetricConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Metrics to enable.
+        # Required. Metrics sources to enable.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::DataprocV1::Metric>]
         attr_accessor :metrics
@@ -1077,11 +1083,12 @@ module Google
         # @return [String]
         attr_accessor :local_ssd_interface
       
-        # Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
+        # Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not
         # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
         # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
         # attached, this runtime bulk data is spread across them, and the boot disk
-        # contains only basic config and installed binaries.
+        # contains only basic config and installed binaries.Note: Local SSD options may
+        # vary by machine type and number of vCPUs selected.
         # Corresponds to the JSON property `numLocalSsds`
         # @return [Fixnum]
         attr_accessor :num_local_ssds
@@ -1515,9 +1522,9 @@ module Google
         attr_accessor :accelerators
       
         # Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/
-        # compute/docs/disks/customer-managed-encryption) used to encrypt the boot disk
+        # kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk
         # attached to each node in the node pool. Specify the key using the following
-        # format: projects/KEY_PROJECT_ID /locations/LOCATION/keyRings/RING_NAME/
+        # format: projects/KEY_PROJECT_ID/locations/LOCATION /keyRings/RING_NAME/
         # cryptoKeys/KEY_NAME.
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
@@ -2950,18 +2957,31 @@ module Google
         end
       end
       
-      # The metric source to enable, with any optional metrics, to override Dataproc
-      # default metrics.
+      # A Dataproc OSS metric.
       class Metric
         include Google::Apis::Core::Hashable
       
-        # Optional. Optional Metrics to override the Dataproc default metrics configured
-        # for the metric source.
+        # Optional. Specify one or more available OSS metrics (https://cloud.google.com/
+        # dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the
+        # metric course (for the SPARK metric source, any Spark metric (https://spark.
+        # apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide
+        # metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use
+        # camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:
+        # AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:
+        # Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.
+        # used Notes: Only the specified overridden metrics will be collected for the
+        # metric source. For example, if one or more spark:executive metrics are listed
+        # as metric overrides, other SPARK metrics will not be collected. The collection
+        # of the default metrics for other OSS metric sources is unaffected. For example,
+        # if both SPARK andd YARN metric sources are enabled, and overrides are
+        # provided for Spark metrics only, all default YARN metrics will be collected.
         # Corresponds to the JSON property `metricOverrides`
         # @return [Array<String>]
         attr_accessor :metric_overrides
       
-        # Required. MetricSource to enable.
+        # Required. Default metrics are collected unless metricOverrides are specified
+        # for the metric source (see Available OSS metrics (https://cloud.google.com/
+        # dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
         # Corresponds to the JSON property `metricSource`
         # @return [String]
         attr_accessor :metric_source

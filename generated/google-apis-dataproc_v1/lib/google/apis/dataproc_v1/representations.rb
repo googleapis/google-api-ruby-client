@@ -911,6 +911,7 @@ module Google
       class ClusterOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_operation_ids, as: 'childOperationIds'
           property :cluster_name, as: 'clusterName'
           property :cluster_uuid, as: 'clusterUuid'
           property :description, as: 'description'
