@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudresourcemanager_v3
 
+### v0.30.0 (2022-07-02)
+
+* Regenerated using generator version 0.8.0
+
 ### v0.29.0 (2022-06-23)
 
 * Regenerated from discovery document revision 20220619
