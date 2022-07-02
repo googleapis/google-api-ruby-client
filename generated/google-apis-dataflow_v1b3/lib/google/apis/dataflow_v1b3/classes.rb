@@ -2090,7 +2090,7 @@ module Google
         # exist in a project within one region at any given time. Jobs in different
         # regions can have the same name. If a caller attempts to create a Job with the
         # same name as an already-existing Job, the attempt returns the existing Job.
-        # The name must match the regular expression `[a-z]([-a-z0-9]`0,38`[a-z0-9])?`
+        # The name must match the regular expression `[a-z]([-a-z0-9]`0,1022`[a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2613,7 +2613,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
       
-        # Required. The job name to use for the created job.
+        # Required. The job name to use for the created job. The name must match the
+        # regular expression `[a-z]([-a-z0-9]`0,1022`[a-z0-9])?`
         # Corresponds to the JSON property `jobName`
         # @return [String]
         attr_accessor :job_name
