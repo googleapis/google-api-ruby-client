@@ -1,5 +1,9 @@
 # Release history for google-apis-language_v1beta2
 
+### v0.12.0 (2022-07-02)
+
+* Regenerated using generator version 0.8.0
+
 ### v0.11.0 (2022-06-17)
 
 * Regenerated using generator version 0.6.0
