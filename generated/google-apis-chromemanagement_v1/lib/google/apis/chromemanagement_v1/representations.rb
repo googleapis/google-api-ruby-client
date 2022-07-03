@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1HttpsLatencyRoutineData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1InstalledApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,24 @@ module Google
       end
       
       class GoogleChromeManagementV1MemoryStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1NetworkDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1NetworkDiagnosticsReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1NetworkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +251,18 @@ module Google
       end
       
       class GoogleChromeManagementV1TelemetryDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1ThunderboltInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TotalMemoryEncryptionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +467,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          property :keylocker_configured, as: 'keylockerConfigured'
+          property :keylocker_supported, as: 'keylockerSupported'
           property :max_clock_speed, as: 'maxClockSpeed'
           property :model, as: 'model'
         end
@@ -529,6 +567,14 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1HttpsLatencyRoutineData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latency, as: 'latency'
+          property :problem, as: 'problem'
+        end
+      end
+      
       class GoogleChromeManagementV1InstalledApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -559,6 +605,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_ram_bytes, :numeric_string => true, as: 'availableRamBytes'
+          property :total_memory_encryption, as: 'totalMemoryEncryption', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TotalMemoryEncryptionInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TotalMemoryEncryptionInfo::Representation
+      
           property :total_ram_bytes, :numeric_string => true, as: 'totalRamBytes'
         end
       end
@@ -573,14 +621,52 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1NetworkDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iccid, as: 'iccid'
+          property :imei, as: 'imei'
+          property :mac_address, as: 'macAddress'
+          property :mdn, as: 'mdn'
+          property :meid, as: 'meid'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleChromeManagementV1NetworkDiagnosticsReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :https_latency_data, as: 'httpsLatencyData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData::Representation
+      
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
+      class GoogleChromeManagementV1NetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_devices, as: 'networkDevices', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDevice::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1NetworkStatusReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :connection_type, as: 'connectionType'
+          property :encryption_on, as: 'encryptionOn'
           property :gateway_ip_address, as: 'gatewayIpAddress'
+          property :guid, as: 'guid'
           property :lan_ip_address, as: 'lanIpAddress'
+          property :receiving_bit_rate_mbps, :numeric_string => true, as: 'receivingBitRateMbps'
           property :report_time, as: 'reportTime'
           property :sample_frequency, as: 'sampleFrequency'
           property :signal_strength_dbm, as: 'signalStrengthDbm'
+          property :transmission_bit_rate_mbps, :numeric_string => true, as: 'transmissionBitRateMbps'
+          property :transmission_power_dbm, as: 'transmissionPowerDbm'
+          property :wifi_link_quality, :numeric_string => true, as: 'wifiLinkQuality'
+          property :wifi_power_management_enabled, as: 'wifiPowerManagementEnabled'
         end
       end
       
@@ -648,6 +734,10 @@ module Google
           collection :memory_status_report, as: 'memoryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport::Representation
       
           property :name, as: 'name'
+          collection :network_diagnostics_report, as: 'networkDiagnosticsReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport::Representation
+      
+          property :network_info, as: 'networkInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo::Representation
+      
           collection :network_status_report, as: 'networkStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkStatusReport::Representation
       
           property :org_unit_id, as: 'orgUnitId'
@@ -658,6 +748,25 @@ module Google
       
           collection :storage_status_report, as: 'storageStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageStatusReport::Representation
       
+          collection :thunderbolt_info, as: 'thunderboltInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ThunderboltInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ThunderboltInfo::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1ThunderboltInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_level, as: 'securityLevel'
+        end
+      end
+      
+      class GoogleChromeManagementV1TotalMemoryEncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_algorithm, as: 'encryptionAlgorithm'
+          property :encryption_state, as: 'encryptionState'
+          property :key_length, :numeric_string => true, as: 'keyLength'
+          property :max_keys, :numeric_string => true, as: 'maxKeys'
         end
       end
       

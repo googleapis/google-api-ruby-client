@@ -763,6 +763,19 @@ module Google
         # @return [String]
         attr_accessor :architecture
       
+        # Output only. Whether keylocker is configured.`TRUE` = Enabled; `FALSE` =
+        # disabled. Only reported if keylockerSupported = `TRUE`.
+        # Corresponds to the JSON property `keylockerConfigured`
+        # @return [Boolean]
+        attr_accessor :keylocker_configured
+        alias_method :keylocker_configured?, :keylocker_configured
+      
+        # Output only. Whether keylocker is supported.
+        # Corresponds to the JSON property `keylockerSupported`
+        # @return [Boolean]
+        attr_accessor :keylocker_supported
+        alias_method :keylocker_supported?, :keylocker_supported
+      
         # Output only. The max CPU clock speed in kHz.
         # Corresponds to the JSON property `maxClockSpeed`
         # @return [Fixnum]
@@ -781,6 +794,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
+          @keylocker_configured = args[:keylocker_configured] if args.key?(:keylocker_configured)
+          @keylocker_supported = args[:keylocker_supported] if args.key?(:keylocker_supported)
           @max_clock_speed = args[:max_clock_speed] if args.key?(:max_clock_speed)
           @model = args[:model] if args.key?(:model)
         end
@@ -1120,6 +1135,33 @@ module Google
         end
       end
       
+      # Data that describes the result of the HTTPS latency diagnostics routine, with
+      # the HTTPS requests issued to Google websites.
+      class GoogleChromeManagementV1HttpsLatencyRoutineData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. HTTPS latency if routine succeeded or failed because of
+        # HIGH_LATENCY or VERY_HIGH_LATENCY.
+        # Corresponds to the JSON property `latency`
+        # @return [String]
+        attr_accessor :latency
+      
+        # Output only. HTTPS latency routine problem if a problem occurred.
+        # Corresponds to the JSON property `problem`
+        # @return [String]
+        attr_accessor :problem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency = args[:latency] if args.key?(:latency)
+          @problem = args[:problem] if args.key?(:problem)
+        end
+      end
+      
       # Describes an installed app.
       class GoogleChromeManagementV1InstalledApp
         include Google::Apis::Core::Hashable
@@ -1236,6 +1278,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_ram_bytes
       
+        # Memory encryption information of a device.
+        # Corresponds to the JSON property `totalMemoryEncryption`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TotalMemoryEncryptionInfo]
+        attr_accessor :total_memory_encryption
+      
         # Output only. Total RAM in bytes.
         # Corresponds to the JSON property `totalRamBytes`
         # @return [Fixnum]
@@ -1248,6 +1295,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_ram_bytes = args[:available_ram_bytes] if args.key?(:available_ram_bytes)
+          @total_memory_encryption = args[:total_memory_encryption] if args.key?(:total_memory_encryption)
           @total_ram_bytes = args[:total_ram_bytes] if args.key?(:total_ram_bytes)
         end
       end
@@ -1291,19 +1339,141 @@ module Google
         end
       end
       
+      # Network device.
+      class GoogleChromeManagementV1NetworkDevice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The integrated circuit card ID associated with the device's sim
+        # card.
+        # Corresponds to the JSON property `iccid`
+        # @return [String]
+        attr_accessor :iccid
+      
+        # Output only. IMEI (if applicable) of the corresponding network device.
+        # Corresponds to the JSON property `imei`
+        # @return [String]
+        attr_accessor :imei
+      
+        # Output only. MAC address (if applicable) of the corresponding network device.
+        # Corresponds to the JSON property `macAddress`
+        # @return [String]
+        attr_accessor :mac_address
+      
+        # Output only. The mobile directory number associated with the device's sim card.
+        # Corresponds to the JSON property `mdn`
+        # @return [String]
+        attr_accessor :mdn
+      
+        # Output only. MEID (if applicable) of the corresponding network device.
+        # Corresponds to the JSON property `meid`
+        # @return [String]
+        attr_accessor :meid
+      
+        # Output only. Network device type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iccid = args[:iccid] if args.key?(:iccid)
+          @imei = args[:imei] if args.key?(:imei)
+          @mac_address = args[:mac_address] if args.key?(:mac_address)
+          @mdn = args[:mdn] if args.key?(:mdn)
+          @meid = args[:meid] if args.key?(:meid)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Network testing results to determine the health of the device's network
+      # connection, for example whether the HTTPS latency is high or normal.
+      class GoogleChromeManagementV1NetworkDiagnosticsReport
+        include Google::Apis::Core::Hashable
+      
+        # Data that describes the result of the HTTPS latency diagnostics routine, with
+        # the HTTPS requests issued to Google websites.
+        # Corresponds to the JSON property `httpsLatencyData`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData]
+        attr_accessor :https_latency_data
+      
+        # Output only. Timestamp of when the diagnostics were collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @https_latency_data = args[:https_latency_data] if args.key?(:https_latency_data)
+          @report_time = args[:report_time] if args.key?(:report_time)
+        end
+      end
+      
+      # Network devices info.
+      class GoogleChromeManagementV1NetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of network devices.
+        # Corresponds to the JSON property `networkDevices`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDevice>]
+        attr_accessor :network_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_devices = args[:network_devices] if args.key?(:network_devices)
+        end
+      end
+      
       # State of visible/configured networks.
       class GoogleChromeManagementV1NetworkStatusReport
         include Google::Apis::Core::Hashable
+      
+        # Output only. Current connection state of the network.
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # Output only. Network connection type.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # Output only. Whether the wifi encryption key is turned off.
+        # Corresponds to the JSON property `encryptionOn`
+        # @return [Boolean]
+        attr_accessor :encryption_on
+        alias_method :encryption_on?, :encryption_on
       
         # Output only. Gateway IP address.
         # Corresponds to the JSON property `gatewayIpAddress`
         # @return [String]
         attr_accessor :gateway_ip_address
       
+        # Output only. Network connection guid.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
         # Output only. LAN IP address.
         # Corresponds to the JSON property `lanIpAddress`
         # @return [String]
         attr_accessor :lan_ip_address
+      
+        # Output only. Receiving bit rate measured in megabytes per second.
+        # Corresponds to the JSON property `receivingBitRateMbps`
+        # @return [Fixnum]
+        attr_accessor :receiving_bit_rate_mbps
       
         # Output only. Time at which the network state was reported.
         # Corresponds to the JSON property `reportTime`
@@ -1320,17 +1490,48 @@ module Google
         # @return [Fixnum]
         attr_accessor :signal_strength_dbm
       
+        # Output only. Transmission bit rate measured in megabytes per second.
+        # Corresponds to the JSON property `transmissionBitRateMbps`
+        # @return [Fixnum]
+        attr_accessor :transmission_bit_rate_mbps
+      
+        # Output only. Transmission power measured in decibels.
+        # Corresponds to the JSON property `transmissionPowerDbm`
+        # @return [Fixnum]
+        attr_accessor :transmission_power_dbm
+      
+        # Output only. Wifi link quality. Value ranges from [0, 70]. 0 indicates no
+        # signal and 70 indicates a strong signal.
+        # Corresponds to the JSON property `wifiLinkQuality`
+        # @return [Fixnum]
+        attr_accessor :wifi_link_quality
+      
+        # Output only. Wifi power management enabled
+        # Corresponds to the JSON property `wifiPowerManagementEnabled`
+        # @return [Boolean]
+        attr_accessor :wifi_power_management_enabled
+        alias_method :wifi_power_management_enabled?, :wifi_power_management_enabled
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @encryption_on = args[:encryption_on] if args.key?(:encryption_on)
           @gateway_ip_address = args[:gateway_ip_address] if args.key?(:gateway_ip_address)
+          @guid = args[:guid] if args.key?(:guid)
           @lan_ip_address = args[:lan_ip_address] if args.key?(:lan_ip_address)
+          @receiving_bit_rate_mbps = args[:receiving_bit_rate_mbps] if args.key?(:receiving_bit_rate_mbps)
           @report_time = args[:report_time] if args.key?(:report_time)
           @sample_frequency = args[:sample_frequency] if args.key?(:sample_frequency)
           @signal_strength_dbm = args[:signal_strength_dbm] if args.key?(:signal_strength_dbm)
+          @transmission_bit_rate_mbps = args[:transmission_bit_rate_mbps] if args.key?(:transmission_bit_rate_mbps)
+          @transmission_power_dbm = args[:transmission_power_dbm] if args.key?(:transmission_power_dbm)
+          @wifi_link_quality = args[:wifi_link_quality] if args.key?(:wifi_link_quality)
+          @wifi_power_management_enabled = args[:wifi_power_management_enabled] if args.key?(:wifi_power_management_enabled)
         end
       end
       
@@ -1542,6 +1743,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Network diagnostics collected periodically.
+        # Corresponds to the JSON property `networkDiagnosticsReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport>]
+        attr_accessor :network_diagnostics_report
+      
+        # Network devices info.
+        # Corresponds to the JSON property `networkInfo`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo]
+        attr_accessor :network_info
+      
         # Output only. Network specs collected periodically.
         # Corresponds to the JSON property `networkStatusReport`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkStatusReport>]
@@ -1573,6 +1784,11 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageStatusReport>]
         attr_accessor :storage_status_report
       
+        # Output only. Information on Thunderbolt bus.
+        # Corresponds to the JSON property `thunderboltInfo`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ThunderboltInfo>]
+        attr_accessor :thunderbolt_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1591,12 +1807,71 @@ module Google
           @memory_info = args[:memory_info] if args.key?(:memory_info)
           @memory_status_report = args[:memory_status_report] if args.key?(:memory_status_report)
           @name = args[:name] if args.key?(:name)
+          @network_diagnostics_report = args[:network_diagnostics_report] if args.key?(:network_diagnostics_report)
+          @network_info = args[:network_info] if args.key?(:network_info)
           @network_status_report = args[:network_status_report] if args.key?(:network_status_report)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @storage_info = args[:storage_info] if args.key?(:storage_info)
           @storage_status_report = args[:storage_status_report] if args.key?(:storage_status_report)
+          @thunderbolt_info = args[:thunderbolt_info] if args.key?(:thunderbolt_info)
+        end
+      end
+      
+      # Thunderbolt bus info.
+      class GoogleChromeManagementV1ThunderboltInfo
+        include Google::Apis::Core::Hashable
+      
+        # Security level of the Thunderbolt bus.
+        # Corresponds to the JSON property `securityLevel`
+        # @return [String]
+        attr_accessor :security_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @security_level = args[:security_level] if args.key?(:security_level)
+        end
+      end
+      
+      # Memory encryption information of a device.
+      class GoogleChromeManagementV1TotalMemoryEncryptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Memory encryption algorithm.
+        # Corresponds to the JSON property `encryptionAlgorithm`
+        # @return [String]
+        attr_accessor :encryption_algorithm
+      
+        # The state of memory encryption on the device.
+        # Corresponds to the JSON property `encryptionState`
+        # @return [String]
+        attr_accessor :encryption_state
+      
+        # The length of the encryption keys.
+        # Corresponds to the JSON property `keyLength`
+        # @return [Fixnum]
+        attr_accessor :key_length
+      
+        # The maximum number of keys that can be used for encryption.
+        # Corresponds to the JSON property `maxKeys`
+        # @return [Fixnum]
+        attr_accessor :max_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_algorithm = args[:encryption_algorithm] if args.key?(:encryption_algorithm)
+          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @key_length = args[:key_length] if args.key?(:key_length)
+          @max_keys = args[:max_keys] if args.key?(:max_keys)
         end
       end
       
