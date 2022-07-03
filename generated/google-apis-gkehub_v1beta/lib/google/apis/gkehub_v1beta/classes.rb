@@ -1205,6 +1205,13 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementPolicyControllerMonitoring]
         attr_accessor :monitoring
       
+        # Enable or disable mutation in policy controller. If true, mutation CRDs,
+        # webhook and controller deployment will be deployed to the cluster.
+        # Corresponds to the JSON property `mutationEnabled`
+        # @return [Boolean]
+        attr_accessor :mutation_enabled
+        alias_method :mutation_enabled?, :mutation_enabled
+      
         # Enables the ability to use Constraint Templates that reference to objects
         # other than the object currently being evaluated.
         # Corresponds to the JSON property `referentialRulesEnabled`
@@ -1229,6 +1236,7 @@ module Google
           @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
+          @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
         end
