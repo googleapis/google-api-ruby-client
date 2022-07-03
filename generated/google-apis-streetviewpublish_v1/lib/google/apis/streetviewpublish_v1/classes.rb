@@ -156,6 +156,31 @@ module Google
         end
       end
       
+      # Details related to ProcessingFailureReason#GPS_DATA_GAP.
+      class GpsDataGapFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the gap in GPS data that was found.
+        # Corresponds to the JSON property `gapDuration`
+        # @return [String]
+        attr_accessor :gap_duration
+      
+        # Relative time (from the start of the video stream) when the gap started.
+        # Corresponds to the JSON property `gapTime`
+        # @return [String]
+        attr_accessor :gap_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gap_duration = args[:gap_duration] if args.key?(:gap_duration)
+          @gap_time = args[:gap_time] if args.key?(:gap_time)
+        end
+      end
+      
       # IMU data from the device sensors.
       class Imu
         include Google::Apis::Core::Hashable
@@ -187,6 +212,50 @@ module Google
           @accel_mpsps = args[:accel_mpsps] if args.key?(:accel_mpsps)
           @gyro_rps = args[:gyro_rps] if args.key?(:gyro_rps)
           @mag_ut = args[:mag_ut] if args.key?(:mag_ut)
+        end
+      end
+      
+      # Details related to ProcessingFailureReason#IMU_DATA_GAP.
+      class ImuDataGapFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the gap in IMU data that was found.
+        # Corresponds to the JSON property `gapDuration`
+        # @return [String]
+        attr_accessor :gap_duration
+      
+        # Relative time (from the start of the video stream) when the gap started.
+        # Corresponds to the JSON property `gapTime`
+        # @return [String]
+        attr_accessor :gap_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gap_duration = args[:gap_duration] if args.key?(:gap_duration)
+          @gap_time = args[:gap_time] if args.key?(:gap_time)
+        end
+      end
+      
+      # Details related to ProcessingFailureReason#INSUFFICIENT_GPS.
+      class InsufficientGpsFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # The number of GPS points that were found in the video.
+        # Corresponds to the JSON property `gpsPointsFound`
+        # @return [Fixnum]
+        attr_accessor :gps_points_found
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gps_points_found = args[:gps_points_found] if args.key?(:gps_points_found)
         end
       end
       
@@ -371,6 +440,26 @@ module Google
           @x = args[:x] if args.key?(:x)
           @y = args[:y] if args.key?(:y)
           @z = args[:z] if args.key?(:z)
+        end
+      end
+      
+      # Details related to ProcessingFailureReason#NOT_OUTDOORS.
+      class NotOutdoorsFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # Relative time (from the start of the video stream) when an indoor frame was
+        # found.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -597,6 +686,13 @@ module Google
         # @return [Float]
         attr_accessor :distance_meters
       
+        # Additional details to accompany the ProcessingFailureReason enum. This message
+        # is always expected to be used in conjunction with ProcessingFailureReason, and
+        # the oneof value set in this message should match the FailureReason.
+        # Corresponds to the JSON property `failureDetails`
+        # @return [Google::Apis::StreetviewpublishV1::ProcessingFailureDetails]
+        attr_accessor :failure_details
+      
         # Output only. If this sequence has processing_state = FAILED, this will contain
         # the reason why it failed. If the processing_state is any other value, this
         # field will be unset.
@@ -677,6 +773,7 @@ module Google
         def update!(**args)
           @capture_time_override = args[:capture_time_override] if args.key?(:capture_time_override)
           @distance_meters = args[:distance_meters] if args.key?(:distance_meters)
+          @failure_details = args[:failure_details] if args.key?(:failure_details)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @filename = args[:filename] if args.key?(:filename)
           @gps_source = args[:gps_source] if args.key?(:gps_source)
@@ -797,6 +894,45 @@ module Google
           @level = args[:level] if args.key?(:level)
           @pitch = args[:pitch] if args.key?(:pitch)
           @roll = args[:roll] if args.key?(:roll)
+        end
+      end
+      
+      # Additional details to accompany the ProcessingFailureReason enum. This message
+      # is always expected to be used in conjunction with ProcessingFailureReason, and
+      # the oneof value set in this message should match the FailureReason.
+      class ProcessingFailureDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details related to ProcessingFailureReason#GPS_DATA_GAP.
+        # Corresponds to the JSON property `gpsDataGapDetails`
+        # @return [Google::Apis::StreetviewpublishV1::GpsDataGapFailureDetails]
+        attr_accessor :gps_data_gap_details
+      
+        # Details related to ProcessingFailureReason#IMU_DATA_GAP.
+        # Corresponds to the JSON property `imuDataGapDetails`
+        # @return [Google::Apis::StreetviewpublishV1::ImuDataGapFailureDetails]
+        attr_accessor :imu_data_gap_details
+      
+        # Details related to ProcessingFailureReason#INSUFFICIENT_GPS.
+        # Corresponds to the JSON property `insufficientGpsDetails`
+        # @return [Google::Apis::StreetviewpublishV1::InsufficientGpsFailureDetails]
+        attr_accessor :insufficient_gps_details
+      
+        # Details related to ProcessingFailureReason#NOT_OUTDOORS.
+        # Corresponds to the JSON property `notOutdoorsDetails`
+        # @return [Google::Apis::StreetviewpublishV1::NotOutdoorsFailureDetails]
+        attr_accessor :not_outdoors_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gps_data_gap_details = args[:gps_data_gap_details] if args.key?(:gps_data_gap_details)
+          @imu_data_gap_details = args[:imu_data_gap_details] if args.key?(:imu_data_gap_details)
+          @insufficient_gps_details = args[:insufficient_gps_details] if args.key?(:insufficient_gps_details)
+          @not_outdoors_details = args[:not_outdoors_details] if args.key?(:not_outdoors_details)
         end
       end
       
