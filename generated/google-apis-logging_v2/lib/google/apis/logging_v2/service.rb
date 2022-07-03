@@ -132,73 +132,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a log bucket.
-        # @param [String] name
-        #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
-        #   global/buckets/my-bucket"
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2::LogBucket] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2::LogBucket]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_billing_account_bucket(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::LoggingV2::LogBucket::Representation
-          command.response_class = Google::Apis::LoggingV2::LogBucket
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a view on a log bucket..
-        # @param [String] name
-        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
-        #   project/locations/global/buckets/my-bucket/views/my-view"
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2::LogView]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_billing_account_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
-          command.response_class = Google::Apis::LoggingV2::LogView
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a new exclusion in the _Default sink in a specified parent resource.
         # Only log entries belonging to that resource can be excluded. You can have up
         # to 10 exclusions in a resource.
@@ -544,6 +477,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a log bucket.
+        # @param [String] name
+        #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogBucket] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogBucket]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_location_bucket(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogBucket::Representation
+          command.response_class = Google::Apis::LoggingV2::LogBucket
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
@@ -753,6 +721,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a view on a log bucket..
+        # @param [String] name
+        #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::LogView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::LogView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_location_bucket_view(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::LogView::Representation
+          command.response_class = Google::Apis::LoggingV2::LogView
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
@@ -934,6 +934,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
+          command.response_class = Google::Apis::LoggingV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists operations that match the specified filter in the request. If the server
         # doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding
         # allows API services to override the binding to use different resource name
@@ -1067,37 +1098,6 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['resourceNames'] = resource_names unless resource_names.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the latest state of a long-running operation. Clients can use this method
-        # to poll the operation result at intervals as recommended by the API service.
-        # @param [String] name
-        #   The name of the operation resource.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::LoggingV2::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::LoggingV2::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_billing_account_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::LoggingV2::Operation::Representation
-          command.response_class = Google::Apis::LoggingV2::Operation
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
