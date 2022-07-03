@@ -852,6 +852,7 @@ module Google
           property :log_denies_enabled, as: 'logDeniesEnabled'
           property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1::ConfigManagementPolicyControllerMonitoring, decorator: Google::Apis::GkehubV1::ConfigManagementPolicyControllerMonitoring::Representation
       
+          property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
         end
