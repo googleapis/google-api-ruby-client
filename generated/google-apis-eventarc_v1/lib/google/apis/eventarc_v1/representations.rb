@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChannelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -252,6 +258,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_token, as: 'activationToken'
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :pubsub_topic, as: 'pubsubTopic'
@@ -348,6 +355,15 @@ module Google
           property :namespace, as: 'namespace'
           property :path, as: 'path'
           property :service, as: 'service'
+        end
+      end
+      
+      class GoogleChannelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_name, as: 'cryptoKeyName'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       

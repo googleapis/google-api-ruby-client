@@ -182,6 +182,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
         # Required. The resource name of the channel. Must be unique within the location
         # on the project and must be in `projects/`project`/locations/`location`/
         # channels/`channel_id`` format.
@@ -228,6 +235,7 @@ module Google
         def update!(**args)
           @activation_token = args[:activation_token] if args.key?(:activation_token)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
@@ -267,8 +275,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. / Output only. Server assigned ID of the resource. The server
-        # guarantees uniqueness and immutability until deleted.
+        # Output only. Server assigned ID of the resource. The server guarantees
+        # uniqueness and immutability until deleted.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -608,6 +616,43 @@ module Google
         end
       end
       
+      # A GoogleChannelConfig is a resource that stores the custom settings respected
+      # by Eventarc first-party triggers in the matching region. Once configured,
+      # first-party event data will be protected using the specified custom managed
+      # encryption key instead of Google-managed encryption keys.
+      class GoogleChannelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Required. The resource name of the config. Must be in the format of, `projects/
+        # `project`/locations/`location`/googleChannelConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -756,7 +801,7 @@ module Google
         # @return [Array<Google::Apis::EventarcV1::ChannelConnection>]
         attr_accessor :channel_connections
       
-        # A page token that can be sent to ListChannelConnections to request the next
+        # A page token that can be sent to `ListChannelConnections` to request the next
         # page. If this is empty, then there are no more pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -788,7 +833,7 @@ module Google
         # @return [Array<Google::Apis::EventarcV1::Channel>]
         attr_accessor :channels
       
-        # A page token that can be sent to ListChannels to request the next page. If
+        # A page token that can be sent to `ListChannels` to request the next page. If
         # this is empty, then there are no more pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -840,7 +885,7 @@ module Google
       class ListProvidersResponse
         include Google::Apis::Core::Hashable
       
-        # A page token that can be sent to ListProviders to request the next page. If
+        # A page token that can be sent to `ListProviders` to request the next page. If
         # this is empty, then there are no more pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -872,7 +917,7 @@ module Google
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
       
-        # A page token that can be sent to ListTriggers to request the next page. If
+        # A page token that can be sent to `ListTriggers` to request the next page. If
         # this is empty, then there are no more pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
