@@ -889,6 +889,28 @@ module Google
         end
       end
       
+      # Request for SimulateMaintenanceEvent.
+      class SimulateMaintenanceEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # The 0-based worker ID. If it is empty, worker ID 0 will be selected for
+        # maintenance event simulation. A maintenance event will only be fired on the
+        # first specified worker ID. Future implementations may support firing on
+        # multiple workers.
+        # Corresponds to the JSON property `workerIds`
+        # @return [Array<String>]
+        attr_accessor :worker_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @worker_ids = args[:worker_ids] if args.key?(:worker_ids)
+        end
+      end
+      
       # Request for StartNode.
       class StartNodeRequest
         include Google::Apis::Core::Hashable
