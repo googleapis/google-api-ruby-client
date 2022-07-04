@@ -2620,6 +2620,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectRemoteLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InterconnectsGetDiagnosticsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11575,6 +11605,68 @@ module Google
         end
       end
       
+      class InterconnectRemoteLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :city, as: 'city'
+          property :continent, as: 'continent'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :facility_provider, as: 'facilityProvider'
+          property :facility_provider_facility_id, as: 'facilityProviderFacilityId'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :peeringdb_facility_id, as: 'peeringdbFacilityId'
+          property :permitted_connections, as: 'permittedConnections', class: Google::Apis::ComputeAlpha::InterconnectRemoteLocationPermittedConnections, decorator: Google::Apis::ComputeAlpha::InterconnectRemoteLocationPermittedConnections::Representation
+      
+          property :remote_service, as: 'remoteService'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class InterconnectRemoteLocationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::InterconnectRemoteLocation, decorator: Google::Apis::ComputeAlpha::InterconnectRemoteLocation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning, decorator: Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InterconnectRemoteLocationPermittedConnections
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interconnect_location, as: 'interconnectLocation'
+        end
+      end
+      
       class InterconnectsGetDiagnosticsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15652,6 +15744,7 @@ module Google
       class SavedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :kind, as: 'kind'
           property :source_disk, as: 'sourceDisk'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
