@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.0 (2022-07-04)
+
+#### Features
+
+* Update core dependency to at least 0.7 ([#10551](https://github.com/googleapis/google-api-ruby-client/issues/10551)) 
+
 ### 0.8.0 (2022-06-30)
 
 #### Features
