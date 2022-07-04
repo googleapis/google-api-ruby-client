@@ -21418,6 +21418,268 @@ module Google
         end
       end
       
+      # Represents an Cross-Cloud Interconnect Remote Location resource. You can use
+      # this resource to find remote location details about an Interconnect attachment
+      # (VLAN).
+      class InterconnectRemoteLocation
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The postal address of the Point of Presence, each line in the
+        # address is separated by a newline character.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # [Output Only] Metropolitan area designator that indicates which city an
+        # interconnect is located. For example: "Chicago, IL", "Amsterdam, Netherlands".
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # [Output Only] Continent for this location, which can take one of the following
+        # values: - AFRICA - ASIA_PAC - EUROPE - NORTH_AMERICA - SOUTH_AMERICA
+        # Corresponds to the JSON property `continent`
+        # @return [String]
+        attr_accessor :continent
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The name of the provider for this facility (e.g., EQUINIX).
+        # Corresponds to the JSON property `facilityProvider`
+        # @return [String]
+        attr_accessor :facility_provider
+      
+        # [Output Only] A provider-assigned Identifier for this facility (e.g., Ashburn-
+        # DC1).
+        # Corresponds to the JSON property `facilityProviderFacilityId`
+        # @return [String]
+        attr_accessor :facility_provider_facility_id
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#interconnectRemoteLocation
+        # for interconnect remote locations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The peeringdb identifier for this facility (corresponding with a
+        # netfac type in peeringdb).
+        # Corresponds to the JSON property `peeringdbFacilityId`
+        # @return [String]
+        attr_accessor :peeringdb_facility_id
+      
+        # [Output-only] Permitted connections.
+        # Corresponds to the JSON property `permittedConnections`
+        # @return [Google::Apis::ComputeAlpha::InterconnectRemoteLocationPermittedConnections]
+        attr_accessor :permitted_connections
+      
+        # [Output Only] Indicates the service provider present at the remote location.
+        # Example values: "Amazon Web Services", "Microsoft Azure".
+        # Corresponds to the JSON property `remoteService`
+        # @return [String]
+        attr_accessor :remote_service
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] The status of this InterconnectRemoteLocation, which can take
+        # one of the following values: - CLOSED: The InterconnectRemoteLocation is
+        # closed and is unavailable for provisioning new Cross-Cloud Interconnects. -
+        # AVAILABLE: The InterconnectRemoteLocation is available for provisioning new
+        # Cross-Cloud Interconnects.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @city = args[:city] if args.key?(:city)
+          @continent = args[:continent] if args.key?(:continent)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @facility_provider = args[:facility_provider] if args.key?(:facility_provider)
+          @facility_provider_facility_id = args[:facility_provider_facility_id] if args.key?(:facility_provider_facility_id)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @peeringdb_facility_id = args[:peeringdb_facility_id] if args.key?(:peeringdb_facility_id)
+          @permitted_connections = args[:permitted_connections] if args.key?(:permitted_connections)
+          @remote_service = args[:remote_service] if args.key?(:remote_service)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response to the list request, and contains a list of interconnect remote
+      # locations.
+      class InterconnectRemoteLocationList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InterconnectRemoteLocation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::InterconnectRemoteLocation>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#interconnectRemoteLocationList
+        # for lists of interconnect remote locations.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InterconnectRemoteLocationPermittedConnections
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] URL of an Interconnect location that is permitted to connect to
+        # this Interconnect remote location.
+        # Corresponds to the JSON property `interconnectLocation`
+        # @return [String]
+        attr_accessor :interconnect_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect_location = args[:interconnect_location] if args.key?(:interconnect_location)
+        end
+      end
+      
       # Response for the InterconnectsGetDiagnosticsRequest.
       class InterconnectsGetDiagnosticsResponse
         include Google::Apis::Core::Hashable
@@ -37258,6 +37520,11 @@ module Google
       class SavedDisk
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The architecture of the attached disk.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # [Output Only] Type of the resource. Always compute#savedDisk for attached
         # disks.
         # Corresponds to the JSON property `kind`
@@ -37288,6 +37555,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @kind = args[:kind] if args.key?(:kind)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
