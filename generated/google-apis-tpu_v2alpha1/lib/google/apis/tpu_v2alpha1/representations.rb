@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SimulateMaintenanceEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartNodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -451,6 +457,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class SimulateMaintenanceEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :worker_ids, as: 'workerIds'
         end
       end
       
