@@ -844,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExchangedPeeringRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1277,6 +1283,18 @@ module Google
       end
       
       class HealthStatusForNetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HelpLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2194,6 +2212,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalizedMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2358,6 +2382,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -2928,6 +2958,12 @@ module Google
           
           class Error
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -5800,6 +5836,7 @@ module Google
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :auto_delete, as: 'autoDelete'
           property :boot, as: 'boot'
           property :device_name, as: 'deviceName'
@@ -5825,6 +5862,7 @@ module Google
       class AttachedDiskInitializeParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :description, as: 'description'
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -6769,6 +6807,7 @@ module Google
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -7083,6 +7122,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadatas, as: 'metadatas'
+          property :reason, as: 'reason'
         end
       end
       
@@ -7927,6 +7975,22 @@ module Google
         end
       end
       
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::ComputeV1::HelpLink, decorator: Google::Apis::ComputeV1::HelpLink::Representation
+      
+        end
+      end
+      
+      class HelpLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
+        end
+      end
+      
       class HostRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8191,6 +8255,7 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :archive_size_bytes, :numeric_string => true, as: 'archiveSizeBytes'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
@@ -9703,6 +9768,14 @@ module Google
         end
       end
       
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
+        end
+      end
+      
       class LocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10013,8 +10086,22 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors::Error::ErrorDetail, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeV1::ErrorInfo, decorator: Google::Apis::ComputeV1::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeV1::Help, decorator: Google::Apis::ComputeV1::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
+            
+              end
             end
           end
         end
@@ -11078,8 +11165,22 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeV1::Operation::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeV1::Operation::Error::Error::ErrorDetail::Representation
+          
               property :location, as: 'location'
               property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeV1::ErrorInfo, decorator: Google::Apis::ComputeV1::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeV1::Help, decorator: Google::Apis::ComputeV1::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
+            
+              end
             end
           end
         end
@@ -13035,6 +13136,7 @@ module Google
       class SavedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :kind, as: 'kind'
           property :source_disk, as: 'sourceDisk'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
@@ -13581,6 +13683,7 @@ module Google
       class Snapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :auto_created, as: 'autoCreated'
           property :chain_name, as: 'chainName'
           property :creation_timestamp, as: 'creationTimestamp'
