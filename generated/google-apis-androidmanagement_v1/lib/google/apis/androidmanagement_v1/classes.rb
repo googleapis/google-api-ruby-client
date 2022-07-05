@@ -173,10 +173,10 @@ module Google
         # @return [String]
         attr_accessor :apk_sha256_hash
       
-        # Package names of all packages that are associated with the particular user id.
+        # Package names of all packages that are associated with the particular user ID.
         # In most cases, this will be a single package name, the package that has been
-        # assigned that user id. If multiple application share a uid then all packages
-        # sharing uid will be included.
+        # assigned that user ID. If multiple application share a UID then all packages
+        # sharing UID will be included.
         # Corresponds to the JSON property `packageNames`
         # @return [Array<String>]
         attr_accessor :package_names
@@ -5218,8 +5218,8 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::RemoteLockEvent]
         attr_accessor :remote_lock_event
       
-        # The work profile or company-owned device failed to wipe when when requested.
-        # This could be user initiated or admin initiated e.g. delete was received.
+        # The work profile or company-owned device failed to wipe when requested. This
+        # could be user initiated or admin initiated e.g. delete was received.
         # Intentionally empty.
         # Corresponds to the JSON property `wipeFailureEvent`
         # @return [Google::Apis::AndroidmanagementV1::WipeFailureEvent]
@@ -5475,8 +5475,8 @@ module Google
         end
       end
       
-      # The work profile or company-owned device failed to wipe when when requested.
-      # This could be user initiated or admin initiated e.g. delete was received.
+      # The work profile or company-owned device failed to wipe when requested. This
+      # could be user initiated or admin initiated e.g. delete was received.
       # Intentionally empty.
       class WipeFailureEvent
         include Google::Apis::Core::Hashable
