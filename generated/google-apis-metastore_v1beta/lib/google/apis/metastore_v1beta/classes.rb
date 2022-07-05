@@ -533,10 +533,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A map from BackendMetastore rank to BackendMetastores from which the
-        # federation service serves metadata at query time. The map key is an integer
-        # that represents the order in which BackendMetastores should be evaluated to
-        # resolve database names at query time. A BackendMetastore with a lower number
-        # will be evaluated before a BackendMetastore with a higher number.
+        # federation service serves metadata at query time. The map key represents the
+        # order in which BackendMetastores should be evaluated to resolve database names
+        # at query time and should be greater than or equal to zero. A BackendMetastore
+        # with a lower number will be evaluated before a BackendMetastore with a higher
+        # number.
         # Corresponds to the JSON property `backendMetastores`
         # @return [Hash<String,Google::Apis::MetastoreV1beta::BackendMetastore>]
         attr_accessor :backend_metastores
