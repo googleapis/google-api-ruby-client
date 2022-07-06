@@ -3591,6 +3591,11 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
+        # Dual password status for the user.
+        # Corresponds to the JSON property `dualPasswordType`
+        # @return [String]
+        attr_accessor :dual_password_type
+      
         # This field is deprecated and will be removed from a future version of the API.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -3656,6 +3661,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dual_password_type = args[:dual_password_type] if args.key?(:dual_password_type)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @instance = args[:instance] if args.key?(:instance)
@@ -3684,6 +3690,13 @@ module Google
         attr_accessor :enable_failed_attempts_check
         alias_method :enable_failed_attempts_check?, :enable_failed_attempts_check
       
+        # If true, the user must specify the current password before changing the
+        # password. This flag is supported only for MySQL.
+        # Corresponds to the JSON property `enablePasswordVerification`
+        # @return [Boolean]
+        attr_accessor :enable_password_verification
+        alias_method :enable_password_verification?, :enable_password_verification
+      
         # Expiration duration after password is updated.
         # Corresponds to the JSON property `passwordExpirationDuration`
         # @return [String]
@@ -3702,6 +3715,7 @@ module Google
         def update!(**args)
           @allowed_failed_attempts = args[:allowed_failed_attempts] if args.key?(:allowed_failed_attempts)
           @enable_failed_attempts_check = args[:enable_failed_attempts_check] if args.key?(:enable_failed_attempts_check)
+          @enable_password_verification = args[:enable_password_verification] if args.key?(:enable_password_verification)
           @password_expiration_duration = args[:password_expiration_duration] if args.key?(:password_expiration_duration)
           @status = args[:status] if args.key?(:status)
         end
