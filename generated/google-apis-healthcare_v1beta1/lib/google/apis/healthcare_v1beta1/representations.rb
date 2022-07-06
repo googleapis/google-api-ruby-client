@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeidentifiedStoreDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeidentifyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1298,6 +1304,15 @@ module Google
         end
       end
       
+      class DeidentifiedStoreDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::HealthcareV1beta1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1beta1::DeidentifyConfig::Representation
+      
+          property :store, as: 'store'
+        end
+      end
+      
       class DeidentifyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1347,6 +1362,7 @@ module Google
           property :gcs_config_uri, as: 'gcsConfigUri'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::HealthcareV1beta1::FhirFilter, decorator: Google::Apis::HealthcareV1beta1::FhirFilter::Representation
       
+          property :skip_modified_resources, as: 'skipModifiedResources'
         end
       end
       
@@ -2431,6 +2447,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
+      
+          property :deidentified_store_destination, as: 'deidentifiedStoreDestination', class: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination, decorator: Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination::Representation
       
           collection :resource_types, as: 'resourceTypes'
         end

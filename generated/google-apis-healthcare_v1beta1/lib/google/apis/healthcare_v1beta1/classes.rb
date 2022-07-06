@@ -1072,6 +1072,35 @@ module Google
         end
       end
       
+      # Contains configuration for streaming de-identified FHIR export.
+      class DeidentifiedStoreDestination
+        include Google::Apis::Core::Hashable
+      
+        # Configures de-id options specific to different types of content. Each
+        # submessage customizes the handling of an https://tools.ietf.org/html/rfc6838
+        # media type or subtype. Configs are applied in a nested manner at runtime.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
+        attr_accessor :config
+      
+        # The full resource name of a Cloud Healthcare FHIR store, for example, `
+        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
+        # `fhir_store_id``.
+        # Corresponds to the JSON property `store`
+        # @return [String]
+        attr_accessor :store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @store = args[:store] if args.key?(:store)
+        end
+      end
+      
       # Configures de-id options specific to different types of content. Each
       # submessage customizes the handling of an https://tools.ietf.org/html/rfc6838
       # media type or subtype. Configs are applied in a nested manner at runtime.
@@ -1252,6 +1281,13 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::FhirFilter]
         attr_accessor :resource_filter
       
+        # If true, skips resources that are created or modified after the de-identify
+        # operation is created.
+        # Corresponds to the JSON property `skipModifiedResources`
+        # @return [Boolean]
+        attr_accessor :skip_modified_resources
+        alias_method :skip_modified_resources?, :skip_modified_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1262,6 +1298,7 @@ module Google
           @destination_store = args[:destination_store] if args.key?(:destination_store)
           @gcs_config_uri = args[:gcs_config_uri] if args.key?(:gcs_config_uri)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
+          @skip_modified_resources = args[:skip_modified_resources] if args.key?(:skip_modified_resources)
         end
       end
       
@@ -5186,6 +5223,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination]
         attr_accessor :bigquery_destination
       
+        # Contains configuration for streaming de-identified FHIR export.
+        # Corresponds to the JSON property `deidentifiedStoreDestination`
+        # @return [Google::Apis::HealthcareV1beta1::DeidentifiedStoreDestination]
+        attr_accessor :deidentified_store_destination
+      
         # Supply a FHIR resource type (such as "Patient" or "Observation"). See https://
         # www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource
         # types. The server treats an empty list as an intent to stream all the
@@ -5201,6 +5243,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @deidentified_store_destination = args[:deidentified_store_destination] if args.key?(:deidentified_store_destination)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
