@@ -1502,6 +1502,7 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
           property :instance, as: 'instance'
@@ -1522,6 +1523,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowed_failed_attempts, as: 'allowedFailedAttempts'
           property :enable_failed_attempts_check, as: 'enableFailedAttemptsCheck'
+          property :enable_password_verification, as: 'enablePasswordVerification'
           property :password_expiration_duration, as: 'passwordExpirationDuration'
           property :status, as: 'status', class: Google::Apis::SqladminV1beta4::PasswordStatus, decorator: Google::Apis::SqladminV1beta4::PasswordStatus::Representation
       
