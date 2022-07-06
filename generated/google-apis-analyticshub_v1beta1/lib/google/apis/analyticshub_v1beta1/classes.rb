@@ -979,7 +979,7 @@ module Google
         end
       end
       
-      # Message for response when you subscribe to a listing. Empty for now.
+      # Message for response when you subscribe to a listing.
       class SubscribeListingResponse
         include Google::Apis::Core::Hashable
       
