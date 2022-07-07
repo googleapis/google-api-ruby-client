@@ -1354,7 +1354,8 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementPolicyControllerMonitoring]
         attr_accessor :monitoring
       
-        # Enable users to try out mutation for PolicyController.
+        # Enable or disable mutation in policy controller. If true, mutation CRDs,
+        # webhook and controller deployment will be deployed to the cluster.
         # Corresponds to the JSON property `mutationEnabled`
         # @return [Boolean]
         attr_accessor :mutation_enabled
