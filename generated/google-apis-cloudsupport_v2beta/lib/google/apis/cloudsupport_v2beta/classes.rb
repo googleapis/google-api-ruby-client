@@ -203,6 +203,11 @@ module Google
         # @return [String]
         attr_accessor :priority
       
+        # The ID of the project associated with the case.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         # The severity of this case. Deprecated. Use priority instead.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -251,6 +256,7 @@ module Google
           @escalated = args[:escalated] if args.key?(:escalated)
           @name = args[:name] if args.key?(:name)
           @priority = args[:priority] if args.key?(:priority)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @severity = args[:severity] if args.key?(:severity)
           @state = args[:state] if args.key?(:state)
           @subscriber_email_addresses = args[:subscriber_email_addresses] if args.key?(:subscriber_email_addresses)
