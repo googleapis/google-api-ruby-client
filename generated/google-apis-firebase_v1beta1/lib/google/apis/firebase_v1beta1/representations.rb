@@ -329,6 +329,7 @@ module Google
       class FirebaseAppInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_id, as: 'apiKeyId'
           property :app_id, as: 'appId'
           property :display_name, as: 'displayName'
           property :name, as: 'name'

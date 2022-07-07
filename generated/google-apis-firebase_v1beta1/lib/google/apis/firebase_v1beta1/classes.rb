@@ -289,41 +289,42 @@ module Google
       class DefaultResources
         include Google::Apis::Core::Hashable
       
-        # The default Firebase Hosting site name, in the format: PROJECT_ID Though rare,
-        # your `projectId` might already be used as the name for an existing Hosting
-        # site in another project (learn more about creating non-default, [additional
-        # sites](https://firebase.google.com/docs/hosting/multisites)). In these cases,
-        # your `projectId` is appended with a hyphen then five alphanumeric characters
-        # to create your default Hosting site name. For example, if your `projectId` is `
-        # myproject123`, your default Hosting site name might be: `myproject123-a5c16`
+        # Output only. The default Firebase Hosting site name, in the format: PROJECT_ID
+        # Though rare, your `projectId` might already be used as the name for an
+        # existing Hosting site in another project (learn more about creating non-
+        # default, [additional sites](https://firebase.google.com/docs/hosting/
+        # multisites)). In these cases, your `projectId` is appended with a hyphen then
+        # five alphanumeric characters to create your default Hosting site name. For
+        # example, if your `projectId` is `myproject123`, your default Hosting site name
+        # might be: `myproject123-a5c16`
         # Corresponds to the JSON property `hostingSite`
         # @return [String]
         attr_accessor :hosting_site
       
-        # The ID of the Project's default GCP resource location. The location is one of
-        # the available [GCP resource locations](https://firebase.google.com/docs/
-        # projects/locations). This field is omitted if the default GCP resource
-        # location has not been finalized yet. To set a Project's default GCP resource
-        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
-        # finalize) after you add Firebase resources to the Project.
+        # Output only. The ID of the Project's default GCP resource location. The
+        # location is one of the available [GCP resource locations](https://firebase.
+        # google.com/docs/projects/locations). This field is omitted if the default GCP
+        # resource location has not been finalized yet. To set a Project's default GCP
+        # resource location, call [`FinalizeDefaultLocation`](../projects.
+        # defaultLocation/finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # The default Firebase Realtime Database instance name, in the format:
-        # PROJECT_ID Though rare, your `projectId` might already be used as the name for
-        # an existing Realtime Database instance in another project (learn more about [
-        # database sharding](https://firebase.google.com/docs/database/usage/sharding)).
-        # In these cases, your `projectId` is appended with a hyphen then five
-        # alphanumeric characters to create your default Realtime Database instance name.
-        # For example, if your `projectId` is `myproject123`, your default database
-        # instance name might be: `myproject123-a5c16`
+        # Output only. The default Firebase Realtime Database instance name, in the
+        # format: PROJECT_ID Though rare, your `projectId` might already be used as the
+        # name for an existing Realtime Database instance in another project (learn more
+        # about [database sharding](https://firebase.google.com/docs/database/usage/
+        # sharding)). In these cases, your `projectId` is appended with a hyphen then
+        # five alphanumeric characters to create your default Realtime Database instance
+        # name. For example, if your `projectId` is `myproject123`, your default
+        # database instance name might be: `myproject123-a5c16`
         # Corresponds to the JSON property `realtimeDatabaseInstance`
         # @return [String]
         attr_accessor :realtime_database_instance
       
-        # The default Cloud Storage for Firebase storage bucket, in the format:
-        # PROJECT_ID.appspot.com
+        # Output only. The default Cloud Storage for Firebase storage bucket, in the
+        # format: PROJECT_ID.appspot.com
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
@@ -382,6 +383,15 @@ module Google
       class FirebaseAppInfo
         include Google::Apis::Core::Hashable
       
+        # The key_id of the GCP ApiKey associated with this App. If set must have no
+        # restrictions, or only have restrictions that are valid for the associated
+        # Firebase App. Cannot be set to an empty value in update requests. If left
+        # unset on create requests, an existing valid API Key will be chosen, or if no
+        # valid API Keys exist, one will be provisioned for you.
+        # Corresponds to the JSON property `apiKeyId`
+        # @return [String]
+        attr_accessor :api_key_id
+      
         # Output only. Immutable. The globally unique, Firebase-assigned identifier for
         # the `WebApp`. This identifier should be treated as an opaque token, as the
         # data format is not specified.
@@ -428,6 +438,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
@@ -466,15 +477,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier for the Project. This identifier
-        # may appear in URLs or names for some Firebase resources associated with the
-        # Project, but it should generally be treated as a convenience alias to
+        # Output only. A user-assigned unique identifier for the Project. This
+        # identifier may appear in URLs or names for some Firebase resources associated
+        # with the Project, but it should generally be treated as a convenience alias to
         # reference the Project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Immutable. The globally unique, Google-assigned canonical identifier for the
+        # Output only. The globally unique, Google-assigned canonical identifier for the
         # Project. Use this identifier when configuring integrations and/or making API
         # calls to Firebase or third-party services.
         # Corresponds to the JSON property `projectNumber`
