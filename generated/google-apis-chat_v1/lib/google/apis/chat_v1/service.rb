@@ -394,10 +394,10 @@ module Google
         # authentication](https://developers.google.com/chat/api/guides/auth/service-
         # accounts).
         # @param [Fixnum] page_size
-        #   Requested page size. The value is capped at 1000. Server may return fewer
-        #   results than requested. If unspecified, server will default to 100.
+        #   Optional. Requested page size. The value is capped at 1000. Server may return
+        #   fewer results than requested. If unspecified, server will default to 100.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
+        #   Optional. A token identifying a page of results the server should return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
