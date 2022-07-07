@@ -517,6 +517,32 @@ module Google
         end
       end
       
+      # A description of what time period or moment in time the product or service is
+      # being delivered over.
+      class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end time of the service period. Time is exclusive.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The start time of the service period. Time is inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # A Subscription resource managed by 3P Partners.
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         include Google::Apis::Core::Hashable
@@ -685,7 +711,7 @@ module Google
         end
       end
       
-      # Individual line item definition of a subscription. Next id: 6
+      # Individual line item definition of a subscription. Next id: 8
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         include Google::Apis::Core::Hashable
       
@@ -710,11 +736,21 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>]
         attr_accessor :line_item_promotion_specs
       
+        # Details for a ONE_TIME recurrence line item.
+        # Corresponds to the JSON property `oneTimeRecurrenceDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails]
+        attr_accessor :one_time_recurrence_details
+      
         # Required. Product resource name that identifies one the line item The format
         # is 'partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `product`
         # @return [String]
         attr_accessor :product
+      
+        # Output only. The recurrence type of the line item.
+        # Corresponds to the JSON property `recurrenceType`
+        # @return [String]
+        attr_accessor :recurrence_type
       
         # Output only. The state of the line item.
         # Corresponds to the JSON property `state`
@@ -730,8 +766,30 @@ module Google
           @description = args[:description] if args.key?(:description)
           @line_item_free_trial_end_time = args[:line_item_free_trial_end_time] if args.key?(:line_item_free_trial_end_time)
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
+          @one_time_recurrence_details = args[:one_time_recurrence_details] if args.key?(:one_time_recurrence_details)
           @product = args[:product] if args.key?(:product)
+          @recurrence_type = args[:recurrence_type] if args.key?(:recurrence_type)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Details for a ONE_TIME recurrence line item.
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails
+        include Google::Apis::Core::Hashable
+      
+        # A description of what time period or moment in time the product or service is
+        # being delivered over.
+        # Corresponds to the JSON property `servicePeriod`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod]
+        attr_accessor :service_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_period = args[:service_period] if args.key?(:service_period)
         end
       end
       
