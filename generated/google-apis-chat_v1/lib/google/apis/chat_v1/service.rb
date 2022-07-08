@@ -658,8 +658,9 @@ module Google
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
-        #   Required. The field paths to be updated, comma separated if there are multiple.
-        #   Currently supported field paths: * text * cards * attachment
+        #   Required. The field paths to update. Separate multiple values with commas.
+        #   Currently supported field paths: - text - cards (Requires [service account
+        #   authentication](/chat/api/guides/auth/service-accounts).) - attachment
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
