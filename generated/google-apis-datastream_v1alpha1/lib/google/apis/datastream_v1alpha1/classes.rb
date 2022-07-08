@@ -2030,8 +2030,7 @@ module Google
       class VpcPeeringConfig
         include Google::Apis::Core::Hashable
       
-        # Required. A free subnet for peering. (CIDR of /29) TODO(b/172995841) add
-        # validators.
+        # Required. A free subnet for peering. (CIDR of /29)
         # Corresponds to the JSON property `subnet`
         # @return [String]
         attr_accessor :subnet
