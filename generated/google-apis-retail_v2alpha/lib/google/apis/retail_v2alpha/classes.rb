@@ -565,7 +565,7 @@ module Google
       
       # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveFulfillmentPlaces method.
+      # ProductService.RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -579,7 +579,8 @@ module Google
       end
       
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      # is no meaningful response populated from the ProductService.
+      # RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -594,7 +595,7 @@ module Google
       
       # Metadata related to the progress of the RemoveLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveLocalInventories method.
+      # ProductService.RemoveLocalInventories method.
       class GoogleCloudRetailV2RemoveLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -607,8 +608,9 @@ module Google
         end
       end
       
-      # Response of the RemoveLocalInventories API. Currently empty because there is
-      # no meaningful response populated from the RemoveLocalInventories method.
+      # Response of the ProductService.RemoveLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # RemoveLocalInventories method.
       class GoogleCloudRetailV2RemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -622,8 +624,8 @@ module Google
       end
       
       # Metadata related to the progress of the SetInventory operation. Currently
-      # empty because there is no meaningful metadata populated from the SetInventory
-      # method.
+      # empty because there is no meaningful metadata populated from the
+      # ProductService.SetInventory method.
       class GoogleCloudRetailV2SetInventoryMetadata
         include Google::Apis::Core::Hashable
       
@@ -637,7 +639,7 @@ module Google
       end
       
       # Response of the SetInventoryRequest. Currently empty because there is no
-      # meaningful response populated from the SetInventory method.
+      # meaningful response populated from the ProductService.SetInventory method.
       class GoogleCloudRetailV2SetInventoryResponse
         include Google::Apis::Core::Hashable
       
@@ -3614,7 +3616,7 @@ module Google
       
       # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveFulfillmentPlaces method.
+      # ProductService.RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -3627,7 +3629,7 @@ module Google
         end
       end
       
-      # Request message for RemoveFulfillmentPlaces method.
+      # Request message for ProductService.RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesRequest
         include Google::Apis::Core::Hashable
       
@@ -3682,7 +3684,8 @@ module Google
       end
       
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      # is no meaningful response populated from the ProductService.
+      # RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -3697,7 +3700,7 @@ module Google
       
       # Metadata related to the progress of the RemoveLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveLocalInventories method.
+      # ProductService.RemoveLocalInventories method.
       class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -3710,7 +3713,7 @@ module Google
         end
       end
       
-      # Request message for RemoveLocalInventories method.
+      # Request message for ProductService.RemoveLocalInventories method.
       class GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest
         include Google::Apis::Core::Hashable
       
@@ -3748,8 +3751,9 @@ module Google
         end
       end
       
-      # Response of the RemoveLocalInventories API. Currently empty because there is
-      # no meaningful response populated from the RemoveLocalInventories method.
+      # Response of the ProductService.RemoveLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # RemoveLocalInventories method.
       class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -4536,13 +4540,14 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The order in which Facet.values are returned. Allowed values are: * "count
-        # desc", which means order by Facet.FacetValue.count descending. * "value desc",
-        # which means order by Facet.FacetValue.value descending. Only applies to
-        # textual facets. If not set, textual values are sorted in [natural order](https:
-        # //en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in
-        # the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are
-        # sorted in the order given by FacetSpec.FacetKey.restricted_values.
+        # The order in which SearchResponse.Facet.values are returned. Allowed values
+        # are: * "count desc", which means order by SearchResponse.Facet.values.count
+        # descending. * "value desc", which means order by SearchResponse.Facet.values.
+        # value descending. Only applies to textual facets. If not set, textual values
+        # are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order)
+        # ; numerical intervals are sorted in the order given by FacetSpec.FacetKey.
+        # intervals; FulfillmentInfo.place_ids are sorted in the order given by
+        # FacetSpec.FacetKey.restricted_values.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -4560,12 +4565,13 @@ module Google
         # it will override the default behavior of facet computation. The query syntax
         # is the same as a filter expression. See SearchRequest.filter for detail syntax
         # and limitations. Notice that there is no limitation on FacetKey.key when query
-        # is specified. In the response, FacetValue.value will be always "1" and
-        # FacetValue.count will be the number of results that matches the query. For
-        # example, you can set a customized facet for "shipToStore", where FacetKey.key
-        # is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"
-        # IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the
-        # products that are both in stock and ship to store "123".
+        # is specified. In the response, SearchResponse.Facet.values.value will be
+        # always "1" and SearchResponse.Facet.values.count will be the number of results
+        # that match the query. For example, you can set a customized facet for "
+        # shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.
+        # query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then
+        # the facet will count the products that are both in stock and ship to store "
+        # 123".
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -5120,8 +5126,8 @@ module Google
       end
       
       # Metadata related to the progress of the SetInventory operation. Currently
-      # empty because there is no meaningful metadata populated from the SetInventory
-      # method.
+      # empty because there is no meaningful metadata populated from the
+      # ProductService.SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryMetadata
         include Google::Apis::Core::Hashable
       
@@ -5134,7 +5140,7 @@ module Google
         end
       end
       
-      # Request message for SetInventory method.
+      # Request message for ProductService.SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryRequest
         include Google::Apis::Core::Hashable
       
@@ -5181,7 +5187,7 @@ module Google
       end
       
       # Response of the SetInventoryRequest. Currently empty because there is no
-      # meaningful response populated from the SetInventory method.
+      # meaningful response populated from the ProductService.SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryResponse
         include Google::Apis::Core::Hashable
       
@@ -5944,7 +5950,7 @@ module Google
       
       # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveFulfillmentPlaces method.
+      # ProductService.RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata
         include Google::Apis::Core::Hashable
       
@@ -5958,7 +5964,8 @@ module Google
       end
       
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      # is no meaningful response populated from the ProductService.
+      # RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -5973,7 +5980,7 @@ module Google
       
       # Metadata related to the progress of the RemoveLocalInventories operation.
       # Currently empty because there is no meaningful metadata populated from the
-      # RemoveLocalInventories method.
+      # ProductService.RemoveLocalInventories method.
       class GoogleCloudRetailV2betaRemoveLocalInventoriesMetadata
         include Google::Apis::Core::Hashable
       
@@ -5986,8 +5993,9 @@ module Google
         end
       end
       
-      # Response of the RemoveLocalInventories API. Currently empty because there is
-      # no meaningful response populated from the RemoveLocalInventories method.
+      # Response of the ProductService.RemoveLocalInventories API. Currently empty
+      # because there is no meaningful response populated from the ProductService.
+      # RemoveLocalInventories method.
       class GoogleCloudRetailV2betaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -6001,8 +6009,8 @@ module Google
       end
       
       # Metadata related to the progress of the SetInventory operation. Currently
-      # empty because there is no meaningful metadata populated from the SetInventory
-      # method.
+      # empty because there is no meaningful metadata populated from the
+      # ProductService.SetInventory method.
       class GoogleCloudRetailV2betaSetInventoryMetadata
         include Google::Apis::Core::Hashable
       
@@ -6016,7 +6024,7 @@ module Google
       end
       
       # Response of the SetInventoryRequest. Currently empty because there is no
-      # meaningful response populated from the SetInventory method.
+      # meaningful response populated from the ProductService.SetInventory method.
       class GoogleCloudRetailV2betaSetInventoryResponse
         include Google::Apis::Core::Hashable
       
