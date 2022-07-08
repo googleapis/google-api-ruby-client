@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMetricsScopesByMonitoredProjectResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -482,6 +488,15 @@ module Google
           collection :dashboards, as: 'dashboards', class: Google::Apis::MonitoringV1::Dashboard, decorator: Google::Apis::MonitoringV1::Dashboard::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :match, as: 'match'
+          property :start, as: 'start'
         end
       end
       
