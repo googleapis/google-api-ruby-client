@@ -160,6 +160,7 @@ module Google
       
           property :database, as: 'database'
           property :instance_id, as: 'instanceId'
+          property :service_account_id, as: 'serviceAccountId'
           property :type, as: 'type'
         end
       end
