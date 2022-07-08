@@ -208,6 +208,14 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
+        # Output only. The account ID of the service used for the purpose of this
+        # connection. When the connection is used in the context of an operation in
+        # BigQuery, this service account will serve as identity being used for
+        # connecting to the CloudSQL instance specified in this connection.
+        # Corresponds to the JSON property `serviceAccountId`
+        # @return [String]
+        attr_accessor :service_account_id
+      
         # Type of the Cloud SQL database.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -222,6 +230,7 @@ module Google
           @credential = args[:credential] if args.key?(:credential)
           @database = args[:database] if args.key?(:database)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
           @type = args[:type] if args.key?(:type)
         end
       end
