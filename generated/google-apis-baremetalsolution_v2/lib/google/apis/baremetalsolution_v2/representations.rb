@@ -321,6 +321,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lun, as: 'lun'
+          property :skip_reboot, as: 'skipReboot'
         end
       end
       
@@ -619,6 +620,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_clients, as: 'allowedClients', class: Google::Apis::BaremetalsolutionV2::AllowedClient, decorator: Google::Apis::BaremetalsolutionV2::AllowedClient::Representation
       
+          property :id, as: 'id'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :nfs_share_id, as: 'nfsShareId'
