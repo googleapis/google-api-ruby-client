@@ -1432,6 +1432,46 @@ module Google
         end
       end
       
+      # Encodes the detailed information of a barcode.
+      class GoogleCloudDocumentaiV1beta1Barcode
+        include Google::Apis::Core::Hashable
+      
+        # Format of a barcode. The supported formats are: CODE_128: Code 128 type.
+        # CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type.
+        # DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8:
+        # EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type.
+        # PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://
+        # www.google.com;;'.
+        # Corresponds to the JSON property `rawValue`
+        # @return [String]
+        attr_accessor :raw_value
+      
+        # Value format describes the format of the value that a barcode encodes. The
+        # supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address.
+        # ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS
+        # message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-
+        # localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        # Corresponds to the JSON property `valueFormat`
+        # @return [String]
+        attr_accessor :value_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @raw_value = args[:raw_value] if args.key?(:raw_value)
+          @value_format = args[:value_format] if args.key?(:value_format)
+        end
+      end
+      
       # Response to an batch document processing request. This is returned in the LRO
       # Operation after the operation is complete.
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
@@ -1689,11 +1729,11 @@ module Google
         # Box or similar. It is not intended to model geographical locations (roads,
         # towns, mountains). In typical usage an address would be created via user input
         # or from importing existing data, depending on the type of process. Advice on
-        # address input / editing: - Use an i18n-ready address widget such as https://
-        # github.com/google/libaddressinput) - Users should not be presented with UI
-        # elements for input or editing of fields outside countries where that field is
-        # used. For more guidance on how to use this schema, please see: https://support.
-        # google.com/business/answer/6397478
+        # address input / editing: - Use an internationalization-ready address widget
+        # such as https://github.com/google/libaddressinput) - Users should not be
+        # presented with UI elements for input or editing of fields outside countries
+        # where that field is used. For more guidance on how to use this schema, please
+        # see: https://support.google.com/business/answer/6397478
         # Corresponds to the JSON property `addressValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
@@ -1820,6 +1860,11 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageBlock>]
         attr_accessor :blocks
       
+        # A list of detected barcodes.
+        # Corresponds to the JSON property `detectedBarcodes`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode>]
+        attr_accessor :detected_barcodes
+      
         # A list of detected languages together with confidence.
         # Corresponds to the JSON property `detectedLanguages`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>]
@@ -1903,6 +1948,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blocks = args[:blocks] if args.key?(:blocks)
+          @detected_barcodes = args[:detected_barcodes] if args.key?(:detected_barcodes)
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @dimension = args[:dimension] if args.key?(:dimension)
           @form_fields = args[:form_fields] if args.key?(:form_fields)
@@ -2017,6 +2063,31 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+        end
+      end
+      
+      # A detected barcode.
+      class GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode
+        include Google::Apis::Core::Hashable
+      
+        # Encodes the detailed information of a barcode.
+        # Corresponds to the JSON property `barcode`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1Barcode]
+        attr_accessor :barcode
+      
+        # Visual element describing a layout unit on a page.
+        # Corresponds to the JSON property `layout`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @barcode = args[:barcode] if args.key?(:barcode)
+          @layout = args[:layout] if args.key?(:layout)
         end
       end
       
@@ -3214,6 +3285,46 @@ module Google
         end
       end
       
+      # Encodes the detailed information of a barcode.
+      class GoogleCloudDocumentaiV1beta2Barcode
+        include Google::Apis::Core::Hashable
+      
+        # Format of a barcode. The supported formats are: CODE_128: Code 128 type.
+        # CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type.
+        # DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8:
+        # EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type.
+        # PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://
+        # www.google.com;;'.
+        # Corresponds to the JSON property `rawValue`
+        # @return [String]
+        attr_accessor :raw_value
+      
+        # Value format describes the format of the value that a barcode encodes. The
+        # supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address.
+        # ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS
+        # message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-
+        # localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        # Corresponds to the JSON property `valueFormat`
+        # @return [String]
+        attr_accessor :value_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @raw_value = args[:raw_value] if args.key?(:raw_value)
+          @value_format = args[:value_format] if args.key?(:value_format)
+        end
+      end
+      
       # Request to batch process documents as an asynchronous operation. The output is
       # written to Cloud Storage as JSON in the [Document] format.
       class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest
@@ -3497,11 +3608,11 @@ module Google
         # Box or similar. It is not intended to model geographical locations (roads,
         # towns, mountains). In typical usage an address would be created via user input
         # or from importing existing data, depending on the type of process. Advice on
-        # address input / editing: - Use an i18n-ready address widget such as https://
-        # github.com/google/libaddressinput) - Users should not be presented with UI
-        # elements for input or editing of fields outside countries where that field is
-        # used. For more guidance on how to use this schema, please see: https://support.
-        # google.com/business/answer/6397478
+        # address input / editing: - Use an internationalization-ready address widget
+        # such as https://github.com/google/libaddressinput) - Users should not be
+        # presented with UI elements for input or editing of fields outside countries
+        # where that field is used. For more guidance on how to use this schema, please
+        # see: https://support.google.com/business/answer/6397478
         # Corresponds to the JSON property `addressValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypePostalAddress]
         attr_accessor :address_value
@@ -3665,6 +3776,11 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageBlock>]
         attr_accessor :blocks
       
+        # A list of detected barcodes.
+        # Corresponds to the JSON property `detectedBarcodes`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode>]
+        attr_accessor :detected_barcodes
+      
         # A list of detected languages together with confidence.
         # Corresponds to the JSON property `detectedLanguages`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>]
@@ -3748,6 +3864,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blocks = args[:blocks] if args.key?(:blocks)
+          @detected_barcodes = args[:detected_barcodes] if args.key?(:detected_barcodes)
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @dimension = args[:dimension] if args.key?(:dimension)
           @form_fields = args[:form_fields] if args.key?(:form_fields)
@@ -3862,6 +3979,31 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+        end
+      end
+      
+      # A detected barcode.
+      class GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode
+        include Google::Apis::Core::Hashable
+      
+        # Encodes the detailed information of a barcode.
+        # Corresponds to the JSON property `barcode`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2Barcode]
+        attr_accessor :barcode
+      
+        # Visual element describing a layout unit on a page.
+        # Corresponds to the JSON property `layout`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @barcode = args[:barcode] if args.key?(:barcode)
+          @layout = args[:layout] if args.key?(:layout)
         end
       end
       
@@ -6145,11 +6287,11 @@ module Google
       # Box or similar. It is not intended to model geographical locations (roads,
       # towns, mountains). In typical usage an address would be created via user input
       # or from importing existing data, depending on the type of process. Advice on
-      # address input / editing: - Use an i18n-ready address widget such as https://
-      # github.com/google/libaddressinput) - Users should not be presented with UI
-      # elements for input or editing of fields outside countries where that field is
-      # used. For more guidance on how to use this schema, please see: https://support.
-      # google.com/business/answer/6397478
+      # address input / editing: - Use an internationalization-ready address widget
+      # such as https://github.com/google/libaddressinput) - Users should not be
+      # presented with UI elements for input or editing of fields outside countries
+      # where that field is used. For more guidance on how to use this schema, please
+      # see: https://support.google.com/business/answer/6397478
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       
