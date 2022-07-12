@@ -1442,7 +1442,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # The previous PredictResponse.next_page_token.
+        # This field is not used for now, please leave it unset.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
