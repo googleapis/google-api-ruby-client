@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1Barcode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1BatchDocumentsInputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +419,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1DocumentPageBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1ListProcessorTypesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1ListProcessorVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -784,6 +802,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta1Barcode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -839,6 +863,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta1DocumentPageBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1042,6 +1072,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta2Barcode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1103,6 +1139,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentPageBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1831,6 +1873,15 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1Barcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :raw_value, as: 'rawValue'
+          property :value_format, as: 'valueFormat'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1BatchDocumentsInputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2055,6 +2106,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageBlock::Representation
       
+          collection :detected_barcodes, as: 'detectedBarcodes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedBarcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedBarcode::Representation
+      
           collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage::Representation
       
           property :dimension, as: 'dimension', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDimension, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDimension::Representation
@@ -2113,6 +2166,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :barcode, as: 'barcode', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Barcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Barcode::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
         end
       end
@@ -2373,6 +2436,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_allow_multiple_labels, as: 'documentAllowMultipleLabels'
           property :document_splitter, as: 'documentSplitter'
+          property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
         end
       end
       
@@ -2495,6 +2559,15 @@ module Google
           property :human_review_operation, as: 'humanReviewOperation'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ListProcessorTypesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :processor_types, as: 'processorTypes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorType::Representation
+      
         end
       end
       
@@ -2709,6 +2782,15 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta1Barcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :raw_value, as: 'rawValue'
+          property :value_format, as: 'valueFormat'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2808,6 +2890,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageBlock::Representation
       
+          collection :detected_barcodes, as: 'detectedBarcodes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode::Representation
+      
           collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage::Representation
       
           property :dimension, as: 'dimension', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDimension, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDimension::Representation
@@ -2866,6 +2950,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageDetectedBarcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :barcode, as: 'barcode', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1Barcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1Barcode::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
         end
       end
@@ -3210,6 +3304,15 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta2Barcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :raw_value, as: 'rawValue'
+          property :value_format, as: 'valueFormat'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3320,6 +3423,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageBlock::Representation
       
+          collection :detected_barcodes, as: 'detectedBarcodes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode::Representation
+      
           collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage::Representation
       
           property :dimension, as: 'dimension', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDimension, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDimension::Representation
@@ -3378,6 +3483,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageDetectedBarcode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :barcode, as: 'barcode', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2Barcode, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2Barcode::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
         end
       end
