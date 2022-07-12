@@ -1470,7 +1470,7 @@ module Google
         # @return [String]
         attr_accessor :lan_ip_address
       
-        # Output only. Receiving bit rate measured in megabytes per second.
+        # Output only. Receiving bit rate measured in Megabits per second.
         # Corresponds to the JSON property `receivingBitRateMbps`
         # @return [Fixnum]
         attr_accessor :receiving_bit_rate_mbps
@@ -1490,7 +1490,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :signal_strength_dbm
       
-        # Output only. Transmission bit rate measured in megabytes per second.
+        # Output only. Transmission bit rate measured in Megabits per second.
         # Corresponds to the JSON property `transmissionBitRateMbps`
         # @return [Fixnum]
         attr_accessor :transmission_bit_rate_mbps
