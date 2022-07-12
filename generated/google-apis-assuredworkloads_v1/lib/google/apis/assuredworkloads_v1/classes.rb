@@ -936,7 +936,7 @@ module Google
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
-        # Optional. Count of active Violations in the Workload.
+        # Count of active Violations in the Workload.
         # Corresponds to the JSON property `activeViolationCount`
         # @return [Fixnum]
         attr_accessor :active_violation_count
