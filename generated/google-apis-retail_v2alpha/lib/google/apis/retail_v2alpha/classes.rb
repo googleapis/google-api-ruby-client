@@ -1092,11 +1092,11 @@ module Google
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
         # CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
         # CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-
-        # loaded CatalogAttributes. Only CatalogAttributes that are not in use by
-        # products can be deleted. CatalogAttributes that are in use by products cannot
-        # be deleted; however, their configuration properties will reset to default
-        # values upon removal request. After catalog changes, it takes about 10 minutes
-        # for this field to update.
+        # loaded CatalogAttributes. Only pre-loaded CatalogAttributes that are neither
+        # in use by products nor predefined can be deleted. CatalogAttributes that are
+        # either in use by products or are predefined cannot be deleted; however, their
+        # configuration properties will reset to default values upon removal request.
+        # After catalog changes, it takes about 10 minutes for this field to update.
         # Corresponds to the JSON property `inUse`
         # @return [Boolean]
         attr_accessor :in_use
@@ -2507,7 +2507,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # The previous PredictResponse.next_page_token.
+        # This field is not used for now, please leave it unset.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
