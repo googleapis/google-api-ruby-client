@@ -479,7 +479,20 @@ module Google
       class GoogleCloudApigeeV1ApiProduct
         include Google::Apis::Core::Hashable
       
-        # 
+        # Comma-separated list of API resources to be bundled in the API product. By
+        # default, the resource paths are mapped from the `proxy.pathsuffix` variable.
+        # The proxy path suffix is defined as the URI fragment following the
+        # ProxyEndpoint base path. For example, if the `apiResources` element is defined
+        # to be `/forecastrss` and the base path defined for the API proxy is `/weather`,
+        # then only requests to `/weather/forecastrss` are permitted by the API product.
+        # You can select a specific path, or you can select all subpaths with the
+        # following wildcard: - `/**`: Indicates that all sub-URIs are included. - `/*` :
+        # Indicates that only URIs one level down are included. By default, / supports
+        # the same resources as /** as well as the base path defined by the API proxy.
+        # For example, if the base path of the API proxy is `/v1/weatherapikey`, then
+        # the API product supports requests to `/v1/weatherapikey` and to any sub-URIs,
+        # such as `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so
+        # on. For more information, see Managing API products.
         # Corresponds to the JSON property `apiResources`
         # @return [Array<String>]
         attr_accessor :api_resources
@@ -514,21 +527,7 @@ module Google
         attr_accessor :created_at
       
         # Description of the API product. Include key information about the API product
-        # that is not captured by other fields. Comma-separated list of API resources to
-        # be bundled in the API product. By default, the resource paths are mapped from
-        # the `proxy.pathsuffix` variable. The proxy path suffix is defined as the URI
-        # fragment following the ProxyEndpoint base path. For example, if the `
-        # apiResources` element is defined to be `/forecastrss` and the base path
-        # defined for the API proxy is `/weather`, then only requests to `/weather/
-        # forecastrss` are permitted by the API product. You can select a specific path,
-        # or you can select all subpaths with the following wildcard: - `/**`: Indicates
-        # that all sub-URIs are included. - `/*` : Indicates that only URIs one level
-        # down are included. By default, / supports the same resources as /** as well as
-        # the base path defined by the API proxy. For example, if the base path of the
-        # API proxy is `/v1/weatherapikey`, then the API product supports requests to `/
-        # v1/weatherapikey` and to any sub-URIs, such as `/v1/weatherapikey/forecastrss`,
-        # `/v1/weatherapikey/region/CA`, and so on. For more information, see Managing
-        # API products.
+        # that is not captured by other fields.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
