@@ -4153,8 +4153,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an environment from an organization. **Note**: You must delete all key
-        # value maps and key value entries before you can delete an environment.
+        # Deletes an environment from an organization. **Warning: You must delete all
+        # key value maps and key value entries before you delete an environment.**
+        # Otherwise, if you re-create the environment the key value map entry operations
+        # will encounter encryption/decryption discrepancies.
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
