@@ -821,9 +821,9 @@ module Google
         # Output only. Map containing the point of contacts for the given finding. The
         # key represents the type of contact, while the value contains a list of all the
         # contacts that pertain. Please refer to: https://cloud.google.com/resource-
-        # manager/docs/managing-notification-contacts#notification-categories ` “
-        # security”: `contact: `email: “person1@company.com”` contact: `email: “person2@
-        # company.com”` `
+        # manager/docs/managing-notification-contacts#notification-categories ` "
+        # security":[ ` "contact":` "email":"person1@company.com" ` `, ` "contact":` "
+        # email":“person2@company.com” ` ` ] `
         # Corresponds to the JSON property `contacts`
         # @return [Hash<String,Google::Apis::SecuritycenterV1beta1::ContactDetails>]
         attr_accessor :contacts
@@ -2676,8 +2676,8 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta1::File>]
         attr_accessor :libraries
       
-        # The process name visible in utilities like top and ps; it can be accessed via /
-        # proc/[pid]/comm and changed with prctl(PR_SET_NAME).
+        # The process name visible in utilities like `top` and `ps`; it can be accessed
+        # via `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
