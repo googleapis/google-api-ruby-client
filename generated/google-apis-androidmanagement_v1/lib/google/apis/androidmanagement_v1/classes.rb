@@ -1852,8 +1852,14 @@ module Google
         # @return [String]
         attr_accessor :allow_personal_usage
       
-        # The length of time the enrollment token is valid, ranging from 1 minute to 90
-        # days. If not specified, the default duration is 1 hour.
+        # The length of time the enrollment token is valid, ranging from 1 minute to
+        # Durations.MAX_VALUE (https://developers.google.com/protocol-buffers/docs/
+        # reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
+        # approximately 10,000 years. If not specified, the default duration is 1 hour.
+        # Please note that if requested duration causes the resulting
+        # expiration_timestamp to exceed Timestamps.MAX_VALUE (https://developers.google.
+        # com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Timestamps.
+        # html#MAX_VALUE), then expiration_timestamp is coerced to Timestamps.MAX_VALUE.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
