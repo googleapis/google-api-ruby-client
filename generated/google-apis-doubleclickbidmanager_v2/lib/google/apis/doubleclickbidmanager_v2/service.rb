@@ -80,9 +80,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored query as well as the associated stored reports.
+        # Deletes a query as well as the associated reports.
         # @param [Fixnum] query_id
-        #   Required. Query ID to delete.
+        #   Required. ID of query to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -108,9 +108,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a stored query.
+        # Retrieves a query.
         # @param [Fixnum] query_id
-        #   Required. Query ID to retrieve.
+        #   Required. ID of query to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -138,12 +138,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves stored queries.
+        # Lists queries created by the current user.
         # @param [String] order_by
         #   Name of a field used to order results. The default sorting order is ascending.
         #   To specify descending order for a field, append a " desc" suffix. For example "
-        #   metadata.title desc". Sorting is only supported for the following fields: *
-        #   queryId * metadata.title
+        #   metadata.title desc". Sorting is only supported for the following fields: * `
+        #   queryId` * `metadata.title`
         # @param [Fixnum] page_size
         #   Maximum number of results per page. Must be between `1` and `100`. Defaults to
         #   `100` if unspecified.
@@ -181,7 +181,7 @@ module Google
         
         # Runs a stored query to generate a report.
         # @param [Fixnum] query_id
-        #   Required. Query ID to run.
+        #   Required. ID of query to run.
         # @param [Google::Apis::DoubleclickbidmanagerV2::RunQueryRequest] run_query_request_object
         # @param [Boolean] synchronous
         #   Whether the query should be run synchronously. When true, this method will not
@@ -217,7 +217,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a stored report.
+        # Retrieves a report.
         # @param [Fixnum] query_id
         #   Required. ID of the query the report is associated with.
         # @param [Fixnum] report_id
@@ -250,14 +250,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists reports.
+        # Lists reports associated with a query.
         # @param [Fixnum] query_id
-        #   Required. Query ID with which the reports are associated.
+        #   Required. ID of the query with which the reports are associated.
         # @param [String] order_by
         #   Name of a field used to order results. The default sorting order is ascending.
         #   To specify descending order for a field, append a " desc" suffix. For example "
-        #   key.reportId desc". Sorting is only supported for the following fields: * key.
-        #   reportId
+        #   key.reportId desc". Sorting is only supported for the following fields: * `key.
+        #   reportId`
         # @param [Fixnum] page_size
         #   Maximum number of results per page. Must be between `1` and `100`. Defaults to
         #   `100` if unspecified.
