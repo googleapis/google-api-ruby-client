@@ -132,6 +132,7 @@ module Google
       class Admin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account'
           property :admin, as: 'admin'
           property :name, as: 'name'
           property :pending_invitation, as: 'pendingInvitation'

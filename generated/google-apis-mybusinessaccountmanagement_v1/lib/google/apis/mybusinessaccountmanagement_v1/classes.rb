@@ -123,6 +123,15 @@ module Google
       class Admin
         include Google::Apis::Core::Hashable
       
+        # Immutable. The name of the Account resource that this Admin refers to. Used
+        # when calling CreateAccountAdmin or CreateLocationAdmin to invite UserGroups or
+        # LocationGroups as admins, respectively. If both this field and `admin` are set
+        # on `CREATE` requests, this field takes precedence and the email address in `
+        # admin` will be ignored. Format: `accounts/`account``.
+        # Corresponds to the JSON property `account`
+        # @return [String]
+        attr_accessor :account
+      
         # Optional. The name of the admin. When making the initial invitation, this is
         # the invitee's email address. On `GET` calls, the user's email address is
         # returned if the invitation is still pending. Otherwise, it contains the user's
@@ -159,6 +168,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account = args[:account] if args.key?(:account)
           @admin = args[:admin] if args.key?(:admin)
           @name = args[:name] if args.key?(:name)
           @pending_invitation = args[:pending_invitation] if args.key?(:pending_invitation)
