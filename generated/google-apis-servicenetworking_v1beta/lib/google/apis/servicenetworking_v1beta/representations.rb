@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSqlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Connection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -668,6 +674,15 @@ module Google
         end
       end
       
+      class CloudSqlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :umbrella_network, as: 'umbrellaNetwork'
+          property :umbrella_project, :numeric_string => true, as: 'umbrellaProject'
+        end
+      end
+      
       class Connection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -681,6 +696,8 @@ module Google
       class ConsumerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloudsql_configs, as: 'cloudsqlConfigs', class: Google::Apis::ServicenetworkingV1beta::CloudSqlConfig, decorator: Google::Apis::ServicenetworkingV1beta::CloudSqlConfig::Representation
+      
           property :consumer_export_custom_routes, as: 'consumerExportCustomRoutes'
           property :consumer_export_subnet_routes_with_public_ip, as: 'consumerExportSubnetRoutesWithPublicIp'
           property :consumer_import_custom_routes, as: 'consumerImportCustomRoutes'
