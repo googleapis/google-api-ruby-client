@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalysisCompleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Artifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -804,6 +810,13 @@ module Google
         end
       end
       
+      class AnalysisCompleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis_type, as: 'analysisType'
+        end
+      end
+      
       class Artifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1435,6 +1448,10 @@ module Google
       class DiscoveryOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_completed, as: 'analysisCompleted', class: Google::Apis::ContaineranalysisV1::AnalysisCompleted, decorator: Google::Apis::ContaineranalysisV1::AnalysisCompleted::Representation
+      
+          collection :analysis_error, as: 'analysisError', class: Google::Apis::ContaineranalysisV1::Status, decorator: Google::Apis::ContaineranalysisV1::Status::Representation
+      
           property :analysis_status, as: 'analysisStatus'
           property :analysis_status_error, as: 'analysisStatusError', class: Google::Apis::ContaineranalysisV1::Status, decorator: Google::Apis::ContaineranalysisV1::Status::Representation
       
