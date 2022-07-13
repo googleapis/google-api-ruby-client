@@ -692,6 +692,71 @@ module Google
         end
       end
       
+      # Response containing a list of devices expiring in each month of a selected
+      # time frame. Counts are grouped by model and Auto Update Expiration date.
+      class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of reports sorted by auto update expiration date in ascending order.
+        # Corresponds to the JSON property `deviceAueCountReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceAueCountReport>]
+        attr_accessor :device_aue_count_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_aue_count_reports = args[:device_aue_count_reports] if args.key?(:device_aue_count_reports)
+        end
+      end
+      
+      # Response containing counts for devices that need attention.
+      class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of ChromeOS devices have not synced policies in the past 28 days.
+        # Corresponds to the JSON property `noRecentPolicySyncCount`
+        # @return [Fixnum]
+        attr_accessor :no_recent_policy_sync_count
+      
+        # Number of ChromeOS devices that have not seen any user activity in the past 28
+        # days.
+        # Corresponds to the JSON property `noRecentUserActivityCount`
+        # @return [Fixnum]
+        attr_accessor :no_recent_user_activity_count
+      
+        # Number of devices whose OS version is not compliant.
+        # Corresponds to the JSON property `osVersionNotCompliantCount`
+        # @return [Fixnum]
+        attr_accessor :os_version_not_compliant_count
+      
+        # Number of devices that are pending an OS update.
+        # Corresponds to the JSON property `pendingUpdate`
+        # @return [Fixnum]
+        attr_accessor :pending_update
+      
+        # Number of devices that are unable to apply a policy due to an OS version
+        # mismatch.
+        # Corresponds to the JSON property `unsupportedPolicyCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_policy_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_recent_policy_sync_count = args[:no_recent_policy_sync_count] if args.key?(:no_recent_policy_sync_count)
+          @no_recent_user_activity_count = args[:no_recent_user_activity_count] if args.key?(:no_recent_user_activity_count)
+          @os_version_not_compliant_count = args[:os_version_not_compliant_count] if args.key?(:os_version_not_compliant_count)
+          @pending_update = args[:pending_update] if args.key?(:pending_update)
+          @unsupported_policy_count = args[:unsupported_policy_count] if args.key?(:unsupported_policy_count)
+        end
+      end
+      
       # Response containing requested browser versions details and counts.
       class GoogleChromeManagementV1CountChromeVersionsResponse
         include Google::Apis::Core::Hashable
@@ -887,6 +952,53 @@ module Google
         def update!(**args)
           @device_id = args[:device_id] if args.key?(:device_id)
           @machine = args[:machine] if args.key?(:machine)
+        end
+      end
+      
+      # Report for CountChromeDevicesPerAueDateResponse, contains the count of devices
+      # of a specific model and auto update expiration range.
+      class GoogleChromeManagementV1DeviceAueCountReport
+        include Google::Apis::Core::Hashable
+      
+        # Enum value of month corresponding to the auto update expiration date in UTC
+        # time zone. If the device is already expired, this field is empty.
+        # Corresponds to the JSON property `aueMonth`
+        # @return [String]
+        attr_accessor :aue_month
+      
+        # Int value of year corresponding to the Auto Update Expiration date in UTC time
+        # zone. If the device is already expired, this field is empty.
+        # Corresponds to the JSON property `aueYear`
+        # @return [Fixnum]
+        attr_accessor :aue_year
+      
+        # Count of devices of this model.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Boolean value for whether or not the device has already expired.
+        # Corresponds to the JSON property `expired`
+        # @return [Boolean]
+        attr_accessor :expired
+        alias_method :expired?, :expired
+      
+        # Public model name of the devices.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aue_month = args[:aue_month] if args.key?(:aue_month)
+          @aue_year = args[:aue_year] if args.key?(:aue_year)
+          @count = args[:count] if args.key?(:count)
+          @expired = args[:expired] if args.key?(:expired)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
