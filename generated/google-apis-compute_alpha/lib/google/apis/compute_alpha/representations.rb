@@ -694,6 +694,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomErrorResponsePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerEncryptionKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -773,6 +785,12 @@ module Google
       end
       
       class DiskMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4018,6 +4036,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueuedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResourceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResourceStatusFailedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueuingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6906,6 +6978,7 @@ module Google
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           collection :replica_zones, as: 'replicaZones'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -7902,6 +7975,24 @@ module Google
         end
       end
       
+      class CustomErrorResponsePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_response_rules, as: 'errorResponseRules', class: Google::Apis::ComputeAlpha::CustomErrorResponsePolicyCustomErrorResponseRule, decorator: Google::Apis::ComputeAlpha::CustomErrorResponsePolicyCustomErrorResponseRule::Representation
+      
+          property :error_service, as: 'errorService'
+        end
+      end
+      
+      class CustomErrorResponsePolicyCustomErrorResponseRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :match_response_codes, as: 'matchResponseCodes'
+          property :override_response_code, as: 'overrideResponseCode'
+          property :path, as: 'path'
+        end
+      end
+      
       class CustomerEncryptionKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7964,6 +8055,8 @@ module Google
           property :multi_writer, as: 'multiWriter'
           property :name, as: 'name'
           property :options, as: 'options'
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::DiskParams, decorator: Google::Apis::ComputeAlpha::DiskParams::Representation
+      
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :region, as: 'region'
@@ -8095,6 +8188,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_disk, as: 'targetDisk'
+        end
+      end
+      
+      class DiskParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -9642,6 +9742,8 @@ module Google
       class HttpRouteRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy::Representation
+      
           property :description, as: 'description'
           property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
       
@@ -13801,6 +13903,8 @@ module Google
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'
@@ -13820,6 +13924,8 @@ module Google
       class PathRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_error_response_policy, as: 'customErrorResponsePolicy', class: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy::Representation
+      
           collection :paths, as: 'paths'
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
       
@@ -14205,6 +14311,114 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation
               property :key, as: 'key'
               property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class QueuedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bulk_insert_instance_resource, as: 'bulkInsertInstanceResource', class: Google::Apis::ComputeAlpha::BulkInsertInstanceResource, decorator: Google::Apis::ComputeAlpha::BulkInsertInstanceResource::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
+      
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::QueuedResourceStatus, decorator: Google::Apis::ComputeAlpha::QueuedResourceStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class QueuedResourceList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::QueuedResource, decorator: Google::Apis::ComputeAlpha::QueuedResource::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::QueuedResourceList::Warning, decorator: Google::Apis::ComputeAlpha::QueuedResourceList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::QueuedResourceList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::QueuedResourceList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class QueuedResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_data, as: 'failedData', class: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData, decorator: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Representation
+      
+          collection :provisioning_operations, as: 'provisioningOperations'
+          property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
+      
+        end
+      end
+      
+      class QueuedResourceStatusFailedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error, decorator: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error::Representation
+      
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error::Error, decorator: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::QueuedResourceStatusFailedData::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
             end
           end
         end
@@ -18017,6 +18231,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
+          property :default_custom_error_response_policy, as: 'defaultCustomErrorResponsePolicy', class: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy, decorator: Google::Apis::ComputeAlpha::CustomErrorResponsePolicy::Representation
+      
           property :default_route_action, as: 'defaultRouteAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
       
           property :default_service, as: 'defaultService'
