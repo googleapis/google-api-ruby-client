@@ -170,6 +170,33 @@ module Google
         end
       end
       
+      # This configuration captures the details required to render an authorization
+      # link for the OAuth Authorization Code Flow.
+      class AuthorizationCodeLink
+        include Google::Apis::Core::Hashable
+      
+        # The scopes for which the user will authorize GCP Connectors on the connector
+        # data source.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # The base URI the user must click to trigger the authorization code login flow.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -304,6 +331,12 @@ module Google
       class ConfigVariableTemplate
         include Google::Apis::Core::Hashable
       
+        # This configuration captures the details required to render an authorization
+        # link for the OAuth Authorization Code Flow.
+        # Corresponds to the JSON property `authorizationCodeLink`
+        # @return [Google::Apis::ConnectorsV1::AuthorizationCodeLink]
+        attr_accessor :authorization_code_link
+      
         # Description.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -357,6 +390,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @authorization_code_link = args[:authorization_code_link] if args.key?(:authorization_code_link)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enum_options = args[:enum_options] if args.key?(:enum_options)
@@ -397,11 +431,6 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
-      
-        # Output only. Outbound domains/hosts needs to be allowlisted.
-        # Corresponds to the JSON property `egressBackends`
-        # @return [Array<String>]
-        attr_accessor :egress_backends
       
         # Output only. GCR location where the envoy image is stored. formatted like: gcr.
         # io/`bucketName`/`imageName`
@@ -474,7 +503,6 @@ module Google
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
-          @egress_backends = args[:egress_backends] if args.key?(:egress_backends)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
@@ -2028,6 +2056,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :ssh_client_cert
       
+        # Secret provides a reference to entries in Secret Manager.
+        # Corresponds to the JSON property `sshClientCertPass`
+        # @return [Google::Apis::ConnectorsV1::Secret]
+        attr_accessor :ssh_client_cert_pass
+      
         # The user account used to authenticate.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -2042,6 +2075,7 @@ module Google
           @cert_type = args[:cert_type] if args.key?(:cert_type)
           @password = args[:password] if args.key?(:password)
           @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
+          @ssh_client_cert_pass = args[:ssh_client_cert_pass] if args.key?(:ssh_client_cert_pass)
           @username = args[:username] if args.key?(:username)
         end
       end

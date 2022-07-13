@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizationCodeLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +389,14 @@ module Google
         end
       end
       
+      class AuthorizationCodeLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :scopes, as: 'scopes'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -414,6 +428,8 @@ module Google
       class ConfigVariableTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_code_link, as: 'authorizationCodeLink', class: Google::Apis::ConnectorsV1::AuthorizationCodeLink, decorator: Google::Apis::ConnectorsV1::AuthorizationCodeLink::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :enum_options, as: 'enumOptions', class: Google::Apis::ConnectorsV1::EnumOption, decorator: Google::Apis::ConnectorsV1::EnumOption::Representation
@@ -437,7 +453,6 @@ module Google
           property :connector_version, as: 'connectorVersion'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
-          collection :egress_backends, as: 'egressBackends'
           property :envoy_image_location, as: 'envoyImageLocation'
           property :image_location, as: 'imageLocation'
           hash :labels, as: 'labels'
@@ -856,6 +871,8 @@ module Google
           property :password, as: 'password', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :ssh_client_cert, as: 'sshClientCert', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
+      
+          property :ssh_client_cert_pass, as: 'sshClientCertPass', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :username, as: 'username'
         end
