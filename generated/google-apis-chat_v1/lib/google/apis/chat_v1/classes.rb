@@ -2574,8 +2574,8 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
-        # Output only. The time at which the message was last updated. If the message
-        # was never updated, this field matches `create_time`.
+        # Output only. The time at which the message was last edited by a user. If the
+        # message has never been edited, this field is empty.
         # Corresponds to the JSON property `lastUpdateTime`
         # @return [String]
         attr_accessor :last_update_time
