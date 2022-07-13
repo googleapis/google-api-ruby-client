@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +143,12 @@ module Google
       end
       
       class GoogleChromeManagementV1Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1DeviceAueCountReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -443,6 +461,25 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_aue_count_reports, as: 'deviceAueCountReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceAueCountReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceAueCountReport::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_recent_policy_sync_count, :numeric_string => true, as: 'noRecentPolicySyncCount'
+          property :no_recent_user_activity_count, :numeric_string => true, as: 'noRecentUserActivityCount'
+          property :os_version_not_compliant_count, :numeric_string => true, as: 'osVersionNotCompliantCount'
+          property :pending_update, :numeric_string => true, as: 'pendingUpdate'
+          property :unsupported_policy_count, :numeric_string => true, as: 'unsupportedPolicyCount'
+        end
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -498,6 +535,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, as: 'deviceId'
           property :machine, as: 'machine'
+        end
+      end
+      
+      class GoogleChromeManagementV1DeviceAueCountReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aue_month, as: 'aueMonth'
+          property :aue_year, :numeric_string => true, as: 'aueYear'
+          property :count, :numeric_string => true, as: 'count'
+          property :expired, as: 'expired'
+          property :model, as: 'model'
         end
       end
       

@@ -198,6 +198,93 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate report of the number of devices expiring in each month of the
+        # selected time frame. Devices are grouped by auto update expiration date and
+        # model. Further information can be found [here](https://support.google.com/
+        # chrome/a/answer/10564947).
+        # @param [String] customer
+        #   Required. The customer ID or "my_customer" prefixed with "customers/".
+        # @param [String] max_aue_date
+        #   Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If
+        #   included returns all devices that have already expired and devices with auto
+        #   expiration date equal to or earlier than the maximum date.
+        # @param [String] min_aue_date
+        #   Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If
+        #   included returns all devices that have already expired and devices with auto
+        #   expiration date equal to or later than the minimum date.
+        # @param [String] org_unit_id
+        #   Optional. The organizational unit ID, if omitted, will return data for all
+        #   organizational units.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_chrome_devices_reaching_auto_expiration_date(customer, max_aue_date: nil, min_aue_date: nil, org_unit_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['maxAueDate'] = max_aue_date unless max_aue_date.nil?
+          command.query['minAueDate'] = min_aue_date unless min_aue_date.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Counts of ChromeOS devices that have not synced policies or have lacked user
+        # activity in the past 28 days, are out of date, or are not complaint. Further
+        # information can be found here https://support.google.com/chrome/a/answer/
+        # 10564947
+        # @param [String] customer
+        #   Required. The customer ID or "my_customer" prefixed with "customers/".
+        # @param [String] org_unit_id
+        #   Optional. The ID of the organizational unit. If omitted, all data will be
+        #   returned.
+        # @param [String] read_mask
+        #   Required. Mask of the fields that should be populated in the returned report.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_chrome_devices_that_need_attention(customer, org_unit_id: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countChromeDevicesThatNeedAttention', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate report of installed Chrome versions.
         # @param [String] customer
         #   Required. Customer id or "my_customer" to use the customer associated to the
