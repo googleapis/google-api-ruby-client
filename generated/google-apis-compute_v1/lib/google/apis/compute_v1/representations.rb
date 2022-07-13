@@ -10166,6 +10166,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_ula_internal_ipv6, as: 'enableUlaInternalIpv6'
+          property :firewall_policy, as: 'firewallPolicy'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
           property :internal_ipv6_range, as: 'internalIpv6Range'
@@ -13706,6 +13707,8 @@ module Google
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
           property :source_disk_id, as: 'sourceDiskId'
+          property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
+          property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
           property :status, as: 'status'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
