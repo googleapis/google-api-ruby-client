@@ -823,6 +823,37 @@ module Google
         end
       end
       
+      # Cloud SQL configuration.
+      class CloudSqlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Peering service used for peering with the Cloud SQL project.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The name of network in Cloud SQL umbrella project.
+        # Corresponds to the JSON property `umbrellaNetwork`
+        # @return [String]
+        attr_accessor :umbrella_network
+      
+        # The project number of Cloud SQL umbrella project.
+        # Corresponds to the JSON property `umbrellaProject`
+        # @return [Fixnum]
+        attr_accessor :umbrella_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @umbrella_network = args[:umbrella_network] if args.key?(:umbrella_network)
+          @umbrella_project = args[:umbrella_project] if args.key?(:umbrella_project)
+        end
+      end
+      
       # Represents a private connection resource. A private connection is implemented
       # as a VPC Network Peering connection between a service producer's VPC network
       # and a service consumer's VPC network.
@@ -877,6 +908,11 @@ module Google
       # Configuration information for a private service access connection.
       class ConsumerConfig
         include Google::Apis::Core::Hashable
+      
+        # Represents one or multiple Cloud SQL configurations.
+        # Corresponds to the JSON property `cloudsqlConfigs`
+        # @return [Array<Google::Apis::ServicenetworkingV1::CloudSqlConfig>]
+        attr_accessor :cloudsql_configs
       
         # Export custom routes flag value for peering from consumer to producer.
         # Corresponds to the JSON property `consumerExportCustomRoutes`
@@ -961,6 +997,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloudsql_configs = args[:cloudsql_configs] if args.key?(:cloudsql_configs)
           @consumer_export_custom_routes = args[:consumer_export_custom_routes] if args.key?(:consumer_export_custom_routes)
           @consumer_export_subnet_routes_with_public_ip = args[:consumer_export_subnet_routes_with_public_ip] if args.key?(:consumer_export_subnet_routes_with_public_ip)
           @consumer_import_custom_routes = args[:consumer_import_custom_routes] if args.key?(:consumer_import_custom_routes)
