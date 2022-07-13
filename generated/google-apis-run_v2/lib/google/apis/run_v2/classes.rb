@@ -204,6 +204,12 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VolumeMount>]
         attr_accessor :volume_mounts
       
+        # Container's working directory. If not specified, the container runtime's
+        # default will be used, which might be configured in the container image.
+        # Corresponds to the JSON property `workingDir`
+        # @return [String]
+        attr_accessor :working_dir
+      
         def initialize(**args)
            update!(**args)
         end
@@ -218,6 +224,7 @@ module Google
           @ports = args[:ports] if args.key?(:ports)
           @resources = args[:resources] if args.key?(:resources)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
+          @working_dir = args[:working_dir] if args.key?(:working_dir)
         end
       end
       
@@ -1307,7 +1314,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Integer representation of mode bits to use on created files by default. Must
-        # be a value between 0000 and 0777 (octal), defaulting to 0644. Directories
+        # be a value between 0000 and 0777 (octal), defaulting to 0444. Directories
         # within the path are not affected by this setting. Notes * Internally, a umask
         # of 0222 will be applied to any non-zero value. * This is an integer
         # representation of the mode bits. So, the octal integer value should look

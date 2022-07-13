@@ -336,6 +336,7 @@ module Google
       
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount, decorator: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount::Representation
       
+          property :working_dir, as: 'workingDir'
         end
       end
       
