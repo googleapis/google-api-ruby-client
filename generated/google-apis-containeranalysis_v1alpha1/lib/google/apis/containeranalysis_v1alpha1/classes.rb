@@ -784,6 +784,12 @@ module Google
       class ComplianceVersion
         include Google::Apis::Core::Hashable
       
+        # The name of the document that defines this benchmark, e.g. "CIS Container-
+        # Optimized OS".
+        # Corresponds to the JSON property `benchmarkDocument`
+        # @return [String]
+        attr_accessor :benchmark_document
+      
         # The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
         # applicable to.
         # Corresponds to the JSON property `cpeUri`
@@ -802,6 +808,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @benchmark_document = args[:benchmark_document] if args.key?(:benchmark_document)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @version = args[:version] if args.key?(:version)
         end
