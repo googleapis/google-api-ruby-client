@@ -167,7 +167,7 @@ module Google
       class EventFilter
         include Google::Apis::Core::Hashable
       
-        # Dimension Filter on path events.
+        # Dimension filter on path events.
         # Corresponds to the JSON property `dimensionFilter`
         # @return [Google::Apis::DoubleclickbidmanagerV2::PathQueryOptionsFilter]
         attr_accessor :dimension_filter
@@ -207,17 +207,17 @@ module Google
         end
       end
       
-      # Represents a list of queries.
+      # 
       class ListQueriesResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page of
-        # queries. If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as page_token to retrieve the next page of queries.
+        # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Retrieved queries.
+        # The list of queries.
         # Corresponds to the JSON property `queries`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV2::Query>]
         attr_accessor :queries
@@ -233,12 +233,12 @@ module Google
         end
       end
       
-      # Represents a list of reports.
+      # 
       class ListReportsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page of
-        # reports. If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as page_token to retrieve the next page of reports.
+        # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -311,7 +311,8 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV2::Options]
         attr_accessor :options
       
-        # Report type.
+        # The type of the report. The type of the report will dictate what dimesions,
+        # filters, and metrics can be used.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -343,8 +344,8 @@ module Google
         # @return [Array<Google::Apis::DoubleclickbidmanagerV2::EventFilter>]
         attr_accessor :event_filters
       
-        # Indicates the position of the path the filter should match to (first, last, or
-        # any event in path).
+        # The position of the path the filter should match to (first, last, or any event
+        # in path).
         # Corresponds to the JSON property `pathMatchPosition`
         # @return [String]
         attr_accessor :path_match_position
@@ -386,7 +387,7 @@ module Google
         end
       end
       
-      # Dimension Filter on path events.
+      # Dimension filter on path events.
       class PathQueryOptionsFilter
         include Google::Apis::Core::Hashable
       
@@ -395,12 +396,12 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Indicates how the filter should be matched to the value.
+        # Match logic of the filter.
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
       
-        # Value to filter on.
+        # Values to filter on.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -436,7 +437,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :query_id
       
-        # Information on how frequently and when to run a query.
+        # Information on when and how frequently to run a query.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::DoubleclickbidmanagerV2::QuerySchedule]
         attr_accessor :schedule
@@ -476,7 +477,7 @@ module Google
         alias_method :send_notification?, :send_notification
       
         # List of email addresses which are sent email notifications when the report is
-        # finished. Separate from `sendNotification`.
+        # finished. Separate from send_notification.
         # Corresponds to the JSON property `shareEmailAddress`
         # @return [Array<String>]
         attr_accessor :share_email_address
@@ -500,7 +501,7 @@ module Google
         end
       end
       
-      # Information on how frequently and when to run a query.
+      # Information on when and how frequently to run a query.
       class QuerySchedule
         include Google::Apis::Core::Hashable
       
