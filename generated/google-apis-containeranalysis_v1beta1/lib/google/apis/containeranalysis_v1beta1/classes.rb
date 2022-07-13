@@ -47,6 +47,26 @@ module Google
         end
       end
       
+      # Indicates which analysis completed successfully. Multiple types of analysis
+      # can be performed on a single resource.
+      class AnalysisCompleted
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `analysisType`
+        # @return [Array<String>]
+        attr_accessor :analysis_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
+        end
+      end
+      
       # Artifact describes a build product.
       class Artifact
         include Google::Apis::Core::Hashable
@@ -2313,6 +2333,18 @@ module Google
       class Discovered
         include Google::Apis::Core::Hashable
       
+        # Indicates which analysis completed successfully. Multiple types of analysis
+        # can be performed on a single resource.
+        # Corresponds to the JSON property `analysisCompleted`
+        # @return [Google::Apis::ContaineranalysisV1beta1::AnalysisCompleted]
+        attr_accessor :analysis_completed
+      
+        # Indicates any errors encountered during analysis of a resource. There could be
+        # 0 or more of these errors.
+        # Corresponds to the JSON property `analysisError`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::Status>]
+        attr_accessor :analysis_error
+      
         # The status of discovery for the resource.
         # Corresponds to the JSON property `analysisStatus`
         # @return [String]
@@ -2345,6 +2377,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analysis_completed = args[:analysis_completed] if args.key?(:analysis_completed)
+          @analysis_error = args[:analysis_error] if args.key?(:analysis_error)
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
