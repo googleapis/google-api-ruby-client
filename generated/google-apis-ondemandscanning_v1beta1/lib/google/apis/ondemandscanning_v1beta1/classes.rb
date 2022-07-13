@@ -47,6 +47,26 @@ module Google
         end
       end
       
+      # Indicates which analysis completed successfully. Multiple types of analysis
+      # can be performed on a single resource.
+      class AnalysisCompleted
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `analysisType`
+        # @return [Array<String>]
+        attr_accessor :analysis_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
+        end
+      end
+      
       # AnalyzePackagesMetadata contains metadata for an active scan of a container
       # image.
       class AnalyzePackagesMetadata
@@ -761,6 +781,18 @@ module Google
       class DiscoveryOccurrence
         include Google::Apis::Core::Hashable
       
+        # Indicates which analysis completed successfully. Multiple types of analysis
+        # can be performed on a single resource.
+        # Corresponds to the JSON property `analysisCompleted`
+        # @return [Google::Apis::OndemandscanningV1beta1::AnalysisCompleted]
+        attr_accessor :analysis_completed
+      
+        # Indicates any errors encountered during analysis of a resource. There could be
+        # 0 or more of these errors.
+        # Corresponds to the JSON property `analysisError`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::Status>]
+        attr_accessor :analysis_error
+      
         # The status of discovery for the resource.
         # Corresponds to the JSON property `analysisStatus`
         # @return [String]
@@ -803,6 +835,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analysis_completed = args[:analysis_completed] if args.key?(:analysis_completed)
+          @analysis_error = args[:analysis_error] if args.key?(:analysis_error)
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @archive_time = args[:archive_time] if args.key?(:archive_time)
