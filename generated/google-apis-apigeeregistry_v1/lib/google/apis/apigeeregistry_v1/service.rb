@@ -164,6 +164,9 @@ module Google
         # DeleteApi removes a specified API and all of the resources that it owns.
         # @param [String] name
         #   Required. The name of the API to delete. Format: projects/*/locations/*/apis/*
+        # @param [Boolean] force
+        #   If set to true, any child resources will also be deleted. (Otherwise, the
+        #   request will only work if there are no child resources.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,11 +184,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_api(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_api(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::Empty::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1471,6 +1475,9 @@ module Google
         # @param [String] name
         #   Required. The name of the version to delete. Format: projects/*/locations/*/
         #   apis/*/versions/*
+        # @param [Boolean] force
+        #   If set to true, any child resources will also be deleted. (Otherwise, the
+        #   request will only work if there are no child resources.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1488,11 +1495,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_api_version(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_api_version(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::Empty::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
