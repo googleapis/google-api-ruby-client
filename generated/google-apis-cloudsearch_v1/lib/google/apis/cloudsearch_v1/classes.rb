@@ -3301,6 +3301,19 @@ module Google
         # @return [Google::Apis::CloudsearchV1::FreshnessOptions]
         attr_accessor :freshness_options
       
+        # Operators that can be used to filter suggestions. For Suggest API, only
+        # operators mentioned here will be honored in the FilterOptions. Only TEXT and
+        # ENUM operators are supported. NOTE: "objecttype", "type" and "mimetype" are
+        # already supported. This property is to configure schema specific operators.
+        # Even though this is an array, only one operator can be specified. This is an
+        # array for future extensibility. Operators mapping to multiple properties
+        # within the same object are not supported. If the operator spans across
+        # different object types, this option has to be set once for each object
+        # definition.
+        # Corresponds to the JSON property `suggestionFilteringOperators`
+        # @return [Array<String>]
+        attr_accessor :suggestion_filtering_operators
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3309,6 +3322,7 @@ module Google
         def update!(**args)
           @display_options = args[:display_options] if args.key?(:display_options)
           @freshness_options = args[:freshness_options] if args.key?(:freshness_options)
+          @suggestion_filtering_operators = args[:suggestion_filtering_operators] if args.key?(:suggestion_filtering_operators)
         end
       end
       

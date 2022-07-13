@@ -2043,6 +2043,7 @@ module Google
       
           property :freshness_options, as: 'freshnessOptions', class: Google::Apis::CloudsearchV1::FreshnessOptions, decorator: Google::Apis::CloudsearchV1::FreshnessOptions::Representation
       
+          collection :suggestion_filtering_operators, as: 'suggestionFilteringOperators'
         end
       end
       
