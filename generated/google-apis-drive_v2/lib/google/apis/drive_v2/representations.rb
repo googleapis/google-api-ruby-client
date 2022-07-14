@@ -223,6 +223,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class LabelInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Labels
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -263,6 +269,48 @@ module Google
       end
       
       class GeneratedIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Label
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelFieldModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyLabelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -834,6 +882,8 @@ module Google
       
           property :is_app_authorized, as: 'isAppAuthorized'
           property :kind, as: 'kind'
+          property :label_info, as: 'labelInfo', class: Google::Apis::DriveV2::File::LabelInfo, decorator: Google::Apis::DriveV2::File::LabelInfo::Representation
+      
           property :labels, as: 'labels', class: Google::Apis::DriveV2::File::Labels, decorator: Google::Apis::DriveV2::File::Labels::Representation
       
           property :last_modifying_user, as: 'lastModifyingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
@@ -915,6 +965,7 @@ module Google
             property :can_list_children, as: 'canListChildren'
             property :can_modify_content, as: 'canModifyContent'
             property :can_modify_content_restriction, as: 'canModifyContentRestriction'
+            property :can_modify_labels, as: 'canModifyLabels'
             property :can_move_children_out_of_drive, as: 'canMoveChildrenOutOfDrive'
             property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
             property :can_move_children_within_drive, as: 'canMoveChildrenWithinDrive'
@@ -926,6 +977,7 @@ module Google
             property :can_move_item_within_team_drive, as: 'canMoveItemWithinTeamDrive'
             property :can_move_team_drive_item, as: 'canMoveTeamDriveItem'
             property :can_read_drive, as: 'canReadDrive'
+            property :can_read_labels, as: 'canReadLabels'
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
             property :can_remove_children, as: 'canRemoveChildren'
@@ -979,6 +1031,14 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :text, as: 'text'
+          end
+        end
+        
+        class LabelInfo
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :labels, as: 'labels', class: Google::Apis::DriveV2::Label, decorator: Google::Apis::DriveV2::Label::Representation
+        
           end
         end
         
@@ -1049,6 +1109,87 @@ module Google
           collection :ids, as: 'ids'
           property :kind, as: 'kind'
           property :space, as: 'space'
+        end
+      end
+      
+      class Label
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :fields, as: 'fields', class: Google::Apis::DriveV2::LabelField, decorator: Google::Apis::DriveV2::LabelField::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class LabelField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :date_string, as: 'dateString', type: Date
+      
+          property :id, as: 'id'
+          collection :integer, as: 'integer'
+          property :kind, as: 'kind'
+          collection :selection, as: 'selection'
+          collection :text, as: 'text'
+          collection :user, as: 'user', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
+      
+          property :value_type, as: 'valueType'
+        end
+      end
+      
+      class LabelFieldModification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_id, as: 'fieldId'
+          property :kind, as: 'kind'
+          collection :set_date_values, as: 'setDateValues', type: Date
+      
+          collection :set_integer_values, as: 'setIntegerValues'
+          collection :set_selection_values, as: 'setSelectionValues'
+          collection :set_text_values, as: 'setTextValues'
+          collection :set_user_values, as: 'setUserValues'
+          property :unset_values, as: 'unsetValues'
+        end
+      end
+      
+      class LabelList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::DriveV2::Label, decorator: Google::Apis::DriveV2::Label::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class LabelModification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_modifications, as: 'fieldModifications', class: Google::Apis::DriveV2::LabelFieldModification, decorator: Google::Apis::DriveV2::LabelFieldModification::Representation
+      
+          property :kind, as: 'kind'
+          property :label_id, as: 'labelId'
+          property :remove_label, as: 'removeLabel'
+        end
+      end
+      
+      class ModifyLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :label_modifications, as: 'labelModifications', class: Google::Apis::DriveV2::LabelModification, decorator: Google::Apis::DriveV2::LabelModification::Representation
+      
+        end
+      end
+      
+      class ModifyLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :modified_labels, as: 'modifiedLabels', class: Google::Apis::DriveV2::Label, decorator: Google::Apis::DriveV2::Label::Representation
+      
         end
       end
       
