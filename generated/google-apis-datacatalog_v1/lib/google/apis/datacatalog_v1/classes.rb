@@ -409,6 +409,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Column info specific to Looker System.
+        # Corresponds to the JSON property `lookerColumnSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]
+        attr_accessor :looker_column_spec
+      
         # Optional. A column's mode indicates whether values in this column are required,
         # nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are
         # supported. Default mode is `NULLABLE`.
@@ -435,8 +440,28 @@ module Google
         def update!(**args)
           @column = args[:column] if args.key?(:column)
           @description = args[:description] if args.key?(:description)
+          @looker_column_spec = args[:looker_column_spec] if args.key?(:looker_column_spec)
           @mode = args[:mode] if args.key?(:mode)
           @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Column info specific to Looker System.
+      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
+        include Google::Apis::Core::Hashable
+      
+        # Looker specific column type of this column.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] if args.key?(:type)
         end
       end
