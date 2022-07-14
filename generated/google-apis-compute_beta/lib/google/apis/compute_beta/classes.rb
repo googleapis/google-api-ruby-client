@@ -2657,7 +2657,7 @@ module Google
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # Optional parameter to define a target capacity for the UTILIZATIONbalancing
+        # Optional parameter to define a target capacity for the UTILIZATION balancing
         # mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization
         # balancing mode.
         # Corresponds to the JSON property `maxUtilization`
@@ -18889,7 +18889,7 @@ module Google
         # @return [Google::Apis::ComputeBeta::LocationPolicyLocationConstraints]
         attr_accessor :constraints
       
-        # Preference for a given location.
+        # Preference for a given location. Set to either ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -20283,6 +20283,11 @@ module Google
         attr_accessor :enable_ula_internal_ipv6
         alias_method :enable_ula_internal_ipv6?, :enable_ula_internal_ipv6
       
+        # [Output Only] URL of the firewall policy the network is associated with.
+        # Corresponds to the JSON property `firewallPolicy`
+        # @return [String]
+        attr_accessor :firewall_policy
+      
         # [Output Only] The gateway address for default routing out of the network,
         # selected by GCP.
         # Corresponds to the JSON property `gatewayIPv4`
@@ -20372,6 +20377,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_ula_internal_ipv6 = args[:enable_ula_internal_ipv6] if args.key?(:enable_ula_internal_ipv6)
+          @firewall_policy = args[:firewall_policy] if args.key?(:firewall_policy)
           @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
           @id = args[:id] if args.key?(:id)
           @internal_ipv6_range = args[:internal_ipv6_range] if args.key?(:internal_ipv6_range)
