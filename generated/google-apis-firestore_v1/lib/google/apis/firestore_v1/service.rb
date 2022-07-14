@@ -60,9 +60,6 @@ module Google
         #   characters. Valid characters are /a-z-/ with first character a letter and the
         #   last a letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-
         #   [0-9a-f]`12`/. "(default)" database id is also valid.
-        # @param [Boolean] validate_only
-        #   If set, validate the request and preview the response, but do not actually
-        #   create the database.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -80,7 +77,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_database(parent, google_firestore_admin_v1_database_object = nil, database_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_database(parent, google_firestore_admin_v1_database_object = nil, database_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/databases', options)
           command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database::Representation
           command.request_object = google_firestore_admin_v1_database_object
@@ -88,7 +85,6 @@ module Google
           command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
           command.query['databaseId'] = database_id unless database_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
