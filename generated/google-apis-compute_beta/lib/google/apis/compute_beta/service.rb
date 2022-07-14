@@ -11997,6 +11997,7 @@ module Google
         end
         
         # Creates multiple instances. Count specifies the number of instances to create.
+        # For more information, see About bulk creation of VMs.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

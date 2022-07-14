@@ -10576,6 +10576,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_ula_internal_ipv6, as: 'enableUlaInternalIpv6'
+          property :firewall_policy, as: 'firewallPolicy'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
           property :internal_ipv6_range, as: 'internalIpv6Range'
