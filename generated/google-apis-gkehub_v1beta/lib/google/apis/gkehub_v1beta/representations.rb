@@ -1197,6 +1197,7 @@ module Google
           property :log_denies_enabled, as: 'logDeniesEnabled'
           property :monitoring, as: 'monitoring', class: Google::Apis::GkehubV1beta::PolicyControllerMonitoringConfig, decorator: Google::Apis::GkehubV1beta::PolicyControllerMonitoringConfig::Representation
       
+          property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1beta::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1beta::PolicyControllerTemplateLibraryConfig::Representation
       
