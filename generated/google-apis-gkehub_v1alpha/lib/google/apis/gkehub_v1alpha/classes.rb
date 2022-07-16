@@ -1998,6 +1998,11 @@ module Google
       class IdentityServiceAuthMethod
         include Google::Apis::Core::Hashable
       
+        # Configuration for the AzureAD Auth flow.
+        # Corresponds to the JSON property `azureadConfig`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig]
+        attr_accessor :azuread_config
+      
         # Identifier for auth config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2019,9 +2024,56 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @azuread_config = args[:azuread_config] if args.key?(:azuread_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
+        end
+      end
+      
+      # Configuration for the AzureAD Auth flow.
+      class IdentityServiceAzureAdConfig
+        include Google::Apis::Core::Hashable
+      
+        # ID for the registered client application that makes authentication requests to
+        # the Azure AD identity provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Raw client secret will be passed to the GKE Hub CLH.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Encrypted AzureAD client secrets
+        # Corresponds to the JSON property `encryptedClientSecret`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_client_secret
+      
+        # The redirect URL that kubectl uses for authorization.
+        # Corresponds to the JSON property `kubectlRedirectUri`
+        # @return [String]
+        attr_accessor :kubectl_redirect_uri
+      
+        # Kind of Azure AD account to be authenticated. Supported values are or for
+        # accounts belonging to a specific tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
+          @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
