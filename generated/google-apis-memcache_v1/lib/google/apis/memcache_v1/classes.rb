@@ -362,8 +362,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Deprecated. The MaintenancePolicies that have been attached to the instance.
-        # The key must be of the type name of the oneof policy name defined in
+        # Optional. Deprecated. The MaintenancePolicies that have been attached to the
+        # instance. The key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
@@ -549,8 +549,7 @@ module Google
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
-        # If only the name is needed (like in the deprecated Instance.
-        # maintenance_policy_names field) then only populate MaintenancePolicy.name.
+        # If only the name is needed, then only populate MaintenancePolicy.name.
         # Corresponds to the JSON property `maintenancePolicies`
         # @return [Hash<String,Google::Apis::MemcacheV1::MaintenancePolicy>]
         attr_accessor :maintenance_policies
