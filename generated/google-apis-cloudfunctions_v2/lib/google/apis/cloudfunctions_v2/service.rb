@@ -92,6 +92,192 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new function. If a function with the given name already exists in
+        # the specified project, the long running operation will return `ALREADY_EXISTS`
+        # error.
+        # @param [String] parent
+        #   Required. The project and location in which the function should be created,
+        #   specified in the format `projects/*/locations/*`
+        # @param [Google::Apis::CloudfunctionsV2::Function] function_object
+        # @param [String] function_id
+        #   The ID to use for the function, which will become the final component of the
+        #   function's resource name. This value should be 4-63 characters, and valid
+        #   characters are /a-z-/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_function(parent, function_object = nil, function_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/functions', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2::Function::Representation
+          command.request_object = function_object
+          command.response_representation = Google::Apis::CloudfunctionsV2::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['functionId'] = function_id unless function_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a function with the given name from the specified project. If the
+        # given function is used by some trigger, the trigger will be updated to remove
+        # this function.
+        # @param [String] name
+        #   Required. The name of the function which should be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_function(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::CloudfunctionsV2::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a signed URL for downloading deployed function source code. The URL is
+        # only valid for a limited period and should be used within 30 minutes of
+        # generation. For more information about the signed URL usage see: https://cloud.
+        # google.com/storage/docs/access-control/signed-urls
+        # @param [String] name
+        #   Required. The name of function for which source code Google Cloud Storage
+        #   signed URL should be generated.
+        # @param [Google::Apis::CloudfunctionsV2::GenerateDownloadUrlRequest] generate_download_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::GenerateDownloadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::GenerateDownloadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_function_download_url(name, generate_download_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:generateDownloadUrl', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2::GenerateDownloadUrlRequest::Representation
+          command.request_object = generate_download_url_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2::GenerateDownloadUrlResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::GenerateDownloadUrlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a signed URL for uploading a function source code. For more
+        # information about the signed URL usage see: https://cloud.google.com/storage/
+        # docs/access-control/signed-urls. Once the function source code upload is
+        # complete, the used signed URL should be provided in CreateFunction or
+        # UpdateFunction request as a reference to the function source code. When
+        # uploading source code to the generated signed URL, please follow these
+        # restrictions: * Source file type should be a zip file. * No credentials should
+        # be attached - the signed URLs provide access to the target bucket using
+        # internal service identity; if credentials were attached, the identity from the
+        # credentials would be used, but that identity does not have permissions to
+        # upload files to the URL. When making a HTTP PUT request, these two headers
+        # need to be specified: * `content-type: application/zip` And this header SHOULD
+        # NOT be specified: * `Authorization: Bearer YOUR_TOKEN`
+        # @param [String] parent
+        #   Required. The project and location in which the Google Cloud Storage signed
+        #   URL should be generated, specified in the format `projects/*/locations/*`.
+        # @param [Google::Apis::CloudfunctionsV2::GenerateUploadUrlRequest] generate_upload_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::GenerateUploadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::GenerateUploadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_function_upload_url(parent, generate_upload_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/functions:generateUploadUrl', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2::GenerateUploadUrlRequest::Representation
+          command.request_object = generate_upload_url_request_object
+          command.response_representation = Google::Apis::CloudfunctionsV2::GenerateUploadUrlResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::GenerateUploadUrlResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a function with the given name from the requested project.
+        # @param [String] name
+        #   Required. The name of the function which details should be obtained.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::Function] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::Function]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_function(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::CloudfunctionsV2::Function::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::Function
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -132,6 +318,96 @@ module Google
           command.response_class = Google::Apis::CloudfunctionsV2::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of functions that belong to the requested project.
+        # @param [String] parent
+        #   Required. The project and location from which the function should be listed,
+        #   specified in the format `projects/*/locations/*` If you want to list functions
+        #   in all locations, use "-" in place of a location. When listing functions in
+        #   all locations, if one or more location(s) are unreachable, the response will
+        #   contain functions from all reachable locations along with the names of any
+        #   unreachable locations.
+        # @param [String] filter
+        #   The filter for Functions that match the filter expression, following the
+        #   syntax outlined in https://google.aip.dev/160.
+        # @param [String] order_by
+        #   The sorting order of the resources returned. Value should be a comma separated
+        #   list of fields. The default sorting oder is ascending. See https://google.aip.
+        #   dev/132#ordering.
+        # @param [Fixnum] page_size
+        #   Maximum number of functions to return per call.
+        # @param [String] page_token
+        #   The value returned by the last `ListFunctionsResponse`; indicates that this is
+        #   a continuation of a prior `ListFunctions` call, and that the system should
+        #   return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::ListFunctionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::ListFunctionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_functions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/functions', options)
+          command.response_representation = Google::Apis::CloudfunctionsV2::ListFunctionsResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::ListFunctionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates existing function.
+        # @param [String] name
+        #   A user-defined name of the function. Function names must be unique globally
+        #   and match pattern `projects/*/locations/*/functions/*`
+        # @param [Google::Apis::CloudfunctionsV2::Function] function_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If no field mask is provided, all provided
+        #   fields in the request will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_function(name, function_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::CloudfunctionsV2::Function::Representation
+          command.request_object = function_object
+          command.response_representation = Google::Apis::CloudfunctionsV2::Operation::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -291,6 +567,41 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of runtimes that are supported for the requested project.
+        # @param [String] parent
+        #   Required. The project and location from which the runtimes should be listed,
+        #   specified in the format `projects/*/locations/*`
+        # @param [String] filter
+        #   The filter for Runtimes that match the filter expression, following the syntax
+        #   outlined in https://google.aip.dev/160.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudfunctionsV2::ListRuntimesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudfunctionsV2::ListRuntimesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_runtimes(parent, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/runtimes', options)
+          command.response_representation = Google::Apis::CloudfunctionsV2::ListRuntimesResponse::Representation
+          command.response_class = Google::Apis::CloudfunctionsV2::ListRuntimesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
