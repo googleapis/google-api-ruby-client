@@ -2474,6 +2474,12 @@ module Google
         # @return [Google::Apis::GkehubV1beta::PolicyControllerMonitoringConfig]
         attr_accessor :monitoring
       
+        # Enables the ability to mutate resources using Policy Controller.
+        # Corresponds to the JSON property `mutationEnabled`
+        # @return [Boolean]
+        attr_accessor :mutation_enabled
+        alias_method :mutation_enabled?, :mutation_enabled
+      
         # Enables the ability to use Constraint Templates that reference to objects
         # other than the object currently being evaluated.
         # Corresponds to the JSON property `referentialRulesEnabled`
@@ -2497,6 +2503,7 @@ module Google
           @install_spec = args[:install_spec] if args.key?(:install_spec)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
+          @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_config = args[:template_library_config] if args.key?(:template_library_config)
         end
