@@ -196,13 +196,13 @@ module Google
       
         # Required. List of host names to match. Matched against the ":authority" header
         # in http requests. At least one host should match. Each host can be an exact
-        # match, or a prefix match (example "mydomain.*") or a suffix match (example // *
-        # .myorg.com") or a presence(any) match "*".
+        # match, or a prefix match (example "mydomain.*") or a suffix match (example "*.
+        # myorg.com") or a presence (any) match "*".
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
       
-        # Specification of HTTP header match atrributes.
+        # Specification of HTTP header match attributes.
         # Corresponds to the JSON property `httpHeaderMatch`
         # @return [Google::Apis::NetworksecurityV1beta1::HttpHeaderMatch]
         attr_accessor :http_header_match
@@ -335,7 +335,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The target URI of the gRPC endpoint. Only UDS path is supported, and
-        # should start with “unix:”.
+        # should start with "unix:".
         # Corresponds to the JSON property `targetUri`
         # @return [String]
         attr_accessor :target_uri
@@ -680,7 +680,7 @@ module Google
         end
       end
       
-      # Specification of HTTP header match atrributes.
+      # Specification of HTTP header match attributes.
       class HttpHeaderMatch
         include Google::Apis::Core::Hashable
       
@@ -1149,8 +1149,8 @@ module Google
       
         # Optional. List of peer identities to match for authorization. At least one
         # principal should match. Each peer can be an exact match, or a prefix match (
-        # example, "namespace/*") or a suffix match (example, // */service-account") or
-        # a presence match "*". Authorization based on the principal name without
+        # example, "namespace/*") or a suffix match (example, "*/service-account") or a
+        # presence match "*". Authorization based on the principal name without
         # certificate validation (configured by ServerTlsPolicy resource) is considered
         # insecure.
         # Corresponds to the JSON property `principals`
