@@ -164,6 +164,201 @@ module Google
         end
       end
       
+      # Describes the Build step of the function that builds a container from the
+      # given source.
+      class BuildConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Cloud Build name of the latest successful deployment of the
+        # function.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Optional. User managed repository created in Artifact Registry optionally with
+        # a customer managed encryption key. This is the repository to which the
+        # function docker image will be pushed after it is built by Cloud Build. If
+        # unspecified, GCF will create and use a repository named 'gcf-artifacts' for
+        # every deployed region. It must match the pattern `projects/`project`/locations/
+        # `location`/repositories/`repository``. Cross-project repositories are not
+        # supported. Cross-location repositories are not supported. Repository format
+        # must be 'DOCKER'.
+        # Corresponds to the JSON property `dockerRepository`
+        # @return [String]
+        attr_accessor :docker_repository
+      
+        # The name of the function (as defined in source code) that will be executed.
+        # Defaults to the resource name suffix, if not specified. For backward
+        # compatibility, if function with given name is not found, then the system will
+        # try to use function named "function". For Node.js this is name of a function
+        # exported by the module specified in `source_location`.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # User-provided build-time environment variables for the function
+        # Corresponds to the JSON property `environmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :environment_variables
+      
+        # The runtime in which to run the function. Required when deploying a new
+        # function, optional when updating an existing function. For a complete list of
+        # possible choices, see the [`gcloud` command reference](https://cloud.google.
+        # com/sdk/gcloud/reference/functions/deploy#--runtime).
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        # The location of the function source code.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::CloudfunctionsV2::Source]
+        attr_accessor :source
+      
+        # Provenance of the source. Ways to find the original source, or verify that
+        # some source was used for this build.
+        # Corresponds to the JSON property `sourceProvenance`
+        # @return [Google::Apis::CloudfunctionsV2::SourceProvenance]
+        attr_accessor :source_provenance
+      
+        # Name of the Cloud Build Custom Worker Pool that should be used to build the
+        # function. The format of this field is `projects/`project`/locations/`region`/
+        # workerPools/`workerPool`` where `project` and `region` are the project id and
+        # region respectively where the worker pool is defined and `workerPool` is the
+        # short name of the worker pool. If the project id is not the same as the
+        # function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.
+        # gserviceaccount.com) must be granted the role Cloud Build Custom Workers
+        # Builder (roles/cloudbuild.customworkers.builder) in the project.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build = args[:build] if args.key?(:build)
+          @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
+          @runtime = args[:runtime] if args.key?(:runtime)
+          @source = args[:source] if args.key?(:source)
+          @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Filters events based on exact matches on the CloudEvents attributes.
+      class EventFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of a CloudEvents attribute.
+        # Corresponds to the JSON property `attribute`
+        # @return [String]
+        attr_accessor :attribute
+      
+        # Optional. The operator used for matching the events with the value of the
+        # filter. If not specified, only events that have an exact key-value pair
+        # specified in the filter are matched. The only allowed value is `match-path-
+        # pattern`.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
+        # Required. The value for the attribute.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute = args[:attribute] if args.key?(:attribute)
+          @operator = args[:operator] if args.key?(:operator)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Describes EventTrigger, used to request events to be sent from another service.
+      class EventTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the channel associated with the trigger in `projects/`
+        # project`/locations/`location`/channels/`channel`` format. You must provide a
+        # channel to receive events from Eventarc SaaS partners.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Criteria used to filter events.
+        # Corresponds to the JSON property `eventFilters`
+        # @return [Array<Google::Apis::CloudfunctionsV2::EventFilter>]
+        attr_accessor :event_filters
+      
+        # Required. The type of event to observe. For example: `google.cloud.audit.log.
+        # v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Optional. The name of a Pub/Sub topic in the same project that will be used as
+        # the transport topic for the event delivery. Format: `projects/`project`/topics/
+        # `topic``. This is only valid for events of type `google.cloud.pubsub.topic.v1.
+        # messagePublished`. The topic provided here will not be deleted at function
+        # deletion.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        # Optional. If unset, then defaults to ignoring failures (i.e. not retrying them)
+        # .
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [String]
+        attr_accessor :retry_policy
+      
+        # Optional. The email of the trigger's service account. The service account must
+        # have permission to invoke Cloud Run services, the permission is `run.routes.
+        # invoke`. If empty, defaults to the Compute Engine default service account: ``
+        # project_number`-compute@developer.gserviceaccount.com`.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Output only. The resource name of the Eventarc trigger. The format of this
+        # field is `projects/`project`/locations/`region`/triggers/`trigger``.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        # The region that the trigger will be in. The trigger will only receive events
+        # originating in this region. It can be the same region as the function, a
+        # different region or multi-region, or the global region. If not provided,
+        # defaults to the same region as the function.
+        # Corresponds to the JSON property `triggerRegion`
+        # @return [String]
+        attr_accessor :trigger_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @event_filters = args[:event_filters] if args.key?(:event_filters)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @trigger_region = args[:trigger_region] if args.key?(:trigger_region)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -215,6 +410,306 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Describes a Cloud Function that contains user computation executed in response
+      # to an event. It encapsulates function and trigger configurations.
+      class Function
+        include Google::Apis::Core::Hashable
+      
+        # Describes the Build step of the function that builds a container from the
+        # given source.
+        # Corresponds to the JSON property `buildConfig`
+        # @return [Google::Apis::CloudfunctionsV2::BuildConfig]
+        attr_accessor :build_config
+      
+        # User-provided description of a function.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Describe whether the function is gen1 or gen2.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Describes EventTrigger, used to request events to be sent from another service.
+        # Corresponds to the JSON property `eventTrigger`
+        # @return [Google::Apis::CloudfunctionsV2::EventTrigger]
+        attr_accessor :event_trigger
+      
+        # Labels associated with this Cloud Function.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A user-defined name of the function. Function names must be unique globally
+        # and match pattern `projects/*/locations/*/functions/*`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes the Service being deployed. Currently Supported : Cloud Run (fully
+        # managed).
+        # Corresponds to the JSON property `serviceConfig`
+        # @return [Google::Apis::CloudfunctionsV2::ServiceConfig]
+        attr_accessor :service_config
+      
+        # Output only. State of the function.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. State Messages for this Cloud Function.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2StateMessage>]
+        attr_accessor :state_messages
+      
+        # Output only. The last update timestamp of a Cloud Function.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_config = args[:build_config] if args.key?(:build_config)
+          @description = args[:description] if args.key?(:description)
+          @environment = args[:environment] if args.key?(:environment)
+          @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service_config = args[:service_config] if args.key?(:service_config)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of `GenerateDownloadUrl` method.
+      class GenerateDownloadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated Google Cloud Storage signed URL that should be used for function
+        # source code download.
+        # Corresponds to the JSON property `downloadUrl`
+        # @return [String]
+        attr_accessor :download_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_url = args[:download_url] if args.key?(:download_url)
+        end
+      end
+      
+      # Request of `GenerateSourceUploadUrl` method.
+      class GenerateUploadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of `GenerateSourceUploadUrl` method.
+      class GenerateUploadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `storageSource`
+        # @return [Google::Apis::CloudfunctionsV2::StorageSource]
+        attr_accessor :storage_source
+      
+        # The generated Google Cloud Storage signed URL that should be used for a
+        # function source code upload. The uploaded file should be a zip archive which
+        # contains a function.
+        # Corresponds to the JSON property `uploadUrl`
+        # @return [String]
+        attr_accessor :upload_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_source = args[:storage_source] if args.key?(:storage_source)
+          @upload_url = args[:upload_url] if args.key?(:upload_url)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudFunctionsV2OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Identifies whether the user has requested cancellation of the operation.
+        # Operations that have successfully been cancelled have Operation.error value
+        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The original request that started the operation.
+        # Corresponds to the JSON property `requestResource`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_resource
+      
+        # Mechanism for reporting in-progress stages
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2Stage>]
+        attr_accessor :stages
+      
+        # Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @stages = args[:stages] if args.key?(:stages)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Each Stage of the deployment process
+      class GoogleCloudFunctionsV2Stage
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the Stage
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the Stage. This will be unique for each Stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource of the Stage
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Link to the current Stage resource
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Current state of the Stage
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # State messages from the current Stage.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV2::GoogleCloudFunctionsV2StateMessage>]
+        attr_accessor :state_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
+        end
+      end
+      
+      # Informational messages about the state of the Cloud Function or Operation.
+      class GoogleCloudFunctionsV2StateMessage
+        include Google::Apis::Core::Hashable
+      
+        # The message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Severity of the state message.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # One-word CamelCase type of the state message.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -518,6 +1013,39 @@ module Google
         end
       end
       
+      # Response for the `ListFunctions` method.
+      class ListFunctionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The functions that match the request.
+        # Corresponds to the JSON property `functions`
+        # @return [Array<Google::Apis::CloudfunctionsV2::Function>]
+        attr_accessor :functions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached. The response does not include any
+        # functions from these locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @functions = args[:functions] if args.key?(:functions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -565,6 +1093,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response for the `ListRuntimes` method.
+      class ListRuntimesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The runtimes that match the request.
+        # Corresponds to the JSON property `runtimes`
+        # @return [Array<Google::Apis::CloudfunctionsV2::Runtime>]
+        attr_accessor :runtimes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtimes = args[:runtimes] if args.key?(:runtimes)
         end
       end
       
@@ -838,6 +1385,362 @@ module Google
         end
       end
       
+      # Location of the source in a Google Cloud Source Repository.
+      class RepoSource
+        include Google::Apis::Core::Hashable
+      
+        # Regex matching branches to build. The syntax of the regular expressions
+        # accepted is the syntax accepted by RE2 and described at https://github.com/
+        # google/re2/wiki/Syntax
+        # Corresponds to the JSON property `branchName`
+        # @return [String]
+        attr_accessor :branch_name
+      
+        # Explicit commit SHA to build.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
+        # Directory, relative to the source root, in which to run the build. This must
+        # be a relative path. If a step's `dir` is specified and is an absolute path,
+        # this value is ignored for that step's execution. eg. helloworld (no leading
+        # slash allowed)
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Only trigger a build if the revision regex does NOT match the revision regex.
+        # Corresponds to the JSON property `invertRegex`
+        # @return [Boolean]
+        attr_accessor :invert_regex
+        alias_method :invert_regex?, :invert_regex
+      
+        # ID of the project that owns the Cloud Source Repository. If omitted, the
+        # project ID requesting the build is assumed.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the Cloud Source Repository.
+        # Corresponds to the JSON property `repoName`
+        # @return [String]
+        attr_accessor :repo_name
+      
+        # Regex matching tags to build. The syntax of the regular expressions accepted
+        # is the syntax accepted by RE2 and described at https://github.com/google/re2/
+        # wiki/Syntax
+        # Corresponds to the JSON property `tagName`
+        # @return [String]
+        attr_accessor :tag_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_name = args[:branch_name] if args.key?(:branch_name)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+          @dir = args[:dir] if args.key?(:dir)
+          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @repo_name = args[:repo_name] if args.key?(:repo_name)
+          @tag_name = args[:tag_name] if args.key?(:tag_name)
+        end
+      end
+      
+      # Describes a runtime and any special information (e.g., deprecation status)
+      # related to it.
+      class Runtime
+        include Google::Apis::Core::Hashable
+      
+        # The user facing name, eg 'Go 1.13', 'Node.js 12', etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The environment for the runtime.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The name of the runtime, e.g., 'go113', 'nodejs12', etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The stage of life this runtime is in, e.g., BETA, GA, etc.
+        # Corresponds to the JSON property `stage`
+        # @return [String]
+        attr_accessor :stage
+      
+        # Warning messages, e.g., a deprecation warning.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environment = args[:environment] if args.key?(:environment)
+          @name = args[:name] if args.key?(:name)
+          @stage = args[:stage] if args.key?(:stage)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Configuration for a secret environment variable. It has the information
+      # necessary to fetch the secret value from secret manager and expose it as an
+      # environment variable.
+      class SecretEnvVar
+        include Google::Apis::Core::Hashable
+      
+        # Name of the environment variable.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Project identifier (preferably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it is assumed that the
+        # secret is in the same project as the function.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # recommended to use a numeric version for secret environment variables as any
+        # updates to the secret value is not reflected until new instances start.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a single version.
+      class SecretVersion
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file under the mount path where the secret value for this
+        # version will be fetched and made available. For example, setting the
+        # mount_path as '/etc/secrets' and path as `secret_foo` would mount the secret
+        # value file at `/etc/secrets/secret_foo`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # preferable to use `latest` version with secret volumes as secret value changes
+        # are reflected immediately.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a secret volume. It has the information necessary to fetch
+      # the secret value from secret manager and make it available as files mounted at
+      # the requested paths within the application container.
+      class SecretVolume
+        include Google::Apis::Core::Hashable
+      
+        # The path within the container to mount the secret volume. For example, setting
+        # the mount_path as `/etc/secrets` would mount the secret value files under the `
+        # /etc/secrets` directory. This directory will also be completely shadowed and
+        # unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Project identifier (preferably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it is assumed that the
+        # secret is in the same project as the function.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # List of secret versions to mount for this secret. If empty, the `latest`
+        # version of the secret will be made available in a file named after the secret
+        # under the mount point.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::CloudfunctionsV2::SecretVersion>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # Describes the Service being deployed. Currently Supported : Cloud Run (fully
+      # managed).
+      class ServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether 100% of traffic is routed to the latest revision. On CreateFunction
+        # and UpdateFunction, when set to true, the revision being deployed will serve
+        # 100% of traffic, ignoring any traffic split settings, if any. On GetFunction,
+        # true will be returned if the latest revision is serving 100% of traffic.
+        # Corresponds to the JSON property `allTrafficOnLatestRevision`
+        # @return [Boolean]
+        attr_accessor :all_traffic_on_latest_revision
+        alias_method :all_traffic_on_latest_revision?, :all_traffic_on_latest_revision
+      
+        # The amount of memory available for a function. Defaults to 256M. Supported
+        # units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as
+        # bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/
+        # k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
+        # Corresponds to the JSON property `availableMemory`
+        # @return [String]
+        attr_accessor :available_memory
+      
+        # Environment variables that shall be available during function execution.
+        # Corresponds to the JSON property `environmentVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :environment_variables
+      
+        # The ingress settings for the function, controlling what traffic can reach it.
+        # Corresponds to the JSON property `ingressSettings`
+        # @return [String]
+        attr_accessor :ingress_settings
+      
+        # The limit on the maximum number of function instances that may coexist at a
+        # given time. In some cases, such as rapid traffic surges, Cloud Functions may,
+        # for a short period of time, create more instances than the specified max
+        # instances limit. If your function cannot tolerate this temporary behavior, you
+        # may want to factor in a safety margin and set a lower max instances value than
+        # your function can tolerate. See the [Max Instances](https://cloud.google.com/
+        # functions/docs/max-instances) Guide for more details.
+        # Corresponds to the JSON property `maxInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :max_instance_count
+      
+        # The limit on the minimum number of function instances that may coexist at a
+        # given time. Function instances are kept in idle state for a short period after
+        # they finished executing the request to reduce cold start time for subsequent
+        # requests. Setting a minimum instance count will ensure that the given number
+        # of instances are kept running in idle state always. This can help with cold
+        # start times when jump in incoming request count occurs after the idle instance
+        # would have been stopped in the default case.
+        # Corresponds to the JSON property `minInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :min_instance_count
+      
+        # Output only. The name of service revision.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Secret environment variables configuration.
+        # Corresponds to the JSON property `secretEnvironmentVariables`
+        # @return [Array<Google::Apis::CloudfunctionsV2::SecretEnvVar>]
+        attr_accessor :secret_environment_variables
+      
+        # Secret volumes configuration.
+        # Corresponds to the JSON property `secretVolumes`
+        # @return [Array<Google::Apis::CloudfunctionsV2::SecretVolume>]
+        attr_accessor :secret_volumes
+      
+        # Output only. Name of the service associated with a Function. The format of
+        # this field is `projects/`project`/locations/`region`/services/`service``
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The email of the service's service account. If empty, defaults to ``
+        # project_number`-compute@developer.gserviceaccount.com`.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # The function execution timeout. Execution is considered failed and can be
+        # terminated if the function is not completed at the end of the timeout period.
+        # Defaults to 60 seconds.
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        # Output only. URI of the Service deployed.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The Serverless VPC Access connector that this cloud function can connect to.
+        # The format of this field is `projects/*/locations/*/connectors/*`.
+        # Corresponds to the JSON property `vpcConnector`
+        # @return [String]
+        attr_accessor :vpc_connector
+      
+        # The egress settings for the connector, controlling what traffic is diverted
+        # through it.
+        # Corresponds to the JSON property `vpcConnectorEgressSettings`
+        # @return [String]
+        attr_accessor :vpc_connector_egress_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_traffic_on_latest_revision = args[:all_traffic_on_latest_revision] if args.key?(:all_traffic_on_latest_revision)
+          @available_memory = args[:available_memory] if args.key?(:available_memory)
+          @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
+          @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
+          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
+          @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
+          @revision = args[:revision] if args.key?(:revision)
+          @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
+          @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
+          @service = args[:service] if args.key?(:service)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+          @uri = args[:uri] if args.key?(:uri)
+          @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
+          @vpc_connector_egress_settings = args[:vpc_connector_egress_settings] if args.key?(:vpc_connector_egress_settings)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -891,6 +1794,57 @@ module Google
         end
       end
       
+      # The location of the function source code.
+      class Source
+        include Google::Apis::Core::Hashable
+      
+        # Location of the source in a Google Cloud Source Repository.
+        # Corresponds to the JSON property `repoSource`
+        # @return [Google::Apis::CloudfunctionsV2::RepoSource]
+        attr_accessor :repo_source
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `storageSource`
+        # @return [Google::Apis::CloudfunctionsV2::StorageSource]
+        attr_accessor :storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repo_source = args[:repo_source] if args.key?(:repo_source)
+          @storage_source = args[:storage_source] if args.key?(:storage_source)
+        end
+      end
+      
+      # Provenance of the source. Ways to find the original source, or verify that
+      # some source was used for this build.
+      class SourceProvenance
+        include Google::Apis::Core::Hashable
+      
+        # Location of the source in a Google Cloud Source Repository.
+        # Corresponds to the JSON property `resolvedRepoSource`
+        # @return [Google::Apis::CloudfunctionsV2::RepoSource]
+        attr_accessor :resolved_repo_source
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `resolvedStorageSource`
+        # @return [Google::Apis::CloudfunctionsV2::StorageSource]
+        attr_accessor :resolved_storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
+          @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -927,6 +1881,41 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Location of the source in an archive file in Google Cloud Storage.
+      class StorageSource
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket containing the source (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Google Cloud Storage generation for the object. If the generation is omitted,
+        # the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Google Cloud Storage object containing the source. This object must be a
+        # gzipped archive file (`.tar.gz`) containing source to build.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
         end
       end
       
