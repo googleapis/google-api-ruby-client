@@ -1196,6 +1196,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The current state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1216,6 +1222,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
         end
