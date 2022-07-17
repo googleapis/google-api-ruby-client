@@ -158,8 +158,8 @@ module Google
         
         # Creates a new BackupPlan in a given location.
         # @param [String] parent
-        #   Required. The location within which to create the BackupPlan. Format: projects/
-        #   */locations/*
+        #   Required. The location within which to create the BackupPlan. Format: `
+        #   projects/*/locations/*`
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] backup_plan_id
         #   Required. The client-provided short name for the BackupPlan resource. This
@@ -199,8 +199,8 @@ module Google
         
         # Deletes an existing BackupPlan.
         # @param [String] name
-        #   Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/
-        #   backupPlans/*
+        #   Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/
+        #   backupPlans/*`
         # @param [String] etag
         #   If provided, this value must match the current value of the target BackupPlan'
         #   s etag field or the request is rejected.
@@ -234,8 +234,8 @@ module Google
         
         # Retrieve the details of a single BackupPlan.
         # @param [String] name
-        #   Required. Fully qualified BackupPlan name. Format: projects/*/locations/*/
-        #   backupPlans/*
+        #   Required. Fully qualified BackupPlan name. Format: `projects/*/locations/*/
+        #   backupPlans/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,8 +310,8 @@ module Google
         
         # Lists BackupPlans in a given location.
         # @param [String] parent
-        #   Required. The location that contains the BackupPlans to list. Format: projects/
-        #   */locations/*
+        #   Required. The location that contains the BackupPlans to list. Format: `
+        #   projects/*/locations/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
@@ -359,8 +359,8 @@ module Google
         
         # Update a BackupPlan.
         # @param [String] name
-        #   Output only. The full name of the BackupPlan resource. Format: projects/*/
-        #   locations/*/backupPlans/*
+        #   Output only. The full name of the BackupPlan resource. Format: `projects/*/
+        #   locations/*/backupPlans/*`
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the BackupPlan
@@ -479,8 +479,8 @@ module Google
         
         # Creates a Backup for the given BackupPlan.
         # @param [String] parent
-        #   Required. The BackupPlan within which to create the Backup. Format: projects/*/
-        #   locations/*/backupPlans/*
+        #   Required. The BackupPlan within which to create the Backup. Format: `projects/*
+        #   /locations/*/backupPlans/*`
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] backup_id
         #   The client-provided short name for the Backup resource. This name must: - be
@@ -520,8 +520,8 @@ module Google
         
         # Deletes an existing Backup.
         # @param [String] name
-        #   Required. Name of the Backup resource. Format: projects/*/locations/*/
-        #   backupPlans/*/backups/*
+        #   Required. Name of the Backup resource. Format: `projects/*/locations/*/
+        #   backupPlans/*/backups/*`
         # @param [String] etag
         #   If provided, this value must match the current value of the target Backup's
         #   etag field or the request is rejected.
@@ -559,8 +559,8 @@ module Google
         
         # Retrieve the details of a single Backup.
         # @param [String] name
-        #   Required. Full name of the Backup resource. Format: projects/*/locations/*/
-        #   backupPlans/*/backups/*
+        #   Required. Full name of the Backup resource. Format: `projects/*/locations/*/
+        #   backupPlans/*/backups/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -635,8 +635,8 @@ module Google
         
         # Lists the Backups for a given BackupPlan.
         # @param [String] parent
-        #   Required. The BackupPlan that contains the Backups to list. Format: projects/*/
-        #   locations/*/backupPlans/*
+        #   Required. The BackupPlan that contains the Backups to list. Format: `projects/*
+        #   /locations/*/backupPlans/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
@@ -684,8 +684,8 @@ module Google
         
         # Update a Backup.
         # @param [String] name
-        #   Output only. The fully qualified name of the Backup. projects/*/locations/*/
-        #   backupPlans/*/backups/*
+        #   Output only. The fully qualified name of the Backup. `projects/*/locations/*/
+        #   backupPlans/*/backups/*`
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the Backup targeted
@@ -802,8 +802,8 @@ module Google
         
         # Retrieve the details of a single VolumeBackup.
         # @param [String] name
-        #   Required. Full name of the VolumeBackup resource. Format: projects/*/locations/
-        #   */backupPlans/*/backups/*/volumeBackups/*
+        #   Required. Full name of the VolumeBackup resource. Format: `projects/*/
+        #   locations/*/backupPlans/*/backups/*/volumeBackups/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -878,8 +878,8 @@ module Google
         
         # Lists the VolumeBackups for a given Backup.
         # @param [String] parent
-        #   Required. The Backup that contains the VolumeBackups to list. Format: projects/
-        #   */locations/*/backupPlans/*/backups/*
+        #   Required. The Backup that contains the VolumeBackups to list. Format: `
+        #   projects/*/locations/*/backupPlans/*/backups/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
@@ -1120,8 +1120,8 @@ module Google
         
         # Creates a new RestorePlan in a given location.
         # @param [String] parent
-        #   Required. The location within which to create the RestorePlan. Format:
-        #   projects/*/locations/*
+        #   Required. The location within which to create the RestorePlan. Format: `
+        #   projects/*/locations/*`
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] restore_plan_id
         #   Required. The client-provided short name for the RestorePlan resource. This
@@ -1161,8 +1161,8 @@ module Google
         
         # Deletes an existing RestorePlan.
         # @param [String] name
-        #   Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/
-        #   restorePlans/*
+        #   Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/
+        #   restorePlans/*`
         # @param [String] etag
         #   If provided, this value must match the current value of the target RestorePlan'
         #   s etag field or the request is rejected.
@@ -1200,8 +1200,8 @@ module Google
         
         # Retrieve the details of a single RestorePlan.
         # @param [String] name
-        #   Required. Fully qualified RestorePlan name. Format: projects/*/locations/*/
-        #   restorePlans/*
+        #   Required. Fully qualified RestorePlan name. Format: `projects/*/locations/*/
+        #   restorePlans/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1276,8 +1276,8 @@ module Google
         
         # Lists RestorePlans in a given location.
         # @param [String] parent
-        #   Required. The location that contains the RestorePlans to list. Format:
-        #   projects/*/locations/*
+        #   Required. The location that contains the RestorePlans to list. Format: `
+        #   projects/*/locations/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
@@ -1325,8 +1325,8 @@ module Google
         
         # Update a RestorePlan.
         # @param [String] name
-        #   Output only. The full name of the RestorePlan resource. Format: projects/*/
-        #   locations/*/restorePlans/*.
+        #   Output only. The full name of the RestorePlan resource. Format: `projects/*/
+        #   locations/*/restorePlans/*`.
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the RestorePlan
@@ -1444,8 +1444,8 @@ module Google
         
         # Creates a new Restore for the given RestorePlan.
         # @param [String] parent
-        #   Required. The RestorePlan within which to create the Restore. Format: projects/
-        #   */locations/*/restorePlans/*
+        #   Required. The RestorePlan within which to create the Restore. Format: `
+        #   projects/*/locations/*/restorePlans/*`
         # @param [Google::Apis::GkebackupV1::Restore] restore_object
         # @param [String] restore_id
         #   Required. The client-provided short name for the Restore resource. This name
@@ -1485,8 +1485,8 @@ module Google
         
         # Deletes an existing Restore.
         # @param [String] name
-        #   Required. Full name of the Restore Format: projects/*/locations/*/restorePlans/
-        #   */restores/*
+        #   Required. Full name of the Restore Format: `projects/*/locations/*/
+        #   restorePlans/*/restores/*`
         # @param [String] etag
         #   If provided, this value must match the current value of the target Restore's
         #   etag field or the request is rejected.
@@ -1524,8 +1524,8 @@ module Google
         
         # Retrieves the details of a single Restore.
         # @param [String] name
-        #   Required. Name of the restore resource. Format: projects/*/locations/*/
-        #   restorePlans/*/restores/*
+        #   Required. Name of the restore resource. Format: `projects/*/locations/*/
+        #   restorePlans/*/restores/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1600,8 +1600,8 @@ module Google
         
         # Lists the Restores for a given RestorePlan.
         # @param [String] parent
-        #   Required. The RestorePlan that contains the Restores to list. Format: projects/
-        #   */locations/*/restorePlans/*
+        #   Required. The RestorePlan that contains the Restores to list. Format: `
+        #   projects/*/locations/*/restorePlans/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
@@ -1649,8 +1649,8 @@ module Google
         
         # Update a Restore.
         # @param [String] name
-        #   Output only. The full name of the Restore resource. Format: projects/*/
-        #   locations/*/restorePlans/*/restores/*
+        #   Output only. The full name of the Restore resource. Format: `projects/*/
+        #   locations/*/restorePlans/*/restores/*`
         # @param [Google::Apis::GkebackupV1::Restore] restore_object
         # @param [String] update_mask
         #   This is used to specify the fields to be overwritten in the Restore targeted
@@ -1767,8 +1767,8 @@ module Google
         
         # Retrieve the details of a single VolumeRestore.
         # @param [String] name
-        #   Required. Full name of the VolumeRestore resource. Format: projects/*/
-        #   locations/*/restorePlans/*/restores/*/volumeRestores/*
+        #   Required. Full name of the VolumeRestore resource. Format: `projects/*/
+        #   locations/*/restorePlans/*/restores/*/volumeRestores/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1843,8 +1843,8 @@ module Google
         
         # Lists the VolumeRestores for a given Restore.
         # @param [String] parent
-        #   Required. The Restore that contains the VolumeRestores to list. Format:
-        #   projects/*/locations/*/restorePlans/*/restores/*
+        #   Required. The Restore that contains the VolumeRestores to list. Format: `
+        #   projects/*/locations/*/restorePlans/*/restores/*`
         # @param [String] filter
         #   Field match expression used to filter the results.
         # @param [String] order_by
