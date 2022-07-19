@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCreateModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,30 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +359,18 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaSetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaTuneModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaTuneModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1266,6 +1308,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaCreateModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaExportErrorsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1350,6 +1399,55 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data_state, as: 'dataState'
+          property :display_name, as: 'displayName'
+          property :filtering_option, as: 'filteringOption'
+          property :last_tune_time, as: 'lastTuneTime'
+          property :name, as: 'name'
+          property :optimization_objective, as: 'optimizationObjective'
+          property :page_optimization_config, as: 'pageOptimizationConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfig::Representation
+      
+          property :periodic_tuning_state, as: 'periodicTuningState'
+          property :serving_state, as: 'servingState'
+          property :training_state, as: 'trainingState'
+          property :tuning_operation, as: 'tuningOperation'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_optimization_event_type, as: 'pageOptimizationEventType'
+          collection :panels, as: 'panels', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel::Representation
+      
+          property :restriction, as: 'restriction'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serving_config_id, as: 'servingConfigId'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidates, as: 'candidates', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate::Representation
+      
+          property :default_candidate, as: 'defaultCandidate', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate::Representation
+      
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaPurgeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1425,6 +1523,19 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaSetInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaTuneModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaTuneModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
