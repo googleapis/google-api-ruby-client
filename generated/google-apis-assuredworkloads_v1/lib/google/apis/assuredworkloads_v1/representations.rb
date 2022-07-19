@@ -481,6 +481,7 @@ module Google
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_violation_count, as: 'acknowledgedViolationCount'
           property :active_violation_count, as: 'activeViolationCount'
         end
       end
