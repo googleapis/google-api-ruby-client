@@ -88,6 +88,53 @@ module Google
         end
       end
       
+      # An AwsS3CompatibleData resource.
+      class AwsS3CompatibleData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the name of the bucket.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # Required. Specifies the endpoint of the storage service.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Specifies the root path to transfer objects. Must be an empty string or full
+        # path name that ends with a '/'. This field is treated as an object prefix. As
+        # such, it should generally not begin with a '/'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Specifies the region to sign requests with. This can be left blank if requests
+        # should be signed with an empty region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # S3CompatibleMetadata contains the metadata fields that apply to the basic
+        # types of S3-compatible data providers.
+        # Corresponds to the JSON property `s3Metadata`
+        # @return [Google::Apis::StoragetransferV1::S3CompatibleMetadata]
+        attr_accessor :s3_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @path = args[:path] if args.key?(:path)
+          @region = args[:region] if args.key?(:region)
+          @s3_metadata = args[:s3_metadata] if args.key?(:s3_metadata)
+        end
+      end
+      
       # An AwsS3Data resource can be a data source, but not a data sink. In an
       # AwsS3Data resource, an object's name is the S3 object's key name.
       class AwsS3Data
@@ -930,6 +977,50 @@ module Google
         end
       end
       
+      # S3CompatibleMetadata contains the metadata fields that apply to the basic
+      # types of S3-compatible data providers.
+      class S3CompatibleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the authentication and authorization method used by the storage
+        # service. When not specified, Transfer Service will attempt to determine right
+        # auth method to use.
+        # Corresponds to the JSON property `authMethod`
+        # @return [String]
+        attr_accessor :auth_method
+      
+        # The Listing API to use for discovering objects. When not specified, Transfer
+        # Service will attempt to determine the right API to use.
+        # Corresponds to the JSON property `listApi`
+        # @return [String]
+        attr_accessor :list_api
+      
+        # Specifies the network protocol of the agent. When not specified, the default
+        # value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # Specifies the API request model used to call the storage service. When not
+        # specified, the default value of RequestModel
+        # REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
+        # Corresponds to the JSON property `requestModel`
+        # @return [String]
+        attr_accessor :request_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_method = args[:auth_method] if args.key?(:auth_method)
+          @list_api = args[:list_api] if args.key?(:list_api)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @request_model = args[:request_model] if args.key?(:request_model)
+        end
+      end
+      
       # Transfers can be scheduled to recur or to run just once.
       class Schedule
         include Google::Apis::Core::Hashable
@@ -1502,6 +1593,11 @@ module Google
       class TransferSpec
         include Google::Apis::Core::Hashable
       
+        # An AwsS3CompatibleData resource.
+        # Corresponds to the JSON property `awsS3CompatibleDataSource`
+        # @return [Google::Apis::StoragetransferV1::AwsS3CompatibleData]
+        attr_accessor :aws_s3_compatible_data_source
+      
         # An AwsS3Data resource can be a data source, but not a data sink. In an
         # AwsS3Data resource, an object's name is the S3 object's key name.
         # Corresponds to the JSON property `awsS3DataSource`
@@ -1617,6 +1713,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_s3_compatible_data_source = args[:aws_s3_compatible_data_source] if args.key?(:aws_s3_compatible_data_source)
           @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
           @azure_blob_storage_data_source = args[:azure_blob_storage_data_source] if args.key?(:azure_blob_storage_data_source)
           @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
