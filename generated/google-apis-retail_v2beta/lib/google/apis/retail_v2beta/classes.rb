@@ -739,6 +739,26 @@ module Google
         end
       end
       
+      # Metadata associated with a create operation.
+      class GoogleCloudRetailV2alphaCreateModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the model that this create applies to. Format: projects/`
+        # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # Configuration of destination for Export related errors.
       class GoogleCloudRetailV2alphaExportErrorsConfig
         include Google::Apis::Core::Hashable
@@ -998,6 +1018,231 @@ module Google
         end
       end
       
+      # Metadata that describes the training and serving parameters of a Model. A
+      # Model can be associated with a ServingConfig and then queried through the
+      # Predict api.
+      class GoogleCloudRetailV2alphaModel
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp the Recommendation Model was created at.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The state of data requirements for this model: DATA_OK and
+        # DATA_ERROR. Recommendation model cannot be trained if the data is in
+        # DATA_ERROR state. Recommendation model can have DATA_ERROR state even if
+        # serving state is ACTIVE: models were trained successfully before, but cannot
+        # be refreshed because model no longer has sufficient data for training.
+        # Corresponds to the JSON property `dataState`
+        # @return [String]
+        attr_accessor :data_state
+      
+        # Required. The display name of the model. Should be human readable, used to
+        # display Recommendation Models in the Retail Pantheon Dashboard. UTF-8 encoded
+        # string with limit of 1024 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. If RECOMMENDATIONS_FILTERING_ENABLED, recommendation filtering by
+        # attributes is enabled for the model.
+        # Corresponds to the JSON property `filteringOption`
+        # @return [String]
+        attr_accessor :filtering_option
+      
+        # Output only. The timestamp when the latest successful tune finished.
+        # Corresponds to the JSON property `lastTuneTime`
+        # @return [String]
+        attr_accessor :last_tune_time
+      
+        # Required. The fully qualified resource name of the model. Format: projects/`
+        # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The optimization objective e.g. `cvr`. Currently supported values: `
+        # ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on
+        # model type. Default depends on type of recommendation: `recommended-for-you` =>
+        # `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `
+        # revenue_per_order`
+        # Corresponds to the JSON property `optimizationObjective`
+        # @return [String]
+        attr_accessor :optimization_objective
+      
+        # The PageOptimizationConfig for model training. This determines how many panels
+        # to optimize for, and which serving configurations to consider for each panel.
+        # The purpose of this model is to optimize which ServingConfig to show on which
+        # panels in way that optimizes the visitors shopping journey.
+        # Corresponds to the JSON property `pageOptimizationConfig`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfig]
+        attr_accessor :page_optimization_config
+      
+        # Optional. The state of periodic tuning. The period we use is 3 months - to do
+        # a one-off tune earlier use the TuneModel method. Default value is
+        # PERIODIC_TUNING_ENABLED.
+        # Corresponds to the JSON property `periodicTuningState`
+        # @return [String]
+        attr_accessor :periodic_tuning_state
+      
+        # Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.
+        # Corresponds to the JSON property `servingState`
+        # @return [String]
+        attr_accessor :serving_state
+      
+        # Optional. The training state that the model is in (e.g. TRAINING or PAUSED).
+        # Since part of the cost of running the service is frequency of training - this
+        # can be used to determine when to train model in order to control cost. If not
+        # specified: the default value for CreateModel method is TRAINING. the default
+        # value for UpdateModel method is to keep the state the same as before.
+        # Corresponds to the JSON property `trainingState`
+        # @return [String]
+        attr_accessor :training_state
+      
+        # Output only. The tune operation associated with the model. Can be used to
+        # determine if there is an ongoing tune for this recommendation. Empty field
+        # implies no tune is goig on.
+        # Corresponds to the JSON property `tuningOperation`
+        # @return [String]
+        attr_accessor :tuning_operation
+      
+        # Required. The type of model e.g. `home-page`. Currently supported values: `
+        # recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `
+        # page-optimization`, 'similar-items', 'buy-it-again', `recently-viewed`(
+        # readonly value).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Timestamp the Recommendation Model was last updated. E.g. if a
+        # Recommendation Model was paused - this would be the time the pause was
+        # initiated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_state = args[:data_state] if args.key?(:data_state)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filtering_option = args[:filtering_option] if args.key?(:filtering_option)
+          @last_tune_time = args[:last_tune_time] if args.key?(:last_tune_time)
+          @name = args[:name] if args.key?(:name)
+          @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
+          @page_optimization_config = args[:page_optimization_config] if args.key?(:page_optimization_config)
+          @periodic_tuning_state = args[:periodic_tuning_state] if args.key?(:periodic_tuning_state)
+          @serving_state = args[:serving_state] if args.key?(:serving_state)
+          @training_state = args[:training_state] if args.key?(:training_state)
+          @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The PageOptimizationConfig for model training. This determines how many panels
+      # to optimize for, and which serving configurations to consider for each panel.
+      # The purpose of this model is to optimize which ServingConfig to show on which
+      # panels in way that optimizes the visitors shopping journey.
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of UserEvent this page optimization is shown for. Each page
+        # has an associated event type - this will be the corresponding event type for
+        # the page that the page optimization model is used on. Supported types: * `add-
+        # to-cart`: Products being added to cart. * `detail-page-view`: Products detail
+        # page viewed. * `home-page-view`: Homepage viewed * `category-page-view`:
+        # Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `
+        # home-page-view` only allows models with type `recommended-for-you`. All other
+        # page_optimization_event_type allow all Model.types.
+        # Corresponds to the JSON property `pageOptimizationEventType`
+        # @return [String]
+        attr_accessor :page_optimization_event_type
+      
+        # Required. A list of panel configurations. Limit = 5.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel>]
+        attr_accessor :panels
+      
+        # Optional. How to restrict results across panels e.g. can the same
+        # ServingConfig be shown on multiple panels at once. If unspecified, default to `
+        # UNIQUE_MODEL_RESTRICTION`.
+        # Corresponds to the JSON property `restriction`
+        # @return [String]
+        attr_accessor :restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_optimization_event_type = args[:page_optimization_event_type] if args.key?(:page_optimization_event_type)
+          @panels = args[:panels] if args.key?(:panels)
+          @restriction = args[:restriction] if args.key?(:restriction)
+        end
+      end
+      
+      # A candidate to consider for a given panel. Currently only ServingConfig are
+      # valid candidates.
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate
+        include Google::Apis::Core::Hashable
+      
+        # This has to be a valid ServingConfig identifier. e.g. for a ServingConfig with
+        # full name: `projects/*/locations/global/catalogs/default_catalog/
+        # servingConfigs/my_candidate_config` this would be 'my_candidate_config'
+        # Corresponds to the JSON property `servingConfigId`
+        # @return [String]
+        attr_accessor :serving_config_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serving_config_id = args[:serving_config_id] if args.key?(:serving_config_id)
+        end
+      end
+      
+      # An individual panel with a list of ServingConfigs to consider for it.
+      class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel
+        include Google::Apis::Core::Hashable
+      
+        # Required. The candidates to consider on the panel. Limit = 10.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>]
+        attr_accessor :candidates
+      
+        # A candidate to consider for a given panel. Currently only ServingConfig are
+        # valid candidates.
+        # Corresponds to the JSON property `defaultCandidate`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate]
+        attr_accessor :default_candidate
+      
+        # Optional. The name to display for the panel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @default_candidate = args[:default_candidate] if args.key?(:default_candidate)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Metadata related to the progress of the Purge operation. This will be returned
       # by the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2alphaPurgeMetadata
@@ -1211,6 +1456,39 @@ module Google
       # Response of the SetInventoryRequest. Currently empty because there is no
       # meaningful response populated from the ProductService.SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata associated with a tune operation.
+      class GoogleCloudRetailV2alphaTuneModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the model that this tune applies to. Format: projects/`
+        # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Response associated with a tune operation.
+      class GoogleCloudRetailV2alphaTuneModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1815,9 +2093,8 @@ module Google
       
         # Custom attributes for the suggestion term. * For "user-data", the attributes
         # are additional custom attributes ingested through BigQuery. * For "cloud-
-        # retail", the attributes are product attributes generated by Cloud Retail. This
-        # is an experimental feature. Contact Retail Search support team if you are
-        # interested in enabling it.
+        # retail", the attributes are product attributes generated by Cloud Retail. It
+        # requires UserEvent.product_details is imported properly.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
@@ -3027,7 +3304,7 @@ module Google
         # in `PredictRequest.params` to receive empty results instead. Note that the API
         # will never return items with storageStatus of "EXPIRED" or "DELETED"
         # regardless of filter choices. If `filterSyntaxV2` is set to true under the `
-        # params` field, then attribute based expressions are expected instead of the
+        # params` field, then attribute-based expressions are expected instead of the
         # above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND
         # NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors:
         # ANY("Red") OR categories: ANY("Phones"))
@@ -3058,7 +3335,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # This field is not used for now, please leave it unset.
+        # This field is not used for now, leave it unset.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -3080,8 +3357,8 @@ module Google
         # it needs to be one of `'no-diversity', 'low-diversity', 'medium-diversity', '
         # high-diversity', 'auto-diversity'`. This gives request-level control and
         # adjusts prediction results based on product category. * `filterSyntaxV2`:
-        # Boolean. False by default. If set to true, the `filter` field will be
-        # interpreteted according to the new, attribute-based syntax.
+        # Boolean. False by default. If set to true, the `filter` field is interpreteted
+        # according to the new, attribute-based syntax.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
@@ -4263,13 +4540,13 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleDoNotAssociateAction]
         attr_accessor :do_not_associate_action
       
-        # * Rule Condition: - No Condition provided is a global match. - 1 or more
-        # Condition provided is combined with OR operator. * Action Input: The request
-        # query and filter that will be applied to the retrieved products, in addition
-        # to any filters already provided with the SearchRequest. The AND operator is
-        # used to combine the query's existing filters with the filter rule(s). NOTE:
-        # May result in 0 results when filters conflict. * Action Result: Filters the
-        # returned objects to be ONLY those that passed the filter.
+        # * Rule Condition: - No Condition.query_terms provided is a global match. - 1
+        # or more Condition.query_terms provided is combined with OR operator. * Action
+        # Input: The request query and filter that are applied to the retrieved products,
+        # in addition to any filters already provided with the SearchRequest. The AND
+        # operator is used to combine the query's existing filters with the filter rule(
+        # s). NOTE: May result in 0 results when filters conflict. * Action Result:
+        # Filters the returned objects to be ONLY those that passed the filter.
         # Corresponds to the JSON property `filterAction`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleFilterAction]
         attr_accessor :filter_action
@@ -4289,8 +4566,8 @@ module Google
         attr_accessor :oneway_synonyms_action
       
         # Redirects a shopper to a specific page. * Rule Condition: - Must specify
-        # Condition. * Action Input: Request Query * Action Result: Redirects shopper to
-        # provided uri.
+        # Condition.query_terms. * Action Input: Request Query * Action Result:
+        # Redirects shopper to provided uri.
         # Corresponds to the JSON property `redirectAction`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleRedirectAction]
         attr_accessor :redirect_action
@@ -4400,13 +4677,13 @@ module Google
         end
       end
       
-      # * Rule Condition: - No Condition provided is a global match. - 1 or more
-      # Condition provided is combined with OR operator. * Action Input: The request
-      # query and filter that will be applied to the retrieved products, in addition
-      # to any filters already provided with the SearchRequest. The AND operator is
-      # used to combine the query's existing filters with the filter rule(s). NOTE:
-      # May result in 0 results when filters conflict. * Action Result: Filters the
-      # returned objects to be ONLY those that passed the filter.
+      # * Rule Condition: - No Condition.query_terms provided is a global match. - 1
+      # or more Condition.query_terms provided is combined with OR operator. * Action
+      # Input: The request query and filter that are applied to the retrieved products,
+      # in addition to any filters already provided with the SearchRequest. The AND
+      # operator is used to combine the query's existing filters with the filter rule(
+      # s). NOTE: May result in 0 results when filters conflict. * Action Result:
+      # Filters the returned objects to be ONLY those that passed the filter.
       class GoogleCloudRetailV2betaRuleFilterAction
         include Google::Apis::Core::Hashable
       
@@ -4487,8 +4764,8 @@ module Google
       end
       
       # Redirects a shopper to a specific page. * Rule Condition: - Must specify
-      # Condition. * Action Input: Request Query * Action Result: Redirects shopper to
-      # provided uri.
+      # Condition.query_terms. * Action Input: Request Query * Action Result:
+      # Redirects shopper to provided uri.
       class GoogleCloudRetailV2betaRuleRedirectAction
         include Google::Apis::Core::Hashable
       
@@ -5125,7 +5402,7 @@ module Google
       
         # Contains the spell corrected query, if found. If the spell correction type is
         # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
-        # original query will be used for search.
+        # original query is used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
