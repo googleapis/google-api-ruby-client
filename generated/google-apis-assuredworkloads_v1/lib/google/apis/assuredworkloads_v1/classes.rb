@@ -936,6 +936,11 @@ module Google
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
+        # Count of acknowledged violations in the Workload.
+        # Corresponds to the JSON property `acknowledgedViolationCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_violation_count
+      
         # Count of active Violations in the Workload.
         # Corresponds to the JSON property `activeViolationCount`
         # @return [Fixnum]
@@ -947,6 +952,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acknowledged_violation_count = args[:acknowledged_violation_count] if args.key?(:acknowledged_violation_count)
           @active_violation_count = args[:active_violation_count] if args.key?(:active_violation_count)
         end
       end
