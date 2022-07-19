@@ -1532,13 +1532,13 @@ module Google
         attr_accessor :message
       
         # Output only. The relative resource name of the job, of the form: projects/`
-        # project_number`/locations/`location_id`/lakes/`lake_id`/ tasks/`task_id`/jobs/`
+        # project_number`/locations/`location_id`/lakes/`lake_id`/tasks/`task_id`/jobs/`
         # job_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. . The number of times the job has been retried (excluding the
+        # Output only. The number of times the job has been retried (excluding the
         # initial attempt).
         # Corresponds to the JSON property `retryCount`
         # @return [Fixnum]
@@ -2675,6 +2675,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :args
       
+        # Optional. The Cloud KMS key to use for encryption, of the form: projects/`
+        # project_number`/locations/`location_id`/keyRings/`key-ring-name`/cryptoKeys/`
+        # key-name`.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
         # Optional. The maximum duration after which the job execution is expired.
         # Corresponds to the JSON property `maxJobExecutionLifetime`
         # @return [String]
@@ -2700,6 +2707,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @max_job_execution_lifetime = args[:max_job_execution_lifetime] if args.key?(:max_job_execution_lifetime)
           @project = args[:project] if args.key?(:project)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -2794,6 +2802,11 @@ module Google
       class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime
         include Google::Apis::Core::Hashable
       
+        # Optional. Container image to use.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
         # Optional. A list of Java JARS to add to the classpath. Valid input includes
         # Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/
         # file.jar
@@ -2823,6 +2836,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @image = args[:image] if args.key?(:image)
           @java_jars = args[:java_jars] if args.key?(:java_jars)
           @properties = args[:properties] if args.key?(:properties)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
