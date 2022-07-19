@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllowedDomainsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplicationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -195,12 +201,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_denied_page_uri, as: 'accessDeniedPageUri'
           property :generate_troubleshooting_uri, as: 'generateTroubleshootingUri'
+          property :remediation_token_generation_enabled, as: 'remediationTokenGenerationEnabled'
         end
       end
       
       class AccessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_domains_settings, as: 'allowedDomainsSettings', class: Google::Apis::IapV1::AllowedDomainsSettings, decorator: Google::Apis::IapV1::AllowedDomainsSettings::Representation
+      
           property :cors_settings, as: 'corsSettings', class: Google::Apis::IapV1::CorsSettings, decorator: Google::Apis::IapV1::CorsSettings::Representation
       
           property :gcip_settings, as: 'gcipSettings', class: Google::Apis::IapV1::GcipSettings, decorator: Google::Apis::IapV1::GcipSettings::Representation
@@ -211,6 +220,14 @@ module Google
       
           property :reauth_settings, as: 'reauthSettings', class: Google::Apis::IapV1::ReauthSettings, decorator: Google::Apis::IapV1::ReauthSettings::Representation
       
+        end
+      end
+      
+      class AllowedDomainsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains'
+          property :enable, as: 'enable'
         end
       end
       
