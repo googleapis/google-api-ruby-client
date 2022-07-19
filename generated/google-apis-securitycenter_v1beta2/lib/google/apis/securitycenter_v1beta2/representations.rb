@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessReview
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class ContactDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Container
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +149,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1BigQueryExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +250,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Kubernetes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Label
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryHashSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,7 +274,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Node
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OnboardingState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityCenterSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +341,12 @@ module Google
       end
       
       class SecurityMarks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +395,19 @@ module Google
         end
       end
       
+      class AccessReview
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :name, as: 'name'
+          property :ns, as: 'ns'
+          property :resource, as: 'resource'
+          property :subresource, as: 'subresource'
+          property :verb, as: 'verb'
+          property :version, as: 'version'
+        end
+      end
+      
       class Compliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -375,6 +448,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contacts, as: 'contacts', class: Google::Apis::SecuritycenterV1beta2::Contact, decorator: Google::Apis::SecuritycenterV1beta2::Contact::Representation
       
+        end
+      end
+      
+      class Container
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_id, as: 'imageId'
+          collection :labels, as: 'labels', class: Google::Apis::SecuritycenterV1beta2::Label, decorator: Google::Apis::SecuritycenterV1beta2::Label::Representation
+      
+          property :name, as: 'name'
+          property :uri, as: 'uri'
         end
       end
       
@@ -496,6 +580,8 @@ module Google
       
           hash :contacts, as: 'contacts', class: Google::Apis::SecuritycenterV1beta2::ContactDetails, decorator: Google::Apis::SecuritycenterV1beta2::ContactDetails::Representation
       
+          collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta2::Container, decorator: Google::Apis::SecuritycenterV1beta2::Container::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
@@ -508,6 +594,8 @@ module Google
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta2::IamBinding, decorator: Google::Apis::SecuritycenterV1beta2::IamBinding::Representation
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
+      
+          property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta2::Kubernetes, decorator: Google::Apis::SecuritycenterV1beta2::Kubernetes::Representation
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
@@ -556,6 +644,18 @@ module Google
           property :name, as: 'name'
           property :principal, as: 'principal'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :ns, as: 'ns'
+          property :role, as: 'role', class: Google::Apis::SecuritycenterV1beta2::Role, decorator: Google::Apis::SecuritycenterV1beta2::Role::Representation
+      
+          collection :subjects, as: 'subjects', class: Google::Apis::SecuritycenterV1beta2::Subject, decorator: Google::Apis::SecuritycenterV1beta2::Subject::Representation
+      
         end
       end
       
@@ -718,6 +818,32 @@ module Google
         end
       end
       
+      class Kubernetes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_reviews, as: 'accessReviews', class: Google::Apis::SecuritycenterV1beta2::AccessReview, decorator: Google::Apis::SecuritycenterV1beta2::AccessReview::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1Binding, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1Binding::Representation
+      
+          collection :node_pools, as: 'nodePools', class: Google::Apis::SecuritycenterV1beta2::NodePool, decorator: Google::Apis::SecuritycenterV1beta2::NodePool::Representation
+      
+          collection :nodes, as: 'nodes', class: Google::Apis::SecuritycenterV1beta2::Node, decorator: Google::Apis::SecuritycenterV1beta2::Node::Representation
+      
+          collection :pods, as: 'pods', class: Google::Apis::SecuritycenterV1beta2::Pod, decorator: Google::Apis::SecuritycenterV1beta2::Pod::Representation
+      
+          collection :roles, as: 'roles', class: Google::Apis::SecuritycenterV1beta2::Role, decorator: Google::Apis::SecuritycenterV1beta2::Role::Representation
+      
+        end
+      end
+      
+      class Label
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class MemoryHashSignature
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -738,11 +864,39 @@ module Google
         end
       end
       
+      class Node
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class NodePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :nodes, as: 'nodes', class: Google::Apis::SecuritycenterV1beta2::Node, decorator: Google::Apis::SecuritycenterV1beta2::Node::Representation
+      
+        end
+      end
+      
       class OnboardingState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :onboarding_level, as: 'onboardingLevel'
+        end
+      end
+      
+      class Pod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta2::Container, decorator: Google::Apis::SecuritycenterV1beta2::Container::Representation
+      
+          collection :labels, as: 'labels', class: Google::Apis::SecuritycenterV1beta2::Label, decorator: Google::Apis::SecuritycenterV1beta2::Label::Representation
+      
+          property :name, as: 'name'
+          property :ns, as: 'ns'
         end
       end
       
@@ -795,6 +949,15 @@ module Google
         end
       end
       
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :ns, as: 'ns'
+        end
+      end
+      
       class SecurityCenterSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -823,6 +986,15 @@ module Google
           property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
+        end
+      end
+      
+      class Subject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :ns, as: 'ns'
         end
       end
       

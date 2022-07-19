@@ -73,6 +73,64 @@ module Google
         end
       end
       
+      # Conveys information about a Kubernetes access review (e.g. kubectl auth can-i .
+      # ..) that was involved in a finding.
+      class AccessReview
+        include Google::Apis::Core::Hashable
+      
+        # Group is the API Group of the Resource. "*" means all.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Name is the name of the resource being requested. Empty means all.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Namespace of the action being requested. Currently, there is no distinction
+        # between no namespace and all namespaces. Both are represented by "" (empty).
+        # Corresponds to the JSON property `ns`
+        # @return [String]
+        attr_accessor :ns
+      
+        # Resource is the optional resource type requested. "*" means all.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Subresource is the optional subresource type.
+        # Corresponds to the JSON property `subresource`
+        # @return [String]
+        attr_accessor :subresource
+      
+        # Verb is a Kubernetes resource API verb, like: get, list, watch, create, update,
+        # delete, proxy. "*" means all.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        # Version is the API Version of the Resource. "*" means all.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @name = args[:name] if args.key?(:name)
+          @ns = args[:ns] if args.key?(:ns)
+          @resource = args[:resource] if args.key?(:resource)
+          @subresource = args[:subresource] if args.key?(:subresource)
+          @verb = args[:verb] if args.key?(:verb)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Contains compliance information about a security standard indicating unmet
       # recommendations.
       class Compliance
@@ -211,6 +269,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contacts = args[:contacts] if args.key?(:contacts)
+        end
+      end
+      
+      # Container associated with the finding.
+      class Container
+        include Google::Apis::Core::Hashable
+      
+        # Optional container image id, when provided by the container runtime. Uniquely
+        # identifies the container image launched using a container image digest.
+        # Corresponds to the JSON property `imageId`
+        # @return [String]
+        attr_accessor :image_id
+      
+        # Container labels, as provided by the container runtime.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Label>]
+        attr_accessor :labels
+      
+        # Container name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Container image URI provided when configuring a pod/container. May identify a
+        # container image version using mutable tags.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_id = args[:image_id] if args.key?(:image_id)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -662,11 +759,17 @@ module Google
         # key represents the type of contact, while the value contains a list of all the
         # contacts that pertain. Please refer to: https://cloud.google.com/resource-
         # manager/docs/managing-notification-contacts#notification-categories ` "
-        # security":[ ` "contact":` "email":"person1@company.com" ` `, ` "contact":` "
-        # email":“person2@company.com” ` ` ] `
+        # security": ` "contacts": [ ` "email": "person1@company.com" `, ` "email": "
+        # person2@company.com" ` ] `
         # Corresponds to the JSON property `contacts`
         # @return [Hash<String,Google::Apis::SecuritycenterV1beta2::ContactDetails>]
         attr_accessor :contacts
+      
+        # Containers associated with the finding. containers provides information for
+        # both Kubernetes and non-Kubernetes containers.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Container>]
+        attr_accessor :containers
       
         # The time at which the finding was created in Security Command Center.
         # Corresponds to the JSON property `createTime`
@@ -725,6 +828,11 @@ module Google
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1beta2::Indicator]
         attr_accessor :indicator
+      
+        # Kubernetes related attributes.
+        # Corresponds to the JSON property `kubernetes`
+        # @return [Google::Apis::SecuritycenterV1beta2::Kubernetes]
+        attr_accessor :kubernetes
       
         # MITRE ATT&CK tactics and techniques related to this finding. See: https://
         # attack.mitre.org
@@ -830,6 +938,7 @@ module Google
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
           @contacts = args[:contacts] if args.key?(:contacts)
+          @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
@@ -839,6 +948,7 @@ module Google
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
+          @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @mute = args[:mute] if args.key?(:mute)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
@@ -981,6 +1091,44 @@ module Google
           @name = args[:name] if args.key?(:name)
           @principal = args[:principal] if args.key?(:principal)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a Kubernetes RoleBinding or ClusterRoleBinding.
+      class GoogleCloudSecuritycenterV1Binding
+        include Google::Apis::Core::Hashable
+      
+        # Name for binding.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Namespace for binding.
+        # Corresponds to the JSON property `ns`
+        # @return [String]
+        attr_accessor :ns
+      
+        # Kubernetes Role or ClusterRole.
+        # Corresponds to the JSON property `role`
+        # @return [Google::Apis::SecuritycenterV1beta2::Role]
+        attr_accessor :role
+      
+        # Represents the subjects(s) bound to the role. Not always available for PATCH
+        # requests.
+        # Corresponds to the JSON property `subjects`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Subject>]
+        attr_accessor :subjects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @ns = args[:ns] if args.key?(:ns)
+          @role = args[:role] if args.key?(:role)
+          @subjects = args[:subjects] if args.key?(:subjects)
         end
       end
       
@@ -1635,6 +1783,86 @@ module Google
         end
       end
       
+      # Kubernetes related attributes.
+      class Kubernetes
+        include Google::Apis::Core::Hashable
+      
+        # Provides information on any Kubernetes access reviews (i.e. privilege checks)
+        # relevant to the finding.
+        # Corresponds to the JSON property `accessReviews`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::AccessReview>]
+        attr_accessor :access_reviews
+      
+        # Provides Kubernetes role binding information for findings that involve
+        # RoleBindings or ClusterRoleBindings.
+        # Corresponds to the JSON property `bindings`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1Binding>]
+        attr_accessor :bindings
+      
+        # GKE Node Pools associated with the finding. This field will contain NodePool
+        # information for each Node, when it is available.
+        # Corresponds to the JSON property `nodePools`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::NodePool>]
+        attr_accessor :node_pools
+      
+        # Provides Kubernetes Node information.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Node>]
+        attr_accessor :nodes
+      
+        # Kubernetes Pods associated with the finding. This field will contain Pod
+        # records for each container that is owned by a Pod.
+        # Corresponds to the JSON property `pods`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Pod>]
+        attr_accessor :pods
+      
+        # Provides Kubernetes role information for findings that involve Roles or
+        # ClusterRoles.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Role>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_reviews = args[:access_reviews] if args.key?(:access_reviews)
+          @bindings = args[:bindings] if args.key?(:bindings)
+          @node_pools = args[:node_pools] if args.key?(:node_pools)
+          @nodes = args[:nodes] if args.key?(:nodes)
+          @pods = args[:pods] if args.key?(:pods)
+          @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
+      # Label represents a generic name=value label. Label has separate name and value
+      # fields to support filtering with contains().
+      class Label
+        include Google::Apis::Core::Hashable
+      
+        # Label name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Label value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A signature corresponding to memory page hashes.
       class MemoryHashSignature
         include Google::Apis::Core::Hashable
@@ -1710,6 +1938,50 @@ module Google
         end
       end
       
+      # Kubernetes Nodes associated with the finding.
+      class Node
+        include Google::Apis::Core::Hashable
+      
+        # Full Resource name of the Compute Engine VM running the cluster node.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Provides GKE Node Pool information.
+      class NodePool
+        include Google::Apis::Core::Hashable
+      
+        # Kubernetes Node pool name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Nodes associated with the finding.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Node>]
+        attr_accessor :nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
       # Resource capturing onboarding information for a given CRM resource.
       class OnboardingState
         include Google::Apis::Core::Hashable
@@ -1735,6 +2007,43 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @onboarding_level = args[:onboarding_level] if args.key?(:onboarding_level)
+        end
+      end
+      
+      # Kubernetes Pod.
+      class Pod
+        include Google::Apis::Core::Hashable
+      
+        # Pod containers associated with this finding, if any.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Container>]
+        attr_accessor :containers
+      
+        # Pod labels. For Kubernetes containers, these are applied to the container.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::Label>]
+        attr_accessor :labels
+      
+        # Kubernetes Pod name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Kubernetes Pod namespace.
+        # Corresponds to the JSON property `ns`
+        # @return [String]
+        attr_accessor :ns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @ns = args[:ns] if args.key?(:ns)
         end
       end
       
@@ -1910,6 +2219,37 @@ module Google
         end
       end
       
+      # Kubernetes Role or ClusterRole.
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # Role type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Role name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Role namespace.
+        # Corresponds to the JSON property `ns`
+        # @return [String]
+        attr_accessor :ns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @ns = args[:ns] if args.key?(:ns)
+        end
+      end
+      
       # Resource capturing the settings for Security Center.
       class SecurityCenterSettings
         include Google::Apis::Core::Hashable
@@ -1918,7 +2258,8 @@ module Google
         # the organization this resource resides in. The format is `projects/`project_id`
         # `. An empty value disables logging. This value is only referenced by services
         # that support log sink. Please refer to the documentation for an updated list
-        # of compatible services.
+        # of compatible services. This may only be specified for organization level
+        # onboarding.
         # Corresponds to the JSON property `logSinkProject`
         # @return [String]
         attr_accessor :log_sink_project
@@ -1930,13 +2271,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Timestamp of when the customer organization was onboarded to SCC.
+        # Output only. Timestamp of when the customer organization was onboarded to SCC.
         # Corresponds to the JSON property `onboardingTime`
         # @return [String]
         attr_accessor :onboarding_time
       
-        # The organization level service account to be used for security center
-        # components.
+        # Output only. The organization level service account to be used for security
+        # center components.
         # Corresponds to the JSON property `orgServiceAccount`
         # @return [String]
         attr_accessor :org_service_account
@@ -2047,6 +2388,37 @@ module Google
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a Kubernetes Subject.
+      class Subject
+        include Google::Apis::Core::Hashable
+      
+        # Authentication type for subject.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name for subject.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Namespace for subject.
+        # Corresponds to the JSON property `ns`
+        # @return [String]
+        attr_accessor :ns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @ns = args[:ns] if args.key?(:ns)
         end
       end
       
