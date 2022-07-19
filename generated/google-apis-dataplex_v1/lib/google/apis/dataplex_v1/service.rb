@@ -172,7 +172,7 @@ module Google
         # lake can be deleted.
         # @param [String] name
         #   Required. The resource name of the lake: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id`
+        #   location_id`/lakes/`lake_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -203,7 +203,7 @@ module Google
         # Retrieves a lake resource.
         # @param [String] name
         #   Required. The resource name of the lake: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id`
+        #   location_id`/lakes/`lake_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -444,7 +444,7 @@ module Google
         # Lists action resources in a lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of actions to return. The service may return fewer
         #   than this value. If unspecified, at most 10 actions will be returned. The
@@ -1115,7 +1115,7 @@ module Google
         # Create an environment resource.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_id`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Environment] google_cloud_dataplex_v1_environment_object
         # @param [String] environment_id
         #   Required. Environment identifier. * Must contain only lowercase letters,
@@ -1160,7 +1160,7 @@ module Google
         # deleted before environment deletion can be initiated.
         # @param [String] name
         #   Required. The resource name of the environment: projects/`project_id`/
-        #   locations/`location_id`/lakes/`lake_id`/environments/`environment_id``
+        #   locations/`location_id`/lakes/`lake_id`/environments/`environment_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1191,7 +1191,7 @@ module Google
         # Get environment resource.
         # @param [String] name
         #   Required. The resource name of the environment: projects/`project_id`/
-        #   locations/`location_id`/lakes/`lake_id`/environments/`environment_id`
+        #   locations/`location_id`/lakes/`lake_id`/environments/`environment_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1267,7 +1267,7 @@ module Google
         # Lists environments under the given lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_id`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -1433,7 +1433,7 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent environment: projects/`
         #   project_number`/locations/`location_id`/lakes/`lake_id`/environment/`
-        #   environment_id`
+        #   environment_id`.
         # @param [String] filter
         #   Optional. Filter request. The following mode filter is supported to return
         #   only the sessions belonging to the requester when the mode is USER and return
@@ -1482,7 +1482,7 @@ module Google
         # Creates a task resource within a lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Task] google_cloud_dataplex_v1_task_object
         # @param [String] task_id
         #   Required. Task identifier.
@@ -1523,7 +1523,7 @@ module Google
         # Delete the task resource.
         # @param [String] name
         #   Required. The resource name of the task: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /task/`task_id``
+        #   location_id`/lakes/`lake_id`/task/`task_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1554,7 +1554,7 @@ module Google
         # Get task resource.
         # @param [String] name
         #   Required. The resource name of the task: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /tasks/`tasks_id`
+        #   location_id`/lakes/`lake_id`/tasks/`tasks_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1630,7 +1630,7 @@ module Google
         # Lists tasks under the given lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -1794,7 +1794,7 @@ module Google
         # Cancel jobs running for the task resource.
         # @param [String] name
         #   Required. The resource name of the job: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /task/`task_id`/job/`job_id``
+        #   location_id`/lakes/`lake_id`/task/`task_id`/job/`job_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1CancelJobRequest] google_cloud_dataplex_v1_cancel_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1828,7 +1828,7 @@ module Google
         # Get job resource.
         # @param [String] name
         #   Required. The resource name of the job: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /tasks/`task_id`/jobs/`job_id`
+        #   location_id`/lakes/`lake_id`/tasks/`task_id`/jobs/`job_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1859,7 +1859,7 @@ module Google
         # Lists Jobs under the given task.
         # @param [String] parent
         #   Required. The resource name of the parent environment: projects/`
-        #   project_number`/locations/`location_id`/lakes/`lake_id`/tasks/`task_id`
+        #   project_number`/locations/`location_id`/lakes/`lake_id`/tasks/`task_id`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of jobs to return. The service may return fewer than
         #   this value. If unspecified, at most 10 jobs will be returned. The maximum
@@ -1900,7 +1900,7 @@ module Google
         # Creates a zone resource within a lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Zone] google_cloud_dataplex_v1_zone_object
         # @param [Boolean] validate_only
         #   Optional. Only validate the request, but do not perform mutations. The default
@@ -1947,7 +1947,7 @@ module Google
         # zone can be deleted.
         # @param [String] name
         #   Required. The resource name of the zone: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /zones/`zone_id``
+        #   location_id`/lakes/`lake_id`/zones/`zone_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1978,7 +1978,7 @@ module Google
         # Retrieves a zone resource.
         # @param [String] name
         #   Required. The resource name of the zone: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /zones/`zone_id`
+        #   location_id`/lakes/`lake_id`/zones/`zone_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2054,7 +2054,7 @@ module Google
         # Lists zone resources in a lake.
         # @param [String] parent
         #   Required. The resource name of the parent lake: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`
+        #   locations/`location_id`/lakes/`lake_id`.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -2218,7 +2218,7 @@ module Google
         # Lists action resources in a zone.
         # @param [String] parent
         #   Required. The resource name of the parent zone: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`
+        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of actions to return. The service may return fewer
         #   than this value. If unspecified, at most 10 actions will be returned. The
@@ -2259,7 +2259,7 @@ module Google
         # Creates an asset resource.
         # @param [String] parent
         #   Required. The resource name of the parent zone: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id` /zones/`zone_id``
+        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1Asset] google_cloud_dataplex_v1_asset_object
         # @param [String] asset_id
         #   Required. Asset identifier. This ID will be used to generate names such as
@@ -2305,7 +2305,7 @@ module Google
         # default) or deleted based on the associated Lifecycle policy.
         # @param [String] name
         #   Required. The resource name of the asset: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /zones/`zone_id`/assets/`asset_id`
+        #   location_id`/lakes/`lake_id`/zones/`zone_id`/assets/`asset_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2336,7 +2336,7 @@ module Google
         # Retrieves an asset resource.
         # @param [String] name
         #   Required. The resource name of the asset: projects/`project_number`/locations/`
-        #   location_id`/lakes/`lake_id` /zones/`zone_id`/assets/`asset_id`
+        #   location_id`/lakes/`lake_id`/zones/`zone_id`/assets/`asset_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2412,7 +2412,7 @@ module Google
         # Lists asset resources in a zone.
         # @param [String] parent
         #   Required. The resource name of the parent zone: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id` /zones/`zone_id``
+        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -2577,7 +2577,7 @@ module Google
         # Lists action resources in an asset.
         # @param [String] parent
         #   Required. The resource name of the parent asset: projects/`project_number`/
-        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`/assets/`asset_id`
+        #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`/assets/`asset_id`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of actions to return. The service may return fewer
         #   than this value. If unspecified, at most 10 actions will be returned. The

@@ -1315,6 +1315,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :args, as: 'args'
+          property :kms_key, as: 'kmsKey'
           property :max_job_execution_lifetime, as: 'maxJobExecutionLifetime'
           property :project, as: 'project'
           property :service_account, as: 'serviceAccount'
@@ -1353,6 +1354,7 @@ module Google
       class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
           collection :java_jars, as: 'javaJars'
           hash :properties, as: 'properties'
           collection :python_packages, as: 'pythonPackages'
