@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsS3CompatibleData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsS3Data
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class S3CompatibleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -254,6 +266,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_key_id, as: 'accessKeyId'
           property :secret_access_key, as: 'secretAccessKey'
+        end
+      end
+      
+      class AwsS3CompatibleData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :endpoint, as: 'endpoint'
+          property :path, as: 'path'
+          property :region, as: 'region'
+          property :s3_metadata, as: 's3Metadata', class: Google::Apis::StoragetransferV1::S3CompatibleMetadata, decorator: Google::Apis::StoragetransferV1::S3CompatibleMetadata::Representation
+      
         end
       end
       
@@ -465,6 +489,16 @@ module Google
         end
       end
       
+      class S3CompatibleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_method, as: 'authMethod'
+          property :list_api, as: 'listApi'
+          property :protocol, as: 'protocol'
+          property :request_model, as: 'requestModel'
+        end
+      end
+      
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -590,6 +624,8 @@ module Google
       class TransferSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_s3_compatible_data_source, as: 'awsS3CompatibleDataSource', class: Google::Apis::StoragetransferV1::AwsS3CompatibleData, decorator: Google::Apis::StoragetransferV1::AwsS3CompatibleData::Representation
+      
           property :aws_s3_data_source, as: 'awsS3DataSource', class: Google::Apis::StoragetransferV1::AwsS3Data, decorator: Google::Apis::StoragetransferV1::AwsS3Data::Representation
       
           property :azure_blob_storage_data_source, as: 'azureBlobStorageDataSource', class: Google::Apis::StoragetransferV1::AzureBlobStorageData, decorator: Google::Apis::StoragetransferV1::AzureBlobStorageData::Representation
