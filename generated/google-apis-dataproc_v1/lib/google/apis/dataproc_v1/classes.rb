@@ -3732,17 +3732,6 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
-        # Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning
-        # facilitates the removal of cluster nodes without interrupting jobs in progress.
-        # The timeout specifies the amount of time to wait for jobs finish before
-        # forcefully removing nodes. The default timeout is 0 for forceful
-        # decommissioning, and the maximum timeout period is 1 day. (see JSON Mapping—
-        # Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        # graceful_decommission_timeout is supported in Dataproc image versions 1.2+.
-        # Corresponds to the JSON property `gracefulDecommissionTimeout`
-        # @return [String]
-        attr_accessor :graceful_decommission_timeout
-      
         # Optional. Node pools and corresponding repair action to be taken. All node
         # pools should be unique in this request. i.e. Multiple entries for the same
         # node pool id are not allowed.
@@ -3768,7 +3757,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
-          @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
