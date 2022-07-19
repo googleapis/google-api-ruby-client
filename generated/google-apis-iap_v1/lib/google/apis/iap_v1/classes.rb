@@ -41,6 +41,13 @@ module Google
         attr_accessor :generate_troubleshooting_uri
         alias_method :generate_troubleshooting_uri?, :generate_troubleshooting_uri
       
+        # Whether to generate remediation token on access denied events to this
+        # application.
+        # Corresponds to the JSON property `remediationTokenGenerationEnabled`
+        # @return [Boolean]
+        attr_accessor :remediation_token_generation_enabled
+        alias_method :remediation_token_generation_enabled?, :remediation_token_generation_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -49,12 +56,19 @@ module Google
         def update!(**args)
           @access_denied_page_uri = args[:access_denied_page_uri] if args.key?(:access_denied_page_uri)
           @generate_troubleshooting_uri = args[:generate_troubleshooting_uri] if args.key?(:generate_troubleshooting_uri)
+          @remediation_token_generation_enabled = args[:remediation_token_generation_enabled] if args.key?(:remediation_token_generation_enabled)
         end
       end
       
       # Access related settings for IAP protected apps.
       class AccessSettings
         include Google::Apis::Core::Hashable
+      
+        # Configuration for IAP allowed domains. Allows the customers to restrict access
+        # to the app by only allowing requests from the listed trusted domains.
+        # Corresponds to the JSON property `allowedDomainsSettings`
+        # @return [Google::Apis::IapV1::AllowedDomainsSettings]
+        attr_accessor :allowed_domains_settings
       
         # Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
         # call to bypass authentication and authorization.
@@ -93,11 +107,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_domains_settings = args[:allowed_domains_settings] if args.key?(:allowed_domains_settings)
           @cors_settings = args[:cors_settings] if args.key?(:cors_settings)
           @gcip_settings = args[:gcip_settings] if args.key?(:gcip_settings)
           @oauth_settings = args[:oauth_settings] if args.key?(:oauth_settings)
           @policy_delegation_settings = args[:policy_delegation_settings] if args.key?(:policy_delegation_settings)
           @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
+        end
+      end
+      
+      # Configuration for IAP allowed domains. Allows the customers to restrict access
+      # to the app by only allowing requests from the listed trusted domains.
+      class AllowedDomainsSettings
+        include Google::Apis::Core::Hashable
+      
+        # List of trusted domains.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Configuration for customers to opt in for the feature.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -119,10 +161,10 @@ module Google
         # @return [String]
         attr_accessor :cookie_domain
       
-        # Configuration for RCTokens generated for service mesh workloads protected by
-        # IAP. RCTokens are IAP generated JWTs that can be verified at the application.
+        # Configuration for RCToken generated for service mesh workloads protected by
+        # IAP. RCToken are IAP generated JWTs that can be verified at the application.
         # The RCToken is primarily used for service mesh deployments, and can be scoped
-        # to a single mesh by configuring the audience field accordingly
+        # to a single mesh by configuring the audience field accordingly.
         # Corresponds to the JSON property `csmSettings`
         # @return [Google::Apis::IapV1::CsmSettings]
         attr_accessor :csm_settings
@@ -273,10 +315,10 @@ module Google
         end
       end
       
-      # Configuration for RCTokens generated for service mesh workloads protected by
-      # IAP. RCTokens are IAP generated JWTs that can be verified at the application.
+      # Configuration for RCToken generated for service mesh workloads protected by
+      # IAP. RCToken are IAP generated JWTs that can be verified at the application.
       # The RCToken is primarily used for service mesh deployments, and can be scoped
-      # to a single mesh by configuring the audience field accordingly
+      # to a single mesh by configuring the audience field accordingly.
       class CsmSettings
         include Google::Apis::Core::Hashable
       
