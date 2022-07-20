@@ -21064,9 +21064,9 @@ module Google
         # allows for routing to multiple App Engine services without having to create
         # multiple Network Endpoint Groups and backend services. For example, the
         # request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.
-        # com/v2" can be backed by the same Serverless NEG with URL mask "-dot-appname.
-        # appspot.com/". The URL mask will parse them to ` service = "foo1", version = "
-        # v1" ` and ` service = "foo1", version = "v2" ` respectively.
+        # com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-
+        # appname.appspot.com/<version>". The URL mask will parse them to ` service = "
+        # foo1", version = "v1" ` and ` service = "foo1", version = "v2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -21105,8 +21105,8 @@ module Google
         # routing to multiple Cloud Functions without having to create multiple Network
         # Endpoint Groups and backend services. For example, request URLs " mydomain.com/
         # function1" and "mydomain.com/function2" can be backed by the same Serverless
-        # NEG with URL mask "/". The URL mask will parse them to ` function = "function1"
-        # ` and ` function = "function2" ` respectively.
+        # NEG with URL mask "/<function>". The URL mask will parse them to ` function = "
+        # function1" ` and ` function = "function2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -28831,7 +28831,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # New set of SslCertificate resources to associate with this TargetHttpsProxy
-        # resource. Currently exactly one SslCertificate resource must be specified.
+        # resource.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -28886,7 +28886,11 @@ module Google
       class RequestMirrorPolicy
         include Google::Apis::Core::Hashable
       
-        # The full or partial URL to the BackendService resource being mirrored to.
+        # The full or partial URL to the BackendService resource being mirrored to. The
+        # backend service configured for a mirroring policy must reference backends that
+        # are of the same type as the original backend service matched in the URL map.
+        # Serverless NEG backends are not currently supported as a mirrored backend
+        # service.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
@@ -34891,6 +34895,11 @@ module Google
         # @return [String]
         attr_accessor :chain_name
       
+        # [Output Only] Size in bytes of the snapshot at creation time.
+        # Corresponds to the JSON property `creationSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :creation_size_bytes
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -35001,6 +35010,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
+        # Indicates the type of the snapshot.
+        # Corresponds to the JSON property `snapshotType`
+        # @return [String]
+        attr_accessor :snapshot_type
+      
         # The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
@@ -35070,6 +35084,7 @@ module Google
           @architecture = args[:architecture] if args.key?(:architecture)
           @auto_created = args[:auto_created] if args.key?(:auto_created)
           @chain_name = args[:chain_name] if args.key?(:chain_name)
+          @creation_size_bytes = args[:creation_size_bytes] if args.key?(:creation_size_bytes)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
@@ -35086,6 +35101,7 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
+          @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
@@ -38711,8 +38727,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # NAT option controlling how IPs are NAT'ed to the instance. Currently only
-        # NO_NAT (default value) is supported.
+        # Must have a value of NO_NAT. Protocol forwarding delivers packets while
+        # preserving the destination IP address of the forwarding rule referencing the
+        # target instance.
         # Corresponds to the JSON property `natPolicy`
         # @return [String]
         attr_accessor :nat_policy
