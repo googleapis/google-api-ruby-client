@@ -205,8 +205,8 @@ module Google
       
         # Required. Human-readable display name of the data exchange. The display name
         # must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
-        # spaces ( ), and must not start or end with spaces. Default value is an empty
-        # string. Max length: 63 bytes.
+        # spaces ( ), ampersands (&) and must not start or end with spaces. Default
+        # value is an empty string. Max length: 63 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -611,8 +611,8 @@ module Google
       
         # Required. Human-readable display name of the listing. The display name must
         # contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
-        # spaces ( ), and can't start or end with spaces. Default value is an empty
-        # string. Max length: 63 bytes.
+        # spaces ( ), ampersands (&) and can't start or end with spaces. Default value
+        # is an empty string. Max length: 63 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
