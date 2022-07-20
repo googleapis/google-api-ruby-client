@@ -22,6 +22,48 @@ module Google
   module Apis
     module BeyondcorpV1
       
+      class AllocatedConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientConnectorService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientConnectorServiceOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,13 +88,157 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DestinationRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Egress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +394,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Ingress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAppGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListClientConnectorServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListClientGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PeeredVpc
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Tunnelv1ProtoTunnelerError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -218,6 +434,98 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocatedConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingress_port, as: 'ingressPort'
+          property :psc_uri, as: 'pscUri'
+        end
+      end
+      
+      class AppGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allocated_connections, as: 'allocatedConnections', class: Google::Apis::BeyondcorpV1::AllocatedConnection, decorator: Google::Apis::BeyondcorpV1::AllocatedConnection::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :host_type, as: 'hostType'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class AppGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class ClientConnectorService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :egress, as: 'egress', class: Google::Apis::BeyondcorpV1::Egress, decorator: Google::Apis::BeyondcorpV1::Egress::Representation
+      
+          property :ingress, as: 'ingress', class: Google::Apis::BeyondcorpV1::Ingress, decorator: Google::Apis::BeyondcorpV1::Ingress::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ClientConnectorServiceOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class ClientGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_connector_service, as: 'clientConnectorService'
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ClientGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
       end
       
       class CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig
@@ -258,9 +566,113 @@ module Google
         end
       end
       
+      class Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_routes, as: 'destinationRoutes', class: Google::Apis::BeyondcorpV1::DestinationRoute, decorator: Google::Apis::BeyondcorpV1::DestinationRoute::Representation
+      
+          property :transport_protocol, as: 'transportProtocol'
+        end
+      end
+      
+      class DestinationRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :netmask, as: 'netmask'
+        end
+      end
+      
+      class Egress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peered_vpc, as: 'peeredVpc', class: Google::Apis::BeyondcorpV1::PeeredVpc, decorator: Google::Apis::BeyondcorpV1::PeeredVpc::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_endpoint, as: 'applicationEndpoint', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint::Representation
+      
+          collection :connectors, as: 'connectors'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :gateway, as: 'gateway', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_gateway, as: 'appGateway'
+          property :ingress_port, as: 'ingressPort'
+          property :type, as: 'type'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_connections, as: 'appConnections', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_connection_details, as: 'appConnectionDetails', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_connection, as: 'appConnection', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection::Representation
+      
+          collection :recent_mig_vms, as: 'recentMigVms'
         end
       end
       
@@ -274,6 +686,142 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :principal_info, as: 'principalInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo::Representation
+      
+          property :resource_info, as: 'resourceInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo::Representation
+      
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_config, as: 'imageConfig', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ImageConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ImageConfig::Representation
+      
+          hash :instance_config, as: 'instanceConfig'
+          property :notification_config, as: 'notificationConfig', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig::Representation
+      
+          property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_config_version, as: 'currentConfigVersion'
+          property :error_msg, as: 'errorMsg'
+          property :expected_config_version, as: 'expectedConfigVersion'
+          hash :extended_status, as: 'extendedStatus'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stable_image, as: 'stableImage'
+          property :target_image, as: 'targetImage'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_connectors, as: 'appConnectors', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_notification, as: 'pubsubNotification', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_subscription, as: 'pubsubSubscription'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :resource_info, as: 'resourceInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_config, as: 'instanceConfig', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :resource, as: 'resource'
+          property :status, as: 'status'
+          collection :sub, as: 'sub', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo::Representation
+      
+          property :time, as: 'time'
         end
       end
       
@@ -524,6 +1072,51 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Ingress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::BeyondcorpV1::Config, decorator: Google::Apis::BeyondcorpV1::Config::Representation
+      
+        end
+      end
+      
+      class ListAppGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_gateways, as: 'appGateways', class: Google::Apis::BeyondcorpV1::AppGateway, decorator: Google::Apis::BeyondcorpV1::AppGateway::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListClientConnectorServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_connector_services, as: 'clientConnectorServices', class: Google::Apis::BeyondcorpV1::ClientConnectorService, decorator: Google::Apis::BeyondcorpV1::ClientConnectorService::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListClientGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_gateways, as: 'clientGateways', class: Google::Apis::BeyondcorpV1::ClientGateway, decorator: Google::Apis::BeyondcorpV1::ClientGateway::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class PeeredVpc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_vpc, as: 'networkVpc'
         end
       end
       
