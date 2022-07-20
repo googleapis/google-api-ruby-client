@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudidentityV1
       
+      class CancelUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckTransitiveMembershipResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IsInvitableUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +329,12 @@ module Google
       end
       
       class ListMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -452,6 +476,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserInvitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class CheckTransitiveMembershipResponse
@@ -868,6 +904,13 @@ module Google
         end
       end
       
+      class IsInvitableUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_invitable_user, as: 'isInvitableUser'
+        end
+      end
+      
       class ListGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -883,6 +926,15 @@ module Google
           collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1::Membership, decorator: Google::Apis::CloudidentityV1::Membership::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListUserInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_invitations, as: 'userInvitations', class: Google::Apis::CloudidentityV1::UserInvitation, decorator: Google::Apis::CloudidentityV1::UserInvitation::Representation
+      
         end
       end
       
@@ -1044,6 +1096,12 @@ module Google
         end
       end
       
+      class SendUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1078,6 +1136,16 @@ module Google
           property :field_mask, as: 'fieldMask'
           property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
       
+        end
+      end
+      
+      class UserInvitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mails_sent_count, :numeric_string => true, as: 'mailsSentCount'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
     end
