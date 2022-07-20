@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,24 @@ module Google
       end
       
       class GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,7 +322,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -774,6 +816,19 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -850,6 +905,35 @@ module Google
           property :app_connection, as: 'appConnection', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection::Representation
       
           collection :recent_mig_vms, as: 'recentMigVms'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_config_version, as: 'currentConfigVersion'
+          property :error_msg, as: 'errorMsg'
+          property :expected_config_version, as: 'expectedConfigVersion'
+          hash :extended_status, as: 'extendedStatus'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -989,9 +1073,48 @@ module Google
         end
       end
       
+      class GoogleCloudBeyondcorpAppgatewaysV1AppGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :requested_cancellation, as: 'requestedCancellation'

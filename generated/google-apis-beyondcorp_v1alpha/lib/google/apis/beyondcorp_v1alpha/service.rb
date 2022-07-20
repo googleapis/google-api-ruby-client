@@ -25,7 +25,7 @@ module Google
       # Beyondcorp Enterprise provides identity and context aware access controls for
       #  enterprise resources and enables zero-trust access. Using the Beyondcorp
       #  Enterprise APIs, enterprises can set up multi-cloud and on-prem connectivity
-      #  using the App Connector hybrid connectivity solution.
+      #  solutions.
       #
       # @example
       #    require 'google/apis/beyondcorp_v1alpha'
@@ -1624,7 +1624,8 @@ module Google
         #   ClientConnectorService resource by the update. The fields specified in the
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it is in the mask. If the user does not provide a mask then
-        #   all fields will be overwritten. Mutable fields: display_name.
+        #   all fields will be overwritten. Mutable fields: display_name, ingress.config.
+        #   destination_routes.
         # @param [Boolean] validate_only
         #   Optional. If set, validates request by executing a dry-run which would not
         #   alter the resource in any way.
