@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApnsCertificateExpirationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppMakerSqlSetupNotification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -469,6 +475,15 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ApnsCertificateExpirationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apple_id, as: 'appleId'
+          property :expiration_time, as: 'expirationTime'
+          property :uid, as: 'uid'
         end
       end
       
