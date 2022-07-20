@@ -14313,6 +14313,7 @@ module Google
           property :architecture, as: 'architecture'
           property :auto_created, as: 'autoCreated'
           property :chain_name, as: 'chainName'
+          property :creation_size_bytes, :numeric_string => true, as: 'creationSizeBytes'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -14330,6 +14331,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :snapshot_type, as: 'snapshotType'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
