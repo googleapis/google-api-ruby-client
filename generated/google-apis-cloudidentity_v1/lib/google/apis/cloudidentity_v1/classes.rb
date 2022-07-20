@@ -22,6 +22,19 @@ module Google
   module Apis
     module CloudidentityV1
       
+      # Request to cancel sent invitation for target email in UserInvitation.
+      class CancelUserInvitationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response message for MembershipsService.CheckTransitiveMembership.
       class CheckTransitiveMembershipResponse
         include Google::Apis::Core::Hashable
@@ -1424,6 +1437,26 @@ module Google
         end
       end
       
+      # Response for IsInvitableUser RPC.
+      class IsInvitableUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returns true if the email address is invitable.
+        # Corresponds to the JSON property `isInvitableUser`
+        # @return [Boolean]
+        attr_accessor :is_invitable_user
+        alias_method :is_invitable_user?, :is_invitable_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_invitable_user = args[:is_invitable_user] if args.key?(:is_invitable_user)
+        end
+      end
+      
       # Response message for ListGroups operation.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -1473,6 +1506,34 @@ module Google
         def update!(**args)
           @memberships = args[:memberships] if args.key?(:memberships)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserInvitation listing request.
+      class ListUserInvitationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page. If not empty, indicates that there may be more `
+        # UserInvitation` resources that match the listing request; this value can be
+        # used in a subsequent ListUserInvitationsRequest to get continued results with
+        # the current list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of UserInvitation resources.
+        # Corresponds to the JSON property `userInvitations`
+        # @return [Array<Google::Apis::CloudidentityV1::UserInvitation>]
+        attr_accessor :user_invitations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_invitations = args[:user_invitations] if args.key?(:user_invitations)
         end
       end
       
@@ -1989,6 +2050,20 @@ module Google
         end
       end
       
+      # A request to send email for inviting target user corresponding to the
+      # UserInvitation.
+      class SendUserInvitationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -2098,6 +2173,49 @@ module Google
         def update!(**args)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @membership_role = args[:membership_role] if args.key?(:membership_role)
+        end
+      end
+      
+      # The `UserInvitation` resource represents an email that can be sent to an
+      # unmanaged user account inviting them to join the customer's Google Workspace
+      # or Cloud Identity account. An unmanaged account shares an email address domain
+      # with the Google Workspace or Cloud Identity account but is not managed by it
+      # yet. If the user accepts the `UserInvitation`, the user account will become
+      # managed.
+      class UserInvitation
+        include Google::Apis::Core::Hashable
+      
+        # Number of invitation emails sent to the user.
+        # Corresponds to the JSON property `mailsSentCount`
+        # @return [Fixnum]
+        attr_accessor :mails_sent_count
+      
+        # Shall be of the form `customers/`customer`/userinvitations/`user_email_address`
+        # `.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # State of the `UserInvitation`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Time when the `UserInvitation` was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mails_sent_count = args[:mails_sent_count] if args.key?(:mails_sent_count)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
