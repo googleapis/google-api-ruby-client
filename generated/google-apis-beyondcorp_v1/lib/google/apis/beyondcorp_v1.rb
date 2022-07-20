@@ -24,7 +24,7 @@ module Google
     # Beyondcorp Enterprise provides identity and context aware access controls for
     # enterprise resources and enables zero-trust access. Using the Beyondcorp
     # Enterprise APIs, enterprises can set up multi-cloud and on-prem connectivity
-    # using the App Connector hybrid connectivity solution.
+    # solutions.
     #
     # @see https://cloud.google.com/
     module BeyondcorpV1
