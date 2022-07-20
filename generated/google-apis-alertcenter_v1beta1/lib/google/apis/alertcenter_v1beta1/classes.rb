@@ -436,6 +436,38 @@ module Google
         end
       end
       
+      # The explanation message associated with ApnsCertificationExpiring and
+      # ApnsCertificationExpired alerts.
+      class ApnsCertificateExpirationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The Apple ID used for the certificate, may be blank if admins did not enter it.
+        # Corresponds to the JSON property `appleId`
+        # @return [String]
+        attr_accessor :apple_id
+      
+        # The expiration date of the APNS Certificate.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The UID for the certificate.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apple_id = args[:apple_id] if args.key?(:apple_id)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
       # Alerts from App Maker to notify admins to set up default SQL instance.
       class AppMakerSqlSetupNotification
         include Google::Apis::Core::Hashable
