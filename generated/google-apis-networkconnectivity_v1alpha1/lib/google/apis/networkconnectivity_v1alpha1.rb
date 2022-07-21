@@ -21,7 +21,7 @@ module Google
   module Apis
     # Network Connectivity API
     #
-    # The Network Connectivity API provides access to Network Connectivity Center.
+    # This API enables connectivity with and between Google Cloud resources.
     #
     # @see https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest
     module NetworkconnectivityV1alpha1
