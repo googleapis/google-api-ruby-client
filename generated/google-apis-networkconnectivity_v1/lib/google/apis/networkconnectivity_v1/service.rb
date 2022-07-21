@@ -22,7 +22,7 @@ module Google
     module NetworkconnectivityV1
       # Network Connectivity API
       #
-      # The Network Connectivity API provides access to Network Connectivity Center.
+      # This API enables connectivity with and between Google Cloud resources.
       #
       # @example
       #    require 'google/apis/networkconnectivity_v1'
@@ -122,7 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new hub in the specified project.
+        # Creates a new Network Connectivity Center hub in the specified project.
         # @param [String] parent
         #   Required. The parent resource.
         # @param [Google::Apis::NetworkconnectivityV1::Hub] hub_object
@@ -171,7 +171,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified hub.
+        # Deletes a Network Connectivity Center hub.
         # @param [String] name
         #   Required. The name of the hub to delete.
         # @param [String] request_id
@@ -214,7 +214,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details about the specified hub.
+        # Gets details about a Network Connectivity Center hub.
         # @param [String] name
         #   Required. The name of the hub resource to get.
         # @param [String] fields
@@ -289,7 +289,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists hubs in a given project.
+        # Lists the Network Connectivity Center hubs associated with a given project.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
@@ -331,7 +331,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the description and/or labels of the specified hub.
+        # Updates the description and/or labels of a Network Connectivity Center hub.
         # @param [String] name
         #   Immutable. The name of the hub. Hub names must be unique. They use the
         #   following form: `projects/`project_number`/locations/global/hubs/`hub_id``
@@ -732,7 +732,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a spoke in the specified project and location.
+        # Creates a Network Connectivity Center spoke.
         # @param [String] parent
         #   Required. The parent resource.
         # @param [Google::Apis::NetworkconnectivityV1::Spoke] spoke_object
@@ -781,7 +781,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified spoke.
+        # Deletes a Network Connectivity Center spoke.
         # @param [String] name
         #   Required. The name of the spoke to delete.
         # @param [String] request_id
@@ -824,7 +824,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details about the specified spoke.
+        # Gets details about a Network Connectivity Center spoke.
         # @param [String] name
         #   Required. The name of the spoke resource.
         # @param [String] fields
@@ -899,7 +899,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the spokes in the specified project and location.
+        # Lists the Network Connectivity Center spokes in a specified project and
+        # location.
         # @param [String] parent
         #   Required. The parent resource.
         # @param [String] filter
@@ -941,7 +942,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of the specified spoke.
+        # Updates the parameters of a Network Connectivity Center spoke.
         # @param [String] name
         #   Immutable. The name of the spoke. Spoke names must be unique. They use the
         #   following form: `projects/`project_number`/locations/`region`/spokes/`spoke_id`

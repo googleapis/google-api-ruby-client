@@ -373,11 +373,11 @@ module Google
         end
       end
       
-      # A hub is a collection of spokes. A single hub can contain spokes from multiple
-      # regions. However, if any of a hub's spokes use the data transfer feature, the
-      # resources associated with those spokes must all reside in the same VPC network.
-      # Spokes that do not use data transfer can be associated with any VPC network
-      # in your project.
+      # A Network Connectivity Center hub is a collection of spokes. A single hub can
+      # contain spokes from multiple regions. However, if any of a hub's spokes use
+      # the data transfer feature, the resources associated with those spokes must all
+      # reside in the same VPC network. Spokes that do not use data transfer can be
+      # associated with any VPC network in your project.
       class Hub
         include Google::Apis::Core::Hashable
       
@@ -878,8 +878,8 @@ module Google
         end
       end
       
-      # RoutingVPC contains information about the VPC networks that are associated
-      # with a hub's spokes.
+      # RoutingVPC contains information about the VPC networks associated with the
+      # spokes of a Network Connectivity Center hub.
       class RoutingVpc
         include Google::Apis::Core::Hashable
       
@@ -962,11 +962,11 @@ module Google
         end
       end
       
-      # A spoke represents a connection between your Google Cloud network resources
-      # and a non-Google-Cloud network. When you create a spoke, you associate it with
-      # a hub. You must also identify a value for exactly one of the following fields:
-      # * linked_vpn_tunnels * linked_interconnect_attachments *
-      # linked_router_appliance_instances
+      # A Network Connectivity Center spoke represents a connection between your
+      # Google Cloud network resources and a non-Google-Cloud network. When you create
+      # a spoke, you associate it with a hub. You must also identify a value for
+      # exactly one of the following fields: * linked_vpn_tunnels *
+      # linked_interconnect_attachments * linked_router_appliance_instances
       class Spoke
         include Google::Apis::Core::Hashable
       
