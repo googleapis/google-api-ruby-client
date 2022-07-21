@@ -1687,18 +1687,19 @@ module Google
       class GSuitePrincipal
         include Google::Apis::Core::Hashable
       
-        # This principal represents all users of the G Suite domain of the customer.
+        # This principal represents all users of the Google Workspace domain of the
+        # customer.
         # Corresponds to the JSON property `gsuiteDomain`
         # @return [Boolean]
         attr_accessor :gsuite_domain
         alias_method :gsuite_domain?, :gsuite_domain
       
-        # This principal references a G Suite group account
+        # This principal references a Google Workspace group name.
         # Corresponds to the JSON property `gsuiteGroupEmail`
         # @return [String]
         attr_accessor :gsuite_group_email
       
-        # This principal references a G Suite user account
+        # This principal references a Google Workspace user account.
         # Corresponds to the JSON property `gsuiteUserEmail`
         # @return [String]
         attr_accessor :gsuite_user_email
@@ -2177,8 +2178,8 @@ module Google
       class IndexItemOptions
         include Google::Apis::Core::Hashable
       
-        # Specifies if the index request should allow gsuite principals that do not
-        # exist or are deleted in the index request.
+        # Specifies if the index request should allow Google Workspace principals that
+        # do not exist or are deleted.
         # Corresponds to the JSON property `allowUnknownGsuitePrincipals`
         # @return [Boolean]
         attr_accessor :allow_unknown_gsuite_principals
@@ -3622,7 +3623,7 @@ module Google
         # @return [String]
         attr_accessor :group_resource_name
       
-        # This principal is a GSuite user, group or domain.
+        # This principal is a Google Workspace user, group or domain.
         # Corresponds to the JSON property `gsuitePrincipal`
         # @return [Google::Apis::CloudsearchV1::GSuitePrincipal]
         attr_accessor :gsuite_principal
