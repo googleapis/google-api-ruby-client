@@ -217,7 +217,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
     before(:example) do
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .to_raise(HTTPClient::BadResponseError) # empty error, no res value
+        .to_raise(Faraday::ConnectionFailed) # empty error, no res value
     end
 
     it 'should raise transmission error' do
@@ -231,7 +231,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       end
 
       expect(err).to be_a(Google::Apis::TransmissionError)
-      expect(err.cause).to be_a(HTTPClient::BadResponseError)
+      expect(err.cause).to be_a(Faraday::ConnectionFailed)
       expect(err.cause.res).to be_nil # no res value
     end
   end
@@ -456,8 +456,14 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   end
 
   it 'should prepend user query parameters from options and not remove initial query parameters' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=false&foo=bar')
-      .to_return(status: [200, ''])
+    # stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=false&foo=bar')
+    #   .to_return(status: [200, ''])
+    stub_request(:get, "https://www.googleapis.com/zoo/animals?a=3&b=false&foo=bar").
+                 with(:headers => {'Accept'=>'*/*',
+                                   'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                                   'User-Agent'=>'Faraday v2.2.0'}).
+                                   to_return(:status => 200, :body => "",
+                                             :headers => {})
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
     command.options.query = {
       'a' => [1,2,3],

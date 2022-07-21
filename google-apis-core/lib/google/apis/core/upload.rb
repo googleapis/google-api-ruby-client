@@ -159,9 +159,9 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          @offset = Integer(header[BYTES_RECEIVED_HEADER].first) unless header[BYTES_RECEIVED_HEADER].empty?
-          @upload_url = header[UPLOAD_URL_HEADER].first unless header[UPLOAD_URL_HEADER].empty?
-          upload_status = header[UPLOAD_STATUS_HEADER].first
+          @offset = Integer(header[BYTES_RECEIVED_HEADER]) unless header[BYTES_RECEIVED_HEADER].nil?
+          @upload_url = header[UPLOAD_URL_HEADER] unless header[UPLOAD_URL_HEADER].nil?
+          upload_status = header[UPLOAD_STATUS_HEADER]
           logger.debug { sprintf('Upload status %s', upload_status) }
           if upload_status == STATUS_ACTIVE
             @state = :active
@@ -184,11 +184,10 @@ module Google
           request_header[UPLOAD_CONTENT_LENGTH] = upload_io.size.to_s
           request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
 
-          client.request(method.to_s.upcase,
-                         url.to_s, query: nil,
-                         body: body,
-                         header: request_header,
-                         follow_redirect: true)
+          client.run_request(method.to_sym,
+                             url.to_s,
+                             body,
+                             request_header)
         rescue => e
           raise Google::Apis::ServerError, e.message
         end
@@ -206,7 +205,7 @@ module Google
           apply_request_options(request_header)
           request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
 
-          client.post(@upload_url, body: '', header: request_header, follow_redirect: true)
+          client.post(@upload_url, '', request_header)
         end
 
 
@@ -229,7 +228,7 @@ module Google
           request_header[UPLOAD_OFFSET_HEADER] = @offset.to_s
           request_header[CONTENT_TYPE_HEADER] = upload_content_type
 
-          client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
+          client.post(@upload_url, content, request_header)
         end
 
         # Execute the upload request once. This will typically perform two HTTP requests -- one to initiate or query
@@ -247,16 +246,16 @@ module Google
           case @state
           when :start
             response = send_start_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status, response.headers, response.body)
           when :active
             response = send_query_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status, response.headers, response.body)
           when :cancelled, :final
             error(@last_error, rethrow: true, &block)
           end
           if @state == :active
             response = send_upload_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status, response.headers, response.body)
           end
 
           success(result, &block) if @state == :final

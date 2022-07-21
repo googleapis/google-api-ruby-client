@@ -40,46 +40,27 @@ module Google
         def execute_once(client, &block)
           request_header = header.dup
           apply_request_options(request_header)
-          download_offset = nil
 
           if @offset > 0
             logger.debug { sprintf('Resuming download from offset %d', @offset) }
             request_header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
           end
 
-          http_res = client.get(url.to_s,
-                     query: query,
-                     header: request_header,
-                     follow_redirect: true) do |res, chunk|
-            status = res.http_header.status_code.to_i
-            next unless OK_STATUS.include?(status)
-
-            download_offset ||= (status == 206 ? @offset : 0)
-            download_offset  += chunk.bytesize
-
-            if download_offset - chunk.bytesize == @offset
-              next_chunk = chunk
-            else
-              # Oh no! Requested a chunk, but received the entire content
-              chunk_index = @offset - (download_offset - chunk.bytesize)
-              next_chunk = chunk.byteslice(chunk_index..-1)
-              next if next_chunk.nil?
+          http_res = client.get(url.to_s, query, request_header) do |req|
+            req.options.on_data = proc do |chunk, _num_bytes|
+              @download_io.write(chunk)
+              @offset += chunk.bytesize
             end
-
-            # logger.debug { sprintf('Writing chunk (%d bytes, %d total)', chunk.length, bytes_read) }
-            @download_io.write(next_chunk)
-
-            @offset += next_chunk.bytesize
           end
 
-         @download_io.flush if @download_io.respond_to?(:flush)
+          @download_io.flush if @download_io.respond_to?(:flush)
 
           if @close_io_on_finish
             result = nil
           else
             result = @download_io
           end
-          check_status(http_res.status.to_i, http_res.header, http_res.body)
+          check_status(http_res.status.to_i, http_res.headers, http_res.body)
           # In case of file download in storage, we need to respond back with http 
           # header along with the actual object.
           success([result, http_res], &block)

@@ -60,7 +60,7 @@ module Google
         attr_accessor :method
 
         # HTTP Client
-        # @return [HTTPClient]
+        # @return [FaradayClient]
         attr_accessor :connection
 
         # Query params
@@ -91,7 +91,7 @@ module Google
 
         # Execute the command, retrying as necessary
         #
-        # @param [HTTPClient] client
+        # @param [FaradayClient] client
         #   HTTP client
         # @yield [result, err] Result or error if block supplied
         # @return [Object]
@@ -195,9 +195,9 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def process_response(status, header, body)
-          check_status(status, header, body)
-          decode_response_body(header['Content-Type'].first, body)
+        def process_response(status, headers, body)
+          check_status(status, headers, body)
+          decode_response_body(headers['content-type'], body)
         end
 
         # Check the response and raise error if needed
@@ -276,15 +276,15 @@ module Google
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
           logger.error { sprintf('Error - %s', PP.pp(err, '')) }
-          if err.is_a?(HTTPClient::BadResponseError)
+          if err.is_a?(Faraday::ConnectionFailed)
             begin
-              res = err.res
+              res = err.response
               raise Google::Apis::TransmissionError.new(err) if res.nil?
               check_status(res.status.to_i, res.header, res.body)
             rescue Google::Apis::Error => e
               err = e
             end
-          elsif err.is_a?(HTTPClient::TimeoutError) || err.is_a?(SocketError) || err.is_a?(HTTPClient::KeepAliveDisconnected) || err.is_a?(Errno::ECONNREFUSED) || err.is_a?(Errno::ETIMEDOUT)
+          elsif err.is_a?(Faraday::TimeoutError) || err.is_a?(SocketError) || err.is_a?(Errno::ECONNREFUSED) || err.is_a?(Errno::ETIMEDOUT)
             err = Google::Apis::TransmissionError.new(err)
           end
           block.call(nil, err) if block_given?
@@ -294,7 +294,7 @@ module Google
         # Execute the command once.
         #
         # @private
-        # @param [HTTPClient] client
+        # @param [FaradayClient] client
         #   HTTP client
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
@@ -307,15 +307,13 @@ module Google
             request_header = header.dup
             apply_request_options(request_header)
 
-            @http_res = client.request(method.to_s.upcase,
-                                       url.to_s,
-                                       query: nil,
-                                       body: body,
-                                       header: request_header,
-                                       follow_redirect: true)
+            @http_res = client.run_request(method.to_sym,
+                                           url,
+                                           body,
+                                           request_header)
             logger.debug { @http_res.status }
             logger.debug { safe_response_representation @http_res }
-            response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
+            response = process_response(@http_res.status.to_i, @http_res.headers, @http_res.body)
             success(response)
           rescue => e
             logger.debug { sprintf('Caught error %s', e) }

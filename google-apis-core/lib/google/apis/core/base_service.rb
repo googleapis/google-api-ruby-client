@@ -23,7 +23,11 @@ require 'google/apis/core/download'
 require 'google/apis/core/storage_download'
 require 'google/apis/options'
 require 'googleauth'
-require 'httpclient'
+require 'faraday'
+require 'faraday/net_http'
+require 'faraday/follow_redirects'
+
+Faraday.default_adapter = :net_http
 
 module Google
   module Apis
@@ -111,7 +115,7 @@ module Google
         attr_accessor :batch_path
 
         # HTTP client
-        # @return [HTTPClient]
+        # @return [FaradayClient]
         attr_accessor :client
 
         # General settings
@@ -223,7 +227,7 @@ module Google
         end
 
         # Get the current HTTP client
-        # @return [HTTPClient]
+        # @return [FaradayClient]
         def client
           @client ||= new_client
         end
@@ -433,32 +437,34 @@ module Google
         end
 
         # Create a new HTTP client
-        # @return [HTTPClient]
+        # @return [FaradayClient]
         def new_client
-          client = ::HTTPClient.new
-
-          if client_options.transparent_gzip_decompression
-            client.transparent_gzip_decompression = client_options.transparent_gzip_decompression
-          end
-          
-          client.proxy = client_options.proxy_url if client_options.proxy_url
-
-          if client_options.open_timeout_sec
-            client.connect_timeout = client_options.open_timeout_sec
+          client = Faraday.new do |f|
+            f.use(Faraday::FollowRedirects::Middleware, {limit: 5})
           end
 
-          if client_options.read_timeout_sec
-            client.receive_timeout = client_options.read_timeout_sec
-          end
+          # if client_options.transparent_gzip_decompression
+          #   client.transparent_gzip_decompression = client_options.transparent_gzip_decompression
+          # end
 
-          if client_options.send_timeout_sec
-            client.send_timeout = client_options.send_timeout_sec
-          end
+          # client.proxy = client_options.proxy_url if client_options.proxy_url
 
-          client.follow_redirect_count = 5
-          client.default_header = { 'User-Agent' => user_agent }
+          # if client_options.open_timeout_sec
+          #   client.connect_timeout = client_options.open_timeout_sec
+          # end
 
-          client.debug_dev = logger if client_options.log_http_requests
+          # if client_options.read_timeout_sec
+          #   client.receive_timeout = client_options.read_timeout_sec
+          # end
+
+          # if client_options.send_timeout_sec
+          #   client.send_timeout = client_options.send_timeout_sec
+          # end
+
+          # client.follow_redirect_count = 5
+          # client.default_header = { 'User-Agent' => user_agent }
+
+          # client.debug_dev = logger if client_options.log_http_requests
           client
         end
 

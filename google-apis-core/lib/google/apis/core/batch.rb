@@ -81,7 +81,7 @@ module Google
             parts.each_index do |index|
               response = deserializer.to_http_response(parts[index])
               outer_header = response.shift
-              call_id = header_to_id(outer_header['Content-ID'].first) || index
+              call_id = header_to_id(outer_header['Content-ID']) || index
               call, callback = @calls[call_id]
               begin
                 result = call.process_response(*response) unless call.nil?
@@ -218,7 +218,7 @@ module Google
         # @return [Array<(HTTP::Message::Headers, String)>]
         #   the header and the body, separately.
         def split_header_and_body(response)
-          header = HTTP::Message::Headers.new
+          header = {}
           payload = response.lstrip
           while payload
             line, payload = payload.split(/\n/, 2)
