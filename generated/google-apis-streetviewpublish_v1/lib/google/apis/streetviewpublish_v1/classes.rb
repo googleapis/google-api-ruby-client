@@ -156,7 +156,8 @@ module Google
         end
       end
       
-      # Details related to ProcessingFailureReason#GPS_DATA_GAP.
+      # Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple
+      # GPS data gaps, only the one with the largest duration is reported here.
       class GpsDataGapFailureDetails
         include Google::Apis::Core::Hashable
       
@@ -215,7 +216,8 @@ module Google
         end
       end
       
-      # Details related to ProcessingFailureReason#IMU_DATA_GAP.
+      # Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple
+      # IMU data gaps, only the one with the largest duration is reported here.
       class ImuDataGapFailureDetails
         include Google::Apis::Core::Hashable
       
@@ -443,7 +445,8 @@ module Google
         end
       end
       
-      # Details related to ProcessingFailureReason#NOT_OUTDOORS.
+      # Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple
+      # indoor frames found, the first frame is recorded here.
       class NotOutdoorsFailureDetails
         include Google::Apis::Core::Hashable
       
@@ -903,12 +906,14 @@ module Google
       class ProcessingFailureDetails
         include Google::Apis::Core::Hashable
       
-        # Details related to ProcessingFailureReason#GPS_DATA_GAP.
+        # Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple
+        # GPS data gaps, only the one with the largest duration is reported here.
         # Corresponds to the JSON property `gpsDataGapDetails`
         # @return [Google::Apis::StreetviewpublishV1::GpsDataGapFailureDetails]
         attr_accessor :gps_data_gap_details
       
-        # Details related to ProcessingFailureReason#IMU_DATA_GAP.
+        # Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple
+        # IMU data gaps, only the one with the largest duration is reported here.
         # Corresponds to the JSON property `imuDataGapDetails`
         # @return [Google::Apis::StreetviewpublishV1::ImuDataGapFailureDetails]
         attr_accessor :imu_data_gap_details
@@ -918,7 +923,8 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::InsufficientGpsFailureDetails]
         attr_accessor :insufficient_gps_details
       
-        # Details related to ProcessingFailureReason#NOT_OUTDOORS.
+        # Details related to ProcessingFailureReason#NOT_OUTDOORS. If there are multiple
+        # indoor frames found, the first frame is recorded here.
         # Corresponds to the JSON property `notOutdoorsDetails`
         # @return [Google::Apis::StreetviewpublishV1::NotOutdoorsFailureDetails]
         attr_accessor :not_outdoors_details
