@@ -1648,6 +1648,13 @@ module Google
       class HttpCheck
         include Google::Apis::Core::Hashable
       
+        # If present, the check will only pass if the HTTP response status code is in
+        # this set of status codes. If empty, the HTTP status code will only pass if the
+        # HTTP status code is 200-299.
+        # Corresponds to the JSON property `acceptedResponseStatusCodes`
+        # @return [Array<Google::Apis::MonitoringV3::ResponseStatusCode>]
+        attr_accessor :accepted_response_status_codes
+      
         # The authentication parameters to provide to the specified resource or URL that
         # requires a username and password. Currently, only Basic HTTP authentication (
         # https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
@@ -1740,6 +1747,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accepted_response_status_codes = args[:accepted_response_status_codes] if args.key?(:accepted_response_status_codes)
           @auth_info = args[:auth_info] if args.key?(:auth_info)
           @body = args[:body] if args.key?(:body)
           @content_type = args[:content_type] if args.key?(:content_type)
@@ -3624,6 +3632,32 @@ module Google
         def update!(**args)
           @group_id = args[:group_id] if args.key?(:group_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # A status to accept. Either a status code class like "2xx", or an integer
+      # status code like "200".
+      class ResponseStatusCode
+        include Google::Apis::Core::Hashable
+      
+        # A class of status codes to accept.
+        # Corresponds to the JSON property `statusClass`
+        # @return [String]
+        attr_accessor :status_class
+      
+        # A status code to accept.
+        # Corresponds to the JSON property `statusValue`
+        # @return [Fixnum]
+        attr_accessor :status_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status_class = args[:status_class] if args.key?(:status_class)
+          @status_value = args[:status_value] if args.key?(:status_value)
         end
       end
       

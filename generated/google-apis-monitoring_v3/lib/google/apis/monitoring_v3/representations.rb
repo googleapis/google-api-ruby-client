@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResponseStatusCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SendNotificationChannelVerificationCodeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1062,6 +1068,8 @@ module Google
       class HttpCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accepted_response_status_codes, as: 'acceptedResponseStatusCodes', class: Google::Apis::MonitoringV3::ResponseStatusCode, decorator: Google::Apis::MonitoringV3::ResponseStatusCode::Representation
+      
           property :auth_info, as: 'authInfo', class: Google::Apis::MonitoringV3::BasicAuthentication, decorator: Google::Apis::MonitoringV3::BasicAuthentication::Representation
       
           property :body, :base64 => true, as: 'body'
@@ -1526,6 +1534,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group_id, as: 'groupId'
           property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class ResponseStatusCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status_class, as: 'statusClass'
+          property :status_value, as: 'statusValue'
         end
       end
       
