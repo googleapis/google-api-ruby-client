@@ -21,9 +21,9 @@ module Google
   module Apis
     # VM Migration API
     #
-    # Use the Migrate for Compute Engine API to programmatically migrate workloads.
+    # Use the Migrate to Virtual Machines API to programmatically migrate workloads.
     #
-    # @see https://cloud.google.com/migrate/compute-engine
+    # @see https://cloud.google.com/migrate/virtual-machines
     module VmmigrationV1alpha1
       # Version of the VM Migration API this client connects to.
       # This is NOT the gem version.

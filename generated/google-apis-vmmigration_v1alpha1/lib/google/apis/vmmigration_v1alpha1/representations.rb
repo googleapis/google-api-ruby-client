@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AwsSourceVmDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelCloneJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,12 +203,6 @@ module Google
       end
       
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListReplicationCyclesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -462,14 +450,6 @@ module Google
       
           property :new_deployable_appliance, as: 'newDeployableAppliance', class: Google::Apis::VmmigrationV1alpha1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1alpha1::ApplianceVersion::Representation
       
-        end
-      end
-      
-      class AwsSourceVmDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
-          property :firmware, as: 'firmware'
         end
       end
       
@@ -792,16 +772,6 @@ module Google
         end
       end
       
-      class ListReplicationCyclesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :replication_cycles, as: 'replicationCycles', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -854,8 +824,6 @@ module Google
       class MigratingVm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails::Representation
-      
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults::Representation
       
           property :compute_engine_vm_defaults, as: 'computeEngineVmDefaults', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
