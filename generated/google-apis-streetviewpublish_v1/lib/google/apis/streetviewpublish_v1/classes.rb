@@ -167,9 +167,9 @@ module Google
         attr_accessor :gap_duration
       
         # Relative time (from the start of the video stream) when the gap started.
-        # Corresponds to the JSON property `gapTime`
+        # Corresponds to the JSON property `gapStartTime`
         # @return [String]
-        attr_accessor :gap_time
+        attr_accessor :gap_start_time
       
         def initialize(**args)
            update!(**args)
@@ -178,7 +178,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gap_duration = args[:gap_duration] if args.key?(:gap_duration)
-          @gap_time = args[:gap_time] if args.key?(:gap_time)
+          @gap_start_time = args[:gap_start_time] if args.key?(:gap_start_time)
         end
       end
       
@@ -227,9 +227,9 @@ module Google
         attr_accessor :gap_duration
       
         # Relative time (from the start of the video stream) when the gap started.
-        # Corresponds to the JSON property `gapTime`
+        # Corresponds to the JSON property `gapStartTime`
         # @return [String]
-        attr_accessor :gap_time
+        attr_accessor :gap_start_time
       
         def initialize(**args)
            update!(**args)
@@ -238,7 +238,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gap_duration = args[:gap_duration] if args.key?(:gap_duration)
-          @gap_time = args[:gap_time] if args.key?(:gap_time)
+          @gap_start_time = args[:gap_start_time] if args.key?(:gap_start_time)
         end
       end
       
@@ -452,9 +452,9 @@ module Google
       
         # Relative time (from the start of the video stream) when an indoor frame was
         # found.
-        # Corresponds to the JSON property `time`
+        # Corresponds to the JSON property `startTime`
         # @return [String]
-        attr_accessor :time
+        attr_accessor :start_time
       
         def initialize(**args)
            update!(**args)
@@ -462,7 +462,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @time = args[:time] if args.key?(:time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
