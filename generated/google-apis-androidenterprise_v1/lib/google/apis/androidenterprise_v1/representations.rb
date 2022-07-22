@@ -1063,6 +1063,8 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_restrictions_schema, as: 'appRestrictionsSchema', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchema, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchema::Representation
+      
           collection :app_tracks, as: 'appTracks', class: Google::Apis::AndroidenterpriseV1::TrackInfo, decorator: Google::Apis::AndroidenterpriseV1::TrackInfo::Representation
       
           collection :app_version, as: 'appVersion', class: Google::Apis::AndroidenterpriseV1::AppVersion, decorator: Google::Apis::AndroidenterpriseV1::AppVersion::Representation
