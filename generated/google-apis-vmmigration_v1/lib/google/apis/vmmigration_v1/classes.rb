@@ -129,31 +129,6 @@ module Google
         end
       end
       
-      # Represent the source AWS VM details.
-      class AwsSourceVmDetails
-        include Google::Apis::Core::Hashable
-      
-        # The total size of the disks being migrated in bytes.
-        # Corresponds to the JSON property `committedStorageBytes`
-        # @return [Fixnum]
-        attr_accessor :committed_storage_bytes
-      
-        # The firmware type of the source VM.
-        # Corresponds to the JSON property `firmware`
-        # @return [String]
-        attr_accessor :firmware
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
-          @firmware = args[:firmware] if args.key?(:firmware)
-        end
-      end
-      
       # Request message for 'CancelCloneJob' request.
       class CancelCloneJobRequest
         include Google::Apis::Core::Hashable
@@ -1089,38 +1064,6 @@ module Google
         end
       end
       
-      # Response message for 'ListReplicationCycles' request.
-      class ListReplicationCyclesResponse
-        include Google::Apis::Core::Hashable
-      
-        # Output only. A token, which can be sent as `page_token` to retrieve the next
-        # page. If this field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Output only. The list of replication cycles response.
-        # Corresponds to the JSON property `replicationCycles`
-        # @return [Array<Google::Apis::VmmigrationV1::ReplicationCycle>]
-        attr_accessor :replication_cycles
-      
-        # Output only. Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @replication_cycles = args[:replication_cycles] if args.key?(:replication_cycles)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # Response message for 'ListSources' request.
       class ListSourcesResponse
         include Google::Apis::Core::Hashable
@@ -1296,11 +1239,6 @@ module Google
       class MigratingVm
         include Google::Apis::Core::Hashable
       
-        # Represent the source AWS VM details.
-        # Corresponds to the JSON property `awsSourceVmDetails`
-        # @return [Google::Apis::VmmigrationV1::AwsSourceVmDetails]
-        attr_accessor :aws_source_vm_details
-      
         # ComputeEngineTargetDefaults is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDefaults`
@@ -1409,7 +1347,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @aws_source_vm_details = args[:aws_source_vm_details] if args.key?(:aws_source_vm_details)
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_sync_info = args[:current_sync_info] if args.key?(:current_sync_info)
