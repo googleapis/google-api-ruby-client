@@ -832,12 +832,12 @@ module Google
         # @return [String]
         attr_accessor :service
       
-        # The name of network in Cloud SQL umbrella project.
+        # The name of the umbrella network in the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaNetwork`
         # @return [String]
         attr_accessor :umbrella_network
       
-        # The project number of Cloud SQL umbrella project.
+        # The project number of the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaProject`
         # @return [Fixnum]
         attr_accessor :umbrella_project
