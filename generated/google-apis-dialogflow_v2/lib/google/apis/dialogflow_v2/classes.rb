@@ -12491,7 +12491,7 @@ module Google
         attr_accessor :language_code
       
         # Required. The UTF-8 encoded natural language text to be processed. Text length
-        # must not exceed 256 characters.
+        # must not exceed 256 characters for virtual agent interactions.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
