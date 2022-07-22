@@ -1003,6 +1003,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::MysqlRdbms]
         attr_accessor :include_objects
       
+        # Maximum number of concurrent CDC tasks. The number should be non negative. If
+        # not set (or set to 0), the system's default value will be used.
+        # Corresponds to the JSON property `maxConcurrentCdcTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_tasks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1011,6 +1017,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
         end
       end
       
@@ -1430,6 +1437,17 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :include_objects
       
+        # Maximum number of concurrent CDC tasks. The number should be non negative. If
+        # not set (or set to 0), the system's default value will be used.
+        # Corresponds to the JSON property `maxConcurrentCdcTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_tasks
+      
+        # Configuration to stream large object values.
+        # Corresponds to the JSON property `streamLargeObjects`
+        # @return [Google::Apis::DatastreamV1::StreamLargeObjects]
+        attr_accessor :stream_large_objects
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1439,6 +1457,8 @@ module Google
           @drop_large_objects = args[:drop_large_objects] if args.key?(:drop_large_objects)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
+          @stream_large_objects = args[:stream_large_objects] if args.key?(:stream_large_objects)
         end
       end
       
@@ -1866,6 +1886,19 @@ module Google
           @source_config = args[:source_config] if args.key?(:source_config)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration to stream large object values.
+      class StreamLargeObjects
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

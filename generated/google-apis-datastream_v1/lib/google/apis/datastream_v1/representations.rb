@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StreamLargeObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StreamObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -693,6 +699,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
+          property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
         end
       end
       
@@ -804,6 +811,9 @@ module Google
           property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
+      
+          property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
+          property :stream_large_objects, as: 'streamLargeObjects', class: Google::Apis::DatastreamV1::StreamLargeObjects, decorator: Google::Apis::DatastreamV1::StreamLargeObjects::Representation
       
         end
       end
@@ -937,6 +947,12 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class StreamLargeObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
