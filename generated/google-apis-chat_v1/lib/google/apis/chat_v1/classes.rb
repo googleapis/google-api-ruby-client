@@ -887,7 +887,7 @@ module Google
         # to `false`, it is strongly recommended that the card use [LoadIndicator.
         # SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
         # for all actions, as this locks the UI to ensure no changes are made by the
-        # user while the action is being processed.
+        # user while the action is being processed. Not supported by Google Chat apps.
         # Corresponds to the JSON property `persistValues`
         # @return [Boolean]
         attr_accessor :persist_values
@@ -931,37 +931,6 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Represents the platform specific uri/intent to open for each client.
-      class GoogleAppsCardV1AppUri
-        include Google::Apis::Core::Hashable
-      
-        # Android intent.
-        # Corresponds to the JSON property `androidIntent`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Intent]
-        attr_accessor :android_intent
-      
-        # A companion uri string to be opened in the chat companion window. on the web.
-        # Corresponds to the JSON property `companionUri`
-        # @return [String]
-        attr_accessor :companion_uri
-      
-        # A uri string to be opened in the corresponding iOS hosting app.
-        # Corresponds to the JSON property `iosUri`
-        # @return [String]
-        attr_accessor :ios_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @android_intent = args[:android_intent] if args.key?(:android_intent)
-          @companion_uri = args[:companion_uri] if args.key?(:companion_uri)
-          @ios_uri = args[:ios_uri] if args.key?(:ios_uri)
         end
       end
       
@@ -1187,7 +1156,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
         attr_accessor :card_actions
       
-        # The display style for `peekCardHeader`.
+        # The `peekCardHeader` display style for. Not supported by Google Chat apps.
         # Corresponds to the JSON property `displayStyle`
         # @return [String]
         attr_accessor :display_style
@@ -1478,32 +1447,6 @@ module Google
         end
       end
       
-      # Extra data for an android intent. Valid keys are defined in the hosting app
-      # contract.
-      class GoogleAppsCardV1ExtraData
-        include Google::Apis::Core::Hashable
-      
-        # A key for the intent extra data.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Value for the given extra data key.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
       # Represents a Grid widget that displays items in a configurable grid layout.
       class GoogleAppsCardV1Grid
         include Google::Apis::Core::Hashable
@@ -1731,34 +1674,6 @@ module Google
         end
       end
       
-      # Android intent.
-      class GoogleAppsCardV1Intent
-        include Google::Apis::Core::Hashable
-      
-        # A list of extra data for the android intent. For example, for a calendar event
-        # edit intent, the event title information can be passed as extra data.
-        # Corresponds to the JSON property `extraData`
-        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1ExtraData>]
-        attr_accessor :extra_data
-      
-        # An android intent action string for the `@link android.content.Intent` object.
-        # For example: for the view intent action type, a valid value will be android.
-        # content.Intent.ACTION_VIEW.
-        # Corresponds to the JSON property `intentAction`
-        # @return [String]
-        attr_accessor :intent_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @extra_data = args[:extra_data] if args.key?(:extra_data)
-          @intent_action = args[:intent_action] if args.key?(:intent_action)
-        end
-      end
-      
       # Represents the response to an `onClick` event.
       class GoogleAppsCardV1OnClick
         include Google::Apis::Core::Hashable
@@ -1819,11 +1734,6 @@ module Google
       class GoogleAppsCardV1OpenLink
         include Google::Apis::Core::Hashable
       
-        # Represents the platform specific uri/intent to open for each client.
-        # Corresponds to the JSON property `appUri`
-        # @return [Google::Apis::ChatV1::GoogleAppsCardV1AppUri]
-        attr_accessor :app_uri
-      
         # Whether the client forgets about a link after opening it, or observes it until
         # the window closes. Not supported by Chat apps.
         # Corresponds to the JSON property `onClose`
@@ -1846,7 +1756,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @app_uri = args[:app_uri] if args.key?(:app_uri)
           @on_close = args[:on_close] if args.key?(:on_close)
           @open_as = args[:open_as] if args.key?(:open_as)
           @url = args[:url] if args.key?(:url)
@@ -2127,7 +2036,7 @@ module Google
       end
       
       # A paragraph of text that supports formatting. See [Text formatting](workspace/
-      # add-ons/concepts/widgets#text_formatting") for details.
+      # add-ons/concepts/widgets#text_formatting) for details.
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -2201,7 +2110,7 @@ module Google
         attr_accessor :text_input
       
         # A paragraph of text that supports formatting. See [Text formatting](workspace/
-        # add-ons/concepts/widgets#text_formatting") for details.
+        # add-ons/concepts/widgets#text_formatting) for details.
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
@@ -2514,6 +2423,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. User's role within a Chat space, which determines their permitted
+        # actions in the space.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
         # Output only. State of the membership.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2528,6 +2443,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @member = args[:member] if args.key?(:member)
           @name = args[:name] if args.key?(:name)
+          @role = args[:role] if args.key?(:role)
           @state = args[:state] if args.key?(:state)
         end
       end
