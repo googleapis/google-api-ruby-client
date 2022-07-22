@@ -1886,6 +1886,12 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # Represents the list of app restrictions available to be pre-configured for the
+        # product.
+        # Corresponds to the JSON property `appRestrictionsSchema`
+        # @return [Google::Apis::AndroidenterpriseV1::AppRestrictionsSchema]
+        attr_accessor :app_restrictions_schema
+      
         # The tracks visible to the enterprise.
         # Corresponds to the JSON property `appTracks`
         # @return [Array<Google::Apis::AndroidenterpriseV1::TrackInfo>]
@@ -2025,6 +2031,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_restrictions_schema = args[:app_restrictions_schema] if args.key?(:app_restrictions_schema)
           @app_tracks = args[:app_tracks] if args.key?(:app_tracks)
           @app_version = args[:app_version] if args.key?(:app_version)
           @author_name = args[:author_name] if args.key?(:author_name)
