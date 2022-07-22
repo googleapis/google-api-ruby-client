@@ -253,7 +253,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gap_duration, as: 'gapDuration'
-          property :gap_time, as: 'gapTime'
+          property :gap_start_time, as: 'gapStartTime'
         end
       end
       
@@ -273,7 +273,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gap_duration, as: 'gapDuration'
-          property :gap_time, as: 'gapTime'
+          property :gap_start_time, as: 'gapStartTime'
         end
       end
       
@@ -341,7 +341,7 @@ module Google
       class NotOutdoorsFailureDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :time, as: 'time'
+          property :start_time, as: 'startTime'
         end
       end
       
