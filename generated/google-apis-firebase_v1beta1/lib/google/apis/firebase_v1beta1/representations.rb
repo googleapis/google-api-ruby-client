@@ -342,7 +342,9 @@ module Google
       class FirebaseProject
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :project_number, :numeric_string => true, as: 'projectNumber'
