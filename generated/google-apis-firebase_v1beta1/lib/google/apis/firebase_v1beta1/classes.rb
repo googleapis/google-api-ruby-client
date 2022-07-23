@@ -461,10 +461,26 @@ module Google
       class FirebaseProject
         include Google::Apis::Core::Hashable
       
+        # Set of user-defined annotations for the FirebaseProject as per [AIP-128](https:
+        # //google.aip.dev/128#annotations). These annotations are intended solely for
+        # developers and client-side tools Firebase services will not mutate this
+        # annotation set.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # The user-assigned display name of the Project.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
+        # friendly-resources). This etag is strongly validated.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER
         # PROJECT_IDENTIFIER: the Project's [`ProjectNumber`](../projects#
@@ -510,7 +526,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_number = args[:project_number] if args.key?(:project_number)
