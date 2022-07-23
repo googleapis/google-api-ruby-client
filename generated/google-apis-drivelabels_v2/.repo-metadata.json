@@ -1,0 +1,7 @@
+{
+    "api_id": "drivelabels:v2",
+    "name_pretty": "Drive Labels API",
+    "distribution_name": "google-apis-drivelabels_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
