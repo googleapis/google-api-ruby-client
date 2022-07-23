@@ -1207,9 +1207,24 @@ module Google
         # @return [Google::Apis::LoggingV2::LogEntrySourceLocation]
         attr_accessor :source_location
       
-        # Optional. The span ID within the trace associated with the log entry.For Trace
-        # spans, this is the same format that the Trace API v2 uses: a 16-character
-        # hexadecimal encoding of an 8-byte array, such as 000000000000004a.
+        # Optional. The ID of the Cloud Trace (https://cloud.google.com/trace) span
+        # associated with the current operation in which the log is being written. For
+        # example, if a span has the REST resource name of "projects/some-project/traces/
+        # some-trace/spans/some-span-id", then the span_id field is "some-span-id".A
+        # Span (https://cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/
+        # batchWrite#Span) represents a single operation within a trace. Whereas a trace
+        # may involve multiple different microservices running on multiple different
+        # machines, a span generally corresponds to a single logical operation being
+        # performed in a single instance of a microservice on one specific machine.
+        # Spans are the nodes within the tree that is a trace.Applications that are
+        # instrumented for tracing (https://cloud.google.com/trace/docs/setup) will
+        # generally assign a new, unique span ID on each incoming request. It is also
+        # common to create and record additional spans corresponding to internal
+        # processing elements as well as issuing requests to dependencies.The span ID is
+        # expected to be a 16-character, hexadecimal encoding of an 8-byte array and
+        # should not be zero. It should be unique within the trace and should, ideally,
+        # be generated in a manner that is uniformly random.Example values:
+        # 000000000000004a 7a2190356c3fc94b 0000f00300090021 d39223e101960076
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
@@ -1239,10 +1254,13 @@ module Google
         # @return [String]
         attr_accessor :timestamp
       
-        # Optional. Resource name of the trace associated with the log entry, if any. If
-        # it contains a relative resource name, the name is assumed to be relative to //
-        # tracing.googleapis.com. Example: projects/my-projectid/traces/
-        # 06796866738c859f2f19b7cfb3214824
+        # Optional. The REST resource name of the trace being written to Cloud Trace (
+        # https://cloud.google.com/trace) in association with this log entry. For
+        # example, if your trace data is stored in the Cloud project "my-trace-project"
+        # and if the service that is creating the log entry receives a trace header that
+        # includes the trace ID "12345", then the service should use "projects/my-
+        # tracing-project/traces/12345".The trace field provides the link between logs
+        # and traces. By using this field, you can navigate from a log entry to a trace.
         # Corresponds to the JSON property `trace`
         # @return [String]
         attr_accessor :trace
@@ -1700,16 +1718,16 @@ module Google
       
         # Output only. An IAM identity—a service account or group—under which Cloud
         # Logging writes the exported log entries to the sink's destination. This field
-        # is set by sinks.create and sinks.update based on the value of
-        # unique_writer_identity in those methods.Until you grant this identity write-
-        # access to the destination, log entry exports from this sink will fail. For
-        # more information, see Granting Access for a Resource (https://cloud.google.com/
-        # iam/docs/granting-roles-to-service-accounts#
-        # granting_access_to_a_service_account_for_a_resource). Consult the destination
-        # service's documentation to determine the appropriate IAM roles to assign to
-        # the identity.Sinks that have a destination that is a log bucket in the same
-        # project as the sink do not have a writer_identity and no additional
-        # permissions are required.
+        # is either set by specifying custom_writer_identity or set automatically by
+        # sinks.create and sinks.update based on the value of unique_writer_identity in
+        # those methods.Until you grant this identity write-access to the destination,
+        # log entry exports from this sink will fail. For more information, see Granting
+        # Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-
+        # service-accounts#granting_access_to_a_service_account_for_a_resource). Consult
+        # the destination service's documentation to determine the appropriate IAM roles
+        # to assign to the identity.Sinks that have a destination that is a log bucket
+        # in the same project as the sink cannot have a writer_identity and no
+        # additional permissions are required.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
