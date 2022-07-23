@@ -341,8 +341,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Deprecated. The MaintenancePolicies that have been attached to the instance.
-        # The key must be of the type name of the oneof policy name defined in
+        # Optional. Deprecated. The MaintenancePolicies that have been attached to the
+        # instance. The key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
@@ -528,8 +528,7 @@ module Google
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
-        # If only the name is needed (like in the deprecated Instance.
-        # maintenance_policy_names field) then only populate MaintenancePolicy.name.
+        # If only the name is needed, then only populate MaintenancePolicy.name.
         # Corresponds to the JSON property `maintenancePolicies`
         # @return [Hash<String,Google::Apis::FileV1beta1::MaintenancePolicy>]
         attr_accessor :maintenance_policies
@@ -1205,13 +1204,14 @@ module Google
         # static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode.
         # When the name of an allocated IP address range is specified, it must be one of
         # the ranges associated with the private service access connection. When
-        # specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier
-        # or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal
-        # IP address ranges](https://www.arin.net/reference/research/statistics/
-        # address_filters/) that identifies the range of IP addresses reserved for this
-        # instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify
-        # can't overlap with either existing subnets or assigned IP address ranges for
-        # other Cloud Filestore instances in the selected VPC network.
+        # specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier,
+        # a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier
+        # in one of the [internal IP address ranges](https://www.arin.net/reference/
+        # research/statistics/address_filters/) that identifies the range of IP
+        # addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24,
+        # or 192.168.0.0/26, respectively. The range you specify can't overlap with
+        # either existing subnets or assigned IP address ranges for other Cloud
+        # Filestore instances in the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
