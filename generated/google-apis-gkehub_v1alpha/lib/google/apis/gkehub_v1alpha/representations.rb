@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetLifecycleState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateConnectManifestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,12 @@ module Google
       end
       
       class IdentityServiceAzureAdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityServiceGoogleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1214,10 +1226,18 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
-          property :fleet_name, as: 'fleetName'
           property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FleetLifecycleState, decorator: Google::Apis::GkehubV1alpha::FleetLifecycleState::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FleetLifecycleState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
         end
       end
       
@@ -1251,6 +1271,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :azuread_config, as: 'azureadConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig::Representation
       
+          property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig::Representation
+      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig::Representation
       
@@ -1266,6 +1288,13 @@ module Google
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
           property :tenant, as: 'tenant'
+        end
+      end
+      
+      class IdentityServiceGoogleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable, as: 'disable'
         end
       end
       
