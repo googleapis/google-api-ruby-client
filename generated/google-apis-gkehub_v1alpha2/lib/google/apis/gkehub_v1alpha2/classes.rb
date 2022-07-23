@@ -945,7 +945,8 @@ module Google
         # Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For
         # example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-
         # a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/
-        # locations/us-west1-a/azureClusters/my-cluster
+        # locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/
+        # projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
