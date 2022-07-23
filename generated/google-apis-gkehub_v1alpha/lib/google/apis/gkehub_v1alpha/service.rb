@@ -527,10 +527,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Fleet] parsed result object
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GkehubV1alpha::Fleet]
+        # @return [Google::Apis::GkehubV1alpha::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -539,8 +539,8 @@ module Google
           command = make_simple_command(:post, 'v1alpha/{+parent}/fleets', options)
           command.request_representation = Google::Apis::GkehubV1alpha::Fleet::Representation
           command.request_object = fleet_object
-          command.response_representation = Google::Apis::GkehubV1alpha::Fleet::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Fleet
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -560,18 +560,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Empty] parsed result object
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GkehubV1alpha::Empty]
+        # @return [Google::Apis::GkehubV1alpha::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_fleet(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::GkehubV1alpha::Empty::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Empty
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -668,10 +668,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GkehubV1alpha::Fleet] parsed result object
+        # @yieldparam result [Google::Apis::GkehubV1alpha::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GkehubV1alpha::Fleet]
+        # @return [Google::Apis::GkehubV1alpha::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -680,8 +680,8 @@ module Google
           command = make_simple_command(:patch, 'v1alpha/{+name}', options)
           command.request_representation = Google::Apis::GkehubV1alpha::Fleet::Representation
           command.request_object = fleet_object
-          command.response_representation = Google::Apis::GkehubV1alpha::Fleet::Representation
-          command.response_class = Google::Apis::GkehubV1alpha::Fleet
+          command.response_representation = Google::Apis::GkehubV1alpha::Operation::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -1860,21 +1860,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The name for the fleet. The name must meet the following constraints: + The
-        # name of a fleet should be unique within the organization; + It must consist of
-        # lower case alphanumeric characters or `-`; + The length of the name must be
-        # less than or equal to 63; + Unicode names must be expressed in Punycode format
-        # (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        # Corresponds to the JSON property `fleetName`
-        # @return [String]
-        attr_accessor :fleet_name
-      
         # Output only. The full, unique resource name of this fleet in the format of `
         # projects/`project`/locations/`location`/fleets/`fleet``. Each GCP project can
         # have at most one fleet resource, named "default".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # FleetLifecycleState describes the state of a Fleet resource.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1alpha::FleetLifecycleState]
+        attr_accessor :state
       
         # Output only. Google-generated UUID for this resource. This is unique across
         # all Fleet resources. If a Fleet resource is deleted and another resource with
@@ -1897,10 +1893,29 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @fleet_name = args[:fleet_name] if args.key?(:fleet_name)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FleetLifecycleState describes the state of a Fleet resource.
+      class FleetLifecycleState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the Fleet resource.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
         end
       end
       
@@ -2003,6 +2018,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig]
         attr_accessor :azuread_config
       
+        # Configuration for the Google Plugin Auth flow.
+        # Corresponds to the JSON property `googleConfig`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig]
+        attr_accessor :google_config
+      
         # Identifier for auth config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2025,6 +2045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @azuread_config = args[:azuread_config] if args.key?(:azuread_config)
+          @google_config = args[:google_config] if args.key?(:google_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
@@ -2041,12 +2062,13 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Raw client secret will be passed to the GKE Hub CLH.
+        # Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub
+        # CLH.
         # Corresponds to the JSON property `clientSecret`
         # @return [String]
         attr_accessor :client_secret
       
-        # Encrypted AzureAD client secrets
+        # Output only. Encrypted AzureAD client secret.
         # Corresponds to the JSON property `encryptedClientSecret`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2074,6 +2096,26 @@ module Google
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
           @tenant = args[:tenant] if args.key?(:tenant)
+        end
+      end
+      
+      # Configuration for the Google Plugin Auth flow.
+      class IdentityServiceGoogleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Disable automatic configuration of Google Plugin on supported platforms.
+        # Corresponds to the JSON property `disable`
+        # @return [Boolean]
+        attr_accessor :disable
+        alias_method :disable?, :disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable = args[:disable] if args.key?(:disable)
         end
       end
       
@@ -2993,7 +3035,8 @@ module Google
         # Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For
         # example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-
         # a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/
-        # locations/us-west1-a/azureClusters/my-cluster
+        # locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/
+        # projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
