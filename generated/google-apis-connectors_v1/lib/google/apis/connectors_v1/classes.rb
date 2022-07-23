@@ -1876,6 +1876,12 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Output only. Name of the runtimeConfig resource. Format: projects/`project`/
+        # locations/`location`/runtimeConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Output only. The endpoint of the connectors runtime ingress.
         # Corresponds to the JSON property `runtimeEndpoint`
         # @return [String]
@@ -1907,6 +1913,7 @@ module Google
           @control_plane_subscription = args[:control_plane_subscription] if args.key?(:control_plane_subscription)
           @control_plane_topic = args[:control_plane_topic] if args.key?(:control_plane_topic)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @name = args[:name] if args.key?(:name)
           @runtime_endpoint = args[:runtime_endpoint] if args.key?(:runtime_endpoint)
           @schema_gcs_bucket = args[:schema_gcs_bucket] if args.key?(:schema_gcs_bucket)
           @service_directory = args[:service_directory] if args.key?(:service_directory)

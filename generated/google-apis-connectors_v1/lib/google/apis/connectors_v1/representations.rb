@@ -824,6 +824,7 @@ module Google
           property :control_plane_subscription, as: 'controlPlaneSubscription'
           property :control_plane_topic, as: 'controlPlaneTopic'
           property :location_id, as: 'locationId'
+          property :name, as: 'name'
           property :runtime_endpoint, as: 'runtimeEndpoint'
           property :schema_gcs_bucket, as: 'schemaGcsBucket'
           property :service_directory, as: 'serviceDirectory'
