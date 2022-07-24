@@ -122,10 +122,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates and buffers a new task without the need to explicitly define a Task
-        # message. The queue must be an http queue (i.e., must have HTTP target). This
-        # method is used for a simplified application of Cloud Tasks queues in buffer
-        # and rate limitting HTTP requests.
+        # Note: This feature is in its experimental stage. You must request access to
+        # the API through the [Cloud Tasks BufferQueues Experiment Signup form](https://
+        # forms.gle/X8Zr5hiXH5tTGFqh8). Creates and buffers a new task without the need
+        # to explicitly define a Task message. The queue must be an http queue (i.e.,
+        # must have HTTP target). This method is used for a simplified application of
+        # Cloud Tasks queues in buffer and rate limitting HTTP requests.
         # @param [String] name
         #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
