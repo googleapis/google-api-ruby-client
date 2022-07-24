@@ -392,9 +392,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. One or more ports that the Gateway must receive traffic on. The
-        # proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports
-        # specified below.
+        # Required. One or more port numbers (1-65535), on which the Gateway will
+        # receive traffic. The proxy binds to the specified ports. Gateways of type '
+        # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
+        # on 0.0.0.0 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -419,7 +420,8 @@ module Google
         # @return [String]
         attr_accessor :server_tls_policy
       
-        # Immutable. The type of the customer managed gateway.
+        # Immutable. The type of the customer managed gateway. This field is required.
+        # If unspecified, an error is returned.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -748,7 +750,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the allowed number of retries. This number must be > 0. If not
-        # specpfied, default to 1.
+        # specified, default to 1.
         # Corresponds to the JSON property `numRetries`
         # @return [Fixnum]
         attr_accessor :num_retries
