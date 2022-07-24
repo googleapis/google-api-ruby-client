@@ -1372,7 +1372,7 @@ module Google
         #   Maximum number of HttpRoutes to return per call.
         # @param [String] page_token
         #   The value returned by the last `ListHttpRoutesResponse` Indicates that this is
-        #   a continuation of a prior `ListRouters` call, and that the system should
+        #   a continuation of a prior `ListHttpRoutes` call, and that the system should
         #   return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2261,7 +2261,7 @@ module Google
         #   Maximum number of TcpRoutes to return per call.
         # @param [String] page_token
         #   The value returned by the last `ListTcpRoutesResponse` Indicates that this is
-        #   a continuation of a prior `ListRouters` call, and that the system should
+        #   a continuation of a prior `ListTcpRoutes` call, and that the system should
         #   return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2441,7 +2441,7 @@ module Google
         #   Maximum number of TlsRoutes to return per call.
         # @param [String] page_token
         #   The value returned by the last `ListTlsRoutesResponse` Indicates that this is
-        #   a continuation of a prior `ListRouters` call, and that the system should
+        #   a continuation of a prior `ListTlsRoutes` call, and that the system should
         #   return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
