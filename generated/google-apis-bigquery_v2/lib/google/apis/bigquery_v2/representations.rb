@@ -1357,6 +1357,7 @@ module Google
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
           property :null_marker, as: 'null_marker'
+          property :preserve_ascii_control_characters, as: 'preserveAsciiControlCharacters'
           property :quote, as: 'quote'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
         end
@@ -1652,6 +1653,7 @@ module Google
           property :max_bad_records, as: 'maxBadRecords'
           property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
       
+          property :reference_file_schema_uri, as: 'referenceFileSchemaUri'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :source_format, as: 'sourceFormat'
@@ -1965,6 +1967,7 @@ module Google
           property :quote, as: 'quote'
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
       
+          property :reference_file_schema_uri, as: 'referenceFileSchemaUri'
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :schema_inline, as: 'schemaInline'
