@@ -2363,6 +2363,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1::ProcessSignature>]
         attr_accessor :signatures
       
+        # The list of URIs associated to the Findings
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2372,6 +2377,7 @@ module Google
           @domains = args[:domains] if args.key?(:domains)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @signatures = args[:signatures] if args.key?(:signatures)
+          @uris = args[:uris] if args.key?(:uris)
         end
       end
       

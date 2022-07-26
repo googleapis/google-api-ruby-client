@@ -1102,6 +1102,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses'
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1::ProcessSignature, decorator: Google::Apis::SecuritycenterV1::ProcessSignature::Representation
       
+          collection :uris, as: 'uris'
         end
       end
       
