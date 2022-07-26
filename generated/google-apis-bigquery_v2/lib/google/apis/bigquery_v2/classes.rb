@@ -1443,6 +1443,14 @@ module Google
         # @return [String]
         attr_accessor :null_marker
       
+        # [Optional] Preserves the embedded ASCII control characters (the first 32
+        # characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV.
+        # Only applicable to CSV, ignored for other formats.
+        # Corresponds to the JSON property `preserveAsciiControlCharacters`
+        # @return [Boolean]
+        attr_accessor :preserve_ascii_control_characters
+        alias_method :preserve_ascii_control_characters?, :preserve_ascii_control_characters
+      
         # [Optional] The value that is used to quote data sections in a CSV file.
         # BigQuery converts the string to ISO-8859-1 encoding, and then uses the first
         # byte of the encoded string to split the data in its raw, binary state. The
@@ -1480,6 +1488,7 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
+          @preserve_ascii_control_characters = args[:preserve_ascii_control_characters] if args.key?(:preserve_ascii_control_characters)
           @quote = args[:quote] if args.key?(:quote)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
         end
@@ -2657,6 +2666,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::ParquetOptions]
         attr_accessor :parquet_options
       
+        # [Optional] Provide a referencing file with the expected table schema. Enabled
+        # for the format: AVRO, PARQUET, ORC.
+        # Corresponds to the JSON property `referenceFileSchemaUri`
+        # @return [String]
+        attr_accessor :reference_file_schema_uri
+      
         # [Optional] The schema for the data. Schema is required for CSV and JSON
         # formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore
         # backups, and Avro formats.
@@ -2702,6 +2717,7 @@ module Google
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
+          @reference_file_schema_uri = args[:reference_file_schema_uri] if args.key?(:reference_file_schema_uri)
           @schema = args[:schema] if args.key?(:schema)
           @source_format = args[:source_format] if args.key?(:source_format)
           @source_uris = args[:source_uris] if args.key?(:source_uris)
@@ -3870,6 +3886,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
         attr_accessor :range_partitioning
       
+        # User provided referencing file with the expected reader schema, Available for
+        # the format: AVRO, PARQUET, ORC.
+        # Corresponds to the JSON property `referenceFileSchemaUri`
+        # @return [String]
+        attr_accessor :reference_file_schema_uri
+      
         # [Optional] The schema for the destination table. The schema can be omitted if
         # the destination table already exists, or if you're loading data from Google
         # Cloud Datastore.
@@ -3980,6 +4002,7 @@ module Google
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
+          @reference_file_schema_uri = args[:reference_file_schema_uri] if args.key?(:reference_file_schema_uri)
           @schema = args[:schema] if args.key?(:schema)
           @schema_inline = args[:schema_inline] if args.key?(:schema_inline)
           @schema_inline_format = args[:schema_inline_format] if args.key?(:schema_inline_format)
@@ -6136,7 +6159,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :estimated_runnable_units
       
-        # Total parallel units of work remaining for the active stages.
+        # Total units of work remaining for the query. This number can be revised (
+        # increased or decreased) while the query is running.
         # Corresponds to the JSON property `pendingUnits`
         # @return [Fixnum]
         attr_accessor :pending_units
