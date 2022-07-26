@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaBigQueryOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaBigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +515,18 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaModelServingConfigList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -952,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaBigQueryOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1001,6 +1025,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaImportUserEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1392,6 +1422,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaBigQueryOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaBigQuerySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1581,6 +1619,8 @@ module Google
       
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig::Representation
       
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult::Representation
+      
         end
       end
       
@@ -1590,6 +1630,8 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::RetailV2alpha::GoogleRpcStatus, decorator: Google::Apis::RetailV2alpha::GoogleRpcStatus::Representation
       
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig::Representation
+      
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult::Representation
       
         end
       end
@@ -1811,6 +1853,8 @@ module Google
           property :page_optimization_config, as: 'pageOptimizationConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfig::Representation
       
           property :periodic_tuning_state, as: 'periodicTuningState'
+          collection :serving_config_lists, as: 'servingConfigLists', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelServingConfigList, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelServingConfigList::Representation
+      
           property :serving_state, as: 'servingState'
           property :training_state, as: 'trainingState'
           property :tuning_operation, as: 'tuningOperation'
@@ -1844,6 +1888,21 @@ module Google
           property :default_candidate, as: 'defaultCandidate', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate::Representation
       
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaModelServingConfigList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :serving_config_ids, as: 'servingConfigIds'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBigQueryOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBigQueryOutputResult::Representation
+      
         end
       end
       
@@ -2582,6 +2641,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaBigQueryOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
       class GoogleCloudRetailV2betaExportErrorsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2604,6 +2671,8 @@ module Google
       
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig::Representation
       
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult::Representation
+      
         end
       end
       
@@ -2613,6 +2682,8 @@ module Google
           collection :error_samples, as: 'errorSamples', class: Google::Apis::RetailV2alpha::GoogleRpcStatus, decorator: Google::Apis::RetailV2alpha::GoogleRpcStatus::Representation
       
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig::Representation
+      
+          property :output_result, as: 'outputResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult::Representation
       
         end
       end
@@ -2662,6 +2733,14 @@ module Google
           property :errors_config, as: 'errorsConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaImportErrorsConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaImportErrorsConfig::Representation
       
           property :import_summary, as: 'importSummary', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaUserEventImportSummary, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaUserEventImportSummary::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaBigQueryOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaBigQueryOutputResult::Representation
       
         end
       end
