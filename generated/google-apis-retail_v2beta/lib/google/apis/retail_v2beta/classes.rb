@@ -739,6 +739,31 @@ module Google
         end
       end
       
+      # A BigQuery output result.
+      class GoogleCloudRetailV2alphaBigQueryOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The ID of a BigQuery Table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
       # Metadata associated with a create operation.
       class GoogleCloudRetailV2alphaCreateModelMetadata
         include Google::Apis::Core::Hashable
@@ -823,6 +848,11 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaExportErrorsConfig]
         attr_accessor :errors_config
       
+        # Output result.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaOutputResult]
+        attr_accessor :output_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -831,6 +861,7 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
@@ -850,6 +881,11 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaExportErrorsConfig]
         attr_accessor :errors_config
       
+        # Output result.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaOutputResult]
+        attr_accessor :output_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -858,6 +894,7 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
@@ -1087,6 +1124,12 @@ module Google
         # @return [String]
         attr_accessor :periodic_tuning_state
       
+        # Output only. The list of valid serving configs associated with the
+        # PageOptimizationConfig.
+        # Corresponds to the JSON property `servingConfigLists`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelServingConfigList>]
+        attr_accessor :serving_config_lists
+      
         # Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.
         # Corresponds to the JSON property `servingState`
         # @return [String]
@@ -1138,6 +1181,7 @@ module Google
           @optimization_objective = args[:optimization_objective] if args.key?(:optimization_objective)
           @page_optimization_config = args[:page_optimization_config] if args.key?(:page_optimization_config)
           @periodic_tuning_state = args[:periodic_tuning_state] if args.key?(:periodic_tuning_state)
+          @serving_config_lists = args[:serving_config_lists] if args.key?(:serving_config_lists)
           @serving_state = args[:serving_state] if args.key?(:serving_state)
           @training_state = args[:training_state] if args.key?(:training_state)
           @tuning_operation = args[:tuning_operation] if args.key?(:tuning_operation)
@@ -1240,6 +1284,46 @@ module Google
           @candidates = args[:candidates] if args.key?(:candidates)
           @default_candidate = args[:default_candidate] if args.key?(:default_candidate)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Represents an ordered combination of valid serving configs, which / may be
+      # used for PAGE_OPTIMIZATION recommendations.
+      class GoogleCloudRetailV2alphaModelServingConfigList
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A set of valid serving configs that may be used for
+        # PAGE_OPTIMIZATION.
+        # Corresponds to the JSON property `servingConfigIds`
+        # @return [Array<String>]
+        attr_accessor :serving_config_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serving_config_ids = args[:serving_config_ids] if args.key?(:serving_config_ids)
+        end
+      end
+      
+      # Output result.
+      class GoogleCloudRetailV2alphaOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # Export result in BigQuery.
+        # Corresponds to the JSON property `bigqueryResult`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaBigQueryOutputResult>]
+        attr_accessor :bigquery_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
         end
       end
       
@@ -1805,6 +1889,31 @@ module Google
         def update!(**args)
           @age_groups = args[:age_groups] if args.key?(:age_groups)
           @genders = args[:genders] if args.key?(:genders)
+        end
+      end
+      
+      # A BigQuery output result.
+      class GoogleCloudRetailV2betaBigQueryOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a BigQuery Dataset.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # The ID of a BigQuery Table.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
         end
       end
       
@@ -2554,6 +2663,11 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExportErrorsConfig]
         attr_accessor :errors_config
       
+        # Output result.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputResult]
+        attr_accessor :output_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2562,6 +2676,7 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
@@ -2581,6 +2696,11 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaExportErrorsConfig]
         attr_accessor :errors_config
       
+        # Output result.
+        # Corresponds to the JSON property `outputResult`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaOutputResult]
+        attr_accessor :output_result
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2589,6 +2709,7 @@ module Google
         def update!(**args)
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
+          @output_result = args[:output_result] if args.key?(:output_result)
         end
       end
       
@@ -3280,6 +3401,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @links = args[:links] if args.key?(:links)
+        end
+      end
+      
+      # Output result.
+      class GoogleCloudRetailV2betaOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # Export result in BigQuery.
+        # Corresponds to the JSON property `bigqueryResult`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBigQueryOutputResult>]
+        attr_accessor :bigquery_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
         end
       end
       
