@@ -815,6 +815,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses'
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta2::ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta2::ProcessSignature::Representation
       
+          collection :uris, as: 'uris'
         end
       end
       
