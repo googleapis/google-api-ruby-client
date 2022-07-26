@@ -12634,7 +12634,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 21
+        # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -15353,7 +15353,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 21
+        # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -31264,7 +31264,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 21
+      # Sets the scheduling options for an Instance.
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -33715,7 +33715,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Sets the scheduling options for an Instance. NextID: 21
+        # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
