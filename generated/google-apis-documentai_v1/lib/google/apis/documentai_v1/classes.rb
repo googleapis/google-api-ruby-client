@@ -548,6 +548,11 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>]
         attr_accessor :individual_import_statuses
       
+        # Total number of the documents that are qualified for importing.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -556,6 +561,7 @@ module Google
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @individual_import_statuses = args[:individual_import_statuses] if args.key?(:individual_import_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
         end
       end
       
@@ -1577,9 +1583,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -4288,9 +4294,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -6127,9 +6133,9 @@ module Google
         # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
         # calendar day in a particular time zone. * When neither time_zone nor
         # utc_offset is set: a civil time on a calendar day in local time. The date is
-        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-        # considered not to have a specific year. month and day must have valid, non-
-        # zero values. This type may also be used to represent a physical time if all
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
         # the date and time fields are set and either case of the `time_offset` oneof is
         # set. Consider using `Timestamp` message for physical time instead. If your use
         # case also would like to store the user's timezone, that can be done in another
@@ -8497,9 +8503,9 @@ module Google
       # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
       # calendar day in a particular time zone. * When neither time_zone nor
       # utc_offset is set: a civil time on a calendar day in local time. The date is
-      # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
-      # considered not to have a specific year. month and day must have valid, non-
-      # zero values. This type may also be used to represent a physical time if all
+      # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+      # the DateTime is considered not to have a specific year, month, or day
+      # respectively. This type may also be used to represent a physical time if all
       # the date and time fields are set and either case of the `time_offset` oneof is
       # set. Consider using `Timestamp` message for physical time instead. If your use
       # case also would like to store the user's timezone, that can be done in another
@@ -8508,34 +8514,38 @@ module Google
       class GoogleTypeDateTime
         include Google::Apis::Core::Hashable
       
-        # Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+        # Optional. Day of month. Must be from 1 to 31 and valid for the year and month,
+        # or 0 if specifying a datetime without a day.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may
-        # choose to allow the value "24:00:00" for scenarios like business closing time.
+        # Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to
+        # 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios
+        # like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # Required. Minutes of hour of day. Must be from 0 to 59.
+        # Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
       
-        # Required. Month of year. Must be from 1 to 12.
+        # Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime
+        # without a month.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999,
+        # defaults to 0.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
-        # API may allow the value 60 if it allows leap-seconds.
+        # Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+        # defaults to 0. An API may allow the value 60 if it allows leap-seconds.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds

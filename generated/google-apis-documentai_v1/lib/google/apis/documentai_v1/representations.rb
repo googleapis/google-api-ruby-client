@@ -1736,6 +1736,7 @@ module Google
       
           collection :individual_import_statuses, as: 'individualImportStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus::Representation
       
+          property :total_document_count, as: 'totalDocumentCount'
         end
       end
       
