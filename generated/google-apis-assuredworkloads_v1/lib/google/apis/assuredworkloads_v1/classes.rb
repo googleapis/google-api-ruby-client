@@ -936,12 +936,12 @@ module Google
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus
         include Google::Apis::Core::Hashable
       
-        # Count of acknowledged violations in the Workload.
+        # Count of active Violations which are acknowledged in the Workload.
         # Corresponds to the JSON property `acknowledgedViolationCount`
         # @return [Fixnum]
         attr_accessor :acknowledged_violation_count
       
-        # Count of active Violations in the Workload.
+        # Count of active Violations which haven't been acknowledged.
         # Corresponds to the JSON property `activeViolationCount`
         # @return [Fixnum]
         attr_accessor :active_violation_count
