@@ -630,12 +630,12 @@ module Google
         end
       end
       
-      # Creates a new slide.
+      # Creates a slide.
       class CreateSlideRequest
         include Google::Apis::Core::Hashable
       
         # The optional zero-based index indicating where to insert the slides. If you
-        # don't specify an index, the new slide is created at the end.
+        # don't specify an index, the slide is created at the end.
         # Corresponds to the JSON property `insertionIndex`
         # @return [Fixnum]
         attr_accessor :insertion_index
@@ -644,15 +644,15 @@ module Google
         # pages and page elements in the presentation. The ID must start with an
         # alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`);
         # remaining characters may include those as well as a hyphen or colon (matches
-        # regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or
-        # greater than 50. If you don't specify an ID, a unique one is generated.
+        # regex `[a-zA-Z0-9_-:]`). The ID length must be between 5 and 50 characters,
+        # inclusive. If you don't specify an ID, a unique one is generated.
         # Corresponds to the JSON property `objectId`
         # @return [String]
         attr_accessor :object_id_prop
       
         # An optional list of object ID mappings from the placeholder(s) on the layout
-        # to the placeholder(s) that will be created on the new slide from that
-        # specified layout. Can only be used when `slide_layout_reference` is specified.
+        # to the placeholders that are created on the slide from the specified layout.
+        # Can only be used when `slide_layout_reference` is specified.
         # Corresponds to the JSON property `placeholderIdMappings`
         # @return [Array<Google::Apis::SlidesV1::LayoutPlaceholderIdMapping>]
         attr_accessor :placeholder_id_mappings
@@ -2839,7 +2839,7 @@ module Google
         # @return [Google::Apis::SlidesV1::CreateSheetsChartRequest]
         attr_accessor :create_sheets_chart
       
-        # Creates a new slide.
+        # Creates a slide.
         # Corresponds to the JSON property `createSlide`
         # @return [Google::Apis::SlidesV1::CreateSlideRequest]
         attr_accessor :create_slide
