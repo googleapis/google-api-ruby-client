@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaArchiveAudienceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,96 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaAttributionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudience
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceEventFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceEventTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterClause
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSimpleFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListAudiencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -450,6 +552,12 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaArchiveAudienceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -469,6 +577,165 @@ module Google
           property :name, as: 'name'
           property :other_conversion_event_lookback_window, as: 'otherConversionEventLookbackWindow'
           property :reporting_attribution_model, as: 'reportingAttributionModel'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudience
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :event_trigger, as: 'eventTrigger', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventTrigger, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventTrigger::Representation
+      
+          property :exclusion_duration_mode, as: 'exclusionDurationMode'
+          collection :filter_clauses, as: 'filterClauses', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterClause, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterClause::Representation
+      
+          property :membership_duration_days, as: 'membershipDurationDays'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :at_any_point_in_time, as: 'atAnyPointInTime'
+          property :between_filter, as: 'betweenFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter::Representation
+      
+          property :field_name, as: 'fieldName'
+          property :in_any_n_day_period, as: 'inAnyNDayPeriod'
+          property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter::Representation
+      
+          property :numeric_filter, as: 'numericFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter::Representation
+      
+          property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from_value, as: 'fromValue', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue::Representation
+      
+          property :to_value, as: 'toValue', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+          property :value, as: 'value', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :double_value, as: 'doubleValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :match_type, as: 'matchType'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceEventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_name, as: 'eventName'
+          property :event_parameter_filter_expression, as: 'eventParameterFilterExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceEventTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_name, as: 'eventName'
+          property :log_condition, as: 'logCondition'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterClause
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clause_type, as: 'clauseType'
+          property :sequence_filter, as: 'sequenceFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilter::Representation
+      
+          property :simple_filter, as: 'simpleFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSimpleFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSimpleFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :and_group, as: 'andGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList::Representation
+      
+          property :dimension_or_metric_filter, as: 'dimensionOrMetricFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter::Representation
+      
+          property :event_filter, as: 'eventFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventFilter::Representation
+      
+          property :not_expression, as: 'notExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression::Representation
+      
+          property :or_group, as: 'orGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :sequence_maximum_duration, as: 'sequenceMaximumDuration'
+          collection :sequence_steps, as: 'sequenceSteps', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint_duration, as: 'constraintDuration'
+          property :filter_expression, as: 'filterExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression::Representation
+      
+          property :immediately_follows, as: 'immediatelyFollows'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAudienceSimpleFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_expression, as: 'filterExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression::Representation
+      
+          property :scope, as: 'scope'
         end
       end
       
@@ -817,6 +1084,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accounts, as: 'accounts', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListAudiencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audiences, as: 'audiences', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

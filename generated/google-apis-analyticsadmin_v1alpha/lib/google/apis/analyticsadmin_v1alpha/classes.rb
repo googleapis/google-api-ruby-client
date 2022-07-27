@@ -183,6 +183,19 @@ module Google
         end
       end
       
+      # Request message for ArchiveAudience RPC.
+      class GoogleAnalyticsAdminV1alphaArchiveAudienceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for ArchiveCustomDimension RPC.
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         include Google::Apis::Core::Hashable
@@ -251,6 +264,534 @@ module Google
           @name = args[:name] if args.key?(:name)
           @other_conversion_event_lookback_window = args[:other_conversion_event_lookback_window] if args.key?(:other_conversion_event_lookback_window)
           @reporting_attribution_model = args[:reporting_attribution_model] if args.key?(:reporting_attribution_model)
+        end
+      end
+      
+      # A resource message representing a GA4 Audience.
+      class GoogleAnalyticsAdminV1alphaAudience
+        include Google::Apis::Core::Hashable
+      
+        # Output only. It is automatically set by GA to false if this is an NPA Audience
+        # and is excluded from ads personalization.
+        # Corresponds to the JSON property `adsPersonalizationEnabled`
+        # @return [Boolean]
+        attr_accessor :ads_personalization_enabled
+        alias_method :ads_personalization_enabled?, :ads_personalization_enabled
+      
+        # Required. The description of the Audience.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the Audience.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specifies an event to log when a user joins the Audience.
+        # Corresponds to the JSON property `eventTrigger`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventTrigger]
+        attr_accessor :event_trigger
+      
+        # Immutable. Specifies how long an exclusion lasts for users that meet the
+        # exclusion filter. It is applied to all EXCLUDE filter clauses and is ignored
+        # when there is no EXCLUDE filter clause in the Audience.
+        # Corresponds to the JSON property `exclusionDurationMode`
+        # @return [String]
+        attr_accessor :exclusion_duration_mode
+      
+        # Required. Immutable. null Filter clauses that define the Audience. All clauses
+        # will be AND’ed together.
+        # Corresponds to the JSON property `filterClauses`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterClause>]
+        attr_accessor :filter_clauses
+      
+        # Required. Immutable. The duration a user should stay in an Audience. It cannot
+        # be set to more than 540 days.
+        # Corresponds to the JSON property `membershipDurationDays`
+        # @return [Fixnum]
+        attr_accessor :membership_duration_days
+      
+        # Output only. The resource name for this Audience resource. Format: properties/`
+        # propertyId`/audiences/`audienceId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
+          @exclusion_duration_mode = args[:exclusion_duration_mode] if args.key?(:exclusion_duration_mode)
+          @filter_clauses = args[:filter_clauses] if args.key?(:filter_clauses)
+          @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A specific filter for a single dimension or metric.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether this filter needs dynamic evaluation or not. If
+        # set to true, users join the Audience if they ever met the condition (static
+        # evaluation). If unset or set to false, user evaluation for an Audience is
+        # dynamic; users are added to an Audience when they meet the conditions and then
+        # removed when they no longer meet them. This can only be set when Audience
+        # scope is ACROSS_ALL_SESSIONS.
+        # Corresponds to the JSON property `atAnyPointInTime`
+        # @return [Boolean]
+        attr_accessor :at_any_point_in_time
+        alias_method :at_any_point_in_time?, :at_any_point_in_time
+      
+        # A filter for numeric or date values between certain values on a dimension or
+        # metric.
+        # Corresponds to the JSON property `betweenFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter]
+        attr_accessor :between_filter
+      
+        # Required. Immutable. The dimension name or metric name to filter.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Optional. If set, specifies the time window for which to evaluate data in
+        # number of days. If not set, then audience data is evaluated against lifetime
+        # data (i.e., infinite time window). For example, if set to 1 day, only the
+        # current day's data is evaluated. The reference point is the current day when
+        # at_any_point_in_time is unset or false. It can only be set when Audience scope
+        # is ACROSS_ALL_SESSIONS and cannot be greater than 60 days.
+        # Corresponds to the JSON property `inAnyNDayPeriod`
+        # @return [Fixnum]
+        attr_accessor :in_any_n_day_period
+      
+        # A filter for a string dimension that matches a particular list of options.
+        # Corresponds to the JSON property `inListFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter]
+        attr_accessor :in_list_filter
+      
+        # A filter for numeric or date values on a dimension or metric.
+        # Corresponds to the JSON property `numericFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter]
+        attr_accessor :numeric_filter
+      
+        # A filter for a string-type dimension that matches a particular pattern.
+        # Corresponds to the JSON property `stringFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter]
+        attr_accessor :string_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @at_any_point_in_time = args[:at_any_point_in_time] if args.key?(:at_any_point_in_time)
+          @between_filter = args[:between_filter] if args.key?(:between_filter)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @in_any_n_day_period = args[:in_any_n_day_period] if args.key?(:in_any_n_day_period)
+          @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
+          @numeric_filter = args[:numeric_filter] if args.key?(:numeric_filter)
+          @string_filter = args[:string_filter] if args.key?(:string_filter)
+        end
+      end
+      
+      # A filter for numeric or date values between certain values on a dimension or
+      # metric.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter
+        include Google::Apis::Core::Hashable
+      
+        # To represent a number.
+        # Corresponds to the JSON property `fromValue`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue]
+        attr_accessor :from_value
+      
+        # To represent a number.
+        # Corresponds to the JSON property `toValue`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue]
+        attr_accessor :to_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from_value = args[:from_value] if args.key?(:from_value)
+          @to_value = args[:to_value] if args.key?(:to_value)
+        end
+      end
+      
+      # A filter for a string dimension that matches a particular list of options.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the match is case-sensitive. If false, the match is case-
+        # insensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. The list of possible string values to match against. Must be non-
+        # empty.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A filter for numeric or date values on a dimension or metric.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The operation applied to a numeric filter.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # To represent a number.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # To represent a number.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue
+        include Google::Apis::Core::Hashable
+      
+        # Double value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # Integer value.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+        end
+      end
+      
+      # A filter for a string-type dimension that matches a particular pattern.
+      class GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the match is case-sensitive. If false, the match is case-
+        # insensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. The match type for the string filter.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The string value to be matched against.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A filter that matches events of a single event name. If an event parameter is
+      # specified, only the subset of events that match both the single event name and
+      # the parameter filter expressions match this event filter.
+      class GoogleAnalyticsAdminV1alphaAudienceEventFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the event to match against.
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
+        # A logical expression of Audience dimension, metric, or event filters.
+        # Corresponds to the JSON property `eventParameterFilterExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression]
+        attr_accessor :event_parameter_filter_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @event_parameter_filter_expression = args[:event_parameter_filter_expression] if args.key?(:event_parameter_filter_expression)
+        end
+      end
+      
+      # Specifies an event to log when a user joins the Audience.
+      class GoogleAnalyticsAdminV1alphaAudienceEventTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Required. The event name that will be logged.
+        # Corresponds to the JSON property `eventName`
+        # @return [String]
+        attr_accessor :event_name
+      
+        # Required. When to log the event.
+        # Corresponds to the JSON property `logCondition`
+        # @return [String]
+        attr_accessor :log_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_name = args[:event_name] if args.key?(:event_name)
+          @log_condition = args[:log_condition] if args.key?(:log_condition)
+        end
+      end
+      
+      # A clause for defining either a simple or sequence filter. A filter can be
+      # inclusive (i.e., users satisfying the filter clause are included in the
+      # Audience) or exclusive (i.e., users satisfying the filter clause are excluded
+      # from the Audience).
+      class GoogleAnalyticsAdminV1alphaAudienceFilterClause
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies whether this is an include or exclude filter clause.
+        # Corresponds to the JSON property `clauseType`
+        # @return [String]
+        attr_accessor :clause_type
+      
+        # Defines filters that must occur in a specific order for the user to be a
+        # member of the Audience.
+        # Corresponds to the JSON property `sequenceFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilter]
+        attr_accessor :sequence_filter
+      
+        # Defines a simple filter that a user must satisfy to be a member of the
+        # Audience.
+        # Corresponds to the JSON property `simpleFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSimpleFilter]
+        attr_accessor :simple_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clause_type = args[:clause_type] if args.key?(:clause_type)
+          @sequence_filter = args[:sequence_filter] if args.key?(:sequence_filter)
+          @simple_filter = args[:simple_filter] if args.key?(:simple_filter)
+        end
+      end
+      
+      # A logical expression of Audience dimension, metric, or event filters.
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # A list of Audience filter expressions.
+        # Corresponds to the JSON property `andGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList]
+        attr_accessor :and_group
+      
+        # A specific filter for a single dimension or metric.
+        # Corresponds to the JSON property `dimensionOrMetricFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter]
+        attr_accessor :dimension_or_metric_filter
+      
+        # A filter that matches events of a single event name. If an event parameter is
+        # specified, only the subset of events that match both the single event name and
+        # the parameter filter expressions match this event filter.
+        # Corresponds to the JSON property `eventFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceEventFilter]
+        attr_accessor :event_filter
+      
+        # A logical expression of Audience dimension, metric, or event filters.
+        # Corresponds to the JSON property `notExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression]
+        attr_accessor :not_expression
+      
+        # A list of Audience filter expressions.
+        # Corresponds to the JSON property `orGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList]
+        attr_accessor :or_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @and_group = args[:and_group] if args.key?(:and_group)
+          @dimension_or_metric_filter = args[:dimension_or_metric_filter] if args.key?(:dimension_or_metric_filter)
+          @event_filter = args[:event_filter] if args.key?(:event_filter)
+          @not_expression = args[:not_expression] if args.key?(:not_expression)
+          @or_group = args[:or_group] if args.key?(:or_group)
+        end
+      end
+      
+      # A list of Audience filter expressions.
+      class GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList
+        include Google::Apis::Core::Hashable
+      
+        # A list of Audience filter expressions.
+        # Corresponds to the JSON property `filterExpressions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression>]
+        attr_accessor :filter_expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_expressions = args[:filter_expressions] if args.key?(:filter_expressions)
+        end
+      end
+      
+      # Defines filters that must occur in a specific order for the user to be a
+      # member of the Audience.
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Specifies the scope for this filter.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Optional. Defines the time period in which the whole sequence must occur.
+        # Corresponds to the JSON property `sequenceMaximumDuration`
+        # @return [String]
+        attr_accessor :sequence_maximum_duration
+      
+        # Required. An ordered sequence of steps. A user must complete each step in
+        # order to join the sequence filter.
+        # Corresponds to the JSON property `sequenceSteps`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>]
+        attr_accessor :sequence_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @sequence_maximum_duration = args[:sequence_maximum_duration] if args.key?(:sequence_maximum_duration)
+          @sequence_steps = args[:sequence_steps] if args.key?(:sequence_steps)
+        end
+      end
+      
+      # A condition that must occur in the specified step order for this user to match
+      # the sequence.
+      class GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When set, this step must be satisfied within the constraint_duration
+        # of the previous step (i.e., t[i] - t[i-1] <= constraint_duration). If not set,
+        # there is no duration requirement (the duration is effectively unlimited). It
+        # is ignored for the first step.
+        # Corresponds to the JSON property `constraintDuration`
+        # @return [String]
+        attr_accessor :constraint_duration
+      
+        # A logical expression of Audience dimension, metric, or event filters.
+        # Corresponds to the JSON property `filterExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression]
+        attr_accessor :filter_expression
+      
+        # Optional. If true, the event satisfying this step must be the very next event
+        # after the event satisfying the last step. If unset or false, this step
+        # indirectly follows the prior step; for example, there may be events between
+        # the prior step and this step. It is ignored for the first step.
+        # Corresponds to the JSON property `immediatelyFollows`
+        # @return [Boolean]
+        attr_accessor :immediately_follows
+        alias_method :immediately_follows?, :immediately_follows
+      
+        # Required. Immutable. Specifies the scope for this step.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraint_duration = args[:constraint_duration] if args.key?(:constraint_duration)
+          @filter_expression = args[:filter_expression] if args.key?(:filter_expression)
+          @immediately_follows = args[:immediately_follows] if args.key?(:immediately_follows)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Defines a simple filter that a user must satisfy to be a member of the
+      # Audience.
+      class GoogleAnalyticsAdminV1alphaAudienceSimpleFilter
+        include Google::Apis::Core::Hashable
+      
+        # A logical expression of Audience dimension, metric, or event filters.
+        # Corresponds to the JSON property `filterExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterExpression]
+        attr_accessor :filter_expression
+      
+        # Required. Immutable. Specifies the scope for this filter.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_expression = args[:filter_expression] if args.key?(:filter_expression)
+          @scope = args[:scope] if args.key?(:scope)
         end
       end
       
@@ -1548,6 +2089,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListAudiences RPC.
+      class GoogleAnalyticsAdminV1alphaListAudiencesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Audiences.
+        # Corresponds to the JSON property `audiences`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience>]
+        attr_accessor :audiences
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audiences = args[:audiences] if args.key?(:audiences)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
