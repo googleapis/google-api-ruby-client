@@ -36,7 +36,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the account. Format: accounts/pub-[0-9]+
+        # Output only. Resource name of the account. Format: accounts/pub-[0-9]+
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -86,7 +86,8 @@ module Google
       class AdClient
         include Google::Apis::Core::Hashable
       
-        # Resource name of the ad client. Format: accounts/`account`/adclients/`adclient`
+        # Output only. Resource name of the ad client. Format: accounts/`account`/
+        # adclients/`adclient`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -171,8 +172,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the ad unit. Format: accounts/`account`/adclients/`adclient`/
-        # adunits/`adunit`
+        # Output only. Resource name of the ad unit. Format: accounts/`account`/
+        # adclients/`adclient`/adunits/`adunit`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -231,7 +232,8 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # Resource name of the alert. Format: accounts/`account`/alerts/`alert`
+        # Output only. Resource name of the alert. Format: accounts/`account`/alerts/`
+        # alert`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -315,8 +317,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the custom channel. Format: accounts/`account`/adclients/`
-        # adclient`/customchannels/`customchannel`
+        # Output only. Resource name of the custom channel. Format: accounts/`account`/
+        # adclients/`adclient`/customchannels/`customchannel`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -784,11 +786,11 @@ module Google
         # @return [Google::Apis::AdsenseV2::Date]
         attr_accessor :date
       
-        # Resource name of the payment. Format: - accounts/`account`/payments/unpaid for
-        # unpaid (current) AdSense earnings. - accounts/`account`/payments/youtube-
-        # unpaid for unpaid (current) YouTube earnings. - accounts/`account`/payments/
-        # yyyy-MM-dd for paid AdSense earnings. - accounts/`account`/payments/youtube-
-        # yyyy-MM-dd for paid YouTube earnings.
+        # Output only. Resource name of the payment. Format: - accounts/`account`/
+        # payments/unpaid for unpaid (current) AdSense earnings. - accounts/`account`/
+        # payments/youtube-unpaid for unpaid (current) YouTube earnings. - accounts/`
+        # account`/payments/yyyy-MM-dd for paid AdSense earnings. - accounts/`account`/
+        # payments/youtube-yyyy-MM-dd for paid YouTube earnings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -906,7 +908,8 @@ module Google
       class SavedReport
         include Google::Apis::Core::Hashable
       
-        # Resource name of the report. Format: accounts/`account`/reports/`report`
+        # Output only. Resource name of the report. Format: accounts/`account`/reports/`
+        # report`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -943,7 +946,7 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Resource name of a site. Format: accounts/`account`/sites/`site`
+        # Output only. Resource name of a site. Format: accounts/`account`/sites/`site`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1005,8 +1008,8 @@ module Google
       class UrlChannel
         include Google::Apis::Core::Hashable
       
-        # Resource name of the URL channel. Format: accounts/`account`/adclients/`
-        # adclient`/urlchannels/`urlchannel`
+        # Output only. Resource name of the URL channel. Format: accounts/`account`/
+        # adclients/`adclient`/urlchannels/`urlchannel`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
