@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FreeInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetDatabaseDdlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1011,6 +1017,15 @@ module Google
         end
       end
       
+      class FreeInstanceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_behavior, as: 'expireBehavior'
+          property :expire_time, as: 'expireTime'
+          property :upgrade_time, as: 'upgradeTime'
+        end
+      end
+      
       class GetDatabaseDdlResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1055,6 +1070,9 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           collection :endpoint_uris, as: 'endpointUris'
+          property :free_instance_metadata, as: 'freeInstanceMetadata', class: Google::Apis::SpannerV1::FreeInstanceMetadata, decorator: Google::Apis::SpannerV1::FreeInstanceMetadata::Representation
+      
+          property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :node_count, as: 'nodeCount'
@@ -1068,6 +1086,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :free_instance_availability, as: 'freeInstanceAvailability'
           collection :leader_options, as: 'leaderOptions'
           property :name, as: 'name'
           collection :replicas, as: 'replicas', class: Google::Apis::SpannerV1::ReplicaInfo, decorator: Google::Apis::SpannerV1::ReplicaInfo::Representation

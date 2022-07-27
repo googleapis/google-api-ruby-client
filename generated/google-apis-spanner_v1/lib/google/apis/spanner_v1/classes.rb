@@ -1752,6 +1752,44 @@ module Google
         end
       end
       
+      # Free instance specific metadata that is kept even after an instance has been
+      # upgraded for tracking purposes.
+      class FreeInstanceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the expiration behavior of a free instance. The default of
+        # ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or
+        # after creation, and before expiration.
+        # Corresponds to the JSON property `expireBehavior`
+        # @return [String]
+        attr_accessor :expire_behavior
+      
+        # Output only. Timestamp after which the instance will either be upgraded or
+        # scheduled for deletion after a grace period. ExpireBehavior is used to choose
+        # between upgrading or scheduling the free instance for deletion. This timestamp
+        # is set during the creation of a free instance.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. If present, the timestamp at which the free instance was upgraded
+        # to a provisioned instance.
+        # Corresponds to the JSON property `upgradeTime`
+        # @return [String]
+        attr_accessor :upgrade_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_behavior = args[:expire_behavior] if args.key?(:expire_behavior)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @upgrade_time = args[:upgrade_time] if args.key?(:upgrade_time)
+        end
+      end
+      
       # The response for GetDatabaseDdl.
       class GetDatabaseDdlResponse
         include Google::Apis::Core::Hashable
@@ -1888,6 +1926,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :endpoint_uris
       
+        # Free instance specific metadata that is kept even after an instance has been
+        # upgraded for tracking purposes.
+        # Corresponds to the JSON property `freeInstanceMetadata`
+        # @return [Google::Apis::SpannerV1::FreeInstanceMetadata]
+        attr_accessor :free_instance_metadata
+      
+        # The `InstanceType` of the current instance.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
         # Cloud Labels are a flexible and lightweight mechanism for organizing cloud
         # resources into groups that reflect a customer's organizational needs and
         # deployment strategies. Cloud Labels can be used to filter collections of
@@ -1956,6 +2005,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @endpoint_uris = args[:endpoint_uris] if args.key?(:endpoint_uris)
+          @free_instance_metadata = args[:free_instance_metadata] if args.key?(:free_instance_metadata)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @node_count = args[:node_count] if args.key?(:node_count)
@@ -1974,6 +2025,12 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. Describes whether free instances are available to be created in
+        # this instance config.
+        # Corresponds to the JSON property `freeInstanceAvailability`
+        # @return [String]
+        attr_accessor :free_instance_availability
       
         # Allowed values of the "default_leader" schema option for databases in
         # instances that use this instance configuration.
@@ -2000,6 +2057,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @free_instance_availability = args[:free_instance_availability] if args.key?(:free_instance_availability)
           @leader_options = args[:leader_options] if args.key?(:leader_options)
           @name = args[:name] if args.key?(:name)
           @replicas = args[:replicas] if args.key?(:replicas)
@@ -2893,11 +2951,14 @@ module Google
         # suppose a streaming SQL query is yielding a result set whose rows contain a
         # single string field. The following `PartialResultSet`s might be yielded: ` "
         # metadata": ` ... ` "values": ["Hello", "W"] "chunked_value": true "
-        # resume_token": "Af65..." ` ` "values": ["orl"] "chunked_value": true "
-        # resume_token": "Bqp2..." ` ` "values": ["d"] "resume_token": "Zx1B..." ` This
-        # sequence of `PartialResultSet`s encodes two rows, one containing the field
-        # value `"Hello"`, and a second containing the field value `"World" = "W" + "orl"
-        # + "d"`.
+        # resume_token": "Af65..." ` ` "values": ["orl"] "chunked_value": true ` ` "
+        # values": ["d"] "resume_token": "Zx1B..." ` This sequence of `PartialResultSet`
+        # s encodes two rows, one containing the field value `"Hello"`, and a second
+        # containing the field value `"World" = "W" + "orl" + "d"`. Not all `
+        # PartialResultSet`s contain a `resume_token`. Execution can only be resumed
+        # from a previously yielded `resume_token`. For the above sequence of `
+        # PartialResultSet`s, resuming the query with `"resume_token": "Af65..."` will
+        # yield results from the `PartialResultSet` with value `["orl"]`.
         # Corresponds to the JSON property `values`
         # @return [Array<Object>]
         attr_accessor :values
