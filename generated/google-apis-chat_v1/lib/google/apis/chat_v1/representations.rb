@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpaceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1212,8 +1218,18 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :single_user_bot_dm, as: 'singleUserBotDm'
+          property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
+      
           property :threaded, as: 'threaded'
           property :type, as: 'type'
+        end
+      end
+      
+      class SpaceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :guidelines, as: 'guidelines'
         end
       end
       

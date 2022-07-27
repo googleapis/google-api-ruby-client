@@ -2719,13 +2719,18 @@ module Google
         attr_accessor :single_user_bot_dm
         alias_method :single_user_bot_dm?, :single_user_bot_dm
       
+        # Details about the space including description and rules.
+        # Corresponds to the JSON property `spaceDetails`
+        # @return [Google::Apis::ChatV1::SpaceDetails]
+        attr_accessor :space_details
+      
         # Output only. Whether messages are threaded in this space.
         # Corresponds to the JSON property `threaded`
         # @return [Boolean]
         attr_accessor :threaded
         alias_method :threaded?, :threaded
       
-        # Output only. Deprecated: Use `single_user_bot_dm` or `space_type` (developer
+        # Output only. Deprecated: Use `singleUserBotDm` or `spaceType` (developer
         # preview) instead. The type of a space.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2740,8 +2745,35 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
+          @space_details = args[:space_details] if args.key?(:space_details)
           @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Details about the space including description and rules.
+      class SpaceDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A description of the space. It could describe the space's discussion
+        # topic, functional purpose, or participants.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The space's rules, expectations, and etiquette.
+        # Corresponds to the JSON property `guidelines`
+        # @return [String]
+        attr_accessor :guidelines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @guidelines = args[:guidelines] if args.key?(:guidelines)
         end
       end
       
