@@ -4525,6 +4525,15 @@ module Google
         # @return [String]
         attr_accessor :timeout
       
+        # User-supplied key/value data to be used for organizing and identifying the
+        # UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and
+        # value is limited to 63 Unicode characters or 128 bytes, whichever is smaller.
+        # Labels and values can contain only lowercase letters, numerals, underscores,
+        # and dashes. Keys must begin with a letter.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4544,6 +4553,7 @@ module Google
           @selected_regions = args[:selected_regions] if args.key?(:selected_regions)
           @tcp_check = args[:tcp_check] if args.key?(:tcp_check)
           @timeout = args[:timeout] if args.key?(:timeout)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       

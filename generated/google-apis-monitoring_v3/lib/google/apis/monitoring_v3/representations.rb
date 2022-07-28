@@ -1756,6 +1756,7 @@ module Google
           property :tcp_check, as: 'tcpCheck', class: Google::Apis::MonitoringV3::TcpCheck, decorator: Google::Apis::MonitoringV3::TcpCheck::Representation
       
           property :timeout, as: 'timeout'
+          hash :user_labels, as: 'userLabels'
         end
       end
       
