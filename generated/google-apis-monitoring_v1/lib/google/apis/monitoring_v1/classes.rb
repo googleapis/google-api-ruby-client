@@ -1840,6 +1840,11 @@ module Google
         # @return [Array<Google::Apis::MonitoringV1::TableDataSet>]
         attr_accessor :data_sets
       
+        # Optional. Store rendering strategy
+        # Corresponds to the JSON property `metricVisualization`
+        # @return [String]
+        attr_accessor :metric_visualization
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1847,6 +1852,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_sets = args[:data_sets] if args.key?(:data_sets)
+          @metric_visualization = args[:metric_visualization] if args.key?(:metric_visualization)
         end
       end
       
