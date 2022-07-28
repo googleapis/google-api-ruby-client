@@ -787,6 +787,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TableDataSet, decorator: Google::Apis::MonitoringV1::TableDataSet::Representation
       
+          property :metric_visualization, as: 'metricVisualization'
         end
       end
       
