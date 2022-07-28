@@ -124,10 +124,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Immutable. The name of the Account resource that this Admin refers to. Used
-        # when calling CreateAccountAdmin or CreateLocationAdmin to invite UserGroups or
-        # LocationGroups as admins, respectively. If both this field and `admin` are set
-        # on `CREATE` requests, this field takes precedence and the email address in `
-        # admin` will be ignored. Format: `accounts/`account``.
+        # when calling locations.admins.create to invite a LocationGroup as an admin. If
+        # both this field and `admin` are set on `CREATE` requests, this field takes
+        # precedence and the email address in `admin` will be ignored. Format: `accounts/
+        # `account``.
         # Corresponds to the JSON property `account`
         # @return [String]
         attr_accessor :account
