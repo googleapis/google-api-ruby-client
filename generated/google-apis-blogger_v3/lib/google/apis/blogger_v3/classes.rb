@@ -602,6 +602,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # RFC 3339 date-time when this Page was trashed.
+        # Corresponds to the JSON property `trashed`
+        # @return [String]
+        attr_accessor :trashed
+      
         # RFC 3339 date-time when this Page was last updated.
         # Corresponds to the JSON property `updated`
         # @return [String]
@@ -628,6 +633,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
+          @trashed = args[:trashed] if args.key?(:trashed)
           @updated = args[:updated] if args.key?(:updated)
           @url = args[:url] if args.key?(:url)
         end
@@ -890,6 +896,11 @@ module Google
         # @return [String]
         attr_accessor :title_link
       
+        # RFC 3339 date-time when this Post was last trashed.
+        # Corresponds to the JSON property `trashed`
+        # @return [String]
+        attr_accessor :trashed
+      
         # RFC 3339 date-time when this Post was last updated.
         # Corresponds to the JSON property `updated`
         # @return [String]
@@ -923,6 +934,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
           @title_link = args[:title_link] if args.key?(:title_link)
+          @trashed = args[:trashed] if args.key?(:trashed)
           @updated = args[:updated] if args.key?(:updated)
           @url = args[:url] if args.key?(:url)
         end
