@@ -291,6 +291,8 @@ module Google
           property :name, as: 'name'
           property :package_name, as: 'packageName'
           property :project_id, as: 'projectId'
+          collection :sha1_hashes, as: 'sha1Hashes'
+          collection :sha256_hashes, as: 'sha256Hashes'
           property :state, as: 'state'
         end
       end
