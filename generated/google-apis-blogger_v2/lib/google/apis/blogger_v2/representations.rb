@@ -372,6 +372,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :title, as: 'title'
+          property :trashed, as: 'trashed'
           property :updated, as: 'updated'
           property :url, as: 'url'
         end
@@ -438,6 +439,7 @@ module Google
           property :status, as: 'status'
           property :title, as: 'title'
           property :title_link, as: 'titleLink'
+          property :trashed, as: 'trashed'
           property :updated, as: 'updated'
           property :url, as: 'url'
         end
