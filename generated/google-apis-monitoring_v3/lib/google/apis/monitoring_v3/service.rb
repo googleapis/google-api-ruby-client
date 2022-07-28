@@ -880,10 +880,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new metric descriptor. The creation is executed asynchronously and
-        # callers may check the returned operation to track its progress. User-created
-        # metric descriptors define custom metrics (https://cloud.google.com/monitoring/
-        # custom-metrics).
+        # Creates a new metric descriptor. The creation is executed asynchronously. User-
+        # created metric descriptors define custom metrics (https://cloud.google.com/
+        # monitoring/custom-metrics). The metric descriptor is updated if it already
+        # exists, except that metric labels are never removed.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: 4 projects/
