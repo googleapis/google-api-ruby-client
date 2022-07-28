@@ -1640,8 +1640,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_uuid, as: 'clusterUuid'
+          property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
           collection :node_pools, as: 'nodePools', class: Google::Apis::DataprocV1::NodePool, decorator: Google::Apis::DataprocV1::NodePool::Representation
       
+          property :parent_operation_id, as: 'parentOperationId'
           property :request_id, as: 'requestId'
         end
       end
