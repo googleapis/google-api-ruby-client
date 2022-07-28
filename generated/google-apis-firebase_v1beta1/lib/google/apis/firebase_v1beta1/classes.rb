@@ -237,6 +237,16 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # The SHA1 certificate hashes for the AndroidApp.
+        # Corresponds to the JSON property `sha1Hashes`
+        # @return [Array<String>]
+        attr_accessor :sha1_hashes
+      
+        # The SHA256 certificate hashes for the AndroidApp.
+        # Corresponds to the JSON property `sha256Hashes`
+        # @return [Array<String>]
+        attr_accessor :sha256_hashes
+      
         # Output only. The lifecycle state of the App.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -254,6 +264,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @package_name = args[:package_name] if args.key?(:package_name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @sha1_hashes = args[:sha1_hashes] if args.key?(:sha1_hashes)
+          @sha256_hashes = args[:sha256_hashes] if args.key?(:sha256_hashes)
           @state = args[:state] if args.key?(:state)
         end
       end
