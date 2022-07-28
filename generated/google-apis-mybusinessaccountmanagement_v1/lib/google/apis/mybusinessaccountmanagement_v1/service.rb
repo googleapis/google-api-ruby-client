@@ -125,8 +125,7 @@ module Google
         #   account. For example, a request with the filter `type=USER_GROUP` will only
         #   return user groups. The `type` field is the only supported filter.
         # @param [Fixnum] page_size
-        #   Optional. How many accounts to fetch per page. The minimum supported page_size
-        #   is 2. The default and maximum is 20.
+        #   Optional. How many accounts to fetch per page. The default and maximum is 20.
         # @param [String] page_token
         #   Optional. If specified, the next page of accounts is retrieved. The `pageToken`
         #   is returned when a call to `accounts.list` returns more results than can fit
