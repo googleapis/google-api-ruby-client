@@ -1092,8 +1092,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls messages from the server. The server may return `UNAVAILABLE` if there
-        # are too many concurrent pull requests pending for the given subscription.
+        # Pulls messages from the server.
         # @param [String] subscription
         #   Required. The subscription from which messages should be pulled. Format is `
         #   projects/`project`/subscriptions/`sub``.
