@@ -1238,12 +1238,15 @@ module Google
       class GoogleCloudDataplexV1SessionEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_succeeded, as: 'eventSucceeded'
           property :message, as: 'message'
           property :query, as: 'query', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1SessionEventQueryDetail, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1SessionEventQueryDetail::Representation
       
           property :session_id, as: 'sessionId'
           property :type, as: 'type'
+          property :unassigned_duration, as: 'unassignedDuration'
           property :user_id, as: 'userId'
+          property :warm_pool_enabled, as: 'warmPoolEnabled'
         end
       end
       
