@@ -1075,7 +1075,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :constraints, as: 'constraints', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Constraints, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Constraints::Representation
       
-          property :deal_code, as: 'dealCode'
           property :end_time, as: 'endTime'
           property :marketing_info, as: 'marketingInfo', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1MarketingInfo, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1MarketingInfo::Representation
       
