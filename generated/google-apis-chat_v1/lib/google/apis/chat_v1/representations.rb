@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CardWithId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChatAppLogEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -585,6 +591,15 @@ module Google
           property :image_url, as: 'imageUrl'
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
+        end
+      end
+      
+      class CardWithId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :card, as: 'card', class: Google::Apis::ChatV1::GoogleAppsCardV1Card, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Card::Representation
+      
+          property :card_id, as: 'cardId'
         end
       end
       
@@ -1148,6 +1163,8 @@ module Google
           collection :attachment, as: 'attachment', class: Google::Apis::ChatV1::Attachment, decorator: Google::Apis::ChatV1::Attachment::Representation
       
           collection :cards, as: 'cards', class: Google::Apis::ChatV1::Card, decorator: Google::Apis::ChatV1::Card::Representation
+      
+          collection :cards_v2, as: 'cardsV2', class: Google::Apis::ChatV1::CardWithId, decorator: Google::Apis::ChatV1::CardWithId::Representation
       
           property :create_time, as: 'createTime'
           property :fallback_text, as: 'fallbackText'

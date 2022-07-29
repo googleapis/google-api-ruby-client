@@ -374,6 +374,49 @@ module Google
         end
       end
       
+      # Widgets for Chat apps to specify.
+      class CardWithId
+        include Google::Apis::Core::Hashable
+      
+        # A card is a UI element that can contain UI widgets such as text and images.
+        # For more information, see Cards . For example, the following JSON creates a
+        # card that has a header with the name, position, icons, and link for a contact,
+        # followed by a section with contact information like email and phone number. ```
+        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
+        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
+        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
+        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
+        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
+        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
+        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
+        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
+        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
+        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
+        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
+        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
+        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Corresponds to the JSON property `card`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
+        attr_accessor :card
+      
+        # Required for `cardsV2` messages. Chat app-specified identifier for this widget.
+        # Scoped within a message.
+        # Corresponds to the JSON property `cardId`
+        # @return [String]
+        attr_accessor :card_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card = args[:card] if args.key?(:card)
+          @card_id = args[:card_id] if args.key?(:card_id)
+        end
+      end
+      
       # JSON payload of error messages. If the Cloud Logging API is enabled, these
       # error messages are logged to [Google Cloud Logging](https://cloud.google.com/
       # logging/docs).
@@ -2479,6 +2522,18 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
       
+        # Richly formatted and interactive cards that display UI elements and editable
+        # widgets, such as: - Formatted text - Buttons - Clickable images - Checkboxes -
+        # Radio buttons - Input widgets. Cards are usually displayed below the text-body
+        # of a Chat message, but can situationally appear other places, such as [dialogs]
+        # (https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique
+        # identifier among cards in the same message and for identifying user input
+        # values. Currently supported widgets include: - `TextParagraph` - `
+        # DecoratedText` - `Image` - `ButtonList`
+        # Corresponds to the JSON property `cardsV2`
+        # @return [Array<Google::Apis::ChatV1::CardWithId>]
+        attr_accessor :cards_v2
+      
         # Output only. The time at which the message was created in Google Chat server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2548,6 +2603,7 @@ module Google
           @argument_text = args[:argument_text] if args.key?(:argument_text)
           @attachment = args[:attachment] if args.key?(:attachment)
           @cards = args[:cards] if args.key?(:cards)
+          @cards_v2 = args[:cards_v2] if args.key?(:cards_v2)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
