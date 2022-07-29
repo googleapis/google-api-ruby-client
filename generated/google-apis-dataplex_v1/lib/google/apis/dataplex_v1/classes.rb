@@ -2374,6 +2374,12 @@ module Google
       class GoogleCloudDataplexV1SessionEvent
         include Google::Apis::Core::Hashable
       
+        # The status of the event.
+        # Corresponds to the JSON property `eventSucceeded`
+        # @return [Boolean]
+        attr_accessor :event_succeeded
+        alias_method :event_succeeded?, :event_succeeded
+      
         # The log message.
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -2394,10 +2400,22 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The information about the user that created the session.
+        # The idle duration of a warm pooled session before it is assigned to user.
+        # Corresponds to the JSON property `unassignedDuration`
+        # @return [String]
+        attr_accessor :unassigned_duration
+      
+        # The information about the user that created the session. It will be the email
+        # address of the user.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
+      
+        # If the session is a warm pooled session.
+        # Corresponds to the JSON property `warmPoolEnabled`
+        # @return [Boolean]
+        attr_accessor :warm_pool_enabled
+        alias_method :warm_pool_enabled?, :warm_pool_enabled
       
         def initialize(**args)
            update!(**args)
@@ -2405,11 +2423,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @event_succeeded = args[:event_succeeded] if args.key?(:event_succeeded)
           @message = args[:message] if args.key?(:message)
           @query = args[:query] if args.key?(:query)
           @session_id = args[:session_id] if args.key?(:session_id)
           @type = args[:type] if args.key?(:type)
+          @unassigned_duration = args[:unassigned_duration] if args.key?(:unassigned_duration)
           @user_id = args[:user_id] if args.key?(:user_id)
+          @warm_pool_enabled = args[:warm_pool_enabled] if args.key?(:warm_pool_enabled)
         end
       end
       
@@ -2688,8 +2709,8 @@ module Google
         attr_accessor :max_job_execution_lifetime
       
         # Optional. The project in which jobs are run. By default, the project
-        # containing the Lake is used. If a project is provided, the executionspec.
-        # service_account must belong to this same project.
+        # containing the Lake is used. If a project is provided, the ExecutionSpec.
+        # service_account must belong to this project.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
