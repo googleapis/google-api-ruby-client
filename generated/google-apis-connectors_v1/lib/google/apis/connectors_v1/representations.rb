@@ -438,6 +438,7 @@ module Google
           property :required, as: 'required'
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
+          property :state, as: 'state'
           property :validation_regex, as: 'validationRegex'
           property :value_type, as: 'valueType'
         end
