@@ -82,36 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeployedClusterState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeployedFleet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeployedFleetAutoscaler
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeployedFleetDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeployedFleetStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,96 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FetchDeploymentStateRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FetchDeploymentStateResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FleetConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerCluster
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerClusterConnectionInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerConfigOverride
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerDeployment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GameServerDeploymentRollout
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GkeClusterReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class KubernetesClusterState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LabelSelector
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGameServerClustersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGameServerConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGameServerDeploymentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,12 +101,6 @@ module Google
       end
       
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListRealmsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,61 +124,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewCreateGameServerClusterResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewDeleteGameServerClusterResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewGameServerDeploymentRolloutResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewRealmUpdateResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PreviewUpdateGameServerClusterResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Realm
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RealmSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,61 +136,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ScalingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Schedule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SpecSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetFleet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetFleetAutoscaler
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetFleetDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TargetState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -475,57 +247,6 @@ module Google
         end
       end
       
-      class DeployedClusterState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster, as: 'cluster'
-          collection :fleet_details, as: 'fleetDetails', class: Google::Apis::GameservicesV1::DeployedFleetDetails, decorator: Google::Apis::GameservicesV1::DeployedFleetDetails::Representation
-      
-        end
-      end
-      
-      class DeployedFleet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fleet, as: 'fleet'
-          property :fleet_spec, as: 'fleetSpec'
-          property :spec_source, as: 'specSource', class: Google::Apis::GameservicesV1::SpecSource, decorator: Google::Apis::GameservicesV1::SpecSource::Representation
-      
-          property :status, as: 'status', class: Google::Apis::GameservicesV1::DeployedFleetStatus, decorator: Google::Apis::GameservicesV1::DeployedFleetStatus::Representation
-      
-        end
-      end
-      
-      class DeployedFleetAutoscaler
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscaler, as: 'autoscaler'
-          property :fleet_autoscaler_spec, as: 'fleetAutoscalerSpec'
-          property :spec_source, as: 'specSource', class: Google::Apis::GameservicesV1::SpecSource, decorator: Google::Apis::GameservicesV1::SpecSource::Representation
-      
-        end
-      end
-      
-      class DeployedFleetDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :deployed_autoscaler, as: 'deployedAutoscaler', class: Google::Apis::GameservicesV1::DeployedFleetAutoscaler, decorator: Google::Apis::GameservicesV1::DeployedFleetAutoscaler::Representation
-      
-          property :deployed_fleet, as: 'deployedFleet', class: Google::Apis::GameservicesV1::DeployedFleet, decorator: Google::Apis::GameservicesV1::DeployedFleet::Representation
-      
-        end
-      end
-      
-      class DeployedFleetStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allocated_replicas, :numeric_string => true, as: 'allocatedReplicas'
-          property :ready_replicas, :numeric_string => true, as: 'readyReplicas'
-          property :replicas, :numeric_string => true, as: 'replicas'
-          property :reserved_replicas, :numeric_string => true, as: 'reservedReplicas'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -539,159 +260,6 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
-        end
-      end
-      
-      class FetchDeploymentStateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class FetchDeploymentStateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :cluster_state, as: 'clusterState', class: Google::Apis::GameservicesV1::DeployedClusterState, decorator: Google::Apis::GameservicesV1::DeployedClusterState::Representation
-      
-          collection :unavailable, as: 'unavailable'
-        end
-      end
-      
-      class FleetConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fleet_spec, as: 'fleetSpec'
-          property :name, as: 'name'
-        end
-      end
-      
-      class GameServerCluster
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_state, as: 'clusterState', class: Google::Apis::GameservicesV1::KubernetesClusterState, decorator: Google::Apis::GameservicesV1::KubernetesClusterState::Representation
-      
-          property :connection_info, as: 'connectionInfo', class: Google::Apis::GameservicesV1::GameServerClusterConnectionInfo, decorator: Google::Apis::GameservicesV1::GameServerClusterConnectionInfo::Representation
-      
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GameServerClusterConnectionInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gke_cluster_reference, as: 'gkeClusterReference', class: Google::Apis::GameservicesV1::GkeClusterReference, decorator: Google::Apis::GameservicesV1::GkeClusterReference::Representation
-      
-          property :namespace, as: 'namespace'
-        end
-      end
-      
-      class GameServerConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          collection :fleet_configs, as: 'fleetConfigs', class: Google::Apis::GameservicesV1::FleetConfig, decorator: Google::Apis::GameservicesV1::FleetConfig::Representation
-      
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          collection :scaling_configs, as: 'scalingConfigs', class: Google::Apis::GameservicesV1::ScalingConfig, decorator: Google::Apis::GameservicesV1::ScalingConfig::Representation
-      
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GameServerConfigOverride
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :config_version, as: 'configVersion'
-          property :realms_selector, as: 'realmsSelector', class: Google::Apis::GameservicesV1::RealmSelector, decorator: Google::Apis::GameservicesV1::RealmSelector::Representation
-      
-        end
-      end
-      
-      class GameServerDeployment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GameServerDeploymentRollout
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :default_game_server_config, as: 'defaultGameServerConfig'
-          property :etag, as: 'etag'
-          collection :game_server_config_overrides, as: 'gameServerConfigOverrides', class: Google::Apis::GameservicesV1::GameServerConfigOverride, decorator: Google::Apis::GameservicesV1::GameServerConfigOverride::Representation
-      
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GkeClusterReference
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster, as: 'cluster'
-        end
-      end
-      
-      class KubernetesClusterState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agones_version_installed, as: 'agonesVersionInstalled'
-          property :agones_version_targeted, as: 'agonesVersionTargeted'
-          property :installation_state, as: 'installationState'
-          property :kubernetes_version_installed, as: 'kubernetesVersionInstalled'
-          property :provider, as: 'provider'
-          property :version_installed_error_message, as: 'versionInstalledErrorMessage'
-        end
-      end
-      
-      class LabelSelector
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :labels, as: 'labels'
-        end
-      end
-      
-      class ListGameServerClustersResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :game_server_clusters, as: 'gameServerClusters', class: Google::Apis::GameservicesV1::GameServerCluster, decorator: Google::Apis::GameservicesV1::GameServerCluster::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListGameServerConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :game_server_configs, as: 'gameServerConfigs', class: Google::Apis::GameservicesV1::GameServerConfig, decorator: Google::Apis::GameservicesV1::GameServerConfig::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListGameServerDeploymentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :game_server_deployments, as: 'gameServerDeployments', class: Google::Apis::GameservicesV1::GameServerDeployment, decorator: Google::Apis::GameservicesV1::GameServerDeployment::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -710,16 +278,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GameservicesV1::Operation, decorator: Google::Apis::GameservicesV1::Operation::Representation
       
-        end
-      end
-      
-      class ListRealmsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :realms, as: 'realms', class: Google::Apis::GameservicesV1::Realm, decorator: Google::Apis::GameservicesV1::Realm::Representation
-      
-          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -758,31 +316,6 @@ module Google
         end
       end
       
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          hash :operation_status, as: 'operationStatus', class: Google::Apis::GameservicesV1::OperationStatus, decorator: Google::Apis::GameservicesV1::OperationStatus::Representation
-      
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          collection :unreachable, as: 'unreachable'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class OperationStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error_code, as: 'errorCode'
-          property :error_message, as: 'errorMessage'
-        end
-      end
-      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -794,74 +327,6 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::GameservicesV1::Rule, decorator: Google::Apis::GameservicesV1::Rule::Representation
       
           property :version, as: 'version'
-        end
-      end
-      
-      class PreviewCreateGameServerClusterResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_state, as: 'clusterState', class: Google::Apis::GameservicesV1::KubernetesClusterState, decorator: Google::Apis::GameservicesV1::KubernetesClusterState::Representation
-      
-          property :etag, as: 'etag'
-          property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1::TargetState, decorator: Google::Apis::GameservicesV1::TargetState::Representation
-      
-        end
-      end
-      
-      class PreviewDeleteGameServerClusterResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1::TargetState, decorator: Google::Apis::GameservicesV1::TargetState::Representation
-      
-        end
-      end
-      
-      class PreviewGameServerDeploymentRolloutResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1::TargetState, decorator: Google::Apis::GameservicesV1::TargetState::Representation
-      
-          collection :unavailable, as: 'unavailable'
-        end
-      end
-      
-      class PreviewRealmUpdateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1::TargetState, decorator: Google::Apis::GameservicesV1::TargetState::Representation
-      
-        end
-      end
-      
-      class PreviewUpdateGameServerClusterResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :target_state, as: 'targetState', class: Google::Apis::GameservicesV1::TargetState, decorator: Google::Apis::GameservicesV1::TargetState::Representation
-      
-        end
-      end
-      
-      class Realm
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :time_zone, as: 'timeZone'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class RealmSelector
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :realms, as: 'realms'
         end
       end
       
@@ -880,28 +345,6 @@ module Google
         end
       end
       
-      class ScalingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fleet_autoscaler_spec, as: 'fleetAutoscalerSpec'
-          property :name, as: 'name'
-          collection :schedules, as: 'schedules', class: Google::Apis::GameservicesV1::Schedule, decorator: Google::Apis::GameservicesV1::Schedule::Representation
-      
-          collection :selectors, as: 'selectors', class: Google::Apis::GameservicesV1::LabelSelector, decorator: Google::Apis::GameservicesV1::LabelSelector::Representation
-      
-        end
-      end
-      
-      class Schedule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cron_job_duration, as: 'cronJobDuration'
-          property :cron_spec, as: 'cronSpec'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -911,66 +354,12 @@ module Google
         end
       end
       
-      class SpecSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :game_server_config_name, as: 'gameServerConfigName'
-          property :name, as: 'name'
-        end
-      end
-      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class TargetDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :fleet_details, as: 'fleetDetails', class: Google::Apis::GameservicesV1::TargetFleetDetails, decorator: Google::Apis::GameservicesV1::TargetFleetDetails::Representation
-      
-          property :game_server_cluster_name, as: 'gameServerClusterName'
-          property :game_server_deployment_name, as: 'gameServerDeploymentName'
-        end
-      end
-      
-      class TargetFleet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :spec_source, as: 'specSource', class: Google::Apis::GameservicesV1::SpecSource, decorator: Google::Apis::GameservicesV1::SpecSource::Representation
-      
-        end
-      end
-      
-      class TargetFleetAutoscaler
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :spec_source, as: 'specSource', class: Google::Apis::GameservicesV1::SpecSource, decorator: Google::Apis::GameservicesV1::SpecSource::Representation
-      
-        end
-      end
-      
-      class TargetFleetDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscaler, as: 'autoscaler', class: Google::Apis::GameservicesV1::TargetFleetAutoscaler, decorator: Google::Apis::GameservicesV1::TargetFleetAutoscaler::Representation
-      
-          property :fleet, as: 'fleet', class: Google::Apis::GameservicesV1::TargetFleet, decorator: Google::Apis::GameservicesV1::TargetFleet::Representation
-      
-        end
-      end
-      
-      class TargetState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :details, as: 'details', class: Google::Apis::GameservicesV1::TargetDetails, decorator: Google::Apis::GameservicesV1::TargetDetails::Representation
-      
         end
       end
       
