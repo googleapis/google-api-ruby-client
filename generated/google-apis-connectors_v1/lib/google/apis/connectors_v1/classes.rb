@@ -372,6 +372,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::RoleGrant]
         attr_accessor :role_grant
       
+        # State of the config variable.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Regular expression in RE2 syntax used for validating the `value` of a `
         # ConfigVariable`.
         # Corresponds to the JSON property `validationRegex`
@@ -397,6 +402,7 @@ module Google
           @key = args[:key] if args.key?(:key)
           @required = args[:required] if args.key?(:required)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
+          @state = args[:state] if args.key?(:state)
           @validation_regex = args[:validation_regex] if args.key?(:validation_regex)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
