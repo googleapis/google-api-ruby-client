@@ -346,6 +346,60 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudLocationListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -861,6 +915,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_gateway, as: 'appGateway'
           property :ingress_port, as: 'ingressPort'
+          property :l7psc, as: 'l7psc'
           property :type, as: 'type'
           property :uri, as: 'uri'
         end
@@ -1121,6 +1176,104 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation, as: 'aggregation'
+          property :custom_grouping, as: 'customGrouping', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping::Representation
+      
+          property :end_time, as: 'endTime'
+          property :field_filter, as: 'fieldFilter'
+          property :group, as: 'group'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_config, as: 'appliedConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_filter, as: 'fieldFilter'
+          collection :group_fields, as: 'groupFields'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_config, as: 'appliedConfig', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata::Representation
+      
+          property :name, as: 'name'
+          collection :rows, as: 'rows', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregations, as: 'aggregations'
+          property :category, as: 'category'
+          property :display_name, as: 'displayName'
+          collection :fields, as: 'fields', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField::Representation
+      
+          collection :groups, as: 'groups'
+          property :sub_category, as: 'subCategory'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :filter_alias, as: 'filterAlias'
+          property :filterable, as: 'filterable'
+          property :groupable, as: 'groupable'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insights, as: 'insights', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_values, as: 'fieldValues', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :filter_alias, as: 'filterAlias'
+          property :id, as: 'id'
+          property :value, as: 'value'
         end
       end
       
