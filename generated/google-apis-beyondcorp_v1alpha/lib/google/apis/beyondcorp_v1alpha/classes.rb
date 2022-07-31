@@ -1303,6 +1303,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ingress_port
       
+        # Output only. L7 private service connection for this resource.
+        # Corresponds to the JSON property `l7psc`
+        # @return [String]
+        attr_accessor :l7psc
+      
         # Required. The type of hosting used by the gateway.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1321,6 +1326,7 @@ module Google
         def update!(**args)
           @app_gateway = args[:app_gateway] if args.key?(:app_gateway)
           @ingress_port = args[:ingress_port] if args.key?(:ingress_port)
+          @l7psc = args[:l7psc] if args.key?(:l7psc)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -2283,6 +2289,360 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # The configuration that was applied to generate the result.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Aggregation type applied.
+        # Corresponds to the JSON property `aggregation`
+        # @return [String]
+        attr_accessor :aggregation
+      
+        # Customised grouping option that allows setting the group_by fields and also
+        # the filters togather for a configured insight request.
+        # Corresponds to the JSON property `customGrouping`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping]
+        attr_accessor :custom_grouping
+      
+        # Output only. Ending time for the duration for which insight was pulled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Filters applied.
+        # Corresponds to the JSON property `fieldFilter`
+        # @return [String]
+        attr_accessor :field_filter
+      
+        # Output only. Group id of the grouping applied.
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Output only. Starting time for the duration for which insight was pulled.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation = args[:aggregation] if args.key?(:aggregation)
+          @custom_grouping = args[:custom_grouping] if args.key?(:custom_grouping)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @field_filter = args[:field_filter] if args.key?(:field_filter)
+          @group = args[:group] if args.key?(:group)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The response for the configured insight.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
+        include Google::Apis::Core::Hashable
+      
+        # The configuration that was applied to generate the result.
+        # Corresponds to the JSON property `appliedConfig`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig]
+        attr_accessor :applied_config
+      
+        # Output only. Next page token to be fetched. Set to empty or NULL if there are
+        # no more pages available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Result rows returned containing the required value(s) for
+        # configured insight.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_config = args[:applied_config] if args.key?(:applied_config)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # Customised grouping option that allows setting the group_by fields and also
+      # the filters togather for a configured insight request.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filterable parameters to be added to the grouping clause. Available
+        # fields could be fetched by calling insight list and get APIs in `BASIC` view. `
+        # =` is the only comparison operator supported. `AND` is the only logical
+        # operator supported. Usage: field_filter="fieldName1=fieldVal1 AND fieldName2=
+        # fieldVal2". NOTE: Only `AND` conditions are allowed. NOTE: Use the `
+        # filter_alias` from `Insight.Metadata.Field` message for the filtering the
+        # corresponding fields in this filter field. (These expressions are based on the
+        # filter language described at https://google.aip.dev/160).
+        # Corresponds to the JSON property `fieldFilter`
+        # @return [String]
+        attr_accessor :field_filter
+      
+        # Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from `
+        # Insight.Metadata.Field` message for declaring the fields to be grouped-by here.
+        # Corresponds to the JSON property `groupFields`
+        # @return [Array<String>]
+        attr_accessor :group_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_filter = args[:field_filter] if args.key?(:field_filter)
+          @group_fields = args[:group_fields] if args.key?(:group_fields)
+        end
+      end
+      
+      # The Insight object with configuration that was returned and actual list of
+      # records.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight
+        include Google::Apis::Core::Hashable
+      
+        # The configuration that was applied to generate the result.
+        # Corresponds to the JSON property `appliedConfig`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig]
+        attr_accessor :applied_config
+      
+        # Insight filters, groupings and aggregations that can be applied for the
+        # insight. Examples: aggregations, groups, field filters.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata]
+        attr_accessor :metadata
+      
+        # Output only. The insight resource name. e.g. `organizations/`organization_id`/
+        # locations/`location_id`/insights/`insight_id`` OR `projects/`project_id`/
+        # locations/`location_id`/insights/`insight_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Result rows returned containing the required value(s).
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_config = args[:applied_config] if args.key?(:applied_config)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # Insight filters, groupings and aggregations that can be applied for the
+      # insight. Examples: aggregations, groups, field filters.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of aggregation types available for insight.
+        # Corresponds to the JSON property `aggregations`
+        # @return [Array<String>]
+        attr_accessor :aggregations
+      
+        # Output only. Category of the insight.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Common name of the insight.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. List of fields available for insight.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField>]
+        attr_accessor :fields
+      
+        # Output only. List of groupings available for insight.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<String>]
+        attr_accessor :groups
+      
+        # Output only. Sub-Category of the insight.
+        # Corresponds to the JSON property `subCategory`
+        # @return [String]
+        attr_accessor :sub_category
+      
+        # Output only. Type of the insight. It is metadata describing whether the
+        # insight is a metric (e.g. count) or a report (e.g. list, status).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregations = args[:aggregations] if args.key?(:aggregations)
+          @category = args[:category] if args.key?(:category)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fields = args[:fields] if args.key?(:fields)
+          @groups = args[:groups] if args.key?(:groups)
+          @sub_category = args[:sub_category] if args.key?(:sub_category)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Field metadata. Commonly understandable name and description for the field.
+      # Multiple such fields constitute the Insight.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Name of the field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Field name to be used in filter while requesting configured
+        # insight filtered on this field.
+        # Corresponds to the JSON property `filterAlias`
+        # @return [String]
+        attr_accessor :filter_alias
+      
+        # Output only. Indicates whether the field can be used for filtering.
+        # Corresponds to the JSON property `filterable`
+        # @return [Boolean]
+        attr_accessor :filterable
+        alias_method :filterable?, :filterable
+      
+        # Output only. Indicates whether the field can be used for grouping in custom
+        # grouping request.
+        # Corresponds to the JSON property `groupable`
+        # @return [Boolean]
+        attr_accessor :groupable
+        alias_method :groupable?, :groupable
+      
+        # Output only. Field id for which this is the metadata.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter_alias = args[:filter_alias] if args.key?(:filter_alias)
+          @filterable = args[:filterable] if args.key?(:filterable)
+          @groupable = args[:groupable] if args.key?(:groupable)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # The response for the list of insights.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all insights.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>]
+        attr_accessor :insights
+      
+        # Output only. Next page token to be fetched. Set to empty or NULL if there are
+        # no more pages available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights = args[:insights] if args.key?(:insights)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Row of the fetch response consisting of a set of entries.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Columns/entries/key-vals in the result.
+        # Corresponds to the JSON property `fieldValues`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal>]
+        attr_accessor :field_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_values = args[:field_values] if args.key?(:field_values)
+        end
+      end
+      
+      # Column or key value pair from the request as part of key to use in query or a
+      # single pair of the fetch response.
+      class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Field name to be used in filter while requesting configured
+        # insight filtered on this field.
+        # Corresponds to the JSON property `filterAlias`
+        # @return [String]
+        attr_accessor :filter_alias
+      
+        # Output only. Field id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Value of the field in string format. Acceptable values are
+        # strings or numbers.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @filter_alias = args[:filter_alias] if args.key?(:filter_alias)
+          @id = args[:id] if args.key?(:id)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

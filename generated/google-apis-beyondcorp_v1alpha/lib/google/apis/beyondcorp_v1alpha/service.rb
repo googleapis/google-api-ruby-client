@@ -52,6 +52,187 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets the value for a selected particular insight based on the provided filters.
+        # Use the organization level path for fetching at org level and project level
+        # path for fetching the insight value specific to a particular project.
+        # @param [String] insight
+        #   Required. The resource name of the insight using the form: `organizations/`
+        #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
+        #   project_id`/locations/`location_id`/insights/`insight_id``.
+        # @param [String] aggregation
+        #   Optional. Aggregation type. Available aggregation could be fetched by calling
+        #   insight list and get APIs in `BASIC` view.
+        # @param [String] custom_grouping_field_filter
+        #   Optional. Filterable parameters to be added to the grouping clause. Available
+        #   fields could be fetched by calling insight list and get APIs in `BASIC` view. `
+        #   =` is the only comparison operator supported. `AND` is the only logical
+        #   operator supported. Usage: field_filter="fieldName1=fieldVal1 AND fieldName2=
+        #   fieldVal2". NOTE: Only `AND` conditions are allowed. NOTE: Use the `
+        #   filter_alias` from `Insight.Metadata.Field` message for the filtering the
+        #   corresponding fields in this filter field. (These expressions are based on the
+        #   filter language described at https://google.aip.dev/160).
+        # @param [Array<String>, String] custom_grouping_group_fields
+        #   Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from `
+        #   Insight.Metadata.Field` message for declaring the fields to be grouped-by here.
+        # @param [String] end_time
+        #   Required. Ending time for the duration for which insight is to be pulled.
+        # @param [String] field_filter
+        #   Optional. Other filterable/configurable parameters as applicable to the
+        #   selected insight. Available fields could be fetched by calling insight list
+        #   and get APIs in `BASIC` view. `=` is the only comparison operator supported. `
+        #   AND` is the only logical operator supported. Usage: field_filter="fieldName1=
+        #   fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are allowed.
+        #   NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the
+        #   filtering the corresponding fields in this filter field. (These expressions
+        #   are based on the filter language described at https://google.aip.dev/160).
+        # @param [String] group
+        #   Optional. Group id of the available groupings for the insight. Available
+        #   groupings could be fetched by calling insight list and get APIs in `BASIC`
+        #   view.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Used to fetch the page represented by the token. Fetches the first
+        #   page when not set.
+        # @param [String] start_time
+        #   Required. Starting time for the duration for which insight is to be pulled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def configured_organization_location_insight_insight(insight, aggregation: nil, custom_grouping_field_filter: nil, custom_grouping_group_fields: nil, end_time: nil, field_filter: nil, group: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+insight}:configuredInsight', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
+          command.params['insight'] = insight unless insight.nil?
+          command.query['aggregation'] = aggregation unless aggregation.nil?
+          command.query['customGrouping.fieldFilter'] = custom_grouping_field_filter unless custom_grouping_field_filter.nil?
+          command.query['customGrouping.groupFields'] = custom_grouping_group_fields unless custom_grouping_group_fields.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['fieldFilter'] = field_filter unless field_filter.nil?
+          command.query['group'] = group unless group.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the value for a selected particular insight with default configuration.
+        # The default aggregation level is 'DAILY' and no grouping will be applied or
+        # default grouping if applicable. The data will be returned for recent 7 days.
+        # Use the organization level path for fetching at org level and project level
+        # path for fetching the insight value specific to a particular project. Setting
+        # the `view` to `BASIC` will only return the metadata for the insight.
+        # @param [String] name
+        #   Required. The resource name of the insight using the form: `organizations/`
+        #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
+        #   project_id`/locations/`location_id`/insights/`insight_id``
+        # @param [String] view
+        #   Required. Metadata only or full data view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_insight(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists for all the available insights that could be fetched from the system.
+        # Allows to filter using category. Setting the `view` to `BASIC` will let you
+        # iterate over the list of insight metadatas.
+        # @param [String] parent
+        #   Required. The resource name of InsightMetadata using the form: `organizations/`
+        #   organization_id`/locations/`location`` `projects/`project_id`/locations/`
+        #   location_id``
+        # @param [String] filter
+        #   Optional. Filter expression to restrict the insights returned. Supported
+        #   filter fields: * `type` * `category` * `subCategory` Examples: * "category =
+        #   application AND type = count" * "category = application AND subCategory = iap"
+        #   * "type = status" Allowed values: * type: [count, latency, status, list] *
+        #   category: [application, device, request, security] * subCategory: [iap,
+        #   webprotect] NOTE: Only equality based comparison is allowed. Only `AND`
+        #   conjunction is allowed. NOTE: The 'AND' in the filter field needs to be in
+        #   capital letters only. NOTE: Just filtering on `subCategory` is not allowed. It
+        #   should be passed in with the parent `category` too. (These expressions are
+        #   based on the filter language described at https://google.aip.dev/160).
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results. This is currently ignored.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. NOTE: Default page
+        #   size is 50.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] view
+        #   Required. List only metadata or full data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_insights(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/insights', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -851,8 +1032,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get instance config for a given AppConnector. An internal method called by a
-        # AppConnector to get its container config.
+        # Gets instance configuration for a given AppConnector. An internal method
+        # called by a AppConnector to get its container config.
         # @param [String] app_connector
         #   Required. BeyondCorp AppConnector name using the form: `projects/`project_id`/
         #   locations/`location_id`/appConnectors/`app_connector``
@@ -2758,8 +2939,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get instance config for a given connector. An internal method called by a
-        # connector to get its container config.
+        # Gets instance configuration for a given connector. An internal method called
+        # by a connector to get its container config.
         # @param [String] connector
         #   Required. BeyondCorp Connector name using the form: `projects/`project_id`/
         #   locations/`location_id`/connectors/`connector``
@@ -2861,6 +3042,187 @@ module Google
           command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the value for a selected particular insight based on the provided filters.
+        # Use the organization level path for fetching at org level and project level
+        # path for fetching the insight value specific to a particular project.
+        # @param [String] insight
+        #   Required. The resource name of the insight using the form: `organizations/`
+        #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
+        #   project_id`/locations/`location_id`/insights/`insight_id``.
+        # @param [String] aggregation
+        #   Optional. Aggregation type. Available aggregation could be fetched by calling
+        #   insight list and get APIs in `BASIC` view.
+        # @param [String] custom_grouping_field_filter
+        #   Optional. Filterable parameters to be added to the grouping clause. Available
+        #   fields could be fetched by calling insight list and get APIs in `BASIC` view. `
+        #   =` is the only comparison operator supported. `AND` is the only logical
+        #   operator supported. Usage: field_filter="fieldName1=fieldVal1 AND fieldName2=
+        #   fieldVal2". NOTE: Only `AND` conditions are allowed. NOTE: Use the `
+        #   filter_alias` from `Insight.Metadata.Field` message for the filtering the
+        #   corresponding fields in this filter field. (These expressions are based on the
+        #   filter language described at https://google.aip.dev/160).
+        # @param [Array<String>, String] custom_grouping_group_fields
+        #   Required. Fields to be used for grouping. NOTE: Use the `filter_alias` from `
+        #   Insight.Metadata.Field` message for declaring the fields to be grouped-by here.
+        # @param [String] end_time
+        #   Required. Ending time for the duration for which insight is to be pulled.
+        # @param [String] field_filter
+        #   Optional. Other filterable/configurable parameters as applicable to the
+        #   selected insight. Available fields could be fetched by calling insight list
+        #   and get APIs in `BASIC` view. `=` is the only comparison operator supported. `
+        #   AND` is the only logical operator supported. Usage: field_filter="fieldName1=
+        #   fieldVal1 AND fieldName2=fieldVal2". NOTE: Only `AND` conditions are allowed.
+        #   NOTE: Use the `filter_alias` from `Insight.Metadata.Field` message for the
+        #   filtering the corresponding fields in this filter field. (These expressions
+        #   are based on the filter language described at https://google.aip.dev/160).
+        # @param [String] group
+        #   Optional. Group id of the available groupings for the insight. Available
+        #   groupings could be fetched by calling insight list and get APIs in `BASIC`
+        #   view.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Used to fetch the page represented by the token. Fetches the first
+        #   page when not set.
+        # @param [String] start_time
+        #   Required. Starting time for the duration for which insight is to be pulled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def configured_project_location_insight_insight(insight, aggregation: nil, custom_grouping_field_filter: nil, custom_grouping_group_fields: nil, end_time: nil, field_filter: nil, group: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+insight}:configuredInsight', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
+          command.params['insight'] = insight unless insight.nil?
+          command.query['aggregation'] = aggregation unless aggregation.nil?
+          command.query['customGrouping.fieldFilter'] = custom_grouping_field_filter unless custom_grouping_field_filter.nil?
+          command.query['customGrouping.groupFields'] = custom_grouping_group_fields unless custom_grouping_group_fields.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['fieldFilter'] = field_filter unless field_filter.nil?
+          command.query['group'] = group unless group.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the value for a selected particular insight with default configuration.
+        # The default aggregation level is 'DAILY' and no grouping will be applied or
+        # default grouping if applicable. The data will be returned for recent 7 days.
+        # Use the organization level path for fetching at org level and project level
+        # path for fetching the insight value specific to a particular project. Setting
+        # the `view` to `BASIC` will only return the metadata for the insight.
+        # @param [String] name
+        #   Required. The resource name of the insight using the form: `organizations/`
+        #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
+        #   project_id`/locations/`location_id`/insights/`insight_id``
+        # @param [String] view
+        #   Required. Metadata only or full data view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_insight(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists for all the available insights that could be fetched from the system.
+        # Allows to filter using category. Setting the `view` to `BASIC` will let you
+        # iterate over the list of insight metadatas.
+        # @param [String] parent
+        #   Required. The resource name of InsightMetadata using the form: `organizations/`
+        #   organization_id`/locations/`location`` `projects/`project_id`/locations/`
+        #   location_id``
+        # @param [String] filter
+        #   Optional. Filter expression to restrict the insights returned. Supported
+        #   filter fields: * `type` * `category` * `subCategory` Examples: * "category =
+        #   application AND type = count" * "category = application AND subCategory = iap"
+        #   * "type = status" Allowed values: * type: [count, latency, status, list] *
+        #   category: [application, device, request, security] * subCategory: [iap,
+        #   webprotect] NOTE: Only equality based comparison is allowed. Only `AND`
+        #   conjunction is allowed. NOTE: The 'AND' in the filter field needs to be in
+        #   capital letters only. NOTE: Just filtering on `subCategory` is not allowed. It
+        #   should be passed in with the parent `category` too. (These expressions are
+        #   based on the filter language described at https://google.aip.dev/160).
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results. This is currently ignored.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default. NOTE: Default page
+        #   size is 50.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] view
+        #   Required. List only metadata or full data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_insights(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/insights', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
