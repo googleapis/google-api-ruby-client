@@ -3038,8 +3038,8 @@ module Google
         # Cannot be specified with subnetwork. If neither `network` nor `subnet` is
         # specified, the "default" network of the project is used, if it exists. A full
         # URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/
-        # projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/
-        # global/default` Runtimes are managed resources inside Google Infrastructure.
+        # projects/[project_id]/global/networks/default` * `projects/[project_id]/global/
+        # networks/default` Runtimes are managed resources inside Google Infrastructure.
         # Runtimes support the following network configurations: * Google Managed
         # Network (Network & subnet are empty) * Consumer Project VPC (network & subnet
         # are required). Requires configuring Private Service Access. * Shared VPC (
