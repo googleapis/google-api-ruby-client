@@ -312,6 +312,7 @@ module Google
           property :allowed_clients_cidr, as: 'allowedClientsCidr'
           property :mount_permissions, as: 'mountPermissions'
           property :network, as: 'network'
+          property :nfs_path, as: 'nfsPath'
           property :no_root_squash, as: 'noRootSquash'
           property :share_ip, as: 'shareIp'
         end
@@ -362,6 +363,7 @@ module Google
           hash :labels, as: 'labels'
           collection :logical_interfaces, as: 'logicalInterfaces', class: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface, decorator: Google::Apis::BaremetalsolutionV2::GoogleCloudBaremetalsolutionV2LogicalInterface::Representation
       
+          property :login_info, as: 'loginInfo'
           collection :luns, as: 'luns', class: Google::Apis::BaremetalsolutionV2::Lun, decorator: Google::Apis::BaremetalsolutionV2::Lun::Representation
       
           property :machine_type, as: 'machineType'
@@ -373,6 +375,8 @@ module Google
           property :pod, as: 'pod'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
+      
         end
       end
       
@@ -401,6 +405,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_machine_count, as: 'availableMachineCount'
+          property :gcp_service, as: 'gcpService'
           property :instance_type, as: 'instanceType'
           property :location, as: 'location'
           property :name, as: 'name'
@@ -816,6 +821,7 @@ module Google
           property :name, as: 'name'
           property :originally_requested_size_gib, :numeric_string => true, as: 'originallyRequestedSizeGib'
           property :pod, as: 'pod'
+          property :protocol, as: 'protocol'
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :snapshot_auto_delete_behavior, as: 'snapshotAutoDeleteBehavior'
