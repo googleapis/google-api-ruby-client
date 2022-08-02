@@ -41,10 +41,43 @@ module Google
         # @return [String]
         attr_accessor :method_name
       
-        # Associated email, such as "foo@google.com".
+        # Associated email, such as "foo@google.com". The email address of the
+        # authenticated user (or service account on behalf of third party principal)
+        # making the request. For third party identity callers, the `principal_subject`
+        # field is populated instead of this field. For privacy reasons, the principal
+        # email address is sometimes redacted. For more information, see [Caller
+        # identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
         # Corresponds to the JSON property `principalEmail`
         # @return [String]
         attr_accessor :principal_email
+      
+        # A string representing the principal_subject associated with the identity. As
+        # compared to `principal_email`, supports principals that aren't associated with
+        # email addresses, such as third party principals. For most identities, the
+        # format will be `principal://iam.googleapis.com/`identity pool name`/subject/`
+        # subject)` except for some GKE identities (GKE_WORKLOAD, FREEFORM,
+        # GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:`
+        # identity pool name`[`subject`]`
+        # Corresponds to the JSON property `principalSubject`
+        # @return [String]
+        attr_accessor :principal_subject
+      
+        # Identity delegation history of an authenticated service account that makes the
+        # request. It contains information on the real authorities that try to access
+        # GCP resources by delegating on a service account. When multiple authorities
+        # are present, they are guaranteed to be sorted based on the original ordering
+        # of the identity delegation events.
+        # Corresponds to the JSON property `serviceAccountDelegationInfo`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::ServiceAccountDelegationInfo>]
+        attr_accessor :service_account_delegation_info
+      
+        # The name of the service account key used to create or exchange credentials for
+        # authenticating the service account making the request. This is a scheme-less
+        # URI full resource name. For example: "//iam.googleapis.com/projects/`
+        # PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key`"
+        # Corresponds to the JSON property `serviceAccountKeyName`
+        # @return [String]
+        attr_accessor :service_account_key_name
       
         # This is the API service that the service account made a call to, e.g. "iam.
         # googleapis.com"
@@ -68,6 +101,9 @@ module Google
           @caller_ip_geo = args[:caller_ip_geo] if args.key?(:caller_ip_geo)
           @method_name = args[:method_name] if args.key?(:method_name)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+          @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
+          @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @service_name = args[:service_name] if args.key?(:service_name)
           @user_agent_family = args[:user_agent_family] if args.key?(:user_agent_family)
         end
@@ -3221,6 +3257,37 @@ module Google
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @marks = args[:marks] if args.key?(:marks)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Identity delegation history of an authenticated service account.
+      class ServiceAccountDelegationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The email address of a Google account. .
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # A string representing the principal_subject associated with the identity. As
+        # compared to `principal_email`, supports principals that aren't associated with
+        # email addresses, such as third party principals. For most identities, the
+        # format will be `principal://iam.googleapis.com/`identity pool name`/subject/`
+        # subject)` except for some GKE identities (GKE_WORKLOAD, FREEFORM,
+        # GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:`
+        # identity pool name`[`subject`]`
+        # Corresponds to the JSON property `principalSubject`
+        # @return [String]
+        attr_accessor :principal_subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
         end
       end
       
