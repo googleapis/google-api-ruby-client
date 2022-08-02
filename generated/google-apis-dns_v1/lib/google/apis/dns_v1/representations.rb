@@ -292,6 +292,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RrSetRoutingPolicyHealthCheckTargets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RrSetRoutingPolicyLoadBalancerTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RrSetRoutingPolicyPrimaryBackupPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RrSetRoutingPolicyWrrPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -859,6 +877,8 @@ module Google
           property :geo, as: 'geo', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy::Representation
       
           property :kind, as: 'kind'
+          property :primary_backup, as: 'primaryBackup', class: Google::Apis::DnsV1::RrSetRoutingPolicyPrimaryBackupPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyPrimaryBackupPolicy::Representation
+      
           property :wrr, as: 'wrr', class: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyWrrPolicy::Representation
       
         end
@@ -867,6 +887,7 @@ module Google
       class RrSetRoutingPolicyGeoPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_fencing, as: 'enableFencing'
           collection :items, as: 'items', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicyGeoPolicyItem::Representation
       
           property :kind, as: 'kind'
@@ -876,10 +897,46 @@ module Google
       class RrSetRoutingPolicyGeoPolicyGeoPolicyItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_checked_targets, as: 'healthCheckedTargets', class: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets::Representation
+      
           property :kind, as: 'kind'
           property :location, as: 'location'
           collection :rrdatas, as: 'rrdatas'
           collection :signature_rrdatas, as: 'signatureRrdatas'
+        end
+      end
+      
+      class RrSetRoutingPolicyHealthCheckTargets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :internal_load_balancers, as: 'internalLoadBalancers', class: Google::Apis::DnsV1::RrSetRoutingPolicyLoadBalancerTarget, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyLoadBalancerTarget::Representation
+      
+        end
+      end
+      
+      class RrSetRoutingPolicyLoadBalancerTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :ip_protocol, as: 'ipProtocol'
+          property :kind, as: 'kind'
+          property :load_balancer_type, as: 'loadBalancerType'
+          property :network_url, as: 'networkUrl'
+          property :port, as: 'port'
+          property :project, as: 'project'
+          property :region, as: 'region'
+        end
+      end
+      
+      class RrSetRoutingPolicyPrimaryBackupPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_geo_targets, as: 'backupGeoTargets', class: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyGeoPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :primary_targets, as: 'primaryTargets', class: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets::Representation
+      
+          property :trickle_traffic, as: 'trickleTraffic'
         end
       end
       
@@ -895,6 +952,8 @@ module Google
       class RrSetRoutingPolicyWrrPolicyWrrPolicyItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_checked_targets, as: 'healthCheckedTargets', class: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets, decorator: Google::Apis::DnsV1::RrSetRoutingPolicyHealthCheckTargets::Representation
+      
           property :kind, as: 'kind'
           collection :rrdatas, as: 'rrdatas'
           collection :signature_rrdatas, as: 'signatureRrdatas'
