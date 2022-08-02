@@ -22,7 +22,7 @@ module Google
   module Apis
     module RecaptchaenterpriseV1
       
-      # Account Defender risk assessment.
+      # Account defender risk assessment.
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         include Google::Apis::Core::Hashable
       
@@ -79,11 +79,11 @@ module Google
         # @return [String]
         attr_accessor :annotation
       
-        # Optional. Optional unique stable hashed user identifier to apply to the
-        # assessment. This is an alternative to setting the hashed_account_id in
-        # CreateAssessment, for example when the account identifier is not yet known in
-        # the initial request. It is recommended that the identifier is hashed using
-        # hmac-sha256 with stable secret.
+        # Optional. Unique stable hashed user identifier to apply to the assessment.
+        # This is an alternative to setting the hashed_account_id in CreateAssessment,
+        # for example when the account identifier is not yet known in the initial
+        # request. It is recommended that the identifier is hashed using hmac-sha256
+        # with stable secret.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -124,7 +124,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1Assessment
         include Google::Apis::Core::Hashable
       
-        # Account Defender risk assessment.
+        # Account defender risk assessment.
         # Corresponds to the JSON property `accountDefenderAssessment`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment]
         attr_accessor :account_defender_assessment
@@ -221,8 +221,8 @@ module Google
         # @return [String]
         attr_accessor :expected_action
       
-        # Optional. Optional unique stable hashed user identifier for the request. The
-        # identifier should ideally be hashed using sha256 with stable secret.
+        # Optional. Unique stable hashed user identifier for the request. The identifier
+        # must be hashed using hmac-sha256 with stable secret.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -499,7 +499,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. List of prefixes of the encrypted potential password leaks that
-        # matched the given parameters. They should be compared with the client-side
+        # matched the given parameters. They must be compared with the client-side
         # decryption prefix of `reencrypted_user_credentials_hash`
         # Corresponds to the JSON property `encryptedLeakMatchPrefixes`
         # @return [Array<String>]
@@ -522,8 +522,8 @@ module Google
         attr_accessor :lookup_hash_prefix
       
         # Output only. Corresponds to the re-encryption of the `
-        # encrypted_user_credentials_hash` field. Used to match potential password leaks
-        # within `encrypted_leak_match_prefixes`.
+        # encrypted_user_credentials_hash` field. It is used to match potential password
+        # leaks within `encrypted_leak_match_prefixes`.
         # Corresponds to the JSON property `reencryptedUserCredentialsHash`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -567,8 +567,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The unique stable hashed user identifier of the member. The identifier
-        # corresponds to a `hashed_account_id` provided in a previous CreateAssessment
-        # or AnnotateAssessment call.
+        # corresponds to a `hashed_account_id` provided in a previous `CreateAssessment`
+        # or `AnnotateAssessment` call.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -591,8 +591,8 @@ module Google
         end
       end
       
-      # Secret key used in legacy reCAPTCHA only. Should be used when integrating with
-      # a 3rd party which is still using legacy reCAPTCHA.
+      # Secret key is used only in legacy reCAPTCHA. It must be used in a 3rd party
+      # integration with legacy reCAPTCHA.
       class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse
         include Google::Apis::Core::Hashable
       
@@ -693,15 +693,15 @@ module Google
       
         # Optional. The unique stable hashed user identifier we should search
         # connections to. The identifier should correspond to a `hashed_account_id`
-        # provided in a previous CreateAssessment or AnnotateAssessment call.
+        # provided in a previous `CreateAssessment` or `AnnotateAssessment` call.
         # Corresponds to the JSON property `hashedAccountId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :hashed_account_id
       
-        # Optional. The maximum number of groups to return. The service may return fewer
-        # than this value. If unspecified, at most 50 groups will be returned. The
-        # maximum value is 1000; values above 1000 will be coerced to 1000.
+        # Optional. The maximum number of groups to return. The service might return
+        # fewer than this value. If unspecified, at most 50 groups are returned. The
+        # maximum value is 1000; values above 1000 are coerced to 1000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
