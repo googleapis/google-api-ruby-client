@@ -360,12 +360,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the secret key related to the specified public key. You should use the
-        # legacy secret key only if you are integrating with a 3rd party using the
-        # legacy reCAPTCHA instead of reCAPTCHA Enterprise.
+        # Returns the secret key related to the specified public key. You must use the
+        # legacy secret key only in a 3rd party integration with legacy reCAPTCHA.
         # @param [String] key
-        #   Required. The public key name linked to the requested secret key , in the
-        #   format "projects/`project`/keys/`key`".
+        #   Required. The public key name linked to the requested secret key in the format
+        #   "projects/`project`/keys/`key`".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -396,7 +395,7 @@ module Google
         # Search group memberships related to a given account.
         # @param [String] project
         #   Required. The name of the project to search related account group memberships
-        #   from, in the format "projects/`project`".
+        #   from. Specify the project name in the following format: "projects/`project`".
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest] google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -432,9 +431,9 @@ module Google
         #   Required. The name of the project to list related account groups from, in the
         #   format "projects/`project`".
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of groups to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 groups will be returned. The
-        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   Optional. The maximum number of groups to return. The service might return
+        #   fewer than this value. If unspecified, at most 50 groups are returned. The
+        #   maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListRelatedAccountGroups`
         #   call. Provide this to retrieve the subsequent page. When paginating, all other
@@ -469,14 +468,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the memberships in a group of related accounts.
+        # Get memberships in a group of related accounts.
         # @param [String] parent
         #   Required. The resource name for the related account group in the format `
         #   projects/`project`/relatedaccountgroups/`relatedaccountgroup``.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of accounts to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 accounts will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   Optional. The maximum number of accounts to return. The service might return
+        #   fewer than this value. If unspecified, at most 50 accounts are returned. The
+        #   maximum value is 1000; values above 1000 are coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `
         #   ListRelatedAccountGroupMemberships` call. When paginating, all other
