@@ -1195,7 +1195,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup for a single Audience.
+        # Lookup for a single Audience. Audiences created before 2020 may not be
+        # supported.
         # @param [String] name
         #   Required. The name of the Audience to get. Example format: properties/1234/
         #   audiences/5678
@@ -1226,7 +1227,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Audiences on a property.
+        # Lists Audiences on a property. Audiences created before 2020 may not be
+        # supported.
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Fixnum] page_size
