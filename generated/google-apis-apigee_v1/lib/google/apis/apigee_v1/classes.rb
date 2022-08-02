@@ -4380,7 +4380,7 @@ module Google
         attr_accessor :aliases
       
         # Required. Resource ID for this keystore. Values must match the regular
-        # expression `[\w[:space:]-.]`1,255``.
+        # expression `[\w[:space:].-]`1,255``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
