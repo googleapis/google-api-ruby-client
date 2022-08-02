@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceAccountDelegationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetFindingStateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -522,6 +528,10 @@ module Google
       
           property :method_name, as: 'methodName'
           property :principal_email, as: 'principalEmail'
+          property :principal_subject, as: 'principalSubject'
+          collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::SecuritycenterV1beta1::ServiceAccountDelegationInfo, decorator: Google::Apis::SecuritycenterV1beta1::ServiceAccountDelegationInfo::Representation
+      
+          property :service_account_key_name, as: 'serviceAccountKeyName'
           property :service_name, as: 'serviceName'
           property :user_agent_family, as: 'userAgentFamily'
         end
@@ -1300,6 +1310,14 @@ module Google
           property :canonical_name, as: 'canonicalName'
           hash :marks, as: 'marks'
           property :name, as: 'name'
+        end
+      end
+      
+      class ServiceAccountDelegationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal_email, as: 'principalEmail'
+          property :principal_subject, as: 'principalSubject'
         end
       end
       
