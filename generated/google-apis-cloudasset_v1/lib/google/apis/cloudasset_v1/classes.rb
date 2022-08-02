@@ -4125,7 +4125,7 @@ module Google
       end
       
       # A result of Resource Search, containing information of a cloud resource. Next
-      # ID: 28
+      # ID: 29
       class ResourceSearchResult
         include Google::Apis::Core::Hashable
       
