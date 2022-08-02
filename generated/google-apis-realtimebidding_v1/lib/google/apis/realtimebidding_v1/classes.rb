@@ -592,7 +592,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :restricted_categories
       
-        # Output only. The version of this creative. Version for a new creative is 1 and
+        # Output only. The version of the creative. Version for a new creative is 1 and
         # it increments during subsequent creative updates.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
