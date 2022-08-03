@@ -126,6 +126,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets an AttributesConfig.
+        # @param [String] name
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_attributes_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a CompletionConfig.
+        # @param [String] name
+        #   Required. Full CompletionConfig resource name. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/completionConfig
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_completion_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get which branch is currently default branch set by CatalogService.
         # SetDefaultBranch method under a specified parent catalog.
         # @param [String] catalog
@@ -285,6 +347,161 @@ module Google
           command.response_representation = Google::Apis::RetailV2::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::RetailV2::GoogleProtobufEmpty
           command.params['catalog'] = catalog unless catalog.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the AttributesConfig. The catalog attributes in the request will be
+        # updated in the catalog, or inserted if they do not exist. Existing catalog
+        # attributes not included in the request will remain unchanged. Attributes that
+        # are assigned to products, but do not exist at the catalog level, are always
+        # included in the response. The product attribute is assigned default values for
+        # missing catalog attribute fields, e.g., searchable and dynamic facetable
+        # options.
+        # @param [String] name
+        #   Required. Immutable. The fully qualified resource name of the attribute config.
+        #   Format: `projects/*/locations/*/catalogs/*/attributesConfig`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] google_cloud_retail_v2_attributes_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided AttributesConfig to update. The
+        #   following is the only supported field: * AttributesConfig.catalog_attributes
+        #   If not set, all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_catalog_attributes_config(name, google_cloud_retail_v2_attributes_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig::Representation
+          command.request_object = google_cloud_retail_v2_attributes_config_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the CompletionConfigs.
+        # @param [String] name
+        #   Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/
+        #   completionConfig`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig] google_cloud_retail_v2_completion_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided CompletionConfig to update. The
+        #   following are the only supported fields: * CompletionConfig.matching_order *
+        #   CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length *
+        #   CompletionConfig.auto_learning If not set, all supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_catalog_completion_config(name, google_cloud_retail_v2_completion_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig::Representation
+          command.request_object = google_cloud_retail_v2_completion_config_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2CompletionConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds the specified CatalogAttribute to the AttributesConfig. If the
+        # CatalogAttribute to add already exists, an ALREADY_EXISTS error is returned.
+        # @param [String] attributes_config
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2AddCatalogAttributeRequest] google_cloud_retail_v2_add_catalog_attribute_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_catalog_attributes_config_catalog_attribute(attributes_config, google_cloud_retail_v2_add_catalog_attribute_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+attributesConfig}:addCatalogAttribute', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AddCatalogAttributeRequest::Representation
+          command.request_object = google_cloud_retail_v2_add_catalog_attribute_request_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig
+          command.params['attributesConfig'] = attributes_config unless attributes_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes the specified CatalogAttribute from the AttributesConfig. If the
+        # CatalogAttribute to remove does not exist, a NOT_FOUND error is returned.
+        # @param [String] attributes_config
+        #   Required. Full AttributesConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/attributesConfig`
+        # @param [Google::Apis::RetailV2::GoogleCloudRetailV2RemoveCatalogAttributeRequest] google_cloud_retail_v2_remove_catalog_attribute_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_catalog_attributes_config_catalog_attribute(attributes_config, google_cloud_retail_v2_remove_catalog_attribute_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+attributesConfig}:removeCatalogAttribute', options)
+          command.request_representation = Google::Apis::RetailV2::GoogleCloudRetailV2RemoveCatalogAttributeRequest::Representation
+          command.request_object = google_cloud_retail_v2_remove_catalog_attribute_request_object
+          command.response_representation = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig::Representation
+          command.response_class = Google::Apis::RetailV2::GoogleCloudRetailV2AttributesConfig
+          command.params['attributesConfig'] = attributes_config unless attributes_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

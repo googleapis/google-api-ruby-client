@@ -279,6 +279,26 @@ module Google
         end
       end
       
+      # Request for CatalogService.AddCatalogAttribute method.
+      class GoogleCloudRetailV2AddCatalogAttributeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Catalog level attribute config for an attribute. For example, if customers
+        # want to enable/disable facet for a specific attribute.
+        # Corresponds to the JSON property `catalogAttribute`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttribute]
+        attr_accessor :catalog_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_attribute = args[:catalog_attribute] if args.key?(:catalog_attribute)
+        end
+      end
+      
       # Metadata related to the progress of the AddFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
       # ProductService.AddFulfillmentPlaces method.
@@ -446,6 +466,42 @@ module Google
         end
       end
       
+      # Catalog level attribute config.
+      class GoogleCloudRetailV2AttributesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The AttributeConfigLevel used for this catalog.
+        # Corresponds to the JSON property `attributeConfigLevel`
+        # @return [String]
+        attr_accessor :attribute_config_level
+      
+        # Enable attribute(s) config at catalog level. For example, indexable,
+        # dynamic_facetable, or searchable for each attribute. The key is catalog
+        # attribute's name. For example: `color`, `brands`, `attributes.custom_attribute`
+        # , such as `attributes.xyz`. The maximum number of catalog attributes allowed
+        # in a request is 1000.
+        # Corresponds to the JSON property `catalogAttributes`
+        # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CatalogAttribute>]
+        attr_accessor :catalog_attributes
+      
+        # Required. Immutable. The fully qualified resource name of the attribute config.
+        # Format: `projects/*/locations/*/catalogs/*/attributesConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_config_level = args[:attribute_config_level] if args.key?(:attribute_config_level)
+          @catalog_attributes = args[:catalog_attributes] if args.key?(:catalog_attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # An intended audience of the Product for whom it's sold.
       class GoogleCloudRetailV2Audience
         include Google::Apis::Core::Hashable
@@ -495,12 +551,11 @@ module Google
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: The schema is available here: https://support.google.com/
-        # analytics/answer/3437719. * `user_event_ga4`: This feature is in private
-        # preview. Please contact the support team for importing Google Analytics 4
-        # events. The schema is available here: https://support.google.com/analytics/
-        # answer/7029846. Supported values for auto-completion imports: * `suggestions` (
-        # default): One JSON completion suggestion per line. * `denylist`: One JSON deny
-        # suggestion per line. * `allowlist`: One JSON allow suggestion per line.
+        # analytics/answer/3437719. * `user_event_ga4`: The schema is available here:
+        # https://support.google.com/analytics/answer/7029846. Supported values for auto-
+        # completion imports: * `suggestions` (default): One JSON completion suggestion
+        # per line. * `denylist`: One JSON deny suggestion per line. * `allowlist`: One
+        # JSON allow suggestion per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -589,6 +644,79 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @product_level_config = args[:product_level_config] if args.key?(:product_level_config)
+        end
+      end
+      
+      # Catalog level attribute config for an attribute. For example, if customers
+      # want to enable/disable facet for a specific attribute.
+      class GoogleCloudRetailV2CatalogAttribute
+        include Google::Apis::Core::Hashable
+      
+        # If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet.
+        # Could only be DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option
+        # is INDEXABLE_DISABLED. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `dynamicFacetableOption`
+        # @return [String]
+        attr_accessor :dynamic_facetable_option
+      
+        # Output only. Indicates whether this attribute has been used by any products. `
+        # True` if at least one Product is using this attribute in Product.attributes.
+        # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
+        # CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
+        # CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-
+        # loaded CatalogAttributes. Only pre-loaded CatalogAttributes that are neither
+        # in use by products nor predefined can be deleted. CatalogAttributes that are
+        # either in use by products or are predefined cannot be deleted; however, their
+        # configuration properties will reset to default values upon removal request.
+        # After catalog changes, it takes about 10 minutes for this field to update.
+        # Corresponds to the JSON property `inUse`
+        # @return [Boolean]
+        attr_accessor :in_use
+        alias_method :in_use?, :in_use
+      
+        # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered,
+        # faceted, or boosted in SearchService.Search.
+        # Corresponds to the JSON property `indexableOption`
+        # @return [String]
+        attr_accessor :indexable_option
+      
+        # Required. Attribute name. For example: `color`, `brands`, `attributes.
+        # custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute
+        # name can contain only alpha-numeric characters and underscores. For example,
+        # an attribute named `attributes.abc_xyz` can be indexed, but an attribute named
+        # `attributes.abc-xyz` cannot be indexed.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # if SEARCHABLE_ENABLED, attribute values are searchable by text queries in
+        # SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical,
+        # attribute values will not be searchable by text queries in SearchService.
+        # Search, as there are no text values associated to numerical attributes.
+        # Corresponds to the JSON property `searchableOption`
+        # @return [String]
+        attr_accessor :searchable_option
+      
+        # Output only. The type of this attribute. This is derived from the attribute in
+        # Product.attributes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
+          @in_use = args[:in_use] if args.key?(:in_use)
+          @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
+          @key = args[:key] if args.key?(:key)
+          @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -718,6 +846,105 @@ module Google
         # Update properties of this object
         def update!(**args)
           @recent_search = args[:recent_search] if args.key?(:recent_search)
+        end
+      end
+      
+      # Catalog level autocomplete config for customers to customize autocomplete
+      # feature's settings.
+      class GoogleCloudRetailV2CompletionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The input config source for completion data.
+        # Corresponds to the JSON property `allowlistInputConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDataInputConfig]
+        attr_accessor :allowlist_input_config
+      
+        # If set to true, the auto learning function is enabled. Auto learning uses user
+        # data to generate suggestions using ML techniques. Default value is false. Only
+        # after enabling auto learning can users use `cloud-retail` data in
+        # CompleteQueryRequest.
+        # Corresponds to the JSON property `autoLearning`
+        # @return [Boolean]
+        attr_accessor :auto_learning
+        alias_method :auto_learning?, :auto_learning
+      
+        # The input config source for completion data.
+        # Corresponds to the JSON property `denylistInputConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDataInputConfig]
+        attr_accessor :denylist_input_config
+      
+        # Output only. Name of the LRO corresponding to the latest allowlist import. Can
+        # use GetOperation API to retrieve the latest state of the Long Running
+        # Operation.
+        # Corresponds to the JSON property `lastAllowlistImportOperation`
+        # @return [String]
+        attr_accessor :last_allowlist_import_operation
+      
+        # Output only. Name of the LRO corresponding to the latest denylist import. Can
+        # use GetOperation API to retrieve the latest state of the Long Running
+        # Operation.
+        # Corresponds to the JSON property `lastDenylistImportOperation`
+        # @return [String]
+        attr_accessor :last_denylist_import_operation
+      
+        # Output only. Name of the LRO corresponding to the latest suggestion terms list
+        # import. Can use GetOperation API to retrieve the latest state of the Long
+        # Running Operation.
+        # Corresponds to the JSON property `lastSuggestionsImportOperation`
+        # @return [String]
+        attr_accessor :last_suggestions_import_operation
+      
+        # Specifies the matching order for autocomplete suggestions, e.g., a query
+        # consisting of 'sh' with 'out-of-order' specified would suggest "women's shoes",
+        # whereas a query of 'red s' with 'exact-prefix' specified would suggest "red
+        # shoes". Currently supported values: * 'out-of-order' * 'exact-prefix' Default
+        # value: 'exact-prefix'.
+        # Corresponds to the JSON property `matchingOrder`
+        # @return [String]
+        attr_accessor :matching_order
+      
+        # The maximum number of autocomplete suggestions returned per term. Default
+        # value is 20. If left unset or set to 0, then will fallback to default value.
+        # Value range is 1 to 20.
+        # Corresponds to the JSON property `maxSuggestions`
+        # @return [Fixnum]
+        attr_accessor :max_suggestions
+      
+        # The minimum number of characters needed to be typed in order to get
+        # suggestions. Default value is 2. If left unset or set to 0, then will fallback
+        # to default value. Value range is 1 to 20.
+        # Corresponds to the JSON property `minPrefixLength`
+        # @return [Fixnum]
+        attr_accessor :min_prefix_length
+      
+        # Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/
+        # completionConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The input config source for completion data.
+        # Corresponds to the JSON property `suggestionsInputConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDataInputConfig]
+        attr_accessor :suggestions_input_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_input_config = args[:allowlist_input_config] if args.key?(:allowlist_input_config)
+          @auto_learning = args[:auto_learning] if args.key?(:auto_learning)
+          @denylist_input_config = args[:denylist_input_config] if args.key?(:denylist_input_config)
+          @last_allowlist_import_operation = args[:last_allowlist_import_operation] if args.key?(:last_allowlist_import_operation)
+          @last_denylist_import_operation = args[:last_denylist_import_operation] if args.key?(:last_denylist_import_operation)
+          @last_suggestions_import_operation = args[:last_suggestions_import_operation] if args.key?(:last_suggestions_import_operation)
+          @matching_order = args[:matching_order] if args.key?(:matching_order)
+          @max_suggestions = args[:max_suggestions] if args.key?(:max_suggestions)
+          @min_prefix_length = args[:min_prefix_length] if args.key?(:min_prefix_length)
+          @name = args[:name] if args.key?(:name)
+          @suggestions_input_config = args[:suggestions_input_config] if args.key?(:suggestions_input_config)
         end
       end
       
@@ -1120,11 +1347,9 @@ module Google
         # the import is finished, a notification will be sent to specified Pub/Sub topic.
         # The message data will be JSON string of a Operation. Format of the Pub/Sub
         # topic is `projects/`project`/topics/`topic``. It has to be within the same
-        # project as ImportProductsRequest.parent. Make sure that both `cloud-retail-
-        # customer-data-access@system.gserviceaccount.com` and `service-@gcp-sa-retail.
-        # iam.gserviceaccount.com` have the `pubsub.topics.publish` IAM permission on
-        # the topic. Only supported when ImportProductsRequest.reconciliation_mode is
-        # set to `FULL`.
+        # project as ImportProductsRequest.parent. Make sure that `service-@gcp-sa-
+        # retail.iam.gserviceaccount.com` has the `pubsub.topics.publish` IAM permission
+        # on the topic.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -1748,7 +1973,7 @@ module Google
       
         # The id of the collection members when type is Type.COLLECTION. Non-existent
         # product ids are allowed. The type of the members must be either Type.PRIMARY
-        # or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set
+        # or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set
         # it for other types. A maximum of 1000 values are allowed. Otherwise, an
         # INVALID_ARGUMENT error is return.
         # Corresponds to the JSON property `collectionMemberIds`
@@ -2400,6 +2625,25 @@ module Google
         end
       end
       
+      # Request for CatalogService.RemoveCatalogAttribute method.
+      class GoogleCloudRetailV2RemoveCatalogAttributeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The attribute name key of the CatalogAttribute to remove.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
       # ProductService.RemoveFulfillmentPlaces method.
@@ -3010,6 +3254,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :restricted_values
       
+        # Returns the min and max value for each numerical facet intervals. Ignored for
+        # textual facets.
+        # Corresponds to the JSON property `returnMinMax`
+        # @return [Boolean]
+        attr_accessor :return_min_max
+        alias_method :return_min_max?, :return_min_max
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3024,6 +3275,7 @@ module Google
           @prefixes = args[:prefixes] if args.key?(:prefixes)
           @query = args[:query] if args.key?(:query)
           @restricted_values = args[:restricted_values] if args.key?(:restricted_values)
+          @return_min_max = args[:return_min_max] if args.key?(:return_min_max)
         end
       end
       
@@ -3226,6 +3478,18 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Interval]
         attr_accessor :interval
       
+        # The maximum value in the FacetValue.interval. Only supported on numerical
+        # facets and returned if SearchRequest.FacetSpec.FacetKey.return_min_max is true.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Float]
+        attr_accessor :max_value
+      
+        # The minimum value in the FacetValue.interval. Only supported on numerical
+        # facets and returned if SearchRequest.FacetSpec.FacetKey.return_min_max is true.
+        # Corresponds to the JSON property `minValue`
+        # @return [Float]
+        attr_accessor :min_value
+      
         # Text value of a facet, such as "Black" for facet "colorFamilies".
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -3239,6 +3503,8 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @interval = args[:interval] if args.key?(:interval)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -3294,6 +3560,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :matching_variant_fields
       
+        # Specifies previous events related to this product for this user based on
+        # UserEvent with same SearchRequest.visitor_id or UserInfo.user_id. This is set
+        # only when SearchRequest.PersonalizationSpec.mode is SearchRequest.
+        # PersonalizationSpec.Mode.AUTO. Possible values: * `purchased`: Indicates that
+        # this product has been purchased before.
+        # Corresponds to the JSON property `personalLabels`
+        # @return [Array<String>]
+        attr_accessor :personal_labels
+      
         # Product captures all metadata information of items to be recommended or
         # searched.
         # Corresponds to the JSON property `product`
@@ -3326,6 +3601,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matching_variant_count = args[:matching_variant_count] if args.key?(:matching_variant_count)
           @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
+          @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)
         end
@@ -4101,6 +4377,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_count
       
+        # Metadata related to transform user events operation.
+        # Corresponds to the JSON property `transformedUserEventsMetadata`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2alphaTransformedUserEventsMetadata]
+        attr_accessor :transformed_user_events_metadata
+      
         # Operation last update time. If the operation is done, this is also the finish
         # time.
         # Corresponds to the JSON property `updateTime`
@@ -4118,6 +4399,7 @@ module Google
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @request_id = args[:request_id] if args.key?(:request_id)
           @success_count = args[:success_count] if args.key?(:success_count)
+          @transformed_user_events_metadata = args[:transformed_user_events_metadata] if args.key?(:transformed_user_events_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -4204,8 +4486,8 @@ module Google
         attr_accessor :data_state
       
         # Required. The display name of the model. Should be human readable, used to
-        # display Recommendation Models in the Retail Pantheon Dashboard. UTF-8 encoded
-        # string with limit of 1024 characters.
+        # display Recommendation Models in the Retail Cloud Cosole Dashboard. UTF-8
+        # encoded string with limit of 1024 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4676,6 +4958,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata related to transform user events operation.
+      class GoogleCloudRetailV2alphaTransformedUserEventsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Count of entries in the source user events BigQuery table.
+        # Corresponds to the JSON property `sourceEventsCount`
+        # @return [Fixnum]
+        attr_accessor :source_events_count
+      
+        # Count of entries in the transformed user events BigQuery table, which could be
+        # different from the actually imported number of user events.
+        # Corresponds to the JSON property `transformedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :transformed_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_events_count = args[:source_events_count] if args.key?(:source_events_count)
+          @transformed_events_count = args[:transformed_events_count] if args.key?(:transformed_events_count)
         end
       end
       
