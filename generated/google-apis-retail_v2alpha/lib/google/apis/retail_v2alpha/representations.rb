@@ -244,6 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaBatchRemoveCatalogAttributesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaBatchRemoveCatalogAttributesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaBigQueryOutputResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -898,6 +910,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaTransformedUserEventsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaTuneModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1422,6 +1440,21 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaBatchRemoveCatalogAttributesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attribute_keys, as: 'attributeKeys'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaBatchRemoveCatalogAttributesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deleted_catalog_attributes, as: 'deletedCatalogAttributes'
+          collection :reset_catalog_attributes, as: 'resetCatalogAttributes'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaBigQueryOutputResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1459,6 +1492,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_facetable_option, as: 'dynamicFacetableOption'
+          property :exact_searchable_option, as: 'exactSearchableOption'
           property :in_use, as: 'inUse'
           property :indexable_option, as: 'indexableOption'
           property :key, as: 'key'
@@ -1702,6 +1736,8 @@ module Google
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           property :request_id, as: 'requestId'
           property :success_count, :numeric_string => true, as: 'successCount'
+          property :transformed_user_events_metadata, as: 'transformedUserEventsMetadata', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaTransformedUserEventsMetadata, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaTransformedUserEventsMetadata::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -2388,6 +2424,7 @@ module Google
           collection :prefixes, as: 'prefixes'
           property :query, as: 'query'
           collection :restricted_values, as: 'restrictedValues'
+          property :return_min_max, as: 'returnMinMax'
         end
       end
       
@@ -2449,6 +2486,8 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :interval, as: 'interval', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaInterval::Representation
       
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
           property :value, as: 'value'
         end
       end
@@ -2467,6 +2506,7 @@ module Google
           property :id, as: 'id'
           property :matching_variant_count, as: 'matchingVariantCount'
           hash :matching_variant_fields, as: 'matchingVariantFields'
+          collection :personal_labels, as: 'personalLabels'
           property :product, as: 'product', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct::Representation
       
           hash :variant_rollup_values, as: 'variantRollupValues'
@@ -2526,6 +2566,14 @@ module Google
       class GoogleCloudRetailV2alphaSetInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaTransformedUserEventsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_events_count, :numeric_string => true, as: 'sourceEventsCount'
+          property :transformed_events_count, :numeric_string => true, as: 'transformedEventsCount'
         end
       end
       
