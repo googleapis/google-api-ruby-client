@@ -710,7 +710,9 @@ module Google
         # Creates a new Service in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this service should be created.
-        #   Format: projects/`projectnumber`/locations/`location`
+        #   Format: projects/`projectnumber`/locations/`location` Only lowercase, digits,
+        #   and hyphens; must begin with letter, and may not end with hyphen; must contain
+        #   fewer than 50 characters.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [String] service_id
         #   Required. The unique identifier for the Service. The name of the service
