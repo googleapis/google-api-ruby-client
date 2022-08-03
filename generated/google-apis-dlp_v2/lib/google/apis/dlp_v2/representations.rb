@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Deidentify
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2DeidentifyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1186,6 +1192,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2TransformationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TransformationDetailsStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TransformationErrorHandling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1258,6 +1276,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2VersionDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2WordList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1291,6 +1315,8 @@ module Google
       class GooglePrivacyDlpV2Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify, as: 'deidentify', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify::Representation
+      
           property :job_notification_emails, as: 'jobNotificationEmails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails::Representation
       
           property :pub_sub, as: 'pubSub', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub::Representation
@@ -1815,6 +1841,18 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2Deidentify
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_output, as: 'cloudStorageOutput'
+          collection :file_types_to_transform, as: 'fileTypesToTransform'
+          property :transformation_config, as: 'transformationConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationConfig::Representation
+      
+          property :transformation_details_storage_config, as: 'transformationDetailsStorageConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDetailsStorageConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDetailsStorageConfig::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2DeidentifyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2205,6 +2243,8 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :supported_by, as: 'supportedBy'
+          collection :versions, as: 'versions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription::Representation
+      
         end
       end
       
@@ -3279,6 +3319,23 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2TransformationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify_template, as: 'deidentifyTemplate'
+          property :image_redact_template, as: 'imageRedactTemplate'
+          property :structured_deidentify_template, as: 'structuredDeidentifyTemplate'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TransformationDetailsStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2TransformationErrorHandling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3399,6 +3456,14 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :value, as: 'value', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Value, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Value::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2VersionDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :version, as: 'version'
         end
       end
       
