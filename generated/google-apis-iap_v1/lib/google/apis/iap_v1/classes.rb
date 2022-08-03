@@ -64,8 +64,8 @@ module Google
       class AccessSettings
         include Google::Apis::Core::Hashable
       
-        # Configuration for IAP allowed domains. Allows the customers to restrict access
-        # to the app by only allowing requests from the listed trusted domains.
+        # Configuration for IAP allowed domains. Lets you to restrict access to an app
+        # and allow access to only the domains that you list.
         # Corresponds to the JSON property `allowedDomainsSettings`
         # @return [Google::Apis::IapV1::AllowedDomainsSettings]
         attr_accessor :allowed_domains_settings
@@ -116,8 +116,8 @@ module Google
         end
       end
       
-      # Configuration for IAP allowed domains. Allows the customers to restrict access
-      # to the app by only allowing requests from the listed trusted domains.
+      # Configuration for IAP allowed domains. Lets you to restrict access to an app
+      # and allow access to only the domains that you list.
       class AllowedDomainsSettings
         include Google::Apis::Core::Hashable
       
