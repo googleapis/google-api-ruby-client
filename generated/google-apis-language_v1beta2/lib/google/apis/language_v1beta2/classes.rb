@@ -265,7 +265,7 @@ module Google
         attr_accessor :encoding_type
       
         # All available features for sentiment, syntax, and semantic analysis. Setting
-        # each one to true will enable that specific analysis for the input. Next ID: 10
+        # each one to true will enable that specific analysis for the input. Next ID: 11
         # Corresponds to the JSON property `features`
         # @return [Google::Apis::LanguageV1beta2::Features]
         attr_accessor :features
@@ -587,7 +587,7 @@ module Google
       end
       
       # All available features for sentiment, syntax, and semantic analysis. Setting
-      # each one to true will enable that specific analysis for the input. Next ID: 10
+      # each one to true will enable that specific analysis for the input. Next ID: 11
       class Features
         include Google::Apis::Core::Hashable
       
