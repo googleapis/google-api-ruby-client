@@ -51,8 +51,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+        # Returns a list of the sensitive information types that DLP API supports. See
+        # https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the API.
         #   Defaults to supported_by=INSPECT.
@@ -94,8 +94,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+        # Returns a list of the sensitive information types that DLP API supports. See
+        # https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         # @param [String] parent
         #   The parent resource name. The format of this value is as follows: locations/
         #   LOCATION_ID
@@ -137,7 +137,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
         # identifying content, images, and storage. See https://cloud.google.com/dlp/
         # docs/creating-templates-deid to learn more.
         # @param [String] parent
@@ -268,13 +268,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListDeidentifyTemplates`.
@@ -345,7 +345,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration for
+        # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
         # creating-templates to learn more.
         # @param [String] parent
@@ -476,13 +476,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListInspectTemplates`.
@@ -553,7 +553,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
         # identifying content, images, and storage. See https://cloud.google.com/dlp/
         # docs/creating-templates-deid to learn more.
         # @param [String] parent
@@ -684,13 +684,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListDeidentifyTemplates`.
@@ -780,25 +780,25 @@ module Google
         #   has the form of ``field` `operator` `value``. * Supported fields/values for
         #   inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `
         #   inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The
-        #   resource name of the trigger that created job. - 'end_time` - Corresponds to
-        #   time the job finished. - 'start_time` - Corresponds to time the job finished. *
-        #   Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|
-        #   FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - '
-        #   start_time` - Corresponds to time the job finished. * The operator must be `=`
-        #   or `!=`. Examples: * inspected_storage = cloud_storage AND state = done *
-        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
-        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
-        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
-        #   more than 500 characters.
+        #   name of the trigger that created the job. - 'end_time` - Corresponds to the
+        #   time the job finished. - 'start_time` - Corresponds to the time the job
+        #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
+        #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
+        #   finished. - 'start_time` - Corresponds to the time the job finished. * The
+        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
+        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
+        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+        #   should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, end_time asc,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the job was created. - `end_time`: corresponds to time the job ended. - `name`:
-        #   corresponds to job's name. - `state`: corresponds to `state`
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the job was created. - `end_time`: corresponds to the time the job ended.
+        #   - `name`: corresponds to the job's name. - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -838,7 +838,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration for
+        # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
         # creating-templates to learn more.
         # @param [String] parent
@@ -969,13 +969,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListInspectTemplates`.
@@ -1185,11 +1185,11 @@ module Google
         #   desc` postfix. This list is case-insensitive, default sorting order is
         #   ascending, redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
-        #   corresponds to time the JobTrigger was created. - `update_time`: corresponds
-        #   to time the JobTrigger was last updated. - `last_run_time`: corresponds to the
-        #   last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `
-        #   display_name`: corresponds to JobTrigger's display name. - `status`:
-        #   corresponds to JobTrigger's status.
+        #   corresponds to the time the JobTrigger was created. - `update_time`:
+        #   corresponds to the time the JobTrigger was last updated. - `last_run_time`:
+        #   corresponds to the last time the JobTrigger ran. - `name`: corresponds to the
+        #   JobTrigger's name. - `display_name`: corresponds to the JobTrigger's display
+        #   name. - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Size of the page, can be limited by a server.
         # @param [String] page_token
@@ -1395,13 +1395,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, display_name,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the most recent version of the resource was created. - `state`: corresponds to
-        #   the state of the resource. - `name`: corresponds to resource name. - `
-        #   display_name`: corresponds to info type's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the most recent version of the resource was created. - `state`:
+        #   corresponds to the state of the resource. - `name`: corresponds to resource
+        #   name. - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListStoredInfoTypes`.
@@ -1603,13 +1603,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, display_name,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the most recent version of the resource was created. - `state`: corresponds to
-        #   the state of the resource. - `name`: corresponds to resource name. - `
-        #   display_name`: corresponds to info type's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the most recent version of the resource was created. - `state`:
+        #   corresponds to the state of the resource. - `name`: corresponds to resource
+        #   name. - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListStoredInfoTypes`.
@@ -1813,7 +1813,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
         # identifying content, images, and storage. See https://cloud.google.com/dlp/
         # docs/creating-templates-deid to learn more.
         # @param [String] parent
@@ -1944,13 +1944,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListDeidentifyTemplates`.
@@ -2103,7 +2103,7 @@ module Google
         end
         
         # Deletes a long-running DlpJob. This method indicates that the client is no
-        # longer interested in the DlpJob result. The job will be cancelled if possible.
+        # longer interested in the DlpJob result. The job will be canceled if possible.
         # See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.
         # google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
@@ -2186,25 +2186,25 @@ module Google
         #   has the form of ``field` `operator` `value``. * Supported fields/values for
         #   inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `
         #   inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The
-        #   resource name of the trigger that created job. - 'end_time` - Corresponds to
-        #   time the job finished. - 'start_time` - Corresponds to time the job finished. *
-        #   Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|
-        #   FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - '
-        #   start_time` - Corresponds to time the job finished. * The operator must be `=`
-        #   or `!=`. Examples: * inspected_storage = cloud_storage AND state = done *
-        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
-        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
-        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
-        #   more than 500 characters.
+        #   name of the trigger that created the job. - 'end_time` - Corresponds to the
+        #   time the job finished. - 'start_time` - Corresponds to the time the job
+        #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
+        #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
+        #   finished. - 'start_time` - Corresponds to the time the job finished. * The
+        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
+        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
+        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+        #   should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, end_time asc,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the job was created. - `end_time`: corresponds to time the job ended. - `name`:
-        #   corresponds to job's name. - `state`: corresponds to `state`
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the job was created. - `end_time`: corresponds to the time the job ended.
+        #   - `name`: corresponds to the job's name. - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -2289,7 +2289,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration for
+        # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
         # creating-templates to learn more.
         # @param [String] parent
@@ -2420,13 +2420,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListInspectTemplates`.
@@ -2671,11 +2671,11 @@ module Google
         #   desc` postfix. This list is case-insensitive, default sorting order is
         #   ascending, redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
-        #   corresponds to time the JobTrigger was created. - `update_time`: corresponds
-        #   to time the JobTrigger was last updated. - `last_run_time`: corresponds to the
-        #   last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `
-        #   display_name`: corresponds to JobTrigger's display name. - `status`:
-        #   corresponds to JobTrigger's status.
+        #   corresponds to the time the JobTrigger was created. - `update_time`:
+        #   corresponds to the time the JobTrigger was last updated. - `last_run_time`:
+        #   corresponds to the last time the JobTrigger ran. - `name`: corresponds to the
+        #   JobTrigger's name. - `display_name`: corresponds to the JobTrigger's display
+        #   name. - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Size of the page, can be limited by a server.
         # @param [String] page_token
@@ -2883,7 +2883,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
         # identifying content, images, and storage. See https://cloud.google.com/dlp/
         # docs/creating-templates-deid to learn more.
         # @param [String] parent
@@ -3014,13 +3014,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListDeidentifyTemplates`.
@@ -3173,7 +3173,7 @@ module Google
         end
         
         # Deletes a long-running DlpJob. This method indicates that the client is no
-        # longer interested in the DlpJob result. The job will be cancelled if possible.
+        # longer interested in the DlpJob result. The job will be canceled if possible.
         # See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.
         # google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
@@ -3325,25 +3325,25 @@ module Google
         #   has the form of ``field` `operator` `value``. * Supported fields/values for
         #   inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `
         #   inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The
-        #   resource name of the trigger that created job. - 'end_time` - Corresponds to
-        #   time the job finished. - 'start_time` - Corresponds to time the job finished. *
-        #   Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|
-        #   FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - '
-        #   start_time` - Corresponds to time the job finished. * The operator must be `=`
-        #   or `!=`. Examples: * inspected_storage = cloud_storage AND state = done *
-        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
-        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
-        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
-        #   more than 500 characters.
+        #   name of the trigger that created the job. - 'end_time` - Corresponds to the
+        #   time the job finished. - 'start_time` - Corresponds to the time the job
+        #   finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|
+        #   CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time the job
+        #   finished. - 'start_time` - Corresponds to the time the job finished. * The
+        #   operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage
+        #   AND state = done * inspected_storage = cloud_storage OR inspected_storage =
+        #   bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+        #   canceled) * end_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+        #   should be no more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, end_time asc,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the job was created. - `end_time`: corresponds to time the job ended. - `name`:
-        #   corresponds to job's name. - `state`: corresponds to `state`
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the job was created. - `end_time`: corresponds to the time the job ended.
+        #   - `name`: corresponds to the job's name. - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -3428,7 +3428,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration for
+        # Creates an InspectTemplate for reusing frequently used configuration for
         # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
         # creating-templates to learn more.
         # @param [String] parent
@@ -3559,13 +3559,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the template was created. - `update_time`: corresponds to time the template
-        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
-        #   corresponds to template's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the template was created. - `update_time`: corresponds to the time the
+        #   template was last updated. - `name`: corresponds to the template's name. - `
+        #   display_name`: corresponds to the template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListInspectTemplates`.
@@ -3846,11 +3846,11 @@ module Google
         #   desc` postfix. This list is case-insensitive, default sorting order is
         #   ascending, redundant space characters are insignificant. Example: `name asc,
         #   update_time, create_time desc` Supported fields are: - `create_time`:
-        #   corresponds to time the JobTrigger was created. - `update_time`: corresponds
-        #   to time the JobTrigger was last updated. - `last_run_time`: corresponds to the
-        #   last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `
-        #   display_name`: corresponds to JobTrigger's display name. - `status`:
-        #   corresponds to JobTrigger's status.
+        #   corresponds to the time the JobTrigger was created. - `update_time`:
+        #   corresponds to the time the JobTrigger was last updated. - `last_run_time`:
+        #   corresponds to the last time the JobTrigger ran. - `name`: corresponds to the
+        #   JobTrigger's name. - `display_name`: corresponds to the JobTrigger's display
+        #   name. - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Size of the page, can be limited by a server.
         # @param [String] page_token
@@ -4056,13 +4056,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, display_name,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the most recent version of the resource was created. - `state`: corresponds to
-        #   the state of the resource. - `name`: corresponds to resource name. - `
-        #   display_name`: corresponds to info type's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the most recent version of the resource was created. - `state`:
+        #   corresponds to the state of the resource. - `name`: corresponds to resource
+        #   name. - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListStoredInfoTypes`.
@@ -4264,13 +4264,13 @@ module Google
         #   Comma separated list of fields to order by, followed by `asc` or `desc`
         #   postfix. This list is case-insensitive, default sorting order is ascending,
         #   redundant space characters are insignificant. Example: `name asc, display_name,
-        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
-        #   the most recent version of the resource was created. - `state`: corresponds to
-        #   the state of the resource. - `name`: corresponds to resource name. - `
-        #   display_name`: corresponds to info type's display name.
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to the
+        #   time the most recent version of the resource was created. - `state`:
+        #   corresponds to the state of the resource. - `name`: corresponds to resource
+        #   name. - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns a page of
-        #   max size 100.
+        #   Size of the page, can be limited by the server. If zero server returns a page
+        #   of max size 100.
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to `
         #   ListStoredInfoTypes`.

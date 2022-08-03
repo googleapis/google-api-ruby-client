@@ -27,13 +27,27 @@ module Google
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
+        # Create a de-identified copy of the requested table or files. . A
+        # TransformationDetail will be created for each transformation. If any rows in
+        # BigQuery are skipped during de-identification (transformation errors or row
+        # size exceeds BigQuery insert API limits) they are placed in the failure output
+        # table. If the original row exceeds the BigQuery insert API limit it will be
+        # truncated when written to the failure output table. The failure output table
+        # can be set in the action.deidentify.output.big_query_output.
+        # deidentified_failure_output_table field, if no table is set, a table will be
+        # automatically created in the same project and dataset as the original table.
+        # Compatible with: Inspect
+        # Corresponds to the JSON property `deidentify`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify]
+        attr_accessor :deidentify
+      
         # Enable email notification to project owners and editors on jobs's completion/
         # failure.
         # Corresponds to the JSON property `jobNotificationEmails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
         attr_accessor :job_notification_emails
       
-        # Publish a message into given Pub/Sub topic when DlpJob has completed. The
+        # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
         # message contains a single field, `DlpJobName`, which is equal to the finished
         # job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/
         # projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
@@ -57,7 +71,7 @@ module Google
         # Publish the result summary of a DlpJob to the Cloud Security Command Center (
         # CSCC Alpha). This action is only available for projects which are parts of an
         # organization and whitelisted for the alpha Cloud Security Command Center. The
-        # action will publish count of finding instances and their info types. The
+        # action will publish the count of finding instances and their info types. The
         # summary of findings will be persisted in CSCC and are governed by CSCC service-
         # specific policy, see https://cloud.google.com/terms/service-terms Only a
         # single instance of this action can be specified. Compatible with: Inspect
@@ -86,6 +100,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deidentify = args[:deidentify] if args.key?(:deidentify)
           @job_notification_emails = args[:job_notification_emails] if args.key?(:job_notification_emails)
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
           @publish_findings_to_cloud_data_catalog = args[:publish_findings_to_cloud_data_catalog] if args.key?(:publish_findings_to_cloud_data_catalog)
@@ -710,7 +725,7 @@ module Google
         end
       end
       
-      # Options defining a file or a set of files within a Google Cloud Storage bucket.
+      # Options defining a file or a set of files within a Cloud Storage bucket.
       class GooglePrivacyDlpV2CloudStorageOptions
         include Google::Apis::Core::Hashable
       
@@ -954,8 +969,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A string representation of the full container name. Examples: - BigQuery: '
-        # Project:DataSetId.TableId' - Google Cloud Storage: 'gs://Bucket/folders/
-        # filename.txt'
+        # Project:DataSetId.TableId' - Cloud Storage: 'gs://Bucket/folders/filename.txt'
         # Corresponds to the JSON property `fullPath`
         # @return [String]
         attr_accessor :full_path
@@ -967,34 +981,34 @@ module Google
         attr_accessor :project_id
       
         # The rest of the path after the root. Examples: - For BigQuery table `
-        # project_id:dataset_id.table_id`, the relative path is `table_id` - Google
-        # Cloud Storage file `gs://bucket/folder/filename.txt`, the relative path is `
-        # folder/filename.txt`
+        # project_id:dataset_id.table_id`, the relative path is `table_id` - For Cloud
+        # Storage file `gs://bucket/folder/filename.txt`, the relative path is `folder/
+        # filename.txt`
         # Corresponds to the JSON property `relativePath`
         # @return [String]
         attr_accessor :relative_path
       
         # The root of the container. Examples: - For BigQuery table `project_id:
-        # dataset_id.table_id`, the root is `dataset_id` - For Google Cloud Storage file
-        # `gs://bucket/folder/filename.txt`, the root is `gs://bucket`
+        # dataset_id.table_id`, the root is `dataset_id` - For Cloud Storage file `gs://
+        # bucket/folder/filename.txt`, the root is `gs://bucket`
         # Corresponds to the JSON property `rootPath`
         # @return [String]
         attr_accessor :root_path
       
-        # Container type, for example BigQuery or Google Cloud Storage.
+        # Container type, for example BigQuery or Cloud Storage.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Findings container modification timestamp, if applicable. For Google Cloud
-        # Storage contains last file modification timestamp. For BigQuery table contains
-        # last_modified_time property. For Datastore - not populated.
+        # Findings container modification timestamp, if applicable. For Cloud Storage,
+        # this field contains the last file modification timestamp. For a BigQuery table,
+        # this field contains the last_modified_time property. For Datastore, this
+        # field isn't populated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Findings container version, if available ("generation" for Google Cloud
-        # Storage).
+        # Findings container version, if available ("generation" for Cloud Storage).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1058,20 +1072,20 @@ module Google
         # formatted as follows: * BigQuery tables: ``project_id`:`dataset_id`.`table_id``
         # * Cloud Storage files: `gs://`bucket`/`path`` * Datastore namespace: `
         # namespace` Nested names could be absent if the embedded object has no string
-        # identifier (for an example an image contained within a document).
+        # identifier (for example, an image contained within a document).
         # Corresponds to the JSON property `containerName`
         # @return [String]
         attr_accessor :container_name
       
-        # Findings container modification timestamp, if applicable. For Google Cloud
-        # Storage contains last file modification timestamp. For BigQuery table contains
-        # last_modified_time property. For Datastore - not populated.
+        # Finding container modification timestamp, if applicable. For Cloud Storage,
+        # this field contains the last file modification timestamp. For a BigQuery table,
+        # this field contains the last_modified_time property. For Datastore, this
+        # field isn't populated.
         # Corresponds to the JSON property `containerTimestamp`
         # @return [String]
         attr_accessor :container_timestamp
       
-        # Findings container version, if available ("generation" for Google Cloud
-        # Storage).
+        # Finding container version, if available ("generation" for Cloud Storage).
         # Corresponds to the JSON property `containerVersion`
         # @return [String]
         attr_accessor :container_version
@@ -1711,10 +1725,10 @@ module Google
         end
       end
       
-      # The message that will be published to a Pub/Sub topic. To receive a message of
-      # protocol buffer schema type, convert the message data to an object of this
-      # proto class. https://cloud.google.com/pubsub/docs/samples/pubsub-subscribe-
-      # proto-messages
+      # Pub/Sub topic message for a DataProfileAction.PubSubNotification event. To
+      # receive a message of protocol buffer schema type, convert the message data to
+      # an object of this proto class. https://cloud.google.com/pubsub/docs/samples/
+      # pubsub-subscribe-proto-messages
       class GooglePrivacyDlpV2DataProfilePubSubMessage
         include Google::Apis::Core::Hashable
       
@@ -1740,7 +1754,7 @@ module Google
       end
       
       # Score is a summary of all elements in the data profile. A higher number means
-      # more risky.
+      # more risk.
       class GooglePrivacyDlpV2DataRiskLevel
         include Google::Apis::Core::Hashable
       
@@ -1898,6 +1912,63 @@ module Google
         end
       end
       
+      # Create a de-identified copy of the requested table or files. . A
+      # TransformationDetail will be created for each transformation. If any rows in
+      # BigQuery are skipped during de-identification (transformation errors or row
+      # size exceeds BigQuery insert API limits) they are placed in the failure output
+      # table. If the original row exceeds the BigQuery insert API limit it will be
+      # truncated when written to the failure output table. The failure output table
+      # can be set in the action.deidentify.output.big_query_output.
+      # deidentified_failure_output_table field, if no table is set, a table will be
+      # automatically created in the same project and dataset as the original table.
+      # Compatible with: Inspect
+      class GooglePrivacyDlpV2Deidentify
+        include Google::Apis::Core::Hashable
+      
+        # Required. User settable GCS bucket and folders to store de-identified files.
+        # This field must be set for cloud storage deidentification. The output GCS
+        # bucket must be different from the input bucket. De-identified files will
+        # overwrite files in the output path. Form of: gs://bucket/folder/ or gs://
+        # bucket
+        # Corresponds to the JSON property `cloudStorageOutput`
+        # @return [String]
+        attr_accessor :cloud_storage_output
+      
+        # List of user-specified file type groups to transform. If specified, only the
+        # files with these filetypes will be transformed. If empty, all supported files
+        # will be transformed. Supported types may be automatically added over time. If
+        # a file type is set in this field that isn't supported by the Deidentify action
+        # then the job will fail and will not be successfully created/started. Currently
+        # the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+        # Corresponds to the JSON property `fileTypesToTransform`
+        # @return [Array<String>]
+        attr_accessor :file_types_to_transform
+      
+        # User specified templates and configs for how to deidentify structured,
+        # unstructures, and image files. User must provide either a unstructured
+        # deidentify template or at least one redact image config.
+        # Corresponds to the JSON property `transformationConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationConfig]
+        attr_accessor :transformation_config
+      
+        # Config for storing transformation details.
+        # Corresponds to the JSON property `transformationDetailsStorageConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDetailsStorageConfig]
+        attr_accessor :transformation_details_storage_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_output = args[:cloud_storage_output] if args.key?(:cloud_storage_output)
+          @file_types_to_transform = args[:file_types_to_transform] if args.key?(:file_types_to_transform)
+          @transformation_config = args[:transformation_config] if args.key?(:transformation_config)
+          @transformation_details_storage_config = args[:transformation_details_storage_config] if args.key?(:transformation_details_storage_config)
+        end
+      end
+      
       # The configuration that controls how the data will change.
       class GooglePrivacyDlpV2DeidentifyConfig
         include Google::Apis::Core::Hashable
@@ -1937,7 +2008,7 @@ module Google
         end
       end
       
-      # Request to de-identify a list of items.
+      # Request to de-identify a ContentItem.
       class GooglePrivacyDlpV2DeidentifyContentRequest
         include Google::Apis::Core::Hashable
       
@@ -2427,7 +2498,7 @@ module Google
         end
       end
       
-      # List of exclude infoTypes.
+      # List of excluded infoTypes.
       class GooglePrivacyDlpV2ExcludeInfoTypes
         include Google::Apis::Core::Hashable
       
@@ -2479,7 +2550,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
       
-        # List of exclude infoTypes.
+        # List of excluded infoTypes.
         # Corresponds to the JSON property `excludeInfoTypes`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes]
         attr_accessor :exclude_info_types
@@ -2529,7 +2600,7 @@ module Google
         end
       end
       
-      # An expression, consisting or an operator and conditions.
+      # An expression, consisting of an operator and conditions.
       class GooglePrivacyDlpV2Expressions
         include Google::Apis::Core::Hashable
       
@@ -2767,7 +2838,10 @@ module Google
       end
       
       # Configuration to control the number of findings returned for inspection. This
-      # is not used for de-identification or data profiling.
+      # is not used for de-identification or data profiling. When redacting sensitive
+      # data from images, finding limits don't apply. They can cause unexpected or
+      # inconsistent results, where only some data is redacted. Don't include finding
+      # limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
       class GooglePrivacyDlpV2FindingLimits
         include Google::Apis::Core::Hashable
       
@@ -3260,6 +3334,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_by
       
+        # A list of available versions for the infotype.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription>]
+        attr_accessor :versions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3271,6 +3350,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @supported_by = args[:supported_by] if args.key?(:supported_by)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -3444,7 +3524,10 @@ module Google
         attr_accessor :info_types
       
         # Configuration to control the number of findings returned for inspection. This
-        # is not used for de-identification or data profiling.
+        # is not used for de-identification or data profiling. When redacting sensitive
+        # data from images, finding limits don't apply. They can cause unexpected or
+        # inconsistent results, where only some data is redacted. Don't include finding
+        # limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
         # Corresponds to the JSON property `limits`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits]
         attr_accessor :limits
@@ -4320,8 +4403,8 @@ module Google
       # Configuration for a custom dictionary created from a data source of any size
       # up to the maximum size defined in the [limits](https://cloud.google.com/dlp/
       # limits) page. The artifacts of dictionary creation are stored in the specified
-      # Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
-      # smaller dictionaries that satisfy the size requirements.
+      # Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller
+      # dictionaries that satisfy the size requirements.
       class GooglePrivacyDlpV2LargeCustomDictionaryConfig
         include Google::Apis::Core::Hashable
       
@@ -5188,7 +5271,7 @@ module Google
       # Publish the result summary of a DlpJob to the Cloud Security Command Center (
       # CSCC Alpha). This action is only available for projects which are parts of an
       # organization and whitelisted for the alpha Cloud Security Command Center. The
-      # action will publish count of finding instances and their info types. The
+      # action will publish the count of finding instances and their info types. The
       # summary of findings will be persisted in CSCC and are governed by CSCC service-
       # specific policy, see https://cloud.google.com/terms/service-terms Only a
       # single instance of this action can be specified. Compatible with: Inspect
@@ -5204,7 +5287,7 @@ module Google
         end
       end
       
-      # Publish a message into given Pub/Sub topic when DlpJob has completed. The
+      # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
       # message contains a single field, `DlpJobName`, which is equal to the finished
       # job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/
       # projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
@@ -5390,7 +5473,7 @@ module Google
       class GooglePrivacyDlpV2RecordCondition
         include Google::Apis::Core::Hashable
       
-        # An expression, consisting or an operator and conditions.
+        # An expression, consisting of an operator and conditions.
         # Corresponds to the JSON property `expressions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Expressions]
         attr_accessor :expressions
@@ -5695,7 +5778,7 @@ module Google
         end
       end
       
-      # Results of re-identifying a item.
+      # Results of re-identifying an item.
       class GooglePrivacyDlpV2ReidentifyContentResponse
         include Google::Apis::Core::Hashable
       
@@ -5940,11 +6023,11 @@ module Google
       class GooglePrivacyDlpV2Schedule
         include Google::Apis::Core::Hashable
       
-        # With this option a job is started a regular periodic basis. For example: every
-        # day (86400 seconds). A scheduled start time will be skipped if the previous
-        # execution has not ended when its scheduled time occurs. This value must be set
-        # to a time duration greater than or equal to 1 day and can be no longer than 60
-        # days.
+        # With this option a job is started on a regular periodic basis. For example:
+        # every day (86400 seconds). A scheduled start time will be skipped if the
+        # previous execution has not ended when its scheduled time occurs. This value
+        # must be set to a time duration greater than or equal to 1 day and can be no
+        # longer than 60 days.
         # Corresponds to the JSON property `recurrencePeriodDuration`
         # @return [String]
         attr_accessor :recurrence_period_duration
@@ -6026,7 +6109,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryOptions]
         attr_accessor :big_query_options
       
-        # Options defining a file or a set of files within a Google Cloud Storage bucket.
+        # Options defining a file or a set of files within a Cloud Storage bucket.
         # Corresponds to the JSON property `cloudStorageOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageOptions]
         attr_accessor :cloud_storage_options
@@ -6043,7 +6126,7 @@ module Google
         attr_accessor :hybrid_options
       
         # Configuration of the timespan of the items to include in scanning. Currently
-        # only supported when inspecting Google Cloud Storage and BigQuery.
+        # only supported when inspecting Cloud Storage and BigQuery.
         # Corresponds to the JSON property `timespanConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig]
         attr_accessor :timespan_config
@@ -6155,8 +6238,8 @@ module Google
         # Configuration for a custom dictionary created from a data source of any size
         # up to the maximum size defined in the [limits](https://cloud.google.com/dlp/
         # limits) page. The artifacts of dictionary creation are stored in the specified
-        # Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
-        # smaller dictionaries that satisfy the size requirements.
+        # Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller
+        # dictionaries that satisfy the size requirements.
         # Corresponds to the JSON property `largeCustomDictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig]
         attr_accessor :large_custom_dictionary
@@ -6221,9 +6304,9 @@ module Google
         # detected in the storedInfoType data that render it unusable. Only the five
         # most recent errors will be displayed, with the most recent error appearing
         # first. For example, some of the data for stored custom dictionaries is put in
-        # the user's Google Cloud Storage bucket, and if this data is modified or
-        # deleted by the user or another system, the dictionary becomes invalid. If any
-        # errors occur, fix the problem indicated by the error message and use the
+        # the user's Cloud Storage bucket, and if this data is modified or deleted by
+        # the user or another system, the dictionary becomes invalid. If any errors
+        # occur, fix the problem indicated by the error message and use the
         # UpdateStoredInfoType API method to create another version of the
         # storedInfoType to continue using it, reusing the same `config` if it was not
         # the source of the error.
@@ -6378,7 +6461,7 @@ module Google
         attr_accessor :create_time
       
         # Score is a summary of all elements in the data profile. A higher number means
-        # more risky.
+        # more risk.
         # Corresponds to the JSON property `dataRiskLevel`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataRiskLevel]
         attr_accessor :data_risk_level
@@ -6672,7 +6755,7 @@ module Google
       end
       
       # Configuration of the timespan of the items to include in scanning. Currently
-      # only supported when inspecting Google Cloud Storage and BigQuery.
+      # only supported when inspecting Cloud Storage and BigQuery.
       class GooglePrivacyDlpV2TimespanConfig
         include Google::Apis::Core::Hashable
       
@@ -6712,6 +6795,71 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @timestamp_field = args[:timestamp_field] if args.key?(:timestamp_field)
+        end
+      end
+      
+      # User specified templates and configs for how to deidentify structured,
+      # unstructures, and image files. User must provide either a unstructured
+      # deidentify template or at least one redact image config.
+      class GooglePrivacyDlpV2TransformationConfig
+        include Google::Apis::Core::Hashable
+      
+        # De-identify template. If this template is specified, it will serve as the
+        # default de-identify template. This template cannot contain `
+        # record_transformations` since it can be used for unstructured content such as
+        # free-form text files. If this template is not set, a default `
+        # ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+        # Corresponds to the JSON property `deidentifyTemplate`
+        # @return [String]
+        attr_accessor :deidentify_template
+      
+        # Image redact template. If this template is specified, it will serve as the de-
+        # identify template for images. If this template is not set, all findings in the
+        # image will be redacted with a black box.
+        # Corresponds to the JSON property `imageRedactTemplate`
+        # @return [String]
+        attr_accessor :image_redact_template
+      
+        # Structured de-identify template. If this template is specified, it will serve
+        # as the de-identify template for structured content such as delimited files and
+        # tables. If this template is not set but the `deidentify_template` is set, then
+        # `deidentify_template` will also apply to the structured content. If neither
+        # template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-
+        # identify structured content.
+        # Corresponds to the JSON property `structuredDeidentifyTemplate`
+        # @return [String]
+        attr_accessor :structured_deidentify_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deidentify_template = args[:deidentify_template] if args.key?(:deidentify_template)
+          @image_redact_template = args[:image_redact_template] if args.key?(:image_redact_template)
+          @structured_deidentify_template = args[:structured_deidentify_template] if args.key?(:structured_deidentify_template)
+        end
+      end
+      
+      # Config for storing transformation details.
+      class GooglePrivacyDlpV2TransformationDetailsStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message defining the location of a BigQuery table. A table is uniquely
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -7110,6 +7258,31 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details about each available version for an infotype.
+      class GooglePrivacyDlpV2VersionDescription
+        include Google::Apis::Core::Hashable
+      
+        # Description of the version.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name of the version
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
