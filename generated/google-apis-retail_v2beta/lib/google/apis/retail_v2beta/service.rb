@@ -472,6 +472,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Removes all specified CatalogAttributes from the AttributesConfig.
+        # @param [String] attributes_config
+        #   Required. The attributes config resource shared by all catalog attributes
+        #   being deleted. Format: `projects/`project_number`/locations/`location_id`/
+        #   catalogs/`catalog_id`/attributesConfig`
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest] google_cloud_retail_v2beta_batch_remove_catalog_attributes_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_catalog_attributes_config_remove_catalog_attributes(attributes_config, google_cloud_retail_v2beta_batch_remove_catalog_attributes_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+attributesConfig}:batchRemoveCatalogAttributes', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_batch_remove_catalog_attributes_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBatchRemoveCatalogAttributesResponse
+          command.params['attributesConfig'] = attributes_config unless attributes_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Removes the specified CatalogAttribute from the AttributesConfig. If the
         # CatalogAttribute to remove does not exist, a NOT_FOUND error is returned.
         # @param [String] attributes_config
