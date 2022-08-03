@@ -2160,8 +2160,9 @@ module Google
         # when creating resources, although some resources may allow a client to request
         # the generation of an appropriate name automatically. Name is primarily
         # intended for creation idempotence and configuration definition. Cannot be
-        # updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +
-        # optional
+        # updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If
+        # ObjectMeta is part of a namespaces.services.create request, name must contain
+        # fewer than 50 characters. +optional
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
