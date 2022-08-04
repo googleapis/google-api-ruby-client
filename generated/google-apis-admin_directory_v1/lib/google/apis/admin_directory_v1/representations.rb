@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsUpdateStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Printer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -840,6 +846,7 @@ module Google
           property :ethernet_mac_address, as: 'ethernetMacAddress'
           property :ethernet_mac_address0, as: 'ethernetMacAddress0'
           property :firmware_version, as: 'firmwareVersion'
+          property :first_enrollment_time, as: 'firstEnrollmentTime'
           property :kind, as: 'kind'
           property :last_enrollment_time, as: 'lastEnrollmentTime', type: DateTime
       
@@ -855,6 +862,8 @@ module Google
           property :order_number, as: 'orderNumber'
           property :org_unit_id, as: 'orgUnitId'
           property :org_unit_path, as: 'orgUnitPath'
+          property :os_update_status, as: 'osUpdateStatus', class: Google::Apis::AdminDirectoryV1::OsUpdateStatus, decorator: Google::Apis::AdminDirectoryV1::OsUpdateStatus::Representation
+      
           property :os_version, as: 'osVersion'
           property :platform_version, as: 'platformVersion'
           collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser::Representation
@@ -1388,6 +1397,18 @@ module Google
           property :kind, as: 'kind'
           collection :organization_units, as: 'organizationUnits', class: Google::Apis::AdminDirectoryV1::OrgUnit, decorator: Google::Apis::AdminDirectoryV1::OrgUnit::Representation
       
+        end
+      end
+      
+      class OsUpdateStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reboot_time, as: 'rebootTime'
+          property :state, as: 'state'
+          property :target_kiosk_app_version, as: 'targetKioskAppVersion'
+          property :target_os_version, as: 'targetOsVersion'
+          property :update_check_time, as: 'updateCheckTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
