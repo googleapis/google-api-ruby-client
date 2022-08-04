@@ -298,8 +298,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field
-        # defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        # The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL".
+        # This field defaults to "ON_DEMAND" and is ignored, when specified for insert
+        # requests.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -763,7 +764,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_names
       
-        # Initial root password. Use only on creation.
+        # Initial root password. Use only on creation. You must set root passwords
+        # before you can connect to PostgreSQL instances.
         # Corresponds to the JSON property `rootPassword`
         # @return [String]
         attr_accessor :root_password
@@ -2802,6 +2804,12 @@ module Google
         attr_accessor :database_replication_enabled
         alias_method :database_replication_enabled?, :database_replication_enabled
       
+        # Configuration to protect against accidental instance deletion.
+        # Corresponds to the JSON property `deletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_protection_enabled
+        alias_method :deletion_protection_enabled?, :deletion_protection_enabled
+      
         # Deny maintenance periods
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::SqladminV1::DenyMaintenancePeriod>]
@@ -2909,6 +2917,7 @@ module Google
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @database_replication_enabled = args[:database_replication_enabled] if args.key?(:database_replication_enabled)
+          @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @insights_config = args[:insights_config] if args.key?(:insights_config)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
