@@ -1276,6 +1276,7 @@ module Google
           collection :database_flags, as: 'databaseFlags', class: Google::Apis::SqladminV1::DatabaseFlags, decorator: Google::Apis::SqladminV1::DatabaseFlags::Representation
       
           property :database_replication_enabled, as: 'databaseReplicationEnabled'
+          property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           collection :deny_maintenance_periods, as: 'denyMaintenancePeriods', class: Google::Apis::SqladminV1::DenyMaintenancePeriod, decorator: Google::Apis::SqladminV1::DenyMaintenancePeriod::Representation
       
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1::InsightsConfig, decorator: Google::Apis::SqladminV1::InsightsConfig::Representation
