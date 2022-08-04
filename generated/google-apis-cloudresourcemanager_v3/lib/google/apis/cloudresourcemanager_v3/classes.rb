@@ -441,14 +441,16 @@ module Google
         attr_accessor :inherited
         alias_method :inherited?, :inherited
       
-        # The namespaced_name of the TagKey, in the format of ``organization_id`/`
-        # tag_key_short_name``
+        # The namespaced_name of the TagKey. Now only supported in the format of ``
+        # organization_id`/`tag_key_short_name``. Other formats will be supported when
+        # we add non-org parented tags.
         # Corresponds to the JSON property `namespacedTagKey`
         # @return [String]
         attr_accessor :namespaced_tag_key
       
-        # Namespaced name of the TagValue. Must be in the format ``organization_id`/`
-        # tag_key_short_name`/`tag_value_short_name``.
+        # Namespaced name of the TagValue. Now only supported in the format ``
+        # organization_id`/`tag_key_short_name`/`tag_value_short_name``. Other formats
+        # will be supported when we add non-org parented tags.
         # Corresponds to the JSON property `namespacedTagValue`
         # @return [String]
         attr_accessor :namespaced_tag_value
@@ -1833,8 +1835,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Namespaced name of the TagValue. Must be in the format ``
-        # organization_id`/`tag_key_short_name`/`short_name``.
+        # Output only. Namespaced name of the TagValue. Now only supported in the format
+        # ``organization_id`/`tag_key_short_name`/`short_name``. Other formats will be
+        # supported when we add non-org parented tags.
         # Corresponds to the JSON property `namespacedName`
         # @return [String]
         attr_accessor :namespaced_name
