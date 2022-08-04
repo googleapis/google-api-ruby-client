@@ -827,6 +827,11 @@ module Google
         # @return [String]
         attr_accessor :firmware_version
       
+        # Date and time for the first time the device was enrolled.
+        # Corresponds to the JSON property `firstEnrollmentTime`
+        # @return [String]
+        attr_accessor :first_enrollment_time
+      
         # The type of resource. For the Chromeosdevices resource, the value is `admin#
         # directory#chromeosdevice`.
         # Corresponds to the JSON property `kind`
@@ -914,6 +919,11 @@ module Google
         # @return [String]
         attr_accessor :org_unit_path
       
+        # Contains information regarding the current OS update status.
+        # Corresponds to the JSON property `osUpdateStatus`
+        # @return [Google::Apis::AdminDirectoryV1::OsUpdateStatus]
+        attr_accessor :os_update_status
+      
         # The Chrome device's operating system version.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
@@ -996,6 +1006,7 @@ module Google
           @ethernet_mac_address = args[:ethernet_mac_address] if args.key?(:ethernet_mac_address)
           @ethernet_mac_address0 = args[:ethernet_mac_address0] if args.key?(:ethernet_mac_address0)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
+          @first_enrollment_time = args[:first_enrollment_time] if args.key?(:first_enrollment_time)
           @kind = args[:kind] if args.key?(:kind)
           @last_enrollment_time = args[:last_enrollment_time] if args.key?(:last_enrollment_time)
           @last_known_network = args[:last_known_network] if args.key?(:last_known_network)
@@ -1008,6 +1019,7 @@ module Google
           @order_number = args[:order_number] if args.key?(:order_number)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @org_unit_path = args[:org_unit_path] if args.key?(:org_unit_path)
+          @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
           @os_version = args[:os_version] if args.key?(:os_version)
           @platform_version = args[:platform_version] if args.key?(:platform_version)
           @recent_users = args[:recent_users] if args.key?(:recent_users)
@@ -2190,7 +2202,9 @@ module Google
         attr_accessor :admin_created
         alias_method :admin_created?, :admin_created
       
-        # Read-only. A list of a group's alias email addresses.
+        # Read-only. A list of a group's alias email addresses. To add, update, or
+        # remove a group's aliases, use the `groups.aliases` methods. If edited in a
+        # group's POST or PUT request, the edit is ignored.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
@@ -2245,7 +2259,7 @@ module Google
         # outside of the account's primary domain or subdomains. These are functioning
         # email addresses used by the group. This is a read-only property returned in
         # the API's response for a group. If edited in a group's POST or PUT request,
-        # the edit is ignored by the API service.
+        # the edit is ignored.
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
@@ -3005,6 +3019,59 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @organization_units = args[:organization_units] if args.key?(:organization_units)
+        end
+      end
+      
+      # Contains information regarding the current OS update status.
+      class OsUpdateStatus
+        include Google::Apis::Core::Hashable
+      
+        # Date and time of the last reboot.
+        # Corresponds to the JSON property `rebootTime`
+        # @return [String]
+        attr_accessor :reboot_time
+      
+        # The update state of an OS update.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # New required platform version from the pending updated kiosk app.
+        # Corresponds to the JSON property `targetKioskAppVersion`
+        # @return [String]
+        attr_accessor :target_kiosk_app_version
+      
+        # New platform version of the OS image being downloaded and applied. It is only
+        # set when update status is UPDATE_STATUS_DOWNLOAD_IN_PROGRESS or
+        # UPDATE_STATUS_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for
+        # UPDATE_STATUS_NEED_REBOOT for some edge cases, e.g. update engine is restarted
+        # without a reboot.
+        # Corresponds to the JSON property `targetOsVersion`
+        # @return [String]
+        attr_accessor :target_os_version
+      
+        # Date and time of the last update check.
+        # Corresponds to the JSON property `updateCheckTime`
+        # @return [String]
+        attr_accessor :update_check_time
+      
+        # Date and time of the last successful OS update.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reboot_time = args[:reboot_time] if args.key?(:reboot_time)
+          @state = args[:state] if args.key?(:state)
+          @target_kiosk_app_version = args[:target_kiosk_app_version] if args.key?(:target_kiosk_app_version)
+          @target_os_version = args[:target_os_version] if args.key?(:target_os_version)
+          @update_check_time = args[:update_check_time] if args.key?(:update_check_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
