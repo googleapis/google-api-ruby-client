@@ -1896,9 +1896,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves TagValue. If the TagValue or namespaced name does not exist, or if
-        # the user does not have permission to view it, this method will return `
-        # PERMISSION_DENIED`.
+        # Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value
+        # does not exist or the user does not have permission to view it.
         # @param [String] name
         #   Required. Resource name for TagValue to be fetched in the format `tagValues/
         #   456`.
