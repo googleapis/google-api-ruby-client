@@ -6336,20 +6336,20 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Fully qualified name of the user-provided connection object which holds the
-        # authentication information to send requests to the remote service. projects/`
-        # project_id`/locations/`location_id`/connections/`connection_id`
+        # authentication information to send requests to the remote service. Format: ```"
+        # projects/`projectId`/locations/`locationId`/connections/`connectionId`"```
         # Corresponds to the JSON property `connection`
         # @return [String]
         attr_accessor :connection
       
-        # Endpoint of the user-provided remote service (e.g. a function url in Google
-        # Cloud Functions).
+        # Endpoint of the user-provided remote service, e.g. ```https://us-east1-
+        # my_gcf_project.cloudfunctions.net/remote_add```
         # Corresponds to the JSON property `endpoint`
         # @return [String]
         attr_accessor :endpoint
       
         # Max number of rows in each batch sent to the remote service. If absent or if 0,
-        # it means no limit.
+        # BigQuery dynamically decides the number of rows in a batch.
         # Corresponds to the JSON property `maxBatchingRows`
         # @return [Fixnum]
         attr_accessor :max_batching_rows
