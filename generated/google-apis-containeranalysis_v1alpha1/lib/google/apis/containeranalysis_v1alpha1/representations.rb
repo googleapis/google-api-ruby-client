@@ -22,6 +22,12 @@ module Google
   module Apis
     module ContaineranalysisV1alpha1
       
+      class AnalysisCompleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Artifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -844,6 +850,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalysisCompleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :analysis_type, as: 'analysisType'
+        end
+      end
+      
       class Artifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1444,6 +1457,10 @@ module Google
       class Discovered
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_completed, as: 'analysisCompleted', class: Google::Apis::ContaineranalysisV1alpha1::AnalysisCompleted, decorator: Google::Apis::ContaineranalysisV1alpha1::AnalysisCompleted::Representation
+      
+          collection :analysis_error, as: 'analysisError', class: Google::Apis::ContaineranalysisV1alpha1::Status, decorator: Google::Apis::ContaineranalysisV1alpha1::Status::Representation
+      
           property :analysis_status, as: 'analysisStatus'
           property :analysis_status_error, as: 'analysisStatusError', class: Google::Apis::ContaineranalysisV1alpha1::Status, decorator: Google::Apis::ContaineranalysisV1alpha1::Status::Representation
       
