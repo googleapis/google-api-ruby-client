@@ -1219,7 +1219,9 @@ module Google
         end
       end
       
-      # A subscription resource.
+      # A subscription resource. If none of `push_config` or `bigquery_config` is set,
+      # then the subscriber will pull and ack messages using API methods. At most one
+      # of these fields may be set.
       class Subscription
         include Google::Apis::Core::Hashable
       
@@ -1544,7 +1546,9 @@ module Google
       class UpdateSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # A subscription resource.
+        # A subscription resource. If none of `push_config` or `bigquery_config` is set,
+        # then the subscriber will pull and ack messages using API methods. At most one
+        # of these fields may be set.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PubsubV1::Subscription]
         attr_accessor :subscription
