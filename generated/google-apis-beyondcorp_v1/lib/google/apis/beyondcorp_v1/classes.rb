@@ -784,6 +784,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :ingress_port
       
+        # Output only. L7 private service connection for this resource.
+        # Corresponds to the JSON property `l7psc`
+        # @return [String]
+        attr_accessor :l7psc
+      
         # Required. The type of hosting used by the gateway.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -802,6 +807,7 @@ module Google
         def update!(**args)
           @app_gateway = args[:app_gateway] if args.key?(:app_gateway)
           @ingress_port = args[:ingress_port] if args.key?(:ingress_port)
+          @l7psc = args[:l7psc] if args.key?(:l7psc)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
         end

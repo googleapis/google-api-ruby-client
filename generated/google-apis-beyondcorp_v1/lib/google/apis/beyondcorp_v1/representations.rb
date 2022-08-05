@@ -629,6 +629,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_gateway, as: 'appGateway'
           property :ingress_port, as: 'ingressPort'
+          property :l7psc, as: 'l7psc'
           property :type, as: 'type'
           property :uri, as: 'uri'
         end
