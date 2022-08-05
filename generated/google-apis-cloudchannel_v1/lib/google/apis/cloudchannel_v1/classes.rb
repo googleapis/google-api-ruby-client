@@ -1328,8 +1328,9 @@ module Google
         # @return [String]
         attr_accessor :customer_name
       
-        # The BCP-47 language code. For example, "en-US". The response will localize in
-        # the corresponding language code, if specified. The default value is "en-US".
+        # Optional. The BCP-47 language code. For example, "en-US". The response will
+        # localize in the corresponding language code, if specified. The default value
+        # is "en-US".
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
