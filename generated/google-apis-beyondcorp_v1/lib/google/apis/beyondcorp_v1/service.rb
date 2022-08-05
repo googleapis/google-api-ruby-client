@@ -851,8 +851,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get instance config for a given AppConnector. An internal method called by a
-        # AppConnector to get its container config.
+        # Gets instance configuration for a given AppConnector. An internal method
+        # called by a AppConnector to get its container config.
         # @param [String] app_connector
         #   Required. BeyondCorp AppConnector name using the form: `projects/`project_id`/
         #   locations/`location_id`/appConnectors/`app_connector``
