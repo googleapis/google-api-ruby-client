@@ -2166,6 +2166,13 @@ module Google
         # @return [String]
         attr_accessor :custom_gpu_driver_path
       
+        # Bool indicating whether JupyterLab terminal will be available or not. Default:
+        # False
+        # Corresponds to the JSON property `disableTerminal`
+        # @return [Boolean]
+        attr_accessor :disable_terminal
+        alias_method :disable_terminal?, :disable_terminal
+      
         # Verifies core internal services are running. Default: True
         # Corresponds to the JSON property `enableHealthMonitoring`
         # @return [Boolean]
@@ -2227,6 +2234,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_gpu_driver_path = args[:custom_gpu_driver_path] if args.key?(:custom_gpu_driver_path)
+          @disable_terminal = args[:disable_terminal] if args.key?(:disable_terminal)
           @enable_health_monitoring = args[:enable_health_monitoring] if args.key?(:enable_health_monitoring)
           @idle_shutdown = args[:idle_shutdown] if args.key?(:idle_shutdown)
           @idle_shutdown_timeout = args[:idle_shutdown_timeout] if args.key?(:idle_shutdown_timeout)
