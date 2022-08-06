@@ -1444,6 +1444,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
+        # Resource manager tags to be bound to the disk. Tag keys and values have the
+        # same definition as resource manager tags. Keys must be in the format `tagKeys/`
+        # tag_key_id``, and values are in the format `tagValues/456`. The field is
+        # ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         # Resource policies applied to this disk for automatic snapshot creations.
         # Specified using the full or partial URL. For instance template, specify only
         # the resource policy name.
@@ -1507,6 +1515,7 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
@@ -5792,6 +5801,11 @@ module Google
         # @return [String]
         attr_accessor :options
       
+        # Additional disk params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeV1::DiskParams]
+        attr_accessor :params
+      
         # Physical block size of the persistent disk, in bytes. If not present in a
         # request, a default value is used. The currently supported size is 4096, other
         # sizes may be added in the future. If an unsupported value is requested, the
@@ -5977,6 +5991,7 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
+          @params = args[:params] if args.key?(:params)
           @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @region = args[:region] if args.key?(:region)
@@ -6320,6 +6335,28 @@ module Google
         def update!(**args)
           @destination_zone = args[:destination_zone] if args.key?(:destination_zone)
           @target_disk = args[:target_disk] if args.key?(:target_disk)
+        end
+      end
+      
+      # Additional disk params.
+      class DiskParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the disk. Tag keys and values have the
+        # same definition as resource manager tags. Keys must be in the format `tagKeys/`
+        # tag_key_id``, and values are in the format `tagValues/456`. The field is
+        # ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -31836,6 +31873,12 @@ module Google
       class SecurityPolicyAdvancedOptionsConfig
         include Google::Apis::Core::Hashable
       
+        # Custom configuration to apply the JSON parsing. Only applicable when
+        # json_parsing is set to STANDARD.
+        # Corresponds to the JSON property `jsonCustomConfig`
+        # @return [Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig]
+        attr_accessor :json_custom_config
+      
         # 
         # Corresponds to the JSON property `jsonParsing`
         # @return [String]
@@ -31852,8 +31895,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @json_custom_config = args[:json_custom_config] if args.key?(:json_custom_config)
           @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
           @log_level = args[:log_level] if args.key?(:log_level)
+        end
+      end
+      
+      # 
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of custom Content-Type header values to apply the JSON parsing. As per
+        # RFC 1341, a Content-Type header value has the following format: Content-Type :=
+        # type "/" subtype *[";" parameter] When configuring a custom Content-Type
+        # header value, only the type/subtype needs to be specified, and the parameters
+        # should be excluded.
+        # Corresponds to the JSON property `contentTypes`
+        # @return [Array<String>]
+        attr_accessor :content_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_types = args[:content_types] if args.key?(:content_types)
         end
       end
       
