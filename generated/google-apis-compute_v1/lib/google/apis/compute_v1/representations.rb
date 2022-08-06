@@ -724,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4150,6 +4156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyDdosProtectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5871,6 +5883,7 @@ module Google
           collection :licenses, as: 'licenses'
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -6825,6 +6838,8 @@ module Google
           property :location_hint, as: 'locationHint'
           property :name, as: 'name'
           property :options, as: 'options'
+          property :params, as: 'params', class: Google::Apis::ComputeV1::DiskParams, decorator: Google::Apis::ComputeV1::DiskParams::Representation
+      
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :region, as: 'region'
@@ -6931,6 +6946,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_disk, as: 'targetDisk'
+        end
+      end
+      
+      class DiskParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -13308,8 +13330,17 @@ module Google
       class SecurityPolicyAdvancedOptionsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_custom_config, as: 'jsonCustomConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig::Representation
+      
           property :json_parsing, as: 'jsonParsing'
           property :log_level, as: 'logLevel'
+        end
+      end
+      
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_types, as: 'contentTypes'
         end
       end
       
