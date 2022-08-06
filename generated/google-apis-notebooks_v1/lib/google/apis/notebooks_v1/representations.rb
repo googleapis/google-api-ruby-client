@@ -982,6 +982,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_gpu_driver_path, as: 'customGpuDriverPath'
+          property :disable_terminal, as: 'disableTerminal'
           property :enable_health_monitoring, as: 'enableHealthMonitoring'
           property :idle_shutdown, as: 'idleShutdown'
           property :idle_shutdown_timeout, as: 'idleShutdownTimeout'
