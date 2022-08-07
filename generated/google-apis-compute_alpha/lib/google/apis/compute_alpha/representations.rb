@@ -166,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllocationResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllocationResourceStatusSpecificSkuAllocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1211,6 +1223,12 @@ module Google
       end
       
       class FutureReservationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStatusSpecificSkuProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5098,6 +5116,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAssociation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6920,6 +6944,21 @@ module Google
         end
       end
       
+      class AllocationResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :specific_sku_allocation, as: 'specificSkuAllocation', class: Google::Apis::ComputeAlpha::AllocationResourceStatusSpecificSkuAllocation, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatusSpecificSkuAllocation::Representation
+      
+        end
+      end
+      
+      class AllocationResourceStatusSpecificSkuAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6951,6 +6990,7 @@ module Google
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
       
+          property :source_instance_template, as: 'sourceInstanceTemplate'
         end
       end
       
@@ -8968,6 +9008,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :name_prefix, as: 'namePrefix'
+          property :planning_status, as: 'planningStatus'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
@@ -8987,6 +9028,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
       
+          property :source_instance_template, as: 'sourceInstanceTemplate'
           property :total_count, :numeric_string => true, as: 'totalCount'
         end
       end
@@ -8998,6 +9040,15 @@ module Google
           property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
           property :lock_time, as: 'lockTime'
           property :procurement_status, as: 'procurementStatus'
+          property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeAlpha::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeAlpha::FutureReservationStatusSpecificSkuProperties::Representation
+      
+        end
+      end
+      
+      class FutureReservationStatusSpecificSkuProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instance_template_id, as: 'sourceInstanceTemplateId'
         end
       end
       
@@ -15084,6 +15135,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           hash :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::AllocationResourceStatus, decorator: Google::Apis::ComputeAlpha::AllocationResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -16240,8 +16293,17 @@ module Google
       class SecurityPolicyAdvancedOptionsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_custom_config, as: 'jsonCustomConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig::Representation
+      
           property :json_parsing, as: 'jsonParsing'
           property :log_level, as: 'logLevel'
+        end
+      end
+      
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_types, as: 'contentTypes'
         end
       end
       
