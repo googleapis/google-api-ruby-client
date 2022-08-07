@@ -963,9 +963,7 @@ module Google
         #   volume``
         # @param [Google::Apis::BaremetalsolutionV2::Volume] volume_object
         # @param [String] update_mask
-        #   The list of fields to update. The only currently supported fields are: `
-        #   snapshot_auto_delete_behavior` `snapshot_schedule_policy_name` 'labels' '
-        #   snapshot_enabled' 'snapshot_reservation_detail.reserved_space_percent'
+        #   The list of fields to update. The only currently supported fields are: 'labels'
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
