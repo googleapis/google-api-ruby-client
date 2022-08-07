@@ -1176,6 +1176,44 @@ module Google
         end
       end
       
+      # [Output Only] Contains output only fields.
+      class AllocationResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Contains Properties set for the reservation.
+        # Corresponds to the JSON property `specificSkuAllocation`
+        # @return [Google::Apis::ComputeAlpha::AllocationResourceStatusSpecificSkuAllocation]
+        attr_accessor :specific_sku_allocation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
+        end
+      end
+      
+      # Contains Properties set for the reservation.
+      class AllocationResourceStatusSpecificSkuAllocation
+        include Google::Apis::Core::Hashable
+      
+        # ID of the instance template used to populate reservation properties.
+        # Corresponds to the JSON property `sourceInstanceTemplateId`
+        # @return [String]
+        attr_accessor :source_instance_template_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
+        end
+      end
+      
       # 
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         include Google::Apis::Core::Hashable
@@ -1289,6 +1327,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
       
+        # Specific URL of the instance template used in the reservation
+        # Corresponds to the JSON property `sourceInstanceTemplate`
+        # @return [String]
+        attr_accessor :source_instance_template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1299,6 +1342,7 @@ module Google
           @count = args[:count] if args.key?(:count)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
         end
       end
       
@@ -9329,7 +9373,7 @@ module Google
         # A fully-qualified URL of a SecurityProfile resource instance. Example: https://
         # networksecurity.googleapis.com/v1/projects/`project`/locations/`location`/
         # securityProfileGroups/my-security-profile-group Must be specified if action = '
-        # apply_profile_group' and cannot be specified for other actions.
+        # apply_security_profile_group' and cannot be specified for other actions.
         # Corresponds to the JSON property `securityProfileGroup`
         # @return [String]
         attr_accessor :security_profile_group
@@ -10367,6 +10411,11 @@ module Google
         # @return [String]
         attr_accessor :name_prefix
       
+        # Planning state before being submitted for evaluation
+        # Corresponds to the JSON property `planningStatus`
+        # @return [String]
+        attr_accessor :planning_status
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -10415,6 +10464,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @name_prefix = args[:name_prefix] if args.key?(:name_prefix)
+          @planning_status = args[:planning_status] if args.key?(:planning_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
@@ -10434,6 +10484,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
       
+        # The instance template that will be used to populate the
+        # ReservedInstanceProperties of the future reservation
+        # Corresponds to the JSON property `sourceInstanceTemplate`
+        # @return [String]
+        attr_accessor :source_instance_template
+      
         # Total number of instances for which capacity assurance is requested at a
         # future time period.
         # Corresponds to the JSON property `totalCount`
@@ -10447,6 +10503,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
           @total_count = args[:total_count] if args.key?(:total_count)
         end
       end
@@ -10480,6 +10537,11 @@ module Google
         # @return [String]
         attr_accessor :procurement_status
       
+        # Properties to be set for the Future Reservation.
+        # Corresponds to the JSON property `specificSkuProperties`
+        # @return [Google::Apis::ComputeAlpha::FutureReservationStatusSpecificSkuProperties]
+        attr_accessor :specific_sku_properties
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10490,6 +10552,26 @@ module Google
           @fulfilled_count = args[:fulfilled_count] if args.key?(:fulfilled_count)
           @lock_time = args[:lock_time] if args.key?(:lock_time)
           @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
+          @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
+        end
+      end
+      
+      # Properties to be set for the Future Reservation.
+      class FutureReservationStatusSpecificSkuProperties
+        include Google::Apis::Core::Hashable
+      
+        # ID of the instance template used to populate the Future Reservation properties.
+        # Corresponds to the JSON property `sourceInstanceTemplateId`
+        # @return [String]
+        attr_accessor :source_instance_template_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
         end
       end
       
@@ -34463,6 +34545,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Contains output only fields.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::AllocationResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -34522,6 +34609,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -39120,6 +39208,12 @@ module Google
       class SecurityPolicyAdvancedOptionsConfig
         include Google::Apis::Core::Hashable
       
+        # Custom configuration to apply the JSON parsing. Only applicable when
+        # json_parsing is set to STANDARD.
+        # Corresponds to the JSON property `jsonCustomConfig`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfigJsonCustomConfig]
+        attr_accessor :json_custom_config
+      
         # 
         # Corresponds to the JSON property `jsonParsing`
         # @return [String]
@@ -39136,8 +39230,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @json_custom_config = args[:json_custom_config] if args.key?(:json_custom_config)
           @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
           @log_level = args[:log_level] if args.key?(:log_level)
+        end
+      end
+      
+      # 
+      class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of custom Content-Type header values to apply the JSON parsing. As per
+        # RFC 1341, a Content-Type header value has the following format: Content-Type :=
+        # type "/" subtype *[";" parameter] When configuring a custom Content-Type
+        # header value, only the type/subtype needs to be specified, and the parameters
+        # should be excluded.
+        # Corresponds to the JSON property `contentTypes`
+        # @return [Array<String>]
+        attr_accessor :content_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_types = args[:content_types] if args.key?(:content_types)
         end
       end
       
