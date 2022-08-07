@@ -175,6 +175,18 @@ module Google
       class AuthorizationCodeLink
         include Google::Apis::Core::Hashable
       
+        # The client ID assigned to the GCP Connectors OAuth app for the connector data
+        # source.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Whether to enable PKCE for the auth code flow.
+        # Corresponds to the JSON property `enablePkce`
+        # @return [Boolean]
+        attr_accessor :enable_pkce
+        alias_method :enable_pkce?, :enable_pkce
+      
         # The scopes for which the user will authorize GCP Connectors on the connector
         # data source.
         # Corresponds to the JSON property `scopes`
@@ -192,6 +204,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @enable_pkce = args[:enable_pkce] if args.key?(:enable_pkce)
           @scopes = args[:scopes] if args.key?(:scopes)
           @uri = args[:uri] if args.key?(:uri)
         end

@@ -392,6 +392,8 @@ module Google
       class AuthorizationCodeLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :enable_pkce, as: 'enablePkce'
           collection :scopes, as: 'scopes'
           property :uri, as: 'uri'
         end
