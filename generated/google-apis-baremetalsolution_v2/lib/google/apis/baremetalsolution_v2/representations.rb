@@ -813,6 +813,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
+          property :boot_volume, as: 'bootVolume'
           property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
           property :emergency_size_gib, :numeric_string => true, as: 'emergencySizeGib'
           property :id, as: 'id'

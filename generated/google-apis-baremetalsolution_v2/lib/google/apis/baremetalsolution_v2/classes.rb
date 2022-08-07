@@ -1950,6 +1950,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :auto_grown_size_gib
       
+        # Output only. Whether this volume is a boot volume. A boot volume is one which
+        # contains a boot LUN.
+        # Corresponds to the JSON property `bootVolume`
+        # @return [Boolean]
+        attr_accessor :boot_volume
+        alias_method :boot_volume?, :boot_volume
+      
         # The current size of this storage volume, in GiB, including space reserved for
         # snapshots. This size might be different than the requested size if the storage
         # volume has been configured with auto grow or auto shrink.
@@ -2050,6 +2057,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_grown_size_gib = args[:auto_grown_size_gib] if args.key?(:auto_grown_size_gib)
+          @boot_volume = args[:boot_volume] if args.key?(:boot_volume)
           @current_size_gib = args[:current_size_gib] if args.key?(:current_size_gib)
           @emergency_size_gib = args[:emergency_size_gib] if args.key?(:emergency_size_gib)
           @id = args[:id] if args.key?(:id)
