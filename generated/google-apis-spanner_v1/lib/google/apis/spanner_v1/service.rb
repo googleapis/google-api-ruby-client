@@ -1720,7 +1720,7 @@ module Google
         # Lists Cloud Spanner database roles.
         # @param [String] parent
         #   Required. The database whose roles should be listed. Values are of the form `
-        #   projects//instances//databases//databaseRoles`.
+        #   projects//instances//databases/`.
         # @param [Fixnum] page_size
         #   Number of database roles to be returned in the response. If 0 or less,
         #   defaults to the server's maximum allowed page size.
