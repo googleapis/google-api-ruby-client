@@ -830,8 +830,8 @@ module Google
         # CompleteNodePoolUpgrade will signal an on-going node pool upgrade to complete.
         # @param [String] name
         #   The name (project, location, cluster, node pool id) of the node pool to
-        #   complete upgrade. Specified in the format 'projects/*/locations/*/clusters/*/
-        #   nodePools/*'.
+        #   complete upgrade. Specified in the format `projects/*/locations/*/clusters/*/
+        #   nodePools/*`.
         # @param [Google::Apis::ContainerV1beta1::CompleteNodePoolUpgradeRequest] complete_node_pool_upgrade_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
