@@ -301,8 +301,9 @@ module Google
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
         # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
         # specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be
-        # specified using cloud.google.com/requested-min-cpu-platform label selector on
-        # the pod. To unset the min cpu platform field pass "automatic" as field value.
+        # specified using https://cloud.google.com/requested-min-cpu-platform label
+        # selector on the pod. To unset the min cpu platform field pass "automatic" as
+        # field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -420,8 +421,9 @@ module Google
       class BinaryAuthorization
         include Google::Apis::Core::Hashable
       
-        # Enable Binary Authorization for this cluster. If enabled, all container images
-        # will be validated by Binary Authorization.
+        # This field is deprecated. Leave this unset and instead configure
+        # BinaryAuthorization using evaluation_mode. If evaluation_mode is set to
+        # anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -2863,7 +2865,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Whether the location is recomended for GKE cluster scheduling.
+        # Whether the location is recommended for GKE cluster scheduling.
         # Corresponds to the JSON property `recommended`
         # @return [Boolean]
         attr_accessor :recommended
