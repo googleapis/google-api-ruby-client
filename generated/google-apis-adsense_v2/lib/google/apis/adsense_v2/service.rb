@@ -295,7 +295,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the AdSense code for a given ad unit.
+        # Gets the ad unit code for a given ad unit. For more information, see [About
+        # the AdSense code](https://support.google.com/adsense/answer/9274634) and [
+        # Where to place the ad code in your HTML](https://support.google.com/adsense/
+        # answer/9190028).
         # @param [String] name
         #   Required. Name of the adunit for which to get the adcode. Format: accounts/`
         #   account`/adclients/`adclient`/adunits/`adunit`
