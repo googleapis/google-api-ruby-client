@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InventoryTypeTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAuctionPackagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -663,6 +669,13 @@ module Google
         end
       end
       
+      class InventoryTypeTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inventory_types, as: 'inventoryTypes'
+        end
+      end
+      
       class ListAuctionPackagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -734,6 +747,8 @@ module Google
           property :geo_targeting, as: 'geoTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::CriteriaTargeting::Representation
       
           property :inventory_size_targeting, as: 'inventorySizeTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting::Representation
+      
+          property :inventory_type_targeting, as: 'inventoryTypeTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::InventoryTypeTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::InventoryTypeTargeting::Representation
       
           property :placement_targeting, as: 'placementTargeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1::PlacementTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::PlacementTargeting::Representation
       
