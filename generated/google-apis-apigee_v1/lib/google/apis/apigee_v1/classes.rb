@@ -3197,6 +3197,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # NodeConfig for setting the min/max number of nodes associated with the
+        # environment.
+        # Corresponds to the JSON property `nodeConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1NodeConfig]
+        attr_accessor :node_config
+      
         # Message for compatibility with legacy Edge specification for Java Properties
         # object in JSON.
         # Corresponds to the JSON property `properties`
@@ -3223,6 +3229,7 @@ module Google
           @forward_proxy_uri = args[:forward_proxy_uri] if args.key?(:forward_proxy_uri)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @node_config = args[:node_config] if args.key?(:node_config)
           @properties = args[:properties] if args.key?(:properties)
           @state = args[:state] if args.key?(:state)
         end
@@ -5212,6 +5219,38 @@ module Google
         end
       end
       
+      # The optionally aggregated metric to query with its ordering.
+      class GoogleCloudApigeeV1MetricAggregation
+        include Google::Apis::Core::Hashable
+      
+        # Aggregation function associated with the metric.
+        # Corresponds to the JSON property `aggregation`
+        # @return [String]
+        attr_accessor :aggregation
+      
+        # Name of the metric
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Ordering for this aggregation in the result. For time series this is ignored
+        # since the ordering of points depends only on the timestamp, not the values.
+        # Corresponds to the JSON property `order`
+        # @return [String]
+        attr_accessor :order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation = args[:aggregation] if args.key?(:aggregation)
+          @name = args[:name] if args.key?(:name)
+          @order = args[:order] if args.key?(:order)
+        end
+      end
+      
       # Configuration for the Monetization add-on.
       class GoogleCloudApigeeV1MonetizationConfig
         include Google::Apis::Core::Hashable
@@ -5261,6 +5300,45 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # NodeConfig for setting the min/max number of nodes associated with the
+      # environment.
+      class GoogleCloudApigeeV1NodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current total number of gateway nodes that each environment
+        # currently has across all instances.
+        # Corresponds to the JSON property `currentAggregateNodeCount`
+        # @return [Fixnum]
+        attr_accessor :current_aggregate_node_count
+      
+        # Optional. The maximum total number of gateway nodes that the is reserved for
+        # all instances that has the specified environment. If not specified, the
+        # default is determined by the recommended maximum number of nodes for that
+        # gateway.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        # Optional. The minimum total number of gateway nodes that the is reserved for
+        # all instances that has the specified environment. If not specified, the
+        # default is determined by the recommended minimum number of nodes for that
+        # gateway.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_aggregate_node_count = args[:current_aggregate_node_count] if args.key?(:current_aggregate_node_count)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
         end
       end
       
@@ -6135,6 +6213,226 @@ module Google
           @name = args[:name] if args.key?(:name)
           @operator = args[:operator] if args.key?(:operator)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request payload representing the query to be run for fetching security
+      # statistics as rows.
+      class GoogleCloudApigeeV1QueryTabularStatsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of dimension names to group the aggregations by.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # Filter further on specific dimension values. Follows the same grammar as
+        # custom report's filter expressions. Example, apiproxy eq 'foobar'. https://
+        # cloud.google.com/apigee/docs/api-platform/analytics/analytics-reference#
+        # filters
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. List of metrics and their aggregations.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation>]
+        attr_accessor :metrics
+      
+        # Page size represents the number of rows.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Identifies a sequence of rows.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeInterval]
+        attr_accessor :time_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @filter = args[:filter] if args.key?(:filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @time_range = args[:time_range] if args.key?(:time_range)
+        end
+      end
+      
+      # Encapsulates two kinds of stats that are results of the dimensions and
+      # aggregations requested. - Tabular rows. - Time series data. Example of tabular
+      # rows, Represents security stats results as a row of flat values.
+      class GoogleCloudApigeeV1QueryTabularStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Column names corresponding to the same order as the inner values in the stats
+        # field.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Resultant rows from the executed query.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Array<Object>>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # QueryTimeSeriesStatsRequest represents a query that returns a collection of
+      # time series sequences grouped by their values.
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of dimension names to group the aggregations by. If no dimensions are
+        # passed, a single trend line representing the requested metric aggregations
+        # grouped by environment is returned.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<String>]
+        attr_accessor :dimensions
+      
+        # Filter further on specific dimension values. Follows the same grammar as
+        # custom report's filter expressions. Example, apiproxy eq 'foobar'. https://
+        # cloud.google.com/apigee/docs/api-platform/analytics/analytics-reference#
+        # filters
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. List of metrics and their aggregations.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation>]
+        attr_accessor :metrics
+      
+        # Page size represents the number of time series sequences, one per unique set
+        # of dimensions and their values.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Page token stands for a specific collection of time series sequences.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeInterval]
+        attr_accessor :time_range
+      
+        # Order the sequences in increasing or decreasing order of timestamps. Default
+        # is descending order of timestamps (latest first).
+        # Corresponds to the JSON property `timestampOrder`
+        # @return [String]
+        attr_accessor :timestamp_order
+      
+        # Time buckets to group the stats by.
+        # Corresponds to the JSON property `windowSize`
+        # @return [String]
+        attr_accessor :window_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @filter = args[:filter] if args.key?(:filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @time_range = args[:time_range] if args.key?(:time_range)
+          @timestamp_order = args[:timestamp_order] if args.key?(:timestamp_order)
+          @window_size = args[:window_size] if args.key?(:window_size)
+        end
+      end
+      
+      # Represents security stats result as a collection of time series sequences.
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Column names corresponding to the same order as the inner values in the stats
+        # field.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Results of the query returned as a JSON array.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A sequence of time series.
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence
+        include Google::Apis::Core::Hashable
+      
+        # Map of dimensions and their values that uniquely identifies a time series
+        # sequence.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # List of points. First value of each inner list is a timestamp.
+        # Corresponds to the JSON property `points`
+        # @return [Array<Array<Object>>]
+        attr_accessor :points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @points = args[:points] if args.key?(:points)
         end
       end
       
@@ -8742,25 +9040,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members

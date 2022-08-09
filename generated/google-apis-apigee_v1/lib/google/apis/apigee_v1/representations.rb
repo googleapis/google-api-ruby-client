@@ -814,6 +814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1MetricAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1MonetizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -821,6 +827,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1NatAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -929,6 +941,36 @@ module Google
       end
       
       class GoogleCloudApigeeV1QueryMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1QueryTabularStatsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1QueryTabularStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2179,6 +2221,8 @@ module Google
           property :forward_proxy_uri, as: 'forwardProxyUri'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          property :node_config, as: 'nodeConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NodeConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1NodeConfig::Representation
+      
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
       
           property :state, as: 'state'
@@ -2788,6 +2832,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1MetricAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation, as: 'aggregation'
+          property :name, as: 'name'
+          property :order, as: 'order'
+        end
+      end
+      
       class GoogleCloudApigeeV1MonetizationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2801,6 +2854,15 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudApigeeV1NodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_aggregate_node_count, :numeric_string => true, as: 'currentAggregateNodeCount'
+          property :max_node_count, :numeric_string => true, as: 'maxNodeCount'
+          property :min_node_count, :numeric_string => true, as: 'minNodeCount'
         end
       end
       
@@ -3011,6 +3073,71 @@ module Google
           property :name, as: 'name'
           property :operator, as: 'operator'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudApigeeV1QueryTabularStatsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :time_range, as: 'timeRange', class: Google::Apis::ApigeeV1::GoogleTypeInterval, decorator: Google::Apis::ApigeeV1::GoogleTypeInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1QueryTabularStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+          property :next_page_token, as: 'nextPageToken'
+          collection :values, as: 'values', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MetricAggregation::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :time_range, as: 'timeRange', class: Google::Apis::ApigeeV1::GoogleTypeInterval, decorator: Google::Apis::ApigeeV1::GoogleTypeInterval::Representation
+      
+          property :timestamp_order, as: 'timestampOrder'
+          property :window_size, as: 'windowSize'
+        end
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+          property :next_page_token, as: 'nextPageToken'
+          collection :values, as: 'values', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          collection :points, as: 'points', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
         end
       end
       
