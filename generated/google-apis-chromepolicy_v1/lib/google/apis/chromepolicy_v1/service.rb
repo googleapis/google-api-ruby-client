@@ -86,6 +86,156 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete multiple policy values that are applied to a specific group. All
+        # targets must have the same target format. That is to say that they must point
+        # to the same target resource and must have the same keys specified in `
+        # additionalTargetKeyNames`, though the values for those keys may be different.
+        # On failure the request will return the error details as part of the google.rpc.
+        # Status.
+        # @param [String] customer
+        #   ID of the Google Workspace account or literal "my_customer" for the customer
+        #   associated to the request.
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest] google_chrome_policy_v1_batch_delete_group_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_customer_policy_group_delete(customer, google_chrome_policy_v1_batch_delete_group_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/policies/groups:batchDelete', options)
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest::Representation
+          command.request_object = google_chrome_policy_v1_batch_delete_group_policies_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modify multiple policy values that are applied to a specific group. All
+        # targets must have the same target format. That is to say that they must point
+        # to the same target resource and must have the same keys specified in `
+        # additionalTargetKeyNames`, though the values for those keys may be different.
+        # On failure the request will return the error details as part of the google.rpc.
+        # Status.
+        # @param [String] customer
+        #   ID of the Google Workspace account or literal "my_customer" for the customer
+        #   associated to the request.
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1BatchModifyGroupPoliciesRequest] google_chrome_policy_v1_batch_modify_group_policies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_customer_policy_group_modify(customer, google_chrome_policy_v1_batch_modify_group_policies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/policies/groups:batchModify', options)
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1BatchModifyGroupPoliciesRequest::Representation
+          command.request_object = google_chrome_policy_v1_batch_modify_group_policies_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a group priority ordering for an app. The target app must be supplied
+        # in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request
+        # will return the error details as part of the google.rpc.Status.
+        # @param [String] customer
+        #   Required. ID of the Google Workspace account or literal "my_customer" for the
+        #   customer associated to the request.
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingRequest] google_chrome_policy_v1_list_group_priority_ordering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_policy_group_group_priority_ordering(customer, google_chrome_policy_v1_list_group_priority_ordering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/policies/groups:listGroupPriorityOrdering', options)
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingRequest::Representation
+          command.request_object = google_chrome_policy_v1_list_group_priority_ordering_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ListGroupPriorityOrderingResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a group priority ordering for an app. The target app must be supplied
+        # in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request
+        # will return the error details as part of the google.rpc.Status.
+        # @param [String] customer
+        #   Required. ID of the Google Workspace account or literal "my_customer" for the
+        #   customer associated to the request.
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest] google_chrome_policy_v1_update_group_priority_ordering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromepolicyV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_customer_policy_group_group_priority_ordering(customer, google_chrome_policy_v1_update_group_priority_ordering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/policies/groups:updateGroupPriorityOrdering', options)
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest::Representation
+          command.request_object = google_chrome_policy_v1_update_group_priority_ordering_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleProtobufEmpty
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Modify multiple policy values that are applied to a specific org unit so that
         # they now inherit the value from a parent (if applicable). All targets must
         # have the same target format. That is to say that they must point to the same

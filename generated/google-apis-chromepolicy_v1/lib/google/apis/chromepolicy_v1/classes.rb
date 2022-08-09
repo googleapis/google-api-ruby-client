@@ -86,6 +86,31 @@ module Google
         end
       end
       
+      # Request message for specifying that multiple policy values will be deleted.
+      class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies that will be deleted as defined by the `requests`. All
+        # requests in the list must follow these restrictions: 1. All schemas in the
+        # list must have the same root namespace. 2. All `policyTargetKey.targetResource`
+        # values must point to a group resource. 3. All `policyTargetKey` values must
+        # have the same `app_id` key name in the `additionalTargetKeys`. 4. No two
+        # modification requests can reference the same `policySchema` + `
+        # policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DeleteGroupPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
       # Request message for specifying that multiple policy values inherit their value
       # from their parents.
       class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
@@ -102,6 +127,31 @@ module Google
         # same `policySchema` + ` policyTargetKey` pair.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1InheritOrgUnitPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for modifying multiple policy values for a specific group-
+      # based target.
+      class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies to modify as defined by the `requests`. All requests in the
+        # list must follow these restrictions: 1. All schemas in the list must have the
+        # same root namespace. 2. All `policyTargetKey.targetResource` values must point
+        # to a group resource. 3. All `policyTargetKey` values must have the same `
+        # app_id` key name in the `additionalTargetKeys`. 4. No two modification
+        # requests can reference the same `policySchema` + ` policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyGroupPolicyRequest>]
         attr_accessor :requests
       
         def initialize(**args)
@@ -140,6 +190,31 @@ module Google
         end
       end
       
+      # Request parameters for deleting the policy value of a specific group target.
+      class GoogleChromePolicyV1DeleteGroupPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the policy schema that is being inherited.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
       # Request parameters for inheriting policy value of a specific org unit target
       # from the policy value of its parent org unit.
       class GoogleChromePolicyV1InheritOrgUnitPolicyRequest
@@ -166,6 +241,62 @@ module Google
         end
       end
       
+      # Request message for listing the group priority ordering of an app.
+      class GoogleChromePolicyV1ListGroupPriorityOrderingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The namespace of the policy type for the request.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Response message for listing the group priority ordering of an app.
+      class GoogleChromePolicyV1ListGroupPriorityOrderingResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The group IDs, in priority ordering.
+        # Corresponds to the JSON property `groupIds`
+        # @return [Array<String>]
+        attr_accessor :group_ids
+      
+        # Output only. The namespace of the policy type of the group IDs.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_ids = args[:group_ids] if args.key?(:group_ids)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
       # Response message for listing policy schemas that match a filter.
       class GoogleChromePolicyV1ListPolicySchemasResponse
         include Google::Apis::Core::Hashable
@@ -188,6 +319,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policy_schemas = args[:policy_schemas] if args.key?(:policy_schemas)
+        end
+      end
+      
+      # Request parameters for modifying a policy value for a specific group target.
+      class GoogleChromePolicyV1ModifyGroupPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        # A particular value for a policy managed by the service.
+        # Corresponds to the JSON property `policyValue`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue]
+        attr_accessor :policy_value
+      
+        # Required. Policy fields to update. Only fields in this mask will be updated;
+        # other fields in `policy_value` will be ignored (even if they have values). If
+        # a field is in this list it must have a value in 'policy_value'.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+          @policy_value = args[:policy_value] if args.key?(:policy_value)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -648,6 +812,37 @@ module Google
           @source_key = args[:source_key] if args.key?(:source_key)
           @target_key = args[:target_key] if args.key?(:target_key)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request message for updating the group priority ordering of an app.
+      class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The group IDs, in desired priority ordering.
+        # Corresponds to the JSON property `groupIds`
+        # @return [Array<String>]
+        attr_accessor :group_ids
+      
+        # Required. The namespace of the policy type for the request.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_ids = args[:group_ids] if args.key?(:group_ids)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
         end
       end
       
