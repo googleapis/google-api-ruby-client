@@ -947,6 +947,25 @@ module Google
         end
       end
       
+      # Targeting of the inventory types a bid request can originate from.
+      class InventoryTypeTargeting
+        include Google::Apis::Core::Hashable
+      
+        # The list of targeted inventory types for the bid request.
+        # Corresponds to the JSON property `inventoryTypes`
+        # @return [Array<String>]
+        attr_accessor :inventory_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inventory_types = args[:inventory_types] if args.key?(:inventory_types)
+        end
+      end
+      
       # Response message for listing auction packages.
       class ListAuctionPackagesResponse
         include Google::Apis::Core::Hashable
@@ -1152,6 +1171,11 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting]
         attr_accessor :inventory_size_targeting
       
+        # Targeting of the inventory types a bid request can originate from.
+        # Corresponds to the JSON property `inventoryTypeTargeting`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::InventoryTypeTargeting]
+        attr_accessor :inventory_type_targeting
+      
         # Represents targeting about where the ads can appear, for example, certain
         # sites or mobile applications. Different placement targeting types will be
         # logically OR'ed.
@@ -1185,6 +1209,7 @@ module Google
           @daypart_targeting = args[:daypart_targeting] if args.key?(:daypart_targeting)
           @geo_targeting = args[:geo_targeting] if args.key?(:geo_targeting)
           @inventory_size_targeting = args[:inventory_size_targeting] if args.key?(:inventory_size_targeting)
+          @inventory_type_targeting = args[:inventory_type_targeting] if args.key?(:inventory_type_targeting)
           @placement_targeting = args[:placement_targeting] if args.key?(:placement_targeting)
           @technology_targeting = args[:technology_targeting] if args.key?(:technology_targeting)
           @user_list_targeting = args[:user_list_targeting] if args.key?(:user_list_targeting)
