@@ -4358,6 +4358,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates properties for an Apigee environment with patch semantics using a
+        # field mask. **Note:** Not supported for Apigee hybrid.
+        # @param [String] name
+        #   Required. Name of the environment. Use the following structure in your request:
+        #   `organizations/`org`/environments/`environment``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment] google_cloud_apigee_v1_environment_object
+        # @param [String] update_mask
+        #   List of fields to be updated. Fields that can be updated: node_config.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_organization_environment_environment(name, google_cloud_apigee_v1_environment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment::Representation
+          command.request_object = google_cloud_apigee_v1_environment_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the IAM policy on an environment, if the policy already exists it will be
         # replaced. For more information, see [Manage users, roles, and permissions
         # using the API](https://cloud.google.com/apigee/docs/api-platform/system-
@@ -7061,6 +7099,72 @@ module Google
           command.query['status'] = status unless status.nil?
           command.query['submittedBy'] = submitted_by unless submitted_by.nil?
           command.query['to'] = to unless to.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve security statistics as tabular rows.
+        # @param [String] orgenv
+        #   Required. Should be of the form organizations//environments/.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsRequest] google_cloud_apigee_v1_query_tabular_stats_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_organization_environment_security_stat_tabular_stats(orgenv, google_cloud_apigee_v1_query_tabular_stats_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+orgenv}/securityStats:queryTabularStats', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsRequest::Representation
+          command.request_object = google_cloud_apigee_v1_query_tabular_stats_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTabularStatsResponse
+          command.params['orgenv'] = orgenv unless orgenv.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve security statistics as a collection of time series.
+        # @param [String] orgenv
+        #   Required. Should be of the form organizations//environments/.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsRequest] google_cloud_apigee_v1_query_time_series_stats_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_organization_environment_security_stat_time_series_stats(orgenv, google_cloud_apigee_v1_query_time_series_stats_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+orgenv}/securityStats:queryTimeSeriesStats', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsRequest::Representation
+          command.request_object = google_cloud_apigee_v1_query_time_series_stats_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryTimeSeriesStatsResponse
+          command.params['orgenv'] = orgenv unless orgenv.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
