@@ -99,8 +99,8 @@ module Google
         attr_accessor :output_config
       
         # Required. The BCP-47 language code of the input document if known, for example,
-        # "en-US" or "sr-Latn". Supported language codes are listed in Language Support
-        # (https://cloud.google.com/translate/docs/languages).
+        # "en-US" or "sr-Latn". Supported language codes are listed in [Language
+        # Support](https://cloud.google.com/translate/docs/languages).
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
