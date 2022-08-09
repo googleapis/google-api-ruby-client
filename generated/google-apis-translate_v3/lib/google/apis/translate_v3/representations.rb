@@ -112,7 +112,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlossaryEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlossaryInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlossaryTerm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlossaryTermsPair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlossaryTermsSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +161,12 @@ module Google
       end
       
       class ListGlossariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGlossaryEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -363,6 +393,7 @@ module Google
       class Glossary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :end_time, as: 'endTime'
           property :entry_count, as: 'entryCount'
           property :input_config, as: 'inputConfig', class: Google::Apis::TranslateV3::GlossaryInputConfig, decorator: Google::Apis::TranslateV3::GlossaryInputConfig::Representation
@@ -376,10 +407,48 @@ module Google
         end
       end
       
+      class GlossaryEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :terms_pair, as: 'termsPair', class: Google::Apis::TranslateV3::GlossaryTermsPair, decorator: Google::Apis::TranslateV3::GlossaryTermsPair::Representation
+      
+          property :terms_set, as: 'termsSet', class: Google::Apis::TranslateV3::GlossaryTermsSet, decorator: Google::Apis::TranslateV3::GlossaryTermsSet::Representation
+      
+        end
+      end
+      
       class GlossaryInputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::TranslateV3::GcsSource, decorator: Google::Apis::TranslateV3::GcsSource::Representation
+      
+        end
+      end
+      
+      class GlossaryTerm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :text, as: 'text'
+        end
+      end
+      
+      class GlossaryTermsPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_term, as: 'sourceTerm', class: Google::Apis::TranslateV3::GlossaryTerm, decorator: Google::Apis::TranslateV3::GlossaryTerm::Representation
+      
+          property :target_term, as: 'targetTerm', class: Google::Apis::TranslateV3::GlossaryTerm, decorator: Google::Apis::TranslateV3::GlossaryTerm::Representation
+      
+        end
+      end
+      
+      class GlossaryTermsSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :terms, as: 'terms', class: Google::Apis::TranslateV3::GlossaryTerm, decorator: Google::Apis::TranslateV3::GlossaryTerm::Representation
       
         end
       end
@@ -412,6 +481,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :glossaries, as: 'glossaries', class: Google::Apis::TranslateV3::Glossary, decorator: Google::Apis::TranslateV3::Glossary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGlossaryEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :glossary_entries, as: 'glossaryEntries', class: Google::Apis::TranslateV3::GlossaryEntry, decorator: Google::Apis::TranslateV3::GlossaryEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

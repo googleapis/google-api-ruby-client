@@ -99,8 +99,8 @@ module Google
         attr_accessor :output_config
       
         # Required. The BCP-47 language code of the input document if known, for example,
-        # "en-US" or "sr-Latn". Supported language codes are listed in Language Support
-        # (https://cloud.google.com/translate/docs/languages).
+        # "en-US" or "sr-Latn". Supported language codes are listed in [Language
+        # Support](https://cloud.google.com/translate/docs/languages).
         # Corresponds to the JSON property `sourceLanguageCode`
         # @return [String]
         attr_accessor :source_language_code
@@ -470,6 +470,11 @@ module Google
       class Glossary
         include Google::Apis::Core::Hashable
       
+        # Optional. The display name of the glossary.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Output only. When the glossary creation was finished.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -513,6 +518,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @end_time = args[:end_time] if args.key?(:end_time)
           @entry_count = args[:entry_count] if args.key?(:entry_count)
           @input_config = args[:input_config] if args.key?(:input_config)
@@ -520,6 +526,46 @@ module Google
           @language_pair = args[:language_pair] if args.key?(:language_pair)
           @name = args[:name] if args.key?(:name)
           @submit_time = args[:submit_time] if args.key?(:submit_time)
+        end
+      end
+      
+      # Represents a single entry in a glossary.
+      class GlossaryEntry
+        include Google::Apis::Core::Hashable
+      
+        # Describes the glossary entry.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The resource name of the entry. Format: "projects/*/locations/*/
+        # glossaries/*/glossaryEntries/*"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a single entry for an unidirectional glossary.
+        # Corresponds to the JSON property `termsPair`
+        # @return [Google::Apis::TranslateV3::GlossaryTermsPair]
+        attr_accessor :terms_pair
+      
+        # Represents a single entry for an equivalent term set glossary. This is used
+        # for equivalent term sets where each term can be replaced by the other terms in
+        # the set.
+        # Corresponds to the JSON property `termsSet`
+        # @return [Google::Apis::TranslateV3::GlossaryTermsSet]
+        attr_accessor :terms_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @terms_pair = args[:terms_pair] if args.key?(:terms_pair)
+          @terms_set = args[:terms_set] if args.key?(:terms_set)
         end
       end
       
@@ -539,6 +585,77 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Represents a single glossary term
+      class GlossaryTerm
+        include Google::Apis::Core::Hashable
+      
+        # The language for this glossary term.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The text for the glossary term.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents a single entry for an unidirectional glossary.
+      class GlossaryTermsPair
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single glossary term
+        # Corresponds to the JSON property `sourceTerm`
+        # @return [Google::Apis::TranslateV3::GlossaryTerm]
+        attr_accessor :source_term
+      
+        # Represents a single glossary term
+        # Corresponds to the JSON property `targetTerm`
+        # @return [Google::Apis::TranslateV3::GlossaryTerm]
+        attr_accessor :target_term
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_term = args[:source_term] if args.key?(:source_term)
+          @target_term = args[:target_term] if args.key?(:target_term)
+        end
+      end
+      
+      # Represents a single entry for an equivalent term set glossary. This is used
+      # for equivalent term sets where each term can be replaced by the other terms in
+      # the set.
+      class GlossaryTermsSet
+        include Google::Apis::Core::Hashable
+      
+        # Each term in the set represents a term that can be replaced by the other terms.
+        # Corresponds to the JSON property `terms`
+        # @return [Array<Google::Apis::TranslateV3::GlossaryTerm>]
+        attr_accessor :terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @terms = args[:terms] if args.key?(:terms)
         end
       end
       
@@ -640,6 +757,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListGlossaryEntries
+      class ListGlossaryEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Glossary Entries
+        # Corresponds to the JSON property `glossaryEntries`
+        # @return [Array<Google::Apis::TranslateV3::GlossaryEntry>]
+        attr_accessor :glossary_entries
+      
+        # Optional. A token to retrieve a page of results. Pass this value in the [
+        # ListGLossaryEntriesRequest.page_token] field in the subsequent calls.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @glossary_entries = args[:glossary_entries] if args.key?(:glossary_entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
