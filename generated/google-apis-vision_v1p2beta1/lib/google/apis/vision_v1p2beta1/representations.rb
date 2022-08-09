@@ -2948,6 +2948,7 @@ module Google
       class GoogleCloudVisionV1p2beta1TextDetectionParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advanced_ocr_options, as: 'advancedOcrOptions'
           property :enable_text_detection_confidence_score, as: 'enableTextDetectionConfidenceScore'
         end
       end
