@@ -516,6 +516,57 @@ module Google
         end
       end
       
+      # Represents database access information, such as queries. A database may be a
+      # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+      # Spanner instances), or the database instance itself. Some database resources
+      # may not have the full resource name populated because these resource types are
+      # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
+      # cases only the display name will be provided.
+      class Database
+        include Google::Apis::Core::Hashable
+      
+        # The human readable name of the database the user connected to.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The target usernames/roles/groups of a SQL privilege grant (not an IAM policy
+        # change).
+        # Corresponds to the JSON property `grantees`
+        # @return [Array<String>]
+        attr_accessor :grantees
+      
+        # The full resource name of the database the user connected to, if it is
+        # supported by CAI. (https://google.aip.dev/122#full-resource-names)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The SQL statement associated with the relevant access.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # The username used to connect to the DB. This may not necessarily be an IAM
+        # principal, and has no required format.
+        # Corresponds to the JSON property `userName`
+        # @return [String]
+        attr_accessor :user_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @grantees = args[:grantees] if args.key?(:grantees)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+          @user_name = args[:user_name] if args.key?(:user_name)
+        end
+      end
+      
       # Details of a subscription.
       class Details
         include Google::Apis::Core::Hashable
@@ -812,6 +863,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Represents database access information, such as queries. A database may be a
+        # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+        # Spanner instances), or the database instance itself. Some database resources
+        # may not have the full resource name populated because these resource types are
+        # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
+        # cases only the display name will be provided.
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::SecuritycenterV1beta2::Database]
+        attr_accessor :database
+      
         # Contains more detail about the finding.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -976,6 +1037,7 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
