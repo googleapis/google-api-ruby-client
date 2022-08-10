@@ -55,15 +55,19 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
       
-        # Publish findings of a DlpJob to Data Catalog. Labels summarizing the results
-        # of the DlpJob will be applied to the entry for the resource scanned in Data
-        # Catalog. Any labels previously written by another DlpJob will be deleted.
-        # InfoType naming patterns are strictly enforced when using this feature. Note
-        # that the findings will be persisted in Data Catalog storage and are governed
-        # by Data Catalog service-specific policy, see https://cloud.google.com/terms/
-        # service-terms Only a single instance of this action can be specified and only
-        # allowed if all resources being scanned are BigQuery tables. Compatible with:
-        # Inspect
+        # Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates
+        # are applied to the resource that Cloud DLP scanned. Data Catalog tag templates
+        # are stored in the same project and region where the BigQuery table exists. For
+        # Cloud DLP to create and apply the tag template, the Cloud DLP service agent
+        # must have the `roles/datacatalog.tagTemplateOwner` permission on the project.
+        # The tag template contains fields summarizing the results of the DlpJob. Any
+        # field values previously written by another DlpJob are deleted. InfoType naming
+        # patterns are strictly enforced when using this feature. Findings are persisted
+        # in Data Catalog storage and are governed by service-specific policies for Data
+        # Catalog. For more information, see [Service Specific Terms](https://cloud.
+        # google.com/terms/service-terms). Only a single instance of this action can be
+        # specified. This action is allowed only if all resources being scanned are
+        # BigQuery tables. Compatible with: Inspect
         # Corresponds to the JSON property `publishFindingsToCloudDataCatalog`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog]
         attr_accessor :publish_findings_to_cloud_data_catalog
@@ -5247,15 +5251,19 @@ module Google
         end
       end
       
-      # Publish findings of a DlpJob to Data Catalog. Labels summarizing the results
-      # of the DlpJob will be applied to the entry for the resource scanned in Data
-      # Catalog. Any labels previously written by another DlpJob will be deleted.
-      # InfoType naming patterns are strictly enforced when using this feature. Note
-      # that the findings will be persisted in Data Catalog storage and are governed
-      # by Data Catalog service-specific policy, see https://cloud.google.com/terms/
-      # service-terms Only a single instance of this action can be specified and only
-      # allowed if all resources being scanned are BigQuery tables. Compatible with:
-      # Inspect
+      # Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates
+      # are applied to the resource that Cloud DLP scanned. Data Catalog tag templates
+      # are stored in the same project and region where the BigQuery table exists. For
+      # Cloud DLP to create and apply the tag template, the Cloud DLP service agent
+      # must have the `roles/datacatalog.tagTemplateOwner` permission on the project.
+      # The tag template contains fields summarizing the results of the DlpJob. Any
+      # field values previously written by another DlpJob are deleted. InfoType naming
+      # patterns are strictly enforced when using this feature. Findings are persisted
+      # in Data Catalog storage and are governed by service-specific policies for Data
+      # Catalog. For more information, see [Service Specific Terms](https://cloud.
+      # google.com/terms/service-terms). Only a single instance of this action can be
+      # specified. This action is allowed only if all resources being scanned are
+      # BigQuery tables. Compatible with: Inspect
       class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
         include Google::Apis::Core::Hashable
       
