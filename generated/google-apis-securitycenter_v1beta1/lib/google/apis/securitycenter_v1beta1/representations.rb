@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Detection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -678,6 +684,17 @@ module Google
         end
       end
       
+      class Database
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :grantees, as: 'grantees'
+          property :name, as: 'name'
+          property :query, as: 'query'
+          property :user_name, as: 'userName'
+        end
+      end
+      
       class Detection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -756,6 +773,8 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta1::Container, decorator: Google::Apis::SecuritycenterV1beta1::Container::Representation
       
           property :create_time, as: 'createTime'
+          property :database, as: 'database', class: Google::Apis::SecuritycenterV1beta1::Database, decorator: Google::Apis::SecuritycenterV1beta1::Database::Representation
+      
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta1::Exfiltration, decorator: Google::Apis::SecuritycenterV1beta1::Exfiltration::Representation
