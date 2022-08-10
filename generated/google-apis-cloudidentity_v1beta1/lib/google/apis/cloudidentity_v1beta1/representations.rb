@@ -1028,8 +1028,6 @@ module Google
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :additional_group_keys, as: 'additionalGroupKeys', class: Google::Apis::CloudidentityV1beta1::EntityKey, decorator: Google::Apis::CloudidentityV1beta1::EntityKey::Representation
-      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'

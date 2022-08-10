@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudidentity_v1beta1
 
+### v0.30.0 (2022-08-10)
+
+* Regenerated from discovery document revision 20220808
+* Regenerated using generator version 0.9.0
+
 ### v0.29.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0
