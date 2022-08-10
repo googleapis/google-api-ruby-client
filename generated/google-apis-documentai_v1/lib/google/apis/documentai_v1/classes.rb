@@ -2789,6 +2789,14 @@ module Google
         attr_accessor :prefixed_naming_on_properties
         alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
       
+        # If set, we will skip the naming format validation in the schema. So the string
+        # values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.
+        # Property.name` will not be checked.
+        # Corresponds to the JSON property `skipNamingValidation`
+        # @return [Boolean]
+        attr_accessor :skip_naming_validation
+        alias_method :skip_naming_validation?, :skip_naming_validation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2798,6 +2806,7 @@ module Google
           @document_allow_multiple_labels = args[:document_allow_multiple_labels] if args.key?(:document_allow_multiple_labels)
           @document_splitter = args[:document_splitter] if args.key?(:document_splitter)
           @prefixed_naming_on_properties = args[:prefixed_naming_on_properties] if args.key?(:prefixed_naming_on_properties)
+          @skip_naming_validation = args[:skip_naming_validation] if args.key?(:skip_naming_validation)
         end
       end
       
