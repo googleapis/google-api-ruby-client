@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DetectedAppSplashScreen
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceOutOfMemory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -812,6 +818,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crash_package, as: 'crashPackage'
+        end
+      end
+      
+      class DetectedAppSplashScreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

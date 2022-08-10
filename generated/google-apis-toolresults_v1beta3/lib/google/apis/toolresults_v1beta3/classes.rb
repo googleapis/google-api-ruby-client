@@ -487,6 +487,20 @@ module Google
         end
       end
       
+      # A notification that Robo detected a splash screen provided by app (vs. Android
+      # OS splash screen).
+      class DetectedAppSplashScreen
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A warning that device ran out of memory
       class DeviceOutOfMemory
         include Google::Apis::Core::Hashable
