@@ -1702,11 +1702,6 @@ module Google
       class Group
         include Google::Apis::Core::Hashable
       
-        # Additional entity key aliases for a Group.
-        # Corresponds to the JSON property `additionalGroupKeys`
-        # @return [Array<Google::Apis::CloudidentityV1beta1::EntityKey>]
-        attr_accessor :additional_group_keys
-      
         # Output only. The time when the `Group` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1781,7 +1776,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @additional_group_keys = args[:additional_group_keys] if args.key?(:additional_group_keys)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
