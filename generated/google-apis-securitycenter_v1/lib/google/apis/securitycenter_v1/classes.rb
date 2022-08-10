@@ -377,25 +377,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -725,6 +728,57 @@ module Google
         end
       end
       
+      # Represents database access information, such as queries. A database may be a
+      # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+      # Spanner instances), or the database instance itself. Some database resources
+      # may not have the full resource name populated because these resource types are
+      # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
+      # cases only the display name will be provided.
+      class Database
+        include Google::Apis::Core::Hashable
+      
+        # The human readable name of the database the user connected to.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The target usernames/roles/groups of a SQL privilege grant (not an IAM policy
+        # change).
+        # Corresponds to the JSON property `grantees`
+        # @return [Array<String>]
+        attr_accessor :grantees
+      
+        # The full resource name of the database the user connected to, if it is
+        # supported by CAI. (https://google.aip.dev/122#full-resource-names)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The SQL statement associated with the relevant access.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # The username used to connect to the DB. This may not necessarily be an IAM
+        # principal, and has no required format.
+        # Corresponds to the JSON property `userName`
+        # @return [String]
+        attr_accessor :user_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @grantees = args[:grantees] if args.key?(:grantees)
+          @name = args[:name] if args.key?(:name)
+          @query = args[:query] if args.key?(:query)
+          @user_name = args[:user_name] if args.key?(:user_name)
+        end
+      end
+      
       # Memory hash detection contributing to the binary family match.
       class Detection
         include Google::Apis::Core::Hashable
@@ -1018,6 +1072,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Represents database access information, such as queries. A database may be a
+        # sub-resource of an instance (as in the case of CloudSQL instances or Cloud
+        # Spanner instances), or the database instance itself. Some database resources
+        # may not have the full resource name populated because these resource types are
+        # not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these
+        # cases only the display name will be provided.
+        # Corresponds to the JSON property `database`
+        # @return [Google::Apis::SecuritycenterV1::Database]
+        attr_accessor :database
+      
         # Contains more detail about the finding.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1182,6 +1246,7 @@ module Google
           @contacts = args[:contacts] if args.key?(:contacts)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database = args[:database] if args.key?(:database)
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
