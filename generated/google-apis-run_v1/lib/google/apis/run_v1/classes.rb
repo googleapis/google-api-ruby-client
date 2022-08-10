@@ -170,25 +170,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -208,6 +211,19 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Request message for cancelling an execution.
+      class CancelExecutionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1193,8 +1209,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
-      # port.
+      # GRPCAction describes an action involving a GRPC port.
       class GrpcAction
         include Google::Apis::Core::Hashable
       
@@ -1313,8 +1328,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
-      # requests.
+      # HTTPGetAction describes an action based on HTTP Get requests.
       class HttpGetAction
         include Google::Apis::Core::Hashable
       
@@ -1352,8 +1366,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run HTTPHeader describes a custom header to be used in
-      # HTTP probes
+      # HTTPHeader describes a custom header to be used in HTTP probes
       class HttpHeader
         include Google::Apis::Core::Hashable
       
@@ -2404,14 +2417,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
-        # Not supported by Cloud Run GRPCAction describes an action involving a GRPC
-        # port.
+        # GRPCAction describes an action involving a GRPC port.
         # Corresponds to the JSON property `grpc`
         # @return [Google::Apis::RunV1::GrpcAction]
         attr_accessor :grpc
       
-        # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
-        # requests.
+        # HTTPGetAction describes an action based on HTTP Get requests.
         # Corresponds to the JSON property `httpGet`
         # @return [Google::Apis::RunV1::HttpGetAction]
         attr_accessor :http_get
@@ -2438,8 +2449,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_threshold
       
-        # Not supported by Cloud Run TCPSocketAction describes an action based on
-        # opening a socket
+        # TCPSocketAction describes an action based on opening a socket
         # Corresponds to the JSON property `tcpSocket`
         # @return [Google::Apis::RunV1::TcpSocketAction]
         attr_accessor :tcp_socket
@@ -3427,8 +3437,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run TCPSocketAction describes an action based on
-      # opening a socket
+      # TCPSocketAction describes an action based on opening a socket
       class TcpSocketAction
         include Google::Apis::Core::Hashable
       
