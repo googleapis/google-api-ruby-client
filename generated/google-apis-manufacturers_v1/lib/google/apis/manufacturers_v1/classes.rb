@@ -106,6 +106,11 @@ module Google
         # @return [String]
         attr_accessor :gender
       
+        # Grocery Attributes. For more information, see go/mfc-nutrition-attributes.
+        # Corresponds to the JSON property `grocery`
+        # @return [Google::Apis::ManufacturersV1::Grocery]
+        attr_accessor :grocery
+      
         # The Global Trade Item Number (GTIN) of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#gtin.
         # Corresponds to the JSON property `gtin`
@@ -141,6 +146,11 @@ module Google
         # Corresponds to the JSON property `mpn`
         # @return [String]
         attr_accessor :mpn
+      
+        # Nutrition Attributes. For more information, see go/mfc-nutrition-attributes.
+        # Corresponds to the JSON property `nutrition`
+        # @return [Google::Apis::ManufacturersV1::Nutrition]
+        attr_accessor :nutrition
       
         # The pattern of the product. For more information, see https://support.google.
         # com/manufacturers/answer/6124116#pattern.
@@ -269,12 +279,14 @@ module Google
           @flavor = args[:flavor] if args.key?(:flavor)
           @format = args[:format] if args.key?(:format)
           @gender = args[:gender] if args.key?(:gender)
+          @grocery = args[:grocery] if args.key?(:grocery)
           @gtin = args[:gtin] if args.key?(:gtin)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destination = args[:included_destination] if args.key?(:included_destination)
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @material = args[:material] if args.key?(:material)
           @mpn = args[:mpn] if args.key?(:mpn)
+          @nutrition = args[:nutrition] if args.key?(:nutrition)
           @pattern = args[:pattern] if args.key?(:pattern)
           @product_detail = args[:product_detail] if args.key?(:product_detail)
           @product_highlight = args[:product_highlight] if args.key?(:product_highlight)
@@ -421,6 +433,98 @@ module Google
         end
       end
       
+      # Combination of float amout and unit.
+      class FloatUnit
+        include Google::Apis::Core::Hashable
+      
+        # amount.
+        # Corresponds to the JSON property `amount`
+        # @return [Float]
+        attr_accessor :amount
+      
+        # unit.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # 
+      class Grocery
+        include Google::Apis::Core::Hashable
+      
+        # Active ingredients.
+        # Corresponds to the JSON property `activeIngredients`
+        # @return [String]
+        attr_accessor :active_ingredients
+      
+        # Alcohol by volume.
+        # Corresponds to the JSON property `alcoholByVolume`
+        # @return [Float]
+        attr_accessor :alcohol_by_volume
+      
+        # Allergens.
+        # Corresponds to the JSON property `allergens`
+        # @return [String]
+        attr_accessor :allergens
+      
+        # Derived nutrition claim.
+        # Corresponds to the JSON property `derivedNutritionClaim`
+        # @return [Array<String>]
+        attr_accessor :derived_nutrition_claim
+      
+        # Directions.
+        # Corresponds to the JSON property `directions`
+        # @return [String]
+        attr_accessor :directions
+      
+        # Indications.
+        # Corresponds to the JSON property `indications`
+        # @return [String]
+        attr_accessor :indications
+      
+        # Ingredients.
+        # Corresponds to the JSON property `ingredients`
+        # @return [String]
+        attr_accessor :ingredients
+      
+        # Nutrition claim.
+        # Corresponds to the JSON property `nutritionClaim`
+        # @return [Array<String>]
+        attr_accessor :nutrition_claim
+      
+        # Storage instructions.
+        # Corresponds to the JSON property `storageInstructions`
+        # @return [String]
+        attr_accessor :storage_instructions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_ingredients = args[:active_ingredients] if args.key?(:active_ingredients)
+          @alcohol_by_volume = args[:alcohol_by_volume] if args.key?(:alcohol_by_volume)
+          @allergens = args[:allergens] if args.key?(:allergens)
+          @derived_nutrition_claim = args[:derived_nutrition_claim] if args.key?(:derived_nutrition_claim)
+          @directions = args[:directions] if args.key?(:directions)
+          @indications = args[:indications] if args.key?(:indications)
+          @ingredients = args[:ingredients] if args.key?(:ingredients)
+          @nutrition_claim = args[:nutrition_claim] if args.key?(:nutrition_claim)
+          @storage_instructions = args[:storage_instructions] if args.key?(:storage_instructions)
+        end
+      end
+      
       # An image.
       class Image
         include Google::Apis::Core::Hashable
@@ -539,6 +643,277 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # 
+      class Nutrition
+        include Google::Apis::Core::Hashable
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `addedSugars`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :added_sugars
+      
+        # Added sugars daily percentage.
+        # Corresponds to the JSON property `addedSugarsDailyPercentage`
+        # @return [Float]
+        attr_accessor :added_sugars_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `calcium`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :calcium
+      
+        # Calcium daily percentage.
+        # Corresponds to the JSON property `calciumDailyPercentage`
+        # @return [Float]
+        attr_accessor :calcium_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `cholesterol`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :cholesterol
+      
+        # Cholesterol daily percentage.
+        # Corresponds to the JSON property `cholesterolDailyPercentage`
+        # @return [Float]
+        attr_accessor :cholesterol_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `dietaryFiber`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :dietary_fiber
+      
+        # Dietary fiber daily percentage.
+        # Corresponds to the JSON property `dietaryFiberDailyPercentage`
+        # @return [Float]
+        attr_accessor :dietary_fiber_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `energy`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :energy
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `energyFromFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :energy_from_fat
+      
+        # Folate daily percentage.
+        # Corresponds to the JSON property `folateDailyPercentage`
+        # @return [Float]
+        attr_accessor :folate_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `folateFolicAcid`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :folate_folic_acid
+      
+        # Folate mcg DFE.
+        # Corresponds to the JSON property `folateMcgDfe`
+        # @return [Float]
+        attr_accessor :folate_mcg_dfe
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `iron`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :iron
+      
+        # Iron daily percentage.
+        # Corresponds to the JSON property `ironDailyPercentage`
+        # @return [Float]
+        attr_accessor :iron_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `monounsaturatedFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :monounsaturated_fat
+      
+        # Nutrition fact measure.
+        # Corresponds to the JSON property `nutritionFactMeasure`
+        # @return [String]
+        attr_accessor :nutrition_fact_measure
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `polyols`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :polyols
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `polyunsaturatedFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :polyunsaturated_fat
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `potassium`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :potassium
+      
+        # Potassium daily percentage.
+        # Corresponds to the JSON property `potassiumDailyPercentage`
+        # @return [Float]
+        attr_accessor :potassium_daily_percentage
+      
+        # Prepared size description.
+        # Corresponds to the JSON property `preparedSizeDescription`
+        # @return [String]
+        attr_accessor :prepared_size_description
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `protein`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :protein
+      
+        # Protein daily percentage.
+        # Corresponds to the JSON property `proteinDailyPercentage`
+        # @return [Float]
+        attr_accessor :protein_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `saturatedFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :saturated_fat
+      
+        # Saturated fat daily percentage.
+        # Corresponds to the JSON property `saturatedFatDailyPercentage`
+        # @return [Float]
+        attr_accessor :saturated_fat_daily_percentage
+      
+        # Food Serving Size. Serving size description.
+        # Corresponds to the JSON property `servingSizeDescription`
+        # @return [String]
+        attr_accessor :serving_size_description
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `servingSizeMeasure`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :serving_size_measure
+      
+        # Servings per container.
+        # Corresponds to the JSON property `servingsPerContainer`
+        # @return [String]
+        attr_accessor :servings_per_container
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `sodium`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :sodium
+      
+        # Sodium daily percentage.
+        # Corresponds to the JSON property `sodiumDailyPercentage`
+        # @return [Float]
+        attr_accessor :sodium_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `starch`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :starch
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `totalCarbohydrate`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :total_carbohydrate
+      
+        # Total carbohydrate daily percentage.
+        # Corresponds to the JSON property `totalCarbohydrateDailyPercentage`
+        # @return [Float]
+        attr_accessor :total_carbohydrate_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `totalFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :total_fat
+      
+        # Total fat daily percentage.
+        # Corresponds to the JSON property `totalFatDailyPercentage`
+        # @return [Float]
+        attr_accessor :total_fat_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `totalSugars`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :total_sugars
+      
+        # Total sugars daily percentage.
+        # Corresponds to the JSON property `totalSugarsDailyPercentage`
+        # @return [Float]
+        attr_accessor :total_sugars_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `transFat`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :trans_fat
+      
+        # Trans fat daily percentage.
+        # Corresponds to the JSON property `transFatDailyPercentage`
+        # @return [Float]
+        attr_accessor :trans_fat_daily_percentage
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `vitaminD`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :vitamin_d
+      
+        # Vitamin D daily percentage.
+        # Corresponds to the JSON property `vitaminDDailyPercentage`
+        # @return [Float]
+        attr_accessor :vitamin_d_daily_percentage
+      
+        # Voluntary nutrition fact.
+        # Corresponds to the JSON property `voluntaryNutritionFact`
+        # @return [Array<Google::Apis::ManufacturersV1::VoluntaryNutritionFact>]
+        attr_accessor :voluntary_nutrition_fact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_sugars = args[:added_sugars] if args.key?(:added_sugars)
+          @added_sugars_daily_percentage = args[:added_sugars_daily_percentage] if args.key?(:added_sugars_daily_percentage)
+          @calcium = args[:calcium] if args.key?(:calcium)
+          @calcium_daily_percentage = args[:calcium_daily_percentage] if args.key?(:calcium_daily_percentage)
+          @cholesterol = args[:cholesterol] if args.key?(:cholesterol)
+          @cholesterol_daily_percentage = args[:cholesterol_daily_percentage] if args.key?(:cholesterol_daily_percentage)
+          @dietary_fiber = args[:dietary_fiber] if args.key?(:dietary_fiber)
+          @dietary_fiber_daily_percentage = args[:dietary_fiber_daily_percentage] if args.key?(:dietary_fiber_daily_percentage)
+          @energy = args[:energy] if args.key?(:energy)
+          @energy_from_fat = args[:energy_from_fat] if args.key?(:energy_from_fat)
+          @folate_daily_percentage = args[:folate_daily_percentage] if args.key?(:folate_daily_percentage)
+          @folate_folic_acid = args[:folate_folic_acid] if args.key?(:folate_folic_acid)
+          @folate_mcg_dfe = args[:folate_mcg_dfe] if args.key?(:folate_mcg_dfe)
+          @iron = args[:iron] if args.key?(:iron)
+          @iron_daily_percentage = args[:iron_daily_percentage] if args.key?(:iron_daily_percentage)
+          @monounsaturated_fat = args[:monounsaturated_fat] if args.key?(:monounsaturated_fat)
+          @nutrition_fact_measure = args[:nutrition_fact_measure] if args.key?(:nutrition_fact_measure)
+          @polyols = args[:polyols] if args.key?(:polyols)
+          @polyunsaturated_fat = args[:polyunsaturated_fat] if args.key?(:polyunsaturated_fat)
+          @potassium = args[:potassium] if args.key?(:potassium)
+          @potassium_daily_percentage = args[:potassium_daily_percentage] if args.key?(:potassium_daily_percentage)
+          @prepared_size_description = args[:prepared_size_description] if args.key?(:prepared_size_description)
+          @protein = args[:protein] if args.key?(:protein)
+          @protein_daily_percentage = args[:protein_daily_percentage] if args.key?(:protein_daily_percentage)
+          @saturated_fat = args[:saturated_fat] if args.key?(:saturated_fat)
+          @saturated_fat_daily_percentage = args[:saturated_fat_daily_percentage] if args.key?(:saturated_fat_daily_percentage)
+          @serving_size_description = args[:serving_size_description] if args.key?(:serving_size_description)
+          @serving_size_measure = args[:serving_size_measure] if args.key?(:serving_size_measure)
+          @servings_per_container = args[:servings_per_container] if args.key?(:servings_per_container)
+          @sodium = args[:sodium] if args.key?(:sodium)
+          @sodium_daily_percentage = args[:sodium_daily_percentage] if args.key?(:sodium_daily_percentage)
+          @starch = args[:starch] if args.key?(:starch)
+          @total_carbohydrate = args[:total_carbohydrate] if args.key?(:total_carbohydrate)
+          @total_carbohydrate_daily_percentage = args[:total_carbohydrate_daily_percentage] if args.key?(:total_carbohydrate_daily_percentage)
+          @total_fat = args[:total_fat] if args.key?(:total_fat)
+          @total_fat_daily_percentage = args[:total_fat_daily_percentage] if args.key?(:total_fat_daily_percentage)
+          @total_sugars = args[:total_sugars] if args.key?(:total_sugars)
+          @total_sugars_daily_percentage = args[:total_sugars_daily_percentage] if args.key?(:total_sugars_daily_percentage)
+          @trans_fat = args[:trans_fat] if args.key?(:trans_fat)
+          @trans_fat_daily_percentage = args[:trans_fat_daily_percentage] if args.key?(:trans_fat_daily_percentage)
+          @vitamin_d = args[:vitamin_d] if args.key?(:vitamin_d)
+          @vitamin_d_daily_percentage = args[:vitamin_d_daily_percentage] if args.key?(:vitamin_d_daily_percentage)
+          @voluntary_nutrition_fact = args[:voluntary_nutrition_fact] if args.key?(:voluntary_nutrition_fact)
         end
       end
       
@@ -666,6 +1041,37 @@ module Google
           @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
           @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
           @section_name = args[:section_name] if args.key?(:section_name)
+        end
+      end
+      
+      # Voluntary Nutrition Facts.
+      class VoluntaryNutritionFact
+        include Google::Apis::Core::Hashable
+      
+        # Daily percentage.
+        # Corresponds to the JSON property `dailyPercentage`
+        # @return [Float]
+        attr_accessor :daily_percentage
+      
+        # Name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Combination of float amout and unit.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::ManufacturersV1::FloatUnit]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @daily_percentage = args[:daily_percentage] if args.key?(:daily_percentage)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end
