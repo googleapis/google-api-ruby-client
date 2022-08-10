@@ -3699,6 +3699,7 @@ module Google
           property :document_allow_multiple_labels, as: 'documentAllowMultipleLabels'
           property :document_splitter, as: 'documentSplitter'
           property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
+          property :skip_naming_validation, as: 'skipNamingValidation'
         end
       end
       
