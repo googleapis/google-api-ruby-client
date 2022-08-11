@@ -1821,6 +1821,25 @@ module Google
         end
       end
       
+      # Information useful for debugging a hot key detection.
+      class HotKeyDebuggingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Debugging information for each detected hot key. Keyed by a hash of the key.
+        # Corresponds to the JSON property `detectedHotKeys`
+        # @return [Hash<String,Google::Apis::DataflowV1b3::HotKeyInfo>]
+        attr_accessor :detected_hot_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_hot_keys = args[:detected_hot_keys] if args.key?(:detected_hot_keys)
+        end
+      end
+      
       # Proto describing a hot key detected on a given WorkItem.
       class HotKeyDetection
         include Google::Apis::Core::Hashable
@@ -1850,6 +1869,41 @@ module Google
           @hot_key_age = args[:hot_key_age] if args.key?(:hot_key_age)
           @system_name = args[:system_name] if args.key?(:system_name)
           @user_step_name = args[:user_step_name] if args.key?(:user_step_name)
+        end
+      end
+      
+      # Information about a hot key.
+      class HotKeyInfo
+        include Google::Apis::Core::Hashable
+      
+        # The age of the hot key measured from when it was first detected.
+        # Corresponds to the JSON property `hotKeyAge`
+        # @return [String]
+        attr_accessor :hot_key_age
+      
+        # A detected hot key that is causing limited parallelism. This field will be
+        # populated only if the following flag is set to true: "--enable_hot_key_logging"
+        # .
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # If true, then the above key is truncated and cannot be deserialized. This
+        # occurs if the key above is populated and the key size is >5MB.
+        # Corresponds to the JSON property `keyTruncated`
+        # @return [Boolean]
+        attr_accessor :key_truncated
+        alias_method :key_truncated?, :key_truncated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hot_key_age = args[:hot_key_age] if args.key?(:hot_key_age)
+          @key = args[:key] if args.key?(:key)
+          @key_truncated = args[:key_truncated] if args.key?(:key_truncated)
         end
       end
       
@@ -5054,6 +5108,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Summarized straggler identification details.
+        # Corresponds to the JSON property `stragglerSummary`
+        # @return [Google::Apis::DataflowV1b3::StragglerSummary]
+        attr_accessor :straggler_summary
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5066,6 +5125,7 @@ module Google
           @stage_id = args[:stage_id] if args.key?(:stage_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @straggler_summary = args[:straggler_summary] if args.key?(:straggler_summary)
         end
       end
       
@@ -5175,6 +5235,79 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Information useful for debugging a straggler. Each type will provide
+      # specialized debugging information relevant for a particular cause. The
+      # StragglerDebuggingInfo will be 1:1 mapping to the StragglerCause enum.
+      class StragglerDebuggingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information useful for debugging a hot key detection.
+        # Corresponds to the JSON property `hotKey`
+        # @return [Google::Apis::DataflowV1b3::HotKeyDebuggingInfo]
+        attr_accessor :hot_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hot_key = args[:hot_key] if args.key?(:hot_key)
+        end
+      end
+      
+      # Information useful for straggler identification and debugging.
+      class StragglerInfo
+        include Google::Apis::Core::Hashable
+      
+        # The straggler causes, keyed by the string representation of the StragglerCause
+        # enum and contains specialized debugging information for each straggler cause.
+        # Corresponds to the JSON property `causes`
+        # @return [Hash<String,Google::Apis::DataflowV1b3::StragglerDebuggingInfo>]
+        attr_accessor :causes
+      
+        # The time when the work item attempt became a straggler.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @causes = args[:causes] if args.key?(:causes)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Summarized straggler identification details.
+      class StragglerSummary
+        include Google::Apis::Core::Hashable
+      
+        # Aggregated counts of straggler causes, keyed by the string representation of
+        # the StragglerCause enum.
+        # Corresponds to the JSON property `stragglerCauseCount`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :straggler_cause_count
+      
+        # The total count of stragglers.
+        # Corresponds to the JSON property `totalStragglerCount`
+        # @return [Fixnum]
+        attr_accessor :total_straggler_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @straggler_cause_count = args[:straggler_cause_count] if args.key?(:straggler_cause_count)
+          @total_straggler_count = args[:total_straggler_count] if args.key?(:total_straggler_count)
         end
       end
       
@@ -5983,6 +6116,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Information useful for straggler identification and debugging.
+        # Corresponds to the JSON property `stragglerInfo`
+        # @return [Google::Apis::DataflowV1b3::StragglerInfo]
+        attr_accessor :straggler_info
+      
         # Name of this work item.
         # Corresponds to the JSON property `taskId`
         # @return [String]
@@ -6000,6 +6138,7 @@ module Google
           @progress = args[:progress] if args.key?(:progress)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @straggler_info = args[:straggler_info] if args.key?(:straggler_info)
           @task_id = args[:task_id] if args.key?(:task_id)
         end
       end
