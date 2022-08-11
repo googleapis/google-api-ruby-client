@@ -268,7 +268,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HotKeyDebuggingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HotKeyDetection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HotKeyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -791,6 +803,24 @@ module Google
       end
       
       class Step
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StragglerDebuggingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StragglerInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StragglerSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1463,12 +1493,29 @@ module Google
         end
       end
       
+      class HotKeyDebuggingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :detected_hot_keys, as: 'detectedHotKeys', class: Google::Apis::DataflowV1b3::HotKeyInfo, decorator: Google::Apis::DataflowV1b3::HotKeyInfo::Representation
+      
+        end
+      end
+      
       class HotKeyDetection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hot_key_age, as: 'hotKeyAge'
           property :system_name, as: 'systemName'
           property :user_step_name, as: 'userStepName'
+        end
+      end
+      
+      class HotKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hot_key_age, as: 'hotKeyAge'
+          property :key, as: 'key'
+          property :key_truncated, as: 'keyTruncated'
         end
       end
       
@@ -2364,6 +2411,8 @@ module Google
           property :stage_id, as: 'stageId'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :straggler_summary, as: 'stragglerSummary', class: Google::Apis::DataflowV1b3::StragglerSummary, decorator: Google::Apis::DataflowV1b3::StragglerSummary::Representation
+      
         end
       end
       
@@ -2390,6 +2439,31 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           hash :properties, as: 'properties'
+        end
+      end
+      
+      class StragglerDebuggingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hot_key, as: 'hotKey', class: Google::Apis::DataflowV1b3::HotKeyDebuggingInfo, decorator: Google::Apis::DataflowV1b3::HotKeyDebuggingInfo::Representation
+      
+        end
+      end
+      
+      class StragglerInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :causes, as: 'causes', class: Google::Apis::DataflowV1b3::StragglerDebuggingInfo, decorator: Google::Apis::DataflowV1b3::StragglerDebuggingInfo::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class StragglerSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :straggler_cause_count, as: 'stragglerCauseCount'
+          property :total_straggler_count, :numeric_string => true, as: 'totalStragglerCount'
         end
       end
       
@@ -2617,6 +2691,8 @@ module Google
       
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :straggler_info, as: 'stragglerInfo', class: Google::Apis::DataflowV1b3::StragglerInfo, decorator: Google::Apis::DataflowV1b3::StragglerInfo::Representation
+      
           property :task_id, as: 'taskId'
         end
       end
