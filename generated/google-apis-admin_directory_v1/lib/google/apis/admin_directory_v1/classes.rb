@@ -672,7 +672,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Additional parameters controlling delivery channel behavior. Optional.
+        # Additional parameters controlling delivery channel behavior. Optional. For
+        # example, `params.ttl` specifies the time-to-live in seconds for the
+        # notification channel, where the default is 2 hours and the maximum TTL is 2
+        # days.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,String>]
         attr_accessor :params
@@ -2283,6 +2286,50 @@ module Google
         end
       end
       
+      # The Directory API manages aliases, which are alternative email addresses.
+      class GroupAlias
+        include Google::Apis::Core::Hashable
+      
+        # The alias email address.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The unique ID of the group.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of the API resource. For Alias resources, the value is `admin#
+        # directory#alias`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The primary email address of the group.
+        # Corresponds to the JSON property `primaryEmail`
+        # @return [String]
+        attr_accessor :primary_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @primary_email = args[:primary_email] if args.key?(:primary_email)
+        end
+      end
+      
       # 
       class Groups
         include Google::Apis::Core::Hashable
@@ -3882,7 +3929,7 @@ module Google
         attr_accessor :gender
       
         # Stores the hash format of the `password` property. The following `hashFunction`
-        # values are allowed: * `MD5` - Accepts simple hex-encoded values. * `SHA1` -
+        # values are allowed: * `MD5` - Accepts simple hex-encoded values. * `SHA-1` -
         # Accepts simple hex-encoded values. * `crypt` - Compliant with the [C crypt
         # library](https://en.wikipedia.org/wiki/Crypt_%28C%29). Supports the DES, MD5 (
         # hash prefix `$1$`), SHA-256 (hash prefix `$5$`), and SHA-512 (hash prefix `$6$`
@@ -4273,6 +4320,50 @@ module Google
           @source_is_structured = args[:source_is_structured] if args.key?(:source_is_structured)
           @street_address = args[:street_address] if args.key?(:street_address)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The Directory API manages aliases, which are alternative email addresses.
+      class UserAlias
+        include Google::Apis::Core::Hashable
+      
+        # The alias email address.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The unique ID for the user.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The type of the API resource. For Alias resources, the value is `admin#
+        # directory#alias`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The user's primary email address.
+        # Corresponds to the JSON property `primaryEmail`
+        # @return [String]
+        attr_accessor :primary_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @primary_email = args[:primary_email] if args.key?(:primary_email)
         end
       end
       

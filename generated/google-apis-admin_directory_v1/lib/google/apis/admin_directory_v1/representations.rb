@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Groups
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,12 @@ module Google
       end
       
       class UserAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserAlias
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1236,6 +1248,17 @@ module Google
         end
       end
       
+      class GroupAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :primary_email, as: 'primaryEmail'
+        end
+      end
+      
       class Groups
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1672,6 +1695,17 @@ module Google
           property :source_is_structured, as: 'sourceIsStructured'
           property :street_address, as: 'streetAddress'
           property :type, as: 'type'
+        end
+      end
+      
+      class UserAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :primary_email, as: 'primaryEmail'
         end
       end
       
