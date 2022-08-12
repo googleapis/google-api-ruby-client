@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StandardSqlDataType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2585,6 +2591,8 @@ module Google
           property :routine_reference, as: 'routineReference', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
       
           property :routine_type, as: 'routineType'
+          property :spark_options, as: 'sparkOptions', class: Google::Apis::BigqueryV2::SparkOptions, decorator: Google::Apis::BigqueryV2::SparkOptions::Representation
+      
           property :strict_mode, as: 'strictMode'
         end
       end
@@ -2689,6 +2697,21 @@ module Google
       
           property :snapshot_time, as: 'snapshotTime', type: DateTime
       
+        end
+      end
+      
+      class SparkOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_uris, as: 'archiveUris'
+          property :connection, as: 'connection'
+          property :container_image, as: 'containerImage'
+          collection :file_uris, as: 'fileUris'
+          collection :jar_uris, as: 'jarUris'
+          property :main_file_uri, as: 'mainFileUri'
+          hash :properties, as: 'properties'
+          collection :py_file_uris, as: 'pyFileUris'
+          property :runtime_version, as: 'runtimeVersion'
         end
       end
       
@@ -2996,6 +3019,7 @@ module Google
           property :booster_type, as: 'boosterType'
           property :calculate_p_values, as: 'calculatePValues'
           property :clean_spikes_and_dips, as: 'cleanSpikesAndDips'
+          property :color_space, as: 'colorSpace'
           property :colsample_bylevel, as: 'colsampleBylevel'
           property :colsample_bynode, as: 'colsampleBynode'
           property :colsample_bytree, as: 'colsampleBytree'
@@ -3075,6 +3099,7 @@ module Google
           property :start_time, as: 'startTime'
           property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingOptions::Representation
       
+          property :training_start_time, :numeric_string => true, as: 'trainingStartTime'
           property :vertex_ai_model_id, as: 'vertexAiModelId'
           property :vertex_ai_model_version, as: 'vertexAiModelVersion'
         end
