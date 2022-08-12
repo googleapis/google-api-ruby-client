@@ -1300,7 +1300,7 @@ module Google
         # CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The
         # recent searches satisfy the follow rules: * They are ordered from latest to
         # oldest. * They are matched with CompleteQueryRequest.query case insensitively.
-        # * They are transformed to lower cases. * They are UTF-8 safe. Recent searches
+        # * They are transformed to lower case. * They are UTF-8 safe. Recent searches
         # are deduplicated. More recent searches will be reserved when duplication
         # happens.
         # Corresponds to the JSON property `recentSearchResults`
@@ -2529,8 +2529,8 @@ module Google
         attr_accessor :branch_id
       
         # String representing the destination to import for, all if left empty. List of
-        # possible values can be found here. [https://support.google.com/merchants/
-        # answer/7501026] List of allowed string values: "Shopping_ads", "
+        # possible values is given in [Included destination](https://support.google.com/
+        # merchants/answer/7501026). List of allowed string values: "Shopping_ads", "
         # Buy_on_google_listings", "Display_ads", "Local_inventory _ads", "Free_listings"
         # , "Free_local_listings" NOTE: The string values are case sensitive.
         # Corresponds to the JSON property `destinations`
@@ -2924,15 +2924,15 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Maximum number of results to return per page. Set this property to the number
-        # of prediction results needed. If zero, the service will choose a reasonable
+        # Maximum number of results to return. Set this property to the number of
+        # prediction results needed. If zero, the service will choose a reasonable
         # default. The maximum allowed value is 100. Values above 100 will be coerced to
         # 100.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # This field is not used for now, leave it unset.
+        # This field is not used; leave it unset.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -4260,7 +4260,7 @@ module Google
         attr_accessor :do_not_associate_action
       
         # * Rule Condition: - No Condition.query_terms provided is a global match. - 1
-        # or more Condition.query_terms provided is combined with OR operator. * Action
+        # or more Condition.query_terms provided are combined with OR operator. * Action
         # Input: The request query and filter that are applied to the retrieved products,
         # in addition to any filters already provided with the SearchRequest. The AND
         # operator is used to combine the query's existing filters with the filter rule(
@@ -4397,7 +4397,7 @@ module Google
       end
       
       # * Rule Condition: - No Condition.query_terms provided is a global match. - 1
-      # or more Condition.query_terms provided is combined with OR operator. * Action
+      # or more Condition.query_terms provided are combined with OR operator. * Action
       # Input: The request query and filter that are applied to the retrieved products,
       # in addition to any filters already provided with the SearchRequest. The AND
       # operator is used to combine the query's existing filters with the filter rule(
