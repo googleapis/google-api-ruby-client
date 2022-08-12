@@ -954,25 +954,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -6466,6 +6469,11 @@ module Google
         # @return [String]
         attr_accessor :routine_type
       
+        # Options for a user-defined Spark routine.
+        # Corresponds to the JSON property `sparkOptions`
+        # @return [Google::Apis::BigqueryV2::SparkOptions]
+        attr_accessor :spark_options
+      
         # Optional. Can be set for procedures only. If true (default), the definition
         # body will be validated in the creation and the updates of the procedure. For
         # procedures with an argument of ANY TYPE, the definition body validtion is not
@@ -6496,6 +6504,7 @@ module Google
           @return_type = args[:return_type] if args.key?(:return_type)
           @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
           @routine_type = args[:routine_type] if args.key?(:routine_type)
+          @spark_options = args[:spark_options] if args.key?(:spark_options)
           @strict_mode = args[:strict_mode] if args.key?(:strict_mode)
         end
       end
@@ -6865,6 +6874,85 @@ module Google
         def update!(**args)
           @base_table_reference = args[:base_table_reference] if args.key?(:base_table_reference)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
+      # Options for a user-defined Spark routine.
+      class SparkOptions
+        include Google::Apis::Core::Hashable
+      
+        # Archive files to be extracted into the working directory of each executor. For
+        # more information about Apache Spark, see [Apache Spark](https://spark.apache.
+        # org/docs/latest/index.html).
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Fully qualified name of the user-provided Spark connection object. Format: ```"
+        # projects/`project_id`/locations/`location_id`/connections/`connection_id`"```
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Custom container image for the runtime environment.
+        # Corresponds to the JSON property `containerImage`
+        # @return [String]
+        attr_accessor :container_image
+      
+        # Files to be placed in the working directory of each executor. For more
+        # information about Apache Spark, see [Apache Spark](https://spark.apache.org/
+        # docs/latest/index.html).
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # JARs to include on the driver and executor CLASSPATH. For more information
+        # about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/
+        # index.html).
+        # Corresponds to the JSON property `jarUris`
+        # @return [Array<String>]
+        attr_accessor :jar_uris
+      
+        # The main file URI of the Spark application. Exactly one of the definition_body
+        # field and the main_file_uri field must be set.
+        # Corresponds to the JSON property `mainFileUri`
+        # @return [String]
+        attr_accessor :main_file_uri
+      
+        # Configuration properties as a set of key/value pairs, which will be passed on
+        # to the Spark application. For more information, see [Apache Spark](https://
+        # spark.apache.org/docs/latest/index.html).
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # Python files to be placed on the PYTHONPATH for PySpark application. Supported
+        # file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark,
+        # see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        # Corresponds to the JSON property `pyFileUris`
+        # @return [Array<String>]
+        attr_accessor :py_file_uris
+      
+        # Runtime version. If not specified, the default runtime version is used.
+        # Corresponds to the JSON property `runtimeVersion`
+        # @return [String]
+        attr_accessor :runtime_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @connection = args[:connection] if args.key?(:connection)
+          @container_image = args[:container_image] if args.key?(:container_image)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @jar_uris = args[:jar_uris] if args.key?(:jar_uris)
+          @main_file_uri = args[:main_file_uri] if args.key?(:main_file_uri)
+          @properties = args[:properties] if args.key?(:properties)
+          @py_file_uris = args[:py_file_uris] if args.key?(:py_file_uris)
+          @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
         end
       end
       
@@ -8037,6 +8125,12 @@ module Google
         attr_accessor :clean_spikes_and_dips
         alias_method :clean_spikes_and_dips?, :clean_spikes_and_dips
       
+        # Enums for color space, used for processing images in Object Table. See more
+        # details at https://www.tensorflow.org/io/tutorials/colorspace.
+        # Corresponds to the JSON property `colorSpace`
+        # @return [String]
+        attr_accessor :color_space
+      
         # Subsample ratio of columns for each level for boosted tree models.
         # Corresponds to the JSON property `colsampleBylevel`
         # @return [Float]
@@ -8300,7 +8394,7 @@ module Google
         attr_accessor :preserve_input_structs
         alias_method :preserve_input_structs?, :preserve_input_structs
       
-        # Number of paths for the sampled shapley explain method.
+        # Number of paths for the sampled Shapley explain method.
         # Corresponds to the JSON property `sampledShapleyNumPaths`
         # @return [Fixnum]
         attr_accessor :sampled_shapley_num_paths
@@ -8375,6 +8469,7 @@ module Google
           @booster_type = args[:booster_type] if args.key?(:booster_type)
           @calculate_p_values = args[:calculate_p_values] if args.key?(:calculate_p_values)
           @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
+          @color_space = args[:color_space] if args.key?(:color_space)
           @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
           @colsample_bynode = args[:colsample_bynode] if args.key?(:colsample_bynode)
           @colsample_bytree = args[:colsample_bytree] if args.key?(:colsample_bytree)
@@ -8480,6 +8575,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TrainingOptions]
         attr_accessor :training_options
       
+        # The start time of this training run, in milliseconds since epoch.
+        # Corresponds to the JSON property `trainingStartTime`
+        # @return [Fixnum]
+        attr_accessor :training_start_time
+      
         # The model id in Vertex AI Model Registry for this training run
         # Corresponds to the JSON property `vertexAiModelId`
         # @return [String]
@@ -8503,6 +8603,7 @@ module Google
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
+          @training_start_time = args[:training_start_time] if args.key?(:training_start_time)
           @vertex_ai_model_id = args[:vertex_ai_model_id] if args.key?(:vertex_ai_model_id)
           @vertex_ai_model_version = args[:vertex_ai_model_version] if args.key?(:vertex_ai_model_version)
         end
