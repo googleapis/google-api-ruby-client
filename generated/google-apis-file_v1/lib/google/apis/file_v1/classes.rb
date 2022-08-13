@@ -22,7 +22,7 @@ module Google
   module Apis
     module FileV1
       
-      # A Cloud Filestore backup.
+      # A Filestore backup.
       class Backup
         include Google::Apis::Core::Hashable
       
@@ -66,20 +66,20 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Name of the file share in the source Cloud Filestore instance that the backup
-        # is created from.
+        # Name of the file share in the source Filestore instance that the backup is
+        # created from.
         # Corresponds to the JSON property `sourceFileShare`
         # @return [String]
         attr_accessor :source_file_share
       
-        # The resource name of the source Cloud Filestore instance, in the format `
-        # projects/`project_number`/locations/`location_id`/instances/`instance_id``,
-        # used to create this backup.
+        # The resource name of the source Filestore instance, in the format `projects/`
+        # project_number`/locations/`location_id`/instances/`instance_id``, used to
+        # create this backup.
         # Corresponds to the JSON property `sourceInstance`
         # @return [String]
         attr_accessor :source_instance
       
-        # Output only. The service tier of the source Cloud Filestore instance that this
+        # Output only. The service tier of the source Filestore instance that this
         # backup is created from.
         # Corresponds to the JSON property `sourceInstanceTier`
         # @return [String]
@@ -266,8 +266,7 @@ module Google
       class FileShareConfig
         include Google::Apis::Core::Hashable
       
-        # File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3
-        # bytes.
+        # File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
         # Corresponds to the JSON property `capacityGb`
         # @return [Fixnum]
         attr_accessor :capacity_gb
@@ -718,7 +717,7 @@ module Google
         end
       end
       
-      # A Cloud Filestore instance.
+      # A Filestore instance.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -1138,8 +1137,8 @@ module Google
         # research/statistics/address_filters/) that identifies the range of IP
         # addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24
         # or 192.168.0.0/26, respectively. The range you specify can't overlap with
-        # either existing subnets or assigned IP address ranges for other Cloud
-        # Filestore instances in the selected VPC network.
+        # either existing subnets or assigned IP address ranges for other Filestore
+        # instances in the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
@@ -1339,8 +1338,8 @@ module Google
       class RestoreInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the file share in the Cloud Filestore instance that the
-        # backup is being restored to.
+        # Required. Name of the file share in the Filestore instance that the backup is
+        # being restored to.
         # Corresponds to the JSON property `fileShare`
         # @return [String]
         attr_accessor :file_share
