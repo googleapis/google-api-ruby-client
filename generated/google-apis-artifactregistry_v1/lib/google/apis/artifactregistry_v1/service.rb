@@ -624,6 +624,8 @@ module Google
         # Lists docker images.
         # @param [String] parent
         #   Required. The name of the parent resource whose docker images will be listed.
+        # @param [String] order_by
+        #   The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return.
         # @param [String] page_token
@@ -645,11 +647,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_repository_docker_images(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_repository_docker_images(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/dockerImages', options)
           command.response_representation = Google::Apis::ArtifactregistryV1::ListDockerImagesResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::ListDockerImagesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

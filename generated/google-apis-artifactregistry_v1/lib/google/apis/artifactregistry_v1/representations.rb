@@ -383,6 +383,7 @@ module Google
           property :media_type, as: 'mediaType'
           property :name, as: 'name'
           collection :tags, as: 'tags'
+          property :update_time, as: 'updateTime'
           property :upload_time, as: 'uploadTime'
           property :uri, as: 'uri'
         end
