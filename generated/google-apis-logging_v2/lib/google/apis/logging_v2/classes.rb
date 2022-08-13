@@ -1495,6 +1495,14 @@ module Google
       class LogMetric
         include Google::Apis::Core::Hashable
       
+        # Optional. The resource name of the Log Bucket that owns the Log Metric. Only
+        # Log Buckets in projects are supported. The bucket has to be in the same
+        # project as the metric.For example:projects/my-project/locations/global/buckets/
+        # my-bucketIf empty, then the Log Metric is considered a non-Bucket Log Metric.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
         # BucketOptions describes the bucket boundaries used to create a histogram for
         # the distribution. The buckets can be in a linear sequence, an exponential
         # sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -1544,11 +1552,11 @@ module Google
         # Each label key specified in the LabelDescriptor must have an associated
         # extractor expression in this map. The syntax of the extractor expression is
         # the same as for the value_extractor field.The extracted value is converted to
-        # the type defined in the label descriptor. If the either the extraction or the
-        # type conversion fails, the label will have a default value. The default value
-        # for a string label is an empty string, for an integer label its 0, and for a
-        # boolean label its false.Note that there are upper bounds on the maximum number
-        # of labels and the number of active time series that are allowed in a project.
+        # the type defined in the label descriptor. If either the extraction or the type
+        # conversion fails, the label will have a default value. The default value for a
+        # string label is an empty string, for an integer label its 0, and for a boolean
+        # label its false.Note that there are upper bounds on the maximum number of
+        # labels and the number of active time series that are allowed in a project.
         # Corresponds to the JSON property `labelExtractors`
         # @return [Hash<String,String>]
         attr_accessor :label_extractors
@@ -1608,6 +1616,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)

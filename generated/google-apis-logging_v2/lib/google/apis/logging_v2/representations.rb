@@ -681,6 +681,7 @@ module Google
       class LogMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
           property :bucket_options, as: 'bucketOptions', class: Google::Apis::LoggingV2::BucketOptions, decorator: Google::Apis::LoggingV2::BucketOptions::Representation
       
           property :create_time, as: 'createTime'
