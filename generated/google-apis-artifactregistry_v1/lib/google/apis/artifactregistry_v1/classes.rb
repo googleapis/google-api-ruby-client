@@ -212,6 +212,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Output only. The time when the docker image was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Time the image was uploaded.
         # Corresponds to the JSON property `uploadTime`
         # @return [String]
@@ -235,6 +240,7 @@ module Google
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @upload_time = args[:upload_time] if args.key?(:upload_time)
           @uri = args[:uri] if args.key?(:uri)
         end
