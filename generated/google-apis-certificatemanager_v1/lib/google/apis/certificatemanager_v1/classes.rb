@@ -26,9 +26,9 @@ module Google
       class AuthorizationAttemptInfo
         include Google::Apis::Core::Hashable
       
-        # Human readable explanation for reaching the state. Provided to help address
-        # the configuration issues. Not guaranteed to be stable. For programmatic access
-        # use Reason enum.
+        # Output only. Human readable explanation for reaching the state. Provided to
+        # help address the configuration issues. Not guaranteed to be stable. For
+        # programmatic access use FailureReason enum.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -43,7 +43,7 @@ module Google
         # @return [String]
         attr_accessor :failure_reason
       
-        # State of the domain for managed certificate issuance.
+        # Output only. State of the domain for managed certificate issuance.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -398,19 +398,20 @@ module Google
       class GclbTarget
         include Google::Apis::Core::Hashable
       
-        # IP configurations for this Target Proxy where the Certificate Map is serving.
+        # Output only. IP configurations for this Target Proxy where the Certificate Map
+        # is serving.
         # Corresponds to the JSON property `ipConfigs`
         # @return [Array<Google::Apis::CertificatemanagerV1::IpConfig>]
         attr_accessor :ip_configs
       
-        # This field returns the resource name in the following format: `//compute.
-        # googleapis.com/projects/*/global/targetHttpsProxies/*`.
+        # Output only. This field returns the resource name in the following format: `//
+        # compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
         # Corresponds to the JSON property `targetHttpsProxy`
         # @return [String]
         attr_accessor :target_https_proxy
       
-        # This field returns the resource name in the following format: `//compute.
-        # googleapis.com/projects/*/global/targetSslProxies/*`.
+        # Output only. This field returns the resource name in the following format: `//
+        # compute.googleapis.com/projects/*/global/targetSslProxies/*`.
         # Corresponds to the JSON property `targetSslProxy`
         # @return [String]
         attr_accessor :target_ssl_proxy
@@ -431,12 +432,12 @@ module Google
       class IpConfig
         include Google::Apis::Core::Hashable
       
-        # An external IP address.
+        # Output only. An external IP address.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # Ports.
+        # Output only. Ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -853,14 +854,14 @@ module Google
       class ProvisioningIssue
         include Google::Apis::Core::Hashable
       
-        # Human readable explanation about the issue. Provided to help address the
-        # configuration issues. Not guaranteed to be stable. For programmatic access use
-        # Reason enum.
+        # Output only. Human readable explanation about the issue. Provided to help
+        # address the configuration issues. Not guaranteed to be stable. For
+        # programmatic access use Reason enum.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
       
-        # Reason for provisioning failures.
+        # Output only. Reason for provisioning failures.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
