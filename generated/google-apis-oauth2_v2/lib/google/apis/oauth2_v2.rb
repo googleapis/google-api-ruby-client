@@ -29,7 +29,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V2'
 
-      # View your email address
+      # See your primary Google Account email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
       # See your personal info, including any personal info you've made publicly available
