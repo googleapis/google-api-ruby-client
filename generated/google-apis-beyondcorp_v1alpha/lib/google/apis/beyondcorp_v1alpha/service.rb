@@ -60,7 +60,7 @@ module Google
         #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
         #   project_id`/locations/`location_id`/insights/`insight_id``.
         # @param [String] aggregation
-        #   Optional. Aggregation type. Available aggregation could be fetched by calling
+        #   Required. Aggregation type. Available aggregation could be fetched by calling
         #   insight list and get APIs in `BASIC` view.
         # @param [String] custom_grouping_field_filter
         #   Optional. Filterable parameters to be added to the grouping clause. Available
@@ -135,10 +135,11 @@ module Google
         
         # Gets the value for a selected particular insight with default configuration.
         # The default aggregation level is 'DAILY' and no grouping will be applied or
-        # default grouping if applicable. The data will be returned for recent 7 days.
-        # Use the organization level path for fetching at org level and project level
-        # path for fetching the insight value specific to a particular project. Setting
-        # the `view` to `BASIC` will only return the metadata for the insight.
+        # default grouping if applicable. The data will be returned for recent 7 days
+        # starting the day before. The insight data size will be limited to 50 rows. Use
+        # the organization level path for fetching at org level and project level path
+        # for fetching the insight value specific to a particular project. Setting the `
+        # view` to `BASIC` will only return the metadata for the insight.
         # @param [String] name
         #   Required. The resource name of the insight using the form: `organizations/`
         #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
@@ -3055,7 +3056,7 @@ module Google
         #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
         #   project_id`/locations/`location_id`/insights/`insight_id``.
         # @param [String] aggregation
-        #   Optional. Aggregation type. Available aggregation could be fetched by calling
+        #   Required. Aggregation type. Available aggregation could be fetched by calling
         #   insight list and get APIs in `BASIC` view.
         # @param [String] custom_grouping_field_filter
         #   Optional. Filterable parameters to be added to the grouping clause. Available
@@ -3130,10 +3131,11 @@ module Google
         
         # Gets the value for a selected particular insight with default configuration.
         # The default aggregation level is 'DAILY' and no grouping will be applied or
-        # default grouping if applicable. The data will be returned for recent 7 days.
-        # Use the organization level path for fetching at org level and project level
-        # path for fetching the insight value specific to a particular project. Setting
-        # the `view` to `BASIC` will only return the metadata for the insight.
+        # default grouping if applicable. The data will be returned for recent 7 days
+        # starting the day before. The insight data size will be limited to 50 rows. Use
+        # the organization level path for fetching at org level and project level path
+        # for fetching the insight value specific to a particular project. Setting the `
+        # view` to `BASIC` will only return the metadata for the insight.
         # @param [String] name
         #   Required. The resource name of the insight using the form: `organizations/`
         #   organization_id`/locations/`location_id`/insights/`insight_id`` `projects/`
