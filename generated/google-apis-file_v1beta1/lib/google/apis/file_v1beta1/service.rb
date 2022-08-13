@@ -128,8 +128,8 @@ module Google
         # Creates a backup.
         # @param [String] parent
         #   Required. The backup's project and location, in the format `projects/`
-        #   project_id`/locations/`location``. In Cloud Filestore, backup locations map to
-        #   GCP regions, for example **us-west1**.
+        #   project_id`/locations/`location``. In Filestore, backup locations map to GCP
+        #   regions, for example **us-west1**.
         # @param [Google::Apis::FileV1beta1::Backup] backup_object
         # @param [String] backup_id
         #   Required. The ID to use for the backup. The ID must be unique within the
@@ -232,7 +232,7 @@ module Google
         # locations.
         # @param [String] parent
         #   Required. The project and location for which to retrieve backup information,
-        #   in the format `projects/`project_id`/locations/`location``. In Cloud Filestore,
+        #   in the format `projects/`project_id`/locations/`location``. In Filestore,
         #   backup locations map to GCP regions, for example **us-west1**. To retrieve
         #   backup information for all locations, use "-" for the ``location`` value.
         # @param [String] filter
@@ -318,8 +318,8 @@ module Google
         # also equal to or larger than the minimum capacity of the tier).
         # @param [String] parent
         #   Required. The instance's project and location, in the format `projects/`
-        #   project_id`/locations/`location``. In Cloud Filestore, locations map to GCP
-        #   zones, for example **us-west1-b**.
+        #   project_id`/locations/`location``. In Filestore, locations map to GCP zones,
+        #   for example **us-west1-b**.
         # @param [Google::Apis::FileV1beta1::Instance] instance_object
         # @param [String] instance_id
         #   Required. The ID of the instance to create. The ID must be unique within the
