@@ -1498,6 +1498,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceConsumptionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceConsumptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8481,6 +8493,25 @@ module Google
         end
       end
       
+      class InstanceConsumptionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumption_info, as: 'consumptionInfo', class: Google::Apis::ComputeV1::InstanceConsumptionInfo, decorator: Google::Apis::ComputeV1::InstanceConsumptionInfo::Representation
+      
+          property :instance, as: 'instance'
+        end
+      end
+      
+      class InstanceConsumptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_cpus, as: 'guestCpus'
+          property :local_ssd_gb, as: 'localSsdGb'
+          property :memory_mb, as: 'memoryMb'
+          property :min_node_cpus, as: 'minNodeCpus'
+        end
+      end
+      
       class InstanceGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10658,6 +10689,8 @@ module Google
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
+      
           property :size, as: 'size'
           property :status, as: 'status'
           property :zone, as: 'zone'
@@ -10752,8 +10785,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
+          property :consumed_resources, as: 'consumedResources', class: Google::Apis::ComputeV1::InstanceConsumptionInfo, decorator: Google::Apis::ComputeV1::InstanceConsumptionInfo::Representation
+      
           property :cpu_overcommit_type, as: 'cpuOvercommitType'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::LocalDisk, decorator: Google::Apis::ComputeV1::LocalDisk::Representation
+      
+          collection :instance_consumption_data, as: 'instanceConsumptionData', class: Google::Apis::ComputeV1::InstanceConsumptionData, decorator: Google::Apis::ComputeV1::InstanceConsumptionData::Representation
       
           collection :instances, as: 'instances'
           property :name, as: 'name'
@@ -10763,6 +10800,8 @@ module Google
       
           property :server_id, as: 'serverId'
           property :status, as: 'status'
+          property :total_resources, as: 'totalResources', class: Google::Apis::ComputeV1::InstanceConsumptionInfo, decorator: Google::Apis::ComputeV1::InstanceConsumptionInfo::Representation
+      
         end
       end
       
@@ -14009,6 +14048,7 @@ module Google
           property :min_tls_version, as: 'minTlsVersion'
           property :name, as: 'name'
           property :profile, as: 'profile'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::SslPolicy::Warning, decorator: Google::Apis::ComputeV1::SslPolicy::Warning::Representation
       
