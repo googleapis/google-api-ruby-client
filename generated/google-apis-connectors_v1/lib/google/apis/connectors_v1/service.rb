@@ -581,216 +581,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Provider.
-        # @param [String] name
-        #   Required. Resource name of the form: `projects/*/locations/*/providers/*`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::Provider] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::Provider]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_provider(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ConnectorsV1::Provider::Representation
-          command.response_class = Google::Apis::ConnectorsV1::Provider
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists Providers in a given project and location.
-        # @param [String] parent
-        #   Required. Parent resource of the API, of the form: `projects/*/locations/*`
-        # @param [Fixnum] page_size
-        #   Page size.
-        # @param [String] page_token
-        #   Page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::ListProvidersResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::ListProvidersResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_providers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/providers', options)
-          command.response_representation = Google::Apis::ConnectorsV1::ListProvidersResponse::Representation
-          command.response_class = Google::Apis::ConnectorsV1::ListProvidersResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets details of a single Connector.
-        # @param [String] name
-        #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
-        #   connectors/*`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::Connector] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::Connector]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_provider_connector(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ConnectorsV1::Connector::Representation
-          command.response_class = Google::Apis::ConnectorsV1::Connector
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists Connectors in a given project and location.
-        # @param [String] parent
-        #   Required. Parent resource of the connectors, of the form: `projects/*/
-        #   locations/*/providers/*`
-        # @param [Fixnum] page_size
-        #   Page size.
-        # @param [String] page_token
-        #   Page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::ListConnectorsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::ListConnectorsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_provider_connectors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/connectors', options)
-          command.response_representation = Google::Apis::ConnectorsV1::ListConnectorsResponse::Representation
-          command.response_class = Google::Apis::ConnectorsV1::ListConnectorsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets details of a single connector version.
-        # @param [String] name
-        #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
-        #   connectors/*/versions/*`
-        # @param [String] view
-        #   Specifies which fields of the ConnectorVersion are returned in the response.
-        #   Defaults to `CUSTOMER` view.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::ConnectorVersion] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::ConnectorVersion]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_global_provider_connector_version(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ConnectorsV1::ConnectorVersion::Representation
-          command.response_class = Google::Apis::ConnectorsV1::ConnectorVersion
-          command.params['name'] = name unless name.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists Connector Versions in a given project and location.
-        # @param [String] parent
-        #   Required. Parent resource of the connectors, of the form: `projects/*/
-        #   locations/*/providers/*/connectors/*`
-        # @param [Fixnum] page_size
-        #   Page size.
-        # @param [String] page_token
-        #   Page token.
-        # @param [String] view
-        #   Specifies which fields of the ConnectorVersion are returned in the response.
-        #   Defaults to `CUSTOMER` view.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ConnectorsV1::ListConnectorVersionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ConnectorsV1::ListConnectorVersionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_global_provider_connector_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
-          command.response_representation = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse::Representation
-          command.response_class = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['view'] = view unless view.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -941,6 +731,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets details of a provider.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/providers/*` Only
+        #   global location is supported for Provider resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Provider] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Provider]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::Provider::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Provider
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -981,6 +802,43 @@ module Google
           command.response_class = Google::Apis::ConnectorsV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Providers in a given project and location.
+        # @param [String] parent
+        #   Required. Parent resource of the API, of the form: `projects/*/locations/*`
+        #   Only global location is supported for Provider resource.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_providers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/providers', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListProvidersResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1057,6 +915,153 @@ module Google
           command.response_representation = Google::Apis::ConnectorsV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Connector.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
+        #   connectors/*` Only global location is supported for Connector resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Connector] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Connector]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_provider_connector(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::Connector::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Connector
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Connectors in a given project and location.
+        # @param [String] parent
+        #   Required. Parent resource of the connectors, of the form: `projects/*/
+        #   locations/*/providers/*` Only global location is supported for Connector
+        #   resource.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListConnectorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListConnectorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_provider_connectors(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/connectors', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListConnectorsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListConnectorsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single connector version.
+        # @param [String] name
+        #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
+        #   connectors/*/versions/*` Only global location is supported for
+        #   ConnectorVersion resource.
+        # @param [String] view
+        #   Specifies which fields of the ConnectorVersion are returned in the response.
+        #   Defaults to `CUSTOMER` view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ConnectorVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ConnectorVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_provider_connector_version(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ConnectorVersion::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ConnectorVersion
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Connector Versions in a given project and location.
+        # @param [String] parent
+        #   Required. Parent resource of the connectors, of the form: `projects/*/
+        #   locations/*/providers/*/connectors/*` Only global location is supported for
+        #   ConnectorVersion resource.
+        # @param [Fixnum] page_size
+        #   Page size.
+        # @param [String] page_token
+        #   Page token.
+        # @param [String] view
+        #   Specifies which fields of the ConnectorVersion are returned in the response.
+        #   Defaults to `BASIC` view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ListConnectorVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ListConnectorVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
