@@ -2632,6 +2632,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupPscData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupServerlessDeployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4385,6 +4391,24 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10725,6 +10749,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :psc_data, as: 'pscData', class: Google::Apis::ComputeBeta::NetworkEndpointGroupPscData, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupPscData::Representation
+      
           property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -10834,6 +10860,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupPscData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_psc_address, as: 'consumerPscAddress'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
         end
       end
       
@@ -12833,6 +12868,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          hash :resource_policies, as: 'resourcePolicies'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeBeta::ShareSettings, decorator: Google::Apis::ComputeBeta::ShareSettings::Representation
@@ -13980,6 +14016,8 @@ module Google
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher::Representation
       
+          property :preconfigured_waf_config, as: 'preconfiguredWafConfig', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfig::Representation
+      
           property :preview, as: 'preview'
           property :priority, as: 'priority'
           property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptions::Representation
@@ -14035,6 +14073,38 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusion, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusion::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_cookies_to_exclude, as: 'requestCookiesToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_headers_to_exclude, as: 'requestHeadersToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_query_params_to_exclude, as: 'requestQueryParamsToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_uris_to_exclude, as: 'requestUrisToExclude', class: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :target_rule_ids, as: 'targetRuleIds'
+          property :target_rule_set, as: 'targetRuleSet'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :op, as: 'op'
+          property :val, as: 'val'
         end
       end
       
