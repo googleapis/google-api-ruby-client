@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Destination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DestinationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EgressControlConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +227,12 @@ module Google
       end
       
       class LockConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -456,12 +474,16 @@ module Google
           property :connector_version, as: 'connectorVersion'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :destination_configs, as: 'destinationConfigs', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
+      
           property :envoy_image_location, as: 'envoyImageLocation'
           property :image_location, as: 'imageLocation'
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::ConnectorsV1::LockConfig, decorator: Google::Apis::ConnectorsV1::LockConfig::Representation
       
           property :name, as: 'name'
+          property :node_config, as: 'nodeConfig', class: Google::Apis::ConnectorsV1::NodeConfig, decorator: Google::Apis::ConnectorsV1::NodeConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :service_directory, as: 'serviceDirectory'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::ConnectionStatus, decorator: Google::Apis::ConnectorsV1::ConnectionStatus::Representation
@@ -526,6 +548,24 @@ module Google
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Destination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
+          property :service_attachment, as: 'serviceAttachment'
+        end
+      end
+      
+      class DestinationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::Destination, decorator: Google::Apis::ConnectorsV1::Destination::Representation
+      
+          property :key, as: 'key'
         end
       end
       
@@ -705,6 +745,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locked, as: 'locked'
           property :reason, as: 'reason'
+        end
+      end
+      
+      class NodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_node_count, as: 'maxNodeCount'
+          property :min_node_count, as: 'minNodeCount'
         end
       end
       

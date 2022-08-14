@@ -241,25 +241,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -437,7 +440,8 @@ module Google
         attr_accessor :config_variables
       
         # Required. Connector version on which the connection is created. The format is:
-        # projects/*/locations/global/providers/*/connectors/*/versions/*
+        # projects/*/locations/*/providers/*/connectors/*/versions/* Only global
+        # location is supported for ConnectorVersion resource.
         # Corresponds to the JSON property `connectorVersion`
         # @return [String]
         attr_accessor :connector_version
@@ -451,6 +455,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Optional. Configuration of the Connector's destination. Only accepted for
+        # Connectors that accepts user defined destination(s).
+        # Corresponds to the JSON property `destinationConfigs`
+        # @return [Array<Google::Apis::ConnectorsV1::DestinationConfig>]
+        attr_accessor :destination_configs
       
         # Output only. GCR location where the envoy image is stored. formatted like: gcr.
         # io/`bucketName`/`imageName`
@@ -482,6 +492,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Configuration for the connection.
+        # Corresponds to the JSON property `nodeConfig`
+        # @return [Google::Apis::ConnectorsV1::NodeConfig]
+        attr_accessor :node_config
       
         # Optional. Service account needed for runtime plane to access GCP resources.
         # Corresponds to the JSON property `serviceAccount`
@@ -523,11 +538,13 @@ module Google
           @connector_version = args[:connector_version] if args.key?(:connector_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @destination_configs = args[:destination_configs] if args.key?(:destination_configs)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
           @image_location = args[:image_location] if args.key?(:image_location)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
           @name = args[:name] if args.key?(:name)
+          @node_config = args[:node_config] if args.key?(:node_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
           @status = args[:status] if args.key?(:status)
@@ -634,7 +651,8 @@ module Google
         attr_accessor :launch_stage
       
         # Output only. Resource name of the Connector. Format: projects/`project`/
-        # locations/`location`/providers/`provider`/connectors/`connector`
+        # locations/`location`/providers/`provider`/connectors/`connector` Only global
+        # location is supported for Connector resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -714,7 +732,7 @@ module Google
       
         # Output only. Resource name of the Version. Format: projects/`project`/
         # locations/`location`/providers/`provider`/connectors/`connector`/versions/`
-        # version`
+        # version` Only global location is supported for Connector resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -770,6 +788,62 @@ module Google
           @role_grants = args[:role_grants] if args.key?(:role_grants)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # 
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # For publicly routable host.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The port is the target port number that is accepted by the destination.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+        end
+      end
+      
+      # Define the Connectors target endpoint.
+      class DestinationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The destinations for the key.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::ConnectorsV1::Destination>]
+        attr_accessor :destinations
+      
+        # The key is the destination identifier that is supported by the Connector.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @key = args[:key] if args.key?(:key)
         end
       end
       
@@ -1386,6 +1460,31 @@ module Google
         end
       end
       
+      # Configuration for the connection.
+      class NodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of nodes in the runtime nodes.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        # Minimum number of nodes in the runtime nodes.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
       # Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See
       # https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
       class Oauth2ClientCredentials
@@ -1697,7 +1796,8 @@ module Google
         attr_accessor :launch_stage
       
         # Output only. Resource name of the Provider. Format: projects/`project`/
-        # locations/`location`/providers/`provider`
+        # locations/`location`/providers/`provider` Only global location is supported
+        # for Provider resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
