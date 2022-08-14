@@ -408,25 +408,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -3411,53 +3414,6 @@ module Google
         end
       end
       
-      # State of the Policy Controller.
-      class PolicyControllerHubState
-        include Google::Apis::Core::Hashable
-      
-        # Map from deployment name to deployment state. Example deployments are
-        # gatekeeper-controller-manager, gatekeeper-audit deployment, and gatekeeper-
-        # mutation.
-        # Corresponds to the JSON property `deploymentStates`
-        # @return [Hash<String,String>]
-        attr_accessor :deployment_states
-      
-        # The build version of Gatekeeper that Policy Controller is using.
-        # Corresponds to the JSON property `version`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerHubVersion]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deployment_states = args[:deployment_states] if args.key?(:deployment_states)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # The build version of Gatekeeper that Policy Controller is using.
-      class PolicyControllerHubVersion
-        include Google::Apis::Core::Hashable
-      
-        # The gatekeeper image tag that is composed of ACM version, git tag, build
-        # number.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
       # **Policy Controller**: Configuration for a single cluster. Intended to
       # parallel the PolicyController CR.
       class PolicyControllerMembershipSpec
@@ -3496,18 +3452,14 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # **Policy Controller**: Configuration for a single cluster. Intended to
-        # parallel the PolicyController CR.
-        # Corresponds to the JSON property `membershipSpec`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
-        attr_accessor :membership_spec
+        # Currently these include (also serving as map keys): 1. "admission" 2. "audit"
+        # 3. "mutation" 4. "constraint template library"
+        # Corresponds to the JSON property `componentStates`
+        # @return [Hash<String,Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState>]
+        attr_accessor :component_states
       
-        # State of the Policy Controller.
-        # Corresponds to the JSON property `policyControllerHubState`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerHubState]
-        attr_accessor :policy_controller_hub_state
-      
-        # The lifecycle state Policy Controller is in.
+        # The overall Policy Controller lifecycle state observed by the Hub Feature
+        # controller.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3519,8 +3471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
-          @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
-          @policy_controller_hub_state = args[:policy_controller_hub_state] if args.key?(:policy_controller_hub_state)
+          @component_states = args[:component_states] if args.key?(:component_states)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3544,6 +3495,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backends = args[:backends] if args.key?(:backends)
+        end
+      end
+      
+      # OnClusterState represents the state of a sub-component of Policy Controller.
+      class PolicyControllerOnClusterState
+        include Google::Apis::Core::Hashable
+      
+        # Surface potential errors or information logs.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # The lifecycle state of this component.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
