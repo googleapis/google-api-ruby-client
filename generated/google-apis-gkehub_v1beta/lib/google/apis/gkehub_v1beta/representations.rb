@@ -418,18 +418,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicyControllerHubState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PolicyControllerHubVersion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PolicyControllerMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +431,12 @@ module Google
       end
       
       class PolicyControllerMonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerOnClusterState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1204,22 +1198,6 @@ module Google
         end
       end
       
-      class PolicyControllerHubState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :deployment_states, as: 'deploymentStates'
-          property :version, as: 'version', class: Google::Apis::GkehubV1beta::PolicyControllerHubVersion, decorator: Google::Apis::GkehubV1beta::PolicyControllerHubVersion::Representation
-      
-        end
-      end
-      
-      class PolicyControllerHubVersion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :version, as: 'version'
-        end
-      end
-      
       class PolicyControllerMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1233,9 +1211,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_name, as: 'clusterName'
-          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
-      
-          property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1beta::PolicyControllerHubState, decorator: Google::Apis::GkehubV1beta::PolicyControllerHubState::Representation
+          hash :component_states, as: 'componentStates', class: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState::Representation
       
           property :state, as: 'state'
         end
@@ -1245,6 +1221,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backends, as: 'backends'
+        end
+      end
+      
+      class PolicyControllerOnClusterState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :state, as: 'state'
         end
       end
       
