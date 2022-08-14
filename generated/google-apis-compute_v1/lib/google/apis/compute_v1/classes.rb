@@ -4528,25 +4528,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -12917,6 +12920,68 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstanceConsumptionData
+        include Google::Apis::Core::Hashable
+      
+        # Resources consumed by the instance.
+        # Corresponds to the JSON property `consumptionInfo`
+        # @return [Google::Apis::ComputeV1::InstanceConsumptionInfo]
+        attr_accessor :consumption_info
+      
+        # Server-defined URL for the instance.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_info = args[:consumption_info] if args.key?(:consumption_info)
+          @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # 
+      class InstanceConsumptionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of virtual CPUs that are available to the instance.
+        # Corresponds to the JSON property `guestCpus`
+        # @return [Fixnum]
+        attr_accessor :guest_cpus
+      
+        # The amount of local SSD storage available to the instance, defined in GiB.
+        # Corresponds to the JSON property `localSsdGb`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_gb
+      
+        # The amount of physical memory available to the instance, defined in MiB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # The minimal guaranteed number of virtual CPUs that are reserved.
+        # Corresponds to the JSON property `minNodeCpus`
+        # @return [Fixnum]
+        attr_accessor :min_node_cpus
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guest_cpus = args[:guest_cpus] if args.key?(:guest_cpus)
+          @local_ssd_gb = args[:local_ssd_gb] if args.key?(:local_ssd_gb)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
         end
       end
       
@@ -21458,6 +21523,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The share setting for reservations and sole tenancy node groups.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeV1::ShareSettings]
+        attr_accessor :share_settings
+      
         # [Output Only] The total number of nodes in the node group.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
@@ -21492,6 +21562,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @node_template = args[:node_template] if args.key?(:node_template)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @size = args[:size] if args.key?(:size)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
@@ -21813,6 +21884,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
         attr_accessor :accelerators
       
+        # Node resources that are reserved by all instances.
+        # Corresponds to the JSON property `consumedResources`
+        # @return [Google::Apis::ComputeV1::InstanceConsumptionInfo]
+        attr_accessor :consumed_resources
+      
         # CPU overcommit.
         # Corresponds to the JSON property `cpuOvercommitType`
         # @return [String]
@@ -21822,6 +21898,11 @@ module Google
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeV1::LocalDisk>]
         attr_accessor :disks
+      
+        # Instance data that shows consumed resources on the node.
+        # Corresponds to the JSON property `instanceConsumptionData`
+        # @return [Array<Google::Apis::ComputeV1::InstanceConsumptionData>]
+        attr_accessor :instance_consumption_data
       
         # Instances scheduled on this node.
         # Corresponds to the JSON property `instances`
@@ -21859,6 +21940,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Total amount of available resources on the node.
+        # Corresponds to the JSON property `totalResources`
+        # @return [Google::Apis::ComputeV1::InstanceConsumptionInfo]
+        attr_accessor :total_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21866,8 +21952,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @consumed_resources = args[:consumed_resources] if args.key?(:consumed_resources)
           @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
           @disks = args[:disks] if args.key?(:disks)
+          @instance_consumption_data = args[:instance_consumption_data] if args.key?(:instance_consumption_data)
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
@@ -21875,6 +21963,7 @@ module Google
           @server_binding = args[:server_binding] if args.key?(:server_binding)
           @server_id = args[:server_id] if args.key?(:server_id)
           @status = args[:status] if args.key?(:status)
+          @total_resources = args[:total_resources] if args.key?(:total_resources)
         end
       end
       
@@ -34553,6 +34642,12 @@ module Google
         # @return [String]
         attr_accessor :profile
       
+        # [Output Only] URL of the region where the regional SSL policy resides. This
+        # field is not applicable to global SSL policies.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -34580,6 +34675,7 @@ module Google
           @min_tls_version = args[:min_tls_version] if args.key?(:min_tls_version)
           @name = args[:name] if args.key?(:name)
           @profile = args[:profile] if args.key?(:profile)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @warnings = args[:warnings] if args.key?(:warnings)
         end
