@@ -928,7 +928,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DisksStopGroupAsyncReplicationRequest
+      class DisksStopGroupAsyncReplicationResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3190,6 +3190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupPscData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupServerlessDeployment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3455,6 +3461,12 @@ module Google
       end
       
       class NodeGroupsSetNodeTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeGroupsSimulateMaintenanceEventRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4246,12 +4258,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RegionDisksStopGroupAsyncReplicationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RegionInstanceGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5020,6 +5026,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulingDynamicResizeProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchedulingNodeAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5207,6 +5219,24 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7041,6 +7071,7 @@ module Google
           property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           collection :replica_zones, as: 'replicaZones'
           hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
@@ -8123,6 +8154,7 @@ module Google
       
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
@@ -8454,7 +8486,7 @@ module Google
         end
       end
       
-      class DisksStopGroupAsyncReplicationRequest
+      class DisksStopGroupAsyncReplicationResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_policy, as: 'resourcePolicy'
@@ -12659,6 +12691,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :psc_data, as: 'pscData', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupPscData, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupPscData::Representation
+      
           property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -12770,6 +12804,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupPscData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_psc_address, as: 'consumerPscAddress'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
         end
       end
       
@@ -13261,6 +13304,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_template, as: 'nodeTemplate'
+        end
+      end
+      
+      class NodeGroupsSimulateMaintenanceEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
         end
       end
       
@@ -14730,13 +14780,6 @@ module Google
         end
       end
       
-      class RegionDisksStopGroupAsyncReplicationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_policy, as: 'resourcePolicy'
-        end
-      end
-      
       class RegionInstanceGroupList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16106,6 +16149,8 @@ module Google
           property :availability_domain, as: 'availabilityDomain'
           property :current_cpus, as: 'currentCpus'
           property :current_memory_mb, :numeric_string => true, as: 'currentMemoryMb'
+          property :dynamic_resize_properties, as: 'dynamicResizeProperties', class: Google::Apis::ComputeAlpha::SchedulingDynamicResizeProperties, decorator: Google::Apis::ComputeAlpha::SchedulingDynamicResizeProperties::Representation
+      
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :latency_tolerant, as: 'latencyTolerant'
@@ -16121,6 +16166,14 @@ module Google
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
+        end
+      end
+      
+      class SchedulingDynamicResizeProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_hot_standby, as: 'enableHotStandby'
+          property :hot_standby_state, as: 'hotStandbyState'
         end
       end
       
@@ -16390,6 +16443,8 @@ module Google
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher::Representation
       
+          property :preconfigured_waf_config, as: 'preconfiguredWafConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfig::Representation
+      
           property :preview, as: 'preview'
           property :priority, as: 'priority'
           property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptions::Representation
@@ -16457,6 +16512,38 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclusions, as: 'exclusions', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusion, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusion::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_cookies_to_exclude, as: 'requestCookiesToExclude', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_headers_to_exclude, as: 'requestHeadersToExclude', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_query_params_to_exclude, as: 'requestQueryParamsToExclude', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :request_uris_to_exclude, as: 'requestUrisToExclude', class: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams::Representation
+      
+          collection :target_rule_ids, as: 'targetRuleIds'
+          property :target_rule_set, as: 'targetRuleSet'
+        end
+      end
+      
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :op, as: 'op'
+          property :val, as: 'val'
         end
       end
       
