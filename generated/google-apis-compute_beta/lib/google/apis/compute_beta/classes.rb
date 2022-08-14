@@ -4659,25 +4659,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -20888,6 +20891,12 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_type
       
+        # All data that is specifically relevant to only network endpoint groups of type
+        # PRIVATE_SERVICE_CONNECT.
+        # Corresponds to the JSON property `pscData`
+        # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupPscData]
+        attr_accessor :psc_data
+      
         # The target service url used to set up private service connection to a Google
         # API or a PSC Producer Service Attachment. An example value is: "asia-
         # northeast3-cloudkms.googleapis.com"
@@ -20948,6 +20957,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
+          @psc_data = args[:psc_data] if args.key?(:psc_data)
           @psc_target_service = args[:psc_target_service] if args.key?(:psc_target_service)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -21358,6 +21368,39 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # All data that is specifically relevant to only network endpoint groups of type
+      # PRIVATE_SERVICE_CONNECT.
+      class NetworkEndpointGroupPscData
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Address allocated from given subnetwork for PSC. This IP address
+        # acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+        # Corresponds to the JSON property `consumerPscAddress`
+        # @return [String]
+        attr_accessor :consumer_psc_address
+      
+        # [Output Only] The PSC connection id of the PSC Network Endpoint Group Consumer.
+        # Corresponds to the JSON property `pscConnectionId`
+        # @return [Fixnum]
+        attr_accessor :psc_connection_id
+      
+        # [Output Only] The connection status of the PSC Forwarding Rule.
+        # Corresponds to the JSON property `pscConnectionStatus`
+        # @return [String]
+        attr_accessor :psc_connection_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_psc_address = args[:consumer_psc_address] if args.key?(:consumer_psc_address)
+          @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
+          @psc_connection_status = args[:psc_connection_status] if args.key?(:psc_connection_status)
         end
       end
       
@@ -28988,6 +29031,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Resource policies to be added to this reservation. The key is defined by user,
+        # and the value is resource policy url. This is to define placement policy with
+        # reservation.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_policies
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -29041,6 +29091,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
@@ -33565,6 +33616,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher]
         attr_accessor :match
       
+        # Preconfigured WAF configuration to be applied for the rule. If the rule does
+        # not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is
+        # not used, this field will have no effect.
+        # Corresponds to the JSON property `preconfiguredWafConfig`
+        # @return [Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfig]
+        attr_accessor :preconfigured_waf_config
+      
         # If set to true, the specified action is not enforced.
         # Corresponds to the JSON property `preview`
         # @return [Boolean]
@@ -33631,6 +33689,7 @@ module Google
           @header_action = args[:header_action] if args.key?(:header_action)
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
+          @preconfigured_waf_config = args[:preconfigured_waf_config] if args.key?(:preconfigured_waf_config)
           @preview = args[:preview] if args.key?(:preview)
           @priority = args[:priority] if args.key?(:priority)
           @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
@@ -33799,6 +33858,107 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of exclusions to apply during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusion>]
+        attr_accessor :exclusions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfigExclusion
+        include Google::Apis::Core::Hashable
+      
+        # A list of request cookie names whose value will be excluded from inspection
+        # during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `requestCookiesToExclude`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_cookies_to_exclude
+      
+        # A list of request header names whose value will be excluded from inspection
+        # during preconfigured WAF evaluation.
+        # Corresponds to the JSON property `requestHeadersToExclude`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_headers_to_exclude
+      
+        # A list of request query parameter names whose value will be excluded from
+        # inspection during preconfigured WAF evaluation. Note that the parameter can be
+        # in the query string or in the POST body.
+        # Corresponds to the JSON property `requestQueryParamsToExclude`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_query_params_to_exclude
+      
+        # A list of request URIs from the request line to be excluded from inspection
+        # during preconfigured WAF evaluation. When specifying this field, the query or
+        # fragment part should be excluded.
+        # Corresponds to the JSON property `requestUrisToExclude`
+        # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_uris_to_exclude
+      
+        # A list of target rule IDs under the WAF rule set to apply the preconfigured
+        # WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule
+        # set.
+        # Corresponds to the JSON property `targetRuleIds`
+        # @return [Array<String>]
+        attr_accessor :target_rule_ids
+      
+        # Target WAF rule set to apply the preconfigured WAF exclusion.
+        # Corresponds to the JSON property `targetRuleSet`
+        # @return [String]
+        attr_accessor :target_rule_set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_cookies_to_exclude = args[:request_cookies_to_exclude] if args.key?(:request_cookies_to_exclude)
+          @request_headers_to_exclude = args[:request_headers_to_exclude] if args.key?(:request_headers_to_exclude)
+          @request_query_params_to_exclude = args[:request_query_params_to_exclude] if args.key?(:request_query_params_to_exclude)
+          @request_uris_to_exclude = args[:request_uris_to_exclude] if args.key?(:request_uris_to_exclude)
+          @target_rule_ids = args[:target_rule_ids] if args.key?(:target_rule_ids)
+          @target_rule_set = args[:target_rule_set] if args.key?(:target_rule_set)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams
+        include Google::Apis::Core::Hashable
+      
+        # The match operator for the field.
+        # Corresponds to the JSON property `op`
+        # @return [String]
+        attr_accessor :op
+      
+        # The value of the field.
+        # Corresponds to the JSON property `val`
+        # @return [String]
+        attr_accessor :val
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @op = args[:op] if args.key?(:op)
+          @val = args[:val] if args.key?(:val)
         end
       end
       
