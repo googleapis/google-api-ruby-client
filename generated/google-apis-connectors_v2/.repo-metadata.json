@@ -1,0 +1,7 @@
+{
+    "api_id": "connectors:v2",
+    "name_pretty": "Connectors API",
+    "distribution_name": "google-apis-connectors_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
