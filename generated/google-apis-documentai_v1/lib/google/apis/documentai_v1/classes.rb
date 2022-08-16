@@ -36,6 +36,11 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>]
         attr_accessor :individual_batch_delete_statuses
       
+        # Total number of documents deleting from dataset.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44,6 +49,7 @@ module Google
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @individual_batch_delete_statuses = args[:individual_batch_delete_statuses] if args.key?(:individual_batch_delete_statuses)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
         end
       end
       
@@ -543,6 +549,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # Validation statuses of the batch documents import config.
+        # Corresponds to the JSON property `importConfigValidationResults`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult>]
+        attr_accessor :import_config_validation_results
+      
         # The list of response details of each document.
         # Corresponds to the JSON property `individualImportStatuses`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>]
@@ -560,8 +571,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @import_config_validation_results = args[:import_config_validation_results] if args.key?(:import_config_validation_results)
           @individual_import_statuses = args[:individual_import_statuses] if args.key?(:individual_import_statuses)
           @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The validation status of each import config. Status is ok if the configuration
+      # is valid and the specified documents are valid for importing. Otherwise status
+      # will be set as errors.
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # The source Cloud Storage URI specified in the import config.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -624,6 +668,18 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The list of dataset resync statuses. Not checked when `dataset_documents` is
+        # specified in ResyncRequest.
+        # Corresponds to the JSON property `datasetResyncStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus>]
+        attr_accessor :dataset_resync_statuses
+      
+        # The list of document resync statuses. The same document could have multiple `
+        # individual_document_resync_statuses` if it has multiple inconsistencies.
+        # Corresponds to the JSON property `individualDocumentResyncStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>]
+        attr_accessor :individual_document_resync_statuses
+      
         # Returns the newly added document Cloud Storage prefix if the documents are
         # founded in Cloud Storage while not in Document Service storage.
         # Corresponds to the JSON property `newlyAddedDocuments`
@@ -637,7 +693,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @dataset_resync_statuses = args[:dataset_resync_statuses] if args.key?(:dataset_resync_statuses)
+          @individual_document_resync_statuses = args[:individual_document_resync_statuses] if args.key?(:individual_document_resync_statuses)
           @newly_added_documents = args[:newly_added_documents] if args.key?(:newly_added_documents)
+        end
+      end
+      
+      # Resync status against inconsistency types on the dataset level.
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus
+        include Google::Apis::Core::Hashable
+      
+        # The type of the inconsistency of the dataset.
+        # Corresponds to the JSON property `datasetInconsistencyType`
+        # @return [String]
+        attr_accessor :dataset_inconsistency_type
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_inconsistency_type = args[:dataset_inconsistency_type] if args.key?(:dataset_inconsistency_type)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Resync status for each document per inconsistency type.
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The type of document inconsistency.
+        # Corresponds to the JSON property `documentInconsistencyType`
+        # @return [String]
+        attr_accessor :document_inconsistency_type
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @document_inconsistency_type = args[:document_inconsistency_type] if args.key?(:document_inconsistency_type)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1471,15 +1595,6 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
-        # Optional. This attribute indicates that the processing didn't actually
-        # identify this entity, but a confidence score was assigned that represent the
-        # potential that this could be a false negative. A non-present entity should
-        # have an empty mention_text and text_anchor.
-        # Corresponds to the JSON property `nonPresent`
-        # @return [Boolean]
-        attr_accessor :non_present
-        alias_method :non_present?, :non_present
-      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityNormalizedValue]
@@ -1530,7 +1645,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
-          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -2685,8 +2799,8 @@ module Google
         # Name of the type. It must be unique within the schema file and cannot be a '
         # Common Type'. Besides that we use the following naming conventions: - *use
         # snake_casing* - name matching is case-insensitive - Maximum 64 characters. -
-        # Must start with a letter. - Allowed characters: ASCII letters [a-z0-9_-]. (For
-        # backward compatibility internal infrastructure and tooling can handle any
+        # Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (
+        # For backward compatibility internal infrastructure and tooling can handle any
         # ascii character) - The '/' is sometimes used to denote a property of a type.
         # For example line_item/amount. This convention is deprecated, but will still be
         # honored for backward compatibility.
@@ -4191,15 +4305,6 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
-        # Optional. This attribute indicates that the processing didn't actually
-        # identify this entity, but a confidence score was assigned that represent the
-        # potential that this could be a false negative. A non-present entity should
-        # have an empty mention_text and text_anchor.
-        # Corresponds to the JSON property `nonPresent`
-        # @return [Boolean]
-        attr_accessor :non_present
-        alias_method :non_present?, :non_present
-      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue]
@@ -4250,7 +4355,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
-          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -6030,15 +6134,6 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
-        # Optional. This attribute indicates that the processing didn't actually
-        # identify this entity, but a confidence score was assigned that represent the
-        # potential that this could be a false negative. A non-present entity should
-        # have an empty mention_text and text_anchor.
-        # Corresponds to the JSON property `nonPresent`
-        # @return [Boolean]
-        attr_accessor :non_present
-        alias_method :non_present?, :non_present
-      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue]
@@ -6089,7 +6184,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
-          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
