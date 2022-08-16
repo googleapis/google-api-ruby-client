@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1541,6 +1559,7 @@ module Google
       
           collection :individual_batch_delete_statuses, as: 'individualBatchDeleteStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus::Representation
       
+          property :total_document_count, as: 'totalDocumentCount'
         end
       end
       
@@ -1734,9 +1753,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
+          collection :import_config_validation_results, as: 'importConfigValidationResults', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult::Representation
+      
           collection :individual_import_statuses, as: 'individualImportStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus::Representation
       
           property :total_document_count, as: 'totalDocumentCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_gcs_source, as: 'inputGcsSource'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -1761,7 +1791,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
+          collection :dataset_resync_statuses, as: 'datasetResyncStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus::Representation
+      
+          collection :individual_document_resync_statuses, as: 'individualDocumentResyncStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus::Representation
+      
           collection :newly_added_documents, as: 'newlyAddedDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataDatasetResyncStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_inconsistency_type, as: 'datasetInconsistencyType'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
+      
+          property :document_inconsistency_type, as: 'documentInconsistencyType'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
       
         end
       end
@@ -2044,7 +2098,6 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
-          property :non_present, as: 'nonPresent'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageAnchor::Representation
@@ -2844,7 +2897,6 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
-          property :non_present, as: 'nonPresent'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageAnchor::Representation
@@ -3368,7 +3420,6 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
-          property :non_present, as: 'nonPresent'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageAnchor::Representation
