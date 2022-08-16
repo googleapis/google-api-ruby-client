@@ -1579,6 +1579,7 @@ module Google
       
           collection :proxies, as: 'proxies'
           property :quota, as: 'quota'
+          property :quota_counter_scope, as: 'quotaCounterScope'
           property :quota_interval, as: 'quotaInterval'
           property :quota_time_unit, as: 'quotaTimeUnit'
           collection :scopes, as: 'scopes'
@@ -2193,6 +2194,7 @@ module Google
       class GoogleCloudApigeeV1EndpointAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
           property :host, as: 'host'
           property :location, as: 'location'
           property :name, as: 'name'
