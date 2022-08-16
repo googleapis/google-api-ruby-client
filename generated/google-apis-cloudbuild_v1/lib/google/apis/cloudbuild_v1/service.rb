@@ -855,8 +855,8 @@ module Google
         #   Required. Name of the parent resource.
         # @param [Fixnum] page_size
         #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 50 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
+        #   this value. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
         # @param [String] page_token
         #   A page token, received from a previous `ListBitbucketServerRepositoriesRequest`
         #   call. Provide this to retrieve the subsequent page. When paginating, all

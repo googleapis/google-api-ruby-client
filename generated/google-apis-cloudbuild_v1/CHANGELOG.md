@@ -1,5 +1,10 @@
 # Release history for google-apis-cloudbuild_v1
 
+### v0.36.0 (2022-08-16)
+
+* Regenerated from discovery document revision 20220808
+* Regenerated using generator version 0.9.0
+
 ### v0.35.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0
