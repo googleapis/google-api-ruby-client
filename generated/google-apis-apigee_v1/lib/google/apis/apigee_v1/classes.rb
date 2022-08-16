@@ -592,6 +592,18 @@ module Google
         # @return [String]
         attr_accessor :quota
       
+        # Scope of the quota decides how the quota counter gets applied and evaluate for
+        # quota violation. If the Scope is set as PROXY, then all the operations defined
+        # for the APIproduct that are associated with the same proxy will share the same
+        # quota counter set at the APIproduct level, making it a global counter at a
+        # proxy level. If the Scope is set as OPERATION, then each operations get the
+        # counter set at the API product dedicated, making it a local counter. Note that,
+        # the QuotaCounterScope applies only when an operation does not have dedicated
+        # quota set for itself.
+        # Corresponds to the JSON property `quotaCounterScope`
+        # @return [String]
+        attr_accessor :quota_counter_scope
+      
         # Time interval over which the number of request messages is calculated.
         # Corresponds to the JSON property `quotaInterval`
         # @return [String]
@@ -629,6 +641,7 @@ module Google
           @operation_group = args[:operation_group] if args.key?(:operation_group)
           @proxies = args[:proxies] if args.key?(:proxies)
           @quota = args[:quota] if args.key?(:quota)
+          @quota_counter_scope = args[:quota_counter_scope] if args.key?(:quota_counter_scope)
           @quota_interval = args[:quota_interval] if args.key?(:quota_interval)
           @quota_time_unit = args[:quota_time_unit] if args.key?(:quota_time_unit)
           @scopes = args[:scopes] if args.key?(:scopes)
@@ -3068,6 +3081,12 @@ module Google
       class GoogleCloudApigeeV1EndpointAttachment
         include Google::Apis::Core::Hashable
       
+        # Output only. State of the endpoint attachment connection to the service
+        # attachment.
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
         # Output only. Host that can be used in either the HTTP target endpoint directly
         # or as the host in target server.
         # Corresponds to the JSON property `host`
@@ -3102,6 +3121,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
           @host = args[:host] if args.key?(:host)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
