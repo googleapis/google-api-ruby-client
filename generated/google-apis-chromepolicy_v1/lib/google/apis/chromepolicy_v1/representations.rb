@@ -363,6 +363,8 @@ module Google
           property :name, as: 'name'
           collection :notices, as: 'notices', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription::Representation
       
+          property :policy_api_lifecycle, as: 'policyApiLifecycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
+      
           property :policy_api_lifeycle, as: 'policyApiLifeycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
       
           property :policy_description, as: 'policyDescription'

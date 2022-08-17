@@ -388,7 +388,7 @@ module Google
         end
       end
       
-      # Resource representing a policy schema. Next ID: 12
+      # Resource representing a policy schema. Next ID: 13
       class GoogleChromePolicyV1PolicySchema
         include Google::Apis::Core::Hashable
       
@@ -425,7 +425,12 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription>]
         attr_accessor :notices
       
-        # Output only. Current life cycle information.
+        # Output only. Current lifecycle information.
+        # Corresponds to the JSON property `policyApiLifecycle`
+        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
+        attr_accessor :policy_api_lifecycle
+      
+        # Deprecated field because of typo.
         # Corresponds to the JSON property `policyApiLifeycle`
         # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
         attr_accessor :policy_api_lifeycle
@@ -465,6 +470,7 @@ module Google
           @field_descriptions = args[:field_descriptions] if args.key?(:field_descriptions)
           @name = args[:name] if args.key?(:name)
           @notices = args[:notices] if args.key?(:notices)
+          @policy_api_lifecycle = args[:policy_api_lifecycle] if args.key?(:policy_api_lifecycle)
           @policy_api_lifeycle = args[:policy_api_lifeycle] if args.key?(:policy_api_lifeycle)
           @policy_description = args[:policy_description] if args.key?(:policy_description)
           @schema_name = args[:schema_name] if args.key?(:schema_name)
