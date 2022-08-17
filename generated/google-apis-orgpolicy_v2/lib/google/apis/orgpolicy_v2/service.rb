@@ -350,6 +350,185 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.
+        # Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.
+        # Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists
+        # on the given organization.
+        # @param [String] parent
+        #   Required. Must be in the following form: * `organizations/`organization_id``
+        # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] google_cloud_orgpolicy_v2_custom_constraint_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_custom_constraint(parent, google_cloud_orgpolicy_v2_custom_constraint_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/customConstraints', options)
+          command.request_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+          command.request_object = google_cloud_orgpolicy_v2_custom_constraint_object
+          command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+          command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.
+        # Code.NOT_FOUND` if the constraint does not exist.
+        # @param [String] name
+        #   Required. Name of the custom constraint to delete. See `CustomConstraint` for
+        #   naming rules.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OrgpolicyV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OrgpolicyV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_custom_constraint(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::OrgpolicyV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.
+        # NOT_FOUND` if the CustomConstraint does not exist.
+        # @param [String] name
+        #   Required. Resource name of the custom constraint. See `CustomConstraint` for
+        #   naming requirements.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_custom_constraint(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+          command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves all of the `CustomConstraints` that exist on a particular
+        # organization resource.
+        # @param [String] parent
+        #   Required. The target Cloud resource that parents the set of custom constraints
+        #   that will be returned from this call. Must be in one of the following forms: *
+        #   `organizations/`organization_id``
+        # @param [Fixnum] page_size
+        #   Size of the pages to be returned. This is currently unsupported and will be
+        #   ignored. The server may at any point start using this field to limit page size.
+        # @param [String] page_token
+        #   Page token used to retrieve the next page. This is currently unsupported and
+        #   will be ignored. The server may at any point start using this field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ListCustomConstraintsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ListCustomConstraintsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_custom_constraints(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/customConstraints', options)
+          command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ListCustomConstraintsResponse::Representation
+          command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Custom Constraint. Returns a `google.rpc.Status` with `google.rpc.
+        # Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy
+        # will perform a full overwrite of all fields.
+        # @param [String] name
+        #   Immutable. Name of the constraint. This is unique within the organization.
+        #   Format of the name should be * `organizations/`organization_id`/
+        #   customConstraints/`custom_constraint_id`` Example : "organizations/123/
+        #   customConstraints/custom.createOnlyE2TypeVms"
+        # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] google_cloud_orgpolicy_v2_custom_constraint_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_custom_constraint(name, google_cloud_orgpolicy_v2_custom_constraint_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+          command.request_object = google_cloud_orgpolicy_v2_custom_constraint_object
+          command.response_representation = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
+          command.response_class = Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.
         # NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status`
         # with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the
