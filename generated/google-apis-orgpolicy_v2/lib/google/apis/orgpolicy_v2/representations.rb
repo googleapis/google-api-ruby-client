@@ -46,7 +46,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOrgpolicyV2ListConstraintsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,10 +143,32 @@ module Google
         end
       end
       
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :method_types, as: 'methodTypes'
+          property :name, as: 'name'
+          collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
       class GoogleCloudOrgpolicyV2ListConstraintsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :constraints, as: 'constraints', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Constraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Constraint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_constraints, as: 'customConstraints', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
