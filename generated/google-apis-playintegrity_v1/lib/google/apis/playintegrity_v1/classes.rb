@@ -27,6 +27,13 @@ module Google
       class AccountDetails
         include Google::Apis::Core::Hashable
       
+        # Contains information about account risk that indicates if the current user
+        # session seems low risk, unknown, or risky before you allow important actions
+        # to proceed.
+        # Corresponds to the JSON property `accountRiskVerdict`
+        # @return [Google::Apis::PlayintegrityV1::AccountRiskVerdict]
+        attr_accessor :account_risk_verdict
+      
         # Required. Details about the licensing status of the user for the app in the
         # scope.
         # Corresponds to the JSON property `appLicensingVerdict`
@@ -39,7 +46,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_risk_verdict = args[:account_risk_verdict] if args.key?(:account_risk_verdict)
           @app_licensing_verdict = args[:app_licensing_verdict] if args.key?(:app_licensing_verdict)
+        end
+      end
+      
+      # Contains information about account risk that indicates if the current user
+      # session seems low risk, unknown, or risky before you allow important actions
+      # to proceed.
+      class AccountRiskVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates the account risk level of the current user session.
+        # Corresponds to the JSON property `riskLevel`
+        # @return [String]
+        attr_accessor :risk_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @risk_level = args[:risk_level] if args.key?(:risk_level)
         end
       end
       
