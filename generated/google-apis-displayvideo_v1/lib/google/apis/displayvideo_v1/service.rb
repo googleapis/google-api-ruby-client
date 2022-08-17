@@ -1540,7 +1540,7 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this insertion order belongs to.
         # @param [Fixnum] insertion_order_id
-        #   The ID of the insertion order we need to delete.
+        #   The ID of the insertion order to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2052,7 +2052,7 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this line item belongs to.
         # @param [Fixnum] line_item_id
-        #   The ID of the line item we need to fetch.
+        #   The ID of the line item to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3529,7 +3529,8 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
         #   identifies the assigned targeting option being requested.
@@ -3569,7 +3570,8 @@ module Google
         #   Required. Identifies the type of assigned targeting options to list. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
+        #   `TARGETING_TYPE_YOUTUBE_CHANNEL`
         # @param [String] filter
         #   Allows filtering by assigned targeting option properties. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
