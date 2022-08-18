@@ -76,6 +76,87 @@ module Google
         end
       end
       
+      # The request set by clients to instruct Backend how the user intend to fix the
+      # ACL. Technically it's not a request to ACL Fixer, because Backend uses /
+      # DriveService.Share to modify Drive ACLs.
+      class AclFixRequest
+        include Google::Apis::Core::Hashable
+      
+        # For Spaces messages: This field is ignored. For DMs messages: The list of
+        # email addresses that should be added to the Drive item's ACL. In general, the
+        # list should not be empty when the boolean "should_fix" field is set; otherwise,
+        # the list should be empty. During transition - when clients do not specify
+        # this field but the "should_fix" is true, we follow the legacy behavior: share
+        # to all users in the DM regardless of emails. This behavior is being phased out.
+        # Corresponds to the JSON property `recipientEmails`
+        # @return [Array<String>]
+        attr_accessor :recipient_emails
+      
+        # 
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        # Whether to attempt to fix the ACL by adding the room or DM members to the
+        # Drive file's ACL.
+        # Corresponds to the JSON property `shouldFix`
+        # @return [Boolean]
+        attr_accessor :should_fix
+        alias_method :should_fix?, :should_fix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recipient_emails = args[:recipient_emails] if args.key?(:recipient_emails)
+          @role = args[:role] if args.key?(:role)
+          @should_fix = args[:should_fix] if args.key?(:should_fix)
+        end
+      end
+      
+      # The message reconstructed based on information in the response of /
+      # PermissionFixOptionsService.Query (or the Apiary API that wraps it). Indicates
+      # the ability of the requester to change the access to the Drive file for the
+      # room roster or the DM members. Used in GetMessagePreviewMetadataResponse only.
+      class AclFixStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `fixability`
+        # @return [String]
+        attr_accessor :fixability
+      
+        # List of recipient email addresses for which access can be granted. This field
+        # contains the same email addresses from the GetMessagePreviewMetadata request
+        # if all recipients can be successfully added to the ACL as determined by Drive
+        # ACL Fixer. For now, the field is non-empty if and only if the "fixability"
+        # value is "CAN_FIX".
+        # Corresponds to the JSON property `fixableEmailAddress`
+        # @return [Array<String>]
+        attr_accessor :fixable_email_address
+      
+        # List of recipient email addresses for which an out-of-domain-sharing warning
+        # must be shown, stating that these email addresses are not in the Google Apps
+        # organization that the requested item belong to. Empty if all recipients are in
+        # the same Google Apps organization.
+        # Corresponds to the JSON property `outOfDomainWarningEmailAddress`
+        # @return [Array<String>]
+        attr_accessor :out_of_domain_warning_email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixability = args[:fixability] if args.key?(:fixability)
+          @fixable_email_address = args[:fixable_email_address] if args.key?(:fixable_email_address)
+          @out_of_domain_warning_email_address = args[:out_of_domain_warning_email_address] if args.key?(:out_of_domain_warning_email_address)
+        end
+      end
+      
       # Next tag: 4
       class AclInfo
         include Google::Apis::Core::Hashable
@@ -136,6 +217,52 @@ module Google
         end
       end
       
+      # Earlier we used to populate just the affected_members list and inferred the
+      # new membership state (roles didn't exist back then) from the Type. go/dynamite-
+      # finra required backend to know the previous membership state to reconstruct
+      # membership history. The proper solution involved cleaning up up Type enum, but
+      # it was used in many, many places. This was added as a stop-gap solution to
+      # unblock FINRA without breaking everything. Later role update and target
+      # audience update started relying on this to communicate information to clients
+      # about what transition happened. So this is now required to be populated and
+      # should be in sync with affected_members for new messages.
+      class AffectedMembership
+        include Google::Apis::Core::Hashable
+      
+        # Eventually this can be updated to a oneOf User, Space (for nested spaces),
+        # Bots or Service, as and when these use cases come up.
+        # Corresponds to the JSON property `affectedMember`
+        # @return [Google::Apis::CloudsearchV1::MemberId]
+        attr_accessor :affected_member
+      
+        # 
+        # Corresponds to the JSON property `priorMembershipRole`
+        # @return [String]
+        attr_accessor :prior_membership_role
+      
+        # 
+        # Corresponds to the JSON property `priorMembershipState`
+        # @return [String]
+        attr_accessor :prior_membership_state
+      
+        # 
+        # Corresponds to the JSON property `targetMembershipRole`
+        # @return [String]
+        attr_accessor :target_membership_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_member = args[:affected_member] if args.key?(:affected_member)
+          @prior_membership_role = args[:prior_membership_role] if args.key?(:prior_membership_role)
+          @prior_membership_state = args[:prior_membership_state] if args.key?(:prior_membership_state)
+          @target_membership_role = args[:target_membership_role] if args.key?(:target_membership_role)
+        end
+      end
+      
       # Represents a principal who has authenticated as any kind of user which the
       # application understands. This is typically used for "wiki-like" security,
       # where anyone is allowed access so long as they can be held accountable for
@@ -158,19 +285,19 @@ module Google
       # NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new
       # fields with potential PII, so they get scrubbed when logging protos for errors.
       # NEXT TAG: 29
-      class AppsDynamiteAnnotation
+      class Annotation
         include Google::Apis::Core::Hashable
       
         # Annotation metadata for Babel-only items that signals which type of
         # placeholder message should be displayed in Babel clients.
         # Corresponds to the JSON property `babelPlaceholderMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadata]
+        # @return [Google::Apis::CloudsearchV1::BabelPlaceholderMetadata]
         attr_accessor :babel_placeholder_metadata
       
         # LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/
         # action/common/SystemMessageHelper.java)
         # Corresponds to the JSON property `cardCapabilityMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteCardCapabilityMetadata]
+        # @return [Google::Apis::CloudsearchV1::CardCapabilityMetadata]
         attr_accessor :card_capability_metadata
       
         # Whether the annotation should be rendered as a chip. If this is missing or
@@ -181,12 +308,12 @@ module Google
       
         # Annotation metadata app unfurl consent.
         # Corresponds to the JSON property `consentedAppUnfurlMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteConsentedAppUnfurlMetadata]
+        # @return [Google::Apis::CloudsearchV1::ConsentedAppUnfurlMetadata]
         attr_accessor :consented_app_unfurl_metadata
       
         # 
         # Corresponds to the JSON property `customEmojiMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteCustomEmojiMetadata]
+        # @return [Google::Apis::CloudsearchV1::CustomEmojiMetadata]
         attr_accessor :custom_emoji_metadata
       
         # Annotation metadata for Data Loss Prevention that pertains to DLP violation on
@@ -194,40 +321,40 @@ module Google
         # other downstream process in BE (e.g. storage and audit logging), and it should
         # never be returned to the client.
         # Corresponds to the JSON property `dataLossPreventionMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDataLossPreventionMetadata]
+        # @return [Google::Apis::CloudsearchV1::DataLossPreventionMetadata]
         attr_accessor :data_loss_prevention_metadata
       
         # Annotation metadata for Drive artifacts.
         # Corresponds to the JSON property `driveMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadata]
+        # @return [Google::Apis::CloudsearchV1::DriveMetadata]
         attr_accessor :drive_metadata
       
         # Annotation metadata for markup formatting
         # Corresponds to the JSON property `formatMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFormatMetadata]
+        # @return [Google::Apis::CloudsearchV1::FormatMetadata]
         attr_accessor :format_metadata
       
         # 
         # Corresponds to the JSON property `groupRetentionSettingsUpdated`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteGroupRetentionSettingsUpdatedMetaData]
+        # @return [Google::Apis::CloudsearchV1::GroupRetentionSettingsUpdatedMetaData]
         attr_accessor :group_retention_settings_updated
       
         # Annotation metadata for an GsuiteIntegration artifact.
         # Corresponds to the JSON property `gsuiteIntegrationMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata]
+        # @return [Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata]
         attr_accessor :gsuite_integration_metadata
       
         # Annotation metadata to display system messages for incoming webhook events.
         # Next Tag: 7
         # Corresponds to the JSON property `incomingWebhookChangedMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteIncomingWebhookChangedMetadata]
+        # @return [Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata]
         attr_accessor :incoming_webhook_changed_metadata
       
         # Annotation metadata to display system message for integration config updated
         # event. This metadata is stored in spanner, and can be dispatched to clients
         # without any field modification or transformation.
         # Corresponds to the JSON property `integrationConfigUpdated`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigUpdatedMetadata]
+        # @return [Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata]
         attr_accessor :integration_config_updated
       
         # Length of the text_body substring beginning from start_index the Annotation
@@ -245,22 +372,22 @@ module Google
       
         # Annotation metadata to display system messages for membership changes.
         # Corresponds to the JSON property `membershipChanged`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadata]
+        # @return [Google::Apis::CloudsearchV1::MembershipChangedMetadata]
         attr_accessor :membership_changed
       
         # 
         # Corresponds to the JSON property `readReceiptsSettingsMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteReadReceiptsSettingsUpdatedMetadata]
+        # @return [Google::Apis::CloudsearchV1::ReadReceiptsSettingsUpdatedMetadata]
         attr_accessor :read_receipts_settings_metadata
       
         # A list of capabilities that are used in this message.
         # Corresponds to the JSON property `requiredMessageFeaturesMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRequiredMessageFeaturesMetadata]
+        # @return [Google::Apis::CloudsearchV1::RequiredMessageFeaturesMetadata]
         attr_accessor :required_message_features_metadata
       
         # 
         # Corresponds to the JSON property `roomUpdated`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadata]
+        # @return [Google::Apis::CloudsearchV1::RoomUpdatedMetadata]
         attr_accessor :room_updated
       
         # Whether or not the annotation is invalidated by the server. Example of
@@ -273,7 +400,7 @@ module Google
       
         # Annotation metadata for slash commands (/).
         # Corresponds to the JSON property `slashCommandMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSlashCommandMetadata]
+        # @return [Google::Apis::CloudsearchV1::SlashCommandMetadata]
         attr_accessor :slash_command_metadata
       
         # Start index (0-indexed) of the Message text the Annotation corresponds to,
@@ -295,7 +422,7 @@ module Google
       
         # Annotation metadata for user Upload artifacts.
         # Corresponds to the JSON property `uploadMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata]
+        # @return [Google::Apis::CloudsearchV1::UploadMetadata]
         attr_accessor :upload_metadata
       
         # Annotation metadata for a Weblink. In case of pasted link it can qualify to be
@@ -304,22 +431,22 @@ module Google
         # which metadata to render it with. These fields are filled in using page render
         # service.
         # Corresponds to the JSON property `urlMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUrlMetadata]
+        # @return [Google::Apis::CloudsearchV1::UrlMetadata]
         attr_accessor :url_metadata
       
         # Annotation metadata for user mentions (+/@/-).
         # Corresponds to the JSON property `userMentionMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserMentionMetadata]
+        # @return [Google::Apis::CloudsearchV1::UserMentionMetadata]
         attr_accessor :user_mention_metadata
       
         # 
         # Corresponds to the JSON property `videoCallMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteVideoCallMetadata]
+        # @return [Google::Apis::CloudsearchV1::VideoCallMetadata]
         attr_accessor :video_call_metadata
       
         # Annotation metadata for YouTube artifact.
         # Corresponds to the JSON property `youtubeMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteYoutubeMetadata]
+        # @return [Google::Apis::CloudsearchV1::YoutubeMetadata]
         attr_accessor :youtube_metadata
       
         def initialize(**args)
@@ -360,7 +487,7 @@ module Google
       end
       
       # Identifier of an App.
-      class AppsDynamiteAppId
+      class AppId
         include Google::Apis::Core::Hashable
       
         # Enum indicating the type of App this is.
@@ -390,2351 +517,6 @@ module Google
         def update!(**args)
           @app_type = args[:app_type] if args.key?(:app_type)
           @gsuite_app_type = args[:gsuite_app_type] if args.key?(:gsuite_app_type)
-          @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # Attachments that follow the message text.
-      class AppsDynamiteAttachment
-        include Google::Apis::Core::Hashable
-      
-        # The markup for developers to specify the contents of a contextual AddOn.
-        # Corresponds to the JSON property `addOnData`
-        # @return [Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup]
-        attr_accessor :add_on_data
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `appId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :app_id
-      
-        # To identify an attachment within repeated in a message
-        # Corresponds to the JSON property `attachmentId`
-        # @return [String]
-        attr_accessor :attachment_id
-      
-        # A card is a UI element that can contain UI widgets such as text and images.
-        # For more information, see Cards . For example, the following JSON creates a
-        # card that has a header with the name, position, icons, and link for a contact,
-        # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
-        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
-        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
-        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
-        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
-        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
-        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
-        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
-        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
-        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
-        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
-        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
-        # Corresponds to the JSON property `cardAddOnData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCard]
-        attr_accessor :card_add_on_data
-      
-        # The markup for developers to specify the contents of a contextual AddOn. A
-        # contextual AddOn is triggered in context of an email. For that email, there
-        # can be N items that are associated with the email (e.g. contacts, sales lead,
-        # meeting information). Each item is represented as a "card". A card has two
-        # views, collapsed and detailed. If there are more than 1 card, the cards are
-        # show as a list of collapsed views. The end user can expand into the detailed
-        # view for each of those cards. In the detailed view, developers have the
-        # freedom to use a variety of "widgets" to construct it. The model here is to
-        # restrict (make consistent for end users) the navigation of the N cards but
-        # providing developers the freedom to build the detailed view that can best
-        # represent their use case/content. Go http://go/aoig-widgets1 to see the mocks.
-        # Post v1, we plan to support new AddOn use cases that will require different
-        # and separate 'templates'. For example, a compose triggered AddOn which will
-        # support a new set of use cases with different user interaction patterns. As a
-        # result, we will likely need a very different template than this one.
-        # Corresponds to the JSON property `deprecatedAddOnData`
-        # @return [Google::Apis::CloudsearchV1::ContextualAddOnMarkup]
-        attr_accessor :deprecated_add_on_data
-      
-        # Richly formatted attachments. Documentation: - https://api.slack.com/docs/
-        # message-attachments
-        # Corresponds to the JSON property `slackData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment]
-        attr_accessor :slack_data
-      
-        # The height of image url as fetched by fife. This field is asynchronously
-        # filled.
-        # Corresponds to the JSON property `slackDataImageUrlHeight`
-        # @return [Fixnum]
-        attr_accessor :slack_data_image_url_height
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @add_on_data = args[:add_on_data] if args.key?(:add_on_data)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
-          @card_add_on_data = args[:card_add_on_data] if args.key?(:card_add_on_data)
-          @deprecated_add_on_data = args[:deprecated_add_on_data] if args.key?(:deprecated_add_on_data)
-          @slack_data = args[:slack_data] if args.key?(:slack_data)
-          @slack_data_image_url_height = args[:slack_data_image_url_height] if args.key?(:slack_data_image_url_height)
-        end
-      end
-      
-      # Container for Babel (Hangouts Classic) only message properties. The properties
-      # here will not be consumed by Dynamite clients. They are relevant only for
-      # Hangouts Classic.
-      class AppsDynamiteBabelMessageProps
-        include Google::Apis::Core::Hashable
-      
-        # Babel clients locally generate this ID to dedupe against the async fanout.
-        # Corresponds to the JSON property `clientGeneratedId`
-        # @return [Fixnum]
-        attr_accessor :client_generated_id
-      
-        # NEXT ID: 12
-        # Corresponds to the JSON property `contentExtension`
-        # @return [Google::Apis::CloudsearchV1::ChatContentExtension]
-        attr_accessor :content_extension
-      
-        # Stores the delivery source of messages (such as phone number for SMS).
-        # Corresponds to the JSON property `deliveryMedium`
-        # @return [Google::Apis::CloudsearchV1::DeliveryMedium]
-        attr_accessor :delivery_medium
-      
-        # Primary identifier used by Hangouts Classic for its events (messages).
-        # Corresponds to the JSON property `eventId`
-        # @return [String]
-        attr_accessor :event_id
-      
-        # The content of a chat message, which includes 0 or more segments along with 0
-        # or more embeds, which represent various attachment types (like photos).
-        # Corresponds to the JSON property `messageContent`
-        # @return [Google::Apis::CloudsearchV1::MessageContent]
-        attr_accessor :message_content
-      
-        # Whether or not these message properties were backfilled by go/dinnertrain.
-        # Corresponds to the JSON property `wasUpdatedByBackfill`
-        # @return [Boolean]
-        attr_accessor :was_updated_by_backfill
-        alias_method :was_updated_by_backfill?, :was_updated_by_backfill
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client_generated_id = args[:client_generated_id] if args.key?(:client_generated_id)
-          @content_extension = args[:content_extension] if args.key?(:content_extension)
-          @delivery_medium = args[:delivery_medium] if args.key?(:delivery_medium)
-          @event_id = args[:event_id] if args.key?(:event_id)
-          @message_content = args[:message_content] if args.key?(:message_content)
-          @was_updated_by_backfill = args[:was_updated_by_backfill] if args.key?(:was_updated_by_backfill)
-        end
-      end
-      
-      # Annotation metadata for Babel-only items that signals which type of
-      # placeholder message should be displayed in Babel clients.
-      class AppsDynamiteBabelPlaceholderMetadata
-        include Google::Apis::Core::Hashable
-      
-        # A message delete in Dynamite inserts a Babel-only item containing this field.
-        # This is only inserted for messages before the source-of-truth flip. See go/hsc-
-        # message-deletions for more details.
-        # Corresponds to the JSON property `deleteMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataDeleteMetadata]
-        attr_accessor :delete_metadata
-      
-        # A message edit in Dynamite inserts a Babel-only item containing this field.
-        # Corresponds to the JSON property `editMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataEditMetadata]
-        attr_accessor :edit_metadata
-      
-        # A message representing the Hangout video start/end events in Babel
-        # Corresponds to the JSON property `hangoutVideoMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata]
-        attr_accessor :hangout_video_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_metadata = args[:delete_metadata] if args.key?(:delete_metadata)
-          @edit_metadata = args[:edit_metadata] if args.key?(:edit_metadata)
-          @hangout_video_metadata = args[:hangout_video_metadata] if args.key?(:hangout_video_metadata)
-        end
-      end
-      
-      # A message delete in Dynamite inserts a Babel-only item containing this field.
-      # This is only inserted for messages before the source-of-truth flip. See go/hsc-
-      # message-deletions for more details.
-      class AppsDynamiteBabelPlaceholderMetadataDeleteMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A message edit in Dynamite inserts a Babel-only item containing this field.
-      class AppsDynamiteBabelPlaceholderMetadataEditMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A message representing the Hangout video start/end events in Babel
-      class AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `hangoutVideoType`
-        # @return [String]
-        attr_accessor :hangout_video_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @hangout_video_type = args[:hangout_video_type] if args.key?(:hangout_video_type)
-        end
-      end
-      
-      # A summary of a DLP scan event. This is a summary and should contain the
-      # minimum amount of data required to identify and process DLP scans. It is
-      # written to Starcast and encoded & returned to the client on attachment upload.
-      class AppsDynamiteBackendDlpScanSummary
-        include Google::Apis::Core::Hashable
-      
-        # The scan ID of the corresponding `@link DlpViolationScanRecord` in the `@link
-        # EphemeralDlpScans` Spanner table. This can be used to fetch additional details
-        # about the scan, e.g. for audit logging.
-        # Corresponds to the JSON property `scanId`
-        # @return [String]
-        attr_accessor :scan_id
-      
-        # Indicates that was no attempt to scan a message or attachment because it was
-        # not applicable in the given context (e.g. atomic mutuate). If this is true,
-        # scan_outcome should not be set. This flag is used to identify messages that
-        # DLP did not attempt to scan for monitoring scan coverage. Contents that DLP
-        # attempted to scan but skipped can be identified by DlpScanOutcome.
-        # SCAN_SKIPPED_* reasons.
-        # Corresponds to the JSON property `scanNotApplicableForContext`
-        # @return [Boolean]
-        attr_accessor :scan_not_applicable_for_context
-        alias_method :scan_not_applicable_for_context?, :scan_not_applicable_for_context
-      
-        # The outcome of a DLP Scan. If this is set, scan_not_applicable_for_context
-        # should not be true.
-        # Corresponds to the JSON property `scanOutcome`
-        # @return [String]
-        attr_accessor :scan_outcome
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @scan_id = args[:scan_id] if args.key?(:scan_id)
-          @scan_not_applicable_for_context = args[:scan_not_applicable_for_context] if args.key?(:scan_not_applicable_for_context)
-          @scan_outcome = args[:scan_outcome] if args.key?(:scan_outcome)
-        end
-      end
-      
-      # An individual instance (or "tag") of a label configured as a communal type
-      # that's associated with a message.
-      class AppsDynamiteBackendLabelsCommunalLabelTag
-        include Google::Apis::Core::Hashable
-      
-        # Gaia ID of the user who added the tag, if any. Not present for any tags
-        # automatically created by server-side processing.
-        # Corresponds to the JSON property `creatorUserId`
-        # @return [Fixnum]
-        attr_accessor :creator_user_id
-      
-        # A string ID representing the label. Possible ID values are documented at go/
-        # chat-labels-howto:ids. Example: "^*t_p" for "Pinned".
-        # Corresponds to the JSON property `labelId`
-        # @return [String]
-        attr_accessor :label_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
-          @label_id = args[:label_id] if args.key?(:label_id)
-        end
-      end
-      
-      # An individual instance (or "tag") of a label configured as a personal type
-      # that's associated with a message.
-      class AppsDynamiteBackendLabelsPersonalLabelTag
-        include Google::Apis::Core::Hashable
-      
-        # A string ID representing the label. Possible ID values are documented at go/
-        # chat-labels-howto:ids. Examples: "^t" for "Starred", "^nu" for "Nudged".
-        # Corresponds to the JSON property `labelId`
-        # @return [String]
-        attr_accessor :label_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label_id = args[:label_id] if args.key?(:label_id)
-        end
-      end
-      
-      # Information about a bot response, branched from shared/bot_response.proto
-      # without frontend User proto as we never store it.
-      class AppsDynamiteBotResponse
-        include Google::Apis::Core::Hashable
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `botId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :bot_id
-      
-        # 
-        # Corresponds to the JSON property `requiredAction`
-        # @return [String]
-        attr_accessor :required_action
-      
-        # 
-        # Corresponds to the JSON property `responseType`
-        # @return [String]
-        attr_accessor :response_type
-      
-        # URL for setting up bot.
-        # Corresponds to the JSON property `setupUrl`
-        # @return [String]
-        attr_accessor :setup_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bot_id = args[:bot_id] if args.key?(:bot_id)
-          @required_action = args[:required_action] if args.key?(:required_action)
-          @response_type = args[:response_type] if args.key?(:response_type)
-          @setup_url = args[:setup_url] if args.key?(:setup_url)
-        end
-      end
-      
-      # 
-      class AppsDynamiteCardCapabilityMetadata
-        include Google::Apis::Core::Hashable
-      
-        # NEXT TAG : 2
-        # Corresponds to the JSON property `requiredCapabilities`
-        # @return [Array<String>]
-        attr_accessor :required_capabilities
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @required_capabilities = args[:required_capabilities] if args.key?(:required_capabilities)
-        end
-      end
-      
-      # Annotation metadata app unfurl consent.
-      class AppsDynamiteConsentedAppUnfurlMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `clientSpecifiedAppId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :client_specified_app_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client_specified_app_id = args[:client_specified_app_id] if args.key?(:client_specified_app_id)
-        end
-      end
-      
-      # 
-      class AppsDynamiteContentReport
-        include Google::Apis::Core::Hashable
-      
-        # The time at which the report is generated. Always populated when it is in a
-        # response.
-        # Corresponds to the JSON property `reportCreateTimestamp`
-        # @return [String]
-        attr_accessor :report_create_timestamp
-      
-        # Additional user-provided justification on the report. Optional.
-        # Corresponds to the JSON property `reportJustification`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteContentReportJustification]
-        attr_accessor :report_justification
-      
-        # Denotes a type of content report a user can send.
-        # Corresponds to the JSON property `reportType`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType]
-        attr_accessor :report_type
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `reporterUserId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :reporter_user_id
-      
-        # Create timestamp of the revisions of the message when it's reported. Always
-        # populated when it is in a response.
-        # Corresponds to the JSON property `revisionCreateTimestamp`
-        # @return [String]
-        attr_accessor :revision_create_timestamp
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @report_create_timestamp = args[:report_create_timestamp] if args.key?(:report_create_timestamp)
-          @report_justification = args[:report_justification] if args.key?(:report_justification)
-          @report_type = args[:report_type] if args.key?(:report_type)
-          @reporter_user_id = args[:reporter_user_id] if args.key?(:reporter_user_id)
-          @revision_create_timestamp = args[:revision_create_timestamp] if args.key?(:revision_create_timestamp)
-        end
-      end
-      
-      # 
-      class AppsDynamiteContentReportJustification
-        include Google::Apis::Core::Hashable
-      
-        # Optional. User-generated free-text justification for the content report.
-        # Corresponds to the JSON property `userJustification`
-        # @return [String]
-        attr_accessor :user_justification
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @user_justification = args[:user_justification] if args.key?(:user_justification)
-        end
-      end
-      
-      # 
-      class AppsDynamiteCustomEmojiMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Proto representation of a custom emoji. May be used in both APIs and in
-        # Spanner, but certain fields should be restricted to one or the other. See the
-        # per-field documentation for details. NEXT_TAG: 14
-        # Corresponds to the JSON property `customEmoji`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji]
-        attr_accessor :custom_emoji
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
-        end
-      end
-      
-      # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
-      class AppsDynamiteCustomerId
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `customerId`
-        # @return [String]
-        attr_accessor :customer_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @customer_id = args[:customer_id] if args.key?(:customer_id)
-        end
-      end
-      
-      # Annotation metadata for Data Loss Prevention that pertains to DLP violation on
-      # message send or edit events. It is used for client -> BE communication and
-      # other downstream process in BE (e.g. storage and audit logging), and it should
-      # never be returned to the client.
-      class AppsDynamiteDataLossPreventionMetadata
-        include Google::Apis::Core::Hashable
-      
-        # A summary of a DLP scan event. This is a summary and should contain the
-        # minimum amount of data required to identify and process DLP scans. It is
-        # written to Starcast and encoded & returned to the client on attachment upload.
-        # Corresponds to the JSON property `dlpScanSummary`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary]
-        attr_accessor :dlp_scan_summary
-      
-        # Flag set by client on message resend to bypass WARN violation.
-        # Corresponds to the JSON property `warnAcknowledged`
-        # @return [Boolean]
-        attr_accessor :warn_acknowledged
-        alias_method :warn_acknowledged?, :warn_acknowledged
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
-          @warn_acknowledged = args[:warn_acknowledged] if args.key?(:warn_acknowledged)
-        end
-      end
-      
-      # 
-      class AppsDynamiteDmId
-        include Google::Apis::Core::Hashable
-      
-        # Unique server assigned Id, per Direct Message Space.
-        # Corresponds to the JSON property `dmId`
-        # @return [String]
-        attr_accessor :dm_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dm_id = args[:dm_id] if args.key?(:dm_id)
-        end
-      end
-      
-      # Annotation metadata for Drive artifacts.
-      class AppsDynamiteDriveMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The request set by clients to instruct Backend how the user intend to fix the
-        # ACL. Technically it's not a request to ACL Fixer, because Backend uses /
-        # DriveService.Share to modify Drive ACLs.
-        # Corresponds to the JSON property `aclFixRequest`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixRequest]
-        attr_accessor :acl_fix_request
-      
-        # The message reconstructed based on information in the response of /
-        # PermissionFixOptionsService.Query (or the Apiary API that wraps it). Indicates
-        # the ability of the requester to change the access to the Drive file for the
-        # room roster or the DM members. Used in GetMessagePreviewMetadataResponse only.
-        # Corresponds to the JSON property `aclFixStatus`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixStatus]
-        attr_accessor :acl_fix_status
-      
-        # Can the current user edit this resource
-        # Corresponds to the JSON property `canEdit`
-        # @return [Boolean]
-        attr_accessor :can_edit
-        alias_method :can_edit?, :can_edit
-      
-        # Can the current user share this resource
-        # Corresponds to the JSON property `canShare`
-        # @return [Boolean]
-        attr_accessor :can_share
-        alias_method :can_share?, :can_share
-      
-        # Can the current user view this resource
-        # Corresponds to the JSON property `canView`
-        # @return [Boolean]
-        attr_accessor :can_view
-        alias_method :can_view?, :can_view
-      
-        # DriveAction for organizing this file in Drive. If the user does not have
-        # access to the Drive file, the value will be DriveAction.
-        # DRIVE_ACTION_UNSPECIFIED. This field is only set when part of a FileResult in
-        # a ListFilesResponse.
-        # Corresponds to the JSON property `driveAction`
-        # @return [String]
-        attr_accessor :drive_action
-      
-        # 
-        # Corresponds to the JSON property `driveState`
-        # @return [String]
-        attr_accessor :drive_state
-      
-        # Message containing a string that is safe to use in all URL contexts in DOM
-        # APIs and HTML documents; even where the referred-to resource is interpreted as
-        # code, e.g., as the src of a script element.
-        # Corresponds to the JSON property `embedUrl`
-        # @return [Google::Apis::CloudsearchV1::TrustedResourceUrlProto]
-        attr_accessor :embed_url
-      
-        # Indicates whether the Drive link contains an encrypted doc ID. If true,
-        # Dynamite should not attempt to query the doc ID in Drive Service. See go/docid-
-        # encryption for details.
-        # Corresponds to the JSON property `encryptedDocId`
-        # @return [Boolean]
-        attr_accessor :encrypted_doc_id
-        alias_method :encrypted_doc_id?, :encrypted_doc_id
-      
-        # This is deprecated and unneeded. TODO (b/182479059): Remove this.
-        # Corresponds to the JSON property `encryptedResourceKey`
-        # @return [String]
-        attr_accessor :encrypted_resource_key
-      
-        # External mimetype of the Drive Resource (Useful for creating Drive URL) See:
-        # http://b/35219462
-        # Corresponds to the JSON property `externalMimetype`
-        # @return [String]
-        attr_accessor :external_mimetype
-      
-        # Drive resource ID of the artifact.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Deprecated. Whether the setting to restrict downloads is enabled for this file.
-        # This was previously used to determine whether to hide the download and print
-        # buttons in the UI, but is no longer used by clients, because Projector now
-        # independently queries Drive to ensure that we have the most up-to-date value.
-        # Corresponds to the JSON property `isDownloadRestricted`
-        # @return [Boolean]
-        attr_accessor :is_download_restricted
-        alias_method :is_download_restricted?, :is_download_restricted
-      
-        # If the current user is the Drive file's owner. The field is currently only set
-        # for Annotations for the ListFiles action (as opposed to fetching Topics/
-        # Messages with Drive annotations).
-        # Corresponds to the JSON property `isOwner`
-        # @return [Boolean]
-        attr_accessor :is_owner
-        alias_method :is_owner?, :is_owner
-      
-        # The original UploadMetadata that this DriveMetadata was converted from.
-        # Corresponds to the JSON property `legacyUploadMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataLegacyUploadMetadata]
-        attr_accessor :legacy_upload_metadata
-      
-        # Mimetype of the Drive Resource
-        # Corresponds to the JSON property `mimetype`
-        # @return [String]
-        attr_accessor :mimetype
-      
-        # The display name of the organization owning the Drive item.
-        # Corresponds to the JSON property `organizationDisplayName`
-        # @return [String]
-        attr_accessor :organization_display_name
-      
-        # A combination of an identifier for a Drive resource (e.g. file, folder, or
-        # drive) and any secrets needed to access it. The secrets should never be logged,
-        # and this proto annotates those secret fields to ensure that they are not.
-        # Clients are encouraged to use this proto rather than defining their own, to
-        # ensure that secrets are correctly annotated.
-        # Corresponds to the JSON property `shortcutAuthorizedItemId`
-        # @return [Google::Apis::CloudsearchV1::AuthorizedItemId]
-        attr_accessor :shortcut_authorized_item_id
-      
-        # If this field is set to true, server should still contact external backends to
-        # get metadata for search but clients should not render this chip.
-        # Corresponds to the JSON property `shouldNotRender`
-        # @return [Boolean]
-        attr_accessor :should_not_render
-        alias_method :should_not_render?, :should_not_render
-      
-        # Thumbnail image of the Drive Resource
-        # Corresponds to the JSON property `thumbnailHeight`
-        # @return [Fixnum]
-        attr_accessor :thumbnail_height
-      
-        # Thumbnail image of the Drive Resource
-        # Corresponds to the JSON property `thumbnailUrl`
-        # @return [String]
-        attr_accessor :thumbnail_url
-      
-        # Thumbnail image of the Drive Resource
-        # Corresponds to the JSON property `thumbnailWidth`
-        # @return [Fixnum]
-        attr_accessor :thumbnail_width
-      
-        # Title of the Drive Resource
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Url string fragment that generally indicates the specific location in the
-        # linked file. Example: #header=h.123abc456. If the fragment is not present this
-        # will not be present and therefore default to an empty string. The "#" will not
-        # be included.
-        # Corresponds to the JSON property `urlFragment`
-        # @return [String]
-        attr_accessor :url_fragment
-      
-        # A wrapper around a raw resource key. The secret should never be logged, and
-        # this proto annotates those secret fields to ensure that they are not. Clients
-        # are encouraged to use this proto rather than defining their own, to ensure
-        # that secrets are correctly annotated.
-        # Corresponds to the JSON property `wrappedResourceKey`
-        # @return [Google::Apis::CloudsearchV1::WrappedResourceKey]
-        attr_accessor :wrapped_resource_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acl_fix_request = args[:acl_fix_request] if args.key?(:acl_fix_request)
-          @acl_fix_status = args[:acl_fix_status] if args.key?(:acl_fix_status)
-          @can_edit = args[:can_edit] if args.key?(:can_edit)
-          @can_share = args[:can_share] if args.key?(:can_share)
-          @can_view = args[:can_view] if args.key?(:can_view)
-          @drive_action = args[:drive_action] if args.key?(:drive_action)
-          @drive_state = args[:drive_state] if args.key?(:drive_state)
-          @embed_url = args[:embed_url] if args.key?(:embed_url)
-          @encrypted_doc_id = args[:encrypted_doc_id] if args.key?(:encrypted_doc_id)
-          @encrypted_resource_key = args[:encrypted_resource_key] if args.key?(:encrypted_resource_key)
-          @external_mimetype = args[:external_mimetype] if args.key?(:external_mimetype)
-          @id = args[:id] if args.key?(:id)
-          @is_download_restricted = args[:is_download_restricted] if args.key?(:is_download_restricted)
-          @is_owner = args[:is_owner] if args.key?(:is_owner)
-          @legacy_upload_metadata = args[:legacy_upload_metadata] if args.key?(:legacy_upload_metadata)
-          @mimetype = args[:mimetype] if args.key?(:mimetype)
-          @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
-          @shortcut_authorized_item_id = args[:shortcut_authorized_item_id] if args.key?(:shortcut_authorized_item_id)
-          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
-          @thumbnail_height = args[:thumbnail_height] if args.key?(:thumbnail_height)
-          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
-          @thumbnail_width = args[:thumbnail_width] if args.key?(:thumbnail_width)
-          @title = args[:title] if args.key?(:title)
-          @url_fragment = args[:url_fragment] if args.key?(:url_fragment)
-          @wrapped_resource_key = args[:wrapped_resource_key] if args.key?(:wrapped_resource_key)
-        end
-      end
-      
-      # The request set by clients to instruct Backend how the user intend to fix the
-      # ACL. Technically it's not a request to ACL Fixer, because Backend uses /
-      # DriveService.Share to modify Drive ACLs.
-      class AppsDynamiteDriveMetadataAclFixRequest
-        include Google::Apis::Core::Hashable
-      
-        # For Spaces messages: This field is ignored. For DMs messages: The list of
-        # email addresses that should be added to the Drive item's ACL. In general, the
-        # list should not be empty when the boolean "should_fix" field is set; otherwise,
-        # the list should be empty. During transition - when clients do not specify
-        # this field but the "should_fix" is true, we follow the legacy behavior: share
-        # to all users in the DM regardless of emails. This behavior is being phased out.
-        # Corresponds to the JSON property `recipientEmails`
-        # @return [Array<String>]
-        attr_accessor :recipient_emails
-      
-        # 
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        # Whether to attempt to fix the ACL by adding the room or DM members to the
-        # Drive file's ACL.
-        # Corresponds to the JSON property `shouldFix`
-        # @return [Boolean]
-        attr_accessor :should_fix
-        alias_method :should_fix?, :should_fix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @recipient_emails = args[:recipient_emails] if args.key?(:recipient_emails)
-          @role = args[:role] if args.key?(:role)
-          @should_fix = args[:should_fix] if args.key?(:should_fix)
-        end
-      end
-      
-      # The message reconstructed based on information in the response of /
-      # PermissionFixOptionsService.Query (or the Apiary API that wraps it). Indicates
-      # the ability of the requester to change the access to the Drive file for the
-      # room roster or the DM members. Used in GetMessagePreviewMetadataResponse only.
-      class AppsDynamiteDriveMetadataAclFixStatus
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `fixability`
-        # @return [String]
-        attr_accessor :fixability
-      
-        # List of recipient email addresses for which access can be granted. This field
-        # contains the same email addresses from the GetMessagePreviewMetadata request
-        # if all recipients can be successfully added to the ACL as determined by Drive
-        # ACL Fixer. For now, the field is non-empty if and only if the "fixability"
-        # value is "CAN_FIX".
-        # Corresponds to the JSON property `fixableEmailAddress`
-        # @return [Array<String>]
-        attr_accessor :fixable_email_address
-      
-        # List of recipient email addresses for which an out-of-domain-sharing warning
-        # must be shown, stating that these email addresses are not in the Google Apps
-        # organization that the requested item belong to. Empty if all recipients are in
-        # the same Google Apps organization.
-        # Corresponds to the JSON property `outOfDomainWarningEmailAddress`
-        # @return [Array<String>]
-        attr_accessor :out_of_domain_warning_email_address
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @fixability = args[:fixability] if args.key?(:fixability)
-          @fixable_email_address = args[:fixable_email_address] if args.key?(:fixable_email_address)
-          @out_of_domain_warning_email_address = args[:out_of_domain_warning_email_address] if args.key?(:out_of_domain_warning_email_address)
-        end
-      end
-      
-      # The original UploadMetadata that this DriveMetadata was converted from.
-      class AppsDynamiteDriveMetadataLegacyUploadMetadata
-        include Google::Apis::Core::Hashable
-      
-        # A unique ID generated from legacy UploadMetadata. This is used for interopping
-        # URLs after uploading blob to shared drive. Links in Classic might break
-        # without this. go/drive-file-attachment-interop-from-dynamite.
-        # Corresponds to the JSON property `legacyUniqueId`
-        # @return [String]
-        attr_accessor :legacy_unique_id
-      
-        # Annotation metadata for user Upload artifacts.
-        # Corresponds to the JSON property `uploadMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata]
-        attr_accessor :upload_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @legacy_unique_id = args[:legacy_unique_id] if args.key?(:legacy_unique_id)
-          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
-        end
-      end
-      
-      # Annotation metadata for markup formatting
-      class AppsDynamiteFormatMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Font color is set if and only if format_type is FONT_COLOR. The components are
-        # stored as (alpha << 24) | (red << 16) | (green << 8) | blue. Clients should
-        # always set the alpha component to 0xFF. NEXT TAG: 3
-        # Corresponds to the JSON property `fontColor`
-        # @return [Fixnum]
-        attr_accessor :font_color
-      
-        # LINT.ThenChange(//depot/google3/apps/dynamite/v1/web/datakeys/annotated_span.
-        # proto)
-        # Corresponds to the JSON property `formatType`
-        # @return [String]
-        attr_accessor :format_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @font_color = args[:font_color] if args.key?(:font_color)
-          @format_type = args[:format_type] if args.key?(:format_type)
-        end
-      end
-      
-      # Bot-specific profile information.
-      class AppsDynamiteFrontendBotInfo
-        include Google::Apis::Core::Hashable
-      
-        # Identifier of an App.
-        # Corresponds to the JSON property `appId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteAppId]
-        attr_accessor :app_id
-      
-        # URL for the avatar picture of the User in dynamite. This field should be
-        # populated if the request is FetchBotCategories/ListBotCatalogEntries
-        # Corresponds to the JSON property `botAvatarUrl`
-        # @return [String]
-        attr_accessor :bot_avatar_url
-      
-        # Non-unique, user-defined display name of the Bot. This field should be
-        # populated if the request is FetchBotCategories/ListBotCatalogEntries.
-        # Corresponds to the JSON property `botName`
-        # @return [String]
-        attr_accessor :bot_name
-      
-        # Short description for the bot.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Name of bot developer.
-        # Corresponds to the JSON property `developerName`
-        # @return [String]
-        attr_accessor :developer_name
-      
-        # URL for the banner image in GSuite Market Place. The banner will be 220x140.
-        # Corresponds to the JSON property `marketPlaceBannerUrl`
-        # @return [String]
-        attr_accessor :market_place_banner_url
-      
-        # Indicates whether bot is enabled/disabled.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Urls with additional bot related information.
-        # Corresponds to the JSON property `supportUrls`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfoSupportUrls]
-        attr_accessor :support_urls
-      
-        # The supported uses are limited according to the user that made the request. If
-        # the user does not have permission to use the bot, the list will be empty. This
-        # could occur for non whitelisted bots in the catalog.
-        # Corresponds to the JSON property `supportedUses`
-        # @return [Array<String>]
-        attr_accessor :supported_uses
-      
-        # 
-        # Corresponds to the JSON property `whitelistStatus`
-        # @return [String]
-        attr_accessor :whitelist_status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @bot_avatar_url = args[:bot_avatar_url] if args.key?(:bot_avatar_url)
-          @bot_name = args[:bot_name] if args.key?(:bot_name)
-          @description = args[:description] if args.key?(:description)
-          @developer_name = args[:developer_name] if args.key?(:developer_name)
-          @market_place_banner_url = args[:market_place_banner_url] if args.key?(:market_place_banner_url)
-          @status = args[:status] if args.key?(:status)
-          @support_urls = args[:support_urls] if args.key?(:support_urls)
-          @supported_uses = args[:supported_uses] if args.key?(:supported_uses)
-          @whitelist_status = args[:whitelist_status] if args.key?(:whitelist_status)
-        end
-      end
-      
-      # Urls with additional bot related information.
-      class AppsDynamiteFrontendBotInfoSupportUrls
-        include Google::Apis::Core::Hashable
-      
-        # Link to the admin configuration webpage for the bot. Configured by Pantheon,
-        # may be empty.
-        # Corresponds to the JSON property `adminConfigUrl`
-        # @return [String]
-        attr_accessor :admin_config_url
-      
-        # Link to the deletion policy webpage for the bot. Configured by Pantheon, may
-        # be empty.
-        # Corresponds to the JSON property `deletionPolicyUrl`
-        # @return [String]
-        attr_accessor :deletion_policy_url
-      
-        # Link to the privacy policy webpage for the bot. May be empty.
-        # Corresponds to the JSON property `privacyPolicyUrl`
-        # @return [String]
-        attr_accessor :privacy_policy_url
-      
-        # Link to the setup webpage for the bot. Configured by Pantheon, may be empty.
-        # Corresponds to the JSON property `setupUrl`
-        # @return [String]
-        attr_accessor :setup_url
-      
-        # Link to the support webpage for the developer of the bot. May be empty.
-        # Corresponds to the JSON property `supportUrl`
-        # @return [String]
-        attr_accessor :support_url
-      
-        # Link to the terms of service webpage for the bot. May be empty.
-        # Corresponds to the JSON property `tosUrl`
-        # @return [String]
-        attr_accessor :tos_url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @admin_config_url = args[:admin_config_url] if args.key?(:admin_config_url)
-          @deletion_policy_url = args[:deletion_policy_url] if args.key?(:deletion_policy_url)
-          @privacy_policy_url = args[:privacy_policy_url] if args.key?(:privacy_policy_url)
-          @setup_url = args[:setup_url] if args.key?(:setup_url)
-          @support_url = args[:support_url] if args.key?(:support_url)
-          @tos_url = args[:tos_url] if args.key?(:tos_url)
-        end
-      end
-      
-      # 
-      class AppsDynamiteFrontendMember
-        include Google::Apis::Core::Hashable
-      
-        # Roster profile information.
-        # Corresponds to the JSON property `roster`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendRoster]
-        attr_accessor :roster
-      
-        # User profile information. This user is not necessarily member of a space.
-        # Corresponds to the JSON property `user`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser]
-        attr_accessor :user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @roster = args[:roster] if args.key?(:roster)
-          @user = args[:user] if args.key?(:user)
-        end
-      end
-      
-      # Roster profile information.
-      class AppsDynamiteFrontendRoster
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `avatarUrl`
-        # @return [String]
-        attr_accessor :avatar_url
-      
-        # Primary key for Roster resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRosterId]
-        attr_accessor :id
-      
-        # 
-        # Corresponds to the JSON property `membershipCount`
-        # @return [Fixnum]
-        attr_accessor :membership_count
-      
-        # 
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Roster gaia key, usually an email address. Set in looking up rosters response.
-        # Corresponds to the JSON property `rosterGaiaKey`
-        # @return [String]
-        attr_accessor :roster_gaia_key
-      
-        # Roster deletion state - considered active unless set to deleted
-        # Corresponds to the JSON property `rosterState`
-        # @return [String]
-        attr_accessor :roster_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
-          @id = args[:id] if args.key?(:id)
-          @membership_count = args[:membership_count] if args.key?(:membership_count)
-          @name = args[:name] if args.key?(:name)
-          @roster_gaia_key = args[:roster_gaia_key] if args.key?(:roster_gaia_key)
-          @roster_state = args[:roster_state] if args.key?(:roster_state)
-        end
-      end
-      
-      # User profile information. This user is not necessarily member of a space.
-      class AppsDynamiteFrontendUser
-        include Google::Apis::Core::Hashable
-      
-        # URL for the avatar picture of the User in dynamite
-        # Corresponds to the JSON property `avatarUrl`
-        # @return [String]
-        attr_accessor :avatar_url
-      
-        # User-block relationship
-        # Corresponds to the JSON property `blockRelationship`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship]
-        attr_accessor :block_relationship
-      
-        # Bot-specific profile information.
-        # Corresponds to the JSON property `botInfo`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfo]
-        attr_accessor :bot_info
-      
-        # Deleted flag, if true, means User has been soft-deleted/purged Deprecated. Use
-        # user_account_state field instead.
-        # Corresponds to the JSON property `deleted`
-        # @return [Boolean]
-        attr_accessor :deleted
-        alias_method :deleted?, :deleted
-      
-        # Email ID of the user
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # First or given name of the user
-        # Corresponds to the JSON property `firstName`
-        # @return [String]
-        attr_accessor :first_name
-      
-        # Gender of the user
-        # Corresponds to the JSON property `gender`
-        # @return [String]
-        attr_accessor :gender
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :id
-      
-        # Set to true if none of the depending services (Gaia, PeopleApi) returns any
-        # info for this user.
-        # Corresponds to the JSON property `isAnonymous`
-        # @return [Boolean]
-        attr_accessor :is_anonymous
-        alias_method :is_anonymous?, :is_anonymous
-      
-        # Last or family name of the user
-        # Corresponds to the JSON property `lastName`
-        # @return [String]
-        attr_accessor :last_name
-      
-        # Non-unique, user-defined display name of the User
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Contains info about the entity that something is, or is owned by.
-        # Corresponds to the JSON property `organizationInfo`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo]
-        attr_accessor :organization_info
-      
-        # Phone number(s) of the user
-        # Corresponds to the JSON property `phoneNumber`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber>]
-        attr_accessor :phone_number
-      
-        # State of user's Gaia Account
-        # Corresponds to the JSON property `userAccountState`
-        # @return [String]
-        attr_accessor :user_account_state
-      
-        # Visibility of user's Profile
-        # Corresponds to the JSON property `userProfileVisibility`
-        # @return [String]
-        attr_accessor :user_profile_visibility
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
-          @block_relationship = args[:block_relationship] if args.key?(:block_relationship)
-          @bot_info = args[:bot_info] if args.key?(:bot_info)
-          @deleted = args[:deleted] if args.key?(:deleted)
-          @email = args[:email] if args.key?(:email)
-          @first_name = args[:first_name] if args.key?(:first_name)
-          @gender = args[:gender] if args.key?(:gender)
-          @id = args[:id] if args.key?(:id)
-          @is_anonymous = args[:is_anonymous] if args.key?(:is_anonymous)
-          @last_name = args[:last_name] if args.key?(:last_name)
-          @name = args[:name] if args.key?(:name)
-          @organization_info = args[:organization_info] if args.key?(:organization_info)
-          @phone_number = args[:phone_number] if args.key?(:phone_number)
-          @user_account_state = args[:user_account_state] if args.key?(:user_account_state)
-          @user_profile_visibility = args[:user_profile_visibility] if args.key?(:user_profile_visibility)
-        end
-      end
-      
-      # Id representing a group that could be a space, a chat, or a direct message
-      # space. Which ID is set here will determine which group
-      class AppsDynamiteGroupId
-        include Google::Apis::Core::Hashable
-      
-        # Unique, immutable ID of the Direct Message Space
-        # Corresponds to the JSON property `dmId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteDmId]
-        attr_accessor :dm_id
-      
-        # Primary key for Space resource.
-        # Corresponds to the JSON property `spaceId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSpaceId]
-        attr_accessor :space_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dm_id = args[:dm_id] if args.key?(:dm_id)
-          @space_id = args[:space_id] if args.key?(:space_id)
-        end
-      end
-      
-      # 
-      class AppsDynamiteGroupRetentionSettingsUpdatedMetaData
-        include Google::Apis::Core::Hashable
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `initiator`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :initiator
-      
-        # The settings of retention period of a message or topic.
-        # Corresponds to the JSON property `retentionSettings`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
-        attr_accessor :retention_settings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @initiator = args[:initiator] if args.key?(:initiator)
-          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
-        end
-      end
-      
-      # Annotation metadata for an GsuiteIntegration artifact.
-      class AppsDynamiteGsuiteIntegrationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Next Id: 5
-        # Corresponds to the JSON property `activityFeedData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData]
-        attr_accessor :activity_feed_data
-      
-        # This is the internal version of the API proto at google3/google/chat/v1/
-        # gsuite_message_integration.proto Data used to render Assistant suggestions.
-        # See go/bullseye-rendering.
-        # Corresponds to the JSON property `assistantData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData]
-        attr_accessor :assistant_data
-      
-        # 
-        # Corresponds to the JSON property `calendarEventData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData]
-        attr_accessor :calendar_event_data
-      
-        # Data used to render Meet or Google Voice chips in Chat. See go/dynamite-
-        # calling-artifacts-in-chat.
-        # Corresponds to the JSON property `callData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData]
-        attr_accessor :call_data
-      
-        # 
-        # Corresponds to the JSON property `clientType`
-        # @return [String]
-        attr_accessor :client_type
-      
-        # A list of all strings that are to be indexed for this 1P chip. Each string in
-        # this list would be the contents of a single string field in the 1P chip. Eg.
-        # For Tasks[title = “hello world”, description = “good bye”]. If we want to
-        # index only the title, this would be set to [“hello world”]. If both title and
-        # description, then this would be [“hello world”, “good bye”]. Please make sure
-        # that the contents of this field is a subset of strings that are rendered as
-        # part of the 1P Chip.
-        # Corresponds to the JSON property `indexableTexts`
-        # @return [Array<String>]
-        attr_accessor :indexable_texts
-      
-        # This is the internal version of the API proto at google3/google/chat/v1/
-        # gsuite_message_integration.proto
-        # Corresponds to the JSON property `tasksData`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData]
-        attr_accessor :tasks_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @activity_feed_data = args[:activity_feed_data] if args.key?(:activity_feed_data)
-          @assistant_data = args[:assistant_data] if args.key?(:assistant_data)
-          @calendar_event_data = args[:calendar_event_data] if args.key?(:calendar_event_data)
-          @call_data = args[:call_data] if args.key?(:call_data)
-          @client_type = args[:client_type] if args.key?(:client_type)
-          @indexable_texts = args[:indexable_texts] if args.key?(:indexable_texts)
-          @tasks_data = args[:tasks_data] if args.key?(:tasks_data)
-        end
-      end
-      
-      # Annotation metadata to display system messages for incoming webhook events.
-      # Next Tag: 7
-      class AppsDynamiteIncomingWebhookChangedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The webhook name at the time of the change. Used in Spanner storage, BE API
-        # responses and FE API responses.
-        # Corresponds to the JSON property `incomingWebhookName`
-        # @return [String]
-        attr_accessor :incoming_webhook_name
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `initiatorId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :initiator_id
-      
-        # User profile information. This user is not necessarily member of a space.
-        # Corresponds to the JSON property `initiatorProfile`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser]
-        attr_accessor :initiator_profile
-      
-        # The webhook id of the incoming webhook in question. This field should not be
-        # used to load webhook information dynamically and is only present for debugging
-        # purposes. Used in Spanner storage, BE API responses and FE API responses.
-        # Corresponds to the JSON property `obfuscatedIncomingWebhookId`
-        # @return [String]
-        attr_accessor :obfuscated_incoming_webhook_id
-      
-        # Only populated for UPDATED_NAME and UPDATED_NAME_AND_AVATAR events, where the
-        # webhook name was changed. Used in Spanner storage, BE API responses and FE API
-        # responses.
-        # Corresponds to the JSON property `oldIncomingWebhookName`
-        # @return [String]
-        attr_accessor :old_incoming_webhook_name
-      
-        # Used in Spanner storage, BE API responses and FE API responses.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @incoming_webhook_name = args[:incoming_webhook_name] if args.key?(:incoming_webhook_name)
-          @initiator_id = args[:initiator_id] if args.key?(:initiator_id)
-          @initiator_profile = args[:initiator_profile] if args.key?(:initiator_profile)
-          @obfuscated_incoming_webhook_id = args[:obfuscated_incoming_webhook_id] if args.key?(:obfuscated_incoming_webhook_id)
-          @old_incoming_webhook_name = args[:old_incoming_webhook_name] if args.key?(:old_incoming_webhook_name)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class AppsDynamiteIntegrationConfigMutation
-        include Google::Apis::Core::Hashable
-      
-        # Identifier of an App.
-        # Corresponds to the JSON property `addApp`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteAppId]
-        attr_accessor :add_app
-      
-        # Add a pinned tab using its identifier.
-        # Corresponds to the JSON property `addPinnedItem`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId]
-        attr_accessor :add_pinned_item
-      
-        # Identifier of an App.
-        # Corresponds to the JSON property `removeApp`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteAppId]
-        attr_accessor :remove_app
-      
-        # Remove an active pinned tab using its identifier.
-        # Corresponds to the JSON property `removePinnedItem`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId]
-        attr_accessor :remove_pinned_item
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @add_app = args[:add_app] if args.key?(:add_app)
-          @add_pinned_item = args[:add_pinned_item] if args.key?(:add_pinned_item)
-          @remove_app = args[:remove_app] if args.key?(:remove_app)
-          @remove_pinned_item = args[:remove_pinned_item] if args.key?(:remove_pinned_item)
-        end
-      end
-      
-      # Annotation metadata to display system message for integration config updated
-      # event. This metadata is stored in spanner, and can be dispatched to clients
-      # without any field modification or transformation.
-      class AppsDynamiteIntegrationConfigUpdatedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `initiatorId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :initiator_id
-      
-        # A list of updates applied on the integration config.
-        # Corresponds to the JSON property `mutations`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigMutation>]
-        attr_accessor :mutations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @initiator_id = args[:initiator_id] if args.key?(:initiator_id)
-          @mutations = args[:mutations] if args.key?(:mutations)
-        end
-      end
-      
-      # Invitee information from a Dynamite invitation. See go/dynamite-invitee-mgmt.
-      class AppsDynamiteInviteeInfo
-        include Google::Apis::Core::Hashable
-      
-        # Email as typed by the user when invited to Room or DM. This value will be
-        # canonicalized and hashed before retained in storage.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `userId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :user_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @email = args[:email] if args.key?(:email)
-          @user_id = args[:user_id] if args.key?(:user_id)
-        end
-      end
-      
-      # Eventually this can be updated to a oneOf User, Space (for nested spaces),
-      # Bots or Service, as and when these use cases come up.
-      class AppsDynamiteMemberId
-        include Google::Apis::Core::Hashable
-      
-        # Primary key for Roster resource.
-        # Corresponds to the JSON property `rosterId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRosterId]
-        attr_accessor :roster_id
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `userId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :user_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @roster_id = args[:roster_id] if args.key?(:roster_id)
-          @user_id = args[:user_id] if args.key?(:user_id)
-        end
-      end
-      
-      # Annotation metadata to display system messages for membership changes.
-      class AppsDynamiteMembershipChangedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `affectedMemberProfiles`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteFrontendMember>]
-        attr_accessor :affected_member_profiles
-      
-        # List of users and rosters whose membership status changed.
-        # Corresponds to the JSON property `affectedMembers`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteMemberId>]
-        attr_accessor :affected_members
-      
-        # 
-        # Corresponds to the JSON property `affectedMemberships`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadataAffectedMembership>]
-        attr_accessor :affected_memberships
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `initiator`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :initiator
-      
-        # User profile information. This user is not necessarily member of a space.
-        # Corresponds to the JSON property `initiatorProfile`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser]
-        attr_accessor :initiator_profile
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @affected_member_profiles = args[:affected_member_profiles] if args.key?(:affected_member_profiles)
-          @affected_members = args[:affected_members] if args.key?(:affected_members)
-          @affected_memberships = args[:affected_memberships] if args.key?(:affected_memberships)
-          @initiator = args[:initiator] if args.key?(:initiator)
-          @initiator_profile = args[:initiator_profile] if args.key?(:initiator_profile)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Earlier we used to populate just the affected_members list and inferred the
-      # new membership state (roles didn't exist back then) from the Type. go/dynamite-
-      # finra required backend to know the previous membership state to reconstruct
-      # membership history. The proper solution involved cleaning up up Type enum, but
-      # it was used in many, many places. This was added as a stop-gap solution to
-      # unblock FINRA without breaking everything. Later role update and target
-      # audience update started relying on this to communicate information to clients
-      # about what transition happened. So this is now required to be populated and
-      # should be in sync with affected_members for new messages.
-      class AppsDynamiteMembershipChangedMetadataAffectedMembership
-        include Google::Apis::Core::Hashable
-      
-        # Eventually this can be updated to a oneOf User, Space (for nested spaces),
-        # Bots or Service, as and when these use cases come up.
-        # Corresponds to the JSON property `affectedMember`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMemberId]
-        attr_accessor :affected_member
-      
-        # 
-        # Corresponds to the JSON property `priorMembershipRole`
-        # @return [String]
-        attr_accessor :prior_membership_role
-      
-        # 
-        # Corresponds to the JSON property `priorMembershipState`
-        # @return [String]
-        attr_accessor :prior_membership_state
-      
-        # 
-        # Corresponds to the JSON property `targetMembershipRole`
-        # @return [String]
-        attr_accessor :target_membership_role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @affected_member = args[:affected_member] if args.key?(:affected_member)
-          @prior_membership_role = args[:prior_membership_role] if args.key?(:prior_membership_role)
-          @prior_membership_state = args[:prior_membership_state] if args.key?(:prior_membership_state)
-          @target_membership_role = args[:target_membership_role] if args.key?(:target_membership_role)
-        end
-      end
-      
-      # Message posted to a Space.
-      class AppsDynamiteMessage
-        include Google::Apis::Core::Hashable
-      
-        # Annotations parsed and extracted from the text body.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteAnnotation>]
-        attr_accessor :annotations
-      
-        # Optional field for apps overriding display info
-        # Corresponds to the JSON property `appProfile`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile]
-        attr_accessor :app_profile
-      
-        # Attachments parsed from incoming webhooks
-        # Corresponds to the JSON property `attachments`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteAttachment>]
-        attr_accessor :attachments
-      
-        # Stores tombstone message attributes: go/tombstone-message-attributes-overview
-        # Corresponds to the JSON property `attributes`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageAttributes]
-        attr_accessor :attributes
-      
-        # Responses from bots indicating if extra auth/config is needed.
-        # Corresponds to the JSON property `botResponses`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteBotResponse>]
-        attr_accessor :bot_responses
-      
-        # Communal labels associated with a message. These exist on the message itself
-        # regardless of which user fetches them. Order of entries is arbitrary and will
-        # not list duplicates of the same label_id. See go/chat-labels-design for
-        # details.
-        # Corresponds to the JSON property `communalLabels`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsCommunalLabelTag>]
-        attr_accessor :communal_labels
-      
-        # Summarized info of content reports. Usually less expensive to fetch than to
-        # fetch all detailed reports. Set only when the request asks for it.
-        # Corresponds to the JSON property `contentReportSummary`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageContentReportSummary]
-        attr_accessor :content_report_summary
-      
-        # Time when the Message was posted in microseconds.
-        # Corresponds to the JSON property `createTime`
-        # @return [Fixnum]
-        attr_accessor :create_time
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `creatorId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :creator_id
-      
-        # Indicates who can delete the message. This field is set on the read path (e.g.
-        # ListTopics) but doesn’t have any effect on the write path (e.g.
-        # CreateMessageRequest).
-        # Corresponds to the JSON property `deletableBy`
-        # @return [String]
-        attr_accessor :deletable_by
-      
-        # Time when the Message was deleted in microseconds. This field is set to
-        # nonzero value only for Messages deleted globally.
-        # Corresponds to the JSON property `deleteTime`
-        # @return [Fixnum]
-        attr_accessor :delete_time
-      
-        # Time when the Message was per-user deleted by the message requester in
-        # microseconds. This field is set to nonzero value only for Message per-user
-        # deleted by the requester.
-        # Corresponds to the JSON property `deleteTimeForRequester`
-        # @return [Fixnum]
-        attr_accessor :delete_time_for_requester
-      
-        # Was this message deleted by Vault (Only used for Vault support) This is false
-        # if message is live or message was deleted by user.
-        # Corresponds to the JSON property `deletedByVault`
-        # @return [Boolean]
-        attr_accessor :deleted_by_vault
-        alias_method :deleted_by_vault?, :deleted_by_vault
-      
-        # Data Loss Prevention scan information for this message. Messages are evaluated
-        # in the backend on create message/topic and edit message actions. DEPRECATED:
-        # use dlp_scan_summary instead.
-        # Corresponds to the JSON property `dlpScanOutcome`
-        # @return [String]
-        attr_accessor :dlp_scan_outcome
-      
-        # A summary of a DLP scan event. This is a summary and should contain the
-        # minimum amount of data required to identify and process DLP scans. It is
-        # written to Starcast and encoded & returned to the client on attachment upload.
-        # Corresponds to the JSON property `dlpScanSummary`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary]
-        attr_accessor :dlp_scan_summary
-      
-        # Indicates who can edit the message. This field is set on the read path (e.g.
-        # ListTopics) but doesn’t have any effect on the write path (e.g.
-        # CreateMessageRequest).
-        # Corresponds to the JSON property `editableBy`
-        # @return [String]
-        attr_accessor :editable_by
-      
-        # A plain-text description of the attachment, used when clients cannot display
-        # formatted attachment (e.g. mobile push notifications).
-        # Corresponds to the JSON property `fallbackText`
-        # @return [String]
-        attr_accessor :fallback_text
-      
-        # Primary key for Message resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageId]
-        attr_accessor :id
-      
-        # Output only. Indicates if the message is an inline reply. Set to true only if
-        # the message's ParentPath is non-NULL. Currently, only inline replies have non-
-        # NULL ParentPath. See go/chat-be-inline-reply-indicator.
-        # Corresponds to the JSON property `isInlineReply`
-        # @return [Boolean]
-        attr_accessor :is_inline_reply
-        alias_method :is_inline_reply?, :is_inline_reply
-      
-        # If the message was edited by a user, timestamp of the last edit, in
-        # microseconds.
-        # Corresponds to the JSON property `lastEditTime`
-        # @return [Fixnum]
-        attr_accessor :last_edit_time
-      
-        # Time when the Message text was last updated in microseconds.
-        # Corresponds to the JSON property `lastUpdateTime`
-        # @return [Fixnum]
-        attr_accessor :last_update_time
-      
-        # A unique id specified on the client side.
-        # Corresponds to the JSON property `localId`
-        # @return [String]
-        attr_accessor :local_id
-      
-        # The payload(restricted to 1P applications) to be stored with a specific
-        # message.
-        # Corresponds to the JSON property `messageIntegrationPayload`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload]
-        attr_accessor :message_integration_payload
-      
-        # Where the message was posted from
-        # Corresponds to the JSON property `messageOrigin`
-        # @return [String]
-        attr_accessor :message_origin
-      
-        # State of the message, indicating whether the message is visible to all members
-        # in the group or is only visible to the sender only, or the
-        # private_message_viewer if it is set.
-        # Corresponds to the JSON property `messageState`
-        # @return [String]
-        attr_accessor :message_state
-      
-        # Indicates if this message contains any suggestions that were provided by any
-        # Apps.
-        # Corresponds to the JSON property `originAppSuggestions`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion>]
-        attr_accessor :origin_app_suggestions
-      
-        # Personal labels associated with a message for the viewing user. Order of
-        # entries is arbitrary and will not list duplicates of the same label_id. See go/
-        # chat-labels-design for details. NOTE: This will be unpopulated in the case of
-        # SpaceChangelog events.
-        # Corresponds to the JSON property `personalLabels`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsPersonalLabelTag>]
-        attr_accessor :personal_labels
-      
-        # A list of per-user private information. This is deprecated, because we no
-        # longer plan to support partially private messages or private messages for
-        # multiple users. The message_state and private_message_viewer fields should be
-        # sufficient for this infrastructure.
-        # Corresponds to the JSON property `privateMessageInfos`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamitePrivateMessageInfo>]
-        attr_accessor :private_message_infos
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `privateMessageViewer`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :private_message_viewer
-      
-        # Container for storing properties applicable to messages. For now (until
-        # storage consolidation is complete), it will only be used for babel props. In
-        # the future it could be used to house Dynamite properties for experimenting/
-        # rapid prototyping.
-        # Corresponds to the JSON property `props`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageProps]
-        attr_accessor :props
-      
-        # Output only. Whether this message has been quoted by another message or not.
-        # Used by clients to handle message edit flows for messages that have been
-        # quoted.
-        # Corresponds to the JSON property `quotedByState`
-        # @return [String]
-        attr_accessor :quoted_by_state
-      
-        # Quote metadata: go/message-quoting-be-dd-v2. This proto is only used on the
-        # read path. For the request proto, refer to `QuotedMessagePayload`. Fields are
-        # either derived from storage directly from the Item this metadata belongs to,
-        # or is hydrated at read time from another Item read. Note:
-        # QuotedMessageMetadata proto is similar to Message proto with less field.
-        # Reasons to differtiate QuotedMessageMetadata from Message are: 1. Not all
-        # fields for original message is applicable for quoted message. (E.g. reactions,
-        # is_inline_reply, etc.), thus separting out for confusion. 2. We don't support
-        # nested message quoting. For more detailed discussion, please see http://shortn/
-        # _VsSXQb2C7P. For future reference: if your new feature/field will be supported
-        # in message quoting feature (go/chat-quoting-prd), you will need to add that
-        # field within QuotedMessageMetadata
-        # Corresponds to the JSON property `quotedMessageMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteQuotedMessageMetadata]
-        attr_accessor :quoted_message_metadata
-      
-        # A list of user reactions to this message. Ordered by the timestamp of the
-        # first reaction, ascending (oldest to newest).
-        # Corresponds to the JSON property `reactions`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction>]
-        attr_accessor :reactions
-      
-        # Output only. Details of content reports. Set only when the request asks for it.
-        # Corresponds to the JSON property `reports`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteContentReport>]
-        attr_accessor :reports
-      
-        # The settings of retention period of a message or topic.
-        # Corresponds to the JSON property `retentionSettings`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
-        attr_accessor :retention_settings
-      
-        # A client-specified string that can be used to uniquely identify a message in a
-        # space, in lieu of `id.message_id`.
-        # Corresponds to the JSON property `secondaryMessageKey`
-        # @return [String]
-        attr_accessor :secondary_message_key
-      
-        # Plaintext body of the Message.
-        # Corresponds to the JSON property `textBody`
-        # @return [String]
-        attr_accessor :text_body
-      
-        # Tombstoning is the act of leaving a contextual trace when deleting a message.
-        # See more: go/tombstone-prd, go/hub-dynamite-tombstones-server-design-v2.
-        # Corresponds to the JSON property `tombstoneMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteTombstoneMetadata]
-        attr_accessor :tombstone_metadata
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `updaterId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :updater_id
-      
-        # UploadMetadata b/36864213 is an ongoing effort to move UploadMetadata out of
-        # annotations field and save it to upload_metadata field only. After the
-        # migration, UploadMetadata will only be saved in this field.
-        # Corresponds to the JSON property `uploadMetadata`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata>]
-        attr_accessor :upload_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @app_profile = args[:app_profile] if args.key?(:app_profile)
-          @attachments = args[:attachments] if args.key?(:attachments)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @bot_responses = args[:bot_responses] if args.key?(:bot_responses)
-          @communal_labels = args[:communal_labels] if args.key?(:communal_labels)
-          @content_report_summary = args[:content_report_summary] if args.key?(:content_report_summary)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @creator_id = args[:creator_id] if args.key?(:creator_id)
-          @deletable_by = args[:deletable_by] if args.key?(:deletable_by)
-          @delete_time = args[:delete_time] if args.key?(:delete_time)
-          @delete_time_for_requester = args[:delete_time_for_requester] if args.key?(:delete_time_for_requester)
-          @deleted_by_vault = args[:deleted_by_vault] if args.key?(:deleted_by_vault)
-          @dlp_scan_outcome = args[:dlp_scan_outcome] if args.key?(:dlp_scan_outcome)
-          @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
-          @editable_by = args[:editable_by] if args.key?(:editable_by)
-          @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
-          @id = args[:id] if args.key?(:id)
-          @is_inline_reply = args[:is_inline_reply] if args.key?(:is_inline_reply)
-          @last_edit_time = args[:last_edit_time] if args.key?(:last_edit_time)
-          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
-          @local_id = args[:local_id] if args.key?(:local_id)
-          @message_integration_payload = args[:message_integration_payload] if args.key?(:message_integration_payload)
-          @message_origin = args[:message_origin] if args.key?(:message_origin)
-          @message_state = args[:message_state] if args.key?(:message_state)
-          @origin_app_suggestions = args[:origin_app_suggestions] if args.key?(:origin_app_suggestions)
-          @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
-          @private_message_infos = args[:private_message_infos] if args.key?(:private_message_infos)
-          @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
-          @props = args[:props] if args.key?(:props)
-          @quoted_by_state = args[:quoted_by_state] if args.key?(:quoted_by_state)
-          @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
-          @reactions = args[:reactions] if args.key?(:reactions)
-          @reports = args[:reports] if args.key?(:reports)
-          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
-          @secondary_message_key = args[:secondary_message_key] if args.key?(:secondary_message_key)
-          @text_body = args[:text_body] if args.key?(:text_body)
-          @tombstone_metadata = args[:tombstone_metadata] if args.key?(:tombstone_metadata)
-          @updater_id = args[:updater_id] if args.key?(:updater_id)
-          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
-        end
-      end
-      
-      # Stores tombstone message attributes: go/tombstone-message-attributes-overview
-      class AppsDynamiteMessageAttributes
-        include Google::Apis::Core::Hashable
-      
-        # If true: message is a tombstone in the client. Default false.
-        # Corresponds to the JSON property `isTombstone`
-        # @return [Boolean]
-        attr_accessor :is_tombstone
-        alias_method :is_tombstone?, :is_tombstone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_tombstone = args[:is_tombstone] if args.key?(:is_tombstone)
-        end
-      end
-      
-      # Summarized info of content reports. Usually less expensive to fetch than to
-      # fetch all detailed reports. Set only when the request asks for it.
-      class AppsDynamiteMessageContentReportSummary
-        include Google::Apis::Core::Hashable
-      
-        # Total number of reports attached to this (revision of) message.
-        # Corresponds to the JSON property `numberReports`
-        # @return [Fixnum]
-        attr_accessor :number_reports
-      
-        # Totoal number of reports attached to all revisions of this message (i.e. since
-        # creation). Set only when the request asks for it.
-        # Corresponds to the JSON property `numberReportsAllRevisions`
-        # @return [Fixnum]
-        attr_accessor :number_reports_all_revisions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @number_reports = args[:number_reports] if args.key?(:number_reports)
-          @number_reports_all_revisions = args[:number_reports_all_revisions] if args.key?(:number_reports_all_revisions)
-        end
-      end
-      
-      # Primary key for Message resource.
-      class AppsDynamiteMessageId
-        include Google::Apis::Core::Hashable
-      
-        # Opaque, server-assigned ID of the Message. While this ID is guaranteed to be
-        # unique within the Space, it's not guaranteed to be globally unique.
-        # Corresponds to the JSON property `messageId`
-        # @return [String]
-        attr_accessor :message_id
-      
-        # Primary key identifying Message resource's immediate parent. For top-level
-        # Messages, either topic_id or chat_id is populated. For replies, message_id is
-        # populated with the topic Message's ID.
-        # Corresponds to the JSON property `parentId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageParentId]
-        attr_accessor :parent_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message_id = args[:message_id] if args.key?(:message_id)
-          @parent_id = args[:parent_id] if args.key?(:parent_id)
-        end
-      end
-      
-      # 
-      class AppsDynamiteMessageInfo
-        include Google::Apis::Core::Hashable
-      
-        # Message posted to a Space.
-        # Corresponds to the JSON property `message`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessage]
-        attr_accessor :message
-      
-        # Searcher's membership state in the space where the message is posted.
-        # Corresponds to the JSON property `searcherMembershipState`
-        # @return [String]
-        attr_accessor :searcher_membership_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @searcher_membership_state = args[:searcher_membership_state] if args.key?(:searcher_membership_state)
-        end
-      end
-      
-      # Primary key identifying Message resource's immediate parent. For top-level
-      # Messages, either topic_id or chat_id is populated. For replies, message_id is
-      # populated with the topic Message's ID.
-      class AppsDynamiteMessageParentId
-        include Google::Apis::Core::Hashable
-      
-        # ID of the Topic this Message is posted to. NEXT TAG : 5
-        # Corresponds to the JSON property `topicId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteTopicId]
-        attr_accessor :topic_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @topic_id = args[:topic_id] if args.key?(:topic_id)
-        end
-      end
-      
-      # Container for storing properties applicable to messages. For now (until
-      # storage consolidation is complete), it will only be used for babel props. In
-      # the future it could be used to house Dynamite properties for experimenting/
-      # rapid prototyping.
-      class AppsDynamiteMessageProps
-        include Google::Apis::Core::Hashable
-      
-        # Container for Babel (Hangouts Classic) only message properties. The properties
-        # here will not be consumed by Dynamite clients. They are relevant only for
-        # Hangouts Classic.
-        # Corresponds to the JSON property `babelProps`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBabelMessageProps]
-        attr_accessor :babel_props
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @babel_props = args[:babel_props] if args.key?(:babel_props)
-        end
-      end
-      
-      # 
-      class AppsDynamitePinnedItemId
-        include Google::Apis::Core::Hashable
-      
-        # Identifier for a Drive file (e.g. Docs, Sheets, Slides).
-        # Corresponds to the JSON property `driveId`
-        # @return [String]
-        attr_accessor :drive_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @drive_id = args[:drive_id] if args.key?(:drive_id)
-        end
-      end
-      
-      # Private message information specific to a given user.
-      class AppsDynamitePrivateMessageInfo
-        include Google::Apis::Core::Hashable
-      
-        # Annotations private to `@code userId`.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteAnnotation>]
-        attr_accessor :annotations
-      
-        # Attachments private to `@code userId`.
-        # Corresponds to the JSON property `attachments`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteAttachment>]
-        attr_accessor :attachments
-      
-        # 
-        # Corresponds to the JSON property `contextualAddOnMarkup`
-        # @return [Array<Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup>]
-        attr_accessor :contextual_add_on_markup
-      
-        # 
-        # Corresponds to the JSON property `gsuiteIntegrationMetadata`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata>]
-        attr_accessor :gsuite_integration_metadata
-      
-        # Text private to `@code user_id`. Initial restriction: Only one of public text
-        # or private text is rendered on the client. So if public text is set, private
-        # text is ignored.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `userId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :user_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @attachments = args[:attachments] if args.key?(:attachments)
-          @contextual_add_on_markup = args[:contextual_add_on_markup] if args.key?(:contextual_add_on_markup)
-          @gsuite_integration_metadata = args[:gsuite_integration_metadata] if args.key?(:gsuite_integration_metadata)
-          @text = args[:text] if args.key?(:text)
-          @user_id = args[:user_id] if args.key?(:user_id)
-        end
-      end
-      
-      # Quote metadata: go/message-quoting-be-dd-v2. This proto is only used on the
-      # read path. For the request proto, refer to `QuotedMessagePayload`. Fields are
-      # either derived from storage directly from the Item this metadata belongs to,
-      # or is hydrated at read time from another Item read. Note:
-      # QuotedMessageMetadata proto is similar to Message proto with less field.
-      # Reasons to differtiate QuotedMessageMetadata from Message are: 1. Not all
-      # fields for original message is applicable for quoted message. (E.g. reactions,
-      # is_inline_reply, etc.), thus separting out for confusion. 2. We don't support
-      # nested message quoting. For more detailed discussion, please see http://shortn/
-      # _VsSXQb2C7P. For future reference: if your new feature/field will be supported
-      # in message quoting feature (go/chat-quoting-prd), you will need to add that
-      # field within QuotedMessageMetadata
-      class AppsDynamiteQuotedMessageMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Snapshot of the annotations of the quoted message.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteAnnotation>]
-        attr_accessor :annotations
-      
-        # Optional field for apps overriding display info
-        # Corresponds to the JSON property `appProfile`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile]
-        attr_accessor :app_profile
-      
-        # Output only. The bot attachment state of the quoted message. Used by clients
-        # to display a bot attachment indicator in the UI.
-        # Corresponds to the JSON property `botAttachmentState`
-        # @return [String]
-        attr_accessor :bot_attachment_state
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `creatorId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :creator_id
-      
-        # The `last_update_time` of the original message when the client initiated the
-        # quote creation. This is derived from the request payload passed from clients.
-        # Used to fetch the quoted message contents at a specific time on the read path.
-        # This field is populated from storage directly.
-        # Corresponds to the JSON property `lastUpdateTimeWhenQuotedMicros`
-        # @return [Fixnum]
-        attr_accessor :last_update_time_when_quoted_micros
-      
-        # Primary key for Message resource.
-        # Corresponds to the JSON property `messageId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageId]
-        attr_accessor :message_id
-      
-        # Output only. The state of the quoted message. Used by clients to display
-        # tombstones for quotes that reference a deleted message.
-        # Corresponds to the JSON property `messageState`
-        # @return [String]
-        attr_accessor :message_state
-      
-        # The settings of retention period of a message or topic.
-        # Corresponds to the JSON property `retentionSettings`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
-        attr_accessor :retention_settings
-      
-        # Output only. Snapshot of the text body of the quoted message.
-        # Corresponds to the JSON property `textBody`
-        # @return [String]
-        attr_accessor :text_body
-      
-        # Output only. Upload metadata of the quoted message. NEXT TAG: 11
-        # Corresponds to the JSON property `uploadMetadata`
-        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata>]
-        attr_accessor :upload_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @app_profile = args[:app_profile] if args.key?(:app_profile)
-          @bot_attachment_state = args[:bot_attachment_state] if args.key?(:bot_attachment_state)
-          @creator_id = args[:creator_id] if args.key?(:creator_id)
-          @last_update_time_when_quoted_micros = args[:last_update_time_when_quoted_micros] if args.key?(:last_update_time_when_quoted_micros)
-          @message_id = args[:message_id] if args.key?(:message_id)
-          @message_state = args[:message_state] if args.key?(:message_state)
-          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
-          @text_body = args[:text_body] if args.key?(:text_body)
-          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
-        end
-      end
-      
-      # 
-      class AppsDynamiteReadReceiptsSettingsUpdatedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The new read receipts state.
-        # Corresponds to the JSON property `readReceiptsEnabled`
-        # @return [Boolean]
-        attr_accessor :read_receipts_enabled
-        alias_method :read_receipts_enabled?, :read_receipts_enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @read_receipts_enabled = args[:read_receipts_enabled] if args.key?(:read_receipts_enabled)
-        end
-      end
-      
-      # A list of capabilities that are used in this message.
-      class AppsDynamiteRequiredMessageFeaturesMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `requiredFeatures`
-        # @return [Array<String>]
-        attr_accessor :required_features
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @required_features = args[:required_features] if args.key?(:required_features)
-        end
-      end
-      
-      # 
-      class AppsDynamiteRoomUpdatedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `groupDetailsMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata]
-        attr_accessor :group_details_metadata
-      
-        # 
-        # Corresponds to the JSON property `groupLinkSharingEnabled`
-        # @return [Boolean]
-        attr_accessor :group_link_sharing_enabled
-        alias_method :group_link_sharing_enabled?, :group_link_sharing_enabled
-      
-        # User profile information. This user is not necessarily member of a space.
-        # Corresponds to the JSON property `initiator`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser]
-        attr_accessor :initiator
-      
-        # The type of the user who initiated this room update.
-        # Corresponds to the JSON property `initiatorType`
-        # @return [String]
-        attr_accessor :initiator_type
-      
-        # What was updated in the room.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # 
-        # Corresponds to the JSON property `renameMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata]
-        attr_accessor :rename_metadata
-      
-        # DEPRECATED: See GroupVisibility proto definition.
-        # Corresponds to the JSON property `visibility`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility]
-        attr_accessor :visibility
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @group_details_metadata = args[:group_details_metadata] if args.key?(:group_details_metadata)
-          @group_link_sharing_enabled = args[:group_link_sharing_enabled] if args.key?(:group_link_sharing_enabled)
-          @initiator = args[:initiator] if args.key?(:initiator)
-          @initiator_type = args[:initiator_type] if args.key?(:initiator_type)
-          @name = args[:name] if args.key?(:name)
-          @rename_metadata = args[:rename_metadata] if args.key?(:rename_metadata)
-          @visibility = args[:visibility] if args.key?(:visibility)
-        end
-      end
-      
-      # 
-      class AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata
-        include Google::Apis::Core::Hashable
-      
-        # NEXT TAG: 3 A GroupDetails proto will store the information pertaining to
-        # single Group.
-        # Corresponds to the JSON property `newGroupDetails`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails]
-        attr_accessor :new_group_details
-      
-        # NEXT TAG: 3 A GroupDetails proto will store the information pertaining to
-        # single Group.
-        # Corresponds to the JSON property `prevGroupDetails`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails]
-        attr_accessor :prev_group_details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @new_group_details = args[:new_group_details] if args.key?(:new_group_details)
-          @prev_group_details = args[:prev_group_details] if args.key?(:prev_group_details)
-        end
-      end
-      
-      # 
-      class AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `newName`
-        # @return [String]
-        attr_accessor :new_name
-      
-        # NEXT_TAG: 3
-        # Corresponds to the JSON property `prevName`
-        # @return [String]
-        attr_accessor :prev_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @new_name = args[:new_name] if args.key?(:new_name)
-          @prev_name = args[:prev_name] if args.key?(:prev_name)
-        end
-      end
-      
-      # Primary key for Roster resource.
-      class AppsDynamiteRosterId
-        include Google::Apis::Core::Hashable
-      
-        # Opaque, server-assigned ID of the Roster.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
           @id = args[:id] if args.key?(:id)
         end
       end
@@ -2865,7 +647,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `updaterToShow`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :updater_to_show
       
         def initialize(**args)
@@ -3139,13 +921,13 @@ module Google
         # minimum amount of data required to identify and process DLP scans. It is
         # written to Starcast and encoded & returned to the client on attachment upload.
         # Corresponds to the JSON property `dlpScanSummary`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary]
+        # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
         attr_accessor :dlp_scan_summary
       
         # Id representing a group that could be a space, a chat, or a direct message
         # space. Which ID is set here will determine which group
         # Corresponds to the JSON property `groupId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteGroupId]
+        # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
         # Dimension for the uploaded attachments.
@@ -3155,7 +937,7 @@ module Google
       
         # Primary key for Message resource.
         # Corresponds to the JSON property `quoteReplyMessageId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageId]
+        # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :quote_reply_message_id
       
         # The SHA256 hash of the attachment bytes.
@@ -3708,7 +1490,7 @@ module Google
       
         # Primary key for Message resource.
         # Corresponds to the JSON property `suggestionMessageId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageId]
+        # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :suggestion_message_id
       
         def initialize(**args)
@@ -4127,7 +1909,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `creatorUserId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :creator_user_id
       
         # Time when the emoji was deleted, in microseconds. This field may be present in
@@ -4146,7 +1928,7 @@ module Google
       
         # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
         # Corresponds to the JSON property `ownerCustomerId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteCustomerId]
+        # @return [Google::Apis::CloudsearchV1::CustomerId]
         attr_accessor :owner_customer_id
       
         # Opaque token that clients use to construct the URL for accessing the custom
@@ -4868,7 +2650,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `user`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :user
       
         def initialize(**args)
@@ -4916,7 +2698,7 @@ module Google
       
         # Primary key for Message resource.
         # Corresponds to the JSON property `messageId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteMessageId]
+        # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :message_id
       
         # Timestamp of when the topic containing the message has been read by the user.
@@ -5172,7 +2954,7 @@ module Google
       
         # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
         # Corresponds to the JSON property `customerId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteCustomerId]
+        # @return [Google::Apis::CloudsearchV1::CustomerId]
         attr_accessor :customer_id
       
         def initialize(**args)
@@ -5191,7 +2973,7 @@ module Google
       
         # Identifier of an App.
         # Corresponds to the JSON property `appId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteAppId]
+        # @return [Google::Apis::CloudsearchV1::AppId]
         attr_accessor :app_id
       
         # Card click which identifies one suggestion provided by the app/bot.
@@ -5403,7 +3185,7 @@ module Google
         # Id representing a group that could be a space, a chat, or a direct message
         # space. Which ID is set here will determine which group
         # Corresponds to the JSON property `groupId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteGroupId]
+        # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
         # The email address of the user that invited the calling user to the room, if
@@ -5557,7 +3339,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `oldAssignee`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :old_assignee
       
         def initialize(**args)
@@ -5615,7 +3397,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `assignee`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :assignee
       
         # Whether the task is marked as completed.
@@ -5926,428 +3708,6 @@ module Google
         end
       end
       
-      # Annotation metadata for slash commands (/).
-      class AppsDynamiteSlashCommandMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Hint string for the arguments expected by the slash command.
-        # Corresponds to the JSON property `argumentsHint`
-        # @return [String]
-        attr_accessor :arguments_hint
-      
-        # Unique id for the slash command.
-        # Corresponds to the JSON property `commandId`
-        # @return [Fixnum]
-        attr_accessor :command_id
-      
-        # Name of the slash command.
-        # Corresponds to the JSON property `commandName`
-        # @return [String]
-        attr_accessor :command_name
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :id
-      
-        # Whether or not this slash command should trigger a dialog.
-        # Corresponds to the JSON property `triggersDialog`
-        # @return [Boolean]
-        attr_accessor :triggers_dialog
-        alias_method :triggers_dialog?, :triggers_dialog
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @arguments_hint = args[:arguments_hint] if args.key?(:arguments_hint)
-          @command_id = args[:command_id] if args.key?(:command_id)
-          @command_name = args[:command_name] if args.key?(:command_name)
-          @id = args[:id] if args.key?(:id)
-          @triggers_dialog = args[:triggers_dialog] if args.key?(:triggers_dialog)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Primary key for Space resource.
-      class AppsDynamiteSpaceId
-        include Google::Apis::Core::Hashable
-      
-        # Unique, immutable ID of the Space
-        # Corresponds to the JSON property `spaceId`
-        # @return [String]
-        attr_accessor :space_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @space_id = args[:space_id] if args.key?(:space_id)
-        end
-      end
-      
-      # Tombstoning is the act of leaving a contextual trace when deleting a message.
-      # See more: go/tombstone-prd, go/hub-dynamite-tombstones-server-design-v2.
-      class AppsDynamiteTombstoneMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Indicates the type of Tombstone.
-        # Corresponds to the JSON property `tombstoneType`
-        # @return [String]
-        attr_accessor :tombstone_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tombstone_type = args[:tombstone_type] if args.key?(:tombstone_type)
-        end
-      end
-      
-      # 
-      class AppsDynamiteTopicId
-        include Google::Apis::Core::Hashable
-      
-        # Id representing a group that could be a space, a chat, or a direct message
-        # space. Which ID is set here will determine which group
-        # Corresponds to the JSON property `groupId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteGroupId]
-        attr_accessor :group_id
-      
-        # Opaque, server-assigned ID of the Topic. While this ID is guaranteed to be
-        # unique within the Space, it's not guaranteed to be globally unique. Internal
-        # usage: this field can be empty in the following cases: 1. To create the first
-        # message in a topic. 2. To list last N messages of a Space (regardless of topic)
-        # .
-        # Corresponds to the JSON property `topicId`
-        # @return [String]
-        attr_accessor :topic_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @group_id = args[:group_id] if args.key?(:group_id)
-          @topic_id = args[:topic_id] if args.key?(:topic_id)
-        end
-      end
-      
-      # Annotation metadata for user Upload artifacts.
-      class AppsDynamiteUploadMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Opaque token. Clients shall simply pass it back to the Backend. This field
-        # will NOT be saved into storage.
-        # Corresponds to the JSON property `attachmentToken`
-        # @return [String]
-        attr_accessor :attachment_token
-      
-        # Metadata used only in Dynamite backend for uploaded attachments.
-        # Corresponds to the JSON property `backendUploadMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata]
-        attr_accessor :backend_upload_metadata
-      
-        # A combination of an identifier for a Drive resource (e.g. file, folder, or
-        # drive) and any secrets needed to access it. The secrets should never be logged,
-        # and this proto annotates those secret fields to ensure that they are not.
-        # Clients are encouraged to use this proto rather than defining their own, to
-        # ensure that secrets are correctly annotated.
-        # Corresponds to the JSON property `clonedAuthorizedItemId`
-        # @return [Google::Apis::CloudsearchV1::AuthorizedItemId]
-        attr_accessor :cloned_authorized_item_id
-      
-        # DriveAction for organizing the cloned version of this upload in Drive, if the
-        # file has been added to Drive. This field is not set if the file has not been
-        # added to Drive. Additionally, this field is only set when part of a FileResult
-        # in a ListFilesResponse.
-        # Corresponds to the JSON property `clonedDriveAction`
-        # @return [String]
-        attr_accessor :cloned_drive_action
-      
-        # Reference to a Drive ID, if this upload file has been previously cloned to
-        # Drive. Note: this is deprecated in favor of the AuthorizedItemId below.
-        # Corresponds to the JSON property `clonedDriveId`
-        # @return [String]
-        attr_accessor :cloned_drive_id
-      
-        # The original file name for the content, not the full path.
-        # Corresponds to the JSON property `contentName`
-        # @return [String]
-        attr_accessor :content_name
-      
-        # Type is from Scotty's best_guess by default: http://google3/uploader/agent/
-        # scotty_agent.proto?l=51&rcl=140889785
-        # Corresponds to the JSON property `contentType`
-        # @return [String]
-        attr_accessor :content_type
-      
-        # LINT.IfChange
-        # Corresponds to the JSON property `dlpMetricsMetadata`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata]
-        attr_accessor :dlp_metrics_metadata
-      
-        # A copy of the LocalId in Annotation. This field is supposed to be filled by
-        # server only.
-        # Corresponds to the JSON property `localId`
-        # @return [String]
-        attr_accessor :local_id
-      
-        # Dimension for the uploaded attachments.
-        # Corresponds to the JSON property `originalDimension`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension]
-        attr_accessor :original_dimension
-      
-        # Reference to a transcoded video attachment.
-        # Corresponds to the JSON property `videoReference`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference]
-        attr_accessor :video_reference
-      
-        # Result for a virus scan. It's duplicated in the above field apps.dynamite.
-        # shared.BackendUploadMetadata
-        # Corresponds to the JSON property `virusScanResult`
-        # @return [String]
-        attr_accessor :virus_scan_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attachment_token = args[:attachment_token] if args.key?(:attachment_token)
-          @backend_upload_metadata = args[:backend_upload_metadata] if args.key?(:backend_upload_metadata)
-          @cloned_authorized_item_id = args[:cloned_authorized_item_id] if args.key?(:cloned_authorized_item_id)
-          @cloned_drive_action = args[:cloned_drive_action] if args.key?(:cloned_drive_action)
-          @cloned_drive_id = args[:cloned_drive_id] if args.key?(:cloned_drive_id)
-          @content_name = args[:content_name] if args.key?(:content_name)
-          @content_type = args[:content_type] if args.key?(:content_type)
-          @dlp_metrics_metadata = args[:dlp_metrics_metadata] if args.key?(:dlp_metrics_metadata)
-          @local_id = args[:local_id] if args.key?(:local_id)
-          @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
-          @video_reference = args[:video_reference] if args.key?(:video_reference)
-          @virus_scan_result = args[:virus_scan_result] if args.key?(:virus_scan_result)
-        end
-      end
-      
-      # Annotation metadata for a Weblink. In case of pasted link it can qualify to be
-      # other types in addition to being a URL - like DRIVE_DOC/DRIVE_SHEET and so on.
-      # The URL metadata will also be present and it's up to the client to decide
-      # which metadata to render it with. These fields are filled in using page render
-      # service.
-      class AppsDynamiteUrlMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Domain for this url. If it's an IP address the address is returned.
-        # Corresponds to the JSON property `domain`
-        # @return [String]
-        attr_accessor :domain
-      
-        # Message containing a string that is safe to use in URL contexts in DOM APIs
-        # and HTML documents, where the URL context does not refer to a resource that
-        # loads code.
-        # Corresponds to the JSON property `gwsUrl`
-        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
-        attr_accessor :gws_url
-      
-        # The expiration timestamp for GWS URL, only set when gws_url is set.
-        # Corresponds to the JSON property `gwsUrlExpirationTimestamp`
-        # @return [Fixnum]
-        attr_accessor :gws_url_expiration_timestamp
-      
-        # Dimensions of the image: height. This field is string to match with page
-        # render service response. Deprecated. Use int_image_height instead.
-        # Corresponds to the JSON property `imageHeight`
-        # @return [String]
-        attr_accessor :image_height
-      
-        # Representative image of the website.
-        # Corresponds to the JSON property `imageUrl`
-        # @return [String]
-        attr_accessor :image_url
-      
-        # Dimensions of the image: width. This field is string to match with page render
-        # service response. Deprecated. Use int_image_height instead.
-        # Corresponds to the JSON property `imageWidth`
-        # @return [String]
-        attr_accessor :image_width
-      
-        # Dimensions of the image: height.
-        # Corresponds to the JSON property `intImageHeight`
-        # @return [Fixnum]
-        attr_accessor :int_image_height
-      
-        # Dimensions of the image: width.
-        # Corresponds to the JSON property `intImageWidth`
-        # @return [Fixnum]
-        attr_accessor :int_image_width
-      
-        # Mime type of the content (Currently mapped from Page Render Service ItemType)
-        # Note that this is not necessarily the mime type of the http resource. For
-        # example a text/html from youtube or vimeo may actually be classified as a
-        # video type. Then we shall mark it as video/* since we don't know exactly what
-        # type of video it is. NEXT TAG : 16
-        # Corresponds to the JSON property `mimeType`
-        # @return [String]
-        attr_accessor :mime_type
-      
-        # Message containing a string that is safe to use in URL contexts in DOM APIs
-        # and HTML documents, where the URL context does not refer to a resource that
-        # loads code.
-        # Corresponds to the JSON property `redirectUrl`
-        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
-        attr_accessor :redirect_url
-      
-        # If the UrlMetadata is missing data for rendering a chip. Deprecated. Use
-        # Annotation.ChipRenderType instead.
-        # Corresponds to the JSON property `shouldNotRender`
-        # @return [Boolean]
-        attr_accessor :should_not_render
-        alias_method :should_not_render?, :should_not_render
-      
-        # Snippet/small description of the weblink.
-        # Corresponds to the JSON property `snippet`
-        # @return [String]
-        attr_accessor :snippet
-      
-        # Title of the Weblink.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Message containing a string that is safe to use in URL contexts in DOM APIs
-        # and HTML documents, where the URL context does not refer to a resource that
-        # loads code.
-        # Corresponds to the JSON property `url`
-        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @domain = args[:domain] if args.key?(:domain)
-          @gws_url = args[:gws_url] if args.key?(:gws_url)
-          @gws_url_expiration_timestamp = args[:gws_url_expiration_timestamp] if args.key?(:gws_url_expiration_timestamp)
-          @image_height = args[:image_height] if args.key?(:image_height)
-          @image_url = args[:image_url] if args.key?(:image_url)
-          @image_width = args[:image_width] if args.key?(:image_width)
-          @int_image_height = args[:int_image_height] if args.key?(:int_image_height)
-          @int_image_width = args[:int_image_width] if args.key?(:int_image_width)
-          @mime_type = args[:mime_type] if args.key?(:mime_type)
-          @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
-          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
-          @snippet = args[:snippet] if args.key?(:snippet)
-          @title = args[:title] if args.key?(:title)
-          @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Primary key for User resource.
-      class AppsDynamiteUserId
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Opaque, server-assigned ID of the user profile associated with App/
-        # user acting on behalf of the human user. This is currently only set when a 3P
-        # application is acting on the user's behalf.
-        # Corresponds to the JSON property `actingUserId`
-        # @return [String]
-        attr_accessor :acting_user_id
-      
-        # Opaque, server-assigned ID of the User.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Identifier of an App.
-        # Corresponds to the JSON property `originAppId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteAppId]
-        attr_accessor :origin_app_id
-      
-        # Clients do not need to send UserType to Backend, but Backend will always send
-        # this field to clients per the following rule: 1. For HUMAN Ids, the field is
-        # empty but by default .getType() will return HUMAN. 2. For BOT Ids, the field
-        # is ALWAYS set to BOT.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acting_user_id = args[:acting_user_id] if args.key?(:acting_user_id)
-          @id = args[:id] if args.key?(:id)
-          @origin_app_id = args[:origin_app_id] if args.key?(:origin_app_id)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Annotation metadata for user mentions (+/@/-).
-      class AppsDynamiteUserMentionMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Display name of the mentioned user. This field should remain empty when
-        # clients resolve a UserMention annotation. It will be filled in when a
-        # UserMention is generated by the Integration Server.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Gender of the mentioned user. One of "female", "male" or "other". Used for
-        # choosing accurate translations for strings that contain the UserMention, when
-        # these need to be constructed (e.g. task assignment update message). This field
-        # should remain empty when clients resolve a UserMention. It will be filled in
-        # when a UserMention is generated by the Integration Server.
-        # Corresponds to the JSON property `gender`
-        # @return [String]
-        attr_accessor :gender
-      
-        # Primary key for User resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
-        attr_accessor :id
-      
-        # Invitee information from a Dynamite invitation. See go/dynamite-invitee-mgmt.
-        # Corresponds to the JSON property `inviteeInfo`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteInviteeInfo]
-        attr_accessor :invitee_info
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @gender = args[:gender] if args.key?(:gender)
-          @id = args[:id] if args.key?(:id)
-          @invitee_info = args[:invitee_info] if args.key?(:invitee_info)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
       # Interactive objects inside a message. Documentation: - https://api.slack.com/
       # docs/message-buttons
       class AppsDynamiteV1ApiCompatV1Action
@@ -6598,112 +3958,77 @@ module Google
         end
       end
       
-      # 
-      class AppsDynamiteVideoCallMetadata
-        include Google::Apis::Core::Hashable
-      
-        # A meeting space is a persistent object that is the context for one or more
-        # calls. The meeting space is what makes users find each other when they want to
-        # meet and to find shared resources. With two exceptions, all the fields in the
-        # meeting space resource are visible publicly to any client, even anonymous
-        # users. The exceptions are that * The call_info field is only visible to
-        # clients that have a device (as indicated by the meeting token) in the JOINED
-        # or HIDDEN state. * The meeting_alias field will only be set for users who are
-        # in the same domain as the meeting space. The meeting space resource (outside
-        # call_info) should only contain information necessary to join a call in the
-        # meeting space, and not any other metadata about the meeting space, such as
-        # what organization it belongs to or things related to ongoing calls.
-        # Corresponds to the JSON property `meetingSpace`
-        # @return [Google::Apis::CloudsearchV1::MeetingSpace]
-        attr_accessor :meeting_space
-      
-        # If this field is set to true, server should still contact external backends to
-        # get metadata for search but clients should not render this chip.
-        # Corresponds to the JSON property `shouldNotRender`
-        # @return [Boolean]
-        attr_accessor :should_not_render
-        alias_method :should_not_render?, :should_not_render
-      
-        # Whether this meeting space was created via Dynamite in this Dynamite group.
-        # Corresponds to the JSON property `wasCreatedInCurrentGroup`
-        # @return [Boolean]
-        attr_accessor :was_created_in_current_group
-        alias_method :was_created_in_current_group?, :was_created_in_current_group
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @meeting_space = args[:meeting_space] if args.key?(:meeting_space)
-          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
-          @was_created_in_current_group = args[:was_created_in_current_group] if args.key?(:was_created_in_current_group)
-        end
-      end
-      
-      # Annotation metadata for YouTube artifact.
-      class AppsDynamiteYoutubeMetadata
-        include Google::Apis::Core::Hashable
-      
-        # YouTube resource ID of the artifact.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # If this field is set to true, server should still contact external backends to
-        # get metadata for search but clients should not render this chip.
-        # Corresponds to the JSON property `shouldNotRender`
-        # @return [Boolean]
-        attr_accessor :should_not_render
-        alias_method :should_not_render?, :should_not_render
-      
-        # YouTube query parameter for timestamp. YouTube specific flag that allows users
-        # to embed time token when sharing a link. This property contains parsed time
-        # token in seconds.
-        # Corresponds to the JSON property `startTime`
-        # @return [Fixnum]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # An Attachment represents a linked entity associated with a piece of social
-      # content. This may be a 1st-party or 3rd-party entity. In the Papyrus context,
-      # an Attachment is part of a Cent, and sits alongside the main content of the
-      # cent, which is represented as a sequence of Segments. Right now an Attachment
-      # is just a wrapper around an Embed, but we provide the extra layer of
-      # abstraction since, as Embeds move to separate storage in Briefcase, we may
-      # want to add additional fields that are not part of the Embed proper, but that (
-      # for example) relate to the usage of the linked content within the particular
-      # post/cent.
+      # Attachments that follow the message text.
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # Represents an embedded object in an update. This is a wrapper class that can
-        # contain a single specific item proto in an extension field. Think of it as a
-        # base class like `Message` in Java. Each item proto must declare that it
-        # extends this proto: message ExampleObject ` option (item_type) =
-        # EXAMPLE_OBJECT; extend EmbedClientItem ` optional ExampleObject example_object
-        # = ; ` ` See go/es-embeds for details.
-        # Corresponds to the JSON property `embedItem`
-        # @return [Google::Apis::CloudsearchV1::EmbedClientItem]
-        attr_accessor :embed_item
+        # The markup for developers to specify the contents of a contextual AddOn.
+        # Corresponds to the JSON property `addOnData`
+        # @return [Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup]
+        attr_accessor :add_on_data
       
-        # An id to uniquely identify an attachment when several attachments are in a
-        # collection.
-        # Corresponds to the JSON property `id`
+        # Primary key for User resource.
+        # Corresponds to the JSON property `appId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :app_id
+      
+        # To identify an attachment within repeated in a message
+        # Corresponds to the JSON property `attachmentId`
         # @return [String]
-        attr_accessor :id
+        attr_accessor :attachment_id
+      
+        # A card is a UI element that can contain UI widgets such as text and images.
+        # For more information, see Cards . For example, the following JSON creates a
+        # card that has a header with the name, position, icons, and link for a contact,
+        # followed by a section with contact information like email and phone number. ```
+        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
+        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
+        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
+        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
+        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
+        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
+        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
+        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
+        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
+        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
+        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
+        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Corresponds to the JSON property `cardAddOnData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCard]
+        attr_accessor :card_add_on_data
+      
+        # The markup for developers to specify the contents of a contextual AddOn. A
+        # contextual AddOn is triggered in context of an email. For that email, there
+        # can be N items that are associated with the email (e.g. contacts, sales lead,
+        # meeting information). Each item is represented as a "card". A card has two
+        # views, collapsed and detailed. If there are more than 1 card, the cards are
+        # show as a list of collapsed views. The end user can expand into the detailed
+        # view for each of those cards. In the detailed view, developers have the
+        # freedom to use a variety of "widgets" to construct it. The model here is to
+        # restrict (make consistent for end users) the navigation of the N cards but
+        # providing developers the freedom to build the detailed view that can best
+        # represent their use case/content. Go http://go/aoig-widgets1 to see the mocks.
+        # Post v1, we plan to support new AddOn use cases that will require different
+        # and separate 'templates'. For example, a compose triggered AddOn which will
+        # support a new set of use cases with different user interaction patterns. As a
+        # result, we will likely need a very different template than this one.
+        # Corresponds to the JSON property `deprecatedAddOnData`
+        # @return [Google::Apis::CloudsearchV1::ContextualAddOnMarkup]
+        attr_accessor :deprecated_add_on_data
+      
+        # Richly formatted attachments. Documentation: - https://api.slack.com/docs/
+        # message-attachments
+        # Corresponds to the JSON property `slackData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment]
+        attr_accessor :slack_data
+      
+        # The height of image url as fetched by fife. This field is asynchronously
+        # filled.
+        # Corresponds to the JSON property `slackDataImageUrlHeight`
+        # @return [Fixnum]
+        attr_accessor :slack_data_image_url_height
       
         def initialize(**args)
            update!(**args)
@@ -6711,27 +4036,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @embed_item = args[:embed_item] if args.key?(:embed_item)
-          @id = args[:id] if args.key?(:id)
-        end
-      end
-      
-      # An attachment uploaded in Dynamite and its filename.
-      class AttachmentMetadata
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `filename`
-        # @return [String]
-        attr_accessor :filename
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filename = args[:filename] if args.key?(:filename)
+          @add_on_data = args[:add_on_data] if args.key?(:add_on_data)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
+          @card_add_on_data = args[:card_add_on_data] if args.key?(:card_add_on_data)
+          @deprecated_add_on_data = args[:deprecated_add_on_data] if args.key?(:deprecated_add_on_data)
+          @slack_data = args[:slack_data] if args.key?(:slack_data)
+          @slack_data_image_url_height = args[:slack_data_image_url_height] if args.key?(:slack_data_image_url_height)
         end
       end
       
@@ -6849,6 +4160,93 @@ module Google
         end
       end
       
+      # Container for Babel (Hangouts Classic) only message properties. The properties
+      # here will not be consumed by Dynamite clients. They are relevant only for
+      # Hangouts Classic.
+      class BabelMessageProps
+        include Google::Apis::Core::Hashable
+      
+        # Babel clients locally generate this ID to dedupe against the async fanout.
+        # Corresponds to the JSON property `clientGeneratedId`
+        # @return [Fixnum]
+        attr_accessor :client_generated_id
+      
+        # NEXT ID: 12
+        # Corresponds to the JSON property `contentExtension`
+        # @return [Google::Apis::CloudsearchV1::ChatContentExtension]
+        attr_accessor :content_extension
+      
+        # Stores the delivery source of messages (such as phone number for SMS).
+        # Corresponds to the JSON property `deliveryMedium`
+        # @return [Google::Apis::CloudsearchV1::DeliveryMedium]
+        attr_accessor :delivery_medium
+      
+        # Primary identifier used by Hangouts Classic for its events (messages).
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # The content of a chat message, which includes 0 or more segments along with 0
+        # or more embeds, which represent various attachment types (like photos).
+        # Corresponds to the JSON property `messageContent`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverMessageContent]
+        attr_accessor :message_content
+      
+        # Whether or not these message properties were backfilled by go/dinnertrain.
+        # Corresponds to the JSON property `wasUpdatedByBackfill`
+        # @return [Boolean]
+        attr_accessor :was_updated_by_backfill
+        alias_method :was_updated_by_backfill?, :was_updated_by_backfill
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_generated_id = args[:client_generated_id] if args.key?(:client_generated_id)
+          @content_extension = args[:content_extension] if args.key?(:content_extension)
+          @delivery_medium = args[:delivery_medium] if args.key?(:delivery_medium)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @message_content = args[:message_content] if args.key?(:message_content)
+          @was_updated_by_backfill = args[:was_updated_by_backfill] if args.key?(:was_updated_by_backfill)
+        end
+      end
+      
+      # Annotation metadata for Babel-only items that signals which type of
+      # placeholder message should be displayed in Babel clients.
+      class BabelPlaceholderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A message delete in Dynamite inserts a Babel-only item containing this field.
+        # This is only inserted for messages before the source-of-truth flip. See go/hsc-
+        # message-deletions for more details.
+        # Corresponds to the JSON property `deleteMetadata`
+        # @return [Google::Apis::CloudsearchV1::DeleteMetadata]
+        attr_accessor :delete_metadata
+      
+        # A message edit in Dynamite inserts a Babel-only item containing this field.
+        # Corresponds to the JSON property `editMetadata`
+        # @return [Google::Apis::CloudsearchV1::EditMetadata]
+        attr_accessor :edit_metadata
+      
+        # A message representing the Hangout video start/end events in Babel
+        # Corresponds to the JSON property `hangoutVideoMetadata`
+        # @return [Google::Apis::CloudsearchV1::HangoutVideoEventMetadata]
+        attr_accessor :hangout_video_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_metadata = args[:delete_metadata] if args.key?(:delete_metadata)
+          @edit_metadata = args[:edit_metadata] if args.key?(:edit_metadata)
+          @hangout_video_metadata = args[:hangout_video_metadata] if args.key?(:hangout_video_metadata)
+        end
+      end
+      
       # Used to provide a search operator for boolean properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -6929,9 +4327,63 @@ module Google
         end
       end
       
-      # A bot sent a message in Dynamite.
-      class BotMessageMetadata
+      # Bot-specific profile information.
+      class BotInfo
         include Google::Apis::Core::Hashable
+      
+        # Identifier of an App.
+        # Corresponds to the JSON property `appId`
+        # @return [Google::Apis::CloudsearchV1::AppId]
+        attr_accessor :app_id
+      
+        # URL for the avatar picture of the User in dynamite. This field should be
+        # populated if the request is FetchBotCategories/ListBotCatalogEntries
+        # Corresponds to the JSON property `botAvatarUrl`
+        # @return [String]
+        attr_accessor :bot_avatar_url
+      
+        # Non-unique, user-defined display name of the Bot. This field should be
+        # populated if the request is FetchBotCategories/ListBotCatalogEntries.
+        # Corresponds to the JSON property `botName`
+        # @return [String]
+        attr_accessor :bot_name
+      
+        # Short description for the bot.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name of bot developer.
+        # Corresponds to the JSON property `developerName`
+        # @return [String]
+        attr_accessor :developer_name
+      
+        # URL for the banner image in GSuite Market Place. The banner will be 220x140.
+        # Corresponds to the JSON property `marketPlaceBannerUrl`
+        # @return [String]
+        attr_accessor :market_place_banner_url
+      
+        # Indicates whether bot is enabled/disabled.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Urls with additional bot related information.
+        # Corresponds to the JSON property `supportUrls`
+        # @return [Google::Apis::CloudsearchV1::SupportUrls]
+        attr_accessor :support_urls
+      
+        # The supported uses are limited according to the user that made the request. If
+        # the user does not have permission to use the bot, the list will be empty. This
+        # could occur for non whitelisted bots in the catalog.
+        # Corresponds to the JSON property `supportedUses`
+        # @return [Array<String>]
+        attr_accessor :supported_uses
+      
+        # 
+        # Corresponds to the JSON property `whitelistStatus`
+        # @return [String]
+        attr_accessor :whitelist_status
       
         def initialize(**args)
            update!(**args)
@@ -6939,6 +4391,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @bot_avatar_url = args[:bot_avatar_url] if args.key?(:bot_avatar_url)
+          @bot_name = args[:bot_name] if args.key?(:bot_name)
+          @description = args[:description] if args.key?(:description)
+          @developer_name = args[:developer_name] if args.key?(:developer_name)
+          @market_place_banner_url = args[:market_place_banner_url] if args.key?(:market_place_banner_url)
+          @status = args[:status] if args.key?(:status)
+          @support_urls = args[:support_urls] if args.key?(:support_urls)
+          @supported_uses = args[:supported_uses] if args.key?(:supported_uses)
+          @whitelist_status = args[:whitelist_status] if args.key?(:whitelist_status)
+        end
+      end
+      
+      # Information about a bot response, branched from shared/bot_response.proto
+      # without frontend User proto as we never store it.
+      class BotResponse
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `botId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :bot_id
+      
+        # 
+        # Corresponds to the JSON property `requiredAction`
+        # @return [String]
+        attr_accessor :required_action
+      
+        # 
+        # Corresponds to the JSON property `responseType`
+        # @return [String]
+        attr_accessor :response_type
+      
+        # URL for setting up bot.
+        # Corresponds to the JSON property `setupUrl`
+        # @return [String]
+        attr_accessor :setup_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bot_id = args[:bot_id] if args.key?(:bot_id)
+          @required_action = args[:required_action] if args.key?(:required_action)
+          @response_type = args[:response_type] if args.key?(:response_type)
+          @setup_url = args[:setup_url] if args.key?(:setup_url)
         end
       end
       
@@ -7051,19 +4551,6 @@ module Google
         end
       end
       
-      # A Calendar event message in Dynamite.
-      class CalendarEventMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Contains information regarding an ongoing conference (aka call) for a meeting
       # space.
       class CallInfo
@@ -7104,6 +4591,11 @@ module Google
         # Corresponds to the JSON property `calendarEventId`
         # @return [String]
         attr_accessor :calendar_event_id
+      
+        # Configuration of the in meeting chat.
+        # Corresponds to the JSON property `chatConfig`
+        # @return [Google::Apis::CloudsearchV1::ChatConfig]
+        attr_accessor :chat_config
       
         # Metadata about a co-activity session.
         # Corresponds to the JSON property `coActivity`
@@ -7187,11 +4679,6 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::StreamingSessionInfo>]
         attr_accessor :streaming_sessions
       
-        # Supported caption languages in BCP 47 language code format, e.g.'en-US'.
-        # Corresponds to the JSON property `supportedCaptionLanguages`
-        # @return [Array<String>]
-        attr_accessor :supported_caption_languages
-      
         # Information about a transcription session.
         # Corresponds to the JSON property `transcriptionSessionInfo`
         # @return [Google::Apis::CloudsearchV1::TranscriptionSessionInfo]
@@ -7220,6 +4707,7 @@ module Google
           @available_reactions = args[:available_reactions] if args.key?(:available_reactions)
           @broadcast_session_info = args[:broadcast_session_info] if args.key?(:broadcast_session_info)
           @calendar_event_id = args[:calendar_event_id] if args.key?(:calendar_event_id)
+          @chat_config = args[:chat_config] if args.key?(:chat_config)
           @co_activity = args[:co_activity] if args.key?(:co_activity)
           @collaboration = args[:collaboration] if args.key?(:collaboration)
           @cse_info = args[:cse_info] if args.key?(:cse_info)
@@ -7232,7 +4720,6 @@ module Google
           @recording_session_info = args[:recording_session_info] if args.key?(:recording_session_info)
           @settings = args[:settings] if args.key?(:settings)
           @streaming_sessions = args[:streaming_sessions] if args.key?(:streaming_sessions)
-          @supported_caption_languages = args[:supported_caption_languages] if args.key?(:supported_caption_languages)
           @transcription_session_info = args[:transcription_session_info] if args.key?(:transcription_session_info)
           @viewer_count = args[:viewer_count] if args.key?(:viewer_count)
           @you_tube_broadcast_session_infos = args[:you_tube_broadcast_session_infos] if args.key?(:you_tube_broadcast_session_infos)
@@ -7436,6 +4923,25 @@ module Google
       end
       
       # 
+      class CardCapabilityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # NEXT TAG : 2
+        # Corresponds to the JSON property `requiredCapabilities`
+        # @return [Array<String>]
+        attr_accessor :required_capabilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_capabilities = args[:required_capabilities] if args.key?(:required_capabilities)
+        end
+      end
+      
+      # 
       class CardHeader
         include Google::Apis::Core::Hashable
       
@@ -7481,6 +4987,226 @@ module Google
         end
       end
       
+      # Configuration of the in meeting chat.
+      class ChatConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Type of chat this Conference is currently using.
+        # Corresponds to the JSON property `chatType`
+        # @return [String]
+        attr_accessor :chat_type
+      
+        # Configuration of the Google Chat in Meet.
+        # Corresponds to the JSON property `googleChatConfig`
+        # @return [Google::Apis::CloudsearchV1::GoogleChatConfig]
+        attr_accessor :google_chat_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_type = args[:chat_type] if args.key?(:chat_type)
+          @google_chat_config = args[:google_chat_config] if args.key?(:google_chat_config)
+        end
+      end
+      
+      # Metadata used as inputs to the localization that is performed on Dynamite-
+      # originated messages that are incompatible with Hangouts clients. See go/
+      # localization-of-system-messages for more details.
+      class ChatConserverDynamitePlaceholderMetadata
+        include Google::Apis::Core::Hashable
+      
+        # An attachment uploaded in Dynamite and its filename.
+        # Corresponds to the JSON property `attachmentMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataAttachmentMetadata]
+        attr_accessor :attachment_metadata
+      
+        # A bot sent a message in Dynamite.
+        # Corresponds to the JSON property `botMessageMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataBotMessageMetadata]
+        attr_accessor :bot_message_metadata
+      
+        # A Calendar event message in Dynamite.
+        # Corresponds to the JSON property `calendarEventMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata]
+        attr_accessor :calendar_event_metadata
+      
+        # A message was deleted in Dynamite.
+        # Corresponds to the JSON property `deleteMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataDeleteMetadata]
+        attr_accessor :delete_metadata
+      
+        # An edit was made in Dynamite.
+        # Corresponds to the JSON property `editMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataEditMetadata]
+        attr_accessor :edit_metadata
+      
+        # The space URL embedded in the localized string.
+        # Corresponds to the JSON property `spaceUrl`
+        # @return [String]
+        attr_accessor :space_url
+      
+        # A Tasks message in Dynamite.
+        # Corresponds to the JSON property `tasksMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataTasksMetadata]
+        attr_accessor :tasks_metadata
+      
+        # A Meet initiated in Dynamite and its URL.
+        # Corresponds to the JSON property `videoCallMetadata`
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataVideoCallMetadata]
+        attr_accessor :video_call_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_metadata = args[:attachment_metadata] if args.key?(:attachment_metadata)
+          @bot_message_metadata = args[:bot_message_metadata] if args.key?(:bot_message_metadata)
+          @calendar_event_metadata = args[:calendar_event_metadata] if args.key?(:calendar_event_metadata)
+          @delete_metadata = args[:delete_metadata] if args.key?(:delete_metadata)
+          @edit_metadata = args[:edit_metadata] if args.key?(:edit_metadata)
+          @space_url = args[:space_url] if args.key?(:space_url)
+          @tasks_metadata = args[:tasks_metadata] if args.key?(:tasks_metadata)
+          @video_call_metadata = args[:video_call_metadata] if args.key?(:video_call_metadata)
+        end
+      end
+      
+      # An attachment uploaded in Dynamite and its filename.
+      class ChatConserverDynamitePlaceholderMetadataAttachmentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filename = args[:filename] if args.key?(:filename)
+        end
+      end
+      
+      # A bot sent a message in Dynamite.
+      class ChatConserverDynamitePlaceholderMetadataBotMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A Calendar event message in Dynamite.
+      class ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A message was deleted in Dynamite.
+      class ChatConserverDynamitePlaceholderMetadataDeleteMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # An edit was made in Dynamite.
+      class ChatConserverDynamitePlaceholderMetadataEditMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A Tasks message in Dynamite.
+      class ChatConserverDynamitePlaceholderMetadataTasksMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A Meet initiated in Dynamite and its URL.
+      class ChatConserverDynamitePlaceholderMetadataVideoCallMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `meetingUrl`
+        # @return [String]
+        attr_accessor :meeting_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @meeting_url = args[:meeting_url] if args.key?(:meeting_url)
+        end
+      end
+      
+      # The content of a chat message, which includes 0 or more segments along with 0
+      # or more embeds, which represent various attachment types (like photos).
+      class ChatConserverMessageContent
+        include Google::Apis::Core::Hashable
+      
+        # Items attached to this message, such as photos. This should *NOT* be set by
+        # clients. It will be automatically set from media uploaded along with this
+        # request and using the information provided in existing_media.
+        # Corresponds to the JSON property `attachment`
+        # @return [Array<Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment>]
+        attr_accessor :attachment
+      
+        # The text part of the message content. Segments are concatenated together to
+        # yield the full message. A message can have zero or more segments.
+        # Corresponds to the JSON property `segment`
+        # @return [Array<Google::Apis::CloudsearchV1::Segment>]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
       # NEXT ID: 12
       class ChatContentExtension
         include Google::Apis::Core::Hashable
@@ -7494,7 +5220,7 @@ module Google
         # originated messages that are incompatible with Hangouts clients. See go/
         # localization-of-system-messages for more details.
         # Corresponds to the JSON property `dynamitePlaceholderMetadata`
-        # @return [Google::Apis::CloudsearchV1::DynamitePlaceholderMetadata]
+        # @return [Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadata]
         attr_accessor :dynamite_placeholder_metadata
       
         # Is this event OnTR or OffTR? Since some events can be ON_THE_RECORD and have
@@ -7819,6 +5545,34 @@ module Google
         end
       end
       
+      # An individual instance (or "tag") of a label configured as a communal type
+      # that's associated with a message.
+      class CommunalLabelTag
+        include Google::Apis::Core::Hashable
+      
+        # Gaia ID of the user who added the tag, if any. Not present for any tags
+        # automatically created by server-side processing.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [Fixnum]
+        attr_accessor :creator_user_id
+      
+        # A string ID representing the label. Possible ID values are documented at go/
+        # chat-labels-howto:ids. Example: "^*t_p" for "Pinned".
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @label_id = args[:label_id] if args.key?(:label_id)
+        end
+      end
+      
       # 
       class CompositeFilter
         include Google::Apis::Core::Hashable
@@ -7841,6 +5595,25 @@ module Google
         def update!(**args)
           @logic_operator = args[:logic_operator] if args.key?(:logic_operator)
           @sub_filters = args[:sub_filters] if args.key?(:sub_filters)
+        end
+      end
+      
+      # Annotation metadata app unfurl consent.
+      class ConsentedAppUnfurlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `clientSpecifiedAppId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :client_specified_app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_specified_app_id = args[:client_specified_app_id] if args.key?(:client_specified_app_id)
         end
       end
       
@@ -7882,6 +5655,97 @@ module Google
           @group_id = args[:group_id] if args.key?(:group_id)
           @owner_gaia_id = args[:owner_gaia_id] if args.key?(:owner_gaia_id)
           @required_consistency_timestamp_usec = args[:required_consistency_timestamp_usec] if args.key?(:required_consistency_timestamp_usec)
+        end
+      end
+      
+      # 
+      class ContentReport
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the report is generated. Always populated when it is in a
+        # response.
+        # Corresponds to the JSON property `reportCreateTimestamp`
+        # @return [String]
+        attr_accessor :report_create_timestamp
+      
+        # Additional user-provided justification on the report. Optional.
+        # Corresponds to the JSON property `reportJustification`
+        # @return [Google::Apis::CloudsearchV1::ContentReportJustification]
+        attr_accessor :report_justification
+      
+        # Denotes a type of content report a user can send.
+        # Corresponds to the JSON property `reportType`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType]
+        attr_accessor :report_type
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `reporterUserId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :reporter_user_id
+      
+        # Create timestamp of the revisions of the message when it's reported. Always
+        # populated when it is in a response.
+        # Corresponds to the JSON property `revisionCreateTimestamp`
+        # @return [String]
+        attr_accessor :revision_create_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_create_timestamp = args[:report_create_timestamp] if args.key?(:report_create_timestamp)
+          @report_justification = args[:report_justification] if args.key?(:report_justification)
+          @report_type = args[:report_type] if args.key?(:report_type)
+          @reporter_user_id = args[:reporter_user_id] if args.key?(:reporter_user_id)
+          @revision_create_timestamp = args[:revision_create_timestamp] if args.key?(:revision_create_timestamp)
+        end
+      end
+      
+      # 
+      class ContentReportJustification
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-generated free-text justification for the content report.
+        # Corresponds to the JSON property `userJustification`
+        # @return [String]
+        attr_accessor :user_justification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_justification = args[:user_justification] if args.key?(:user_justification)
+        end
+      end
+      
+      # Summarized info of content reports. Usually less expensive to fetch than to
+      # fetch all detailed reports. Set only when the request asks for it.
+      class ContentReportSummary
+        include Google::Apis::Core::Hashable
+      
+        # Total number of reports attached to this (revision of) message.
+        # Corresponds to the JSON property `numberReports`
+        # @return [Fixnum]
+        attr_accessor :number_reports
+      
+        # Totoal number of reports attached to all revisions of this message (i.e. since
+        # creation). Set only when the request asks for it.
+        # Corresponds to the JSON property `numberReportsAllRevisions`
+        # @return [Fixnum]
+        attr_accessor :number_reports_all_revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @number_reports = args[:number_reports] if args.key?(:number_reports)
+          @number_reports_all_revisions = args[:number_reports_all_revisions] if args.key?(:number_reports_all_revisions)
         end
       end
       
@@ -7982,6 +5846,46 @@ module Google
         def update!(**args)
           @cse_domain = args[:cse_domain] if args.key?(:cse_domain)
           @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
+        end
+      end
+      
+      # 
+      class CustomEmojiMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Proto representation of a custom emoji. May be used in both APIs and in
+        # Spanner, but certain fields should be restricted to one or the other. See the
+        # per-field documentation for details. NEXT_TAG: 14
+        # Corresponds to the JSON property `customEmoji`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji]
+        attr_accessor :custom_emoji
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
+        end
+      end
+      
+      # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
+      class CustomerId
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
         end
       end
       
@@ -8165,6 +6069,37 @@ module Google
           @one_day_active_users_count = args[:one_day_active_users_count] if args.key?(:one_day_active_users_count)
           @seven_days_active_users_count = args[:seven_days_active_users_count] if args.key?(:seven_days_active_users_count)
           @thirty_days_active_users_count = args[:thirty_days_active_users_count] if args.key?(:thirty_days_active_users_count)
+        end
+      end
+      
+      # Annotation metadata for Data Loss Prevention that pertains to DLP violation on
+      # message send or edit events. It is used for client -> BE communication and
+      # other downstream process in BE (e.g. storage and audit logging), and it should
+      # never be returned to the client.
+      class DataLossPreventionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A summary of a DLP scan event. This is a summary and should contain the
+        # minimum amount of data required to identify and process DLP scans. It is
+        # written to Starcast and encoded & returned to the client on attachment upload.
+        # Corresponds to the JSON property `dlpScanSummary`
+        # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
+        attr_accessor :dlp_scan_summary
+      
+        # Flag set by client on message resend to bypass WARN violation.
+        # Corresponds to the JSON property `warnAcknowledged`
+        # @return [Boolean]
+        attr_accessor :warn_acknowledged
+        alias_method :warn_acknowledged?, :warn_acknowledged
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
+          @warn_acknowledged = args[:warn_acknowledged] if args.key?(:warn_acknowledged)
         end
       end
       
@@ -8568,7 +6503,9 @@ module Google
         end
       end
       
-      # A message was deleted in Dynamite.
+      # A message delete in Dynamite inserts a Babel-only item containing this field.
+      # This is only inserted for messages before the source-of-truth flip. See go/hsc-
+      # message-deletions for more details.
       class DeleteMetadata
         include Google::Apis::Core::Hashable
       
@@ -8676,6 +6613,67 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A summary of a DLP scan event. This is a summary and should contain the
+      # minimum amount of data required to identify and process DLP scans. It is
+      # written to Starcast and encoded & returned to the client on attachment upload.
+      class DlpScanSummary
+        include Google::Apis::Core::Hashable
+      
+        # The scan ID of the corresponding `@link DlpViolationScanRecord` in the `@link
+        # EphemeralDlpScans` Spanner table. This can be used to fetch additional details
+        # about the scan, e.g. for audit logging.
+        # Corresponds to the JSON property `scanId`
+        # @return [String]
+        attr_accessor :scan_id
+      
+        # Indicates that was no attempt to scan a message or attachment because it was
+        # not applicable in the given context (e.g. atomic mutuate). If this is true,
+        # scan_outcome should not be set. This flag is used to identify messages that
+        # DLP did not attempt to scan for monitoring scan coverage. Contents that DLP
+        # attempted to scan but skipped can be identified by DlpScanOutcome.
+        # SCAN_SKIPPED_* reasons.
+        # Corresponds to the JSON property `scanNotApplicableForContext`
+        # @return [Boolean]
+        attr_accessor :scan_not_applicable_for_context
+        alias_method :scan_not_applicable_for_context?, :scan_not_applicable_for_context
+      
+        # The outcome of a DLP Scan. If this is set, scan_not_applicable_for_context
+        # should not be true.
+        # Corresponds to the JSON property `scanOutcome`
+        # @return [String]
+        attr_accessor :scan_outcome
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan_id = args[:scan_id] if args.key?(:scan_id)
+          @scan_not_applicable_for_context = args[:scan_not_applicable_for_context] if args.key?(:scan_not_applicable_for_context)
+          @scan_outcome = args[:scan_outcome] if args.key?(:scan_outcome)
+        end
+      end
+      
+      # 
+      class DmId
+        include Google::Apis::Core::Hashable
+      
+        # Unique server assigned Id, per Direct Message Space.
+        # Corresponds to the JSON property `dmId`
+        # @return [String]
+        attr_accessor :dm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dm_id = args[:dm_id] if args.key?(:dm_id)
         end
       end
       
@@ -8800,6 +6798,205 @@ module Google
         end
       end
       
+      # Annotation metadata for Drive artifacts.
+      class DriveMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The request set by clients to instruct Backend how the user intend to fix the
+        # ACL. Technically it's not a request to ACL Fixer, because Backend uses /
+        # DriveService.Share to modify Drive ACLs.
+        # Corresponds to the JSON property `aclFixRequest`
+        # @return [Google::Apis::CloudsearchV1::AclFixRequest]
+        attr_accessor :acl_fix_request
+      
+        # The message reconstructed based on information in the response of /
+        # PermissionFixOptionsService.Query (or the Apiary API that wraps it). Indicates
+        # the ability of the requester to change the access to the Drive file for the
+        # room roster or the DM members. Used in GetMessagePreviewMetadataResponse only.
+        # Corresponds to the JSON property `aclFixStatus`
+        # @return [Google::Apis::CloudsearchV1::AclFixStatus]
+        attr_accessor :acl_fix_status
+      
+        # Can the current user edit this resource
+        # Corresponds to the JSON property `canEdit`
+        # @return [Boolean]
+        attr_accessor :can_edit
+        alias_method :can_edit?, :can_edit
+      
+        # Can the current user share this resource
+        # Corresponds to the JSON property `canShare`
+        # @return [Boolean]
+        attr_accessor :can_share
+        alias_method :can_share?, :can_share
+      
+        # Can the current user view this resource
+        # Corresponds to the JSON property `canView`
+        # @return [Boolean]
+        attr_accessor :can_view
+        alias_method :can_view?, :can_view
+      
+        # DriveAction for organizing this file in Drive. If the user does not have
+        # access to the Drive file, the value will be DriveAction.
+        # DRIVE_ACTION_UNSPECIFIED. This field is only set when part of a FileResult in
+        # a ListFilesResponse.
+        # Corresponds to the JSON property `driveAction`
+        # @return [String]
+        attr_accessor :drive_action
+      
+        # 
+        # Corresponds to the JSON property `driveState`
+        # @return [String]
+        attr_accessor :drive_state
+      
+        # Message containing a string that is safe to use in all URL contexts in DOM
+        # APIs and HTML documents; even where the referred-to resource is interpreted as
+        # code, e.g., as the src of a script element.
+        # Corresponds to the JSON property `embedUrl`
+        # @return [Google::Apis::CloudsearchV1::TrustedResourceUrlProto]
+        attr_accessor :embed_url
+      
+        # Indicates whether the Drive link contains an encrypted doc ID. If true,
+        # Dynamite should not attempt to query the doc ID in Drive Service. See go/docid-
+        # encryption for details.
+        # Corresponds to the JSON property `encryptedDocId`
+        # @return [Boolean]
+        attr_accessor :encrypted_doc_id
+        alias_method :encrypted_doc_id?, :encrypted_doc_id
+      
+        # This is deprecated and unneeded. TODO (b/182479059): Remove this.
+        # Corresponds to the JSON property `encryptedResourceKey`
+        # @return [String]
+        attr_accessor :encrypted_resource_key
+      
+        # External mimetype of the Drive Resource (Useful for creating Drive URL) See:
+        # http://b/35219462
+        # Corresponds to the JSON property `externalMimetype`
+        # @return [String]
+        attr_accessor :external_mimetype
+      
+        # Drive resource ID of the artifact.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Deprecated. Whether the setting to restrict downloads is enabled for this file.
+        # This was previously used to determine whether to hide the download and print
+        # buttons in the UI, but is no longer used by clients, because Projector now
+        # independently queries Drive to ensure that we have the most up-to-date value.
+        # Corresponds to the JSON property `isDownloadRestricted`
+        # @return [Boolean]
+        attr_accessor :is_download_restricted
+        alias_method :is_download_restricted?, :is_download_restricted
+      
+        # If the current user is the Drive file's owner. The field is currently only set
+        # for Annotations for the ListFiles action (as opposed to fetching Topics/
+        # Messages with Drive annotations).
+        # Corresponds to the JSON property `isOwner`
+        # @return [Boolean]
+        attr_accessor :is_owner
+        alias_method :is_owner?, :is_owner
+      
+        # The original UploadMetadata that this DriveMetadata was converted from.
+        # Corresponds to the JSON property `legacyUploadMetadata`
+        # @return [Google::Apis::CloudsearchV1::LegacyUploadMetadata]
+        attr_accessor :legacy_upload_metadata
+      
+        # Mimetype of the Drive Resource
+        # Corresponds to the JSON property `mimetype`
+        # @return [String]
+        attr_accessor :mimetype
+      
+        # The display name of the organization owning the Drive item.
+        # Corresponds to the JSON property `organizationDisplayName`
+        # @return [String]
+        attr_accessor :organization_display_name
+      
+        # A combination of an identifier for a Drive resource (e.g. file, folder, or
+        # drive) and any secrets needed to access it. The secrets should never be logged,
+        # and this proto annotates those secret fields to ensure that they are not.
+        # Clients are encouraged to use this proto rather than defining their own, to
+        # ensure that secrets are correctly annotated.
+        # Corresponds to the JSON property `shortcutAuthorizedItemId`
+        # @return [Google::Apis::CloudsearchV1::AuthorizedItemId]
+        attr_accessor :shortcut_authorized_item_id
+      
+        # If this field is set to true, server should still contact external backends to
+        # get metadata for search but clients should not render this chip.
+        # Corresponds to the JSON property `shouldNotRender`
+        # @return [Boolean]
+        attr_accessor :should_not_render
+        alias_method :should_not_render?, :should_not_render
+      
+        # Thumbnail image of the Drive Resource
+        # Corresponds to the JSON property `thumbnailHeight`
+        # @return [Fixnum]
+        attr_accessor :thumbnail_height
+      
+        # Thumbnail image of the Drive Resource
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
+        # Thumbnail image of the Drive Resource
+        # Corresponds to the JSON property `thumbnailWidth`
+        # @return [Fixnum]
+        attr_accessor :thumbnail_width
+      
+        # Title of the Drive Resource
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Url string fragment that generally indicates the specific location in the
+        # linked file. Example: #header=h.123abc456. If the fragment is not present this
+        # will not be present and therefore default to an empty string. The "#" will not
+        # be included.
+        # Corresponds to the JSON property `urlFragment`
+        # @return [String]
+        attr_accessor :url_fragment
+      
+        # A wrapper around a raw resource key. The secret should never be logged, and
+        # this proto annotates those secret fields to ensure that they are not. Clients
+        # are encouraged to use this proto rather than defining their own, to ensure
+        # that secrets are correctly annotated.
+        # Corresponds to the JSON property `wrappedResourceKey`
+        # @return [Google::Apis::CloudsearchV1::WrappedResourceKey]
+        attr_accessor :wrapped_resource_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_fix_request = args[:acl_fix_request] if args.key?(:acl_fix_request)
+          @acl_fix_status = args[:acl_fix_status] if args.key?(:acl_fix_status)
+          @can_edit = args[:can_edit] if args.key?(:can_edit)
+          @can_share = args[:can_share] if args.key?(:can_share)
+          @can_view = args[:can_view] if args.key?(:can_view)
+          @drive_action = args[:drive_action] if args.key?(:drive_action)
+          @drive_state = args[:drive_state] if args.key?(:drive_state)
+          @embed_url = args[:embed_url] if args.key?(:embed_url)
+          @encrypted_doc_id = args[:encrypted_doc_id] if args.key?(:encrypted_doc_id)
+          @encrypted_resource_key = args[:encrypted_resource_key] if args.key?(:encrypted_resource_key)
+          @external_mimetype = args[:external_mimetype] if args.key?(:external_mimetype)
+          @id = args[:id] if args.key?(:id)
+          @is_download_restricted = args[:is_download_restricted] if args.key?(:is_download_restricted)
+          @is_owner = args[:is_owner] if args.key?(:is_owner)
+          @legacy_upload_metadata = args[:legacy_upload_metadata] if args.key?(:legacy_upload_metadata)
+          @mimetype = args[:mimetype] if args.key?(:mimetype)
+          @organization_display_name = args[:organization_display_name] if args.key?(:organization_display_name)
+          @shortcut_authorized_item_id = args[:shortcut_authorized_item_id] if args.key?(:shortcut_authorized_item_id)
+          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
+          @thumbnail_height = args[:thumbnail_height] if args.key?(:thumbnail_height)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
+          @thumbnail_width = args[:thumbnail_width] if args.key?(:thumbnail_width)
+          @title = args[:title] if args.key?(:title)
+          @url_fragment = args[:url_fragment] if args.key?(:url_fragment)
+          @wrapped_resource_key = args[:wrapped_resource_key] if args.key?(:wrapped_resource_key)
+        end
+      end
+      
       # Drive mime-type search restricts (e.g. "type:pdf").
       class DriveMimeTypeRestrict
         include Google::Apis::Core::Hashable
@@ -8835,69 +7032,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Metadata used as inputs to the localization that is performed on Dynamite-
-      # originated messages that are incompatible with Hangouts clients. See go/
-      # localization-of-system-messages for more details.
-      class DynamitePlaceholderMetadata
-        include Google::Apis::Core::Hashable
-      
-        # An attachment uploaded in Dynamite and its filename.
-        # Corresponds to the JSON property `attachmentMetadata`
-        # @return [Google::Apis::CloudsearchV1::AttachmentMetadata]
-        attr_accessor :attachment_metadata
-      
-        # A bot sent a message in Dynamite.
-        # Corresponds to the JSON property `botMessageMetadata`
-        # @return [Google::Apis::CloudsearchV1::BotMessageMetadata]
-        attr_accessor :bot_message_metadata
-      
-        # A Calendar event message in Dynamite.
-        # Corresponds to the JSON property `calendarEventMetadata`
-        # @return [Google::Apis::CloudsearchV1::CalendarEventMetadata]
-        attr_accessor :calendar_event_metadata
-      
-        # A message was deleted in Dynamite.
-        # Corresponds to the JSON property `deleteMetadata`
-        # @return [Google::Apis::CloudsearchV1::DeleteMetadata]
-        attr_accessor :delete_metadata
-      
-        # An edit was made in Dynamite.
-        # Corresponds to the JSON property `editMetadata`
-        # @return [Google::Apis::CloudsearchV1::EditMetadata]
-        attr_accessor :edit_metadata
-      
-        # The space URL embedded in the localized string.
-        # Corresponds to the JSON property `spaceUrl`
-        # @return [String]
-        attr_accessor :space_url
-      
-        # A Tasks message in Dynamite.
-        # Corresponds to the JSON property `tasksMetadata`
-        # @return [Google::Apis::CloudsearchV1::TasksMetadata]
-        attr_accessor :tasks_metadata
-      
-        # A Meet initiated in Dynamite and its URL.
-        # Corresponds to the JSON property `videoCallMetadata`
-        # @return [Google::Apis::CloudsearchV1::VideoCallMetadata]
-        attr_accessor :video_call_metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attachment_metadata = args[:attachment_metadata] if args.key?(:attachment_metadata)
-          @bot_message_metadata = args[:bot_message_metadata] if args.key?(:bot_message_metadata)
-          @calendar_event_metadata = args[:calendar_event_metadata] if args.key?(:calendar_event_metadata)
-          @delete_metadata = args[:delete_metadata] if args.key?(:delete_metadata)
-          @edit_metadata = args[:edit_metadata] if args.key?(:edit_metadata)
-          @space_url = args[:space_url] if args.key?(:space_url)
-          @tasks_metadata = args[:tasks_metadata] if args.key?(:tasks_metadata)
-          @video_call_metadata = args[:video_call_metadata] if args.key?(:video_call_metadata)
         end
       end
       
@@ -9011,7 +7145,7 @@ module Google
         end
       end
       
-      # An edit was made in Dynamite.
+      # A message edit in Dynamite inserts a Babel-only item containing this field.
       class EditMetadata
         include Google::Apis::Core::Hashable
       
@@ -9028,10 +7162,33 @@ module Google
       class EmailAddress
         include Google::Apis::Core::Hashable
       
+        # If the value of type is custom, this property contains the custom type string.
+        # Corresponds to the JSON property `customType`
+        # @return [String]
+        attr_accessor :custom_type
+      
         # The email address.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
+      
+        # The URL to send email.
+        # Corresponds to the JSON property `emailUrl`
+        # @return [String]
+        attr_accessor :email_url
+      
+        # Indicates if this is the user's primary email. Only one entry can be marked as
+        # primary.
+        # Corresponds to the JSON property `primary`
+        # @return [Boolean]
+        attr_accessor :primary
+        alias_method :primary?, :primary
+      
+        # The type of the email account. Acceptable values are: "custom", "home", "other"
+        # , "work".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -9039,7 +7196,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_type = args[:custom_type] if args.key?(:custom_type)
           @email_address = args[:email_address] if args.key?(:email_address)
+          @email_url = args[:email_url] if args.key?(:email_url)
+          @primary = args[:primary] if args.key?(:primary)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -9684,6 +7845,34 @@ module Google
         end
       end
       
+      # Annotation metadata for markup formatting
+      class FormatMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Font color is set if and only if format_type is FONT_COLOR. The components are
+        # stored as (alpha << 24) | (red << 16) | (green << 8) | blue. Clients should
+        # always set the alpha component to 0xFF. NEXT TAG: 3
+        # Corresponds to the JSON property `fontColor`
+        # @return [Fixnum]
+        attr_accessor :font_color
+      
+        # LINT.ThenChange(//depot/google3/apps/dynamite/v1/web/datakeys/annotated_span.
+        # proto)
+        # Corresponds to the JSON property `formatType`
+        # @return [String]
+        attr_accessor :format_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @font_color = args[:font_color] if args.key?(:font_color)
+          @format_type = args[:format_type] if args.key?(:format_type)
+        end
+      end
+      
       # Formatting information for a segment.
       class Formatting
         include Google::Apis::Core::Hashable
@@ -10100,6 +8289,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Configuration of the Google Chat in Meet.
+      class GoogleChatConfig
+        include Google::Apis::Core::Hashable
+      
+        # ID of the Chat group.
+        # Corresponds to the JSON property `chatGroupId`
+        # @return [String]
+        attr_accessor :chat_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chat_group_id = args[:chat_group_id] if args.key?(:chat_group_id)
         end
       end
       
@@ -10809,6 +9017,59 @@ module Google
       end
       
       # 
+      class GroupDetailsUpdatedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # NEXT TAG: 3 A GroupDetails proto will store the information pertaining to
+        # single Group.
+        # Corresponds to the JSON property `newGroupDetails`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails]
+        attr_accessor :new_group_details
+      
+        # NEXT TAG: 3 A GroupDetails proto will store the information pertaining to
+        # single Group.
+        # Corresponds to the JSON property `prevGroupDetails`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails]
+        attr_accessor :prev_group_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_group_details = args[:new_group_details] if args.key?(:new_group_details)
+          @prev_group_details = args[:prev_group_details] if args.key?(:prev_group_details)
+        end
+      end
+      
+      # Id representing a group that could be a space, a chat, or a direct message
+      # space. Which ID is set here will determine which group
+      class GroupId
+        include Google::Apis::Core::Hashable
+      
+        # Unique, immutable ID of the Direct Message Space
+        # Corresponds to the JSON property `dmId`
+        # @return [Google::Apis::CloudsearchV1::DmId]
+        attr_accessor :dm_id
+      
+        # Primary key for Space resource.
+        # Corresponds to the JSON property `spaceId`
+        # @return [Google::Apis::CloudsearchV1::SpaceId]
+        attr_accessor :space_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dm_id = args[:dm_id] if args.key?(:dm_id)
+          @space_id = args[:space_id] if args.key?(:space_id)
+        end
+      end
+      
+      # 
       class GroupLinkSharingModificationEvent
         include Google::Apis::Core::Hashable
       
@@ -10824,6 +9085,96 @@ module Google
         # Update properties of this object
         def update!(**args)
           @new_status = args[:new_status] if args.key?(:new_status)
+        end
+      end
+      
+      # 
+      class GroupRetentionSettingsUpdatedMetaData
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `initiator`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :initiator
+      
+        # The settings of retention period of a message or topic.
+        # Corresponds to the JSON property `retentionSettings`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
+        attr_accessor :retention_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
+        end
+      end
+      
+      # Annotation metadata for an GsuiteIntegration artifact.
+      class GsuiteIntegrationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Next Id: 5
+        # Corresponds to the JSON property `activityFeedData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData]
+        attr_accessor :activity_feed_data
+      
+        # This is the internal version of the API proto at google3/google/chat/v1/
+        # gsuite_message_integration.proto Data used to render Assistant suggestions.
+        # See go/bullseye-rendering.
+        # Corresponds to the JSON property `assistantData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData]
+        attr_accessor :assistant_data
+      
+        # 
+        # Corresponds to the JSON property `calendarEventData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData]
+        attr_accessor :calendar_event_data
+      
+        # Data used to render Meet or Google Voice chips in Chat. See go/dynamite-
+        # calling-artifacts-in-chat.
+        # Corresponds to the JSON property `callData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData]
+        attr_accessor :call_data
+      
+        # 
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
+        # A list of all strings that are to be indexed for this 1P chip. Each string in
+        # this list would be the contents of a single string field in the 1P chip. Eg.
+        # For Tasks[title = “hello world”, description = “good bye”]. If we want to
+        # index only the title, this would be set to [“hello world”]. If both title and
+        # description, then this would be [“hello world”, “good bye”]. Please make sure
+        # that the contents of this field is a subset of strings that are rendered as
+        # part of the 1P Chip.
+        # Corresponds to the JSON property `indexableTexts`
+        # @return [Array<String>]
+        attr_accessor :indexable_texts
+      
+        # This is the internal version of the API proto at google3/google/chat/v1/
+        # gsuite_message_integration.proto
+        # Corresponds to the JSON property `tasksData`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData]
+        attr_accessor :tasks_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_feed_data = args[:activity_feed_data] if args.key?(:activity_feed_data)
+          @assistant_data = args[:assistant_data] if args.key?(:assistant_data)
+          @calendar_event_data = args[:calendar_event_data] if args.key?(:calendar_event_data)
+          @call_data = args[:call_data] if args.key?(:call_data)
+          @client_type = args[:client_type] if args.key?(:client_type)
+          @indexable_texts = args[:indexable_texts] if args.key?(:indexable_texts)
+          @tasks_data = args[:tasks_data] if args.key?(:tasks_data)
         end
       end
       
@@ -10861,6 +9212,25 @@ module Google
           @media_type = args[:media_type] if args.key?(:media_type)
           @participant_id = args[:participant_id] if args.key?(:participant_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A message representing the Hangout video start/end events in Babel
+      class HangoutVideoEventMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `hangoutVideoType`
+        # @return [String]
+        attr_accessor :hangout_video_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hangout_video_type = args[:hangout_video_type] if args.key?(:hangout_video_type)
         end
       end
       
@@ -11246,6 +9616,61 @@ module Google
         end
       end
       
+      # Annotation metadata to display system messages for incoming webhook events.
+      # Next Tag: 7
+      class IncomingWebhookChangedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The webhook name at the time of the change. Used in Spanner storage, BE API
+        # responses and FE API responses.
+        # Corresponds to the JSON property `incomingWebhookName`
+        # @return [String]
+        attr_accessor :incoming_webhook_name
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `initiatorId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :initiator_id
+      
+        # User profile information. This user is not necessarily member of a space.
+        # Corresponds to the JSON property `initiatorProfile`
+        # @return [Google::Apis::CloudsearchV1::User]
+        attr_accessor :initiator_profile
+      
+        # The webhook id of the incoming webhook in question. This field should not be
+        # used to load webhook information dynamically and is only present for debugging
+        # purposes. Used in Spanner storage, BE API responses and FE API responses.
+        # Corresponds to the JSON property `obfuscatedIncomingWebhookId`
+        # @return [String]
+        attr_accessor :obfuscated_incoming_webhook_id
+      
+        # Only populated for UPDATED_NAME and UPDATED_NAME_AND_AVATAR events, where the
+        # webhook name was changed. Used in Spanner storage, BE API responses and FE API
+        # responses.
+        # Corresponds to the JSON property `oldIncomingWebhookName`
+        # @return [String]
+        attr_accessor :old_incoming_webhook_name
+      
+        # Used in Spanner storage, BE API responses and FE API responses.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @incoming_webhook_name = args[:incoming_webhook_name] if args.key?(:incoming_webhook_name)
+          @initiator_id = args[:initiator_id] if args.key?(:initiator_id)
+          @initiator_profile = args[:initiator_profile] if args.key?(:initiator_profile)
+          @obfuscated_incoming_webhook_id = args[:obfuscated_incoming_webhook_id] if args.key?(:obfuscated_incoming_webhook_id)
+          @old_incoming_webhook_name = args[:old_incoming_webhook_name] if args.key?(:old_incoming_webhook_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # 
       class IndexItemOptions
         include Google::Apis::Core::Hashable
@@ -11442,6 +9867,70 @@ module Google
         end
       end
       
+      # 
+      class IntegrationConfigMutation
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of an App.
+        # Corresponds to the JSON property `addApp`
+        # @return [Google::Apis::CloudsearchV1::AppId]
+        attr_accessor :add_app
+      
+        # Add a pinned tab using its identifier.
+        # Corresponds to the JSON property `addPinnedItem`
+        # @return [Google::Apis::CloudsearchV1::PinnedItemId]
+        attr_accessor :add_pinned_item
+      
+        # Identifier of an App.
+        # Corresponds to the JSON property `removeApp`
+        # @return [Google::Apis::CloudsearchV1::AppId]
+        attr_accessor :remove_app
+      
+        # Remove an active pinned tab using its identifier.
+        # Corresponds to the JSON property `removePinnedItem`
+        # @return [Google::Apis::CloudsearchV1::PinnedItemId]
+        attr_accessor :remove_pinned_item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_app = args[:add_app] if args.key?(:add_app)
+          @add_pinned_item = args[:add_pinned_item] if args.key?(:add_pinned_item)
+          @remove_app = args[:remove_app] if args.key?(:remove_app)
+          @remove_pinned_item = args[:remove_pinned_item] if args.key?(:remove_pinned_item)
+        end
+      end
+      
+      # Annotation metadata to display system message for integration config updated
+      # event. This metadata is stored in spanner, and can be dispatched to clients
+      # without any field modification or transformation.
+      class IntegrationConfigUpdatedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `initiatorId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :initiator_id
+      
+        # A list of updates applied on the integration config.
+        # Corresponds to the JSON property `mutations`
+        # @return [Array<Google::Apis::CloudsearchV1::IntegrationConfigMutation>]
+        attr_accessor :mutations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initiator_id = args[:initiator_id] if args.key?(:initiator_id)
+          @mutations = args[:mutations] if args.key?(:mutations)
+        end
+      end
+      
       # Represents an interaction between a user and an item.
       class Interaction
         include Google::Apis::Core::Hashable
@@ -11490,6 +9979,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @participant_id = args[:participant_id] if args.key?(:participant_id)
+        end
+      end
+      
+      # Invitee information from a Dynamite invitation. See go/dynamite-invitee-mgmt.
+      class InviteeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email as typed by the user when invited to Room or DM. This value will be
+        # canonicalized and hashed before retained in storage.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `userId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -12039,6 +10554,33 @@ module Google
         end
       end
       
+      # The original UploadMetadata that this DriveMetadata was converted from.
+      class LegacyUploadMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A unique ID generated from legacy UploadMetadata. This is used for interopping
+        # URLs after uploading blob to shared drive. Links in Classic might break
+        # without this. go/drive-file-attachment-interop-from-dynamite.
+        # Corresponds to the JSON property `legacyUniqueId`
+        # @return [String]
+        attr_accessor :legacy_unique_id
+      
+        # Annotation metadata for user Upload artifacts.
+        # Corresponds to the JSON property `uploadMetadata`
+        # @return [Google::Apis::CloudsearchV1::UploadMetadata]
+        attr_accessor :upload_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @legacy_unique_id = args[:legacy_unique_id] if args.key?(:legacy_unique_id)
+          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
+        end
+      end
+      
       # Link metadata, for LINK segments. Anchor text should be stored in the "text"
       # field of the Segment, which can also serve as a fallback.
       class LinkData
@@ -12054,7 +10596,7 @@ module Google
         # for example) relate to the usage of the linked content within the particular
         # post/cent.
         # Corresponds to the JSON property `attachment`
-        # @return [Google::Apis::CloudsearchV1::Attachment]
+        # @return [Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment]
         attr_accessor :attachment
       
         # The hint to use when rendering the associated attachment. Ignored if there is
@@ -12507,6 +11049,57 @@ module Google
       end
       
       # 
+      class Member
+        include Google::Apis::Core::Hashable
+      
+        # Roster profile information.
+        # Corresponds to the JSON property `roster`
+        # @return [Google::Apis::CloudsearchV1::Roster]
+        attr_accessor :roster
+      
+        # User profile information. This user is not necessarily member of a space.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::CloudsearchV1::User]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @roster = args[:roster] if args.key?(:roster)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Eventually this can be updated to a oneOf User, Space (for nested spaces),
+      # Bots or Service, as and when these use cases come up.
+      class MemberId
+        include Google::Apis::Core::Hashable
+      
+        # Primary key for Roster resource.
+        # Corresponds to the JSON property `rosterId`
+        # @return [Google::Apis::CloudsearchV1::RosterId]
+        attr_accessor :roster_id
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `userId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @roster_id = args[:roster_id] if args.key?(:roster_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # 
       class MembershipChangeEvent
         include Google::Apis::Core::Hashable
       
@@ -12533,6 +11126,55 @@ module Google
         def update!(**args)
           @leave_reason = args[:leave_reason] if args.key?(:leave_reason)
           @participant_id = args[:participant_id] if args.key?(:participant_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Annotation metadata to display system messages for membership changes.
+      class MembershipChangedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `affectedMemberProfiles`
+        # @return [Array<Google::Apis::CloudsearchV1::Member>]
+        attr_accessor :affected_member_profiles
+      
+        # List of users and rosters whose membership status changed.
+        # Corresponds to the JSON property `affectedMembers`
+        # @return [Array<Google::Apis::CloudsearchV1::MemberId>]
+        attr_accessor :affected_members
+      
+        # 
+        # Corresponds to the JSON property `affectedMemberships`
+        # @return [Array<Google::Apis::CloudsearchV1::AffectedMembership>]
+        attr_accessor :affected_memberships
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `initiator`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :initiator
+      
+        # User profile information. This user is not necessarily member of a space.
+        # Corresponds to the JSON property `initiatorProfile`
+        # @return [Google::Apis::CloudsearchV1::User]
+        attr_accessor :initiator_profile
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_member_profiles = args[:affected_member_profiles] if args.key?(:affected_member_profiles)
+          @affected_members = args[:affected_members] if args.key?(:affected_members)
+          @affected_memberships = args[:affected_memberships] if args.key?(:affected_memberships)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @initiator_profile = args[:initiator_profile] if args.key?(:initiator_profile)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -12608,23 +11250,262 @@ module Google
         end
       end
       
-      # The content of a chat message, which includes 0 or more segments along with 0
-      # or more embeds, which represent various attachment types (like photos).
-      class MessageContent
+      # Message posted to a Space.
+      class Message
         include Google::Apis::Core::Hashable
       
-        # Items attached to this message, such as photos. This should *NOT* be set by
-        # clients. It will be automatically set from media uploaded along with this
-        # request and using the information provided in existing_media.
-        # Corresponds to the JSON property `attachment`
-        # @return [Array<Google::Apis::CloudsearchV1::Attachment>]
-        attr_accessor :attachment
+        # Annotations parsed and extracted from the text body.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::CloudsearchV1::Annotation>]
+        attr_accessor :annotations
       
-        # The text part of the message content. Segments are concatenated together to
-        # yield the full message. A message can have zero or more segments.
-        # Corresponds to the JSON property `segment`
-        # @return [Array<Google::Apis::CloudsearchV1::Segment>]
-        attr_accessor :segment
+        # Optional field for apps overriding display info
+        # Corresponds to the JSON property `appProfile`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile]
+        attr_accessor :app_profile
+      
+        # Attachments parsed from incoming webhooks
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::CloudsearchV1::Attachment>]
+        attr_accessor :attachments
+      
+        # Stores tombstone message attributes: go/tombstone-message-attributes-overview
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::CloudsearchV1::MessageAttributes]
+        attr_accessor :attributes
+      
+        # Responses from bots indicating if extra auth/config is needed.
+        # Corresponds to the JSON property `botResponses`
+        # @return [Array<Google::Apis::CloudsearchV1::BotResponse>]
+        attr_accessor :bot_responses
+      
+        # Communal labels associated with a message. These exist on the message itself
+        # regardless of which user fetches them. Order of entries is arbitrary and will
+        # not list duplicates of the same label_id. See go/chat-labels-design for
+        # details.
+        # Corresponds to the JSON property `communalLabels`
+        # @return [Array<Google::Apis::CloudsearchV1::CommunalLabelTag>]
+        attr_accessor :communal_labels
+      
+        # Summarized info of content reports. Usually less expensive to fetch than to
+        # fetch all detailed reports. Set only when the request asks for it.
+        # Corresponds to the JSON property `contentReportSummary`
+        # @return [Google::Apis::CloudsearchV1::ContentReportSummary]
+        attr_accessor :content_report_summary
+      
+        # Time when the Message was posted in microseconds.
+        # Corresponds to the JSON property `createTime`
+        # @return [Fixnum]
+        attr_accessor :create_time
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `creatorId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :creator_id
+      
+        # Indicates who can delete the message. This field is set on the read path (e.g.
+        # ListTopics) but doesn’t have any effect on the write path (e.g.
+        # CreateMessageRequest).
+        # Corresponds to the JSON property `deletableBy`
+        # @return [String]
+        attr_accessor :deletable_by
+      
+        # Time when the Message was deleted in microseconds. This field is set to
+        # nonzero value only for Messages deleted globally.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [Fixnum]
+        attr_accessor :delete_time
+      
+        # Time when the Message was per-user deleted by the message requester in
+        # microseconds. This field is set to nonzero value only for Message per-user
+        # deleted by the requester.
+        # Corresponds to the JSON property `deleteTimeForRequester`
+        # @return [Fixnum]
+        attr_accessor :delete_time_for_requester
+      
+        # Was this message deleted by Vault (Only used for Vault support) This is false
+        # if message is live or message was deleted by user.
+        # Corresponds to the JSON property `deletedByVault`
+        # @return [Boolean]
+        attr_accessor :deleted_by_vault
+        alias_method :deleted_by_vault?, :deleted_by_vault
+      
+        # Data Loss Prevention scan information for this message. Messages are evaluated
+        # in the backend on create message/topic and edit message actions. DEPRECATED:
+        # use dlp_scan_summary instead.
+        # Corresponds to the JSON property `dlpScanOutcome`
+        # @return [String]
+        attr_accessor :dlp_scan_outcome
+      
+        # A summary of a DLP scan event. This is a summary and should contain the
+        # minimum amount of data required to identify and process DLP scans. It is
+        # written to Starcast and encoded & returned to the client on attachment upload.
+        # Corresponds to the JSON property `dlpScanSummary`
+        # @return [Google::Apis::CloudsearchV1::DlpScanSummary]
+        attr_accessor :dlp_scan_summary
+      
+        # Indicates who can edit the message. This field is set on the read path (e.g.
+        # ListTopics) but doesn’t have any effect on the write path (e.g.
+        # CreateMessageRequest).
+        # Corresponds to the JSON property `editableBy`
+        # @return [String]
+        attr_accessor :editable_by
+      
+        # A plain-text description of the attachment, used when clients cannot display
+        # formatted attachment (e.g. mobile push notifications).
+        # Corresponds to the JSON property `fallbackText`
+        # @return [String]
+        attr_accessor :fallback_text
+      
+        # Primary key for Message resource.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::CloudsearchV1::MessageId]
+        attr_accessor :id
+      
+        # Output only. Indicates if the message is an inline reply. Set to true only if
+        # the message's ParentPath is non-NULL. Currently, only inline replies have non-
+        # NULL ParentPath. See go/chat-be-inline-reply-indicator.
+        # Corresponds to the JSON property `isInlineReply`
+        # @return [Boolean]
+        attr_accessor :is_inline_reply
+        alias_method :is_inline_reply?, :is_inline_reply
+      
+        # If the message was edited by a user, timestamp of the last edit, in
+        # microseconds.
+        # Corresponds to the JSON property `lastEditTime`
+        # @return [Fixnum]
+        attr_accessor :last_edit_time
+      
+        # Time when the Message text was last updated in microseconds.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [Fixnum]
+        attr_accessor :last_update_time
+      
+        # A unique id specified on the client side.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # The payload(restricted to 1P applications) to be stored with a specific
+        # message.
+        # Corresponds to the JSON property `messageIntegrationPayload`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload]
+        attr_accessor :message_integration_payload
+      
+        # Where the message was posted from
+        # Corresponds to the JSON property `messageOrigin`
+        # @return [String]
+        attr_accessor :message_origin
+      
+        # State of the message, indicating whether the message is visible to all members
+        # in the group or is only visible to the sender only, or the
+        # private_message_viewer if it is set.
+        # Corresponds to the JSON property `messageState`
+        # @return [String]
+        attr_accessor :message_state
+      
+        # Indicates if this message contains any suggestions that were provided by any
+        # Apps.
+        # Corresponds to the JSON property `originAppSuggestions`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion>]
+        attr_accessor :origin_app_suggestions
+      
+        # Personal labels associated with a message for the viewing user. Order of
+        # entries is arbitrary and will not list duplicates of the same label_id. See go/
+        # chat-labels-design for details. NOTE: This will be unpopulated in the case of
+        # SpaceChangelog events.
+        # Corresponds to the JSON property `personalLabels`
+        # @return [Array<Google::Apis::CloudsearchV1::PersonalLabelTag>]
+        attr_accessor :personal_labels
+      
+        # A list of per-user private information. This is deprecated, because we no
+        # longer plan to support partially private messages or private messages for
+        # multiple users. The message_state and private_message_viewer fields should be
+        # sufficient for this infrastructure.
+        # Corresponds to the JSON property `privateMessageInfos`
+        # @return [Array<Google::Apis::CloudsearchV1::PrivateMessageInfo>]
+        attr_accessor :private_message_infos
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `privateMessageViewer`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :private_message_viewer
+      
+        # Container for storing properties applicable to messages. For now (until
+        # storage consolidation is complete), it will only be used for babel props. In
+        # the future it could be used to house Dynamite properties for experimenting/
+        # rapid prototyping.
+        # Corresponds to the JSON property `props`
+        # @return [Google::Apis::CloudsearchV1::MessageProps]
+        attr_accessor :props
+      
+        # Output only. Whether this message has been quoted by another message or not.
+        # Used by clients to handle message edit flows for messages that have been
+        # quoted.
+        # Corresponds to the JSON property `quotedByState`
+        # @return [String]
+        attr_accessor :quoted_by_state
+      
+        # Quote metadata: go/message-quoting-be-dd-v2. This proto is only used on the
+        # read path. For the request proto, refer to `QuotedMessagePayload`. Fields are
+        # either derived from storage directly from the Item this metadata belongs to,
+        # or is hydrated at read time from another Item read. Note:
+        # QuotedMessageMetadata proto is similar to Message proto with less field.
+        # Reasons to differtiate QuotedMessageMetadata from Message are: 1. Not all
+        # fields for original message is applicable for quoted message. (E.g. reactions,
+        # is_inline_reply, etc.), thus separting out for confusion. 2. We don't support
+        # nested message quoting. For more detailed discussion, please see http://shortn/
+        # _VsSXQb2C7P. For future reference: if your new feature/field will be supported
+        # in message quoting feature (go/chat-quoting-prd), you will need to add that
+        # field within QuotedMessageMetadata
+        # Corresponds to the JSON property `quotedMessageMetadata`
+        # @return [Google::Apis::CloudsearchV1::QuotedMessageMetadata]
+        attr_accessor :quoted_message_metadata
+      
+        # A list of user reactions to this message. Ordered by the timestamp of the
+        # first reaction, ascending (oldest to newest).
+        # Corresponds to the JSON property `reactions`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction>]
+        attr_accessor :reactions
+      
+        # Output only. Details of content reports. Set only when the request asks for it.
+        # Corresponds to the JSON property `reports`
+        # @return [Array<Google::Apis::CloudsearchV1::ContentReport>]
+        attr_accessor :reports
+      
+        # The settings of retention period of a message or topic.
+        # Corresponds to the JSON property `retentionSettings`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
+        attr_accessor :retention_settings
+      
+        # A client-specified string that can be used to uniquely identify a message in a
+        # space, in lieu of `id.message_id`.
+        # Corresponds to the JSON property `secondaryMessageKey`
+        # @return [String]
+        attr_accessor :secondary_message_key
+      
+        # Plaintext body of the Message.
+        # Corresponds to the JSON property `textBody`
+        # @return [String]
+        attr_accessor :text_body
+      
+        # Tombstoning is the act of leaving a contextual trace when deleting a message.
+        # See more: go/tombstone-prd, go/hub-dynamite-tombstones-server-design-v2.
+        # Corresponds to the JSON property `tombstoneMetadata`
+        # @return [Google::Apis::CloudsearchV1::TombstoneMetadata]
+        attr_accessor :tombstone_metadata
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `updaterId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :updater_id
+      
+        # UploadMetadata b/36864213 is an ongoing effort to move UploadMetadata out of
+        # annotations field and save it to upload_metadata field only. After the
+        # migration, UploadMetadata will only be saved in this field.
+        # Corresponds to the JSON property `uploadMetadata`
+        # @return [Array<Google::Apis::CloudsearchV1::UploadMetadata>]
+        attr_accessor :upload_metadata
       
         def initialize(**args)
            update!(**args)
@@ -12632,8 +11513,164 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @attachment = args[:attachment] if args.key?(:attachment)
-          @segment = args[:segment] if args.key?(:segment)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @app_profile = args[:app_profile] if args.key?(:app_profile)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @bot_responses = args[:bot_responses] if args.key?(:bot_responses)
+          @communal_labels = args[:communal_labels] if args.key?(:communal_labels)
+          @content_report_summary = args[:content_report_summary] if args.key?(:content_report_summary)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_id = args[:creator_id] if args.key?(:creator_id)
+          @deletable_by = args[:deletable_by] if args.key?(:deletable_by)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @delete_time_for_requester = args[:delete_time_for_requester] if args.key?(:delete_time_for_requester)
+          @deleted_by_vault = args[:deleted_by_vault] if args.key?(:deleted_by_vault)
+          @dlp_scan_outcome = args[:dlp_scan_outcome] if args.key?(:dlp_scan_outcome)
+          @dlp_scan_summary = args[:dlp_scan_summary] if args.key?(:dlp_scan_summary)
+          @editable_by = args[:editable_by] if args.key?(:editable_by)
+          @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
+          @id = args[:id] if args.key?(:id)
+          @is_inline_reply = args[:is_inline_reply] if args.key?(:is_inline_reply)
+          @last_edit_time = args[:last_edit_time] if args.key?(:last_edit_time)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @message_integration_payload = args[:message_integration_payload] if args.key?(:message_integration_payload)
+          @message_origin = args[:message_origin] if args.key?(:message_origin)
+          @message_state = args[:message_state] if args.key?(:message_state)
+          @origin_app_suggestions = args[:origin_app_suggestions] if args.key?(:origin_app_suggestions)
+          @personal_labels = args[:personal_labels] if args.key?(:personal_labels)
+          @private_message_infos = args[:private_message_infos] if args.key?(:private_message_infos)
+          @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
+          @props = args[:props] if args.key?(:props)
+          @quoted_by_state = args[:quoted_by_state] if args.key?(:quoted_by_state)
+          @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
+          @reactions = args[:reactions] if args.key?(:reactions)
+          @reports = args[:reports] if args.key?(:reports)
+          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
+          @secondary_message_key = args[:secondary_message_key] if args.key?(:secondary_message_key)
+          @text_body = args[:text_body] if args.key?(:text_body)
+          @tombstone_metadata = args[:tombstone_metadata] if args.key?(:tombstone_metadata)
+          @updater_id = args[:updater_id] if args.key?(:updater_id)
+          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
+        end
+      end
+      
+      # Stores tombstone message attributes: go/tombstone-message-attributes-overview
+      class MessageAttributes
+        include Google::Apis::Core::Hashable
+      
+        # If true: message is a tombstone in the client. Default false.
+        # Corresponds to the JSON property `isTombstone`
+        # @return [Boolean]
+        attr_accessor :is_tombstone
+        alias_method :is_tombstone?, :is_tombstone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_tombstone = args[:is_tombstone] if args.key?(:is_tombstone)
+        end
+      end
+      
+      # Primary key for Message resource.
+      class MessageId
+        include Google::Apis::Core::Hashable
+      
+        # Opaque, server-assigned ID of the Message. While this ID is guaranteed to be
+        # unique within the Space, it's not guaranteed to be globally unique.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # Primary key identifying Message resource's immediate parent. For top-level
+        # Messages, either topic_id or chat_id is populated. For replies, message_id is
+        # populated with the topic Message's ID.
+        # Corresponds to the JSON property `parentId`
+        # @return [Google::Apis::CloudsearchV1::MessageParentId]
+        attr_accessor :parent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @parent_id = args[:parent_id] if args.key?(:parent_id)
+        end
+      end
+      
+      # 
+      class MessageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Message posted to a Space.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::CloudsearchV1::Message]
+        attr_accessor :message
+      
+        # Searcher's membership state in the space where the message is posted.
+        # Corresponds to the JSON property `searcherMembershipState`
+        # @return [String]
+        attr_accessor :searcher_membership_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @searcher_membership_state = args[:searcher_membership_state] if args.key?(:searcher_membership_state)
+        end
+      end
+      
+      # Primary key identifying Message resource's immediate parent. For top-level
+      # Messages, either topic_id or chat_id is populated. For replies, message_id is
+      # populated with the topic Message's ID.
+      class MessageParentId
+        include Google::Apis::Core::Hashable
+      
+        # ID of the Topic this Message is posted to. NEXT TAG : 5
+        # Corresponds to the JSON property `topicId`
+        # @return [Google::Apis::CloudsearchV1::TopicId]
+        attr_accessor :topic_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic_id = args[:topic_id] if args.key?(:topic_id)
+        end
+      end
+      
+      # Container for storing properties applicable to messages. For now (until
+      # storage consolidation is complete), it will only be used for babel props. In
+      # the future it could be used to house Dynamite properties for experimenting/
+      # rapid prototyping.
+      class MessageProps
+        include Google::Apis::Core::Hashable
+      
+        # Container for Babel (Hangouts Classic) only message properties. The properties
+        # here will not be consumed by Dynamite clients. They are relevant only for
+        # Hangouts Classic.
+        # Corresponds to the JSON property `babelProps`
+        # @return [Google::Apis::CloudsearchV1::BabelMessageProps]
+        attr_accessor :babel_props
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @babel_props = args[:babel_props] if args.key?(:babel_props)
         end
       end
       
@@ -13364,6 +12401,27 @@ module Google
         end
       end
       
+      # An individual instance (or "tag") of a label configured as a personal type
+      # that's associated with a message.
+      class PersonalLabelTag
+        include Google::Apis::Core::Hashable
+      
+        # A string ID representing the label. Possible ID values are documented at go/
+        # chat-labels-howto:ids. Examples: "^t" for "Starred", "^nu" for "Nudged".
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_id = args[:label_id] if args.key?(:label_id)
+        end
+      end
+      
       # Phone access contains information required to dial into a conference using a
       # regional phone number and a PIN that is specific to that phone number.
       class PhoneAccess
@@ -13455,6 +12513,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class PinnedItemId
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for a Drive file (e.g. Docs, Sheets, Slides).
+        # Corresponds to the JSON property `driveId`
+        # @return [String]
+        attr_accessor :drive_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_id = args[:drive_id] if args.key?(:drive_id)
         end
       end
       
@@ -13851,6 +12928,57 @@ module Google
           @square = args[:square] if args.key?(:square)
           @youtube_user = args[:youtube_user] if args.key?(:youtube_user)
           @zwieback_session = args[:zwieback_session] if args.key?(:zwieback_session)
+        end
+      end
+      
+      # Private message information specific to a given user.
+      class PrivateMessageInfo
+        include Google::Apis::Core::Hashable
+      
+        # Annotations private to `@code userId`.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::CloudsearchV1::Annotation>]
+        attr_accessor :annotations
+      
+        # Attachments private to `@code userId`.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::CloudsearchV1::Attachment>]
+        attr_accessor :attachments
+      
+        # 
+        # Corresponds to the JSON property `contextualAddOnMarkup`
+        # @return [Array<Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup>]
+        attr_accessor :contextual_add_on_markup
+      
+        # 
+        # Corresponds to the JSON property `gsuiteIntegrationMetadata`
+        # @return [Array<Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata>]
+        attr_accessor :gsuite_integration_metadata
+      
+        # Text private to `@code user_id`. Initial restriction: Only one of public text
+        # or private text is rendered on the client. So if public text is set, private
+        # text is ignored.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `userId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @contextual_add_on_markup = args[:contextual_add_on_markup] if args.key?(:contextual_add_on_markup)
+          @gsuite_integration_metadata = args[:gsuite_integration_metadata] if args.key?(:gsuite_integration_metadata)
+          @text = args[:text] if args.key?(:text)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -14525,6 +13653,95 @@ module Google
         end
       end
       
+      # Quote metadata: go/message-quoting-be-dd-v2. This proto is only used on the
+      # read path. For the request proto, refer to `QuotedMessagePayload`. Fields are
+      # either derived from storage directly from the Item this metadata belongs to,
+      # or is hydrated at read time from another Item read. Note:
+      # QuotedMessageMetadata proto is similar to Message proto with less field.
+      # Reasons to differtiate QuotedMessageMetadata from Message are: 1. Not all
+      # fields for original message is applicable for quoted message. (E.g. reactions,
+      # is_inline_reply, etc.), thus separting out for confusion. 2. We don't support
+      # nested message quoting. For more detailed discussion, please see http://shortn/
+      # _VsSXQb2C7P. For future reference: if your new feature/field will be supported
+      # in message quoting feature (go/chat-quoting-prd), you will need to add that
+      # field within QuotedMessageMetadata
+      class QuotedMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Snapshot of the annotations of the quoted message.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::CloudsearchV1::Annotation>]
+        attr_accessor :annotations
+      
+        # Optional field for apps overriding display info
+        # Corresponds to the JSON property `appProfile`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile]
+        attr_accessor :app_profile
+      
+        # Output only. The bot attachment state of the quoted message. Used by clients
+        # to display a bot attachment indicator in the UI.
+        # Corresponds to the JSON property `botAttachmentState`
+        # @return [String]
+        attr_accessor :bot_attachment_state
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `creatorId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :creator_id
+      
+        # The `last_update_time` of the original message when the client initiated the
+        # quote creation. This is derived from the request payload passed from clients.
+        # Used to fetch the quoted message contents at a specific time on the read path.
+        # This field is populated from storage directly.
+        # Corresponds to the JSON property `lastUpdateTimeWhenQuotedMicros`
+        # @return [Fixnum]
+        attr_accessor :last_update_time_when_quoted_micros
+      
+        # Primary key for Message resource.
+        # Corresponds to the JSON property `messageId`
+        # @return [Google::Apis::CloudsearchV1::MessageId]
+        attr_accessor :message_id
+      
+        # Output only. The state of the quoted message. Used by clients to display
+        # tombstones for quotes that reference a deleted message.
+        # Corresponds to the JSON property `messageState`
+        # @return [String]
+        attr_accessor :message_state
+      
+        # The settings of retention period of a message or topic.
+        # Corresponds to the JSON property `retentionSettings`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
+        attr_accessor :retention_settings
+      
+        # Output only. Snapshot of the text body of the quoted message.
+        # Corresponds to the JSON property `textBody`
+        # @return [String]
+        attr_accessor :text_body
+      
+        # Output only. Upload metadata of the quoted message. NEXT TAG: 11
+        # Corresponds to the JSON property `uploadMetadata`
+        # @return [Array<Google::Apis::CloudsearchV1::UploadMetadata>]
+        attr_accessor :upload_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @app_profile = args[:app_profile] if args.key?(:app_profile)
+          @bot_attachment_state = args[:bot_attachment_state] if args.key?(:bot_attachment_state)
+          @creator_id = args[:creator_id] if args.key?(:creator_id)
+          @last_update_time_when_quoted_micros = args[:last_update_time_when_quoted_micros] if args.key?(:last_update_time_when_quoted_micros)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @message_state = args[:message_state] if args.key?(:message_state)
+          @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
+          @text_body = args[:text_body] if args.key?(:text_body)
+          @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
+        end
+      end
+      
       # Principal associated with a given RBAC role. This principal is used by Sphinx
       # Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-rbacz-
       # design).
@@ -14602,6 +13819,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @emoji = args[:emoji] if args.key?(:emoji)
+        end
+      end
+      
+      # 
+      class ReadReceiptsSettingsUpdatedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The new read receipts state.
+        # Corresponds to the JSON property `readReceiptsEnabled`
+        # @return [Boolean]
+        attr_accessor :read_receipts_enabled
+        alias_method :read_receipts_enabled?, :read_receipts_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_receipts_enabled = args[:read_receipts_enabled] if args.key?(:read_receipts_enabled)
         end
       end
       
@@ -14828,6 +14065,25 @@ module Google
         end
       end
       
+      # A list of capabilities that are used in this message.
+      class RequiredMessageFeaturesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requiredFeatures`
+        # @return [Array<String>]
+        attr_accessor :required_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_features = args[:required_features] if args.key?(:required_features)
+        end
+      end
+      
       # 
       class ResetSearchApplicationRequest
         include Google::Apis::Core::Hashable
@@ -14893,6 +14149,11 @@ module Google
       class ResponseDebugInfo
         include Google::Apis::Core::Hashable
       
+        # Experiments enabled in QAPI.
+        # Corresponds to the JSON property `enabledExperiments`
+        # @return [Array<Fixnum>]
+        attr_accessor :enabled_experiments
+      
         # General debug info formatted for display.
         # Corresponds to the JSON property `formattedDebugInfo`
         # @return [String]
@@ -14904,6 +14165,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enabled_experiments = args[:enabled_experiments] if args.key?(:enabled_experiments)
           @formatted_debug_info = args[:formatted_debug_info] if args.key?(:formatted_debug_info)
         end
       end
@@ -15083,6 +14345,155 @@ module Google
         # Update properties of this object
         def update!(**args)
           @importance = args[:importance] if args.key?(:importance)
+        end
+      end
+      
+      # 
+      class RoomRenameMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `newName`
+        # @return [String]
+        attr_accessor :new_name
+      
+        # NEXT_TAG: 3
+        # Corresponds to the JSON property `prevName`
+        # @return [String]
+        attr_accessor :prev_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_name = args[:new_name] if args.key?(:new_name)
+          @prev_name = args[:prev_name] if args.key?(:prev_name)
+        end
+      end
+      
+      # 
+      class RoomUpdatedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groupDetailsMetadata`
+        # @return [Google::Apis::CloudsearchV1::GroupDetailsUpdatedMetadata]
+        attr_accessor :group_details_metadata
+      
+        # 
+        # Corresponds to the JSON property `groupLinkSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :group_link_sharing_enabled
+        alias_method :group_link_sharing_enabled?, :group_link_sharing_enabled
+      
+        # User profile information. This user is not necessarily member of a space.
+        # Corresponds to the JSON property `initiator`
+        # @return [Google::Apis::CloudsearchV1::User]
+        attr_accessor :initiator
+      
+        # The type of the user who initiated this room update.
+        # Corresponds to the JSON property `initiatorType`
+        # @return [String]
+        attr_accessor :initiator_type
+      
+        # What was updated in the room.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `renameMetadata`
+        # @return [Google::Apis::CloudsearchV1::RoomRenameMetadata]
+        attr_accessor :rename_metadata
+      
+        # DEPRECATED: See GroupVisibility proto definition.
+        # Corresponds to the JSON property `visibility`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_details_metadata = args[:group_details_metadata] if args.key?(:group_details_metadata)
+          @group_link_sharing_enabled = args[:group_link_sharing_enabled] if args.key?(:group_link_sharing_enabled)
+          @initiator = args[:initiator] if args.key?(:initiator)
+          @initiator_type = args[:initiator_type] if args.key?(:initiator_type)
+          @name = args[:name] if args.key?(:name)
+          @rename_metadata = args[:rename_metadata] if args.key?(:rename_metadata)
+          @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # Roster profile information.
+      class Roster
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `avatarUrl`
+        # @return [String]
+        attr_accessor :avatar_url
+      
+        # Primary key for Roster resource.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::CloudsearchV1::RosterId]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `membershipCount`
+        # @return [Fixnum]
+        attr_accessor :membership_count
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Roster gaia key, usually an email address. Set in looking up rosters response.
+        # Corresponds to the JSON property `rosterGaiaKey`
+        # @return [String]
+        attr_accessor :roster_gaia_key
+      
+        # Roster deletion state - considered active unless set to deleted
+        # Corresponds to the JSON property `rosterState`
+        # @return [String]
+        attr_accessor :roster_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
+          @id = args[:id] if args.key?(:id)
+          @membership_count = args[:membership_count] if args.key?(:membership_count)
+          @name = args[:name] if args.key?(:name)
+          @roster_gaia_key = args[:roster_gaia_key] if args.key?(:roster_gaia_key)
+          @roster_state = args[:roster_state] if args.key?(:roster_state)
+        end
+      end
+      
+      # Primary key for Roster resource.
+      class RosterId
+        include Google::Apis::Core::Hashable
+      
+        # Opaque, server-assigned ID of the Roster.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -16163,6 +15574,56 @@ module Google
         end
       end
       
+      # Annotation metadata for slash commands (/).
+      class SlashCommandMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Hint string for the arguments expected by the slash command.
+        # Corresponds to the JSON property `argumentsHint`
+        # @return [String]
+        attr_accessor :arguments_hint
+      
+        # Unique id for the slash command.
+        # Corresponds to the JSON property `commandId`
+        # @return [Fixnum]
+        attr_accessor :command_id
+      
+        # Name of the slash command.
+        # Corresponds to the JSON property `commandName`
+        # @return [String]
+        attr_accessor :command_name
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :id
+      
+        # Whether or not this slash command should trigger a dialog.
+        # Corresponds to the JSON property `triggersDialog`
+        # @return [Boolean]
+        attr_accessor :triggers_dialog
+        alias_method :triggers_dialog?, :triggers_dialog
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments_hint = args[:arguments_hint] if args.key?(:arguments_hint)
+          @command_id = args[:command_id] if args.key?(:command_id)
+          @command_name = args[:command_name] if args.key?(:command_name)
+          @id = args[:id] if args.key?(:id)
+          @triggers_dialog = args[:triggers_dialog] if args.key?(:triggers_dialog)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Snippet of the search result, which summarizes the content of the resulting
       # page.
       class Snippet
@@ -16187,6 +15648,45 @@ module Google
         def update!(**args)
           @match_ranges = args[:match_ranges] if args.key?(:match_ranges)
           @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # An Attachment represents a linked entity associated with a piece of social
+      # content. This may be a 1st-party or 3rd-party entity. In the Papyrus context,
+      # an Attachment is part of a Cent, and sits alongside the main content of the
+      # cent, which is represented as a sequence of Segments. Right now an Attachment
+      # is just a wrapper around an Embed, but we provide the extra layer of
+      # abstraction since, as Embeds move to separate storage in Briefcase, we may
+      # want to add additional fields that are not part of the Embed proper, but that (
+      # for example) relate to the usage of the linked content within the particular
+      # post/cent.
+      class SocialCommonAttachmentAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Represents an embedded object in an update. This is a wrapper class that can
+        # contain a single specific item proto in an extension field. Think of it as a
+        # base class like `Message` in Java. Each item proto must declare that it
+        # extends this proto: message ExampleObject ` option (item_type) =
+        # EXAMPLE_OBJECT; extend EmbedClientItem ` optional ExampleObject example_object
+        # = ; ` ` See go/es-embeds for details.
+        # Corresponds to the JSON property `embedItem`
+        # @return [Google::Apis::CloudsearchV1::EmbedClientItem]
+        attr_accessor :embed_item
+      
+        # An id to uniquely identify an attachment when several attachments are in a
+        # collection.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embed_item = args[:embed_item] if args.key?(:embed_item)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -16394,6 +15894,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_importance = args[:source_importance] if args.key?(:source_importance)
+        end
+      end
+      
+      # Primary key for Space resource.
+      class SpaceId
+        include Google::Apis::Core::Hashable
+      
+        # Unique, immutable ID of the Space
+        # Corresponds to the JSON property `spaceId`
+        # @return [String]
+        attr_accessor :space_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space_id = args[:space_id] if args.key?(:space_id)
         end
       end
       
@@ -16754,6 +16273,57 @@ module Google
         end
       end
       
+      # Urls with additional bot related information.
+      class SupportUrls
+        include Google::Apis::Core::Hashable
+      
+        # Link to the admin configuration webpage for the bot. Configured by Pantheon,
+        # may be empty.
+        # Corresponds to the JSON property `adminConfigUrl`
+        # @return [String]
+        attr_accessor :admin_config_url
+      
+        # Link to the deletion policy webpage for the bot. Configured by Pantheon, may
+        # be empty.
+        # Corresponds to the JSON property `deletionPolicyUrl`
+        # @return [String]
+        attr_accessor :deletion_policy_url
+      
+        # Link to the privacy policy webpage for the bot. May be empty.
+        # Corresponds to the JSON property `privacyPolicyUrl`
+        # @return [String]
+        attr_accessor :privacy_policy_url
+      
+        # Link to the setup webpage for the bot. Configured by Pantheon, may be empty.
+        # Corresponds to the JSON property `setupUrl`
+        # @return [String]
+        attr_accessor :setup_url
+      
+        # Link to the support webpage for the developer of the bot. May be empty.
+        # Corresponds to the JSON property `supportUrl`
+        # @return [String]
+        attr_accessor :support_url
+      
+        # Link to the terms of service webpage for the bot. May be empty.
+        # Corresponds to the JSON property `tosUrl`
+        # @return [String]
+        attr_accessor :tos_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_config_url = args[:admin_config_url] if args.key?(:admin_config_url)
+          @deletion_policy_url = args[:deletion_policy_url] if args.key?(:deletion_policy_url)
+          @privacy_policy_url = args[:privacy_policy_url] if args.key?(:privacy_policy_url)
+          @setup_url = args[:setup_url] if args.key?(:setup_url)
+          @support_url = args[:support_url] if args.key?(:support_url)
+          @tos_url = args[:tos_url] if args.key?(:tos_url)
+        end
+      end
+      
       # 
       class SwitchWidget
         include Google::Apis::Core::Hashable
@@ -16795,19 +16365,6 @@ module Google
           @on_change = args[:on_change] if args.key?(:on_change)
           @selected = args[:selected] if args.key?(:selected)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A Tasks message in Dynamite.
-      class TasksMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -17166,6 +16723,26 @@ module Google
         end
       end
       
+      # Tombstoning is the act of leaving a contextual trace when deleting a message.
+      # See more: go/tombstone-prd, go/hub-dynamite-tombstones-server-design-v2.
+      class TombstoneMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Indicates the type of Tombstone.
+        # Corresponds to the JSON property `tombstoneType`
+        # @return [String]
+        attr_accessor :tombstone_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tombstone_type = args[:tombstone_type] if args.key?(:tombstone_type)
+        end
+      end
+      
       # The Toolbar markup has been deprecated. The information is now specified in
       # the manifest.
       class Toolbar
@@ -17195,6 +16772,36 @@ module Google
           @color = args[:color] if args.key?(:color)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
+      class TopicId
+        include Google::Apis::Core::Hashable
+      
+        # Id representing a group that could be a space, a chat, or a direct message
+        # space. Which ID is set here will determine which group
+        # Corresponds to the JSON property `groupId`
+        # @return [Google::Apis::CloudsearchV1::GroupId]
+        attr_accessor :group_id
+      
+        # Opaque, server-assigned ID of the Topic. While this ID is guaranteed to be
+        # unique within the Space, it's not guaranteed to be globally unique. Internal
+        # usage: this field can be empty in the following cases: 1. To create the first
+        # message in a topic. 2. To list last N messages of a Space (regardless of topic)
+        # .
+        # Corresponds to the JSON property `topicId`
+        # @return [String]
+        attr_accessor :topic_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @topic_id = args[:topic_id] if args.key?(:topic_id)
         end
       end
       
@@ -17448,6 +17055,325 @@ module Google
         end
       end
       
+      # Annotation metadata for user Upload artifacts.
+      class UploadMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Opaque token. Clients shall simply pass it back to the Backend. This field
+        # will NOT be saved into storage.
+        # Corresponds to the JSON property `attachmentToken`
+        # @return [String]
+        attr_accessor :attachment_token
+      
+        # Metadata used only in Dynamite backend for uploaded attachments.
+        # Corresponds to the JSON property `backendUploadMetadata`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata]
+        attr_accessor :backend_upload_metadata
+      
+        # A combination of an identifier for a Drive resource (e.g. file, folder, or
+        # drive) and any secrets needed to access it. The secrets should never be logged,
+        # and this proto annotates those secret fields to ensure that they are not.
+        # Clients are encouraged to use this proto rather than defining their own, to
+        # ensure that secrets are correctly annotated.
+        # Corresponds to the JSON property `clonedAuthorizedItemId`
+        # @return [Google::Apis::CloudsearchV1::AuthorizedItemId]
+        attr_accessor :cloned_authorized_item_id
+      
+        # DriveAction for organizing the cloned version of this upload in Drive, if the
+        # file has been added to Drive. This field is not set if the file has not been
+        # added to Drive. Additionally, this field is only set when part of a FileResult
+        # in a ListFilesResponse.
+        # Corresponds to the JSON property `clonedDriveAction`
+        # @return [String]
+        attr_accessor :cloned_drive_action
+      
+        # Reference to a Drive ID, if this upload file has been previously cloned to
+        # Drive. Note: this is deprecated in favor of the AuthorizedItemId below.
+        # Corresponds to the JSON property `clonedDriveId`
+        # @return [String]
+        attr_accessor :cloned_drive_id
+      
+        # The original file name for the content, not the full path.
+        # Corresponds to the JSON property `contentName`
+        # @return [String]
+        attr_accessor :content_name
+      
+        # Type is from Scotty's best_guess by default: http://google3/uploader/agent/
+        # scotty_agent.proto?l=51&rcl=140889785
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # LINT.IfChange
+        # Corresponds to the JSON property `dlpMetricsMetadata`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata]
+        attr_accessor :dlp_metrics_metadata
+      
+        # A copy of the LocalId in Annotation. This field is supposed to be filled by
+        # server only.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # Dimension for the uploaded attachments.
+        # Corresponds to the JSON property `originalDimension`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension]
+        attr_accessor :original_dimension
+      
+        # Reference to a transcoded video attachment.
+        # Corresponds to the JSON property `videoReference`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference]
+        attr_accessor :video_reference
+      
+        # Result for a virus scan. It's duplicated in the above field apps.dynamite.
+        # shared.BackendUploadMetadata
+        # Corresponds to the JSON property `virusScanResult`
+        # @return [String]
+        attr_accessor :virus_scan_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_token = args[:attachment_token] if args.key?(:attachment_token)
+          @backend_upload_metadata = args[:backend_upload_metadata] if args.key?(:backend_upload_metadata)
+          @cloned_authorized_item_id = args[:cloned_authorized_item_id] if args.key?(:cloned_authorized_item_id)
+          @cloned_drive_action = args[:cloned_drive_action] if args.key?(:cloned_drive_action)
+          @cloned_drive_id = args[:cloned_drive_id] if args.key?(:cloned_drive_id)
+          @content_name = args[:content_name] if args.key?(:content_name)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @dlp_metrics_metadata = args[:dlp_metrics_metadata] if args.key?(:dlp_metrics_metadata)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
+          @video_reference = args[:video_reference] if args.key?(:video_reference)
+          @virus_scan_result = args[:virus_scan_result] if args.key?(:virus_scan_result)
+        end
+      end
+      
+      # Annotation metadata for a Weblink. In case of pasted link it can qualify to be
+      # other types in addition to being a URL - like DRIVE_DOC/DRIVE_SHEET and so on.
+      # The URL metadata will also be present and it's up to the client to decide
+      # which metadata to render it with. These fields are filled in using page render
+      # service.
+      class UrlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Domain for this url. If it's an IP address the address is returned.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Message containing a string that is safe to use in URL contexts in DOM APIs
+        # and HTML documents, where the URL context does not refer to a resource that
+        # loads code.
+        # Corresponds to the JSON property `gwsUrl`
+        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
+        attr_accessor :gws_url
+      
+        # The expiration timestamp for GWS URL, only set when gws_url is set.
+        # Corresponds to the JSON property `gwsUrlExpirationTimestamp`
+        # @return [Fixnum]
+        attr_accessor :gws_url_expiration_timestamp
+      
+        # Dimensions of the image: height. This field is string to match with page
+        # render service response. Deprecated. Use int_image_height instead.
+        # Corresponds to the JSON property `imageHeight`
+        # @return [String]
+        attr_accessor :image_height
+      
+        # Representative image of the website.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # Dimensions of the image: width. This field is string to match with page render
+        # service response. Deprecated. Use int_image_height instead.
+        # Corresponds to the JSON property `imageWidth`
+        # @return [String]
+        attr_accessor :image_width
+      
+        # Dimensions of the image: height.
+        # Corresponds to the JSON property `intImageHeight`
+        # @return [Fixnum]
+        attr_accessor :int_image_height
+      
+        # Dimensions of the image: width.
+        # Corresponds to the JSON property `intImageWidth`
+        # @return [Fixnum]
+        attr_accessor :int_image_width
+      
+        # Mime type of the content (Currently mapped from Page Render Service ItemType)
+        # Note that this is not necessarily the mime type of the http resource. For
+        # example a text/html from youtube or vimeo may actually be classified as a
+        # video type. Then we shall mark it as video/* since we don't know exactly what
+        # type of video it is. NEXT TAG : 16
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Message containing a string that is safe to use in URL contexts in DOM APIs
+        # and HTML documents, where the URL context does not refer to a resource that
+        # loads code.
+        # Corresponds to the JSON property `redirectUrl`
+        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
+        attr_accessor :redirect_url
+      
+        # If the UrlMetadata is missing data for rendering a chip. Deprecated. Use
+        # Annotation.ChipRenderType instead.
+        # Corresponds to the JSON property `shouldNotRender`
+        # @return [Boolean]
+        attr_accessor :should_not_render
+        alias_method :should_not_render?, :should_not_render
+      
+        # Snippet/small description of the weblink.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # Title of the Weblink.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Message containing a string that is safe to use in URL contexts in DOM APIs
+        # and HTML documents, where the URL context does not refer to a resource that
+        # loads code.
+        # Corresponds to the JSON property `url`
+        # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @gws_url = args[:gws_url] if args.key?(:gws_url)
+          @gws_url_expiration_timestamp = args[:gws_url_expiration_timestamp] if args.key?(:gws_url_expiration_timestamp)
+          @image_height = args[:image_height] if args.key?(:image_height)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @image_width = args[:image_width] if args.key?(:image_width)
+          @int_image_height = args[:int_image_height] if args.key?(:int_image_height)
+          @int_image_width = args[:int_image_width] if args.key?(:int_image_width)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
+          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # User profile information. This user is not necessarily member of a space.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # URL for the avatar picture of the User in dynamite
+        # Corresponds to the JSON property `avatarUrl`
+        # @return [String]
+        attr_accessor :avatar_url
+      
+        # User-block relationship
+        # Corresponds to the JSON property `blockRelationship`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship]
+        attr_accessor :block_relationship
+      
+        # Bot-specific profile information.
+        # Corresponds to the JSON property `botInfo`
+        # @return [Google::Apis::CloudsearchV1::BotInfo]
+        attr_accessor :bot_info
+      
+        # Deleted flag, if true, means User has been soft-deleted/purged Deprecated. Use
+        # user_account_state field instead.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Email ID of the user
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # First or given name of the user
+        # Corresponds to the JSON property `firstName`
+        # @return [String]
+        attr_accessor :first_name
+      
+        # Gender of the user
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :id
+      
+        # Set to true if none of the depending services (Gaia, PeopleApi) returns any
+        # info for this user.
+        # Corresponds to the JSON property `isAnonymous`
+        # @return [Boolean]
+        attr_accessor :is_anonymous
+        alias_method :is_anonymous?, :is_anonymous
+      
+        # Last or family name of the user
+        # Corresponds to the JSON property `lastName`
+        # @return [String]
+        attr_accessor :last_name
+      
+        # Non-unique, user-defined display name of the User
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Contains info about the entity that something is, or is owned by.
+        # Corresponds to the JSON property `organizationInfo`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo]
+        attr_accessor :organization_info
+      
+        # Phone number(s) of the user
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber>]
+        attr_accessor :phone_number
+      
+        # State of user's Gaia Account
+        # Corresponds to the JSON property `userAccountState`
+        # @return [String]
+        attr_accessor :user_account_state
+      
+        # Visibility of user's Profile
+        # Corresponds to the JSON property `userProfileVisibility`
+        # @return [String]
+        attr_accessor :user_profile_visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
+          @block_relationship = args[:block_relationship] if args.key?(:block_relationship)
+          @bot_info = args[:bot_info] if args.key?(:bot_info)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @email = args[:email] if args.key?(:email)
+          @first_name = args[:first_name] if args.key?(:first_name)
+          @gender = args[:gender] if args.key?(:gender)
+          @id = args[:id] if args.key?(:id)
+          @is_anonymous = args[:is_anonymous] if args.key?(:is_anonymous)
+          @last_name = args[:last_name] if args.key?(:last_name)
+          @name = args[:name] if args.key?(:name)
+          @organization_info = args[:organization_info] if args.key?(:organization_info)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @user_account_state = args[:user_account_state] if args.key?(:user_account_state)
+          @user_profile_visibility = args[:user_profile_visibility] if args.key?(:user_profile_visibility)
+        end
+      end
+      
       # Resource for displaying user info
       class UserDisplayInfo
         include Google::Apis::Core::Hashable
@@ -17470,6 +17396,48 @@ module Google
         def update!(**args)
           @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Primary key for User resource.
+      class UserId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Opaque, server-assigned ID of the user profile associated with App/
+        # user acting on behalf of the human user. This is currently only set when a 3P
+        # application is acting on the user's behalf.
+        # Corresponds to the JSON property `actingUserId`
+        # @return [String]
+        attr_accessor :acting_user_id
+      
+        # Opaque, server-assigned ID of the User.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifier of an App.
+        # Corresponds to the JSON property `originAppId`
+        # @return [Google::Apis::CloudsearchV1::AppId]
+        attr_accessor :origin_app_id
+      
+        # Clients do not need to send UserType to Backend, but Backend will always send
+        # this field to clients per the following rule: 1. For HUMAN Ids, the field is
+        # empty but by default .getType() will return HUMAN. 2. For BOT Ids, the field
+        # is ALWAYS set to BOT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acting_user_id = args[:acting_user_id] if args.key?(:acting_user_id)
+          @id = args[:id] if args.key?(:id)
+          @origin_app_id = args[:origin_app_id] if args.key?(:origin_app_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -17501,7 +17469,7 @@ module Google
       
         # Primary key for User resource.
         # Corresponds to the JSON property `updaterToShowUserId`
-        # @return [Google::Apis::CloudsearchV1::AppsDynamiteUserId]
+        # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :updater_to_show_user_id
       
         def initialize(**args)
@@ -17567,6 +17535,55 @@ module Google
           @user = args[:user] if args.key?(:user)
           @user_gaia_id = args[:user_gaia_id] if args.key?(:user_gaia_id)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Annotation metadata for user mentions (+/@/-).
+      class UserMentionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the mentioned user. This field should remain empty when
+        # clients resolve a UserMention annotation. It will be filled in when a
+        # UserMention is generated by the Integration Server.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Gender of the mentioned user. One of "female", "male" or "other". Used for
+        # choosing accurate translations for strings that contain the UserMention, when
+        # these need to be constructed (e.g. task assignment update message). This field
+        # should remain empty when clients resolve a UserMention. It will be filled in
+        # when a UserMention is generated by the Integration Server.
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :id
+      
+        # Invitee information from a Dynamite invitation. See go/dynamite-invitee-mgmt.
+        # Corresponds to the JSON property `inviteeInfo`
+        # @return [Google::Apis::CloudsearchV1::InviteeInfo]
+        attr_accessor :invitee_info
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gender = args[:gender] if args.key?(:gender)
+          @id = args[:id] if args.key?(:id)
+          @invitee_info = args[:invitee_info] if args.key?(:invitee_info)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -17677,14 +17694,37 @@ module Google
         end
       end
       
-      # A Meet initiated in Dynamite and its URL.
+      # 
       class VideoCallMetadata
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `meetingUrl`
-        # @return [String]
-        attr_accessor :meeting_url
+        # A meeting space is a persistent object that is the context for one or more
+        # calls. The meeting space is what makes users find each other when they want to
+        # meet and to find shared resources. With two exceptions, all the fields in the
+        # meeting space resource are visible publicly to any client, even anonymous
+        # users. The exceptions are that * The call_info field is only visible to
+        # clients that have a device (as indicated by the meeting token) in the JOINED
+        # or HIDDEN state. * The meeting_alias field will only be set for users who are
+        # in the same domain as the meeting space. The meeting space resource (outside
+        # call_info) should only contain information necessary to join a call in the
+        # meeting space, and not any other metadata about the meeting space, such as
+        # what organization it belongs to or things related to ongoing calls.
+        # Corresponds to the JSON property `meetingSpace`
+        # @return [Google::Apis::CloudsearchV1::MeetingSpace]
+        attr_accessor :meeting_space
+      
+        # If this field is set to true, server should still contact external backends to
+        # get metadata for search but clients should not render this chip.
+        # Corresponds to the JSON property `shouldNotRender`
+        # @return [Boolean]
+        attr_accessor :should_not_render
+        alias_method :should_not_render?, :should_not_render
+      
+        # Whether this meeting space was created via Dynamite in this Dynamite group.
+        # Corresponds to the JSON property `wasCreatedInCurrentGroup`
+        # @return [Boolean]
+        attr_accessor :was_created_in_current_group
+        alias_method :was_created_in_current_group?, :was_created_in_current_group
       
         def initialize(**args)
            update!(**args)
@@ -17692,7 +17732,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @meeting_url = args[:meeting_url] if args.key?(:meeting_url)
+          @meeting_space = args[:meeting_space] if args.key?(:meeting_space)
+          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
+          @was_created_in_current_group = args[:was_created_in_current_group] if args.key?(:was_created_in_current_group)
         end
       end
       
@@ -17822,11 +17864,6 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # This field is deprecated and will be removed. Please use "uri" instead.
-        # Corresponds to the JSON property `whiteboardUri`
-        # @return [String]
-        attr_accessor :whiteboard_uri
-      
         def initialize(**args)
            update!(**args)
         end
@@ -17836,7 +17873,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
-          @whiteboard_uri = args[:whiteboard_uri] if args.key?(:whiteboard_uri)
         end
       end
       
@@ -18042,6 +18078,41 @@ module Google
           @broadcast_id = args[:broadcast_id] if args.key?(:broadcast_id)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @view_url = args[:view_url] if args.key?(:view_url)
+        end
+      end
+      
+      # Annotation metadata for YouTube artifact.
+      class YoutubeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # YouTube resource ID of the artifact.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # If this field is set to true, server should still contact external backends to
+        # get metadata for search but clients should not render this chip.
+        # Corresponds to the JSON property `shouldNotRender`
+        # @return [Boolean]
+        attr_accessor :should_not_render
+        alias_method :should_not_render?, :should_not_render
+      
+        # YouTube query parameter for timestamp. YouTube specific flag that allows users
+        # to embed time token when sharing a link. This property contains parsed time
+        # token in seconds.
+        # Corresponds to the JSON property `startTime`
+        # @return [Fixnum]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
