@@ -614,6 +614,8 @@ module Google
           hash :properties, as: 'properties'
           property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
           property :resource_key, as: 'resourceKey'
+          property :sha1_checksum, as: 'sha1Checksum'
+          property :sha256_checksum, as: 'sha256Checksum'
           property :shared, as: 'shared'
           property :shared_with_me_time, as: 'sharedWithMeTime', type: DateTime
       
