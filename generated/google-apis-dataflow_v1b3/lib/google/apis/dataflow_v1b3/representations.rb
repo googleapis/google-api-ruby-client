@@ -1419,6 +1419,7 @@ module Google
           property :autoscaling_algorithm, as: 'autoscalingAlgorithm'
           property :disk_size_gb, as: 'diskSizeGb'
           property :dump_heap_on_oom, as: 'dumpHeapOnOom'
+          property :enable_launcher_vm_serial_port_logging, as: 'enableLauncherVmSerialPortLogging'
           property :enable_streaming_engine, as: 'enableStreamingEngine'
           property :flexrs_goal, as: 'flexrsGoal'
           property :ip_configuration, as: 'ipConfiguration'

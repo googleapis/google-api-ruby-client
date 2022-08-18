@@ -1501,6 +1501,12 @@ module Google
         attr_accessor :dump_heap_on_oom
         alias_method :dump_heap_on_oom?, :dump_heap_on_oom
       
+        # If true serial port logging will be enabled for the launcher VM.
+        # Corresponds to the JSON property `enableLauncherVmSerialPortLogging`
+        # @return [Boolean]
+        attr_accessor :enable_launcher_vm_serial_port_logging
+        alias_method :enable_launcher_vm_serial_port_logging?, :enable_launcher_vm_serial_port_logging
+      
         # Whether to enable Streaming Engine for the job.
         # Corresponds to the JSON property `enableStreamingEngine`
         # @return [Boolean]
@@ -1628,6 +1634,7 @@ module Google
           @autoscaling_algorithm = args[:autoscaling_algorithm] if args.key?(:autoscaling_algorithm)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @dump_heap_on_oom = args[:dump_heap_on_oom] if args.key?(:dump_heap_on_oom)
+          @enable_launcher_vm_serial_port_logging = args[:enable_launcher_vm_serial_port_logging] if args.key?(:enable_launcher_vm_serial_port_logging)
           @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
           @flexrs_goal = args[:flexrs_goal] if args.key?(:flexrs_goal)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
