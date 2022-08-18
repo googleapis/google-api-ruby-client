@@ -1203,6 +1203,14 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The duration to keep the underlying cluster alive while idling
+        # Passing this threshold will cause the cluster to be terminated. Minimum value
+        # is 30 minutes; maximum value is 14 days (see JSON representation of Duration (
+        # https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        # Corresponds to the JSON property `idleTtl`
+        # @return [String]
+        attr_accessor :idle_ttl
+      
         # Optional. The Cloud KMS key to use for encryption.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
@@ -1234,6 +1242,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @idle_ttl = args[:idle_ttl] if args.key?(:idle_ttl)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)

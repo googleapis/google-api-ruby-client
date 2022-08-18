@@ -1025,6 +1025,7 @@ module Google
       class ExecutionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :idle_ttl, as: 'idleTtl'
           property :kms_key, as: 'kmsKey'
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
