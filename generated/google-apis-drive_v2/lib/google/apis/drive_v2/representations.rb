@@ -917,6 +917,8 @@ module Google
           property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
           property :resource_key, as: 'resourceKey'
           property :self_link, as: 'selfLink'
+          property :sha1_checksum, as: 'sha1Checksum'
+          property :sha256_checksum, as: 'sha256Checksum'
           property :shareable, as: 'shareable'
           property :shared, as: 'shared'
           property :shared_with_me_date, as: 'sharedWithMeDate', type: DateTime
