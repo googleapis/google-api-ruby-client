@@ -1266,6 +1266,20 @@ module Google
         # @return [String]
         attr_accessor :resource_key
       
+        # The SHA1 checksum associated with this file, if available. This field is only
+        # populated for files with content stored in Google Drive; it is not populated
+        # for Docs Editors or shortcut files.
+        # Corresponds to the JSON property `sha1Checksum`
+        # @return [String]
+        attr_accessor :sha1_checksum
+      
+        # The SHA256 checksum associated with this file, if available. This field is
+        # only populated for files with content stored in Google Drive; it is not
+        # populated for Docs Editors or shortcut files.
+        # Corresponds to the JSON property `sha256Checksum`
+        # @return [String]
+        attr_accessor :sha256_checksum
+      
         # Whether the file has been shared. Not populated for items in shared drives.
         # Corresponds to the JSON property `shared`
         # @return [Boolean]
@@ -1438,6 +1452,8 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)
           @resource_key = args[:resource_key] if args.key?(:resource_key)
+          @sha1_checksum = args[:sha1_checksum] if args.key?(:sha1_checksum)
+          @sha256_checksum = args[:sha256_checksum] if args.key?(:sha256_checksum)
           @shared = args[:shared] if args.key?(:shared)
           @shared_with_me_time = args[:shared_with_me_time] if args.key?(:shared_with_me_time)
           @sharing_user = args[:sharing_user] if args.key?(:sharing_user)
