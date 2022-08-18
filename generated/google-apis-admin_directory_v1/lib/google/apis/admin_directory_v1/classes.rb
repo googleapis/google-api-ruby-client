@@ -1470,7 +1470,7 @@ module Google
         end
       end
       
-      # 
+      # The data regarding an action to update the status of a Chrome OS device.
       class ChromeOsDeviceAction
         include Google::Apis::Core::Hashable
       

@@ -331,7 +331,7 @@ module Google
         # Moves or inserts multiple Chrome OS devices to an organizational unit. You can
         # move up to 50 devices at once.
         # @param [String] customer_id
-        #   Immutable ID of the Google Workspace account
+        #   Immutable. ID of the Google Workspace account
         # @param [String] org_unit_path
         #   Full path of the target organizational unit or its ID
         # @param [Google::Apis::AdminDirectoryV1::ChromeOsMoveDevicesToOu] chrome_os_move_devices_to_ou_object
@@ -456,9 +456,9 @@ module Google
         
         # Issues a command for the device to execute.
         # @param [String] customer_id
-        #   Immutable. Immutable ID of the Google Workspace account.
+        #   Immutable. ID of the Google Workspace account.
         # @param [String] device_id
-        #   Immutable. Immutable ID of Chrome OS Device.
+        #   Immutable. ID of Chrome OS Device.
         # @param [Google::Apis::AdminDirectoryV1::DirectoryChromeosdevicesIssueCommandRequest] directory_chromeosdevices_issue_command_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -492,11 +492,11 @@ module Google
         
         # Gets command data a specific command issued to the device.
         # @param [String] customer_id
-        #   Immutable. Immutable ID of the Google Workspace account.
+        #   Immutable. ID of the Google Workspace account.
         # @param [String] device_id
-        #   Immutable. Immutable ID of Chrome OS Device.
+        #   Immutable. ID of Chrome OS Device.
         # @param [Fixnum] command_id
-        #   Immutable. Immutable ID of Chrome OS Device Command.
+        #   Immutable. ID of Chrome OS Device Command.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1569,7 +1569,12 @@ module Google
         end
         
         # Checks whether the given user is a member of the group. Membership can be
-        # direct or nested.
+        # direct or nested, but if nested, the `memberKey` and `groupKey` must be
+        # entities in the same domain or an `Invalid input` error is returned. To check
+        # for nested memberships that include entities outside of the group's domain,
+        # use the [`checkTransitiveMembership()`](https://cloud.google.com/identity/docs/
+        # reference/rest/v1/groups.memberships/checkTransitiveMembership) method in the
+        # Cloud Identity Groups API.
         # @param [String] group_key
         #   Identifies the group in the API request. The value can be the group's email
         #   address, group alias, or the unique group ID.
