@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AclFixRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclFixStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AclInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,343 +58,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AffectedMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllAuthenticatedUsersProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteAnnotation
+      class Annotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteAppId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteAttachment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBabelMessageProps
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataDeleteMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataEditMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBackendDlpScanSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBackendLabelsCommunalLabelTag
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBackendLabelsPersonalLabelTag
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteBotResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteCardCapabilityMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteConsentedAppUnfurlMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteContentReport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteContentReportJustification
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteCustomEmojiMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteCustomerId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDataLossPreventionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDmId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDriveMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDriveMetadataAclFixRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDriveMetadataAclFixStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteDriveMetadataLegacyUploadMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFormatMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFrontendBotInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFrontendBotInfoSupportUrls
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFrontendMember
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFrontendRoster
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteFrontendUser
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteGroupId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteGroupRetentionSettingsUpdatedMetaData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteGsuiteIntegrationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteIncomingWebhookChangedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteIntegrationConfigMutation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteIntegrationConfigUpdatedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteInviteeInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMemberId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMembershipChangedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMembershipChangedMetadataAffectedMembership
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageAttributes
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageContentReportSummary
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageParentId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteMessageProps
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamitePinnedItemId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamitePrivateMessageInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteQuotedMessageMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteReadReceiptsSettingsUpdatedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteRequiredMessageFeaturesMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteRosterId
+      class AppId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -940,54 +634,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteSlashCommandMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteSpaceId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteTombstoneMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteTopicId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteUploadMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteUrlMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteUserId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteUserMentionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppsDynamiteV1ApiCompatV1Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1012,25 +658,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppsDynamiteVideoCallMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AppsDynamiteYoutubeMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Attachment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AttachmentMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1060,6 +688,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BabelMessageProps
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BabelPlaceholderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BooleanOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1078,7 +718,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BotMessageMetadata
+      class BotInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1103,12 +749,6 @@ module Google
       end
       
       class Button
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CalendarEventMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1144,7 +784,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CardCapabilityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CardHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataAttachmentMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataBotMessageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataDeleteMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataEditMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataTasksMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataVideoCallMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatConserverMessageContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,13 +904,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommunalLabelTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompositeFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsentedAppUnfurlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContactGroupProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentReportJustification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentReportSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1223,6 +959,18 @@ module Google
       end
       
       class CseInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomEmojiMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1259,6 +1007,12 @@ module Google
       end
       
       class CustomerUserStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataLossPreventionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1354,6 +1108,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DlpScanSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DmId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DocumentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1390,6 +1156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DriveMimeTypeRestrict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1397,12 +1169,6 @@ module Google
       end
       
       class DriveTimeSpanRestrict
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DynamitePlaceholderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1534,6 +1300,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FormatMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Formatting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1625,6 +1397,12 @@ module Google
       end
       
       class GetSearchApplicationUserStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChatConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1750,13 +1528,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupDetailsUpdatedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GroupLinkSharingModificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupRetentionSettingsUpdatedMetaData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GsuiteIntegrationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HangoutEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HangoutVideoEventMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1834,6 +1642,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IncomingWebhookChangedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IndexItemOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1870,6 +1684,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntegrationConfigMutation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntegrationConfigUpdatedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Interaction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1877,6 +1703,12 @@ module Google
       end
       
       class InviteAcceptedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InviteeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1943,6 +1775,12 @@ module Google
       end
       
       class LdapUserProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LegacyUploadMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2026,7 +1864,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Member
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemberId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MembershipChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipChangedMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2044,7 +1900,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MessageContent
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageParentId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageProps
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2164,6 +2050,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersonalLabelTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PhoneAccess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2177,6 +2069,12 @@ module Google
       end
       
       class Photo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PinnedItemId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2213,6 +2111,12 @@ module Google
       end
       
       class PrincipalProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateMessageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2302,6 +2206,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotedMessageMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RbacRoleProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2315,6 +2225,12 @@ module Google
       end
       
       class ReactionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReadReceiptsSettingsUpdatedMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2351,6 +2267,12 @@ module Google
       end
       
       class RequestOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequiredMessageFeaturesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2411,6 +2333,30 @@ module Google
       end
       
       class RetrievalImportance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomRenameMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomUpdatedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Roster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RosterId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2560,7 +2506,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SlashCommandMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Snippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SocialCommonAttachmentAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2603,6 +2561,12 @@ module Google
       end
       
       class SourceScoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2680,13 +2644,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SwitchWidget
+      class SupportUrls
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TasksMetadata
+      class SwitchWidget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2752,7 +2716,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TombstoneMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Toolbar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TopicId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2818,7 +2794,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserDisplayInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2831,6 +2831,12 @@ module Google
       end
       
       class UserMentionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserMentionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2914,6 +2920,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class YoutubeUserProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2942,6 +2954,24 @@ module Google
         end
       end
       
+      class AclFixRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recipient_emails, as: 'recipientEmails'
+          property :role, as: 'role'
+          property :should_fix, as: 'shouldFix'
+        end
+      end
+      
+      class AclFixStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixability, as: 'fixability'
+          collection :fixable_email_address, as: 'fixableEmailAddress'
+          collection :out_of_domain_warning_email_address, as: 'outOfDomainWarningEmailAddress'
+        end
+      end
+      
       class AclInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2959,509 +2989,10 @@ module Google
         end
       end
       
-      class AllAuthenticatedUsersProto
+      class AffectedMembership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class AppsDynamiteAnnotation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :babel_placeholder_metadata, as: 'babelPlaceholderMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadata::Representation
-      
-          property :card_capability_metadata, as: 'cardCapabilityMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteCardCapabilityMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteCardCapabilityMetadata::Representation
-      
-          property :chip_render_type, as: 'chipRenderType'
-          property :consented_app_unfurl_metadata, as: 'consentedAppUnfurlMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteConsentedAppUnfurlMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteConsentedAppUnfurlMetadata::Representation
-      
-          property :custom_emoji_metadata, as: 'customEmojiMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteCustomEmojiMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteCustomEmojiMetadata::Representation
-      
-          property :data_loss_prevention_metadata, as: 'dataLossPreventionMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteDataLossPreventionMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDataLossPreventionMetadata::Representation
-      
-          property :drive_metadata, as: 'driveMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadata::Representation
-      
-          property :format_metadata, as: 'formatMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteFormatMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFormatMetadata::Representation
-      
-          property :group_retention_settings_updated, as: 'groupRetentionSettingsUpdated', class: Google::Apis::CloudsearchV1::AppsDynamiteGroupRetentionSettingsUpdatedMetaData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGroupRetentionSettingsUpdatedMetaData::Representation
-      
-          property :gsuite_integration_metadata, as: 'gsuiteIntegrationMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata::Representation
-      
-          property :incoming_webhook_changed_metadata, as: 'incomingWebhookChangedMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteIncomingWebhookChangedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteIncomingWebhookChangedMetadata::Representation
-      
-          property :integration_config_updated, as: 'integrationConfigUpdated', class: Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigUpdatedMetadata::Representation
-      
-          property :length, as: 'length'
-          property :local_id, as: 'localId'
-          property :membership_changed, as: 'membershipChanged', class: Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadata::Representation
-      
-          property :read_receipts_settings_metadata, as: 'readReceiptsSettingsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteReadReceiptsSettingsUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteReadReceiptsSettingsUpdatedMetadata::Representation
-      
-          property :required_message_features_metadata, as: 'requiredMessageFeaturesMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteRequiredMessageFeaturesMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRequiredMessageFeaturesMetadata::Representation
-      
-          property :room_updated, as: 'roomUpdated', class: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadata::Representation
-      
-          property :server_invalidated, as: 'serverInvalidated'
-          property :slash_command_metadata, as: 'slashCommandMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSlashCommandMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSlashCommandMetadata::Representation
-      
-          property :start_index, as: 'startIndex'
-          property :type, as: 'type'
-          property :unique_id, as: 'uniqueId'
-          property :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata::Representation
-      
-          property :url_metadata, as: 'urlMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUrlMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUrlMetadata::Representation
-      
-          property :user_mention_metadata, as: 'userMentionMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUserMentionMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserMentionMetadata::Representation
-      
-          property :video_call_metadata, as: 'videoCallMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteVideoCallMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteVideoCallMetadata::Representation
-      
-          property :youtube_metadata, as: 'youtubeMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteYoutubeMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteYoutubeMetadata::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteAppId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_type, as: 'appType'
-          property :gsuite_app_type, as: 'gsuiteAppType'
-          property :id, :numeric_string => true, as: 'id'
-        end
-      end
-      
-      class AppsDynamiteAttachment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :add_on_data, as: 'addOnData', class: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup::Representation
-      
-          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :attachment_id, as: 'attachmentId'
-          property :card_add_on_data, as: 'cardAddOnData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard::Representation
-      
-          property :deprecated_add_on_data, as: 'deprecatedAddOnData', class: Google::Apis::CloudsearchV1::ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::ContextualAddOnMarkup::Representation
-      
-          property :slack_data, as: 'slackData', class: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment::Representation
-      
-          property :slack_data_image_url_height, as: 'slackDataImageUrlHeight'
-        end
-      end
-      
-      class AppsDynamiteBabelMessageProps
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_generated_id, :numeric_string => true, as: 'clientGeneratedId'
-          property :content_extension, as: 'contentExtension', class: Google::Apis::CloudsearchV1::ChatContentExtension, decorator: Google::Apis::CloudsearchV1::ChatContentExtension::Representation
-      
-          property :delivery_medium, as: 'deliveryMedium', class: Google::Apis::CloudsearchV1::DeliveryMedium, decorator: Google::Apis::CloudsearchV1::DeliveryMedium::Representation
-      
-          property :event_id, as: 'eventId'
-          property :message_content, as: 'messageContent', class: Google::Apis::CloudsearchV1::MessageContent, decorator: Google::Apis::CloudsearchV1::MessageContent::Representation
-      
-          property :was_updated_by_backfill, as: 'wasUpdatedByBackfill'
-        end
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :delete_metadata, as: 'deleteMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataDeleteMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataDeleteMetadata::Representation
-      
-          property :edit_metadata, as: 'editMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataEditMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataEditMetadata::Representation
-      
-          property :hangout_video_metadata, as: 'hangoutVideoMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataDeleteMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataEditMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class AppsDynamiteBabelPlaceholderMetadataHangoutVideoEventMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hangout_video_type, as: 'hangoutVideoType'
-        end
-      end
-      
-      class AppsDynamiteBackendDlpScanSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :scan_id, as: 'scanId'
-          property :scan_not_applicable_for_context, as: 'scanNotApplicableForContext'
-          property :scan_outcome, as: 'scanOutcome'
-        end
-      end
-      
-      class AppsDynamiteBackendLabelsCommunalLabelTag
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creator_user_id, :numeric_string => true, as: 'creatorUserId'
-          property :label_id, as: 'labelId'
-        end
-      end
-      
-      class AppsDynamiteBackendLabelsPersonalLabelTag
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :label_id, as: 'labelId'
-        end
-      end
-      
-      class AppsDynamiteBotResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bot_id, as: 'botId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :required_action, as: 'requiredAction'
-          property :response_type, as: 'responseType'
-          property :setup_url, as: 'setupUrl'
-        end
-      end
-      
-      class AppsDynamiteCardCapabilityMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :required_capabilities, as: 'requiredCapabilities'
-        end
-      end
-      
-      class AppsDynamiteConsentedAppUnfurlMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_specified_app_id, as: 'clientSpecifiedAppId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteContentReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :report_create_timestamp, as: 'reportCreateTimestamp'
-          property :report_justification, as: 'reportJustification', class: Google::Apis::CloudsearchV1::AppsDynamiteContentReportJustification, decorator: Google::Apis::CloudsearchV1::AppsDynamiteContentReportJustification::Representation
-      
-          property :report_type, as: 'reportType', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType::Representation
-      
-          property :reporter_user_id, as: 'reporterUserId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :revision_create_timestamp, as: 'revisionCreateTimestamp'
-        end
-      end
-      
-      class AppsDynamiteContentReportJustification
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :user_justification, as: 'userJustification'
-        end
-      end
-      
-      class AppsDynamiteCustomEmojiMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :custom_emoji, as: 'customEmoji', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteCustomerId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer_id, as: 'customerId'
-        end
-      end
-      
-      class AppsDynamiteDataLossPreventionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary::Representation
-      
-          property :warn_acknowledged, as: 'warnAcknowledged'
-        end
-      end
-      
-      class AppsDynamiteDmId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dm_id, as: 'dmId'
-        end
-      end
-      
-      class AppsDynamiteDriveMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acl_fix_request, as: 'aclFixRequest', class: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixRequest, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixRequest::Representation
-      
-          property :acl_fix_status, as: 'aclFixStatus', class: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixStatus, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataAclFixStatus::Representation
-      
-          property :can_edit, as: 'canEdit'
-          property :can_share, as: 'canShare'
-          property :can_view, as: 'canView'
-          property :drive_action, as: 'driveAction'
-          property :drive_state, as: 'driveState'
-          property :embed_url, as: 'embedUrl', class: Google::Apis::CloudsearchV1::TrustedResourceUrlProto, decorator: Google::Apis::CloudsearchV1::TrustedResourceUrlProto::Representation
-      
-          property :encrypted_doc_id, as: 'encryptedDocId'
-          property :encrypted_resource_key, as: 'encryptedResourceKey'
-          property :external_mimetype, as: 'externalMimetype'
-          property :id, as: 'id'
-          property :is_download_restricted, as: 'isDownloadRestricted'
-          property :is_owner, as: 'isOwner'
-          property :legacy_upload_metadata, as: 'legacyUploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataLegacyUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDriveMetadataLegacyUploadMetadata::Representation
-      
-          property :mimetype, as: 'mimetype'
-          property :organization_display_name, as: 'organizationDisplayName'
-          property :shortcut_authorized_item_id, as: 'shortcutAuthorizedItemId', class: Google::Apis::CloudsearchV1::AuthorizedItemId, decorator: Google::Apis::CloudsearchV1::AuthorizedItemId::Representation
-      
-          property :should_not_render, as: 'shouldNotRender'
-          property :thumbnail_height, as: 'thumbnailHeight'
-          property :thumbnail_url, as: 'thumbnailUrl'
-          property :thumbnail_width, as: 'thumbnailWidth'
-          property :title, as: 'title'
-          property :url_fragment, as: 'urlFragment'
-          property :wrapped_resource_key, as: 'wrappedResourceKey', class: Google::Apis::CloudsearchV1::WrappedResourceKey, decorator: Google::Apis::CloudsearchV1::WrappedResourceKey::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteDriveMetadataAclFixRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :recipient_emails, as: 'recipientEmails'
-          property :role, as: 'role'
-          property :should_fix, as: 'shouldFix'
-        end
-      end
-      
-      class AppsDynamiteDriveMetadataAclFixStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fixability, as: 'fixability'
-          collection :fixable_email_address, as: 'fixableEmailAddress'
-          collection :out_of_domain_warning_email_address, as: 'outOfDomainWarningEmailAddress'
-        end
-      end
-      
-      class AppsDynamiteDriveMetadataLegacyUploadMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :legacy_unique_id, as: 'legacyUniqueId'
-          property :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteFormatMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :font_color, as: 'fontColor'
-          property :format_type, as: 'formatType'
-        end
-      end
-      
-      class AppsDynamiteFrontendBotInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppsDynamiteAppId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAppId::Representation
-      
-          property :bot_avatar_url, as: 'botAvatarUrl'
-          property :bot_name, as: 'botName'
-          property :description, as: 'description'
-          property :developer_name, as: 'developerName'
-          property :market_place_banner_url, as: 'marketPlaceBannerUrl'
-          property :status, as: 'status'
-          property :support_urls, as: 'supportUrls', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfoSupportUrls, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfoSupportUrls::Representation
-      
-          collection :supported_uses, as: 'supportedUses'
-          property :whitelist_status, as: 'whitelistStatus'
-        end
-      end
-      
-      class AppsDynamiteFrontendBotInfoSupportUrls
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :admin_config_url, as: 'adminConfigUrl'
-          property :deletion_policy_url, as: 'deletionPolicyUrl'
-          property :privacy_policy_url, as: 'privacyPolicyUrl'
-          property :setup_url, as: 'setupUrl'
-          property :support_url, as: 'supportUrl'
-          property :tos_url, as: 'tosUrl'
-        end
-      end
-      
-      class AppsDynamiteFrontendMember
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :roster, as: 'roster', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendRoster, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendRoster::Representation
-      
-          property :user, as: 'user', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteFrontendRoster
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :avatar_url, as: 'avatarUrl'
-          property :id, as: 'id', class: Google::Apis::CloudsearchV1::AppsDynamiteRosterId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRosterId::Representation
-      
-          property :membership_count, as: 'membershipCount'
-          property :name, as: 'name'
-          property :roster_gaia_key, as: 'rosterGaiaKey'
-          property :roster_state, as: 'rosterState'
-        end
-      end
-      
-      class AppsDynamiteFrontendUser
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :avatar_url, as: 'avatarUrl'
-          property :block_relationship, as: 'blockRelationship', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship::Representation
-      
-          property :bot_info, as: 'botInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendBotInfo::Representation
-      
-          property :deleted, as: 'deleted'
-          property :email, as: 'email'
-          property :first_name, as: 'firstName'
-          property :gender, as: 'gender'
-          property :id, as: 'id', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :is_anonymous, as: 'isAnonymous'
-          property :last_name, as: 'lastName'
-          property :name, as: 'name'
-          property :organization_info, as: 'organizationInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo::Representation
-      
-          collection :phone_number, as: 'phoneNumber', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber::Representation
-      
-          property :user_account_state, as: 'userAccountState'
-          property :user_profile_visibility, as: 'userProfileVisibility'
-        end
-      end
-      
-      class AppsDynamiteGroupId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dm_id, as: 'dmId', class: Google::Apis::CloudsearchV1::AppsDynamiteDmId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteDmId::Representation
-      
-          property :space_id, as: 'spaceId', class: Google::Apis::CloudsearchV1::AppsDynamiteSpaceId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSpaceId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteGroupRetentionSettingsUpdatedMetaData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteGsuiteIntegrationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :activity_feed_data, as: 'activityFeedData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData::Representation
-      
-          property :assistant_data, as: 'assistantData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData::Representation
-      
-          property :calendar_event_data, as: 'calendarEventData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData::Representation
-      
-          property :call_data, as: 'callData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData::Representation
-      
-          property :client_type, as: 'clientType'
-          collection :indexable_texts, as: 'indexableTexts'
-          property :tasks_data, as: 'tasksData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteIncomingWebhookChangedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :incoming_webhook_name, as: 'incomingWebhookName'
-          property :initiator_id, as: 'initiatorId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :initiator_profile, as: 'initiatorProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser::Representation
-      
-          property :obfuscated_incoming_webhook_id, as: 'obfuscatedIncomingWebhookId'
-          property :old_incoming_webhook_name, as: 'oldIncomingWebhookName'
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteIntegrationConfigMutation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :add_app, as: 'addApp', class: Google::Apis::CloudsearchV1::AppsDynamiteAppId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAppId::Representation
-      
-          property :add_pinned_item, as: 'addPinnedItem', class: Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId, decorator: Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId::Representation
-      
-          property :remove_app, as: 'removeApp', class: Google::Apis::CloudsearchV1::AppsDynamiteAppId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAppId::Representation
-      
-          property :remove_pinned_item, as: 'removePinnedItem', class: Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId, decorator: Google::Apis::CloudsearchV1::AppsDynamitePinnedItemId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteIntegrationConfigUpdatedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :initiator_id, as: 'initiatorId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          collection :mutations, as: 'mutations', class: Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigMutation, decorator: Google::Apis::CloudsearchV1::AppsDynamiteIntegrationConfigMutation::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteInviteeInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :email, as: 'email'
-          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteMemberId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :roster_id, as: 'rosterId', class: Google::Apis::CloudsearchV1::AppsDynamiteRosterId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRosterId::Representation
-      
-          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteMembershipChangedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :affected_member_profiles, as: 'affectedMemberProfiles', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendMember, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendMember::Representation
-      
-          collection :affected_members, as: 'affectedMembers', class: Google::Apis::CloudsearchV1::AppsDynamiteMemberId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMemberId::Representation
-      
-          collection :affected_memberships, as: 'affectedMemberships', class: Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadataAffectedMembership, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMembershipChangedMetadataAffectedMembership::Representation
-      
-          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :initiator_profile, as: 'initiatorProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteMembershipChangedMetadataAffectedMembership
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :affected_member, as: 'affectedMember', class: Google::Apis::CloudsearchV1::AppsDynamiteMemberId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMemberId::Representation
+          property :affected_member, as: 'affectedMember', class: Google::Apis::CloudsearchV1::MemberId, decorator: Google::Apis::CloudsearchV1::MemberId::Representation
       
           property :prior_membership_role, as: 'priorMembershipRole'
           property :prior_membership_state, as: 'priorMembershipState'
@@ -3469,223 +3000,73 @@ module Google
         end
       end
       
-      class AppsDynamiteMessage
+      class AllAuthenticatedUsersProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation::Representation
+        end
+      end
       
-          property :app_profile, as: 'appProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile::Representation
+      class Annotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :babel_placeholder_metadata, as: 'babelPlaceholderMetadata', class: Google::Apis::CloudsearchV1::BabelPlaceholderMetadata, decorator: Google::Apis::CloudsearchV1::BabelPlaceholderMetadata::Representation
       
-          collection :attachments, as: 'attachments', class: Google::Apis::CloudsearchV1::AppsDynamiteAttachment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAttachment::Representation
+          property :card_capability_metadata, as: 'cardCapabilityMetadata', class: Google::Apis::CloudsearchV1::CardCapabilityMetadata, decorator: Google::Apis::CloudsearchV1::CardCapabilityMetadata::Representation
       
-          property :attributes, as: 'attributes', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageAttributes, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageAttributes::Representation
+          property :chip_render_type, as: 'chipRenderType'
+          property :consented_app_unfurl_metadata, as: 'consentedAppUnfurlMetadata', class: Google::Apis::CloudsearchV1::ConsentedAppUnfurlMetadata, decorator: Google::Apis::CloudsearchV1::ConsentedAppUnfurlMetadata::Representation
       
-          collection :bot_responses, as: 'botResponses', class: Google::Apis::CloudsearchV1::AppsDynamiteBotResponse, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBotResponse::Representation
+          property :custom_emoji_metadata, as: 'customEmojiMetadata', class: Google::Apis::CloudsearchV1::CustomEmojiMetadata, decorator: Google::Apis::CloudsearchV1::CustomEmojiMetadata::Representation
       
-          collection :communal_labels, as: 'communalLabels', class: Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsCommunalLabelTag, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsCommunalLabelTag::Representation
+          property :data_loss_prevention_metadata, as: 'dataLossPreventionMetadata', class: Google::Apis::CloudsearchV1::DataLossPreventionMetadata, decorator: Google::Apis::CloudsearchV1::DataLossPreventionMetadata::Representation
       
-          property :content_report_summary, as: 'contentReportSummary', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageContentReportSummary, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageContentReportSummary::Representation
+          property :drive_metadata, as: 'driveMetadata', class: Google::Apis::CloudsearchV1::DriveMetadata, decorator: Google::Apis::CloudsearchV1::DriveMetadata::Representation
       
-          property :create_time, :numeric_string => true, as: 'createTime'
-          property :creator_id, as: 'creatorId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :format_metadata, as: 'formatMetadata', class: Google::Apis::CloudsearchV1::FormatMetadata, decorator: Google::Apis::CloudsearchV1::FormatMetadata::Representation
       
-          property :deletable_by, as: 'deletableBy'
-          property :delete_time, :numeric_string => true, as: 'deleteTime'
-          property :delete_time_for_requester, :numeric_string => true, as: 'deleteTimeForRequester'
-          property :deleted_by_vault, as: 'deletedByVault'
-          property :dlp_scan_outcome, as: 'dlpScanOutcome'
-          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary::Representation
+          property :group_retention_settings_updated, as: 'groupRetentionSettingsUpdated', class: Google::Apis::CloudsearchV1::GroupRetentionSettingsUpdatedMetaData, decorator: Google::Apis::CloudsearchV1::GroupRetentionSettingsUpdatedMetaData::Representation
       
-          property :editable_by, as: 'editableBy'
-          property :fallback_text, as: 'fallbackText'
-          property :id, as: 'id', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageId::Representation
+          property :gsuite_integration_metadata, as: 'gsuiteIntegrationMetadata', class: Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata, decorator: Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata::Representation
       
-          property :is_inline_reply, as: 'isInlineReply'
-          property :last_edit_time, :numeric_string => true, as: 'lastEditTime'
-          property :last_update_time, :numeric_string => true, as: 'lastUpdateTime'
+          property :incoming_webhook_changed_metadata, as: 'incomingWebhookChangedMetadata', class: Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata, decorator: Google::Apis::CloudsearchV1::IncomingWebhookChangedMetadata::Representation
+      
+          property :integration_config_updated, as: 'integrationConfigUpdated', class: Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::IntegrationConfigUpdatedMetadata::Representation
+      
+          property :length, as: 'length'
           property :local_id, as: 'localId'
-          property :message_integration_payload, as: 'messageIntegrationPayload', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload::Representation
+          property :membership_changed, as: 'membershipChanged', class: Google::Apis::CloudsearchV1::MembershipChangedMetadata, decorator: Google::Apis::CloudsearchV1::MembershipChangedMetadata::Representation
       
-          property :message_origin, as: 'messageOrigin'
-          property :message_state, as: 'messageState'
-          collection :origin_app_suggestions, as: 'originAppSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion::Representation
+          property :read_receipts_settings_metadata, as: 'readReceiptsSettingsMetadata', class: Google::Apis::CloudsearchV1::ReadReceiptsSettingsUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::ReadReceiptsSettingsUpdatedMetadata::Representation
       
-          collection :personal_labels, as: 'personalLabels', class: Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsPersonalLabelTag, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBackendLabelsPersonalLabelTag::Representation
+          property :required_message_features_metadata, as: 'requiredMessageFeaturesMetadata', class: Google::Apis::CloudsearchV1::RequiredMessageFeaturesMetadata, decorator: Google::Apis::CloudsearchV1::RequiredMessageFeaturesMetadata::Representation
       
-          collection :private_message_infos, as: 'privateMessageInfos', class: Google::Apis::CloudsearchV1::AppsDynamitePrivateMessageInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamitePrivateMessageInfo::Representation
+          property :room_updated, as: 'roomUpdated', class: Google::Apis::CloudsearchV1::RoomUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::RoomUpdatedMetadata::Representation
       
-          property :private_message_viewer, as: 'privateMessageViewer', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :server_invalidated, as: 'serverInvalidated'
+          property :slash_command_metadata, as: 'slashCommandMetadata', class: Google::Apis::CloudsearchV1::SlashCommandMetadata, decorator: Google::Apis::CloudsearchV1::SlashCommandMetadata::Representation
       
-          property :props, as: 'props', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageProps, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageProps::Representation
+          property :start_index, as: 'startIndex'
+          property :type, as: 'type'
+          property :unique_id, as: 'uniqueId'
+          property :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::UploadMetadata, decorator: Google::Apis::CloudsearchV1::UploadMetadata::Representation
       
-          property :quoted_by_state, as: 'quotedByState'
-          property :quoted_message_metadata, as: 'quotedMessageMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteQuotedMessageMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteQuotedMessageMetadata::Representation
+          property :url_metadata, as: 'urlMetadata', class: Google::Apis::CloudsearchV1::UrlMetadata, decorator: Google::Apis::CloudsearchV1::UrlMetadata::Representation
       
-          collection :reactions, as: 'reactions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction::Representation
+          property :user_mention_metadata, as: 'userMentionMetadata', class: Google::Apis::CloudsearchV1::UserMentionMetadata, decorator: Google::Apis::CloudsearchV1::UserMentionMetadata::Representation
       
-          collection :reports, as: 'reports', class: Google::Apis::CloudsearchV1::AppsDynamiteContentReport, decorator: Google::Apis::CloudsearchV1::AppsDynamiteContentReport::Representation
+          property :video_call_metadata, as: 'videoCallMetadata', class: Google::Apis::CloudsearchV1::VideoCallMetadata, decorator: Google::Apis::CloudsearchV1::VideoCallMetadata::Representation
       
-          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
-      
-          property :secondary_message_key, as: 'secondaryMessageKey'
-          property :text_body, as: 'textBody'
-          property :tombstone_metadata, as: 'tombstoneMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteTombstoneMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteTombstoneMetadata::Representation
-      
-          property :updater_id, as: 'updaterId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          collection :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata::Representation
+          property :youtube_metadata, as: 'youtubeMetadata', class: Google::Apis::CloudsearchV1::YoutubeMetadata, decorator: Google::Apis::CloudsearchV1::YoutubeMetadata::Representation
       
         end
       end
       
-      class AppsDynamiteMessageAttributes
+      class AppId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_tombstone, as: 'isTombstone'
-        end
-      end
-      
-      class AppsDynamiteMessageContentReportSummary
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :number_reports, as: 'numberReports'
-          property :number_reports_all_revisions, as: 'numberReportsAllRevisions'
-        end
-      end
-      
-      class AppsDynamiteMessageId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message_id, as: 'messageId'
-          property :parent_id, as: 'parentId', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageParentId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageParentId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteMessageInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, as: 'message', class: Google::Apis::CloudsearchV1::AppsDynamiteMessage, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessage::Representation
-      
-          property :searcher_membership_state, as: 'searcherMembershipState'
-        end
-      end
-      
-      class AppsDynamiteMessageParentId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :topic_id, as: 'topicId', class: Google::Apis::CloudsearchV1::AppsDynamiteTopicId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteTopicId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteMessageProps
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :babel_props, as: 'babelProps', class: Google::Apis::CloudsearchV1::AppsDynamiteBabelMessageProps, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBabelMessageProps::Representation
-      
-        end
-      end
-      
-      class AppsDynamitePinnedItemId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :drive_id, as: 'driveId'
-        end
-      end
-      
-      class AppsDynamitePrivateMessageInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation::Representation
-      
-          collection :attachments, as: 'attachments', class: Google::Apis::CloudsearchV1::AppsDynamiteAttachment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAttachment::Representation
-      
-          collection :contextual_add_on_markup, as: 'contextualAddOnMarkup', class: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup::Representation
-      
-          collection :gsuite_integration_metadata, as: 'gsuiteIntegrationMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGsuiteIntegrationMetadata::Representation
-      
-          property :text, as: 'text'
-          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteQuotedMessageMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAnnotation::Representation
-      
-          property :app_profile, as: 'appProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile::Representation
-      
-          property :bot_attachment_state, as: 'botAttachmentState'
-          property :creator_id, as: 'creatorId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :last_update_time_when_quoted_micros, :numeric_string => true, as: 'lastUpdateTimeWhenQuotedMicros'
-          property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageId::Representation
-      
-          property :message_state, as: 'messageState'
-          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
-      
-          property :text_body, as: 'textBody'
-          collection :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUploadMetadata::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteReadReceiptsSettingsUpdatedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :read_receipts_enabled, as: 'readReceiptsEnabled'
-        end
-      end
-      
-      class AppsDynamiteRequiredMessageFeaturesMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :required_features, as: 'requiredFeatures'
-        end
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :group_details_metadata, as: 'groupDetailsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata::Representation
-      
-          property :group_link_sharing_enabled, as: 'groupLinkSharingEnabled'
-          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser, decorator: Google::Apis::CloudsearchV1::AppsDynamiteFrontendUser::Representation
-      
-          property :initiator_type, as: 'initiatorType'
-          property :name, as: 'name'
-          property :rename_metadata, as: 'renameMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata::Representation
-      
-          property :visibility, as: 'visibility', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadataGroupDetailsUpdatedMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_group_details, as: 'newGroupDetails', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails::Representation
-      
-          property :prev_group_details, as: 'prevGroupDetails', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteRoomUpdatedMetadataRoomRenameMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :new_name, as: 'newName'
-          property :prev_name, as: 'prevName'
-        end
-      end
-      
-      class AppsDynamiteRosterId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
+          property :app_type, as: 'appType'
+          property :gsuite_app_type, as: 'gsuiteAppType'
+          property :id, :numeric_string => true, as: 'id'
         end
       end
       
@@ -3726,7 +3107,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :updater_count_display_type, as: 'updaterCountDisplayType'
           property :updater_count_to_show, as: 'updaterCountToShow'
-          property :updater_to_show, as: 'updaterToShow', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :updater_to_show, as: 'updaterToShow', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -3818,13 +3199,13 @@ module Google
           property :content_size, :numeric_string => true, as: 'contentSize'
           property :content_type, as: 'contentType'
           property :dlp_scan_outcome, as: 'dlpScanOutcome'
-          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary, decorator: Google::Apis::CloudsearchV1::AppsDynamiteBackendDlpScanSummary::Representation
+          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
       
-          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::AppsDynamiteGroupId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGroupId::Representation
+          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
           property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
       
-          property :quote_reply_message_id, as: 'quoteReplyMessageId', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageId::Representation
+          property :quote_reply_message_id, as: 'quoteReplyMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
           property :sha256, :base64 => true, as: 'sha256'
           property :upload_ip, as: 'uploadIp'
@@ -3960,7 +3341,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
-          property :suggestion_message_id, as: 'suggestionMessageId', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageId::Representation
+          property :suggestion_message_id, as: 'suggestionMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
         end
       end
@@ -4092,11 +3473,11 @@ module Google
           property :blob_id, as: 'blobId'
           property :content_type, as: 'contentType'
           property :create_time_micros, :numeric_string => true, as: 'createTimeMicros'
-          property :creator_user_id, as: 'creatorUserId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :creator_user_id, as: 'creatorUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
           property :delete_time_micros, :numeric_string => true, as: 'deleteTimeMicros'
           property :ephemeral_url, as: 'ephemeralUrl'
-          property :owner_customer_id, as: 'ownerCustomerId', class: Google::Apis::CloudsearchV1::AppsDynamiteCustomerId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteCustomerId::Representation
+          property :owner_customer_id, as: 'ownerCustomerId', class: Google::Apis::CloudsearchV1::CustomerId, decorator: Google::Apis::CloudsearchV1::CustomerId::Representation
       
           property :read_token, as: 'readToken'
           property :shortcode, as: 'shortcode'
@@ -4302,7 +3683,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_recipient, as: 'isRecipient'
-          property :user, as: 'user', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :user, as: 'user', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -4318,7 +3699,7 @@ module Google
       class AppsDynamiteSharedMessageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::AppsDynamiteMessageId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteMessageId::Representation
+          property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
           property :topic_read_time_usec, :numeric_string => true, as: 'topicReadTimeUsec'
         end
@@ -4403,7 +3784,7 @@ module Google
       class AppsDynamiteSharedOrganizationInfoCustomerInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer_id, as: 'customerId', class: Google::Apis::CloudsearchV1::AppsDynamiteCustomerId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteCustomerId::Representation
+          property :customer_id, as: 'customerId', class: Google::Apis::CloudsearchV1::CustomerId, decorator: Google::Apis::CloudsearchV1::CustomerId::Representation
       
         end
       end
@@ -4411,7 +3792,7 @@ module Google
       class AppsDynamiteSharedOriginAppSuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppsDynamiteAppId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAppId::Representation
+          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
       
           property :card_click_suggestion, as: 'cardClickSuggestion', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardClickSuggestion, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCardClickSuggestion::Representation
       
@@ -4474,7 +3855,7 @@ module Google
       
           property :avatar_url, as: 'avatarUrl'
           property :description, as: 'description'
-          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::AppsDynamiteGroupId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGroupId::Representation
+          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
           property :inviter_email, as: 'inviterEmail'
           property :is_external, as: 'isExternal'
@@ -4521,7 +3902,7 @@ module Google
       class AppsDynamiteSharedTasksAnnotationDataAssigneeChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :old_assignee, as: 'oldAssignee', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :old_assignee, as: 'oldAssignee', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -4547,7 +3928,7 @@ module Google
       class AppsDynamiteSharedTasksAnnotationDataTaskProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :assignee, as: 'assignee', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :assignee, as: 'assignee', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
           property :completed, as: 'completed'
           property :deleted, as: 'deleted'
@@ -4638,112 +4019,6 @@ module Google
         end
       end
       
-      class AppsDynamiteSlashCommandMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :arguments_hint, as: 'argumentsHint'
-          property :command_id, :numeric_string => true, as: 'commandId'
-          property :command_name, as: 'commandName'
-          property :id, as: 'id', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :triggers_dialog, as: 'triggersDialog'
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteSpaceId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :space_id, as: 'spaceId'
-        end
-      end
-      
-      class AppsDynamiteTombstoneMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :tombstone_type, as: 'tombstoneType'
-        end
-      end
-      
-      class AppsDynamiteTopicId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::AppsDynamiteGroupId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteGroupId::Representation
-      
-          property :topic_id, as: 'topicId'
-        end
-      end
-      
-      class AppsDynamiteUploadMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attachment_token, as: 'attachmentToken'
-          property :backend_upload_metadata, as: 'backendUploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata::Representation
-      
-          property :cloned_authorized_item_id, as: 'clonedAuthorizedItemId', class: Google::Apis::CloudsearchV1::AuthorizedItemId, decorator: Google::Apis::CloudsearchV1::AuthorizedItemId::Representation
-      
-          property :cloned_drive_action, as: 'clonedDriveAction'
-          property :cloned_drive_id, as: 'clonedDriveId'
-          property :content_name, as: 'contentName'
-          property :content_type, as: 'contentType'
-          property :dlp_metrics_metadata, as: 'dlpMetricsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata::Representation
-      
-          property :local_id, as: 'localId'
-          property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
-      
-          property :video_reference, as: 'videoReference', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference::Representation
-      
-          property :virus_scan_result, as: 'virusScanResult'
-        end
-      end
-      
-      class AppsDynamiteUrlMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :domain, as: 'domain'
-          property :gws_url, as: 'gwsUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
-      
-          property :gws_url_expiration_timestamp, :numeric_string => true, as: 'gwsUrlExpirationTimestamp'
-          property :image_height, as: 'imageHeight'
-          property :image_url, as: 'imageUrl'
-          property :image_width, as: 'imageWidth'
-          property :int_image_height, as: 'intImageHeight'
-          property :int_image_width, as: 'intImageWidth'
-          property :mime_type, as: 'mimeType'
-          property :redirect_url, as: 'redirectUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
-      
-          property :should_not_render, as: 'shouldNotRender'
-          property :snippet, as: 'snippet'
-          property :title, as: 'title'
-          property :url, as: 'url', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
-      
-        end
-      end
-      
-      class AppsDynamiteUserId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acting_user_id, as: 'actingUserId'
-          property :id, as: 'id'
-          property :origin_app_id, as: 'originAppId', class: Google::Apis::CloudsearchV1::AppsDynamiteAppId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteAppId::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
-      class AppsDynamiteUserMentionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :gender, as: 'gender'
-          property :id, as: 'id', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
-      
-          property :invitee_info, as: 'inviteeInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteInviteeInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteInviteeInfo::Representation
-      
-          property :type, as: 'type'
-        end
-      end
-      
       class AppsDynamiteV1ApiCompatV1Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4803,38 +4078,21 @@ module Google
         end
       end
       
-      class AppsDynamiteVideoCallMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :meeting_space, as: 'meetingSpace', class: Google::Apis::CloudsearchV1::MeetingSpace, decorator: Google::Apis::CloudsearchV1::MeetingSpace::Representation
-      
-          property :should_not_render, as: 'shouldNotRender'
-          property :was_created_in_current_group, as: 'wasCreatedInCurrentGroup'
-        end
-      end
-      
-      class AppsDynamiteYoutubeMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :should_not_render, as: 'shouldNotRender'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class Attachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :embed_item, as: 'embedItem', class: Google::Apis::CloudsearchV1::EmbedClientItem, decorator: Google::Apis::CloudsearchV1::EmbedClientItem::Representation
+          property :add_on_data, as: 'addOnData', class: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup::Representation
       
-          property :id, as: 'id'
-        end
-      end
+          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
-      class AttachmentMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filename, as: 'filename'
+          property :attachment_id, as: 'attachmentId'
+          property :card_add_on_data, as: 'cardAddOnData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCard::Representation
+      
+          property :deprecated_add_on_data, as: 'deprecatedAddOnData', class: Google::Apis::CloudsearchV1::ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::ContextualAddOnMarkup::Representation
+      
+          property :slack_data, as: 'slackData', class: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment, decorator: Google::Apis::CloudsearchV1::AppsDynamiteV1ApiCompatV1Attachment::Representation
+      
+          property :slack_data_image_url_height, as: 'slackDataImageUrlHeight'
         end
       end
       
@@ -4871,6 +4129,33 @@ module Google
         end
       end
       
+      class BabelMessageProps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_generated_id, :numeric_string => true, as: 'clientGeneratedId'
+          property :content_extension, as: 'contentExtension', class: Google::Apis::CloudsearchV1::ChatContentExtension, decorator: Google::Apis::CloudsearchV1::ChatContentExtension::Representation
+      
+          property :delivery_medium, as: 'deliveryMedium', class: Google::Apis::CloudsearchV1::DeliveryMedium, decorator: Google::Apis::CloudsearchV1::DeliveryMedium::Representation
+      
+          property :event_id, as: 'eventId'
+          property :message_content, as: 'messageContent', class: Google::Apis::CloudsearchV1::ChatConserverMessageContent, decorator: Google::Apis::CloudsearchV1::ChatConserverMessageContent::Representation
+      
+          property :was_updated_by_backfill, as: 'wasUpdatedByBackfill'
+        end
+      end
+      
+      class BabelPlaceholderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_metadata, as: 'deleteMetadata', class: Google::Apis::CloudsearchV1::DeleteMetadata, decorator: Google::Apis::CloudsearchV1::DeleteMetadata::Representation
+      
+          property :edit_metadata, as: 'editMetadata', class: Google::Apis::CloudsearchV1::EditMetadata, decorator: Google::Apis::CloudsearchV1::EditMetadata::Representation
+      
+          property :hangout_video_metadata, as: 'hangoutVideoMetadata', class: Google::Apis::CloudsearchV1::HangoutVideoEventMetadata, decorator: Google::Apis::CloudsearchV1::HangoutVideoEventMetadata::Representation
+      
+        end
+      end
+      
       class BooleanOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4895,9 +4180,32 @@ module Google
         end
       end
       
-      class BotMessageMetadata
+      class BotInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
+      
+          property :bot_avatar_url, as: 'botAvatarUrl'
+          property :bot_name, as: 'botName'
+          property :description, as: 'description'
+          property :developer_name, as: 'developerName'
+          property :market_place_banner_url, as: 'marketPlaceBannerUrl'
+          property :status, as: 'status'
+          property :support_urls, as: 'supportUrls', class: Google::Apis::CloudsearchV1::SupportUrls, decorator: Google::Apis::CloudsearchV1::SupportUrls::Representation
+      
+          collection :supported_uses, as: 'supportedUses'
+          property :whitelist_status, as: 'whitelistStatus'
+        end
+      end
+      
+      class BotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bot_id, as: 'botId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :required_action, as: 'requiredAction'
+          property :response_type, as: 'responseType'
+          property :setup_url, as: 'setupUrl'
         end
       end
       
@@ -4938,12 +4246,6 @@ module Google
         end
       end
       
-      class CalendarEventMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class CallInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4958,6 +4260,8 @@ module Google
           property :broadcast_session_info, as: 'broadcastSessionInfo', class: Google::Apis::CloudsearchV1::BroadcastSessionInfo, decorator: Google::Apis::CloudsearchV1::BroadcastSessionInfo::Representation
       
           property :calendar_event_id, as: 'calendarEventId'
+          property :chat_config, as: 'chatConfig', class: Google::Apis::CloudsearchV1::ChatConfig, decorator: Google::Apis::CloudsearchV1::ChatConfig::Representation
+      
           property :co_activity, as: 'coActivity', class: Google::Apis::CloudsearchV1::CoActivity, decorator: Google::Apis::CloudsearchV1::CoActivity::Representation
       
           property :collaboration, as: 'collaboration', class: Google::Apis::CloudsearchV1::Collaboration, decorator: Google::Apis::CloudsearchV1::Collaboration::Representation
@@ -4979,7 +4283,6 @@ module Google
       
           collection :streaming_sessions, as: 'streamingSessions', class: Google::Apis::CloudsearchV1::StreamingSessionInfo, decorator: Google::Apis::CloudsearchV1::StreamingSessionInfo::Representation
       
-          collection :supported_caption_languages, as: 'supportedCaptionLanguages'
           property :transcription_session_info, as: 'transcriptionSessionInfo', class: Google::Apis::CloudsearchV1::TranscriptionSessionInfo, decorator: Google::Apis::CloudsearchV1::TranscriptionSessionInfo::Representation
       
           property :viewer_count, as: 'viewerCount'
@@ -5038,6 +4341,13 @@ module Google
         end
       end
       
+      class CardCapabilityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :required_capabilities, as: 'requiredCapabilities'
+        end
+      end
+      
       class CardHeader
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5049,12 +4359,96 @@ module Google
         end
       end
       
+      class ChatConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_type, as: 'chatType'
+          property :google_chat_config, as: 'googleChatConfig', class: Google::Apis::CloudsearchV1::GoogleChatConfig, decorator: Google::Apis::CloudsearchV1::GoogleChatConfig::Representation
+      
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_metadata, as: 'attachmentMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataAttachmentMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataAttachmentMetadata::Representation
+      
+          property :bot_message_metadata, as: 'botMessageMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataBotMessageMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataBotMessageMetadata::Representation
+      
+          property :calendar_event_metadata, as: 'calendarEventMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata::Representation
+      
+          property :delete_metadata, as: 'deleteMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataDeleteMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataDeleteMetadata::Representation
+      
+          property :edit_metadata, as: 'editMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataEditMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataEditMetadata::Representation
+      
+          property :space_url, as: 'spaceUrl'
+          property :tasks_metadata, as: 'tasksMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataTasksMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataTasksMetadata::Representation
+      
+          property :video_call_metadata, as: 'videoCallMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataVideoCallMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadataVideoCallMetadata::Representation
+      
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataAttachmentMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filename, as: 'filename'
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataBotMessageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataDeleteMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataEditMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataTasksMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ChatConserverDynamitePlaceholderMetadataVideoCallMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :meeting_url, as: 'meetingUrl'
+        end
+      end
+      
+      class ChatConserverMessageContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachment, as: 'attachment', class: Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment, decorator: Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment::Representation
+      
+          collection :segment, as: 'segment', class: Google::Apis::CloudsearchV1::Segment, decorator: Google::Apis::CloudsearchV1::Segment::Representation
+      
+        end
+      end
+      
       class ChatContentExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :annotation, as: 'annotation', class: Google::Apis::CloudsearchV1::EventAnnotation, decorator: Google::Apis::CloudsearchV1::EventAnnotation::Representation
       
-          property :dynamite_placeholder_metadata, as: 'dynamitePlaceholderMetadata', class: Google::Apis::CloudsearchV1::DynamitePlaceholderMetadata, decorator: Google::Apis::CloudsearchV1::DynamitePlaceholderMetadata::Representation
+          property :dynamite_placeholder_metadata, as: 'dynamitePlaceholderMetadata', class: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadata, decorator: Google::Apis::CloudsearchV1::ChatConserverDynamitePlaceholderMetadata::Representation
       
           property :event_otr_status, as: 'eventOtrStatus'
           property :group_link_sharing_modification_event, as: 'groupLinkSharingModificationEvent', class: Google::Apis::CloudsearchV1::GroupLinkSharingModificationEvent, decorator: Google::Apis::CloudsearchV1::GroupLinkSharingModificationEvent::Representation
@@ -5133,11 +4527,27 @@ module Google
         end
       end
       
+      class CommunalLabelTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creator_user_id, :numeric_string => true, as: 'creatorUserId'
+          property :label_id, as: 'labelId'
+        end
+      end
+      
       class CompositeFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :logic_operator, as: 'logicOperator'
           collection :sub_filters, as: 'subFilters', class: Google::Apis::CloudsearchV1::Filter, decorator: Google::Apis::CloudsearchV1::Filter::Representation
+      
+        end
+      end
+      
+      class ConsentedAppUnfurlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_specified_app_id, as: 'clientSpecifiedAppId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -5148,6 +4558,35 @@ module Google
           property :group_id, :numeric_string => true, as: 'groupId'
           property :owner_gaia_id, :numeric_string => true, as: 'ownerGaiaId'
           property :required_consistency_timestamp_usec, :numeric_string => true, as: 'requiredConsistencyTimestampUsec'
+        end
+      end
+      
+      class ContentReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_create_timestamp, as: 'reportCreateTimestamp'
+          property :report_justification, as: 'reportJustification', class: Google::Apis::CloudsearchV1::ContentReportJustification, decorator: Google::Apis::CloudsearchV1::ContentReportJustification::Representation
+      
+          property :report_type, as: 'reportType', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedContentReportType::Representation
+      
+          property :reporter_user_id, as: 'reporterUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :revision_create_timestamp, as: 'revisionCreateTimestamp'
+        end
+      end
+      
+      class ContentReportJustification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_justification, as: 'userJustification'
+        end
+      end
+      
+      class ContentReportSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :number_reports, as: 'numberReports'
+          property :number_reports_all_revisions, as: 'numberReportsAllRevisions'
         end
       end
       
@@ -5174,6 +4613,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cse_domain, as: 'cseDomain'
           property :wrapped_key, :base64 => true, as: 'wrappedKey'
+        end
+      end
+      
+      class CustomEmojiMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji, as: 'customEmoji', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCustomEmoji::Representation
+      
+        end
+      end
+      
+      class CustomerId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
         end
       end
       
@@ -5233,6 +4687,15 @@ module Google
           property :one_day_active_users_count, :numeric_string => true, as: 'oneDayActiveUsersCount'
           property :seven_days_active_users_count, :numeric_string => true, as: 'sevenDaysActiveUsersCount'
           property :thirty_days_active_users_count, :numeric_string => true, as: 'thirtyDaysActiveUsersCount'
+        end
+      end
+      
+      class DataLossPreventionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
+      
+          property :warn_acknowledged, as: 'warnAcknowledged'
         end
       end
       
@@ -5375,6 +4838,22 @@ module Google
         end
       end
       
+      class DlpScanSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan_id, as: 'scanId'
+          property :scan_not_applicable_for_context, as: 'scanNotApplicableForContext'
+          property :scan_outcome, as: 'scanOutcome'
+        end
+      end
+      
+      class DmId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dm_id, as: 'dmId'
+        end
+      end
+      
       class DocumentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5419,6 +4898,43 @@ module Google
         end
       end
       
+      class DriveMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_fix_request, as: 'aclFixRequest', class: Google::Apis::CloudsearchV1::AclFixRequest, decorator: Google::Apis::CloudsearchV1::AclFixRequest::Representation
+      
+          property :acl_fix_status, as: 'aclFixStatus', class: Google::Apis::CloudsearchV1::AclFixStatus, decorator: Google::Apis::CloudsearchV1::AclFixStatus::Representation
+      
+          property :can_edit, as: 'canEdit'
+          property :can_share, as: 'canShare'
+          property :can_view, as: 'canView'
+          property :drive_action, as: 'driveAction'
+          property :drive_state, as: 'driveState'
+          property :embed_url, as: 'embedUrl', class: Google::Apis::CloudsearchV1::TrustedResourceUrlProto, decorator: Google::Apis::CloudsearchV1::TrustedResourceUrlProto::Representation
+      
+          property :encrypted_doc_id, as: 'encryptedDocId'
+          property :encrypted_resource_key, as: 'encryptedResourceKey'
+          property :external_mimetype, as: 'externalMimetype'
+          property :id, as: 'id'
+          property :is_download_restricted, as: 'isDownloadRestricted'
+          property :is_owner, as: 'isOwner'
+          property :legacy_upload_metadata, as: 'legacyUploadMetadata', class: Google::Apis::CloudsearchV1::LegacyUploadMetadata, decorator: Google::Apis::CloudsearchV1::LegacyUploadMetadata::Representation
+      
+          property :mimetype, as: 'mimetype'
+          property :organization_display_name, as: 'organizationDisplayName'
+          property :shortcut_authorized_item_id, as: 'shortcutAuthorizedItemId', class: Google::Apis::CloudsearchV1::AuthorizedItemId, decorator: Google::Apis::CloudsearchV1::AuthorizedItemId::Representation
+      
+          property :should_not_render, as: 'shouldNotRender'
+          property :thumbnail_height, as: 'thumbnailHeight'
+          property :thumbnail_url, as: 'thumbnailUrl'
+          property :thumbnail_width, as: 'thumbnailWidth'
+          property :title, as: 'title'
+          property :url_fragment, as: 'urlFragment'
+          property :wrapped_resource_key, as: 'wrappedResourceKey', class: Google::Apis::CloudsearchV1::WrappedResourceKey, decorator: Google::Apis::CloudsearchV1::WrappedResourceKey::Representation
+      
+        end
+      end
+      
       class DriveMimeTypeRestrict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5430,27 +4946,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
-        end
-      end
-      
-      class DynamitePlaceholderMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attachment_metadata, as: 'attachmentMetadata', class: Google::Apis::CloudsearchV1::AttachmentMetadata, decorator: Google::Apis::CloudsearchV1::AttachmentMetadata::Representation
-      
-          property :bot_message_metadata, as: 'botMessageMetadata', class: Google::Apis::CloudsearchV1::BotMessageMetadata, decorator: Google::Apis::CloudsearchV1::BotMessageMetadata::Representation
-      
-          property :calendar_event_metadata, as: 'calendarEventMetadata', class: Google::Apis::CloudsearchV1::CalendarEventMetadata, decorator: Google::Apis::CloudsearchV1::CalendarEventMetadata::Representation
-      
-          property :delete_metadata, as: 'deleteMetadata', class: Google::Apis::CloudsearchV1::DeleteMetadata, decorator: Google::Apis::CloudsearchV1::DeleteMetadata::Representation
-      
-          property :edit_metadata, as: 'editMetadata', class: Google::Apis::CloudsearchV1::EditMetadata, decorator: Google::Apis::CloudsearchV1::EditMetadata::Representation
-      
-          property :space_url, as: 'spaceUrl'
-          property :tasks_metadata, as: 'tasksMetadata', class: Google::Apis::CloudsearchV1::TasksMetadata, decorator: Google::Apis::CloudsearchV1::TasksMetadata::Representation
-      
-          property :video_call_metadata, as: 'videoCallMetadata', class: Google::Apis::CloudsearchV1::VideoCallMetadata, decorator: Google::Apis::CloudsearchV1::VideoCallMetadata::Representation
-      
         end
       end
       
@@ -5485,7 +4980,11 @@ module Google
       class EmailAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_type, as: 'customType'
           property :email_address, as: 'emailAddress'
+          property :email_url, as: 'emailUrl'
+          property :primary, as: 'primary'
+          property :type, as: 'type'
         end
       end
       
@@ -5660,6 +5159,14 @@ module Google
         end
       end
       
+      class FormatMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :font_color, as: 'fontColor'
+          property :format_type, as: 'formatType'
+        end
+      end
+      
       class Formatting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5792,6 +5299,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::SearchApplicationUserStats, decorator: Google::Apis::CloudsearchV1::SearchApplicationUserStats::Representation
       
+        end
+      end
+      
+      class GoogleChatConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chat_group_id, as: 'chatGroupId'
         end
       end
       
@@ -6011,10 +5525,58 @@ module Google
         end
       end
       
+      class GroupDetailsUpdatedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_group_details, as: 'newGroupDetails', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails::Representation
+      
+          property :prev_group_details, as: 'prevGroupDetails', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupDetails::Representation
+      
+        end
+      end
+      
+      class GroupId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dm_id, as: 'dmId', class: Google::Apis::CloudsearchV1::DmId, decorator: Google::Apis::CloudsearchV1::DmId::Representation
+      
+          property :space_id, as: 'spaceId', class: Google::Apis::CloudsearchV1::SpaceId, decorator: Google::Apis::CloudsearchV1::SpaceId::Representation
+      
+        end
+      end
+      
       class GroupLinkSharingModificationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :new_status, as: 'newStatus'
+        end
+      end
+      
+      class GroupRetentionSettingsUpdatedMetaData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
+      
+        end
+      end
+      
+      class GsuiteIntegrationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_feed_data, as: 'activityFeedData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData::Representation
+      
+          property :assistant_data, as: 'assistantData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAssistantAnnotationData::Representation
+      
+          property :calendar_event_data, as: 'calendarEventData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCalendarEventAnnotationData::Representation
+      
+          property :call_data, as: 'callData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedCallAnnotationData::Representation
+      
+          property :client_type, as: 'clientType'
+          collection :indexable_texts, as: 'indexableTexts'
+          property :tasks_data, as: 'tasksData', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedTasksAnnotationData::Representation
+      
         end
       end
       
@@ -6026,6 +5588,13 @@ module Google
           collection :participant_id, as: 'participantId', class: Google::Apis::CloudsearchV1::StoredParticipantId, decorator: Google::Apis::CloudsearchV1::StoredParticipantId::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class HangoutVideoEventMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hangout_video_type, as: 'hangoutVideoType'
         end
       end
       
@@ -6140,6 +5709,20 @@ module Google
         end
       end
       
+      class IncomingWebhookChangedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :incoming_webhook_name, as: 'incomingWebhookName'
+          property :initiator_id, as: 'initiatorId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :initiator_profile, as: 'initiatorProfile', class: Google::Apis::CloudsearchV1::User, decorator: Google::Apis::CloudsearchV1::User::Representation
+      
+          property :obfuscated_incoming_webhook_id, as: 'obfuscatedIncomingWebhookId'
+          property :old_incoming_webhook_name, as: 'oldIncomingWebhookName'
+          property :type, as: 'type'
+        end
+      end
+      
       class IndexItemOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6194,6 +5777,30 @@ module Google
         end
       end
       
+      class IntegrationConfigMutation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_app, as: 'addApp', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
+      
+          property :add_pinned_item, as: 'addPinnedItem', class: Google::Apis::CloudsearchV1::PinnedItemId, decorator: Google::Apis::CloudsearchV1::PinnedItemId::Representation
+      
+          property :remove_app, as: 'removeApp', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
+      
+          property :remove_pinned_item, as: 'removePinnedItem', class: Google::Apis::CloudsearchV1::PinnedItemId, decorator: Google::Apis::CloudsearchV1::PinnedItemId::Representation
+      
+        end
+      end
+      
+      class IntegrationConfigUpdatedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initiator_id, as: 'initiatorId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          collection :mutations, as: 'mutations', class: Google::Apis::CloudsearchV1::IntegrationConfigMutation, decorator: Google::Apis::CloudsearchV1::IntegrationConfigMutation::Representation
+      
+        end
+      end
+      
       class Interaction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6208,6 +5815,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :participant_id, as: 'participantId', class: Google::Apis::CloudsearchV1::StoredParticipantId, decorator: Google::Apis::CloudsearchV1::StoredParticipantId::Representation
+      
+        end
+      end
+      
+      class InviteeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -6354,10 +5970,19 @@ module Google
         end
       end
       
+      class LegacyUploadMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_unique_id, as: 'legacyUniqueId'
+          property :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::UploadMetadata, decorator: Google::Apis::CloudsearchV1::UploadMetadata::Representation
+      
+        end
+      end
+      
       class LinkData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :attachment, as: 'attachment', class: Google::Apis::CloudsearchV1::Attachment, decorator: Google::Apis::CloudsearchV1::Attachment::Representation
+          property :attachment, as: 'attachment', class: Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment, decorator: Google::Apis::CloudsearchV1::SocialCommonAttachmentAttachment::Representation
       
           property :attachment_render_hint, as: 'attachmentRenderHint'
           property :display_url, as: 'displayUrl'
@@ -6485,11 +6110,48 @@ module Google
         end
       end
       
+      class Member
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :roster, as: 'roster', class: Google::Apis::CloudsearchV1::Roster, decorator: Google::Apis::CloudsearchV1::Roster::Representation
+      
+          property :user, as: 'user', class: Google::Apis::CloudsearchV1::User, decorator: Google::Apis::CloudsearchV1::User::Representation
+      
+        end
+      end
+      
+      class MemberId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :roster_id, as: 'rosterId', class: Google::Apis::CloudsearchV1::RosterId, decorator: Google::Apis::CloudsearchV1::RosterId::Representation
+      
+          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+        end
+      end
+      
       class MembershipChangeEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :leave_reason, as: 'leaveReason'
           collection :participant_id, as: 'participantId', class: Google::Apis::CloudsearchV1::StoredParticipantId, decorator: Google::Apis::CloudsearchV1::StoredParticipantId::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class MembershipChangedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :affected_member_profiles, as: 'affectedMemberProfiles', class: Google::Apis::CloudsearchV1::Member, decorator: Google::Apis::CloudsearchV1::Member::Representation
+      
+          collection :affected_members, as: 'affectedMembers', class: Google::Apis::CloudsearchV1::MemberId, decorator: Google::Apis::CloudsearchV1::MemberId::Representation
+      
+          collection :affected_memberships, as: 'affectedMemberships', class: Google::Apis::CloudsearchV1::AffectedMembership, decorator: Google::Apis::CloudsearchV1::AffectedMembership::Representation
+      
+          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :initiator_profile, as: 'initiatorProfile', class: Google::Apis::CloudsearchV1::User, decorator: Google::Apis::CloudsearchV1::User::Representation
       
           property :type, as: 'type'
         end
@@ -6516,12 +6178,112 @@ module Google
         end
       end
       
-      class MessageContent
+      class Message
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :attachment, as: 'attachment', class: Google::Apis::CloudsearchV1::Attachment, decorator: Google::Apis::CloudsearchV1::Attachment::Representation
+          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::Annotation, decorator: Google::Apis::CloudsearchV1::Annotation::Representation
       
-          collection :segment, as: 'segment', class: Google::Apis::CloudsearchV1::Segment, decorator: Google::Apis::CloudsearchV1::Segment::Representation
+          property :app_profile, as: 'appProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile::Representation
+      
+          collection :attachments, as: 'attachments', class: Google::Apis::CloudsearchV1::Attachment, decorator: Google::Apis::CloudsearchV1::Attachment::Representation
+      
+          property :attributes, as: 'attributes', class: Google::Apis::CloudsearchV1::MessageAttributes, decorator: Google::Apis::CloudsearchV1::MessageAttributes::Representation
+      
+          collection :bot_responses, as: 'botResponses', class: Google::Apis::CloudsearchV1::BotResponse, decorator: Google::Apis::CloudsearchV1::BotResponse::Representation
+      
+          collection :communal_labels, as: 'communalLabels', class: Google::Apis::CloudsearchV1::CommunalLabelTag, decorator: Google::Apis::CloudsearchV1::CommunalLabelTag::Representation
+      
+          property :content_report_summary, as: 'contentReportSummary', class: Google::Apis::CloudsearchV1::ContentReportSummary, decorator: Google::Apis::CloudsearchV1::ContentReportSummary::Representation
+      
+          property :create_time, :numeric_string => true, as: 'createTime'
+          property :creator_id, as: 'creatorId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :deletable_by, as: 'deletableBy'
+          property :delete_time, :numeric_string => true, as: 'deleteTime'
+          property :delete_time_for_requester, :numeric_string => true, as: 'deleteTimeForRequester'
+          property :deleted_by_vault, as: 'deletedByVault'
+          property :dlp_scan_outcome, as: 'dlpScanOutcome'
+          property :dlp_scan_summary, as: 'dlpScanSummary', class: Google::Apis::CloudsearchV1::DlpScanSummary, decorator: Google::Apis::CloudsearchV1::DlpScanSummary::Representation
+      
+          property :editable_by, as: 'editableBy'
+          property :fallback_text, as: 'fallbackText'
+          property :id, as: 'id', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
+      
+          property :is_inline_reply, as: 'isInlineReply'
+          property :last_edit_time, :numeric_string => true, as: 'lastEditTime'
+          property :last_update_time, :numeric_string => true, as: 'lastUpdateTime'
+          property :local_id, as: 'localId'
+          property :message_integration_payload, as: 'messageIntegrationPayload', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageIntegrationPayload::Representation
+      
+          property :message_origin, as: 'messageOrigin'
+          property :message_state, as: 'messageState'
+          collection :origin_app_suggestions, as: 'originAppSuggestions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOriginAppSuggestion::Representation
+      
+          collection :personal_labels, as: 'personalLabels', class: Google::Apis::CloudsearchV1::PersonalLabelTag, decorator: Google::Apis::CloudsearchV1::PersonalLabelTag::Representation
+      
+          collection :private_message_infos, as: 'privateMessageInfos', class: Google::Apis::CloudsearchV1::PrivateMessageInfo, decorator: Google::Apis::CloudsearchV1::PrivateMessageInfo::Representation
+      
+          property :private_message_viewer, as: 'privateMessageViewer', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :props, as: 'props', class: Google::Apis::CloudsearchV1::MessageProps, decorator: Google::Apis::CloudsearchV1::MessageProps::Representation
+      
+          property :quoted_by_state, as: 'quotedByState'
+          property :quoted_message_metadata, as: 'quotedMessageMetadata', class: Google::Apis::CloudsearchV1::QuotedMessageMetadata, decorator: Google::Apis::CloudsearchV1::QuotedMessageMetadata::Representation
+      
+          collection :reactions, as: 'reactions', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedReaction::Representation
+      
+          collection :reports, as: 'reports', class: Google::Apis::CloudsearchV1::ContentReport, decorator: Google::Apis::CloudsearchV1::ContentReport::Representation
+      
+          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
+      
+          property :secondary_message_key, as: 'secondaryMessageKey'
+          property :text_body, as: 'textBody'
+          property :tombstone_metadata, as: 'tombstoneMetadata', class: Google::Apis::CloudsearchV1::TombstoneMetadata, decorator: Google::Apis::CloudsearchV1::TombstoneMetadata::Representation
+      
+          property :updater_id, as: 'updaterId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          collection :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::UploadMetadata, decorator: Google::Apis::CloudsearchV1::UploadMetadata::Representation
+      
+        end
+      end
+      
+      class MessageAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_tombstone, as: 'isTombstone'
+        end
+      end
+      
+      class MessageId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_id, as: 'messageId'
+          property :parent_id, as: 'parentId', class: Google::Apis::CloudsearchV1::MessageParentId, decorator: Google::Apis::CloudsearchV1::MessageParentId::Representation
+      
+        end
+      end
+      
+      class MessageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::CloudsearchV1::Message, decorator: Google::Apis::CloudsearchV1::Message::Representation
+      
+          property :searcher_membership_state, as: 'searcherMembershipState'
+        end
+      end
+      
+      class MessageParentId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic_id, as: 'topicId', class: Google::Apis::CloudsearchV1::TopicId, decorator: Google::Apis::CloudsearchV1::TopicId::Representation
+      
+        end
+      end
+      
+      class MessageProps
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :babel_props, as: 'babelProps', class: Google::Apis::CloudsearchV1::BabelMessageProps, decorator: Google::Apis::CloudsearchV1::BabelMessageProps::Representation
       
         end
       end
@@ -6736,6 +6498,13 @@ module Google
         end
       end
       
+      class PersonalLabelTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_id, as: 'labelId'
+        end
+      end
+      
       class PhoneAccess
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6759,6 +6528,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class PinnedItemId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_id, as: 'driveId'
         end
       end
       
@@ -6863,6 +6639,23 @@ module Google
           property :youtube_user, as: 'youtubeUser', class: Google::Apis::CloudsearchV1::YoutubeUserProto, decorator: Google::Apis::CloudsearchV1::YoutubeUserProto::Representation
       
           property :zwieback_session, as: 'zwiebackSession', class: Google::Apis::CloudsearchV1::ZwiebackSessionProto, decorator: Google::Apis::CloudsearchV1::ZwiebackSessionProto::Representation
+      
+        end
+      end
+      
+      class PrivateMessageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::Annotation, decorator: Google::Apis::CloudsearchV1::Annotation::Representation
+      
+          collection :attachments, as: 'attachments', class: Google::Apis::CloudsearchV1::Attachment, decorator: Google::Apis::CloudsearchV1::Attachment::Representation
+      
+          collection :contextual_add_on_markup, as: 'contextualAddOnMarkup', class: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup, decorator: Google::Apis::CloudsearchV1::GoogleChatV1ContextualAddOnMarkup::Representation
+      
+          collection :gsuite_integration_metadata, as: 'gsuiteIntegrationMetadata', class: Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata, decorator: Google::Apis::CloudsearchV1::GsuiteIntegrationMetadata::Representation
+      
+          property :text, as: 'text'
+          property :user_id, as: 'userId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -7031,6 +6824,28 @@ module Google
         end
       end
       
+      class QuotedMessageMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :annotations, as: 'annotations', class: Google::Apis::CloudsearchV1::Annotation, decorator: Google::Apis::CloudsearchV1::Annotation::Representation
+      
+          property :app_profile, as: 'appProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile::Representation
+      
+          property :bot_attachment_state, as: 'botAttachmentState'
+          property :creator_id, as: 'creatorId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :last_update_time_when_quoted_micros, :numeric_string => true, as: 'lastUpdateTimeWhenQuotedMicros'
+          property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
+      
+          property :message_state, as: 'messageState'
+          property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
+      
+          property :text_body, as: 'textBody'
+          collection :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::UploadMetadata, decorator: Google::Apis::CloudsearchV1::UploadMetadata::Representation
+      
+        end
+      end
+      
       class RbacRoleProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7052,6 +6867,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :emoji, as: 'emoji'
+        end
+      end
+      
+      class ReadReceiptsSettingsUpdatedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_receipts_enabled, as: 'readReceiptsEnabled'
         end
       end
       
@@ -7114,6 +6936,13 @@ module Google
         end
       end
       
+      class RequiredMessageFeaturesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :required_features, as: 'requiredFeatures'
+        end
+      end
+      
       class ResetSearchApplicationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7135,6 +6964,7 @@ module Google
       class ResponseDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_experiments, as: 'enabledExperiments'
           property :formatted_debug_info, as: 'formattedDebugInfo'
         end
       end
@@ -7200,6 +7030,51 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :importance, as: 'importance'
+        end
+      end
+      
+      class RoomRenameMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_name, as: 'newName'
+          property :prev_name, as: 'prevName'
+        end
+      end
+      
+      class RoomUpdatedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_details_metadata, as: 'groupDetailsMetadata', class: Google::Apis::CloudsearchV1::GroupDetailsUpdatedMetadata, decorator: Google::Apis::CloudsearchV1::GroupDetailsUpdatedMetadata::Representation
+      
+          property :group_link_sharing_enabled, as: 'groupLinkSharingEnabled'
+          property :initiator, as: 'initiator', class: Google::Apis::CloudsearchV1::User, decorator: Google::Apis::CloudsearchV1::User::Representation
+      
+          property :initiator_type, as: 'initiatorType'
+          property :name, as: 'name'
+          property :rename_metadata, as: 'renameMetadata', class: Google::Apis::CloudsearchV1::RoomRenameMetadata, decorator: Google::Apis::CloudsearchV1::RoomRenameMetadata::Representation
+      
+          property :visibility, as: 'visibility', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedGroupVisibility::Representation
+      
+        end
+      end
+      
+      class Roster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_url, as: 'avatarUrl'
+          property :id, as: 'id', class: Google::Apis::CloudsearchV1::RosterId, decorator: Google::Apis::CloudsearchV1::RosterId::Representation
+      
+          property :membership_count, as: 'membershipCount'
+          property :name, as: 'name'
+          property :roster_gaia_key, as: 'rosterGaiaKey'
+          property :roster_state, as: 'rosterState'
+        end
+      end
+      
+      class RosterId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -7489,12 +7364,34 @@ module Google
         end
       end
       
+      class SlashCommandMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arguments_hint, as: 'argumentsHint'
+          property :command_id, :numeric_string => true, as: 'commandId'
+          property :command_name, as: 'commandName'
+          property :id, as: 'id', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :triggers_dialog, as: 'triggersDialog'
+          property :type, as: 'type'
+        end
+      end
+      
       class Snippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :match_ranges, as: 'matchRanges', class: Google::Apis::CloudsearchV1::MatchRange, decorator: Google::Apis::CloudsearchV1::MatchRange::Representation
       
           property :snippet, as: 'snippet'
+        end
+      end
+      
+      class SocialCommonAttachmentAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embed_item, as: 'embedItem', class: Google::Apis::CloudsearchV1::EmbedClientItem, decorator: Google::Apis::CloudsearchV1::EmbedClientItem::Representation
+      
+          property :id, as: 'id'
         end
       end
       
@@ -7557,6 +7454,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_importance, as: 'sourceImportance'
+        end
+      end
+      
+      class SpaceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space_id, as: 'spaceId'
         end
       end
       
@@ -7671,6 +7575,18 @@ module Google
         end
       end
       
+      class SupportUrls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_config_url, as: 'adminConfigUrl'
+          property :deletion_policy_url, as: 'deletionPolicyUrl'
+          property :privacy_policy_url, as: 'privacyPolicyUrl'
+          property :setup_url, as: 'setupUrl'
+          property :support_url, as: 'supportUrl'
+          property :tos_url, as: 'tosUrl'
+        end
+      end
+      
       class SwitchWidget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7680,12 +7596,6 @@ module Google
       
           property :selected, as: 'selected'
           property :value, as: 'value'
-        end
-      end
-      
-      class TasksMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -7787,12 +7697,28 @@ module Google
         end
       end
       
+      class TombstoneMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tombstone_type, as: 'tombstoneType'
+        end
+      end
+      
       class Toolbar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color'
           property :icon_url, as: 'iconUrl'
           property :name, as: 'name'
+        end
+      end
+      
+      class TopicId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
+      
+          property :topic_id, as: 'topicId'
         end
       end
       
@@ -7881,11 +7807,94 @@ module Google
         end
       end
       
+      class UploadMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_token, as: 'attachmentToken'
+          property :backend_upload_metadata, as: 'backendUploadMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedBackendUploadMetadata::Representation
+      
+          property :cloned_authorized_item_id, as: 'clonedAuthorizedItemId', class: Google::Apis::CloudsearchV1::AuthorizedItemId, decorator: Google::Apis::CloudsearchV1::AuthorizedItemId::Representation
+      
+          property :cloned_drive_action, as: 'clonedDriveAction'
+          property :cloned_drive_id, as: 'clonedDriveId'
+          property :content_name, as: 'contentName'
+          property :content_type, as: 'contentType'
+          property :dlp_metrics_metadata, as: 'dlpMetricsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata::Representation
+      
+          property :local_id, as: 'localId'
+          property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
+      
+          property :video_reference, as: 'videoReference', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedVideoReference::Representation
+      
+          property :virus_scan_result, as: 'virusScanResult'
+        end
+      end
+      
+      class UrlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :gws_url, as: 'gwsUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
+      
+          property :gws_url_expiration_timestamp, :numeric_string => true, as: 'gwsUrlExpirationTimestamp'
+          property :image_height, as: 'imageHeight'
+          property :image_url, as: 'imageUrl'
+          property :image_width, as: 'imageWidth'
+          property :int_image_height, as: 'intImageHeight'
+          property :int_image_width, as: 'intImageWidth'
+          property :mime_type, as: 'mimeType'
+          property :redirect_url, as: 'redirectUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
+      
+          property :should_not_render, as: 'shouldNotRender'
+          property :snippet, as: 'snippet'
+          property :title, as: 'title'
+          property :url, as: 'url', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
+      
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_url, as: 'avatarUrl'
+          property :block_relationship, as: 'blockRelationship', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedUserBlockRelationship::Representation
+      
+          property :bot_info, as: 'botInfo', class: Google::Apis::CloudsearchV1::BotInfo, decorator: Google::Apis::CloudsearchV1::BotInfo::Representation
+      
+          property :deleted, as: 'deleted'
+          property :email, as: 'email'
+          property :first_name, as: 'firstName'
+          property :gender, as: 'gender'
+          property :id, as: 'id', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :is_anonymous, as: 'isAnonymous'
+          property :last_name, as: 'lastName'
+          property :name, as: 'name'
+          property :organization_info, as: 'organizationInfo', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOrganizationInfo::Representation
+      
+          collection :phone_number, as: 'phoneNumber', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedPhoneNumber::Representation
+      
+          property :user_account_state, as: 'userAccountState'
+          property :user_profile_visibility, as: 'userProfileVisibility'
+        end
+      end
+      
       class UserDisplayInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :avatar_url, as: 'avatarUrl'
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class UserId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acting_user_id, as: 'actingUserId'
+          property :id, as: 'id'
+          property :origin_app_id, as: 'originAppId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -7896,7 +7905,7 @@ module Google
           property :updater_count_to_show, as: 'updaterCountToShow'
           property :updater_to_show_email, as: 'updaterToShowEmail'
           property :updater_to_show_gaia_id, :numeric_string => true, as: 'updaterToShowGaiaId'
-          property :updater_to_show_user_id, as: 'updaterToShowUserId', class: Google::Apis::CloudsearchV1::AppsDynamiteUserId, decorator: Google::Apis::CloudsearchV1::AppsDynamiteUserId::Representation
+          property :updater_to_show_user_id, as: 'updaterToShowUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end
       end
@@ -7909,6 +7918,19 @@ module Google
       
           property :user_gaia_id, :numeric_string => true, as: 'userGaiaId'
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class UserMentionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :gender, as: 'gender'
+          property :id, as: 'id', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :invitee_info, as: 'inviteeInfo', class: Google::Apis::CloudsearchV1::InviteeInfo, decorator: Google::Apis::CloudsearchV1::InviteeInfo::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -7944,7 +7966,10 @@ module Google
       class VideoCallMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :meeting_url, as: 'meetingUrl'
+          property :meeting_space, as: 'meetingSpace', class: Google::Apis::CloudsearchV1::MeetingSpace, decorator: Google::Apis::CloudsearchV1::MeetingSpace::Representation
+      
+          property :should_not_render, as: 'shouldNotRender'
+          property :was_created_in_current_group, as: 'wasCreatedInCurrentGroup'
         end
       end
       
@@ -7982,7 +8007,6 @@ module Google
           property :id, as: 'id'
           property :title, as: 'title'
           property :uri, as: 'uri'
-          property :whiteboard_uri, as: 'whiteboardUri'
         end
       end
       
@@ -8050,6 +8074,15 @@ module Google
           property :broadcast_id, as: 'broadcastId'
           property :channel_id, as: 'channelId'
           property :view_url, as: 'viewUrl'
+        end
+      end
+      
+      class YoutubeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :should_not_render, as: 'shouldNotRender'
+          property :start_time, as: 'startTime'
         end
       end
       
