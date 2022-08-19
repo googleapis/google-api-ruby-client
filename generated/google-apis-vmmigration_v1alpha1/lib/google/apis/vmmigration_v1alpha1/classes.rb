@@ -1400,7 +1400,7 @@ module Google
       class LocalizedMessage
         include Google::Apis::Core::Hashable
       
-        # The locale used following the specification defined at http://www.rfc-editor.
+        # The locale used following the specification defined at https://www.rfc-editor.
         # org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
         # Corresponds to the JSON property `locale`
         # @return [String]
