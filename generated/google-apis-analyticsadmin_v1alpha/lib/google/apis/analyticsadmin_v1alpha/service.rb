@@ -1240,7 +1240,7 @@ module Google
         end
         
         # Lookup for a single Audience. Audiences created before 2020 may not be
-        # supported.
+        # supported. Default audiences will not show filter definitions.
         # @param [String] name
         #   Required. The name of the Audience to get. Example format: properties/1234/
         #   audiences/5678
@@ -1272,7 +1272,7 @@ module Google
         end
         
         # Lists Audiences on a property. Audiences created before 2020 may not be
-        # supported.
+        # supported. Default audiences will not show filter definitions.
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Fixnum] page_size
