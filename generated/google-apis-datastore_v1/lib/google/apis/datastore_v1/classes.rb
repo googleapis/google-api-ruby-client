@@ -26,7 +26,8 @@ module Google
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -92,7 +93,8 @@ module Google
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -139,7 +141,8 @@ module Google
       class CommitRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -1432,7 +1435,8 @@ module Google
       class LookupRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -1960,8 +1964,7 @@ module Google
       class ReadOptions
         include Google::Apis::Core::Hashable
       
-        # The non-transactional read consistency to use. Cannot be set to `STRONG` for
-        # global queries.
+        # The non-transactional read consistency to use.
         # Corresponds to the JSON property `readConsistency`
         # @return [String]
         attr_accessor :read_consistency
@@ -2015,7 +2018,8 @@ module Google
       class ReserveIdsRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -2054,7 +2058,8 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
@@ -2094,7 +2099,8 @@ module Google
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
-        # If not empty, the ID of the database against which to make the request.
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
