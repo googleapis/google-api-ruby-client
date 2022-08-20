@@ -1,0 +1,7 @@
+{
+    "api_id": "identitytoolkit:v2",
+    "name_pretty": "Identity Toolkit API",
+    "distribution_name": "google-apis-identitytoolkit_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
