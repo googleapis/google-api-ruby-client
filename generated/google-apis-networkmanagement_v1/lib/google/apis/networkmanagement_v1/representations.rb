@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudFunctionEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudFunctionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSqlInstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcConnectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnGatewayInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -260,6 +278,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          collection :projects_missing_permission, as: 'projectsMissingPermission'
           property :resource_uri, as: 'resourceUri'
         end
       end
@@ -294,6 +313,23 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CloudFunctionEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class CloudFunctionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :uri, as: 'uri'
+          property :version_id, :numeric_string => true, as: 'versionId'
         end
       end
       
@@ -354,6 +390,8 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint::Representation
+      
           property :cloud_sql_instance, as: 'cloudSqlInstance'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
@@ -614,6 +652,8 @@ module Google
           property :abort, as: 'abort', class: Google::Apis::NetworkmanagementV1::AbortInfo, decorator: Google::Apis::NetworkmanagementV1::AbortInfo::Representation
       
           property :causes_drop, as: 'causesDrop'
+          property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1::CloudFunctionInfo, decorator: Google::Apis::NetworkmanagementV1::CloudFunctionInfo::Representation
+      
           property :cloud_sql_instance, as: 'cloudSqlInstance', class: Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo, decorator: Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo::Representation
       
           property :deliver, as: 'deliver', class: Google::Apis::NetworkmanagementV1::DeliverInfo, decorator: Google::Apis::NetworkmanagementV1::DeliverInfo::Representation
@@ -641,6 +681,8 @@ module Google
           property :route, as: 'route', class: Google::Apis::NetworkmanagementV1::RouteInfo, decorator: Google::Apis::NetworkmanagementV1::RouteInfo::Representation
       
           property :state, as: 'state'
+          property :vpc_connector, as: 'vpcConnector', class: Google::Apis::NetworkmanagementV1::VpcConnectorInfo, decorator: Google::Apis::NetworkmanagementV1::VpcConnectorInfo::Representation
+      
           property :vpn_gateway, as: 'vpnGateway', class: Google::Apis::NetworkmanagementV1::VpnGatewayInfo, decorator: Google::Apis::NetworkmanagementV1::VpnGatewayInfo::Representation
       
           property :vpn_tunnel, as: 'vpnTunnel', class: Google::Apis::NetworkmanagementV1::VpnTunnelInfo, decorator: Google::Apis::NetworkmanagementV1::VpnTunnelInfo::Representation
@@ -669,6 +711,15 @@ module Google
       
           collection :steps, as: 'steps', class: Google::Apis::NetworkmanagementV1::Step, decorator: Google::Apis::NetworkmanagementV1::Step::Representation
       
+        end
+      end
+      
+      class VpcConnectorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :uri, as: 'uri'
         end
       end
       
