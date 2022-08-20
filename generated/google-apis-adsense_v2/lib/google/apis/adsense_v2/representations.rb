@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdBlockingRecoveryTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdClient
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -219,6 +225,14 @@ module Google
           property :state, as: 'state'
           property :time_zone, as: 'timeZone', class: Google::Apis::AdsenseV2::TimeZone, decorator: Google::Apis::AdsenseV2::TimeZone::Representation
       
+        end
+      end
+      
+      class AdBlockingRecoveryTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_protection_code, as: 'errorProtectionCode'
+          property :tag, as: 'tag'
         end
       end
       
