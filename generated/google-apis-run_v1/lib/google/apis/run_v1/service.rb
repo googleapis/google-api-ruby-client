@@ -90,8 +90,8 @@ module Google
         
         # Get information about a configuration.
         # @param [String] name
-        #   The name of the configuration to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   The name of the configuration to retrieve. For Cloud Run, replace `
+        #   namespace_id` with the project ID or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,27 +121,23 @@ module Google
         
         # List configurations.
         # @param [String] parent
-        #   The namespace from which the configurations should be listed. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   The namespace from which the configurations should be listed. For Cloud Run,
+        #   replace `namespace_id` with the project ID or number.
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name. Send
-        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
-        #   used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [String] label_selector
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   Optional. The maximum number of records that should be returned.
+        #   Optional. The maximum number of the records that should be returned.
         # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -230,7 +226,7 @@ module Google
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
         #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   architecture/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,7 +290,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List domain mappings.
+        # List all domain mappings.
         # @param [String] parent
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
         #   fully managed), replace `namespace` with the project ID or number. It takes
@@ -398,8 +394,9 @@ module Google
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Optional. Specifies the propagation policy of delete. Cloud Run currently
-        #   ignores this setting, and deletes in the background. Please see kubernetes.io/
-        #   docs/concepts/workloads/controllers/garbage-collection/ for more information.
+        #   ignores this setting, and deletes in the background. Please see http://
+        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more
+        #   information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -470,22 +467,18 @@ module Google
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Optional. Allows to filter resources based on a specific value for a field
-        #   name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not
-        #   currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Optional. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] label_selector
         #   Optional. Allows to filter resources based on a label. Supported operations
         #   are =, !=, exists, in, and notIn.
         # @param [Fixnum] limit
-        #   Optional. The maximum number of records that should be returned.
+        #   Optional. The maximum number of the records that should be returned.
         # @param [String] resource_version
-        #   Optional. The baseline resource version from which the list or watch operation
-        #   should start. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] watch
-        #   Optional. Flag that indicates that the client expects to watch this resource
-        #   as well. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -638,22 +631,18 @@ module Google
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Optional. Allows to filter resources based on a specific value for a field
-        #   name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not
-        #   currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Optional. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] label_selector
         #   Optional. Allows to filter resources based on a label. Supported operations
         #   are =, !=, exists, in, and notIn.
         # @param [Fixnum] limit
         #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
-        #   Optional. The baseline resource version from which the list or watch operation
-        #   should start. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] watch
-        #   Optional. Flag that indicates that the client expects to watch this resource
-        #   as well. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -693,7 +682,7 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   Required. The name of the service being replaced. Replace `namespace` with the
+        #   Required. The name of the job being replaced. Replace `namespace` with the
         #   project ID or number. It takes the form namespaces/`namespace`. For example:
         #   namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Job] job_object
@@ -775,8 +764,8 @@ module Google
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   setting, and deletes in the background. Please see https://kubernetes.io/docs/
+        #   concepts/architecture/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -988,11 +977,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a service.
+        # Creates a new Service. Service creation will trigger a new deployment. Use
+        # GetService, and check service.status to determine if the Service is ready.
         # @param [String] parent
-        #   The namespace in which the service should be created. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The resource's parent. In Cloud Run, it may be one of the following: * `
+        #   namespaces/`project_id_or_number`` * `projects/`project_id_or_number`/
+        #   locations/`region`` * `projects/`project_id_or_number`/regions/`region``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -1027,23 +1017,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a service. This will cause the Service to stop serving traffic and will
-        # delete the child entities like Routes, Configurations and Revisions.
+        # Deletes the provided service. This will cause the Service to stop serving
+        # traffic and will delete all associated Revisions.
         # @param [String] name
-        #   The name of the service to delete. For Cloud Run (fully managed), replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to delete. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] api_version
-        #   Cloud Run currently ignores this parameter.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all`
         # @param [String] kind
-        #   Cloud Run currently ignores this parameter.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1075,11 +1064,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get information about a service.
+        # Gets information about a service.
         # @param [String] name
-        #   The name of the service to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to retrieve. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1107,30 +1097,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List services.
+        # Lists services for the given project and region.
         # @param [String] parent
-        #   The namespace from which the services should be listed. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The parent from where the resources should be listed. In Cloud Run, it may be
+        #   one of the following: * `namespaces/`project_id_or_number`` * `projects/`
+        #   project_id_or_number`/locations/`region`` * `projects/`project_id_or_number`/
+        #   regions/`region``
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name. Send
-        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
-        #   used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] label_selector
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1165,14 +1152,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace a service. Only the spec and metadata labels and annotations are
+        # Replaces a service. Only the spec and metadata labels and annotations are
         # modifiable. After the Update request, Cloud Run will work to make the 'status'
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. For Cloud Run (fully managed), replace
-        #   `namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to replace. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -1247,22 +1235,18 @@ module Google
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Optional. Allows to filter resources based on a specific value for a field
-        #   name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not
-        #   currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Optional. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] label_selector
         #   Optional. Allows to filter resources based on a label. Supported operations
         #   are =, !=, exists, in, and notIn.
         # @param [Fixnum] limit
         #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
-        #   Optional. The baseline resource version from which the list or watch operation
-        #   should start. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [Boolean] watch
-        #   Optional. Flag that indicates that the client expects to watch this resource
-        #   as well. Not currently used by Cloud Run.
+        #   Optional. Not supported by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1414,8 +1398,8 @@ module Google
         
         # Get information about a configuration.
         # @param [String] name
-        #   The name of the configuration to retrieve. For Cloud Run (fully managed),
-        #   replace `namespace_id` with the project ID or number.
+        #   The name of the configuration to retrieve. For Cloud Run, replace `
+        #   namespace_id` with the project ID or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1445,27 +1429,23 @@ module Google
         
         # List configurations.
         # @param [String] parent
-        #   The namespace from which the configurations should be listed. For Cloud Run (
-        #   fully managed), replace `namespace_id` with the project ID or number.
+        #   The namespace from which the configurations should be listed. For Cloud Run,
+        #   replace `namespace_id` with the project ID or number.
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name. Send
-        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
-        #   used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [String] label_selector
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   Optional. The maximum number of records that should be returned.
+        #   Optional. The maximum number of the records that should be returned.
         # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
+        #   Not supported by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1554,7 +1534,7 @@ module Google
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
         #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   architecture/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1618,7 +1598,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List domain mappings.
+        # List all domain mappings.
         # @param [String] parent
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
         #   fully managed), replace `namespace` with the project ID or number. It takes
@@ -1807,8 +1787,8 @@ module Google
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   setting, and deletes in the background. Please see https://kubernetes.io/docs/
+        #   concepts/architecture/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2020,11 +2000,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a service.
+        # Creates a new Service. Service creation will trigger a new deployment. Use
+        # GetService, and check service.status to determine if the Service is ready.
         # @param [String] parent
-        #   The namespace in which the service should be created. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The resource's parent. In Cloud Run, it may be one of the following: * `
+        #   namespaces/`project_id_or_number`` * `projects/`project_id_or_number`/
+        #   locations/`region`` * `projects/`project_id_or_number`/regions/`region``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -2059,23 +2040,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a service. This will cause the Service to stop serving traffic and will
-        # delete the child entities like Routes, Configurations and Revisions.
+        # Deletes the provided service. This will cause the Service to stop serving
+        # traffic and will delete all associated Revisions.
         # @param [String] name
-        #   The name of the service to delete. For Cloud Run (fully managed), replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to delete. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] api_version
-        #   Cloud Run currently ignores this parameter.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
         #   values without persisting the request. Supported values: `all`
         # @param [String] kind
-        #   Cloud Run currently ignores this parameter.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
-        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
-        #   workloads/controllers/garbage-collection/ for more information.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2107,11 +2087,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get information about a service.
+        # Gets information about a service.
         # @param [String] name
-        #   The name of the service to retrieve. For Cloud Run (fully managed), replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to retrieve. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2139,7 +2120,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the IAM Access Control policy currently in effect for the given Cloud Run
+        # Gets the IAM Access Control policy currently in effect for the given Cloud Run
         # service. This result does not include any inherited policies.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -2184,30 +2165,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List services.
+        # Lists services for the given project and region.
         # @param [String] parent
-        #   The namespace from which the services should be listed. For Cloud Run (fully
-        #   managed), replace `namespace` with the project ID or number. It takes the form
-        #   namespaces/`namespace`. For example: namespaces/PROJECT_ID
+        #   The parent from where the resources should be listed. In Cloud Run, it may be
+        #   one of the following: * `namespaces/`project_id_or_number`` * `projects/`
+        #   project_id_or_number`/locations/`region`` * `projects/`project_id_or_number`/
+        #   regions/`region``
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name. Send
-        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
-        #   used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] label_selector
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
+        #   Not supported, and ignored by Cloud Run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2242,14 +2220,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace a service. Only the spec and metadata labels and annotations are
+        # Replaces a service. Only the spec and metadata labels and annotations are
         # modifiable. After the Update request, Cloud Run will work to make the 'status'
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. For Cloud Run (fully managed), replace
-        #   `namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   The fully qualified name of the service to replace. It can be any of the
+        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
+        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
+        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
