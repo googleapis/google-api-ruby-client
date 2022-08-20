@@ -31,6 +31,13 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # List of project IDs that the user has specified in the request but does not
+        # have permission to access network configs. Analysis is aborted in this case
+        # with the PERMISSION_DENIED cause.
+        # Corresponds to the JSON property `projectsMissingPermission`
+        # @return [Array<String>]
+        attr_accessor :projects_missing_permission
+      
         # URI of the resource that caused the abort.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
@@ -43,6 +50,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @projects_missing_permission = args[:projects_missing_permission] if args.key?(:projects_missing_permission)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
         end
       end
@@ -148,25 +156,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -199,6 +210,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Wrapper for cloud function attributes.
+      class CloudFunctionEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # A [Cloud function](https://cloud.google.com/functions) name.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with a Cloud function.
+      class CloudFunctionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud function.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which the Cloud function is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a Cloud function.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Latest successfully deployed version id of the Cloud function.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
@@ -404,6 +471,11 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # Wrapper for cloud function attributes.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint]
+        attr_accessor :cloud_function
+      
         # A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         # Corresponds to the JSON property `cloudSqlInstance`
         # @return [String]
@@ -461,6 +533,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
@@ -1534,6 +1607,11 @@ module Google
         attr_accessor :causes_drop
         alias_method :causes_drop?, :causes_drop
       
+        # For display only. Metadata associated with a Cloud function.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::NetworkmanagementV1::CloudFunctionInfo]
+        attr_accessor :cloud_function
+      
         # For display only. Metadata associated with a Cloud SQL instance.
         # Corresponds to the JSON property `cloudSqlInstance`
         # @return [Google::Apis::NetworkmanagementV1::CloudSqlInstanceInfo]
@@ -1613,6 +1691,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # For display only. Metadata associated with a VPC connector.
+        # Corresponds to the JSON property `vpcConnector`
+        # @return [Google::Apis::NetworkmanagementV1::VpcConnectorInfo]
+        attr_accessor :vpc_connector
+      
         # For display only. Metadata associated with a Compute Engine VPN gateway.
         # Corresponds to the JSON property `vpnGateway`
         # @return [Google::Apis::NetworkmanagementV1::VpnGatewayInfo]
@@ -1631,6 +1714,7 @@ module Google
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
@@ -1646,6 +1730,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @route = args[:route] if args.key?(:route)
           @state = args[:state] if args.key?(:state)
+          @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
         end
@@ -1724,6 +1809,37 @@ module Google
         def update!(**args)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # For display only. Metadata associated with a VPC connector.
+      class VpcConnectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a VPC connector.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which the VPC connector is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a VPC connector.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
