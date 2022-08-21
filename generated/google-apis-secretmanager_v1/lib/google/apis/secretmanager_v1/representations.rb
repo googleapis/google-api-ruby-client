@@ -432,6 +432,7 @@ module Google
       class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
