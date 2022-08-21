@@ -27,7 +27,7 @@ module Google
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
-        # Create a de-identified copy of the requested table or files. . A
+        # Create a de-identified copy of the requested table or files. A
         # TransformationDetail will be created for each transformation. If any rows in
         # BigQuery are skipped during de-identification (transformation errors or row
         # size exceeds BigQuery insert API limits) they are placed in the failure output
@@ -41,8 +41,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Deidentify]
         attr_accessor :deidentify
       
-        # Enable email notification to project owners and editors on jobs's completion/
-        # failure.
+        # Sends an email when the job completes. The email goes to IAM project owners
+        # and technical [Essential Contacts](https://cloud.google.com/resource-manager/
+        # docs/managing-notification-contacts).
         # Corresponds to the JSON property `jobNotificationEmails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
         attr_accessor :job_notification_emails
@@ -116,6 +117,32 @@ module Google
       
       # Request message for ActivateJobTrigger.
       class GooglePrivacyDlpV2ActivateJobTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Apply transformation to all findings.
+      class GooglePrivacyDlpV2AllInfoTypes
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Apply to all text.
+      class GooglePrivacyDlpV2AllText
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1916,7 +1943,7 @@ module Google
         end
       end
       
-      # Create a de-identified copy of the requested table or files. . A
+      # Create a de-identified copy of the requested table or files. A
       # TransformationDetail will be created for each transformation. If any rows in
       # BigQuery are skipped during de-identification (transformation errors or row
       # size exceeds BigQuery insert API limits) they are placed in the failure output
@@ -1929,11 +1956,11 @@ module Google
       class GooglePrivacyDlpV2Deidentify
         include Google::Apis::Core::Hashable
       
-        # Required. User settable GCS bucket and folders to store de-identified files.
-        # This field must be set for cloud storage deidentification. The output GCS
-        # bucket must be different from the input bucket. De-identified files will
-        # overwrite files in the output path. Form of: gs://bucket/folder/ or gs://
-        # bucket
+        # Required. User settable Cloud Storage bucket and folders to store de-
+        # identified files. This field must be set for cloud storage deidentification.
+        # The output Cloud Storage bucket must be different from the input bucket. De-
+        # identified files will overwrite files in the output path. Form of: gs://bucket/
+        # folder/ or gs://bucket
         # Corresponds to the JSON property `cloudStorageOutput`
         # @return [String]
         attr_accessor :cloud_storage_output
@@ -1977,6 +2004,11 @@ module Google
       class GooglePrivacyDlpV2DeidentifyConfig
         include Google::Apis::Core::Hashable
       
+        # A type of transformation that is applied over images.
+        # Corresponds to the JSON property `imageTransformations`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformations]
+        attr_accessor :image_transformations
+      
         # A type of transformation that will scan unstructured text and apply various `
         # PrimitiveTransformation`s to each finding, where the transformation is applied
         # to only values that were identified as a specific info_type.
@@ -2006,6 +2038,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @image_transformations = args[:image_transformations] if args.key?(:image_transformations)
           @info_type_transformations = args[:info_type_transformations] if args.key?(:info_type_transformations)
           @record_transformations = args[:record_transformations] if args.key?(:record_transformations)
           @transformation_error_handling = args[:transformation_error_handling] if args.key?(:transformation_error_handling)
@@ -3246,6 +3279,62 @@ module Google
         end
       end
       
+      # Configuration for determining how redaction of images should occur.
+      class GooglePrivacyDlpV2ImageTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Apply transformation to all findings.
+        # Corresponds to the JSON property `allInfoTypes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllInfoTypes]
+        attr_accessor :all_info_types
+      
+        # Apply to all text.
+        # Corresponds to the JSON property `allText`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AllText]
+        attr_accessor :all_text
+      
+        # Represents a color in the RGB color space.
+        # Corresponds to the JSON property `redactionColor`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Color]
+        attr_accessor :redaction_color
+      
+        # Apply transformation to the selected info_types.
+        # Corresponds to the JSON property `selectedInfoTypes`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SelectedInfoTypes]
+        attr_accessor :selected_info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_info_types = args[:all_info_types] if args.key?(:all_info_types)
+          @all_text = args[:all_text] if args.key?(:all_text)
+          @redaction_color = args[:redaction_color] if args.key?(:redaction_color)
+          @selected_info_types = args[:selected_info_types] if args.key?(:selected_info_types)
+        end
+      end
+      
+      # A type of transformation that is applied over images.
+      class GooglePrivacyDlpV2ImageTransformations
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `transforms`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformation>]
+        attr_accessor :transforms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transforms = args[:transforms] if args.key?(:transforms)
+        end
+      end
+      
       # Type of information detected by the API.
       class GooglePrivacyDlpV2InfoType
         include Google::Apis::Core::Hashable
@@ -3830,8 +3919,9 @@ module Google
         end
       end
       
-      # Enable email notification to project owners and editors on jobs's completion/
-      # failure.
+      # Sends an email when the job completes. The email goes to IAM project owners
+      # and technical [Essential Contacts](https://cloud.google.com/resource-manager/
+      # docs/managing-notification-contacts).
       class GooglePrivacyDlpV2JobNotificationEmails
         include Google::Apis::Core::Hashable
       
@@ -5580,6 +5670,37 @@ module Google
         end
       end
       
+      # 
+      class GooglePrivacyDlpV2RecordTransformation
+        include Google::Apis::Core::Hashable
+      
+        # Findings container modification timestamp, if applicable.
+        # Corresponds to the JSON property `containerTimestamp`
+        # @return [String]
+        attr_accessor :container_timestamp
+      
+        # Container version, if available ("generation" for Cloud Storage).
+        # Corresponds to the JSON property `containerVersion`
+        # @return [String]
+        attr_accessor :container_version
+      
+        # General identifier of a data field in a storage service.
+        # Corresponds to the JSON property `fieldId`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
+        attr_accessor :field_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_timestamp = args[:container_timestamp] if args.key?(:container_timestamp)
+          @container_version = args[:container_version] if args.key?(:container_version)
+          @field_id = args[:field_id] if args.key?(:field_id)
+        end
+      end
+      
       # A type of transformation that is applied over structured data such as a table.
       class GooglePrivacyDlpV2RecordTransformations
         include Google::Apis::Core::Hashable
@@ -6047,6 +6168,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @recurrence_period_duration = args[:recurrence_period_duration] if args.key?(:recurrence_period_duration)
+        end
+      end
+      
+      # Apply transformation to the selected info_types.
+      class GooglePrivacyDlpV2SelectedInfoTypes
+        include Google::Apis::Core::Hashable
+      
+        # Required. InfoTypes to apply the transformation to. Required. Provided
+        # InfoType must be unique within the ImageTransformations message.
+        # Corresponds to the JSON property `infoTypes`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
+        attr_accessor :info_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info_types = args[:info_types] if args.key?(:info_types)
         end
       end
       
@@ -6850,6 +6991,111 @@ module Google
         end
       end
       
+      # A flattened description of a `PrimitiveTransformation` or `RecordSuppression`.
+      class GooglePrivacyDlpV2TransformationDescription
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable string representation of the `RecordCondition` corresponding
+        # to this transformation. Set if a `RecordCondition` was used to determine
+        # whether or not to apply this transformation. Examples: * (age_field > 85) * (
+        # age_field <= 18) * (zip_field exists) * (zip_field == 01234) && (city_field !=
+        # "Springville") * (zip_field == 01234) && (age_field <= 18) && (city_field
+        # exists)
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # A description of the transformation. This is empty for a RECORD_SUPPRESSION,
+        # or is the output of calling toString() on the `PrimitiveTransformation`
+        # protocol buffer message for any other type of transformation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Type of information detected by the API.
+        # Corresponds to the JSON property `infoType`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
+        attr_accessor :info_type
+      
+        # The transformation type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
+          @info_type = args[:info_type] if args.key?(:info_type)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Details about a single transformation. This object contains a description of
+      # the transformation, information about whether the transformation was
+      # successfully applied, and the precise location where the transformation
+      # occurred. These details are stored in a user-specified BigQuery table.
+      class GooglePrivacyDlpV2TransformationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The top level name of the container where the transformation is located (this
+        # will be the source file name or table name).
+        # Corresponds to the JSON property `containerName`
+        # @return [String]
+        attr_accessor :container_name
+      
+        # The name of the job that completed the transformation.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Status of the transformation, if transformation was not successful, this will
+        # specify what caused it to fail, otherwise it will show that the transformation
+        # was successful.
+        # Corresponds to the JSON property `statusDetails`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationResultStatus]
+        attr_accessor :status_details
+      
+        # Description of transformation. This would only contain more than one element
+        # if there were multiple matching transformations and which one to apply was
+        # ambiguous. Not set for states that contain no transformation, currently only
+        # state that contains no transformation is TransformationResultStateType.
+        # METADATA_UNRETRIEVABLE.
+        # Corresponds to the JSON property `transformation`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDescription>]
+        attr_accessor :transformation
+      
+        # Specifies the location of a transformation.
+        # Corresponds to the JSON property `transformationLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationLocation]
+        attr_accessor :transformation_location
+      
+        # The number of bytes that were transformed. If transformation was unsuccessful
+        # or did not take place because there was no content to transform, this will be
+        # zero.
+        # Corresponds to the JSON property `transformedBytes`
+        # @return [Fixnum]
+        attr_accessor :transformed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_name = args[:container_name] if args.key?(:container_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @status_details = args[:status_details] if args.key?(:status_details)
+          @transformation = args[:transformation] if args.key?(:transformation)
+          @transformation_location = args[:transformation_location] if args.key?(:transformation_location)
+          @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
+        end
+      end
+      
       # Config for storing transformation details.
       class GooglePrivacyDlpV2TransformationDetailsStorageConfig
         include Google::Apis::Core::Hashable
@@ -6904,6 +7150,42 @@ module Google
         end
       end
       
+      # Specifies the location of a transformation.
+      class GooglePrivacyDlpV2TransformationLocation
+        include Google::Apis::Core::Hashable
+      
+        # Information about the functionality of the container where this finding
+        # occurred, if available.
+        # Corresponds to the JSON property `containerType`
+        # @return [String]
+        attr_accessor :container_type
+      
+        # For infotype transformations, link to the corresponding findings ID so that
+        # location information does not need to be duplicated. Each findings ID
+        # correlates to an entry in the findings output table, this table only gets
+        # created when users specify to save findings (add the save findings action to
+        # the request).
+        # Corresponds to the JSON property `findingId`
+        # @return [String]
+        attr_accessor :finding_id
+      
+        # For record transformations, provide a field and container information.
+        # Corresponds to the JSON property `recordTransformation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformation]
+        attr_accessor :record_transformation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_type = args[:container_type] if args.key?(:container_type)
+          @finding_id = args[:finding_id] if args.key?(:finding_id)
+          @record_transformation = args[:record_transformation] if args.key?(:record_transformation)
+        end
+      end
+      
       # Overview of the modifications that occurred.
       class GooglePrivacyDlpV2TransformationOverview
         include Google::Apis::Core::Hashable
@@ -6926,6 +7208,37 @@ module Google
         def update!(**args)
           @transformation_summaries = args[:transformation_summaries] if args.key?(:transformation_summaries)
           @transformed_bytes = args[:transformed_bytes] if args.key?(:transformed_bytes)
+        end
+      end
+      
+      # 
+      class GooglePrivacyDlpV2TransformationResultStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::DlpV2::GoogleRpcStatus]
+        attr_accessor :details
+      
+        # Transformation result status type, this will be either SUCCESS, or it will be
+        # the reason for why the transformation was not completely successful.
+        # Corresponds to the JSON property `resultStatusType`
+        # @return [String]
+        attr_accessor :result_status_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @result_status_type = args[:result_status_type] if args.key?(:result_status_type)
         end
       end
       
