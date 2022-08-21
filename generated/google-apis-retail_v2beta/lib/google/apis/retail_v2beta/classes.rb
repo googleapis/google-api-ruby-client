@@ -365,8 +365,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Google Cloud Storage prefix for import errors. This must be an empty, existing
-        # Cloud Storage directory. Import errors will be written to sharded files in
-        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Cloud Storage directory. Import errors are written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -381,8 +381,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2ImportMetadata
         include Google::Apis::Core::Hashable
       
@@ -397,9 +397,9 @@ module Google
         attr_accessor :failure_count
       
         # Pub/Sub topic for receiving notification. If this field is set, when the
-        # import is finished, a notification will be sent to specified Pub/Sub topic.
-        # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``.
+        # import is finished, a notification is sent to specified Pub/Sub topic. The
+        # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
+        # projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -924,8 +924,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Google Cloud Storage prefix for import errors. This must be an empty, existing
-        # Cloud Storage directory. Import errors will be written to sharded files in
-        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Cloud Storage directory. Import errors are written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -940,8 +940,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2alphaImportMetadata
         include Google::Apis::Core::Hashable
       
@@ -956,9 +956,9 @@ module Google
         attr_accessor :failure_count
       
         # Pub/Sub topic for receiving notification. If this field is set, when the
-        # import is finished, a notification will be sent to specified Pub/Sub topic.
-        # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``.
+        # import is finished, a notification is sent to specified Pub/Sub topic. The
+        # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
+        # projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -1063,7 +1063,7 @@ module Google
       
       # Metadata that describes the training and serving parameters of a Model. A
       # Model can be associated with a ServingConfig and then queried through the
-      # Predict api.
+      # Predict API.
       class GoogleCloudRetailV2alphaModel
         include Google::Apis::Core::Hashable
       
@@ -1072,23 +1072,23 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The state of data requirements for this model: DATA_OK and
-        # DATA_ERROR. Recommendation model cannot be trained if the data is in
-        # DATA_ERROR state. Recommendation model can have DATA_ERROR state even if
-        # serving state is ACTIVE: models were trained successfully before, but cannot
+        # Output only. The state of data requirements for this model: `DATA_OK` and `
+        # DATA_ERROR`. Recommendation model cannot be trained if the data is in `
+        # DATA_ERROR` state. Recommendation model can have `DATA_ERROR` state even if
+        # serving state is `ACTIVE`: models were trained successfully before, but cannot
         # be refreshed because model no longer has sufficient data for training.
         # Corresponds to the JSON property `dataState`
         # @return [String]
         attr_accessor :data_state
       
         # Required. The display name of the model. Should be human readable, used to
-        # display Recommendation Models in the Retail Cloud Cosole Dashboard. UTF-8
+        # display Recommendation Models in the Retail Cloud Console Dashboard. UTF-8
         # encoded string with limit of 1024 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. If RECOMMENDATIONS_FILTERING_ENABLED, recommendation filtering by
+        # Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by
         # attributes is enabled for the model.
         # Corresponds to the JSON property `filteringOption`
         # @return [String]
@@ -1099,9 +1099,10 @@ module Google
         # @return [String]
         attr_accessor :last_tune_time
       
-        # Required. The fully qualified resource name of the model. Format: projects/`
+        # Required. The fully qualified resource name of the model. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
-        # catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+        # ` catalog_id has char limit of 50. recommendation_model_id has char limit of
+        # 40.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1124,8 +1125,8 @@ module Google
         attr_accessor :page_optimization_config
       
         # Optional. The state of periodic tuning. The period we use is 3 months - to do
-        # a one-off tune earlier use the TuneModel method. Default value is
-        # PERIODIC_TUNING_ENABLED.
+        # a one-off tune earlier use the `TuneModel` method. Default value is `
+        # PERIODIC_TUNING_ENABLED`.
         # Corresponds to the JSON property `periodicTuningState`
         # @return [String]
         attr_accessor :periodic_tuning_state
@@ -1136,16 +1137,16 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelServingConfigList>]
         attr_accessor :serving_config_lists
       
-        # Output only. The serving state of the model: ACTIVE, NOT_ACTIVE.
+        # Output only. The serving state of the model: `ACTIVE`, `NOT_ACTIVE`.
         # Corresponds to the JSON property `servingState`
         # @return [String]
         attr_accessor :serving_state
       
-        # Optional. The training state that the model is in (e.g. TRAINING or PAUSED).
-        # Since part of the cost of running the service is frequency of training - this
-        # can be used to determine when to train model in order to control cost. If not
-        # specified: the default value for CreateModel method is TRAINING. the default
-        # value for UpdateModel method is to keep the state the same as before.
+        # Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`)
+        # . Since part of the cost of running the service is frequency of training -
+        # this can be used to determine when to train model in order to control cost. If
+        # not specified: the default value for `CreateModel` method is `TRAINING`. The
+        # default value for `UpdateModel` method is to keep the state the same as before.
         # Corresponds to the JSON property `trainingState`
         # @return [String]
         attr_accessor :training_state
@@ -1159,7 +1160,7 @@ module Google
       
         # Required. The type of model e.g. `home-page`. Currently supported values: `
         # recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `
-        # page-optimization`, 'similar-items', 'buy-it-again', `recently-viewed`(
+        # page-optimization`, `similar-items`, `buy-it-again`, and `recently-viewed`(
         # readonly value).
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -1244,9 +1245,10 @@ module Google
       class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate
         include Google::Apis::Core::Hashable
       
-        # This has to be a valid ServingConfig identifier. e.g. for a ServingConfig with
-        # full name: `projects/*/locations/global/catalogs/default_catalog/
-        # servingConfigs/my_candidate_config` this would be 'my_candidate_config'
+        # This has to be a valid ServingConfig identifier. For example, for a
+        # ServingConfig with full name: `projects/*/locations/global/catalogs/
+        # default_catalog/servingConfigs/my_candidate_config`, this would be `
+        # my_candidate_config`.
         # Corresponds to the JSON property `servingConfigId`
         # @return [String]
         attr_accessor :serving_config_id
@@ -1293,13 +1295,13 @@ module Google
         end
       end
       
-      # Represents an ordered combination of valid serving configs, which / may be
-      # used for PAGE_OPTIMIZATION recommendations.
+      # Represents an ordered combination of valid serving configs, which can be used
+      # for `PAGE_OPTIMIZATION` recommendations.
       class GoogleCloudRetailV2alphaModelServingConfigList
         include Google::Apis::Core::Hashable
       
-        # Optional. A set of valid serving configs that may be used for
-        # PAGE_OPTIMIZATION.
+        # Optional. A set of valid serving configs that may be used for `
+        # PAGE_OPTIMIZATION`.
         # Corresponds to the JSON property `servingConfigIds`
         # @return [Array<String>]
         attr_accessor :serving_config_ids
@@ -2836,7 +2838,7 @@ module Google
         end
       end
       
-      # Google Cloud Storage location for input content. format.
+      # Google Cloud Storage location for input content.
       class GoogleCloudRetailV2betaGcsSource
         include Google::Apis::Core::Hashable
       
@@ -2847,8 +2849,8 @@ module Google
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
-        # Supported values for control imports: * 'control' (default): One JSON Control
-        # per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        # Supported values for control imports: * `control` (default): One JSON Control
+        # per line. Supported values for catalog attribute imports: * `catalog_attribute`
         # (default): One CSV CatalogAttribute per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
@@ -2958,9 +2960,9 @@ module Google
         attr_accessor :input_config
       
         # Pub/Sub topic for receiving notification. If this field is set, when the
-        # import is finished, a notification will be sent to specified Pub/Sub topic.
-        # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``.
+        # import is finished, a notification is sent to specified Pub/Sub topic. The
+        # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
+        # projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -3002,8 +3004,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Google Cloud Storage prefix for import errors. This must be an empty, existing
-        # Cloud Storage directory. Import errors will be written to sharded files in
-        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Cloud Storage directory. Import errors are written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -3018,8 +3020,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Import operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Import operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2betaImportMetadata
         include Google::Apis::Core::Hashable
       
@@ -3034,9 +3036,9 @@ module Google
         attr_accessor :failure_count
       
         # Pub/Sub topic for receiving notification. If this field is set, when the
-        # import is finished, a notification will be sent to specified Pub/Sub topic.
-        # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``.
+        # import is finished, a notification is sent to specified Pub/Sub topic. The
+        # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
+        # projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -3087,12 +3089,12 @@ module Google
         attr_accessor :input_config
       
         # Full Pub/Sub topic name for receiving notification. If this field is set, when
-        # the import is finished, a notification will be sent to specified Pub/Sub topic.
-        # The message data will be JSON string of a Operation. Format of the Pub/Sub
-        # topic is `projects/`project`/topics/`topic``. It has to be within the same
-        # project as ImportProductsRequest.parent. Make sure that `service-@gcp-sa-
-        # retail.iam.gserviceaccount.com` has the `pubsub.topics.publish` IAM permission
-        # on the topic.
+        # the import is finished, a notification is sent to specified Pub/Sub topic. The
+        # message data is JSON string of a Operation. Format of the Pub/Sub topic is `
+        # projects/`project`/topics/`topic``. It has to be within the same project as
+        # ImportProductsRequest.parent. Make sure that `service-@gcp-sa-retail.iam.
+        # gserviceaccount.com` has the `pubsub.topics.publish` IAM permission on the
+        # topic.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -3108,8 +3110,8 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Indicates which fields in the provided imported 'products' to update. If not
-        # set, will by default update all fields.
+        # Indicates which fields in the provided imported `products` to update. If not
+        # set, all fields are updated.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -4216,7 +4218,7 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBigQuerySource]
         attr_accessor :big_query_source
       
-        # Google Cloud Storage location for input content. format.
+        # Google Cloud Storage location for input content.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGcsSource]
         attr_accessor :gcs_source
@@ -6449,7 +6451,7 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBigQuerySource]
         attr_accessor :big_query_source
       
-        # Google Cloud Storage location for input content. format.
+        # Google Cloud Storage location for input content.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaGcsSource]
         attr_accessor :gcs_source
