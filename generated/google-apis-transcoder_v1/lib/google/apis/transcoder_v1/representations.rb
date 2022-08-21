@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BwdifConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class Deblock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Deinterlace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YadifConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdBreak
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -336,6 +354,15 @@ module Google
         end
       end
       
+      class BwdifConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deinterlace_all_frames, as: 'deinterlaceAllFrames'
+          property :mode, as: 'mode'
+          property :parity, as: 'parity'
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -360,6 +387,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :strength, as: 'strength'
+        end
+      end
+      
+      class Deinterlace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bwdif, as: 'bwdif', class: Google::Apis::TranscoderV1::BwdifConfig, decorator: Google::Apis::TranscoderV1::BwdifConfig::Representation
+      
+          property :yadif, as: 'yadif', class: Google::Apis::TranscoderV1::YadifConfig, decorator: Google::Apis::TranscoderV1::YadifConfig::Representation
+      
         end
       end
       
@@ -614,6 +651,8 @@ module Google
       
           property :deblock, as: 'deblock', class: Google::Apis::TranscoderV1::Deblock, decorator: Google::Apis::TranscoderV1::Deblock::Representation
       
+          property :deinterlace, as: 'deinterlace', class: Google::Apis::TranscoderV1::Deinterlace, decorator: Google::Apis::TranscoderV1::Deinterlace::Representation
+      
           property :denoise, as: 'denoise', class: Google::Apis::TranscoderV1::Denoise, decorator: Google::Apis::TranscoderV1::Denoise::Representation
       
           property :pad, as: 'pad', class: Google::Apis::TranscoderV1::Pad, decorator: Google::Apis::TranscoderV1::Pad::Representation
@@ -705,6 +744,16 @@ module Google
           property :profile, as: 'profile'
           property :rate_control_mode, as: 'rateControlMode'
           property :width_pixels, as: 'widthPixels'
+        end
+      end
+      
+      class YadifConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deinterlace_all_frames, as: 'deinterlaceAllFrames'
+          property :disable_spatial_interlacing, as: 'disableSpatialInterlacing'
+          property :mode, as: 'mode'
+          property :parity, as: 'parity'
         end
       end
     end
