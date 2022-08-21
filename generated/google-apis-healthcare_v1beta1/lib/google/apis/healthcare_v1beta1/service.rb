@@ -5084,21 +5084,23 @@ module Google
         # 17.2), [R4](https://hl7.org/implement/standards/fhir/R4/http.html#trules)).
         # The request body must contain a JSON-encoded FHIR `Bundle` resource, and the
         # request headers must contain `Content-Type: application/fhir+json`. For a
-        # batch bundle or a successful transaction the response body contains a JSON-
+        # batch bundle or a successful transaction, the response body contains a JSON-
         # encoded representation of a `Bundle` resource of type `batch-response` or `
         # transaction-response` containing one entry for each entry in the request, with
         # the outcome of processing the entry. In the case of an error for a transaction
         # bundle, the response body contains a JSON-encoded `OperationOutcome` resource
         # describing the reason for the error. If the request cannot be mapped to a
         # valid API method on a FHIR store, a generic GCP error might be returned
-        # instead. This method requires permission for executing the requests in the
-        # bundle. The `executeBundle` permission grants permission to execute the
-        # request in the bundle but you must grant sufficient permissions to execute the
-        # individual requests in the bundle. For example, if the bundle contains a `
-        # create` request, you must have permission to execute the `create` request.
-        # Logging is available for the `executeBundle` permission. For samples that show
-        # how to call `executeBundle`, see [Managing FHIR resources using FHIR bundles](/
-        # healthcare/docs/how-tos/fhir-bundles).
+        # instead. This method checks permissions for each request in the bundle. The `
+        # executeBundle` permission is required to call this method, but you must also
+        # grant sufficient permissions to execute the individual requests in the bundle.
+        # For example, if the bundle contains a request to create a FHIR resource, the
+        # caller must also have been granted the `healthcare.fhirResources.create`
+        # permission. You can use audit logs to view the permissions for `executeBundle`
+        # and each request in the bundle. For more information, see [Viewing Cloud Audit
+        # logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging). For
+        # samples that show how to call `executeBundle`, see [Managing FHIR resources
+        # using FHIR bundles](/healthcare/docs/how-tos/fhir-bundles).
         # @param [String] parent
         #   Name of the FHIR store in which this bundle will be executed.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
