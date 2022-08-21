@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2AllInfoTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2AllText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -532,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ImageTransformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2ImageTransformations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2InfoType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -970,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2RecordTransformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2RecordTransformations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1067,6 +1097,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2SelectedInfoTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,6 +1234,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2TransformationDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TransformationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TransformationDetailsStorageConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1210,7 +1258,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2TransformationLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TransformationOverview
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TransformationResultStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1333,6 +1393,18 @@ module Google
       end
       
       class GooglePrivacyDlpV2ActivateJobTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2AllInfoTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2AllText
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1856,6 +1928,8 @@ module Google
       class GooglePrivacyDlpV2DeidentifyConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_transformations, as: 'imageTransformations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformations, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformations::Representation
+      
           property :info_type_transformations, as: 'infoTypeTransformations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations::Representation
       
           property :record_transformations, as: 'recordTransformations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations::Representation
@@ -2213,6 +2287,28 @@ module Google
       
           property :redact_all_text, as: 'redactAllText'
           property :redaction_color, as: 'redactionColor', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Color, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Color::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ImageTransformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_info_types, as: 'allInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllInfoTypes::Representation
+      
+          property :all_text, as: 'allText', class: Google::Apis::DlpV2::GooglePrivacyDlpV2AllText, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2AllText::Representation
+      
+          property :redaction_color, as: 'redactionColor', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Color, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Color::Representation
+      
+          property :selected_info_types, as: 'selectedInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SelectedInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SelectedInfoTypes::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ImageTransformations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :transforms, as: 'transforms', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageTransformation::Representation
       
         end
       end
@@ -2941,6 +3037,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2RecordTransformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_timestamp, as: 'containerTimestamp'
+          property :container_version, as: 'containerVersion'
+          property :field_id, as: 'fieldId', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2RecordTransformations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3098,6 +3204,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recurrence_period_duration, as: 'recurrencePeriodDuration'
+        end
+      end
+      
+      class GooglePrivacyDlpV2SelectedInfoTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
         end
       end
       
@@ -3328,6 +3442,32 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2TransformationDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TransformationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_name, as: 'containerName'
+          property :resource_name, as: 'resourceName'
+          property :status_details, as: 'statusDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationResultStatus, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationResultStatus::Representation
+      
+          collection :transformation, as: 'transformation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDescription, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationDescription::Representation
+      
+          property :transformation_location, as: 'transformationLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationLocation::Representation
+      
+          property :transformed_bytes, :numeric_string => true, as: 'transformedBytes'
+        end
+      end
+      
       class GooglePrivacyDlpV2TransformationDetailsStorageConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3346,12 +3486,31 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2TransformationLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_type, as: 'containerType'
+          property :finding_id, as: 'findingId'
+          property :record_transformation, as: 'recordTransformation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformation::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2TransformationOverview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :transformation_summaries, as: 'transformationSummaries', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationSummary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationSummary::Representation
       
           property :transformed_bytes, :numeric_string => true, as: 'transformedBytes'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TransformationResultStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details', class: Google::Apis::DlpV2::GoogleRpcStatus, decorator: Google::Apis::DlpV2::GoogleRpcStatus::Representation
+      
+          property :result_status_type, as: 'resultStatusType'
         end
       end
       
