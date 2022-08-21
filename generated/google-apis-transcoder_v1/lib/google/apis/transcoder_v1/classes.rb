@@ -306,6 +306,44 @@ module Google
         end
       end
       
+      # Bob Weaver Deinterlacing Filter Configuration.
+      class BwdifConfig
+        include Google::Apis::Core::Hashable
+      
+        # Deinterlace all frames rather than just the frames identified as interlaced.
+        # The default is `false`.
+        # Corresponds to the JSON property `deinterlaceAllFrames`
+        # @return [Boolean]
+        attr_accessor :deinterlace_all_frames
+        alias_method :deinterlace_all_frames?, :deinterlace_all_frames
+      
+        # Specifies the deinterlacing mode to adopt. The default is `send_frame`.
+        # Supported values: - `send_frame`: Output one frame for each frame - `
+        # send_field`: Output one frame for each field
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The picture field parity assumed for the input interlaced video. The default
+        # is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`:
+        # Assume the bottom field is first - `auto`: Enable automatic detection of field
+        # parity
+        # Corresponds to the JSON property `parity`
+        # @return [String]
+        attr_accessor :parity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deinterlace_all_frames = args[:deinterlace_all_frames] if args.key?(:deinterlace_all_frames)
+          @mode = args[:mode] if args.key?(:mode)
+          @parity = args[:parity] if args.key?(:parity)
+        end
+      end
+      
       # Color preprocessing configuration. **Note:** This configuration is not
       # supported.
       class Color
@@ -407,6 +445,31 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @strength = args[:strength] if args.key?(:strength)
+        end
+      end
+      
+      # Deinterlace configuration for input video.
+      class Deinterlace
+        include Google::Apis::Core::Hashable
+      
+        # Bob Weaver Deinterlacing Filter Configuration.
+        # Corresponds to the JSON property `bwdif`
+        # @return [Google::Apis::TranscoderV1::BwdifConfig]
+        attr_accessor :bwdif
+      
+        # Yet Another Deinterlacing Filter Configuration.
+        # Corresponds to the JSON property `yadif`
+        # @return [Google::Apis::TranscoderV1::YadifConfig]
+        attr_accessor :yadif
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bwdif = args[:bwdif] if args.key?(:bwdif)
+          @yadif = args[:yadif] if args.key?(:yadif)
         end
       end
       
@@ -1447,6 +1510,11 @@ module Google
         # @return [Google::Apis::TranscoderV1::Deblock]
         attr_accessor :deblock
       
+        # Deinterlace configuration for input video.
+        # Corresponds to the JSON property `deinterlace`
+        # @return [Google::Apis::TranscoderV1::Deinterlace]
+        attr_accessor :deinterlace
+      
         # Denoise preprocessing configuration. **Note:** This configuration is not
         # supported.
         # Corresponds to the JSON property `denoise`
@@ -1469,6 +1537,7 @@ module Google
           @color = args[:color] if args.key?(:color)
           @crop = args[:crop] if args.key?(:crop)
           @deblock = args[:deblock] if args.key?(:deblock)
+          @deinterlace = args[:deinterlace] if args.key?(:deinterlace)
           @denoise = args[:denoise] if args.key?(:denoise)
           @pad = args[:pad] if args.key?(:pad)
         end
@@ -1842,6 +1911,51 @@ module Google
           @profile = args[:profile] if args.key?(:profile)
           @rate_control_mode = args[:rate_control_mode] if args.key?(:rate_control_mode)
           @width_pixels = args[:width_pixels] if args.key?(:width_pixels)
+        end
+      end
+      
+      # Yet Another Deinterlacing Filter Configuration.
+      class YadifConfig
+        include Google::Apis::Core::Hashable
+      
+        # Deinterlace all frames rather than just the frames identified as interlaced.
+        # The default is `false`.
+        # Corresponds to the JSON property `deinterlaceAllFrames`
+        # @return [Boolean]
+        attr_accessor :deinterlace_all_frames
+        alias_method :deinterlace_all_frames?, :deinterlace_all_frames
+      
+        # Disable spacial interlacing. The default is `false`.
+        # Corresponds to the JSON property `disableSpatialInterlacing`
+        # @return [Boolean]
+        attr_accessor :disable_spatial_interlacing
+        alias_method :disable_spatial_interlacing?, :disable_spatial_interlacing
+      
+        # Specifies the deinterlacing mode to adopt. The default is `send_frame`.
+        # Supported values: - `send_frame`: Output one frame for each frame - `
+        # send_field`: Output one frame for each field
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The picture field parity assumed for the input interlaced video. The default
+        # is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`:
+        # Assume the bottom field is first - `auto`: Enable automatic detection of field
+        # parity
+        # Corresponds to the JSON property `parity`
+        # @return [String]
+        attr_accessor :parity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deinterlace_all_frames = args[:deinterlace_all_frames] if args.key?(:deinterlace_all_frames)
+          @disable_spatial_interlacing = args[:disable_spatial_interlacing] if args.key?(:disable_spatial_interlacing)
+          @mode = args[:mode] if args.key?(:mode)
+          @parity = args[:parity] if args.key?(:parity)
         end
       end
     end
