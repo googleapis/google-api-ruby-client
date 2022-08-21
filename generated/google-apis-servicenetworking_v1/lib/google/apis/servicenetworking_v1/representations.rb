@@ -1286,6 +1286,7 @@ module Google
       class OAuthRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_any_scope, as: 'allowAnyScope'
           property :canonical_scopes, as: 'canonicalScopes'
         end
       end
