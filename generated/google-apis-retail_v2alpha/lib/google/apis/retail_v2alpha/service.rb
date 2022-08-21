@@ -614,9 +614,13 @@ module Google
         # updating fulfillment information. If the request is valid, the update will be
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the added place IDs are not immediately manifested in the Product
-        # queried by ProductService.GetProduct or ProductService.ListProducts. This
-        # feature is only available for users who have Retail Search enabled. Please
-        # enable Retail Search on Cloud Console before using this feature.
+        # queried by ProductService.GetProduct or ProductService.ListProducts. The
+        # returned Operations will be obsolete after 1 day, and GetOperation API will
+        # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
+        # associated with the stale updates will not be marked as done until being
+        # obsolete. This feature is only available for users who have Retail Search
+        # enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -661,9 +665,12 @@ module Google
         # ProductService.GetProduct or ProductService.ListProducts. Local inventory
         # information can only be modified using this method. ProductService.
         # CreateProduct and ProductService.UpdateProduct has no effect on local
-        # inventories. This feature is only available for users who have Retail Search
-        # enabled. Please enable Retail Search on Cloud Console before using this
-        # feature.
+        # inventories. The returned Operations will be obsolete after 1 day, and
+        # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
+        # issued, the Operations associated with the stale updates will not be marked as
+        # done until being obsolete. This feature is only available for users who have
+        # Retail Search enabled. Please enable Retail Search on Cloud Console before
+        # using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1016,9 +1023,13 @@ module Google
         # updating fulfillment information. If the request is valid, the update will be
         # enqueued and processed downstream. As a consequence, when a response is
         # returned, the removed place IDs are not immediately manifested in the Product
-        # queried by ProductService.GetProduct or ProductService.ListProducts. This
-        # feature is only available for users who have Retail Search enabled. Please
-        # enable Retail Search on Cloud Console before using this feature.
+        # queried by ProductService.GetProduct or ProductService.ListProducts. The
+        # returned Operations will be obsolete after 1 day, and GetOperation API will
+        # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
+        # associated with the stale updates will not be marked as done until being
+        # obsolete. This feature is only available for users who have Retail Search
+        # enabled. Please enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1061,9 +1072,12 @@ module Google
         # queried by ProductService.GetProduct or ProductService.ListProducts. Local
         # inventory information can only be removed using this method. ProductService.
         # CreateProduct and ProductService.UpdateProduct has no effect on local
-        # inventories. This feature is only available for users who have Retail Search
-        # enabled. Please enable Retail Search on Cloud Console before using this
-        # feature.
+        # inventories. The returned Operations will be obsolete after 1 day, and
+        # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
+        # issued, the Operations associated with the stale updates will not be marked as
+        # done until being obsolete. This feature is only available for users who have
+        # Retail Search enabled. Please enable Retail Search on Cloud Console before
+        # using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1116,9 +1130,12 @@ module Google
         # SetInventoryRequest.set_mask, then any existing inventory information will be
         # preserved. Pre-existing inventory information can only be updated with
         # ProductService.SetInventory, ProductService.AddFulfillmentPlaces, and
-        # ProductService.RemoveFulfillmentPlaces. This feature is only available for
-        # users who have Retail Search enabled. Please enable Retail Search on Cloud
-        # Console before using this feature.
+        # ProductService.RemoveFulfillmentPlaces. The returned Operations will be
+        # obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards.
+        # If conflicting updates are issued, the Operations associated with the stale
+        # updates will not be marked as done until being obsolete. This feature is only
+        # available for users who have Retail Search enabled. Please enable Retail
+        # Search on Cloud Console before using this feature.
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -1388,7 +1405,7 @@ module Google
         #   projects/`project_number`/locations/`location_id`/catalogs/`catalog_id`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel] google_cloud_retail_v2alpha_model_object
         # @param [Boolean] dry_run
-        #   Optional. Whether to run a dry_run to validate the request (without actually
+        #   Optional. Whether to run a dry run to validate the request (without actually
         #   creating the model).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1422,7 +1439,7 @@ module Google
         
         # Deletes an existing model.
         # @param [String] name
-        #   Required. The resource name of the [Model] to delete. Format: projects/`
+        #   Required. The resource name of the Model to delete. Format: projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1490,17 +1507,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update of model metadata. Only fields that currently can be updated are:
-        # filtering_option, periodic_tuning_state. If other values are provided, this
-        # API method will ignore them.
+        # Update of model metadata. Only fields that currently can be updated are: `
+        # filtering_option` and `periodic_tuning_state`. If other values are provided,
+        # this API method ignores them.
         # @param [String] name
-        #   Required. The fully qualified resource name of the model. Format: projects/`
+        #   Required. The fully qualified resource name of the model. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
-        #   catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+        #   ` catalog_id has char limit of 50. recommendation_model_id has char limit of
+        #   40.
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaModel] google_cloud_retail_v2alpha_model_object
         # @param [String] update_mask
         #   Optional. Indicates which fields in the provided 'model' to update. If not set,
-        #   will by default update all fields.
+        #   by default updates all fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2185,9 +2203,9 @@ module Google
         
         # Bulk import of User events. Request processing might be synchronous. Events
         # that already exist are skipped. Use this method for backfilling historical
-        # user events. Operation.response is of type ImportResponse. Note that it is
-        # possible for a subset of the items to be successfully inserted. Operation.
-        # metadata is of type ImportMetadata.
+        # user events. `Operation.response` is of type `ImportResponse`. Note that it is
+        # possible for a subset of the items to be successfully inserted. `Operation.
+        # metadata` is of type `ImportMetadata`.
         # @param [String] parent
         #   Required. `projects/1234/locations/global/catalogs/default_catalog`
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaImportUserEventsRequest] google_cloud_retail_v2alpha_import_user_events_request_object
