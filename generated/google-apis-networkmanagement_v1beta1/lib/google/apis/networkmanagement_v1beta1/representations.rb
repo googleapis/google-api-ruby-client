@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppEngineVersionInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -308,17 +302,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          collection :projects_missing_permission, as: 'projectsMissingPermission'
           property :resource_uri, as: 'resourceUri'
-        end
-      end
-      
-      class AppEngineVersionInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :environment, as: 'environment'
-          property :runtime, as: 'runtime'
-          property :uri, as: 'uri'
         end
       end
       
@@ -734,8 +719,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abort, as: 'abort', class: Google::Apis::NetworkmanagementV1beta1::AbortInfo, decorator: Google::Apis::NetworkmanagementV1beta1::AbortInfo::Representation
-      
-          property :app_engine_version, as: 'appEngineVersion', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo::Representation
       
           property :causes_drop, as: 'causesDrop'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo::Representation
