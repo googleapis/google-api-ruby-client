@@ -131,25 +131,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -545,6 +548,40 @@ module Google
         end
       end
       
+      # ExtendSchemaRequest is the request message for ExtendSchema method.
+      class ExtendSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Description for Schema Change.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # File uploaded as a byte stream input.
+        # Corresponds to the JSON property `fileContents`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :file_contents
+      
+        # File stored in Cloud Storage bucket and represented in the form projects/`
+        # project_id`/buckets/`bucket_name`/objects/`object_name` File should be in the
+        # same project as the domain.
+        # Corresponds to the JSON property `gcsPath`
+        # @return [String]
+        attr_accessor :gcs_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @file_contents = args[:file_contents] if args.key?(:file_contents)
+          @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleCloudManagedidentitiesV1OpMetadata
         include Google::Apis::Core::Hashable
@@ -738,8 +775,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Deprecated. The MaintenancePolicies that have been attached to the instance.
-        # The key must be of the type name of the oneof policy name defined in
+        # Optional. Deprecated. The MaintenancePolicies that have been attached to the
+        # instance. The key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the referenced policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
@@ -925,8 +962,7 @@ module Google
         # key must be of the type name of the oneof policy name defined in
         # MaintenancePolicy, and the embedded policy must define the same policy type.
         # For complete details of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
-        # If only the name is needed (like in the deprecated Instance.
-        # maintenance_policy_names field) then only populate MaintenancePolicy.name.
+        # If only the name is needed, then only populate MaintenancePolicy.name.
         # Corresponds to the JSON property `maintenancePolicies`
         # @return [Hash<String,Google::Apis::ManagedidentitiesV1::MaintenancePolicy>]
         attr_accessor :maintenance_policies
