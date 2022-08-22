@@ -31,6 +31,13 @@ module Google
         # @return [String]
         attr_accessor :cause
       
+        # List of project IDs that the user has specified in the request but does not
+        # have permission to access network configs. Analysis is aborted in this case
+        # with the PERMISSION_DENIED cause.
+        # Corresponds to the JSON property `projectsMissingPermission`
+        # @return [Array<String>]
+        attr_accessor :projects_missing_permission
+      
         # URI of the resource that caused the abort.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
@@ -43,44 +50,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cause = args[:cause] if args.key?(:cause)
+          @projects_missing_permission = args[:projects_missing_permission] if args.key?(:projects_missing_permission)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
-        end
-      end
-      
-      # For display only. Metadata associated with an App Engine version.
-      class AppEngineVersionInfo
-        include Google::Apis::Core::Hashable
-      
-        # Name of an App Engine version.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # App Engine execution environment for a version.
-        # Corresponds to the JSON property `environment`
-        # @return [String]
-        attr_accessor :environment
-      
-        # Runtime of the App Engine version.
-        # Corresponds to the JSON property `runtime`
-        # @return [String]
-        attr_accessor :runtime
-      
-        # URI of an App Engine version.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @environment = args[:environment] if args.key?(:environment)
-          @runtime = args[:runtime] if args.key?(:runtime)
-          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -185,25 +156,28 @@ module Google
         # anyone who is authenticated with a Google account or a service account. * `
         # user:`emailid``: An email address that represents a specific Google account.
         # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # address that represents a Google service account. For example, `my-other-app@
+        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
+        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
+        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
+        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
+        # . * `group:`emailid``: An email address that represents a Google group. For
+        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
+        # email address (plus unique identifier) representing a user that has been
+        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
+        # If the user is recovered, this value reverts to `user:`emailid`` and the
+        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
+        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a service account that has been recently deleted. For example, `
+        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
+        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
+        # and the undeleted service account retains the role in the binding. * `deleted:
+        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
+        # representing a Google group that has been recently deleted. For example, `
+        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
+        # value reverts to `group:`emailid`` and the recovered group retains the role in
+        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
+        # all the users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1780,11 +1754,6 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::AbortInfo]
         attr_accessor :abort
       
-        # For display only. Metadata associated with an App Engine version.
-        # Corresponds to the JSON property `appEngineVersion`
-        # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo]
-        attr_accessor :app_engine_version
-      
         # This is a step that leads to the final state Drop.
         # Corresponds to the JSON property `causesDrop`
         # @return [Boolean]
@@ -1897,7 +1866,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
-          @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
