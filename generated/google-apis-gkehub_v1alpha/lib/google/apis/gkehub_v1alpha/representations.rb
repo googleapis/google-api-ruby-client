@@ -370,18 +370,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdentityServiceAzureAdConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IdentityServiceGoogleConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class IdentityServiceMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1263,32 +1251,10 @@ module Google
       class IdentityServiceAuthMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :azuread_config, as: 'azureadConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig::Representation
-      
-          property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig::Representation
-      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig::Representation
       
           property :proxy, as: 'proxy'
-        end
-      end
-      
-      class IdentityServiceAzureAdConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_id, as: 'clientId'
-          property :client_secret, as: 'clientSecret'
-          property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
-          property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
-          property :tenant, as: 'tenant'
-        end
-      end
-      
-      class IdentityServiceGoogleConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :disable, as: 'disable'
         end
       end
       
