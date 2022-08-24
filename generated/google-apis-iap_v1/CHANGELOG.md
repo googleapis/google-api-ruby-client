@@ -1,5 +1,9 @@
 # Release history for google-apis-iap_v1
 
+### v0.24.0 (2022-08-24)
+
+* Regenerated from discovery document revision 20220822
+
 ### v0.23.0 (2022-08-09)
 
 * Regenerated from discovery document revision 20220805
