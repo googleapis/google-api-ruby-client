@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestinationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,12 @@ module Google
       end
       
       class ConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatasetTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +298,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostgresqlColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlRdbms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresqlTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,7 +358,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SingleTargetDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceHierarchyDatasets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +473,8 @@ module Google
       
           property :oracle_excluded_objects, as: 'oracleExcludedObjects', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
+          property :postgresql_excluded_objects, as: 'postgresqlExcludedObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
         end
       end
       
@@ -422,6 +496,23 @@ module Google
         end
       end
       
+      class BigQueryDestinationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_freshness, as: 'dataFreshness'
+          property :single_target_dataset, as: 'singleTargetDataset', class: Google::Apis::DatastreamV1::SingleTargetDataset, decorator: Google::Apis::DatastreamV1::SingleTargetDataset::Representation
+      
+          property :source_hierarchy_datasets, as: 'sourceHierarchyDatasets', class: Google::Apis::DatastreamV1::SourceHierarchyDatasets, decorator: Google::Apis::DatastreamV1::SourceHierarchyDatasets::Representation
+      
+        end
+      end
+      
+      class BigQueryProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -431,6 +522,8 @@ module Google
       class ConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_profile, as: 'bigqueryProfile', class: Google::Apis::DatastreamV1::BigQueryProfile, decorator: Google::Apis::DatastreamV1::BigQueryProfile::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity::Representation
@@ -443,6 +536,8 @@ module Google
           property :name, as: 'name'
           property :oracle_profile, as: 'oracleProfile', class: Google::Apis::DatastreamV1::OracleProfile, decorator: Google::Apis::DatastreamV1::OracleProfile::Representation
       
+          property :postgresql_profile, as: 'postgresqlProfile', class: Google::Apis::DatastreamV1::PostgresqlProfile, decorator: Google::Apis::DatastreamV1::PostgresqlProfile::Representation
+      
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
       
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
@@ -451,9 +546,20 @@ module Google
         end
       end
       
+      class DatasetTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id_prefix, as: 'datasetIdPrefix'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :location, as: 'location'
+        end
+      end
+      
       class DestinationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination_config, as: 'bigqueryDestinationConfig', class: Google::Apis::DatastreamV1::BigQueryDestinationConfig, decorator: Google::Apis::DatastreamV1::BigQueryDestinationConfig::Representation
+      
           property :destination_connection_profile, as: 'destinationConnectionProfile'
           property :gcs_destination_config, as: 'gcsDestinationConfig', class: Google::Apis::DatastreamV1::GcsDestinationConfig, decorator: Google::Apis::DatastreamV1::GcsDestinationConfig::Representation
       
@@ -472,6 +578,8 @@ module Google
       
           property :oracle_rdbms, as: 'oracleRdbms', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
       
+          property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
         end
       end
       
@@ -481,6 +589,8 @@ module Google
           property :mysql_rdbms, as: 'mysqlRdbms', class: Google::Apis::DatastreamV1::MysqlRdbms, decorator: Google::Apis::DatastreamV1::MysqlRdbms::Representation
       
           property :oracle_rdbms, as: 'oracleRdbms', class: Google::Apis::DatastreamV1::OracleRdbms, decorator: Google::Apis::DatastreamV1::OracleRdbms::Representation
+      
+          property :postgresql_rdbms, as: 'postgresqlRdbms', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
         end
       end
@@ -827,6 +937,77 @@ module Google
         end
       end
       
+      class PostgresqlColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :data_type, as: 'dataType'
+          property :length, as: 'length'
+          property :nullable, as: 'nullable'
+          property :ordinal_position, as: 'ordinalPosition'
+          property :precision, as: 'precision'
+          property :primary_key, as: 'primaryKey'
+          property :scale, as: 'scale'
+        end
+      end
+      
+      class PostgresqlObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :table, as: 'table'
+        end
+      end
+      
+      class PostgresqlProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :hostname, as: 'hostname'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :username, as: 'username'
+        end
+      end
+      
+      class PostgresqlRdbms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postgresql_schemas, as: 'postgresqlSchemas', class: Google::Apis::DatastreamV1::PostgresqlSchema, decorator: Google::Apis::DatastreamV1::PostgresqlSchema::Representation
+      
+        end
+      end
+      
+      class PostgresqlSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postgresql_tables, as: 'postgresqlTables', class: Google::Apis::DatastreamV1::PostgresqlTable, decorator: Google::Apis::DatastreamV1::PostgresqlTable::Representation
+      
+          property :schema, as: 'schema'
+        end
+      end
+      
+      class PostgresqlSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
+      
+          property :publication, as: 'publication'
+          property :replication_slot, as: 'replicationSlot'
+        end
+      end
+      
+      class PostgresqlTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :postgresql_columns, as: 'postgresqlColumns', class: Google::Apis::DatastreamV1::PostgresqlColumn, decorator: Google::Apis::DatastreamV1::PostgresqlColumn::Representation
+      
+          property :table, as: 'table'
+        end
+      end
+      
       class PrivateConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -863,6 +1044,13 @@ module Google
         end
       end
       
+      class SingleTargetDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+        end
+      end
+      
       class SourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -870,7 +1058,17 @@ module Google
       
           property :oracle_source_config, as: 'oracleSourceConfig', class: Google::Apis::DatastreamV1::OracleSourceConfig, decorator: Google::Apis::DatastreamV1::OracleSourceConfig::Representation
       
+          property :postgresql_source_config, as: 'postgresqlSourceConfig', class: Google::Apis::DatastreamV1::PostgresqlSourceConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSourceConfig::Representation
+      
           property :source_connection_profile, as: 'sourceConnectionProfile'
+        end
+      end
+      
+      class SourceHierarchyDatasets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_template, as: 'datasetTemplate', class: Google::Apis::DatastreamV1::DatasetTemplate, decorator: Google::Apis::DatastreamV1::DatasetTemplate::Representation
+      
         end
       end
       
@@ -880,6 +1078,8 @@ module Google
           property :mysql_identifier, as: 'mysqlIdentifier', class: Google::Apis::DatastreamV1::MysqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::MysqlObjectIdentifier::Representation
       
           property :oracle_identifier, as: 'oracleIdentifier', class: Google::Apis::DatastreamV1::OracleObjectIdentifier, decorator: Google::Apis::DatastreamV1::OracleObjectIdentifier::Representation
+      
+          property :postgresql_identifier, as: 'postgresqlIdentifier', class: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier, decorator: Google::Apis::DatastreamV1::PostgresqlObjectIdentifier::Representation
       
         end
       end
