@@ -49,6 +49,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # ReceiveGitHubDotComWebhook is called when the API receives a github.com
+        # webhook.
+        # @param [Google::Apis::CloudbuildV1::HttpBody] http_body_object
+        # @param [String] webhook_key
+        #   For GitHub Enterprise webhooks, this key is used to associate the webhook
+        #   request with the GitHubEnterpriseConfig to use for validation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def receive_github_dot_com_webhook(http_body_object = nil, webhook_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/githubDotComWebhook:receive', options)
+          command.request_representation = Google::Apis::CloudbuildV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.query['webhookKey'] = webhook_key unless webhook_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # ReceiveRegionalWebhook is called when the API receives a regional GitHub
         # webhook.
         # @param [String] location
