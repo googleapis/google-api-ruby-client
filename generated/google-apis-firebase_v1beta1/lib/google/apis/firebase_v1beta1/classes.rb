@@ -1341,6 +1341,87 @@ module Google
         end
       end
       
+      # 
+      class UndeleteAndroidAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Checksum provided in the AndroidApp entity, which if provided ensures the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If set to true, only validate the request and do not undelete the app.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # 
+      class UndeleteIosAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Checksum provided in the IosApp entity, which if provided ensures the client
+        # has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If set to true, only validate the request and do not undelete the app.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # 
+      class UndeleteWebAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Checksum provided in the WebApp entity, which if provided ensures the client
+        # has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If set to true, only validate the request and do not undelete the app.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Details of a Firebase App for the web.
       class WebApp
         include Google::Apis::Core::Hashable
