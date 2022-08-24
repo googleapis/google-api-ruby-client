@@ -688,6 +688,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaListModelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaListProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,7 +724,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaModelServingConfigList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaPauseModelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -892,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaResumeModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1055,6 +1085,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaSetInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaTuneModelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1884,6 +1920,7 @@ module Google
           property :name, as: 'name'
           property :rule, as: 'rule', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRule, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRule::Representation
       
+          collection :search_solution_use_case, as: 'searchSolutionUseCase'
           collection :solution_types, as: 'solutionTypes'
         end
       end
@@ -2081,6 +2118,15 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaListModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudRetailV2betaListProductsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2130,11 +2176,45 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data_state, as: 'dataState'
+          property :display_name, as: 'displayName'
+          property :filtering_option, as: 'filteringOption'
+          property :last_tune_time, as: 'lastTuneTime'
+          property :name, as: 'name'
+          property :optimization_objective, as: 'optimizationObjective'
+          property :periodic_tuning_state, as: 'periodicTuningState'
+          collection :serving_config_lists, as: 'servingConfigLists', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModelServingConfigList, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModelServingConfigList::Representation
+      
+          property :serving_state, as: 'servingState'
+          property :training_state, as: 'trainingState'
+          property :tuning_operation, as: 'tuningOperation'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaModelServingConfigList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :serving_config_ids, as: 'servingConfigIds'
+        end
+      end
+      
       class GoogleCloudRetailV2betaOutputResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBigQueryOutputResult, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaBigQueryOutputResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaPauseModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2220,6 +2300,8 @@ module Google
           collection :images, as: 'images', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaImage, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaImage::Representation
       
           property :language_code, as: 'languageCode'
+          collection :local_inventories, as: 'localInventories', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaLocalInventory::Representation
+      
           collection :materials, as: 'materials'
           property :name, as: 'name'
           collection :patterns, as: 'patterns'
@@ -2411,6 +2493,12 @@ module Google
           property :catalog_attribute, as: 'catalogAttribute', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaResumeModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2676,6 +2764,7 @@ module Google
           collection :boost_control_ids, as: 'boostControlIds'
           property :display_name, as: 'displayName'
           property :diversity_level, as: 'diversityLevel'
+          property :diversity_type, as: 'diversityType'
           collection :do_not_associate_control_ids, as: 'doNotAssociateControlIds'
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec::Representation
       
@@ -2686,6 +2775,8 @@ module Google
           property :model_id, as: 'modelId'
           property :name, as: 'name'
           collection :oneway_synonyms_control_ids, as: 'onewaySynonymsControlIds'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec::Representation
+      
           property :price_reranking_level, as: 'priceRerankingLevel'
           collection :redirect_control_ids, as: 'redirectControlIds'
           collection :replacement_control_ids, as: 'replacementControlIds'
@@ -2721,6 +2812,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaSetInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaTuneModelRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
