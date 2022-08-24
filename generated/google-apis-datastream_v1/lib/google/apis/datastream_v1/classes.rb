@@ -50,6 +50,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :oracle_excluded_objects
       
+        # PostgreSQL database structure.
+        # Corresponds to the JSON property `postgresqlExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
+        attr_accessor :postgresql_excluded_objects
+      
         def initialize(**args)
            update!(**args)
         end
@@ -58,6 +63,7 @@ module Google
         def update!(**args)
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
+          @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
         end
       end
       
@@ -117,6 +123,54 @@ module Google
         end
       end
       
+      # 
+      class BigQueryDestinationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The guaranteed data freshness (in seconds) when querying tables created by the
+        # stream. Editing this field will only affect new tables created in the future,
+        # but existing tables will not be impacted. Lower values mean that queries will
+        # return fresher data, but may result in higher cost.
+        # Corresponds to the JSON property `dataFreshness`
+        # @return [String]
+        attr_accessor :data_freshness
+      
+        # A single target dataset to which all data will be streamed.
+        # Corresponds to the JSON property `singleTargetDataset`
+        # @return [Google::Apis::DatastreamV1::SingleTargetDataset]
+        attr_accessor :single_target_dataset
+      
+        # Destination datasets are created so that hierarchy of the destination data
+        # objects matches the source hierarchy.
+        # Corresponds to the JSON property `sourceHierarchyDatasets`
+        # @return [Google::Apis::DatastreamV1::SourceHierarchyDatasets]
+        attr_accessor :source_hierarchy_datasets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_freshness = args[:data_freshness] if args.key?(:data_freshness)
+          @single_target_dataset = args[:single_target_dataset] if args.key?(:single_target_dataset)
+          @source_hierarchy_datasets = args[:source_hierarchy_datasets] if args.key?(:source_hierarchy_datasets)
+        end
+      end
+      
+      # BigQuery warehouse profile.
+      class BigQueryProfile
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -134,6 +188,11 @@ module Google
       # destination for a stream.
       class ConnectionProfile
         include Google::Apis::Core::Hashable
+      
+        # BigQuery warehouse profile.
+        # Corresponds to the JSON property `bigqueryProfile`
+        # @return [Google::Apis::DatastreamV1::BigQueryProfile]
+        attr_accessor :bigquery_profile
       
         # Output only. The create time of the resource.
         # Corresponds to the JSON property `createTime`
@@ -175,6 +234,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
       
+        # PostgreSQL database profile.
+        # Corresponds to the JSON property `postgresqlProfile`
+        # @return [Google::Apis::DatastreamV1::PostgresqlProfile]
+        attr_accessor :postgresql_profile
+      
         # Private Connectivity
         # Corresponds to the JSON property `privateConnectivity`
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
@@ -196,6 +260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bigquery_profile = args[:bigquery_profile] if args.key?(:bigquery_profile)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
@@ -204,15 +269,59 @@ module Google
           @mysql_profile = args[:mysql_profile] if args.key?(:mysql_profile)
           @name = args[:name] if args.key?(:name)
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
+          @postgresql_profile = args[:postgresql_profile] if args.key?(:postgresql_profile)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
+      # Dataset template used for dynamic dataset creation.
+      class DatasetTemplate
+        include Google::Apis::Core::Hashable
+      
+        # If supplied, every created dataset will have its name prefixed by the provided
+        # value. The prefix and name will be separated by an underscore. i.e. _.
+        # Corresponds to the JSON property `datasetIdPrefix`
+        # @return [String]
+        attr_accessor :dataset_id_prefix
+      
+        # Describes the Cloud KMS encryption key that will be used to protect
+        # destination BigQuery table. The BigQuery Service Account associated with your
+        # project requires access to this encryption key. i.e. projects/`project`/
+        # locations/`location`/keyRings/`key_ring`/cryptoKeys/`cryptoKey`. See https://
+        # cloud.google.com/bigquery/docs/customer-managed-encryption for more
+        # information.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Required. The geographic location where the dataset should reside. See https://
+        # cloud.google.com/bigquery/docs/locations for supported locations.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id_prefix = args[:dataset_id_prefix] if args.key?(:dataset_id_prefix)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # The configuration of the stream destination.
       class DestinationConfig
         include Google::Apis::Core::Hashable
+      
+        # BigQuery destination configuration.
+        # Corresponds to the JSON property `bigqueryDestinationConfig`
+        # @return [Google::Apis::DatastreamV1::BigQueryDestinationConfig]
+        attr_accessor :bigquery_destination_config
       
         # Required. Destination connection profile resource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
@@ -231,6 +340,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bigquery_destination_config = args[:bigquery_destination_config] if args.key?(:bigquery_destination_config)
           @destination_connection_profile = args[:destination_connection_profile] if args.key?(:destination_connection_profile)
           @gcs_destination_config = args[:gcs_destination_config] if args.key?(:gcs_destination_config)
         end
@@ -273,6 +383,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :oracle_rdbms
       
+        # PostgreSQL database structure.
+        # Corresponds to the JSON property `postgresqlRdbms`
+        # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
+        attr_accessor :postgresql_rdbms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +400,7 @@ module Google
           @hierarchy_depth = args[:hierarchy_depth] if args.key?(:hierarchy_depth)
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
+          @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
         end
       end
       
@@ -302,6 +418,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleRdbms]
         attr_accessor :oracle_rdbms
       
+        # PostgreSQL database structure.
+        # Corresponds to the JSON property `postgresqlRdbms`
+        # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
+        attr_accessor :postgresql_rdbms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -310,6 +431,7 @@ module Google
         def update!(**args)
           @mysql_rdbms = args[:mysql_rdbms] if args.key?(:mysql_rdbms)
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
+          @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
         end
       end
       
@@ -1488,6 +1610,246 @@ module Google
         end
       end
       
+      # PostgreSQL Column.
+      class PostgresqlColumn
+        include Google::Apis::Core::Hashable
+      
+        # Column name.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # The PostgreSQL data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Column length.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Whether or not the column can accept a null value.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # The ordinal position of the column in the table.
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        # Column precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
+        # Whether or not the column represents a primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Boolean]
+        attr_accessor :primary_key
+        alias_method :primary_key?, :primary_key
+      
+        # Column scale.
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @length = args[:length] if args.key?(:length)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @precision = args[:precision] if args.key?(:precision)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # PostgreSQL data source object identifier.
+      class PostgresqlObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Required. The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Required. The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # PostgreSQL database profile.
+      class PostgresqlProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Database for the PostgreSQL connection.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required. Hostname for the PostgreSQL connection.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. Password for the PostgreSQL connection.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Port for the PostgreSQL connection, default value is 5432.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Required. Username for the PostgreSQL connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @password = args[:password] if args.key?(:password)
+          @port = args[:port] if args.key?(:port)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # PostgreSQL database structure.
+      class PostgresqlRdbms
+        include Google::Apis::Core::Hashable
+      
+        # PostgreSQL schemas in the database server.
+        # Corresponds to the JSON property `postgresqlSchemas`
+        # @return [Array<Google::Apis::DatastreamV1::PostgresqlSchema>]
+        attr_accessor :postgresql_schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postgresql_schemas = args[:postgresql_schemas] if args.key?(:postgresql_schemas)
+        end
+      end
+      
+      # PostgreSQL schema.
+      class PostgresqlSchema
+        include Google::Apis::Core::Hashable
+      
+        # Tables in the schema.
+        # Corresponds to the JSON property `postgresqlTables`
+        # @return [Array<Google::Apis::DatastreamV1::PostgresqlTable>]
+        attr_accessor :postgresql_tables
+      
+        # Schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postgresql_tables = args[:postgresql_tables] if args.key?(:postgresql_tables)
+          @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # PostgreSQL data source configuration
+      class PostgresqlSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # PostgreSQL database structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
+        attr_accessor :exclude_objects
+      
+        # PostgreSQL database structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
+        attr_accessor :include_objects
+      
+        # Required. The name of the publication that includes the set of all tables that
+        # are defined in the stream's include_objects.
+        # Corresponds to the JSON property `publication`
+        # @return [String]
+        attr_accessor :publication
+      
+        # Required. The name of the logical replication slot that's configured with the
+        # pgoutput plugin.
+        # Corresponds to the JSON property `replicationSlot`
+        # @return [String]
+        attr_accessor :replication_slot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @publication = args[:publication] if args.key?(:publication)
+          @replication_slot = args[:replication_slot] if args.key?(:replication_slot)
+        end
+      end
+      
+      # PostgreSQL table.
+      class PostgresqlTable
+        include Google::Apis::Core::Hashable
+      
+        # PostgreSQL columns in the schema. When unspecified as part of include/exclude
+        # objects, includes/excludes everything.
+        # Corresponds to the JSON property `postgresqlColumns`
+        # @return [Array<Google::Apis::DatastreamV1::PostgresqlColumn>]
+        attr_accessor :postgresql_columns
+      
+        # Table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @postgresql_columns = args[:postgresql_columns] if args.key?(:postgresql_columns)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # The PrivateConnection resource is used to establish private connectivity
       # between Datastream and a customer's network.
       class PrivateConnection
@@ -1627,6 +1989,25 @@ module Google
         end
       end
       
+      # A single target dataset to which all data will be streamed.
+      class SingleTargetDataset
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+        end
+      end
+      
       # The configuration of the stream source.
       class SourceConfig
         include Google::Apis::Core::Hashable
@@ -1640,6 +2021,11 @@ module Google
         # Corresponds to the JSON property `oracleSourceConfig`
         # @return [Google::Apis::DatastreamV1::OracleSourceConfig]
         attr_accessor :oracle_source_config
+      
+        # PostgreSQL data source configuration
+        # Corresponds to the JSON property `postgresqlSourceConfig`
+        # @return [Google::Apis::DatastreamV1::PostgresqlSourceConfig]
+        attr_accessor :postgresql_source_config
       
         # Required. Source connection profile resoource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
@@ -1655,7 +2041,28 @@ module Google
         def update!(**args)
           @mysql_source_config = args[:mysql_source_config] if args.key?(:mysql_source_config)
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
+          @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
+        end
+      end
+      
+      # Destination datasets are created so that hierarchy of the destination data
+      # objects matches the source hierarchy.
+      class SourceHierarchyDatasets
+        include Google::Apis::Core::Hashable
+      
+        # Dataset template used for dynamic dataset creation.
+        # Corresponds to the JSON property `datasetTemplate`
+        # @return [Google::Apis::DatastreamV1::DatasetTemplate]
+        attr_accessor :dataset_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_template = args[:dataset_template] if args.key?(:dataset_template)
         end
       end
       
@@ -1673,6 +2080,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleObjectIdentifier]
         attr_accessor :oracle_identifier
       
+        # PostgreSQL data source object identifier.
+        # Corresponds to the JSON property `postgresqlIdentifier`
+        # @return [Google::Apis::DatastreamV1::PostgresqlObjectIdentifier]
+        attr_accessor :postgresql_identifier
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1681,6 +2093,7 @@ module Google
         def update!(**args)
           @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
+          @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
         end
       end
       
