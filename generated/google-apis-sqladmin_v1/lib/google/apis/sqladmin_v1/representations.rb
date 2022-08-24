@@ -1270,6 +1270,7 @@ module Google
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1::BackupConfiguration, decorator: Google::Apis::SqladminV1::BackupConfiguration::Representation
       
           property :collation, as: 'collation'
+          property :connector_enforcement, as: 'connectorEnforcement'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'

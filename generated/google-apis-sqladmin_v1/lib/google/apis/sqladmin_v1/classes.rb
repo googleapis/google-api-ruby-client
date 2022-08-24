@@ -2773,6 +2773,17 @@ module Google
         # @return [String]
         attr_accessor :collation
       
+        # Specifies if connections must use Cloud SQL connectors. Option values include
+        # the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without
+        # Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL
+        # Connectors. Note that using REQUIRED disables all existing authorized networks.
+        # If this field is not specified when creating a new instance, NOT_REQUIRED is
+        # used. If this field is not specified when patching or updating an existing
+        # instance, it is left unchanged in the instance.
+        # Corresponds to the JSON property `connectorEnforcement`
+        # @return [String]
+        attr_accessor :connector_enforcement
+      
         # Configuration specific to read replica instances. Indicates whether database
         # flags for crash-safe replication are enabled. This property was only
         # applicable to First Generation instances.
@@ -2912,6 +2923,7 @@ module Google
           @availability_type = args[:availability_type] if args.key?(:availability_type)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @collation = args[:collation] if args.key?(:collation)
+          @connector_enforcement = args[:connector_enforcement] if args.key?(:connector_enforcement)
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] if args.key?(:crash_safe_replication_enabled)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
