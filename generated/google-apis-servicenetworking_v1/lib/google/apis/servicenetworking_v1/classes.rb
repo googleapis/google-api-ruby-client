@@ -2839,17 +2839,6 @@ module Google
       class OAuthRequirements
         include Google::Apis::Core::Hashable
       
-        # UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope,
-        # more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option
-        # will bring security risks. Customers enabling this feature accidentally may
-        # have the risk of losing authentication enforcement. Please reach out to api-
-        # auth@ and esf-team@ for approval and allowlisting before you enable this
-        # option.
-        # Corresponds to the JSON property `allowAnyScope`
-        # @return [Boolean]
-        attr_accessor :allow_any_scope
-        alias_method :allow_any_scope?, :allow_any_scope
-      
         # The list of publicly documented OAuth scopes that are allowed access. An OAuth
         # token containing any of these scopes will be accepted. Example:
         # canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.
@@ -2864,7 +2853,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allow_any_scope = args[:allow_any_scope] if args.key?(:allow_any_scope)
           @canonical_scopes = args[:canonical_scopes] if args.key?(:canonical_scopes)
         end
       end
