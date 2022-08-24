@@ -52,8 +52,8 @@ module Google
         end
         
         # Completes the specified prefix with keyword suggestions. This feature is only
-        # available for users who have Retail Search enabled. Please enable Retail
-        # Search on Cloud Console before using this feature.
+        # available for users who have Retail Search enabled. Enable Retail Search on
+        # Cloud Console before using this feature.
         # @param [String] catalog
         #   Required. Catalog for which the completion is performed. Full resource name of
         #   catalog, such as `projects/*/locations/global/catalogs/default_catalog`.
@@ -159,8 +159,8 @@ module Google
         
         # Gets a CompletionConfig.
         # @param [String] name
-        #   Required. Full CompletionConfig resource name. Format: projects/`
-        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/completionConfig
+        #   Required. Full CompletionConfig resource name. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/completionConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,8 +619,7 @@ module Google
         # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
         # associated with the stale updates will not be marked as done until being
         # obsolete. This feature is only available for users who have Retail Search
-        # enabled. Please enable Retail Search on Cloud Console before using this
-        # feature.
+        # enabled. Enable Retail Search on Cloud Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -669,8 +668,8 @@ module Google
         # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
         # issued, the Operations associated with the stale updates will not be marked as
         # done until being obsolete. This feature is only available for users who have
-        # Retail Search enabled. Please enable Retail Search on Cloud Console before
-        # using this feature.
+        # Retail Search enabled. Enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -981,8 +980,7 @@ module Google
         # return NOT_FOUND afterwards. If conflicting updates are issued, the Operations
         # associated with the stale updates will not be marked as done until being
         # obsolete. This feature is only available for users who have Retail Search
-        # enabled. Please enable Retail Search on Cloud Console before using this
-        # feature.
+        # enabled. Enable Retail Search on Cloud Console before using this feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1029,8 +1027,8 @@ module Google
         # GetOperation API will return NOT_FOUND afterwards. If conflicting updates are
         # issued, the Operations associated with the stale updates will not be marked as
         # done until being obsolete. This feature is only available for users who have
-        # Retail Search enabled. Please enable Retail Search on Cloud Console before
-        # using this feature.
+        # Retail Search enabled. Enable Retail Search on Cloud Console before using this
+        # feature.
         # @param [String] product
         #   Required. Full resource name of Product, such as `projects/*/locations/global/
         #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
@@ -1069,26 +1067,26 @@ module Google
         # Updates inventory information for a Product while respecting the last update
         # timestamps of each inventory field. This process is asynchronous and does not
         # require the Product to exist before updating fulfillment information. If the
-        # request is valid, the update will be enqueued and processed downstream. As a
+        # request is valid, the update is enqueued and processed downstream. As a
         # consequence, when a response is returned, updates are not immediately
         # manifested in the Product queried by ProductService.GetProduct or
         # ProductService.ListProducts. When inventory is updated with ProductService.
         # CreateProduct and ProductService.UpdateProduct, the specified inventory field
-        # value(s) will overwrite any existing value(s) while ignoring the last update
-        # time for this field. Furthermore, the last update time for the specified
-        # inventory fields will be overwritten to the time of the ProductService.
-        # CreateProduct or ProductService.UpdateProduct request. If no inventory fields
-        # are set in CreateProductRequest.product, then any pre-existing inventory
-        # information for this product will be used. If no inventory fields are set in
-        # SetInventoryRequest.set_mask, then any existing inventory information will be
-        # preserved. Pre-existing inventory information can only be updated with
-        # ProductService.SetInventory, ProductService.AddFulfillmentPlaces, and
-        # ProductService.RemoveFulfillmentPlaces. The returned Operations will be
-        # obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards.
-        # If conflicting updates are issued, the Operations associated with the stale
-        # updates will not be marked as done until being obsolete. This feature is only
-        # available for users who have Retail Search enabled. Please enable Retail
-        # Search on Cloud Console before using this feature.
+        # value(s) overwrite any existing value(s) while ignoring the last update time
+        # for this field. Furthermore, the last update times for the specified inventory
+        # fields are overwritten by the times of the ProductService.CreateProduct or
+        # ProductService.UpdateProduct request. If no inventory fields are set in
+        # CreateProductRequest.product, then any pre-existing inventory information for
+        # this product is used. If no inventory fields are set in SetInventoryRequest.
+        # set_mask, then any existing inventory information is preserved. Pre-existing
+        # inventory information can only be updated with ProductService.SetInventory,
+        # ProductService.AddFulfillmentPlaces, and ProductService.
+        # RemoveFulfillmentPlaces. The returned Operations is obsolete after one day,
+        # and the GetOperation API returns `NOT_FOUND` afterwards. If conflicting
+        # updates are issued, the Operations associated with the stale updates are not
+        # marked as done until they are obsolete. This feature is only available for
+        # users who have Retail Search enabled. Enable Retail Search on Cloud Console
+        # before using this feature.
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -1126,8 +1124,8 @@ module Google
         # asynchronous. Partial updating is not supported. The operation is successfully
         # finished only after the imported suggestions are indexed successfully and
         # ready for serving. The process takes hours. This feature is only available for
-        # users who have Retail Search enabled. Please enable Retail Search on Cloud
-        # Console before using this feature.
+        # users who have Retail Search enabled. Enable Retail Search on Cloud Console
+        # before using this feature.
         # @param [String] parent
         #   Required. The catalog which the suggestions dataset belongs to. Format: `
         #   projects/1234/locations/global/catalogs/default_catalog`.
@@ -1236,7 +1234,7 @@ module Google
         
         # Gets a Control.
         # @param [String] name
-        #   Required. The resource name of the Control to delete. Format: `projects/`
+        #   Required. The resource name of the Control to get. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/controls/`
         #   control_id``
         # @param [String] fields
@@ -1266,7 +1264,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Controls linked to this catalog.
+        # Lists all Controls by their parent Catalog.
         # @param [String] parent
         #   Required. The catalog resource name. Format: `projects/`project_number`/
         #   locations/`location_id`/catalogs/`catalog_id``
@@ -1312,7 +1310,7 @@ module Google
         end
         
         # Updates a Control. Control cannot be set to a different oneof field, if so an
-        # INVALID_ARGUMENT is returned. If the Control to delete does not exist, a
+        # INVALID_ARGUMENT is returned. If the Control to update does not exist, a
         # NOT_FOUND error is returned.
         # @param [String] name
         #   Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
@@ -1347,6 +1345,260 @@ module Google
           command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaControl
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new model.
+        # @param [String] parent
+        #   Required. The parent resource under which to create the model. Format: `
+        #   projects/`project_number`/locations/`location_id`/catalogs/`catalog_id``
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel] google_cloud_retail_v2beta_model_object
+        # @param [Boolean] dry_run
+        #   Optional. Whether to run a dry run to validate the request (without actually
+        #   creating the model).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_catalog_model(parent, google_cloud_retail_v2beta_model_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/models', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+          command.request_object = google_cloud_retail_v2beta_model_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing model.
+        # @param [String] name
+        #   Required. The resource name of the Model to delete. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        #   `
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_catalog_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2beta::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the models linked to this event store.
+        # @param [String] parent
+        #   Required. The parent for which to list models. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id``
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. If unspecified, defaults to 50.
+        #   Max allowed value is 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListModels` call. Provide
+        #   this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaListModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaListModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_catalog_models(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+parent}/models', options)
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaListModelsResponse::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaListModelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update of model metadata. Only fields that currently can be updated are: `
+        # filtering_option` and `periodic_tuning_state`. If other values are provided,
+        # this API method ignores them.
+        # @param [String] name
+        #   Required. The fully qualified resource name of the model. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        #   ` catalog_id has char limit of 50. recommendation_model_id has char limit of
+        #   40.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel] google_cloud_retail_v2beta_model_object
+        # @param [String] update_mask
+        #   Optional. Indicates which fields in the provided 'model' to update. If not set,
+        #   by default updates all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_catalog_model(name, google_cloud_retail_v2beta_model_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+          command.request_object = google_cloud_retail_v2beta_model_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pauses the training of an existing model.
+        # @param [String] name
+        #   Required. The name of the model to pause. Format: `projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id`/models/`model_id``
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPauseModelRequest] google_cloud_retail_v2beta_pause_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_project_location_catalog_model(name, google_cloud_retail_v2beta_pause_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:pause', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPauseModelRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_pause_model_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes the training of an existing model.
+        # @param [String] name
+        #   Required. The name of the model to resume. Format: `projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id`/models/`model_id``
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaResumeModelRequest] google_cloud_retail_v2beta_resume_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_project_location_catalog_model(name, google_cloud_retail_v2beta_resume_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:resume', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaResumeModelRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_resume_model_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaModel
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tunes an existing model.
+        # @param [String] name
+        #   Required. The resource name of the model to tune. Format: `projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        #   `
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTuneModelRequest] google_cloud_retail_v2beta_tune_model_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def tune_project_location_catalog_model(name, google_cloud_retail_v2beta_tune_model_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:tune', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaTuneModelRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_tune_model_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1472,7 +1724,7 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # Search enabled. Enable Retail Search on Cloud Console before using this
         # feature.
         # @param [String] placement
         #   Required. The resource name of the Retail Search serving config, such as `
@@ -1518,9 +1770,9 @@ module Google
         # Returns a FAILED_PRECONDITION error if the addition could exceed maximum
         # number of control allowed for that type of control.
         # @param [String] serving_config
-        #   Required. The source ServingConfig resource name . Format: projects/`
+        #   Required. The source ServingConfig resource name . Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
-        #   serving_config_id`
+        #   serving_config_id``
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAddControlRequest] google_cloud_retail_v2beta_add_control_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1594,9 +1846,9 @@ module Google
         # Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does
         # not exist.
         # @param [String] name
-        #   Required. The resource name of the ServingConfig to delete. Format: projects/`
+        #   Required. The resource name of the ServingConfig to delete. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
-        #   serving_config_id`
+        #   serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1627,9 +1879,9 @@ module Google
         # Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not
         # exist.
         # @param [String] name
-        #   Required. The resource name of the ServingConfig to get. Format: projects/`
+        #   Required. The resource name of the ServingConfig to get. Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
-        #   serving_config_id`
+        #   serving_config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1659,8 +1911,8 @@ module Google
         
         # Lists all ServingConfigs linked to this catalog.
         # @param [String] parent
-        #   Required. The catalog resource name. Format: projects/`project_number`/
-        #   locations/`location_id`/catalogs/`catalog_id`
+        #   Required. The catalog resource name. Format: `projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id``
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
         #   If a value greater than 100 is provided, at most 100 results are returned.
@@ -1781,9 +2033,9 @@ module Google
         # the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for
         # the ServingConfig.
         # @param [String] serving_config
-        #   Required. The source ServingConfig resource name . Format: projects/`
+        #   Required. The source ServingConfig resource name . Format: `projects/`
         #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
-        #   serving_config_id`
+        #   serving_config_id``
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRemoveControlRequest] google_cloud_retail_v2beta_remove_control_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1815,7 +2067,7 @@ module Google
         end
         
         # Performs a search. This feature is only available for users who have Retail
-        # Search enabled. Please enable Retail Search on Cloud Console before using this
+        # Search enabled. Enable Retail Search on Cloud Console before using this
         # feature.
         # @param [String] placement
         #   Required. The resource name of the Retail Search serving config, such as `
@@ -1976,12 +2228,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts a user event rejoin operation with latest product catalog. Events will
-        # not be annotated with detailed product information if product is missing from
-        # the catalog at the time the user event is ingested, and these events are
-        # stored as unjoined events with a limited usage on training and serving. This
-        # method can be used to start a join operation on specified events with latest
-        # version of product catalog. It can also be used to correct events joined with
+        # Starts a user-event rejoin operation with latest product catalog. Events are
+        # not annotated with detailed product information for products that are missing
+        # from the catalog when the user event is ingested. These events are stored as
+        # unjoined events with limited usage on training and serving. You can use this
+        # method to start a join operation on specified events with the latest version
+        # of product catalog. You can also use this method to correct events joined with
         # the wrong product catalog. A rejoin operation can take hours or days to
         # complete.
         # @param [String] parent
