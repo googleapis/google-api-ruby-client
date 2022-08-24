@@ -22,6 +22,76 @@ module Google
   module Apis
     module DatamigrationV1
       
+      # Specifies required connection parameters, and the parameters required to
+      # create an AlloyDB destination cluster.
+      class AlloyDbConnectionProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The AlloyDB cluster ID that this connection profile is associated
+        # with.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Settings for creating an AlloyDB cluster.
+        # Corresponds to the JSON property `settings`
+        # @return [Google::Apis::DatamigrationV1::AlloyDbSettings]
+        attr_accessor :settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @settings = args[:settings] if args.key?(:settings)
+        end
+      end
+      
+      # Settings for creating an AlloyDB cluster.
+      class AlloyDbSettings
+        include Google::Apis::Core::Hashable
+      
+        # The username/password for a database user. Used for specifying initial users
+        # at cluster creation time.
+        # Corresponds to the JSON property `initialUser`
+        # @return [Google::Apis::DatamigrationV1::UserPassword]
+        attr_accessor :initial_user
+      
+        # Labels for the AlloyDB cluster created by DMS. An object containing a list of '
+        # key', 'value' pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Settings for the cluster's primary instance
+        # Corresponds to the JSON property `primaryInstanceSettings`
+        # @return [Google::Apis::DatamigrationV1::PrimaryInstanceSettings]
+        attr_accessor :primary_instance_settings
+      
+        # Required. The resource link for the VPC network in which cluster resources are
+        # created and from which they are accessible via Private IP. The network must
+        # belong to the same project as the cluster. It is specified in the form: "
+        # projects/`project_number`/global/networks/`network_id`". This is required to
+        # create a cluster.
+        # Corresponds to the JSON property `vpcNetwork`
+        # @return [String]
+        attr_accessor :vpc_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_user = args[:initial_user] if args.key?(:initial_user)
+          @labels = args[:labels] if args.key?(:labels)
+          @primary_instance_settings = args[:primary_instance_settings] if args.key?(:primary_instance_settings)
+          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -355,6 +425,12 @@ module Google
       class ConnectionProfile
         include Google::Apis::Core::Hashable
       
+        # Specifies required connection parameters, and the parameters required to
+        # create an AlloyDB destination cluster.
+        # Corresponds to the JSON property `alloydb`
+        # @return [Google::Apis::DatamigrationV1::AlloyDbConnectionProfile]
+        attr_accessor :alloydb
+      
         # Specifies required connection parameters, and, optionally, the parameters
         # required to create a Cloud SQL destination database instance.
         # Corresponds to the JSON property `cloudsql`
@@ -430,6 +506,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alloydb = args[:alloydb] if args.key?(:alloydb)
           @cloudsql = args[:cloudsql] if args.key?(:cloudsql)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -837,6 +914,25 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # MachineConfig describes the configuration of a machine.
+      class MachineConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of CPU's in the VM instance.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
         end
       end
       
@@ -1264,6 +1360,12 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Output only. If the source is a Cloud SQL database, this field indicates the
+        # network architecture it's associated with.
+        # Corresponds to the JSON property `networkArchitecture`
+        # @return [String]
+        attr_accessor :network_architecture
+      
         # Required. Input only. The password for the user that Database Migration
         # Service will be using to connect to the database. This field is not returned
         # on request, and the value is encrypted when stored in Database Migration
@@ -1302,11 +1404,59 @@ module Google
         def update!(**args)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
           @host = args[:host] if args.key?(:host)
+          @network_architecture = args[:network_architecture] if args.key?(:network_architecture)
           @password = args[:password] if args.key?(:password)
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
           @ssl = args[:ssl] if args.key?(:ssl)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Settings for the cluster's primary instance
+      class PrimaryInstanceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and
+        # instances. See the AlloyDB documentation for how these can be used.
+        # Corresponds to the JSON property `databaseFlags`
+        # @return [Hash<String,String>]
+        attr_accessor :database_flags
+      
+        # Required. The ID of the AlloyDB primary instance. The ID must satisfy the
+        # regex expression "[a-z0-9-]+".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Labels for the AlloyDB primary instance created by DMS. An object containing a
+        # list of 'key', 'value' pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # MachineConfig describes the configuration of a machine.
+        # Corresponds to the JSON property `machineConfig`
+        # @return [Google::Apis::DatamigrationV1::MachineConfig]
+        attr_accessor :machine_config
+      
+        # Output only. The private IP address for the Instance. This is the connection
+        # endpoint for an end-user application.
+        # Corresponds to the JSON property `privateIp`
+        # @return [String]
+        attr_accessor :private_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_flags = args[:database_flags] if args.key?(:database_flags)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+          @machine_config = args[:machine_config] if args.key?(:machine_config)
+          @private_ip = args[:private_ip] if args.key?(:private_ip)
         end
       end
       
@@ -1710,6 +1860,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # The username/password for a database user. Used for specifying initial users
+      # at cluster creation time.
+      class UserPassword
+        include Google::Apis::Core::Hashable
+      
+        # The initial password for the user.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Output only. Indicates if the initial_user.password field has been set.
+        # Corresponds to the JSON property `passwordSet`
+        # @return [Boolean]
+        attr_accessor :password_set
+        alias_method :password_set?, :password_set
+      
+        # The database username.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+          @password_set = args[:password_set] if args.key?(:password_set)
+          @user = args[:user] if args.key?(:user)
         end
       end
       

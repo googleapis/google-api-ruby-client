@@ -22,6 +22,18 @@ module Google
   module Apis
     module DatamigrationV1
       
+      class AlloyDbConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachineConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigrationJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +185,12 @@ module Google
       end
       
       class PostgreSqlConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrimaryInstanceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserPassword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VerifyMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -284,6 +314,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbConnectionProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :settings, as: 'settings', class: Google::Apis::DatamigrationV1::AlloyDbSettings, decorator: Google::Apis::DatamigrationV1::AlloyDbSettings::Representation
+      
+        end
+      end
+      
+      class AlloyDbSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_user, as: 'initialUser', class: Google::Apis::DatamigrationV1::UserPassword, decorator: Google::Apis::DatamigrationV1::UserPassword::Representation
+      
+          hash :labels, as: 'labels'
+          property :primary_instance_settings, as: 'primaryInstanceSettings', class: Google::Apis::DatamigrationV1::PrimaryInstanceSettings, decorator: Google::Apis::DatamigrationV1::PrimaryInstanceSettings::Representation
+      
+          property :vpc_network, as: 'vpcNetwork'
+        end
       end
       
       class AuditConfig
@@ -356,6 +407,8 @@ module Google
       class ConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloydb, as: 'alloydb', class: Google::Apis::DatamigrationV1::AlloyDbConnectionProfile, decorator: Google::Apis::DatamigrationV1::AlloyDbConnectionProfile::Representation
+      
           property :cloudsql, as: 'cloudsql', class: Google::Apis::DatamigrationV1::CloudSqlConnectionProfile, decorator: Google::Apis::DatamigrationV1::CloudSqlConnectionProfile::Representation
       
           property :create_time, as: 'createTime'
@@ -488,6 +541,13 @@ module Google
         end
       end
       
+      class MachineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_count, as: 'cpuCount'
+        end
+      end
+      
       class MigrationJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -573,12 +633,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_sql_id, as: 'cloudSqlId'
           property :host, as: 'host'
+          property :network_architecture, as: 'networkArchitecture'
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class PrimaryInstanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :database_flags, as: 'databaseFlags'
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
+          property :machine_config, as: 'machineConfig', class: Google::Apis::DatamigrationV1::MachineConfig, decorator: Google::Apis::DatamigrationV1::MachineConfig::Representation
+      
+          property :private_ip, as: 'privateIp'
         end
       end
       
@@ -695,6 +768,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class UserPassword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+          property :password_set, as: 'passwordSet'
+          property :user, as: 'user'
         end
       end
       
