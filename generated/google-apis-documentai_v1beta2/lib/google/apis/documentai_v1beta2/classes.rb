@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # Total number of documents that failed to be deleted in storage.
+        # Corresponds to the JSON property `errorDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :error_document_count
+      
         # The list of response details of each document.
         # Corresponds to the JSON property `individualBatchDeleteStatuses`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>]
@@ -48,6 +53,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @error_document_count = args[:error_document_count] if args.key?(:error_document_count)
           @individual_batch_delete_statuses = args[:individual_batch_delete_statuses] if args.key?(:individual_batch_delete_statuses)
           @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
         end
@@ -577,9 +583,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is ok if the configuration
-      # is valid and the specified documents are valid for importing. Otherwise status
-      # will be set as errors.
+      # The validation status of each import config. Status is set to errors if there
+      # is no documents to import in the import_config, or OK if the operation will
+      # try to proceed at least one document.
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
@@ -680,12 +686,6 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>]
         attr_accessor :individual_document_resync_statuses
       
-        # Returns the newly added document Cloud Storage prefix if the documents are
-        # founded in Cloud Storage while not in Document Service storage.
-        # Corresponds to the JSON property `newlyAddedDocuments`
-        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument>]
-        attr_accessor :newly_added_documents
-      
         def initialize(**args)
            update!(**args)
         end
@@ -695,7 +695,6 @@ module Google
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @dataset_resync_statuses = args[:dataset_resync_statuses] if args.key?(:dataset_resync_statuses)
           @individual_document_resync_statuses = args[:individual_document_resync_statuses] if args.key?(:individual_document_resync_statuses)
-          @newly_added_documents = args[:newly_added_documents] if args.key?(:newly_added_documents)
         end
       end
       
@@ -761,44 +760,6 @@ module Google
         def update!(**args)
           @document_id = args[:document_id] if args.key?(:document_id)
           @document_inconsistency_type = args[:document_inconsistency_type] if args.key?(:document_inconsistency_type)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # The proto for updated document in resync pipeline.
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        include Google::Apis::Core::Hashable
-      
-        # The prefix of cloud storage, identifies the destination document which should
-        # be updated by resync pipeline.
-        # Corresponds to the JSON property `destinationPrefix`
-        # @return [String]
-        attr_accessor :destination_prefix
-      
-        # The prefix of cloud storage, identifies the original document which should be
-        # updated by resync pipeline.
-        # Corresponds to the JSON property `sourcePrefix`
-        # @return [String]
-        attr_accessor :source_prefix
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_prefix = args[:destination_prefix] if args.key?(:destination_prefix)
-          @source_prefix = args[:source_prefix] if args.key?(:source_prefix)
           @status = args[:status] if args.key?(:status)
         end
       end
