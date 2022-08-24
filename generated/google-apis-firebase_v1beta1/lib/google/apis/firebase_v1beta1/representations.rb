@@ -226,6 +226,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteAndroidAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteIosAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteWebAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -554,6 +572,30 @@ module Google
           property :app, as: 'app'
           property :measurement_id, as: 'measurementId'
           property :stream_id, :numeric_string => true, as: 'streamId'
+        end
+      end
+      
+      class UndeleteAndroidAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class UndeleteIosAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class UndeleteWebAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
