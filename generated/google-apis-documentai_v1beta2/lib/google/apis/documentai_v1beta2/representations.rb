@@ -208,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1185,6 +1179,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
+          property :error_document_count, as: 'errorDocumentCount'
           collection :individual_batch_delete_statuses, as: 'individualBatchDeleteStatuses', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus::Representation
       
           property :total_document_count, as: 'totalDocumentCount'
@@ -1423,8 +1418,6 @@ module Google
       
           collection :individual_document_resync_statuses, as: 'individualDocumentResyncStatuses', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus::Representation
       
-          collection :newly_added_documents, as: 'newlyAddedDocuments', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument::Representation
-      
         end
       end
       
@@ -1443,16 +1436,6 @@ module Google
           property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
       
           property :document_inconsistency_type, as: 'documentInconsistencyType'
-          property :status, as: 'status', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_prefix, as: 'destinationPrefix'
-          property :source_prefix, as: 'sourcePrefix'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
       
         end
