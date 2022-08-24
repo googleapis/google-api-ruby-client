@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkMountPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkUsage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -548,9 +554,13 @@ module Google
           property :cidr, as: 'cidr'
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+          property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
           hash :labels, as: 'labels'
           collection :mac_address, as: 'macAddress'
+          collection :mount_points, as: 'mountPoints', class: Google::Apis::BaremetalsolutionV2::NetworkMountPoint, decorator: Google::Apis::BaremetalsolutionV2::NetworkMountPoint::Representation
+      
           property :name, as: 'name'
+          property :pod, as: 'pod'
           collection :reservations, as: 'reservations', class: Google::Apis::BaremetalsolutionV2::NetworkAddressReservation, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddressReservation::Representation
       
           property :services_cidr, as: 'servicesCidr'
@@ -598,6 +608,16 @@ module Google
         end
       end
       
+      class NetworkMountPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_gateway, as: 'defaultGateway'
+          property :instance, as: 'instance'
+          property :ip_address, as: 'ipAddress'
+          property :logical_interface, as: 'logicalInterface'
+        end
+      end
+      
       class NetworkUsage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -631,6 +651,7 @@ module Google
           property :nfs_share_id, as: 'nfsShareId'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :state, as: 'state'
+          property :storage_type, as: 'storageType'
           property :volume, as: 'volume'
         end
       end
@@ -803,8 +824,11 @@ module Google
       class VlanAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :pairing_key, as: 'pairingKey'
           property :peer_ip, as: 'peerIp'
           property :peer_vlan_id, :numeric_string => true, as: 'peerVlanId'
+          property :qos_policy, as: 'qosPolicy', class: Google::Apis::BaremetalsolutionV2::QosPolicy, decorator: Google::Apis::BaremetalsolutionV2::QosPolicy::Representation
+      
           property :router_ip, as: 'routerIp'
         end
       end

@@ -68,7 +68,8 @@ module Google
         attr_accessor :no_root_squash
         alias_method :no_root_squash?, :no_root_squash
       
-        # The IP address of the share on this network.
+        # Output only. The IP address of the share on this network. Assigned
+        # automatically during provisioning based on the network's services_cidr.
         # Corresponds to the JSON property `shareIp`
         # @return [String]
         attr_accessor :share_ip
@@ -938,6 +939,12 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Whether network uses standard frames or jumbo ones.
+        # Corresponds to the JSON property `jumboFramesEnabled`
+        # @return [Boolean]
+        attr_accessor :jumbo_frames_enabled
+        alias_method :jumbo_frames_enabled?, :jumbo_frames_enabled
+      
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -948,6 +955,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :mac_address
       
+        # Input only. List of mount points to attach the network to.
+        # Corresponds to the JSON property `mountPoints`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NetworkMountPoint>]
+        attr_accessor :mount_points
+      
         # Output only. The resource name of this `Network`. Resource names are
         # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
         # design/resource_names. Format: `projects/`project`/locations/`location`/
@@ -955,6 +967,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. Pod name.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
       
         # List of IP address reservations in this network. When updating this field, an
         # error will be generated if a reservation conflicts with an IP address already
@@ -997,9 +1014,12 @@ module Google
           @cidr = args[:cidr] if args.key?(:cidr)
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @jumbo_frames_enabled = args[:jumbo_frames_enabled] if args.key?(:jumbo_frames_enabled)
           @labels = args[:labels] if args.key?(:labels)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
+          @mount_points = args[:mount_points] if args.key?(:mount_points)
           @name = args[:name] if args.key?(:name)
+          @pod = args[:pod] if args.key?(:pod)
           @reservations = args[:reservations] if args.key?(:reservations)
           @services_cidr = args[:services_cidr] if args.key?(:services_cidr)
           @state = args[:state] if args.key?(:state)
@@ -1159,6 +1179,44 @@ module Google
         end
       end
       
+      # Mount point for a network.
+      class NetworkMountPoint
+        include Google::Apis::Core::Hashable
+      
+        # Network should be a default gateway.
+        # Corresponds to the JSON property `defaultGateway`
+        # @return [Boolean]
+        attr_accessor :default_gateway
+        alias_method :default_gateway?, :default_gateway
+      
+        # Instance to attach network to.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Ip address of the server.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Logical interface to detach from.
+        # Corresponds to the JSON property `logicalInterface`
+        # @return [String]
+        attr_accessor :logical_interface
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_gateway = args[:default_gateway] if args.key?(:default_gateway)
+          @instance = args[:instance] if args.key?(:instance)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @logical_interface = args[:logical_interface] if args.key?(:logical_interface)
+        end
+      end
+      
       # Network with all used IP addresses.
       class NetworkUsage
         include Google::Apis::Core::Hashable
@@ -1265,7 +1323,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The name of the NFS share.
+        # Immutable. The name of the NFS share.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1281,12 +1339,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :requested_size_gib
       
-        # The state of the NFS share.
+        # Output only. The state of the NFS share.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The volume containing the share.
+        # Immutable. The storage type of the underlying volume.
+        # Corresponds to the JSON property `storageType`
+        # @return [String]
+        attr_accessor :storage_type
+      
+        # Output only. The underlying volume of the share. Created automatically during
+        # provisioning.
         # Corresponds to the JSON property `volume`
         # @return [String]
         attr_accessor :volume
@@ -1304,6 +1368,7 @@ module Google
           @nfs_share_id = args[:nfs_share_id] if args.key?(:nfs_share_id)
           @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
           @state = args[:state] if args.key?(:state)
+          @storage_type = args[:storage_type] if args.key?(:storage_type)
           @volume = args[:volume] if args.key?(:volume)
         end
       end
@@ -1913,6 +1978,11 @@ module Google
       class VlanAttachment
         include Google::Apis::Core::Hashable
       
+        # Input only. Pairing key.
+        # Corresponds to the JSON property `pairingKey`
+        # @return [String]
+        attr_accessor :pairing_key
+      
         # The peer IP of the attachment.
         # Corresponds to the JSON property `peerIp`
         # @return [String]
@@ -1922,6 +1992,11 @@ module Google
         # Corresponds to the JSON property `peerVlanId`
         # @return [Fixnum]
         attr_accessor :peer_vlan_id
+      
+        # QOS policy parameters.
+        # Corresponds to the JSON property `qosPolicy`
+        # @return [Google::Apis::BaremetalsolutionV2::QosPolicy]
+        attr_accessor :qos_policy
       
         # The router IP of the attachment.
         # Corresponds to the JSON property `routerIp`
@@ -1934,8 +2009,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @peer_vlan_id = args[:peer_vlan_id] if args.key?(:peer_vlan_id)
+          @qos_policy = args[:qos_policy] if args.key?(:qos_policy)
           @router_ip = args[:router_ip] if args.key?(:router_ip)
         end
       end
