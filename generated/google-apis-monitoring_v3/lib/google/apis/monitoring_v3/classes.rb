@@ -1713,6 +1713,12 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Information involved in sending ICMP pings alongside public HTTP/TCP checks.
+        # For HTTP, the pings are performed for each part of the redirect chain.
+        # Corresponds to the JSON property `pingConfig`
+        # @return [Google::Apis::MonitoringV3::PingConfig]
+        attr_accessor :ping_config
+      
         # Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true).
         # The TCP port on the HTTP server against which to run the check. Will be
         # combined with host (specified within the monitored_resource) and path to
@@ -1754,6 +1760,7 @@ module Google
           @headers = args[:headers] if args.key?(:headers)
           @mask_headers = args[:mask_headers] if args.key?(:mask_headers)
           @path = args[:path] if args.key?(:path)
+          @ping_config = args[:ping_config] if args.key?(:ping_config)
           @port = args[:port] if args.key?(:port)
           @request_method = args[:request_method] if args.key?(:request_method)
           @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
@@ -3366,6 +3373,26 @@ module Google
         end
       end
       
+      # Information involved in sending ICMP pings alongside public HTTP/TCP checks.
+      # For HTTP, the pings are performed for each part of the redirect chain.
+      class PingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+        # Corresponds to the JSON property `pingsCount`
+        # @return [Fixnum]
+        attr_accessor :pings_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pings_count = args[:pings_count] if args.key?(:pings_count)
+        end
+      end
+      
       # A single data point in a time series.
       class Point
         include Google::Apis::Core::Hashable
@@ -4010,6 +4037,12 @@ module Google
       class TcpCheck
         include Google::Apis::Core::Hashable
       
+        # Information involved in sending ICMP pings alongside public HTTP/TCP checks.
+        # For HTTP, the pings are performed for each part of the redirect chain.
+        # Corresponds to the JSON property `pingConfig`
+        # @return [Google::Apis::MonitoringV3::PingConfig]
+        attr_accessor :ping_config
+      
         # The TCP port on the server against which to run the check. Will be combined
         # with host (specified within the monitored_resource) to construct the full URL.
         # Required.
@@ -4023,6 +4056,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ping_config = args[:ping_config] if args.key?(:ping_config)
           @port = args[:port] if args.key?(:port)
         end
       end

@@ -1894,6 +1894,11 @@ module Google
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   whose Uptime check configurations are listed. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by uptime
+        #   checks to be included in the response.For more details, see Filtering syntax (
+        #   https://cloud.google.com/monitoring/api/v3/sorting-and-filtering#filter_syntax)
+        #   .
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If
@@ -1920,11 +1925,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_uptime_check_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_uptime_check_configs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v3/{+parent}/uptimeCheckConfigs', options)
           command.response_representation = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse::Representation
           command.response_class = Google::Apis::MonitoringV3::ListUptimeCheckConfigsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

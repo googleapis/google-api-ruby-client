@@ -490,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Point
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1077,6 +1083,8 @@ module Google
           hash :headers, as: 'headers'
           property :mask_headers, as: 'maskHeaders'
           property :path, as: 'path'
+          property :ping_config, as: 'pingConfig', class: Google::Apis::MonitoringV3::PingConfig, decorator: Google::Apis::MonitoringV3::PingConfig::Representation
+      
           property :port, as: 'port'
           property :request_method, as: 'requestMethod'
           property :use_ssl, as: 'useSsl'
@@ -1469,6 +1477,13 @@ module Google
         end
       end
       
+      class PingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pings_count, as: 'pingsCount'
+        end
+      end
+      
       class Point
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1634,6 +1649,8 @@ module Google
       class TcpCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ping_config, as: 'pingConfig', class: Google::Apis::MonitoringV3::PingConfig, decorator: Google::Apis::MonitoringV3::PingConfig::Representation
+      
           property :port, as: 'port'
         end
       end
