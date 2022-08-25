@@ -492,17 +492,12 @@ module Google
         # @return [Google::Apis::WebriskV1::GoogleRpcStatus]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation. It typically contains
-        # progress information and common metadata such as create time. Some services
-        # might not provide such metadata. Any method that returns a long-running
-        # operation should document the metadata type, if any.
+        # This field will contain a `SubmitUriMetadata` object.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # be a resource name ending with `operations/`unique_id``.
+        # This will match the pattern `/v1/`project-name`/operations/`operation-id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
