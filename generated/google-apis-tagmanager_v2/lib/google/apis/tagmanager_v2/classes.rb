@@ -102,8 +102,8 @@ module Google
       
       # Built-in variables are a special category of variables that are pre-created
       # and non-customizable. They provide common functionality like accessing
-      # propeties of the gtm data layer, monitoring clicks, or accessing elements of a
-      # page URL.
+      # properties of the gtm data layer, monitoring clicks, or accessing elements of
+      # a page URL.
       class BuiltInVariable
         include Google::Apis::Core::Hashable
       
@@ -594,7 +594,7 @@ module Google
         # @return [String]
         attr_accessor :num_zones
       
-        # GTM Container Versions's API relative path.
+        # GTM Container Version's API relative path.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path

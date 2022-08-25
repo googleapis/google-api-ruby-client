@@ -2158,7 +2158,7 @@ module Google
         
         # Creates a GTM Trigger.
         # @param [String] parent
-        #   GTM Workspaces's API relative path. Example: accounts/`account_id`/containers/`
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
         #   container_id`/workspaces/`workspace_id`
         # @param [Google::Apis::TagmanagerV2::Trigger] trigger_object
         # @param [String] fields
@@ -2252,7 +2252,7 @@ module Google
         
         # Lists all GTM Triggers of a Container.
         # @param [String] parent
-        #   GTM Workspaces's API relative path. Example: accounts/`account_id`/containers/`
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
         #   container_id`/workspaces/`workspace_id`
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
