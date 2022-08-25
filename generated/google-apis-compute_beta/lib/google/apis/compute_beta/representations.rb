@@ -6124,6 +6124,7 @@ module Google
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :force_attach, as: 'forceAttach'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           property :index, as: 'index'
@@ -6908,6 +6909,7 @@ module Google
           property :kind, as: 'kind'
           property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeBeta::LicenseResourceCommitment, decorator: Google::Apis::ComputeBeta::LicenseResourceCommitment::Representation
       
+          collection :merge_source_commitments, as: 'mergeSourceCommitments'
           property :name, as: 'name'
           property :plan, as: 'plan'
           property :region, as: 'region'
@@ -6916,6 +6918,7 @@ module Google
           collection :resources, as: 'resources', class: Google::Apis::ComputeBeta::ResourceCommitment, decorator: Google::Apis::ComputeBeta::ResourceCommitment::Representation
       
           property :self_link, as: 'selfLink'
+          property :split_source_commitment, as: 'splitSourceCommitment'
           property :start_timestamp, as: 'startTimestamp'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
