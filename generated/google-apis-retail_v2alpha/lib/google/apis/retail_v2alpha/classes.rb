@@ -531,7 +531,7 @@ module Google
         end
       end
       
-      # Metadata for RejoinUserEvents method.
+      # Metadata for `RejoinUserEvents` method.
       class GoogleCloudRetailV2RejoinUserEventsMetadata
         include Google::Apis::Core::Hashable
       
@@ -544,7 +544,7 @@ module Google
         end
       end
       
-      # Response message for RejoinUserEvents method.
+      # Response message for `RejoinUserEvents` method.
       class GoogleCloudRetailV2RejoinUserEventsResponse
         include Google::Apis::Core::Hashable
       
@@ -1562,8 +1562,8 @@ module Google
       
         # The value of the term to match on. Value cannot be empty. Value can have at
         # most 3 terms if specified as a partial match. Each space separated string is
-        # considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is
-        # 4 terms and not allowed for partial match.
+        # considered as one term. For example, "a b c" is 3 terms and allowed, but " a b
+        # c d" is 4 terms and not allowed for a partial match.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1605,14 +1605,14 @@ module Google
         end
       end
       
-      # Configures dynamic serving time metadata that is used to pre and post process
-      # search/recommendation model results.
+      # Configures dynamic metadata that can be linked to a ServingConfig and affect
+      # search or recommendation results at serving time.
       class GoogleCloudRetailV2alphaControl
         include Google::Apis::Core::Hashable
       
-        # Output only. List of serving configuration ids that that are associated with
-        # this control. Note the association is managed via the ServingConfig, this is
-        # an output only denormalizeed view. Assumed to be in the same catalog.
+        # Output only. List of serving configuration ids that are associated with this
+        # control in the same Catalog. Note the association is managed via the
+        # ServingConfig, this is an output only denormalized view.
         # Corresponds to the JSON property `associatedServingConfigIds`
         # @return [Array<String>]
         attr_accessor :associated_serving_config_ids
@@ -1636,13 +1636,21 @@ module Google
         attr_accessor :name
       
         # A rule is a condition-action pair * A condition defines when a rule is to be
-        # triggered. * An action specifies what occurs on that trigger. Currently only
-        # boost rules are supported. Currently only supported by the search endpoint.
+        # triggered. * An action specifies what occurs on that trigger. Currently rules
+        # only work for controls with SOLUTION_TYPE_SEARCH.
         # Corresponds to the JSON property `rule`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule]
         attr_accessor :rule
       
-        # Required. Immutable. The solution types that the serving config is used for.
+        # Specifies the use case for the control. Affects what condition fields can be
+        # set. Only settable by search controls. Will default to
+        # SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one
+        # search_solution_use_case per control.
+        # Corresponds to the JSON property `searchSolutionUseCase`
+        # @return [Array<String>]
+        attr_accessor :search_solution_use_case
+      
+        # Required. Immutable. The solution types that the control is used for.
         # Currently we support setting only one type of solution at creation time. Only `
         # SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is
         # provided at creation time, will default to SOLUTION_TYPE_SEARCH.
@@ -1661,6 +1669,7 @@ module Google
           @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
+          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
         end
       end
@@ -1669,8 +1678,9 @@ module Google
       class GoogleCloudRetailV2alphaCreateModelMetadata
         include Google::Apis::Core::Hashable
       
-        # The resource name of the model that this create applies to. Format: projects/`
+        # The resource name of the model that this create applies to. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # `
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -1763,8 +1773,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Export operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Export operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2alphaExportMetadata
         include Google::Apis::Core::Hashable
       
@@ -3223,11 +3233,11 @@ module Google
         # belonging to several parallel categories. Strongly recommended using the full
         # path for better search / recommendation quality. To represent full path of
         # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, please replace it with other character(s). For example, if
-        # a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["
-        # Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented
-        # as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness >
-        # Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an
+        # the category name, replace it with other character(s). For example, if a shoes
+        # product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports &
+        # Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "
+        # categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic
+        # Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an
         # INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product.
         # Empty values are not allowed. Each value must be a UTF-8 encoded string with
         # a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
@@ -3334,6 +3344,13 @@ module Google
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
+      
+        # Output only. A list of local inventories specific to different places. This is
+        # only available for users who have Retail Search enabled, and it can be managed
+        # by AddLocalInventories and RemoveLocalInventories APIs.
+        # Corresponds to the JSON property `localInventories`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory>]
+        attr_accessor :local_inventories
       
         # The material of the product. For example, "leather", "wooden". A maximum of 20
         # values are allowed. Each value must be a UTF-8 encoded string with a length
@@ -3513,6 +3530,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @local_inventories = args[:local_inventories] if args.key?(:local_inventories)
           @materials = args[:materials] if args.key?(:materials)
           @name = args[:name] if args.key?(:name)
           @patterns = args[:patterns] if args.key?(:patterns)
@@ -3948,7 +3966,7 @@ module Google
         end
       end
       
-      # Metadata for RejoinUserEvents method.
+      # Metadata for `RejoinUserEvents` method.
       class GoogleCloudRetailV2alphaRejoinUserEventsMetadata
         include Google::Apis::Core::Hashable
       
@@ -3966,8 +3984,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The type of the user event rejoin to define the scope and range of the user
-        # events to be rejoined with the latest product catalog. Defaults to
-        # USER_EVENT_REJOIN_SCOPE_UNSPECIFIED if this field is not set, or set to an
+        # events to be rejoined with the latest product catalog. Defaults to `
+        # USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not set, or set to an
         # invalid integer value.
         # Corresponds to the JSON property `userEventRejoinScope`
         # @return [String]
@@ -3983,7 +4001,7 @@ module Google
         end
       end
       
-      # Response message for RejoinUserEvents method.
+      # Response message for `RejoinUserEvents` method.
       class GoogleCloudRetailV2alphaRejoinUserEventsResponse
         include Google::Apis::Core::Hashable
       
@@ -4235,8 +4253,8 @@ module Google
       end
       
       # A rule is a condition-action pair * A condition defines when a rule is to be
-      # triggered. * An action specifies what occurs on that trigger. Currently only
-      # boost rules are supported. Currently only supported by the search endpoint.
+      # triggered. * An action specifies what occurs on that trigger. Currently rules
+      # only work for controls with SOLUTION_TYPE_SEARCH.
       class GoogleCloudRetailV2alphaRule
         include Google::Apis::Core::Hashable
       
@@ -4645,9 +4663,9 @@ module Google
         # navigation queries to achieve good search quality. The format should be the
         # same as UserEvent.page_categories; To represent full path of category, use '>'
         # sign to separate different hierarchies. If '>' is part of the category name,
-        # please replace it with other character(s). Category pages include special
-        # pages such as sales or promotions. For instance, a special sale page may have
-        # the category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # replace it with other character(s). Category pages include special pages such
+        # as sales or promotions. For instance, a special sale page may have the
+        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -5382,9 +5400,7 @@ module Google
       end
       
       # Configures metadata that is used to generate serving time results (e.g. search
-      # results or recommendation predictions). The ServingConfig is passed in the
-      # search and predict request and together with the Catalog.default_branch,
-      # generates results.
+      # results or recommendation predictions).
       class GoogleCloudRetailV2alphaServingConfig
         include Google::Apis::Core::Hashable
       
@@ -5407,15 +5423,20 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # How much diversity to use in recommendation model results e.g. 'medium-
-        # diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' *
-        # 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If
+        # How much diversity to use in recommendation model results e.g. `medium-
+        # diversity` or `high-diversity`. Currently supported values: * `no-diversity` *
+        # `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If
         # not specified, we choose default based on recommendation model type. Default
-        # value: 'no-diversity'. Can only be set if solution_types is
+        # value: `no-diversity`. Can only be set if solution_types is
         # SOLUTION_TYPE_RECOMMENDATION.
         # Corresponds to the JSON property `diversityLevel`
         # @return [String]
         attr_accessor :diversity_level
+      
+        # What kind of diversity to use - data driven or rule based.
+        # Corresponds to the JSON property `diversityType`
+        # @return [String]
+        attr_accessor :diversity_type
       
         # Condition do not associate specifications. If multiple do not associate
         # conditions match, all matching do not associate controls in the list will
@@ -5430,10 +5451,10 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec]
         attr_accessor :dynamic_facet_spec
       
-        # Whether to add additional category filters on the 'similar-items' model. If
-        # not specified, we enable it by default. Allowed values are: * 'no-category-
-        # match': No additional filtering of original results from the model and the
-        # customer's filters. * 'relaxed-category-match': Only keep results with
+        # Whether to add additional category filters on the `similar-items` model. If
+        # not specified, we enable it by default. Allowed values are: * `no-category-
+        # match`: No additional filtering of original results from the model and the
+        # customer's filters. * `relaxed-category-match`: Only keep results with
         # categories that match at least one item categories in the PredictRequests's
         # context item. * If customer also sends filters in the PredictRequest, then the
         # results will satisfy both conditions (user given and category match). Can only
@@ -5467,7 +5488,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :ignore_control_ids
       
-        # The id of the model to use at serving time. Currently only
+        # The id of the model in the same Catalog to use at serving time. Currently only
         # RecommendationModels are supported: https://cloud.google.com/retail/
         # recommendations-ai/docs/create-models Can be changed but only to a compatible
         # model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when
@@ -5491,13 +5512,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :oneway_synonyms_control_ids
       
+        # The specification for personalization.
+        # Corresponds to the JSON property `personalizationSpec`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec]
+        attr_accessor :personalization_spec
+      
         # How much price ranking we want in serving results. Price reranking causes
         # product items with a similar recommendation probability to be ordered by price,
         # with the highest-priced items first. This setting could result in a decrease
-        # in click-through and conversion rates. Allowed values are: * 'no-price-
-        # reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-
-        # reranking' If not specified, we choose default based on model type. Default
-        # value: 'no-price-reranking'. Can only be set if solution_types is
+        # in click-through and conversion rates. Allowed values are: * `no-price-
+        # reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-
+        # reranking` If not specified, we choose default based on model type. Default
+        # value: `no-price-reranking`. Can only be set if solution_types is
         # SOLUTION_TYPE_RECOMMENDATION.
         # Corresponds to the JSON property `priceRerankingLevel`
         # @return [String]
@@ -5541,6 +5567,7 @@ module Google
           @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
           @diversity_level = args[:diversity_level] if args.key?(:diversity_level)
+          @diversity_type = args[:diversity_type] if args.key?(:diversity_type)
           @do_not_associate_control_ids = args[:do_not_associate_control_ids] if args.key?(:do_not_associate_control_ids)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @enable_category_filter_level = args[:enable_category_filter_level] if args.key?(:enable_category_filter_level)
@@ -5550,6 +5577,7 @@ module Google
           @model_id = args[:model_id] if args.key?(:model_id)
           @name = args[:name] if args.key?(:name)
           @oneway_synonyms_control_ids = args[:oneway_synonyms_control_ids] if args.key?(:oneway_synonyms_control_ids)
+          @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
           @price_reranking_level = args[:price_reranking_level] if args.key?(:price_reranking_level)
           @redirect_control_ids = args[:redirect_control_ids] if args.key?(:redirect_control_ids)
           @replacement_control_ids = args[:replacement_control_ids] if args.key?(:replacement_control_ids)
@@ -5702,8 +5730,9 @@ module Google
       class GoogleCloudRetailV2alphaTuneModelMetadata
         include Google::Apis::Core::Hashable
       
-        # The resource name of the model that this tune applies to. Format: projects/`
+        # The resource name of the model that this tune applies to. Format: `projects/`
         # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # `
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -5853,12 +5882,12 @@ module Google
       
         # The categories associated with a category page. To represent full path of
         # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, please replace it with other character(s). Category pages
-        # include special pages such as sales or promotions. For instance, a special
-        # sale page may have the category hierarchy: "pageCategories" : ["Sales > 2017
-        # Black Friday Deals"]. Required for `category-page-view` events. At least one
-        # of search_query or page_categories is required for `search` events. Other
-        # event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
+        # the category name, replace it with other character(s). Category pages include
+        # special pages such as sales or promotions. For instance, a special sale page
+        # may have the category hierarchy: "pageCategories" : ["Sales > 2017 Black
+        # Friday Deals"]. Required for `category-page-view` events. At least one of
+        # search_query or page_categories is required for `search` events. Other event
+        # types should not set this field. Otherwise, an INVALID_ARGUMENT error is
         # returned.
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
@@ -6213,8 +6242,8 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the Export operation. This will be
-      # returned by the google.longrunning.Operation.metadata field.
+      # Metadata related to the progress of the Export operation. This is returned by
+      # the google.longrunning.Operation.metadata field.
       class GoogleCloudRetailV2betaExportMetadata
         include Google::Apis::Core::Hashable
       
@@ -6517,7 +6546,7 @@ module Google
         end
       end
       
-      # Metadata for RejoinUserEvents method.
+      # Metadata for `RejoinUserEvents` method.
       class GoogleCloudRetailV2betaRejoinUserEventsMetadata
         include Google::Apis::Core::Hashable
       
@@ -6530,7 +6559,7 @@ module Google
         end
       end
       
-      # Response message for RejoinUserEvents method.
+      # Response message for `RejoinUserEvents` method.
       class GoogleCloudRetailV2betaRejoinUserEventsResponse
         include Google::Apis::Core::Hashable
       
