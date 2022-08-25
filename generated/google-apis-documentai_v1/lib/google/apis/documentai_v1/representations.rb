@@ -208,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +640,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1EntityTypeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,7 +670,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -737,6 +749,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1PropertyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1557,6 +1575,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
       
+          property :error_document_count, as: 'errorDocumentCount'
           collection :individual_batch_delete_statuses, as: 'individualBatchDeleteStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus::Representation
       
           property :total_document_count, as: 'totalDocumentCount'
@@ -1795,8 +1814,6 @@ module Google
       
           collection :individual_document_resync_statuses, as: 'individualDocumentResyncStatuses', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus::Representation
       
-          collection :newly_added_documents, as: 'newlyAddedDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument::Representation
-      
         end
       end
       
@@ -1815,16 +1832,6 @@ module Google
           property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
       
           property :document_inconsistency_type, as: 'documentInconsistencyType'
-          property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :destination_prefix, as: 'destinationPrefix'
-          property :source_prefix, as: 'sourcePrefix'
           property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
       
         end
@@ -2461,6 +2468,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :base_types, as: 'baseTypes'
           property :display_name, as: 'displayName'
+          property :entity_type_metadata, as: 'entityTypeMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EntityTypeMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EntityTypeMetadata::Representation
+      
           property :enum_values, as: 'enumValues', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues::Representation
       
           property :name, as: 'name'
@@ -2481,6 +2490,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :occurrence_type, as: 'occurrenceType'
+          property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1PropertyMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1PropertyMetadata::Representation
+      
           property :value_type, as: 'valueType'
         end
       end
@@ -2577,6 +2588,18 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1EntityTypeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata::Representation
+      
+          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
+      
+          property :inactive, as: 'inactive'
+          property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2608,12 +2631,27 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_normalization_editing, as: 'enableNormalizationEditing'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :human_review_operation, as: 'humanReviewOperation'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_threshold, as: 'confidenceThreshold'
+          property :enable_validation, as: 'enableValidation'
         end
       end
       
@@ -2728,6 +2766,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deprecation_time, as: 'deprecationTime'
           property :replacement_processor_version, as: 'replacementProcessorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1PropertyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata::Representation
+      
+          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
+      
+          property :inactive, as: 'inactive'
         end
       end
       
