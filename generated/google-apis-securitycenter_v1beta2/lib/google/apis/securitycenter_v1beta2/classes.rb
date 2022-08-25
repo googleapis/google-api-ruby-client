@@ -847,7 +847,7 @@ module Google
         # contacts that pertain. Please refer to: https://cloud.google.com/resource-
         # manager/docs/managing-notification-contacts#notification-categories ` "
         # security": ` "contacts": [ ` "email": "person1@company.com" `, ` "email": "
-        # person2@company.com" ` ] `
+        # person2@company.com" ` ] ` `
         # Corresponds to the JSON property `contacts`
         # @return [Hash<String,Google::Apis::SecuritycenterV1beta2::ContactDetails>]
         attr_accessor :contacts
@@ -1869,7 +1869,7 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::ProcessSignature>]
         attr_accessor :signatures
       
-        # The list of URIs associated to the Findings
+        # The list of URIs associated to the Findings.
         # Corresponds to the JSON property `uris`
         # @return [Array<String>]
         attr_accessor :uris
