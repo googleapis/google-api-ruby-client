@@ -13756,9 +13756,9 @@ module Google
         # forwarding the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
-        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
-        # within a route rule's routeAction.
+        # urlRedirect, service or routeAction.weightedBackendService must be set. URL
+        # maps for Classic external HTTP(S) load balancers only support the urlRewrite
+        # action within a route rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -14975,7 +14975,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Tags]
         attr_accessor :tags
       
-        # Upcoming Maintenance notification information. TODO(b/196881882) Deprecate
+        # Upcoming Maintenance notification information. TODO(b/242069500) Deprecate
         # this proto once it's fully migrated to be under proto ResourceStatus.
         # UpcomingMaintenance.
         # Corresponds to the JSON property `upcomingMaintenance`
@@ -22953,7 +22953,7 @@ module Google
       class LocalizedMessage
         include Google::Apis::Core::Hashable
       
-        # The locale used following the specification defined at http://www.rfc-editor.
+        # The locale used following the specification defined at https://www.rfc-editor.
         # org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
         # Corresponds to the JSON property `locale`
         # @return [String]
@@ -30446,8 +30446,9 @@ module Google
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
-        # support only the urlRewrite action within a path matcher's defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
+        # balancers only support the urlRewrite action within a path matcher's
+        # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -30553,8 +30554,9 @@ module Google
         # the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for external HTTP(S) load
-        # balancers support only the urlRewrite action within a path rule's routeAction.
+        # routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S)
+        # load balancers only support the urlRewrite action within a path rule's
+        # routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -47582,7 +47584,7 @@ module Google
         end
       end
       
-      # Upcoming Maintenance notification information. TODO(b/196881882) Deprecate
+      # Upcoming Maintenance notification information. TODO(b/242069500) Deprecate
       # this proto once it's fully migrated to be under proto ResourceStatus.
       # UpcomingMaintenance.
       class UpcomingMaintenance
@@ -47693,8 +47695,8 @@ module Google
         # defaultRouteAction specifies any weightedBackendServices, defaultService must
         # not be set. Conversely if defaultService is set, defaultRouteAction cannot
         # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
-        # support only the urlRewrite action within defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
+        # balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
