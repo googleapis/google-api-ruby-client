@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # Total number of documents that failed to be deleted in storage.
+        # Corresponds to the JSON property `errorDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :error_document_count
+      
         # The list of response details of each document.
         # Corresponds to the JSON property `individualBatchDeleteStatuses`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus>]
@@ -48,6 +53,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @error_document_count = args[:error_document_count] if args.key?(:error_document_count)
           @individual_batch_delete_statuses = args[:individual_batch_delete_statuses] if args.key?(:individual_batch_delete_statuses)
           @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
         end
@@ -577,9 +583,9 @@ module Google
         end
       end
       
-      # The validation status of each import config. Status is ok if the configuration
-      # is valid and the specified documents are valid for importing. Otherwise status
-      # will be set as errors.
+      # The validation status of each import config. Status is set to errors if there
+      # is no documents to import in the import_config, or OK if the operation will
+      # try to proceed at least one document.
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult
         include Google::Apis::Core::Hashable
       
@@ -680,12 +686,6 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataIndividualDocumentResyncStatus>]
         attr_accessor :individual_document_resync_statuses
       
-        # Returns the newly added document Cloud Storage prefix if the documents are
-        # founded in Cloud Storage while not in Document Service storage.
-        # Corresponds to the JSON property `newlyAddedDocuments`
-        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument>]
-        attr_accessor :newly_added_documents
-      
         def initialize(**args)
            update!(**args)
         end
@@ -695,7 +695,6 @@ module Google
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @dataset_resync_statuses = args[:dataset_resync_statuses] if args.key?(:dataset_resync_statuses)
           @individual_document_resync_statuses = args[:individual_document_resync_statuses] if args.key?(:individual_document_resync_statuses)
-          @newly_added_documents = args[:newly_added_documents] if args.key?(:newly_added_documents)
         end
       end
       
@@ -761,44 +760,6 @@ module Google
         def update!(**args)
           @document_id = args[:document_id] if args.key?(:document_id)
           @document_inconsistency_type = args[:document_inconsistency_type] if args.key?(:document_inconsistency_type)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # The proto for updated document in resync pipeline.
-      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
-        include Google::Apis::Core::Hashable
-      
-        # The prefix of cloud storage, identifies the destination document which should
-        # be updated by resync pipeline.
-        # Corresponds to the JSON property `destinationPrefix`
-        # @return [String]
-        attr_accessor :destination_prefix
-      
-        # The prefix of cloud storage, identifies the original document which should be
-        # updated by resync pipeline.
-        # Corresponds to the JSON property `sourcePrefix`
-        # @return [String]
-        attr_accessor :source_prefix
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_prefix = args[:destination_prefix] if args.key?(:destination_prefix)
-          @source_prefix = args[:source_prefix] if args.key?(:source_prefix)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -2791,6 +2752,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Metadata about an entity type.
+        # Corresponds to the JSON property `entityTypeMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EntityTypeMetadata]
+        attr_accessor :entity_type_metadata
+      
         # Defines the a list of enum values.
         # Corresponds to the JSON property `enumValues`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues]
@@ -2821,6 +2787,7 @@ module Google
         def update!(**args)
           @base_types = args[:base_types] if args.key?(:base_types)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_type_metadata = args[:entity_type_metadata] if args.key?(:entity_type_metadata)
           @enum_values = args[:enum_values] if args.key?(:enum_values)
           @name = args[:name] if args.key?(:name)
           @properties = args[:properties] if args.key?(:properties)
@@ -2861,6 +2828,11 @@ module Google
         # @return [String]
         attr_accessor :occurrence_type
       
+        # Metadata about a property.
+        # Corresponds to the JSON property `propertyMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1PropertyMetadata]
+        attr_accessor :property_metadata
+      
         # A reference to the value type of the property. This type is subject to the
         # same conventions as the `Entity.base_types` field.
         # Corresponds to the JSON property `valueType`
@@ -2875,6 +2847,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @property_metadata = args[:property_metadata] if args.key?(:property_metadata)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
@@ -3259,6 +3232,45 @@ module Google
         end
       end
       
+      # Metadata about an entity type.
+      class GoogleCloudDocumentaiV1EntityTypeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for human review labeling config.
+        # Corresponds to the JSON property `humanReviewLabelingMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata]
+        attr_accessor :human_review_labeling_metadata
+      
+        # Metadata for Human Review config.
+        # Corresponds to the JSON property `humanReviewMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata]
+        attr_accessor :human_review_metadata
+      
+        # Whether the entity type should be considered as "inactive".
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        # If set, the properties of this entity type must be prefixed with the parents.
+        # Corresponds to the JSON property `prefixedNamingOnProperties`
+        # @return [Boolean]
+        attr_accessor :prefixed_naming_on_properties
+        alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
+          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
+          @inactive = args[:inactive] if args.key?(:inactive)
+          @prefixed_naming_on_properties = args[:prefixed_naming_on_properties] if args.key?(:prefixed_naming_on_properties)
+        end
+      end
+      
       # Response message for fetch processor types.
       class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
         include Google::Apis::Core::Hashable
@@ -3341,6 +3353,26 @@ module Google
         end
       end
       
+      # Metadata for human review labeling config.
+      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable normalization editing.
+        # Corresponds to the JSON property `enableNormalizationEditing`
+        # @return [Boolean]
+        attr_accessor :enable_normalization_editing
+        alias_method :enable_normalization_editing?, :enable_normalization_editing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_normalization_editing = args[:enable_normalization_editing] if args.key?(:enable_normalization_editing)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -3372,6 +3404,32 @@ module Google
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Metadata for Human Review config.
+      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The confidence threshold if human review validation is enabled.
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # Whether to enable human review validation.
+        # Corresponds to the JSON property `enableValidation`
+        # @return [Boolean]
+        attr_accessor :enable_validation
+        alias_method :enable_validation?, :enable_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @enable_validation = args[:enable_validation] if args.key?(:enable_validation)
         end
       end
       
@@ -3774,6 +3832,38 @@ module Google
         def update!(**args)
           @deprecation_time = args[:deprecation_time] if args.key?(:deprecation_time)
           @replacement_processor_version = args[:replacement_processor_version] if args.key?(:replacement_processor_version)
+        end
+      end
+      
+      # Metadata about a property.
+      class GoogleCloudDocumentaiV1PropertyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for human review labeling config.
+        # Corresponds to the JSON property `humanReviewLabelingMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata]
+        attr_accessor :human_review_labeling_metadata
+      
+        # Metadata for Human Review config.
+        # Corresponds to the JSON property `humanReviewMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata]
+        attr_accessor :human_review_metadata
+      
+        # Whether the property should be considered as "inactive".
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
+          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
+          @inactive = args[:inactive] if args.key?(:inactive)
         end
       end
       
