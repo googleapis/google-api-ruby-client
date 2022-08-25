@@ -1610,6 +1610,7 @@ module Google
           property :name, as: 'name'
           property :rule, as: 'rule', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule::Representation
       
+          collection :search_solution_use_case, as: 'searchSolutionUseCase'
           collection :solution_types, as: 'solutionTypes'
         end
       end
@@ -2030,6 +2031,8 @@ module Google
           collection :images, as: 'images', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaImage, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaImage::Representation
       
           property :language_code, as: 'languageCode'
+          collection :local_inventories, as: 'localInventories', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory::Representation
+      
           collection :materials, as: 'materials'
           property :name, as: 'name'
           collection :patterns, as: 'patterns'
@@ -2519,6 +2522,7 @@ module Google
           collection :boost_control_ids, as: 'boostControlIds'
           property :display_name, as: 'displayName'
           property :diversity_level, as: 'diversityLevel'
+          property :diversity_type, as: 'diversityType'
           collection :do_not_associate_control_ids, as: 'doNotAssociateControlIds'
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec::Representation
       
@@ -2529,6 +2533,8 @@ module Google
           property :model_id, as: 'modelId'
           property :name, as: 'name'
           collection :oneway_synonyms_control_ids, as: 'onewaySynonymsControlIds'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestPersonalizationSpec::Representation
+      
           property :price_reranking_level, as: 'priceRerankingLevel'
           collection :redirect_control_ids, as: 'redirectControlIds'
           collection :replacement_control_ids, as: 'replacementControlIds'
