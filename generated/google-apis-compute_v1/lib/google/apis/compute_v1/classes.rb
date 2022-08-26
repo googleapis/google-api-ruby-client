@@ -1274,6 +1274,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # [Input Only] Whether to force attach the regional disk even if it's currently
+        # attached to another instance. If you try to force attach a zonal disk to an
+        # instance, you will receive an error.
+        # Corresponds to the JSON property `forceAttach`
+        # @return [Boolean]
+        attr_accessor :force_attach
+        alias_method :force_attach?, :force_attach
+      
         # A list of features to enable on the guest operating system. Applicable only
         # for bootable images. Read Enabling guest operating system features to see a
         # list of available options.
@@ -1359,6 +1367,7 @@ module Google
           @device_name = args[:device_name] if args.key?(:device_name)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @force_attach = args[:force_attach] if args.key?(:force_attach)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @index = args[:index] if args.key?(:index)
           @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
@@ -4885,6 +4894,11 @@ module Google
         # @return [Google::Apis::ComputeV1::LicenseResourceCommitment]
         attr_accessor :license_resource
       
+        # List of source commitments to be merged into a new commitment.
+        # Corresponds to the JSON property `mergeSourceCommitments`
+        # @return [Array<String>]
+        attr_accessor :merge_source_commitments
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -4922,6 +4936,11 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # Source commitment to be splitted into a new commitment.
+        # Corresponds to the JSON property `splitSourceCommitment`
+        # @return [String]
+        attr_accessor :split_source_commitment
       
         # [Output Only] Commitment start time in RFC3339 text format.
         # Corresponds to the JSON property `startTimestamp`
@@ -4962,12 +4981,14 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @license_resource = args[:license_resource] if args.key?(:license_resource)
+          @merge_source_commitments = args[:merge_source_commitments] if args.key?(:merge_source_commitments)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
           @reservations = args[:reservations] if args.key?(:reservations)
           @resources = args[:resources] if args.key?(:resources)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @split_source_commitment = args[:split_source_commitment] if args.key?(:split_source_commitment)
           @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
@@ -11632,9 +11653,9 @@ module Google
         # forwarding the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # urlRedirect, service or routeAction.weightedBackendService must be set.
-        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
-        # within a route rule's routeAction.
+        # urlRedirect, service or routeAction.weightedBackendService must be set. URL
+        # maps for Classic external HTTP(S) load balancers only support the urlRewrite
+        # action within a route rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :route_action
@@ -18134,7 +18155,7 @@ module Google
       class LocalizedMessage
         include Google::Apis::Core::Hashable
       
-        # The locale used following the specification defined at http://www.rfc-editor.
+        # The locale used following the specification defined at https://www.rfc-editor.
         # org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
         # Corresponds to the JSON property `locale`
         # @return [String]
@@ -24884,8 +24905,9 @@ module Google
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
-        # support only the urlRewrite action within a path matcher's defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
+        # balancers only support the urlRewrite action within a path matcher's
+        # defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :default_route_action
@@ -24984,8 +25006,9 @@ module Google
         # the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. URL maps for external HTTP(S) load
-        # balancers support only the urlRewrite action within a path rule's routeAction.
+        # routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S)
+        # load balancers only support the urlRewrite action within a path rule's
+        # routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :route_action
@@ -38916,8 +38939,8 @@ module Google
         # defaultRouteAction specifies any weightedBackendServices, defaultService must
         # not be set. Conversely if defaultService is set, defaultRouteAction cannot
         # contain any weightedBackendServices. Only one of defaultRouteAction or
-        # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
-        # support only the urlRewrite action within defaultRouteAction.
+        # defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load
+        # balancers only support the urlRewrite action within defaultRouteAction.
         # defaultRouteAction has no effect when the URL map is bound to a target gRPC
         # proxy that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
