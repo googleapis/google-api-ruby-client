@@ -22,8 +22,8 @@ module Google
   module Apis
     module AppengineV1
       
-      # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
-      # endpoints/) configuration for API handlers.
+      # Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API
+      # handlers.
       class ApiConfigHandler
         include Google::Apis::Core::Hashable
       
@@ -2715,8 +2715,8 @@ module Google
       class Version
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/
-        # endpoints/) configuration for API handlers.
+        # Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API
+        # handlers.
         # Corresponds to the JSON property `apiConfig`
         # @return [Google::Apis::AppengineV1::ApiConfigHandler]
         attr_accessor :api_config
