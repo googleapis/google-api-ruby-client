@@ -14,5 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load_git remote: "https://github.com/googleapis/ruby-common-tools.git",
-         path: "toys/release"
+if ENV["RUBY_COMMON_TOOLS"]
+  common_tools_dir = File.expand_path ENV["RUBY_COMMON_TOOLS"]
+  load File.join(common_tools_dir, "toys", "release")
+else
+  load_git remote: "https://github.com/googleapis/ruby-common-tools.git",
+           path: "toys/release",
+           update: true
+end
