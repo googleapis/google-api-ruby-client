@@ -326,6 +326,12 @@ module Google
         # @return [Google::Apis::SpeechV1::Status]
         attr_accessor :output_error
       
+        # The ID associated with the request. This is a unique ID specific only to the
+        # given request.
+        # Corresponds to the JSON property `requestId`
+        # @return [Fixnum]
+        attr_accessor :request_id
+      
         # Sequential list of transcription results corresponding to sequential portions
         # of audio.
         # Corresponds to the JSON property `results`
@@ -345,6 +351,7 @@ module Google
         def update!(**args)
           @output_config = args[:output_config] if args.key?(:output_config)
           @output_error = args[:output_error] if args.key?(:output_error)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @results = args[:results] if args.key?(:results)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
@@ -851,6 +858,12 @@ module Google
       class RecognizeResponse
         include Google::Apis::Core::Hashable
       
+        # The ID associated with the request. This is a unique ID specific only to the
+        # given request.
+        # Corresponds to the JSON property `requestId`
+        # @return [Fixnum]
+        attr_accessor :request_id
+      
         # Sequential list of transcription results corresponding to sequential portions
         # of audio.
         # Corresponds to the JSON property `results`
@@ -868,6 +881,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @results = args[:results] if args.key?(:results)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
