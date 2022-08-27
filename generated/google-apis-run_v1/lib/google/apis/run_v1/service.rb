@@ -394,7 +394,7 @@ module Google
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
         #   Optional. Specifies the propagation policy of delete. Cloud Run currently
-        #   ignores this setting, and deletes in the background. Please see http://
+        #   ignores this setting, and deletes in the background. Please see https://
         #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more
         #   information.
         # @param [String] fields
@@ -1240,7 +1240,17 @@ module Google
         #   Optional. Not supported by Cloud Run.
         # @param [String] label_selector
         #   Optional. Allows to filter resources based on a label. Supported operations
-        #   are =, !=, exists, in, and notIn.
+        #   are =, !=, exists, in, and notIn. For example, to list all tasks of execution "
+        #   foo" in succeeded state: `run.googleapis.com/execution=foo,run.googleapis.com/
+        #   runningState=Succeeded`. Supported states are: * `Pending`: Initial state of
+        #   all tasks. The task has not yet started but eventually will. * `Running`:
+        #   Container instances for this task are running or will be running shortly. * `
+        #   Succeeded`: No more container instances to run for the task, and the last
+        #   attempt succeeded. * `Failed`: No more container instances to run for the task,
+        #   and the last attempt failed. This task has run out of retry attempts. * `
+        #   Cancelled`: Task was running but got stopped because its parent execution has
+        #   been aborted. * `Abandoned`: The task has not yet started and never will
+        #   because its parent execution has been aborted.
         # @param [Fixnum] limit
         #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version

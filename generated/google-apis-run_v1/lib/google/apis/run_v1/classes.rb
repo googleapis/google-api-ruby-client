@@ -262,11 +262,11 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run. Selects a key from a ConfigMap.
+      # Not supported by Cloud Run.
       class ConfigMapKeySelector
         include Google::Apis::Core::Hashable
       
-        # Required. The key to select.
+        # Required. Not supported by Cloud Run.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -277,12 +277,12 @@ module Google
         # @return [Google::Apis::RunV1::LocalObjectReference]
         attr_accessor :local_object_reference
       
-        # Required. The ConfigMap to select from.
+        # Required. Not supported by Cloud Run.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Specify whether the ConfigMap or its key must be defined
+        # Not supported by Cloud Run.
         # Corresponds to the JSON property `optional`
         # @return [Boolean]
         attr_accessor :optional
@@ -483,25 +483,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Arguments to the entrypoint. The docker image's CMD is used if this is not
-        # provided. Variable references $(VAR_NAME) are expanded using the container's
-        # environment. If a variable cannot be resolved, the reference in the input
-        # string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $
-        # $, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of
-        # whether the variable exists or not. More info: https://kubernetes.io/docs/
-        # tasks/inject-data-application/define-command-argument-container/#running-a-
-        # command-in-a-shell
+        # provided. Variable references are not supported in Cloud Run.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
       
         # Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT
-        # is used if this is not provided. Variable references $(VAR_NAME) are expanded
-        # using the container's environment. If a variable cannot be resolved, the
-        # reference in the input string will be unchanged. The $(VAR_NAME) syntax can be
-        # escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be
-        # expanded, regardless of whether the variable exists or not. More info: https://
-        # kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
-        # container/#running-a-command-in-a-shell
+        # is used if this is not provided. Variable references are not supported in
+        # Cloud Run.
         # Corresponds to the JSON property `command`
         # @return [Array<String>]
         attr_accessor :command
@@ -844,12 +833,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Variable references $(VAR_NAME) are expanded using the previous defined
-        # environment variables in the container and any route environment variables. If
-        # a variable cannot be resolved, the reference in the input string will be
-        # unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(
-        # VAR_NAME). Escaped references will never be expanded, regardless of whether
-        # the variable exists or not. Defaults to "".
+        # Value of the environment variable. Defaults to "". Variable references are not
+        # supported in Cloud Run.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -875,7 +860,7 @@ module Google
       class EnvVarSource
         include Google::Apis::Core::Hashable
       
-        # Not supported by Cloud Run. Selects a key from a ConfigMap.
+        # Not supported by Cloud Run.
         # Corresponds to the JSON property `configMapKeyRef`
         # @return [Google::Apis::RunV1::ConfigMapKeySelector]
         attr_accessor :config_map_key_ref
@@ -1059,7 +1044,12 @@ module Google
         # @return [String]
         attr_accessor :completion_time
       
-        # Optional. The latest available observations of an execution's current state.
+        # Optional. Conditions communicate information about ongoing/complete
+        # reconciliation processes that bring the "spec" inline with the observed state
+        # of the world. Execution-specific conditions include: * `ResourcesAvailable`: `
+        # True` when underlying resources have been provisioned. * `Started`: `True`
+        # when the execution has started to execute. * `Completed`: `True` when the
+        # execution has succeeded. `False` when the execution has failed.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
@@ -1468,8 +1458,10 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # The latest available observations of a job's current state. More info: https://
-        # kubernetes.io/docs/concepts/workloads/controllers/job/
+        # Conditions communicate information about ongoing/complete reconciliation
+        # processes that bring the "spec" inline with the observed state of the world.
+        # Job-specific conditions include: * `Ready`: `True` when the job is ready to be
+        # executed.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
@@ -2544,8 +2536,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        # requests per container instance of the Revision. Cloud Run: supported,
-        # defaults to 80
+        # requests per container instance of the Revision. If not specified, defaults to
+        # 80.
         # Corresponds to the JSON property `containerConcurrency`
         # @return [Fixnum]
         attr_accessor :container_concurrency
@@ -2611,13 +2603,13 @@ module Google
       class RevisionStatus
         include Google::Apis::Core::Hashable
       
-        # Conditions communicates information about ongoing/complete reconciliation
+        # Conditions communicate information about ongoing/complete reconciliation
         # processes that bring the "spec" inline with the observed state of the world.
         # As a Revision is being prepared, it will incrementally update conditions.
-        # Revision-specific conditions include: * "ResourcesAvailable": True when
-        # underlying resources have been provisioned. * "ContainerHealthy": True when
-        # the Revision readiness check completes. * "Active": True when the Revision may
-        # receive traffic.
+        # Revision-specific conditions include: * `ResourcesAvailable`: `True` when
+        # underlying resources have been provisioned. * `ContainerHealthy`: `True` when
+        # the Revision readiness check completes. * `Active`: `True` when the Revision
+        # may receive traffic.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
@@ -3090,11 +3082,11 @@ module Google
         # @return [Google::Apis::RunV1::Addressable]
         attr_accessor :address
       
-        # Communicates information about ongoing/complete reconciliation processes that
-        # bring the `spec` inline with the observed state of the world. Service-specific
-        # conditions include: * `ConfigurationsReady`: `True` when the underlying
-        # Configuration is ready. * `RoutesReady`: `True` when the underlying Route is
-        # ready. * `Ready`: `True` when all underlying resources are ready.
+        # Conditions communicate information about ongoing/complete reconciliation
+        # processes that bring the `spec` inline with the observed state of the world.
+        # Service-specific conditions include: * `ConfigurationsReady`: `True` when the
+        # underlying Configuration is ready. * `RoutesReady`: `True` when the underlying
+        # Route is ready. * `Ready`: `True` when all underlying resources are ready.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
@@ -3529,8 +3521,11 @@ module Google
         # @return [String]
         attr_accessor :completion_time
       
-        # Optional. The latest available observations of a task's current state. More
-        # info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        # Optional. Conditions communicate information about ongoing/complete
+        # reconciliation processes that bring the "spec" inline with the observed state
+        # of the world. Task-specific conditions include: * `Started`: `True` when the
+        # task has started to execute. * `Completed`: `True` when the task has succeeded.
+        # `False` when the task has failed.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
         attr_accessor :conditions
