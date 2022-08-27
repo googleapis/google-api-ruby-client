@@ -22,37 +22,7 @@ module Google
   module Apis
     module MybusinessplaceactionsV1
       
-      class AvailableDay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Date
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FeeDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FixedFee
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FulfillmentOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,30 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MinimumFee
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Money
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NoFee
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderOnlineMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PlaceActionLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,60 +52,9 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AvailableDay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :fulfillment_date, as: 'fulfillmentDate', class: Google::Apis::MybusinessplaceactionsV1::Date, decorator: Google::Apis::MybusinessplaceactionsV1::Date::Representation
-      
-          property :last_ordering_time, as: 'lastOrderingTime'
-        end
-      end
-      
-      class Date
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :day, as: 'day'
-          property :month, as: 'month'
-          property :year, as: 'year'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class FeeDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_fee, as: 'baseFee', class: Google::Apis::MybusinessplaceactionsV1::MinimumFee, decorator: Google::Apis::MybusinessplaceactionsV1::MinimumFee::Representation
-      
-          property :fixed_fee, as: 'fixedFee', class: Google::Apis::MybusinessplaceactionsV1::FixedFee, decorator: Google::Apis::MybusinessplaceactionsV1::FixedFee::Representation
-      
-          property :no_fee, as: 'noFee', class: Google::Apis::MybusinessplaceactionsV1::NoFee, decorator: Google::Apis::MybusinessplaceactionsV1::NoFee::Representation
-      
-        end
-      end
-      
-      class FixedFee
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :amount, as: 'amount', class: Google::Apis::MybusinessplaceactionsV1::Money, decorator: Google::Apis::MybusinessplaceactionsV1::Money::Representation
-      
-        end
-      end
-      
-      class FulfillmentOption
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :available_day, as: 'availableDay', class: Google::Apis::MybusinessplaceactionsV1::AvailableDay, decorator: Google::Apis::MybusinessplaceactionsV1::AvailableDay::Representation
-      
-          property :fee_details, as: 'feeDetails', class: Google::Apis::MybusinessplaceactionsV1::FeeDetails, decorator: Google::Apis::MybusinessplaceactionsV1::FeeDetails::Representation
-      
-          property :fulfillment_type, as: 'fulfillmentType'
-          property :minimum_order, as: 'minimumOrder', class: Google::Apis::MybusinessplaceactionsV1::Money, decorator: Google::Apis::MybusinessplaceactionsV1::Money::Representation
-      
         end
       end
       
@@ -181,37 +76,6 @@ module Google
         end
       end
       
-      class MinimumFee
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :base_fee_amount, as: 'baseFeeAmount', class: Google::Apis::MybusinessplaceactionsV1::Money, decorator: Google::Apis::MybusinessplaceactionsV1::Money::Representation
-      
-        end
-      end
-      
-      class Money
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :currency_code, as: 'currencyCode'
-          property :nanos, as: 'nanos'
-          property :units, :numeric_string => true, as: 'units'
-        end
-      end
-      
-      class NoFee
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class OrderOnlineMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :fulfillment_option, as: 'fulfillmentOption', class: Google::Apis::MybusinessplaceactionsV1::FulfillmentOption, decorator: Google::Apis::MybusinessplaceactionsV1::FulfillmentOption::Representation
-      
-        end
-      end
-      
       class PlaceActionLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -219,8 +83,6 @@ module Google
           property :is_editable, as: 'isEditable'
           property :is_preferred, as: 'isPreferred'
           property :name, as: 'name'
-          property :order_online_metadata, as: 'orderOnlineMetadata', class: Google::Apis::MybusinessplaceactionsV1::OrderOnlineMetadata, decorator: Google::Apis::MybusinessplaceactionsV1::OrderOnlineMetadata::Representation
-      
           property :place_action_type, as: 'placeActionType'
           property :provider_type, as: 'providerType'
           property :update_time, as: 'updateTime'
