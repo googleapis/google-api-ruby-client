@@ -304,6 +304,7 @@ module Google
       
           property :output_error, as: 'outputError', class: Google::Apis::SpeechV1p1beta1::Status, decorator: Google::Apis::SpeechV1p1beta1::Status::Representation
       
+          property :request_id, :numeric_string => true, as: 'requestId'
           collection :results, as: 'results', class: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult::Representation
       
           property :total_billed_time, as: 'totalBilledTime'
@@ -409,6 +410,7 @@ module Google
       class RecognizeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, :numeric_string => true, as: 'requestId'
           collection :results, as: 'results', class: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult::Representation
       
           property :total_billed_time, as: 'totalBilledTime'
