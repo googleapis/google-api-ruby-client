@@ -4481,6 +4481,7 @@ module Google
       class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_dataset, as: 'conversationDataset'
         end
       end
       
