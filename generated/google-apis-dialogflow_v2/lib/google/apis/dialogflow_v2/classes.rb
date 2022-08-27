@@ -7312,12 +7312,19 @@ module Google
       class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The resource name of the conversation dataset that will be created. Format: `
+        # projects//locations//conversationDatasets/`
+        # Corresponds to the JSON property `conversationDataset`
+        # @return [String]
+        attr_accessor :conversation_dataset
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @conversation_dataset = args[:conversation_dataset] if args.key?(:conversation_dataset)
         end
       end
       
