@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrinoJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValueValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1271,6 +1277,8 @@ module Google
       
           collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
       
+          property :trino_job, as: 'trinoJob', class: Google::Apis::DataprocV1::TrinoJob, decorator: Google::Apis::DataprocV1::TrinoJob::Representation
+      
           collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1::YarnApplication, decorator: Google::Apis::DataprocV1::YarnApplication::Representation
       
         end
@@ -1534,6 +1542,8 @@ module Google
           property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1::SparkSqlJob, decorator: Google::Apis::DataprocV1::SparkSqlJob::Representation
       
           property :step_id, as: 'stepId'
+          property :trino_job, as: 'trinoJob', class: Google::Apis::DataprocV1::TrinoJob, decorator: Google::Apis::DataprocV1::TrinoJob::Representation
+      
         end
       end
       
@@ -1882,6 +1892,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TrinoJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_tags, as: 'clientTags'
+          property :continue_on_failure, as: 'continueOnFailure'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
+      
+          property :output_format, as: 'outputFormat'
+          hash :properties, as: 'properties'
+          property :query_file_uri, as: 'queryFileUri'
+          property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
+      
         end
       end
       

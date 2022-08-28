@@ -1203,10 +1203,10 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The duration to keep the underlying cluster alive while idling
-        # Passing this threshold will cause the cluster to be terminated. Minimum value
-        # is 30 minutes; maximum value is 14 days (see JSON representation of Duration (
-        # https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        # Optional. The duration to keep the session alive while it's idling. Passing
+        # this threshold will cause the session to be terminated. Minimum value is 30
+        # minutes; maximum value is 14 days (see JSON representation of Duration (https:/
+        # /developers.google.com/protocol-buffers/docs/proto3#json)).
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -2266,6 +2266,14 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::JobStatus>]
         attr_accessor :status_history
       
+        # A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The
+        # Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/
+        # concepts/components/trino) must be enabled when the cluster is created to
+        # submit a Trino job to the cluster.
+        # Corresponds to the JSON property `trinoJob`
+        # @return [Google::Apis::DataprocV1::TrinoJob]
+        attr_accessor :trino_job
+      
         # Output only. The collection of YARN applications spun up by this job.Beta
         # Feature: This report is available for testing purposes only. It may be changed
         # before final release.
@@ -2297,6 +2305,7 @@ module Google
           @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
           @status = args[:status] if args.key?(:status)
           @status_history = args[:status_history] if args.key?(:status_history)
+          @trino_job = args[:trino_job] if args.key?(:trino_job)
           @yarn_applications = args[:yarn_applications] if args.key?(:yarn_applications)
         end
       end
@@ -3275,6 +3284,14 @@ module Google
         # @return [String]
         attr_accessor :step_id
       
+        # A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The
+        # Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/
+        # concepts/components/trino) must be enabled when the cluster is created to
+        # submit a Trino job to the cluster.
+        # Corresponds to the JSON property `trinoJob`
+        # @return [Google::Apis::DataprocV1::TrinoJob]
+        attr_accessor :trino_job
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3293,6 +3310,7 @@ module Google
           @spark_r_job = args[:spark_r_job] if args.key?(:spark_r_job)
           @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
           @step_id = args[:step_id] if args.key?(:step_id)
+          @trino_job = args[:trino_job] if args.key?(:trino_job)
         end
       end
       
@@ -4769,6 +4787,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The
+      # Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/
+      # concepts/components/trino) must be enabled when the cluster is created to
+      # submit a Trino job to the cluster.
+      class TrinoJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Trino client tags to attach to this query
+        # Corresponds to the JSON property `clientTags`
+        # @return [Array<String>]
+        attr_accessor :client_tags
+      
+        # Optional. Whether to continue executing queries if a query fails. The default
+        # value is false. Setting to true can be useful when executing independent
+        # parallel queries.
+        # Corresponds to the JSON property `continueOnFailure`
+        # @return [Boolean]
+        attr_accessor :continue_on_failure
+        alias_method :continue_on_failure?, :continue_on_failure
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional. The format in which query output will be displayed. See the Trino
+        # documentation for supported output formats
+        # Corresponds to the JSON property `outputFormat`
+        # @return [String]
+        attr_accessor :output_format
+      
+        # Optional. A mapping of property names to values. Used to set Trino session
+        # properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to
+        # using the --session flag in the Trino CLI
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # The HCFS URI of the script that contains SQL queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1::QueryList]
+        attr_accessor :query_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_tags = args[:client_tags] if args.key?(:client_tags)
+          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @output_format = args[:output_format] if args.key?(:output_format)
+          @properties = args[:properties] if args.key?(:properties)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
+          @query_list = args[:query_list] if args.key?(:query_list)
         end
       end
       
