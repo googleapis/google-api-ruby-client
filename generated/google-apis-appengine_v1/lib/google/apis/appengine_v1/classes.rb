@@ -22,8 +22,8 @@ module Google
   module Apis
     module AppengineV1
       
-      # Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API
-      # handlers.
+      # Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for
+      # API handlers.
       class ApiConfigHandler
         include Google::Apis::Core::Hashable
       
@@ -822,7 +822,7 @@ module Google
         end
       end
       
-      # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
+      # Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
       # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
       # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
       # The fields here refer to the name and configuration ID of a "service" resource
@@ -2715,8 +2715,8 @@ module Google
       class Version
         include Google::Apis::Core::Hashable
       
-        # Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API
-        # handlers.
+        # Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for
+        # API handlers.
         # Corresponds to the JSON property `apiConfig`
         # @return [Google::Apis::AppengineV1::ApiConfigHandler]
         attr_accessor :api_config
@@ -2784,7 +2784,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_usage_bytes
       
-        # Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
+        # Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
         # Endpoints API Service provides tooling for serving Open API and gRPC endpoints
         # via an NGINX proxy. Only valid for App Engine Flexible environment deployments.
         # The fields here refer to the name and configuration ID of a "service" resource
