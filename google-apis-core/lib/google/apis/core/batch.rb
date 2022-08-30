@@ -28,6 +28,7 @@
 require 'google/apis/core/multipart'
 require 'google/apis/core/http_command'
 require 'google/apis/core/upload'
+require 'google/apis/core/storage_upload'
 require 'google/apis/core/download'
 require 'google/apis/core/composite_io'
 require 'addressable/uri'
@@ -120,7 +121,7 @@ module Google
         end
 
         def ensure_valid_command(command)
-          if command.is_a?(Google::Apis::Core::BaseUploadCommand) || command.is_a?(Google::Apis::Core::DownloadCommand) || command.is_a?(Google::Apis::Core::StorageDownloadCommand)
+          if command.is_a?(Google::Apis::Core::BaseUploadCommand) || command.is_a?(Google::Apis::Core::DownloadCommand) || command.is_a?(Google::Apis::Core::StorageDownloadCommand) || command.is_a?(Google::Apis::Core::StorageUploadCommand)
             fail Google::Apis::ClientError, 'Can not include media requests in batch'
           end
           fail Google::Apis::ClientError, 'Invalid command object' unless command.is_a?(HttpCommand)

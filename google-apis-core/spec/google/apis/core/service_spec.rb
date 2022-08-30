@@ -202,6 +202,21 @@ RSpec.describe Google::Apis::Core::BaseService do
     include_examples 'with options'
   end
 
+  context 'when making storage upload commands' do
+    let(:command) { service.send(:make_storage_upload_command, :post, 'zoo/animals', authorization: 'foo') }
+
+    it 'should return the correct command type' do
+      expect(command).to be_an_instance_of(Google::Apis::Core::StorageUploadCommand)
+    end
+
+    it 'should build a correct URL' do
+      url = command.url.expand({}).to_s
+      expect(url).to eql 'https://www.googleapis.com/upload/zoo/animals'
+    end
+
+    include_examples 'with options'
+  end
+
   context 'with batch' do
     before(:example) do
       response = <<EOF.gsub(/\n/, "\r\n")

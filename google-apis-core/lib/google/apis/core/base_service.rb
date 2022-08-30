@@ -19,6 +19,7 @@ require 'google/apis/core/version'
 require 'google/apis/core/api_command'
 require 'google/apis/core/batch'
 require 'google/apis/core/upload'
+require 'google/apis/core/storage_upload'
 require 'google/apis/core/download'
 require 'google/apis/core/storage_download'
 require 'google/apis/options'
@@ -313,6 +314,25 @@ module Google
           else
             command = ResumableUploadCommand.new(method, template, client_version: client_version)
           end
+          command.options = request_options.merge(options)
+          apply_command_defaults(command)
+          command
+        end
+
+        # Create a new storage upload command.
+        # This is specifically for storage because we are moving to a new upload protocol.
+        # Ref: https://cloud.google.com/storage/docs/performing-resumable-uploads
+        #
+        # @param [symbol] method
+        #  HTTP method for uploading (typically :put or :post)
+        # @param [String] path
+        #  Additional path to upload endpoint, appended to API base path
+        # @param [Hash, Google::Apis::RequestOptions] options
+        #  Request-specific options
+        # @return [Google::Apis::Core::StorageUploadCommand]
+        def make_storage_upload_command(method, path, options)
+          template = Addressable::Template.new(root_url + upload_path + path)
+          command = StorageUploadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
           apply_command_defaults(command)
           command
