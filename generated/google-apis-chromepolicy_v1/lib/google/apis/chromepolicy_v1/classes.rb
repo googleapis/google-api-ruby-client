@@ -388,7 +388,7 @@ module Google
         end
       end
       
-      # Resource representing a policy schema. Next ID: 13
+      # Resource representing a policy schema. Next ID: 14
       class GoogleChromePolicyV1PolicySchema
         include Google::Apis::Core::Hashable
       
@@ -403,6 +403,11 @@ module Google
         # Corresponds to the JSON property `additionalTargetKeyNames`
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1AdditionalTargetKeyName>]
         attr_accessor :additional_target_key_names
+      
+        # Output only. Title of the category in which a setting belongs.
+        # Corresponds to the JSON property `categoryTitle`
+        # @return [String]
+        attr_accessor :category_title
       
         # Describes a complete .proto file.
         # Corresponds to the JSON property `definition`
@@ -466,6 +471,7 @@ module Google
         def update!(**args)
           @access_restrictions = args[:access_restrictions] if args.key?(:access_restrictions)
           @additional_target_key_names = args[:additional_target_key_names] if args.key?(:additional_target_key_names)
+          @category_title = args[:category_title] if args.key?(:category_title)
           @definition = args[:definition] if args.key?(:definition)
           @field_descriptions = args[:field_descriptions] if args.key?(:field_descriptions)
           @name = args[:name] if args.key?(:name)
