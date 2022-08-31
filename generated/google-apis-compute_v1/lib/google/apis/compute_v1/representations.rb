@@ -5814,6 +5814,7 @@ module Google
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :threads_per_core, as: 'threadsPerCore'
+          property :visible_core_count, as: 'visibleCoreCount'
         end
       end
       
@@ -6148,6 +6149,7 @@ module Google
           property :bucket_name, as: 'bucketName'
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeV1::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeV1::BackendBucketCdnPolicy::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
@@ -6246,6 +6248,7 @@ module Google
       
           property :circuit_breakers, as: 'circuitBreakers', class: Google::Apis::ComputeV1::CircuitBreakers, decorator: Google::Apis::ComputeV1::CircuitBreakers::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeV1::ConnectionDraining, decorator: Google::Apis::ComputeV1::ConnectionDraining::Representation
       
           property :connection_tracking_policy, as: 'connectionTrackingPolicy', class: Google::Apis::ComputeV1::BackendServiceConnectionTrackingPolicy, decorator: Google::Apis::ComputeV1::BackendServiceConnectionTrackingPolicy::Representation

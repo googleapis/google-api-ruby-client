@@ -1064,6 +1064,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :threads_per_core
       
+        # The number of physical cores to expose to an instance. Multiply by the number
+        # of threads per core to compute the total number of virtual CPUs to expose to
+        # the instance. If unset, the number of cores is inferred from the instance's
+        # nominal CPU count and the underlying platform's SMT width.
+        # Corresponds to the JSON property `visibleCoreCount`
+        # @return [Fixnum]
+        attr_accessor :visible_core_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1073,6 +1081,7 @@ module Google
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+          @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
       end
       
@@ -1307,10 +1316,9 @@ module Google
         attr_accessor :initialize_params
       
         # Specifies the disk interface to use for attaching this disk, which is either
-        # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
-        # the request will fail if you attempt to attach a persistent disk in any other
-        # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance.
+        # SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use
+        # either NVME or SCSI. In certain configurations, persistent disks can use NVMe.
+        # For more information, see About persistent disks.
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -2602,6 +2610,12 @@ module Google
         # @return [Google::Apis::ComputeV1::BackendBucketCdnPolicy]
         attr_accessor :cdn_policy
       
+        # Compress text responses using Brotli or gzip compression, based on the client'
+        # s Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -2663,6 +2677,7 @@ module Google
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
@@ -3067,6 +3082,12 @@ module Google
         # @return [Google::Apis::ComputeV1::CircuitBreakers]
         attr_accessor :circuit_breakers
       
+        # Compress text responses using Brotli or gzip compression, based on the client'
+        # s Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
         # Message containing connection draining configuration.
         # Corresponds to the JSON property `connectionDraining`
         # @return [Google::Apis::ComputeV1::ConnectionDraining]
@@ -3346,6 +3367,7 @@ module Google
           @backends = args[:backends] if args.key?(:backends)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @circuit_breakers = args[:circuit_breakers] if args.key?(:circuit_breakers)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @connection_tracking_policy = args[:connection_tracking_policy] if args.key?(:connection_tracking_policy)
           @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
@@ -7643,9 +7665,8 @@ module Google
         attr_accessor :destination_ranges
       
         # Direction of traffic to which this firewall applies, either `INGRESS` or `
-        # EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify
-        # the destinationRanges field, and for `EGRESS` traffic, you cannot specify the
-        # sourceRanges or sourceTags fields.
+        # EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify
+        # the sourceTags fields.
         # Corresponds to the JSON property `direction`
         # @return [String]
         attr_accessor :direction
@@ -19645,8 +19666,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-        # and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
+        # Maximum Transmission Unit in bytes. The minimum value for this field is 1300
+        # and the maximum value is 8896. The suggested value is 1500, which is the
+        # default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If
+        # unspecified, the value defaults to 1460.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu
