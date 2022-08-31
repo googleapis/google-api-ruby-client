@@ -2769,7 +2769,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. Whether the space is a DM between a Chat app and a single human.
+        # Optional. Whether the space is a DM between a Chat app and a single human.
         # Corresponds to the JSON property `singleUserBotDm`
         # @return [Boolean]
         attr_accessor :single_user_bot_dm
