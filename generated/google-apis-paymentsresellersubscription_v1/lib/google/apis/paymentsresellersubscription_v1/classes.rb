@@ -582,8 +582,9 @@ module Google
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>]
         attr_accessor :line_items
       
-        # Output only. Response only. Resource name of the subscription. It will have
-        # the format of "partners/`partner_id`/subscriptions/`subscription_id`"
+        # Optional. Resource name of the subscription. It will have the format of "
+        # partners/`partner_id`/subscriptions/`subscription_id`". This is available for
+        # authorizeAddon, but otherwise is response only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
