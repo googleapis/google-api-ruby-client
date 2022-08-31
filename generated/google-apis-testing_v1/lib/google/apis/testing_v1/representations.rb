@@ -617,6 +617,8 @@ module Google
           property :package_name, as: 'packageName'
           property :target_sdk_version, as: 'targetSdkVersion'
           collection :uses_permission, as: 'usesPermission'
+          property :version_code, :numeric_string => true, as: 'versionCode'
+          property :version_name, as: 'versionName'
         end
       end
       
