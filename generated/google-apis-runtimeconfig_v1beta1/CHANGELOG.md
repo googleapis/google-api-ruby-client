@@ -1,5 +1,9 @@
 # Release history for google-apis-runtimeconfig_v1beta1
 
+### v0.19.0 (2022-08-31)
+
+* Regenerated from discovery document revision 20220829
+
 ### v0.18.0 (2022-08-09)
 
 * Regenerated from discovery document revision 20220808
