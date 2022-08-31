@@ -1435,10 +1435,9 @@ module Google
         attr_accessor :initialize_params
       
         # Specifies the disk interface to use for attaching this disk, which is either
-        # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
-        # the request will fail if you attempt to attach a persistent disk in any other
-        # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance.
+        # SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use
+        # either NVME or SCSI. In certain configurations, persistent disks can use NVMe.
+        # For more information, see About persistent disks.
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -8615,9 +8614,8 @@ module Google
         attr_accessor :destination_ranges
       
         # Direction of traffic to which this firewall applies, either `INGRESS` or `
-        # EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify
-        # the destinationRanges field, and for `EGRESS` traffic, you cannot specify the
-        # sourceRanges or sourceTags fields.
+        # EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify
+        # the sourceTags fields.
         # Corresponds to the JSON property `direction`
         # @return [String]
         attr_accessor :direction
@@ -15898,6 +15896,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :none
       
+        # [Output Only] The number of instances that the managed instance group is
+        # currently queuing.
+        # Corresponds to the JSON property `queuing`
+        # @return [Fixnum]
+        attr_accessor :queuing
+      
         # [Output Only] The number of instances in the managed instance group that are
         # scheduled to be recreated or are currently being being recreated. Recreating
         # an instance deletes the existing root persistent disk and creates a new disk
@@ -15962,6 +15966,7 @@ module Google
           @creating_without_retries = args[:creating_without_retries] if args.key?(:creating_without_retries)
           @deleting = args[:deleting] if args.key?(:deleting)
           @none = args[:none] if args.key?(:none)
+          @queuing = args[:queuing] if args.key?(:queuing)
           @recreating = args[:recreating] if args.key?(:recreating)
           @refreshing = args[:refreshing] if args.key?(:refreshing)
           @restarting = args[:restarting] if args.key?(:restarting)
@@ -23993,6 +23998,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
+        # [Output Only] The name of the instance. The name will always exist even if the
+        # instance has not yet been created.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Preserved state for a given instance.
         # Corresponds to the JSON property `preservedStateFromConfig`
         # @return [Google::Apis::ComputeAlpha::PreservedState]
@@ -24034,6 +24045,7 @@ module Google
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
+          @name = args[:name] if args.key?(:name)
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @tag = args[:tag] if args.key?(:tag)
@@ -24541,8 +24553,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Maximum Transmission Unit in bytes. The minimum value for this field is 1460
-        # and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
+        # Maximum Transmission Unit in bytes. The minimum value for this field is 1300
+        # and the maximum value is 8896. The suggested value is 1500, which is the
+        # default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If
+        # unspecified, the value defaults to 1460.
         # Corresponds to the JSON property `mtu`
         # @return [Fixnum]
         attr_accessor :mtu

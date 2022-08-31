@@ -10326,6 +10326,7 @@ module Google
           property :creating_without_retries, as: 'creatingWithoutRetries'
           property :deleting, as: 'deleting'
           property :none, as: 'none'
+          property :queuing, as: 'queuing'
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
@@ -12421,6 +12422,7 @@ module Google
           property :instance_template, as: 'instanceTemplate'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeAlpha::ManagedInstanceLastAttempt::Representation
       
+          property :name, as: 'name'
           property :preserved_state_from_config, as: 'preservedStateFromConfig', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
           property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
