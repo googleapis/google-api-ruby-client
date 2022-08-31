@@ -196,7 +196,7 @@ module Google
         #   Format: projects/`project`/locations/`location`/workflows/`workflow`
         # @param [Fixnum] page_size
         #   Maximum number of executions to return per call. Max supported value depends
-        #   on the selected Execution view: it's 10000 for BASIC and 100 for FULL. The
+        #   on the selected Execution view: it's 1000 for BASIC and 100 for FULL. The
         #   default value used if the field is not specified is 100, regardless of the
         #   selected view. Values greater than the max value will be coerced down to it.
         # @param [String] page_token
