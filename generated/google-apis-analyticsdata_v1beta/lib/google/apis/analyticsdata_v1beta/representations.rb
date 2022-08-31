@@ -758,6 +758,8 @@ module Google
       
           property :tokens_per_hour, as: 'tokensPerHour', class: Google::Apis::AnalyticsdataV1beta::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1beta::QuotaStatus::Representation
       
+          property :tokens_per_project_per_hour, as: 'tokensPerProjectPerHour', class: Google::Apis::AnalyticsdataV1beta::QuotaStatus, decorator: Google::Apis::AnalyticsdataV1beta::QuotaStatus::Representation
+      
         end
       end
       
