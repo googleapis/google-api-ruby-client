@@ -567,10 +567,13 @@ module Google
       class BuildStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allow_exit_codes, as: 'allowExitCodes'
+          property :allow_failure, as: 'allowFailure'
           collection :args, as: 'args'
           property :dir, as: 'dir'
           property :entrypoint, as: 'entrypoint'
           collection :env, as: 'env'
+          property :exit_code, as: 'exitCode'
           property :id, as: 'id'
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::CloudbuildV1beta1::TimeSpan, decorator: Google::Apis::CloudbuildV1beta1::TimeSpan::Representation
