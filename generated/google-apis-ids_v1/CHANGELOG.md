@@ -1,5 +1,9 @@
 # Release history for google-apis-ids_v1
 
+### v0.7.0 (2022-08-31)
+
+* Regenerated from discovery document revision 20220828
+
 ### v0.6.0 (2022-08-20)
 
 * Regenerated from discovery document revision 20220810
