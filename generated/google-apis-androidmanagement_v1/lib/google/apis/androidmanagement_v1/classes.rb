@@ -2126,7 +2126,9 @@ module Google
       # period will start or end on Feb. 28th instead. * When a device’s system clock
       # reads Feb. 29th, it’s treated as Feb. 28th. * When calculating the number of
       # days in a freeze period or the time between two freeze periods, Feb. 29th is
-      # ignored and not counted as a day.
+      # ignored and not counted as a day.Note: For Freeze Periods to take effect,
+      # SystemUpdateType cannot be specified as SYSTEM_UPDATE_TYPE_UNSPECIFIED,
+      # because freeze periods require a defined policy to be specified.
       class FreezePeriod
         include Google::Apis::Core::Hashable
       
@@ -4217,7 +4219,8 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::UsageLog]
         attr_accessor :usage_log
       
-        # Whether transferring files over USB is disabled.
+        # Whether transferring files over USB is disabled. This is supported only on
+        # company-owned devices.
         # Corresponds to the JSON property `usbFileTransferDisabled`
         # @return [Boolean]
         attr_accessor :usb_file_transfer_disabled
