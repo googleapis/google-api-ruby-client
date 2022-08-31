@@ -693,6 +693,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :uses_permission
       
+        # Version number used internally by the app.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        # Version number shown to users.
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -706,6 +716,8 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
           @uses_permission = args[:uses_permission] if args.key?(:uses_permission)
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @version_name = args[:version_name] if args.key?(:version_name)
         end
       end
       
