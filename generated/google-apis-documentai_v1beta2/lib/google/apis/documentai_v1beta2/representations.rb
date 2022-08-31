@@ -154,6 +154,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1353,6 +1377,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation, as: 'evaluation'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+          collection :individual_export_statuses, as: 'individualExportStatuses', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus::Representation
+      
+          collection :split_export_stats, as: 'splitExportStats', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId::Representation
+      
+          property :output_gcs_destination, as: 'outputGcsDestination'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :split_type, as: 'splitType'
+          property :total_document_count, as: 'totalDocumentCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
