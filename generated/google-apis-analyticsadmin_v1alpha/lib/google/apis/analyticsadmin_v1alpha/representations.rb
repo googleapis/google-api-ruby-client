@@ -791,6 +791,8 @@ module Google
       
           property :tokens_per_hour, as: 'tokensPerHour', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus::Representation
       
+          property :tokens_per_project_per_hour, as: 'tokensPerProjectPerHour', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus::Representation
+      
         end
       end
       

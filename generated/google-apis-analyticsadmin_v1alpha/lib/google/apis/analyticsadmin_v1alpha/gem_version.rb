@@ -16,13 +16,13 @@ module Google
   module Apis
     module AnalyticsadminV1alpha
       # Version of the google-apis-analyticsadmin_v1alpha gem
-      GEM_VERSION = "0.36.0"
+      GEM_VERSION = "0.37.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.9.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220817"
+      REVISION = "20220825"
     end
   end
 end
