@@ -465,6 +465,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus]
         attr_accessor :tokens_per_hour
       
+        # Current state for a particular quota group.
+        # Corresponds to the JSON property `tokensPerProjectPerHour`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessQuotaStatus]
+        attr_accessor :tokens_per_project_per_hour
+      
         def initialize(**args)
            update!(**args)
         end
@@ -475,6 +480,7 @@ module Google
           @server_errors_per_project_per_hour = args[:server_errors_per_project_per_hour] if args.key?(:server_errors_per_project_per_hour)
           @tokens_per_day = args[:tokens_per_day] if args.key?(:tokens_per_day)
           @tokens_per_hour = args[:tokens_per_hour] if args.key?(:tokens_per_hour)
+          @tokens_per_project_per_hour = args[:tokens_per_project_per_hour] if args.key?(:tokens_per_project_per_hour)
         end
       end
       
