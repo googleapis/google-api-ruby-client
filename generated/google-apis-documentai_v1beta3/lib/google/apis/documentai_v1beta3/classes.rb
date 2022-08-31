@@ -508,6 +508,112 @@ module Google
         end
       end
       
+      # Metadata of the batch export documents operation.
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualExportStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus>]
+        attr_accessor :individual_export_statuses
+      
+        # The list of statistics for each dataset split type.
+        # Corresponds to the JSON property `splitExportStats`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat>]
+        attr_accessor :split_export_stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_export_statuses = args[:individual_export_statuses] if args.key?(:individual_export_statuses)
+          @split_export_stats = args[:split_export_stats] if args.key?(:split_export_stats)
+        end
+      end
+      
+      # The status of each individual document in the export process.
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataIndividualExportStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The output_gcs_destination of the exported document if it was successful,
+        # otherwise empty.
+        # Corresponds to the JSON property `outputGcsDestination`
+        # @return [String]
+        attr_accessor :output_gcs_destination
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The statistic representing a dataset split type for this export.
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadataSplitExportStat
+        include Google::Apis::Core::Hashable
+      
+        # The dataset split type.
+        # Corresponds to the JSON property `splitType`
+        # @return [String]
+        attr_accessor :split_type
+      
+        # Total number of documents with the given dataset split type to be exported.
+        # Corresponds to the JSON property `totalDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :total_document_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @split_type = args[:split_type] if args.key?(:split_type)
+          @total_document_count = args[:total_document_count] if args.key?(:total_document_count)
+        end
+      end
+      
+      # The response proto of ExportDocuments method.
+      class GoogleCloudDocumentaiUiv1beta3ExportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata message associated with the ExportProcessorVersion operation.
       class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionMetadata
         include Google::Apis::Core::Hashable
