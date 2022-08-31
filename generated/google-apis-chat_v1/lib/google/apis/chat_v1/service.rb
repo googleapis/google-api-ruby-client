@@ -660,7 +660,7 @@ module Google
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - text - cards (Requires [service account
-        #   authentication](/chat/api/guides/auth/service-accounts).)
+        #   authentication](/chat/api/guides/auth/service-accounts).) - cards_v2
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
