@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -636,6 +648,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_sending_config, as: 'emailSendingConfig'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
