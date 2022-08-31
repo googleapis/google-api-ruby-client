@@ -976,6 +976,22 @@ module Google
       class BuildStep
         include Google::Apis::Core::Hashable
       
+        # Allow this build step to fail without failing the entire build if and only if
+        # the exit code is one of the specified codes. If allow_failure is also
+        # specified, this field will take precedence.
+        # Corresponds to the JSON property `allowExitCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :allow_exit_codes
+      
+        # Allow this build step to fail without failing the entire build. If false, the
+        # entire build will fail if this step fails. Otherwise, the build will succeed,
+        # but this step will still have a failure status. Error information will be
+        # reported in the failure_detail field.
+        # Corresponds to the JSON property `allowFailure`
+        # @return [Boolean]
+        attr_accessor :allow_failure
+        alias_method :allow_failure?, :allow_failure
+      
         # A list of arguments that will be presented to the step when it is started. If
         # the image used to run the step's container has an entrypoint, the `args` are
         # used as arguments to that entrypoint. If the image does not define an
@@ -1008,6 +1024,11 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<String>]
         attr_accessor :env
+      
+        # Output only. Return code from running the step.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
       
         # Unique identifier for this build step, used in `wait_for` to reference this
         # build step as a dependency.
@@ -1090,10 +1111,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_exit_codes = args[:allow_exit_codes] if args.key?(:allow_exit_codes)
+          @allow_failure = args[:allow_failure] if args.key?(:allow_failure)
           @args = args[:args] if args.key?(:args)
           @dir = args[:dir] if args.key?(:dir)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @env = args[:env] if args.key?(:env)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
