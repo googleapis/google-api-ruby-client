@@ -356,6 +356,7 @@ module Google
           collection :access_restrictions, as: 'accessRestrictions'
           collection :additional_target_key_names, as: 'additionalTargetKeyNames', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1AdditionalTargetKeyName, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1AdditionalTargetKeyName::Representation
       
+          property :category_title, as: 'categoryTitle'
           property :definition, as: 'definition', class: Google::Apis::ChromepolicyV1::Proto2FileDescriptorProto, decorator: Google::Apis::ChromepolicyV1::Proto2FileDescriptorProto::Representation
       
           collection :field_descriptions, as: 'fieldDescriptions', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription::Representation
