@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckMigrationPermissionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckMigrationPermissionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Domain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +101,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +251,18 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnPremDomainDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnPremDomainSidDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -396,6 +432,21 @@ module Google
         end
       end
       
+      class CheckMigrationPermissionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckMigrationPermissionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :onprem_domains, as: 'onpremDomains', class: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainSidDetails, decorator: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainSidDetails::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class DailyCycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -434,6 +485,12 @@ module Google
         end
       end
       
+      class DisableMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Domain
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -457,6 +514,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :migrating_domains, as: 'migratingDomains', class: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainDetails, decorator: Google::Apis::ManagedidentitiesV1beta1::OnPremDomainDetails::Representation
+      
         end
       end
       
@@ -719,6 +784,22 @@ module Google
       
           property :weekly_cycle, as: 'weeklyCycle', class: Google::Apis::ManagedidentitiesV1beta1::WeeklyCycle, decorator: Google::Apis::ManagedidentitiesV1beta1::WeeklyCycle::Representation
       
+        end
+      end
+      
+      class OnPremDomainDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_sid_filtering, as: 'disableSidFiltering'
+          property :domain_name, as: 'domainName'
+        end
+      end
+      
+      class OnPremDomainSidDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sid_filtering_state, as: 'sidFilteringState'
         end
       end
       

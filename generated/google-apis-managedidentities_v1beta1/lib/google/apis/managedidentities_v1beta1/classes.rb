@@ -132,31 +132,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -232,6 +234,46 @@ module Google
           @subject = args[:subject] if args.key?(:subject)
           @subject_alternative_name = args[:subject_alternative_name] if args.key?(:subject_alternative_name)
           @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
+        end
+      end
+      
+      # CheckMigrationPermissionRequest is the request message for
+      # CheckMigrationPermission method.
+      class CheckMigrationPermissionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # CheckMigrationPermissionResponse is the response message for
+      # CheckMigrationPermission method.
+      class CheckMigrationPermissionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of SID filtering of all the domains which has trust established.
+        # Corresponds to the JSON property `onpremDomains`
+        # @return [Array<Google::Apis::ManagedidentitiesV1beta1::OnPremDomainSidDetails>]
+        attr_accessor :onprem_domains
+      
+        # The state of DomainMigration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @onprem_domains = args[:onprem_domains] if args.key?(:onprem_domains)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -371,6 +413,19 @@ module Google
         end
       end
       
+      # DisableMigrationRequest is the request message for DisableMigration method.
+      class DisableMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a managed Microsoft Active Directory domain. If the domain is being
       # changed, it will be placed into the UPDATING state, which indicates that the
       # resource is being reconciled. At this point, Get will reflect an intermediate
@@ -493,6 +548,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # EnableMigrationRequest is the request message for EnableMigration method.
+      class EnableMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of the on-prem domains to be migrated.
+        # Corresponds to the JSON property `migratingDomains`
+        # @return [Array<Google::Apis::ManagedidentitiesV1beta1::OnPremDomainDetails>]
+        attr_accessor :migrating_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migrating_domains = args[:migrating_domains] if args.key?(:migrating_domains)
         end
       end
       
@@ -1539,6 +1613,59 @@ module Google
         def update!(**args)
           @daily_cycle = args[:daily_cycle] if args.key?(:daily_cycle)
           @weekly_cycle = args[:weekly_cycle] if args.key?(:weekly_cycle)
+        end
+      end
+      
+      # OnPremDomainDetails is the message which contains details of on-prem domain
+      # which is trusted and needs to be migrated.
+      class OnPremDomainDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Option to disable SID filtering.
+        # Corresponds to the JSON property `disableSidFiltering`
+        # @return [Boolean]
+        attr_accessor :disable_sid_filtering
+        alias_method :disable_sid_filtering?, :disable_sid_filtering
+      
+        # Required. FQDN of the on-prem domain being migrated.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_sid_filtering = args[:disable_sid_filtering] if args.key?(:disable_sid_filtering)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+        end
+      end
+      
+      # OnPremDomainDetails is the message which contains details of on-prem domain
+      # which is trusted and needs to be migrated.
+      class OnPremDomainSidDetails
+        include Google::Apis::Core::Hashable
+      
+        # FQDN of the on-prem domain being migrated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Current SID filtering state.
+        # Corresponds to the JSON property `sidFilteringState`
+        # @return [String]
+        attr_accessor :sid_filtering_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @sid_filtering_state = args[:sid_filtering_state] if args.key?(:sid_filtering_state)
         end
       end
       
