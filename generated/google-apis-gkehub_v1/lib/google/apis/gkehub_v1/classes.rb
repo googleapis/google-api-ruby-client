@@ -350,31 +350,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -495,7 +497,7 @@ module Google
         attr_accessor :prevent_drift
         alias_method :prevent_drift?, :prevent_drift
       
-        # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
+        # Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured"
         # mode.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
@@ -707,6 +709,11 @@ module Google
         # @return [String]
         attr_accessor :gatekeeper_controller_manager_state
       
+        # Status of the pod serving the mutation webhook.
+        # Corresponds to the JSON property `gatekeeperMutation`
+        # @return [String]
+        attr_accessor :gatekeeper_mutation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -715,6 +722,7 @@ module Google
         def update!(**args)
           @gatekeeper_audit = args[:gatekeeper_audit] if args.key?(:gatekeeper_audit)
           @gatekeeper_controller_manager_state = args[:gatekeeper_controller_manager_state] if args.key?(:gatekeeper_controller_manager_state)
+          @gatekeeper_mutation = args[:gatekeeper_mutation] if args.key?(:gatekeeper_mutation)
         end
       end
       
@@ -1697,6 +1705,11 @@ module Google
       class IdentityServiceAuthMethod
         include Google::Apis::Core::Hashable
       
+        # Configuration for the Google Plugin Auth flow.
+        # Corresponds to the JSON property `googleConfig`
+        # @return [Google::Apis::GkehubV1::IdentityServiceGoogleConfig]
+        attr_accessor :google_config
+      
         # Identifier for auth config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1718,9 +1731,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_config = args[:google_config] if args.key?(:google_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
+        end
+      end
+      
+      # Configuration for the Google Plugin Auth flow.
+      class IdentityServiceGoogleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Disable automatic configuration of Google Plugin on supported platforms.
+        # Corresponds to the JSON property `disable`
+        # @return [Boolean]
+        attr_accessor :disable
+        alias_method :disable?, :disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable = args[:disable] if args.key?(:disable)
         end
       end
       
@@ -1807,6 +1841,12 @@ module Google
         attr_accessor :deploy_cloud_console_proxy
         alias_method :deploy_cloud_console_proxy?, :deploy_cloud_console_proxy
       
+        # Enable access token.
+        # Corresponds to the JSON property `enableAccessToken`
+        # @return [Boolean]
+        attr_accessor :enable_access_token
+        alias_method :enable_access_token?, :enable_access_token
+      
         # Output only. Encrypted OIDC Client secret
         # Corresponds to the JSON property `encryptedClientSecret`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1865,6 +1905,7 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @deploy_cloud_console_proxy = args[:deploy_cloud_console_proxy] if args.key?(:deploy_cloud_console_proxy)
+          @enable_access_token = args[:enable_access_token] if args.key?(:enable_access_token)
           @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @extra_params = args[:extra_params] if args.key?(:extra_params)
           @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
