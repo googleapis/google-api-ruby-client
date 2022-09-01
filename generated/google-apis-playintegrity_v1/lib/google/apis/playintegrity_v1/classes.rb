@@ -58,6 +58,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Indicates the account risk level of the current user session.
+        # Corresponds to the JSON property `risk`
+        # @return [String]
+        attr_accessor :risk
+      
+        # Required. Indicates the account risk level of the current user session.
         # Corresponds to the JSON property `riskLevel`
         # @return [String]
         attr_accessor :risk_level
@@ -68,6 +73,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @risk = args[:risk] if args.key?(:risk)
           @risk_level = args[:risk_level] if args.key?(:risk_level)
         end
       end

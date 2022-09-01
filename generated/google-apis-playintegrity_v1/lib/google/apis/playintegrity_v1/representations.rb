@@ -88,6 +88,7 @@ module Google
       class AccountRiskVerdict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :risk, as: 'risk'
           property :risk_level, as: 'riskLevel'
         end
       end
