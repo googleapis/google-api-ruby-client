@@ -1743,7 +1743,7 @@ module Google
         # @return [String]
         attr_accessor :current_registrar
       
-        # The URL of registrar that currently manages the domain.
+        # The URL of the registrar that currently manages the domain.
         # Corresponds to the JSON property `currentRegistrarUri`
         # @return [String]
         attr_accessor :current_registrar_uri
