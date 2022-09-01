@@ -1737,7 +1737,7 @@ module Google
         end
       end
       
-      # A condition for determining whether a PubSub should be triggered.
+      # A condition for determining whether a Pub/Sub should be triggered.
       class GooglePrivacyDlpV2DataProfilePubSubCondition
         include Google::Apis::Core::Hashable
       
@@ -1758,8 +1758,7 @@ module Google
       
       # Pub/Sub topic message for a DataProfileAction.PubSubNotification event. To
       # receive a message of protocol buffer schema type, convert the message data to
-      # an object of this proto class. https://cloud.google.com/pubsub/docs/samples/
-      # pubsub-subscribe-proto-messages
+      # an object of this proto class.
       class GooglePrivacyDlpV2DataProfilePubSubMessage
         include Google::Apis::Core::Hashable
       
@@ -5317,7 +5316,7 @@ module Google
         # @return [String]
         attr_accessor :event
       
-        # A condition for determining whether a PubSub should be triggered.
+        # A condition for determining whether a Pub/Sub should be triggered.
         # Corresponds to the JSON property `pubsubCondition`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfilePubSubCondition]
         attr_accessor :pubsub_condition
