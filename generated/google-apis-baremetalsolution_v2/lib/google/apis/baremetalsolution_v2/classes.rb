@@ -1978,6 +1978,11 @@ module Google
       class VlanAttachment
         include Google::Apis::Core::Hashable
       
+        # Immutable. The identifier of the attachment within vrf.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Input only. Pairing key.
         # Corresponds to the JSON property `pairingKey`
         # @return [String]
@@ -2009,6 +2014,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
           @peer_vlan_id = args[:peer_vlan_id] if args.key?(:peer_vlan_id)
@@ -2070,10 +2076,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Input only. User-specified notes for new Volume. Used to provision Volumes
+        # that require manual intervention.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
         # Originally requested size, in GiB.
         # Corresponds to the JSON property `originallyRequestedSizeGib`
         # @return [Fixnum]
         attr_accessor :originally_requested_size_gib
+      
+        # Immutable. Performance tier of the Volume. Default is SHARED.
+        # Corresponds to the JSON property `performanceTier`
+        # @return [String]
+        attr_accessor :performance_tier
       
         # Immutable. Pod name.
         # Corresponds to the JSON property `pod`
@@ -2141,7 +2158,9 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @max_size_gib = args[:max_size_gib] if args.key?(:max_size_gib)
           @name = args[:name] if args.key?(:name)
+          @notes = args[:notes] if args.key?(:notes)
           @originally_requested_size_gib = args[:originally_requested_size_gib] if args.key?(:originally_requested_size_gib)
+          @performance_tier = args[:performance_tier] if args.key?(:performance_tier)
           @pod = args[:pod] if args.key?(:pod)
           @protocol = args[:protocol] if args.key?(:protocol)
           @remaining_space_gib = args[:remaining_space_gib] if args.key?(:remaining_space_gib)
@@ -2191,6 +2210,11 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::NfsExport>]
         attr_accessor :nfs_exports
       
+        # Performance tier of the Volume. Default is SHARED.
+        # Corresponds to the JSON property `performanceTier`
+        # @return [String]
+        attr_accessor :performance_tier
+      
         # Volume protocol.
         # Corresponds to the JSON property `protocol`
         # @return [String]
@@ -2230,6 +2254,7 @@ module Google
           @machine_ids = args[:machine_ids] if args.key?(:machine_ids)
           @name = args[:name] if args.key?(:name)
           @nfs_exports = args[:nfs_exports] if args.key?(:nfs_exports)
+          @performance_tier = args[:performance_tier] if args.key?(:performance_tier)
           @protocol = args[:protocol] if args.key?(:protocol)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @snapshots_enabled = args[:snapshots_enabled] if args.key?(:snapshots_enabled)

@@ -824,6 +824,7 @@ module Google
       class VlanAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :pairing_key, as: 'pairingKey'
           property :peer_ip, as: 'peerIp'
           property :peer_vlan_id, :numeric_string => true, as: 'peerVlanId'
@@ -844,7 +845,9 @@ module Google
           hash :labels, as: 'labels'
           property :max_size_gib, :numeric_string => true, as: 'maxSizeGib'
           property :name, as: 'name'
+          property :notes, as: 'notes'
           property :originally_requested_size_gib, :numeric_string => true, as: 'originallyRequestedSizeGib'
+          property :performance_tier, as: 'performanceTier'
           property :pod, as: 'pod'
           property :protocol, as: 'protocol'
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
@@ -870,6 +873,7 @@ module Google
           property :name, as: 'name'
           collection :nfs_exports, as: 'nfsExports', class: Google::Apis::BaremetalsolutionV2::NfsExport, decorator: Google::Apis::BaremetalsolutionV2::NfsExport::Representation
       
+          property :performance_tier, as: 'performanceTier'
           property :protocol, as: 'protocol'
           property :size_gb, as: 'sizeGb'
           property :snapshots_enabled, as: 'snapshotsEnabled'
