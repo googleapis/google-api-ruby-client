@@ -1265,6 +1265,7 @@ module Google
       class GoogleCloudDatacatalogV1UsageSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :favorite_count, :numeric_string => true, as: 'favoriteCount'
           property :update_time, as: 'updateTime'
           hash :usage_within_time_range, as: 'usageWithinTimeRange', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats::Representation
       
