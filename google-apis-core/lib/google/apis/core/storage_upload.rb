@@ -135,23 +135,22 @@ module Google
         def send_upload_command(client)
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
-          content = upload_io
           remaining_content_size = upload_io.size - @offset
           current_chunk_size = remaining_content_size < CHUNK_SIZE ? remaining_content_size : CHUNK_SIZE
 
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = sprintf('bytes %d-%d/%d', @offset, @offset+current_chunk_size-1, upload_io.size)
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
-
-          body = content.read(current_chunk_size)
+          body = upload_io.read(current_chunk_size)
 
           response = client.put(@upload_url, body: body, header: request_header, follow_redirect: true)
-          result = process_response(response.status_code, response.header, response.body)
 
+          result = process_response(response.status_code, response.header, response.body)
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
           @offset += current_chunk_size if @upload_incomplete
           success(result)
         rescue => e
+          upload_io.pos = @offset
           error(e, rethrow: true)
         end
 
