@@ -225,13 +225,17 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies the filters for the promotion results. The syntax defined
-        # in the EBNF grammar: https://google.aip.dev/assets/misc/ebnf-filtering.txt. An
-        # error will be thrown if any specified parameter is not supported. Currently,
-        # it can only be used by Youtube partners. Allowed parameters are: - regionCodes
-        # - zipCode - eligibilityId - applicableProducts Multiple parameters can be
-        # specified, for example: "regionCodes=US zipCode=94043 eligibilityId=
-        # 2022H1Campaign", or "applicableProducts=partners/p1/products/product2"
+        # Optional. Specifies the filters for the promotion results. The syntax is
+        # defined in https://google.aip.dev/160 with the following caveats: - Only the
+        # following features are supported: - Logical operator `AND` - Comparison
+        # operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (
+        # no wildcards `*`) - Only the following fields are supported: - `
+        # applicable_products` - `region_codes` - `youtube_payload.
+        # partner_eligibility_id` - `youtube_payload.postal_code` - Unless explicitly
+        # mentioned above, other features are not supported. Example: `
+        # applicable_products:partners/partner1/products/product1 AND region_codes:US
+        # AND youtube_payload.postal_code=94043 AND youtube_payload.
+        # partner_eligibility_id=eligibility-id`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
