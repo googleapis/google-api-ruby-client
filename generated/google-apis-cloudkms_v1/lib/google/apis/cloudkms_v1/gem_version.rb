@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudkmsV1
       # Version of the google-apis-cloudkms_v1 gem
-      GEM_VERSION = "0.30.0"
+      GEM_VERSION = "0.31.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.9.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220819"
+      REVISION = "20220826"
     end
   end
 end
