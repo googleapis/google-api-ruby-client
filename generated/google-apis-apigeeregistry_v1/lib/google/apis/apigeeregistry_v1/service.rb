@@ -122,14 +122,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateApi creates a specified API.
+        # Creates a specified API.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of APIs. Format: projects/*/
-        #   locations/*
+        #   Required. The parent, which owns this collection of APIs. Format: `projects/*/
+        #   locations/*`
         # @param [Google::Apis::ApigeeregistryV1::Api] api_object
         # @param [String] api_id
-        #   Required. The ID to use for the api, which will become the final component of
-        #   the api's resource name. This value should be 4-63 characters, and valid
+        #   Required. The ID to use for the API, which will become the final component of
+        #   the API's resource name. This value should be 4-63 characters, and valid
         #   characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -161,9 +161,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApi removes a specified API and all of the resources that it owns.
+        # Removes a specified API and all of the resources that it owns.
         # @param [String] name
-        #   Required. The name of the API to delete. Format: projects/*/locations/*/apis/*
+        #   Required. The name of the API to delete. Format: `projects/*/locations/*/apis/*
+        #   `
         # @param [Boolean] force
         #   If set to true, any child resources will also be deleted. (Otherwise, the
         #   request will only work if there are no child resources.)
@@ -195,10 +196,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetApi returns a specified API.
+        # Returns a specified API.
         # @param [String] name
-        #   Required. The name of the API to retrieve. Format: projects/*/locations/*/apis/
-        #   *
+        #   Required. The name of the API to retrieve. Format: `projects/*/locations/*/
+        #   apis/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -271,13 +272,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApis returns matching APIs.
+        # Returns matching APIs.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of APIs. Format: projects/*/
-        #   locations/*
+        #   Required. The parent, which owns this collection of APIs. Format: `projects/*/
+        #   locations/*`
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of APIs to return. The service may return fewer than this
         #   value. If unspecified, at most 50 values will be returned. The maximum is 1000;
@@ -303,12 +307,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_apis(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_apis(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/apis', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApisResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApisResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -316,18 +321,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # UpdateApi can be used to modify a specified API.
+        # Used to modify a specified API.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Api] api_object
         # @param [Boolean] allow_missing
-        #   If set to true, and the api is not found, a new api will be created. In this
+        #   If set to true, and the API is not found, a new API will be created. In this
         #   situation, `update_mask` is ignored.
         # @param [String] update_mask
         #   The list of fields to be updated. If omitted, all fields are updated that are
-        #   set in the request message (fields set to default values are ignored). If a "*"
-        #   is specified, all fields are updated, including fields that are unspecified/
-        #   default in the request.
+        #   set in the request message (fields set to default values are ignored). If an
+        #   asterisk "*" is specified, all fields are updated, including fields that are
+        #   unspecified/default in the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -435,9 +440,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateArtifact creates a specified artifact.
+        # Creates a specified artifact.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
         # @param [String] artifact_id
         #   Required. The ID to use for the artifact, which will become the final
@@ -474,9 +480,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteArtifact removes a specified artifact.
+        # Removes a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to delete. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to delete. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -504,9 +510,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifact returns a specified artifact.
+        # Returns a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to retrieve. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to retrieve. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -534,13 +540,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifactContents returns the contents of a specified artifact. If artifacts
-        # are stored with GZip compression, the default behavior is to return the
-        # artifact uncompressed (the mime_type response field indicates the exact format
-        # returned).
+        # Returns the contents of a specified artifact. If artifacts are stored with
+        # GZip compression, the default behavior is to return the artifact uncompressed (
+        # the mime_type response field indicates the exact format returned).
         # @param [String] name
         #   Required. The name of the artifact whose contents should be retrieved. Format:
-        #   `parent`/artifacts/*
+        #   ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -613,12 +618,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListArtifacts returns matching artifacts.
+        # Returns matching artifacts.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -644,12 +653,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_artifacts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/artifacts', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListArtifactsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListArtifactsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -657,7 +667,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ReplaceArtifact can be used to replace a specified artifact.
+        # Used to replace a specified artifact.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
@@ -766,10 +776,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateApiDeployment creates a specified deployment.
+        # Creates a specified deployment.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of deployments. Format:
-        #   projects/*/locations/*/apis/*
+        #   Required. The parent, which owns this collection of deployments. Format: `
+        #   projects/*/locations/*/apis/*`
         # @param [Google::Apis::ApigeeregistryV1::ApiDeployment] api_deployment_object
         # @param [String] api_deployment_id
         #   Required. The ID to use for the deployment, which will become the final
@@ -806,11 +816,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApiDeployment removes a specified deployment, all revisions, and all
-        # child resources (e.g. artifacts).
+        # Removes a specified deployment, all revisions, and all child resources (e.g.,
+        # artifacts).
         # @param [String] name
-        #   Required. The name of the deployment to delete. Format: projects/*/locations/*/
-        #   apis/*/deployments/*
+        #   Required. The name of the deployment to delete. Format: `projects/*/locations/*
+        #   /apis/*/deployments/*`
         # @param [Boolean] force
         #   If set to true, any child resources will also be deleted. (Otherwise, the
         #   request will only work if there are no child resources.)
@@ -842,11 +852,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApiDeploymentRevision deletes a revision of a deployment.
+        # Deletes a revision of a deployment.
         # @param [String] name
         #   Required. The name of the deployment revision to be deleted, with a revision
-        #   ID explicitly included. Example: projects/sample/locations/global/apis/
-        #   petstore/deployments/prod@c7cfa2a8
+        #   ID explicitly included. Example: `projects/sample/locations/global/apis/
+        #   petstore/deployments/prod@c7cfa2a8`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -874,10 +884,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetApiDeployment returns a specified deployment.
+        # Returns a specified deployment.
         # @param [String] name
-        #   Required. The name of the deployment to retrieve. Format: projects/*/locations/
-        #   */apis/*/deployments/*
+        #   Required. The name of the deployment to retrieve. Format: `projects/*/
+        #   locations/*/apis/*/deployments/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -950,13 +960,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApiDeployments returns matching deployments.
+        # Returns matching deployments.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of deployments. Format:
-        #   projects/*/locations/*/apis/*
+        #   Required. The parent, which owns this collection of deployments. Format: `
+        #   projects/*/locations/*/apis/*`
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of deployments to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -983,12 +996,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_deployments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/deployments', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApiDeploymentsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApiDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -996,8 +1010,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApiDeploymentRevisions lists all revisions of a deployment. Revisions are
-        # returned in descending order of revision creation time.
+        # Lists all revisions of a deployment. Revisions are returned in descending
+        # order of revision creation time.
         # @param [String] name
         #   Required. The name of the deployment to list revisions for.
         # @param [Fixnum] page_size
@@ -1034,7 +1048,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # UpdateApiDeployment can be used to modify a specified deployment.
+        # Used to modify a specified deployment.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::ApiDeployment] api_deployment_object
@@ -1043,9 +1057,9 @@ module Google
         #   created. In this situation, `update_mask` is ignored.
         # @param [String] update_mask
         #   The list of fields to be updated. If omitted, all fields are updated that are
-        #   set in the request message (fields set to default values are ignored). If a "*"
-        #   is specified, all fields are updated, including fields that are unspecified/
-        #   default in the request.
+        #   set in the request message (fields set to default values are ignored). If an
+        #   asterisk "*" is specified, all fields are updated, including fields that are
+        #   unspecified/default in the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1077,8 +1091,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # RollbackApiDeployment sets the current revision to a specified prior revision.
-        # Note that this creates a new revision with a new revision ID.
+        # Sets the current revision to a specified prior revision. Note that this
+        # creates a new revision with a new revision ID.
         # @param [String] name
         #   Required. The deployment being rolled back.
         # @param [Google::Apis::ApigeeregistryV1::RollbackApiDeploymentRequest] rollback_api_deployment_request_object
@@ -1148,7 +1162,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # TagApiDeploymentRevision adds a tag to a specified revision of a deployment.
+        # Adds a tag to a specified revision of a deployment.
         # @param [String] name
         #   Required. The name of the deployment to be tagged, including the revision ID.
         # @param [Google::Apis::ApigeeregistryV1::TagApiDeploymentRevisionRequest] tag_api_deployment_revision_request_object
@@ -1220,9 +1234,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateArtifact creates a specified artifact.
+        # Creates a specified artifact.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
         # @param [String] artifact_id
         #   Required. The ID to use for the artifact, which will become the final
@@ -1259,9 +1274,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteArtifact removes a specified artifact.
+        # Removes a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to delete. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to delete. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1289,9 +1304,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifact returns a specified artifact.
+        # Returns a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to retrieve. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to retrieve. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1319,13 +1334,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifactContents returns the contents of a specified artifact. If artifacts
-        # are stored with GZip compression, the default behavior is to return the
-        # artifact uncompressed (the mime_type response field indicates the exact format
-        # returned).
+        # Returns the contents of a specified artifact. If artifacts are stored with
+        # GZip compression, the default behavior is to return the artifact uncompressed (
+        # the mime_type response field indicates the exact format returned).
         # @param [String] name
         #   Required. The name of the artifact whose contents should be retrieved. Format:
-        #   `parent`/artifacts/*
+        #   ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1353,12 +1367,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListArtifacts returns matching artifacts.
+        # Returns matching artifacts.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -1384,12 +1402,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_deployment_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_deployment_artifacts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/artifacts', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListArtifactsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListArtifactsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1397,7 +1416,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ReplaceArtifact can be used to replace a specified artifact.
+        # Used to replace a specified artifact.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
@@ -1430,10 +1449,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateApiVersion creates a specified version.
+        # Creates a specified version.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of versions. Format: projects/
-        #   */locations/*/apis/*
+        #   Required. The parent, which owns this collection of versions. Format: `
+        #   projects/*/locations/*/apis/*`
         # @param [Google::Apis::ApigeeregistryV1::ApiVersion] api_version_object
         # @param [String] api_version_id
         #   Required. The ID to use for the version, which will become the final component
@@ -1470,11 +1489,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApiVersion removes a specified version and all of the resources that it
-        # owns.
+        # Removes a specified version and all of the resources that it owns.
         # @param [String] name
-        #   Required. The name of the version to delete. Format: projects/*/locations/*/
-        #   apis/*/versions/*
+        #   Required. The name of the version to delete. Format: `projects/*/locations/*/
+        #   apis/*/versions/*`
         # @param [Boolean] force
         #   If set to true, any child resources will also be deleted. (Otherwise, the
         #   request will only work if there are no child resources.)
@@ -1506,10 +1524,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetApiVersion returns a specified version.
+        # Returns a specified version.
         # @param [String] name
-        #   Required. The name of the version to retrieve. Format: projects/*/locations/*/
-        #   apis/*/versions/*
+        #   Required. The name of the version to retrieve. Format: `projects/*/locations/*/
+        #   apis/*/versions/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1582,13 +1600,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApiVersions returns matching versions.
+        # Returns matching versions.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of versions. Format: projects/
-        #   */locations/*/apis/*
+        #   Required. The parent, which owns this collection of versions. Format: `
+        #   projects/*/locations/*/apis/*`
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -1614,12 +1635,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_versions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApiVersionsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApiVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1627,7 +1649,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # UpdateApiVersion can be used to modify a specified version.
+        # Used to modify a specified version.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::ApiVersion] api_version_object
@@ -1636,9 +1658,9 @@ module Google
         #   In this situation, `update_mask` is ignored.
         # @param [String] update_mask
         #   The list of fields to be updated. If omitted, all fields are updated that are
-        #   set in the request message (fields set to default values are ignored). If a "*"
-        #   is specified, all fields are updated, including fields that are unspecified/
-        #   default in the request.
+        #   set in the request message (fields set to default values are ignored). If an
+        #   asterisk "*" is specified, all fields are updated, including fields that are
+        #   unspecified/default in the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1746,9 +1768,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateArtifact creates a specified artifact.
+        # Creates a specified artifact.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
         # @param [String] artifact_id
         #   Required. The ID to use for the artifact, which will become the final
@@ -1785,9 +1808,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteArtifact removes a specified artifact.
+        # Removes a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to delete. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to delete. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1815,9 +1838,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifact returns a specified artifact.
+        # Returns a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to retrieve. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to retrieve. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1845,13 +1868,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifactContents returns the contents of a specified artifact. If artifacts
-        # are stored with GZip compression, the default behavior is to return the
-        # artifact uncompressed (the mime_type response field indicates the exact format
-        # returned).
+        # Returns the contents of a specified artifact. If artifacts are stored with
+        # GZip compression, the default behavior is to return the artifact uncompressed (
+        # the mime_type response field indicates the exact format returned).
         # @param [String] name
         #   Required. The name of the artifact whose contents should be retrieved. Format:
-        #   `parent`/artifacts/*
+        #   ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1924,12 +1946,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListArtifacts returns matching artifacts.
+        # Returns matching artifacts.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -1955,12 +1981,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_version_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_version_artifacts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/artifacts', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListArtifactsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListArtifactsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1968,7 +1995,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ReplaceArtifact can be used to replace a specified artifact.
+        # Used to replace a specified artifact.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
@@ -2077,10 +2104,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateApiSpec creates a specified spec.
+        # Creates a specified spec.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of specs. Format: projects/*/
-        #   locations/*/apis/*/versions/*
+        #   Required. The parent, which owns this collection of specs. Format: `projects/*/
+        #   locations/*/apis/*/versions/*`
         # @param [Google::Apis::ApigeeregistryV1::ApiSpec] api_spec_object
         # @param [String] api_spec_id
         #   Required. The ID to use for the spec, which will become the final component of
@@ -2116,11 +2143,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApiSpec removes a specified spec, all revisions, and all child resources
-        # (e.g. artifacts).
+        # Removes a specified spec, all revisions, and all child resources (e.g.,
+        # artifacts).
         # @param [String] name
-        #   Required. The name of the spec to delete. Format: projects/*/locations/*/apis/*
-        #   /versions/*/specs/*
+        #   Required. The name of the spec to delete. Format: `projects/*/locations/*/apis/
+        #   */versions/*/specs/*`
         # @param [Boolean] force
         #   If set to true, any child resources will also be deleted. (Otherwise, the
         #   request will only work if there are no child resources.)
@@ -2152,11 +2179,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteApiSpecRevision deletes a revision of a spec.
+        # Deletes a revision of a spec.
         # @param [String] name
         #   Required. The name of the spec revision to be deleted, with a revision ID
-        #   explicitly included. Example: projects/sample/locations/global/apis/petstore/
-        #   versions/1.0.0/specs/openapi.yaml@c7cfa2a8
+        #   explicitly included. Example: `projects/sample/locations/global/apis/petstore/
+        #   versions/1.0.0/specs/openapi.yaml@c7cfa2a8`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2184,10 +2211,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetApiSpec returns a specified spec.
+        # Returns a specified spec.
         # @param [String] name
-        #   Required. The name of the spec to retrieve. Format: projects/*/locations/*/
-        #   apis/*/versions/*/specs/*
+        #   Required. The name of the spec to retrieve. Format: `projects/*/locations/*/
+        #   apis/*/versions/*/specs/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2215,13 +2242,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetApiSpecContents returns the contents of a specified spec. If specs are
-        # stored with GZip compression, the default behavior is to return the spec
-        # uncompressed (the mime_type response field indicates the exact format returned)
-        # .
+        # Returns the contents of a specified spec. If specs are stored with GZip
+        # compression, the default behavior is to return the spec uncompressed (the
+        # mime_type response field indicates the exact format returned).
         # @param [String] name
-        #   Required. The name of the spec whose contents should be retrieved. Format:
-        #   projects/*/locations/*/apis/*/versions/*/specs/*
+        #   Required. The name of the spec whose contents should be retrieved. Format: `
+        #   projects/*/locations/*/apis/*/versions/*/specs/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2294,13 +2320,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApiSpecs returns matching specs.
+        # Returns matching specs.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of specs. Format: projects/*/
-        #   locations/*/apis/*/versions/*
+        #   Required. The parent, which owns this collection of specs. Format: `projects/*/
+        #   locations/*/apis/*/versions/*`
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of specs to return. The service may return fewer than this
         #   value. If unspecified, at most 50 values will be returned. The maximum is 1000;
@@ -2326,12 +2355,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_version_specs(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_version_specs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/specs', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListApiSpecsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListApiSpecsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2339,8 +2369,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListApiSpecRevisions lists all revisions of a spec. Revisions are returned in
-        # descending order of revision creation time.
+        # Lists all revisions of a spec. Revisions are returned in descending order of
+        # revision creation time.
         # @param [String] name
         #   Required. The name of the spec to list revisions for.
         # @param [Fixnum] page_size
@@ -2377,7 +2407,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # UpdateApiSpec can be used to modify a specified spec.
+        # Used to modify a specified spec.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::ApiSpec] api_spec_object
@@ -2386,9 +2416,9 @@ module Google
         #   situation, `update_mask` is ignored.
         # @param [String] update_mask
         #   The list of fields to be updated. If omitted, all fields are updated that are
-        #   set in the request message (fields set to default values are ignored). If a "*"
-        #   is specified, all fields are updated, including fields that are unspecified/
-        #   default in the request.
+        #   set in the request message (fields set to default values are ignored). If an
+        #   asterisk "*" is specified, all fields are updated, including fields that are
+        #   unspecified/default in the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2420,8 +2450,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # RollbackApiSpec sets the current revision to a specified prior revision. Note
-        # that this creates a new revision with a new revision ID.
+        # Sets the current revision to a specified prior revision. Note that this
+        # creates a new revision with a new revision ID.
         # @param [String] name
         #   Required. The spec being rolled back.
         # @param [Google::Apis::ApigeeregistryV1::RollbackApiSpecRequest] rollback_api_spec_request_object
@@ -2491,7 +2521,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # TagApiSpecRevision adds a tag to a specified revision of a spec.
+        # Adds a tag to a specified revision of a spec.
         # @param [String] name
         #   Required. The name of the spec to be tagged, including the revision ID.
         # @param [Google::Apis::ApigeeregistryV1::TagApiSpecRevisionRequest] tag_api_spec_revision_request_object
@@ -2563,9 +2593,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateArtifact creates a specified artifact.
+        # Creates a specified artifact.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
         # @param [String] artifact_id
         #   Required. The ID to use for the artifact, which will become the final
@@ -2602,9 +2633,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteArtifact removes a specified artifact.
+        # Removes a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to delete. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to delete. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2632,9 +2663,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifact returns a specified artifact.
+        # Returns a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to retrieve. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to retrieve. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2662,13 +2693,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifactContents returns the contents of a specified artifact. If artifacts
-        # are stored with GZip compression, the default behavior is to return the
-        # artifact uncompressed (the mime_type response field indicates the exact format
-        # returned).
+        # Returns the contents of a specified artifact. If artifacts are stored with
+        # GZip compression, the default behavior is to return the artifact uncompressed (
+        # the mime_type response field indicates the exact format returned).
         # @param [String] name
         #   Required. The name of the artifact whose contents should be retrieved. Format:
-        #   `parent`/artifacts/*
+        #   ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2741,12 +2771,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListArtifacts returns matching artifacts.
+        # Returns matching artifacts.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -2772,12 +2806,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_api_version_spec_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_api_version_spec_artifacts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/artifacts', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListArtifactsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListArtifactsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2785,7 +2820,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ReplaceArtifact can be used to replace a specified artifact.
+        # Used to replace a specified artifact.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
@@ -2894,9 +2929,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateArtifact creates a specified artifact.
+        # Creates a specified artifact.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object
         # @param [String] artifact_id
         #   Required. The ID to use for the artifact, which will become the final
@@ -2933,9 +2969,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # DeleteArtifact removes a specified artifact.
+        # Removes a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to delete. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to delete. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2963,9 +2999,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifact returns a specified artifact.
+        # Returns a specified artifact.
         # @param [String] name
-        #   Required. The name of the artifact to retrieve. Format: `parent`/artifacts/*
+        #   Required. The name of the artifact to retrieve. Format: ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2993,13 +3029,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # GetArtifactContents returns the contents of a specified artifact. If artifacts
-        # are stored with GZip compression, the default behavior is to return the
-        # artifact uncompressed (the mime_type response field indicates the exact format
-        # returned).
+        # Returns the contents of a specified artifact. If artifacts are stored with
+        # GZip compression, the default behavior is to return the artifact uncompressed (
+        # the mime_type response field indicates the exact format returned).
         # @param [String] name
         #   Required. The name of the artifact whose contents should be retrieved. Format:
-        #   `parent`/artifacts/*
+        #   ``parent`/artifacts/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3072,12 +3107,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ListArtifacts returns matching artifacts.
+        # Returns matching artifacts.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of artifacts. Format: `parent`
+        #   Required. The parent, which owns this collection of artifacts. Format: ``
+        #   parent``
         # @param [String] filter
         #   An expression that can be used to filter the list. Filters use the Common
         #   Expression Language and can refer to all message fields except contents.
+        # @param [String] order_by
+        #   A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in
+        #   descending order using the "desc" identifier, e.g. "foo desc,bar"
         # @param [Fixnum] page_size
         #   The maximum number of artifacts to return. The service may return fewer than
         #   this value. If unspecified, at most 50 values will be returned. The maximum is
@@ -3103,12 +3142,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_artifacts(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_artifacts(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/artifacts', options)
           command.response_representation = Google::Apis::ApigeeregistryV1::ListArtifactsResponse::Representation
           command.response_class = Google::Apis::ApigeeregistryV1::ListArtifactsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3116,7 +3156,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ReplaceArtifact can be used to replace a specified artifact.
+        # Used to replace a specified artifact.
         # @param [String] name
         #   Resource name.
         # @param [Google::Apis::ApigeeregistryV1::Artifact] artifact_object

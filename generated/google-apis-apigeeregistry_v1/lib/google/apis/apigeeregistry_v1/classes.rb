@@ -22,8 +22,8 @@ module Google
   module Apis
     module ApigeeregistryV1
       
-      # An Api is a top-level description of an API. Apis are produced by producers
-      # and are commitments to provide services.
+      # A top-level description of an API. Produced by producers and are commitments
+      # to provide services.
       class Api
         include Google::Apis::Core::Hashable
       
@@ -36,7 +36,7 @@ module Google
         attr_accessor :annotations
       
         # A user-definable description of the availability of this service. Format: free-
-        # form, but we expect single words that describe availability, e.g. "NONE", "
+        # form, but we expect single words that describe availability, e.g., "NONE", "
         # TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         # Corresponds to the JSON property `availability`
         # @return [String]
@@ -60,11 +60,11 @@ module Google
         # Labels attach identifying metadata to resources. Identifying metadata can be
         # used to filter list operations. Label keys and values can be no longer than 64
         # characters (Unicode codepoints), can only contain lowercase letters, numeric
-        # characters, underscores and dashes. International characters are allowed. No
+        # characters, underscores, and dashes. International characters are allowed. No
         # more than 64 user labels can be associated with one resource (System labels
         # are excluded). See https://goo.gl/xmQnxf for more information and examples of
-        # labels. System reserved label keys are prefixed with "apigeeregistry.
-        # googleapis.com/" and cannot be changed.
+        # labels. System reserved label keys are prefixed with `apigeeregistry.
+        # googleapis.com/` and cannot be changed.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -74,13 +74,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The recommended deployment of the API. Format: apis/`api`/deployments/`
-        # deployment`
+        # The recommended deployment of the API. Format: `apis/`api`/deployments/`
+        # deployment``
         # Corresponds to the JSON property `recommendedDeployment`
         # @return [String]
         attr_accessor :recommended_deployment
       
-        # The recommended version of the API. Format: apis/`api`/versions/`version`
+        # The recommended version of the API. Format: `apis/`api`/versions/`version``
         # Corresponds to the JSON property `recommendedVersion`
         # @return [String]
         attr_accessor :recommended_version
@@ -109,11 +109,10 @@ module Google
         end
       end
       
-      # An ApiDeployment describes a service running at particular address that
-      # provides a particular version of an API. ApiDeployments have revisions which
-      # correspond to different configurations of a single deployment in time.
-      # Revision identifiers should be updated whenever the served API spec or
-      # endpoint address changes.
+      # Describes a service running at particular address that provides a particular
+      # version of an API. ApiDeployments have revisions which correspond to different
+      # configurations of a single deployment in time. Revision identifiers should be
+      # updated whenever the served API spec or endpoint address changes.
       class ApiDeployment
         include Google::Apis::Core::Hashable
       
@@ -131,9 +130,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # The full resource name (including revision id) of the spec of the API being
+        # The full resource name (including revision ID) of the spec of the API being
         # served by the deployment. Changes to this value will update the revision.
-        # Format: apis/`api`/deployments/`deployment`
+        # Format: `apis/`api`/deployments/`deployment``
         # Corresponds to the JSON property `apiSpecRevision`
         # @return [String]
         attr_accessor :api_spec_revision
@@ -159,7 +158,7 @@ module Google
         # @return [String]
         attr_accessor :endpoint_uri
       
-        # The address of the external channel of the API (e.g. the Developer Portal).
+        # The address of the external channel of the API (e.g., the Developer Portal).
         # Changes to this value will not affect the revision.
         # Corresponds to the JSON property `externalChannelUri`
         # @return [String]
@@ -177,8 +176,8 @@ module Google
         # characters, underscores and dashes. International characters are allowed. No
         # more than 64 user labels can be associated with one resource (System labels
         # are excluded). See https://goo.gl/xmQnxf for more information and examples of
-        # labels. System reserved label keys are prefixed with "apigeeregistry.
-        # googleapis.com/" and cannot be changed.
+        # labels. System reserved label keys are prefixed with `apigeeregistry.
+        # googleapis.com/` and cannot be changed.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -230,10 +229,10 @@ module Google
         end
       end
       
-      # An ApiSpec describes a version of an API in a structured way. ApiSpecs provide
-      # formal descriptions that consumers can use to use a version. ApiSpec resources
-      # are intended to be fully-resolved descriptions of an ApiVersion. When specs
-      # consist of multiple files, these should be bundled together (e.g. in a zip
+      # Describes a version of an API in a structured way. ApiSpecs provide formal
+      # descriptions that consumers can use to use a version. ApiSpec resources are
+      # intended to be fully-resolved descriptions of an ApiVersion. When specs
+      # consist of multiple files, these should be bundled together (e.g., in a zip
       # archive) and stored as a unit. Multiple specs can exist to provide
       # representations in different API description formats. Synchronization of these
       # representations would be provided by tooling and background services.
@@ -282,16 +281,16 @@ module Google
         # characters, underscores and dashes. International characters are allowed. No
         # more than 64 user labels can be associated with one resource (System labels
         # are excluded). See https://goo.gl/xmQnxf for more information and examples of
-        # labels. System reserved label keys are prefixed with "apigeeregistry.
-        # googleapis.com/" and cannot be changed.
+        # labels. System reserved label keys are prefixed with `apigeeregistry.
+        # googleapis.com/` and cannot be changed.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
         # A style (format) descriptor for this spec that is specified as a Media Type (
-        # https://en.wikipedia.org/wiki/Media_type). Possible values include "
-        # application/vnd.apigee.proto", "application/vnd.apigee.openapi", and "
-        # application/vnd.apigee.graphql", with possible suffixes representing
+        # https://en.wikipedia.org/wiki/Media_type). Possible values include `
+        # application/vnd.apigee.proto`, `application/vnd.apigee.openapi`, and `
+        # application/vnd.apigee.graphql`, with possible suffixes representing
         # compression types. These hypothetical names are defined in the vendor tree
         # defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final.
         # Content types can specify compression. Currently only GZip compression is
@@ -361,8 +360,8 @@ module Google
         end
       end
       
-      # An ApiVersion describes a particular version of an API. ApiVersions are what
-      # consumers actually use.
+      # Describes a particular version of an API. ApiVersions are what consumers
+      # actually use.
       class ApiVersion
         include Google::Apis::Core::Hashable
       
@@ -395,8 +394,8 @@ module Google
         # characters, underscores and dashes. International characters are allowed. No
         # more than 64 user labels can be associated with one resource (System labels
         # are excluded). See https://goo.gl/xmQnxf for more information and examples of
-        # labels. System reserved label keys are prefixed with "apigeeregistry.
-        # googleapis.com/" and cannot be changed.
+        # labels. System reserved label keys are prefixed with `apigeeregistry.
+        # googleapis.com/` and cannot be changed.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -407,7 +406,7 @@ module Google
         attr_accessor :name
       
         # A user-definable description of the lifecycle phase of this API version.
-        # Format: free-form, but we expect single words that describe API maturity, e.g.
+        # Format: free-form, but we expect single words that describe API maturity, e.g.,
         # "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "
         # RETIRED".
         # Corresponds to the JSON property `state`
@@ -439,9 +438,9 @@ module Google
       # Artifacts of resources. Artifacts are unique (single-value) per resource and
       # are used to store metadata that is too large or numerous to be stored directly
       # on the resource. Since artifacts are stored separately from parent resources,
-      # they should generally be used for metadata that is needed infrequently, i.e.
+      # they should generally be used for metadata that is needed infrequently, i.e.,
       # not for display in primary views of the resource but perhaps displayed or
-      # downloaded upon request. The ListArtifacts method allows artifacts to be
+      # downloaded upon request. The `ListArtifacts` method allows artifacts to be
       # quickly enumerated and checked for presence without downloading their (
       # potentially-large) contents.
       class Artifact
@@ -534,28 +533,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -752,8 +756,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Format: `projects/*/locations/*/instance`. Currently only locations/global is
-        # supported.
+        # Format: `projects/*/locations/*/instance`. Currently only `locations/global`
+        # is supported.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1281,7 +1285,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The revision ID to roll back to. It must be a revision of the same
-        # deployment. Example: c7cfa2a8
+        # deployment. Example: `c7cfa2a8`
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -1301,7 +1305,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The revision ID to roll back to. It must be a revision of the same
-        # spec. Example: c7cfa2a8
+        # spec. Example: `c7cfa2a8`
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
