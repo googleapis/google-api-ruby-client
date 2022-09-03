@@ -167,31 +167,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -2125,17 +2127,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The immutable name of the resource. In Cloud Run, name is required when
-        # creating top-level resources (Service, Job), and must be unique within a Cloud
-        # Run project/region. More info: https://kubernetes.io/docs/user-guide/
-        # identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must
-        # contain fewer than 50 characters. Otherwise,
+        # Required. The name of the resource. In Cloud Run, name is required when
+        # creating top-level resources (Service, Job), must be unique within a Cloud Run
+        # project/region, and cannot be changed once created. More info: https://
+        # kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a
+        # CreateServiceRequest, name must contain fewer than 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Defines the space within each name must be unique within a Cloud Run region.
-        # In Cloud Run, it must be project ID or number.
+        # Required. Defines the space within each name must be unique within a Cloud Run
+        # region. In Cloud Run, it must be project ID or number.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -2145,14 +2147,13 @@ module Google
         # @return [Array<Google::Apis::RunV1::OwnerReference>]
         attr_accessor :owner_references
       
-        # Optional. Opaque, system-generated value that represents the internal version
-        # of this object that can be used by clients to determine when objects have
-        # changed. May be used for optimistic concurrency, change detection, and the
-        # watch operation on a resource or set of resources. Clients must treat these
-        # values as opaque and passed unmodified back to the server or omit the value to
-        # disable conflict-detection. More info: https://git.k8s.io/community/
-        # contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-
-        # consistency
+        # Opaque, system-generated value that represents the internal version of this
+        # object that can be used by clients to determine when objects have changed. May
+        # be used for optimistic concurrency, change detection, and the watch operation
+        # on a resource or set of resources. Clients must treat these values as opaque
+        # and passed unmodified back to the server or omit the value to disable conflict-
+        # detection. More info: https://git.k8s.io/community/contributors/devel/sig-
+        # architecture/api-conventions.md#concurrency-control-and-consistency
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version

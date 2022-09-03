@@ -980,9 +980,10 @@ module Google
         # Creates a new Service. Service creation will trigger a new deployment. Use
         # GetService, and check service.status to determine if the Service is ready.
         # @param [String] parent
-        #   The resource's parent. In Cloud Run, it may be one of the following: * `
-        #   namespaces/`project_id_or_number`` * `projects/`project_id_or_number`/
-        #   locations/`region`` * `projects/`project_id_or_number`/regions/`region``
+        #   Required. The resource's parent. In Cloud Run, it may be one of the following:
+        #   * ``project_id_or_number`` * `namespaces/`project_id_or_number`` * `namespaces/
+        #   `project_id_or_number`/services` * `projects/`project_id_or_number`/locations/`
+        #   region`` * `projects/`project_id_or_number`/regions/`region``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -1020,10 +1021,11 @@ module Google
         # Deletes the provided service. This will cause the Service to stop serving
         # traffic and will delete all associated Revisions.
         # @param [String] name
-        #   The fully qualified name of the service to delete. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to delete. It can be any of
+        #   the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [String] api_version
         #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
@@ -1066,10 +1068,11 @@ module Google
         
         # Gets information about a service.
         # @param [String] name
-        #   The fully qualified name of the service to retrieve. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to retrieve. It can be any
+        #   of the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1099,12 +1102,13 @@ module Google
         
         # Lists services for the given project and region.
         # @param [String] parent
-        #   The parent from where the resources should be listed. In Cloud Run, it may be
-        #   one of the following: * `namespaces/`project_id_or_number`` * `projects/`
-        #   project_id_or_number`/locations/`region`` * `projects/`project_id_or_number`/
-        #   regions/`region``
+        #   Required. The parent from where the resources should be listed. In Cloud Run,
+        #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
+        #   project_id_or_number`` * `namespaces/`project_id_or_number`/services` * `
+        #   projects/`project_id_or_number`/locations/`region`` * `projects/`
+        #   project_id_or_number`/regions/`region``
         # @param [String] continue
-        #   Optional. Encoded string to continue paging.
+        #   Encoded string to continue paging.
         # @param [String] field_selector
         #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] include_uninitialized
@@ -1113,7 +1117,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   Optional. The maximum number of records that should be returned.
+        #   The maximum number of records that should be returned.
         # @param [String] resource_version
         #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] watch
@@ -1157,10 +1161,11 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The fully qualified name of the service to replace. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to replace. It can be any of
+        #   the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -2013,9 +2018,10 @@ module Google
         # Creates a new Service. Service creation will trigger a new deployment. Use
         # GetService, and check service.status to determine if the Service is ready.
         # @param [String] parent
-        #   The resource's parent. In Cloud Run, it may be one of the following: * `
-        #   namespaces/`project_id_or_number`` * `projects/`project_id_or_number`/
-        #   locations/`region`` * `projects/`project_id_or_number`/regions/`region``
+        #   Required. The resource's parent. In Cloud Run, it may be one of the following:
+        #   * ``project_id_or_number`` * `namespaces/`project_id_or_number`` * `namespaces/
+        #   `project_id_or_number`/services` * `projects/`project_id_or_number`/locations/`
+        #   region`` * `projects/`project_id_or_number`/regions/`region``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -2053,10 +2059,11 @@ module Google
         # Deletes the provided service. This will cause the Service to stop serving
         # traffic and will delete all associated Revisions.
         # @param [String] name
-        #   The fully qualified name of the service to delete. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to delete. It can be any of
+        #   the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [String] api_version
         #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
@@ -2099,10 +2106,11 @@ module Google
         
         # Gets information about a service.
         # @param [String] name
-        #   The fully qualified name of the service to retrieve. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to retrieve. It can be any
+        #   of the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2177,12 +2185,13 @@ module Google
         
         # Lists services for the given project and region.
         # @param [String] parent
-        #   The parent from where the resources should be listed. In Cloud Run, it may be
-        #   one of the following: * `namespaces/`project_id_or_number`` * `projects/`
-        #   project_id_or_number`/locations/`region`` * `projects/`project_id_or_number`/
-        #   regions/`region``
+        #   Required. The parent from where the resources should be listed. In Cloud Run,
+        #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
+        #   project_id_or_number`` * `namespaces/`project_id_or_number`/services` * `
+        #   projects/`project_id_or_number`/locations/`region`` * `projects/`
+        #   project_id_or_number`/regions/`region``
         # @param [String] continue
-        #   Optional. Encoded string to continue paging.
+        #   Encoded string to continue paging.
         # @param [String] field_selector
         #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] include_uninitialized
@@ -2191,7 +2200,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   Optional. The maximum number of records that should be returned.
+        #   The maximum number of records that should be returned.
         # @param [String] resource_version
         #   Not supported, and ignored by Cloud Run.
         # @param [Boolean] watch
@@ -2235,10 +2244,11 @@ module Google
         # match the requested 'spec'. May provide metadata.resourceVersion to enforce
         # update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The fully qualified name of the service to replace. It can be any of the
-        #   following forms: * `namespaces/`project_id_or_number`/services/`service_name``
-        #   * `projects/`project_id_or_number`/locations/`region`/services/`service_name``
-        #   * `projects/`project_id_or_number`/regions/`region`/services/`service_name``
+        #   Required. The fully qualified name of the service to replace. It can be any of
+        #   the following forms: * `namespaces/`project_id_or_number`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
+        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
+        #   service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
