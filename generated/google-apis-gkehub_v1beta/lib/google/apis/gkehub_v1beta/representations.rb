@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceGoogleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +731,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gatekeeper_audit, as: 'gatekeeperAudit'
           property :gatekeeper_controller_manager_state, as: 'gatekeeperControllerManagerState'
+          property :gatekeeper_mutation, as: 'gatekeeperMutation'
         end
       end
       
@@ -976,10 +983,19 @@ module Google
       class IdentityServiceAuthMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1beta::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1beta::IdentityServiceGoogleConfig::Representation
+      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1beta::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1beta::IdentityServiceOidcConfig::Representation
       
           property :proxy, as: 'proxy'
+        end
+      end
+      
+      class IdentityServiceGoogleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable, as: 'disable'
         end
       end
       
@@ -1009,6 +1025,7 @@ module Google
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
           property :deploy_cloud_console_proxy, as: 'deployCloudConsoleProxy'
+          property :enable_access_token, as: 'enableAccessToken'
           property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :extra_params, as: 'extraParams'
           property :group_prefix, as: 'groupPrefix'
