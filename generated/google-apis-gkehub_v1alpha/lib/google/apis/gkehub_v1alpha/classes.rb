@@ -45,7 +45,7 @@ module Google
       class AnthosObservabilityMembershipSpec
         include Google::Apis::Core::Hashable
       
-        # use full of metrics rather than optimized metrics. See https://cloud.google.
+        # Use full of metrics rather than optimized metrics. See https://cloud.google.
         # com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#
         # optimized_metrics_default_metrics
         # Corresponds to the JSON property `doNotOptimizeMetrics`
@@ -53,8 +53,7 @@ module Google
         attr_accessor :do_not_optimize_metrics
         alias_method :do_not_optimize_metrics?, :do_not_optimize_metrics
       
-        # enable collecting and reporting metrics and logs from user apps See go/onyx-
-        # application-metrics-logs-user-guide
+        # Enable collecting and reporting metrics and logs from user apps.
         # Corresponds to the JSON property `enableStackdriverOnApplications`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_on_applications
@@ -405,31 +404,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -688,7 +689,7 @@ module Google
         attr_accessor :prevent_drift
         alias_method :prevent_drift?, :prevent_drift
       
-        # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
+        # Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured"
         # mode.
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
@@ -2016,6 +2017,11 @@ module Google
       class IdentityServiceAuthMethod
         include Google::Apis::Core::Hashable
       
+        # Configuration for the Google Plugin Auth flow.
+        # Corresponds to the JSON property `googleConfig`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig]
+        attr_accessor :google_config
+      
         # Identifier for auth config.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2037,9 +2043,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @google_config = args[:google_config] if args.key?(:google_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
+        end
+      end
+      
+      # Configuration for the Google Plugin Auth flow.
+      class IdentityServiceGoogleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Disable automatic configuration of Google Plugin on supported platforms.
+        # Corresponds to the JSON property `disable`
+        # @return [Boolean]
+        attr_accessor :disable
+        alias_method :disable?, :disable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable = args[:disable] if args.key?(:disable)
         end
       end
       

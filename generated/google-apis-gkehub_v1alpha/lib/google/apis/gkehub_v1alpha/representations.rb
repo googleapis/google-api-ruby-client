@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceGoogleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1251,10 +1257,19 @@ module Google
       class IdentityServiceAuthMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig::Representation
+      
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig::Representation
       
           property :proxy, as: 'proxy'
+        end
+      end
+      
+      class IdentityServiceGoogleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable, as: 'disable'
         end
       end
       
