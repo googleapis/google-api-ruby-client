@@ -87,8 +87,8 @@ module Google
         # @return [String]
         attr_accessor :app_recognition_verdict
       
-        # Hex fingerprint of the application signing certificate. e.g. “ABCE1F....” Set
-        # iff app_recognition_verdict != UNEVALUATED.
+        # The SHA256 hash of the requesting app's signing certificates (base64 web-safe
+        # encoded). Set iff app_recognition_verdict != UNEVALUATED.
         # Corresponds to the JSON property `certificateSha256Digest`
         # @return [Array<String>]
         attr_accessor :certificate_sha256_digest
