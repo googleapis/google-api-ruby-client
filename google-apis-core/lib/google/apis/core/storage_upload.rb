@@ -26,6 +26,7 @@ module Google
       class StorageUploadCommand < ApiCommand
         CONTENT_LENGTH_HEADER = 'Content-Length'
         CONTENT_TYPE_HEADER = 'Content-Type'
+        UPLOAD_CONTENT_TYPE_HEADER = 'X-Upload-Content-Type'
         LOCATION_HEADER = 'Location'
         CONTENT_RANGE_HEADER = "Content-Range"
         RESUMABLE = "resumable"
@@ -96,8 +97,9 @@ module Google
 
           do_retry :initiate_resumable_upload, client
           while @upload_incomplete
-            do_retry :send_upload_command, client
+            res = do_retry :send_upload_command, client
           end
+          res
         ensure
           opencensus_end_span
           @http_res = nil
@@ -115,6 +117,7 @@ module Google
 
           request_header[CONTENT_LENGTH_HEADER] = upload_io.size.to_s
           request_header[CONTENT_TYPE_HEADER] = JSON_CONTENT_TYPE
+          request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
 
           response = client.post(url.to_s, query: request_query,
                          body: body,
