@@ -951,31 +951,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -4748,6 +4750,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::SearchStatistics]
         attr_accessor :search_statistics
       
+        # [Output-only] Statistics of a Spark procedure job.
+        # Corresponds to the JSON property `sparkStatistics`
+        # @return [Google::Apis::BigqueryV2::SparkStatistics]
+        attr_accessor :spark_statistics
+      
         # The type of query statement, if valid. Possible values (new values might be
         # added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
         # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
@@ -4838,6 +4845,7 @@ module Google
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @schema = args[:schema] if args.key?(:schema)
           @search_statistics = args[:search_statistics] if args.key?(:search_statistics)
+          @spark_statistics = args[:spark_statistics] if args.key?(:spark_statistics)
           @statement_type = args[:statement_type] if args.key?(:statement_type)
           @timeline = args[:timeline] if args.key?(:timeline)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
@@ -6877,6 +6885,31 @@ module Google
         end
       end
       
+      # 
+      class SparkLoggingInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Project ID used for logging
+        # Corresponds to the JSON property `project_id`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # [Output-only] Resource type used for logging
+        # Corresponds to the JSON property `resource_type`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # Options for a user-defined Spark routine.
       class SparkOptions
         include Google::Apis::Core::Hashable
@@ -6953,6 +6986,43 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @py_file_uris = args[:py_file_uris] if args.key?(:py_file_uris)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+        end
+      end
+      
+      # 
+      class SparkStatistics
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Endpoints generated for the Spark job.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Hash<String,String>]
+        attr_accessor :endpoints
+      
+        # [Output-only] Logging info is used to generate a link to Cloud Logging.
+        # Corresponds to the JSON property `logging_info`
+        # @return [Google::Apis::BigqueryV2::SparkLoggingInfo]
+        attr_accessor :logging_info
+      
+        # [Output-only] Spark job id if a Spark job is created successfully.
+        # Corresponds to the JSON property `spark_job_id`
+        # @return [String]
+        attr_accessor :spark_job_id
+      
+        # [Output-only] Location where the Spark job is executed.
+        # Corresponds to the JSON property `spark_job_location`
+        # @return [String]
+        attr_accessor :spark_job_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @logging_info = args[:logging_info] if args.key?(:logging_info)
+          @spark_job_id = args[:spark_job_id] if args.key?(:spark_job_id)
+          @spark_job_location = args[:spark_job_location] if args.key?(:spark_job_location)
         end
       end
       
