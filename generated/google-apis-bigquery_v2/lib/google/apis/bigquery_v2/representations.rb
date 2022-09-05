@@ -820,7 +820,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkLoggingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2170,6 +2182,8 @@ module Google
       
           property :search_statistics, as: 'searchStatistics', class: Google::Apis::BigqueryV2::SearchStatistics, decorator: Google::Apis::BigqueryV2::SearchStatistics::Representation
       
+          property :spark_statistics, as: 'sparkStatistics', class: Google::Apis::BigqueryV2::SparkStatistics, decorator: Google::Apis::BigqueryV2::SparkStatistics::Representation
+      
           property :statement_type, as: 'statementType'
           collection :timeline, as: 'timeline', class: Google::Apis::BigqueryV2::QueryTimelineSample, decorator: Google::Apis::BigqueryV2::QueryTimelineSample::Representation
       
@@ -2700,6 +2714,14 @@ module Google
         end
       end
       
+      class SparkLoggingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'project_id'
+          property :resource_type, as: 'resource_type'
+        end
+      end
+      
       class SparkOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2712,6 +2734,17 @@ module Google
           hash :properties, as: 'properties'
           collection :py_file_uris, as: 'pyFileUris'
           property :runtime_version, as: 'runtimeVersion'
+        end
+      end
+      
+      class SparkStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :endpoints, as: 'endpoints'
+          property :logging_info, as: 'logging_info', class: Google::Apis::BigqueryV2::SparkLoggingInfo, decorator: Google::Apis::BigqueryV2::SparkLoggingInfo::Representation
+      
+          property :spark_job_id, as: 'spark_job_id'
+          property :spark_job_location, as: 'spark_job_location'
         end
       end
       
