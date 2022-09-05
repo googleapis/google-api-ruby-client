@@ -370,8 +370,8 @@ module Google
         #   Token returned from a previous call to `ListFirebaseProjects` indicating where
         #   in the set of Projects to resume listing.
         # @param [Boolean] show_deleted
-        #   Optional. Controls whether Projects in the DELETING state should be returned.
-        #   Defaults to false.
+        #   Optional. Controls whether Projects in the DELETED state should be returned in
+        #   the response. If not specified, only `ACTIVE` Projects will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -413,9 +413,12 @@ module Google
         #   will be the `ProjectId`.
         # @param [Google::Apis::FirebaseV1beta1::FirebaseProject] firebase_project_object
         # @param [String] update_mask
-        #   Specifies which fields to update. If this list is empty, then no state will be
-        #   updated. Note that the fields `name`, `projectId`, and `projectNumber` are all
-        #   immutable.
+        #   Specifies which fields of the FirebaseProject to update. Note that the
+        #   following fields are immutable: `name`, `project_id`, and `project_number`. To
+        #   update `state`, use any of the following Google Cloud endpoints: [`projects.
+        #   delete`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/
+        #   delete) or [`projects.undelete`](https://cloud.google.com/resource-manager/
+        #   reference/rest/v1/projects/undelete)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -527,8 +530,8 @@ module Google
         #   Token returned from a previous call to `SearchFirebaseApps` indicating where
         #   in the set of Apps to resume listing.
         # @param [Boolean] show_deleted
-        #   Controls whether Apps in the DELETED state should be returned. Defaults to
-        #   false.
+        #   Controls whether Apps in the DELETED state should be returned. If not
+        #   specified, only `ACTIVE` Apps will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -685,8 +688,8 @@ module Google
         #   Token returned from a previous call to `ListAndroidApps` indicating where in
         #   the set of Apps to resume listing.
         # @param [Boolean] show_deleted
-        #   Controls whether Apps in the DELETED state should be returned. Defaults to
-        #   false.
+        #   Controls whether Apps in the DELETED state should be returned in the response.
+        #   If not specified, only `ACTIVE` Apps will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -730,8 +733,10 @@ module Google
         #   projects.androidApps#AndroidApp.FIELDS.app_id)).
         # @param [Google::Apis::FirebaseV1beta1::AndroidApp] android_app_object
         # @param [String] update_mask
-        #   Specifies which fields to update. Note that the fields `name`, `app_id`, `
-        #   project_id`, `package_name`, and `state` are all immutable.
+        #   Specifies which fields of the AndroidApp to update. Note that the following
+        #   fields are immutable: `name`, `app_id`, `project_id`, and `package_name`. To
+        #   update `state`, use any of the following endpoints: RemoveAndroidApp or
+        #   UndeleteAndroidApp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -762,7 +767,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified AndroidApp from the project.
+        # Removes the specified AndroidApp from the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the AndroidApp, in the format: projects/
         #   PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier,
@@ -800,7 +805,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the specified AndroidApp to the project.
+        # Restores the specified AndroidApp to the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the AndroidApp, in the format: projects/
         #   PROJECT_IDENTIFIER/androidApps/APP_ID Since an APP_ID is a unique identifier,
@@ -1192,8 +1197,8 @@ module Google
         #   Token returned from a previous call to `ListIosApps` indicating where in the
         #   set of Apps to resume listing.
         # @param [Boolean] show_deleted
-        #   Controls whether Apps in the DELETED state should be returned. Defaults to
-        #   false.
+        #   Controls whether Apps in the DELETED state should be returned in the response.
+        #   If not specified, only `ACTIVE` Apps will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1237,8 +1242,9 @@ module Google
         #   ).
         # @param [Google::Apis::FirebaseV1beta1::IosApp] ios_app_object
         # @param [String] update_mask
-        #   Specifies which fields to update. Note that the fields `name`, `appId`, `
-        #   projectId`, `bundleId`, and `state` are all immutable
+        #   Specifies which fields of the IosApp to update. Note that the following fields
+        #   are immutable: `name`, `app_id`, `project_id`, and `bundle_id`. To update `
+        #   state`, use any of the following endpoints: RemoveIosApp or UndeleteIosApp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1269,7 +1275,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified IosApp from the project.
+        # Removes the specified IosApp from the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the IosApp, in the format: projects/
         #   PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the
@@ -1307,7 +1313,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the specified IosApp to the project.
+        # Restores the specified IosApp to the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the IosApp, in the format: projects/
         #   PROJECT_IDENTIFIER/iosApps/APP_ID Since an APP_ID is a unique identifier, the
@@ -1469,8 +1475,8 @@ module Google
         #   Token returned from a previous call to `ListWebApps` indicating where in the
         #   set of Apps to resume listing.
         # @param [Boolean] show_deleted
-        #   Controls whether Apps in the DELETED state should be returned. Defaults to
-        #   false.
+        #   Controls whether Apps in the DELETED state should be returned in the response.
+        #   If not specified, only `ACTIVE` Apps will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1514,8 +1520,9 @@ module Google
         #   ).
         # @param [Google::Apis::FirebaseV1beta1::WebApp] web_app_object
         # @param [String] update_mask
-        #   Specifies which fields to update. Note that the fields `name`, `appId`, `
-        #   projectId` and `state` are all immutable
+        #   Specifies which fields of the WebApp to update. Note that the following fields
+        #   are immutable: `name`, `app_id`, and `project_id`. To update `state`, use any
+        #   of the following endpoints: RemoveWebApp or UndeleteWebApp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1546,7 +1553,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified WebApp from the project.
+        # Removes the specified WebApp from the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the WebApp, in the format: projects/
         #   PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the
@@ -1584,7 +1591,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the specified WebApp to the project.
+        # Restores the specified WebApp to the FirebaseProject.
         # @param [String] name
         #   Required. The resource name of the WebApp, in the format: projects/
         #   PROJECT_IDENTIFIER/webApps/APP_ID Since an APP_ID is a unique identifier, the
