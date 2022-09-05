@@ -530,9 +530,7 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::DefaultResources]
         attr_accessor :resources
       
-        # Output only. The lifecycle state of the Project. Updates to the state must be
-        # performed via com.google.cloudresourcemanager.v1.Projects.DeleteProject and
-        # com.google.cloudresourcemanager.v1.Projects.UndeleteProject
+        # Output only. The lifecycle state of the Project.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1057,7 +1055,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not delete the app.
+        # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1092,7 +1090,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not delete the app.
+        # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1127,7 +1125,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not delete the app.
+        # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1351,7 +1349,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not undelete the app.
+        # If set to true, the request is only validated. The App will _not_ be undeleted.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1378,7 +1376,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not undelete the app.
+        # If set to true, the request is only validated. The App will _not_ be undeleted.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -1405,7 +1403,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # If set to true, only validate the request and do not undelete the app.
+        # If set to true, the request is only validated. The App will _not_ be undeleted.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
