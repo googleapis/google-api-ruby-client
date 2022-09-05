@@ -1278,8 +1278,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the database role. Values are of the form `projects//
-        # instances//databases//databaseRoles/ `, where `` is as specified in the `
-        # CREATE ROLE` DDL statement.
+        # instances//databases//databaseRoles/` where `` is as specified in the `CREATE
+        # ROLE` DDL statement.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
