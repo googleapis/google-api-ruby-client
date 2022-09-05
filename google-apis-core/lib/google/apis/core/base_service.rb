@@ -324,7 +324,8 @@ module Google
         # Ref: https://cloud.google.com/storage/docs/performing-resumable-uploads
         #
         # @param [symbol] method
-        #  HTTP method for uploading (typically :put or :post)
+        #  HTTP method for uploading. The initial request to initiate a resumable session
+        #  is :post and the subsequent chunks uploaded to the session are :put
         # @param [String] path
         #  Additional path to upload endpoint, appended to API base path
         # @param [Hash, Google::Apis::RequestOptions] options
