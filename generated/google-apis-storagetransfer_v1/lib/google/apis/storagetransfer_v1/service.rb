@@ -302,6 +302,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a transfer job. Deleting a transfer job sets its status to DELETED.
+        # @param [String] job_name
+        #   Required. The job to delete.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud project that owns the job.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_transfer_job(job_name, project_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+jobName}', options)
+          command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
+          command.response_class = Google::Apis::StoragetransferV1::Empty
+          command.params['jobName'] = job_name unless job_name.nil?
+          command.query['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a transfer job.
         # @param [String] job_name
         #   Required. The job to get.
