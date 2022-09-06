@@ -3092,7 +3092,8 @@ module Google
       class AppsDynamiteSharedActivityFeedAnnotationData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :activity_feed_message_id, as: 'activityFeedMessageId'
+          property :activity_feed_message_id, as: 'activityFeedMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
+      
           property :chat_item, as: 'chatItem', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem::Representation
       
           property :shared_user_info, as: 'sharedUserInfo', class: Google::Apis::CloudsearchV1::UserInfo, decorator: Google::Apis::CloudsearchV1::UserInfo::Representation
@@ -3701,6 +3702,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
+          property :message_type, as: 'messageType'
           property :topic_read_time_usec, :numeric_string => true, as: 'topicReadTimeUsec'
         end
       end
@@ -6209,6 +6211,7 @@ module Google
           property :fallback_text, as: 'fallbackText'
           property :id, as: 'id', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
+          property :is_content_purged, as: 'isContentPurged'
           property :is_inline_reply, as: 'isInlineReply'
           property :last_edit_time, :numeric_string => true, as: 'lastEditTime'
           property :last_update_time, :numeric_string => true, as: 'lastUpdateTime'
@@ -7905,6 +7908,7 @@ module Google
           property :updater_count_to_show, as: 'updaterCountToShow'
           property :updater_to_show_email, as: 'updaterToShowEmail'
           property :updater_to_show_gaia_id, :numeric_string => true, as: 'updaterToShowGaiaId'
+          property :updater_to_show_name, as: 'updaterToShowName'
           property :updater_to_show_user_id, as: 'updaterToShowUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
         end

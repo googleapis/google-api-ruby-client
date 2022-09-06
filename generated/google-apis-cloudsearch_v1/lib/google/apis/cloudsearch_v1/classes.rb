@@ -588,18 +588,13 @@ module Google
         end
       end
       
-      # Next Id: 5
+      # Next Id: 6
       class AppsDynamiteSharedActivityFeedAnnotationData
         include Google::Apis::Core::Hashable
       
-        # Unique id of the Activity Feed message. This will be in the form of "space-id/
-        # message-id" or "dm-id/message-id", where the space-/dm-id and message-id
-        # components are extracted from the top-level MessageId in message.proto (http://
-        # shortn/_SulV51DNfF). This is copied into annotations so that no client changes
-        # are needed to access this value. Clients will need a unique id for every
-        # Activity Feed message to implement click-to-source.
+        # Primary key for Message resource.
         # Corresponds to the JSON property `activityFeedMessageId`
-        # @return [String]
+        # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :activity_feed_message_id
       
         # Next Id: 5
@@ -607,7 +602,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem]
         attr_accessor :chat_item
       
-        # Contains info regarding the updater of an Activity Feed item. Next Id: 6
+        # Contains info regarding the updater of an Activity Feed item. Next Id: 7
         # Corresponds to the JSON property `sharedUserInfo`
         # @return [Google::Apis::CloudsearchV1::UserInfo]
         attr_accessor :shared_user_info
@@ -1565,7 +1560,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItemGroupInfo]
         attr_accessor :group_info
       
-        # Information that references a Dynamite chat message.
+        # Information that references a Dynamite chat message. This is only used for
+        # Activity Feed messages.
         # Corresponds to the JSON property `messageInfo`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedMessageInfo]
         attr_accessor :message_info
@@ -2692,7 +2688,8 @@ module Google
         end
       end
       
-      # Information that references a Dynamite chat message.
+      # Information that references a Dynamite chat message. This is only used for
+      # Activity Feed messages.
       class AppsDynamiteSharedMessageInfo
         include Google::Apis::Core::Hashable
       
@@ -2700,6 +2697,11 @@ module Google
         # Corresponds to the JSON property `messageId`
         # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :message_id
+      
+        # The type of the source chat message.
+        # Corresponds to the JSON property `messageType`
+        # @return [String]
+        attr_accessor :message_type
       
         # Timestamp of when the topic containing the message has been read by the user.
         # This is populated if the message references an inline reply, in which case the
@@ -2715,6 +2717,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message_id = args[:message_id] if args.key?(:message_id)
+          @message_type = args[:message_type] if args.key?(:message_type)
           @topic_read_time_usec = args[:topic_read_time_usec] if args.key?(:topic_read_time_usec)
         end
       end
@@ -4760,7 +4763,7 @@ module Google
         attr_accessor :cse_enabled
         alias_method :cse_enabled?, :cse_enabled
       
-        # Indicates whether the current call is moderated. go/meet-multimod-dd
+        # Indicates whether the current call is moderated.
         # Corresponds to the JSON property `moderationEnabled`
         # @return [Boolean]
         attr_accessor :moderation_enabled
@@ -9117,7 +9120,7 @@ module Google
       class GsuiteIntegrationMetadata
         include Google::Apis::Core::Hashable
       
-        # Next Id: 5
+        # Next Id: 6
         # Corresponds to the JSON property `activityFeedData`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData]
         attr_accessor :activity_feed_data
@@ -10970,8 +10973,7 @@ module Google
       
         # An optional alias for the meeting space. The alias can in some cases be
         # resolved to the meeting space, similar to the meeting code. The limitation is
-        # that the user needs to be in the same meeting domain as the meeting space. See
-        # go/thor-backend/meeting-alias for more details.
+        # that the user needs to be in the same meeting domain as the meeting space.
         # Corresponds to the JSON property `meetingAlias`
         # @return [String]
         attr_accessor :meeting_alias
@@ -10999,7 +11001,7 @@ module Google
         # Output only. A URL that clients (e.g. Calendar) can use to show the web page
         # with all join methods available for this meeting space. This link is also used
         # in iOS universal links and Android intents, used for opening the "More ways to
-        # join" view in the Thor mobile apps. Example: https://tel.meet/mee-ting-cod?pin=
+        # join" view in the Meet mobile apps. Example: https://tel.meet/mee-ting-cod?pin=
         # 1234567891011 Here, "pin" is the universal phone PIN. We include it explicitly
         # to better support the offline case on the mobile. This is set when the meeting
         # space has either a universal PIN or an interop PIN and clients who can show a "
@@ -11362,6 +11364,15 @@ module Google
         # @return [Google::Apis::CloudsearchV1::MessageId]
         attr_accessor :id
       
+        # Whether the message is content purged. Content purged messages contain only
+        # data required for tombstone (see go/chat-infinite-tombstone). This field is
+        # only used by Vault to display tombstone and should only be set to true if the
+        # message is a tombstone.
+        # Corresponds to the JSON property `isContentPurged`
+        # @return [Boolean]
+        attr_accessor :is_content_purged
+        alias_method :is_content_purged?, :is_content_purged
+      
         # Output only. Indicates if the message is an inline reply. Set to true only if
         # the message's ParentPath is non-NULL. Currently, only inline replies have non-
         # NULL ParentPath. See go/chat-be-inline-reply-indicator.
@@ -11531,6 +11542,7 @@ module Google
           @editable_by = args[:editable_by] if args.key?(:editable_by)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @id = args[:id] if args.key?(:id)
+          @is_content_purged = args[:is_content_purged] if args.key?(:is_content_purged)
           @is_inline_reply = args[:is_inline_reply] if args.key?(:is_inline_reply)
           @last_edit_time = args[:last_edit_time] if args.key?(:last_edit_time)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
@@ -15374,7 +15386,7 @@ module Google
         attr_accessor :default_as_viewer
         alias_method :default_as_viewer?, :default_as_viewer
       
-        # Indicates whether the meeting space is moderated. go/meet-multimod-dd
+        # Indicates whether the meeting space is moderated.
         # Corresponds to the JSON property `moderationEnabled`
         # @return [Boolean]
         attr_accessor :moderation_enabled
@@ -17441,7 +17453,7 @@ module Google
         end
       end
       
-      # Contains info regarding the updater of an Activity Feed item. Next Id: 6
+      # Contains info regarding the updater of an Activity Feed item. Next Id: 7
       class UserInfo
         include Google::Apis::Core::Hashable
       
@@ -17467,6 +17479,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :updater_to_show_gaia_id
       
+        # The display name of the updater for clients to show used for Gmail items. This
+        # (along with the updater fields above) will be populated in the thread pipeline
+        # (http://shortn/_rPS0GCp94Y) when converting Activity Feed message attributes
+        # into client-renderable Activity Feed items.
+        # Corresponds to the JSON property `updaterToShowName`
+        # @return [String]
+        attr_accessor :updater_to_show_name
+      
         # Primary key for User resource.
         # Corresponds to the JSON property `updaterToShowUserId`
         # @return [Google::Apis::CloudsearchV1::UserId]
@@ -17482,6 +17502,7 @@ module Google
           @updater_count_to_show = args[:updater_count_to_show] if args.key?(:updater_count_to_show)
           @updater_to_show_email = args[:updater_to_show_email] if args.key?(:updater_to_show_email)
           @updater_to_show_gaia_id = args[:updater_to_show_gaia_id] if args.key?(:updater_to_show_gaia_id)
+          @updater_to_show_name = args[:updater_to_show_name] if args.key?(:updater_to_show_name)
           @updater_to_show_user_id = args[:updater_to_show_user_id] if args.key?(:updater_to_show_user_id)
         end
       end
