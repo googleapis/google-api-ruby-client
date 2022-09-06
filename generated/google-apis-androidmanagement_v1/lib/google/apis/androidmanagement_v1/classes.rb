@@ -4196,7 +4196,8 @@ module Google
         attr_accessor :tethering_config_disabled
         alias_method :tethering_config_disabled?, :tethering_config_disabled
       
-        # Whether user uninstallation of applications is disabled.
+        # Whether user uninstallation of applications is disabled. This prevents apps
+        # from being uninstalled, even those removed using applications
         # Corresponds to the JSON property `uninstallAppsDisabled`
         # @return [Boolean]
         attr_accessor :uninstall_apps_disabled
