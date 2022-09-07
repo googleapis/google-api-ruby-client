@@ -941,7 +941,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates settings of a Cloud SQL instance. This method supports patch semantics.
+        # Partially updates settings of a Cloud SQL instance by merging the request with
+        # the current configuration. This method supports patch semantics.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
