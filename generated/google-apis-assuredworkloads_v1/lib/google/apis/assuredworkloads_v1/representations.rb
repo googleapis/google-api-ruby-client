@@ -334,6 +334,7 @@ module Google
           property :cjis_settings, as: 'cjisSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadCjisSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadCjisSettings::Representation
       
           property :compliance_regime, as: 'complianceRegime'
+          collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :enable_sovereign_controls, as: 'enableSovereignControls'
@@ -445,6 +446,7 @@ module Google
           property :compliance_regime, as: 'complianceRegime'
           property :compliance_status, as: 'complianceStatus', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus::Representation
       
+          collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :enable_sovereign_controls, as: 'enableSovereignControls'
