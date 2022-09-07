@@ -621,6 +621,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
+          property :time_zone, as: 'timeZone'
           property :type, as: 'type'
           property :window_start_time, as: 'windowStartTime'
         end
@@ -651,6 +652,7 @@ module Google
           property :allocated_ip_range, as: 'allocatedIpRange'
           property :bin_log_coordinates, as: 'binLogCoordinates', class: Google::Apis::SqladminV1::BinLogCoordinates, decorator: Google::Apis::SqladminV1::BinLogCoordinates::Representation
       
+          collection :database_names, as: 'databaseNames'
           property :destination_instance_name, as: 'destinationInstanceName'
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
@@ -1299,6 +1301,7 @@ module Google
           property :storage_auto_resize, as: 'storageAutoResize'
           property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
+          property :time_zone, as: 'timeZone'
           hash :user_labels, as: 'userLabels'
         end
       end

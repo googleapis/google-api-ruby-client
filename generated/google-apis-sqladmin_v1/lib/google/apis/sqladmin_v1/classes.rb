@@ -298,6 +298,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Backup time zone to prevent restores to an instance with a different time zone.
+        # Now relevant only for SQL Server.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL".
         # This field defaults to "ON_DEMAND" and is ignored, when specified for insert
         # requests.
@@ -332,6 +338,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @type = args[:type] if args.key?(:type)
           @window_start_time = args[:window_start_time] if args.key?(:window_start_time)
         end
@@ -419,6 +426,12 @@ module Google
         # @return [Google::Apis::SqladminV1::BinLogCoordinates]
         attr_accessor :bin_log_coordinates
       
+        # (SQL Server only) Clone only the specified databases from the source instance.
+        # Clone all databases if empty.
+        # Corresponds to the JSON property `databaseNames`
+        # @return [Array<String>]
+        attr_accessor :database_names
+      
         # Name of the Cloud SQL instance to be created as a clone.
         # Corresponds to the JSON property `destinationInstanceName`
         # @return [String]
@@ -448,6 +461,7 @@ module Google
         def update!(**args)
           @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
+          @database_names = args[:database_names] if args.key?(:database_names)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
@@ -2774,12 +2788,12 @@ module Google
         attr_accessor :collation
       
         # Specifies if connections must use Cloud SQL connectors. Option values include
-        # the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without
-        # Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL
-        # Connectors. Note that using REQUIRED disables all existing authorized networks.
-        # If this field is not specified when creating a new instance, NOT_REQUIRED is
-        # used. If this field is not specified when patching or updating an existing
-        # instance, it is left unchanged in the instance.
+        # the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without
+        # Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud
+        # SQL Connectors). Note that using REQUIRED disables all existing authorized
+        # networks. If this field is not specified when creating a new instance,
+        # NOT_REQUIRED is used. If this field is not specified when patching or updating
+        # an existing instance, it is left unchanged in the instance.
         # Corresponds to the JSON property `connectorEnforcement`
         # @return [String]
         attr_accessor :connector_enforcement
@@ -2905,6 +2919,11 @@ module Google
         # @return [String]
         attr_accessor :tier
       
+        # Server timezone, relevant only for Cloud SQL for SQL Server.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # User-provided labels, represented as a dictionary where each label is a single
         # key value pair.
         # Corresponds to the JSON property `userLabels`
@@ -2944,6 +2963,7 @@ module Google
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
