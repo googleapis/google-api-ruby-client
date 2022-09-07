@@ -285,31 +285,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1531,6 +1533,22 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
         include Google::Apis::Core::Hashable
       
+        # Allow this build step to fail without failing the entire build if and only if
+        # the exit code is one of the specified codes. If allow_failure is also
+        # specified, this field will take precedence.
+        # Corresponds to the JSON property `allowExitCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :allow_exit_codes
+      
+        # Allow this build step to fail without failing the entire build. If false, the
+        # entire build will fail if this step fails. Otherwise, the build will succeed,
+        # but this step will still have a failure status. Error information will be
+        # reported in the failure_detail field.
+        # Corresponds to the JSON property `allowFailure`
+        # @return [Boolean]
+        attr_accessor :allow_failure
+        alias_method :allow_failure?, :allow_failure
+      
         # A list of arguments that will be presented to the step when it is started. If
         # the image used to run the step's container has an entrypoint, the `args` are
         # used as arguments to that entrypoint. If the image does not define an
@@ -1563,6 +1581,11 @@ module Google
         # Corresponds to the JSON property `env`
         # @return [Array<String>]
         attr_accessor :env
+      
+        # Output only. Return code from running the step.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
       
         # Unique identifier for this build step, used in `wait_for` to reference this
         # build step as a dependency.
@@ -1645,10 +1668,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_exit_codes = args[:allow_exit_codes] if args.key?(:allow_exit_codes)
+          @allow_failure = args[:allow_failure] if args.key?(:allow_failure)
           @args = args[:args] if args.key?(:args)
           @dir = args[:dir] if args.key?(:dir)
           @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
           @env = args[:env] if args.key?(:env)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
