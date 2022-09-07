@@ -489,6 +489,9 @@ module Google
         #   Must be set to true if the app bundle installation may trigger a warning on
         #   user devices (for example, if installation size may be over a threshold,
         #   typically 100 MB).
+        # @param [String] device_tier_config_id
+        #   Device tier config (DTC) to be used for generating deliverables (APKs).
+        #   Contains id of the DTC or "LATEST" for last uploaded DTC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -510,7 +513,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_edit_bundle(package_name, edit_id, ack_bundle_installation_warning: nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_edit_bundle(package_name, edit_id, ack_bundle_installation_warning: nil, device_tier_config_id: nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles', options)
           else
@@ -523,6 +526,7 @@ module Google
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['ackBundleInstallationWarning'] = ack_bundle_installation_warning unless ack_bundle_installation_warning.nil?
+          command.query['deviceTierConfigId'] = device_tier_config_id unless device_tier_config_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
