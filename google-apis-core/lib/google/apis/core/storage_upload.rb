@@ -24,10 +24,10 @@ module Google
       # Base upload command. Not intended to be used directly
       # @private
       class StorageUploadCommand < ApiCommand
-        CONTENT_LENGTH_HEADER = 'Content-Length'
-        CONTENT_TYPE_HEADER = 'Content-Type'
-        UPLOAD_CONTENT_TYPE_HEADER = 'X-Upload-Content-Type'
-        LOCATION_HEADER = 'Location'
+        CONTENT_LENGTH_HEADER = "Content-Length"
+        CONTENT_TYPE_HEADER = "Content-Type"
+        UPLOAD_CONTENT_TYPE_HEADER = "X-Upload-Content-Type"
+        LOCATION_HEADER = "Location"
         CONTENT_RANGE_HEADER = "Content-Range"
         RESUMABLE = "resumable"
         OK_STATUS = 200
@@ -66,7 +66,7 @@ module Google
             self.upload_io = File.new(upload_source, 'r')
             if self.upload_content_type.nil?
               type = MiniMime.lookup_by_filename(upload_source)
-              self.upload_content_type = type && type.content_type
+              self.upload_content_type = type&.content_type
             end
             @close_io_on_finish = true
           else
@@ -159,7 +159,7 @@ module Google
 
         # Check the to see if the upload is complete or needs to be resumed.
         #
-        # @param [Fixnum] status
+        # @param [Integer] status
         #   HTTP status code of response
         # @param [HTTP::Message::Headers] header
         #   Response headers

@@ -323,7 +323,7 @@ module Google
         # This is specifically for storage because we are moving to a new upload protocol.
         # Ref: https://cloud.google.com/storage/docs/performing-resumable-uploads
         #
-        # @param [symbol] method
+        # @param [Symbol] method
         #  HTTP method for uploading. The initial request to initiate a resumable session
         #  is :post and the subsequent chunks uploaded to the session are :put
         # @param [String] path
