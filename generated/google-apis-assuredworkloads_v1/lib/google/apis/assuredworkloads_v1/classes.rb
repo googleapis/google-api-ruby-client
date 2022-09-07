@@ -397,12 +397,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1Workload
         include Google::Apis::Core::Hashable
       
-        # Output only. The billing account used for the resources which are direct
-        # children of workload. This billing account is initially associated with the
-        # resources created as part of Workload creation. After the initial creation of
-        # these resources, the customer can change the assigned billing account. The
-        # resource name has the form `billingAccounts/`billing_account_id``. For example,
-        # `billingAccounts/012345-567890-ABCDEF`.
+        # Optional. The billing account used for the resources which are direct children
+        # of workload. This billing account is initially associated with the resources
+        # created as part of Workload creation. After the initial creation of these
+        # resources, the customer can change the assigned billing account. The resource
+        # name has the form `billingAccounts/`billing_account_id``. For example, `
+        # billingAccounts/012345-567890-ABCDEF`.
         # Corresponds to the JSON property `billingAccount`
         # @return [String]
         attr_accessor :billing_account
@@ -416,6 +416,14 @@ module Google
         # Corresponds to the JSON property `complianceRegime`
         # @return [String]
         attr_accessor :compliance_regime
+      
+        # Output only. Urls for services which are compliant for this Assured Workload,
+        # but which are currently disallowed by the ResourceUsageRestriction org policy.
+        # Invoke RestrictAllowedResources endpoint to allow your project developers to
+        # use these services in their environment."
+        # Corresponds to the JSON property `compliantButDisallowedServices`
+        # @return [Array<String>]
+        attr_accessor :compliant_but_disallowed_services
       
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
@@ -514,6 +522,7 @@ module Google
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
@@ -772,12 +781,12 @@ module Google
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkload
         include Google::Apis::Core::Hashable
       
-        # Input only. The billing account used for the resources which are direct
-        # children of workload. This billing account is initially associated with the
-        # resources created as part of Workload creation. After the initial creation of
-        # these resources, the customer can change the assigned billing account. The
-        # resource name has the form `billingAccounts/`billing_account_id``. For example,
-        # `billingAccounts/012345-567890-ABCDEF`.
+        # Optional. The billing account used for the resources which are direct children
+        # of workload. This billing account is initially associated with the resources
+        # created as part of Workload creation. After the initial creation of these
+        # resources, the customer can change the assigned billing account. The resource
+        # name has the form `billingAccounts/`billing_account_id``. For example, `
+        # billingAccounts/012345-567890-ABCDEF`.
         # Corresponds to the JSON property `billingAccount`
         # @return [String]
         attr_accessor :billing_account
@@ -796,6 +805,14 @@ module Google
         # Corresponds to the JSON property `complianceStatus`
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadComplianceStatus]
         attr_accessor :compliance_status
+      
+        # Output only. Urls for services which are compliant for this Assured Workload,
+        # but which are currently disallowed by the ResourceUsageRestriction org policy.
+        # Invoke RestrictAllowedResources endpoint to allow your project developers to
+        # use these services in their environment."
+        # Corresponds to the JSON property `compliantButDisallowedServices`
+        # @return [Array<String>]
+        attr_accessor :compliant_but_disallowed_services
       
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
@@ -895,6 +912,7 @@ module Google
           @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
+          @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
