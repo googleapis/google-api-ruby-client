@@ -642,7 +642,7 @@ module Google
       class FieldFilter
         include Google::Apis::Core::Hashable
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1::FieldReference]
         attr_accessor :field
@@ -669,11 +669,12 @@ module Google
         end
       end
       
-      # A reference to a field, such as `max(messages.time) as max_time`.
+      # A reference to a field in a document, ex: `stats.operations`.
       class FieldReference
         include Google::Apis::Core::Hashable
       
-        # 
+        # The relative path of the document being referenced. Requires: * Conform to
+        # document field name limitations.
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -1163,14 +1164,14 @@ module Google
       class GoogleFirestoreAdminV1Index
         include Google::Apis::Core::Hashable
       
-        # The fields supported by this index. For composite indexes, this is always 2 or
-        # more fields. The last field entry is always for the field path `__name__`. If,
-        # on creation, `__name__` was not specified as the last field, it will be added
-        # automatically with the same direction as that of the last field defined. If
-        # the final field in a composite index is not directional, the `__name__` will
-        # be ordered ASCENDING (unless explicitly specified). For single field indexes,
-        # this will always be exactly one entry with a field path equal to the field
-        # path of the associated field.
+        # The fields supported by this index. For composite indexes, this requires a
+        # minimum of 2 and a maximum of 100 fields. The last field entry is always for
+        # the field path `__name__`. If, on creation, `__name__` was not specified as
+        # the last field, it will be added automatically with the same direction as that
+        # of the last field defined. If the final field in a composite index is not
+        # directional, the `__name__` will be ordered ASCENDING (unless explicitly
+        # specified). For single field indexes, this will always be exactly one entry
+        # with a field path equal to the field path of the associated field.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField>]
         attr_accessor :fields
@@ -1936,7 +1937,7 @@ module Google
         # @return [String]
         attr_accessor :direction
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1::FieldReference]
         attr_accessor :field
@@ -2331,13 +2332,15 @@ module Google
         attr_accessor :from
       
         # The maximum number of results to return. Applies after all other constraints.
-        # Must be >= 0 if specified.
+        # Requires: * The value must be greater than or equal to zero if specified.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
       
-        # The number of results to skip. Applies before limit, but after all other
-        # constraints. Must be >= 0 if specified.
+        # The number of documents to skip before returning the first result. This
+        # applies after the constraints specified by the `WHERE`, `START AT`, & `END AT`
+        # but before the `LIMIT` clause. Requires: * The value must be greater than or
+        # equal to zero if specified.
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
@@ -2531,7 +2534,7 @@ module Google
       class UnaryFilter
         include Google::Apis::Core::Hashable
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1::FieldReference]
         attr_accessor :field
