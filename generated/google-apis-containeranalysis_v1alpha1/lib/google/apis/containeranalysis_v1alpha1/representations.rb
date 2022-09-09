@@ -1184,10 +1184,13 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allow_exit_codes, as: 'allowExitCodes'
+          property :allow_failure, as: 'allowFailure'
           collection :args, as: 'args'
           property :dir, as: 'dir'
           property :entrypoint, as: 'entrypoint'
           collection :env, as: 'env'
+          property :exit_code, as: 'exitCode'
           property :id, as: 'id'
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
