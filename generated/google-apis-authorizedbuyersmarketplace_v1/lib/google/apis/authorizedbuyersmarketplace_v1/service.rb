@@ -1471,7 +1471,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists publisher profiles
+        # Lists publisher profiles. The returned publisher profiles aren't in any
+        # defined order. The order of the results might change. A new publisher profile
+        # can appear in any place in the list of returned results.
         # @param [String] parent
         #   Required. Parent that owns the collection of publisher profiles Format: `
         #   buyers/`buyerId``
