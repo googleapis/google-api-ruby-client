@@ -681,12 +681,12 @@ module Google
         # - NAT_AUTO for the regional external IP addresses used by Cloud NAT when
         # allocating addresses using automatic NAT IP address allocation. -
         # IPSEC_INTERCONNECT for addresses created from a private IP range that are
-        # reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect*
-        # configuration. These addresses are regional resources. Not currently available
-        # publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is
-        # assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT`
-        # for a private network address that is used to configure Private Service
-        # Connect. Only global internal addresses can use this purpose.
+        # reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect*
+        # configuration. These addresses are regional resources. - `
+        # SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to
+        # multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private
+        # network address that is used to configure Private Service Connect. Only global
+        # internal addresses can use this purpose.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -4530,18 +4530,34 @@ module Google
       class BackendServiceLogConfig
         include Google::Apis::Core::Hashable
       
-        # This field denotes whether to enable logging for the load balancer traffic
-        # served by this backend service.
+        # Denotes whether to enable logging for the load balancer traffic served by this
+        # backend service. The default value is false.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
         alias_method :enable?, :enable
       
         # This field can only be specified if logging is enabled for this backend
+        # service. Configures whether all, none or a subset of optional fields should be
+        # added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL,
+        # CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        # Corresponds to the JSON property `optional`
+        # @return [String]
+        attr_accessor :optional
+      
+        # This field can only be specified if logging is enabled for this backend
+        # service and "logConfig.optional" was set to CUSTOM. Contains a list of
+        # optional fields you want to include in the logs. For example: serverInstance,
+        # serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        # Corresponds to the JSON property `optionalFields`
+        # @return [Array<String>]
+        attr_accessor :optional_fields
+      
+        # This field can only be specified if logging is enabled for this backend
         # service. The value of the field must be in [0, 1]. This configures the
         # sampling rate of requests to the load balancer where 1.0 means all logged
         # requests are reported and 0.0 means no logged requests are reported. The
-        # default value is 0.0.
+        # default value is 1.0.
         # Corresponds to the JSON property `sampleRate`
         # @return [Float]
         attr_accessor :sample_rate
@@ -4553,6 +4569,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
+          @optional = args[:optional] if args.key?(:optional)
+          @optional_fields = args[:optional_fields] if args.key?(:optional_fields)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
         end
       end
@@ -4973,31 +4991,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -9037,13 +9057,13 @@ module Google
       
         # Deprecated, please use short name instead. User-provided name of the
         # Organization firewall policy. The name should be unique in the organization in
-        # which the firewall policy is created. This name must be set on creation and
-        # cannot be changed. The name must be 1-63 characters long, and comply with
-        # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
-        # character must be a lowercase letter, and all following characters must be a
-        # dash, lowercase letter, or digit, except the last character, which cannot be a
-        # dash.
+        # which the firewall policy is created. This field is not applicable to network
+        # firewall policies. This name must be set on creation and cannot be changed.
+        # The name must be 1-63 characters long, and comply with RFC1035. Specifically,
+        # the name must be 1-63 characters long and match the regular expression `[a-z]([
+        # -a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        # letter, and all following characters must be a dash, lowercase letter, or
+        # digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -9072,13 +9092,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Name of the resource. It is a numeric ID allocated by GCP which
-        # uniquely identifies the Firewall Policy.
+        # Name of the resource. For Organization Firewall Policies it's a [Output Only]
+        # numeric ID allocated by GCP which uniquely identifies the Organization
+        # Firewall Policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] The parent of the firewall policy.
+        # [Output Only] The parent of the firewall policy. This field is not applicable
+        # to network firewall policies.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -9115,14 +9137,15 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # User-provided name of the Organization firewall plicy. The name should be
-        # unique in the organization in which the firewall policy is created. This name
-        # must be set on creation and cannot be changed. The name must be 1-63
-        # characters long, and comply with RFC1035. Specifically, the name must be 1-63
-        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
-        # which means the first character must be a lowercase letter, and all following
-        # characters must be a dash, lowercase letter, or digit, except the last
-        # character, which cannot be a dash.
+        # User-provided name of the Organization firewall policy. The name should be
+        # unique in the organization in which the firewall policy is created. This field
+        # is not applicable to network firewall policies. This name must be set on
+        # creation and cannot be changed. The name must be 1-63 characters long, and
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `shortName`
         # @return [String]
         attr_accessor :short_name
@@ -20156,8 +20179,8 @@ module Google
         # attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that
         # is encrypted by an IPsec device, such as an HA VPN gateway or third-party
         # IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such
-        # a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN
-        # attachment must be created with this option. Not currently available publicly.
+        # a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN
+        # attachment must be created with this option.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -24638,6 +24661,496 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # NetworkAttachments A network attachment resource ...
+      class NetworkAttachment
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] An array of connections for all the producers connected to this
+        # network attachment.
+        # Corresponds to the JSON property `connectionEndpoints`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentConnectedEndpoint>]
+        attr_accessor :connection_endpoints
+      
+        # 
+        # Corresponds to the JSON property `connectionPreference`
+        # @return [String]
+        attr_accessor :connection_preference
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Fingerprint of this resource. A hash of the contents stored in
+        # this object. This field is used in optimistic locking. An up-to-date
+        # fingerprint must be provided in order to patch.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The URL of the network which the Network Attachment belongs to.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Projects that are allowed to connect to this network attachment. The project
+        # can be specified using its id or number.
+        # Corresponds to the JSON property `producerAcceptLists`
+        # @return [Array<String>]
+        attr_accessor :producer_accept_lists
+      
+        # Projects that are not allowed to connect to this network attachment. The
+        # project can be specified using its id or number.
+        # Corresponds to the JSON property `producerRejectLists`
+        # @return [Array<String>]
+        attr_accessor :producer_reject_lists
+      
+        # [Output Only] URL of the region where the network attachment resides. This
+        # field applies only to the region resource. You must specify this field as part
+        # of the HTTP request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # An array of URLs where each entry is the URL of a subnet provided by the
+        # service consumer to use for endpoints in the producers that connect to this
+        # network attachment.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<String>]
+        attr_accessor :subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_endpoints = args[:connection_endpoints] if args.key?(:connection_endpoints)
+          @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @producer_accept_lists = args[:producer_accept_lists] if args.key?(:producer_accept_lists)
+          @producer_reject_lists = args[:producer_reject_lists] if args.key?(:producer_reject_lists)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # Contains a list of NetworkAttachmentsScopedList.
+      class NetworkAttachmentAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkAttachmentsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::NetworkAttachmentsScopedList>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NetworkAttachmentAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # [Output Only] A connection connected to this network attachment.
+      class NetworkAttachmentConnectedEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The IP address assigned to the producer instance network interface. This value
+        # will be a range in case of Serverless.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The project id or number of the interface to which the IP was assigned.
+        # Corresponds to the JSON property `projectIdOrNum`
+        # @return [String]
+        attr_accessor :project_id_or_num
+      
+        # Alias IP ranges from the same subnetwork
+        # Corresponds to the JSON property `secondaryIpCidrRanges`
+        # @return [Array<String>]
+        attr_accessor :secondary_ip_cidr_ranges
+      
+        # The status of a connected endpoint to this network attachment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The subnetwork used to assign the IP to the producer instance network
+        # interface.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
+          @secondary_ip_cidr_ranges = args[:secondary_ip_cidr_ranges] if args.key?(:secondary_ip_cidr_ranges)
+          @status = args[:status] if args.key?(:status)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # 
+      class NetworkAttachmentList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkAttachment resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachment>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NetworkAttachmentList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkAttachmentsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of NetworkAttachments contained in this scope.
+        # Corresponds to the JSON property `networkAttachments`
+        # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachment>]
+        attr_accessor :network_attachments
+      
+        # Informational warning which replaces the list of network attachments when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::NetworkAttachmentsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachments = args[:network_attachments] if args.key?(:network_attachments)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of network attachments when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -36670,7 +37183,7 @@ module Google
         attr_accessor :description
       
         # Indicates if a router is dedicated for use with encrypted VLAN attachments (
-        # interconnectAttachments). Not currently available publicly.
+        # interconnectAttachments).
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
@@ -49446,9 +49959,8 @@ module Google
       
         # URL of the VLAN attachment (interconnectAttachment) resource for this VPN
         # gateway interface. When the value of this field is present, the VPN gateway is
-        # used for IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for
+        # used for HA VPN over Cloud Interconnect; all egress or ingress traffic for
         # this VPN gateway interface goes through the specified VLAN attachment resource.
-        # Not currently available publicly.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
@@ -49457,11 +49969,11 @@ module Google
         # gateway. The IP address could be either a regional external IP address or a
         # regional internal IP address. The two IP addresses for a VPN gateway must be
         # all regional external or regional internal IP addresses. There cannot be a mix
-        # of regional external IP addresses and regional internal IP addresses. For
-        # IPsec-encrypted Cloud Interconnect, the IP addresses for both interfaces could
-        # either be regional internal IP addresses or regional external IP addresses.
-        # For regular (non IPsec-encrypted Cloud Interconnect) HA VPN tunnels, the IP
-        # address must be a regional external IP address.
+        # of regional external IP addresses and regional internal IP addresses. For HA
+        # VPN over Cloud Interconnect, the IP addresses for both interfaces could either
+        # be regional internal IP addresses or regional external IP addresses. For
+        # regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address
+        # must be a regional external IP address.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
