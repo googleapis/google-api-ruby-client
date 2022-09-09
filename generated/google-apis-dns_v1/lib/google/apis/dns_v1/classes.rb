@@ -492,31 +492,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -1143,6 +1145,11 @@ module Google
       class ManagedZonePrivateVisibilityConfig
         include Google::Apis::Core::Hashable
       
+        # The list of Google Kubernetes Engine clusters that can see this zone.
+        # Corresponds to the JSON property `gkeClusters`
+        # @return [Array<Google::Apis::DnsV1::ManagedZonePrivateVisibilityConfigGkeCluster>]
+        attr_accessor :gke_clusters
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1159,8 +1166,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
           @kind = args[:kind] if args.key?(:kind)
           @networks = args[:networks] if args.key?(:networks)
+        end
+      end
+      
+      # 
+      class ManagedZonePrivateVisibilityConfigGkeCluster
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the cluster to bind this ManagedZone to. This should be
+        # specified in the format like: projects/*/locations/*/clusters/*. This is
+        # referenced from GKE projects.locations.clusters.get API: https://cloud.google.
+        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        # Corresponds to the JSON property `gkeClusterName`
+        # @return [String]
+        attr_accessor :gke_cluster_name
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_cluster_name = args[:gke_cluster_name] if args.key?(:gke_cluster_name)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -2464,6 +2500,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # The list of Google Kubernetes Engine clusters to which this response policy is
+        # applied.
+        # Corresponds to the JSON property `gkeClusters`
+        # @return [Array<Google::Apis::DnsV1::ResponsePolicyGkeCluster>]
+        attr_accessor :gke_clusters
+      
         # Unique identifier for the resource; defined by the server (output only).
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -2491,10 +2533,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @networks = args[:networks] if args.key?(:networks)
           @response_policy_name = args[:response_policy_name] if args.key?(:response_policy_name)
+        end
+      end
+      
+      # 
+      class ResponsePolicyGkeCluster
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the cluster to bind this response policy to. This should
+        # be specified in the format like: projects/*/locations/*/clusters/*. This is
+        # referenced from GKE projects.locations.clusters.get API: https://cloud.google.
+        # com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        # Corresponds to the JSON property `gkeClusterName`
+        # @return [String]
+        attr_accessor :gke_cluster_name
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gke_cluster_name = args[:gke_cluster_name] if args.key?(:gke_cluster_name)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
