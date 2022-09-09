@@ -402,8 +402,8 @@ module Google
         end
       end
       
-      # Request message for BufferQueue.
-      class BufferQueueRequest
+      # Request message for BufferTask.
+      class BufferTaskRequest
         include Google::Apis::Core::Hashable
       
         # Message that represents an arbitrary HTTP body. It should only be used for
@@ -436,15 +436,13 @@ module Google
         end
       end
       
-      # Response message for BufferQueue.
-      class BufferQueueResponse
+      # Response message for BufferTask.
+      class BufferTaskResponse
         include Google::Apis::Core::Hashable
       
-        # The name of the created task. For example: `projects/PROJECT_ID/locations/
-        # LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. TASK_ID is randomly generated and
-        # is unique within the queue.
+        # A unit of scheduled work.
         # Corresponds to the JSON property `task`
-        # @return [String]
+        # @return [Google::Apis::CloudtasksV2beta2::Task]
         attr_accessor :task
       
         def initialize(**args)

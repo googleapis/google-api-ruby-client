@@ -58,13 +58,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BufferQueueRequest
+      class BufferTaskRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BufferQueueResponse
+      class BufferTaskResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -356,7 +356,7 @@ module Google
         end
       end
       
-      class BufferQueueRequest
+      class BufferTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body', class: Google::Apis::CloudtasksV2beta2::HttpBody, decorator: Google::Apis::CloudtasksV2beta2::HttpBody::Representation
@@ -364,10 +364,11 @@ module Google
         end
       end
       
-      class BufferQueueResponse
+      class BufferTaskResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :task, as: 'task'
+          property :task, as: 'task', class: Google::Apis::CloudtasksV2beta2::Task, decorator: Google::Apis::CloudtasksV2beta2::Task::Representation
+      
         end
       end
       
