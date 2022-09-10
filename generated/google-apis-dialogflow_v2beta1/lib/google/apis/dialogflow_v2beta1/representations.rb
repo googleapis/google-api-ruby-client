@@ -2554,6 +2554,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7018,6 +7036,33 @@ module Google
       
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_size, as: 'contextSize'
+          property :latest_message, as: 'latestMessage'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_size, as: 'contextSize'
+          property :latest_message, as: 'latestMessage'
+          property :summary, as: 'summary', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :text, as: 'text'
+          hash :text_sections, as: 'textSections'
         end
       end
       
