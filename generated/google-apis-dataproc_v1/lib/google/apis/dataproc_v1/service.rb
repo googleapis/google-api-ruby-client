@@ -407,7 +407,8 @@ module Google
         # Deletes the batch workload resource. If the batch is not in terminal state,
         # the delete fails and the response returns FAILED_PRECONDITION.
         # @param [String] name
-        #   Required. The name of the batch resource to delete.
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,7 +438,8 @@ module Google
         
         # Gets the batch workload resource representation.
         # @param [String] name
-        #   Required. The name of the batch to retrieve.
+        #   Required. The fully qualified name of the batch to retrieve in the format "
+        #   projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
