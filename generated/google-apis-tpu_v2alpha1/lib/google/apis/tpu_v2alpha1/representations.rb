@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SimulateMaintenanceEventRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -397,6 +403,8 @@ module Google
       
           property :service_account, as: 'serviceAccount', class: Google::Apis::TpuV2alpha1::ServiceAccount, decorator: Google::Apis::TpuV2alpha1::ServiceAccount::Representation
       
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::TpuV2alpha1::ShieldedInstanceConfig, decorator: Google::Apis::TpuV2alpha1::ShieldedInstanceConfig::Representation
+      
           property :state, as: 'state'
           collection :symptoms, as: 'symptoms', class: Google::Apis::TpuV2alpha1::Symptom, decorator: Google::Apis::TpuV2alpha1::Symptom::Representation
       
@@ -457,6 +465,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_secure_boot, as: 'enableSecureBoot'
         end
       end
       
