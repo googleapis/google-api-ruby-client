@@ -627,6 +627,11 @@ module Google
         # @return [Google::Apis::TpuV2alpha1::ServiceAccount]
         attr_accessor :service_account
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::TpuV2alpha1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # Output only. The current state for the TPU Node.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -666,6 +671,7 @@ module Google
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @state = args[:state] if args.key?(:state)
           @symptoms = args[:symptoms] if args.key?(:symptoms)
           @tags = args[:tags] if args.key?(:tags)
@@ -886,6 +892,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # A set of Shielded Instance options.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has Secure Boot enabled.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
         end
       end
       
