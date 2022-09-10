@@ -3086,6 +3086,57 @@ module Google
         end
       end
       
+      # Contains info on membership count for member types: HUMAN_USER, BOT_USER &
+      # ROSTER_MEMBER different states: INVITED, JOINED
+      class AppsDynamiteSharedSegmentedMembershipCount
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `memberType`
+        # @return [String]
+        attr_accessor :member_type
+      
+        # count of members with given type and state
+        # Corresponds to the JSON property `membershipCount`
+        # @return [Fixnum]
+        attr_accessor :membership_count
+      
+        # 
+        # Corresponds to the JSON property `membershipState`
+        # @return [String]
+        attr_accessor :membership_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member_type = args[:member_type] if args.key?(:member_type)
+          @membership_count = args[:membership_count] if args.key?(:membership_count)
+          @membership_state = args[:membership_state] if args.key?(:membership_state)
+        end
+      end
+      
+      # 
+      class AppsDynamiteSharedSegmentedMembershipCounts
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCount>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A widget that creates a UI item (for example, a drop-down list) with options
       # for users to select.
       class AppsDynamiteSharedSelectionInput
@@ -8810,7 +8861,7 @@ module Google
       end
       
       # The corpus specific metadata for office-type documents, from Google Docs and
-      # other sources. This message is passed to the scorer and beyond. Next tag: 7
+      # other sources. This message is passed to the scorer and beyond. Next tag: 9
       class GoogleDocsMetadata
         include Google::Apis::Core::Hashable
       
@@ -8836,6 +8887,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_content_modified_timestamp
       
+        # Contains number of subscribers for the document.
+        # Corresponds to the JSON property `numSubscribers`
+        # @return [Fixnum]
+        attr_accessor :num_subscribers
+      
+        # Size of untruncated viewers list.
+        # Corresponds to the JSON property `numViewers`
+        # @return [Fixnum]
+        attr_accessor :num_viewers
+      
         # A message containing information about a specific result. This information is
         # passed to the scorer and beyond; in particular, GWS relies on it to format the
         # result in the UI. Split from GoogleDocsMetadata in case we later want to reuse
@@ -8859,6 +8920,8 @@ module Google
           @document_type = args[:document_type] if args.key?(:document_type)
           @file_extension = args[:file_extension] if args.key?(:file_extension)
           @last_content_modified_timestamp = args[:last_content_modified_timestamp] if args.key?(:last_content_modified_timestamp)
+          @num_subscribers = args[:num_subscribers] if args.key?(:num_subscribers)
+          @num_viewers = args[:num_viewers] if args.key?(:num_viewers)
           @result_info = args[:result_info] if args.key?(:result_info)
           @type_info = args[:type_info] if args.key?(:type_info)
         end
@@ -14041,9 +14104,9 @@ module Google
         # translations. Set this field using the language set in browser or for the page.
         # In the event that the user's language preference is known, set this field to
         # the known user language. When specified, the documents in search results are
-        # biased towards the specified language. The suggest API does not use this
-        # parameter. Instead, suggest autocompletes only based on characters in the
-        # query.
+        # biased towards the specified language. From Suggest API perspective, for 3p
+        # suggest this is used as a hint while making predictions to add language
+        # boosting.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -14475,6 +14538,12 @@ module Google
         # @return [String]
         attr_accessor :roster_state
       
+        # Roster membership count. May contain counts based on member type and
+        # membership state.
+        # Corresponds to the JSON property `segmentedMembershipCounts`
+        # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts]
+        attr_accessor :segmented_membership_counts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14487,6 +14556,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @roster_gaia_key = args[:roster_gaia_key] if args.key?(:roster_gaia_key)
           @roster_state = args[:roster_state] if args.key?(:roster_state)
+          @segmented_membership_counts = args[:segmented_membership_counts] if args.key?(:segmented_membership_counts)
         end
       end
       
