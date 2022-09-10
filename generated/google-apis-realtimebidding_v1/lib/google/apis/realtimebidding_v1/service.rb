@@ -903,8 +903,9 @@ module Google
         #   https://google.aip.dev/160 for more information about filtering syntax.
         # @param [String] order_by
         #   Order specification by which results should be sorted. If no sort order is
-        #   specified, the results will be returned in an arbitrary order. Currently
-        #   results can be sorted by `createTime`. Example: 'createTime DESC'.
+        #   specified, the results will be returned in alphabetic order based on the
+        #   publisher's publisher code. Results can be sorted by `createTime`. Example: '
+        #   createTime DESC'.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested (due
         #   to timeout constraint) even if more are available via another call. If
