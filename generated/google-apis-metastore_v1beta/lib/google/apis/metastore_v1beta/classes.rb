@@ -1615,8 +1615,9 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::MetadataManagementActivity]
         attr_accessor :metadata_management_activity
       
-        # Immutable. The relative resource name of the metastore service, of the form:
-        # projects/`project_number`/locations/`location_id`/services/`service_id`.
+        # Immutable. The relative resource name of the metastore service, in the
+        # following format:projects/`project_number`/locations/`location_id`/services/`
+        # service_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
