@@ -51,7 +51,7 @@ module Google
         
         # Gets a GTM Account.
         # @param [String] path
-        #   GTM Accounts's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path. Example: accounts/`account_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

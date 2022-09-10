@@ -467,7 +467,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # GTM ContainerVersions's API relative path.
+        # GTM Container Version's API relative path.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
