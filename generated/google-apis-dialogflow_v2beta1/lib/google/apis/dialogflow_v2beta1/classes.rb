@@ -15549,6 +15549,102 @@ module Google
         end
       end
       
+      # The request message for Conversations.SuggestConversationSummary.
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Max number of messages prior to and including [latest_message] to use as
+        # context when compiling the suggestion. By default 500 and at most 1000.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. If empty, the latest message of the conversation will be used.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The response message for Conversations.SuggestConversationSummary.
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including last_conversation_message used to
+        # compile the suggestion. It may be smaller than the SuggestSummaryRequest.
+        # context_size field in the request if there weren't that many messages in the
+        # conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # Generated summary for a conversation.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Generated summary for a conversation.
+      class GoogleCloudDialogflowV2beta1SuggestConversationSummaryResponseSummary
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: "projects//answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The summary content that is concatenated into one string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The summary content that is divided into sections. The key is the section's
+        # name and the value is the section's content. There is no specific format for
+        # the key or value.
+        # Corresponds to the JSON property `textSections`
+        # @return [Hash<String,String>]
+        attr_accessor :text_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @text = args[:text] if args.key?(:text)
+          @text_sections = args[:text_sections] if args.key?(:text_sections)
+        end
+      end
+      
       # The request message for Participants.SuggestFaqAnswers.
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest
         include Google::Apis::Core::Hashable
