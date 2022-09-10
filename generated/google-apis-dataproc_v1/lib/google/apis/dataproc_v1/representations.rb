@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GceNodePoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1070,6 +1076,22 @@ module Google
           property :subnetwork_uri, as: 'subnetworkUri'
           collection :tags, as: 'tags'
           property :zone_uri, as: 'zoneUri'
+        end
+      end
+      
+      class GceNodePoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :description, as: 'description'
+          property :gce_node_pool_id, as: 'gceNodePoolId'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
+      
+          collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
+      
+          collection :warnings, as: 'warnings'
         end
       end
       
