@@ -86,7 +86,7 @@ module Google
       end
       
       # An insight along with the information used to derive the insight. The insight
-      # may have associated recomendations as well.
+      # may have associated recommendations as well.
       class GoogleCloudRecommenderV1beta1Insight
         include Google::Apis::Core::Hashable
       
