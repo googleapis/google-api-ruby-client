@@ -483,22 +483,23 @@ module Google
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
-        # authenticated with a Google account or a service account. user:`emailid`: An
-        # email address that represents a specific Google account. For example, alice@
-        # example.com . serviceAccount:`emailid`: An email address that represents a
-        # Google service account. For example, my-other-app@appspot.gserviceaccount.com.
-        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]: An
-        # identifier for a Kubernetes service account (https://cloud.google.com/
-        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-
-        # project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:`emailid`: An email
-        # address that represents a Google group. For example, admins@example.com.
-        # deleted:user:`emailid`?uid=`uniqueid`: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example,
-        # alice@example.com?uid=123456789012345678901. If the user is recovered, this
-        # value reverts to user:`emailid` and the recovered user retains the role in the
-        # binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email address (
-        # plus unique identifier) representing a service account that has been recently
-        # deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
+        # authenticated with a Google account or a service account. Does not include
+        # identities that come from external identity providers (IdPs) through identity
+        # federation. user:`emailid`: An email address that represents a specific Google
+        # account. For example, alice@example.com . serviceAccount:`emailid`: An email
+        # address that represents a Google service account. For example, my-other-app@
+        # appspot.gserviceaccount.com. serviceAccount:`projectid`.svc.id.goog[`namespace`
+        # /`kubernetes-sa`]: An identifier for a Kubernetes service account (https://
+        # cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+        # For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:`
+        # emailid`: An email address that represents a Google group. For example, admins@
+        # example.com. deleted:user:`emailid`?uid=`uniqueid`: An email address (plus
+        # unique identifier) representing a user that has been recently deleted. For
+        # example, alice@example.com?uid=123456789012345678901. If the user is recovered,
+        # this value reverts to user:`emailid` and the recovered user retains the role
+        # in the binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901. If the service account is undeleted, this value reverts
         # to serviceAccount:`emailid` and the undeleted service account retains the role
         # in the binding. deleted:group:`emailid`?uid=`uniqueid`: An email address (plus
@@ -1436,6 +1437,68 @@ module Google
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
           @tags = args[:tags] if args.key?(:tags)
           @zone_uri = args[:zone_uri] if args.key?(:zone_uri)
+        end
+      end
+      
+      # Metadata describing the Compute Engine node pool operation.
+      class GceNodePoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Cluster UUID associated with the Compute Engine node pool
+        # operation.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # Output only. Short description of operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Compute Engine node pool ID for the operation.
+        # Corresponds to the JSON property `gceNodePoolId`
+        # @return [String]
+        attr_accessor :gce_node_pool_id
+      
+        # Output only. Labels associated with the operation
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1::ClusterOperationStatus]
+        attr_accessor :status
+      
+        # Output only. The previous operation status.
+        # Corresponds to the JSON property `statusHistory`
+        # @return [Array<Google::Apis::DataprocV1::ClusterOperationStatus>]
+        attr_accessor :status_history
+      
+        # Output only. Errors encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @description = args[:description] if args.key?(:description)
+          @gce_node_pool_id = args[:gce_node_pool_id] if args.key?(:gce_node_pool_id)
+          @labels = args[:labels] if args.key?(:labels)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @status = args[:status] if args.key?(:status)
+          @status_history = args[:status_history] if args.key?(:status_history)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
