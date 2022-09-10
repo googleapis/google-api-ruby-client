@@ -100,8 +100,8 @@ module Google
         # The data type of a variable such as a function argument. Examples include: *
         # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
-        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
-        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
         # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
@@ -3744,6 +3744,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
       
+        # Connection properties.
+        # Corresponds to the JSON property `connectionProperties`
+        # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
+        attr_accessor :connection_properties
+      
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
         # BigQuery creates the table. CREATE_NEVER: The table must already exist. If it
@@ -3990,6 +3995,7 @@ module Google
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @clustering = args[:clustering] if args.key?(:clustering)
+          @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
@@ -6460,8 +6466,8 @@ module Google
         # The data type of a variable such as a function argument. Examples include: *
         # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
-        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
-        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
         # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `returnType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
@@ -7029,8 +7035,8 @@ module Google
       # The data type of a variable such as a function argument. Examples include: *
       # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
       # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
-      # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
-      # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+      # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+      # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
       # DATE"` ` ` ] ` `
       class StandardSqlDataType
         include Google::Apis::Core::Hashable
@@ -7038,8 +7044,8 @@ module Google
         # The data type of a variable such as a function argument. Examples include: *
         # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
-        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
-        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
         # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `arrayElementType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
@@ -7080,8 +7086,8 @@ module Google
         # The data type of a variable such as a function argument. Examples include: *
         # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
         # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
-        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
-        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind": "STRING"` `, `
+        # "name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typeKind": "
         # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
