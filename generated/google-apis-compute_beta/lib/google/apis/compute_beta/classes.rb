@@ -654,12 +654,12 @@ module Google
         # - NAT_AUTO for the regional external IP addresses used by Cloud NAT when
         # allocating addresses using automatic NAT IP address allocation. -
         # IPSEC_INTERCONNECT for addresses created from a private IP range that are
-        # reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect*
-        # configuration. These addresses are regional resources. Not currently available
-        # publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is
-        # assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT`
-        # for a private network address that is used to configure Private Service
-        # Connect. Only global internal addresses can use this purpose.
+        # reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect*
+        # configuration. These addresses are regional resources. - `
+        # SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to
+        # multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private
+        # network address that is used to configure Private Service Connect. Only global
+        # internal addresses can use this purpose.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -4246,8 +4246,8 @@ module Google
       class BackendServiceLogConfig
         include Google::Apis::Core::Hashable
       
-        # This field denotes whether to enable logging for the load balancer traffic
-        # served by this backend service.
+        # Denotes whether to enable logging for the load balancer traffic served by this
+        # backend service. The default value is false.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -4257,7 +4257,7 @@ module Google
         # service. The value of the field must be in [0, 1]. This configures the
         # sampling rate of requests to the load balancer where 1.0 means all logged
         # requests are reported and 0.0 means no logged requests are reported. The
-        # default value is 0.0.
+        # default value is 1.0.
         # Corresponds to the JSON property `sampleRate`
         # @return [Float]
         attr_accessor :sample_rate
@@ -4664,31 +4664,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -8261,13 +8263,13 @@ module Google
       
         # Deprecated, please use short name instead. User-provided name of the
         # Organization firewall policy. The name should be unique in the organization in
-        # which the firewall policy is created. This name must be set on creation and
-        # cannot be changed. The name must be 1-63 characters long, and comply with
-        # RFC1035. Specifically, the name must be 1-63 characters long and match the
-        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
-        # character must be a lowercase letter, and all following characters must be a
-        # dash, lowercase letter, or digit, except the last character, which cannot be a
-        # dash.
+        # which the firewall policy is created. This field is not applicable to network
+        # firewall policies. This name must be set on creation and cannot be changed.
+        # The name must be 1-63 characters long, and comply with RFC1035. Specifically,
+        # the name must be 1-63 characters long and match the regular expression `[a-z]([
+        # -a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        # letter, and all following characters must be a dash, lowercase letter, or
+        # digit, except the last character, which cannot be a dash.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8296,13 +8298,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Name of the resource. It is a numeric ID allocated by GCP which
-        # uniquely identifies the Firewall Policy.
+        # Name of the resource. For Organization Firewall Policies it's a [Output Only]
+        # numeric ID allocated by GCP which uniquely identifies the Organization
+        # Firewall Policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] The parent of the firewall policy.
+        # [Output Only] The parent of the firewall policy. This field is not applicable
+        # to network firewall policies.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -8339,14 +8343,15 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # User-provided name of the Organization firewall plicy. The name should be
-        # unique in the organization in which the firewall policy is created. This name
-        # must be set on creation and cannot be changed. The name must be 1-63
-        # characters long, and comply with RFC1035. Specifically, the name must be 1-63
-        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
-        # which means the first character must be a lowercase letter, and all following
-        # characters must be a dash, lowercase letter, or digit, except the last
-        # character, which cannot be a dash.
+        # User-provided name of the Organization firewall policy. The name should be
+        # unique in the organization in which the firewall policy is created. This field
+        # is not applicable to network firewall policies. This name must be set on
+        # creation and cannot be changed. The name must be 1-63 characters long, and
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `shortName`
         # @return [String]
         attr_accessor :short_name
@@ -17165,8 +17170,8 @@ module Google
         # attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that
         # is encrypted by an IPsec device, such as an HA VPN gateway or third-party
         # IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such
-        # a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN
-        # attachment must be created with this option. Not currently available publicly.
+        # a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN
+        # attachment must be created with this option.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -30869,7 +30874,7 @@ module Google
         attr_accessor :description
       
         # Indicates if a router is dedicated for use with encrypted VLAN attachments (
-        # interconnectAttachments). Not currently available publicly.
+        # interconnectAttachments).
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
@@ -42818,9 +42823,8 @@ module Google
       
         # URL of the VLAN attachment (interconnectAttachment) resource for this VPN
         # gateway interface. When the value of this field is present, the VPN gateway is
-        # used for IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for
+        # used for HA VPN over Cloud Interconnect; all egress or ingress traffic for
         # this VPN gateway interface goes through the specified VLAN attachment resource.
-        # Not currently available publicly.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
@@ -42829,11 +42833,11 @@ module Google
         # gateway. The IP address could be either a regional external IP address or a
         # regional internal IP address. The two IP addresses for a VPN gateway must be
         # all regional external or regional internal IP addresses. There cannot be a mix
-        # of regional external IP addresses and regional internal IP addresses. For
-        # IPsec-encrypted Cloud Interconnect, the IP addresses for both interfaces could
-        # either be regional internal IP addresses or regional external IP addresses.
-        # For regular (non IPsec-encrypted Cloud Interconnect) HA VPN tunnels, the IP
-        # address must be a regional external IP address.
+        # of regional external IP addresses and regional internal IP addresses. For HA
+        # VPN over Cloud Interconnect, the IP addresses for both interfaces could either
+        # be regional internal IP addresses or regional external IP addresses. For
+        # regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address
+        # must be a regional external IP address.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
