@@ -200,31 +200,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -283,6 +285,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Information specifying where to deploy a Cloud Run Service.
+      class CloudRunLocation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The location where the Cloud Run Service should be located. Format
+        # is `projects/`project`/locations/`location``.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # CloudRunMetadata contains information from a Cloud Run deployment.
+      class CloudRunMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Cloud Run Revision id associated with a `Rollout`.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Output only. The name of the Cloud Run Service that is associated with a `
+        # Rollout`. Format is projects/`project`/locations/`location`/services/`service`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Output only. The Cloud Run Service urls that are associated with a `Rollout`.
+        # Corresponds to the JSON property `serviceUrls`
+        # @return [Array<String>]
+        attr_accessor :service_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision = args[:revision] if args.key?(:revision)
+          @service = args[:service] if args.key?(:service)
+          @service_urls = args[:service_urls] if args.key?(:service_urls)
         end
       end
       
@@ -907,6 +961,25 @@ module Google
         end
       end
       
+      # Metadata surfaces information associated with a `Rollout` to the user.
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # CloudRunMetadata contains information from a Cloud Run deployment.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
+        attr_accessor :cloud_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1504,6 +1577,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Metadata surfaces information associated with a `Rollout` to the user.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::Metadata]
+        attr_accessor :metadata
+      
         # Optional. Name of the `Rollout`. Format is projects/`project`/ locations/`
         # location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/a-
         # z`0,62`.
@@ -1545,6 +1623,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @target_id = args[:target_id] if args.key?(:target_id)
@@ -1848,6 +1927,11 @@ module Google
         attr_accessor :require_approval
         alias_method :require_approval?, :require_approval
       
+        # Information specifying where to deploy a Cloud Run Service.
+        # Corresponds to the JSON property `run`
+        # @return [Google::Apis::ClouddeployV1::CloudRunLocation]
+        attr_accessor :run
+      
         # Output only. Resource id of the `Target`.
         # Corresponds to the JSON property `targetId`
         # @return [String]
@@ -1879,6 +1963,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @require_approval = args[:require_approval] if args.key?(:require_approval)
+          @run = args[:run] if args.key?(:run)
           @target_id = args[:target_id] if args.key?(:target_id)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1962,6 +2047,11 @@ module Google
         # @return [String]
         attr_accessor :failure_cause
       
+        # Output only. Additional information about the render failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
         # Output only. The resource name of the Cloud Build `Build` object that is used
         # to render the manifest for this target. Format is `projects/`project`/
         # locations/`location`/builds/`build``.
@@ -1981,6 +2071,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
           @rendering_build = args[:rendering_build] if args.key?(:rendering_build)
           @rendering_state = args[:rendering_state] if args.key?(:rendering_state)
         end
