@@ -922,15 +922,16 @@ module Google
       
         # Indicates whether form values persist after the action. The default value is `
         # false`. If `true`, form values remain after the action is triggered. When
-        # using [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#
-        # loadindicator) for actions, `persist_values` = `true`is recommended, as it
-        # ensures that any changes made by the user after form or on change actions are
-        # sent to the server are not overwritten by the response. If `false`, the form
-        # values are cleared when the action is triggered. When `persist_values` is set
-        # to `false`, it is strongly recommended that the card use [LoadIndicator.
-        # SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-        # for all actions, as this locks the UI to ensure no changes are made by the
-        # user while the action is being processed. Not supported by Google Chat apps.
+        # using [LoadIndicator.NONE](https://developers.google.com/workspace/add-ons/
+        # reference/rpc/google.apps.card.v1#loadindicator) for actions, `persist_values`
+        # = `true`is recommended, as it ensures that any changes made by the user after
+        # form or on change actions are sent to the server are not overwritten by the
+        # response. If `false`, the form values are cleared when the action is triggered.
+        # When `persist_values` is set to `false`, it is strongly recommended that the
+        # card use [LoadIndicator.SPINNER](https://developers.google.com/workspace/add-
+        # ons/reference/rpc/google.apps.card.v1#loadindicator) for all actions, as this
+        # locks the UI to ensure no changes are made by the user while the action is
+        # being processed. Not supported by Google Chat apps.
         # Corresponds to the JSON property `persistValues`
         # @return [Boolean]
         attr_accessor :persist_values
@@ -2078,8 +2079,9 @@ module Google
         end
       end
       
-      # A paragraph of text that supports formatting. See [Text formatting](workspace/
-      # add-ons/concepts/widgets#text_formatting) for details.
+      # A paragraph of text that supports formatting. See [Text formatting](https://
+      # developers.google.com/workspace/add-ons/concepts/widgets#text_formatting) for
+      # details.
       class GoogleAppsCardV1TextParagraph
         include Google::Apis::Core::Hashable
       
@@ -2152,8 +2154,9 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
         attr_accessor :text_input
       
-        # A paragraph of text that supports formatting. See [Text formatting](workspace/
-        # add-ons/concepts/widgets#text_formatting) for details.
+        # A paragraph of text that supports formatting. See [Text formatting](https://
+        # developers.google.com/workspace/add-ons/concepts/widgets#text_formatting) for
+        # details.
         # Corresponds to the JSON property `textParagraph`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
