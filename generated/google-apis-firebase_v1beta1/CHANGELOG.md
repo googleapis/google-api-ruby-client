@@ -1,8 +1,8 @@
 # Release history for google-apis-firebase_v1beta1
 
-### v0.25.0 (2022-09-05)
+### v0.25.0 (2022-09-10)
 
-* Regenerated from discovery document revision 20220901
+* Regenerated from discovery document revision 20220908
 
 ### v0.24.0 (2022-08-24)
 
