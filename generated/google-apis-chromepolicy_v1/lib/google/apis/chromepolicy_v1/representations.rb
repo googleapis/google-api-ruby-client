@@ -390,9 +390,11 @@ module Google
           property :field, as: 'field'
           collection :field_dependencies, as: 'fieldDependencies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies::Representation
       
+          property :field_description, as: 'fieldDescription'
           property :input_constraint, as: 'inputConstraint'
           collection :known_value_descriptions, as: 'knownValueDescriptions', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription::Representation
       
+          property :name, as: 'name'
           collection :nested_field_descriptions, as: 'nestedFieldDescriptions', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription::Representation
       
           collection :required_items, as: 'requiredItems', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems::Representation

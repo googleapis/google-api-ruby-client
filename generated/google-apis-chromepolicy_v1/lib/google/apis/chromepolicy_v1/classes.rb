@@ -516,7 +516,8 @@ module Google
       class GoogleChromePolicyV1PolicySchemaFieldDescription
         include Google::Apis::Core::Hashable
       
-        # Output only. The description for the field.
+        # Deprecated. Use name and field_description instead. The description for the
+        # field.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -533,6 +534,11 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies>]
         attr_accessor :field_dependencies
       
+        # Output only. The description of the field.
+        # Corresponds to the JSON property `fieldDescription`
+        # @return [String]
+        attr_accessor :field_description
+      
         # Output only. Any input constraints associated on the values for the field.
         # Corresponds to the JSON property `inputConstraint`
         # @return [String]
@@ -543,6 +549,11 @@ module Google
         # Corresponds to the JSON property `knownValueDescriptions`
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>]
         attr_accessor :known_value_descriptions
+      
+        # Output only. The name of the field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # Output only. Provides the description of the fields nested in this field, if
         # the field is a message type that defines multiple fields.
@@ -565,8 +576,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
           @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
+          @field_description = args[:field_description] if args.key?(:field_description)
           @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
           @known_value_descriptions = args[:known_value_descriptions] if args.key?(:known_value_descriptions)
+          @name = args[:name] if args.key?(:name)
           @nested_field_descriptions = args[:nested_field_descriptions] if args.key?(:nested_field_descriptions)
           @required_items = args[:required_items] if args.key?(:required_items)
         end
