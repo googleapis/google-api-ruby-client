@@ -1,5 +1,10 @@
 # Release history for google-apis-firebasedatabase_v1beta
 
+### v0.15.0 (2022-09-10)
+
+* Regenerated from discovery document revision 20220908
+* Regenerated using generator version 0.9.0
+
 ### v0.14.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0

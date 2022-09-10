@@ -19,14 +19,14 @@ require 'google/apis/firebasedatabase_v1beta/gem_version.rb'
 
 module Google
   module Apis
-    # Firebase Realtime Database Management API
+    # Firebase Realtime Database API
     #
     # The Firebase Realtime Database Management API enables programmatic
     # provisioning and management of Realtime Database instances.
     #
     # @see https://firebase.google.com/docs/reference/rest/database/database-management/rest/
     module FirebasedatabaseV1beta
-      # Version of the Firebase Realtime Database Management API this client connects to.
+      # Version of the Firebase Realtime Database API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1beta'
 
