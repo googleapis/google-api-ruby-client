@@ -201,7 +201,14 @@ module Google
         end
       end
       
-      # Audio report.
+      # Status data for storage. * This field is telemetry information and this will
+      # change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDeviceAudioStatus](https://chromeenterprise.
+      # google/policies/#ReportDeviceAudioStatus) * Data Collection Frequency: 10
+      # minutes * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1AudioStatusReport
         include Google::Apis::Core::Hashable
       
@@ -258,7 +265,14 @@ module Google
         end
       end
       
-      # Battery info
+      # Information about the battery. * This field provides device information, which
+      # is static and will not change over time. * Data for this field is controlled
+      # via policy: [ReportDevicePowerStatus](https://chromeenterprise.google/policies/
+      # #ReportDevicePowerStatus) * Data Collection Frequency: Only at Upload *
+      # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If
+      # the device is offline, the collected data is stored locally, and will be
+      # reported when the device is next online: No * Reported for affiliated users
+      # only: N/A
       class GoogleChromeManagementV1BatteryInfo
         include Google::Apis::Core::Hashable
       
@@ -314,7 +328,14 @@ module Google
         end
       end
       
-      # Sampling data for battery.
+      # Sampling data for battery. * This field is telemetry information and this will
+      # change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDevicePowerStatus](https://chromeenterprise.
+      # google/policies/#ReportDevicePowerStatus) * Data Collection Frequency: Only at
+      # Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1BatterySampleReport
         include Google::Apis::Core::Hashable
       
@@ -376,7 +397,14 @@ module Google
         end
       end
       
-      # Status data for battery.
+      # Status data for battery. * This field is telemetry information and this will
+      # change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDevicePowerStatus](https://chromeenterprise.
+      # google/policies/#ReportDevicePowerStatus) * Data Collection Frequency: Only at
+      # Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1BatteryStatusReport
         include Google::Apis::Core::Hashable
       
@@ -819,11 +847,25 @@ module Google
         end
       end
       
-      # CPU specs for a CPU.
+      # CPU specifications for the device * This field provides device information,
+      # which is static and will not change over time. * Data for this field is
+      # controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.google/
+      # policies/#ReportDeviceCpuInfo) * Data Collection Frequency: Only at Upload *
+      # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache: If
+      # the device is offline, the collected data is stored locally, and will be
+      # reported when the device is next online: No * Reported for affiliated users
+      # only: N/A
       class GoogleChromeManagementV1CpuInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. The CPU architecture.
+        # Output only. Architecture type for the CPU. * This field provides device
+        # information, which is static and will not change over time. * Data for this
+        # field is controlled via policy: [ReportDeviceCpuInfo](https://chromeenterprise.
+        # google/policies/#ReportDeviceCpuInfo) * Data Collection Frequency: Only at
+        # Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+        # Cache: If the device is offline, the collected data is stored locally, and
+        # will be reported when the device is next online: No * Reported for affiliated
+        # users only: N/A
         # Corresponds to the JSON property `architecture`
         # @return [String]
         attr_accessor :architecture
@@ -866,7 +908,14 @@ module Google
         end
       end
       
-      # Contains samples of the cpu status reports.
+      # Provides information about the status of the CPU. * This field is telemetry
+      # information and this will change over time as the device is utilized. * Data
+      # for this field is controlled via policy: [ReportDeviceCpuInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+      # Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours -
+      # Policy Controlled: Yes * Cache: If the device is offline, the collected data
+      # is stored locally, and will be reported when the device is next online: No *
+      # Reported for affiliated users only: N/A
       class GoogleChromeManagementV1CpuStatusReport
         include Google::Apis::Core::Hashable
       
@@ -904,7 +953,14 @@ module Google
         end
       end
       
-      # CPU temperature of a device. Sampled per CPU core in Celsius
+      # CPU temperature of a device. Sampled per CPU core in Celsius. * This field is
+      # telemetry information and this will change over time as the device is utilized.
+      # * Data for this field is controlled via policy: [ReportDeviceCpuInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceCpuInfo) * Data Collection
+      # Frequency: Every 10 minutes * Default Data Reporting Frequency: 3 hours -
+      # Policy Controlled: Yes * Cache: If the device is offline, the collected data
+      # is stored locally, and will be reported when the device is next online: No *
+      # Reported for affiliated users only: N/A
       class GoogleChromeManagementV1CpuTemperatureInfo
         include Google::Apis::Core::Hashable
       
@@ -1203,7 +1259,14 @@ module Google
         end
       end
       
-      # Information of the graphics subsystem.
+      # Information of the graphics subsystem. * This field provides device
+      # information, which is static and will not change over time. * Data for this
+      # field is controlled via policy: [ReportDeviceGraphicsStatus](https://
+      # chromeenterprise.google/policies/#ReportDeviceGraphicsStatus) * Data
+      # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
+      # hours - Policy Controlled: Yes * Cache: If the device is offline, the
+      # collected data is stored locally, and will be reported when the device is next
+      # online: No * Reported for affiliated users only: N/A
       class GoogleChromeManagementV1GraphicsInfo
         include Google::Apis::Core::Hashable
       
@@ -1222,7 +1285,14 @@ module Google
         end
       end
       
-      # Information of the graphics subsystem.
+      # Information of the graphics subsystem. * This field is telemetry information
+      # and this will change over time as the device is utilized. * Data for this
+      # field is controlled via policy: [ReportDeviceGraphicsInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceGraphicsInfo) * Data Collection
+      # Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy
+      # Controlled: Yes * Cache: If the device is offline, the collected data is
+      # stored locally, and will be reported when the device is next online: No *
+      # Reported for affiliated users only: N/A
       class GoogleChromeManagementV1GraphicsStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1381,7 +1451,18 @@ module Google
         end
       end
       
-      # Memory information of a device.
+      # Memory information of a device. * This field has both telemetry and device
+      # information: - `totalRamBytes` - Device information - `availableRamBytes` -
+      # Telemetry information - `totalMemoryEncryption` - Device information * Data
+      # for this field is controlled via policy: [ReportDeviceMemoryInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+      # Frequency: - `totalRamBytes` - Only at upload - `availableRamBytes` - Every 10
+      # minutes - `totalMemoryEncryption` - at device startup * Default Data Reporting
+      # Frequency: - `totalRamBytes` - 3 hours - `availableRamBytes` - 3 hours - `
+      # totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache:
+      # If the device is offline, the collected data is stored locally, and will be
+      # reported when the device is next online: only for `totalMemoryEncryption` *
+      # Reported for affiliated users only: N/A
       class GoogleChromeManagementV1MemoryInfo
         include Google::Apis::Core::Hashable
       
@@ -1390,7 +1471,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_ram_bytes
       
-        # Memory encryption information of a device.
+        # Memory encryption information of a device. * This field provides device
+        # information, which is static and will not change over time. * Data for this
+        # field is controlled via policy: [ReportDeviceMemoryInfo](https://
+        # chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+        # Frequency: At device startup * Default Data Reporting Frequency: At device
+        # startup - Policy Controlled: Yes * Cache: If the device is offline, the
+        # collected data is stored locally, and will be reported when the device is next
+        # online: Yes * Reported for affiliated users only: N/A
         # Corresponds to the JSON property `totalMemoryEncryption`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TotalMemoryEncryptionInfo]
         attr_accessor :total_memory_encryption
@@ -1412,7 +1500,15 @@ module Google
         end
       end
       
-      # Contains samples of memory status reports.
+      # Contains samples of memory status reports. * This field is telemetry
+      # information and this will change over time as the device is utilized. * Data
+      # for this field is controlled via policy: [ReportDeviceMemoryInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+      # Frequency: Only at upload, SystemRamFreeByes is collected every 10 minutes *
+      # Default Data Reporting Frequency: Every 3 hours - Policy Controlled: Yes *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1MemoryStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1451,7 +1547,14 @@ module Google
         end
       end
       
-      # Network device.
+      # Details about the network device. * This field provides device information,
+      # which is static and will not change over time. * Data for this field is
+      # controlled via policy: [ReportNetworkDeviceConfiguration](https://
+      # chromeenterprise.google/policies/#ReportNetworkDeviceConfiguration) * Data
+      # Collection Frequency: At device startup * Default Data Reporting Frequency: At
+      # device startup - Policy Controlled: Yes * Cache: If the device is offline, the
+      # collected data is stored locally, and will be reported when the device is next
+      # online: Yes * Reported for affiliated users only: N/A
       class GoogleChromeManagementV1NetworkDevice
         include Google::Apis::Core::Hashable
       
@@ -1528,7 +1631,14 @@ module Google
         end
       end
       
-      # Network devices info.
+      # Network device information. * This field provides device information, which is
+      # static and will not change over time. * Data for this field is controlled via
+      # policy: [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/
+      # policies/#ReportNetworkDeviceConfiguration) * Data Collection Frequency: At
+      # device startup * Default Data Reporting Frequency: At device startup - Policy
+      # Controlled: Yes * Cache: If the device is offline, the collected data is
+      # stored locally, and will be reported when the device is next online: Yes *
+      # Reported for affiliated users only: N/A
       class GoogleChromeManagementV1NetworkInfo
         include Google::Apis::Core::Hashable
       
@@ -1547,7 +1657,14 @@ module Google
         end
       end
       
-      # State of visible/configured networks.
+      # State of visible/configured networks. * This field is telemetry information
+      # and this will change over time as the device is utilized. * Data for this
+      # field is controlled via policy: [ReportNetworkStatus](https://chromeenterprise.
+      # google/policies/#ReportNetworkStatus) * Data Collection Frequency: 60 minutes *
+      # Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes * Cache:
+      # If the device is offline, the collected data is stored locally, and will be
+      # reported when the device is next online: Yes * Reported for affiliated users
+      # only: Yes
       class GoogleChromeManagementV1NetworkStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1647,7 +1764,14 @@ module Google
         end
       end
       
-      # Contains information regarding the current OS update status.
+      # Contains information regarding the current OS update status. * This field is
+      # telemetry information and this will change over time as the device is utilized.
+      # * Data for this field is controlled via policy: [ReportDeviceOsUpdateStatus](
+      # https://chromeenterprise.google/policies/#ReportDeviceOsUpdateStatus) * Data
+      # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
+      # hours - Policy Controlled: Yes * Cache: If the device is offline, the
+      # collected data is stored locally, and will be reported when the device is next
+      # online: No * Reported for affiliated users only: N/A
       class GoogleChromeManagementV1OsUpdateStatus
         include Google::Apis::Core::Hashable
       
@@ -1700,7 +1824,14 @@ module Google
         end
       end
       
-      # Status data for storage.
+      # Status data for storage. * This field is telemetry information and this will
+      # change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.
+      # google/policies/#ReportDeviceStorageStatus) * Data Collection Frequency: Only
+      # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
+      # * Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1StorageInfo
         include Google::Apis::Core::Hashable
       
@@ -1762,7 +1893,14 @@ module Google
         end
       end
       
-      # Status data for storage.
+      # Status data for storage. * This field is telemetry information and this will
+      # change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.
+      # google/policies/#ReportDeviceStorageStatus) * Data Collection Frequency: Only
+      # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
+      # * Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: No * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1StorageStatusReport
         include Google::Apis::Core::Hashable
       
@@ -1829,7 +1967,14 @@ module Google
         # @return [String]
         attr_accessor :device_id
       
-        # Information of the graphics subsystem.
+        # Information of the graphics subsystem. * This field provides device
+        # information, which is static and will not change over time. * Data for this
+        # field is controlled via policy: [ReportDeviceGraphicsStatus](https://
+        # chromeenterprise.google/policies/#ReportDeviceGraphicsStatus) * Data
+        # Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3
+        # hours - Policy Controlled: Yes * Cache: If the device is offline, the
+        # collected data is stored locally, and will be reported when the device is next
+        # online: No * Reported for affiliated users only: N/A
         # Corresponds to the JSON property `graphicsInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo]
         attr_accessor :graphics_info
@@ -1839,7 +1984,18 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport>]
         attr_accessor :graphics_status_report
       
-        # Memory information of a device.
+        # Memory information of a device. * This field has both telemetry and device
+        # information: - `totalRamBytes` - Device information - `availableRamBytes` -
+        # Telemetry information - `totalMemoryEncryption` - Device information * Data
+        # for this field is controlled via policy: [ReportDeviceMemoryInfo](https://
+        # chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+        # Frequency: - `totalRamBytes` - Only at upload - `availableRamBytes` - Every 10
+        # minutes - `totalMemoryEncryption` - at device startup * Default Data Reporting
+        # Frequency: - `totalRamBytes` - 3 hours - `availableRamBytes` - 3 hours - `
+        # totalMemoryEncryption` - at device startup - Policy Controlled: Yes * Cache:
+        # If the device is offline, the collected data is stored locally, and will be
+        # reported when the device is next online: only for `totalMemoryEncryption` *
+        # Reported for affiliated users only: N/A
         # Corresponds to the JSON property `memoryInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo]
         attr_accessor :memory_info
@@ -1860,7 +2016,14 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkDiagnosticsReport>]
         attr_accessor :network_diagnostics_report
       
-        # Network devices info.
+        # Network device information. * This field provides device information, which is
+        # static and will not change over time. * Data for this field is controlled via
+        # policy: [ReportNetworkDeviceConfiguration](https://chromeenterprise.google/
+        # policies/#ReportNetworkDeviceConfiguration) * Data Collection Frequency: At
+        # device startup * Default Data Reporting Frequency: At device startup - Policy
+        # Controlled: Yes * Cache: If the device is offline, the collected data is
+        # stored locally, and will be reported when the device is next online: Yes *
+        # Reported for affiliated users only: N/A
         # Corresponds to the JSON property `networkInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkInfo]
         attr_accessor :network_info
@@ -1886,7 +2049,14 @@ module Google
         # @return [String]
         attr_accessor :serial_number
       
-        # Status data for storage.
+        # Status data for storage. * This field is telemetry information and this will
+        # change over time as the device is utilized. * Data for this field is
+        # controlled via policy: [ReportDeviceStorageStatus](https://chromeenterprise.
+        # google/policies/#ReportDeviceStorageStatus) * Data Collection Frequency: Only
+        # at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes
+        # * Cache: If the device is offline, the collected data is stored locally, and
+        # will be reported when the device is next online: No * Reported for affiliated
+        # users only: N/A
         # Corresponds to the JSON property `storageInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo]
         attr_accessor :storage_info
@@ -1931,7 +2101,14 @@ module Google
         end
       end
       
-      # Thunderbolt bus info.
+      # Thunderbolt bus info. * This field provides device information, which is
+      # static and will not change over time. * Data for this field is controlled via
+      # policy: [ReportDeviceSecurityStatus](https://chromeenterprise.google/policies/#
+      # ReportDeviceSecurityStatus) * Data Collection Frequency: At device startup *
+      # Default Data Reporting Frequency: At device startup - Policy Controlled: No *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: Yes * Reported for affiliated
+      # users only: N/A
       class GoogleChromeManagementV1ThunderboltInfo
         include Google::Apis::Core::Hashable
       
@@ -1950,7 +2127,14 @@ module Google
         end
       end
       
-      # Memory encryption information of a device.
+      # Memory encryption information of a device. * This field provides device
+      # information, which is static and will not change over time. * Data for this
+      # field is controlled via policy: [ReportDeviceMemoryInfo](https://
+      # chromeenterprise.google/policies/#ReportDeviceMemoryInfo) * Data Collection
+      # Frequency: At device startup * Default Data Reporting Frequency: At device
+      # startup - Policy Controlled: Yes * Cache: If the device is offline, the
+      # collected data is stored locally, and will be reported when the device is next
+      # online: Yes * Reported for affiliated users only: N/A
       class GoogleChromeManagementV1TotalMemoryEncryptionInfo
         include Google::Apis::Core::Hashable
       
