@@ -684,11 +684,12 @@ module Google
         # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
         # CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
         # CatalogService.UpdateAttributesConfig APIs. This field is `False` for pre-
-        # loaded CatalogAttributes. Only pre-loaded CatalogAttributes that are neither
-        # in use by products nor predefined can be deleted. CatalogAttributes that are
-        # either in use by products or are predefined cannot be deleted; however, their
-        # configuration properties will reset to default values upon removal request.
-        # After catalog changes, it takes about 10 minutes for this field to update.
+        # loaded CatalogAttributes. Only pre-loaded catalog attributes that are neither
+        # in use by products nor predefined can be deleted. Catalog attributes that are
+        # either in use by products or are predefined attributes cannot be deleted;
+        # however, their configuration properties will reset to default values upon
+        # removal request. After catalog changes, it takes about 10 minutes for this
+        # field to update.
         # Corresponds to the JSON property `inUse`
         # @return [Boolean]
         attr_accessor :in_use
@@ -2159,6 +2160,8 @@ module Google
         attr_accessor :available_quantity
       
         # The timestamp when this Product becomes available for SearchService.Search.
+        # Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and
+        # ignored for Type.VARIANT.
         # Corresponds to the JSON property `availableTime`
         # @return [String]
         attr_accessor :available_time
@@ -2227,7 +2230,10 @@ module Google
         attr_accessor :description
       
         # The timestamp when this product becomes unavailable for SearchService.Search.
-        # If it is set, the Product is not available for SearchService.Search after
+        # Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and
+        # ignored for Type.VARIANT. In general, we suggest the users to delete the stale
+        # products explicitly, instead of using this field to determine staleness. If it
+        # is set, the Product is not available for SearchService.Search after
         # expire_time. However, the product can still be retrieved by ProductService.
         # GetProduct and ProductService.ListProducts. expire_time must be later than
         # available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown.
@@ -2290,7 +2296,8 @@ module Google
       
         # Output only. A list of local inventories specific to different places. This is
         # only available for users who have Retail Search enabled, and it can be managed
-        # by AddLocalInventories and RemoveLocalInventories APIs.
+        # by ProductService.AddLocalInventories and ProductService.
+        # RemoveLocalInventories APIs.
         # Corresponds to the JSON property `localInventories`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2LocalInventory>]
         attr_accessor :local_inventories
@@ -2413,7 +2420,10 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Input only. The TTL (time to live) of the product. If it is set, it must be a
+        # Input only. The TTL (time to live) of the product. Note that this is only
+        # applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
+        # In general, we suggest the users to delete the stale products explicitly,
+        # instead of using this field to determine staleness. If it is set, it must be a
         # non-negative value, and expire_time is set as current timestamp plus ttl. The
         # derived expire_time is returned in the output and ttl is left blank when
         # retrieving the Product. If it is set, the product is not available for
