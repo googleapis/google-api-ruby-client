@@ -839,8 +839,9 @@ module Google
         
         # Updates the parameters of a single service.
         # @param [String] name
-        #   Immutable. The relative resource name of the metastore service, of the form:
-        #   projects/`project_number`/locations/`location_id`/services/`service_id`.
+        #   Immutable. The relative resource name of the metastore service, in the
+        #   following format:projects/`project_number`/locations/`location_id`/services/`
+        #   service_id`.
         # @param [Google::Apis::MetastoreV1alpha::Service] service_object
         # @param [String] request_id
         #   Optional. A request ID. Specify a unique request ID to allow the server to
