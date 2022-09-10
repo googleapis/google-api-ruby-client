@@ -526,6 +526,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsDynamiteSharedSegmentedMembershipCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsDynamiteSharedSegmentedMembershipCounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppsDynamiteSharedSelectionInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3828,6 +3840,23 @@ module Google
         end
       end
       
+      class AppsDynamiteSharedSegmentedMembershipCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member_type, as: 'memberType'
+          property :membership_count, as: 'membershipCount'
+          property :membership_state, as: 'membershipState'
+        end
+      end
+      
+      class AppsDynamiteSharedSegmentedMembershipCounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :value, as: 'value', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCount, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCount::Representation
+      
+        end
+      end
+      
       class AppsDynamiteSharedSelectionInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5479,6 +5508,8 @@ module Google
           property :document_type, as: 'documentType'
           property :file_extension, as: 'fileExtension'
           property :last_content_modified_timestamp, :numeric_string => true, as: 'lastContentModifiedTimestamp'
+          property :num_subscribers, as: 'numSubscribers'
+          property :num_viewers, as: 'numViewers'
           property :result_info, as: 'resultInfo', class: Google::Apis::CloudsearchV1::GoogleDocsResultInfo, decorator: Google::Apis::CloudsearchV1::GoogleDocsResultInfo::Representation
       
           property :type_info, as: 'typeInfo', class: Google::Apis::CloudsearchV1::TypeInfo, decorator: Google::Apis::CloudsearchV1::TypeInfo::Representation
@@ -7071,6 +7102,8 @@ module Google
           property :name, as: 'name'
           property :roster_gaia_key, as: 'rosterGaiaKey'
           property :roster_state, as: 'rosterState'
+          property :segmented_membership_counts, as: 'segmentedMembershipCounts', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedSegmentedMembershipCounts::Representation
+      
         end
       end
       
