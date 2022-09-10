@@ -718,6 +718,7 @@ module Google
         attr_accessor :project_id
       
         # Required. An ordered sequence of property names and their index attributes.
+        # Requires: * A maximum of 100 properties.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::DatastoreV1::GoogleDatastoreAdminV1IndexedProperty>]
         attr_accessor :properties
