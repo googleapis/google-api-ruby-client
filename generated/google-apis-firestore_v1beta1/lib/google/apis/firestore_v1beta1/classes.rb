@@ -642,7 +642,7 @@ module Google
       class FieldFilter
         include Google::Apis::Core::Hashable
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1beta1::FieldReference]
         attr_accessor :field
@@ -669,11 +669,12 @@ module Google
         end
       end
       
-      # A reference to a field, such as `max(messages.time) as max_time`.
+      # A reference to a field in a document, ex: `stats.operations`.
       class FieldReference
         include Google::Apis::Core::Hashable
       
-        # 
+        # The relative path of the document being referenced. Requires: * Conform to
+        # document field name limitations.
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -1451,7 +1452,7 @@ module Google
         # @return [String]
         attr_accessor :direction
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1beta1::FieldReference]
         attr_accessor :field
@@ -1846,13 +1847,15 @@ module Google
         attr_accessor :from
       
         # The maximum number of results to return. Applies after all other constraints.
-        # Must be >= 0 if specified.
+        # Requires: * The value must be greater than or equal to zero if specified.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
       
-        # The number of results to skip. Applies before limit, but after all other
-        # constraints. Must be >= 0 if specified.
+        # The number of documents to skip before returning the first result. This
+        # applies after the constraints specified by the `WHERE`, `START AT`, & `END AT`
+        # but before the `LIMIT` clause. Requires: * The value must be greater than or
+        # equal to zero if specified.
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
@@ -2046,7 +2049,7 @@ module Google
       class UnaryFilter
         include Google::Apis::Core::Hashable
       
-        # A reference to a field, such as `max(messages.time) as max_time`.
+        # A reference to a field in a document, ex: `stats.operations`.
         # Corresponds to the JSON property `field`
         # @return [Google::Apis::FirestoreV1beta1::FieldReference]
         attr_accessor :field
