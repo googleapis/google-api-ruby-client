@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRunLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRunMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,6 +407,22 @@ module Google
         end
       end
       
+      class CloudRunLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+        end
+      end
+      
+      class CloudRunMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revision, as: 'revision'
+          property :service, as: 'service'
+          collection :service_urls, as: 'serviceUrls'
+        end
+      end
+      
       class Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -552,6 +586,14 @@ module Google
         end
       end
       
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunMetadata::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -679,6 +721,8 @@ module Google
           property :etag, as: 'etag'
           property :failure_reason, as: 'failureReason'
           hash :labels, as: 'labels'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::Metadata, decorator: Google::Apis::ClouddeployV1::Metadata::Representation
+      
           property :name, as: 'name'
           property :state, as: 'state'
           property :target_id, as: 'targetId'
@@ -757,6 +801,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :require_approval, as: 'requireApproval'
+          property :run, as: 'run', class: Google::Apis::ClouddeployV1::CloudRunLocation, decorator: Google::Apis::ClouddeployV1::CloudRunLocation::Representation
+      
           property :target_id, as: 'targetId'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -785,6 +831,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
           property :rendering_build, as: 'renderingBuild'
           property :rendering_state, as: 'renderingState'
         end
