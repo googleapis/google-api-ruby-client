@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FirebasedatabaseV1beta
-      # Firebase Realtime Database Management API
+      # Firebase Realtime Database API
       #
       # The Firebase Realtime Database Management API enables programmatic
       #  provisioning and management of Realtime Database instances.
