@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Step
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelExecutionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -92,6 +104,8 @@ module Google
           property :result, as: 'result'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::WorkflowexecutionsV1beta::Status, decorator: Google::Apis::WorkflowexecutionsV1beta::Status::Representation
+      
           property :workflow_revision_id, as: 'workflowRevisionId'
         end
       end
@@ -127,6 +141,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :position, as: 'position', class: Google::Apis::WorkflowexecutionsV1beta::Position, decorator: Google::Apis::WorkflowexecutionsV1beta::Position::Representation
       
+          property :routine, as: 'routine'
+          property :step, as: 'step'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :current_steps, as: 'currentSteps', class: Google::Apis::WorkflowexecutionsV1beta::Step, decorator: Google::Apis::WorkflowexecutionsV1beta::Step::Representation
+      
+        end
+      end
+      
+      class Step
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :routine, as: 'routine'
           property :step, as: 'step'
         end
