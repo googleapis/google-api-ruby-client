@@ -179,7 +179,8 @@ module Google
       class CreateSnapshotRequest
         include Google::Apis::Core::Hashable
       
-        # See Creating and managing labels.
+        # See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels)
+        # .
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -883,7 +884,7 @@ module Google
         # without this attribute. The only supported values for the `x-goog-version`
         # attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/
         # Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub
-        # API. For example: attributes ` "x-goog-version": "v1" `
+        # API. For example: `attributes ` "x-goog-version": "v1" ``
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
@@ -1233,7 +1234,7 @@ module Google
         # The approximate amount of time (on a best-effort basis) Pub/Sub waits for the
         # subscriber to acknowledge receipt before resending the message. In the
         # interval after the message is delivered and before it is acknowledged, it is
-        # considered to be *outstanding*. During that time period, the message will not
+        # considered to be _outstanding_. During that time period, the message will not
         # be redelivered (on a best-effort basis). For pull subscriptions, this value is
         # used as the initial value for the ack deadline. To override this value for a
         # given message, call `ModifyAckDeadline` with the corresponding `ack_id` if
@@ -1307,7 +1308,8 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # See Creating and managing labels.
+        # See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels)
+        # .
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
