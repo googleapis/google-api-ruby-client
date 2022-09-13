@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VersionhistoryV1
-      # Version History API
+      # versionhistory.googleapis.com API
       #
       # Version History API - Prod
       #
