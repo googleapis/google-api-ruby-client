@@ -1,5 +1,9 @@
 # Release history for google-apis-translate_v3beta1
 
+### v0.19.0 (2022-09-13)
+
+* Regenerated from discovery document revision 20220909
+
 ### v0.18.0 (2022-08-09)
 
 * Regenerated from discovery document revision 20220805
