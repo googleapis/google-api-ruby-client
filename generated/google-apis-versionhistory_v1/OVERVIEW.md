@@ -1,6 +1,6 @@
-# Simple REST client for version V1 of the Version History API
+# Simple REST client for version V1 of the versionhistory.googleapis.com API
 
-This is a simple client library for version V1 of the Version History API. It provides:
+This is a simple client library for version V1 of the versionhistory.googleapis.com API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Versionhistory service in particular.)
 
-For reference information on specific calls in the Version History API, see the {Google::Apis::VersionhistoryV1::VersionHistoryService class reference docs}.
+For reference information on specific calls in the versionhistory.googleapis.com API, see the {Google::Apis::VersionhistoryV1::VersionHistoryService class reference docs}.
 
 ## Which client should I use?
 

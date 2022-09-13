@@ -1,6 +1,6 @@
 {
     "api_id": "versionhistory:v1",
-    "name_pretty": "Version History API",
+    "name_pretty": "versionhistory.googleapis.com API",
     "distribution_name": "google-apis-versionhistory_v1",
     "language": "ruby",
     "library_type": "REST"

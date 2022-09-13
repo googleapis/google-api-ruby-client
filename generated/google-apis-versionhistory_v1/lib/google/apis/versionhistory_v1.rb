@@ -19,13 +19,13 @@ require 'google/apis/versionhistory_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Version History API
+    # versionhistory.googleapis.com API
     #
     # Version History API - Prod
     #
     # @see https://developers.chrome.com/versionhistory
     module VersionhistoryV1
-      # Version of the Version History API this client connects to.
+      # Version of the versionhistory.googleapis.com API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
     end
