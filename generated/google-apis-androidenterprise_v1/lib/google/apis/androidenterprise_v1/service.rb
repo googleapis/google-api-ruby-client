@@ -775,7 +775,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes an entitlement to an app for a user.
+        # Removes an entitlement to an app for a user. **Note:** This item has been
+        # deprecated. New integrations cannot use this method and can refer to our new
+        # recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -809,7 +811,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves details of an entitlement.
+        # Retrieves details of an entitlement. **Note:** This item has been deprecated.
+        # New integrations cannot use this method and can refer to our new
+        # recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -845,7 +849,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all entitlements for the specified user. Only the ID is set.
+        # Lists all entitlements for the specified user. Only the ID is set. **Note:**
+        # This item has been deprecated. New integrations cannot use this method and can
+        # refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -878,7 +884,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds or updates an entitlement to an app for a user.
+        # Adds or updates an entitlement to an app for a user. **Note:** This item has
+        # been deprecated. New integrations cannot use this method and can refer to our
+        # new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -923,7 +931,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves details of an enterprise's group license for a product.
+        # Retrieves details of an enterprise's group license for a product. **Note:**
+        # This item has been deprecated. New integrations cannot use this method and can
+        # refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] group_license_id
@@ -957,7 +967,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves IDs of all products for which the enterprise has a group license.
+        # Retrieves IDs of all products for which the enterprise has a group license. **
+        # Note:** This item has been deprecated. New integrations cannot use this method
+        # and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -988,7 +1000,8 @@ module Google
         end
         
         # Retrieves the IDs of the users who have been granted entitlements under the
-        # license.
+        # license. **Note:** This item has been deprecated. New integrations cannot use
+        # this method and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] group_license_id
@@ -1561,7 +1574,9 @@ module Google
         # Approves the specified product and the relevant app permissions, if any. The
         # maximum number of products that you can approve per enterprise customer is 1,
         # 000. To learn how to use managed Google Play to design and create a store
-        # layout to display approved products to your users, see Store Layout Design.
+        # layout to display approved products to your users, see Store Layout Design. **
+        # Note:** This item has been deprecated. New integrations cannot use this method
+        # and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -1602,7 +1617,8 @@ module Google
         # UI element in the EMM console, which in turn should trigger the use of this
         # URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to
         # approve the product. This URL can only be used to display permissions for up
-        # to 1 day.
+        # to 1 day. **Note:** This item has been deprecated. New integrations cannot use
+        # this method and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -1750,7 +1766,8 @@ module Google
         end
         
         # Finds approved products that match a query, or all approved products if there
-        # is no query.
+        # is no query. **Note:** This item has been deprecated. New integrations cannot
+        # use this method and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Boolean] approved
@@ -1802,7 +1819,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unapproves the specified product (and the relevant app permissions, if any)
+        # Unapproves the specified product (and the relevant app permissions, if any) **
+        # Note:** This item has been deprecated. New integrations cannot use this method
+        # and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -2379,7 +2398,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the set of products a user is entitled to access.
+        # Retrieves the set of products a user is entitled to access. **Note:** This
+        # item has been deprecated. New integrations cannot use this method and can
+        # refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2519,7 +2540,9 @@ module Google
         
         # Modifies the set of products that a user is entitled to access (referred to as
         # *whitelisted* products). Only products that are approved or products that were
-        # previously approved (products with revoked approval) can be whitelisted.
+        # previously approved (products with revoked approval) can be whitelisted. **
+        # Note:** This item has been deprecated. New integrations cannot use this method
+        # and can refer to our new recommendations.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
