@@ -1297,8 +1297,7 @@ module Google
         # longer have owners who have accepted the ToS. Edits to IAM policies will be
         # rejected until the lack of a ToS-accepting owner is rectified. If the project
         # is part of an organization, you can remove all owners, potentially making the
-        # organization inaccessible. + Calling this method requires enabling the App
-        # Engine Admin API.
+        # organization inaccessible.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See [Resource
         #   names](https://cloud.google.com/apis/design/resource_names) for the
