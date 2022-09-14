@@ -1562,7 +1562,8 @@ module Google
         end
         
         # Creates key value entries in a key value map scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -1600,9 +1601,10 @@ module Google
         end
         
         # Deletes a key value entry from a key value map scoped to an organization,
-        # environment, or API proxy. **Note:** After you delete the key value entry, the
-        # policy consuming the entry will continue to function with its cached values
-        # for a few minutes. This is expected behavior.
+        # environment, or API proxy. **Notes:** * After you delete the key value entry,
+        # the policy consuming the entry will continue to function with its cached
+        # values for a few minutes. This is expected behavior. * Supported for Apigee
+        # hybrid 1.8.x and higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -1637,7 +1639,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # Get the key value entry value for a key value map scoped to an organization,
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
         #   entry/value. Use **one** of the following structures in your request: * `
@@ -1673,7 +1677,8 @@ module Google
         end
         
         # Lists key value entries for key values maps scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to list key value maps. Use **
         #   one** of the following structures in your request: * `organizations/`
@@ -6106,7 +6111,8 @@ module Google
         end
         
         # Creates key value entries in a key value map scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -6144,9 +6150,10 @@ module Google
         end
         
         # Deletes a key value entry from a key value map scoped to an organization,
-        # environment, or API proxy. **Note:** After you delete the key value entry, the
-        # policy consuming the entry will continue to function with its cached values
-        # for a few minutes. This is expected behavior.
+        # environment, or API proxy. **Notes:** * After you delete the key value entry,
+        # the policy consuming the entry will continue to function with its cached
+        # values for a few minutes. This is expected behavior. * Supported for Apigee
+        # hybrid 1.8.x and higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -6181,7 +6188,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # Get the key value entry value for a key value map scoped to an organization,
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
         #   entry/value. Use **one** of the following structures in your request: * `
@@ -6217,7 +6226,8 @@ module Google
         end
         
         # Lists key value entries for key values maps scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to list key value maps. Use **
         #   one** of the following structures in your request: * `organizations/`
@@ -8865,7 +8875,8 @@ module Google
         end
         
         # Creates key value entries in a key value map scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to create the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -8903,9 +8914,10 @@ module Google
         end
         
         # Deletes a key value entry from a key value map scoped to an organization,
-        # environment, or API proxy. **Note:** After you delete the key value entry, the
-        # policy consuming the entry will continue to function with its cached values
-        # for a few minutes. This is expected behavior.
+        # environment, or API proxy. **Notes:** * After you delete the key value entry,
+        # the policy consuming the entry will continue to function with its cached
+        # values for a few minutes. This is expected behavior. * Supported for Apigee
+        # hybrid 1.8.x and higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to delete the key value map
         #   entry. Use **one** of the following structures in your request: * `
@@ -8940,7 +8952,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the Key value entry value for org, env or apis scoped Key value map.
+        # Get the key value entry value for a key value map scoped to an organization,
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] name
         #   Required. Scope as indicated by the URI in which to fetch the key value map
         #   entry/value. Use **one** of the following structures in your request: * `
@@ -8976,7 +8990,8 @@ module Google
         end
         
         # Lists key value entries for key values maps scoped to an organization,
-        # environment, or API proxy.
+        # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
+        # higher.
         # @param [String] parent
         #   Required. Scope as indicated by the URI in which to list key value maps. Use **
         #   one** of the following structures in your request: * `organizations/`
