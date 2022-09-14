@@ -3139,6 +3139,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :color
       
+        # Font family such as "Arial", "Times New Roman". https://www.w3schools.com/
+        # cssref/pr_font_font-family.asp
+        # Corresponds to the JSON property `fontFamily`
+        # @return [String]
+        attr_accessor :font_family
+      
         # Font size with unit.
         # Corresponds to the JSON property `fontSize`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentStyleFontSize]
@@ -3175,6 +3181,7 @@ module Google
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color = args[:color] if args.key?(:color)
+          @font_family = args[:font_family] if args.key?(:font_family)
           @font_size = args[:font_size] if args.key?(:font_size)
           @font_weight = args[:font_weight] if args.key?(:font_weight)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
@@ -5740,6 +5747,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :color
       
+        # Font family such as "Arial", "Times New Roman". https://www.w3schools.com/
+        # cssref/pr_font_font-family.asp
+        # Corresponds to the JSON property `fontFamily`
+        # @return [String]
+        attr_accessor :font_family
+      
         # Font size with unit.
         # Corresponds to the JSON property `fontSize`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentStyleFontSize]
@@ -5776,6 +5789,7 @@ module Google
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color = args[:color] if args.key?(:color)
+          @font_family = args[:font_family] if args.key?(:font_family)
           @font_size = args[:font_size] if args.key?(:font_size)
           @font_weight = args[:font_weight] if args.key?(:font_weight)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
@@ -7606,6 +7620,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeColor]
         attr_accessor :color
       
+        # Font family such as "Arial", "Times New Roman". https://www.w3schools.com/
+        # cssref/pr_font_font-family.asp
+        # Corresponds to the JSON property `fontFamily`
+        # @return [String]
+        attr_accessor :font_family
+      
         # Font size with unit.
         # Corresponds to the JSON property `fontSize`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentStyleFontSize]
@@ -7642,6 +7662,7 @@ module Google
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color = args[:color] if args.key?(:color)
+          @font_family = args[:font_family] if args.key?(:font_family)
           @font_size = args[:font_size] if args.key?(:font_size)
           @font_weight = args[:font_weight] if args.key?(:font_weight)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
