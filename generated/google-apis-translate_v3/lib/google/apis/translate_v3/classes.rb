@@ -1071,6 +1071,14 @@ module Google
       class TranslateDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. This flag is to support user customized attribution. If not provided,
+        # the default is `Machine Translated by Google`. Customized attribution should
+        # follow rules in https://cloud.google.com/translate/attribution#
+        # attribution_and_logos
+        # Corresponds to the JSON property `customizedAttribution`
+        # @return [String]
+        attr_accessor :customized_attribution
+      
         # A document translation request input config.
         # Corresponds to the JSON property `documentInputConfig`
         # @return [Google::Apis::TranslateV3::DocumentInputConfig]
@@ -1128,6 +1136,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
