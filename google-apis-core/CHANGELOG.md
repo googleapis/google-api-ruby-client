@@ -1,5 +1,11 @@
 # Release History
 
+### 0.7.1 (2022-09-14)
+
+#### Bug Fixes
+
+* Revert "chore(core): log errors as error instead of debug([#6494](https://github.com/googleapis/google-api-ruby-client/issues/6494))" ([#11561](https://github.com/googleapis/google-api-ruby-client/issues/11561)) 
+
 ### 0.7.0 (2022-06-30)
 
 #### Features
