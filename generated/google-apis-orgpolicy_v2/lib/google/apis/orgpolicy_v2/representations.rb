@@ -153,6 +153,7 @@ module Google
           collection :method_types, as: 'methodTypes'
           property :name, as: 'name'
           collection :resource_types, as: 'resourceTypes'
+          property :update_time, as: 'updateTime'
         end
       end
       
