@@ -574,6 +574,7 @@ module Google
       class TranslateDocumentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customized_attribution, as: 'customizedAttribution'
           property :document_input_config, as: 'documentInputConfig', class: Google::Apis::TranslateV3::DocumentInputConfig, decorator: Google::Apis::TranslateV3::DocumentInputConfig::Representation
       
           property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::TranslateV3::DocumentOutputConfig, decorator: Google::Apis::TranslateV3::DocumentOutputConfig::Representation
