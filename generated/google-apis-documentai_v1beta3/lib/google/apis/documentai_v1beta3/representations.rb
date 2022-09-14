@@ -2588,6 +2588,7 @@ module Google
       
           property :color, as: 'color', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
       
+          property :font_family, as: 'fontFamily'
           property :font_size, as: 'fontSize', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentStyleFontSize, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentStyleFontSize::Representation
       
           property :font_weight, as: 'fontWeight'
@@ -3120,6 +3121,7 @@ module Google
       
           property :color, as: 'color', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
       
+          property :font_family, as: 'fontFamily'
           property :font_size, as: 'fontSize', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentStyleFontSize, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentStyleFontSize::Representation
       
           property :font_weight, as: 'fontWeight'
@@ -3842,6 +3844,7 @@ module Google
       
           property :color, as: 'color', class: Google::Apis::DocumentaiV1beta3::GoogleTypeColor, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeColor::Representation
       
+          property :font_family, as: 'fontFamily'
           property :font_size, as: 'fontSize', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyleFontSize, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentStyleFontSize::Representation
       
           property :font_weight, as: 'fontWeight'
