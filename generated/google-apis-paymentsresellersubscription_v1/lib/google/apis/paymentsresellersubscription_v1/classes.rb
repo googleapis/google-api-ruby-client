@@ -22,6 +22,32 @@ module Google
   module Apis
     module PaymentsresellersubscriptionV1
       
+      # Describes the amount unit including the currency code.
+      class GoogleCloudPaymentsResellerSubscriptionV1Amount
+        include Google::Apis::Core::Hashable
+      
+        # Required. Amount in micros (1_000_000 micros = 1 currency unit)
+        # Corresponds to the JSON property `amountMicros`
+        # @return [Fixnum]
+        attr_accessor :amount_micros
+      
+        # Required. Currency codes in accordance with [ISO-4217 Currency Codes] (https://
+        # en.wikipedia.org/wiki/ISO_4217). For example, USD.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_micros = args[:amount_micros] if args.key?(:amount_micros)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+        end
+      end
+      
       # 
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
         include Google::Apis::Core::Hashable
@@ -374,11 +400,16 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Product
         include Google::Apis::Core::Hashable
       
-        # Output only. Response only. Resource name of the subscription. It will have
-        # the format of "partners/`partner_id`/products/`product_id`"
+        # Output only. Response only. Resource name of the product. It will have the
+        # format of "partners/`partner_id`/products/`product_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. Price configs for the product in the available regions.
+        # Corresponds to the JSON property `priceConfigs`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>]
+        attr_accessor :price_configs
       
         # Output only. 2-letter ISO region code where the product is available in. Ex. "
         # US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
@@ -403,9 +434,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @price_configs = args[:price_configs] if args.key?(:price_configs)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @subscription_billing_cycle_duration = args[:subscription_billing_cycle_duration] if args.key?(:subscription_billing_cycle_duration)
           @titles = args[:titles] if args.key?(:titles)
+        end
+      end
+      
+      # Configs the prices in an available region.
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Describes the amount unit including the currency code.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        attr_accessor :amount
+      
+        # Output only. 2-letter ISO region code where the product is available in. Ex. "
+        # US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
@@ -504,6 +562,17 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
         include Google::Apis::Core::Hashable
       
+        # Describes the amount unit including the currency code.
+        # Corresponds to the JSON property `discountAmount`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount]
+        attr_accessor :discount_amount
+      
+        # Output only. The discount percentage in micros. For example, 50,000 represents
+        # 5%.
+        # Corresponds to the JSON property `discountRatioMicros`
+        # @return [Fixnum]
+        attr_accessor :discount_ratio_micros
+      
         # Output only. Output Only. The duration of an introductory offer in billing
         # cycles.
         # Corresponds to the JSON property `recurrenceCount`
@@ -516,6 +585,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @discount_amount = args[:discount_amount] if args.key?(:discount_amount)
+          @discount_ratio_micros = args[:discount_ratio_micros] if args.key?(:discount_ratio_micros)
           @recurrence_count = args[:recurrence_count] if args.key?(:recurrence_count)
         end
       end
