@@ -444,8 +444,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   end
 
   it 'should form encode parameters when method is POST and no body present' do
-    stub_request(:post, 'https://www.googleapis.com/zoo/animals')
-        .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
+    stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=hello&c&d=0')
         .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
     command.query['a'] = [1,2,3]
