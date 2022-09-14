@@ -4342,7 +4342,7 @@ module Google
       end
       
       # Key value map pair where the value represents the data associated with the
-      # corresponding key.
+      # corresponding key. **Note**: Supported for Apigee hybrid 1.8.x and higher.
       class GoogleCloudApigeeV1KeyValueEntry
         include Google::Apis::Core::Hashable
       
@@ -4937,7 +4937,7 @@ module Google
         end
       end
       
-      # The request structure for listing Key value map keys and its corrresponding
+      # The request structure for listing key value map keys and its corresponding
       # values.
       class GoogleCloudApigeeV1ListKeyValueEntriesResponse
         include Google::Apis::Core::Hashable
