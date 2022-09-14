@@ -940,7 +940,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The returned responses.
+        # The returned form responses. Note: The `formId` field is not returned in the `
+        # FormResponse` object for list requests.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::FormsV1::FormResponse>]
         attr_accessor :responses
