@@ -22,6 +22,12 @@ module Google
   module Apis
     module PaymentsresellersubscriptionV1
       
+      class GoogleCloudPaymentsResellerSubscriptionV1Amount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1Promotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -182,6 +194,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1Amount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_micros, :numeric_string => true, as: 'amountMicros'
+          property :currency_code, as: 'currencyCode'
+        end
       end
       
       class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest
@@ -297,11 +317,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          collection :price_configs, as: 'priceConfigs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig::Representation
+      
           collection :region_codes, as: 'regionCodes'
           property :subscription_billing_cycle_duration, as: 'subscriptionBillingCycleDuration', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration::Representation
       
           collection :titles, as: 'titles', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount::Representation
+      
+          property :region_code, as: 'regionCode'
         end
       end
       
@@ -334,6 +365,9 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :discount_amount, as: 'discountAmount', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Amount::Representation
+      
+          property :discount_ratio_micros, :numeric_string => true, as: 'discountRatioMicros'
           property :recurrence_count, as: 'recurrenceCount'
         end
       end
