@@ -175,7 +175,7 @@ module Google
         end
 
         def invocation_id_header
-          "gccl-invocation-id#{SecureRandom.uuid}"
+          "gccl-invocation-id/#{SecureRandom.uuid}"
         end
 
         # Attempt to parse a JSON error message
