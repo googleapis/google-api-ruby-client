@@ -18,6 +18,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/errors'
 require 'json'
 require 'retriable'
+require "securerandom"
 
 module Google
   module Apis
@@ -161,6 +162,7 @@ module Google
           xgac = "gl-ruby/#{RUBY_VERSION} gdcl/#{munged_client_version}"
           xgac = old_xgac.empty? ? xgac : "#{old_xgac} #{xgac}"
           header.delete_if { |k, v| k.downcase == 'x-goog-api-client' }
+          xgac += invocation_id_header if options.add_invocation_id_header
           header['X-Goog-Api-Client'] = xgac
         end
 
@@ -170,6 +172,10 @@ module Google
             quota_project_id = options.authorization.quota_project_id
           end
           header['X-Goog-User-Project'] = quota_project_id if quota_project_id
+        end
+
+        def invocation_id_header
+          "gccl-invocation-id#{SecureRandom.uuid}"
         end
 
         # Attempt to parse a JSON error message

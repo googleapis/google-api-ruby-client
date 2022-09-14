@@ -84,6 +84,12 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       command.prepare!
       expect(command.header['X-Goog-User-Project']).to eql "c_project_id"
     end
+
+    it "should set the gccl-invocation-id to a random UUID" do
+      command.options.add_invocation_id_header = true
+      command.prepare!
+      expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
+    end
   end
 
   context('with a request body') do
