@@ -106,7 +106,8 @@ module Google
         # @return [String]
         attr_accessor :gender
       
-        # Grocery Attributes. For more information, see go/mfc-nutrition-attributes.
+        # Grocery Attributes. See more at https://support.google.com/manufacturers/
+        # answer/12098458#grocery.
         # Corresponds to the JSON property `grocery`
         # @return [Google::Apis::ManufacturersV1::Grocery]
         attr_accessor :grocery
@@ -147,7 +148,8 @@ module Google
         # @return [String]
         attr_accessor :mpn
       
-        # Nutrition Attributes. For more information, see go/mfc-nutrition-attributes.
+        # Nutrition Attributes. See more at https://support.google.com/manufacturers/
+        # answer/12098458#food-servings.
         # Corresponds to the JSON property `nutrition`
         # @return [Google::Apis::ManufacturersV1::Nutrition]
         attr_accessor :nutrition
@@ -433,7 +435,7 @@ module Google
         end
       end
       
-      # Combination of float amout and unit.
+      # Combination of float amount and unit.
       class FloatUnit
         include Google::Apis::Core::Hashable
       
@@ -650,7 +652,7 @@ module Google
       class Nutrition
         include Google::Apis::Core::Hashable
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `addedSugars`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :added_sugars
@@ -660,7 +662,7 @@ module Google
         # @return [Float]
         attr_accessor :added_sugars_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `calcium`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :calcium
@@ -670,7 +672,7 @@ module Google
         # @return [Float]
         attr_accessor :calcium_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `cholesterol`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :cholesterol
@@ -680,7 +682,7 @@ module Google
         # @return [Float]
         attr_accessor :cholesterol_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `dietaryFiber`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :dietary_fiber
@@ -690,12 +692,12 @@ module Google
         # @return [Float]
         attr_accessor :dietary_fiber_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `energy`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :energy
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `energyFromFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :energy_from_fat
@@ -705,7 +707,7 @@ module Google
         # @return [Float]
         attr_accessor :folate_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `folateFolicAcid`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :folate_folic_acid
@@ -715,7 +717,7 @@ module Google
         # @return [Float]
         attr_accessor :folate_mcg_dfe
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `iron`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :iron
@@ -725,7 +727,7 @@ module Google
         # @return [Float]
         attr_accessor :iron_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `monounsaturatedFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :monounsaturated_fat
@@ -735,17 +737,17 @@ module Google
         # @return [String]
         attr_accessor :nutrition_fact_measure
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `polyols`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :polyols
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `polyunsaturatedFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :polyunsaturated_fat
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `potassium`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :potassium
@@ -760,7 +762,7 @@ module Google
         # @return [String]
         attr_accessor :prepared_size_description
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `protein`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :protein
@@ -770,7 +772,7 @@ module Google
         # @return [Float]
         attr_accessor :protein_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `saturatedFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :saturated_fat
@@ -785,7 +787,7 @@ module Google
         # @return [String]
         attr_accessor :serving_size_description
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `servingSizeMeasure`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :serving_size_measure
@@ -795,7 +797,7 @@ module Google
         # @return [String]
         attr_accessor :servings_per_container
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `sodium`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :sodium
@@ -805,12 +807,12 @@ module Google
         # @return [Float]
         attr_accessor :sodium_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `starch`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :starch
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `totalCarbohydrate`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :total_carbohydrate
@@ -820,7 +822,7 @@ module Google
         # @return [Float]
         attr_accessor :total_carbohydrate_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `totalFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :total_fat
@@ -830,7 +832,7 @@ module Google
         # @return [Float]
         attr_accessor :total_fat_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `totalSugars`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :total_sugars
@@ -840,7 +842,7 @@ module Google
         # @return [Float]
         attr_accessor :total_sugars_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `transFat`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :trans_fat
@@ -850,7 +852,7 @@ module Google
         # @return [Float]
         attr_accessor :trans_fat_daily_percentage
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `vitaminD`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :vitamin_d
@@ -1058,7 +1060,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Combination of float amout and unit.
+        # Combination of float amount and unit.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::ManufacturersV1::FloatUnit]
         attr_accessor :value
