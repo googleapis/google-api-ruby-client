@@ -137,6 +137,14 @@ module Google
         # @return [String]
         attr_accessor :compliance_regime
       
+        # Output only. Urls for services which are compliant for this Assured Workload,
+        # but which are currently disallowed by the ResourceUsageRestriction org policy.
+        # Invoke RestrictAllowedResources endpoint to allow your project developers to
+        # use these services in their environment."
+        # Corresponds to the JSON property `compliantButDisallowedServices`
+        # @return [Array<String>]
+        attr_accessor :compliant_but_disallowed_services
+      
         # Output only. Immutable. The Workload creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -218,6 +226,7 @@ module Google
         def update!(**args)
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)

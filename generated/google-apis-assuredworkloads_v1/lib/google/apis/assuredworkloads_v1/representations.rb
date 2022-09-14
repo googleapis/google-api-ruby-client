@@ -263,6 +263,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_account, as: 'billingAccount'
           property :compliance_regime, as: 'complianceRegime'
+          collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :enable_sovereign_controls, as: 'enableSovereignControls'
