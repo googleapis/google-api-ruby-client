@@ -868,6 +868,121 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retries the specified Job in a Rollout.
+        # @param [String] rollout
+        #   Required. Name of the Rollout. Format is projects/`project`/locations/`
+        #   location`/deliveryPipelines/`deliveryPipeline`/ releases/`release`/rollouts/`
+        #   rollout`.
+        # @param [Google::Apis::ClouddeployV1::RetryJobRequest] retry_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::RetryJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::RetryJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retry_rollout_job(rollout, retry_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+rollout}:retryJob', options)
+          command.request_representation = Google::Apis::ClouddeployV1::RetryJobRequest::Representation
+          command.request_object = retry_job_request_object
+          command.response_representation = Google::Apis::ClouddeployV1::RetryJobResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::RetryJobResponse
+          command.params['rollout'] = rollout unless rollout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single JobRun.
+        # @param [String] name
+        #   Required. Name of the `JobRun`. Format must be projects/`project_id`/locations/
+        #   `location_name`/deliveryPipelines/`pipeline_name`/releases/`release_name`/
+        #   rollouts/`rollout_name`/jobRuns/`job_run_name`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::JobRun] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::JobRun]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_delivery_pipeline_release_rollout_job_run(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ClouddeployV1::JobRun::Representation
+          command.response_class = Google::Apis::ClouddeployV1::JobRun
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists JobRuns in a given project and location.
+        # @param [String] parent
+        #   Required. The `Rollout` which owns this collection of `JobRun` objects.
+        # @param [String] filter
+        #   Optional. Filter results to be returned. See https://google.aip.dev/160 for
+        #   more details.
+        # @param [String] order_by
+        #   Optional. Field to sort by. See https://google.aip.dev/132#ordering for more
+        #   details.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `JobRun` objects to return. The service may
+        #   return fewer than this value. If unspecified, at most 50 `JobRun` objects will
+        #   be returned. The maximum value is 1000; values above 1000 will be set to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListJobRuns` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other provided
+        #   parameters match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClouddeployV1::ListJobRunsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClouddeployV1::ListJobRunsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_delivery_pipeline_release_rollout_job_runs(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/jobRuns', options)
+          command.response_representation = Google::Apis::ClouddeployV1::ListJobRunsResponse::Representation
+          command.response_class = Google::Apis::ClouddeployV1::ListJobRunsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.

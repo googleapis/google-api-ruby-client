@@ -124,6 +124,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeployJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentJobs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,7 +166,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDeliveryPipelinesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListJobRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Phase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PipelineCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetryJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rollout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,7 +340,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Standard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Strategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +395,18 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyJobRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +556,31 @@ module Google
         end
       end
       
+      class DeployJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeployJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build, as: 'build'
+          property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
+        end
+      end
+      
+      class DeploymentJobs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deploy_job, as: 'deployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
+          property :verify_job, as: 'verifyJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -517,10 +620,52 @@ module Google
         end
       end
       
+      class Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deploy_job, as: 'deployJob', class: Google::Apis::ClouddeployV1::DeployJob, decorator: Google::Apis::ClouddeployV1::DeployJob::Representation
+      
+          property :id, as: 'id'
+          property :job_run, as: 'jobRun'
+          property :state, as: 'state'
+          property :verify_job, as: 'verifyJob', class: Google::Apis::ClouddeployV1::VerifyJob, decorator: Google::Apis::ClouddeployV1::VerifyJob::Representation
+      
+        end
+      end
+      
+      class JobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :deploy_job_run, as: 'deployJobRun', class: Google::Apis::ClouddeployV1::DeployJobRun, decorator: Google::Apis::ClouddeployV1::DeployJobRun::Representation
+      
+          property :end_time, as: 'endTime'
+          property :etag, as: 'etag'
+          property :job_id, as: 'jobId'
+          property :name, as: 'name'
+          property :phase_id, as: 'phaseId'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :verify_job_run, as: 'verifyJobRun', class: Google::Apis::ClouddeployV1::VerifyJobRun, decorator: Google::Apis::ClouddeployV1::VerifyJobRun::Representation
+      
+        end
+      end
+      
       class ListDeliveryPipelinesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :delivery_pipelines, as: 'deliveryPipelines', class: Google::Apis::ClouddeployV1::DeliveryPipeline, decorator: Google::Apis::ClouddeployV1::DeliveryPipeline::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListJobRunsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :job_runs, as: 'jobRuns', class: Google::Apis::ClouddeployV1::JobRun, decorator: Google::Apis::ClouddeployV1::JobRun::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -619,6 +764,16 @@ module Google
         end
       end
       
+      class Phase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_jobs, as: 'deploymentJobs', class: Google::Apis::ClouddeployV1::DeploymentJobs, decorator: Google::Apis::ClouddeployV1::DeploymentJobs::Representation
+      
+          property :id, as: 'id'
+          property :state, as: 'state'
+        end
+      end
+      
       class PipelineCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -705,6 +860,20 @@ module Google
         end
       end
       
+      class RetryJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, as: 'jobId'
+          property :phase_id, as: 'phaseId'
+        end
+      end
+      
+      class RetryJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Rollout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -724,6 +893,8 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::Metadata, decorator: Google::Apis::ClouddeployV1::Metadata::Representation
       
           property :name, as: 'name'
+          collection :phases, as: 'phases', class: Google::Apis::ClouddeployV1::Phase, decorator: Google::Apis::ClouddeployV1::Phase::Representation
+      
           property :state, as: 'state'
           property :target_id, as: 'targetId'
           property :uid, as: 'uid'
@@ -772,7 +943,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :profiles, as: 'profiles'
+          property :strategy, as: 'strategy', class: Google::Apis::ClouddeployV1::Strategy, decorator: Google::Apis::ClouddeployV1::Strategy::Representation
+      
           property :target_id, as: 'targetId'
+        end
+      end
+      
+      class Standard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verify, as: 'verify'
         end
       end
       
@@ -782,6 +962,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Strategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard, as: 'standard', class: Google::Apis::ClouddeployV1::Standard, decorator: Google::Apis::ClouddeployV1::Standard::Representation
+      
         end
       end
       
@@ -857,6 +1045,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class VerifyJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class VerifyJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_uri, as: 'artifactUri'
+          property :build, as: 'build'
+          property :event_log_path, as: 'eventLogPath'
+          property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
         end
       end
     end
