@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshDataPlaneManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -667,6 +673,7 @@ module Google
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_vertical_scale, as: 'allowVerticalScale'
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
@@ -1265,10 +1272,20 @@ module Google
         end
       end
       
+      class ServiceMeshDataPlaneManagement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::GkehubV1beta::ServiceMeshStatusDetails, decorator: Google::Apis::GkehubV1beta::ServiceMeshStatusDetails::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class ServiceMeshMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :control_plane, as: 'controlPlane'
+          property :management, as: 'management'
         end
       end
       
@@ -1276,6 +1293,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :control_plane_management, as: 'controlPlaneManagement', class: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement, decorator: Google::Apis::GkehubV1beta::ServiceMeshControlPlaneManagement::Representation
+      
+          property :data_plane_management, as: 'dataPlaneManagement', class: Google::Apis::GkehubV1beta::ServiceMeshDataPlaneManagement, decorator: Google::Apis::GkehubV1beta::ServiceMeshDataPlaneManagement::Representation
       
         end
       end
