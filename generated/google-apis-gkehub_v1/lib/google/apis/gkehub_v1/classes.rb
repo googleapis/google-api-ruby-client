@@ -469,6 +469,13 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
+        # Set to true to allow the vertical scaling. Defaults to false which disallows
+        # vertical scaling.
+        # Corresponds to the JSON property `allowVerticalScale`
+        # @return [Boolean]
+        attr_accessor :allow_vertical_scale
+        alias_method :allow_vertical_scale?, :allow_vertical_scale
+      
         # Enables the installation of ConfigSync. If set to true, ConfigSync resources
         # will be created and the other ConfigSync fields will be applied if exist. If
         # set to false, all other ConfigSync fields will be ignored, ConfigSync
@@ -509,6 +516,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_vertical_scale = args[:allow_vertical_scale] if args.key?(:allow_vertical_scale)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
           @oci = args[:oci] if args.key?(:oci)
@@ -2918,6 +2926,31 @@ module Google
         end
       end
       
+      # Status of data plane management. Only reported per-member.
+      class ServiceMeshDataPlaneManagement
+        include Google::Apis::Core::Hashable
+      
+        # Explanation of the status.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::GkehubV1::ServiceMeshStatusDetails>]
+        attr_accessor :details
+      
+        # Lifecycle status of data plane management.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # **Service Mesh**: Spec for a single Membership for the servicemesh feature
       class ServiceMeshMembershipSpec
         include Google::Apis::Core::Hashable
@@ -2927,6 +2960,11 @@ module Google
         # @return [String]
         attr_accessor :control_plane
       
+        # Enables automatic Service Mesh management.
+        # Corresponds to the JSON property `management`
+        # @return [String]
+        attr_accessor :management
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2934,6 +2972,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
+          @management = args[:management] if args.key?(:management)
         end
       end
       
@@ -2947,6 +2986,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ServiceMeshControlPlaneManagement]
         attr_accessor :control_plane_management
       
+        # Status of data plane management. Only reported per-member.
+        # Corresponds to the JSON property `dataPlaneManagement`
+        # @return [Google::Apis::GkehubV1::ServiceMeshDataPlaneManagement]
+        attr_accessor :data_plane_management
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2954,6 +2998,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
+          @data_plane_management = args[:data_plane_management] if args.key?(:data_plane_management)
         end
       end
       
