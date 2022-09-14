@@ -292,8 +292,8 @@ module Google
       class CloudRunLocation
         include Google::Apis::Core::Hashable
       
-        # Required. The location where the Cloud Run Service should be located. Format
-        # is `projects/`project`/locations/`location``.
+        # Required. The location for the Cloud Run Service. Format must be `projects/`
+        # project`/locations/`location``.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -570,6 +570,77 @@ module Google
         end
       end
       
+      # A deploy Job.
+      class DeployJob
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # DeployJobRun contains information specific to a deploy `JobRun`.
+      class DeployJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the Cloud Build `Build` object that is used
+        # to deploy. Format is projects/`project`/locations/`location`/builds/`build`.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Output only. The reason the deploy failed. This will always be unspecified
+        # while the deploy is in progress or if it succeeded.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
+        # Output only. Additional information about the deploy failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build = args[:build] if args.key?(:build)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
+        end
+      end
+      
+      # Deployment job composition.
+      class DeploymentJobs
+        include Google::Apis::Core::Hashable
+      
+        # Job represents an operation for a `Rollout`.
+        # Corresponds to the JSON property `deployJob`
+        # @return [Google::Apis::ClouddeployV1::Job]
+        attr_accessor :deploy_job
+      
+        # Job represents an operation for a `Rollout`.
+        # Corresponds to the JSON property `verifyJob`
+        # @return [Google::Apis::ClouddeployV1::Job]
+        attr_accessor :verify_job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
+          @verify_job = args[:verify_job] if args.key?(:verify_job)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -736,6 +807,134 @@ module Google
         end
       end
       
+      # Job represents an operation for a `Rollout`.
+      class Job
+        include Google::Apis::Core::Hashable
+      
+        # A deploy Job.
+        # Corresponds to the JSON property `deployJob`
+        # @return [Google::Apis::ClouddeployV1::DeployJob]
+        attr_accessor :deploy_job
+      
+        # Output only. The ID of the Job.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The name of the `JobRun` responsible for the most recent
+        # invocation of this Job.
+        # Corresponds to the JSON property `jobRun`
+        # @return [String]
+        attr_accessor :job_run
+      
+        # Output only. The current state of the Job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A verify Job.
+        # Corresponds to the JSON property `verifyJob`
+        # @return [Google::Apis::ClouddeployV1::VerifyJob]
+        attr_accessor :verify_job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deploy_job = args[:deploy_job] if args.key?(:deploy_job)
+          @id = args[:id] if args.key?(:id)
+          @job_run = args[:job_run] if args.key?(:job_run)
+          @state = args[:state] if args.key?(:state)
+          @verify_job = args[:verify_job] if args.key?(:verify_job)
+        end
+      end
+      
+      # A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains
+      # information of a single `Rollout` job evaluation.
+      class JobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time at which the `JobRun` was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # DeployJobRun contains information specific to a deploy `JobRun`.
+        # Corresponds to the JSON property `deployJobRun`
+        # @return [Google::Apis::ClouddeployV1::DeployJobRun]
+        attr_accessor :deploy_job_run
+      
+        # Output only. Time at which the `JobRun` ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. This checksum is computed by the server based on the value of
+        # other fields, and may be sent on update and delete requests to ensure the
+        # client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. ID of the `Rollout` job this `JobRun` corresponds to.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Optional. Name of the `JobRun`. Format is projects/`project`/locations/`
+        # location`/ deliveryPipelines/`deliveryPipeline`/releases/`releases`/rollouts/ `
+        # rollouts`/jobRuns/`uuid`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. ID of the `Rollout` phase this `JobRun` belongs in.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        # Output only. Time at which the `JobRun` was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the `JobRun`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Unique identifier of the `JobRun`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # VerifyJobRun contains information specific to a verify `JobRun`.
+        # Corresponds to the JSON property `verifyJobRun`
+        # @return [Google::Apis::ClouddeployV1::VerifyJobRun]
+        attr_accessor :verify_job_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deploy_job_run = args[:deploy_job_run] if args.key?(:deploy_job_run)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @name = args[:name] if args.key?(:name)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @verify_job_run = args[:verify_job_run] if args.key?(:verify_job_run)
+        end
+      end
+      
       # The response object from `ListDeliveryPipelines`.
       class ListDeliveryPipelinesResponse
         include Google::Apis::Core::Hashable
@@ -763,6 +962,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delivery_pipelines = args[:delivery_pipelines] if args.key?(:delivery_pipelines)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListJobRunsResponse is the response object returned by `ListJobRuns`.
+      class ListJobRunsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `JobRun` objects.
+        # Corresponds to the JSON property `jobRuns`
+        # @return [Array<Google::Apis::ClouddeployV1::JobRun>]
+        attr_accessor :job_runs
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_runs = args[:job_runs] if args.key?(:job_runs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -961,7 +1192,7 @@ module Google
         end
       end
       
-      # Metadata surfaces information associated with a `Rollout` to the user.
+      # Metadata includes information associated with a `Rollout`.
       class Metadata
         include Google::Apis::Core::Hashable
       
@@ -1098,6 +1329,38 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Phase represents a collection of jobs that are logically grouped together for
+      # a `Rollout`.
+      class Phase
+        include Google::Apis::Core::Hashable
+      
+        # Deployment job composition.
+        # Corresponds to the JSON property `deploymentJobs`
+        # @return [Google::Apis::ClouddeployV1::DeploymentJobs]
+        attr_accessor :deployment_jobs
+      
+        # Output only. The ID of the Phase.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Current state of the Phase.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_jobs = args[:deployment_jobs] if args.key?(:deployment_jobs)
+          @id = args[:id] if args.key?(:id)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1494,6 +1757,44 @@ module Google
         end
       end
       
+      # RetryJobRequest is the request object used by `RetryJob`.
+      class RetryJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The job ID for the Job to retry.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Required. The phase ID the Job to retry belongs to.
+        # Corresponds to the JSON property `phaseId`
+        # @return [String]
+        attr_accessor :phase_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @phase_id = args[:phase_id] if args.key?(:phase_id)
+        end
+      end
+      
+      # The response object from 'RetryJob'.
+      class RetryJobResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains
       # information around a specific deployment to a `Target`.
       class Rollout
@@ -1577,7 +1878,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Metadata surfaces information associated with a `Rollout` to the user.
+        # Metadata includes information associated with a `Rollout`.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ClouddeployV1::Metadata]
         attr_accessor :metadata
@@ -1588,6 +1889,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The phases that represent the workflows of this `Rollout`.
+        # Corresponds to the JSON property `phases`
+        # @return [Array<Google::Apis::ClouddeployV1::Phase>]
+        attr_accessor :phases
       
         # Output only. Current state of the `Rollout`.
         # Corresponds to the JSON property `state`
@@ -1625,6 +1931,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @phases = args[:phases] if args.key?(:phases)
           @state = args[:state] if args.key?(:state)
           @target_id = args[:target_id] if args.key?(:target_id)
           @uid = args[:uid] if args.key?(:uid)
@@ -1796,6 +2103,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :profiles
       
+        # Strategy contains deployment strategy information.
+        # Corresponds to the JSON property `strategy`
+        # @return [Google::Apis::ClouddeployV1::Strategy]
+        attr_accessor :strategy
+      
         # The target_id to which this stage points. This field refers exclusively to the
         # last segment of a target name. For example, this field would just be `my-
         # target` (rather than `projects/project/locations/location/targets/my-target`).
@@ -1812,7 +2124,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @profiles = args[:profiles] if args.key?(:profiles)
+          @strategy = args[:strategy] if args.key?(:strategy)
           @target_id = args[:target_id] if args.key?(:target_id)
+        end
+      end
+      
+      # Standard represents the standard deployment strategy.
+      class Standard
+        include Google::Apis::Core::Hashable
+      
+        # Whether to verify a deployment.
+        # Corresponds to the JSON property `verify`
+        # @return [Boolean]
+        attr_accessor :verify
+        alias_method :verify?, :verify
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verify = args[:verify] if args.key?(:verify)
         end
       end
       
@@ -1852,6 +2185,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Strategy contains deployment strategy information.
+      class Strategy
+        include Google::Apis::Core::Hashable
+      
+        # Standard represents the standard deployment strategy.
+        # Corresponds to the JSON property `standard`
+        # @return [Google::Apis::ClouddeployV1::Standard]
+        attr_accessor :standard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @standard = args[:standard] if args.key?(:standard)
         end
       end
       
@@ -2148,6 +2500,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A verify Job.
+      class VerifyJob
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # VerifyJobRun contains information specific to a verify `JobRun`.
+      class VerifyJobRun
+        include Google::Apis::Core::Hashable
+      
+        # Output only. URI of a directory containing the verify artifacts. This contains
+        # the Skaffold event log.
+        # Corresponds to the JSON property `artifactUri`
+        # @return [String]
+        attr_accessor :artifact_uri
+      
+        # Output only. The resource name of the Cloud Build `Build` object that is used
+        # to verify. Format is projects/`project`/locations/`location`/builds/`build`.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Output only. File path of the Skaffold event log relative to the artifact URI.
+        # Corresponds to the JSON property `eventLogPath`
+        # @return [String]
+        attr_accessor :event_log_path
+      
+        # Output only. The reason the verify failed. This will always be unspecified
+        # while the verify is in progress or if it succeeded.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
+        # Output only. Additional information about the verify failure, if available.
+        # Corresponds to the JSON property `failureMessage`
+        # @return [String]
+        attr_accessor :failure_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_uri = args[:artifact_uri] if args.key?(:artifact_uri)
+          @build = args[:build] if args.key?(:build)
+          @event_log_path = args[:event_log_path] if args.key?(:event_log_path)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
+          @failure_message = args[:failure_message] if args.key?(:failure_message)
         end
       end
     end
