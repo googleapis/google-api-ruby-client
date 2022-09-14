@@ -212,6 +212,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_types
       
+        # Output only. The last time this custom constraint was updated. This represents
+        # the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint`
+        # RPC was called
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -225,6 +232,7 @@ module Google
           @method_types = args[:method_types] if args.key?(:method_types)
           @name = args[:name] if args.key?(:name)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
