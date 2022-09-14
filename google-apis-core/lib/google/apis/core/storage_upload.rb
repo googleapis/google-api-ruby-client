@@ -72,9 +72,6 @@ module Google
           else
             fail Google::Apis::ClientError, 'Invalid upload source'
           end
-          if self.upload_content_type.nil? || self.upload_content_type.empty?
-            self.upload_content_type = 'application/octet-stream'
-          end
         end
 
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
@@ -117,7 +114,7 @@ module Google
 
           request_header[CONTENT_LENGTH_HEADER] = upload_io.size.to_s
           request_header[CONTENT_TYPE_HEADER] = JSON_CONTENT_TYPE
-          request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
+          request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type unless upload_content_type.nil?
 
           response = client.post(url.to_s, query: request_query,
                          body: body,
