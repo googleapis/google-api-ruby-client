@@ -168,7 +168,6 @@ module Google
             @form_encoded = true
             self.body = Addressable::URI.form_encode(url.query_values(Array))
             self.header['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
-            self.url.query_values = {}
           else
             @form_encoded = false
           end
