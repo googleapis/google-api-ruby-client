@@ -238,37 +238,37 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bids`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bids
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidsInAuction`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bids_in_auction
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `billedImpressions`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :billed_impressions
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `impressionsWon`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :impressions_won
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `measurableImpressions`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :measurable_impressions
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `reachedQueries`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :reached_queries
@@ -280,7 +280,7 @@ module Google
         attr_accessor :row_dimensions
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `viewableImpressions`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :viewable_impressions
@@ -308,7 +308,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `impressionCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :impression_count
@@ -370,7 +370,7 @@ module Google
         attr_accessor :callout_status_id
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `impressionCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :impression_count
@@ -503,7 +503,7 @@ module Google
       # A client user is created under a client buyer and has restricted access to the
       # Marketplace and certain other sections of the Authorized Buyers UI based on
       # the role granted to the associated client buyer. The only way a new client
-      # user can be created is via accepting an email invitation (see the accounts.
+      # user can be created is through accepting an email invitation (see the accounts.
       # clients.invitations.create method). All fields are required unless otherwise
       # specified.
       class ClientUser
@@ -680,7 +680,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :agency_id
       
-        # Output only. The last update timestamp of the creative via API.
+        # Output only. The last update timestamp of the creative through the API.
         # Corresponds to the JSON property `apiUpdateTime`
         # @return [String]
         attr_accessor :api_update_time
@@ -784,7 +784,7 @@ module Google
       
         # Output only. The granular status of this ad in specific contexts. A context
         # here relates to where something ultimately serves (for example, a physical
-        # location, a platform, an HTTPS vs HTTP request, or the type of auction).
+        # location, a platform, an HTTPS versus HTTP request, or the type of auction).
         # Corresponds to the JSON property `servingRestrictions`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::ServingRestriction>]
         attr_accessor :serving_restrictions
@@ -993,7 +993,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_count
@@ -1165,8 +1165,8 @@ module Google
       
         # Optional. Proposed flight start time of the deal. This will generally be
         # stored in the granularity of one second since deal serving starts at seconds
-        # boundary. Any time specified with more granularity (e.g., in milliseconds)
-        # will be truncated towards the start of time in seconds.
+        # boundary. Any time specified with more granularity (for example, in
+        # milliseconds) will be truncated towards the start of time in seconds.
         # Corresponds to the JSON property `availableStartTime`
         # @return [String]
         attr_accessor :available_start_time
@@ -1225,8 +1225,8 @@ module Google
         attr_accessor :deal_serving_metadata
       
         # The deal terms specify the details of a Product/deal. They specify things like
-        # price per buyer, the type of pricing model (e.g., fixed price, auction) and
-        # expected impressions from the publisher.
+        # price per buyer, the type of pricing model (for example, fixed price, auction)
+        # and expected impressions from the publisher.
         # Corresponds to the JSON property `dealTerms`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::DealTerms]
         attr_accessor :deal_terms
@@ -1407,8 +1407,8 @@ module Google
       end
       
       # The deal terms specify the details of a Product/deal. They specify things like
-      # price per buyer, the type of pricing model (e.g., fixed price, auction) and
-      # expected impressions from the publisher.
+      # price per buyer, the type of pricing model (for example, fixed price, auction)
+      # and expected impressions from the publisher.
       class DealTerms
         include Google::Apis::Core::Hashable
       
@@ -1549,7 +1549,7 @@ module Google
       # A set of filters that is applied to a request for data. Within a filter set,
       # an AND operation is performed across the filters represented by each field. An
       # OR operation is performed across the filters represented by the multiple
-      # values of a repeated field, e.g., "format=VIDEO AND deal_id=12 AND (
+      # values of a repeated field, for example, "format=VIDEO AND deal_id=12 AND (
       # seller_network_id=34 OR seller_network_id=56)".
       class FilterSet
         include Google::Apis::Core::Hashable
@@ -1570,15 +1570,16 @@ module Google
         attr_accessor :breakdown_dimensions
       
         # The ID of the creative on which to filter; optional. This field may be set
-        # only for a filter set that accesses account-level troubleshooting data, i.e.,
-        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
+        # only for a filter set that accesses account-level troubleshooting data, for
+        # example, one whose name matches the `bidders/*/accounts/*/filterSets/*`
+        # pattern.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
         attr_accessor :creative_id
       
         # The ID of the deal on which to filter; optional. This field may be set only
-        # for a filter set that accesses account-level troubleshooting data, i.e., one
-        # whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
+        # for a filter set that accesses account-level troubleshooting data, for example,
+        # one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern.
         # Corresponds to the JSON property `dealId`
         # @return [Fixnum]
         attr_accessor :deal_id
@@ -1610,7 +1611,7 @@ module Google
         attr_accessor :name
       
         # The list of platforms on which to filter; may be empty. The filters
-        # represented by multiple platforms are ORed together (i.e., if non-empty,
+        # represented by multiple platforms are ORed together (for example, if non-empty,
         # results must match any one of the platforms).
         # Corresponds to the JSON property `platforms`
         # @return [Array<String>]
@@ -1631,8 +1632,8 @@ module Google
         attr_accessor :realtime_time_range
       
         # A relative date range, specified by an offset and a duration. The supported
-        # range of dates begins 30 days before today and ends today, i.e., the limits
-        # for these values are: offset_days >= 0 duration_days >= 1 offset_days +
+        # range of dates begins 30 days before today and ends today, for example, the
+        # limits for these values are: offset_days >= 0 duration_days >= 1 offset_days +
         # duration_days <= 30
         # Corresponds to the JSON property `relativeDateRange`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::RelativeDateRange]
@@ -1640,15 +1641,15 @@ module Google
       
         # For Authorized Buyers only. The list of IDs of the seller (publisher) networks
         # on which to filter; may be empty. The filters represented by multiple seller
-        # network IDs are ORed together (i.e., if non-empty, results must match any one
-        # of the publisher networks). See [seller-network-ids](https://developers.google.
-        # com/authorized-buyers/rtb/downloads/seller-network-ids) file for the set of
-        # existing seller network IDs.
+        # network IDs are ORed together (for example, if non-empty, results must match
+        # any one of the publisher networks). See [seller-network-ids](https://
+        # developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file
+        # for the set of existing seller network IDs.
         # Corresponds to the JSON property `sellerNetworkIds`
         # @return [Array<Fixnum>]
         attr_accessor :seller_network_ids
       
-        # The granularity of time intervals if a time series breakdown is desired;
+        # The granularity of time intervals if a time series breakdown is preferred;
         # optional.
         # Corresponds to the JSON property `timeSeriesGranularity`
         # @return [String]
@@ -1683,7 +1684,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_count
@@ -1712,13 +1713,13 @@ module Google
       end
       
       # The number of filtered bids with the specified dimension values, among those
-      # filtered due to the requested filtering reason (i.e. creative status), that
-      # have the specified detail.
+      # filtered due to the requested filtering reason (for example, creative status),
+      # that have the specified detail.
       class FilteredBidDetailRow
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_count
@@ -1952,25 +1953,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `availableImpressions`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :available_impressions
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidRequests`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_requests
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `inventoryMatches`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :inventory_matches
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `responsesWithBids`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :responses_with_bids
@@ -1982,7 +1983,7 @@ module Google
         attr_accessor :row_dimensions
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `successfulResponses`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :successful_responses
@@ -2375,8 +2376,8 @@ module Google
       class ListFilteredBidsResponse
         include Google::Apis::Core::Hashable
       
-        # List of rows, with counts of filtered bids aggregated by filtering reason (i.e.
-        # creative status).
+        # List of rows, with counts of filtered bids aggregated by filtering reason (for
+        # example, creative status).
         # Corresponds to the JSON property `creativeStatusRows`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow>]
         attr_accessor :creative_status_rows
@@ -2431,8 +2432,8 @@ module Google
       class ListLosingBidsResponse
         include Google::Apis::Core::Hashable
       
-        # List of rows, with counts of losing bids aggregated by loss reason (i.e.
-        # creative status).
+        # List of rows, with counts of losing bids aggregated by loss reason (for
+        # example, creative status).
         # Corresponds to the JSON property `creativeStatusRows`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::CreativeStatusRow>]
         attr_accessor :creative_status_rows
@@ -2562,9 +2563,9 @@ module Google
       class LocationContext
         include Google::Apis::Core::Hashable
       
-        # IDs representing the geo location for this context. Please refer to the [geo-
-        # table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
-        # file for different geo criteria IDs.
+        # IDs representing the geo location for this context. Refer to the [geo-table.
+        # csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file
+        # for different geo criteria IDs.
         # Corresponds to the JSON property `geoCriteriaIds`
         # @return [Array<Fixnum>]
         attr_accessor :geo_criteria_ids
@@ -2600,9 +2601,9 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::InventorySizeTargeting]
         attr_accessor :inventory_size_targeting
       
-        # Represents targeting about where the ads can appear, e.g., certain sites or
-        # mobile applications. Different placement targeting types will be logically OR'
-        # ed.
+        # Represents targeting about where the ads can appear, for example, certain
+        # sites or mobile applications. Different placement targeting types will be
+        # logically OR'ed.
         # Corresponds to the JSON property `placementTargeting`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::PlacementTargeting]
         attr_accessor :placement_targeting
@@ -2632,7 +2633,7 @@ module Google
       end
       
       # A metric value, with an expected value and a variance; represents a count that
-      # may be either exact or estimated (i.e. when sampled).
+      # may be either exact or estimated (for example, when sampled).
       class MetricValue
         include Google::Apis::Core::Hashable
       
@@ -2641,12 +2642,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :value
       
-        # The variance (i.e. square of the standard deviation) of the metric value. If
-        # value is exact, variance is 0. Can be used to calculate margin of error as a
-        # percentage of value, using the following formula, where Z is the standard
-        # constant that depends on the desired size of the confidence interval (e.g. for
-        # 90% confidence interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(
-        # variance) / value
+        # The variance (for example, square of the standard deviation) of the metric
+        # value. If value is exact, variance is 0. Can be used to calculate margin of
+        # error as a percentage of value, using the following formula, where Z is the
+        # standard constant that depends on the preferred size of the confidence
+        # interval (for example, for 90% confidence interval, use Z = 1.645):
+        # marginOfError = 100 * Z * sqrt(variance) / value
         # Corresponds to the JSON property `variance`
         # @return [Fixnum]
         attr_accessor :variance
@@ -2822,7 +2823,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A metric value, with an expected value and a variance; represents a count that
-        # may be either exact or estimated (i.e. when sampled).
+        # may be either exact or estimated (for example, when sampled).
         # Corresponds to the JSON property `bidCount`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_count
@@ -3016,9 +3017,9 @@ module Google
         end
       end
       
-      # Represents targeting about where the ads can appear, e.g., certain sites or
-      # mobile applications. Different placement targeting types will be logically OR'
-      # ed.
+      # Represents targeting about where the ads can appear, for example, certain
+      # sites or mobile applications. Different placement targeting types will be
+      # logically OR'ed.
       class PlacementTargeting
         include Google::Apis::Core::Hashable
       
@@ -3027,7 +3028,7 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MobileApplicationTargeting]
         attr_accessor :mobile_application_targeting
       
-        # Represents a list of targeted and excluded URLs (e.g., google.com). For
+        # Represents a list of targeted and excluded URLs (for example, google.com). For
         # Private Auction and AdX Preferred Deals, URLs are either included or excluded.
         # For Programmatic Guaranteed and Preferred Deals, this doesn't apply.
         # Corresponds to the JSON property `urlTargeting`
@@ -3147,7 +3148,7 @@ module Google
         end
       end
       
-      # A product is a segment of inventory that a seller wishes to sell. It is
+      # A product is a segment of inventory that a seller wants to sell. It is
       # associated with certain terms and targeting information which helps the buyer
       # know more about the inventory.
       class Product
@@ -3225,8 +3226,8 @@ module Google
         attr_accessor :targeting_criterion
       
         # The deal terms specify the details of a Product/deal. They specify things like
-        # price per buyer, the type of pricing model (e.g., fixed price, auction) and
-        # expected impressions from the publisher.
+        # price per buyer, the type of pricing model (for example, fixed price, auction)
+        # and expected impressions from the publisher.
         # Corresponds to the JSON property `terms`
         # @return [Google::Apis::Adexchangebuyer2V2beta1::DealTerms]
         attr_accessor :terms
@@ -3598,20 +3599,20 @@ module Google
       end
       
       # A relative date range, specified by an offset and a duration. The supported
-      # range of dates begins 30 days before today and ends today, i.e., the limits
-      # for these values are: offset_days >= 0 duration_days >= 1 offset_days +
+      # range of dates begins 30 days before today and ends today, for example, the
+      # limits for these values are: offset_days >= 0 duration_days >= 1 offset_days +
       # duration_days <= 30
       class RelativeDateRange
         include Google::Apis::Core::Hashable
       
-        # The number of days in the requested date range, e.g., for a range spanning
-        # today: 1. For a range spanning the last 7 days: 7.
+        # The number of days in the requested date range, for example, for a range
+        # spanning today: 1. For a range spanning the last 7 days: 7.
         # Corresponds to the JSON property `durationDays`
         # @return [Fixnum]
         attr_accessor :duration_days
       
         # The end date of the filter set, specified as the number of days before today,
-        # e.g., for a range where the last date is today: 0.
+        # for example, for a range where the last date is today: 0.
         # Corresponds to the JSON property `offsetDays`
         # @return [Fixnum]
         attr_accessor :offset_days
@@ -3805,8 +3806,8 @@ module Google
       
       # Output only. A representation of the status of an ad in a specific context. A
       # context here relates to where something ultimately serves (for example, a user
-      # or publisher geo, a platform, an HTTPS vs HTTP request, or the type of auction)
-      # .
+      # or publisher geo, a platform, an HTTPS versus HTTP request, or the type of
+      # auction).
       class ServingRestriction
         include Google::Apis::Core::Hashable
       
@@ -3822,7 +3823,7 @@ module Google
       
         # Any disapprovals bound to this restriction. Only present if status=DISAPPROVED.
         # Can be used to filter the response of the creatives.list method. Deprecated;
-        # please use disapproval field instead.
+        # use disapproval field instead.
         # Corresponds to the JSON property `disapprovalReasons`
         # @return [Array<Google::Apis::Adexchangebuyer2V2beta1::Disapproval>]
         attr_accessor :disapproval_reasons
@@ -4060,7 +4061,7 @@ module Google
         end
       end
       
-      # Represents a list of targeted and excluded URLs (e.g., google.com). For
+      # Represents a list of targeted and excluded URLs (for example, google.com). For
       # Private Auction and AdX Preferred Deals, URLs are either included or excluded.
       # For Programmatic Guaranteed and Preferred Deals, this doesn't apply.
       class UrlTargeting
