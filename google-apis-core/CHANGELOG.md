@@ -1,5 +1,11 @@
 # Release History
 
+### 0.7.2 (2022-09-15)
+
+#### Bug Fixes
+
+* do not reset query_values in case of form encoding ([#11654](https://github.com/googleapis/google-api-ruby-client/issues/11654)) 
+
 ### 0.7.1 (2022-09-14)
 
 #### Bug Fixes
