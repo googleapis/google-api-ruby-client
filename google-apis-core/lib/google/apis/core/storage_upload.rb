@@ -141,9 +141,9 @@ module Google
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = sprintf('bytes %d-%d/%d', @offset, @offset+current_chunk_size-1, upload_io.size)
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
-          body = upload_io.read(current_chunk_size)
+          chunk_body = upload_io.read(current_chunk_size)
 
-          response = client.put(@upload_url, body: body, header: request_header, follow_redirect: true)
+          response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
 
           result = process_response(response.status_code, response.header, response.body)
           @upload_incomplete = false if response.status_code.eql? OK_STATUS
