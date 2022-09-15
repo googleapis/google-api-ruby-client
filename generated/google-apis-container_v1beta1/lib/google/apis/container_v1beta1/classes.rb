@@ -300,8 +300,8 @@ module Google
         # values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
         # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
         # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be
-        # specified using https://cloud.google.com/requested-min-cpu-platform label
+        # specify-min-cpu-platform). This field is deprecated, min_cpu_platform should
+        # be specified using https://cloud.google.com/requested-min-cpu-platform label
         # selector on the pod. To unset the min cpu platform field pass "automatic" as
         # field value.
         # Corresponds to the JSON property `minCpuPlatform`
@@ -1422,6 +1422,11 @@ module Google
         # @return [String]
         attr_accessor :desired_node_pool_id
       
+        # NodePoolLoggingConfig specifies logging configuration for nodepools.
+        # Corresponds to the JSON property `desiredNodePoolLoggingConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
+        attr_accessor :desired_node_pool_logging_config
+      
         # The Kubernetes version to change the nodes to (typically an upgrade). Users
         # may specify either explicit versions offered by Kubernetes Engine or version
         # aliases, which have the following behavior: - "latest": picks the highest
@@ -1542,6 +1547,7 @@ module Google
           @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
+          @desired_node_pool_logging_config = args[:desired_node_pool_logging_config] if args.key?(:desired_node_pool_logging_config)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_notification_config = args[:desired_notification_config] if args.key?(:desired_notification_config)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
@@ -2926,6 +2932,25 @@ module Google
         end
       end
       
+      # LoggingVariantConfig specifies the behaviour of the logging component.
+      class LoggingVariantConfig
+        include Google::Apis::Core::Hashable
+      
+        # Logging variant deployed on nodes.
+        # Corresponds to the JSON property `variant`
+        # @return [String]
+        attr_accessor :variant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variant = args[:variant] if args.key?(:variant)
+        end
+      end
+      
       # Represents the Maintenance exclusion option.
       class MaintenanceExclusionOptions
         include Google::Apis::Core::Hashable
@@ -3528,6 +3553,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :local_ssd_count
       
+        # NodePoolLoggingConfig specifies logging configuration for nodepools.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
+        attr_accessor :logging_config
+      
         # The name of a Google Compute Engine [machine type](https://cloud.google.com/
         # compute/docs/machine-types). If unspecified, the default machine type is `e2-
         # medium`.
@@ -3558,7 +3588,7 @@ module Google
         # friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `
         # minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to
         # specify min CPU platform](https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform)
+        # specify-min-cpu-platform).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -3663,6 +3693,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -3689,6 +3720,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
         attr_accessor :gcfs_config
       
+        # NodePoolLoggingConfig specifies logging configuration for nodepools.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
+        attr_accessor :logging_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3696,6 +3732,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
         end
       end
       
@@ -4137,6 +4174,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @node_config_defaults = args[:node_config_defaults] if args.key?(:node_config_defaults)
+        end
+      end
+      
+      # NodePoolLoggingConfig specifies logging configuration for nodepools.
+      class NodePoolLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # LoggingVariantConfig specifies the behaviour of the logging component.
+        # Corresponds to the JSON property `variantConfig`
+        # @return [Google::Apis::ContainerV1beta1::LoggingVariantConfig]
+        attr_accessor :variant_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variant_config = args[:variant_config] if args.key?(:variant_config)
         end
       end
       
@@ -4662,8 +4718,8 @@ module Google
         attr_accessor :consume_reservation_type
       
         # Corresponds to the label key of a reservation resource. To target a
-        # SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the
-        # key and specify the name of your reservation as its value.
+        # SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name"
+        # as the key and specify the name of your reservation as its value.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -6099,6 +6155,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :locations
       
+        # NodePoolLoggingConfig specifies logging configuration for nodepools.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolLoggingConfig]
+        attr_accessor :logging_config
+      
         # The name (project, location, cluster, node pool) of the node pool to update.
         # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
@@ -6196,6 +6257,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
