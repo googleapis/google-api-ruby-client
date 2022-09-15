@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -634,6 +640,7 @@ module Google
           property :name, as: 'name'
           property :next_steps, as: 'nextSteps'
           property :parent, as: 'parent'
+          property :parent_display_name, as: 'parentDisplayName'
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
       
           property :resource_name, as: 'resourceName'
@@ -741,6 +748,15 @@ module Google
           property :project, as: 'project'
           property :project_display_name, as: 'projectDisplayName'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :resource_value, as: 'resourceValue'
+          collection :tag_values, as: 'tagValues'
         end
       end
       

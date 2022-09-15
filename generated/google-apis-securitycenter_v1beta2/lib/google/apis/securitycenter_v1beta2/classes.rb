@@ -977,6 +977,12 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Output only. The human readable display name of the finding source such as "
+        # Event Threat Detection" or "Security Health Analytics"
+        # Corresponds to the JSON property `parentDisplayName`
+        # @return [String]
+        attr_accessor :parent_display_name
+      
         # Represents operating system processes associated with the Finding.
         # Corresponds to the JSON property `processes`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Process>]
@@ -1054,6 +1060,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_steps = args[:next_steps] if args.key?(:next_steps)
           @parent = args[:parent] if args.key?(:parent)
+          @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @processes = args[:processes] if args.key?(:processes)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @security_marks = args[:security_marks] if args.key?(:security_marks)
@@ -1459,6 +1466,40 @@ module Google
           @project = args[:project] if args.key?(:project)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A resource value config is a mapping configuration of user's tag values to
+      # resource values. Used by the attack path simulation.
+      class GoogleCloudSecuritycenterV1ResourceValueConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name for the resource value config
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Resource value level this expression represents
+        # Corresponds to the JSON property `resourceValue`
+        # @return [String]
+        attr_accessor :resource_value
+      
+        # Required. Tag values combined with AND to check against. Values in the form "
+        # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
+        # https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        # Corresponds to the JSON property `tagValues`
+        # @return [Array<String>]
+        attr_accessor :tag_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @resource_value = args[:resource_value] if args.key?(:resource_value)
+          @tag_values = args[:tag_values] if args.key?(:tag_values)
         end
       end
       
