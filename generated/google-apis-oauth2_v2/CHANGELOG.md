@@ -1,5 +1,9 @@
 # Release history for google-apis-oauth2_v2
 
+### v0.12.0 (2022-09-16)
+
+* Unspecified changes
+
 ### v0.11.0 (2022-08-13)
 
 * Regenerated using generator version 0.9.0
