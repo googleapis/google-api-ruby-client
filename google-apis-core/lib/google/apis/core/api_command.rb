@@ -18,6 +18,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/errors'
 require 'json'
 require 'retriable'
+require "securerandom"
 
 module Google
   module Apis
@@ -174,7 +175,7 @@ module Google
         end
 
         def invocation_id_header
-          "gccl-invocation-id/#{Random.uuid}"
+          "gccl-invocation-id/#{SecureRandom.uuid}"
         end
 
         # Attempt to parse a JSON error message
