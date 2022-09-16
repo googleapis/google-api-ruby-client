@@ -343,11 +343,11 @@ module Google
       class Bidder
         include Google::Apis::Core::Hashable
       
-        # Output only. A flag to bypass pretargeting for private auctions and preferred
-        # deals. When true, bid requests from these nonguaranteed deals will always be
-        # sent. When false, bid requests will be subject to regular pretargeting
-        # configurations. Programmatic Guaranteed deals will always be sent to the
-        # bidder, regardless of the value for this flag. Auction packages are not
+        # Output only. An option to bypass pretargeting for private auctions and
+        # preferred deals. When true, bid requests from these nonguaranteed deals will
+        # always be sent. When false, bid requests will be subject to regular
+        # pretargeting configurations. Programmatic Guaranteed deals will always be sent
+        # to the bidder, regardless of the value for this flag. Auction packages are not
         # impacted by this value and are subject to the regular pretargeting
         # configurations.
         # Corresponds to the JSON property `bypassNonguaranteedDealsPretargeting`
@@ -404,8 +404,8 @@ module Google
       class Buyer
         include Google::Apis::Core::Hashable
       
-        # Output only. The number of creatives that this buyer submitted via the API or
-        # bid with in the last 30 days. This is counted against the maximum number of
+        # Output only. The number of creatives that this buyer submitted through the API
+        # or bid with in the last 30 days. This is counted against the maximum number of
         # active creatives.
         # Corresponds to the JSON property `activeCreativeCount`
         # @return [Fixnum]
@@ -504,7 +504,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :agency_id
       
-        # Output only. The last update timestamp of the creative via API.
+        # Output only. The last update timestamp of the creative through the API.
         # Corresponds to the JSON property `apiUpdateTime`
         # @return [String]
         attr_accessor :api_update_time
@@ -881,7 +881,7 @@ module Google
         # @return [String]
         attr_accessor :expanded_url
       
-        # HTTP error code (e.g. 404 or 5xx)
+        # HTTP error code (for example, 404 or 5xx)
         # Corresponds to the JSON property `httpError`
         # @return [Fixnum]
         attr_accessor :http_error
@@ -952,7 +952,7 @@ module Google
       class DomainCallEvidence
         include Google::Apis::Core::Hashable
       
-        # Breakdown of the most frequent domains called via HTTP by the creative.
+        # Breakdown of the most frequent domains called through HTTP by the creative.
         # Corresponds to the JSON property `topHttpCallDomains`
         # @return [Array<Google::Apis::RealtimebiddingV1::DomainCalls>]
         attr_accessor :top_http_call_domains
@@ -1578,16 +1578,16 @@ module Google
       class PolicyCompliance
         include Google::Apis::Core::Hashable
       
-        # Serving status for the given transaction type (e.g., open auction, deals) or
-        # region (e.g., China, Russia). Can be used to filter the response of the
-        # creatives.list method.
+        # Serving status for the given transaction type (for example, open auction,
+        # deals) or region (for example, China, Russia). Can be used to filter the
+        # response of the creatives.list method.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # Topics related to the policy compliance for this transaction type (e.g., open
-        # auction, deals) or region (e.g., China, Russia). Topics may be present only if
-        # status is DISAPPROVED.
+        # Topics related to the policy compliance for this transaction type (for example,
+        # open auction, deals) or region (for example, China, Russia). Topics may be
+        # present only if status is DISAPPROVED.
         # Corresponds to the JSON property `topics`
         # @return [Array<Google::Apis::RealtimebiddingV1::PolicyTopicEntry>]
         attr_accessor :topics
@@ -2307,7 +2307,7 @@ module Google
         # subscriptions/`subscription_id``. Subscription is created with pull delivery.
         # All service accounts belonging to the bidder will have read access to this
         # subscription. Subscriptions that are inactive for more than 90 days will be
-        # disabled. Please use watchCreatives to re-enable the subscription.
+        # disabled. Use watchCreatives to re-enable the subscription.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
