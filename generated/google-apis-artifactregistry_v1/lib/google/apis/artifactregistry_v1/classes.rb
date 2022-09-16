@@ -621,6 +621,35 @@ module Google
         end
       end
       
+      # A detailed representation of a GooGet artifact.
+      class KfpArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of the KFP artifact. Since users don't directly
+        # interact with this resource, the name will be derived from the associated
+        # version. For example, when version = ".../versions/sha256:abcdef...", the name
+        # will be ".../kfpArtifacts/sha256:abcdef...".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The version associated with the KFP artifact. Must follow the Semantic
+        # Versioning standard.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The response from listing docker images.
       class ListDockerImagesResponse
         include Google::Apis::Core::Hashable
@@ -1648,6 +1677,64 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+        end
+      end
+      
+      # The response to upload an artifact.
+      class UploadKfpArtifactMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The operation metadata for uploading KFP artifacts.
+      class UploadKfpArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request to upload an artifact.
+      class UploadKfpArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Description of the package version.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Tags to be created with the version.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
