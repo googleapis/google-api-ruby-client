@@ -1,5 +1,9 @@
 # Release history for google-apis-binaryauthorization_v1beta1
 
+### v0.24.0 (2022-09-16)
+
+* Unspecified changes
+
 ### v0.23.0 (2022-08-31)
 
 * Regenerated from discovery document revision 20220826
