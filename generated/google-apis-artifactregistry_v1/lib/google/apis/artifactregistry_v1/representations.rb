@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KfpArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDockerImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,24 @@ module Google
       end
       
       class UploadAptArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadKfpArtifactMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadKfpArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadKfpArtifactRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -507,6 +531,14 @@ module Google
       
           collection :yum_artifacts, as: 'yumArtifacts', class: Google::Apis::ArtifactregistryV1::YumArtifact, decorator: Google::Apis::ArtifactregistryV1::YumArtifact::Representation
       
+        end
+      end
+      
+      class KfpArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
       
@@ -782,6 +814,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apt_artifacts, as: 'aptArtifacts', class: Google::Apis::ArtifactregistryV1::AptArtifact, decorator: Google::Apis::ArtifactregistryV1::AptArtifact::Representation
       
+        end
+      end
+      
+      class UploadKfpArtifactMediaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1::Operation, decorator: Google::Apis::ArtifactregistryV1::Operation::Representation
+      
+        end
+      end
+      
+      class UploadKfpArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UploadKfpArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :tags, as: 'tags'
         end
       end
       
