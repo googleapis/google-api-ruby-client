@@ -16,7 +16,7 @@ module Google
   module Apis
     module Oauth2V2
       # Version of the google-apis-oauth2_v2 gem
-      GEM_VERSION = "0.11.0"
+      GEM_VERSION = "0.12.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.9.0"
