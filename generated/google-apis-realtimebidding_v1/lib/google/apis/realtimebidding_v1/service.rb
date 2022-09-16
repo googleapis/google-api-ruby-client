@@ -135,8 +135,8 @@ module Google
         #   123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself.
         #   So for listing creatives pertaining to bidder (`123`), you would use `buyers/
         #   123`. If you want to access all creatives pertaining to both the bidder and
-        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, e.g.
-        #   , for all creatives pertaining to bidder (`123`), use `bidders/123`.
+        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, for
+        #   example, for all creatives pertaining to bidder (`123`), use `bidders/123`.
         # @param [String] filter
         #   Query string to filter creatives. If no filter is specified, all active
         #   creatives will be returned. Example: 'accountId=12345 AND (dealsStatus:
@@ -144,7 +144,7 @@ module Google
         #   IS_COOKIE_TARGETED'
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer creatives than requested (due
-        #   to timeout constraint) even if more are available via another call. If
+        #   to timeout constraint) even if more are available through another call. If
         #   unspecified, server will pick an appropriate default. Acceptable values are 1
         #   to 1000, inclusive.
         # @param [String] page_token
@@ -908,7 +908,7 @@ module Google
         #   createTime DESC'.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested (due
-        #   to timeout constraint) even if more are available via another call. If
+        #   to timeout constraint) even if more are available through another call. If
         #   unspecified, the server will pick an appropriate default. Acceptable values
         #   are 1 to 5000, inclusive.
         # @param [String] page_token
@@ -1139,8 +1139,8 @@ module Google
         #   123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself.
         #   So for listing creatives pertaining to bidder (`123`), you would use `buyers/
         #   123`. If you want to access all creatives pertaining to both the bidder and
-        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, e.g.
-        #   , for all creatives pertaining to bidder (`123`), use `bidders/123`.
+        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, for
+        #   example, for all creatives pertaining to bidder (`123`), use `bidders/123`.
         # @param [String] filter
         #   Query string to filter creatives. If no filter is specified, all active
         #   creatives will be returned. Example: 'accountId=12345 AND (dealsStatus:
@@ -1148,7 +1148,7 @@ module Google
         #   IS_COOKIE_TARGETED'
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer creatives than requested (due
-        #   to timeout constraint) even if more are available via another call. If
+        #   to timeout constraint) even if more are available through another call. If
         #   unspecified, server will pick an appropriate default. Acceptable values are 1
         #   to 1000, inclusive.
         # @param [String] page_token
