@@ -98,9 +98,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute(client)
+        def execute(client, &block)
           prepare!
           opencensus_begin_span
+          do_retry :execute_once, client, &block
+        ensure
+          opencensus_end_span
+          @http_res = nil
+          release!
+        end
+
+        def do_retry func, client
           begin
             Retriable.retriable tries: options.retries + 1,
                                 max_elapsed_time: options.max_elapsed_time,
@@ -115,7 +123,7 @@ module Google
               Retriable.retriable tries: auth_tries,
                                   on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
                                   on_retry: proc { |*| refresh_authorization } do
-                execute_once(client).tap do |result|
+                send(func, client).tap do |result|
                   if block_given?
                     yield result, nil
                   end
@@ -129,10 +137,6 @@ module Google
               raise e
             end
           end
-        ensure
-          opencensus_end_span
-          @http_res = nil
-          release!
         end
 
         # Refresh the authorization authorization after a 401 error
@@ -216,7 +220,7 @@ module Google
         def check_status(status, header = nil, body = nil, message = nil)
           # TODO: 304 Not Modified depends on context...
           case status
-          when 200...300
+          when 200...300, 308
             nil
           when 301, 302, 303, 307
             message ||= sprintf('Redirect to %s', header['Location'])
