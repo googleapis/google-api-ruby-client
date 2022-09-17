@@ -153,31 +153,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -213,11 +215,11 @@ module Google
         end
       end
       
-      # Wrapper for cloud function attributes.
+      # Wrapper for Cloud Function attributes.
       class CloudFunctionEndpoint
         include Google::Apis::Core::Hashable
       
-        # A [Cloud function](https://cloud.google.com/functions) name.
+        # A [Cloud Function](https://cloud.google.com/functions) name.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -232,26 +234,26 @@ module Google
         end
       end
       
-      # For display only. Metadata associated with a Cloud function.
+      # For display only. Metadata associated with a Cloud Function.
       class CloudFunctionInfo
         include Google::Apis::Core::Hashable
       
-        # Name of a Cloud function.
+        # Name of a Cloud Function.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Location in which the Cloud function is deployed.
+        # Location in which the Cloud Function is deployed.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # URI of a Cloud function.
+        # URI of a Cloud Function.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
       
-        # Latest successfully deployed version id of the Cloud function.
+        # Latest successfully deployed version id of the Cloud Function.
         # Corresponds to the JSON property `versionId`
         # @return [Fixnum]
         attr_accessor :version_id
@@ -497,7 +499,7 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
-        # Wrapper for cloud function attributes.
+        # Wrapper for Cloud Function attributes.
         # Corresponds to the JSON property `cloudFunction`
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint]
         attr_accessor :cloud_function
@@ -1760,7 +1762,7 @@ module Google
         attr_accessor :causes_drop
         alias_method :causes_drop?, :causes_drop
       
-        # For display only. Metadata associated with a Cloud function.
+        # For display only. Metadata associated with a Cloud Function.
         # Corresponds to the JSON property `cloudFunction`
         # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo]
         attr_accessor :cloud_function
