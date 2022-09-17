@@ -1,5 +1,9 @@
 # Release history for google-apis-streetviewpublish_v1
 
+### v0.22.0 (2022-09-17)
+
+* Regenerated from discovery document revision 20220722
+
 ### v0.21.0 (2022-07-22)
 
 * Regenerated from discovery document revision 20220720
