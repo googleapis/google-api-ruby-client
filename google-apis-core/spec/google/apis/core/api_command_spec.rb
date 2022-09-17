@@ -84,6 +84,12 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       command.prepare!
       expect(command.header['X-Goog-User-Project']).to eql "c_project_id"
     end
+
+    it "should set the gccl-invocation-id to a random UUID" do
+      command.options.add_invocation_id_header = true
+      command.prepare!
+      expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
+    end
   end
 
   context('with a request body') do
@@ -238,6 +244,16 @@ EOF
     it 'should retry' do
       command.execute(client)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')).to have_been_made.times(2)
+    end
+
+    it 'should keep same invocation_id header across retries' do
+      command.options.add_invocation_id_header = true
+      result = command.execute(client)
+      invocation_id_header = command.header["X-Goog-Api-Client"]
+      
+      expect(invocation_id_header).to include("gccl-invocation-id")
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Api-Client'] == invocation_id_header }).to have_been_made.times(2)
     end
   end
 

@@ -39,7 +39,8 @@ module Google
       :api_format_version,
       :use_opencensus,
       :quota_project,
-      :query)
+      :query,
+      :add_invocation_id_header)
 
     # General client options
     class ClientOptions
@@ -95,6 +96,8 @@ module Google
       #   @return [String] Project ID to charge quota, or `nil` to default to the credentials-specified project.
       # @!attribute [rw] query
       #   @return [Hash<String,String>] Additional HTTP URL query parameters to include in requests.
+      # @!attribute [rw] add_invocation_id_header
+      #   @return [Boolean] True if the header gccl-invocation-id need to be set
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -129,5 +132,6 @@ module Google
     RequestOptions.default.api_format_version = nil
     RequestOptions.default.use_opencensus = true
     RequestOptions.default.quota_project = nil
+    RequestOptions.default.add_invocation_id_header = false
   end
 end
