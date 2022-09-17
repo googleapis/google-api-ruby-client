@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingVariantConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenanceExclusionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +509,12 @@ module Google
       end
       
       class NodePoolDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodePoolLoggingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1121,6 +1133,8 @@ module Google
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
+          property :desired_node_pool_logging_config, as: 'desiredNodePoolLoggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
+      
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_notification_config, as: 'desiredNotificationConfig', class: Google::Apis::ContainerV1::NotificationConfig, decorator: Google::Apis::ContainerV1::NotificationConfig::Representation
       
@@ -1457,6 +1471,13 @@ module Google
         end
       end
       
+      class LoggingVariantConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :variant, as: 'variant'
+        end
+      end
+      
       class MaintenanceExclusionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1625,6 +1646,8 @@ module Google
           property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
       
           property :local_ssd_count, as: 'localSsdCount'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
+      
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -1651,6 +1674,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
+      
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
       
         end
       end
@@ -1749,6 +1774,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_config_defaults, as: 'nodeConfigDefaults', class: Google::Apis::ContainerV1::NodeConfigDefaults, decorator: Google::Apis::ContainerV1::NodeConfigDefaults::Representation
+      
+        end
+      end
+      
+      class NodePoolLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :variant_config, as: 'variantConfig', class: Google::Apis::ContainerV1::LoggingVariantConfig, decorator: Google::Apis::ContainerV1::LoggingVariantConfig::Representation
       
         end
       end
@@ -2210,6 +2243,8 @@ module Google
           property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1::LinuxNodeConfig::Representation
       
           collection :locations, as: 'locations'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1::NodePoolLoggingConfig::Representation
+      
           property :name, as: 'name'
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
       
