@@ -638,15 +638,13 @@ module Google
       class Header
         include Google::Apis::Core::Hashable
       
-        # 
+        # The key of the header.
         # Corresponds to the JSON property `key`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :key
       
-        # 
+        # The value of the header.
         # Corresponds to the JSON property `value`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :value
       
