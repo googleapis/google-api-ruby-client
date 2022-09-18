@@ -423,8 +423,8 @@ module Google
       class Header
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :key, :base64 => true, as: 'key'
-          property :value, :base64 => true, as: 'value'
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
