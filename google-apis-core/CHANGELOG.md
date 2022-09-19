@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.0 (2022-09-18)
+
+#### Features
+
+* add support to have invocation-id header ([#11655](https://github.com/googleapis/google-api-ruby-client/issues/11655)) 
+
 ### 0.8.0 (2022-09-16)
 
 #### Features
