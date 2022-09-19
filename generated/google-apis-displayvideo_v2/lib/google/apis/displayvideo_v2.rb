@@ -34,6 +34,12 @@ module Google
       # Create, see, edit, and permanently delete your Display & Video 360 entities and reports
       AUTH_DISPLAY_VIDEO = 'https://www.googleapis.com/auth/display-video'
 
+      # Create, see, and edit Display & Video 360 Campaign entities and see billing invoices
+      AUTH_DISPLAY_VIDEO_MEDIAPLANNING = 'https://www.googleapis.com/auth/display-video-mediaplanning'
+
+      # Private Service: https://www.googleapis.com/auth/display-video-user-management
+      AUTH_DISPLAY_VIDEO_USER_MANAGEMENT = 'https://www.googleapis.com/auth/display-video-user-management'
+
       # View and manage your reports in DoubleClick Bid Manager
       AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'
     end
