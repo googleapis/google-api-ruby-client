@@ -1,5 +1,10 @@
 # Release history for google-apis-tpu_v1alpha1
 
+### v0.18.0 (2022-09-19)
+
+* Regenerated from discovery document revision 20220725
+* Regenerated using generator version 0.9.0
+
 ### v0.17.0 (2022-07-02)
 
 * Regenerated using generator version 0.8.0
