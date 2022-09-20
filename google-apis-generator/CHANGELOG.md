@@ -1,5 +1,13 @@
 # Release History
 
+### 0.10.0 (2022-09-20)
+
+#### Features
+
+* Add storage upload to move away from unified upload protocol ([#11508](https://github.com/googleapis/google-api-ruby-client/issues/11508)) 
+* Update core dependency to at least 0.7.2 ([#11660](https://github.com/googleapis/google-api-ruby-client/issues/11660)) 
+* Update core dependency to at least 0.9.0 ([#11808](https://github.com/googleapis/google-api-ruby-client/issues/11808)) 
+
 ### 0.9.0 (2022-07-04)
 
 #### Features
