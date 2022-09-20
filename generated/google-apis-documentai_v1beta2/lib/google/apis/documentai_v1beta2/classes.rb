@@ -1841,8 +1841,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
-        # entity is not present in the document, this field will be empty.
+        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -3717,8 +3716,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
-        # entity is not present in the document, this field will be empty.
+        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
