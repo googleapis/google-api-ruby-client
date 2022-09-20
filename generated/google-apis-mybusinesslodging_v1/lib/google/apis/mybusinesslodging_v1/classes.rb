@@ -3849,12 +3849,14 @@ module Google
         # @return [Array<Google::Apis::MybusinesslodgingV1::EcoCertification>]
         attr_accessor :eco_certifications
       
-        # LEED certification.
+        # LEED certification. Deprecated: this field is no longer populated. LEED
+        # certification status is now provided directly by USGBC.
         # Corresponds to the JSON property `leedCertification`
         # @return [String]
         attr_accessor :leed_certification
       
-        # LEED certification exception.
+        # LEED certification exception. Deprecated: this field is no longer populated.
+        # LEED certification status is now provided directly by USGBC.
         # Corresponds to the JSON property `leedCertificationException`
         # @return [String]
         attr_accessor :leed_certification_exception
