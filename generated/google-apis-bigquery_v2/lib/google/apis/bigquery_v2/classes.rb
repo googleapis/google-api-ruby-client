@@ -1499,6 +1499,30 @@ module Google
         end
       end
       
+      # 
+      class DataMaskingStatistics
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] [Preview] Whether any accessed data was protected by data
+        # masking. The actual evaluation is done by accessStats.masked_field_count > 0.
+        # Since this is only used for the discovery_doc generation purpose, as long as
+        # the type (boolean) matches, client library can leverage this. The actual
+        # evaluation of the variable is done else-where.
+        # Corresponds to the JSON property `dataMaskingApplied`
+        # @return [Boolean]
+        attr_accessor :data_masking_applied
+        alias_method :data_masking_applied?, :data_masking_applied
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_masking_applied = args[:data_masking_applied] if args.key?(:data_masking_applied)
+        end
+      end
+      
       # Data split result. This contains references to the training and evaluation
       # data tables that were used to train the model.
       class DataSplitResult
@@ -4478,6 +4502,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
+        # [Output-only] Statistics for data masking. Present only for query and extract
+        # jobs.
+        # Corresponds to the JSON property `dataMaskingStatistics`
+        # @return [Google::Apis::BigqueryV2::DataMaskingStatistics]
+        attr_accessor :data_masking_statistics
+      
         # [Output-only] End time of this job, in milliseconds since the epoch. This
         # field will be present whenever a job is in the DONE state.
         # Corresponds to the JSON property `endTime`
@@ -4575,6 +4605,7 @@ module Google
           @completion_ratio = args[:completion_ratio] if args.key?(:completion_ratio)
           @copy = args[:copy] if args.key?(:copy)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @data_masking_statistics = args[:data_masking_statistics] if args.key?(:data_masking_statistics)
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
           @load = args[:load] if args.key?(:load)
