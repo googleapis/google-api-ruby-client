@@ -1,5 +1,9 @@
 # Release history for google-apis-resourcesettings_v1
 
+### v0.11.0 (2022-09-20)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.10.0 (2022-09-16)
 
 * Regenerated using generator version 0.9.0
