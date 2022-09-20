@@ -588,9 +588,19 @@ module Google
         end
       end
       
-      # Next Id: 6
+      # Next Id: 7
       class AppsDynamiteSharedActivityFeedAnnotationData
         include Google::Apis::Core::Hashable
+      
+        # Timestamp of when the Activity Feed message that contains this annotation was
+        # created. This is roughly when the activity happened, such as when a reaction
+        # happened, but will have at least some small delay, since the Activity Feed
+        # message is created asynchronously after. This timestamp should only be used
+        # for display when the activity create time is not available in the Chat UI,
+        # like the time of a reaction.
+        # Corresponds to the JSON property `activityFeedMessageCreateTime`
+        # @return [String]
+        attr_accessor :activity_feed_message_create_time
       
         # Primary key for Message resource.
         # Corresponds to the JSON property `activityFeedMessageId`
@@ -618,6 +628,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activity_feed_message_create_time = args[:activity_feed_message_create_time] if args.key?(:activity_feed_message_create_time)
           @activity_feed_message_id = args[:activity_feed_message_id] if args.key?(:activity_feed_message_id)
           @chat_item = args[:chat_item] if args.key?(:chat_item)
           @shared_user_info = args[:shared_user_info] if args.key?(:shared_user_info)
@@ -3086,7 +3097,7 @@ module Google
         end
       end
       
-      # Contains info on membership count for member types: HUMAN_USER, BOT_USER &
+      # Contains info on membership count for member types: HUMAN_USER, APP_USER &
       # ROSTER_MEMBER different states: INVITED, JOINED
       class AppsDynamiteSharedSegmentedMembershipCount
         include Google::Apis::Core::Hashable
@@ -9183,7 +9194,7 @@ module Google
       class GsuiteIntegrationMetadata
         include Google::Apis::Core::Hashable
       
-        # Next Id: 6
+        # Next Id: 7
         # Corresponds to the JSON property `activityFeedData`
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedActivityFeedAnnotationData]
         attr_accessor :activity_feed_data
