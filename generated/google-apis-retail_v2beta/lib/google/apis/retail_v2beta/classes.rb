@@ -1280,7 +1280,7 @@ module Google
       class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel
         include Google::Apis::Core::Hashable
       
-        # Required. The candidates to consider on the panel. Limit = 10.
+        # Required. The candidates to consider on the panel.
         # Corresponds to the JSON property `candidates`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>]
         attr_accessor :candidates
@@ -2655,6 +2655,27 @@ module Google
         end
       end
       
+      # Metadata associated with a create operation.
+      class GoogleCloudRetailV2betaCreateModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the model that this create applies to. Format: `projects/`
+        # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # `
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # A custom attribute that is not explicitly modeled in Product.
       class GoogleCloudRetailV2betaCustomAttribute
         include Google::Apis::Core::Hashable
@@ -3458,6 +3479,32 @@ module Google
         end
       end
       
+      # Merchant Center Feed filter criterrion.
+      class GoogleCloudRetailV2betaMerchantCenterFeedFilter
+        include Google::Apis::Core::Hashable
+      
+        # Merchant Center primary feed id.
+        # Corresponds to the JSON property `primaryFeedId`
+        # @return [Fixnum]
+        attr_accessor :primary_feed_id
+      
+        # Merchant Center primary feed name. The name is used for the display purposes
+        # only.
+        # Corresponds to the JSON property `primaryFeedName`
+        # @return [String]
+        attr_accessor :primary_feed_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_feed_id = args[:primary_feed_id] if args.key?(:primary_feed_id)
+          @primary_feed_name = args[:primary_feed_name] if args.key?(:primary_feed_name)
+        end
+      end
+      
       # Represents a link between a Merchant Center account and a branch. Once a link
       # is established, products from the linked merchant center account will be
       # streamed to the linked branch.
@@ -3481,6 +3528,13 @@ module Google
         # Corresponds to the JSON property `destinations`
         # @return [Array<String>]
         attr_accessor :destinations
+      
+        # Criteria for the Merchant Center feeds to be ingested via the link. All offers
+        # will be ingested if the list is empty. Otherwise the offers will be ingested
+        # from selected feeds.
+        # Corresponds to the JSON property `feeds`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterFeedFilter>]
+        attr_accessor :feeds
       
         # Language of the title/description and other string attributes. Use language
         # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
@@ -3514,6 +3568,7 @@ module Google
         def update!(**args)
           @branch_id = args[:branch_id] if args.key?(:branch_id)
           @destinations = args[:destinations] if args.key?(:destinations)
+          @feeds = args[:feeds] if args.key?(:feeds)
           @language_code = args[:language_code] if args.key?(:language_code)
           @merchant_center_account_id = args[:merchant_center_account_id] if args.key?(:merchant_center_account_id)
           @region_code = args[:region_code] if args.key?(:region_code)
@@ -3748,15 +3803,15 @@ module Google
         # do not have a stockState value of OUT_OF_STOCK. Examples: * tag=("Red" OR "
         # Blue") tag="New-Arrival" tag=(NOT "promotional") * filterOutOfStockItems tag=(-
         # "promotional") * filterOutOfStockItems If your filter blocks all prediction
-        # results, the API will return generic (unfiltered) popular products. If you
-        # only want results strictly matching the filters, set `strictFiltering` to True
-        # in `PredictRequest.params` to receive empty results instead. Note that the API
-        # will never return items with storageStatus of "EXPIRED" or "DELETED"
-        # regardless of filter choices. If `filterSyntaxV2` is set to true under the `
-        # params` field, then attribute-based expressions are expected instead of the
-        # above described tag-based syntax. Examples: * (colors: ANY("Red", "Blue")) AND
-        # NOT (categories: ANY("Phones")) * (availability: ANY("IN_STOCK")) AND (colors:
-        # ANY("Red") OR categories: ANY("Phones"))
+        # results, the API will return *no* results. If instead you want empty result
+        # sets to return generic (unfiltered) popular products, set `strictFiltering` to
+        # False in `PredictRequest.params`. Note that the API will never return items
+        # with storageStatus of "EXPIRED" or "DELETED" regardless of filter choices. If `
+        # filterSyntaxV2` is set to true under the `params` field, then attribute-based
+        # expressions are expected instead of the above described tag-based syntax.
+        # Examples: * (colors: ANY("Red", "Blue")) AND NOT (categories: ANY("Phones")) *
+        # (availability: ANY("IN_STOCK")) AND (colors: ANY("Red") OR categories: ANY("
+        # Phones"))
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -6431,9 +6486,43 @@ module Google
         end
       end
       
+      # Metadata associated with a tune operation.
+      class GoogleCloudRetailV2betaTuneModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the model that this tune applies to. Format: `projects/`
+        # project_number`/locations/`location_id`/catalogs/`catalog_id`/models/`model_id`
+        # `
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # Request to manually start a tuning process now (instead of waiting for the
       # periodically scheduled tuning to happen).
       class GoogleCloudRetailV2betaTuneModelRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response associated with a tune operation.
+      class GoogleCloudRetailV2betaTuneModelResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
