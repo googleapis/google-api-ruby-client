@@ -3104,6 +3104,7 @@ module Google
       class AppsDynamiteSharedActivityFeedAnnotationData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_feed_message_create_time, as: 'activityFeedMessageCreateTime'
           property :activity_feed_message_id, as: 'activityFeedMessageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
           property :chat_item, as: 'chatItem', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem::Representation
