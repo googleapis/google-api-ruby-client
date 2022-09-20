@@ -1299,6 +1299,38 @@ module Google
         end
       end
       
+      # Response message for 'ListReplicationCycles' request.
+      class ListReplicationCyclesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The list of replication cycles response.
+        # Corresponds to the JSON property `replicationCycles`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::ReplicationCycle>]
+        attr_accessor :replication_cycles
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @replication_cycles = args[:replication_cycles] if args.key?(:replication_cycles)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for 'ListSources' request.
       class ListSourcesResponse
         include Google::Apis::Core::Hashable
@@ -1923,10 +1955,25 @@ module Google
       class ReplicationCycle
         include Google::Apis::Core::Hashable
       
+        # The cycle's ordinal number.
+        # Corresponds to the JSON property `cycleNumber`
+        # @return [Fixnum]
+        attr_accessor :cycle_number
+      
         # The time the replication cycle has ended.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VmmigrationV1alpha1::Status]
+        attr_accessor :error
       
         # The identifier of the ReplicationCycle.
         # Corresponds to the JSON property `name`
@@ -1948,6 +1995,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # State of the MigratingVm.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The cycle's steps list representing its progress.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::VmmigrationV1alpha1::CycleStep>]
@@ -1964,11 +2016,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cycle_number = args[:cycle_number] if args.key?(:cycle_number)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
           @progress = args[:progress] if args.key?(:progress)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
           @steps = args[:steps] if args.key?(:steps)
           @total_pause_duration = args[:total_pause_duration] if args.key?(:total_pause_duration)
         end

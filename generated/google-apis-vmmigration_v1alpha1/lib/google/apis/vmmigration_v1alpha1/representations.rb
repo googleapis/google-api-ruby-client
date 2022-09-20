@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReplicationCyclesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -772,6 +778,16 @@ module Google
         end
       end
       
+      class ListReplicationCyclesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :replication_cycles, as: 'replicationCycles', class: Google::Apis::VmmigrationV1alpha1::ReplicationCycle, decorator: Google::Apis::VmmigrationV1alpha1::ReplicationCycle::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -942,11 +958,15 @@ module Google
       class ReplicationCycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cycle_number, as: 'cycleNumber'
           property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
           property :name, as: 'name'
           property :progress, as: 'progress'
           property :progress_percent, as: 'progressPercent'
           property :start_time, as: 'startTime'
+          property :state, as: 'state'
           collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::CycleStep, decorator: Google::Apis::VmmigrationV1alpha1::CycleStep::Representation
       
           property :total_pause_duration, as: 'totalPauseDuration'
