@@ -361,9 +361,39 @@ module Google
         end
       end
       
+      # Model options available for classification requests.
+      class ClassificationModelOptions
+        include Google::Apis::Core::Hashable
+      
+        # Options for the V1 model.
+        # Corresponds to the JSON property `v1Model`
+        # @return [Google::Apis::LanguageV1::V1Model]
+        attr_accessor :v1_model
+      
+        # Options for the V2 model.
+        # Corresponds to the JSON property `v2Model`
+        # @return [Google::Apis::LanguageV1::V2Model]
+        attr_accessor :v2_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @v1_model = args[:v1_model] if args.key?(:v1_model)
+          @v2_model = args[:v2_model] if args.key?(:v2_model)
+        end
+      end
+      
       # The document classification request message.
       class ClassifyTextRequest
         include Google::Apis::Core::Hashable
+      
+        # Model options available for classification requests.
+        # Corresponds to the JSON property `classificationModelOptions`
+        # @return [Google::Apis::LanguageV1::ClassificationModelOptions]
+        attr_accessor :classification_model_options
       
         # ################################################################ # Represents
         # the input to API methods.
@@ -377,6 +407,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classification_model_options = args[:classification_model_options] if args.key?(:classification_model_options)
           @document = args[:document] if args.key?(:document)
         end
       end
@@ -572,6 +603,11 @@ module Google
       class Features
         include Google::Apis::Core::Hashable
       
+        # Model options available for classification requests.
+        # Corresponds to the JSON property `classificationModelOptions`
+        # @return [Google::Apis::LanguageV1::ClassificationModelOptions]
+        attr_accessor :classification_model_options
+      
         # Classify the full document into categories.
         # Corresponds to the JSON property `classifyText`
         # @return [Boolean]
@@ -608,6 +644,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classification_model_options = args[:classification_model_options] if args.key?(:classification_model_options)
           @classify_text = args[:classify_text] if args.key?(:classify_text)
           @extract_document_sentiment = args[:extract_document_sentiment] if args.key?(:extract_document_sentiment)
           @extract_entities = args[:extract_entities] if args.key?(:extract_entities)
@@ -854,6 +891,38 @@ module Google
           @lemma = args[:lemma] if args.key?(:lemma)
           @part_of_speech = args[:part_of_speech] if args.key?(:part_of_speech)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Options for the V1 model.
+      class V1Model
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Options for the V2 model.
+      class V2Model
+        include Google::Apis::Core::Hashable
+      
+        # The content categories used for classification.
+        # Corresponds to the JSON property `contentCategoriesVersion`
+        # @return [String]
+        attr_accessor :content_categories_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_categories_version = args[:content_categories_version] if args.key?(:content_categories_version)
         end
       end
     end
