@@ -1958,7 +1958,6 @@ module Google
       
           collection :original_pipeline_transform, as: 'originalPipelineTransform', class: Google::Apis::DataflowV1b3::TransformSummary, decorator: Google::Apis::DataflowV1b3::TransformSummary::Representation
       
-          property :step_names_hash, as: 'stepNamesHash'
         end
       end
       

@@ -126,8 +126,6 @@ module Google
         # @param [String] location
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
-        # @param [String] name
-        #   Optional. The job name. Optional.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -155,14 +153,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_project_job(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def aggregated_project_job(project_id, filter: nil, location: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs:aggregated', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['location'] = location unless location.nil?
-          command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
@@ -320,8 +317,6 @@ module Google
         # @param [String] location
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
-        # @param [String] name
-        #   Optional. The job name. Optional.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -349,14 +344,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_jobs(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_jobs(project_id, filter: nil, location: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['location'] = location unless location.nil?
-          command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
@@ -921,8 +915,6 @@ module Google
         #   regional-endpoints) that contains this job.
         # @param [String] filter
         #   The kind of filter to use.
-        # @param [String] name
-        #   Optional. The job name. Optional.
         # @param [Fixnum] page_size
         #   If there are many jobs, limit response to at most this many. The actual number
         #   of jobs returned will be the lesser of max_responses and an unspecified server-
@@ -950,14 +942,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(project_id, location, filter: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(project_id, location, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?

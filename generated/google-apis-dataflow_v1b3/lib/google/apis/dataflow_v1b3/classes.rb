@@ -3509,11 +3509,6 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::TransformSummary>]
         attr_accessor :original_pipeline_transform
       
-        # A hash value of the submitted pipeline portable graph step names if exists.
-        # Corresponds to the JSON property `stepNamesHash`
-        # @return [String]
-        attr_accessor :step_names_hash
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3523,7 +3518,6 @@ module Google
           @display_data = args[:display_data] if args.key?(:display_data)
           @execution_pipeline_stage = args[:execution_pipeline_stage] if args.key?(:execution_pipeline_stage)
           @original_pipeline_transform = args[:original_pipeline_transform] if args.key?(:original_pipeline_transform)
-          @step_names_hash = args[:step_names_hash] if args.key?(:step_names_hash)
         end
       end
       
