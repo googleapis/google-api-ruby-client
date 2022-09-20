@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaCreateModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaCustomAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +713,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaLocalInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterFeedFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1090,7 +1102,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaTuneModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaTuneModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaTuneModelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1925,6 +1949,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaCreateModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
       class GoogleCloudRetailV2betaCustomAttribute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2157,11 +2188,21 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaMerchantCenterFeedFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_feed_id, :numeric_string => true, as: 'primaryFeedId'
+          property :primary_feed_name, as: 'primaryFeedName'
+        end
+      end
+      
       class GoogleCloudRetailV2betaMerchantCenterLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_id, as: 'branchId'
           collection :destinations, as: 'destinations'
+          collection :feeds, as: 'feeds', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterFeedFilter, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterFeedFilter::Representation
+      
           property :language_code, as: 'languageCode'
           property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
           property :region_code, as: 'regionCode'
@@ -2817,7 +2858,20 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaTuneModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+        end
+      end
+      
       class GoogleCloudRetailV2betaTuneModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaTuneModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
