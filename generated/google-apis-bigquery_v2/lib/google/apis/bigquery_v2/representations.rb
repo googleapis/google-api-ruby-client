@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataMaskingStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSplitResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1381,6 +1387,13 @@ module Google
         end
       end
       
+      class DataMaskingStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_masking_applied, as: 'dataMaskingApplied'
+        end
+      end
+      
       class DataSplitResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2108,6 +2121,8 @@ module Google
           property :copy, as: 'copy', class: Google::Apis::BigqueryV2::JobStatistics5, decorator: Google::Apis::BigqueryV2::JobStatistics5::Representation
       
           property :creation_time, :numeric_string => true, as: 'creationTime'
+          property :data_masking_statistics, as: 'dataMaskingStatistics', class: Google::Apis::BigqueryV2::DataMaskingStatistics, decorator: Google::Apis::BigqueryV2::DataMaskingStatistics::Representation
+      
           property :end_time, :numeric_string => true, as: 'endTime'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
       
