@@ -1,5 +1,9 @@
 # Release history for google-apis-analytics_v3
 
+### v0.11.0 (2022-09-20)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.10.0 (2022-07-02)
 
 * Regenerated using generator version 0.8.0
