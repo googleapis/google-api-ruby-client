@@ -5379,7 +5379,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The dimension name, e.g. dfa:advertiser
+        # The dimension name, e.g. advertiser
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5854,6 +5854,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Defines the filtering on a single uvar.
+        # Corresponds to the JSON property `uvarFilter`
+        # @return [Google::Apis::DfareportingV4::UvarFilter]
+        attr_accessor :uvar_filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5862,6 +5867,7 @@ module Google
         def update!(**args)
           @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
           @kind = args[:kind] if args.key?(:kind)
+          @uvar_filter = args[:uvar_filter] if args.key?(:uvar_filter)
         end
       end
       
@@ -13154,6 +13160,50 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @user_roles = args[:user_roles] if args.key?(:user_roles)
+        end
+      end
+      
+      # Defines the filtering on a single uvar.
+      class UvarFilter
+        include Google::Apis::Core::Hashable
+      
+        # Return rows which don't match this filter.
+        # Corresponds to the JSON property `complement`
+        # @return [Boolean]
+        attr_accessor :complement
+        alias_method :complement?, :complement
+      
+        # Custom variable index the filter is applied to.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The kind of resource this is, in this case dfareporting#uvarFilter.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Indicates how the filter should be matched to the values.
+        # Corresponds to the JSON property `match`
+        # @return [String]
+        attr_accessor :match
+      
+        # Values to filter on.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complement = args[:complement] if args.key?(:complement)
+          @index = args[:index] if args.key?(:index)
+          @kind = args[:kind] if args.key?(:kind)
+          @match = args[:match] if args.key?(:match)
+          @values = args[:values] if args.key?(:values)
         end
       end
       

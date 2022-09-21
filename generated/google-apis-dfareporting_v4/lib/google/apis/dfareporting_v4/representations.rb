@@ -1492,6 +1492,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UvarFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2938,6 +2944,8 @@ module Google
           property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::DfareportingV4::PathReportDimensionValue, decorator: Google::Apis::DfareportingV4::PathReportDimensionValue::Representation
       
           property :kind, as: 'kind'
+          property :uvar_filter, as: 'uvarFilter', class: Google::Apis::DfareportingV4::UvarFilter, decorator: Google::Apis::DfareportingV4::UvarFilter::Representation
+      
         end
       end
       
@@ -4823,6 +4831,17 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :user_roles, as: 'userRoles', class: Google::Apis::DfareportingV4::UserRole, decorator: Google::Apis::DfareportingV4::UserRole::Representation
       
+        end
+      end
+      
+      class UvarFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complement, as: 'complement'
+          property :index, :numeric_string => true, as: 'index'
+          property :kind, as: 'kind'
+          property :match, as: 'match'
+          collection :values, as: 'values'
         end
       end
       
