@@ -345,6 +345,13 @@ module Google
       class CustomChannel
         include Google::Apis::Core::Hashable
       
+        # Whether the custom channel is active and collecting data. See https://support.
+        # google.com/adsense/answer/10077192.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
         # Required. Display name of the custom channel.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -368,6 +375,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active = args[:active] if args.key?(:active)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @reporting_dimension_id = args[:reporting_dimension_id] if args.key?(:reporting_dimension_id)
@@ -412,6 +420,22 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Header
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -302,6 +308,7 @@ module Google
       class CustomChannel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :reporting_dimension_id, as: 'reportingDimensionId'
@@ -314,6 +321,12 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
