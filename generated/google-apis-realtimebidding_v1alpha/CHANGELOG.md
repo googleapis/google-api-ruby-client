@@ -1,5 +1,9 @@
 # Release history for google-apis-realtimebidding_v1alpha
 
+### v0.13.0 (2022-09-21)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.12.0 (2022-09-18)
 
 * Regenerated from discovery document revision 20220913
