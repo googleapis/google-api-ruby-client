@@ -390,7 +390,7 @@ module Google
         # download url for end user.
         # @param [String] customer
         #   Required. The customer for which the file upload will apply.
-        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileRequest] google_chrome_policy_v1_upload_policy_file_request_object
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileRequest] google_chrome_policy_versions_v1_upload_policy_file_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -404,15 +404,15 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileResponse] parsed result object
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileResponse]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_medium(customer, google_chrome_policy_v1_upload_policy_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_medium(customer, google_chrome_policy_versions_v1_upload_policy_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'v1/{+customer}/policies/files:uploadPolicyFile', options)
           else
@@ -420,10 +420,10 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileRequest::Representation
-          command.request_object = google_chrome_policy_v1_upload_policy_file_request_object
-          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileResponse::Representation
-          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1UploadPolicyFileResponse
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileRequest::Representation
+          command.request_object = google_chrome_policy_versions_v1_upload_policy_file_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1UploadPolicyFileResponse
           command.params['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

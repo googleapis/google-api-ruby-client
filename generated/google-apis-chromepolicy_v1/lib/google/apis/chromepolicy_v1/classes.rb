@@ -874,7 +874,7 @@ module Google
       end
       
       # Request message for uploading a file for a policy. Next ID: 5
-      class GoogleChromePolicyV1UploadPolicyFileRequest
+      class GoogleChromePolicyVersionsV1UploadPolicyFileRequest
         include Google::Apis::Core::Hashable
       
         # Required. The fully qualified policy schema and field name this file is
@@ -895,7 +895,7 @@ module Google
       end
       
       # Response message for downloading an uploaded file. Next ID: 2
-      class GoogleChromePolicyV1UploadPolicyFileResponse
+      class GoogleChromePolicyVersionsV1UploadPolicyFileResponse
         include Google::Apis::Core::Hashable
       
         # The uri for end user to download the file.
