@@ -1,5 +1,9 @@
 # Release history for google-apis-dns_v1beta2
 
+### v0.30.0 (2022-09-21)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.29.0 (2022-09-16)
 
 * Unspecified changes
