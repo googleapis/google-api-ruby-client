@@ -1154,6 +1154,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # ValidateCreateMembership is a preflight check for CreateMembership. It checks
+        # the following: 1. Caller has the required `gkehub.memberships.create`
+        # permission. 2. The membership_id is still available.
+        # @param [String] parent
+        #   Required. The parent (project and location) where the Memberships will be
+        #   created. Specified in the format `projects/*/locations/*`.
+        # @param [Google::Apis::GkehubV1alpha::ValidateCreateMembershipRequest] validate_create_membership_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_create_membership(parent, validate_create_membership_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/memberships:validateCreate', options)
+          command.request_representation = Google::Apis::GkehubV1alpha::ValidateCreateMembershipRequest::Representation
+          command.request_object = validate_create_membership_request_object
+          command.response_representation = Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse::Representation
+          command.response_class = Google::Apis::GkehubV1alpha::ValidateCreateMembershipResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.

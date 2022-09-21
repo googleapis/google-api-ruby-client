@@ -688,6 +688,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidateCreateMembershipRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateCreateMembershipResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosObservabilityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -879,6 +897,7 @@ module Google
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_vertical_scale, as: 'allowVerticalScale'
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
       
@@ -1720,6 +1739,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :control_plane, as: 'controlPlane'
           property :default_channel, as: 'defaultChannel'
+          property :management, as: 'management'
         end
       end
       
@@ -1800,6 +1820,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ValidateCreateMembershipRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership', class: Google::Apis::GkehubV1alpha::Membership, decorator: Google::Apis::GkehubV1alpha::Membership::Representation
+      
+          property :membership_id, as: 'membershipId'
+        end
+      end
+      
+      class ValidateCreateMembershipResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :validation_results, as: 'validationResults', class: Google::Apis::GkehubV1alpha::ValidationResult, decorator: Google::Apis::GkehubV1alpha::ValidationResult::Representation
+      
+        end
+      end
+      
+      class ValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result'
+          property :success, as: 'success'
+          property :validator, as: 'validator'
         end
       end
     end

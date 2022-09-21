@@ -661,6 +661,13 @@ module Google
       class ConfigManagementConfigSync
         include Google::Apis::Core::Hashable
       
+        # Set to true to allow the vertical scaling. Defaults to false which disallows
+        # vertical scaling.
+        # Corresponds to the JSON property `allowVerticalScale`
+        # @return [Boolean]
+        attr_accessor :allow_vertical_scale
+        alias_method :allow_vertical_scale?, :allow_vertical_scale
+      
         # Enables the installation of ConfigSync. If set to true, ConfigSync resources
         # will be created and the other ConfigSync fields will be applied if exist. If
         # set to false, all other ConfigSync fields will be ignored, ConfigSync
@@ -701,6 +708,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_vertical_scale = args[:allow_vertical_scale] if args.key?(:allow_vertical_scale)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
           @oci = args[:oci] if args.key?(:oci)
@@ -3725,6 +3733,11 @@ module Google
         # @return [String]
         attr_accessor :default_channel
       
+        # Enables automatic Service Mesh management.
+        # Corresponds to the JSON property `management`
+        # @return [String]
+        attr_accessor :management
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3733,6 +3746,7 @@ module Google
         def update!(**args)
           @control_plane = args[:control_plane] if args.key?(:control_plane)
           @default_channel = args[:default_channel] if args.key?(:default_channel)
+          @management = args[:management] if args.key?(:management)
         end
       end
       
@@ -4000,6 +4014,83 @@ module Google
         def update!(**args)
           @api_version = args[:api_version] if args.key?(:api_version)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Request message for the `GkeHub.ValidateCreateMembership` method.
+      class ValidateCreateMembershipRequest
+        include Google::Apis::Core::Hashable
+      
+        # Membership contains information about a member cluster.
+        # Corresponds to the JSON property `membership`
+        # @return [Google::Apis::GkehubV1alpha::Membership]
+        attr_accessor :membership
+      
+        # Required. Client chosen membership id.
+        # Corresponds to the JSON property `membershipId`
+        # @return [String]
+        attr_accessor :membership_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+          @membership_id = args[:membership_id] if args.key?(:membership_id)
+        end
+      end
+      
+      # Response message for the `GkeHub.ValidateCreateMembership` method.
+      class ValidateCreateMembershipResponse
+        include Google::Apis::Core::Hashable
+      
+        # Wraps all the validator results.
+        # Corresponds to the JSON property `validationResults`
+        # @return [Array<Google::Apis::GkehubV1alpha::ValidationResult>]
+        attr_accessor :validation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @validation_results = args[:validation_results] if args.key?(:validation_results)
+        end
+      end
+      
+      # ValidationResults are results set by each validator running during
+      # ValidateCreateMembership.
+      class ValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # Additional information for the validation.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Whether the validation is passed or not.
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        # Validator type to validate membership with.
+        # Corresponds to the JSON property `validator`
+        # @return [String]
+        attr_accessor :validator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+          @success = args[:success] if args.key?(:success)
+          @validator = args[:validator] if args.key?(:validator)
         end
       end
     end
