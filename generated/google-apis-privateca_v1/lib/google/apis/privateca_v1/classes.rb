@@ -2067,7 +2067,7 @@ module Google
         attr_accessor :delete_resource
         alias_method :delete_resource?, :delete_resource
       
-        # 
+        # Excluisive action returned by the CLH.
         # Corresponds to the JSON property `exclusiveAction`
         # @return [String]
         attr_accessor :exclusive_action
