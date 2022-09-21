@@ -1482,20 +1482,12 @@ module Google
       class TableDisplayOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Columns to display in the table. Leave empty to display all
-        # available columns. Note: This field is for future features and is not
-        # currently used.
-        # Corresponds to the JSON property `shownColumns`
-        # @return [Array<String>]
-        attr_accessor :shown_columns
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @shown_columns = args[:shown_columns] if args.key?(:shown_columns)
         end
       end
       
