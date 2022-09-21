@@ -172,13 +172,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1UploadPolicyFileRequest
+      class GoogleChromePolicyVersionsV1UploadPolicyFileRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1UploadPolicyFileResponse
+      class GoogleChromePolicyVersionsV1UploadPolicyFileResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -488,14 +488,14 @@ module Google
         end
       end
       
-      class GoogleChromePolicyV1UploadPolicyFileRequest
+      class GoogleChromePolicyVersionsV1UploadPolicyFileRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_field, as: 'policyField'
         end
       end
       
-      class GoogleChromePolicyV1UploadPolicyFileResponse
+      class GoogleChromePolicyVersionsV1UploadPolicyFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :download_uri, as: 'downloadUri'
