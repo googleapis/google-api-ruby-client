@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClassificationModelOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClassifyTextRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,18 @@ module Google
       end
       
       class Token
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Model
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V2Model
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -278,9 +296,21 @@ module Google
         end
       end
       
+      class ClassificationModelOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :v1_model, as: 'v1Model', class: Google::Apis::LanguageV1beta2::V1Model, decorator: Google::Apis::LanguageV1beta2::V1Model::Representation
+      
+          property :v2_model, as: 'v2Model', class: Google::Apis::LanguageV1beta2::V2Model, decorator: Google::Apis::LanguageV1beta2::V2Model::Representation
+      
+        end
+      end
+      
       class ClassifyTextRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :classification_model_options, as: 'classificationModelOptions', class: Google::Apis::LanguageV1beta2::ClassificationModelOptions, decorator: Google::Apis::LanguageV1beta2::ClassificationModelOptions::Representation
+      
           property :document, as: 'document', class: Google::Apis::LanguageV1beta2::Document, decorator: Google::Apis::LanguageV1beta2::Document::Representation
       
         end
@@ -342,6 +372,8 @@ module Google
       class Features
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :classification_model_options, as: 'classificationModelOptions', class: Google::Apis::LanguageV1beta2::ClassificationModelOptions, decorator: Google::Apis::LanguageV1beta2::ClassificationModelOptions::Representation
+      
           property :classify_text, as: 'classifyText'
           property :extract_document_sentiment, as: 'extractDocumentSentiment'
           property :extract_entities, as: 'extractEntities'
@@ -413,6 +445,19 @@ module Google
       
           property :text, as: 'text', class: Google::Apis::LanguageV1beta2::TextSpan, decorator: Google::Apis::LanguageV1beta2::TextSpan::Representation
       
+        end
+      end
+      
+      class V1Model
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V2Model
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_categories_version, as: 'contentCategoriesVersion'
         end
       end
     end
