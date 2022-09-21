@@ -1399,10 +1399,10 @@ module Google
       class GoogleCloudChannelV1ListTransferableSkusRequest
         include Google::Apis::Core::Hashable
       
-        # The super admin of the resold customer generates this token to authorize a
-        # reseller to access their Cloud Identity and purchase entitlements on their
-        # behalf. You can omit this token after authorization. See https://support.
-        # google.com/a/answer/7643790 for more details.
+        # Optional. The super admin of the resold customer generates this token to
+        # authorize a reseller to access their Cloud Identity and purchase entitlements
+        # on their behalf. You can omit this token after authorization. See https://
+        # support.google.com/a/answer/7643790 for more details.
         # Corresponds to the JSON property `authToken`
         # @return [String]
         attr_accessor :auth_token
