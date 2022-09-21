@@ -2566,6 +2566,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupPscData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3850,6 +3856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3960,6 +3972,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterMd5AuthenticationKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8480,6 +8498,8 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::ResourceStatus, decorator: Google::Apis::ComputeV1::ResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
@@ -10386,6 +10406,8 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :psc_data, as: 'pscData', class: Google::Apis::ComputeV1::NetworkEndpointGroupPscData, decorator: Google::Apis::ComputeV1::NetworkEndpointGroupPscData::Representation
+      
           property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -10483,6 +10505,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupPscData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_psc_address, as: 'consumerPscAddress'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
         end
       end
       
@@ -12773,6 +12804,13 @@ module Google
         end
       end
       
+      class ResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :physical_host, as: 'physicalHost'
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12874,6 +12912,8 @@ module Google
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeV1::RouterInterface, decorator: Google::Apis::ComputeV1::RouterInterface::Representation
       
           property :kind, as: 'kind'
+          collection :md5_authentication_keys, as: 'md5AuthenticationKeys', class: Google::Apis::ComputeV1::RouterMd5AuthenticationKey, decorator: Google::Apis::ComputeV1::RouterMd5AuthenticationKey::Representation
+      
           property :name, as: 'name'
           collection :nats, as: 'nats', class: Google::Apis::ComputeV1::RouterNat, decorator: Google::Apis::ComputeV1::RouterNat::Representation
       
@@ -12952,6 +12992,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
+          property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -13013,6 +13054,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouterMd5AuthenticationKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :name, as: 'name'
         end
       end
       
@@ -13103,12 +13152,14 @@ module Google
       
           property :ip_address, as: 'ipAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
+          property :status_reason, as: 'statusReason'
           property :uptime, as: 'uptime'
           property :uptime_seconds, as: 'uptimeSeconds'
         end
