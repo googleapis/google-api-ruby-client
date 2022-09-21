@@ -795,7 +795,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The hostname of the page on which the token was generated.
+        # The hostname of the page on which the token was generated (Web keys only).
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
