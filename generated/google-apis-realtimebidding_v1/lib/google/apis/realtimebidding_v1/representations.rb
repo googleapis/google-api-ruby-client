@@ -517,6 +517,7 @@ module Google
           property :name, as: 'name'
           property :native, as: 'native', class: Google::Apis::RealtimebiddingV1::NativeContent, decorator: Google::Apis::RealtimebiddingV1::NativeContent::Representation
       
+          property :render_url, as: 'renderUrl'
           collection :restricted_categories, as: 'restrictedCategories'
           property :version, as: 'version'
           property :video, as: 'video', class: Google::Apis::RealtimebiddingV1::VideoContent, decorator: Google::Apis::RealtimebiddingV1::VideoContent::Representation
