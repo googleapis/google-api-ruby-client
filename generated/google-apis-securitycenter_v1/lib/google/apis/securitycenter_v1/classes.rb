@@ -1053,7 +1053,7 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1::Connection>]
         attr_accessor :connections
       
-        # Output only. Map containing the point of contacts for the given finding. The
+        # Output only. Map containing the points of contact for the given finding. The
         # key represents the type of contact, while the value contains a list of all the
         # contacts that pertain. Please refer to: https://cloud.google.com/resource-
         # manager/docs/managing-notification-contacts#notification-categories ` "
@@ -1189,7 +1189,7 @@ module Google
         attr_accessor :parent
       
         # Output only. The human readable display name of the finding source such as "
-        # Event Threat Detection" or "Security Health Analytics"
+        # Event Threat Detection" or "Security Health Analytics".
         # Corresponds to the JSON property `parentDisplayName`
         # @return [String]
         attr_accessor :parent_display_name
