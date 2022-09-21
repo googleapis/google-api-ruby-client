@@ -1656,8 +1656,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
-        # entity is not present in the document, this field will be empty.
+        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -1875,6 +1874,11 @@ module Google
       class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig
         include Google::Apis::Core::Hashable
       
+        # Specifies which fields to include in the output documents.
+        # Corresponds to the JSON property `fieldMask`
+        # @return [String]
+        attr_accessor :field_mask
+      
         # The Cloud Storage uri (a directory) of the output.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
@@ -1886,6 +1890,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @field_mask = args[:field_mask] if args.key?(:field_mask)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
         end
       end
@@ -3365,12 +3370,6 @@ module Google
         attr_accessor :inactive
         alias_method :inactive?, :inactive
       
-        # If set, the properties of this entity type must be prefixed with the parents.
-        # Corresponds to the JSON property `prefixedNamingOnProperties`
-        # @return [Boolean]
-        attr_accessor :prefixed_naming_on_properties
-        alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3380,7 +3379,6 @@ module Google
           @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
           @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
-          @prefixed_naming_on_properties = args[:prefixed_naming_on_properties] if args.key?(:prefixed_naming_on_properties)
         end
       end
       
@@ -4502,8 +4500,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
-        # entity is not present in the document, this field will be empty.
+        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -6338,8 +6335,7 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
-        # entity is not present in the document, this field will be empty.
+        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text

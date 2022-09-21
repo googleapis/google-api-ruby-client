@@ -2219,6 +2219,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_mask, as: 'fieldMask'
           property :gcs_uri, as: 'gcsUri'
         end
       end
@@ -2658,7 +2659,6 @@ module Google
           property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
       
           property :inactive, as: 'inactive'
-          property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
         end
       end
       
