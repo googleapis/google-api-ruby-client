@@ -704,7 +704,6 @@ module Google
       class TableDisplayOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :shown_columns, as: 'shownColumns'
         end
       end
       
