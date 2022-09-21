@@ -175,7 +175,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A list of GCLB targets which use this Certificate Map.
+        # Output only. A list of GCLB targets which use this Certificate Map. A Target
+        # Proxy is only present on this list if it's attached to a Forwarding Rule.
         # Corresponds to the JSON property `gclbTargets`
         # @return [Array<Google::Apis::CertificatemanagerV1::GclbTarget>]
         attr_accessor :gclb_targets
