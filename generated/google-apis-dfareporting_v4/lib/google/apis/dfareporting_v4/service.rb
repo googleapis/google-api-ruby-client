@@ -6842,7 +6842,7 @@ module Google
         
         # Updates an existing report. This method supports patch semantics.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The Campaign Manager 360 user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Google::Apis::DfareportingV4::Report] report_object
