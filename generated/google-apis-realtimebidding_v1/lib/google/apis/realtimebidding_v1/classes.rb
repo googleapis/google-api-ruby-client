@@ -587,6 +587,15 @@ module Google
         # @return [Google::Apis::RealtimebiddingV1::NativeContent]
         attr_accessor :native
       
+        # Experimental field that can be used during the [FLEDGE Origin Trial](/
+        # authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an interest group
+        # ad used in [TURTLEDOVE on-device auction](https://github.com/WICG/turtledove/
+        # blob/main/FLEDGE.md#1-browsers-record-interest-groups") This should be unique
+        # among all creatives for a given creative.account_id
+        # Corresponds to the JSON property `renderUrl`
+        # @return [String]
+        attr_accessor :render_url
+      
         # All restricted categories for the ads that may be shown from this creative.
         # Corresponds to the JSON property `restrictedCategories`
         # @return [Array<String>]
@@ -626,6 +635,7 @@ module Google
           @impression_tracking_urls = args[:impression_tracking_urls] if args.key?(:impression_tracking_urls)
           @name = args[:name] if args.key?(:name)
           @native = args[:native] if args.key?(:native)
+          @render_url = args[:render_url] if args.key?(:render_url)
           @restricted_categories = args[:restricted_categories] if args.key?(:restricted_categories)
           @version = args[:version] if args.key?(:version)
           @video = args[:video] if args.key?(:video)
