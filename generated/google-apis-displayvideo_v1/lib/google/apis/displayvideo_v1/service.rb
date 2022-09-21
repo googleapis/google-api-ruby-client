@@ -3529,8 +3529,7 @@ module Google
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
         #   identifies the assigned targeting option being requested.
@@ -3570,8 +3569,7 @@ module Google
         #   Required. Identifies the type of assigned targeting options to list. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
         #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
-        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` *
-        #   `TARGETING_TYPE_YOUTUBE_CHANNEL`
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] filter
         #   Allows filtering by assigned targeting option properties. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
