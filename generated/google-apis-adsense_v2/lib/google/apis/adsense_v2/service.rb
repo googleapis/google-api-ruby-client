@@ -295,6 +295,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an ad unit. This method can only be used by projects enabled for the [
+        # AdSense for Platforms product](https://developers.google.com/adsense/platforms/
+        # ). Note that ad units can only be created for ad clients with an "AFC" product
+        # code. For more info see the [AdClient resource](https://developers.google.com/
+        # adsense/management/reference/rest/v2/accounts.adclients). For now, this method
+        # can only be used to create `DISPLAY` ad units. See: https://support.google.com/
+        # adsense/answer/9183566
+        # @param [String] parent
+        #   Required. Ad client to create an ad unit under. Format: accounts/`account`/
+        #   adclients/`adclient`
+        # @param [Google::Apis::AdsenseV2::AdUnit] ad_unit_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseV2::AdUnit] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseV2::AdUnit]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_adclient_adunit(parent, ad_unit_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/adunits', options)
+          command.request_representation = Google::Apis::AdsenseV2::AdUnit::Representation
+          command.request_object = ad_unit_object
+          command.response_representation = Google::Apis::AdsenseV2::AdUnit::Representation
+          command.response_class = Google::Apis::AdsenseV2::AdUnit
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets an ad unit from a specified account and ad client.
         # @param [String] name
         #   Required. AdUnit to get information about. Format: accounts/`account`/
@@ -443,6 +483,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an ad unit. This method can only be used by projects enabled for the [
+        # AdSense for Platforms product](https://developers.google.com/adsense/platforms/
+        # ). For now, this method can only be used to update `DISPLAY` ad units. See:
+        # https://support.google.com/adsense/answer/9183566
+        # @param [String] name
+        #   Output only. Resource name of the ad unit. Format: accounts/`account`/
+        #   adclients/`adclient`/adunits/`adunit`
+        # @param [Google::Apis::AdsenseV2::AdUnit] ad_unit_object
+        # @param [String] update_mask
+        #   The list of fields to update. If empty, a full update is performed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseV2::AdUnit] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseV2::AdUnit]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_adclient_adunit(name, ad_unit_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::AdsenseV2::AdUnit::Representation
+          command.request_object = ad_unit_object
+          command.response_representation = Google::Apis::AdsenseV2::AdUnit::Representation
+          command.response_class = Google::Apis::AdsenseV2::AdUnit
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a custom channel. This method can only be used by projects enabled for
+        # the [AdSense for Platforms product](https://developers.google.com/adsense/
+        # platforms/).
+        # @param [String] parent
+        #   Required. The ad client to create a custom channel under. Format: accounts/`
+        #   account`/adclients/`adclient`
+        # @param [Google::Apis::AdsenseV2::CustomChannel] custom_channel_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseV2::CustomChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseV2::CustomChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_adclient_customchannel(parent, custom_channel_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/customchannels', options)
+          command.request_representation = Google::Apis::AdsenseV2::CustomChannel::Representation
+          command.request_object = custom_channel_object
+          command.response_representation = Google::Apis::AdsenseV2::CustomChannel::Representation
+          command.response_class = Google::Apis::AdsenseV2::CustomChannel
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a custom channel. This method can only be used by projects enabled for
+        # the [AdSense for Platforms product](https://developers.google.com/adsense/
+        # platforms/).
+        # @param [String] name
+        #   Required. Name of the custom channel to delete. Format: accounts/`account`/
+        #   adclients/`adclient`/customchannels/`customchannel`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_adclient_customchannel(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::AdsenseV2::Empty::Representation
+          command.response_class = Google::Apis::AdsenseV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about the selected custom channel.
         # @param [String] name
         #   Required. Name of the custom channel. Format: accounts/`account`/adclients/`
@@ -553,6 +702,45 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a custom channel. This method can only be used by projects enabled for
+        # the [AdSense for Platforms product](https://developers.google.com/adsense/
+        # platforms/).
+        # @param [String] name
+        #   Output only. Resource name of the custom channel. Format: accounts/`account`/
+        #   adclients/`adclient`/customchannels/`customchannel`
+        # @param [Google::Apis::AdsenseV2::CustomChannel] custom_channel_object
+        # @param [String] update_mask
+        #   The list of fields to update. If empty, a full update is performed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdsenseV2::CustomChannel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdsenseV2::CustomChannel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_account_adclient_customchannel(name, custom_channel_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::AdsenseV2::CustomChannel::Representation
+          command.request_object = custom_channel_object
+          command.response_representation = Google::Apis::AdsenseV2::CustomChannel::Representation
+          command.response_class = Google::Apis::AdsenseV2::CustomChannel
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
