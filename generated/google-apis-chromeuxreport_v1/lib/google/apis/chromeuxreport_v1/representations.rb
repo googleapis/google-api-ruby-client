@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CollectionPeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Key
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +88,25 @@ module Google
           property :density, as: 'density'
           property :end, as: 'end'
           property :start, as: 'start'
+        end
+      end
+      
+      class CollectionPeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_date, as: 'firstDate', class: Google::Apis::ChromeuxreportV1::Date, decorator: Google::Apis::ChromeuxreportV1::Date::Representation
+      
+          property :last_date, as: 'lastDate', class: Google::Apis::ChromeuxreportV1::Date, decorator: Google::Apis::ChromeuxreportV1::Date::Representation
+      
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -130,6 +161,8 @@ module Google
       class Record
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_period, as: 'collectionPeriod', class: Google::Apis::ChromeuxreportV1::CollectionPeriod, decorator: Google::Apis::ChromeuxreportV1::CollectionPeriod::Representation
+      
           property :key, as: 'key', class: Google::Apis::ChromeuxreportV1::Key, decorator: Google::Apis::ChromeuxreportV1::Key::Representation
       
           hash :metrics, as: 'metrics', class: Google::Apis::ChromeuxreportV1::Metric, decorator: Google::Apis::ChromeuxreportV1::Metric::Representation

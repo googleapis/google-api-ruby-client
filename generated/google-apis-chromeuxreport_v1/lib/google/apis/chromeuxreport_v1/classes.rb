@@ -60,6 +60,87 @@ module Google
         end
       end
       
+      # The collection period is a date range which includes the `first` and `last`
+      # day.
+      class CollectionPeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `firstDate`
+        # @return [Google::Apis::ChromeuxreportV1::Date]
+        attr_accessor :first_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `lastDate`
+        # @return [Google::Apis::ChromeuxreportV1::Date]
+        attr_accessor :last_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_date = args[:first_date] if args.key?(:first_date)
+          @last_date = args[:last_date] if args.key?(:last_date)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # Key defines all the dimensions that identify this record as unique.
       class Key
         include Google::Apis::Core::Hashable
@@ -252,6 +333,12 @@ module Google
       class Record
         include Google::Apis::Core::Hashable
       
+        # The collection period is a date range which includes the `first` and `last`
+        # day.
+        # Corresponds to the JSON property `collectionPeriod`
+        # @return [Google::Apis::ChromeuxreportV1::CollectionPeriod]
+        attr_accessor :collection_period
+      
         # Key defines all the dimensions that identify this record as unique.
         # Corresponds to the JSON property `key`
         # @return [Google::Apis::ChromeuxreportV1::Key]
@@ -271,6 +358,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @collection_period = args[:collection_period] if args.key?(:collection_period)
           @key = args[:key] if args.key?(:key)
           @metrics = args[:metrics] if args.key?(:metrics)
         end
