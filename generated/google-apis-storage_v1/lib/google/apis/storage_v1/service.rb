@@ -1882,10 +1882,11 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_object(bucket, object_object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, kms_key_name: nil, name: nil, predefined_acl: nil, projection: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        
           if upload_source.nil?
             command = make_simple_command(:post, 'b/{bucket}/o', options)
           else
-            command = make_upload_command(:post, 'b/{bucket}/o', options)
+            command = make_storage_upload_command(:post, 'b/{bucket}/o', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -2403,7 +2404,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all_objects(bucket, channel_object = nil, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_object_all(bucket, channel_object = nil, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/o/watch', options)
           command.request_representation = Google::Apis::StorageV1::Channel::Representation
           command.request_object = channel_object
