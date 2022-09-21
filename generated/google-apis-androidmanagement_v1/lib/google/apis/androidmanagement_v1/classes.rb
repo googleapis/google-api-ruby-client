@@ -4138,7 +4138,8 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::SetupAction>]
         attr_accessor :setup_actions
       
-        # Whether location sharing is disabled.
+        # Whether location sharing is disabled. share_location_disabled is supported for
+        # both fully managed devices and personally owned work profiles.
         # Corresponds to the JSON property `shareLocationDisabled`
         # @return [Boolean]
         attr_accessor :share_location_disabled
@@ -4245,7 +4246,7 @@ module Google
         attr_accessor :vpn_config_disabled
         alias_method :vpn_config_disabled?, :vpn_config_disabled
       
-        # Whether configuring Wi-Fi access points is disabled.Note: If a network
+        # Whether configuring Wi-Fi access points is disabled. Note: If a network
         # connection can't be made at boot time and configuring Wi-Fi is disabled then
         # network escape hatch will be shown in order to refresh the device policy (see
         # networkEscapeHatchEnabled).
