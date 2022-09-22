@@ -1171,6 +1171,294 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new `GitLabConfig`. This API is experimental
+        # @param [String] parent
+        #   Required. Name of the parent resource.
+        # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
+        # @param [String] gitlab_config_id
+        #   Optional. The ID to use for the GitLabConfig, which will become the final
+        #   component of the GitLabConfig’s resource name. gitlab_config_id must meet the
+        #   following requirements: + They must contain only alphanumeric characters and
+        #   dashes. + They can be 1-64 characters long. + They must begin and end with an
+        #   alphanumeric character
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_git_lab_config(parent, git_lab_config_object = nil, gitlab_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/gitLabConfigs', options)
+          command.request_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
+          command.request_object = git_lab_config_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['gitlabConfigId'] = gitlab_config_id unless gitlab_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a `GitLabConfig`. This API is experimental
+        # @param [String] name
+        #   Required. The config resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_git_lab_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a `GitLabConfig`. This API is experimental
+        # @param [String] name
+        #   Required. The config resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::GitLabConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::GitLabConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_git_lab_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
+          command.response_class = Google::Apis::CloudbuildV1::GitLabConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all `GitLabConfigs` for a given project. This API is experimental
+        # @param [String] parent
+        #   Required. Name of the parent resource
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 configs will be returned. The maximum
+        #   value is 1000;, values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous ‘ListGitlabConfigsRequest’ call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to ‘ListGitlabConfigsRequest’ must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListGitLabConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListGitLabConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_git_lab_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/gitLabConfigs', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListGitLabConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListGitLabConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing `GitLabConfig`. This API is experimental
+        # @param [String] name
+        #   The resource name for the config.
+        # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
+        # @param [String] update_mask
+        #   Update mask for the resource. If this is set, the server will only update the
+        #   fields specified in the field mask. Otherwise, a full update of the mutable
+        #   resource fields will be performed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_git_lab_config(name, git_lab_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
+          command.request_object = git_lab_config_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove a GitLab repository from a given GitLabConfig's connected repositories.
+        # This API is experimental.
+        # @param [String] config
+        #   Required. The name of the `GitLabConfig` to remove a connected repository.
+        #   Format: `projects/`project`/locations/`location`/gitLabConfigs/`config``
+        # @param [Google::Apis::CloudbuildV1::RemoveGitLabConnectedRepositoryRequest] remove_git_lab_connected_repository_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_git_lab_config_git_lab_connected_repository(config, remove_git_lab_connected_repository_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+config}:removeGitLabConnectedRepository', options)
+          command.request_representation = Google::Apis::CloudbuildV1::RemoveGitLabConnectedRepositoryRequest::Representation
+          command.request_object = remove_git_lab_connected_repository_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.params['config'] = config unless config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch connecting GitLab repositories to Cloud Build. This API is experimental.
+        # @param [String] parent
+        #   The name of the `GitLabConfig` that adds connected repositories. Format: `
+        #   projects/`project`/locations/`location`/gitLabConfigs/`config``
+        # @param [Google::Apis::CloudbuildV1::BatchCreateGitLabConnectedRepositoriesRequest] batch_create_git_lab_connected_repositories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_connected_repository_create_git_lab_connected_repositories(parent, batch_create_git_lab_connected_repositories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/connectedRepositories:batchCreate', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BatchCreateGitLabConnectedRepositoriesRequest::Representation
+          command.request_object = batch_create_git_lab_connected_repositories_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all repositories for a given `GitLabConfig`. This API is experimental
+        # @param [String] parent
+        #   Required. Name of the parent resource.
+        # @param [Fixnum] page_size
+        #   The maximum number of repositories to return. The service may return fewer
+        #   than this value.
+        # @param [String] page_token
+        #   A page token, received from a previous ListGitLabRepositoriesRequest` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListGitLabRepositoriesRequest` must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_git_lab_config_repos(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/repos', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create an association between a GCP project and a GitHub Enterprise server.
         # @param [String] parent
         #   Name of the parent project. For example: projects/`$project_number` or

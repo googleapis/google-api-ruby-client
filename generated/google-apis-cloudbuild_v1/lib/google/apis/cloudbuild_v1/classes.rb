@@ -277,6 +277,77 @@ module Google
         end
       end
       
+      # RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC
+      # method.
+      class BatchCreateGitLabConnectedRepositoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Requests to connect GitLab repositories.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::CloudbuildV1::CreateGitLabConnectedRepositoryRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response of BatchCreateGitLabConnectedRepositories RPC method.
+      class BatchCreateGitLabConnectedRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The GitLab connected repository requests' responses.
+        # Corresponds to the JSON property `gitlabConnectedRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::GitLabConnectedRepository>]
+        attr_accessor :gitlab_connected_repositories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gitlab_connected_repositories = args[:gitlab_connected_repositories] if args.key?(:gitlab_connected_repositories)
+        end
+      end
+      
+      # Metadata for `BatchCreateGitLabConnectedRepositories` operation.
+      class BatchCreateGitLabConnectedRepositoriesResponseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # The name of the `GitLabConfig` that added connected repositories. Format: `
+        # projects/`project`/locations/`location`/gitLabConfigs/`config``
+        # Corresponds to the JSON property `config`
+        # @return [String]
+        attr_accessor :config
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # BitbucketServerConfig represents the configuration for a Bitbucket Server.
       class BitbucketServerConfig
         include Google::Apis::Core::Hashable
@@ -1215,6 +1286,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1::GitHubEventsConfig]
         attr_accessor :github
       
+        # GitLabEventsConfig describes the configuration of a trigger that creates a
+        # build whenever a GitLab event is received.
+        # Corresponds to the JSON property `gitlabEnterpriseEventsConfig`
+        # @return [Google::Apis::CloudbuildV1::GitLabEventsConfig]
+        attr_accessor :gitlab_enterprise_events_config
+      
         # Output only. Unique identifier of the trigger.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1323,6 +1400,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @git_file_source = args[:git_file_source] if args.key?(:git_file_source)
           @github = args[:github] if args.key?(:github)
+          @gitlab_enterprise_events_config = args[:gitlab_enterprise_events_config] if args.key?(:gitlab_enterprise_events_config)
           @id = args[:id] if args.key?(:id)
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
           @include_build_logs = args[:include_build_logs] if args.key?(:include_build_logs)
@@ -1508,6 +1586,65 @@ module Google
         end
       end
       
+      # Metadata for `CreateGitLabConfig` operation.
+      class CreateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
+        end
+      end
+      
+      # Request to connect a repository from a connected GitLab host.
+      class CreateGitLabConnectedRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # GitLabConnectedRepository represents a GitLab connected repository request
+        # response.
+        # Corresponds to the JSON property `gitlabConnectedRepository`
+        # @return [Google::Apis::CloudbuildV1::GitLabConnectedRepository]
+        attr_accessor :gitlab_connected_repository
+      
+        # Required. The name of the `GitLabConfig` that adds connected repository.
+        # Format: `projects/`project`/locations/`location`/gitLabConfigs/`config``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gitlab_connected_repository = args[:gitlab_connected_repository] if args.key?(:gitlab_connected_repository)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Metadata for the `CreateWorkerPool` operation.
       class CreateWorkerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1601,6 +1738,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `DeleteGitLabConfig` operation.
+      class DeleteGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -1950,6 +2119,293 @@ module Google
         end
       end
       
+      # GitLabConfig represents the configuration for a GitLab integration.
+      class GitLabConfig
+        include Google::Apis::Core::Hashable
+      
+        # Connected GitLab.com or GitLabEnterprise repositories for this config.
+        # Corresponds to the JSON property `connectedRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::GitLabRepositoryId>]
+        attr_accessor :connected_repositories
+      
+        # Output only. Time when the config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
+        # integration.
+        # Corresponds to the JSON property `enterpriseConfig`
+        # @return [Google::Apis::CloudbuildV1::GitLabEnterpriseConfig]
+        attr_accessor :enterprise_config
+      
+        # The resource name for the config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # GitLabSecrets represents the secrets in Secret Manager for a GitLab
+        # integration.
+        # Corresponds to the JSON property `secrets`
+        # @return [Google::Apis::CloudbuildV1::GitLabSecrets]
+        attr_accessor :secrets
+      
+        # Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        # Output only. UUID included in webhook requests. The UUID is used to look up
+        # the corresponding config.
+        # Corresponds to the JSON property `webhookKey`
+        # @return [String]
+        attr_accessor :webhook_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_repositories = args[:connected_repositories] if args.key?(:connected_repositories)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @enterprise_config = args[:enterprise_config] if args.key?(:enterprise_config)
+          @name = args[:name] if args.key?(:name)
+          @secrets = args[:secrets] if args.key?(:secrets)
+          @username = args[:username] if args.key?(:username)
+          @webhook_key = args[:webhook_key] if args.key?(:webhook_key)
+        end
+      end
+      
+      # GitLabConnectedRepository represents a GitLab connected repository request
+      # response.
+      class GitLabConnectedRepository
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `GitLabConfig` that added connected repository. Format: `
+        # projects/`project`/locations/`location`/gitLabConfigs/`config``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+        # GitLabEnterprise
+        # Corresponds to the JSON property `repo`
+        # @return [Google::Apis::CloudbuildV1::GitLabRepositoryId]
+        attr_accessor :repo
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CloudbuildV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @repo = args[:repo] if args.key?(:repo)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
+      # integration.
+      class GitLabEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The URI of the GitlabEnterprise host.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a SCM
+        # host connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::CloudbuildV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # The SSL certificate to use in requests to GitLab Enterprise instances.
+        # Corresponds to the JSON property `sslCa`
+        # @return [String]
+        attr_accessor :ssl_ca
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca = args[:ssl_ca] if args.key?(:ssl_ca)
+        end
+      end
+      
+      # GitLabEventsConfig describes the configuration of a trigger that creates a
+      # build whenever a GitLab event is received.
+      class GitLabEventsConfig
+        include Google::Apis::Core::Hashable
+      
+        # GitLabConfig represents the configuration for a GitLab integration.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [Google::Apis::CloudbuildV1::GitLabConfig]
+        attr_accessor :gitlab_config
+      
+        # The GitLab config resource that this trigger config maps to.
+        # Corresponds to the JSON property `gitlabConfigResource`
+        # @return [String]
+        attr_accessor :gitlab_config_resource
+      
+        # Namespace of the GitLab project.
+        # Corresponds to the JSON property `projectNamespace`
+        # @return [String]
+        attr_accessor :project_namespace
+      
+        # PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::CloudbuildV1::PullRequestFilter]
+        attr_accessor :pull_request
+      
+        # Push contains filter properties for matching GitHub git pushes.
+        # Corresponds to the JSON property `push`
+        # @return [Google::Apis::CloudbuildV1::PushFilter]
+        attr_accessor :push
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
+          @gitlab_config_resource = args[:gitlab_config_resource] if args.key?(:gitlab_config_resource)
+          @project_namespace = args[:project_namespace] if args.key?(:project_namespace)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
+          @push = args[:push] if args.key?(:push)
+        end
+      end
+      
+      # Proto Representing a GitLabRepository
+      class GitLabRepository
+        include Google::Apis::Core::Hashable
+      
+        # Link to the browse repo page on the GitLab instance
+        # Corresponds to the JSON property `browseUri`
+        # @return [String]
+        attr_accessor :browse_uri
+      
+        # Description of the repository
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the repository
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the repository
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+        # GitLabEnterprise
+        # Corresponds to the JSON property `repositoryId`
+        # @return [Google::Apis::CloudbuildV1::GitLabRepositoryId]
+        attr_accessor :repository_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browse_uri = args[:browse_uri] if args.key?(:browse_uri)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @repository_id = args[:repository_id] if args.key?(:repository_id)
+        end
+      end
+      
+      # GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+      # GitLabEnterprise
+      class GitLabRepositoryId
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identifier for the repository. example: "namespace/project-slug",
+        # namespace is usually the username or group ID
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The ID of the webhook that was created for receiving events from
+        # this repo. We only create and manage a single webhook for each repo.
+        # Corresponds to the JSON property `webhookId`
+        # @return [Fixnum]
+        attr_accessor :webhook_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
+        end
+      end
+      
+      # GitLabSecrets represents the secrets in Secret Manager for a GitLab
+      # integration.
+      class GitLabSecrets
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name for the api access token’s secret version
+        # Corresponds to the JSON property `apiAccessTokenVersion`
+        # @return [String]
+        attr_accessor :api_access_token_version
+      
+        # Required. Immutable. API Key that will be attached to webhook requests from
+        # GitLab to Cloud Build.
+        # Corresponds to the JSON property `apiKeyVersion`
+        # @return [String]
+        attr_accessor :api_key_version
+      
+        # Required. The resource name for the read access token’s secret version
+        # Corresponds to the JSON property `readAccessTokenVersion`
+        # @return [String]
+        attr_accessor :read_access_token_version
+      
+        # Required. Immutable. The resource name for the webhook secret’s secret version.
+        # Once this field has been set, it cannot be changed. If you need to change it,
+        # please create another GitLabConfig.
+        # Corresponds to the JSON property `webhookSecretVersion`
+        # @return [String]
+        attr_accessor :webhook_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_access_token_version = args[:api_access_token_version] if args.key?(:api_access_token_version)
+          @api_key_version = args[:api_key_version] if args.key?(:api_key_version)
+          @read_access_token_version = args[:read_access_token_version] if args.key?(:read_access_token_version)
+          @webhook_secret_version = args[:webhook_secret_version] if args.key?(:webhook_secret_version)
+        end
+      end
+      
       # GitRepoSource describes a repo and ref of a code repository.
       class GitRepoSource
         include Google::Apis::Core::Hashable
@@ -2277,6 +2733,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @builds = args[:builds] if args.key?(:builds)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # RPC response object returned by ListGitLabConfigs RPC method.
+      class ListGitLabConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of GitLabConfigs
+        # Corresponds to the JSON property `gitlabConfigs`
+        # @return [Array<Google::Apis::CloudbuildV1::GitLabConfig>]
+        attr_accessor :gitlab_configs
+      
+        # A token that can be sent as `page_token` to retrieve the next page If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gitlab_configs = args[:gitlab_configs] if args.key?(:gitlab_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # RPC response object returned by the ListGitLabRepositories RPC method.
+      class ListGitLabRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of GitLab repositories
+        # Corresponds to the JSON property `gitlabRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::GitLabRepository>]
+        attr_accessor :gitlab_repositories
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gitlab_repositories = args[:gitlab_repositories] if args.key?(:gitlab_repositories)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2898,6 +3406,26 @@ module Google
         end
       end
       
+      # RPC request object accepted by RemoveGitLabConnectedRepository RPC method.
+      class RemoveGitLabConnectedRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+        # GitLabEnterprise
+        # Corresponds to the JSON property `connectedRepository`
+        # @return [Google::Apis::CloudbuildV1::GitLabRepositoryId]
+        attr_accessor :connected_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -3278,6 +3806,27 @@ module Google
         end
       end
       
+      # ServiceDirectoryConfig represents Service Directory configuration for a SCM
+      # host connection.
+      class ServiceDirectoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Service Directory service name. Format: projects/`project`/locations/`
+        # location`/namespaces/`namespace`/services/`service`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # SlackDelivery is the delivery configuration for delivering Slack messages via
       # webhooks. See Slack webhook documentation at: https://api.slack.com/messaging/
       # webhooks.
@@ -3576,6 +4125,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `UpdateGitLabConfig` operation.
+      class UpdateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
