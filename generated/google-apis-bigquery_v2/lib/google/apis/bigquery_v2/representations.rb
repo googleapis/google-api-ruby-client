@@ -1978,6 +1978,7 @@ module Google
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
           property :create_disposition, as: 'createDisposition'
+          property :create_session, as: 'createSession'
           collection :decimal_target_types, as: 'decimalTargetTypes'
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       

@@ -3783,6 +3783,14 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
+        # If true, creates a new session, where session id will be a server generated
+        # random id. If false, runs query with an existing session_id passed in
+        # ConnectionProperty, otherwise runs the load job in non-session mode.
+        # Corresponds to the JSON property `createSession`
+        # @return [Boolean]
+        attr_accessor :create_session
+        alias_method :create_session?, :create_session
+      
         # [Optional] Defines the list of possible SQL data types to which the source
         # decimal values are converted. This list and the precision and the scale
         # parameters of the decimal field determine the target type. In the order of
@@ -4021,6 +4029,7 @@ module Google
           @clustering = args[:clustering] if args.key?(:clustering)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
+          @create_session = args[:create_session] if args.key?(:create_session)
           @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
@@ -4654,29 +4663,29 @@ module Google
       class JobStatistics2
         include Google::Apis::Core::Hashable
       
-        # BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+        # BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
         # Corresponds to the JSON property `biEngineStatistics`
         # @return [Google::Apis::BigqueryV2::BiEngineStatistics]
         attr_accessor :bi_engine_statistics
       
-        # [Output-only] Billing tier for the job.
+        # [Output only] Billing tier for the job.
         # Corresponds to the JSON property `billingTier`
         # @return [Fixnum]
         attr_accessor :billing_tier
       
-        # [Output-only] Whether the query result was fetched from the query cache.
+        # [Output only] Whether the query result was fetched from the query cache.
         # Corresponds to the JSON property `cacheHit`
         # @return [Boolean]
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only] [Preview] The number of row access policies affected by a DDL
+        # [Output only] [Preview] The number of row access policies affected by a DDL
         # statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         # Corresponds to the JSON property `ddlAffectedRowAccessPolicyCount`
         # @return [Fixnum]
         attr_accessor :ddl_affected_row_access_policy_count
       
-        # [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME
+        # [Output only] The DDL destination table. Present only for ALTER TABLE RENAME
         # TO queries. Note that ddl_target_table is used just for its type information.
         # Corresponds to the JSON property `ddlDestinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
@@ -4693,7 +4702,7 @@ module Google
         # @return [String]
         attr_accessor :ddl_operation_performed
       
-        # [Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP
+        # [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP
         # SCHEMA queries.
         # Corresponds to the JSON property `ddlTargetDataset`
         # @return [Google::Apis::BigqueryV2::DatasetReference]
@@ -4705,89 +4714,89 @@ module Google
         # @return [Google::Apis::BigqueryV2::RoutineReference]
         attr_accessor :ddl_target_routine
       
-        # [Output-only] [Preview] The DDL target row access policy. Present only for
+        # [Output only] [Preview] The DDL target row access policy. Present only for
         # CREATE/DROP ROW ACCESS POLICY queries.
         # Corresponds to the JSON property `ddlTargetRowAccessPolicy`
         # @return [Google::Apis::BigqueryV2::RowAccessPolicyReference]
         attr_accessor :ddl_target_row_access_policy
       
-        # [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW
+        # [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW
         # and DROP ALL ROW ACCESS POLICIES queries.
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
       
-        # [Output-only] Detailed statistics for DML statements Present only for DML
+        # [Output only] Detailed statistics for DML statements Present only for DML
         # statements INSERT, UPDATE, DELETE or TRUNCATE.
         # Corresponds to the JSON property `dmlStats`
         # @return [Google::Apis::BigqueryV2::DmlStatistics]
         attr_accessor :dml_stats
       
-        # [Output-only] The original estimate of bytes processed for the job.
+        # [Output only] The original estimate of bytes processed for the job.
         # Corresponds to the JSON property `estimatedBytesProcessed`
         # @return [Fixnum]
         attr_accessor :estimated_bytes_processed
       
-        # [Output-only] Statistics of a BigQuery ML training job.
+        # [Output only] Statistics of a BigQuery ML training job.
         # Corresponds to the JSON property `mlStatistics`
         # @return [Google::Apis::BigqueryV2::MlStatistics]
         attr_accessor :ml_statistics
       
-        # [Output-only, Beta] Information about create model query job progress.
+        # [Output only, Beta] Information about create model query job progress.
         # Corresponds to the JSON property `modelTraining`
         # @return [Google::Apis::BigqueryV2::BigQueryModelTraining]
         attr_accessor :model_training
       
-        # [Output-only, Beta] Deprecated; do not use.
+        # [Output only, Beta] Deprecated; do not use.
         # Corresponds to the JSON property `modelTrainingCurrentIteration`
         # @return [Fixnum]
         attr_accessor :model_training_current_iteration
       
-        # [Output-only, Beta] Deprecated; do not use.
+        # [Output only, Beta] Deprecated; do not use.
         # Corresponds to the JSON property `modelTrainingExpectedTotalIteration`
         # @return [Fixnum]
         attr_accessor :model_training_expected_total_iteration
       
-        # [Output-only] The number of rows affected by a DML statement. Present only for
+        # [Output only] The number of rows affected by a DML statement. Present only for
         # DML statements INSERT, UPDATE or DELETE.
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
-        # [Output-only] Describes execution plan for the query.
+        # [Output only] Describes execution plan for the query.
         # Corresponds to the JSON property `queryPlan`
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
       
-        # [Output-only] Referenced routines (persistent user-defined functions and
+        # [Output only] Referenced routines (persistent user-defined functions and
         # stored procedures) for the job.
         # Corresponds to the JSON property `referencedRoutines`
         # @return [Array<Google::Apis::BigqueryV2::RoutineReference>]
         attr_accessor :referenced_routines
       
-        # [Output-only] Referenced tables for the job. Queries that reference more than
+        # [Output only] Referenced tables for the job. Queries that reference more than
         # 50 tables will not have a complete list.
         # Corresponds to the JSON property `referencedTables`
         # @return [Array<Google::Apis::BigqueryV2::TableReference>]
         attr_accessor :referenced_tables
       
-        # [Output-only] Job resource usage breakdown by reservation.
+        # [Output only] Job resource usage breakdown by reservation.
         # Corresponds to the JSON property `reservationUsage`
         # @return [Array<Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage>]
         attr_accessor :reservation_usage
       
-        # [Output-only] The schema of the results. Present only for successful dry run
+        # [Output only] The schema of the results. Present only for successful dry run
         # of non-legacy SQL queries.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Output-only] Search query specific statistics.
+        # [Output only] Search query specific statistics.
         # Corresponds to the JSON property `searchStatistics`
         # @return [Google::Apis::BigqueryV2::SearchStatistics]
         attr_accessor :search_statistics
       
-        # [Output-only] Statistics of a Spark procedure job.
+        # [Output only] Statistics of a Spark procedure job.
         # Corresponds to the JSON property `sparkStatistics`
         # @return [Google::Apis::BigqueryV2::SparkStatistics]
         attr_accessor :spark_statistics
@@ -4812,22 +4821,22 @@ module Google
         # @return [String]
         attr_accessor :statement_type
       
-        # [Output-only] [Beta] Describes a timeline of job execution.
+        # [Output only] [Beta] Describes a timeline of job execution.
         # Corresponds to the JSON property `timeline`
         # @return [Array<Google::Apis::BigqueryV2::QueryTimelineSample>]
         attr_accessor :timeline
       
-        # [Output-only] Total bytes billed for the job.
+        # [Output only] Total bytes billed for the job.
         # Corresponds to the JSON property `totalBytesBilled`
         # @return [Fixnum]
         attr_accessor :total_bytes_billed
       
-        # [Output-only] Total bytes processed for the job.
+        # [Output only] Total bytes processed for the job.
         # Corresponds to the JSON property `totalBytesProcessed`
         # @return [Fixnum]
         attr_accessor :total_bytes_processed
       
-        # [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this
+        # [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this
         # field specifies the accuracy of the estimate. Possible values can be: UNKNOWN:
         # accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND:
         # estimate is lower bound of what the query would cost. UPPER_BOUND: estimate
@@ -4836,13 +4845,13 @@ module Google
         # @return [String]
         attr_accessor :total_bytes_processed_accuracy
       
-        # [Output-only] Total number of partitions processed from all partitioned tables
+        # [Output only] Total number of partitions processed from all partitioned tables
         # referenced in the job.
         # Corresponds to the JSON property `totalPartitionsProcessed`
         # @return [Fixnum]
         attr_accessor :total_partitions_processed
       
-        # [Output-only] Slot-milliseconds for the job.
+        # [Output only] Slot-milliseconds for the job.
         # Corresponds to the JSON property `totalSlotMs`
         # @return [Fixnum]
         attr_accessor :total_slot_ms
@@ -4897,12 +4906,12 @@ module Google
         class ReservationUsage
           include Google::Apis::Core::Hashable
         
-          # [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+          # [Output only] Reservation name or "unreserved" for on-demand resources usage.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
         
-          # [Output-only] Slot-milliseconds the job spent in the given reservation.
+          # [Output only] Slot-milliseconds the job spent in the given reservation.
           # Corresponds to the JSON property `slotMs`
           # @return [Fixnum]
           attr_accessor :slot_ms
@@ -5349,8 +5358,7 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :optimal_trial_ids
       
-        # Output only. Information for all training runs in increasing order of
-        # start_time.
+        # Information for all training runs in increasing order of start_time.
         # Corresponds to the JSON property `trainingRuns`
         # @return [Array<Google::Apis::BigqueryV2::TrainingRun>]
         attr_accessor :training_runs
@@ -8643,8 +8651,8 @@ module Google
       class TrainingRun
         include Google::Apis::Core::Hashable
       
-        # Global explanation contains the explanation of top features on the class level.
-        # Applies to classification models only.
+        # Output only. Global explanation contains the explanation of top features on
+        # the class level. Applies to classification models only.
         # Corresponds to the JSON property `classLevelGlobalExplanations`
         # @return [Array<Google::Apis::BigqueryV2::GlobalExplanation>]
         attr_accessor :class_level_global_explanations
@@ -8667,12 +8675,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::GlobalExplanation]
         attr_accessor :model_level_global_explanation
       
-        # Output of each iteration run, results.size() <= max_iterations.
+        # Output only. Output of each iteration run, results.size() <= max_iterations.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
         attr_accessor :results
       
-        # The start time of this training run.
+        # Output only. The start time of this training run.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -8682,7 +8690,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::TrainingOptions]
         attr_accessor :training_options
       
-        # The start time of this training run, in milliseconds since epoch.
+        # Output only. The start time of this training run, in milliseconds since epoch.
         # Corresponds to the JSON property `trainingStartTime`
         # @return [Fixnum]
         attr_accessor :training_start_time
@@ -8692,7 +8700,8 @@ module Google
         # @return [String]
         attr_accessor :vertex_ai_model_id
       
-        # The model version in Vertex AI Model Registry for this training run
+        # Output only. The model version in Vertex AI Model Registry for this training
+        # run
         # Corresponds to the JSON property `vertexAiModelVersion`
         # @return [String]
         attr_accessor :vertex_ai_model_version
