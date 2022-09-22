@@ -450,8 +450,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # User annotations. These attributes can only be set and used by the user, and
-        # not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for
-        # more details such as format and size limitations.
+        # not by Google Cloud Deploy.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -604,6 +603,12 @@ module Google
         # @return [String]
         attr_accessor :failure_message
       
+        # DeployJobRunMetadata surfaces information associated with a `DeployJobRun` to
+        # the user.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ClouddeployV1::DeployJobRunMetadata]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -613,6 +618,27 @@ module Google
           @build = args[:build] if args.key?(:build)
           @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @failure_message = args[:failure_message] if args.key?(:failure_message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # DeployJobRunMetadata surfaces information associated with a `DeployJobRun` to
+      # the user.
+      class DeployJobRunMetadata
+        include Google::Apis::Core::Hashable
+      
+        # CloudRunMetadata contains information from a Cloud Run deployment.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ClouddeployV1::CloudRunMetadata]
+        attr_accessor :cloud_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
         end
       end
       
@@ -932,6 +958,63 @@ module Google
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @verify_job_run = args[:verify_job_run] if args.key?(:verify_job_run)
+        end
+      end
+      
+      # Payload proto for "clouddeploy.googleapis.com/jobrun_notification" Platform
+      # Log event that describes the failure to send JobRun resource update Pub/Sub
+      # notification.
+      class JobRunNotificationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `JobRun`.
+        # Corresponds to the JSON property `jobRun`
+        # @return [String]
+        attr_accessor :job_run
+      
+        # Debug message for when a notification fails to send.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Unique identifier of the `DeliveryPipeline`.
+        # Corresponds to the JSON property `pipelineUid`
+        # @return [String]
+        attr_accessor :pipeline_uid
+      
+        # Unique identifier of the `Release`.
+        # Corresponds to the JSON property `releaseUid`
+        # @return [String]
+        attr_accessor :release_uid
+      
+        # Unique identifier of the `Rollout`.
+        # Corresponds to the JSON property `rolloutUid`
+        # @return [String]
+        attr_accessor :rollout_uid
+      
+        # ID of the `Target`.
+        # Corresponds to the JSON property `targetId`
+        # @return [String]
+        attr_accessor :target_id
+      
+        # Type of this notification, e.g. for a Pub/Sub failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_run = args[:job_run] if args.key?(:job_run)
+          @message = args[:message] if args.key?(:message)
+          @pipeline_uid = args[:pipeline_uid] if args.key?(:pipeline_uid)
+          @release_uid = args[:release_uid] if args.key?(:release_uid)
+          @rollout_uid = args[:rollout_uid] if args.key?(:rollout_uid)
+          @target_id = args[:target_id] if args.key?(:target_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
