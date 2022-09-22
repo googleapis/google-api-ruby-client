@@ -1,5 +1,9 @@
 # Release history for google-apis-customsearch_v1
 
+### v0.12.0 (2022-09-22)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.11.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0
