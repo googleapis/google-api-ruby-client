@@ -900,6 +900,7 @@ module Google
           property :billing_period_duration, as: 'billingPeriodDuration'
           property :grace_period_duration, as: 'gracePeriodDuration'
           property :legacy_compatible, as: 'legacyCompatible'
+          property :legacy_compatible_subscription_offer_id, as: 'legacyCompatibleSubscriptionOfferId'
           property :proration_mode, as: 'prorationMode'
           property :resubscribe_state, as: 'resubscribeState'
         end

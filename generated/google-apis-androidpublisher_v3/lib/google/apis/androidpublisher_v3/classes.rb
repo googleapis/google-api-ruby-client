@@ -293,6 +293,15 @@ module Google
         attr_accessor :legacy_compatible
         alias_method :legacy_compatible?, :legacy_compatible
       
+        # Subscription offer id which is legacy compatible. The backward compatible
+        # subscription offer is returned by the Google Play Billing Library deprecated
+        # method querySkuDetailsAsync(). Only one subscription offer can be marked as
+        # legacy compatible for a given renewing base plan. To have no Subscription
+        # offer as legacy compatible set this field as empty string.
+        # Corresponds to the JSON property `legacyCompatibleSubscriptionOfferId`
+        # @return [String]
+        attr_accessor :legacy_compatible_subscription_offer_id
+      
         # The proration mode for the base plan determines what happens when a user
         # switches to this plan from another base plan. If unspecified, defaults to
         # CHARGE_ON_NEXT_BILLING_DATE.
@@ -315,6 +324,7 @@ module Google
           @billing_period_duration = args[:billing_period_duration] if args.key?(:billing_period_duration)
           @grace_period_duration = args[:grace_period_duration] if args.key?(:grace_period_duration)
           @legacy_compatible = args[:legacy_compatible] if args.key?(:legacy_compatible)
+          @legacy_compatible_subscription_offer_id = args[:legacy_compatible_subscription_offer_id] if args.key?(:legacy_compatible_subscription_offer_id)
           @proration_mode = args[:proration_mode] if args.key?(:proration_mode)
           @resubscribe_state = args[:resubscribe_state] if args.key?(:resubscribe_state)
         end
