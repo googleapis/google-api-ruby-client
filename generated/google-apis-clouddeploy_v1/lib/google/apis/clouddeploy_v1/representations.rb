@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeployJobRunMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentJobs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class JobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobRunNotificationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,6 +580,16 @@ module Google
           property :build, as: 'build'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::DeployJobRunMetadata, decorator: Google::Apis::ClouddeployV1::DeployJobRunMetadata::Representation
+      
+        end
+      end
+      
+      class DeployJobRunMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunMetadata::Representation
+      
         end
       end
       
@@ -649,6 +671,19 @@ module Google
           property :uid, as: 'uid'
           property :verify_job_run, as: 'verifyJobRun', class: Google::Apis::ClouddeployV1::VerifyJobRun, decorator: Google::Apis::ClouddeployV1::VerifyJobRun::Representation
       
+        end
+      end
+      
+      class JobRunNotificationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_run, as: 'jobRun'
+          property :message, as: 'message'
+          property :pipeline_uid, as: 'pipelineUid'
+          property :release_uid, as: 'releaseUid'
+          property :rollout_uid, as: 'rolloutUid'
+          property :target_id, as: 'targetId'
+          property :type, as: 'type'
         end
       end
       
