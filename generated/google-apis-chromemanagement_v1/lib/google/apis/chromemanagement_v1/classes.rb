@@ -785,6 +785,48 @@ module Google
         end
       end
       
+      # Response containing a list of devices with a specific type of hardware
+      # specification from the requested hardware type.
+      class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DeviceHardwareCountReport for device cpu type (for example Intel(R) Core(
+        # TM) i7-10610U CPU @ 1.80GHz).
+        # Corresponds to the JSON property `cpuReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport>]
+        attr_accessor :cpu_reports
+      
+        # The DeviceHardwareCountReport for device memory amount in gigabytes (for
+        # example 16).
+        # Corresponds to the JSON property `memoryReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport>]
+        attr_accessor :memory_reports
+      
+        # The DeviceHardwareCountReport for device model type (for example Acer C7
+        # Chromebook).
+        # Corresponds to the JSON property `modelReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport>]
+        attr_accessor :model_reports
+      
+        # The DeviceHardwareCountReport for device storage amount in gigabytes (for
+        # example 128).
+        # Corresponds to the JSON property `storageReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport>]
+        attr_accessor :storage_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_reports = args[:cpu_reports] if args.key?(:cpu_reports)
+          @memory_reports = args[:memory_reports] if args.key?(:memory_reports)
+          @model_reports = args[:model_reports] if args.key?(:model_reports)
+          @storage_reports = args[:storage_reports] if args.key?(:storage_reports)
+        end
+      end
+      
       # Response containing requested browser versions details and counts.
       class GoogleChromeManagementV1CountChromeVersionsResponse
         include Google::Apis::Core::Hashable
@@ -1055,6 +1097,32 @@ module Google
           @count = args[:count] if args.key?(:count)
           @expired = args[:expired] if args.key?(:expired)
           @model = args[:model] if args.key?(:model)
+        end
+      end
+      
+      # Report for CountChromeDevicesPerHardwareSpecResponse, contains the count of
+      # devices with a unique hardware specification.
+      class GoogleChromeManagementV1DeviceHardwareCountReport
+        include Google::Apis::Core::Hashable
+      
+        # Public name of the hardware specification.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Count of devices with a unique hardware specification.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @count = args[:count] if args.key?(:count)
         end
       end
       
