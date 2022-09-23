@@ -1,5 +1,9 @@
 # Release history for google-apis-site_verification_v1
 
+### v0.11.0 (2022-09-23)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.10.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0
