@@ -22,6 +22,50 @@ module Google
   module Apis
     module IdentitytoolkitV2
       
+      # Defines a policy of allowing every region by default and adding disallowed
+      # regions to a disallow list.
+      class GoogleCloudIdentitytoolkitAdminV2AllowByDefault
+        include Google::Apis::Core::Hashable
+      
+        # Two letter unicode region codes to disallow as defined by https://cldr.unicode.
+        # org/ The full list of these region codes is here: https://github.com/unicode-
+        # cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        # Corresponds to the JSON property `disallowedRegions`
+        # @return [Array<String>]
+        attr_accessor :disallowed_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disallowed_regions = args[:disallowed_regions] if args.key?(:disallowed_regions)
+        end
+      end
+      
+      # Defines a policy of only allowing regions by explicitly adding them to an
+      # allowlist.
+      class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly
+        include Google::Apis::Core::Hashable
+      
+        # Two letter unicode region codes to allow as defined by https://cldr.unicode.
+        # org/ The full list of these region codes is here: https://github.com/unicode-
+        # cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        # Corresponds to the JSON property `allowedRegions`
+        # @return [Array<String>]
+        attr_accessor :allowed_regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_regions = args[:allowed_regions] if args.key?(:allowed_regions)
+        end
+      end
+      
       # Configuration options related to authenticating an anonymous user.
       class GoogleCloudIdentitytoolkitAdminV2Anonymous
         include Google::Apis::Core::Hashable
@@ -267,6 +311,13 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig]
         attr_accessor :sign_in
       
+        # Configures the regions where users are allowed to send verification SMS for
+        # the project or tenant. This is based on the calling code of the destination
+        # phone number.
+        # Corresponds to the JSON property `smsRegionConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]
+        attr_accessor :sms_region_config
+      
         # Output only. The subtype of this config.
         # Corresponds to the JSON property `subtype`
         # @return [String]
@@ -289,6 +340,7 @@ module Google
           @notification = args[:notification] if args.key?(:notification)
           @quota = args[:quota] if args.key?(:quota)
           @sign_in = args[:sign_in] if args.key?(:sign_in)
+          @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @subtype = args[:subtype] if args.key?(:subtype)
         end
       end
@@ -1330,6 +1382,35 @@ module Google
         end
       end
       
+      # Configures the regions where users are allowed to send verification SMS for
+      # the project or tenant. This is based on the calling code of the destination
+      # phone number.
+      class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines a policy of allowing every region by default and adding disallowed
+        # regions to a disallow list.
+        # Corresponds to the JSON property `allowByDefault`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowByDefault]
+        attr_accessor :allow_by_default
+      
+        # Defines a policy of only allowing regions by explicitly adding them to an
+        # allowlist.
+        # Corresponds to the JSON property `allowlistOnly`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowlistOnly]
+        attr_accessor :allowlist_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_by_default = args[:allow_by_default] if args.key?(:allow_by_default)
+          @allowlist_only = args[:allowlist_only] if args.key?(:allowlist_only)
+        end
+      end
+      
       # The template to use when sending an SMS.
       class GoogleCloudIdentitytoolkitAdminV2SmsTemplate
         include Google::Apis::Core::Hashable
@@ -1555,11 +1636,23 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]
         attr_accessor :mfa_config
       
+        # Configuration related to monitoring project activity.
+        # Corresponds to the JSON property `monitoring`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig]
+        attr_accessor :monitoring
+      
         # Output only. Resource name of a tenant. For example: "projects/`project-id`/
         # tenants/`tenant-id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Configures the regions where users are allowed to send verification SMS for
+        # the project or tenant. This is based on the calling code of the destination
+        # phone number.
+        # Corresponds to the JSON property `smsRegionConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig]
+        attr_accessor :sms_region_config
       
         # A map of pairs that can be used for MFA. The phone number should be in E.164
         # format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be
@@ -1584,7 +1677,9 @@ module Google
           @hash_config = args[:hash_config] if args.key?(:hash_config)
           @inheritance = args[:inheritance] if args.key?(:inheritance)
           @mfa_config = args[:mfa_config] if args.key?(:mfa_config)
+          @monitoring = args[:monitoring] if args.key?(:monitoring)
           @name = args[:name] if args.key?(:name)
+          @sms_region_config = args[:sms_region_config] if args.key?(:sms_region_config)
           @test_phone_numbers = args[:test_phone_numbers] if args.key?(:test_phone_numbers)
         end
       end
