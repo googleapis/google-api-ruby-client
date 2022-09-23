@@ -22,6 +22,18 @@ module Google
   module Apis
     module IdentitytoolkitV2
       
+      class GoogleCloudIdentitytoolkitAdminV2AllowByDefault
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2Anonymous
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2SmsTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +472,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2AllowByDefault
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disallowed_regions, as: 'disallowedRegions'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2AllowlistOnly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_regions, as: 'allowedRegions'
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2Anonymous
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -536,6 +568,8 @@ module Google
           property :quota, as: 'quota', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2QuotaConfig::Representation
       
           property :sign_in, as: 'signIn', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SignInConfig::Representation
+      
+          property :sms_region_config, as: 'smsRegionConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig::Representation
       
           property :subtype, as: 'subtype'
         end
@@ -843,6 +877,16 @@ module Google
         end
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_by_default, as: 'allowByDefault', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowByDefault, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowByDefault::Representation
+      
+          property :allowlist_only, as: 'allowlistOnly', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowlistOnly, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2AllowlistOnly::Representation
+      
+        end
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2SmsTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -906,7 +950,11 @@ module Google
       
           property :mfa_config, as: 'mfaConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig::Representation
       
+          property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
+      
           property :name, as: 'name'
+          property :sms_region_config, as: 'smsRegionConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig::Representation
+      
           hash :test_phone_numbers, as: 'testPhoneNumbers'
         end
       end
