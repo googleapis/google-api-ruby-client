@@ -296,12 +296,12 @@ module Google
         end
         
         # Creates an ad unit. This method can only be used by projects enabled for the [
-        # AdSense for Platforms product](https://developers.google.com/adsense/platforms/
-        # ). Note that ad units can only be created for ad clients with an "AFC" product
-        # code. For more info see the [AdClient resource](https://developers.google.com/
-        # adsense/management/reference/rest/v2/accounts.adclients). For now, this method
-        # can only be used to create `DISPLAY` ad units. See: https://support.google.com/
-        # adsense/answer/9183566
+        # AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+        # product. Note that ad units can only be created for ad clients with an "AFC"
+        # product code. For more info see the [AdClient resource](https://developers.
+        # google.com/adsense/management/reference/rest/v2/accounts.adclients). For now,
+        # this method can only be used to create `DISPLAY` ad units. See: https://
+        # support.google.com/adsense/answer/9183566
         # @param [String] parent
         #   Required. Ad client to create an ad unit under. Format: accounts/`account`/
         #   adclients/`adclient`
@@ -484,9 +484,9 @@ module Google
         end
         
         # Updates an ad unit. This method can only be used by projects enabled for the [
-        # AdSense for Platforms product](https://developers.google.com/adsense/platforms/
-        # ). For now, this method can only be used to update `DISPLAY` ad units. See:
-        # https://support.google.com/adsense/answer/9183566
+        # AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+        # product. For now, this method can only be used to update `DISPLAY` ad units.
+        # See: https://support.google.com/adsense/answer/9183566
         # @param [String] name
         #   Output only. Resource name of the ad unit. Format: accounts/`account`/
         #   adclients/`adclient`/adunits/`adunit`
@@ -524,8 +524,8 @@ module Google
         end
         
         # Creates a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms product](https://developers.google.com/adsense/
-        # platforms/).
+        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+        # product.
         # @param [String] parent
         #   Required. The ad client to create a custom channel under. Format: accounts/`
         #   account`/adclients/`adclient`
@@ -560,8 +560,8 @@ module Google
         end
         
         # Deletes a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms product](https://developers.google.com/adsense/
-        # platforms/).
+        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+        # product.
         # @param [String] name
         #   Required. Name of the custom channel to delete. Format: accounts/`account`/
         #   adclients/`adclient`/customchannels/`customchannel`
@@ -708,8 +708,8 @@ module Google
         end
         
         # Updates a custom channel. This method can only be used by projects enabled for
-        # the [AdSense for Platforms product](https://developers.google.com/adsense/
-        # platforms/).
+        # the [AdSense for Platforms](https://developers.google.com/adsense/platforms/)
+        # product.
         # @param [String] name
         #   Output only. Resource name of the custom channel. Format: accounts/`account`/
         #   adclients/`adclient`/customchannels/`customchannel`
