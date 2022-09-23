@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleChromeManagementV1DeviceAueCountReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1DeviceHardwareCountReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -480,6 +492,20 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cpu_reports, as: 'cpuReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport::Representation
+      
+          collection :memory_reports, as: 'memoryReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport::Representation
+      
+          collection :model_reports, as: 'modelReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport::Representation
+      
+          collection :storage_reports, as: 'storageReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DeviceHardwareCountReport::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1CountChromeVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -546,6 +572,14 @@ module Google
           property :count, :numeric_string => true, as: 'count'
           property :expired, as: 'expired'
           property :model, as: 'model'
+        end
+      end
+      
+      class GoogleChromeManagementV1DeviceHardwareCountReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :count, :numeric_string => true, as: 'count'
         end
       end
       
