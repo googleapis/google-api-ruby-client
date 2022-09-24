@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1TaskNotebookTaskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1TaskSparkTaskConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1304,6 +1310,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :notebook, as: 'notebook', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskNotebookTaskConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskNotebookTaskConfig::Representation
+      
           property :spark, as: 'spark', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskSparkTaskConfig, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskSparkTaskConfig::Representation
       
           property :state, as: 'state'
@@ -1370,6 +1378,17 @@ module Google
           property :network, as: 'network'
           collection :network_tags, as: 'networkTags'
           property :sub_network, as: 'subNetwork'
+        end
+      end
+      
+      class GoogleCloudDataplexV1TaskNotebookTaskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_uris, as: 'archiveUris'
+          collection :file_uris, as: 'fileUris'
+          property :infrastructure_spec, as: 'infrastructureSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskInfrastructureSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskInfrastructureSpec::Representation
+      
+          property :notebook, as: 'notebook'
         end
       end
       
