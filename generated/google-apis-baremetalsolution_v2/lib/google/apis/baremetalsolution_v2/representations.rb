@@ -34,6 +34,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableInteractiveSerialConsoleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableInteractiveSerialConsoleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchInstanceProvisioningSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +131,12 @@ module Google
       end
       
       class ListProvisioningQuotasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSshKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SshKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerNetworkTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +359,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lun, as: 'lun'
           property :skip_reboot, as: 'skipReboot'
+        end
+      end
+      
+      class DisableInteractiveSerialConsoleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableInteractiveSerialConsoleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -492,6 +540,15 @@ module Google
         end
       end
       
+      class ListSshKeysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :ssh_keys, as: 'sshKeys', class: Google::Apis::BaremetalsolutionV2::SshKey, decorator: Google::Apis::BaremetalsolutionV2::SshKey::Representation
+      
+        end
+      end
+      
       class ListVolumesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -552,6 +609,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cidr, as: 'cidr'
+          property :gateway_ip, as: 'gatewayIp'
           property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
           property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
@@ -697,6 +755,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_console_uri, as: 'cloudConsoleUri'
+          property :custom_id, as: 'customId'
           property :email, as: 'email'
           property :handover_service_account, as: 'handoverServiceAccount'
           collection :instances, as: 'instances', class: Google::Apis::BaremetalsolutionV2::InstanceConfig, decorator: Google::Apis::BaremetalsolutionV2::InstanceConfig::Representation
@@ -748,6 +807,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :size_gib, :numeric_string => true, as: 'sizeGib'
+        end
+      end
+      
+      class SshKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :public_key, as: 'publicKey'
         end
       end
       
