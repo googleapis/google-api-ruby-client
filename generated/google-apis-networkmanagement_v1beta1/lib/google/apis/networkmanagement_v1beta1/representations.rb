@@ -686,13 +686,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dest_ip_range, as: 'destIpRange'
+          collection :dest_port_ranges, as: 'destPortRanges'
           property :display_name, as: 'displayName'
           collection :instance_tags, as: 'instanceTags'
           property :network_uri, as: 'networkUri'
           property :next_hop, as: 'nextHop'
           property :next_hop_type, as: 'nextHopType'
           property :priority, as: 'priority'
+          collection :protocols, as: 'protocols'
           property :route_type, as: 'routeType'
+          property :src_ip_range, as: 'srcIpRange'
+          collection :src_port_ranges, as: 'srcPortRanges'
           property :uri, as: 'uri'
         end
       end
