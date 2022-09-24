@@ -2633,6 +2633,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Config for running scheduled notebooks.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskNotebookTaskConfig]
+        attr_accessor :notebook
+      
         # User-specified config for running a Spark task.
         # Corresponds to the JSON property `spark`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskSparkTaskConfig]
@@ -2672,6 +2677,7 @@ module Google
           @execution_status = args[:execution_status] if args.key?(:execution_status)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @spark = args[:spark] if args.key?(:spark)
           @state = args[:state] if args.key?(:state)
           @trigger_spec = args[:trigger_spec] if args.key?(:trigger_spec)
@@ -2893,6 +2899,47 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @sub_network = args[:sub_network] if args.key?(:sub_network)
+        end
+      end
+      
+      # Config for running scheduled notebooks.
+      class GoogleCloudDataplexV1TaskNotebookTaskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. GCS URIs of archives to be extracted into the working directory of
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. GCS URIs of files to be placed in the working directory of each
+        # executor.
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # Configuration for the underlying infrastructure used to run workloads.
+        # Corresponds to the JSON property `infrastructureSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskInfrastructureSpec]
+        attr_accessor :infrastructure_spec
+      
+        # Required. Path to input notebook. This can be the GCS URI of the notebook file
+        # or the path to a Notebook Content. The execution args are accessible as
+        # environment variables (TASK_key=value).
+        # Corresponds to the JSON property `notebook`
+        # @return [String]
+        attr_accessor :notebook
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @infrastructure_spec = args[:infrastructure_spec] if args.key?(:infrastructure_spec)
+          @notebook = args[:notebook] if args.key?(:notebook)
         end
       end
       
@@ -3433,22 +3480,23 @@ module Google
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
-        # authenticated with a Google account or a service account. user:`emailid`: An
-        # email address that represents a specific Google account. For example, alice@
-        # example.com . serviceAccount:`emailid`: An email address that represents a
-        # Google service account. For example, my-other-app@appspot.gserviceaccount.com.
-        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]: An
-        # identifier for a Kubernetes service account (https://cloud.google.com/
-        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-
-        # project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:`emailid`: An email
-        # address that represents a Google group. For example, admins@example.com.
-        # deleted:user:`emailid`?uid=`uniqueid`: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example,
-        # alice@example.com?uid=123456789012345678901. If the user is recovered, this
-        # value reverts to user:`emailid` and the recovered user retains the role in the
-        # binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email address (
-        # plus unique identifier) representing a service account that has been recently
-        # deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
+        # authenticated with a Google account or a service account. Does not include
+        # identities that come from external identity providers (IdPs) through identity
+        # federation. user:`emailid`: An email address that represents a specific Google
+        # account. For example, alice@example.com . serviceAccount:`emailid`: An email
+        # address that represents a Google service account. For example, my-other-app@
+        # appspot.gserviceaccount.com. serviceAccount:`projectid`.svc.id.goog[`namespace`
+        # /`kubernetes-sa`]: An identifier for a Kubernetes service account (https://
+        # cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+        # For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:`
+        # emailid`: An email address that represents a Google group. For example, admins@
+        # example.com. deleted:user:`emailid`?uid=`uniqueid`: An email address (plus
+        # unique identifier) representing a user that has been recently deleted. For
+        # example, alice@example.com?uid=123456789012345678901. If the user is recovered,
+        # this value reverts to user:`emailid` and the recovered user retains the role
+        # in the binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
         # 123456789012345678901. If the service account is undeleted, this value reverts
         # to serviceAccount:`emailid` and the undeleted service account retains the role
         # in the binding. deleted:group:`emailid`?uid=`uniqueid`: An email address (plus
