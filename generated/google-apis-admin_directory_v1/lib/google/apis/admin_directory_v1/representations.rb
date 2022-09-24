@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreatePrintServersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreatePrintServersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchCreatePrintersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +71,18 @@ module Google
       end
       
       class BatchCreatePrintersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeletePrintServersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeletePrintServersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreatePrintServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatePrinterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPrintServersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPrinterModelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +449,18 @@ module Google
       end
       
       class OsUpdateStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrintServer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrintServerFailureInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -704,6 +752,24 @@ module Google
         end
       end
       
+      class BatchCreatePrintServersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::AdminDirectoryV1::CreatePrintServerRequest, decorator: Google::Apis::AdminDirectoryV1::CreatePrintServerRequest::Representation
+      
+        end
+      end
+      
+      class BatchCreatePrintServersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failures, as: 'failures', class: Google::Apis::AdminDirectoryV1::PrintServerFailureInfo, decorator: Google::Apis::AdminDirectoryV1::PrintServerFailureInfo::Representation
+      
+          collection :print_servers, as: 'printServers', class: Google::Apis::AdminDirectoryV1::PrintServer, decorator: Google::Apis::AdminDirectoryV1::PrintServer::Representation
+      
+        end
+      end
+      
       class BatchCreatePrintersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -719,6 +785,22 @@ module Google
       
           collection :printers, as: 'printers', class: Google::Apis::AdminDirectoryV1::Printer, decorator: Google::Apis::AdminDirectoryV1::Printer::Representation
       
+        end
+      end
+      
+      class BatchDeletePrintServersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :print_server_ids, as: 'printServerIds'
+        end
+      end
+      
+      class BatchDeletePrintServersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failed_print_servers, as: 'failedPrintServers', class: Google::Apis::AdminDirectoryV1::PrintServerFailureInfo, decorator: Google::Apis::AdminDirectoryV1::PrintServerFailureInfo::Representation
+      
+          collection :print_server_ids, as: 'printServerIds'
         end
       end
       
@@ -1055,6 +1137,15 @@ module Google
         end
       end
       
+      class CreatePrintServerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :print_server, as: 'printServer', class: Google::Apis::AdminDirectoryV1::PrintServer, decorator: Google::Apis::AdminDirectoryV1::PrintServer::Representation
+      
+        end
+      end
+      
       class CreatePrinterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1270,6 +1361,15 @@ module Google
         end
       end
       
+      class ListPrintServersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :print_servers, as: 'printServers', class: Google::Apis::AdminDirectoryV1::PrintServer, decorator: Google::Apis::AdminDirectoryV1::PrintServer::Representation
+      
+        end
+      end
+      
       class ListPrinterModelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1432,6 +1532,30 @@ module Google
           property :target_os_version, as: 'targetOsVersion'
           property :update_check_time, as: 'updateCheckTime'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PrintServer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class PrintServerFailureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :print_server, as: 'printServer', class: Google::Apis::AdminDirectoryV1::PrintServer, decorator: Google::Apis::AdminDirectoryV1::PrintServer::Representation
+      
+          property :print_server_id, as: 'printServerId'
         end
       end
       
