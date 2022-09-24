@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class PrivateEnvironmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SaveSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -348,6 +360,12 @@ module Google
         end
       end
       
+      class LoadSnapshotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MaintenanceWindow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -429,6 +447,13 @@ module Google
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
           property :web_server_ipv4_reserved_range, as: 'webServerIpv4ReservedRange'
+        end
+      end
+      
+      class SaveSnapshotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_path, as: 'snapshotPath'
         end
       end
       
