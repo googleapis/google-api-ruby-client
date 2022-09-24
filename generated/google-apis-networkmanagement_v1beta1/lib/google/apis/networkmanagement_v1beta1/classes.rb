@@ -1594,6 +1594,11 @@ module Google
         # @return [String]
         attr_accessor :dest_ip_range
       
+        # Destination port ranges of the route. Policy based routes only.
+        # Corresponds to the JSON property `destPortRanges`
+        # @return [Array<String>]
+        attr_accessor :dest_port_ranges
+      
         # Name of a Compute Engine route.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1624,10 +1629,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # Protocols of the route. Policy based routes only.
+        # Corresponds to the JSON property `protocols`
+        # @return [Array<String>]
+        attr_accessor :protocols
+      
         # Type of route.
         # Corresponds to the JSON property `routeType`
         # @return [String]
         attr_accessor :route_type
+      
+        # Source IP address range of the route. Policy based routes only.
+        # Corresponds to the JSON property `srcIpRange`
+        # @return [String]
+        attr_accessor :src_ip_range
+      
+        # Source port ranges of the route. Policy based routes only.
+        # Corresponds to the JSON property `srcPortRanges`
+        # @return [Array<String>]
+        attr_accessor :src_port_ranges
       
         # URI of a Compute Engine route. Dynamic route from cloud router does not have a
         # URI. Advertised route from Google Cloud VPC to on-premises network also does
@@ -1643,13 +1663,17 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dest_ip_range = args[:dest_ip_range] if args.key?(:dest_ip_range)
+          @dest_port_ranges = args[:dest_port_ranges] if args.key?(:dest_port_ranges)
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_tags = args[:instance_tags] if args.key?(:instance_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @next_hop = args[:next_hop] if args.key?(:next_hop)
           @next_hop_type = args[:next_hop_type] if args.key?(:next_hop_type)
           @priority = args[:priority] if args.key?(:priority)
+          @protocols = args[:protocols] if args.key?(:protocols)
           @route_type = args[:route_type] if args.key?(:route_type)
+          @src_ip_range = args[:src_ip_range] if args.key?(:src_ip_range)
+          @src_port_ranges = args[:src_port_ranges] if args.key?(:src_port_ranges)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
