@@ -224,6 +224,51 @@ module Google
         end
       end
       
+      # Request to add multiple new print servers in a batch.
+      class BatchCreatePrintServersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of `PrintServer` resources to be created (max `50` per batch).
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AdminDirectoryV1::CreatePrintServerRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # 
+      class BatchCreatePrintServersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of create failures. `PrintServer` IDs are not populated, as print
+        # servers were not created.
+        # Corresponds to the JSON property `failures`
+        # @return [Array<Google::Apis::AdminDirectoryV1::PrintServerFailureInfo>]
+        attr_accessor :failures
+      
+        # A list of successfully created print servers with their IDs populated.
+        # Corresponds to the JSON property `printServers`
+        # @return [Array<Google::Apis::AdminDirectoryV1::PrintServer>]
+        attr_accessor :print_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failures = args[:failures] if args.key?(:failures)
+          @print_servers = args[:print_servers] if args.key?(:print_servers)
+        end
+      end
+      
       # Request for adding new printers in batch.
       class BatchCreatePrintersRequest
         include Google::Apis::Core::Hashable
@@ -266,6 +311,50 @@ module Google
         def update!(**args)
           @failures = args[:failures] if args.key?(:failures)
           @printers = args[:printers] if args.key?(:printers)
+        end
+      end
+      
+      # Request to delete multiple existing print servers in a batch.
+      class BatchDeletePrintServersRequest
+        include Google::Apis::Core::Hashable
+      
+        # A list of print server IDs that should be deleted (max `100` per batch).
+        # Corresponds to the JSON property `printServerIds`
+        # @return [Array<String>]
+        attr_accessor :print_server_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @print_server_ids = args[:print_server_ids] if args.key?(:print_server_ids)
+        end
+      end
+      
+      # 
+      class BatchDeletePrintServersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of update failures.
+        # Corresponds to the JSON property `failedPrintServers`
+        # @return [Array<Google::Apis::AdminDirectoryV1::PrintServerFailureInfo>]
+        attr_accessor :failed_print_servers
+      
+        # A list of print server IDs that were successfully deleted.
+        # Corresponds to the JSON property `printServerIds`
+        # @return [Array<String>]
+        attr_accessor :print_server_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_print_servers = args[:failed_print_servers] if args.key?(:failed_print_servers)
+          @print_server_ids = args[:print_server_ids] if args.key?(:print_server_ids)
         end
       end
       
@@ -1554,6 +1643,33 @@ module Google
         end
       end
       
+      # Request for adding a new print server.
+      class CreatePrintServerRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/customers) of the customer's Google Workspace account.
+        # Format: `customers/`id``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Configuration for a print server.
+        # Corresponds to the JSON property `printServer`
+        # @return [Google::Apis::AdminDirectoryV1::PrintServer]
+        attr_accessor :print_server
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @print_server = args[:print_server] if args.key?(:print_server)
+        end
+      end
+      
       # Request for adding a new printer.
       class CreatePrinterRequest
         include Google::Apis::Core::Hashable
@@ -2367,6 +2483,32 @@ module Google
         end
       end
       
+      # 
+      class ListPrintServersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` in a request to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of print servers.
+        # Corresponds to the JSON property `printServers`
+        # @return [Array<Google::Apis::AdminDirectoryV1::PrintServer>]
+        attr_accessor :print_servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @print_servers = args[:print_servers] if args.key?(:print_servers)
+        end
+      end
+      
       # Response for listing allowed printer models.
       class ListPrinterModelsResponse
         include Google::Apis::Core::Hashable
@@ -3119,6 +3261,103 @@ module Google
           @target_os_version = args[:target_os_version] if args.key?(:target_os_version)
           @update_check_time = args[:update_check_time] if args.key?(:update_check_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for a print server.
+      class PrintServer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the print server was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Editable. Description of the print server (as shown in the Admin console).
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Editable. Display name of the print server (as shown in the Admin console).
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. ID of the print server. Leave empty when creating.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Immutable. Resource name of the print server. Leave empty when creating.
+        # Format: `customers/`customer.id`/printServers/`print_server.id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ID of the organization unit (OU) that owns this print server. This value can
+        # only be set when the print server is initially created. If it's not populated,
+        # the print server is placed under the root OU. The `org_unit_id` can be
+        # retrieved using the [Directory API](/admin-sdk/directory/reference/rest/v1/
+        # orgunits).
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Editable. Print server URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Info about failures
+      class PrintServerFailureInfo
+        include Google::Apis::Core::Hashable
+      
+        # Canonical code for why the update failed to apply.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Failure reason message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Configuration for a print server.
+        # Corresponds to the JSON property `printServer`
+        # @return [Google::Apis::AdminDirectoryV1::PrintServer]
+        attr_accessor :print_server
+      
+        # ID of a failed print server.
+        # Corresponds to the JSON property `printServerId`
+        # @return [String]
+        attr_accessor :print_server_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @print_server = args[:print_server] if args.key?(:print_server)
+          @print_server_id = args[:print_server_id] if args.key?(:print_server_id)
         end
       end
       
