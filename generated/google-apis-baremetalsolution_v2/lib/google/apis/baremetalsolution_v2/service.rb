@@ -220,6 +220,72 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Disable the interactive serial console feature on an instance.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [Google::Apis::BaremetalsolutionV2::DisableInteractiveSerialConsoleRequest] disable_interactive_serial_console_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_instance_interactive_serial_console(name, disable_interactive_serial_console_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:disableInteractiveSerialConsole', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::DisableInteractiveSerialConsoleRequest::Representation
+          command.request_object = disable_interactive_serial_console_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enable the interactive serial console feature on an instance.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [Google::Apis::BaremetalsolutionV2::EnableInteractiveSerialConsoleRequest] enable_interactive_serial_console_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_instance_interactive_serial_console(name, enable_interactive_serial_console_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:enableInteractiveSerialConsole', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::EnableInteractiveSerialConsoleRequest::Representation
+          command.request_object = enable_interactive_serial_console_request_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get details about a single server.
         # @param [String] name
         #   Required. Name of the resource.
@@ -540,7 +606,7 @@ module Google
         # @param [Google::Apis::BaremetalsolutionV2::Network] network_object
         # @param [String] update_mask
         #   The list of fields to update. The only currently supported fields are: `labels`
-        #   , `reservations`
+        #   , `reservations`, `vrf.vlan_attachments`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -840,7 +906,8 @@ module Google
         
         # Update existing ProvisioningConfig.
         # @param [String] name
-        #   Output only. The name of the provisioning config.
+        #   Output only. The system-generated name of the provisioning config. This
+        #   follows the UUID format.
         # @param [Google::Apis::BaremetalsolutionV2::ProvisioningConfig] provisioning_config_object
         # @param [String] email
         #   Optional. Email provided to send a confirmation with provisioning config to.
@@ -941,6 +1008,114 @@ module Google
           command = make_simple_command(:get, 'v2/{+parent}/provisioningQuotas', options)
           command.response_representation = Google::Apis::BaremetalsolutionV2::ListProvisioningQuotasResponse::Representation
           command.response_class = Google::Apis::BaremetalsolutionV2::ListProvisioningQuotasResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Register a public SSH key in the specified project for use with the
+        # interactive serial console feature.
+        # @param [String] parent
+        #   Required. The parent containing the SSH keys.
+        # @param [Google::Apis::BaremetalsolutionV2::SshKey] ssh_key_object
+        # @param [String] ssh_key_id
+        #   Required. The ID to use for the key, which will become the final component of
+        #   the key's resource name. This value must match the regex: [a-zA-Z0-9@.\-_]`1,
+        #   64`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::SshKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::SshKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_ssh_key(parent, ssh_key_object = nil, ssh_key_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/sshKeys', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::SshKey::Representation
+          command.request_object = ssh_key_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::SshKey::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::SshKey
+          command.params['parent'] = parent unless parent.nil?
+          command.query['sshKeyId'] = ssh_key_id unless ssh_key_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a public SSH key registered in the specified project.
+        # @param [String] name
+        #   Required. The name of the SSH key to delete. Currently, the only valid value
+        #   for the location is "global".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_ssh_key(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Empty::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the public SSH keys registered for the specified project. These SSH keys
+        # are used only for the interactive serial console feature.
+        # @param [String] parent
+        #   Required. The parent containing the SSH keys. Currently, the only valid value
+        #   for the location is "global".
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::ListSshKeysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::ListSshKeysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_ssh_keys(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/sshKeys', options)
+          command.response_representation = Google::Apis::BaremetalsolutionV2::ListSshKeysResponse::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::ListSshKeysResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
