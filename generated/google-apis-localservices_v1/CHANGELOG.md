@@ -1,5 +1,9 @@
 # Release history for google-apis-localservices_v1
 
+### v0.14.0 (2022-09-25)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.13.0 (2022-06-30)
 
 * Regenerated using generator version 0.8.0
