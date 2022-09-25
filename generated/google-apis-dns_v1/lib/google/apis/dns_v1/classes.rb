@@ -2516,6 +2516,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # User labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # List of network names specifying networks to which this policy is applied.
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::DnsV1::ResponsePolicyNetwork>]
@@ -2536,6 +2541,7 @@ module Google
           @gke_clusters = args[:gke_clusters] if args.key?(:gke_clusters)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @networks = args[:networks] if args.key?(:networks)
           @response_policy_name = args[:response_policy_name] if args.key?(:response_policy_name)
         end
