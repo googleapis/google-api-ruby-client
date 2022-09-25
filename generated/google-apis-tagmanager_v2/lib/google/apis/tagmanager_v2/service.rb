@@ -111,7 +111,7 @@ module Google
         
         # Updates a GTM Account.
         # @param [String] path
-        #   GTM Accounts's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path. Example: accounts/`account_id`
         # @param [Google::Apis::TagmanagerV2::Account] account_object
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the account in
@@ -241,7 +241,7 @@ module Google
         
         # Lists all Containers that belongs to a GTM Account.
         # @param [String] parent
-        #   GTM Accounts's API relative path. Example: accounts/`account_id`.
+        #   GTM Account's API relative path. Example: accounts/`account_id`.
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
@@ -2856,7 +2856,7 @@ module Google
         # List all users that have access to the account along with Account and
         # Container user access granted to each of them.
         # @param [String] parent
-        #   GTM Accounts's API relative path. Example: accounts/`account_id`
+        #   GTM Account's API relative path. Example: accounts/`account_id`
         # @param [String] page_token
         #   Continuation token for fetching the next page of results.
         # @param [String] fields
