@@ -333,31 +333,33 @@ module Google
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a Google service account. For example, `my-other-app@
-        # appspot.gserviceaccount.com`. * `serviceAccount:`projectid`.svc.id.goog[`
-        # namespace`/`kubernetes-sa`]`: An identifier for a [Kubernetes service account](
-        # https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-
-        # accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`
-        # . * `group:`emailid``: An email address that represents a Google group. For
-        # example, `admins@example.com`. * `deleted:user:`emailid`?uid=`uniqueid``: An
-        # email address (plus unique identifier) representing a user that has been
-        # recently deleted. For example, `alice@example.com?uid=123456789012345678901`.
-        # If the user is recovered, this value reverts to `user:`emailid`` and the
-        # recovered user retains the role in the binding. * `deleted:serviceAccount:`
-        # emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a service account that has been recently deleted. For example, `
-        # my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the
-        # service account is undeleted, this value reverts to `serviceAccount:`emailid``
-        # and the undeleted service account retains the role in the binding. * `deleted:
-        # group:`emailid`?uid=`uniqueid``: An email address (plus unique identifier)
-        # representing a Google group that has been recently deleted. For example, `
-        # admins@example.com?uid=123456789012345678901`. If the group is recovered, this
-        # value reverts to `group:`emailid`` and the recovered group retains the role in
-        # the binding. * `domain:`domain``: The G Suite domain (primary) that represents
-        # all the users of that domain. For example, `google.com` or `example.com`.
+        # anyone who is authenticated with a Google account or a service account. Does
+        # not include identities that come from external identity providers (IdPs)
+        # through identity federation. * `user:`emailid``: An email address that
+        # represents a specific Google account. For example, `alice@example.com` . * `
+        # serviceAccount:`emailid``: An email address that represents a Google service
+        # account. For example, `my-other-app@appspot.gserviceaccount.com`. * `
+        # serviceAccount:`projectid`.svc.id.goog[`namespace`/`kubernetes-sa`]`: An
+        # identifier for a [Kubernetes service account](https://cloud.google.com/
+        # kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-
+        # project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:`emailid``: An
+        # email address that represents a Google group. For example, `admins@example.com`
+        # . * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example, `
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding. * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding. * `deleted:group:`emailid`?uid=`uniqueid``:
+        # An email address (plus unique identifier) representing a Google group that has
+        # been recently deleted. For example, `admins@example.com?uid=
+        # 123456789012345678901`. If the group is recovered, this value reverts to `
+        # group:`emailid`` and the recovered group retains the role in the binding. * `
+        # domain:`domain``: The G Suite domain (primary) that represents all the users
+        # of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -758,6 +760,15 @@ module Google
         # @return [String]
         attr_accessor :crypto_key
       
+        # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+        # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+        # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+        # Healthcare Service Agent service account. For more information, see [Creating
+        # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        # Corresponds to the JSON property `kmsWrapped`
+        # @return [Google::Apis::HealthcareV1::KmsWrappedCryptoKey]
+        attr_accessor :kms_wrapped
+      
         def initialize(**args)
            update!(**args)
         end
@@ -765,6 +776,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
         end
       end
       
@@ -814,6 +826,15 @@ module Google
         # @return [String]
         attr_accessor :crypto_key
       
+        # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+        # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+        # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+        # Healthcare Service Agent service account. For more information, see [Creating
+        # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        # Corresponds to the JSON property `kmsWrapped`
+        # @return [Google::Apis::HealthcareV1::KmsWrappedCryptoKey]
+        attr_accessor :kms_wrapped
+      
         def initialize(**args)
            update!(**args)
         end
@@ -821,6 +842,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
+        end
+      end
+      
+      # Contains configuration for streaming de-identified FHIR export.
+      class DeidentifiedStoreDestination
+        include Google::Apis::Core::Hashable
+      
+        # Configures de-id options specific to different types of content. Each
+        # submessage customizes the handling of an https://tools.ietf.org/html/rfc6838
+        # media type or subtype. Configs are applied in a nested manner at runtime.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::HealthcareV1::DeidentifyConfig]
+        attr_accessor :config
+      
+        # The full resource name of a Cloud Healthcare FHIR store, for example, `
+        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/
+        # `fhir_store_id``.
+        # Corresponds to the JSON property `store`
+        # @return [String]
+        attr_accessor :store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @store = args[:store] if args.key?(:store)
         end
       end
       
@@ -992,6 +1043,13 @@ module Google
         # @return [Google::Apis::HealthcareV1::FhirFilter]
         attr_accessor :resource_filter
       
+        # If true, skips resources that are created or modified after the de-identify
+        # operation is created.
+        # Corresponds to the JSON property `skipModifiedResources`
+        # @return [Boolean]
+        attr_accessor :skip_modified_resources
+        alias_method :skip_modified_resources?, :skip_modified_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1002,6 +1060,7 @@ module Google
           @destination_store = args[:destination_store] if args.key?(:destination_store)
           @gcs_config_uri = args[:gcs_config_uri] if args.key?(:gcs_config_uri)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
+          @skip_modified_resources = args[:skip_modified_resources] if args.key?(:skip_modified_resources)
         end
       end
       
@@ -2769,6 +2828,38 @@ module Google
         end
       end
       
+      # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+      # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+      # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+      # Healthcare Service Agent service account. For more information, see [Creating
+      # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+      class KmsWrappedCryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the KMS CryptoKey to use for unwrapping. For
+        # example, `projects/`project_id`/locations/`location_id`/keyRings/`keyring`/
+        # cryptoKeys/`key``.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [String]
+        attr_accessor :crypto_key
+      
+        # Required. The wrapped data crypto key.
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
+        end
+      end
+      
       # EntityMentions can be linked to multiple entities using a LinkedEntity message
       # lets us add other fields, e.g. confidence.
       class LinkedEntity
@@ -4208,6 +4299,11 @@ module Google
         # @return [Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination]
         attr_accessor :bigquery_destination
       
+        # Contains configuration for streaming de-identified FHIR export.
+        # Corresponds to the JSON property `deidentifiedStoreDestination`
+        # @return [Google::Apis::HealthcareV1::DeidentifiedStoreDestination]
+        attr_accessor :deidentified_store_destination
+      
         # Supply a FHIR resource type (such as "Patient" or "Observation"). See https://
         # www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource
         # types. The server treats an empty list as an intent to stream all the
@@ -4223,6 +4319,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @deidentified_store_destination = args[:deidentified_store_destination] if args.key?(:deidentified_store_destination)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end

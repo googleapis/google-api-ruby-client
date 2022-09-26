@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeidentifiedStoreDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeidentifyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +497,12 @@ module Google
       end
       
       class IngestMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KmsWrappedCryptoKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1000,6 +1012,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key, :base64 => true, as: 'cryptoKey'
+          property :kms_wrapped, as: 'kmsWrapped', class: Google::Apis::HealthcareV1::KmsWrappedCryptoKey, decorator: Google::Apis::HealthcareV1::KmsWrappedCryptoKey::Representation
+      
         end
       end
       
@@ -1015,6 +1029,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key, :base64 => true, as: 'cryptoKey'
+          property :kms_wrapped, as: 'kmsWrapped', class: Google::Apis::HealthcareV1::KmsWrappedCryptoKey, decorator: Google::Apis::HealthcareV1::KmsWrappedCryptoKey::Representation
+      
+        end
+      end
+      
+      class DeidentifiedStoreDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::HealthcareV1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1::DeidentifyConfig::Representation
+      
+          property :store, as: 'store'
         end
       end
       
@@ -1063,6 +1088,7 @@ module Google
           property :gcs_config_uri, as: 'gcsConfigUri'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::HealthcareV1::FhirFilter, decorator: Google::Apis::HealthcareV1::FhirFilter::Representation
       
+          property :skip_modified_resources, as: 'skipModifiedResources'
         end
       end
       
@@ -1537,6 +1563,14 @@ module Google
         end
       end
       
+      class KmsWrappedCryptoKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key, as: 'cryptoKey'
+          property :wrapped_key, :base64 => true, as: 'wrappedKey'
+        end
+      end
+      
       class LinkedEntity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1930,6 +1964,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination::Representation
+      
+          property :deidentified_store_destination, as: 'deidentifiedStoreDestination', class: Google::Apis::HealthcareV1::DeidentifiedStoreDestination, decorator: Google::Apis::HealthcareV1::DeidentifiedStoreDestination::Representation
       
           collection :resource_types, as: 'resourceTypes'
         end
