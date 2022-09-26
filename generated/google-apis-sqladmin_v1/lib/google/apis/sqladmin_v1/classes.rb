@@ -411,7 +411,7 @@ module Google
       class CloneContext
         include Google::Apis::Core::Hashable
       
-        # The name of the allocated ip range for the private ip CloudSQL instance. For
+        # The name of the allocated ip range for the private ip Cloud SQL instance. For
         # example: "google-managed-services-default". If set, the cloned instance ip
         # will be created in the allocated range. The range name must comply with [RFC
         # 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-
@@ -1992,7 +1992,7 @@ module Google
       class IpConfiguration
         include Google::Apis::Core::Hashable
       
-        # The name of the allocated ip range for the private ip CloudSQL instance. For
+        # The name of the allocated ip range for the private ip Cloud SQL instance. For
         # example: "google-managed-services-default". If set, the instance ip will be
         # created in the allocated range. The range name must comply with [RFC 1035](
         # https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
