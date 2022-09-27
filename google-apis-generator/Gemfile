@@ -8,7 +8,7 @@ group :development do
   gem 'rspec', '~> 3.1'
   gem 'json_spec', '~> 1.1'
   gem 'webmock', '~> 3.0'
-  gem 'rubocop', '>= 0.49.0', '< 0.93.2'
+  gem 'rubocop', '>= 0.49.0', '< 1.36.1'
   gem 'launchy', '~> 2.4'
   gem 'dotenv', '~> 2.0'
   gem 'fakefs', '~> 1.0', require: "fakefs/safe"
