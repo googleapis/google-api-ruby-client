@@ -377,7 +377,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new alerting policy.
+        # Creates a new alerting policy.Design your application to single-thread API
+        # calls that modify the state of alerting policies in a single project. This
+        # includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   in which to create the alerting policy. The format is: projects/[
@@ -418,7 +420,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an alerting policy.
+        # Deletes an alerting policy.Design your application to single-thread API calls
+        # that modify the state of alerting policies in a single project. This includes
+        # calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
         # @param [String] name
         #   Required. The alerting policy to delete. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more information,
@@ -538,7 +542,9 @@ module Google
         # Updates an alerting policy. You can either replace the entire policy with a
         # new one or replace only certain fields in the current alerting policy by
         # specifying the fields to be updated via updateMask. Returns the updated
-        # alerting policy.
+        # alerting policy.Design your application to single-thread API calls that modify
+        # the state of alerting policies in a single project. This includes calls to
+        # CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
         # @param [String] name
         #   Required if the policy exists. The resource name for this policy. The format
         #   is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
@@ -1188,7 +1194,11 @@ module Google
         end
         
         # Creates a new notification channel, representing a single notification
-        # endpoint such as an email address, SMS number, or PagerDuty service.
+        # endpoint such as an email address, SMS number, or PagerDuty service.Design
+        # your application to single-thread API calls that modify the state of
+        # notification channels in a single project. This includes calls to
+        # CreateNotificationChannel, DeleteNotificationChannel and
+        # UpdateNotificationChannel.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
@@ -1226,7 +1236,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a notification channel.
+        # Deletes a notification channel.Design your application to single-thread API
+        # calls that modify the state of notification channels in a single project. This
+        # includes calls to CreateNotificationChannel, DeleteNotificationChannel and
+        # UpdateNotificationChannel.
         # @param [String] name
         #   Required. The channel for which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
@@ -1407,7 +1420,10 @@ module Google
         end
         
         # Updates a notification channel. Fields not specified in the field mask remain
-        # unchanged.
+        # unchanged.Design your application to single-thread API calls that modify the
+        # state of notification channels in a single project. This includes calls to
+        # CreateNotificationChannel, DeleteNotificationChannel and
+        # UpdateNotificationChannel.
         # @param [String] name
         #   The full REST resource name for this channel. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is
