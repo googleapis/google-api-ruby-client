@@ -180,6 +180,12 @@ module Google
         # @return [String]
         attr_accessor :image
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `livenessProbe`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Probe]
+        attr_accessor :liveness_probe
+      
         # Name of the container specified as a DNS_LABEL.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -198,6 +204,12 @@ module Google
         # Corresponds to the JSON property `resources`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
+      
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `startupProbe`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Probe]
+        attr_accessor :startup_probe
       
         # Volume to mount into the container's filesystem.
         # Corresponds to the JSON property `volumeMounts`
@@ -220,9 +232,11 @@ module Google
           @command = args[:command] if args.key?(:command)
           @env = args[:env] if args.key?(:env)
           @image = args[:image] if args.key?(:image)
+          @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @name = args[:name] if args.key?(:name)
           @ports = args[:ports] if args.key?(:ports)
           @resources = args[:resources] if args.key?(:resources)
+          @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
         end
@@ -583,6 +597,96 @@ module Google
         end
       end
       
+      # GRPCAction describes an action involving a GRPC port.
+      class GoogleCloudRunV2GrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # HTTPGetAction describes an action based on HTTP Get requests.
+      class GoogleCloudRunV2HttpGetAction
+        include Google::Apis::Core::Hashable
+      
+        # Host name to connect to, defaults to the pod IP. You probably want to set "
+        # Host" in httpHeaders instead.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Custom headers to set in the request. HTTP allows repeated headers.
+        # Corresponds to the JSON property `httpHeaders`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2HttpHeader>]
+        attr_accessor :http_headers
+      
+        # Path to access on the HTTP server. Defaults to '/'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Scheme to use for connecting to the host. Defaults to HTTP.
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @http_headers = args[:http_headers] if args.key?(:http_headers)
+          @path = args[:path] if args.key?(:path)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
+      # HTTPHeader describes a custom header to be used in HTTP probes
+      class GoogleCloudRunV2HttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # Required. The header field name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The header field value
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Job represents the configuration of a single job. A job an immutable resource
       # that references a container image which is run to completion.
       class GoogleCloudRunV2Job
@@ -903,6 +1007,72 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
+      # Probe describes a health check to be performed against a container to
+      # determine whether it is alive or ready to receive traffic.
+      class GoogleCloudRunV2Probe
+        include Google::Apis::Core::Hashable
+      
+        # Minimum consecutive failures for the probe to be considered failed after
+        # having succeeded. Defaults to 3. Minimum value is 1.
+        # Corresponds to the JSON property `failureThreshold`
+        # @return [Fixnum]
+        attr_accessor :failure_threshold
+      
+        # GRPCAction describes an action involving a GRPC port.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2GrpcAction]
+        attr_accessor :grpc
+      
+        # HTTPGetAction describes an action based on HTTP Get requests.
+        # Corresponds to the JSON property `httpGet`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction]
+        attr_accessor :http_get
+      
+        # Number of seconds after the container has started before the probe is
+        # initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for
+        # liveness probe is 3600. Maximum value for startup probe is 240. More info:
+        # https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
+        # probes
+        # Corresponds to the JSON property `initialDelaySeconds`
+        # @return [Fixnum]
+        attr_accessor :initial_delay_seconds
+      
+        # How often (in seconds) to perform the probe. Default to 10 seconds. Minimum
+        # value is 1. Maximum value for liveness probe is 3600. Maximum value for
+        # startup probe is 240. Must be greater or equal than timeout_seconds.
+        # Corresponds to the JSON property `periodSeconds`
+        # @return [Fixnum]
+        attr_accessor :period_seconds
+      
+        # TCPSocketAction describes an action based on opening a socket
+        # Corresponds to the JSON property `tcpSocket`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2TcpSocketAction]
+        attr_accessor :tcp_socket
+      
+        # Number of seconds after which the probe times out. Defaults to 1 second.
+        # Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+        # More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#
+        # container-probes
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
+          @grpc = args[:grpc] if args.key?(:grpc)
+          @http_get = args[:http_get] if args.key?(:http_get)
+          @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
+          @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
+          @tcp_socket = args[:tcp_socket] if args.key?(:tcp_socket)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end
       
@@ -1597,6 +1767,34 @@ module Google
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # TCPSocketAction describes an action based on opening a socket
+      class GoogleCloudRunV2TcpSocketAction
+        include Google::Apis::Core::Hashable
+      
+        # Host name to connect to, defaults to the pod IP.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Number or name of the port to access on the container. Number must be in the
+        # range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently
+        # limited to integer types only because of proto's inability to properly support
+        # the IntOrString golang type.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
