@@ -179,8 +179,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full resource name of the identity provider; for example: `//iam.
-        # googleapis.com/projects//locations/global/workloadIdentityPools//providers/`.
-        # Required when exchanging an external credential for a Google access token.
+        # googleapis.com/projects//locations/global/workloadIdentityPools//providers/`
+        # for workload identity pool providers, or `//iam.googleapis.com/locations/
+        # global/workforcePools//providers/` for workforce pool providers. Required when
+        # exchanging an external credential for a Google access token.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
@@ -234,25 +236,28 @@ module Google
         # allowed audiences for the workload identity pool provider, or one of the
         # audiences allowed by default if no audiences were specified. See https://cloud.
         # google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.
-        # providers#oidc Example header: ``` ` "alg": "RS256", "kid": "us-east-11" ` ```
-        # Example payload: ``` ` "iss": "https://accounts.google.com", "iat": 1517963104,
-        # "exp": 1517966704, "aud": "//iam.googleapis.com/projects/1234567890123/
-        # locations/global/workloadIdentityPools/my-pool/providers/my-provider", "sub": "
-        # 113475438248934895348", "my_claims": ` "additional_claim": "value" ` ` ``` If `
-        # subject_token` is for AWS, it must be a serialized `GetCallerIdentity` token.
-        # This token contains the same information as a request to the AWS [`
-        # GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/
-        # API_GetCallerIdentity) method, as well as the AWS [signature](https://docs.aws.
-        # amazon.com/general/latest/gr/signing_aws_api_requests.html) for the request
-        # information. Use Signature Version 4. Format the request as URL-encoded JSON,
-        # and set the `subject_token_type` parameter to `urn:ietf:params:aws:token-type:
-        # aws4_request`. The following parameters are required: - `url`: The URL of the
-        # AWS STS endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?
-        # Action=GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also
-        # supported. - `method`: The HTTP request method: `POST`. - `headers`: The HTTP
-        # request headers, which must include: - `Authorization`: The request signature.
-        # - `x-amz-date`: The time you will send the request, formatted as an [ISO8601
-        # Basic](https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#
+        # providers#oidc. For workforce pools, this must match the client ID specified
+        # in the provider configuration. See https://cloud.google.com/iam/docs/reference/
+        # rest/v1/locations.workforcePools.providers#oidc. Example header: ``` ` "alg": "
+        # RS256", "kid": "us-east-11" ` ``` Example payload: ``` ` "iss": "https://
+        # accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud": "//iam.
+        # googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/
+        # my-pool/providers/my-provider", "sub": "113475438248934895348", "my_claims": `
+        # "additional_claim": "value" ` ` ``` If `subject_token` is for AWS, it must be
+        # a serialized `GetCallerIdentity` token. This token contains the same
+        # information as a request to the AWS [`GetCallerIdentity()`](https://docs.aws.
+        # amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method, as well as
+        # the AWS [signature](https://docs.aws.amazon.com/general/latest/gr/
+        # signing_aws_api_requests.html) for the request information. Use Signature
+        # Version 4. Format the request as URL-encoded JSON, and set the `
+        # subject_token_type` parameter to `urn:ietf:params:aws:token-type:aws4_request`.
+        # The following parameters are required: - `url`: The URL of the AWS STS
+        # endpoint for `GetCallerIdentity()`, such as `https://sts.amazonaws.com?Action=
+        # GetCallerIdentity&Version=2011-06-15`. Regional endpoints are also supported. -
+        # `method`: The HTTP request method: `POST`. - `headers`: The HTTP request
+        # headers, which must include: - `Authorization`: The request signature. - `x-
+        # amz-date`: The time you will send the request, formatted as an [ISO8601 Basic](
+        # https://docs.aws.amazon.com/general/latest/gr/sigv4_elements.html#
         # sigv4_elements_date) string. This value is typically set to the current time
         # and is used to help prevent replay attacks. - `host`: The hostname of the `url`
         # field; for example, `sts.amazonaws.com`. - `x-goog-cloud-target-resource`:
@@ -434,7 +439,10 @@ module Google
         # The human-readable identifier for the token principal subject. For example, if
         # the provided token is associated with a workload identity pool, this field
         # contains a value in the following format: `principal://iam.googleapis.com/
-        # projects//locations/global/workloadIdentityPools//subject/`
+        # projects//locations/global/workloadIdentityPools//subject/`. If the provided
+        # token is associated with a workforce pool, this field contains a value in the
+        # following format: `principal://iam.googleapis.com/locations/global/
+        # workforcePools//subject/`.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
