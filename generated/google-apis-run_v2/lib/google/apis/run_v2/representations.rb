@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2GrpcAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2HttpGetAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2HttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2Job
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +131,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListTasksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Probe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +185,12 @@ module Google
       end
       
       class GoogleCloudRunV2Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,10 +359,14 @@ module Google
           collection :env, as: 'env', class: Google::Apis::RunV2::GoogleCloudRunV2EnvVar, decorator: Google::Apis::RunV2::GoogleCloudRunV2EnvVar::Representation
       
           property :image, as: 'image'
+          property :liveness_probe, as: 'livenessProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
+      
           property :name, as: 'name'
           collection :ports, as: 'ports', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort::Representation
       
           property :resources, as: 'resources', class: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements, decorator: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements::Representation
+      
+          property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
       
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount, decorator: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount::Representation
       
@@ -418,6 +452,33 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2GrpcAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port, as: 'port'
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudRunV2HttpGetAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          collection :http_headers, as: 'httpHeaders', class: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader, decorator: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader::Representation
+      
+          property :path, as: 'path'
+          property :scheme, as: 'scheme'
+        end
+      end
+      
+      class GoogleCloudRunV2HttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleCloudRunV2Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -494,6 +555,22 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tasks, as: 'tasks', class: Google::Apis::RunV2::GoogleCloudRunV2Task, decorator: Google::Apis::RunV2::GoogleCloudRunV2Task::Representation
       
+        end
+      end
+      
+      class GoogleCloudRunV2Probe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_threshold, as: 'failureThreshold'
+          property :grpc, as: 'grpc', class: Google::Apis::RunV2::GoogleCloudRunV2GrpcAction, decorator: Google::Apis::RunV2::GoogleCloudRunV2GrpcAction::Representation
+      
+          property :http_get, as: 'httpGet', class: Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction, decorator: Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction::Representation
+      
+          property :initial_delay_seconds, as: 'initialDelaySeconds'
+          property :period_seconds, as: 'periodSeconds'
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV2::GoogleCloudRunV2TcpSocketAction, decorator: Google::Apis::RunV2::GoogleCloudRunV2TcpSocketAction::Representation
+      
+          property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
       
@@ -634,6 +711,14 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2TcpSocketAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
         end
       end
       
