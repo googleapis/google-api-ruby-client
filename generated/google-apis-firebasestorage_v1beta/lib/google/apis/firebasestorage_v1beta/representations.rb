@@ -73,9 +73,7 @@ module Google
       class Bucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location'
           property :name, as: 'name'
-          property :reconciling, as: 'reconciling'
         end
       end
       
