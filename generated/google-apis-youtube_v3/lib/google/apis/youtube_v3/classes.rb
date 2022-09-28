@@ -3927,6 +3927,16 @@ module Google
       class LiveBroadcastStatistics
         include Google::Apis::Core::Hashable
       
+        # The number of viewers currently watching the broadcast. The property and its
+        # value will be present if the broadcast has current viewers and the broadcast
+        # owner has not hidden the viewcount for the video. Note that YouTube stops
+        # tracking the number of concurrent viewers for a broadcast when the broadcast
+        # ends. So, this property would not identify the number of viewers watching an
+        # archived video of a live broadcast that already ended.
+        # Corresponds to the JSON property `concurrentViewers`
+        # @return [Fixnum]
+        attr_accessor :concurrent_viewers
+      
         # The total number of live chat messages currently on the broadcast. The
         # property and its value will be present if the broadcast is public, has the
         # live chat feature enabled, and has at least one message. Note that this field
@@ -3943,6 +3953,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrent_viewers = args[:concurrent_viewers] if args.key?(:concurrent_viewers)
           @total_chat_count = args[:total_chat_count] if args.key?(:total_chat_count)
         end
       end
