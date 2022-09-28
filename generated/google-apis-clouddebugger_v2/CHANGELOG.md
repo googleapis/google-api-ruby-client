@@ -1,5 +1,9 @@
 # Release history for google-apis-clouddebugger_v2
 
+### v0.15.0 (2022-09-28)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.14.0 (2022-09-16)
 
 * Regenerated using generator version 0.9.0
