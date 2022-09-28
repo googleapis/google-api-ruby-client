@@ -8,5 +8,5 @@
 * @googleapis/ruby-team
 
 # Autogeneration PRs should be handled by yoshi-approver
-/generated/ @yoshi-approver
-/api_names_out.yaml @yoshi-approver
+/generated/ @yoshi-approver @googleapis/ruby-team
+/api_names_out.yaml @yoshi-approver @googleapis/ruby-team
