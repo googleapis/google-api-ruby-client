@@ -2071,6 +2071,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImage]
         attr_accessor :image
       
+        # Image Quality Scores for the page image
+        # Corresponds to the JSON property `imageQualityScores`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores]
+        attr_accessor :image_quality_scores
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `layout`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
@@ -2139,6 +2144,7 @@ module Google
           @dimension = args[:dimension] if args.key?(:dimension)
           @form_fields = args[:form_fields] if args.key?(:form_fields)
           @image = args[:image] if args.key?(:image)
+          @image_quality_scores = args[:image_quality_scores] if args.key?(:image_quality_scores)
           @layout = args[:layout] if args.key?(:layout)
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
@@ -2437,6 +2443,60 @@ module Google
           @height = args[:height] if args.key?(:height)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Image Quality Scores for the page image
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected defects.
+        # Corresponds to the JSON property `detectedDefects`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect>]
+        attr_accessor :detected_defects
+      
+        # The overall quality score. Range [0, 1] where 1 is perfect quality.
+        # Corresponds to the JSON property `qualityScore`
+        # @return [Float]
+        attr_accessor :quality_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_defects = args[:detected_defects] if args.key?(:detected_defects)
+          @quality_score = args[:quality_score] if args.key?(:quality_score)
+        end
+      end
+      
+      # Image Quality Defects
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect
+        include Google::Apis::Core::Hashable
+      
+        # Confidence of detected defect. Range [0, 1] where 1 indicates strong
+        # confidence of that the defect exists.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Name of the defect type. Supported values are "quality/defect_blurry", "
+        # quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/
+        # defect_text_too_small", "quality/defect_document_cutoff", "quality/
+        # defect_text_cutoff", "quality/defect_glare"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3943,6 +4003,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImage]
         attr_accessor :image
       
+        # Image Quality Scores for the page image
+        # Corresponds to the JSON property `imageQualityScores`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores]
+        attr_accessor :image_quality_scores
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `layout`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
@@ -4011,6 +4076,7 @@ module Google
           @dimension = args[:dimension] if args.key?(:dimension)
           @form_fields = args[:form_fields] if args.key?(:form_fields)
           @image = args[:image] if args.key?(:image)
+          @image_quality_scores = args[:image_quality_scores] if args.key?(:image_quality_scores)
           @layout = args[:layout] if args.key?(:layout)
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
@@ -4309,6 +4375,60 @@ module Google
           @height = args[:height] if args.key?(:height)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Image Quality Scores for the page image
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected defects.
+        # Corresponds to the JSON property `detectedDefects`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect>]
+        attr_accessor :detected_defects
+      
+        # The overall quality score. Range [0, 1] where 1 is perfect quality.
+        # Corresponds to the JSON property `qualityScore`
+        # @return [Float]
+        attr_accessor :quality_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_defects = args[:detected_defects] if args.key?(:detected_defects)
+          @quality_score = args[:quality_score] if args.key?(:quality_score)
+        end
+      end
+      
+      # Image Quality Defects
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect
+        include Google::Apis::Core::Hashable
+      
+        # Confidence of detected defect. Range [0, 1] where 1 indicates strong
+        # confidence of that the defect exists.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Name of the defect type. Supported values are "quality/defect_blurry", "
+        # quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/
+        # defect_text_too_small", "quality/defect_document_cutoff", "quality/
+        # defect_text_cutoff", "quality/defect_glare"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -6208,6 +6328,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImage]
         attr_accessor :image
       
+        # Image Quality Scores for the page image
+        # Corresponds to the JSON property `imageQualityScores`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores]
+        attr_accessor :image_quality_scores
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `layout`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageLayout]
@@ -6276,6 +6401,7 @@ module Google
           @dimension = args[:dimension] if args.key?(:dimension)
           @form_fields = args[:form_fields] if args.key?(:form_fields)
           @image = args[:image] if args.key?(:image)
+          @image_quality_scores = args[:image_quality_scores] if args.key?(:image_quality_scores)
           @layout = args[:layout] if args.key?(:layout)
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
@@ -6574,6 +6700,60 @@ module Google
           @height = args[:height] if args.key?(:height)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # Image Quality Scores for the page image
+      class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected defects.
+        # Corresponds to the JSON property `detectedDefects`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect>]
+        attr_accessor :detected_defects
+      
+        # The overall quality score. Range [0, 1] where 1 is perfect quality.
+        # Corresponds to the JSON property `qualityScore`
+        # @return [Float]
+        attr_accessor :quality_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_defects = args[:detected_defects] if args.key?(:detected_defects)
+          @quality_score = args[:quality_score] if args.key?(:quality_score)
+        end
+      end
+      
+      # Image Quality Defects
+      class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect
+        include Google::Apis::Core::Hashable
+      
+        # Confidence of detected defect. Range [0, 1] where 1 indicates strong
+        # confidence of that the defect exists.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # Name of the defect type. Supported values are "quality/defect_blurry", "
+        # quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/
+        # defect_text_too_small", "quality/defect_document_cutoff", "quality/
+        # defect_text_cutoff", "quality/defect_glare"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
