@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasicService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicSli
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +743,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
           property :username, as: 'username'
+        end
+      end
+      
+      class BasicService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :service_labels, as: 'serviceLabels'
+          property :service_type, as: 'serviceType'
         end
       end
       
@@ -1570,6 +1584,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_engine, as: 'appEngine', class: Google::Apis::MonitoringV3::AppEngine, decorator: Google::Apis::MonitoringV3::AppEngine::Representation
+      
+          property :basic_service, as: 'basicService', class: Google::Apis::MonitoringV3::BasicService, decorator: Google::Apis::MonitoringV3::BasicService::Representation
       
           property :cloud_endpoints, as: 'cloudEndpoints', class: Google::Apis::MonitoringV3::CloudEndpoints, decorator: Google::Apis::MonitoringV3::CloudEndpoints::Representation
       

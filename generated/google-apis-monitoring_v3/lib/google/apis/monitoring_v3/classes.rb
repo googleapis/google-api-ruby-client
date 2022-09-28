@@ -325,6 +325,39 @@ module Google
         end
       end
       
+      # A well-known service type, defined by its service type and service labels.
+      # Documentation and examples here (https://cloud.google.com/stackdriver/docs/
+      # solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+      class BasicService
+        include Google::Apis::Core::Hashable
+      
+        # Labels that specify the resource that emits the monitoring data which is used
+        # for SLO reporting of this Service. Documentation and valid values for given
+        # service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-
+        # monitoring/api/api-structures#basic-svc-w-basic-sli).
+        # Corresponds to the JSON property `serviceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :service_labels
+      
+        # The type of service that this basic service defines, e.g. APP_ENGINE service
+        # type. Documentation and valid values here (https://cloud.google.com/
+        # stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-
+        # sli).
+        # Corresponds to the JSON property `serviceType`
+        # @return [String]
+        attr_accessor :service_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_labels = args[:service_labels] if args.key?(:service_labels)
+          @service_type = args[:service_type] if args.key?(:service_type)
+        end
+      end
+      
       # An SLI measuring performance on a well-known service type. Performance will be
       # computed on the basis of pre-defined metrics. The type of the service_resource
       # determines the metrics to use and the service_resource.labels and
@@ -3713,6 +3746,13 @@ module Google
         # @return [Google::Apis::MonitoringV3::AppEngine]
         attr_accessor :app_engine
       
+        # A well-known service type, defined by its service type and service labels.
+        # Documentation and examples here (https://cloud.google.com/stackdriver/docs/
+        # solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        # Corresponds to the JSON property `basicService`
+        # @return [Google::Apis::MonitoringV3::BasicService]
+        attr_accessor :basic_service
+      
         # Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
         # Corresponds to the JSON property `cloudEndpoints`
         # @return [Google::Apis::MonitoringV3::CloudEndpoints]
@@ -3803,6 +3843,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @basic_service = args[:basic_service] if args.key?(:basic_service)
           @cloud_endpoints = args[:cloud_endpoints] if args.key?(:cloud_endpoints)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @cluster_istio = args[:cluster_istio] if args.key?(:cluster_istio)
