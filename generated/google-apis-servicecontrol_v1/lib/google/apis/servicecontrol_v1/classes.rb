@@ -1575,8 +1575,8 @@ module Google
         attr_accessor :port
       
         # The identity of this peer. Similar to `Request.auth.principal`, but relative
-        # to the peer instead of the request. For example, the idenity associated with a
-        # load balancer that forwared the request.
+        # to the peer instead of the request. For example, the identity associated with
+        # a load balancer that forwarded the request.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -2187,6 +2187,11 @@ module Google
       class ResourceInfo
         include Google::Apis::Core::Hashable
       
+        # The resource permission required for this request.
+        # Corresponds to the JSON property `permission`
+        # @return [String]
+        attr_accessor :permission
+      
         # The identifier of the parent of this resource instance. Must be in one of the
         # following formats: - `projects/` - `folders/` - `organizations/`
         # Corresponds to the JSON property `resourceContainer`
@@ -2211,6 +2216,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @permission = args[:permission] if args.key?(:permission)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resource_location = args[:resource_location] if args.key?(:resource_location)
           @resource_name = args[:resource_name] if args.key?(:resource_name)

@@ -846,6 +846,7 @@ module Google
       class ResourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission, as: 'permission'
           property :resource_container, as: 'resourceContainer'
           property :resource_location, as: 'resourceLocation'
           property :resource_name, as: 'resourceName'
