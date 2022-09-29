@@ -516,6 +516,12 @@ module Google
         attr_accessor :is_cws_hosted
         alias_method :is_cws_hosted?, :is_cws_hosted
       
+        # Output only. Whether an app supports policy for extensions.
+        # Corresponds to the JSON property `isExtensionPolicySupported`
+        # @return [Boolean]
+        attr_accessor :is_extension_policy_supported
+        alias_method :is_extension_policy_supported?, :is_extension_policy_supported
+      
         # Output only. Whether the app is only for Kiosk mode on ChromeOS devices
         # Corresponds to the JSON property `isKioskOnly`
         # @return [Boolean]
@@ -568,6 +574,7 @@ module Google
         def update!(**args)
           @google_owned = args[:google_owned] if args.key?(:google_owned)
           @is_cws_hosted = args[:is_cws_hosted] if args.key?(:is_cws_hosted)
+          @is_extension_policy_supported = args[:is_extension_policy_supported] if args.key?(:is_extension_policy_supported)
           @is_kiosk_only = args[:is_kiosk_only] if args.key?(:is_kiosk_only)
           @is_theme = args[:is_theme] if args.key?(:is_theme)
           @kiosk_enabled = args[:kiosk_enabled] if args.key?(:kiosk_enabled)
