@@ -1,5 +1,9 @@
 # Release history for google-apis-games_configuration_v1configuration
 
+### v0.12.0 (2022-09-29)
+
+* Regenerated using generator version 0.10.0
+
 ### v0.11.0 (2022-09-17)
 
 * Regenerated using generator version 0.9.0
