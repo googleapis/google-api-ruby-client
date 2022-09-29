@@ -61,6 +61,11 @@ module Google
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection]
         attr_accessor :cost_projection
       
+        # Contains information on the impact of a reliability recommendation.
+        # Corresponds to the JSON property `reliabilityProjection`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ReliabilityProjection]
+        attr_accessor :reliability_projection
+      
         # Contains various ways of describing the impact on Security.
         # Corresponds to the JSON property `securityProjection`
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection]
@@ -80,6 +85,7 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @cost_projection = args[:cost_projection] if args.key?(:cost_projection)
+          @reliability_projection = args[:reliability_projection] if args.key?(:reliability_projection)
           @security_projection = args[:security_projection] if args.key?(:security_projection)
           @sustainability_projection = args[:sustainability_projection] if args.key?(:sustainability_projection)
         end
@@ -842,6 +848,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @params = args[:params] if args.key?(:params)
+        end
+      end
+      
+      # Contains information on the impact of a reliability recommendation.
+      class GoogleCloudRecommenderV1beta1ReliabilityProjection
+        include Google::Apis::Core::Hashable
+      
+        # Per-recommender projection.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,Object>]
+        attr_accessor :details
+      
+        # Reliability risks mitigated by this recommendation.
+        # Corresponds to the JSON property `risks`
+        # @return [Array<String>]
+        attr_accessor :risks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @risks = args[:risks] if args.key?(:risks)
         end
       end
       

@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1beta1ReliabilityProjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1beta1SecurityProjection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -186,6 +192,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection::Representation
+      
+          property :reliability_projection, as: 'reliabilityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ReliabilityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ReliabilityProjection::Representation
       
           property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection::Representation
       
@@ -391,6 +399,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :params, as: 'params'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1ReliabilityProjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          collection :risks, as: 'risks'
         end
       end
       
