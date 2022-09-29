@@ -1647,6 +1647,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :folders, as: 'folders'
           property :kms_key, as: 'kmsKey'
+          collection :kms_keys, as: 'kmsKeys'
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
