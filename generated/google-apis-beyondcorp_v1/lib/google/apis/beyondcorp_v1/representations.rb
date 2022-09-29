@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudLocationListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -945,6 +951,19 @@ module Google
       class GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
