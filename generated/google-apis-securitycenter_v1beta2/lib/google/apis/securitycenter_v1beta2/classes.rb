@@ -91,6 +91,14 @@ module Google
         # @return [String]
         attr_accessor :user_agent_family
       
+        # A string representing a username. This is likely not an IAM principal. For
+        # instance, this may be the system user name if the finding is VM-related, or
+        # this may be some type of application login user name, depending on the type of
+        # finding.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
         def initialize(**args)
            update!(**args)
         end
@@ -106,6 +114,7 @@ module Google
           @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @service_name = args[:service_name] if args.key?(:service_name)
           @user_agent_family = args[:user_agent_family] if args.key?(:user_agent_family)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -1239,6 +1248,32 @@ module Google
       
       # The response to a BulkMute request. Contains the LRO information.
       class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A resource that is exposed as a result of a finding.
+      class GoogleCloudSecuritycenterV1ExposedResource
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A path that an attacker could take to reach an exposed resource.
+      class GoogleCloudSecuritycenterV1ExposurePath
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

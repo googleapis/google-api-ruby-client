@@ -172,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ExposedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ExposurePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1ExternalSystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -414,6 +426,7 @@ module Google
           property :service_account_key_name, as: 'serviceAccountKeyName'
           property :service_name, as: 'serviceName'
           property :user_agent_family, as: 'userAgentFamily'
+          property :username, as: 'username'
         end
       end
       
@@ -696,6 +709,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ExposedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ExposurePath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
