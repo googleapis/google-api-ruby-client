@@ -445,9 +445,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Attempts to start a new TransferOperation for the current TransferJob. A
-        # TransferJob has a maximum of one active TransferOperation. If this method is
-        # called while a TransferOperation is active, an error will be returned.
+        # Starts a new operation for the specified transfer job. A `TransferJob` has a
+        # maximum of one active `TransferOperation`. If this method is called while a `
+        # TransferOperation` is active, an error is returned.
         # @param [String] job_name
         #   Required. The name of the transfer job.
         # @param [Google::Apis::StoragetransferV1::RunTransferJobRequest] run_transfer_job_request_object
