@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VmmigrationV1
-      # VM Migration API
+      # Migrate to Virtual Machines API
       #
       # Use the Migrate to Virtual Machines API to programmatically migrate workloads.
       #
