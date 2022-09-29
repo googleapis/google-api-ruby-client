@@ -346,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1167,6 +1185,45 @@ module Google
       end
       
       class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :net_connections, as: 'netConnections', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connectors, as: 'connectors'
+          property :create_time, as: 'createTime'
+          collection :destination_cidrs, as: 'destinationCidrs'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network_vpc, as: 'networkVpc'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
