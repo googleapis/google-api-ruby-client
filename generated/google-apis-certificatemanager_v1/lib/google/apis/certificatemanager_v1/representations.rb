@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateAuthorityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateAuthorityServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateIssuanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertificateMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +95,12 @@ module Google
       end
       
       class IpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCertificateIssuanceConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -195,6 +219,37 @@ module Google
         end
       end
       
+      class CertificateAuthorityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_authority_service_config, as: 'certificateAuthorityServiceConfig', class: Google::Apis::CertificatemanagerV1::CertificateAuthorityServiceConfig, decorator: Google::Apis::CertificatemanagerV1::CertificateAuthorityServiceConfig::Representation
+      
+        end
+      end
+      
+      class CertificateAuthorityServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_pool, as: 'caPool'
+        end
+      end
+      
+      class CertificateIssuanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_authority_config, as: 'certificateAuthorityConfig', class: Google::Apis::CertificatemanagerV1::CertificateAuthorityConfig, decorator: Google::Apis::CertificatemanagerV1::CertificateAuthorityConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :key_algorithm, as: 'keyAlgorithm'
+          hash :labels, as: 'labels'
+          property :lifetime, as: 'lifetime'
+          property :name, as: 'name'
+          property :rotation_window_percentage, as: 'rotationWindowPercentage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CertificateMap
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -267,6 +322,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class ListCertificateIssuanceConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificate_issuance_configs, as: 'certificateIssuanceConfigs', class: Google::Apis::CertificatemanagerV1::CertificateIssuanceConfig, decorator: Google::Apis::CertificatemanagerV1::CertificateIssuanceConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -346,6 +411,7 @@ module Google
       
           collection :dns_authorizations, as: 'dnsAuthorizations'
           collection :domains, as: 'domains'
+          property :issuance_config, as: 'issuanceConfig'
           property :provisioning_issue, as: 'provisioningIssue', class: Google::Apis::CertificatemanagerV1::ProvisioningIssue, decorator: Google::Apis::CertificatemanagerV1::ProvisioningIssue::Representation
       
           property :state, as: 'state'

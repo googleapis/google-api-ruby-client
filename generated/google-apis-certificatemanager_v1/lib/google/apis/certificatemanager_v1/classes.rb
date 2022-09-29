@@ -161,6 +161,119 @@ module Google
         end
       end
       
+      # The CA that issues the workload certificate. It includes CA address, type,
+      # authentication to CA service, etc.
+      class CertificateAuthorityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Contains information required to contact CA service.
+        # Corresponds to the JSON property `certificateAuthorityServiceConfig`
+        # @return [Google::Apis::CertificatemanagerV1::CertificateAuthorityServiceConfig]
+        attr_accessor :certificate_authority_service_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority_service_config = args[:certificate_authority_service_config] if args.key?(:certificate_authority_service_config)
+        end
+      end
+      
+      # Contains information required to contact CA service.
+      class CertificateAuthorityServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. A CA pool resource used to issue a certificate. The CA pool string
+        # has a relative resource path following the form "projects/`project`/locations/`
+        # location`/caPools/`ca_pool`".
+        # Corresponds to the JSON property `caPool`
+        # @return [String]
+        attr_accessor :ca_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
+        end
+      end
+      
+      # CertificateIssuanceConfig specifies how to issue and manage a certificate.
+      class CertificateIssuanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The CA that issues the workload certificate. It includes CA address, type,
+        # authentication to CA service, etc.
+        # Corresponds to the JSON property `certificateAuthorityConfig`
+        # @return [Google::Apis::CertificatemanagerV1::CertificateAuthorityConfig]
+        attr_accessor :certificate_authority_config
+      
+        # Output only. The creation timestamp of a CertificateIssuanceConfig.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # One or more paragraphs of text description of a CertificateIssuanceConfig.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The key algorithm to use when generating the private key.
+        # Corresponds to the JSON property `keyAlgorithm`
+        # @return [String]
+        attr_accessor :key_algorithm
+      
+        # Set of labels associated with a CertificateIssuanceConfig.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Workload certificate lifetime requested.
+        # Corresponds to the JSON property `lifetime`
+        # @return [String]
+        attr_accessor :lifetime
+      
+        # A user-defined name of the certificate issuance config.
+        # CertificateIssuanceConfig names must be unique globally and match pattern `
+        # projects/*/locations/*/certificateIssuanceConfigs/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Specifies the percentage of elapsed time of the certificate lifetime
+        # to wait before renewing the certificate. Must be a number between 1-99,
+        # inclusive.
+        # Corresponds to the JSON property `rotationWindowPercentage`
+        # @return [Fixnum]
+        attr_accessor :rotation_window_percentage
+      
+        # Output only. The last update timestamp of a CertificateIssuanceConfig.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority_config = args[:certificate_authority_config] if args.key?(:certificate_authority_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
+          @labels = args[:labels] if args.key?(:labels)
+          @lifetime = args[:lifetime] if args.key?(:lifetime)
+          @name = args[:name] if args.key?(:name)
+          @rotation_window_percentage = args[:rotation_window_percentage] if args.key?(:rotation_window_percentage)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Defines a collection of certificate configurations.
       class CertificateMap
         include Google::Apis::Core::Hashable
@@ -454,6 +567,39 @@ module Google
         end
       end
       
+      # Response for the `ListCertificateIssuanceConfigs` method.
+      class ListCertificateIssuanceConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of certificate configs for the parent resource.
+        # Corresponds to the JSON property `certificateIssuanceConfigs`
+        # @return [Array<Google::Apis::CertificatemanagerV1::CertificateIssuanceConfig>]
+        attr_accessor :certificate_issuance_configs
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_issuance_configs = args[:certificate_issuance_configs] if args.key?(:certificate_issuance_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for the `ListCertificateMapEntries` method.
       class ListCertificateMapEntriesResponse
         include Google::Apis::Core::Hashable
@@ -707,6 +853,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :domains
       
+        # Immutable. The resource name for a CertificateIssuanceConfig used to configure
+        # private PKI certificates in the format `projects/*/locations/*/
+        # certificateIssuanceConfigs/*`. If this field is not set, the certificates will
+        # instead be publicly signed as documented at https://cloud.google.com/load-
+        # balancing/docs/ssl-certificates/google-managed-certs#caa.
+        # Corresponds to the JSON property `issuanceConfig`
+        # @return [String]
+        attr_accessor :issuance_config
+      
         # Information about issues with provisioning a Managed Certificate.
         # Corresponds to the JSON property `provisioningIssue`
         # @return [Google::Apis::CertificatemanagerV1::ProvisioningIssue]
@@ -726,6 +881,7 @@ module Google
           @authorization_attempt_info = args[:authorization_attempt_info] if args.key?(:authorization_attempt_info)
           @dns_authorizations = args[:dns_authorizations] if args.key?(:dns_authorizations)
           @domains = args[:domains] if args.key?(:domains)
+          @issuance_config = args[:issuance_config] if args.key?(:issuance_config)
           @provisioning_issue = args[:provisioning_issue] if args.key?(:provisioning_issue)
           @state = args[:state] if args.key?(:state)
         end
