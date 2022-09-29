@@ -4204,15 +4204,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :folders
       
-        # The Cloud KMS [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/
-        # projects.locations.keyRings.cryptoKeys) name or [CryptoKeyVersion](https://
-        # cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.
-        # cryptoKeys.cryptoKeyVersions) name. This field is available only when the
-        # resource's Protobuf contains it. To search against the `kms_key`: * Use a
-        # field query. Example: `kmsKey:key` * Use a free text query. Example: `key`
+        # This field only presents for the purpose of backward-compatibility. Please use
+        # `kms_keys` field to retrieve KMS key information. This field will only be
+        # populated for the resource types included in this list for backward compatible
+        # purpose. To search against the `kms_key`: * Use a field query. Example: `
+        # kmsKey:key` * Use a free text query. Example: `key`
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
         attr_accessor :kms_key
+      
+        # The Cloud KMS [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/
+        # projects.locations.keyRings.cryptoKeys) names or [CryptoKeyVersion](https://
+        # cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.
+        # cryptoKeys.cryptoKeyVersions) names. This field is available only when the
+        # resource's Protobuf contains it. To search against the `kms_keys`: * Use a
+        # field query. Example: `kmsKeys:key` * Use a free text query. Example: `key`
+        # Corresponds to the JSON property `kmsKeys`
+        # @return [Array<String>]
+        attr_accessor :kms_keys
       
         # Labels associated with this resource. See [Labelling and grouping GCP
         # resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-
@@ -4373,6 +4382,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @kms_keys = args[:kms_keys] if args.key?(:kms_keys)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
