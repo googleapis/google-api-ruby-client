@@ -422,6 +422,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_owned, as: 'googleOwned'
           property :is_cws_hosted, as: 'isCwsHosted'
+          property :is_extension_policy_supported, as: 'isExtensionPolicySupported'
           property :is_kiosk_only, as: 'isKioskOnly'
           property :is_theme, as: 'isTheme'
           property :kiosk_enabled, as: 'kioskEnabled'
