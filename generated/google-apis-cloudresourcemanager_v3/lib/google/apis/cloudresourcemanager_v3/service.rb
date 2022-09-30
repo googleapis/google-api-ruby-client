@@ -1479,12 +1479,10 @@ module Google
         # @param [Fixnum] page_size
         #   Optional. The maximum number of TagBindings to return in the response. The
         #   server allows a maximum of 300 TagBindings to return. If unspecified, the
-        #   server will use 100 as the default. Currently this api returns unpaginated
-        #   response and `page_size` is ignored.
+        #   server will use 100 as the default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListTagBindings`
-        #   that indicates where this listing should continue from. Currently this api
-        #   returns unpaginated response and `page_token` is ignored.
+        #   that indicates where this listing should continue from.
         # @param [String] parent
         #   Required. The full resource name of a resource for which you want to list
         #   existing TagBindings. E.g. "//cloudresourcemanager.googleapis.com/projects/123"
