@@ -1652,6 +1652,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvss_version, as: 'cvssVersion'
           property :effective_severity, as: 'effectiveSeverity'
           property :long_description, as: 'longDescription'
           collection :package_issue, as: 'packageIssue', class: Google::Apis::ContaineranalysisV1beta1::PackageIssue, decorator: Google::Apis::ContaineranalysisV1beta1::PackageIssue::Representation
@@ -2127,6 +2128,7 @@ module Google
       
           property :cvss_v3, as: 'cvssV3', class: Google::Apis::ContaineranalysisV1beta1::CvsSv3, decorator: Google::Apis::ContaineranalysisV1beta1::CvsSv3::Representation
       
+          property :cvss_version, as: 'cvssVersion'
           collection :cwe, as: 'cwe'
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       

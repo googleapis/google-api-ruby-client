@@ -3355,6 +3355,11 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Output only. CVSS version used to populate cvss_score and severity.
+        # Corresponds to the JSON property `cvssVersion`
+        # @return [String]
+        attr_accessor :cvss_version
+      
         # The distro assigned severity for this vulnerability when it is available, and
         # note provider assigned severity when distro has not yet assigned a severity
         # for this vulnerability. When there are multiple PackageIssues for this
@@ -3407,6 +3412,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
@@ -5244,6 +5250,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::CvsSv3]
         attr_accessor :cvss_v3
       
+        # CVSS version used to populate cvss_score and severity.
+        # Corresponds to the JSON property `cvssVersion`
+        # @return [String]
+        attr_accessor :cvss_version
+      
         # A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/
         # index.html
         # Corresponds to the JSON property `cwe`
@@ -5286,6 +5297,7 @@ module Google
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
           @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
+          @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cwe = args[:cwe] if args.key?(:cwe)
           @details = args[:details] if args.key?(:details)
           @severity = args[:severity] if args.key?(:severity)
