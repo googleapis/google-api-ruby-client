@@ -591,6 +591,13 @@ module Google
         # @return [String]
         attr_accessor :ip_version
       
+        # The endpoint type of this address, which should be VM or NETLB. This is used
+        # for deciding which type of endpoint this address can be used after the
+        # external IPv6 address reservation.
+        # Corresponds to the JSON property `ipv6EndpointType`
+        # @return [String]
+        attr_accessor :ipv6_endpoint_type
+      
         # [Output Only] Type of the resource. Always compute#address for addresses.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -709,6 +716,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
+          @ipv6_endpoint_type = args[:ipv6_endpoint_type] if args.key?(:ipv6_endpoint_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -4814,6 +4822,31 @@ module Google
       end
       
       # 
+      class BundledLocalSsds
+        include Google::Apis::Core::Hashable
+      
+        # The default disk interface if the interface is not specified.
+        # Corresponds to the JSON property `defaultInterface`
+        # @return [String]
+        attr_accessor :default_interface
+      
+        # The number of partitions.
+        # Corresponds to the JSON property `partitionCount`
+        # @return [Fixnum]
+        attr_accessor :partition_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_interface = args[:default_interface] if args.key?(:default_interface)
+          @partition_count = args[:partition_count] if args.key?(:partition_count)
+        end
+      end
+      
+      # 
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
@@ -8664,6 +8697,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_address_groups
       
+        # Fully Qualified Domain Name (FQDN) which should be matched against traffic
+        # destination. Maximum number of destination fqdn allowed is 100.
+        # Corresponds to the JSON property `destFqdns`
+        # @return [Array<String>]
+        attr_accessor :dest_fqdns
+      
         # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
         # 5000.
         # Corresponds to the JSON property `destIpRanges`
@@ -8694,6 +8733,12 @@ module Google
         # Corresponds to the JSON property `srcAddressGroups`
         # @return [Array<String>]
         attr_accessor :src_address_groups
+      
+        # Fully Qualified Domain Name (FQDN) which should be matched against traffic
+        # source. Maximum number of source fqdn allowed is 100.
+        # Corresponds to the JSON property `srcFqdns`
+        # @return [Array<String>]
+        attr_accessor :src_fqdns
       
         # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         # Corresponds to the JSON property `srcIpRanges`
@@ -8728,11 +8773,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
+          @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
+          @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
@@ -9131,7 +9178,16 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # 
+        # The URL of the target resource to receive the matched traffic. For regional
+        # forwarding rules, this target must be in the same region as the forwarding
+        # rule. For global forwarding rules, this target must be a global load balancing
+        # resource. The forwarded traffic must be of a type appropriate to the target
+        # object. For more information, see the "Target" column in [Port specifications](
+        # https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
+        # ip_address_specifications). For Private Service Connect forwarding rules that
+        # forward traffic to Google APIs, provide the name of a supported Google API
+        # bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All
+        # supported Google APIs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -9577,27 +9633,35 @@ module Google
         # @return [String]
         attr_accessor :grpc_service_name
       
-        # The port number for the health check request. Must be specified if port_name
-        # and port_specification are not set or if port_specification is USE_FIXED_PORT.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. Valid
+        # values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence. The port_name should conform to
-        # RFC1035.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, gRPC health
-        # check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for pass-
+        # through load balancers. Supports all backends that can be health checked; for
+        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
+        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
+        # port number specified for each endpoint in the network endpoint group. For
+        # instance group backends, the health check uses the port number determined by
+        # looking up the backend service's named port in the instance group's list of
+        # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -9935,31 +9999,43 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The value of the host header in the HTTP/2 health check request. If left empty
-        # (default value), the IP on behalf of which this health check is performed will
-        # be used.
+        # (default value), the host header is set to the destination IP address to which
+        # health check packets are sent. The destination IP address depends on the type
+        # of load balancer. For details, see: https://cloud.google.com/load-balancing/
+        # docs/health-check-concepts#hc-packet-dest
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # The TCP port number for the health check request. The default value is 443.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. The
+        # default value is 443. Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, HTTP2
-        # health check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for pass-
+        # through load balancers. Supports all backends that can be health checked; for
+        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
+        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
+        # port number specified for each endpoint in the network endpoint group. For
+        # instance group backends, the health check uses the port number determined by
+        # looking up the backend service's named port in the instance group's list of
+        # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -9975,9 +10051,11 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
-        # The string to match anywhere in the first 1024 bytes of the response body. If
-        # left empty (the default value), the status code determines health. The
-        # response data can only be ASCII.
+        # Creates a content-based HTTP/2 health check. In addition to the required HTTP
+        # 200 (OK) status code, you can configure the health check to pass only when the
+        # backend sends this specific ASCII response string within the first 1024 bytes
+        # of the HTTP response body. For details, see: https://cloud.google.com/load-
+        # balancing/docs/health-check-concepts#criteria-protocol-http
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -10003,31 +10081,43 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The value of the host header in the HTTP health check request. If left empty (
-        # default value), the IP on behalf of which this health check is performed will
-        # be used.
+        # default value), the host header is set to the destination IP address to which
+        # health check packets are sent. The destination IP address depends on the type
+        # of load balancer. For details, see: https://cloud.google.com/load-balancing/
+        # docs/health-check-concepts#hc-packet-dest
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # The TCP port number for the health check request. The default value is 80.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. The
+        # default value is 80. Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, HTTP health
-        # check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Also supported
+        # in legacy HTTP health checks for target pools. The health check supports all
+        # backends supported by the backend service provided the backend can be health
+        # checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT
+        # network endpoint groups, and instance group backends. USE_NAMED_PORT: Not
+        # supported. USE_SERVING_PORT: Provides an indirect method of specifying the
+        # health check port by referring to the backend service. Only supported by
+        # backend services for proxy load balancers. Not supported by target pools. Not
+        # supported by backend services for pass-through load balancers. Supports all
+        # backends that can be health checked; for example, GCE_VM_IP_PORT network
+        # endpoint groups and instance group backends. For GCE_VM_IP_PORT network
+        # endpoint group backends, the health check uses the port number specified for
+        # each endpoint in the network endpoint group. For instance group backends, the
+        # health check uses the port number determined by looking up the backend service'
+        # s named port in the instance group's list of named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -10043,9 +10133,11 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
-        # The string to match anywhere in the first 1024 bytes of the response body. If
-        # left empty (the default value), the status code determines health. The
-        # response data can only be ASCII.
+        # Creates a content-based HTTP health check. In addition to the required HTTP
+        # 200 (OK) status code, you can configure the health check to pass only when the
+        # backend sends this specific ASCII response string within the first 1024 bytes
+        # of the HTTP response body. For details, see: https://cloud.google.com/load-
+        # balancing/docs/health-check-concepts#criteria-protocol-http
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -10071,31 +10163,43 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The value of the host header in the HTTPS health check request. If left empty (
-        # default value), the IP on behalf of which this health check is performed will
-        # be used.
+        # default value), the host header is set to the destination IP address to which
+        # health check packets are sent. The destination IP address depends on the type
+        # of load balancer. For details, see: https://cloud.google.com/load-balancing/
+        # docs/health-check-concepts#hc-packet-dest
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # The TCP port number for the health check request. The default value is 443.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. The
+        # default value is 443. Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, HTTPS
-        # health check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for pass-
+        # through load balancers. Supports all backends that can be health checked; for
+        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
+        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
+        # port number specified for each endpoint in the network endpoint group. For
+        # instance group backends, the health check uses the port number determined by
+        # looking up the backend service's named port in the instance group's list of
+        # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -10111,9 +10215,11 @@ module Google
         # @return [String]
         attr_accessor :request_path
       
-        # The string to match anywhere in the first 1024 bytes of the response body. If
-        # left empty (the default value), the status code determines health. The
-        # response data can only be ASCII.
+        # Creates a content-based HTTPS health check. In addition to the required HTTP
+        # 200 (OK) status code, you can configure the health check to pass only when the
+        # backend sends this specific ASCII response string within the first 1024 bytes
+        # of the HTTP response body. For details, see: https://cloud.google.com/load-
+        # balancing/docs/health-check-concepts#criteria-protocol-http
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -13076,6 +13182,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # Contains output only fields. Use this sub-message for actual values set on
+        # Instance attributes as compared to the value requested by the user (intent) in
+        # their instance CRUD calls.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeBeta::ResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -13204,6 +13317,7 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -19397,6 +19511,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::MachineType::Accelerator>]
         attr_accessor :accelerators
       
+        # [Output Only] The configuration of bundled local SSD for the machine type.
+        # Corresponds to the JSON property `bundledLocalSsds`
+        # @return [Google::Apis::ComputeBeta::BundledLocalSsds]
+        attr_accessor :bundled_local_ssds
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -19475,6 +19594,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @bundled_local_ssds = args[:bundled_local_ssds] if args.key?(:bundled_local_ssds)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
@@ -30428,6 +30548,27 @@ module Google
         end
       end
       
+      # Contains output only fields. Use this sub-message for actual values set on
+      # Instance attributes as compared to the value requested by the user (intent) in
+      # their instance CRUD calls.
+      class ResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] An opaque ID of the host on which the VM is running.
+        # Corresponds to the JSON property `physicalHost`
+        # @return [String]
+        attr_accessor :physical_host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @physical_host = args[:physical_host] if args.key?(:physical_host)
+        end
+      end
+      
       # A rollout policy configuration.
       class RolloutPolicy
         include Google::Apis::Core::Hashable
@@ -31963,10 +32104,21 @@ module Google
         # @return [Google::Apis::ComputeBeta::BfdStatus]
         attr_accessor :bfd_status
       
+        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Corresponds to the JSON property `enableIpv6`
+        # @return [Boolean]
+        attr_accessor :enable_ipv6
+        alias_method :enable_ipv6?, :enable_ipv6
+      
         # IP address of the local BGP interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv6 address of the local BGP interface.
+        # Corresponds to the JSON property `ipv6NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv6_nexthop_address
       
         # URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
@@ -31993,6 +32145,11 @@ module Google
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv6 address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpv6NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv6_nexthop_address
       
         # [Output only] URI of the VM instance that is used as third-party router
         # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -32036,12 +32193,15 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
@@ -32364,25 +32524,35 @@ module Google
       class SslHealthCheck
         include Google::Apis::Core::Hashable
       
-        # The TCP port number for the health check request. The default value is 443.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. The
+        # default value is 443. Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, SSL health
-        # check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for pass-
+        # through load balancers. Supports all backends that can be health checked; for
+        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
+        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
+        # port number specified for each endpoint in the network endpoint group. For
+        # instance group backends, the health check uses the port number determined by
+        # looking up the backend service's named port in the instance group's list of
+        # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -32393,17 +32563,17 @@ module Google
         # @return [String]
         attr_accessor :proxy_header
       
-        # The application data to send once the SSL connection has been established (
-        # default value is empty). If both request and response are empty, the
-        # connection establishment alone will indicate health. The request data can only
-        # be ASCII.
+        # Instructs the health check prober to send this exact ASCII string, up to 1024
+        # bytes in length, after establishing the TCP connection and SSL handshake.
         # Corresponds to the JSON property `request`
         # @return [String]
         attr_accessor :request
       
-        # The bytes to match against the beginning of the response data. If left empty (
-        # the default value), any response will indicate health. The response data can
-        # only be ASCII.
+        # Creates a content-based SSL health check. In addition to establishing a TCP
+        # connection and the TLS handshake, you can configure the health check to pass
+        # only when the backend sends this exact response ASCII string, up to 1024 bytes
+        # in length. For details, see: https://cloud.google.com/load-balancing/docs/
+        # health-check-concepts#criteria-protocol-ssl-tcp
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -37581,25 +37751,35 @@ module Google
       class TcpHealthCheck
         include Google::Apis::Core::Hashable
       
-        # The TCP port number for the health check request. The default value is 80.
-        # Valid values are 1 through 65535.
+        # The TCP port number to which the health check prober sends packets. The
+        # default value is 80. Valid values are 1 through 65535.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        # port_name are defined, port takes precedence.
+        # Not supported.
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
-        # Specifies how port is selected for health checking, can be one of following
-        # values: USE_FIXED_PORT: The port number in port is used for health checking.
-        # USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT:
-        # For NetworkEndpointGroup, the port specified for each network endpoint is used
-        # for health checking. For other backends, the port or named port specified in
-        # the Backend Service is used for health checking. If not specified, TCP health
-        # check follows behavior specified in port and portName fields.
+        # Specifies how a port is selected for health checking. Can be one of the
+        # following values: USE_FIXED_PORT: Specifies a port number explicitly using the
+        # port field in the health check. Supported by backend services for pass-through
+        # load balancers and backend services for proxy load balancers. Not supported by
+        # target pools. The health check supports all backends supported by the backend
+        # service provided the backend can be health checked. For example, GCE_VM_IP
+        # network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance
+        # group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an
+        # indirect method of specifying the health check port by referring to the
+        # backend service. Only supported by backend services for proxy load balancers.
+        # Not supported by target pools. Not supported by backend services for pass-
+        # through load balancers. Supports all backends that can be health checked; for
+        # example, GCE_VM_IP_PORT network endpoint groups and instance group backends.
+        # For GCE_VM_IP_PORT network endpoint group backends, the health check uses the
+        # port number specified for each endpoint in the network endpoint group. For
+        # instance group backends, the health check uses the port number determined by
+        # looking up the backend service's named port in the instance group's list of
+        # named ports.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -37610,17 +37790,17 @@ module Google
         # @return [String]
         attr_accessor :proxy_header
       
-        # The application data to send once the TCP connection has been established (
-        # default value is empty). If both request and response are empty, the
-        # connection establishment alone will indicate health. The request data can only
-        # be ASCII.
+        # Instructs the health check prober to send this exact ASCII string, up to 1024
+        # bytes in length, after establishing the TCP connection.
         # Corresponds to the JSON property `request`
         # @return [String]
         attr_accessor :request
       
-        # The bytes to match against the beginning of the response data. If left empty (
-        # the default value), any response will indicate health. The response data can
-        # only be ASCII.
+        # Creates a content-based TCP health check. In addition to establishing a TCP
+        # connection, you can configure the health check to pass only when the backend
+        # sends this exact response ASCII string, up to 1024 bytes in length. For
+        # details, see: https://cloud.google.com/load-balancing/docs/health-check-
+        # concepts#criteria-protocol-ssl-tcp
         # Corresponds to the JSON property `response`
         # @return [String]
         attr_accessor :response
@@ -40237,6 +40417,97 @@ module Google
       end
       
       # 
+      class TargetTcpProxiesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of TargetTcpProxies contained in this scope.
+        # Corresponds to the JSON property `targetTcpProxies`
+        # @return [Array<Google::Apis::ComputeBeta::TargetTcpProxy>]
+        attr_accessor :target_tcp_proxies
+      
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_tcp_proxies = args[:target_tcp_proxies] if args.key?(:target_tcp_proxies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class TargetTcpProxiesSetBackendServiceRequest
         include Google::Apis::Core::Hashable
       
@@ -40366,6 +40637,130 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # 
+      class TargetTcpProxyAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of TargetTcpProxiesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeBeta::TargetTcpProxiesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#targetTcpProxyAggregatedList
+        # for lists of Target TCP Proxies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
