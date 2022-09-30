@@ -591,6 +591,13 @@ module Google
         # @return [String]
         attr_accessor :ip_version
       
+        # The endpoint type of this address, which should be VM or NETLB. This is used
+        # for deciding which type of endpoint this address can be used after the
+        # external IPv6 address reservation.
+        # Corresponds to the JSON property `ipv6EndpointType`
+        # @return [String]
+        attr_accessor :ipv6_endpoint_type
+      
         # [Output Only] Type of the resource. Always compute#address for addresses.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -690,6 +697,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
+          @ipv6_endpoint_type = args[:ipv6_endpoint_type] if args.key?(:ipv6_endpoint_type)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -8888,7 +8896,16 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # 
+        # The URL of the target resource to receive the matched traffic. For regional
+        # forwarding rules, this target must be in the same region as the forwarding
+        # rule. For global forwarding rules, this target must be a global load balancing
+        # resource. The forwarded traffic must be of a type appropriate to the target
+        # object. For more information, see the "Target" column in [Port specifications](
+        # https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
+        # ip_address_specifications). For Private Service Connect forwarding rules that
+        # forward traffic to Google APIs, provide the name of a supported Google API
+        # bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All
+        # supported Google APIs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -30950,10 +30967,21 @@ module Google
         # @return [Google::Apis::ComputeV1::BfdStatus]
         attr_accessor :bfd_status
       
+        # Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        # Corresponds to the JSON property `enableIpv6`
+        # @return [Boolean]
+        attr_accessor :enable_ipv6
+        alias_method :enable_ipv6?, :enable_ipv6
+      
         # IP address of the local BGP interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # IPv6 address of the local BGP interface.
+        # Corresponds to the JSON property `ipv6NexthopAddress`
+        # @return [String]
+        attr_accessor :ipv6_nexthop_address
       
         # URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
@@ -30980,6 +31008,11 @@ module Google
         # Corresponds to the JSON property `peerIpAddress`
         # @return [String]
         attr_accessor :peer_ip_address
+      
+        # IPv6 address of the remote BGP interface.
+        # Corresponds to the JSON property `peerIpv6NexthopAddress`
+        # @return [String]
+        attr_accessor :peer_ipv6_nexthop_address
       
         # [Output only] URI of the VM instance that is used as third-party router
         # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -31023,12 +31056,15 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @peer_ipv6_nexthop_address = args[:peer_ipv6_nexthop_address] if args.key?(:peer_ipv6_nexthop_address)
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)

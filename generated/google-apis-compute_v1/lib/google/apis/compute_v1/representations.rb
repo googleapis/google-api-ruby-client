@@ -5755,6 +5755,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
+          property :ipv6_endpoint_type, as: 'ipv6EndpointType'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -13150,12 +13151,15 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeV1::BfdStatus, decorator: Google::Apis::ComputeV1::BfdStatus::Representation
       
+          property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
