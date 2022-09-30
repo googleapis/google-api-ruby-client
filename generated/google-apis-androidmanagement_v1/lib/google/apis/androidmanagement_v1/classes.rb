@@ -3907,7 +3907,8 @@ module Google
         attr_accessor :install_unknown_sources_allowed
         alias_method :install_unknown_sources_allowed?, :install_unknown_sources_allowed
       
-        # Whether the keyguard is disabled.
+        # If true, this disables the Lock Screen (https://source.android.com/docs/core/
+        # display/multi_display/lock-screen) for primary and/or secondary displays.
         # Corresponds to the JSON property `keyguardDisabled`
         # @return [Boolean]
         attr_accessor :keyguard_disabled
