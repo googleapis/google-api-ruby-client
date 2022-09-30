@@ -357,6 +357,126 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Acknowledges an existing violation. By acknowledging a violation, users
+        # acknowledge the existence of a compliance violation in their workload and
+        # decide to ignore it due to a valid business justification. Acknowledgement is
+        # a permanent operation and it cannot be reverted.
+        # @param [String] name
+        #   Required. The resource name of the Violation to acknowledge. Format:
+        #   organizations/`organization`/locations/`location`/workloads/`workload`/
+        #   violations/`violation`
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest] google_cloud_assuredworkloads_v1_acknowledge_violation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acknowledge_organization_location_workload_violation(name, google_cloud_assuredworkloads_v1_acknowledge_violation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:acknowledge', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_acknowledge_violation_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves Assured Workload Violation based on ID.
+        # @param [String] name
+        #   Required. The resource name of the Violation to fetch (ie. Violation.name).
+        #   Format: organizations/`organization`/locations/`location`/workloads/`workload`/
+        #   violations/`violation`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_workload_violation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Violations in the AssuredWorkload Environment. Callers may also
+        # choose to read across multiple Workloads as per [AIP-159](https://google.aip.
+        # dev/159) by using '-' (the hyphen or dash character) as a wildcard character
+        # instead of workload-id in the parent. Format `organizations/`org_id`/locations/
+        # `location`/workloads/-`
+        # @param [String] parent
+        #   Required. The Workload name. Format `organizations/`org_id`/locations/`
+        #   location`/workloads/`workload``.
+        # @param [String] filter
+        #   Optional. A custom filter for filtering by the Violations properties.
+        # @param [String] interval_end_time
+        #   The end of the time window.
+        # @param [String] interval_start_time
+        #   The start of the time window.
+        # @param [Fixnum] page_size
+        #   Optional. Page size.
+        # @param [String] page_token
+        #   Optional. Page token returned from previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_workload_violations(parent, filter: nil, interval_end_time: nil, interval_start_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/violations', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
