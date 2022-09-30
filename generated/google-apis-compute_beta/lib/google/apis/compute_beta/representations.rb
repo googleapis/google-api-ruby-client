@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BundledLocalSsds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CacheInvalidationRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3976,6 +3982,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5284,6 +5296,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetTcpProxiesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetTcpProxiesSetBackendServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5298,6 +5328,24 @@ module Google
       
       class TargetTcpProxy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetTcpProxyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5953,6 +6001,7 @@ module Google
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
+          property :ipv6_endpoint_type, as: 'ipv6EndpointType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -6863,6 +6912,14 @@ module Google
         end
       end
       
+      class BundledLocalSsds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_interface, as: 'defaultInterface'
+          property :partition_count, as: 'partitionCount'
+        end
+      end
+      
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7759,12 +7816,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dest_address_groups, as: 'destAddressGroups'
+          collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
           collection :dest_region_codes, as: 'destRegionCodes'
           collection :dest_threat_intelligences, as: 'destThreatIntelligences'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_address_groups, as: 'srcAddressGroups'
+          collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
           collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag::Representation
@@ -8754,6 +8813,8 @@ module Google
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeBeta::ResourceStatus, decorator: Google::Apis::ComputeBeta::ResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
@@ -10371,6 +10432,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeBeta::MachineType::Accelerator, decorator: Google::Apis::ComputeBeta::MachineType::Accelerator::Representation
+      
+          property :bundled_local_ssds, as: 'bundledLocalSsds', class: Google::Apis::ComputeBeta::BundledLocalSsds, decorator: Google::Apis::ComputeBeta::BundledLocalSsds::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
@@ -13248,6 +13311,13 @@ module Google
         end
       end
       
+      class ResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :physical_host, as: 'physicalHost'
+        end
+      end
+      
       class RolloutPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13596,12 +13666,15 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeBeta::BfdStatus, decorator: Google::Apis::ComputeBeta::BfdStatus::Representation
       
+          property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
@@ -15669,6 +15742,34 @@ module Google
         end
       end
       
+      class TargetTcpProxiesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_tcp_proxies, as: 'targetTcpProxies', class: Google::Apis::ComputeBeta::TargetTcpProxy, decorator: Google::Apis::ComputeBeta::TargetTcpProxy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning, decorator: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class TargetTcpProxiesSetBackendServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15696,6 +15797,39 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service, as: 'service'
+        end
+      end
+      
+      class TargetTcpProxyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList, decorator: Google::Apis::ComputeBeta::TargetTcpProxiesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::TargetTcpProxyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
