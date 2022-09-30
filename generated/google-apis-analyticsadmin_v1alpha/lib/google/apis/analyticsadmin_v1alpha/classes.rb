@@ -1695,6 +1695,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :property
       
+        # A link between a GA4 property and a Search Ads 360 entity.
+        # Corresponds to the JSON property `searchAds360Link`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
+        attr_accessor :search_ads360_link
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1715,6 +1720,7 @@ module Google
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
+          @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
         end
       end
       
@@ -2926,6 +2932,32 @@ module Google
         end
       end
       
+      # Response message for ListSearchAds360Links RPC.
+      class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SearchAds360Links.
+        # Corresponds to the JSON property `searchAds360Links`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link>]
+        attr_accessor :search_ads360_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @search_ads360_links = args[:search_ads360_links] if args.key?(:search_ads360_links)
+        end
+      end
+      
       # Response message for ListUserLinks RPC.
       class GoogleAnalyticsAdminV1alphaListUserLinksResponse
         include Google::Apis::Core::Hashable
@@ -3354,6 +3386,77 @@ module Google
           @quota = args[:quota] if args.key?(:quota)
           @row_count = args[:row_count] if args.key?(:row_count)
           @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # A link between a GA4 property and a Search Ads 360 entity.
+      class GoogleAnalyticsAdminV1alphaSearchAds360Link
+        include Google::Apis::Core::Hashable
+      
+        # Enables personalized advertising features with this integration. If this field
+        # is not set on create, it will be defaulted to true.
+        # Corresponds to the JSON property `adsPersonalizationEnabled`
+        # @return [Boolean]
+        attr_accessor :ads_personalization_enabled
+        alias_method :ads_personalization_enabled?, :ads_personalization_enabled
+      
+        # Output only. The display name of the Search Ads 360 Advertiser. Allows users
+        # to easily identify the linked resource.
+        # Corresponds to the JSON property `advertiserDisplayName`
+        # @return [String]
+        attr_accessor :advertiser_display_name
+      
+        # Immutable. This field represents the Advertiser ID of the Search Ads 360
+        # Advertiser. that has been linked.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [String]
+        attr_accessor :advertiser_id
+      
+        # Immutable. Enables the import of campaign data from Search Ads 360 into the
+        # GA4 property. After link creation, this can only be updated from the Search
+        # Ads 360 product. If this field is not set on create, it will be defaulted to
+        # true.
+        # Corresponds to the JSON property `campaignDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :campaign_data_sharing_enabled
+        alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
+      
+        # Immutable. Enables the import of cost data from Search Ads 360 to the GA4
+        # property. This can only be enabled if campaign_data_sharing_enabled is enabled.
+        # After link creation, this can only be updated from the Search Ads 360 product.
+        # If this field is not set on create, it will be defaulted to true.
+        # Corresponds to the JSON property `costDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :cost_data_sharing_enabled
+        alias_method :cost_data_sharing_enabled?, :cost_data_sharing_enabled
+      
+        # Output only. The resource name for this SearchAds360Link resource. Format:
+        # properties/`propertyId`/searchAds360Links/`linkId` Note: linkId is not the
+        # Search Ads 360 advertiser ID
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Enables export of site stats with this integration. If this field is not set
+        # on create, it will be defaulted to true.
+        # Corresponds to the JSON property `siteStatsSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :site_stats_sharing_enabled
+        alias_method :site_stats_sharing_enabled?, :site_stats_sharing_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
+          @advertiser_display_name = args[:advertiser_display_name] if args.key?(:advertiser_display_name)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @campaign_data_sharing_enabled = args[:campaign_data_sharing_enabled] if args.key?(:campaign_data_sharing_enabled)
+          @cost_data_sharing_enabled = args[:cost_data_sharing_enabled] if args.key?(:cost_data_sharing_enabled)
+          @name = args[:name] if args.key?(:name)
+          @site_stats_sharing_enabled = args[:site_stats_sharing_enabled] if args.key?(:site_stats_sharing_enabled)
         end
       end
       
