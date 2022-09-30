@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListUserLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +611,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaRunAccessReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchAds360Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1185,6 +1197,8 @@ module Google
       
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
+          property :search_ads360_link, as: 'searchAds360Link', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
+      
         end
       end
       
@@ -1509,6 +1523,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :search_ads360_links, as: 'searchAds360Links', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListUserLinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1614,6 +1637,19 @@ module Google
           property :row_count, as: 'rowCount'
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessRow, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccessRow::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaSearchAds360Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
+          property :advertiser_display_name, as: 'advertiserDisplayName'
+          property :advertiser_id, as: 'advertiserId'
+          property :campaign_data_sharing_enabled, as: 'campaignDataSharingEnabled'
+          property :cost_data_sharing_enabled, as: 'costDataSharingEnabled'
+          property :name, as: 'name'
+          property :site_stats_sharing_enabled, as: 'siteStatsSharingEnabled'
         end
       end
       
