@@ -656,7 +656,9 @@ module Google
         #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
-        #   Required. The id to use for this view.
+        #   Required. A client-assigned identifier such as "my-view". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2363,7 +2365,9 @@ module Google
         #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
-        #   Required. The id to use for this view.
+        #   Required. A client-assigned identifier such as "my-view". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3421,7 +3425,9 @@ module Google
         #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
-        #   Required. The id to use for this view.
+        #   Required. A client-assigned identifier such as "my-view". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4562,7 +4568,9 @@ module Google
         #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
-        #   Required. The id to use for this view.
+        #   Required. A client-assigned identifier such as "my-view". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5897,7 +5905,9 @@ module Google
         #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
-        #   Required. The id to use for this view.
+        #   Required. A client-assigned identifier such as "my-view". Identifiers are
+        #   limited to 100 characters and can include only letters, digits, underscores,
+        #   hyphens, and periods.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
