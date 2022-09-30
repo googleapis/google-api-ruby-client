@@ -1055,6 +1055,7 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           collection :networks, as: 'networks', class: Google::Apis::DnsV1beta2::ResponsePolicyNetwork, decorator: Google::Apis::DnsV1beta2::ResponsePolicyNetwork::Representation
       
           property :response_policy_name, as: 'responsePolicyName'
