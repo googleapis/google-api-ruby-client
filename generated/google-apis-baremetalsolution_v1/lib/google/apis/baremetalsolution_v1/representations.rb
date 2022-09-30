@@ -46,18 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ResetInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResetInstanceResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,18 +82,6 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
-        end
-      end
-      
-      class ResetInstanceRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ResetInstanceResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
