@@ -60,32 +60,6 @@ module Google
         end
       end
       
-      # Additional key names that will be used to identify the target of the policy
-      # value.
-      class GoogleChromePolicyV1AdditionalTargetKeyName
-        include Google::Apis::Core::Hashable
-      
-        # Key name.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # Key description.
-        # Corresponds to the JSON property `keyDescription`
-        # @return [String]
-        attr_accessor :key_description
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @key_description = args[:key_description] if args.key?(:key_description)
-        end
-      end
-      
       # Request message for specifying that multiple policy values will be deleted.
       class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest
         include Google::Apis::Core::Hashable
@@ -187,6 +161,143 @@ module Google
         # Update properties of this object
         def update!(**args)
           @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request object for creating a certificate.
+      class GoogleChromePolicyV1DefineCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The optional name of the certificate. If not specified, the
+        # certificate issuer will be used as the name.
+        # Corresponds to the JSON property `ceritificateName`
+        # @return [String]
+        attr_accessor :ceritificate_name
+      
+        # Required. The raw contents of the .PEM, .CRT, or .CER file.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # Optional. Certificate settings within the chrome.networks.certificates
+        # namespace.
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # Required. The target resource on which this certificate is applied. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ceritificate_name = args[:ceritificate_name] if args.key?(:ceritificate_name)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for creating a certificate.
+      class GoogleChromePolicyV1DefineCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The guid of the certificate created by the action.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # the affiliated settings of the certificate (NOT IMPLEMENTED)
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # the resource at which the certificate is defined.
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Request object for creating a new network.
+      class GoogleChromePolicyV1DefineNetworkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the new created network.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Detailed network settings.
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # Required. The target resource on which this new network will be defined. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for creating a network.
+      class GoogleChromePolicyV1DefineNetworkResponse
+        include Google::Apis::Core::Hashable
+      
+        # Network ID of the new created network.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Detailed network settings of the new created network
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # The target resource on which this new network will be defined. The following
+        # resources are supported: * Organizational Unit ("orgunits/`orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
         end
       end
       
@@ -297,31 +408,6 @@ module Google
         end
       end
       
-      # Response message for listing policy schemas that match a filter.
-      class GoogleChromePolicyV1ListPolicySchemasResponse
-        include Google::Apis::Core::Hashable
-      
-        # The page token used to get the next page of policy schemas.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of policy schemas that match the query.
-        # Corresponds to the JSON property `policySchemas`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchema>]
-        attr_accessor :policy_schemas
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @policy_schemas = args[:policy_schemas] if args.key?(:policy_schemas)
-        end
-      end
-      
       # Request parameters for modifying a policy value for a specific group target.
       class GoogleChromePolicyV1ModifyGroupPolicyRequest
         include Google::Apis::Core::Hashable
@@ -388,217 +474,18 @@ module Google
         end
       end
       
-      # Resource representing a policy schema. Next ID: 14
-      class GoogleChromePolicyV1PolicySchema
+      # A network setting contains network configurations.
+      class GoogleChromePolicyV1NetworkSetting
         include Google::Apis::Core::Hashable
       
-        # Output only. Specific access restrictions related to this policy.
-        # Corresponds to the JSON property `accessRestrictions`
-        # @return [Array<String>]
-        attr_accessor :access_restrictions
-      
-        # Output only. Additional key names that will be used to identify the target of
-        # the policy value. When specifying a `policyTargetKey`, each of the additional
-        # keys specified here will have to be included in the `additionalTargetKeys` map.
-        # Corresponds to the JSON property `additionalTargetKeyNames`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1AdditionalTargetKeyName>]
-        attr_accessor :additional_target_key_names
-      
-        # Output only. Title of the category in which a setting belongs.
-        # Corresponds to the JSON property `categoryTitle`
+        # The fully qualified name of the network setting.
+        # Corresponds to the JSON property `policySchema`
         # @return [String]
-        attr_accessor :category_title
+        attr_accessor :policy_schema
       
-        # Describes a complete .proto file.
-        # Corresponds to the JSON property `definition`
-        # @return [Google::Apis::ChromepolicyV1::Proto2FileDescriptorProto]
-        attr_accessor :definition
-      
-        # Output only. Detailed description of each field that is part of the schema.
-        # Corresponds to the JSON property `fieldDescriptions`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription>]
-        attr_accessor :field_descriptions
-      
-        # Format: name=customers/`customer`/policySchemas/`schema_namespace`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Special notice messages related to setting certain values in
-        # certain fields in the schema.
-        # Corresponds to the JSON property `notices`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription>]
-        attr_accessor :notices
-      
-        # Output only. Current lifecycle information.
-        # Corresponds to the JSON property `policyApiLifecycle`
-        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
-        attr_accessor :policy_api_lifecycle
-      
-        # Deprecated field because of typo.
-        # Corresponds to the JSON property `policyApiLifeycle`
-        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
-        attr_accessor :policy_api_lifeycle
-      
-        # Output only. Description about the policy schema for user consumption.
-        # Corresponds to the JSON property `policyDescription`
-        # @return [String]
-        attr_accessor :policy_description
-      
-        # Output only. The fully qualified name of the policy schema. This value is used
-        # to fill the field `policy_schema` in PolicyValue when calling
-        # BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
-        # BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
-        # Corresponds to the JSON property `schemaName`
-        # @return [String]
-        attr_accessor :schema_name
-      
-        # Output only. URI to related support article for this schema.
-        # Corresponds to the JSON property `supportUri`
-        # @return [String]
-        attr_accessor :support_uri
-      
-        # Output only. Information about applicable target resources for the policy.
-        # Corresponds to the JSON property `validTargetResources`
-        # @return [Array<String>]
-        attr_accessor :valid_target_resources
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @access_restrictions = args[:access_restrictions] if args.key?(:access_restrictions)
-          @additional_target_key_names = args[:additional_target_key_names] if args.key?(:additional_target_key_names)
-          @category_title = args[:category_title] if args.key?(:category_title)
-          @definition = args[:definition] if args.key?(:definition)
-          @field_descriptions = args[:field_descriptions] if args.key?(:field_descriptions)
-          @name = args[:name] if args.key?(:name)
-          @notices = args[:notices] if args.key?(:notices)
-          @policy_api_lifecycle = args[:policy_api_lifecycle] if args.key?(:policy_api_lifecycle)
-          @policy_api_lifeycle = args[:policy_api_lifeycle] if args.key?(:policy_api_lifeycle)
-          @policy_description = args[:policy_description] if args.key?(:policy_description)
-          @schema_name = args[:schema_name] if args.key?(:schema_name)
-          @support_uri = args[:support_uri] if args.key?(:support_uri)
-          @valid_target_resources = args[:valid_target_resources] if args.key?(:valid_target_resources)
-        end
-      end
-      
-      # The field and the value it must have for another field to be allowed to be set.
-      class GoogleChromePolicyV1PolicySchemaFieldDependencies
-        include Google::Apis::Core::Hashable
-      
-        # The source field which this field depends on.
-        # Corresponds to the JSON property `sourceField`
-        # @return [String]
-        attr_accessor :source_field
-      
-        # The value which the source field must have for this field to be allowed to be
-        # set.
-        # Corresponds to the JSON property `sourceFieldValue`
-        # @return [String]
-        attr_accessor :source_field_value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source_field = args[:source_field] if args.key?(:source_field)
-          @source_field_value = args[:source_field_value] if args.key?(:source_field_value)
-        end
-      end
-      
-      # Provides detailed information for a particular field that is part of a
-      # PolicySchema.
-      class GoogleChromePolicyV1PolicySchemaFieldDescription
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated. Use name and field_description instead. The description for the
-        # field.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The name of the field for associated with this description.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # Output only. Provides a list of fields and values. At least one of the fields
-        # must have the corresponding value in order for this field to be allowed to be
-        # set.
-        # Corresponds to the JSON property `fieldDependencies`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies>]
-        attr_accessor :field_dependencies
-      
-        # Output only. The description of the field.
-        # Corresponds to the JSON property `fieldDescription`
-        # @return [String]
-        attr_accessor :field_description
-      
-        # Output only. Any input constraints associated on the values for the field.
-        # Corresponds to the JSON property `inputConstraint`
-        # @return [String]
-        attr_accessor :input_constraint
-      
-        # Output only. If the field has a set of known values, this field will provide a
-        # description for these values.
-        # Corresponds to the JSON property `knownValueDescriptions`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>]
-        attr_accessor :known_value_descriptions
-      
-        # Output only. The name of the field.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Provides the description of the fields nested in this field, if
-        # the field is a message type that defines multiple fields.
-        # Corresponds to the JSON property `nestedFieldDescriptions`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription>]
-        attr_accessor :nested_field_descriptions
-      
-        # Output only. Provides a list of fields that are required to be set if this
-        # field has a certain value.
-        # Corresponds to the JSON property `requiredItems`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems>]
-        attr_accessor :required_items
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @field = args[:field] if args.key?(:field)
-          @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
-          @field_description = args[:field_description] if args.key?(:field_description)
-          @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
-          @known_value_descriptions = args[:known_value_descriptions] if args.key?(:known_value_descriptions)
-          @name = args[:name] if args.key?(:name)
-          @nested_field_descriptions = args[:nested_field_descriptions] if args.key?(:nested_field_descriptions)
-          @required_items = args[:required_items] if args.key?(:required_items)
-        end
-      end
-      
-      # Provides detailed information about a known value that is allowed for a
-      # particular field in a PolicySchema.
-      class GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Additional description for this value.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The string represenstation of the value that can be set for the
-        # field.
+        # The value of the network setting.
         # Corresponds to the JSON property `value`
-        # @return [String]
+        # @return [Hash<String,Object>]
         attr_accessor :value
       
         def initialize(**args)
@@ -607,77 +494,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] if args.key?(:description)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @value = args[:value] if args.key?(:value)
         end
       end
       
-      # Provides special notice messages related to a particular value in a field that
-      # is part of a PolicySchema.
-      class GoogleChromePolicyV1PolicySchemaNoticeDescription
+      # Error information for a modification request of a specific field on a specific
+      # policy.
+      class GoogleChromePolicyV1PolicyModificationFieldError
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether the user needs to acknowledge the notice message before
-        # the value can be set.
-        # Corresponds to the JSON property `acknowledgementRequired`
-        # @return [Boolean]
-        attr_accessor :acknowledgement_required
-        alias_method :acknowledgement_required?, :acknowledgement_required
+        # Output only. The error message related to the field.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
       
-        # Output only. The field name associated with the notice.
+        # Output only. The name of the field with the error.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
-        # Output only. The notice message associate with the value of the field.
-        # Corresponds to the JSON property `noticeMessage`
-        # @return [String]
-        attr_accessor :notice_message
-      
-        # Output only. The value of the field that has a notice. When setting the field
-        # to this value, the user may be required to acknowledge the notice message in
-        # order for the value to be set.
-        # Corresponds to the JSON property `noticeValue`
-        # @return [String]
-        attr_accessor :notice_value
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @acknowledgement_required = args[:acknowledgement_required] if args.key?(:acknowledgement_required)
+          @error = args[:error] if args.key?(:error)
           @field = args[:field] if args.key?(:field)
-          @notice_message = args[:notice_message] if args.key?(:notice_message)
-          @notice_value = args[:notice_value] if args.key?(:notice_value)
-        end
-      end
-      
-      # The fields that will become required based on the value of this field.
-      class GoogleChromePolicyV1PolicySchemaRequiredItems
-        include Google::Apis::Core::Hashable
-      
-        # The value(s) of the field that provoke required field enforcement. An empty
-        # field_conditions implies that any value assigned to this field will provoke
-        # required field enforcement.
-        # Corresponds to the JSON property `fieldConditions`
-        # @return [Array<String>]
-        attr_accessor :field_conditions
-      
-        # The fields that are required as a consequence of the field conditions.
-        # Corresponds to the JSON property `requiredFields`
-        # @return [Array<String>]
-        attr_accessor :required_fields
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field_conditions = args[:field_conditions] if args.key?(:field_conditions)
-          @required_fields = args[:required_fields] if args.key?(:required_fields)
         end
       end
       
@@ -735,6 +579,86 @@ module Google
         end
       end
       
+      # Request object for removing a certificate.
+      class GoogleChromePolicyV1RemoveCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GUID of the certificate to remove.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Required. The target resource on which this certificate will be removed. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for removing a certificate.
+      class GoogleChromePolicyV1RemoveCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request object for removing a network
+      class GoogleChromePolicyV1RemoveNetworkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GUID of the network to remove.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Required. The target resource on which this network will be removed. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for removing a network.
+      class GoogleChromePolicyV1RemoveNetworkResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for getting the resolved policy value for a specific target.
       class GoogleChromePolicyV1ResolveRequest
         include Google::Apis::Core::Hashable
@@ -754,7 +678,7 @@ module Google
         # view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards
         # are supported, but only in the leaf portion of the schema name. Wildcards
         # cannot be used in namespace directly. Please read https://developers.google.
-        # com/chrome/policy/guides/policy-schemas for details on schema namepsaces. For
+        # com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
         # example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*"
         # Invalid: "*", "*.users", "chrome.*", "chrome.*.apps.*"
         # Corresponds to the JSON property `policySchemaFilter`
@@ -873,7 +797,357 @@ module Google
         end
       end
       
-      # Request message for uploading a file for a policy. Next ID: 5
+      # Additional key names that will be used to identify the target of the policy
+      # value.
+      class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
+        include Google::Apis::Core::Hashable
+      
+        # Key name.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Key description.
+        # Corresponds to the JSON property `keyDescription`
+        # @return [String]
+        attr_accessor :key_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @key_description = args[:key_description] if args.key?(:key_description)
+        end
+      end
+      
+      # Response message for listing policy schemas that match a filter.
+      class GoogleChromePolicyVersionsV1ListPolicySchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token used to get the next page of policy schemas.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of policy schemas that match the query.
+        # Corresponds to the JSON property `policySchemas`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchema>]
+        attr_accessor :policy_schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policy_schemas = args[:policy_schemas] if args.key?(:policy_schemas)
+        end
+      end
+      
+      # Resource representing a policy schema.
+      class GoogleChromePolicyVersionsV1PolicySchema
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Specific access restrictions related to this policy.
+        # Corresponds to the JSON property `accessRestrictions`
+        # @return [Array<String>]
+        attr_accessor :access_restrictions
+      
+        # Output only. Additional key names that will be used to identify the target of
+        # the policy value. When specifying a `policyTargetKey`, each of the additional
+        # keys specified here will have to be included in the `additionalTargetKeys` map.
+        # Corresponds to the JSON property `additionalTargetKeyNames`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1AdditionalTargetKeyName>]
+        attr_accessor :additional_target_key_names
+      
+        # Title of the category in which a setting belongs.
+        # Corresponds to the JSON property `categoryTitle`
+        # @return [String]
+        attr_accessor :category_title
+      
+        # Describes a complete .proto file.
+        # Corresponds to the JSON property `definition`
+        # @return [Google::Apis::ChromepolicyV1::Proto2FileDescriptorProto]
+        attr_accessor :definition
+      
+        # Output only. Detailed description of each field that is part of the schema.
+        # Corresponds to the JSON property `fieldDescriptions`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>]
+        attr_accessor :field_descriptions
+      
+        # Format: name=customers/`customer`/policySchemas/`schema_namespace`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Special notice messages related to setting certain values in
+        # certain fields in the schema.
+        # Corresponds to the JSON property `notices`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>]
+        attr_accessor :notices
+      
+        # Output only. Current lifecycle information.
+        # Corresponds to the JSON property `policyApiLifecycle`
+        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
+        attr_accessor :policy_api_lifecycle
+      
+        # Deprecated field because of typo.
+        # Corresponds to the JSON property `policyApiLifeycle`
+        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
+        attr_accessor :policy_api_lifeycle
+      
+        # Output only. Description about the policy schema for user consumption.
+        # Corresponds to the JSON property `policyDescription`
+        # @return [String]
+        attr_accessor :policy_description
+      
+        # Output only. The fully qualified name of the policy schema. This value is used
+        # to fill the field `policy_schema` in PolicyValue when calling
+        # BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+        # BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
+        # Corresponds to the JSON property `schemaName`
+        # @return [String]
+        attr_accessor :schema_name
+      
+        # Output only. URI to related support article for this schema.
+        # Corresponds to the JSON property `supportUri`
+        # @return [String]
+        attr_accessor :support_uri
+      
+        # Output only. Information about applicable target resources for the policy.
+        # Corresponds to the JSON property `validTargetResources`
+        # @return [Array<String>]
+        attr_accessor :valid_target_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_restrictions = args[:access_restrictions] if args.key?(:access_restrictions)
+          @additional_target_key_names = args[:additional_target_key_names] if args.key?(:additional_target_key_names)
+          @category_title = args[:category_title] if args.key?(:category_title)
+          @definition = args[:definition] if args.key?(:definition)
+          @field_descriptions = args[:field_descriptions] if args.key?(:field_descriptions)
+          @name = args[:name] if args.key?(:name)
+          @notices = args[:notices] if args.key?(:notices)
+          @policy_api_lifecycle = args[:policy_api_lifecycle] if args.key?(:policy_api_lifecycle)
+          @policy_api_lifeycle = args[:policy_api_lifeycle] if args.key?(:policy_api_lifeycle)
+          @policy_description = args[:policy_description] if args.key?(:policy_description)
+          @schema_name = args[:schema_name] if args.key?(:schema_name)
+          @support_uri = args[:support_uri] if args.key?(:support_uri)
+          @valid_target_resources = args[:valid_target_resources] if args.key?(:valid_target_resources)
+        end
+      end
+      
+      # The field and the value it must have for another field to be allowed to be set.
+      class GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies
+        include Google::Apis::Core::Hashable
+      
+        # The source field which this field depends on.
+        # Corresponds to the JSON property `sourceField`
+        # @return [String]
+        attr_accessor :source_field
+      
+        # The value which the source field must have for this field to be allowed to be
+        # set.
+        # Corresponds to the JSON property `sourceFieldValue`
+        # @return [String]
+        attr_accessor :source_field_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_field = args[:source_field] if args.key?(:source_field)
+          @source_field_value = args[:source_field_value] if args.key?(:source_field_value)
+        end
+      end
+      
+      # Provides detailed information for a particular field that is part of a
+      # PolicySchema.
+      class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Client default if the policy is unset.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Object]
+        attr_accessor :default_value
+      
+        # Deprecated. Use name and field_description instead. The description for the
+        # field.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The name of the field for associated with this description.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Output only. Provides a list of fields and values. At least one of the fields
+        # must have the corresponding value in order for this field to be allowed to be
+        # set.
+        # Corresponds to the JSON property `fieldDependencies`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>]
+        attr_accessor :field_dependencies
+      
+        # Output only. The description of the field.
+        # Corresponds to the JSON property `fieldDescription`
+        # @return [String]
+        attr_accessor :field_description
+      
+        # Output only. Any input constraints associated on the values for the field.
+        # Corresponds to the JSON property `inputConstraint`
+        # @return [String]
+        attr_accessor :input_constraint
+      
+        # Output only. If the field has a set of known values, this field will provide a
+        # description for these values.
+        # Corresponds to the JSON property `knownValueDescriptions`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>]
+        attr_accessor :known_value_descriptions
+      
+        # Output only. The name of the field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Provides the description of the fields nested in this field, if
+        # the field is a message type that defines multiple fields.
+        # Corresponds to the JSON property `nestedFieldDescriptions`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>]
+        attr_accessor :nested_field_descriptions
+      
+        # Output only. Provides a list of fields that are required to be set if this
+        # field has a certain value.
+        # Corresponds to the JSON property `requiredItems`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>]
+        attr_accessor :required_items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @description = args[:description] if args.key?(:description)
+          @field = args[:field] if args.key?(:field)
+          @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
+          @field_description = args[:field_description] if args.key?(:field_description)
+          @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
+          @known_value_descriptions = args[:known_value_descriptions] if args.key?(:known_value_descriptions)
+          @name = args[:name] if args.key?(:name)
+          @nested_field_descriptions = args[:nested_field_descriptions] if args.key?(:nested_field_descriptions)
+          @required_items = args[:required_items] if args.key?(:required_items)
+        end
+      end
+      
+      # Provides detailed information about a known value that is allowed for a
+      # particular field in a PolicySchema.
+      class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional description for this value.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The string represenstation of the value that can be set for the
+        # field.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Provides special notice messages related to a particular value in a field that
+      # is part of a PolicySchema.
+      class GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether the user needs to acknowledge the notice message before
+        # the value can be set.
+        # Corresponds to the JSON property `acknowledgementRequired`
+        # @return [Boolean]
+        attr_accessor :acknowledgement_required
+        alias_method :acknowledgement_required?, :acknowledgement_required
+      
+        # Output only. The field name associated with the notice.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Output only. The notice message associate with the value of the field.
+        # Corresponds to the JSON property `noticeMessage`
+        # @return [String]
+        attr_accessor :notice_message
+      
+        # Output only. The value of the field that has a notice. When setting the field
+        # to this value, the user may be required to acknowledge the notice message in
+        # order for the value to be set.
+        # Corresponds to the JSON property `noticeValue`
+        # @return [String]
+        attr_accessor :notice_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement_required = args[:acknowledgement_required] if args.key?(:acknowledgement_required)
+          @field = args[:field] if args.key?(:field)
+          @notice_message = args[:notice_message] if args.key?(:notice_message)
+          @notice_value = args[:notice_value] if args.key?(:notice_value)
+        end
+      end
+      
+      # The fields that will become required based on the value of this field.
+      class GoogleChromePolicyVersionsV1PolicySchemaRequiredItems
+        include Google::Apis::Core::Hashable
+      
+        # The value(s) of the field that provoke required field enforcement. An empty
+        # field_conditions implies that any value assigned to this field will provoke
+        # required field enforcement.
+        # Corresponds to the JSON property `fieldConditions`
+        # @return [Array<String>]
+        attr_accessor :field_conditions
+      
+        # The fields that are required as a consequence of the field conditions.
+        # Corresponds to the JSON property `requiredFields`
+        # @return [Array<String>]
+        attr_accessor :required_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_conditions = args[:field_conditions] if args.key?(:field_conditions)
+          @required_fields = args[:required_fields] if args.key?(:required_fields)
+        end
+      end
+      
+      # Request message for uploading a file for a policy.
       class GoogleChromePolicyVersionsV1UploadPolicyFileRequest
         include Google::Apis::Core::Hashable
       
@@ -894,7 +1168,7 @@ module Google
         end
       end
       
-      # Response message for downloading an uploaded file. Next ID: 2
+      # Response message for downloading an uploaded file.
       class GoogleChromePolicyVersionsV1UploadPolicyFileResponse
         include Google::Apis::Core::Hashable
       
