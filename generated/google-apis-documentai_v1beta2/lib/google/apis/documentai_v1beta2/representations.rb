@@ -526,6 +526,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1DocumentPageLayout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +821,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentPageImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1890,6 +1914,8 @@ module Google
       
           property :image, as: 'image', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImage, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImage::Representation
       
+          property :image_quality_scores, as: 'imageQualityScores', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores::Representation
+      
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
           collection :lines, as: 'lines', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLine, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLine::Representation
@@ -1997,6 +2023,23 @@ module Google
           property :height, as: 'height'
           property :mime_type, as: 'mimeType'
           property :width, as: 'width'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_defects, as: 'detectedDefects', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect::Representation
+      
+          property :quality_score, as: 'qualityScore'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :type, as: 'type'
         end
       end
       
@@ -2438,6 +2481,8 @@ module Google
       
           property :image, as: 'image', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImage, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImage::Representation
       
+          property :image_quality_scores, as: 'imageQualityScores', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores::Representation
+      
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
           collection :lines, as: 'lines', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLine, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLine::Representation
@@ -2545,6 +2590,23 @@ module Google
           property :height, as: 'height'
           property :mime_type, as: 'mimeType'
           property :width, as: 'width'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_defects, as: 'detectedDefects', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect::Representation
+      
+          property :quality_score, as: 'qualityScore'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :type, as: 'type'
         end
       end
       
