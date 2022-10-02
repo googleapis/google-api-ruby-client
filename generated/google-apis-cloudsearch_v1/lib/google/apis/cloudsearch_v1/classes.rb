@@ -612,7 +612,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedChatItem]
         attr_accessor :chat_item
       
-        # Contains info regarding the updater of an Activity Feed item. Next Id: 7
+        # Contains info regarding the updater of an Activity Feed item. Next Id: 8
         # Corresponds to the JSON property `sharedUserInfo`
         # @return [Google::Apis::CloudsearchV1::UserInfo]
         attr_accessor :shared_user_info
@@ -4396,6 +4396,11 @@ module Google
       class BotInfo
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `appAllowlistStatus`
+        # @return [String]
+        attr_accessor :app_allowlist_status
+      
         # Identifier of an App.
         # Corresponds to the JSON property `appId`
         # @return [Google::Apis::CloudsearchV1::AppId]
@@ -4433,6 +4438,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # If the app supports a home screen.
+        # Corresponds to the JSON property `supportHomeScreen`
+        # @return [Boolean]
+        attr_accessor :support_home_screen
+        alias_method :support_home_screen?, :support_home_screen
+      
         # Urls with additional bot related information.
         # Corresponds to the JSON property `supportUrls`
         # @return [Google::Apis::CloudsearchV1::SupportUrls]
@@ -4445,17 +4456,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_uses
       
-        # 
-        # Corresponds to the JSON property `whitelistStatus`
-        # @return [String]
-        attr_accessor :whitelist_status
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @app_allowlist_status = args[:app_allowlist_status] if args.key?(:app_allowlist_status)
           @app_id = args[:app_id] if args.key?(:app_id)
           @bot_avatar_url = args[:bot_avatar_url] if args.key?(:bot_avatar_url)
           @bot_name = args[:bot_name] if args.key?(:bot_name)
@@ -4463,9 +4470,9 @@ module Google
           @developer_name = args[:developer_name] if args.key?(:developer_name)
           @market_place_banner_url = args[:market_place_banner_url] if args.key?(:market_place_banner_url)
           @status = args[:status] if args.key?(:status)
+          @support_home_screen = args[:support_home_screen] if args.key?(:support_home_screen)
           @support_urls = args[:support_urls] if args.key?(:support_urls)
           @supported_uses = args[:supported_uses] if args.key?(:supported_uses)
-          @whitelist_status = args[:whitelist_status] if args.key?(:whitelist_status)
         end
       end
       
@@ -13194,7 +13201,8 @@ module Google
         # Indicates that users can perform wildcard search for this property. Only
         # supported for Text properties. IsReturnable must be true to set this option.
         # In a given datasource maximum of 5 properties can be marked as
-        # is_wildcard_searchable.
+        # is_wildcard_searchable. For more details, see [Define object properties](https:
+        # //developers.google.com/cloud-search/docs/guides/schema-guide#properties)
         # Corresponds to the JSON property `isWildcardSearchable`
         # @return [Boolean]
         attr_accessor :is_wildcard_searchable
@@ -15449,7 +15457,7 @@ module Google
         attr_accessor :chat_lock
         alias_method :chat_lock?, :chat_lock
       
-        # Whether meeting artifacts will be shared with co-hosts.
+        # Whether meeting artifacts will be shared with cohosts.
         # Corresponds to the JSON property `cohostArtifactSharingEnabled`
         # @return [Boolean]
         attr_accessor :cohost_artifact_sharing_enabled
@@ -17301,7 +17309,7 @@ module Google
         # Note that this is not necessarily the mime type of the http resource. For
         # example a text/html from youtube or vimeo may actually be classified as a
         # video type. Then we shall mark it as video/* since we don't know exactly what
-        # type of video it is. NEXT TAG : 16
+        # type of video it is.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -17337,6 +17345,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
         attr_accessor :url
       
+        # NEXT TAG : 17
+        # Corresponds to the JSON property `urlSource`
+        # @return [String]
+        attr_accessor :url_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17357,6 +17370,7 @@ module Google
           @snippet = args[:snippet] if args.key?(:snippet)
           @title = args[:title] if args.key?(:title)
           @url = args[:url] if args.key?(:url)
+          @url_source = args[:url_source] if args.key?(:url_source)
         end
       end
       
@@ -17534,9 +17548,19 @@ module Google
         end
       end
       
-      # Contains info regarding the updater of an Activity Feed item. Next Id: 7
+      # Contains info regarding the updater of an Activity Feed item. Next Id: 8
       class UserInfo
         include Google::Apis::Core::Hashable
+      
+        # Avatar url of the user who triggered the Drive Notification email. This field
+        # will be populated if we can extract such information from the Drive
+        # Notification email. This should only be used to fetch user avatars when
+        # updater_to_show_email is not populated. This field is not set for non-Drive
+        # Notification items. This is not the actual sender of the email, as the sender
+        # is always comments-noreply@docs.google.com.
+        # Corresponds to the JSON property `driveNotificationAvatarUrl`
+        # @return [String]
+        attr_accessor :drive_notification_avatar_url
       
         # Describes how updater_count_to_show should be used.
         # Corresponds to the JSON property `updaterCountDisplayType`
@@ -17549,7 +17573,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :updater_count_to_show
       
-        # The email of the updater for clients to show used for Gmail items.
+        # The email of the updater for clients to show used for Gmail items. For Drive
+        # Notifications, this is the email of the user who triggered the Drive
+        # Notification email. This field will be populated if we can extract such
+        # information from the Drive Notification email. This is not the actual sender
+        # of the email, as the sender is always comments-noreply@docs.google.com.
         # Corresponds to the JSON property `updaterToShowEmail`
         # @return [String]
         attr_accessor :updater_to_show_email
@@ -17560,10 +17588,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :updater_to_show_gaia_id
       
-        # The display name of the updater for clients to show used for Gmail items. This
-        # (along with the updater fields above) will be populated in the thread pipeline
-        # (http://shortn/_rPS0GCp94Y) when converting Activity Feed message attributes
-        # into client-renderable Activity Feed items.
+        # The display name of the updater for clients to show used for Gmail items. For
+        # non-Drive Notification items, this field will always be populated. If the
+        # display name cannot be found for the user, the fallback string will be the
+        # email address. For Drive Notification items, this is the email of the user who
+        # triggered the Drive notification email. This field will be populated if we can
+        # extract such information from the Drive Notification email. This is not the
+        # actual sender of the email, as the sender is always comments-noreply@docs.
+        # google.com.
         # Corresponds to the JSON property `updaterToShowName`
         # @return [String]
         attr_accessor :updater_to_show_name
@@ -17579,6 +17611,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drive_notification_avatar_url = args[:drive_notification_avatar_url] if args.key?(:drive_notification_avatar_url)
           @updater_count_display_type = args[:updater_count_display_type] if args.key?(:updater_count_display_type)
           @updater_count_to_show = args[:updater_count_to_show] if args.key?(:updater_count_to_show)
           @updater_to_show_email = args[:updater_to_show_email] if args.key?(:updater_to_show_email)
