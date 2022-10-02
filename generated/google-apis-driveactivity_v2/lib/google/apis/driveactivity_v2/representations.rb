@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppliedLabelChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppliedLabelChangeDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Assignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +107,12 @@ module Google
       end
       
       class DataLeakPreventionChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldValueChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +221,12 @@ module Google
       end
       
       class Impersonation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Integer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,7 +316,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Selection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SelectionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SettingsChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleUser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Text
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -364,6 +436,8 @@ module Google
       class ActionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_label_change, as: 'appliedLabelChange', class: Google::Apis::DriveactivityV2::AppliedLabelChange, decorator: Google::Apis::DriveactivityV2::AppliedLabelChange::Representation
+      
           property :comment, as: 'comment', class: Google::Apis::DriveactivityV2::Comment, decorator: Google::Apis::DriveactivityV2::Comment::Representation
       
           property :create, as: 'create', class: Google::Apis::DriveactivityV2::Create, decorator: Google::Apis::DriveactivityV2::Create::Representation
@@ -430,6 +504,25 @@ module Google
         end
       end
       
+      class AppliedLabelChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::DriveactivityV2::AppliedLabelChangeDetail, decorator: Google::Apis::DriveactivityV2::AppliedLabelChangeDetail::Representation
+      
+        end
+      end
+      
+      class AppliedLabelChangeDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_changes, as: 'fieldChanges', class: Google::Apis::DriveactivityV2::FieldValueChange, decorator: Google::Apis::DriveactivityV2::FieldValueChange::Representation
+      
+          property :label, as: 'label'
+          property :title, as: 'title'
+          collection :types, as: 'types'
+        end
+      end
+      
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -487,6 +580,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       
@@ -600,6 +700,40 @@ module Google
         end
       end
       
+      class FieldValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::DriveactivityV2::Date, decorator: Google::Apis::DriveactivityV2::Date::Representation
+      
+          property :integer, as: 'integer', class: Google::Apis::DriveactivityV2::Integer, decorator: Google::Apis::DriveactivityV2::Integer::Representation
+      
+          property :selection, as: 'selection', class: Google::Apis::DriveactivityV2::Selection, decorator: Google::Apis::DriveactivityV2::Selection::Representation
+      
+          property :selection_list, as: 'selectionList', class: Google::Apis::DriveactivityV2::SelectionList, decorator: Google::Apis::DriveactivityV2::SelectionList::Representation
+      
+          property :text, as: 'text', class: Google::Apis::DriveactivityV2::Text, decorator: Google::Apis::DriveactivityV2::Text::Representation
+      
+          property :text_list, as: 'textList', class: Google::Apis::DriveactivityV2::TextList, decorator: Google::Apis::DriveactivityV2::TextList::Representation
+      
+          property :user, as: 'user', class: Google::Apis::DriveactivityV2::SingleUser, decorator: Google::Apis::DriveactivityV2::SingleUser::Representation
+      
+          property :user_list, as: 'userList', class: Google::Apis::DriveactivityV2::UserList, decorator: Google::Apis::DriveactivityV2::UserList::Representation
+      
+        end
+      end
+      
+      class FieldValueChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :field_id, as: 'fieldId'
+          property :new_value, as: 'newValue', class: Google::Apis::DriveactivityV2::FieldValue, decorator: Google::Apis::DriveactivityV2::FieldValue::Representation
+      
+          property :old_value, as: 'oldValue', class: Google::Apis::DriveactivityV2::FieldValue, decorator: Google::Apis::DriveactivityV2::FieldValue::Representation
+      
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -637,6 +771,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :impersonated_user, as: 'impersonatedUser', class: Google::Apis::DriveactivityV2::User, decorator: Google::Apis::DriveactivityV2::User::Representation
       
+        end
+      end
+      
+      class Integer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, :numeric_string => true, as: 'value'
         end
       end
       
@@ -768,11 +909,34 @@ module Google
         end
       end
       
+      class Selection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :value, as: 'value'
+        end
+      end
+      
+      class SelectionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::DriveactivityV2::Selection, decorator: Google::Apis::DriveactivityV2::Selection::Representation
+      
+        end
+      end
+      
       class SettingsChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :restriction_changes, as: 'restrictionChanges', class: Google::Apis::DriveactivityV2::RestrictionChange, decorator: Google::Apis::DriveactivityV2::RestrictionChange::Representation
       
+        end
+      end
+      
+      class SingleUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
         end
       end
       
@@ -834,6 +998,21 @@ module Google
         end
       end
       
+      class Text
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class TextList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::DriveactivityV2::Text, decorator: Google::Apis::DriveactivityV2::Text::Representation
+      
+        end
+      end
+      
       class TimeRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -862,6 +1041,14 @@ module Google
           property :known_user, as: 'knownUser', class: Google::Apis::DriveactivityV2::KnownUser, decorator: Google::Apis::DriveactivityV2::KnownUser::Representation
       
           property :unknown_user, as: 'unknownUser', class: Google::Apis::DriveactivityV2::UnknownUser, decorator: Google::Apis::DriveactivityV2::UnknownUser::Representation
+      
+        end
+      end
+      
+      class UserList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::DriveactivityV2::SingleUser, decorator: Google::Apis::DriveactivityV2::SingleUser::Representation
       
         end
       end
