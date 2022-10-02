@@ -16215,6 +16215,7 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_network_tier, as: 'autoNetworkTier'
           collection :drain_nat_ips, as: 'drainNatIps'
           property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
