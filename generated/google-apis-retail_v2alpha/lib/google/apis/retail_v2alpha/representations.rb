@@ -1234,8 +1234,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_item, as: 'catalogItem'
           property :gcs_path, as: 'gcsPath'
+          property :inventory_activity, as: 'inventoryActivity'
           property :line_number, as: 'lineNumber'
           property :operation_name, as: 'operationName'
+          property :order, as: 'order'
+          property :place, as: 'place'
+          property :place_asset, as: 'placeAsset'
+          property :place_product_price, as: 'placeProductPrice'
+          property :place_product_settings, as: 'placeProductSettings'
           property :product, as: 'product'
           property :user_event, as: 'userEvent'
         end
