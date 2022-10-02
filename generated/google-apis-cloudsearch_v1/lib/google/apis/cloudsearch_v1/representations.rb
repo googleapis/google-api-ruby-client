@@ -4215,6 +4215,7 @@ module Google
       class BotInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_allowlist_status, as: 'appAllowlistStatus'
           property :app_id, as: 'appId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
       
           property :bot_avatar_url, as: 'botAvatarUrl'
@@ -4223,10 +4224,10 @@ module Google
           property :developer_name, as: 'developerName'
           property :market_place_banner_url, as: 'marketPlaceBannerUrl'
           property :status, as: 'status'
+          property :support_home_screen, as: 'supportHomeScreen'
           property :support_urls, as: 'supportUrls', class: Google::Apis::CloudsearchV1::SupportUrls, decorator: Google::Apis::CloudsearchV1::SupportUrls::Representation
       
           collection :supported_uses, as: 'supportedUses'
-          property :whitelist_status, as: 'whitelistStatus'
         end
       end
       
@@ -7887,6 +7888,7 @@ module Google
           property :title, as: 'title'
           property :url, as: 'url', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
       
+          property :url_source, as: 'urlSource'
         end
       end
       
@@ -7938,6 +7940,7 @@ module Google
       class UserInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_notification_avatar_url, as: 'driveNotificationAvatarUrl'
           property :updater_count_display_type, as: 'updaterCountDisplayType'
           property :updater_count_to_show, as: 'updaterCountToShow'
           property :updater_to_show_email, as: 'updaterToShowEmail'
