@@ -522,17 +522,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. A user-assigned unique identifier for the Project. This
-        # identifier may appear in URLs or names for some Firebase resources associated
-        # with the Project, but it should generally be treated as a convenience alias to
-        # reference the Project.
+        # Output only. Immutable. A user-assigned unique identifier for the Project.
+        # This identifier may appear in URLs or names for some Firebase resources
+        # associated with the Project, but it should generally be treated as a
+        # convenience alias to reference the Project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Output only. The globally unique, Google-assigned canonical identifier for the
-        # Project. Use this identifier when configuring integrations and/or making API
-        # calls to Firebase or third-party services.
+        # Output only. Immutable. The globally unique, Google-assigned canonical
+        # identifier for the Project. Use this identifier when configuring integrations
+        # and/or making API calls to Firebase or third-party services.
         # Corresponds to the JSON property `projectNumber`
         # @return [Fixnum]
         attr_accessor :project_number
