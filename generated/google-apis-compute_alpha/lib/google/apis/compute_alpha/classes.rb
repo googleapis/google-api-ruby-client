@@ -618,9 +618,9 @@ module Google
         # @return [String]
         attr_accessor :ip_version
       
-        # The endpoint type of this address, which should be VM. This is used for
-        # deciding which endpoint this address will be assigned to during the IPv6
-        # external IP address reservation.
+        # The endpoint type of this address, which should be VM or NETLB. This is used
+        # for deciding which type of endpoint this address can be used after the
+        # external IPv6 address reservation.
         # Corresponds to the JSON property `ipv6EndpointType`
         # @return [String]
         attr_accessor :ipv6_endpoint_type
@@ -9512,7 +9512,7 @@ module Google
         attr_accessor :dest_address_groups
       
         # Fully Qualified Domain Name (FQDN) which should be matched against traffic
-        # destination. Maximum number of destination fqdn allowed is 1000.
+        # destination. Maximum number of destination fqdn allowed is 100.
         # Corresponds to the JSON property `destFqdns`
         # @return [Array<String>]
         attr_accessor :dest_fqdns
@@ -9549,7 +9549,7 @@ module Google
         attr_accessor :src_address_groups
       
         # Fully Qualified Domain Name (FQDN) which should be matched against traffic
-        # source. Maximum number of source fqdn allowed is 1000.
+        # source. Maximum number of source fqdn allowed is 100.
         # Corresponds to the JSON property `srcFqdns`
         # @return [Array<String>]
         attr_accessor :src_fqdns
@@ -10004,7 +10004,16 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # 
+        # The URL of the target resource to receive the matched traffic. For regional
+        # forwarding rules, this target must be in the same region as the forwarding
+        # rule. For global forwarding rules, this target must be a global load balancing
+        # resource. The forwarded traffic must be of a type appropriate to the target
+        # object. For more information, see the "Target" column in [Port specifications](
+        # https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
+        # ip_address_specifications). For Private Service Connect forwarding rules that
+        # forward traffic to Google APIs, provide the name of a supported Google API
+        # bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All
+        # supported Google APIs.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -38163,6 +38172,12 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
+        # The network tier to use when automatically reserving IP addresses. Must be one
+        # of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        # Corresponds to the JSON property `autoNetworkTier`
+        # @return [String]
+        attr_accessor :auto_network_tier
+      
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
         # used for updating/patching a NAT only.
@@ -38303,6 +38318,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_network_tier = args[:auto_network_tier] if args.key?(:auto_network_tier)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
