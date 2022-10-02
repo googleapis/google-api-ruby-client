@@ -69,6 +69,11 @@ module Google
       class ActionDetail
         include Google::Apis::Core::Hashable
       
+        # Label changes that were made on the Target.
+        # Corresponds to the JSON property `appliedLabelChange`
+        # @return [Google::Apis::DriveactivityV2::AppliedLabelChange]
+        attr_accessor :applied_label_change
+      
         # A change about comments on an object.
         # Corresponds to the JSON property `comment`
         # @return [Google::Apis::DriveactivityV2::Comment]
@@ -130,6 +135,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applied_label_change = args[:applied_label_change] if args.key?(:applied_label_change)
           @comment = args[:comment] if args.key?(:comment)
           @create = args[:create] if args.key?(:create)
           @delete = args[:delete] if args.key?(:delete)
@@ -245,6 +251,64 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Label changes that were made on the Target.
+      class AppliedLabelChange
+        include Google::Apis::Core::Hashable
+      
+        # Changes that were made to the Label on the Target.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::DriveactivityV2::AppliedLabelChangeDetail>]
+        attr_accessor :changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
+        end
+      end
+      
+      # A change made to a Label on the Target.
+      class AppliedLabelChangeDetail
+        include Google::Apis::Core::Hashable
+      
+        # Field Changes. Only present if `types` contains `LABEL_FIELD_VALUE_CHANGED`.
+        # Corresponds to the JSON property `fieldChanges`
+        # @return [Array<Google::Apis::DriveactivityV2::FieldValueChange>]
+        attr_accessor :field_changes
+      
+        # The Label name representing the Label that changed. This name always contains
+        # the revision of the Label that was used when this Action occurred. The format
+        # is `labels/id@revision`.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The human-readable title of the label that changed.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The types of changes made to the Label on the Target.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_changes = args[:field_changes] if args.key?(:field_changes)
+          @label = args[:label] if args.key?(:label)
+          @title = args[:title] if args.key?(:title)
+          @types = args[:types] if args.key?(:types)
         end
       end
       
@@ -409,6 +473,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Wrapper for Date Field value.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Date value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -738,6 +821,105 @@ module Google
         end
       end
       
+      # Contains a value of a Field.
+      class FieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper for Date Field value.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::DriveactivityV2::Date]
+        attr_accessor :date
+      
+        # Wrapper for Integer Field value.
+        # Corresponds to the JSON property `integer`
+        # @return [Google::Apis::DriveactivityV2::Integer]
+        attr_accessor :integer
+      
+        # Wrapper for Selection Field value as combined value/display_name pair for
+        # selected choice.
+        # Corresponds to the JSON property `selection`
+        # @return [Google::Apis::DriveactivityV2::Selection]
+        attr_accessor :selection
+      
+        # Wrapper for SelectionList Field value.
+        # Corresponds to the JSON property `selectionList`
+        # @return [Google::Apis::DriveactivityV2::SelectionList]
+        attr_accessor :selection_list
+      
+        # Wrapper for Text Field value.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::DriveactivityV2::Text]
+        attr_accessor :text
+      
+        # Wrapper for Text List Field value.
+        # Corresponds to the JSON property `textList`
+        # @return [Google::Apis::DriveactivityV2::TextList]
+        attr_accessor :text_list
+      
+        # Wrapper for User Field value.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::DriveactivityV2::SingleUser]
+        attr_accessor :user
+      
+        # Wrapper for UserList Field value.
+        # Corresponds to the JSON property `userList`
+        # @return [Google::Apis::DriveactivityV2::UserList]
+        attr_accessor :user_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @integer = args[:integer] if args.key?(:integer)
+          @selection = args[:selection] if args.key?(:selection)
+          @selection_list = args[:selection_list] if args.key?(:selection_list)
+          @text = args[:text] if args.key?(:text)
+          @text_list = args[:text_list] if args.key?(:text_list)
+          @user = args[:user] if args.key?(:user)
+          @user_list = args[:user_list] if args.key?(:user_list)
+        end
+      end
+      
+      # Change to a Field value.
+      class FieldValueChange
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable display name for this field.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The ID of this field. Field IDs are unique within a Label.
+        # Corresponds to the JSON property `fieldId`
+        # @return [String]
+        attr_accessor :field_id
+      
+        # Contains a value of a Field.
+        # Corresponds to the JSON property `newValue`
+        # @return [Google::Apis::DriveactivityV2::FieldValue]
+        attr_accessor :new_value
+      
+        # Contains a value of a Field.
+        # Corresponds to the JSON property `oldValue`
+        # @return [Google::Apis::DriveactivityV2::FieldValue]
+        attr_accessor :old_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @new_value = args[:new_value] if args.key?(:new_value)
+          @old_value = args[:old_value] if args.key?(:old_value)
+        end
+      end
+      
       # This item is deprecated; please see `DriveFile` instead.
       class File
         include Google::Apis::Core::Hashable
@@ -855,6 +1037,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @impersonated_user = args[:impersonated_user] if args.key?(:impersonated_user)
+        end
+      end
+      
+      # Wrapper for Integer Field value.
+      class Integer
+        include Google::Apis::Core::Hashable
+      
+        # Integer value.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1251,6 +1452,51 @@ module Google
         end
       end
       
+      # Wrapper for Selection Field value as combined value/display_name pair for
+      # selected choice.
+      class Selection
+        include Google::Apis::Core::Hashable
+      
+        # Selection value as human-readable display string.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Selection value as Field Choice ID.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Wrapper for SelectionList Field value.
+      class SelectionList
+        include Google::Apis::Core::Hashable
+      
+        # Selection values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::DriveactivityV2::Selection>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Information about settings changes.
       class SettingsChange
         include Google::Apis::Core::Hashable
@@ -1267,6 +1513,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @restriction_changes = args[:restriction_changes] if args.key?(:restriction_changes)
+        end
+      end
+      
+      # Wrapper for User Field value.
+      class SingleUser
+        include Google::Apis::Core::Hashable
+      
+        # User value as email.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1432,6 +1697,44 @@ module Google
         end
       end
       
+      # Wrapper for Text Field value.
+      class Text
+        include Google::Apis::Core::Hashable
+      
+        # Value of Text Field.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Wrapper for Text List Field value.
+      class TextList
+        include Google::Apis::Core::Hashable
+      
+        # Text values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::DriveactivityV2::Text>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Information about time ranges.
       class TimeRange
         include Google::Apis::Core::Hashable
@@ -1511,6 +1814,25 @@ module Google
           @deleted_user = args[:deleted_user] if args.key?(:deleted_user)
           @known_user = args[:known_user] if args.key?(:known_user)
           @unknown_user = args[:unknown_user] if args.key?(:unknown_user)
+        end
+      end
+      
+      # Wrapper for UserList Field value.
+      class UserList
+        include Google::Apis::Core::Hashable
+      
+        # User values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::DriveactivityV2::SingleUser>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
     end
