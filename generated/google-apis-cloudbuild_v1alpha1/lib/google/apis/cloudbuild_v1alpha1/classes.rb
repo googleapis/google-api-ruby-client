@@ -167,11 +167,28 @@ module Google
         # @return [Array<String>]
         attr_accessor :images
       
+        # A list of Maven artifacts to be uploaded to Artifact Registry upon successful
+        # completion of all build steps. Artifacts in the workspace matching specified
+        # paths globs will be uploaded to the specified Artifact Registry repository
+        # using the builder service account's credentials. If any artifacts fail to be
+        # pushed, the build is marked FAILURE.
+        # Corresponds to the JSON property `mavenArtifacts`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::MavenArtifact>]
+        attr_accessor :maven_artifacts
+      
         # Files in the workspace to upload to Cloud Storage upon successful completion
         # of all build steps.
         # Corresponds to the JSON property `objects`
         # @return [Google::Apis::CloudbuildV1alpha1::ArtifactObjects]
         attr_accessor :objects
+      
+        # A list of Python packages to be uploaded to Artifact Registry upon successful
+        # completion of all build steps. The build service account credentials will be
+        # used to perform the upload. If any objects fail to be pushed, the build is
+        # marked FAILURE.
+        # Corresponds to the JSON property `pythonPackages`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::PythonPackage>]
+        attr_accessor :python_packages
       
         def initialize(**args)
            update!(**args)
@@ -180,7 +197,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @images = args[:images] if args.key?(:images)
+          @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @objects = args[:objects] if args.key?(:objects)
+          @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
       
@@ -1504,6 +1523,55 @@ module Google
         end
       end
       
+      # A Maven artifact to upload to Artifact Registry upon successful completion of
+      # all build steps.
+      class MavenArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+        # Corresponds to the JSON property `artifactId`
+        # @return [String]
+        attr_accessor :artifact_id
+      
+        # Maven `groupId` value used when uploading the artifact to Artifact Registry.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Path to an artifact in the build's workspace to be uploaded to Artifact
+        # Registry. This can be either an absolute path, e.g. /workspace/my-app/target/
+        # my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/
+        # my-app-1.0.SNAPSHOT.jar.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$
+        # PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be
+        # uploaded to Artifact Registry with this location as a prefix.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        # Maven `version` value used when uploading the artifact to Artifact Registry.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @path = args[:path] if args.key?(:path)
+          @repository = args[:repository] if args.key?(:repository)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Network describes the GCP network used to create workers in.
       class Network
         include Google::Apis::Core::Hashable
@@ -1908,6 +1976,36 @@ module Google
         end
       end
       
+      # Python package to upload to Artifact Registry upon successful completion of
+      # all build steps. A package can encapsulate multiple objects to be uploaded to
+      # a single repository.
+      class PythonPackage
+        include Google::Apis::Core::Hashable
+      
+        # Path globs used to match files in the build's workspace. For Python/ Twine,
+        # this is usually `dist/*`, and sometimes additionally an `.asc` file.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<String>]
+        attr_accessor :paths
+      
+        # Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$
+        # PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be
+        # uploaded to Artifact Registry with this location as a prefix.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @paths = args[:paths] if args.key?(:paths)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -2010,10 +2108,20 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1alpha1::BuiltImage>]
         attr_accessor :images
       
+        # Maven artifacts uploaded to Artifact Registry at the end of the build.
+        # Corresponds to the JSON property `mavenArtifacts`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::UploadedMavenArtifact>]
+        attr_accessor :maven_artifacts
+      
         # Number of artifacts uploaded. Only populated when artifacts are uploaded.
         # Corresponds to the JSON property `numArtifacts`
         # @return [Fixnum]
         attr_accessor :num_artifacts
+      
+        # Python artifacts uploaded to Artifact Registry at the end of the build.
+        # Corresponds to the JSON property `pythonPackages`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::UploadedPythonPackage>]
+        attr_accessor :python_packages
       
         def initialize(**args)
            update!(**args)
@@ -2026,7 +2134,9 @@ module Google
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
           @images = args[:images] if args.key?(:images)
+          @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
+          @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
       
@@ -2587,6 +2697,70 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # A Maven artifact uploaded using the MavenArtifact directive.
+      class UploadedMavenArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::CloudbuildV1alpha1::FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::CloudbuildV1alpha1::TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Artifact uploaded using the PythonPackage directive.
+      class UploadedPythonPackage
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Google::Apis::CloudbuildV1alpha1::FileHashes]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::CloudbuildV1alpha1::TimeSpan]
+        attr_accessor :push_timing
+      
+        # URI of the uploaded artifact.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
