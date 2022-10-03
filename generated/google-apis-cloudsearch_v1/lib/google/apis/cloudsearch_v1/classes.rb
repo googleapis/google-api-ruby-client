@@ -4844,14 +4844,6 @@ module Google
         attr_accessor :present_lock
         alias_method :present_lock?, :present_lock
       
-        # Indicates whether project Dino is currently on or off. WARNING: This is
-        # currently an experimental field. It should not be used without getting an
-        # explicit review and approval from the Meet team.
-        # Corresponds to the JSON property `projectDinoEnabled`
-        # @return [Boolean]
-        attr_accessor :project_dino_enabled
-        alias_method :project_dino_enabled?, :project_dino_enabled
-      
         # Indicates whether the reactions lock is currently on or off.
         # Corresponds to the JSON property `reactionsLock`
         # @return [Boolean]
@@ -4877,7 +4869,6 @@ module Google
           @cse_enabled = args[:cse_enabled] if args.key?(:cse_enabled)
           @moderation_enabled = args[:moderation_enabled] if args.key?(:moderation_enabled)
           @present_lock = args[:present_lock] if args.key?(:present_lock)
-          @project_dino_enabled = args[:project_dino_enabled] if args.key?(:project_dino_enabled)
           @reactions_lock = args[:reactions_lock] if args.key?(:reactions_lock)
           @video_lock = args[:video_lock] if args.key?(:video_lock)
         end
@@ -13778,10 +13769,21 @@ module Google
         # @return [String]
         attr_accessor :bot_attachment_state
       
+        # Output only. Time when the quoted message was posted in microseconds.
+        # Corresponds to the JSON property `createTimeMicros`
+        # @return [Fixnum]
+        attr_accessor :create_time_micros
+      
         # Primary key for User resource.
         # Corresponds to the JSON property `creatorId`
         # @return [Google::Apis::CloudsearchV1::UserId]
         attr_accessor :creator_id
+      
+        # Output only. Time when the quoted message was last edited by a user at the
+        # time when quoting action happens. Time is in microseconds.
+        # Corresponds to the JSON property `lastEditTimeMicros`
+        # @return [Fixnum]
+        attr_accessor :last_edit_time_micros
       
         # The `last_update_time` of the original message when the client initiated the
         # quote creation. This is derived from the request payload passed from clients.
@@ -13812,7 +13814,12 @@ module Google
         # @return [String]
         attr_accessor :text_body
       
-        # Output only. Upload metadata of the quoted message. NEXT TAG: 11
+        # Primary key for User resource.
+        # Corresponds to the JSON property `updaterId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :updater_id
+      
+        # Output only. Upload metadata of the quoted message.
         # Corresponds to the JSON property `uploadMetadata`
         # @return [Array<Google::Apis::CloudsearchV1::UploadMetadata>]
         attr_accessor :upload_metadata
@@ -13826,12 +13833,15 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @app_profile = args[:app_profile] if args.key?(:app_profile)
           @bot_attachment_state = args[:bot_attachment_state] if args.key?(:bot_attachment_state)
+          @create_time_micros = args[:create_time_micros] if args.key?(:create_time_micros)
           @creator_id = args[:creator_id] if args.key?(:creator_id)
+          @last_edit_time_micros = args[:last_edit_time_micros] if args.key?(:last_edit_time_micros)
           @last_update_time_when_quoted_micros = args[:last_update_time_when_quoted_micros] if args.key?(:last_update_time_when_quoted_micros)
           @message_id = args[:message_id] if args.key?(:message_id)
           @message_state = args[:message_state] if args.key?(:message_state)
           @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
           @text_body = args[:text_body] if args.key?(:text_body)
+          @updater_id = args[:updater_id] if args.key?(:updater_id)
           @upload_metadata = args[:upload_metadata] if args.key?(:upload_metadata)
         end
       end
@@ -17091,6 +17101,16 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DataSource]
         attr_accessor :source
       
+        # Update mask to control which fields to update. If update_mask is non-empty
+        # then only the fields specified in the update_mask are updated. If you specify
+        # a field in the update_mask, but don't specify its value in the source that
+        # field will be cleared. If the update_mask is not present or empty or has the
+        # value * then all fields will be updated. Some example field paths: name,
+        # display_name
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17099,6 +17119,7 @@ module Google
         def update!(**args)
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @source = args[:source] if args.key?(:source)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -17556,8 +17577,7 @@ module Google
         # will be populated if we can extract such information from the Drive
         # Notification email. This should only be used to fetch user avatars when
         # updater_to_show_email is not populated. This field is not set for non-Drive
-        # Notification items. This is not the actual sender of the email, as the sender
-        # is always comments-noreply@docs.google.com.
+        # Notification items.
         # Corresponds to the JSON property `driveNotificationAvatarUrl`
         # @return [String]
         attr_accessor :drive_notification_avatar_url
@@ -17591,11 +17611,12 @@ module Google
         # The display name of the updater for clients to show used for Gmail items. For
         # non-Drive Notification items, this field will always be populated. If the
         # display name cannot be found for the user, the fallback string will be the
-        # email address. For Drive Notification items, this is the email of the user who
+        # email address. For Drive Notification items, this is the name of the user who
         # triggered the Drive notification email. This field will be populated if we can
-        # extract such information from the Drive Notification email. This is not the
-        # actual sender of the email, as the sender is always comments-noreply@docs.
-        # google.com.
+        # extract such information from the Drive Notification email. If the name cannot
+        # be extracted, then the email will be the fallback string, which is used as the
+        # display name text in the UI when needed. This is not the actual sender of the
+        # email, as the sender is always comments-noreply@docs.google.com.
         # Corresponds to the JSON property `updaterToShowName`
         # @return [String]
         attr_accessor :updater_to_show_name
