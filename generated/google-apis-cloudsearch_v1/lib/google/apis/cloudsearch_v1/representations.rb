@@ -4334,7 +4334,6 @@ module Google
           property :cse_enabled, as: 'cseEnabled'
           property :moderation_enabled, as: 'moderationEnabled'
           property :present_lock, as: 'presentLock'
-          property :project_dino_enabled, as: 'projectDinoEnabled'
           property :reactions_lock, as: 'reactionsLock'
           property :video_lock, as: 'videoLock'
         end
@@ -6868,8 +6867,10 @@ module Google
           property :app_profile, as: 'appProfile', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAppProfile::Representation
       
           property :bot_attachment_state, as: 'botAttachmentState'
+          property :create_time_micros, :numeric_string => true, as: 'createTimeMicros'
           property :creator_id, as: 'creatorId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
       
+          property :last_edit_time_micros, :numeric_string => true, as: 'lastEditTimeMicros'
           property :last_update_time_when_quoted_micros, :numeric_string => true, as: 'lastUpdateTimeWhenQuotedMicros'
           property :message_id, as: 'messageId', class: Google::Apis::CloudsearchV1::MessageId, decorator: Google::Apis::CloudsearchV1::MessageId::Representation
       
@@ -6877,6 +6878,8 @@ module Google
           property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
       
           property :text_body, as: 'textBody'
+          property :updater_id, as: 'updaterId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
           collection :upload_metadata, as: 'uploadMetadata', class: Google::Apis::CloudsearchV1::UploadMetadata, decorator: Google::Apis::CloudsearchV1::UploadMetadata::Representation
       
         end
@@ -7824,6 +7827,7 @@ module Google
       
           property :source, as: 'source', class: Google::Apis::CloudsearchV1::DataSource, decorator: Google::Apis::CloudsearchV1::DataSource::Representation
       
+          property :update_mask, as: 'updateMask'
         end
       end
       

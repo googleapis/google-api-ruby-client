@@ -1213,6 +1213,13 @@ module Google
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
+        # @param [String] update_mask
+        #   Update mask to control which fields to update. If update_mask is non-empty
+        #   then only the fields specified in the update_mask are updated. If you specify
+        #   a field in the update_mask, but don't specify its value in the source that
+        #   field will be cleared. If the update_mask is not present or empty or has the
+        #   value * then all fields will be updated. Some example field paths: name,
+        #   display_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1230,7 +1237,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_setting_datasource(name, data_source_object = nil, debug_options_enable_debugging: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_setting_datasource(name, data_source_object = nil, debug_options_enable_debugging: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/settings/{+name}', options)
           command.request_representation = Google::Apis::CloudsearchV1::DataSource::Representation
           command.request_object = data_source_object
@@ -1238,6 +1245,7 @@ module Google
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['debugOptions.enableDebugging'] = debug_options_enable_debugging unless debug_options_enable_debugging.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1425,6 +1433,13 @@ module Google
         #   The name of the Search Application. Format: searchapplications/`application_id`
         #   .
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
+        # @param [String] update_mask
+        #   Update mask to control which fields to update. If update_mask is non-empty
+        #   then only the fields specified in the update_mask are updated. If you specify
+        #   a field in the update_mask, but don't specify its value in the
+        #   search_application then that field will be cleared. If the update_mask is not
+        #   present or empty or has the value * then all fields will be updated. Some
+        #   example field paths: search_application.name, search_application.display_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1442,13 +1457,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_setting_searchapplication(name, search_application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_setting_searchapplication(name, search_application_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/settings/{+name}', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchApplication::Representation
           command.request_object = search_application_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1495,6 +1511,13 @@ module Google
         #   The name of the Search Application. Format: searchapplications/`application_id`
         #   .
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
+        # @param [String] update_mask
+        #   Update mask to control which fields to update. If update_mask is non-empty
+        #   then only the fields specified in the update_mask are updated. If you specify
+        #   a field in the update_mask, but don't specify its value in the
+        #   search_application then that field will be cleared. If the update_mask is not
+        #   present or empty or has the value * then all fields will be updated. Some
+        #   example field paths: search_application.name, search_application.display_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1512,13 +1535,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_setting_searchapplication(name, search_application_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_setting_searchapplication(name, search_application_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/settings/{+name}', options)
           command.request_representation = Google::Apis::CloudsearchV1::SearchApplication::Representation
           command.request_object = search_application_object
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
