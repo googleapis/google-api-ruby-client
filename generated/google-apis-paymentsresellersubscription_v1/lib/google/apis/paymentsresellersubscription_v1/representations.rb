@@ -369,6 +369,7 @@ module Google
       
           property :discount_ratio_micros, :numeric_string => true, as: 'discountRatioMicros'
           property :recurrence_count, as: 'recurrenceCount'
+          property :region_code, as: 'regionCode'
         end
       end
       
