@@ -579,6 +579,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :recurrence_count
       
+        # Output only. 2-letter ISO region code where the product is available in. Ex. "
+        # US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -588,6 +594,7 @@ module Google
           @discount_amount = args[:discount_amount] if args.key?(:discount_amount)
           @discount_ratio_micros = args[:discount_ratio_micros] if args.key?(:discount_ratio_micros)
           @recurrence_count = args[:recurrence_count] if args.key?(:recurrence_count)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
