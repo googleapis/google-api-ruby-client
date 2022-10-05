@@ -965,8 +965,9 @@ module Google
         end
       end
       
-      # Custom view of service telemetry. Currently a place-holder pending final
-      # design.
+      # Use a custom service to designate a service that you want to monitor when none
+      # of the other service types (like App Engine, Cloud Run, or a GKE type) matches
+      # your intended service.
       class Custom
         include Google::Apis::Core::Hashable
       
@@ -3770,8 +3771,9 @@ module Google
         # @return [Google::Apis::MonitoringV3::ClusterIstio]
         attr_accessor :cluster_istio
       
-        # Custom view of service telemetry. Currently a place-holder pending final
-        # design.
+        # Use a custom service to designate a service that you want to monitor when none
+        # of the other service types (like App Engine, Cloud Run, or a GKE type) matches
+        # your intended service.
         # Corresponds to the JSON property `custom`
         # @return [Google::Apis::MonitoringV3::Custom]
         attr_accessor :custom
