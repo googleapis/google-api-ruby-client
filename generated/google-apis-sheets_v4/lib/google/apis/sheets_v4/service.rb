@@ -666,9 +666,9 @@ module Google
         #   option is SERIAL_NUMBER.
         # @param [String] major_dimension
         #   The major dimension that results should use. For example, if the spreadsheet
-        #   data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=
-        #   ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=
-        #   COLUMNS` returns `[[1,3],[2,4]]`.
+        #   data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?
+        #   majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!
+        #   A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
         # @param [String] value_render_option
         #   How values should be represented in the output. The default render option is
         #   FORMATTED_VALUE.
