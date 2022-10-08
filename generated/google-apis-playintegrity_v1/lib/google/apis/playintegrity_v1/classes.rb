@@ -22,10 +22,40 @@ module Google
   module Apis
     module PlayintegrityV1
       
+      # Contains a signal helping apps differentiating between likely genuine users
+      # and likely non-genuine traffic (such as accounts being used for fraud,
+      # accounts used by automated traffic, or accounts used in device farms) based on
+      # the presence and volume of Play store activity.
+      class AccountActivity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Indicates the activity level of the account.
+        # Corresponds to the JSON property `activityLevel`
+        # @return [String]
+        attr_accessor :activity_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_level = args[:activity_level] if args.key?(:activity_level)
+        end
+      end
+      
       # Contains the account information such as the licensing status for the user in
       # the scope.
       class AccountDetails
         include Google::Apis::Core::Hashable
+      
+        # Contains a signal helping apps differentiating between likely genuine users
+        # and likely non-genuine traffic (such as accounts being used for fraud,
+        # accounts used by automated traffic, or accounts used in device farms) based on
+        # the presence and volume of Play store activity.
+        # Corresponds to the JSON property `accountActivity`
+        # @return [Google::Apis::PlayintegrityV1::AccountActivity]
+        attr_accessor :account_activity
       
         # Contains information about account risk that indicates if the current user
         # session seems low risk, unknown, or risky before you allow important actions
@@ -46,6 +76,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_activity = args[:account_activity] if args.key?(:account_activity)
           @account_risk_verdict = args[:account_risk_verdict] if args.key?(:account_risk_verdict)
           @app_licensing_verdict = args[:app_licensing_verdict] if args.key?(:app_licensing_verdict)
         end

@@ -22,6 +22,12 @@ module Google
   module Apis
     module PlayintegrityV1
       
+      class AccountActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,9 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_level, as: 'activityLevel'
+        end
+      end
+      
       class AccountDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_activity, as: 'accountActivity', class: Google::Apis::PlayintegrityV1::AccountActivity, decorator: Google::Apis::PlayintegrityV1::AccountActivity::Representation
+      
           property :account_risk_verdict, as: 'accountRiskVerdict', class: Google::Apis::PlayintegrityV1::AccountRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AccountRiskVerdict::Representation
       
           property :app_licensing_verdict, as: 'appLicensingVerdict'
