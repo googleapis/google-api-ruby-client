@@ -4206,7 +4206,9 @@ module Google
       
         # This field only presents for the purpose of backward-compatibility. Please use
         # `kms_keys` field to retrieve KMS key information. This field will only be
-        # populated for the resource types included in this list for backward compatible
+        # populated for the resource types included in this [list](https://cloud.google.
+        # com/asset-inventory/docs/legacy-fields#
+        # resource_types_with_the_to_be_deprecated_kmskey_field) for backward compatible
         # purpose. To search against the `kms_key`: * Use a field query. Example: `
         # kmsKey:key` * Use a free text query. Example: `key`
         # Corresponds to the JSON property `kmsKey`
