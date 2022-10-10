@@ -1783,6 +1783,11 @@ module Google
       class TimeSeriesQuery
         include Google::Apis::Core::Hashable
       
+        # A query used to fetch time series with PromQL.
+        # Corresponds to the JSON property `prometheusQuery`
+        # @return [String]
+        attr_accessor :prometheus_query
+      
         # A filter that defines a subset of time series data that is displayed in a
         # widget. Time series data is fetched using the ListTimeSeries (https://cloud.
         # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
@@ -1816,6 +1821,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @prometheus_query = args[:prometheus_query] if args.key?(:prometheus_query)
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
           @time_series_filter_ratio = args[:time_series_filter_ratio] if args.key?(:time_series_filter_ratio)
           @time_series_query_language = args[:time_series_query_language] if args.key?(:time_series_query_language)
