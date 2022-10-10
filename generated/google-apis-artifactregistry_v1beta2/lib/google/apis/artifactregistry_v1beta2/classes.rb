@@ -1364,7 +1364,7 @@ module Google
       
         # Output only. Repository-specific Metadata stored against this version. The
         # fields returned are defined by the underlying repository-specific resource.
-        # Currently, the only resource in use is DockerImage
+        # Currently, the resources could be: DockerImage MavenArtifact
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
