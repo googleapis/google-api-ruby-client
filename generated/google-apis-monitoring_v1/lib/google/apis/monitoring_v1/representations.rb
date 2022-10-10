@@ -772,6 +772,7 @@ module Google
       class TimeSeriesQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :prometheus_query, as: 'prometheusQuery'
           property :time_series_filter, as: 'timeSeriesFilter', class: Google::Apis::MonitoringV1::TimeSeriesFilter, decorator: Google::Apis::MonitoringV1::TimeSeriesFilter::Representation
       
           property :time_series_filter_ratio, as: 'timeSeriesFilterRatio', class: Google::Apis::MonitoringV1::TimeSeriesFilterRatio, decorator: Google::Apis::MonitoringV1::TimeSeriesFilterRatio::Representation
