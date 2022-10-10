@@ -402,7 +402,7 @@ module Google
         end
       end
       
-      # Request message for BufferTask.
+      # LINT.IfChange Request message for BufferTask.
       class BufferTaskRequest
         include Google::Apis::Core::Hashable
       
