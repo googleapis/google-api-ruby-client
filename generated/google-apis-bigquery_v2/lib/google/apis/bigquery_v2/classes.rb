@@ -4856,6 +4856,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_slot_ms
       
+        # [Output-only] Total bytes transferred for cross-cloud queries such as Cross
+        # Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+        # Corresponds to the JSON property `transferredBytes`
+        # @return [Fixnum]
+        attr_accessor :transferred_bytes
+      
         # Standard SQL only: list of undeclared query parameters detected during a dry
         # run validation.
         # Corresponds to the JSON property `undeclaredQueryParameters`
@@ -4899,6 +4905,7 @@ module Google
           @total_bytes_processed_accuracy = args[:total_bytes_processed_accuracy] if args.key?(:total_bytes_processed_accuracy)
           @total_partitions_processed = args[:total_partitions_processed] if args.key?(:total_partitions_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
+          @transferred_bytes = args[:transferred_bytes] if args.key?(:transferred_bytes)
           @undeclared_query_parameters = args[:undeclared_query_parameters] if args.key?(:undeclared_query_parameters)
         end
         
@@ -8695,13 +8702,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :training_start_time
       
-        # The model id in Vertex AI Model Registry for this training run
+        # The model id in the [Vertex AI Model Registry](https://cloud.google.com/vertex-
+        # ai/docs/model-registry/introduction) for this training run.
         # Corresponds to the JSON property `vertexAiModelId`
         # @return [String]
         attr_accessor :vertex_ai_model_id
       
-        # Output only. The model version in Vertex AI Model Registry for this training
-        # run
+        # Output only. The model version in the [Vertex AI Model Registry](https://cloud.
+        # google.com/vertex-ai/docs/model-registry/introduction) for this training run.
         # Corresponds to the JSON property `vertexAiModelVersion`
         # @return [String]
         attr_accessor :vertex_ai_model_version
