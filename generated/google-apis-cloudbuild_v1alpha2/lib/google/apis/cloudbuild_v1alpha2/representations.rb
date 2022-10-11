@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class ProcessAppManifestCallbackOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PythonPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +424,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadedMavenArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadedPythonPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -477,7 +501,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :images, as: 'images'
+          collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::CloudbuildV1alpha2::MavenArtifact, decorator: Google::Apis::CloudbuildV1alpha2::MavenArtifact::Representation
+      
           property :objects, as: 'objects', class: Google::Apis::CloudbuildV1alpha2::ArtifactObjects, decorator: Google::Apis::CloudbuildV1alpha2::ArtifactObjects::Representation
+      
+          collection :python_packages, as: 'pythonPackages', class: Google::Apis::CloudbuildV1alpha2::PythonPackage, decorator: Google::Apis::CloudbuildV1alpha2::PythonPackage::Representation
       
         end
       end
@@ -822,6 +850,17 @@ module Google
         end
       end
       
+      class MavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :group_id, as: 'groupId'
+          property :path, as: 'path'
+          property :repository, as: 'repository'
+          property :version, as: 'version'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -929,6 +968,14 @@ module Google
         end
       end
       
+      class PythonPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :paths, as: 'paths'
+          property :repository, as: 'repository'
+        end
+      end
+      
       class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -953,7 +1000,11 @@ module Google
           collection :build_step_outputs, as: 'buildStepOutputs'
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1alpha2::BuiltImage, decorator: Google::Apis::CloudbuildV1alpha2::BuiltImage::Representation
       
+          collection :maven_artifacts, as: 'mavenArtifacts', class: Google::Apis::CloudbuildV1alpha2::UploadedMavenArtifact, decorator: Google::Apis::CloudbuildV1alpha2::UploadedMavenArtifact::Representation
+      
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
+          collection :python_packages, as: 'pythonPackages', class: Google::Apis::CloudbuildV1alpha2::UploadedPythonPackage, decorator: Google::Apis::CloudbuildV1alpha2::UploadedPythonPackage::Representation
+      
         end
       end
       
@@ -1111,6 +1162,28 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class UploadedMavenArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1alpha2::FileHashes, decorator: Google::Apis::CloudbuildV1alpha2::FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1alpha2::TimeSpan, decorator: Google::Apis::CloudbuildV1alpha2::TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class UploadedPythonPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1alpha2::FileHashes, decorator: Google::Apis::CloudbuildV1alpha2::FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1alpha2::TimeSpan, decorator: Google::Apis::CloudbuildV1alpha2::TimeSpan::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
