@@ -200,6 +200,99 @@ module Google
         end
       end
       
+      # Request for creating a notebook instance diagnostic file.
+      class DiagnoseInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines flags that are used to run the diagnostic tool
+        # Corresponds to the JSON property `diagnosticConfig`
+        # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
+        attr_accessor :diagnostic_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostic_config = args[:diagnostic_config] if args.key?(:diagnostic_config)
+        end
+      end
+      
+      # Request for creating a notebook instance diagnostic file.
+      class DiagnoseRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines flags that are used to run the diagnostic tool
+        # Corresponds to the JSON property `diagnosticConfig`
+        # @return [Google::Apis::NotebooksV1::DiagnosticConfig]
+        attr_accessor :diagnostic_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostic_config = args[:diagnostic_config] if args.key?(:diagnostic_config)
+        end
+      end
+      
+      # Defines flags that are used to run the diagnostic tool
+      class DiagnosticConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables flag to copy all `/home/jupyter` folder contents
+        # Corresponds to the JSON property `copyHomeFilesFlagEnabled`
+        # @return [Boolean]
+        attr_accessor :copy_home_files_flag_enabled
+        alias_method :copy_home_files_flag_enabled?, :copy_home_files_flag_enabled
+      
+        # Required. User Cloud Storage bucket location (REQUIRED) ## Must be formatted
+        # with path prefix (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: -
+        # storage.buckets.writer: Must be given to the project's service account
+        # attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be
+        # given to the project's service account or ## user credentials attached to VM
+        # depending on authentication mode. Cloud Storage bucket Log file will be
+        # written to gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        # Optional. Enables flag to capture packets from the instance for 30 seconds
+        # Corresponds to the JSON property `packetCaptureFlagEnabled`
+        # @return [Boolean]
+        attr_accessor :packet_capture_flag_enabled
+        alias_method :packet_capture_flag_enabled?, :packet_capture_flag_enabled
+      
+        # Optional. Defines the relative storage path in the Cloud Storage bucket where
+        # the diagnostic logs will be written: Default path will be the root directory
+        # of the Cloud Storage bucket (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example of
+        # full path where Log file will be written: gs://$GCS_BUCKET/$RELATIVE_PATH/
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        # Optional. Enables flag to repair service for instance
+        # Corresponds to the JSON property `repairFlagEnabled`
+        # @return [Boolean]
+        attr_accessor :repair_flag_enabled
+        alias_method :repair_flag_enabled?, :repair_flag_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copy_home_files_flag_enabled = args[:copy_home_files_flag_enabled] if args.key?(:copy_home_files_flag_enabled)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+          @packet_capture_flag_enabled = args[:packet_capture_flag_enabled] if args.key?(:packet_capture_flag_enabled)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
+          @repair_flag_enabled = args[:repair_flag_enabled] if args.key?(:repair_flag_enabled)
+        end
+      end
+      
       # An instance-attached disk resource.
       class Disk
         include Google::Apis::Core::Hashable
@@ -2905,6 +2998,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Request for upgrading a Managed Notebook Runtime to the latest version. option
+      # (google.api.message_visibility).restriction = "TRUSTED_TESTER,SPECIAL_TESTER";
+      class UpgradeRuntimeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
