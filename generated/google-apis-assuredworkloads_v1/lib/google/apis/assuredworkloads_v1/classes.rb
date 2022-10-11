@@ -32,14 +32,6 @@ module Google
         # @return [String]
         attr_accessor :comment
       
-        # Optional. Name of the OrgPolicy which was modified with non-compliant change
-        # and resulted in this violation. Format: projects/`project_number`/policies/`
-        # constraint_name` folders/`folder_id`/policies/`constraint_name` organizations/`
-        # organization_id`/policies/`constraint_name`
-        # Corresponds to the JSON property `nonCompliantOrgPolicy`
-        # @return [String]
-        attr_accessor :non_compliant_org_policy
-      
         def initialize(**args)
            update!(**args)
         end
@@ -47,7 +39,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @comment = args[:comment] if args.key?(:comment)
-          @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
         end
       end
       
@@ -225,6 +216,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Immutable. Audit Log link to find business justification provided
+        # for violation exception. Format: https://console.cloud.google.com/logs/query;
+        # query=`logName``protoPayload.resourceName``protoPayload.methodName``timeRange``
+        # organization`
+        # Corresponds to the JSON property `exceptionAuditLogLink`
+        # @return [String]
+        attr_accessor :exception_audit_log_link
+      
         # Output only. Immutable. Name of the Violation. Format: organizations/`
         # organization`/locations/`location`/workloads/`workload_id`/violations/`
         # violations_id`
@@ -280,6 +279,7 @@ module Google
           @begin_time = args[:begin_time] if args.key?(:begin_time)
           @category = args[:category] if args.key?(:category)
           @description = args[:description] if args.key?(:description)
+          @exception_audit_log_link = args[:exception_audit_log_link] if args.key?(:exception_audit_log_link)
           @name = args[:name] if args.key?(:name)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)

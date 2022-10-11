@@ -152,7 +152,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment, as: 'comment'
-          property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
         end
       end
       
@@ -212,6 +211,7 @@ module Google
           property :begin_time, as: 'beginTime'
           property :category, as: 'category'
           property :description, as: 'description'
+          property :exception_audit_log_link, as: 'exceptionAuditLogLink'
           property :name, as: 'name'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
           property :org_policy_constraint, as: 'orgPolicyConstraint'
