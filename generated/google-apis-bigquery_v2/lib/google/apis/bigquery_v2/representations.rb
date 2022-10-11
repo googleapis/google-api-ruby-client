@@ -2210,6 +2210,7 @@ module Google
           property :total_bytes_processed_accuracy, as: 'totalBytesProcessedAccuracy'
           property :total_partitions_processed, :numeric_string => true, as: 'totalPartitionsProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
+          property :transferred_bytes, :numeric_string => true, as: 'transferredBytes'
           collection :undeclared_query_parameters, as: 'undeclaredQueryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
         end
