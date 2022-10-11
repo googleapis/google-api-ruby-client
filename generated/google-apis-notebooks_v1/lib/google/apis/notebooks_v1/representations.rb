@@ -58,6 +58,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiagnoseInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiagnoseRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiagnosticConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeRuntimeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VertexAiParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +538,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
+        end
+      end
+      
+      class DiagnoseInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :diagnostic_config, as: 'diagnosticConfig', class: Google::Apis::NotebooksV1::DiagnosticConfig, decorator: Google::Apis::NotebooksV1::DiagnosticConfig::Representation
+      
+        end
+      end
+      
+      class DiagnoseRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :diagnostic_config, as: 'diagnosticConfig', class: Google::Apis::NotebooksV1::DiagnosticConfig, decorator: Google::Apis::NotebooksV1::DiagnosticConfig::Representation
+      
+        end
+      end
+      
+      class DiagnosticConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :copy_home_files_flag_enabled, as: 'copyHomeFilesFlagEnabled'
+          property :gcs_bucket, as: 'gcsBucket'
+          property :packet_capture_flag_enabled, as: 'packetCaptureFlagEnabled'
+          property :relative_path, as: 'relativePath'
+          property :repair_flag_enabled, as: 'repairFlagEnabled'
         end
       end
       
@@ -1184,6 +1235,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class UpgradeRuntimeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
