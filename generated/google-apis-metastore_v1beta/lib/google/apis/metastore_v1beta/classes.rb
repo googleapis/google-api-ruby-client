@@ -106,7 +106,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
       
-        # Network configuration for the Dataproc Metastore service.
+        # Network configuration for the Dataproc Metastore service.Next available ID: 3
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
@@ -290,7 +290,8 @@ module Google
         end
       end
       
-      # Contains information of the customer's network configurations.
+      # Contains information of the customer's network configurations.Next available
+      # ID: 4
       class Consumer
         include Google::Apis::Core::Hashable
       
@@ -299,12 +300,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint_uri
       
-        # The subnetwork of the customer project from which an IP address is reserved
-        # and used as the Dataproc Metastore service's endpoint. It is accessible to
-        # hosts in the subnet and to all hosts in a subnet in the same region and same
-        # network. There must be at least one IP address available in the subnet's
-        # primary range. The subnet is specified in the following form:`projects/`
-        # project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
+        # Immutable. The subnetwork of the customer project from which an IP address is
+        # reserved and used as the Dataproc Metastore service's endpoint. It is
+        # accessible to hosts in the subnet and to all hosts in a subnet in the same
+        # region and same network. There must be at least one IP address available in
+        # the subnet's primary range. The subnet is specified in the following form:`
+        # projects/`project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1178,7 +1179,7 @@ module Google
         end
       end
       
-      # Network configuration for the Dataproc Metastore service.
+      # Network configuration for the Dataproc Metastore service.Next available ID: 3
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -1629,7 +1630,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Network configuration for the Dataproc Metastore service.
+        # Network configuration for the Dataproc Metastore service.Next available ID: 3
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
