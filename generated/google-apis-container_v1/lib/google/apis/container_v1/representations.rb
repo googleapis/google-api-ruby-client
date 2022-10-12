@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CostManagementConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class GetOpenIdConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeBackupAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,6 +862,8 @@ module Google
       
           property :gcp_filestore_csi_driver_config, as: 'gcpFilestoreCsiDriverConfig', class: Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig, decorator: Google::Apis::ContainerV1::GcpFilestoreCsiDriverConfig::Representation
       
+          property :gke_backup_agent_config, as: 'gkeBackupAgentConfig', class: Google::Apis::ContainerV1::GkeBackupAgentConfig, decorator: Google::Apis::ContainerV1::GkeBackupAgentConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
@@ -996,6 +1010,8 @@ module Google
       
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1::ConfidentialNodes, decorator: Google::Apis::ContainerV1::ConfidentialNodes::Representation
       
+          property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
+      
           property :create_time, as: 'createTime'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
@@ -1100,6 +1116,8 @@ module Google
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
+          property :desired_cost_management_config, as: 'desiredCostManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
+      
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
           property :desired_datapath_provider, as: 'desiredDatapathProvider'
@@ -1187,6 +1205,13 @@ module Google
       end
       
       class ConsumptionMeteringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class CostManagementConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
@@ -1322,6 +1347,13 @@ module Google
         end
       end
       
+      class GkeBackupAgentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class HorizontalPodAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1359,11 +1391,13 @@ module Google
           property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
           property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
           property :create_subnetwork, as: 'createSubnetwork'
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :node_ipv4_cidr, as: 'nodeIpv4Cidr'
           property :node_ipv4_cidr_block, as: 'nodeIpv4CidrBlock'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
           property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
           property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
+          property :stack_type, as: 'stackType'
           property :subnetwork_name, as: 'subnetworkName'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
