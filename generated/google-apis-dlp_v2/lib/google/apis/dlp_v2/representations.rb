@@ -2365,6 +2365,7 @@ module Google
       class GooglePrivacyDlpV2InfoTypeSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_prevalence, as: 'estimatedPrevalence'
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
         end
