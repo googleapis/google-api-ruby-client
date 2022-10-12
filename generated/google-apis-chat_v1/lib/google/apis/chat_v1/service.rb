@@ -503,8 +503,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists human memberships in a space. Requires [service account authentication](
-        # https://developers.google.com/chat/api/guides/auth/service-accounts).
+        # Lists human memberships in a space for joined members. Requires [service
+        # account authentication](https://developers.google.com/chat/api/guides/auth/
+        # service-accounts).
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
