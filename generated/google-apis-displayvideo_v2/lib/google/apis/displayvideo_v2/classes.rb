@@ -4859,7 +4859,7 @@ module Google
       class ExchangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. Output only in v1. Required in v2.
+        # Required. The enum value for the exchange.
         # Corresponds to the JSON property `exchange`
         # @return [String]
         attr_accessor :exchange
