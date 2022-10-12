@@ -4586,8 +4586,8 @@ module Google
         # org/fhir/stu3/compartmentdefinition-patient.html), [R4](https://hl7.org/fhir/
         # R4/compartmentdefinition-patient.html)), which details the eligible resource
         # types and referencing search parameters. For samples that show how to call `
-        # Patient-everything`, see [Getting all patient compartment resources](/
-        # healthcare/docs/how-tos/fhir-resources#
+        # Patient-everything`, see [Getting all patient compartment resources](https://
+        # cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # getting_all_patient_compartment_resources).
         # @param [String] name
         #   Name of the `Patient` resource for which the information is required.
@@ -4653,8 +4653,9 @@ module Google
         # version) from the FHIR store. To remove all versions of a resource, first
         # delete the current version and then call this method. This is not a FHIR
         # standard operation. For samples that show how to call `Resource-purge`, see [
-        # Deleting historical versions of a FHIR resource](/healthcare/docs/how-tos/fhir-
-        # resources#deleting_historical_versions_of_a_fhir_resource).
+        # Deleting historical versions of a FHIR resource](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-resources#
+        # deleting_historical_versions_of_a_fhir_resource).
         # @param [String] name
         #   The name of the resource to purge.
         # @param [String] fields
@@ -4803,7 +4804,7 @@ module Google
         # requires the`healthcare.fhirStores.searchResources` and `healthcare.
         # fhirResources.delete` permissions on the parent FHIR store. For samples that
         # show how to call `conditionalDelete`, see [Conditionally deleting a FHIR
-        # resource](/healthcare/docs/how-tos/fhir-resources#
+        # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
         # conditionally_deleting_a_fhir_resource).
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
@@ -4861,8 +4862,8 @@ module Google
         # searchResources` permission on the parent FHIR store and the `healthcare.
         # fhirResources.patch` permission on the requested FHIR store resource. For
         # samples that show how to call `conditionalPatch`, see [Conditionally patching
-        # a FHIR resource](/healthcare/docs/how-tos/fhir-resources#
-        # conditionally_patching_a_fhir_resource).
+        # a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
+        # resources#conditionally_patching_a_fhir_resource).
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
@@ -4928,8 +4929,9 @@ module Google
         # store, a generic GCP error might be returned instead. This method requires the`
         # healthcare.fhirStores.searchResources` and `healthcare.fhirResources.update`
         # permissions on the parent FHIR store. For samples that show how to call `
-        # conditionalUpdate`, see [Conditionally updating a FHIR resource](/healthcare/
-        # docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource).
+        # conditionalUpdate`, see [Conditionally updating a FHIR resource](https://cloud.
+        # google.com/healthcare/docs/how-tos/fhir-resources#
+        # conditionally_updating_a_fhir_resource).
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
@@ -4988,8 +4990,8 @@ module Google
         # contain a JSON-encoded `OperationOutcome` resource describing the reason for
         # the error. If the request cannot be mapped to a valid API method on a FHIR
         # store, a generic GCP error might be returned instead. For samples that show
-        # how to call `create`, see [Creating a FHIR resource](/healthcare/docs/how-tos/
-        # fhir-resources#creating_a_fhir_resource).
+        # how to call `create`, see [Creating a FHIR resource](https://cloud.google.com/
+        # healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
         # @param [String] parent
         #   The name of the FHIR store this resource belongs to.
         # @param [String] type
@@ -5038,8 +5040,8 @@ module Google
         # FHIR store, the deleted resources are moved to a history repository that can
         # still be retrieved through vread and related methods, unless they are removed
         # by the purge method. For samples that show how to call `delete`, see [Deleting
-        # a FHIR resource](/healthcare/docs/how-tos/fhir-resources#
-        # deleting_a_fhir_resource).
+        # a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
+        # resources#deleting_a_fhir_resource).
         # @param [String] name
         #   The name of the resource to delete.
         # @param [String] fields
@@ -5100,7 +5102,8 @@ module Google
         # and each request in the bundle. For more information, see [Viewing Cloud Audit
         # logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging). For
         # samples that show how to call `executeBundle`, see [Managing FHIR resources
-        # using FHIR bundles](/healthcare/docs/how-tos/fhir-bundles).
+        # using FHIR bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-
+        # bundles).
         # @param [String] parent
         #   Name of the FHIR store in which this bundle will be executed.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
@@ -5145,8 +5148,8 @@ module Google
         # describing the reason for the error. If the request cannot be mapped to a
         # valid API method on a FHIR store, a generic GCP error might be returned
         # instead. For samples that show how to call `history`, see [Listing FHIR
-        # resource versions](/healthcare/docs/how-tos/fhir-resources#
-        # listing_fhir_resource_versions).
+        # resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-
+        # resources#listing_fhir_resource_versions).
         # @param [String] name
         #   The name of the resource to retrieve.
         # @param [String] _at
@@ -5213,7 +5216,8 @@ module Google
         # describing the reason for the error. If the request cannot be mapped to a
         # valid API method on a FHIR store, a generic GCP error might be returned
         # instead. For samples that show how to call `patch`, see [Patching a FHIR
-        # resource](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
+        # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
+        # patching_a_fhir_resource).
         # @param [String] name
         #   The name of the resource to update.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
@@ -5260,8 +5264,8 @@ module Google
         # OperationOutcome` resource describing the reason for the error. If the request
         # cannot be mapped to a valid API method on a FHIR store, a generic GCP error
         # might be returned instead. For samples that show how to call `read`, see [
-        # Getting a FHIR resource](/healthcare/docs/how-tos/fhir-resources#
-        # getting_a_fhir_resource).
+        # Getting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-
+        # resources#getting_a_fhir_resource).
         # @param [String] name
         #   The name of the resource to retrieve.
         # @param [String] fields
@@ -5333,8 +5337,9 @@ module Google
         # indexed asynchronously, so there might be a slight delay between the time a
         # resource is created or changes and when the change is reflected in search
         # results. For samples and detailed information, see [Searching for FHIR
-        # resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
-        # features](/healthcare/docs/how-tos/fhir-advanced-search).
+        # resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [
+        # Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-
+        # tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
@@ -5409,8 +5414,9 @@ module Google
         # indexed asynchronously, so there might be a slight delay between the time a
         # resource is created or changes and when the change is reflected in search
         # results. For samples and detailed information, see [Searching for FHIR
-        # resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
-        # features](/healthcare/docs/how-tos/fhir-advanced-search).
+        # resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [
+        # Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-
+        # tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
@@ -5469,7 +5475,8 @@ module Google
         # describing the reason for the error. If the request cannot be mapped to a
         # valid API method on a FHIR store, a generic GCP error might be returned
         # instead. For samples that show how to call `update`, see [Updating a FHIR
-        # resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+        # resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
+        # updating_a_fhir_resource).
         # @param [String] name
         #   The name of the resource to update.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
@@ -5512,7 +5519,8 @@ module Google
         # the reason for the error. If the request cannot be mapped to a valid API
         # method on a FHIR store, a generic GCP error might be returned instead. For
         # samples that show how to call `vread`, see [Retrieving a FHIR resource version]
-        # (/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
+        # (https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#
+        # retrieving_a_fhir_resource_version).
         # @param [String] name
         #   The name of the resource version to retrieve.
         # @param [String] fields
