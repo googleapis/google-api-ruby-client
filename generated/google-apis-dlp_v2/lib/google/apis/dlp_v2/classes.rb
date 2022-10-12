@@ -3501,6 +3501,11 @@ module Google
       class GooglePrivacyDlpV2InfoTypeSummary
         include Google::Apis::Core::Hashable
       
+        # Not populated for predicted infotypes.
+        # Corresponds to the JSON property `estimatedPrevalence`
+        # @return [Fixnum]
+        attr_accessor :estimated_prevalence
+      
         # Type of information detected by the API.
         # Corresponds to the JSON property `infoType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
@@ -3512,6 +3517,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @estimated_prevalence = args[:estimated_prevalence] if args.key?(:estimated_prevalence)
           @info_type = args[:info_type] if args.key?(:info_type)
         end
       end
