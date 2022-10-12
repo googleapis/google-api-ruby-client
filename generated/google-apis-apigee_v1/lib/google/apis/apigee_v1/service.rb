@@ -3676,8 +3676,9 @@ module Google
         #   Required. Organization the endpoint attachment will be created in.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment] google_cloud_apigee_v1_endpoint_attachment_object
         # @param [String] endpoint_attachment_id
-        #   ID to use for the endpoint attachment. The ID can contain lowercase letters
-        #   and numbers, must start with a letter, and must be 1-20 characters in length.
+        #   ID to use for the endpoint attachment. ID must start with a lowercase letter
+        #   followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end
+        #   with a hyphen. The minimum length is 2.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
