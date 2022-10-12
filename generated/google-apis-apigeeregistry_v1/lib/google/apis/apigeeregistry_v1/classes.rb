@@ -74,13 +74,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The recommended deployment of the API. Format: `apis/`api`/deployments/`
-        # deployment``
+        # The recommended deployment of the API. Format: `projects/`project`/locations/`
+        # location`/apis/`api`/deployments/`deployment``
         # Corresponds to the JSON property `recommendedDeployment`
         # @return [String]
         attr_accessor :recommended_deployment
       
-        # The recommended version of the API. Format: `apis/`api`/versions/`version``
+        # The recommended version of the API. Format: `projects/`project`/locations/`
+        # location`/apis/`api`/versions/`version``
         # Corresponds to the JSON property `recommendedVersion`
         # @return [String]
         attr_accessor :recommended_version
