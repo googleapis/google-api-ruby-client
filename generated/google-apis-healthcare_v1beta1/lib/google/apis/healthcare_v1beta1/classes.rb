@@ -1137,8 +1137,7 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyOperationMetadata]
         attr_accessor :operation_metadata
       
-        # Configures de-identification of text wherever it is found in the
-        # source_dataset.
+        # Configures how to transform sensitive text `InfoTypes`.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::HealthcareV1beta1::TextConfig]
         attr_accessor :text
@@ -3523,9 +3522,9 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DateShiftConfig]
         attr_accessor :date_shift_config
       
-        # InfoTypes to apply this transformation to. If this is not specified, this
-        # transformation becomes the default transformation, and is used for any
-        # info_type that is not specified in another transformation.
+        # `InfoTypes` to apply this transformation to. If this is not specified, this
+        # transformation becomes the default transformation, and is used for any `
+        # info_type` that is not specified in another transformation.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<String>]
         attr_accessor :info_types
@@ -5315,11 +5314,12 @@ module Google
         end
       end
       
-      # 
+      # Configures how to transform sensitive text `InfoTypes`.
       class TextConfig
         include Google::Apis::Core::Hashable
       
-        # The transformations to apply to the detected data.
+        # The transformations to apply to the detected data. Deprecated. Use `
+        # additional_transformations` instead.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::HealthcareV1beta1::InfoTypeTransformation>]
         attr_accessor :transformations
