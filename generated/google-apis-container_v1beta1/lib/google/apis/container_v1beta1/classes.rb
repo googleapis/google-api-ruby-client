@@ -4561,6 +4561,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadConfig]
         attr_accessor :workload_config
       
+        # Sets which mode to use for Protect workload vulnerability scanning feature.
+        # Corresponds to the JSON property `workloadVulnerabilityMode`
+        # @return [String]
+        attr_accessor :workload_vulnerability_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4568,6 +4573,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @workload_config = args[:workload_config] if args.key?(:workload_config)
+          @workload_vulnerability_mode = args[:workload_vulnerability_mode] if args.key?(:workload_vulnerability_mode)
         end
       end
       
