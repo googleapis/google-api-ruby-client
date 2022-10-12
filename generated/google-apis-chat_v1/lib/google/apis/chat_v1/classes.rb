@@ -310,7 +310,7 @@ module Google
       
       # A card action is the action associated with the card. For an invoice card, a
       # typical action would be: delete invoice, email invoice or open the invoice in
-      # browser.
+      # browser. Not supported by Google Chat apps.
       class CardAction
         include Google::Apis::Core::Hashable
       
@@ -378,24 +378,29 @@ module Google
       class CardWithId
         include Google::Apis::Core::Hashable
       
-        # A card is a UI element that can contain UI widgets such as text and images.
-        # For more information, see Cards . For example, the following JSON creates a
-        # card that has a header with the name, position, icons, and link for a contact,
-        # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
-        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
-        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
-        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
-        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
-        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
-        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
-        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
-        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
-        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
-        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
-        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
-        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
-        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Cards support a defined layout, interactive UI elements like buttons, and rich
+        # media like images. Use cards to present detailed information, gather
+        # information from users, and guide users to take a next step. In Google Chat,
+        # cards appear in several places: - As stand-alone messages. - Accompanying a
+        # text message, just beneath the text message. - As a [dialog](https://
+        # developers.google.com/chat/how-tos/dialogs). The following example JSON
+        # creates a "contact card" that features: - A header with the contact's name,
+        # job title, avatar picture. - A section with the contact information, including
+        # formatted text. - Buttons that users can click to share the contact or see
+        # more or less info. ![Example contact card](/chat/images/card_api_reference.png)
+        # ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title"
+        # : "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
+        # google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "
+        # imageAltText": "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info",
+        # "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@
+        # example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `
+        # , "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "
+        # text": "Share", "onClick": ` "openLink": ` "url": "https://example.com/share",
+        # ` ` `, ` "text": "Edit", "onClick": ` "action": ` "function": "goToView", "
+        # parameters": [ ` "key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `,
+        # ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -775,24 +780,29 @@ module Google
       class Dialog
         include Google::Apis::Core::Hashable
       
-        # A card is a UI element that can contain UI widgets such as text and images.
-        # For more information, see Cards . For example, the following JSON creates a
-        # card that has a header with the name, position, icons, and link for a contact,
-        # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
-        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
-        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
-        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
-        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
-        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
-        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
-        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
-        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
-        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
-        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
-        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
-        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
-        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Cards support a defined layout, interactive UI elements like buttons, and rich
+        # media like images. Use cards to present detailed information, gather
+        # information from users, and guide users to take a next step. In Google Chat,
+        # cards appear in several places: - As stand-alone messages. - Accompanying a
+        # text message, just beneath the text message. - As a [dialog](https://
+        # developers.google.com/chat/how-tos/dialogs). The following example JSON
+        # creates a "contact card" that features: - A header with the contact's name,
+        # job title, avatar picture. - A section with the contact information, including
+        # formatted text. - Buttons that users can click to share the contact or see
+        # more or less info. ![Example contact card](/chat/images/card_api_reference.png)
+        # ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title"
+        # : "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
+        # google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "
+        # imageAltText": "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info",
+        # "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@
+        # example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `
+        # , "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "
+        # text": "Share", "onClick": ` "openLink": ` "url": "https://example.com/share",
+        # ` ` `, ` "text": "Edit", "onClick": ` "action": ` "function": "goToView", "
+        # parameters": [ ` "key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `,
+        # ], `, ` ], ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1168,34 +1178,39 @@ module Google
         end
       end
       
-      # A card is a UI element that can contain UI widgets such as text and images.
-      # For more information, see Cards . For example, the following JSON creates a
-      # card that has a header with the name, position, icons, and link for a contact,
-      # followed by a section with contact information like email and phone number. ```
-      # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
-      # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
-      # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
-      # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
-      # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
-      # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
-      # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
-      # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
-      # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
-      # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
-      # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
-      # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
-      # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
-      # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+      # Cards support a defined layout, interactive UI elements like buttons, and rich
+      # media like images. Use cards to present detailed information, gather
+      # information from users, and guide users to take a next step. In Google Chat,
+      # cards appear in several places: - As stand-alone messages. - Accompanying a
+      # text message, just beneath the text message. - As a [dialog](https://
+      # developers.google.com/chat/how-tos/dialogs). The following example JSON
+      # creates a "contact card" that features: - A header with the contact's name,
+      # job title, avatar picture. - A section with the contact information, including
+      # formatted text. - Buttons that users can click to share the contact or see
+      # more or less info. ![Example contact card](/chat/images/card_api_reference.png)
+      # ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title"
+      # : "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
+      # google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "
+      # imageAltText": "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info",
+      # "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "
+      # decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@
+      # example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `
+      # , "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+      # PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "
+      # text": "Share", "onClick": ` "openLink": ` "url": "https://example.com/share",
+      # ` ` `, ` "text": "Edit", "onClick": ` "action": ` "function": "goToView", "
+      # parameters": [ ` "key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `,
+      # ], `, ` ], ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
         # The card's actions. Actions are added to the card's generated toolbar menu.
-        # For example, the following JSON constructs a card action menu with Settings
-        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Settings", "
-        # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
-        # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
-        # //example.com/feedback" ` ` ` ] ```
+        # Not supported by Google Chat apps. For example, the following JSON constructs
+        # a card action menu with Settings and Send Feedback options: ``` "card_actions":
+        # [ ` "actionLabel": "Settings", "onClick": ` "action": ` "functionName": "
+        # goToView", "parameters": [ ` "key": "viewType", "value": "SETTING" ` ], "
+        # loadIndicator": "LoadIndicator.SPINNER" ` ` `, ` "actionLabel": "Send Feedback"
+        # , "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` ` ` ] ```
         # Corresponds to the JSON property `cardActions`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
         attr_accessor :card_actions
@@ -1248,7 +1263,7 @@ module Google
       
       # A card action is the action associated with the card. For example, an invoice
       # card might include actions such as delete invoice, email invoice, or open the
-      # invoice in a browser.
+      # invoice in a browser. Not supported by Google Chat apps.
       class GoogleAppsCardV1CardAction
         include Google::Apis::Core::Hashable
       
@@ -1728,24 +1743,29 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :action
       
-        # A card is a UI element that can contain UI widgets such as text and images.
-        # For more information, see Cards . For example, the following JSON creates a
-        # card that has a header with the name, position, icons, and link for a contact,
-        # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
-        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
-        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
-        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
-        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
-        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
-        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
-        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
-        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
-        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
-        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
-        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
-        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
-        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Cards support a defined layout, interactive UI elements like buttons, and rich
+        # media like images. Use cards to present detailed information, gather
+        # information from users, and guide users to take a next step. In Google Chat,
+        # cards appear in several places: - As stand-alone messages. - Accompanying a
+        # text message, just beneath the text message. - As a [dialog](https://
+        # developers.google.com/chat/how-tos/dialogs). The following example JSON
+        # creates a "contact card" that features: - A header with the contact's name,
+        # job title, avatar picture. - A section with the contact information, including
+        # formatted text. - Buttons that users can click to share the contact or see
+        # more or less info. ![Example contact card](/chat/images/card_api_reference.png)
+        # ``` ` "cardsV2": [ ` "cardId": "unique-card-id", "card": ` "header": ` "title"
+        # : "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.
+        # google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "
+        # imageAltText": "Avatar for Sasha", `, "sections": [ ` "header": "Contact Info",
+        # "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "
+        # decoratedText": ` "startIcon": ` "knownIcon": "EMAIL", `, "text": "sasha@
+        # example.com", ` `, ` "decoratedText": ` "startIcon": ` "knownIcon": "PERSON", `
+        # , "text": "Online", `, `, ` "decoratedText": ` "startIcon": ` "knownIcon": "
+        # PHONE", `, "text": "+1 (555) 555-1234", ` `, ` "buttonList": ` "buttons": [ ` "
+        # text": "Share", "onClick": ` "openLink": ` "url": "https://example.com/share",
+        # ` ` `, ` "text": "Edit", "onClick": ` "action": ` "function": "goToView", "
+        # parameters": [ ` "key": "viewType", "value": "EDIT", ` ], ` ` `, ], ` `, ], `,
+        # ], `, ` ], ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -2518,9 +2538,10 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Attachment>]
         attr_accessor :attachment
       
-        # Rich, formatted and interactive cards that can be used to display UI elements
-        # such as: formatted texts, buttons, clickable images. Cards are normally
-        # displayed below the plain-text body of the message.
+        # Deprecated: Use `cards_v2` instead. Rich, formatted and interactive cards that
+        # can be used to display UI elements such as: formatted texts, buttons,
+        # clickable images. Cards are normally displayed below the plain-text body of
+        # the message.
         # Corresponds to the JSON property `cards`
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
@@ -2532,7 +2553,7 @@ module Google
         # (https://developers.google.com/chat/how-tos/dialogs). The `cardId` is a unique
         # identifier among cards in the same message and for identifying user input
         # values. Currently supported widgets include: - `TextParagraph` - `
-        # DecoratedText` - `Image` - `ButtonList`
+        # DecoratedText` - `Image` - `ButtonList` - `Divider`
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
@@ -3033,10 +3054,8 @@ module Google
         attr_accessor :is_anonymous
         alias_method :is_anonymous?, :is_anonymous
       
-        # Resource name for a Google Chat user. Represents a [person](https://developers.
-        # google.com/people/api/rest/v1/people#Person) in the People API or a [user](
-        # https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in
-        # the Admin SDK Directory API. Formatted as: `users/`user``
+        # Resource name for a Google Chat user. For human users, represents a person in
+        # the People API or a user in the Admin SDK Directory API. Format: `users/`user``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
