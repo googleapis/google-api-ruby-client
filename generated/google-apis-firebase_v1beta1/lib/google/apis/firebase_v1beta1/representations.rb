@@ -507,6 +507,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_missing, as: 'allowMissing'
           property :etag, as: 'etag'
+          property :immediate, as: 'immediate'
           property :validate_only, as: 'validateOnly'
         end
       end
@@ -516,6 +517,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_missing, as: 'allowMissing'
           property :etag, as: 'etag'
+          property :immediate, as: 'immediate'
           property :validate_only, as: 'validateOnly'
         end
       end
@@ -525,6 +527,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_missing, as: 'allowMissing'
           property :etag, as: 'etag'
+          property :immediate, as: 'immediate'
           property :validate_only, as: 'validateOnly'
         end
       end

@@ -1067,6 +1067,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Determines whether to _immediately_ delete the App. If set to true, the App is
+        # immediately deleted from the Project and cannot be restored to the Project. If
+        # not set, defaults to false, which means that the App may be restored to the
+        # Project within 30 days using UndeleteAndroidApp.
+        # Corresponds to the JSON property `immediate`
+        # @return [Boolean]
+        attr_accessor :immediate
+        alias_method :immediate?, :immediate
+      
         # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
@@ -1081,6 +1090,7 @@ module Google
         def update!(**args)
           @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
           @etag = args[:etag] if args.key?(:etag)
+          @immediate = args[:immediate] if args.key?(:immediate)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
@@ -1102,6 +1112,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Determines whether to _immediately_ delete the App. If set to true, the App is
+        # immediately deleted from the Project and cannot be restored to the Project. If
+        # not set, defaults to false, which means that the App may be restored to the
+        # Project within 30 days using UndeleteIosApp
+        # Corresponds to the JSON property `immediate`
+        # @return [Boolean]
+        attr_accessor :immediate
+        alias_method :immediate?, :immediate
+      
         # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
@@ -1116,6 +1135,7 @@ module Google
         def update!(**args)
           @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
           @etag = args[:etag] if args.key?(:etag)
+          @immediate = args[:immediate] if args.key?(:immediate)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
@@ -1137,6 +1157,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Determines whether to _immediately_ delete the App. If set to true, the App is
+        # immediately deleted from the Project and cannot be restored to the Project. If
+        # not set, defaults to false, which means that the App may be restored to the
+        # Project within 30 days using UndeleteWebApp
+        # Corresponds to the JSON property `immediate`
+        # @return [Boolean]
+        attr_accessor :immediate
+        alias_method :immediate?, :immediate
+      
         # If set to true, the request is only validated. The App will _not_ be removed.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
@@ -1151,6 +1180,7 @@ module Google
         def update!(**args)
           @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
           @etag = args[:etag] if args.key?(:etag)
+          @immediate = args[:immediate] if args.key?(:immediate)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
