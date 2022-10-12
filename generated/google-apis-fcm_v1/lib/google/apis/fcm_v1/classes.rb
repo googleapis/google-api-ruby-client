@@ -382,7 +382,9 @@ module Google
         # APNs request headers](https://developer.apple.com/documentation/
         # usernotifications/setting_up_a_remote_notification_server/
         # sending_notification_requests_to_apns) for supported headers such as `apns-
-        # expiration` and `apns-priority`.
+        # expiration` and `apns-priority`. The backend sets a default value for `apns-
+        # expiration` of 30 days and a default value for `apns-priority` of 10 if not
+        # explicitly set.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -391,9 +393,7 @@ module Google
         # payload. See [Payload Key Reference](https://developer.apple.com/documentation/
         # usernotifications/setting_up_a_remote_notification_server/
         # generating_a_remote_notification). If present, it overrides google.firebase.
-        # fcm.v1.Notification.title and google.firebase.fcm.v1.Notification.body. The
-        # backend sets a default value for `apns-expiration` of 30 days and a default
-        # value for `apns-priority` of 10 if not explicitly set.
+        # fcm.v1.Notification.title and google.firebase.fcm.v1.Notification.body.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
