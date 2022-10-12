@@ -2144,6 +2144,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :workload_config, as: 'workloadConfig', class: Google::Apis::ContainerV1beta1::WorkloadConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadConfig::Representation
       
+          property :workload_vulnerability_mode, as: 'workloadVulnerabilityMode'
         end
       end
       
