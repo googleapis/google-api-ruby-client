@@ -28,30 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromePolicyV1DefineCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,61 +52,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1DeleteGroupPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1InheritOrgUnitPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ListGroupPriorityOrderingRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ListGroupPriorityOrderingResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ModifyGroupPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromePolicyV1NetworkSetting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1PolicyModificationFieldError
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1PolicyTargetKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1PolicyValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,37 +82,79 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1ResolveRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ResolveResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1ResolvedPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyVersionsV1ListPolicySchemasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyModificationFieldError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +191,42 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1PolicySchemaRequiredItems
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyTargetKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolveResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolvedPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -302,38 +302,6 @@ module Google
         end
       end
       
-      class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DeleteGroupPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DeleteGroupPolicyRequest::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1InheritOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1InheritOrgUnitPolicyRequest::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyGroupPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyGroupPolicyRequest::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyOrgUnitPolicyRequest::Representation
-      
-        end
-      end
-      
       class GoogleChromePolicyV1DefineCertificateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -375,90 +343,7 @@ module Google
         end
       end
       
-      class GoogleChromePolicyV1DeleteGroupPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_schema, as: 'policySchema'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1InheritOrgUnitPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_schema, as: 'policySchema'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1ListGroupPriorityOrderingRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_namespace, as: 'policyNamespace'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1ListGroupPriorityOrderingResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :group_ids, as: 'groupIds'
-          property :policy_namespace, as: 'policyNamespace'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1ModifyGroupPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-          property :policy_value, as: 'policyValue', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
-      class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-          property :policy_value, as: 'policyValue', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
       class GoogleChromePolicyV1NetworkSetting
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_schema, as: 'policySchema'
-          hash :value, as: 'value'
-        end
-      end
-      
-      class GoogleChromePolicyV1PolicyModificationFieldError
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error'
-          property :field, as: 'field'
-        end
-      end
-      
-      class GoogleChromePolicyV1PolicyTargetKey
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :additional_target_keys, as: 'additionalTargetKeys'
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1PolicyValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_schema, as: 'policySchema'
@@ -494,55 +379,80 @@ module Google
         end
       end
       
-      class GoogleChromePolicyV1ResolveRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :page_size, as: 'pageSize'
-          property :page_token, as: 'pageToken'
-          property :policy_schema_filter, as: 'policySchemaFilter'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1ResolveResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :resolved_policies, as: 'resolvedPolicies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ResolvedPolicy, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ResolvedPolicy::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1ResolvedPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :added_source_key, as: 'addedSourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-          property :source_key, as: 'sourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-          property :target_key, as: 'targetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-          property :value, as: 'value', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue::Representation
-      
-        end
-      end
-      
-      class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :group_ids, as: 'groupIds'
-          property :policy_namespace, as: 'policyNamespace'
-          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
-      
-        end
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :key_description, as: 'keyDescription'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_schema, as: 'policySchema'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_schema, as: 'policySchema'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_namespace, as: 'policyNamespace'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_ids, as: 'groupIds'
+          property :policy_namespace, as: 'policyNamespace'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
         end
       end
       
@@ -552,6 +462,36 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :policy_schemas, as: 'policySchemas', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchema, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchema::Representation
       
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+          property :policy_value, as: 'policyValue', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+          property :policy_value, as: 'policyValue', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyModificationFieldError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :field, as: 'field'
         end
       end
       
@@ -631,6 +571,66 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :field_conditions, as: 'fieldConditions'
           collection :required_fields, as: 'requiredFields'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyTargetKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_target_keys, as: 'additionalTargetKeys'
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1PolicyValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_schema, as: 'policySchema'
+          hash :value, as: 'value'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolveRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :policy_schema_filter, as: 'policySchemaFilter'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolveResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resolved_policies, as: 'resolvedPolicies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ResolvedPolicy, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ResolvedPolicy::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1ResolvedPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_source_key, as: 'addedSourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+          property :source_key, as: 'sourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+          property :target_key, as: 'targetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
+          property :value, as: 'value', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue::Representation
+      
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_ids, as: 'groupIds'
+          property :policy_namespace, as: 'policyNamespace'
+          property :policy_target_key, as: 'policyTargetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey::Representation
+      
         end
       end
       
