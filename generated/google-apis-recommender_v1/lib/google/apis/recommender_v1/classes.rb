@@ -61,10 +61,21 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection]
         attr_accessor :cost_projection
       
+        # Contains information on the impact of a reliability recommendation.
+        # Corresponds to the JSON property `reliabilityProjection`
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection]
+        attr_accessor :reliability_projection
+      
         # Contains various ways of describing the impact on Security.
         # Corresponds to the JSON property `securityProjection`
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection]
         attr_accessor :security_projection
+      
+        # Contains metadata about how much sustainability a recommendation can save or
+        # incur.
+        # Corresponds to the JSON property `sustainabilityProjection`
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SustainabilityProjection]
+        attr_accessor :sustainability_projection
       
         def initialize(**args)
            update!(**args)
@@ -74,7 +85,9 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @cost_projection = args[:cost_projection] if args.key?(:cost_projection)
+          @reliability_projection = args[:reliability_projection] if args.key?(:reliability_projection)
           @security_projection = args[:security_projection] if args.key?(:security_projection)
+          @sustainability_projection = args[:sustainability_projection] if args.key?(:sustainability_projection)
         end
       end
       
@@ -838,6 +851,31 @@ module Google
         end
       end
       
+      # Contains information on the impact of a reliability recommendation.
+      class GoogleCloudRecommenderV1ReliabilityProjection
+        include Google::Apis::Core::Hashable
+      
+        # Per-recommender projection.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,Object>]
+        attr_accessor :details
+      
+        # Reliability risks mitigated by this recommendation.
+        # Corresponds to the JSON property `risks`
+        # @return [Array<String>]
+        attr_accessor :risks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @risks = args[:risks] if args.key?(:risks)
+        end
+      end
+      
       # Contains various ways of describing the impact on Security.
       class GoogleCloudRecommenderV1SecurityProjection
         include Google::Apis::Core::Hashable
@@ -854,6 +892,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # Contains metadata about how much sustainability a recommendation can save or
+      # incur.
+      class GoogleCloudRecommenderV1SustainabilityProjection
+        include Google::Apis::Core::Hashable
+      
+        # Duration for which this sustainability applies.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the
+        # name renders correctly in camelCase (kgCO2e).
+        # Corresponds to the JSON property `kgCO2e`
+        # @return [Float]
+        attr_accessor :kg_co2e
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @kg_co2e = args[:kg_co2e] if args.key?(:kg_co2e)
         end
       end
       
