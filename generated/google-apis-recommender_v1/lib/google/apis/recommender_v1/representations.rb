@@ -148,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1ReliabilityProjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1SecurityProjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1SustainabilityProjection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -181,7 +193,11 @@ module Google
           property :category, as: 'category'
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection::Representation
       
+          property :reliability_projection, as: 'reliabilityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection::Representation
+      
           property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection::Representation
+      
+          property :sustainability_projection, as: 'sustainabilityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SustainabilityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SustainabilityProjection::Representation
       
         end
       end
@@ -386,10 +402,26 @@ module Google
         end
       end
       
+      class GoogleCloudRecommenderV1ReliabilityProjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          collection :risks, as: 'risks'
+        end
+      end
+      
       class GoogleCloudRecommenderV1SecurityProjection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :details, as: 'details'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1SustainabilityProjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :kg_co2e, as: 'kgCO2e'
         end
       end
       
