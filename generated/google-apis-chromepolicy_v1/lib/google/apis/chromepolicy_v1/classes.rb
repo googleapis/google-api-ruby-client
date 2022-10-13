@@ -60,110 +60,6 @@ module Google
         end
       end
       
-      # Request message for specifying that multiple policy values will be deleted.
-      class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest
-        include Google::Apis::Core::Hashable
-      
-        # List of policies that will be deleted as defined by the `requests`. All
-        # requests in the list must follow these restrictions: 1. All schemas in the
-        # list must have the same root namespace. 2. All `policyTargetKey.targetResource`
-        # values must point to a group resource. 3. All `policyTargetKey` values must
-        # have the same `app_id` key name in the `additionalTargetKeys`. 4. No two
-        # modification requests can reference the same `policySchema` + `
-        # policyTargetKey` pair.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DeleteGroupPolicyRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Request message for specifying that multiple policy values inherit their value
-      # from their parents.
-      class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest
-        include Google::Apis::Core::Hashable
-      
-        # List of policies that have to inherit their values as defined by the `requests`
-        # . All requests in the list must follow these restrictions: 1. All schemas in
-        # the list must have the same root namespace. 2. All `policyTargetKey.
-        # targetResource` values must point to an org unit resource. 3. All `
-        # policyTargetKey` values must have the same key names in the `
-        # additionalTargetKeys`. This also means if one of the targets has an empty `
-        # additionalTargetKeys` map, all of the targets must have an empty `
-        # additionalTargetKeys` map. 4. No two modification requests can reference the
-        # same `policySchema` + ` policyTargetKey` pair.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1InheritOrgUnitPolicyRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Request message for modifying multiple policy values for a specific group-
-      # based target.
-      class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest
-        include Google::Apis::Core::Hashable
-      
-        # List of policies to modify as defined by the `requests`. All requests in the
-        # list must follow these restrictions: 1. All schemas in the list must have the
-        # same root namespace. 2. All `policyTargetKey.targetResource` values must point
-        # to a group resource. 3. All `policyTargetKey` values must have the same `
-        # app_id` key name in the `additionalTargetKeys`. 4. No two modification
-        # requests can reference the same `policySchema` + ` policyTargetKey` pair.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyGroupPolicyRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
-      # Request message for modifying multiple policy values for a specific target.
-      class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest
-        include Google::Apis::Core::Hashable
-      
-        # List of policies to modify as defined by the `requests`. All requests in the
-        # list must follow these restrictions: 1. All schemas in the list must have the
-        # same root namespace. 2. All `policyTargetKey.targetResource` values must point
-        # to an org unit resource. 3. All `policyTargetKey` values must have the same
-        # key names in the ` additionalTargetKeys`. This also means if one of the
-        # targets has an empty `additionalTargetKeys` map, all of the targets must have
-        # an empty `additionalTargetKeys` map. 4. No two modification requests can
-        # reference the same `policySchema` + ` policyTargetKey` pair.
-        # Corresponds to the JSON property `requests`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>]
-        attr_accessor :requests
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @requests = args[:requests] if args.key?(:requests)
-        end
-      end
-      
       # Request object for creating a certificate.
       class GoogleChromePolicyV1DefineCertificateRequest
         include Google::Apis::Core::Hashable
@@ -301,179 +197,6 @@ module Google
         end
       end
       
-      # Request parameters for deleting the policy value of a specific group target.
-      class GoogleChromePolicyV1DeleteGroupPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # The fully qualified name of the policy schema that is being inherited.
-        # Corresponds to the JSON property `policySchema`
-        # @return [String]
-        attr_accessor :policy_schema
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
-      # Request parameters for inheriting policy value of a specific org unit target
-      # from the policy value of its parent org unit.
-      class GoogleChromePolicyV1InheritOrgUnitPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # The fully qualified name of the policy schema that is being inherited.
-        # Corresponds to the JSON property `policySchema`
-        # @return [String]
-        attr_accessor :policy_schema
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
-      # Request message for listing the group priority ordering of an app.
-      class GoogleChromePolicyV1ListGroupPriorityOrderingRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The namespace of the policy type for the request.
-        # Corresponds to the JSON property `policyNamespace`
-        # @return [String]
-        attr_accessor :policy_namespace
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
-      # Response message for listing the group priority ordering of an app.
-      class GoogleChromePolicyV1ListGroupPriorityOrderingResponse
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The group IDs, in priority ordering.
-        # Corresponds to the JSON property `groupIds`
-        # @return [Array<String>]
-        attr_accessor :group_ids
-      
-        # Output only. The namespace of the policy type of the group IDs.
-        # Corresponds to the JSON property `policyNamespace`
-        # @return [String]
-        attr_accessor :policy_namespace
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @group_ids = args[:group_ids] if args.key?(:group_ids)
-          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
-      # Request parameters for modifying a policy value for a specific group target.
-      class GoogleChromePolicyV1ModifyGroupPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        # A particular value for a policy managed by the service.
-        # Corresponds to the JSON property `policyValue`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue]
-        attr_accessor :policy_value
-      
-        # Required. Policy fields to update. Only fields in this mask will be updated;
-        # other fields in `policy_value` will be ignored (even if they have values). If
-        # a field is in this list it must have a value in 'policy_value'.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-          @policy_value = args[:policy_value] if args.key?(:policy_value)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-        end
-      end
-      
-      # Request parameters for modifying a policy value for a specific org unit target.
-      class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        # A particular value for a policy managed by the service.
-        # Corresponds to the JSON property `policyValue`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue]
-        attr_accessor :policy_value
-      
-        # Required. Policy fields to update. Only fields in this mask will be updated;
-        # other fields in `policy_value` will be ignored (even if they have values). If
-        # a field is in this list it must have a value in 'policy_value'.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-          @policy_value = args[:policy_value] if args.key?(:policy_value)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-        end
-      end
-      
       # A network setting contains network configurations.
       class GoogleChromePolicyV1NetworkSetting
         include Google::Apis::Core::Hashable
@@ -484,86 +207,6 @@ module Google
         attr_accessor :policy_schema
       
         # The value of the network setting.
-        # Corresponds to the JSON property `value`
-        # @return [Hash<String,Object>]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Error information for a modification request of a specific field on a specific
-      # policy.
-      class GoogleChromePolicyV1PolicyModificationFieldError
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The error message related to the field.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # Output only. The name of the field with the error.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-          @field = args[:field] if args.key?(:field)
-        end
-      end
-      
-      # The key used to identify the target on which the policy will be applied.
-      class GoogleChromePolicyV1PolicyTargetKey
-        include Google::Apis::Core::Hashable
-      
-        # Map containing the additional target key name and value pairs used to further
-        # identify the target of the policy.
-        # Corresponds to the JSON property `additionalTargetKeys`
-        # @return [Hash<String,String>]
-        attr_accessor :additional_target_keys
-      
-        # The target resource on which this policy is applied. The following resources
-        # are supported: * Organizational Unit ("orgunits/`orgunit_id`") * Group ("
-        # groups/`group_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @additional_target_keys = args[:additional_target_keys] if args.key?(:additional_target_keys)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # A particular value for a policy managed by the service.
-      class GoogleChromePolicyV1PolicyValue
-        include Google::Apis::Core::Hashable
-      
-        # The fully qualified name of the policy schema associated with this policy.
-        # Corresponds to the JSON property `policySchema`
-        # @return [String]
-        attr_accessor :policy_schema
-      
-        # The value of the policy that is compatible with the schema that it is
-        # associated with.
         # Corresponds to the JSON property `value`
         # @return [Hash<String,Object>]
         attr_accessor :value
@@ -659,144 +302,6 @@ module Google
         end
       end
       
-      # Request message for getting the resolved policy value for a specific target.
-      class GoogleChromePolicyV1ResolveRequest
-        include Google::Apis::Core::Hashable
-      
-        # The maximum number of policies to return, defaults to 100 and has a maximum of
-        # 1000.
-        # Corresponds to the JSON property `pageSize`
-        # @return [Fixnum]
-        attr_accessor :page_size
-      
-        # The page token used to retrieve a specific page of the request.
-        # Corresponds to the JSON property `pageToken`
-        # @return [String]
-        attr_accessor :page_token
-      
-        # The schema filter to apply to the resolve request. Specify a schema name to
-        # view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards
-        # are supported, but only in the leaf portion of the schema name. Wildcards
-        # cannot be used in namespace directly. Please read https://developers.google.
-        # com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
-        # example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*"
-        # Invalid: "*", "*.users", "chrome.*", "chrome.*.apps.*"
-        # Corresponds to the JSON property `policySchemaFilter`
-        # @return [String]
-        attr_accessor :policy_schema_filter
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @page_size = args[:page_size] if args.key?(:page_size)
-          @page_token = args[:page_token] if args.key?(:page_token)
-          @policy_schema_filter = args[:policy_schema_filter] if args.key?(:policy_schema_filter)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
-      # Response message for getting the resolved policy value for a specific target.
-      class GoogleChromePolicyV1ResolveResponse
-        include Google::Apis::Core::Hashable
-      
-        # The page token used to get the next set of resolved policies found by the
-        # request.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The list of resolved policies found by the resolve request.
-        # Corresponds to the JSON property `resolvedPolicies`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1ResolvedPolicy>]
-        attr_accessor :resolved_policies
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @resolved_policies = args[:resolved_policies] if args.key?(:resolved_policies)
-        end
-      end
-      
-      # The resolved value of a policy for a given target.
-      class GoogleChromePolicyV1ResolvedPolicy
-        include Google::Apis::Core::Hashable
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `addedSourceKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :added_source_key
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `sourceKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :source_key
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `targetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :target_key
-      
-        # A particular value for a policy managed by the service.
-        # Corresponds to the JSON property `value`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyValue]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @added_source_key = args[:added_source_key] if args.key?(:added_source_key)
-          @source_key = args[:source_key] if args.key?(:source_key)
-          @target_key = args[:target_key] if args.key?(:target_key)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Request message for updating the group priority ordering of an app.
-      class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The group IDs, in desired priority ordering.
-        # Corresponds to the JSON property `groupIds`
-        # @return [Array<String>]
-        attr_accessor :group_ids
-      
-        # Required. The namespace of the policy type for the request.
-        # Corresponds to the JSON property `policyNamespace`
-        # @return [String]
-        attr_accessor :policy_namespace
-      
-        # The key used to identify the target on which the policy will be applied.
-        # Corresponds to the JSON property `policyTargetKey`
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
-        attr_accessor :policy_target_key
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @group_ids = args[:group_ids] if args.key?(:group_ids)
-          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
-          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
-        end
-      end
-      
       # Additional key names that will be used to identify the target of the policy
       # value.
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
@@ -823,6 +328,217 @@ module Google
         end
       end
       
+      # Request message for specifying that multiple policy values will be deleted.
+      class GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies that will be deleted as defined by the `requests`. All
+        # requests in the list must follow these restrictions: 1. All schemas in the
+        # list must have the same root namespace. 2. All `policyTargetKey.targetResource`
+        # values must point to a group resource. 3. All `policyTargetKey` values must
+        # have the same `app_id` key name in the `additionalTargetKeys`. 4. No two
+        # modification requests can reference the same `policySchema` + `
+        # policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for specifying that multiple policy values inherit their value
+      # from their parents.
+      class GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies that have to inherit their values as defined by the `requests`
+        # . All requests in the list must follow these restrictions: 1. All schemas in
+        # the list must have the same root namespace. 2. All `policyTargetKey.
+        # targetResource` values must point to an org unit resource. 3. All `
+        # policyTargetKey` values must have the same key names in the `
+        # additionalTargetKeys`. This also means if one of the targets has an empty `
+        # additionalTargetKeys` map, all of the targets must have an empty `
+        # additionalTargetKeys` map. 4. No two modification requests can reference the
+        # same `policySchema` + ` policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for modifying multiple policy values for a specific group-
+      # based target.
+      class GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies to modify as defined by the `requests`. All requests in the
+        # list must follow these restrictions: 1. All schemas in the list must have the
+        # same root namespace. 2. All `policyTargetKey.targetResource` values must point
+        # to a group resource. 3. All `policyTargetKey` values must have the same `
+        # app_id` key name in the `additionalTargetKeys`. 4. No two modification
+        # requests can reference the same `policySchema` + ` policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for modifying multiple policy values for a specific target.
+      class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest
+        include Google::Apis::Core::Hashable
+      
+        # List of policies to modify as defined by the `requests`. All requests in the
+        # list must follow these restrictions: 1. All schemas in the list must have the
+        # same root namespace. 2. All `policyTargetKey.targetResource` values must point
+        # to an org unit resource. 3. All `policyTargetKey` values must have the same
+        # key names in the ` additionalTargetKeys`. This also means if one of the
+        # targets has an empty `additionalTargetKeys` map, all of the targets must have
+        # an empty `additionalTargetKeys` map. 4. No two modification requests can
+        # reference the same `policySchema` + ` policyTargetKey` pair.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request parameters for deleting the policy value of a specific group target.
+      class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the policy schema that is being inherited.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Request parameters for inheriting policy value of a specific org unit target
+      # from the policy value of its parent org unit.
+      class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the policy schema that is being inherited.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Request message for listing the group priority ordering of an app.
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The namespace of the policy type for the request.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Response message for listing the group priority ordering of an app.
+      class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The group IDs, in priority ordering.
+        # Corresponds to the JSON property `groupIds`
+        # @return [Array<String>]
+        attr_accessor :group_ids
+      
+        # Output only. The namespace of the policy type of the group IDs.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_ids = args[:group_ids] if args.key?(:group_ids)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
       # Response message for listing policy schemas that match a filter.
       class GoogleChromePolicyVersionsV1ListPolicySchemasResponse
         include Google::Apis::Core::Hashable
@@ -845,6 +561,98 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @policy_schemas = args[:policy_schemas] if args.key?(:policy_schemas)
+        end
+      end
+      
+      # Request parameters for modifying a policy value for a specific group target.
+      class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        # A particular value for a policy managed by the service.
+        # Corresponds to the JSON property `policyValue`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue]
+        attr_accessor :policy_value
+      
+        # Required. Policy fields to update. Only fields in this mask will be updated;
+        # other fields in `policy_value` will be ignored (even if they have values). If
+        # a field is in this list it must have a value in 'policy_value'.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+          @policy_value = args[:policy_value] if args.key?(:policy_value)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request parameters for modifying a policy value for a specific org unit target.
+      class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        # A particular value for a policy managed by the service.
+        # Corresponds to the JSON property `policyValue`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue]
+        attr_accessor :policy_value
+      
+        # Required. Policy fields to update. Only fields in this mask will be updated;
+        # other fields in `policy_value` will be ignored (even if they have values). If
+        # a field is in this list it must have a value in 'policy_value'.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+          @policy_value = args[:policy_value] if args.key?(:policy_value)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Error information for a modification request of a specific field on a specific
+      # policy.
+      class GoogleChromePolicyVersionsV1PolicyModificationFieldError
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error message related to the field.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. The name of the field with the error.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @field = args[:field] if args.key?(:field)
         end
       end
       
@@ -1144,6 +952,198 @@ module Google
         def update!(**args)
           @field_conditions = args[:field_conditions] if args.key?(:field_conditions)
           @required_fields = args[:required_fields] if args.key?(:required_fields)
+        end
+      end
+      
+      # The key used to identify the target on which the policy will be applied.
+      class GoogleChromePolicyVersionsV1PolicyTargetKey
+        include Google::Apis::Core::Hashable
+      
+        # Map containing the additional target key name and value pairs used to further
+        # identify the target of the policy.
+        # Corresponds to the JSON property `additionalTargetKeys`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_target_keys
+      
+        # The target resource on which this policy is applied. The following resources
+        # are supported: * Organizational Unit ("orgunits/`orgunit_id`") * Group ("
+        # groups/`group_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_target_keys = args[:additional_target_keys] if args.key?(:additional_target_keys)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # A particular value for a policy managed by the service.
+      class GoogleChromePolicyVersionsV1PolicyValue
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the policy schema associated with this policy.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The value of the policy that is compatible with the schema that it is
+        # associated with.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request message for getting the resolved policy value for a specific target.
+      class GoogleChromePolicyVersionsV1ResolveRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of policies to return, defaults to 100 and has a maximum of
+        # 1000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # The page token used to retrieve a specific page of the request.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The schema filter to apply to the resolve request. Specify a schema name to
+        # view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards
+        # are supported, but only in the leaf portion of the schema name. Wildcards
+        # cannot be used in namespace directly. Please read https://developers.google.
+        # com/chrome/policy/guides/policy-schemas for details on schema namespaces. For
+        # example: Valid: "chrome.users.*", "chrome.users.apps.*", "chrome.printers.*"
+        # Invalid: "*", "*.users", "chrome.*", "chrome.*.apps.*"
+        # Corresponds to the JSON property `policySchemaFilter`
+        # @return [String]
+        attr_accessor :policy_schema_filter
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @policy_schema_filter = args[:policy_schema_filter] if args.key?(:policy_schema_filter)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
+        end
+      end
+      
+      # Response message for getting the resolved policy value for a specific target.
+      class GoogleChromePolicyVersionsV1ResolveResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page token used to get the next set of resolved policies found by the
+        # request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of resolved policies found by the resolve request.
+        # Corresponds to the JSON property `resolvedPolicies`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ResolvedPolicy>]
+        attr_accessor :resolved_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resolved_policies = args[:resolved_policies] if args.key?(:resolved_policies)
+        end
+      end
+      
+      # The resolved value of a policy for a given target.
+      class GoogleChromePolicyVersionsV1ResolvedPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `addedSourceKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :added_source_key
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `sourceKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :source_key
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `targetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :target_key
+      
+        # A particular value for a policy managed by the service.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_source_key = args[:added_source_key] if args.key?(:added_source_key)
+          @source_key = args[:source_key] if args.key?(:source_key)
+          @target_key = args[:target_key] if args.key?(:target_key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request message for updating the group priority ordering of an app.
+      class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The group IDs, in desired priority ordering.
+        # Corresponds to the JSON property `groupIds`
+        # @return [Array<String>]
+        attr_accessor :group_ids
+      
+        # Required. The namespace of the policy type for the request.
+        # Corresponds to the JSON property `policyNamespace`
+        # @return [String]
+        attr_accessor :policy_namespace
+      
+        # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `policyTargetKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyTargetKey]
+        attr_accessor :policy_target_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_ids = args[:group_ids] if args.key?(:group_ids)
+          @policy_namespace = args[:policy_namespace] if args.key?(:policy_namespace)
+          @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
         end
       end
       
