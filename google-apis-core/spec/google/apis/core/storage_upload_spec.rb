@@ -72,6 +72,11 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     include_examples 'should upload'
   end
 
+  context('with empty StringIO input') do
+    let(:file) { StringIO.new("") }
+    include_examples 'should upload'
+  end
+
   context('with IO input') do
     let(:file) { File.open(File.join(FIXTURES_DIR, 'files', 'test.txt'), 'r') }
     include_examples 'should upload'
@@ -79,6 +84,11 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     it 'should not close stream' do
       expect(file.closed?).to be false
     end
+  end
+
+  context 'with empty Tempfile' do
+    let(:file) { Tempfile.new {} }
+    include_examples 'should upload'    
   end
 
   context('with file path input') do

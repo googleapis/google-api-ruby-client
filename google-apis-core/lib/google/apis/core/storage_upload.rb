@@ -139,7 +139,7 @@ module Google
           current_chunk_size = remaining_content_size < CHUNK_SIZE ? remaining_content_size : CHUNK_SIZE
 
           request_header = header.dup
-          request_header[CONTENT_RANGE_HEADER] = sprintf('bytes %d-%d/%d', @offset, @offset+current_chunk_size-1, upload_io.size)
+          request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
           chunk_body = upload_io.read(current_chunk_size)
 
@@ -174,6 +174,15 @@ module Google
 
         def streamable?(upload_source)
           upload_source.is_a?(IO) || upload_source.is_a?(StringIO) || upload_source.is_a?(Tempfile)
+        end
+
+        def get_content_range_header current_chunk_size
+          if upload_io.size == 0
+            numerator = "*"
+          else
+            numerator = sprintf("%d-%d", @offset, @offset+current_chunk_size-1)
+          end
+          sprintf('bytes %s/%d', numerator, upload_io.size)
         end
       end
     end
