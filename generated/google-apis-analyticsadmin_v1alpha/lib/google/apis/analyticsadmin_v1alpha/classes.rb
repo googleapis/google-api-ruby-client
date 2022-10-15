@@ -1670,6 +1670,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
         attr_accessor :display_video360_advertiser_link_proposal
       
+        # A resource message representing a GA4 ExpandedDataSet.
+        # Corresponds to the JSON property `expandedDataSet`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet]
+        attr_accessor :expanded_data_set
+      
         # A link between a GA4 property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
@@ -1715,6 +1720,7 @@ module Google
           @data_stream = args[:data_stream] if args.key?(:data_stream)
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
           @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
+          @expanded_data_set = args[:expanded_data_set] if args.key?(:expanded_data_set)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
@@ -2401,6 +2407,209 @@ module Google
           @link_proposal_status_details = args[:link_proposal_status_details] if args.key?(:link_proposal_status_details)
           @name = args[:name] if args.key?(:name)
           @validation_email = args[:validation_email] if args.key?(:validation_email)
+        end
+      end
+      
+      # A resource message representing a GA4 ExpandedDataSet.
+      class GoogleAnalyticsAdminV1alphaExpandedDataSet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when expanded data set began (or will begin) collecing data.
+        # Corresponds to the JSON property `dataCollectionStartTime`
+        # @return [String]
+        attr_accessor :data_collection_start_time
+      
+        # Optional. The description of the ExpandedDataSet. Max 50 chars.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A logical expression of EnhancedDataSet dimension filters.
+        # Corresponds to the JSON property `dimensionFilterExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression]
+        attr_accessor :dimension_filter_expression
+      
+        # Immutable. The list of dimensions included in the ExpandedDataSet. See the [
+        # API Dimensions](https://developers.google.com/analytics/devguides/reporting/
+        # data/v1/api-schema#dimensions) for the list of dimension names.
+        # Corresponds to the JSON property `dimensionNames`
+        # @return [Array<String>]
+        attr_accessor :dimension_names
+      
+        # Required. The display name of the ExpandedDataSet. Max 200 chars.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The list of metrics included in the ExpandedDataSet. See the [API
+        # Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/
+        # api-schema#metrics) for the list of dimension names.
+        # Corresponds to the JSON property `metricNames`
+        # @return [Array<String>]
+        attr_accessor :metric_names
+      
+        # Output only. The resource name for this ExpandedDataSet resource. Format:
+        # properties/`property_id`/expandedDataSets/`expanded_data_set`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_collection_start_time = args[:data_collection_start_time] if args.key?(:data_collection_start_time)
+          @description = args[:description] if args.key?(:description)
+          @dimension_filter_expression = args[:dimension_filter_expression] if args.key?(:dimension_filter_expression)
+          @dimension_names = args[:dimension_names] if args.key?(:dimension_names)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @metric_names = args[:metric_names] if args.key?(:metric_names)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A specific filter for a single dimension
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The dimension name to filter.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # A filter for a string dimension that matches a particular list of options.
+        # Corresponds to the JSON property `inListFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter]
+        attr_accessor :in_list_filter
+      
+        # A filter for a string-type dimension that matches a particular pattern.
+        # Corresponds to the JSON property `stringFilter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter]
+        attr_accessor :string_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @in_list_filter = args[:in_list_filter] if args.key?(:in_list_filter)
+          @string_filter = args[:string_filter] if args.key?(:string_filter)
+        end
+      end
+      
+      # A logical expression of EnhancedDataSet dimension filters.
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression
+        include Google::Apis::Core::Hashable
+      
+        # A list of ExpandedDataSet filter expressions.
+        # Corresponds to the JSON property `andGroup`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList]
+        attr_accessor :and_group
+      
+        # A specific filter for a single dimension
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilter]
+        attr_accessor :filter
+      
+        # A logical expression of EnhancedDataSet dimension filters.
+        # Corresponds to the JSON property `notExpression`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression]
+        attr_accessor :not_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @and_group = args[:and_group] if args.key?(:and_group)
+          @filter = args[:filter] if args.key?(:filter)
+          @not_expression = args[:not_expression] if args.key?(:not_expression)
+        end
+      end
+      
+      # A list of ExpandedDataSet filter expressions.
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList
+        include Google::Apis::Core::Hashable
+      
+        # A list of ExpandedDataSet filter expressions.
+        # Corresponds to the JSON property `filterExpressions`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>]
+        attr_accessor :filter_expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_expressions = args[:filter_expressions] if args.key?(:filter_expressions)
+        end
+      end
+      
+      # A filter for a string dimension that matches a particular list of options.
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the match is case-sensitive. If false, the match is case-
+        # insensitive. Must be true.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. The list of possible string values to match against. Must be non-
+        # empty.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A filter for a string-type dimension that matches a particular pattern.
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the match is case-sensitive. If false, the match is case-
+        # insensitive. Must be true when match_type is EXACT. Must be false when
+        # match_type is CONTAINS.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. The match type for the string filter.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        # Required. The string value to be matched against.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @match_type = args[:match_type] if args.key?(:match_type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
