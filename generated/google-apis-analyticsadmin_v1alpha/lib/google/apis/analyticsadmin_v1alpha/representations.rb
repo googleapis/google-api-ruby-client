@@ -448,6 +448,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaExpandedDataSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1187,6 +1223,8 @@ module Google
       
           property :display_video360_advertiser_link_proposal, as: 'displayVideo360AdvertiserLinkProposal', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal::Representation
       
+          property :expanded_data_set, as: 'expandedDataSet', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSet::Representation
+      
           property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
       
           property :google_ads_link, as: 'googleAdsLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink::Representation
@@ -1355,6 +1393,68 @@ module Google
       
           property :name, as: 'name'
           property :validation_email, as: 'validationEmail'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_collection_start_time, as: 'dataCollectionStartTime'
+          property :description, as: 'description'
+          property :dimension_filter_expression, as: 'dimensionFilterExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression::Representation
+      
+          collection :dimension_names, as: 'dimensionNames'
+          property :display_name, as: 'displayName'
+          collection :metric_names, as: 'metricNames'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          property :in_list_filter, as: 'inListFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter::Representation
+      
+          property :string_filter, as: 'stringFilter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :and_group, as: 'andGroup', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList::Representation
+      
+          property :filter, as: 'filter', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilter, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilter::Representation
+      
+          property :not_expression, as: 'notExpression', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter_expressions, as: 'filterExpressions', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :match_type, as: 'matchType'
+          property :value, as: 'value'
         end
       end
       
