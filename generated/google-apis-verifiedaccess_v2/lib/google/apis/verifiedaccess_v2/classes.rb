@@ -22,7 +22,7 @@ module Google
   module Apis
     module VerifiedaccessV2
       
-      # Result message for VerifiedAccess.CreateChallenge.
+      # Result message for VerifiedAccess.GenerateChallenge.
       class Challenge
         include Google::Apis::Core::Hashable
       
@@ -101,6 +101,13 @@ module Google
       class VerifyChallengeResponseResult
         include Google::Apis::Core::Hashable
       
+        # Unique customer id that this device belongs to, as defined by the Google Admin
+        # SDK at https://developers.google.com/admin-sdk/directory/v1/guides/manage-
+        # customers
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
         # Device permanent id is returned in this field (for the machine response only).
         # Corresponds to the JSON property `devicePermanentId`
         # @return [String]
@@ -124,16 +131,24 @@ module Google
         # @return [String]
         attr_accessor :signed_public_key_and_challenge
       
+        # Virtual device id of the device. The definition of virtual device id is
+        # platform-specific.
+        # Corresponds to the JSON property `virtualDeviceId`
+        # @return [String]
+        attr_accessor :virtual_device_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_permanent_id = args[:device_permanent_id] if args.key?(:device_permanent_id)
           @device_signal = args[:device_signal] if args.key?(:device_signal)
           @key_trust_level = args[:key_trust_level] if args.key?(:key_trust_level)
           @signed_public_key_and_challenge = args[:signed_public_key_and_challenge] if args.key?(:signed_public_key_and_challenge)
+          @virtual_device_id = args[:virtual_device_id] if args.key?(:virtual_device_id)
         end
       end
     end

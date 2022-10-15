@@ -71,10 +71,12 @@ module Google
       class VerifyChallengeResponseResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
           property :device_permanent_id, as: 'devicePermanentId'
           property :device_signal, as: 'deviceSignal'
           property :key_trust_level, as: 'keyTrustLevel'
           property :signed_public_key_and_challenge, as: 'signedPublicKeyAndChallenge'
+          property :virtual_device_id, as: 'virtualDeviceId'
         end
       end
     end
