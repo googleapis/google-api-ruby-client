@@ -1166,6 +1166,7 @@ module Google
       
           collection :cards_v2, as: 'cardsV2', class: Google::Apis::ChatV1::CardWithId, decorator: Google::Apis::ChatV1::CardWithId::Representation
       
+          property :client_assigned_message_id, as: 'clientAssignedMessageId'
           property :create_time, as: 'createTime'
           property :fallback_text, as: 'fallbackText'
           property :last_update_time, as: 'lastUpdateTime'

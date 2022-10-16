@@ -56,6 +56,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -81,13 +88,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -101,6 +109,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -126,13 +141,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_dm(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_dm(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -146,6 +162,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -171,13 +194,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm_conversation(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm_conversation(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -229,6 +253,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -254,13 +285,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -274,6 +306,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -299,13 +338,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_room(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_room(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -319,6 +359,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -344,13 +391,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room_conversation(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room_conversation(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -432,6 +480,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -457,13 +512,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_space(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_space(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -549,6 +605,13 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] message_id
+        #   Optional. A custom name for a Chat message assigned at creation. Must start
+        #   with `client-` and contain only lowercase letters, numbers, and hyphens up to
+        #   63 characters in length. Specify this field to get, update, or delete the
+        #   message with the specified value. For example usage, see [Name a created
+        #   message](https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message).
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
@@ -574,13 +637,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_message(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_message(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['messageId'] = message_id unless message_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -623,8 +687,12 @@ module Google
         # Returns a message. Requires [service account authentication](https://
         # developers.google.com/chat/api/guides/auth/service-accounts).
         # @param [String] name
-        #   Required. Resource name of the message to be retrieved, in the form "spaces/*/
-        #   messages/*". Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
+        #   Required. Resource name of the message to retrieve. Format: spaces/`space`/
+        #   messages/`message` If the message begins with `client-`, then it has a custom
+        #   name assigned by a Chat app that created it with the Chat REST API. That Chat
+        #   app (but not others) can pass the custom name to get, update, or delete the
+        #   message. To learn more, see [create and name a message] (https://developers.
+        #   google.com/chat/api/guides/crudl/messages#name_a_created_message).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -658,6 +726,11 @@ module Google
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [Boolean] allow_missing
+        #   Optional. If `true` and the message is not found, a new message is created and
+        #   `updateMask` is ignored. The specified message ID must be [client-assigned](
+        #   https://developers.google.com/chat/api/guides/crudl/messages#
+        #   name_a_created_message) or the request fails.
         # @param [String] update_mask
         #   Required. The field paths to update. Separate multiple values with commas.
         #   Currently supported field paths: - text - cards (Requires [service account
@@ -679,13 +752,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_space_message(name, message_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_space_message(name, message_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
