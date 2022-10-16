@@ -2558,6 +2558,15 @@ module Google
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
       
+        # A custom name for a Chat message assigned at creation. Must start with `client-
+        # ` and contain only lowercase letters, numbers, and hyphens up to 63 characters
+        # in length. Specify this field to get, update, or delete the message with the
+        # specified value. For example usage, see [Name a created message](https://
+        # developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+        # Corresponds to the JSON property `clientAssignedMessageId`
+        # @return [String]
+        attr_accessor :client_assigned_message_id
+      
         # Output only. The time at which the message was created in Google Chat server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2628,6 +2637,7 @@ module Google
           @attachment = args[:attachment] if args.key?(:attachment)
           @cards = args[:cards] if args.key?(:cards)
           @cards_v2 = args[:cards_v2] if args.key?(:cards_v2)
+          @client_assigned_message_id = args[:client_assigned_message_id] if args.key?(:client_assigned_message_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)

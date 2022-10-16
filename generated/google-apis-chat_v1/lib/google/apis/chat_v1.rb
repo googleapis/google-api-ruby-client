@@ -29,6 +29,9 @@ module Google
       # Version of the Google Chat API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # View, add, and remove members from conversations in Google Chat
+      AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
     end
   end
 end
