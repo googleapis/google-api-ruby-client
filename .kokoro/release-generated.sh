@@ -10,5 +10,4 @@ export PATH=$GEM_HOME/bin:$PATH
 gem install --no-document toys
 toys release install-python-tools -v
 # This is not called from autorelease, so don't run publish-reporter-script
-# TODO: Uncomment to re-enable releases on Oct 14, 2022.
-# toys release perform -v --base-dir=generated --all=^google-apis- --enable-docs < /dev/null
+toys release perform -v --base-dir=generated --all=^google-apis- --enable-docs < /dev/null
