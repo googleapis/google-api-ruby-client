@@ -28,60 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromePolicyV1DefineCertificateRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1DefineCertificateResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1DefineNetworkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1DefineNetworkResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1NetworkSetting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1RemoveCertificateRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1RemoveCertificateResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1RemoveNetworkRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChromePolicyV1RemoveNetworkResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +53,30 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineCertificateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineCertificateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineNetworkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineNetworkResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +119,12 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1NetworkSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +179,30 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1PolicyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveNetworkRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveNetworkResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -302,83 +302,6 @@ module Google
         end
       end
       
-      class GoogleChromePolicyV1DefineCertificateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ceritificate_name, as: 'ceritificateName'
-          property :certificate, as: 'certificate'
-          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting::Representation
-      
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1DefineCertificateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_id, as: 'networkId'
-          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting::Representation
-      
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1DefineNetworkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting::Representation
-      
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1DefineNetworkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_id, as: 'networkId'
-          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting::Representation
-      
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1NetworkSetting
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_schema, as: 'policySchema'
-          hash :value, as: 'value'
-        end
-      end
-      
-      class GoogleChromePolicyV1RemoveCertificateRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_id, as: 'networkId'
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1RemoveCertificateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleChromePolicyV1RemoveNetworkRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :network_id, as: 'networkId'
-          property :target_resource, as: 'targetResource'
-        end
-      end
-      
-      class GoogleChromePolicyV1RemoveNetworkResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -416,6 +339,47 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest::Representation
       
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ceritificate_name, as: 'ceritificateName'
+          property :certificate, as: 'certificate'
+          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting::Representation
+      
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineCertificateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_id, as: 'networkId'
+          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting::Representation
+      
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineNetworkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting::Representation
+      
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1DefineNetworkResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_id, as: 'networkId'
+          collection :settings, as: 'settings', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting::Representation
+      
+          property :target_resource, as: 'targetResource'
         end
       end
       
@@ -484,6 +448,14 @@ module Google
           property :policy_value, as: 'policyValue', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicyValue::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1NetworkSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_schema, as: 'policySchema'
+          hash :value, as: 'value'
         end
       end
       
@@ -587,6 +559,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_schema, as: 'policySchema'
           hash :value, as: 'value'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_id, as: 'networkId'
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveNetworkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_id, as: 'networkId'
+          property :target_resource, as: 'targetResource'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveNetworkResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

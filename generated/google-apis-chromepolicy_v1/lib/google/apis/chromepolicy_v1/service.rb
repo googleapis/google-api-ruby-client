@@ -239,7 +239,7 @@ module Google
         # Creates a certificate at a specified OU for a customer.
         # @param [String] customer
         #   Required. The customer for which the certificate will apply.
-        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateRequest] google_chrome_policy_v1_define_certificate_request_object
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateRequest] google_chrome_policy_versions_v1_define_certificate_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -249,20 +249,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateResponse] parsed result object
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateResponse]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def define_customer_policy_network_certificate(customer, google_chrome_policy_v1_define_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def define_customer_policy_network_certificate(customer, google_chrome_policy_versions_v1_define_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+customer}/policies/networks:defineCertificate', options)
-          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateRequest::Representation
-          command.request_object = google_chrome_policy_v1_define_certificate_request_object
-          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateResponse::Representation
-          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineCertificateResponse
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateRequest::Representation
+          command.request_object = google_chrome_policy_versions_v1_define_certificate_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineCertificateResponse
           command.params['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -272,7 +272,7 @@ module Google
         # Define a new network.
         # @param [String] customer
         #   Required. The customer who will own this new network.
-        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkRequest] google_chrome_policy_v1_define_network_request_object
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkRequest] google_chrome_policy_versions_v1_define_network_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,20 +282,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkResponse] parsed result object
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkResponse]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def define_customer_policy_network_network(customer, google_chrome_policy_v1_define_network_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def define_customer_policy_network_network(customer, google_chrome_policy_versions_v1_define_network_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+customer}/policies/networks:defineNetwork', options)
-          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkRequest::Representation
-          command.request_object = google_chrome_policy_v1_define_network_request_object
-          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkResponse::Representation
-          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1DefineNetworkResponse
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkRequest::Representation
+          command.request_object = google_chrome_policy_versions_v1_define_network_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1DefineNetworkResponse
           command.params['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -305,7 +305,7 @@ module Google
         # Remove an existing certificate by guid.
         # @param [String] customer
         #   Required. The customer whose certificate will be removed.
-        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateRequest] google_chrome_policy_v1_remove_certificate_request_object
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateRequest] google_chrome_policy_versions_v1_remove_certificate_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -315,20 +315,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateResponse] parsed result object
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateResponse]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_customer_policy_network_certificate(customer, google_chrome_policy_v1_remove_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def remove_customer_policy_network_certificate(customer, google_chrome_policy_versions_v1_remove_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+customer}/policies/networks:removeCertificate', options)
-          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateRequest::Representation
-          command.request_object = google_chrome_policy_v1_remove_certificate_request_object
-          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateResponse::Representation
-          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveCertificateResponse
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateRequest::Representation
+          command.request_object = google_chrome_policy_versions_v1_remove_certificate_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveCertificateResponse
           command.params['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -338,7 +338,7 @@ module Google
         # Remove an existing network by guid.
         # @param [String] customer
         #   Required. The customer whose network will be removed.
-        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkRequest] google_chrome_policy_v1_remove_network_request_object
+        # @param [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkRequest] google_chrome_policy_versions_v1_remove_network_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,20 +348,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkResponse] parsed result object
+        # @yieldparam result [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkResponse]
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_customer_policy_network_network(customer, google_chrome_policy_v1_remove_network_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def remove_customer_policy_network_network(customer, google_chrome_policy_versions_v1_remove_network_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+customer}/policies/networks:removeNetwork', options)
-          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkRequest::Representation
-          command.request_object = google_chrome_policy_v1_remove_network_request_object
-          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkResponse::Representation
-          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyV1RemoveNetworkResponse
+          command.request_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkRequest::Representation
+          command.request_object = google_chrome_policy_versions_v1_remove_network_request_object
+          command.response_representation = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkResponse::Representation
+          command.response_class = Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1RemoveNetworkResponse
           command.params['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

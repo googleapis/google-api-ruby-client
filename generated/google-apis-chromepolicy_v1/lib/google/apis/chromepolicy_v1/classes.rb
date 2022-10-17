@@ -60,248 +60,6 @@ module Google
         end
       end
       
-      # Request object for creating a certificate.
-      class GoogleChromePolicyV1DefineCertificateRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The optional name of the certificate. If not specified, the
-        # certificate issuer will be used as the name.
-        # Corresponds to the JSON property `ceritificateName`
-        # @return [String]
-        attr_accessor :ceritificate_name
-      
-        # Required. The raw contents of the .PEM, .CRT, or .CER file.
-        # Corresponds to the JSON property `certificate`
-        # @return [String]
-        attr_accessor :certificate
-      
-        # Optional. Certificate settings within the chrome.networks.certificates
-        # namespace.
-        # Corresponds to the JSON property `settings`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
-        attr_accessor :settings
-      
-        # Required. The target resource on which this certificate is applied. The
-        # following resources are supported: * Organizational Unit ("orgunits/`
-        # orgunit_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ceritificate_name = args[:ceritificate_name] if args.key?(:ceritificate_name)
-          @certificate = args[:certificate] if args.key?(:certificate)
-          @settings = args[:settings] if args.key?(:settings)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # Response object for creating a certificate.
-      class GoogleChromePolicyV1DefineCertificateResponse
-        include Google::Apis::Core::Hashable
-      
-        # The guid of the certificate created by the action.
-        # Corresponds to the JSON property `networkId`
-        # @return [String]
-        attr_accessor :network_id
-      
-        # the affiliated settings of the certificate (NOT IMPLEMENTED)
-        # Corresponds to the JSON property `settings`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
-        attr_accessor :settings
-      
-        # the resource at which the certificate is defined.
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_id = args[:network_id] if args.key?(:network_id)
-          @settings = args[:settings] if args.key?(:settings)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # Request object for creating a new network.
-      class GoogleChromePolicyV1DefineNetworkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. Name of the new created network.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. Detailed network settings.
-        # Corresponds to the JSON property `settings`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
-        attr_accessor :settings
-      
-        # Required. The target resource on which this new network will be defined. The
-        # following resources are supported: * Organizational Unit ("orgunits/`
-        # orgunit_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @settings = args[:settings] if args.key?(:settings)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # Response object for creating a network.
-      class GoogleChromePolicyV1DefineNetworkResponse
-        include Google::Apis::Core::Hashable
-      
-        # Network ID of the new created network.
-        # Corresponds to the JSON property `networkId`
-        # @return [String]
-        attr_accessor :network_id
-      
-        # Detailed network settings of the new created network
-        # Corresponds to the JSON property `settings`
-        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1NetworkSetting>]
-        attr_accessor :settings
-      
-        # The target resource on which this new network will be defined. The following
-        # resources are supported: * Organizational Unit ("orgunits/`orgunit_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_id = args[:network_id] if args.key?(:network_id)
-          @settings = args[:settings] if args.key?(:settings)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # A network setting contains network configurations.
-      class GoogleChromePolicyV1NetworkSetting
-        include Google::Apis::Core::Hashable
-      
-        # The fully qualified name of the network setting.
-        # Corresponds to the JSON property `policySchema`
-        # @return [String]
-        attr_accessor :policy_schema
-      
-        # The value of the network setting.
-        # Corresponds to the JSON property `value`
-        # @return [Hash<String,Object>]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Request object for removing a certificate.
-      class GoogleChromePolicyV1RemoveCertificateRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The GUID of the certificate to remove.
-        # Corresponds to the JSON property `networkId`
-        # @return [String]
-        attr_accessor :network_id
-      
-        # Required. The target resource on which this certificate will be removed. The
-        # following resources are supported: * Organizational Unit ("orgunits/`
-        # orgunit_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_id = args[:network_id] if args.key?(:network_id)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # Response object for removing a certificate.
-      class GoogleChromePolicyV1RemoveCertificateResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request object for removing a network
-      class GoogleChromePolicyV1RemoveNetworkRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The GUID of the network to remove.
-        # Corresponds to the JSON property `networkId`
-        # @return [String]
-        attr_accessor :network_id
-      
-        # Required. The target resource on which this network will be removed. The
-        # following resources are supported: * Organizational Unit ("orgunits/`
-        # orgunit_id`")
-        # Corresponds to the JSON property `targetResource`
-        # @return [String]
-        attr_accessor :target_resource
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_id = args[:network_id] if args.key?(:network_id)
-          @target_resource = args[:target_resource] if args.key?(:target_resource)
-        end
-      end
-      
-      # Response object for removing a network.
-      class GoogleChromePolicyV1RemoveNetworkResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Additional key names that will be used to identify the target of the policy
       # value.
       class GoogleChromePolicyVersionsV1AdditionalTargetKeyName
@@ -429,6 +187,143 @@ module Google
         # Update properties of this object
         def update!(**args)
           @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request object for creating a certificate.
+      class GoogleChromePolicyVersionsV1DefineCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The optional name of the certificate. If not specified, the
+        # certificate issuer will be used as the name.
+        # Corresponds to the JSON property `ceritificateName`
+        # @return [String]
+        attr_accessor :ceritificate_name
+      
+        # Required. The raw contents of the .PEM, .CRT, or .CER file.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # Optional. Certificate settings within the chrome.networks.certificates
+        # namespace.
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # Required. The target resource on which this certificate is applied. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ceritificate_name = args[:ceritificate_name] if args.key?(:ceritificate_name)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for creating a certificate.
+      class GoogleChromePolicyVersionsV1DefineCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The guid of the certificate created by the action.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # the affiliated settings of the certificate (NOT IMPLEMENTED)
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # the resource at which the certificate is defined.
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Request object for creating a new network.
+      class GoogleChromePolicyVersionsV1DefineNetworkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the new created network.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Detailed network settings.
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # Required. The target resource on which this new network will be defined. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for creating a network.
+      class GoogleChromePolicyVersionsV1DefineNetworkResponse
+        include Google::Apis::Core::Hashable
+      
+        # Network ID of the new created network.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Detailed network settings of the new created network
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NetworkSetting>]
+        attr_accessor :settings
+      
+        # The target resource on which this new network will be defined. The following
+        # resources are supported: * Organizational Unit ("orgunits/`orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @settings = args[:settings] if args.key?(:settings)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
         end
       end
       
@@ -627,6 +522,31 @@ module Google
           @policy_target_key = args[:policy_target_key] if args.key?(:policy_target_key)
           @policy_value = args[:policy_value] if args.key?(:policy_value)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # A network setting contains network configurations.
+      class GoogleChromePolicyVersionsV1NetworkSetting
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the network setting.
+        # Corresponds to the JSON property `policySchema`
+        # @return [String]
+        attr_accessor :policy_schema
+      
+        # The value of the network setting.
+        # Corresponds to the JSON property `value`
+        # @return [Hash<String,Object>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1006,6 +926,86 @@ module Google
         def update!(**args)
           @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request object for removing a certificate.
+      class GoogleChromePolicyVersionsV1RemoveCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GUID of the certificate to remove.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Required. The target resource on which this certificate will be removed. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for removing a certificate.
+      class GoogleChromePolicyVersionsV1RemoveCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request object for removing a network
+      class GoogleChromePolicyVersionsV1RemoveNetworkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GUID of the network to remove.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Required. The target resource on which this network will be removed. The
+        # following resources are supported: * Organizational Unit ("orgunits/`
+        # orgunit_id`")
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Response object for removing a network.
+      class GoogleChromePolicyVersionsV1RemoveNetworkResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
