@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.1 (2022-10-18)
+
+#### Bug Fixes
+
+* Storage upload to handle empty string/file cases ([#12306](https://github.com/googleapis/google-api-ruby-client/issues/12306)) 
+
 ### 0.9.0 (2022-09-18)
 
 #### Features
