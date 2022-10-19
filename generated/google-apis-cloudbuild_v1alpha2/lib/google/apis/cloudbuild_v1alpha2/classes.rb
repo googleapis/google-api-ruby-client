@@ -554,10 +554,10 @@ module Google
         attr_accessor :timeout
       
         # Output only. Stores timing information for phases of the build. Valid keys are:
-        # * BUILD: time to execute all build steps. * PUSH: time to push all specified
-        # images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up
-        # build. If the build does not specify source or images, these keys will not be
-        # included.
+        # * BUILD: time to execute all build steps. * PUSH: time to push all artifacts
+        # including docker images and non docker artifacts. * FETCHSOURCE: time to fetch
+        # source. * SETUPBUILD: time to set up build. If the build does not specify
+        # source or images, these keys will not be included.
         # Corresponds to the JSON property `timing`
         # @return [Hash<String,Google::Apis::CloudbuildV1alpha2::TimeSpan>]
         attr_accessor :timing
@@ -2067,7 +2067,8 @@ module Google
       class Results
         include Google::Apis::Core::Hashable
       
-        # Path to the artifact manifest. Only populated when artifacts are uploaded.
+        # Path to the artifact manifest for non-container artifacts uploaded to Cloud
+        # Storage. Only populated when artifacts are uploaded to Cloud Storage.
         # Corresponds to the JSON property `artifactManifest`
         # @return [String]
         attr_accessor :artifact_manifest
@@ -2100,7 +2101,8 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1alpha2::UploadedMavenArtifact>]
         attr_accessor :maven_artifacts
       
-        # Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        # Number of non-container artifacts uploaded to Cloud Storage. Only populated
+        # when artifacts are uploaded to Cloud Storage.
         # Corresponds to the JSON property `numArtifacts`
         # @return [Fixnum]
         attr_accessor :num_artifacts
