@@ -106,9 +106,9 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailLoggingErrorContext]
         attr_accessor :context
       
-        # The error payload that is populated on LRO import APIs. Including: "google.
-        # cloud.retail.v2.ProductService.ImportProducts" "google.cloud.retail.v2.
-        # EventService.ImportUserEvents"
+        # The error payload that is populated on LRO import APIs, including "google.
+        # cloud.retail.v2.ProductService.ImportProducts" and "google.cloud.retail.v2.
+        # EventService.ImportUserEvents".
         # Corresponds to the JSON property `importPayload`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailLoggingImportErrorContext]
         attr_accessor :import_payload
@@ -186,9 +186,9 @@ module Google
         end
       end
       
-      # The error payload that is populated on LRO import APIs. Including: "google.
-      # cloud.retail.v2.ProductService.ImportProducts" "google.cloud.retail.v2.
-      # EventService.ImportUserEvents"
+      # The error payload that is populated on LRO import APIs, including "google.
+      # cloud.retail.v2.ProductService.ImportProducts" and "google.cloud.retail.v2.
+      # EventService.ImportUserEvents".
       class GoogleCloudRetailLoggingImportErrorContext
         include Google::Apis::Core::Hashable
       
@@ -203,12 +203,6 @@ module Google
         # @return [String]
         attr_accessor :gcs_path
       
-        # The detailed content which caused the error on importing an inventory activity.
-        # http://cs/google3/google/cloud/retail/v2main/inventory_activity.proto
-        # Corresponds to the JSON property `inventoryActivity`
-        # @return [String]
-        attr_accessor :inventory_activity
-      
         # Line number of the content in file. Should be empty for permission or batch
         # operation error.
         # Corresponds to the JSON property `lineNumber`
@@ -219,37 +213,6 @@ module Google
         # Corresponds to the JSON property `operationName`
         # @return [String]
         attr_accessor :operation_name
-      
-        # The detailed content which caused the error on importing an order. http://cs/
-        # google3/google/cloud/retail/v2main/order.proto
-        # Corresponds to the JSON property `order`
-        # @return [String]
-        attr_accessor :order
-      
-        # The detailed content which caused the error on importing a place. http://cs/
-        # google3/google/cloud/retail/v2main/place.proto
-        # Corresponds to the JSON property `place`
-        # @return [String]
-        attr_accessor :place
-      
-        # The detailed content which caused the error on importing a place asset. http://
-        # cs/google3/google/cloud/retail/v2main/place_asset.proto
-        # Corresponds to the JSON property `placeAsset`
-        # @return [String]
-        attr_accessor :place_asset
-      
-        # The detailed content which caused the error on importing a place product price.
-        # http://cs/google3/google/cloud/retail/v2main/place_product_price.proto
-        # Corresponds to the JSON property `placeProductPrice`
-        # @return [String]
-        attr_accessor :place_product_price
-      
-        # The detailed content which caused the error on importing a place product
-        # settings. http://cs/google3/google/cloud/retail/v2main/place_product_settings.
-        # proto
-        # Corresponds to the JSON property `placeProductSettings`
-        # @return [String]
-        attr_accessor :place_product_settings
       
         # The detailed content which caused the error on importing a product.
         # Corresponds to the JSON property `product`
@@ -269,14 +232,8 @@ module Google
         def update!(**args)
           @catalog_item = args[:catalog_item] if args.key?(:catalog_item)
           @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
-          @inventory_activity = args[:inventory_activity] if args.key?(:inventory_activity)
           @line_number = args[:line_number] if args.key?(:line_number)
           @operation_name = args[:operation_name] if args.key?(:operation_name)
-          @order = args[:order] if args.key?(:order)
-          @place = args[:place] if args.key?(:place)
-          @place_asset = args[:place_asset] if args.key?(:place_asset)
-          @place_product_price = args[:place_product_price] if args.key?(:place_product_price)
-          @place_product_settings = args[:place_product_settings] if args.key?(:place_product_settings)
           @product = args[:product] if args.key?(:product)
           @user_event = args[:user_event] if args.key?(:user_event)
         end
@@ -1863,7 +1820,8 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig]
         attr_accessor :errors_config
       
-        # Output result.
+        # Output result that stores the information about where the exported data is
+        # stored.
         # Corresponds to the JSON property `outputResult`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult]
         attr_accessor :output_result
@@ -1896,7 +1854,8 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaExportErrorsConfig]
         attr_accessor :errors_config
       
-        # Output result.
+        # Output result that stores the information about where the exported data is
+        # stored.
         # Corresponds to the JSON property `outputResult`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaOutputResult]
         attr_accessor :output_result
@@ -1946,6 +1905,25 @@ module Google
         def update!(**args)
           @place_ids = args[:place_ids] if args.key?(:place_ids)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A Gcs output result.
+      class GoogleCloudRetailV2alphaGcsOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The uri of Gcs output
+        # Corresponds to the JSON property `outputUri`
+        # @return [String]
+        attr_accessor :output_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri = args[:output_uri] if args.key?(:output_uri)
         end
       end
       
@@ -2953,14 +2931,20 @@ module Google
         end
       end
       
-      # Output result.
+      # Output result that stores the information about where the exported data is
+      # stored.
       class GoogleCloudRetailV2alphaOutputResult
         include Google::Apis::Core::Hashable
       
-        # Export result in BigQuery.
+        # The BigQuery location where the result is stored.
         # Corresponds to the JSON property `bigqueryResult`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBigQueryOutputResult>]
         attr_accessor :bigquery_result
+      
+        # The Google Cloud Storage location where the result is stored.
+        # Corresponds to the JSON property `gcsResult`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaGcsOutputResult>]
+        attr_accessor :gcs_result
       
         def initialize(**args)
            update!(**args)
@@ -2969,6 +2953,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
+          @gcs_result = args[:gcs_result] if args.key?(:gcs_result)
         end
       end
       
@@ -6408,7 +6393,8 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig]
         attr_accessor :errors_config
       
-        # Output result.
+        # Output result that stores the information about where the exported data is
+        # stored.
         # Corresponds to the JSON property `outputResult`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult]
         attr_accessor :output_result
@@ -6441,7 +6427,8 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaExportErrorsConfig]
         attr_accessor :errors_config
       
-        # Output result.
+        # Output result that stores the information about where the exported data is
+        # stored.
         # Corresponds to the JSON property `outputResult`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaOutputResult]
         attr_accessor :output_result
@@ -6455,6 +6442,25 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @output_result = args[:output_result] if args.key?(:output_result)
+        end
+      end
+      
+      # A Gcs output result.
+      class GoogleCloudRetailV2betaGcsOutputResult
+        include Google::Apis::Core::Hashable
+      
+        # The uri of Gcs output
+        # Corresponds to the JSON property `outputUri`
+        # @return [String]
+        attr_accessor :output_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri = args[:output_uri] if args.key?(:output_uri)
         end
       end
       
@@ -6775,14 +6781,20 @@ module Google
         end
       end
       
-      # Output result.
+      # Output result that stores the information about where the exported data is
+      # stored.
       class GoogleCloudRetailV2betaOutputResult
         include Google::Apis::Core::Hashable
       
-        # Export result in BigQuery.
+        # The BigQuery location where the result is stored.
         # Corresponds to the JSON property `bigqueryResult`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaBigQueryOutputResult>]
         attr_accessor :bigquery_result
+      
+        # The Google Cloud Storage location where the result is stored.
+        # Corresponds to the JSON property `gcsResult`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaGcsOutputResult>]
+        attr_accessor :gcs_result
       
         def initialize(**args)
            update!(**args)
@@ -6791,6 +6803,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_result = args[:bigquery_result] if args.key?(:bigquery_result)
+          @gcs_result = args[:gcs_result] if args.key?(:gcs_result)
         end
       end
       
