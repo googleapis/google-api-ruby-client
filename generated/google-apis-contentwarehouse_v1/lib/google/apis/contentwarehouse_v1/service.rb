@@ -190,7 +190,8 @@ module Google
         end
         
         # Deletes a document schema. Returns NOT_FOUND if the document schema does not
-        # exist.
+        # exist. Returns BAD_REQUEST if the document schema has documents depending on
+        # it.
         # @param [String] name
         #   Required. The name of the document schema to delete.
         # @param [String] fields
@@ -295,8 +296,9 @@ module Google
         
         # Updates a Document Schema. Returns INVALID_ARGUMENT if the name of the
         # Document Schema is non-empty and does not equal the existing name. Supports
-        # only appending new properties and updating existing properties will result
-        # into INVALID_ARGUMENT.
+        # only appending new properties, adding new ENUM possible values, and updating
+        # the EnumTypeOptions.validation_check_disabled flag for ENUM possible values.
+        # Updating existing properties will result into INVALID_ARGUMENT.
         # @param [String] name
         #   Required. The name of the document schema to update. Format: projects/`
         #   project_number`/locations/`location`/documentSchemas/`document_schema_id`.
