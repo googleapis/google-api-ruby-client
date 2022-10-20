@@ -26,8 +26,7 @@ module Google
       class AnalyzeEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ # Represents
-        # the input to API methods.
+        # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
@@ -79,8 +78,7 @@ module Google
       class AnalyzeSentimentRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ # Represents
-        # the input to API methods.
+        # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
@@ -139,8 +137,7 @@ module Google
       class AnalyzeSyntaxRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ # Represents
-        # the input to API methods.
+        # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
@@ -199,8 +196,7 @@ module Google
       class AnnotateTextRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ # Represents
-        # the input to API methods.
+        # Represents the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1beta1::Document]
         attr_accessor :document
@@ -304,8 +300,7 @@ module Google
         end
       end
       
-      # ################################################################ # Represents
-      # the input to API methods.
+      # Represents the input to API methods.
       class Document
         include Google::Apis::Core::Hashable
       
