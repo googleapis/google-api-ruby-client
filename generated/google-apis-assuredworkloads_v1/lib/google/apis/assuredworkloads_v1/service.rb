@@ -30,7 +30,7 @@ module Google
       #    Assuredworkloads = Google::Apis::AssuredworkloadsV1 # Alias the module
       #    service = Assuredworkloads::AssuredworkloadsService.new
       #
-      # @see https://cloud.google.com
+      # @see https://cloud.google.com/learnmoreurl
       class AssuredworkloadsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -205,7 +205,7 @@ module Google
         
         # Gets Assured Workload associated with a CRM Node
         # @param [String] name
-        #   Required. The resource name of the Workload to fetch. This is the workloads's
+        #   Required. The resource name of the Workload to fetch. This is the workload's
         #   relative path in the API, formatted as "organizations/`organization_id`/
         #   locations/`location_id`/workloads/`workload_id`". For example, "organizations/
         #   123/locations/us-east1/workloads/assured-workload-1".
