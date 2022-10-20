@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.google.com
+    # @see https://cloud.google.com/learnmoreurl
     module AssuredworkloadsV1beta1
       # Version of the Assured Workloads API this client connects to.
       # This is NOT the gem version.

@@ -30,7 +30,7 @@ module Google
       #    Assuredworkloads = Google::Apis::AssuredworkloadsV1beta1 # Alias the module
       #    service = Assuredworkloads::AssuredworkloadsService.new
       #
-      # @see https://cloud.google.com
+      # @see https://cloud.google.com/learnmoreurl
       class AssuredworkloadsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
