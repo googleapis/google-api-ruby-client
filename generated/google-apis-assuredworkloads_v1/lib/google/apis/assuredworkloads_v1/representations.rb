@@ -152,6 +152,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment, as: 'comment'
+          property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
         end
       end
       

@@ -32,6 +32,15 @@ module Google
         # @return [String]
         attr_accessor :comment
       
+        # Optional. This field is deprecated and will be removed in future version of
+        # the API. Name of the OrgPolicy which was modified with non-compliant change
+        # and resulted in this violation. Format: projects/`project_number`/policies/`
+        # constraint_name` folders/`folder_id`/policies/`constraint_name` organizations/`
+        # organization_id`/policies/`constraint_name`
+        # Corresponds to the JSON property `nonCompliantOrgPolicy`
+        # @return [String]
+        attr_accessor :non_compliant_org_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -39,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @comment = args[:comment] if args.key?(:comment)
+          @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
         end
       end
       
@@ -410,7 +420,7 @@ module Google
         end
       end
       
-      # An Workload object for managing highly regulated workloads of cloud customers.
+      # A Workload object for managing highly regulated workloads of cloud customers.
       class GoogleCloudAssuredworkloadsV1Workload
         include Google::Apis::Core::Hashable
       
@@ -467,7 +477,9 @@ module Google
         # @return [String]
         attr_accessor :kaj_enrollment_state
       
-        # Settings specific to the Key Management Service.
+        # Settings specific to the Key Management Service. This message is deprecated.
+        # In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
+        # or KEYRING in ResourceSettings.resource_type field.
         # Corresponds to the JSON property `kmsSettings`
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings]
         attr_accessor :kms_settings
@@ -540,7 +552,9 @@ module Google
         end
       end
       
-      # Settings specific to the Key Management Service.
+      # Settings specific to the Key Management Service. This message is deprecated.
+      # In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
+      # or KEYRING in ResourceSettings.resource_type field.
       class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
         include Google::Apis::Core::Hashable
       
@@ -613,7 +627,7 @@ module Google
         attr_accessor :resource_id
       
         # Indicates the type of resource. This field should be specified to correspond
-        # the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        # the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
