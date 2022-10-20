@@ -2338,6 +2338,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore::Representation
+      
           collection :supported_by, as: 'supportedBy'
           collection :versions, as: 'versions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2VersionDescription::Representation
       
