@@ -38,6 +38,12 @@ module Google
         # @return [String]
         attr_accessor :alert_descriptor
       
+        # Customizable text to display in the next steps section of the alert. Will be
+        # parsed as HTML to allow new paragraphs and hyperlinks.
+        # Corresponds to the JSON property `nextSteps`
+        # @return [String]
+        attr_accessor :next_steps
+      
         # Product that the abuse is originating from.
         # Corresponds to the JSON property `product`
         # @return [String]
@@ -62,6 +68,7 @@ module Google
         def update!(**args)
           @additional_details = args[:additional_details] if args.key?(:additional_details)
           @alert_descriptor = args[:alert_descriptor] if args.key?(:alert_descriptor)
+          @next_steps = args[:next_steps] if args.key?(:next_steps)
           @product = args[:product] if args.key?(:product)
           @sub_alert_id = args[:sub_alert_id] if args.key?(:sub_alert_id)
           @summary = args[:summary] if args.key?(:summary)
