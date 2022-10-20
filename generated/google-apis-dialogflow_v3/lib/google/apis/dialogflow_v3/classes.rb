@@ -4926,10 +4926,10 @@ module Google
         attr_accessor :enable_audio_redaction
         alias_method :enable_audio_redaction?, :enable_audio_redaction
       
-        # Cloud Storage bucket to export audio record to. Settings this field would
-        # grant the Storage Object Creator role to the Dialogflow Service Agent. API
-        # caller that tries to modify this field should have the permission of storage.
-        # buckets.setIamPolicy.
+        # Cloud Storage bucket to export audio record to. Setting this field would grant
+        # the Storage Object Creator role to the Dialogflow Service Agent. API caller
+        # that tries to modify this field should have the permission of storage.buckets.
+        # setIamPolicy.
         # Corresponds to the JSON property `gcsBucket`
         # @return [String]
         attr_accessor :gcs_bucket
