@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaGcsOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,6 +1036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaGcsOutputResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaImportCompletionDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,14 +1246,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_item, as: 'catalogItem'
           property :gcs_path, as: 'gcsPath'
-          property :inventory_activity, as: 'inventoryActivity'
           property :line_number, as: 'lineNumber'
           property :operation_name, as: 'operationName'
-          property :order, as: 'order'
-          property :place, as: 'place'
-          property :place_asset, as: 'placeAsset'
-          property :place_product_price, as: 'placeProductPrice'
-          property :place_product_settings, as: 'placeProductSettings'
           property :product, as: 'product'
           property :user_event, as: 'userEvent'
         end
@@ -1721,6 +1727,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaGcsOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri, as: 'outputUri'
+        end
+      end
+      
       class GoogleCloudRetailV2alphaGcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1991,6 +2004,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBigQueryOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBigQueryOutputResult::Representation
+      
+          collection :gcs_result, as: 'gcsResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaGcsOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaGcsOutputResult::Representation
       
         end
       end
@@ -2801,6 +2816,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaGcsOutputResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri, as: 'outputUri'
+        end
+      end
+      
       class GoogleCloudRetailV2betaImportCompletionDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2882,6 +2904,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bigquery_result, as: 'bigqueryResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaBigQueryOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaBigQueryOutputResult::Representation
+      
+          collection :gcs_result, as: 'gcsResult', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaGcsOutputResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2betaGcsOutputResult::Representation
       
         end
       end
