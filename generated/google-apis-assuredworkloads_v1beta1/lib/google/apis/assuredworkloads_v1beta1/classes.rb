@@ -32,6 +32,15 @@ module Google
         # @return [String]
         attr_accessor :comment
       
+        # Optional. This field is deprecated and will be removed in future version of
+        # the API. Name of the OrgPolicy which was modified with non-compliant change
+        # and resulted in this violation. Format: projects/`project_number`/policies/`
+        # constraint_name` folders/`folder_id`/policies/`constraint_name` organizations/`
+        # organization_id`/policies/`constraint_name`
+        # Corresponds to the JSON property `nonCompliantOrgPolicy`
+        # @return [String]
+        attr_accessor :non_compliant_org_policy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -39,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @comment = args[:comment] if args.key?(:comment)
+          @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
         end
       end
       
@@ -392,7 +402,7 @@ module Google
         end
       end
       
-      # An Workload object for managing highly regulated workloads of cloud customers.
+      # A Workload object for managing highly regulated workloads of cloud customers.
       class GoogleCloudAssuredworkloadsV1beta1Workload
         include Google::Apis::Core::Hashable
       
