@@ -406,6 +406,7 @@ module Google
           property :additional_details, as: 'additionalDetails', class: Google::Apis::AlertcenterV1beta1::EntityList, decorator: Google::Apis::AlertcenterV1beta1::EntityList::Representation
       
           property :alert_descriptor, as: 'alertDescriptor'
+          property :next_steps, as: 'nextSteps'
           property :product, as: 'product'
           property :sub_alert_id, as: 'subAlertId'
           property :summary, as: 'summary'
