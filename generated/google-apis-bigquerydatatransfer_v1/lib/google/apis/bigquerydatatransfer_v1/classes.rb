@@ -230,7 +230,7 @@ module Google
         attr_accessor :immutable
         alias_method :immutable?, :immutable
       
-        # For integer and double values specifies maxminum allowed value.
+        # For integer and double values specifies maximum allowed value.
         # Corresponds to the JSON property `maxValue`
         # @return [Float]
         attr_accessor :max_value

@@ -6088,6 +6088,7 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
           property :speech_model_variant, as: 'speechModelVariant'
         end
       end

@@ -41,6 +41,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_timestamp
       
+        # Customer ID of a client account in the new Search Ads 360 experience.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
         # The numeric segmentation identifier (for example, DoubleClick Search
         # Floodlight activity ID).
         # Corresponds to the JSON property `segmentationId`
@@ -68,6 +73,7 @@ module Google
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @agency_id = args[:agency_id] if args.key?(:agency_id)
           @availability_timestamp = args[:availability_timestamp] if args.key?(:availability_timestamp)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
           @segmentation_id = args[:segmentation_id] if args.key?(:segmentation_id)
           @segmentation_name = args[:segmentation_name] if args.key?(:segmentation_name)
           @segmentation_type = args[:segmentation_type] if args.key?(:segmentation_type)
@@ -167,6 +173,11 @@ module Google
         # Corresponds to the JSON property `customMetric`
         # @return [Array<Google::Apis::DoubleclicksearchV2::CustomMetric>]
         attr_accessor :custom_metric
+      
+        # Customer ID of a client account in the new Search Ads 360 experience.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
       
         # The type of device on which the conversion occurred.
         # Corresponds to the JSON property `deviceType`
@@ -288,6 +299,7 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
           @device_type = args[:device_type] if args.key?(:device_type)
           @ds_conversion_id = args[:ds_conversion_id] if args.key?(:ds_conversion_id)
           @engine_account_id = args[:engine_account_id] if args.key?(:engine_account_id)
