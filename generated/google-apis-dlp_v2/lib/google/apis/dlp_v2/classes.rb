@@ -1060,7 +1060,7 @@ module Google
         end
       end
       
-      # Container structure for the content to inspect.
+      # 
       class GooglePrivacyDlpV2ContentItem
         include Google::Apis::Core::Hashable
       
@@ -2075,7 +2075,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # Container structure for the content to inspect.
+        # The item to de-identify. Will be treated as text.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -2104,7 +2104,7 @@ module Google
       class GooglePrivacyDlpV2DeidentifyContentResponse
         include Google::Apis::Core::Hashable
       
-        # Container structure for the content to inspect.
+        # The de-identified item.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -3019,7 +3019,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails]
         attr_accessor :finding_details
       
-        # Container structure for the content to inspect.
+        # The item to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -3342,7 +3342,7 @@ module Google
         # CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/
         # docs/infotypes-reference when specifying a built-in type. When sending Cloud
         # DLP results to Data Catalog, infoType names should conform to the pattern `[A-
-        # Za-z0-9$-_]`1,64``.
+        # Za-z0-9$_-]`1,64``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3421,6 +3421,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Score is a summary of all elements in the data profile. A higher number means
+        # more sensitive.
+        # Corresponds to the JSON property `sensitivityScore`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SensitivityScore]
+        attr_accessor :sensitivity_score
+      
         # Which parts of the API supports this InfoType.
         # Corresponds to the JSON property `supportedBy`
         # @return [Array<String>]
@@ -3441,6 +3447,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @supported_by = args[:supported_by] if args.key?(:supported_by)
           @versions = args[:versions] if args.key?(:versions)
         end
@@ -3671,7 +3678,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # Container structure for the content to inspect.
+        # The item to inspect.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -5865,7 +5872,7 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # Container structure for the content to inspect.
+        # The item to re-identify. Will be treated as text.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
@@ -5909,7 +5916,7 @@ module Google
       class GooglePrivacyDlpV2ReidentifyContentResponse
         include Google::Apis::Core::Hashable
       
-        # Container structure for the content to inspect.
+        # The re-identified item.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
