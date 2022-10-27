@@ -5992,6 +5992,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleInternalAppsWaldoV1alphaUpcomingCommitmentContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleInternalAppsWaldoV1alphaUpcomingOooContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12868,6 +12874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SocialGraphApiProtoContactPromptSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SocialGraphApiProtoContactState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15379,6 +15391,8 @@ module Google
       class AppsPeopleOzExternalMergedpeopleapiConnectionReminder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_prompt_settings, as: 'contactPromptSettings', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactPromptSettings::Representation
+      
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
       
           collection :prompt, as: 'prompt', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt::Representation
@@ -17956,6 +17970,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acp_version, as: 'acpVersion'
+          property :android_id, :numeric_string => true, as: 'androidId'
           property :app_version, as: 'appVersion'
           property :assistant_settings_source, as: 'assistantSettingsSource'
           property :board_name, as: 'boardName'
@@ -19868,6 +19883,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :devices, as: 'devices', class: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog, decorator: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog::Representation
       
+          property :low_confidence_reason, as: 'lowConfidenceReason'
           property :result_confidence_level, as: 'resultConfidenceLevel'
         end
       end
@@ -26420,9 +26436,6 @@ module Google
       class GoogleInternalAppsWaldoV1alphaInactive
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_commitment_status, as: 'nextCommitmentStatus', class: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUserStatus, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUserStatus::Representation
-      
-          property :next_commitment_time, as: 'nextCommitmentTime'
         end
       end
       
@@ -26465,6 +26478,15 @@ module Google
         end
       end
       
+      class GoogleInternalAppsWaldoV1alphaUpcomingCommitmentContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_commitment_status, as: 'nextCommitmentStatus', class: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUserStatus, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUserStatus::Representation
+      
+          property :next_commitment_time, as: 'nextCommitmentTime'
+        end
+      end
+      
       class GoogleInternalAppsWaldoV1alphaUpcomingOooContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26500,6 +26522,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_time, as: 'localTime', class: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaLocalTimeContext, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaLocalTimeContext::Representation
+      
+          property :upcoming_commitment_context, as: 'upcomingCommitmentContext', class: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUpcomingCommitmentContext, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUpcomingCommitmentContext::Representation
       
           property :upcoming_ooo, as: 'upcomingOoo', class: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUpcomingOooContext, decorator: Google::Apis::ContentwarehouseV1::GoogleInternalAppsWaldoV1alphaUpcomingOooContext::Representation
       
@@ -30091,6 +30115,7 @@ module Google
           property :calibrated_parsing_score, as: 'calibratedParsingScore'
           property :qrewrite_call_path_info, as: 'qrewriteCallPathInfo', class: Google::Apis::ContentwarehouseV1::NlpLoggingQRewriteClientCallPathInfo, decorator: Google::Apis::ContentwarehouseV1::NlpLoggingQRewriteClientCallPathInfo::Representation
       
+          property :qrewrite_call_path_info_fingerprint, :numeric_string => true, as: 'qrewriteCallPathInfoFingerprint'
           property :source, as: 'source'
         end
       end
@@ -36822,7 +36847,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :article_score, as: 'articleScore'
           property :article_score_v2, as: 'articleScoreV2'
-          property :chard, as: 'chard'
+          property :chard_encoded, as: 'chardEncoded'
           property :chard_variance, as: 'chardVariance'
           property :cluster_id, as: 'clusterId'
           property :cluster_uplift, as: 'clusterUplift', class: Google::Apis::ContentwarehouseV1::QualityNsrNsrDataClusterUplift, decorator: Google::Apis::ContentwarehouseV1::QualityNsrNsrDataClusterUplift::Representation
@@ -36849,6 +36874,8 @@ module Google
           property :nsr_variance, as: 'nsrVariance'
           property :nsrdata_from_fallback_pattern_key, as: 'nsrdataFromFallbackPatternKey'
           property :pnav, as: 'pnav'
+          collection :relative_nsr, as: 'relativeNsr', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
+      
           property :secondary_site_chunk, as: 'secondarySiteChunk'
           property :shopping_score, as: 'shoppingScore'
           property :site_autopilot_score, as: 'siteAutopilotScore'
@@ -41259,8 +41286,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :max_value_millis, :numeric_string => true, as: 'maxValueMillis'
+          property :min_value_millis, :numeric_string => true, as: 'minValueMillis'
           property :source, as: 'source'
           property :value, as: 'value'
+          property :value_millis, :numeric_string => true, as: 'valueMillis'
         end
       end
       
@@ -41606,6 +41636,13 @@ module Google
         end
       end
       
+      class SocialGraphApiProtoContactPromptSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_active_state, as: 'contactActiveState'
+        end
+      end
+      
       class SocialGraphApiProtoContactState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -41755,6 +41792,7 @@ module Google
       class SocialGraphApiProtoPrompt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_state, as: 'activeState'
           property :content, as: 'content', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPromptContent, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPromptContent::Representation
       
           property :last_dismiss_date, as: 'lastDismissDate', class: Google::Apis::ContentwarehouseV1::GoogleTypeDate, decorator: Google::Apis::ContentwarehouseV1::GoogleTypeDate::Representation
