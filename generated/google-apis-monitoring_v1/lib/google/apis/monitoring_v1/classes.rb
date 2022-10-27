@@ -1482,12 +1482,19 @@ module Google
       class TableDisplayOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. This field is unused and has been replaced by TimeSeriesTable.
+        # column_settings
+        # Corresponds to the JSON property `shownColumns`
+        # @return [Array<String>]
+        attr_accessor :shown_columns
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @shown_columns = args[:shown_columns] if args.key?(:shown_columns)
         end
       end
       
