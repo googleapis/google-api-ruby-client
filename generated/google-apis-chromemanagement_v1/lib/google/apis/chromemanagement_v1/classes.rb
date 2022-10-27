@@ -454,6 +454,62 @@ module Google
         end
       end
       
+      # Boot performance report of a device. * This field is telemetry information and
+      # this will change over time as the device is utilized. * Data for this field is
+      # controlled via policy: [ReportDeviceBootMode](https://chromeenterprise.google/
+      # policies/#ReportDeviceBootMode) * Data Collection Frequency: On every boot up
+      # event * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+      # Cache: If the device is offline, the collected data is stored locally, and
+      # will be reported when the device is next online: Yes * Reported for affiliated
+      # users only: N/A
+      class GoogleChromeManagementV1BootPerformanceReport
+        include Google::Apis::Core::Hashable
+      
+        # Total time to boot up.
+        # Corresponds to the JSON property `bootUpDuration`
+        # @return [String]
+        attr_accessor :boot_up_duration
+      
+        # The timestamp when power came on.
+        # Corresponds to the JSON property `bootUpTime`
+        # @return [String]
+        attr_accessor :boot_up_time
+      
+        # Timestamp when the report was collected.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Total time since shutdown start to power off.
+        # Corresponds to the JSON property `shutdownDuration`
+        # @return [String]
+        attr_accessor :shutdown_duration
+      
+        # The shutdown reason.
+        # Corresponds to the JSON property `shutdownReason`
+        # @return [String]
+        attr_accessor :shutdown_reason
+      
+        # The timestamp when shutdown.
+        # Corresponds to the JSON property `shutdownTime`
+        # @return [String]
+        attr_accessor :shutdown_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_up_duration = args[:boot_up_duration] if args.key?(:boot_up_duration)
+          @boot_up_time = args[:boot_up_time] if args.key?(:boot_up_time)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @shutdown_duration = args[:shutdown_duration] if args.key?(:shutdown_duration)
+          @shutdown_reason = args[:shutdown_reason] if args.key?(:shutdown_reason)
+          @shutdown_time = args[:shutdown_time] if args.key?(:shutdown_time)
+        end
+      end
+      
       # Describes a browser version and its install count.
       class GoogleChromeManagementV1BrowserVersion
         include Google::Apis::Core::Hashable
@@ -2020,6 +2076,11 @@ module Google
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport>]
         attr_accessor :battery_status_report
       
+        # Output only. Boot performance reports of the device.
+        # Corresponds to the JSON property `bootPerformanceReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BootPerformanceReport>]
+        attr_accessor :boot_performance_report
+      
         # Output only. Information regarding CPU specs for the device.
         # Corresponds to the JSON property `cpuInfo`
         # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo>]
@@ -2155,6 +2216,7 @@ module Google
           @audio_status_report = args[:audio_status_report] if args.key?(:audio_status_report)
           @battery_info = args[:battery_info] if args.key?(:battery_info)
           @battery_status_report = args[:battery_status_report] if args.key?(:battery_status_report)
+          @boot_performance_report = args[:boot_performance_report] if args.key?(:boot_performance_report)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @cpu_status_report = args[:cpu_status_report] if args.key?(:cpu_status_report)
           @customer = args[:customer] if args.key?(:customer)
