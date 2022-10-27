@@ -202,12 +202,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GceNodePoolOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeInitializationAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +671,12 @@ module Google
       end
       
       class TrinoJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsageMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1076,22 +1082,6 @@ module Google
           property :subnetwork_uri, as: 'subnetworkUri'
           collection :tags, as: 'tags'
           property :zone_uri, as: 'zoneUri'
-        end
-      end
-      
-      class GceNodePoolOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_uuid, as: 'clusterUuid'
-          property :description, as: 'description'
-          property :gce_node_pool_id, as: 'gceNodePoolId'
-          hash :labels, as: 'labels'
-          property :operation_type, as: 'operationType'
-          property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
-      
-          collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
-      
-          collection :warnings, as: 'warnings'
         end
       end
       
@@ -1511,6 +1501,22 @@ module Google
         end
       end
       
+      class NodeGroupOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :node_group_id, as: 'nodeGroupId'
+          property :operation_type, as: 'operationType'
+          property :status, as: 'status', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
+      
+          collection :status_history, as: 'statusHistory', class: Google::Apis::DataprocV1::ClusterOperationStatus, decorator: Google::Apis::DataprocV1::ClusterOperationStatus::Representation
+      
+          collection :warnings, as: 'warnings'
+        end
+      end
+      
       class NodeInitializationAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1702,6 +1708,8 @@ module Google
       class RuntimeInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approximate_usage, as: 'approximateUsage', class: Google::Apis::DataprocV1::UsageMetrics, decorator: Google::Apis::DataprocV1::UsageMetrics::Representation
+      
           property :diagnostic_output_uri, as: 'diagnosticOutputUri'
           hash :endpoints, as: 'endpoints'
           property :output_uri, as: 'outputUri'
@@ -1929,6 +1937,14 @@ module Google
           property :query_file_uri, as: 'queryFileUri'
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
       
+        end
+      end
+      
+      class UsageMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
+          property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
         end
       end
       
