@@ -1612,6 +1612,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3455,6 +3461,12 @@ module Google
       end
       
       class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaExceededInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8996,6 +9008,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :instance_group, as: 'instanceGroup'
+          property :instance_lifecycle_policy, as: 'instanceLifecyclePolicy', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicy, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicy::Representation
+      
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
           property :list_managed_instances_results, as: 'listManagedInstancesResults'
@@ -9084,6 +9098,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
           property :initial_delay_sec, as: 'initialDelaySec'
+        end
+      end
+      
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_update_on_repair, as: 'forceUpdateOnRepair'
         end
       end
       
@@ -10623,6 +10644,8 @@ module Google
             
                 property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeBeta::LocalizedMessage, decorator: Google::Apis::ComputeBeta::LocalizedMessage::Representation
             
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeBeta::QuotaExceededInfo, decorator: Google::Apis::ComputeBeta::QuotaExceededInfo::Representation
+            
               end
             end
           end
@@ -11767,6 +11790,8 @@ module Google
             
                 property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeBeta::LocalizedMessage, decorator: Google::Apis::ComputeBeta::LocalizedMessage::Representation
             
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeBeta::QuotaExceededInfo, decorator: Google::Apis::ComputeBeta::QuotaExceededInfo::Representation
+            
               end
             end
           end
@@ -12452,6 +12477,16 @@ module Google
           property :metric, as: 'metric'
           property :owner, as: 'owner'
           property :usage, as: 'usage'
+        end
+      end
+      
+      class QuotaExceededInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :limit, as: 'limit'
+          property :limit_name, as: 'limitName'
+          property :metric_name, as: 'metricName'
         end
       end
       
@@ -13836,12 +13871,15 @@ module Google
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
+          property :max_run_duration, as: 'maxRunDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
+      
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeBeta::SchedulingNodeAffinity, decorator: Google::Apis::ComputeBeta::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :termination_time, as: 'terminationTime'
         end
       end
       
@@ -14936,6 +14974,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
+          property :reserved_internal_range, as: 'reservedInternalRange'
           property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeBeta::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeBeta::SubnetworkSecondaryRange::Representation
       
@@ -15027,6 +15066,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
+          property :reserved_internal_range, as: 'reservedInternalRange'
         end
       end
       

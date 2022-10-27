@@ -1205,8 +1205,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # For more information about maintenance intervals, see Setting maintenance
-        # intervals.
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `PERIODIC`.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
@@ -5685,7 +5685,8 @@ module Google
         # Specifies a regular expression that matches allowed origins. For more
         # information about the regular expression syntax, see Syntax. An origin is
         # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes.
+        # allowOriginRegexes. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -11481,8 +11482,8 @@ module Google
         # For matching against a port specified in the HTTP request, use a headerMatch
         # with headerName set to PORT and a regular expression that satisfies the
         # RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch,
-        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch
-        # only applies to load balancers that have loadBalancingScheme set to
+        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular
+        # expressions can only be used when the loadBalancingScheme is set to
         # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
@@ -11801,8 +11802,8 @@ module Google
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For more information about regular
         # expression syntax, see Syntax. Only one of presentMatch, exactMatch, or
-        # regexMatch must be set. regexMatch only applies when the loadBalancingScheme
-        # is set to INTERNAL_SELF_MANAGED.
+        # regexMatch must be set. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -12204,8 +12205,8 @@ module Google
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For more information
         # about regular expression syntax, see Syntax. Only one of prefixMatch,
-        # fullPathMatch or regexMatch must be specified. regexMatch only applies to load
-        # balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # fullPathMatch or regexMatch must be specified. Regular expressions can only be
+        # used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -13959,6 +13960,11 @@ module Google
         # @return [String]
         attr_accessor :instance_group
       
+        # The repair policy for this managed instance group.
+        # Corresponds to the JSON property `instanceLifecyclePolicy`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerInstanceLifecyclePolicy]
+        attr_accessor :instance_lifecycle_policy
+      
         # The URL of the instance template that is specified for this managed instance
         # group. The group uses this template to create all new instances in the managed
         # instance group. The templates for existing instances in the group do not
@@ -14075,6 +14081,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @instance_group = args[:instance_group] if args.key?(:instance_group)
+          @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
           @list_managed_instances_results = args[:list_managed_instances_results] if args.key?(:list_managed_instances_results)
@@ -14378,6 +14385,29 @@ module Google
         def update!(**args)
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerInstanceLifecyclePolicy
+        include Google::Apis::Core::Hashable
+      
+        # A bit indicating whether to forcefully apply the group's latest configuration
+        # when repairing a VM. Valid options are: - NO (default): If configuration
+        # updates are available, they are not forcefully applied during repair. Instead,
+        # configuration updates are applied according to the group's update policy. -
+        # YES: If configuration updates are available, they are applied during repair.
+        # Corresponds to the JSON property `forceUpdateOnRepair`
+        # @return [String]
+        attr_accessor :force_update_on_repair
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
         end
       end
       
@@ -20218,6 +20248,11 @@ module Google
               # @return [Google::Apis::ComputeBeta::LocalizedMessage]
               attr_accessor :localized_message
             
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeBeta::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
               def initialize(**args)
                  update!(**args)
               end
@@ -20227,6 +20262,7 @@ module Google
                 @error_info = args[:error_info] if args.key?(:error_info)
                 @help = args[:help] if args.key?(:help)
                 @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
               end
             end
           end
@@ -24759,6 +24795,11 @@ module Google
               # @return [Google::Apis::ComputeBeta::LocalizedMessage]
               attr_accessor :localized_message
             
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeBeta::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
               def initialize(**args)
                  update!(**args)
               end
@@ -24768,6 +24809,7 @@ module Google
                 @error_info = args[:error_info] if args.key?(:error_info)
                 @help = args[:help] if args.key?(:help)
                 @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
               end
             end
           end
@@ -25215,28 +25257,36 @@ module Google
       
         # Number of errors before a host is ejected from the connection pool. When the
         # backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-        # Defaults to 5.
+        # Defaults to 5. Not supported when the backend service is referenced by a URL
+        # map that is bound to target gRPC proxy that has validateForProxyless field set
+        # to true.
         # Corresponds to the JSON property `consecutiveErrors`
         # @return [Fixnum]
         attr_accessor :consecutive_errors
       
         # The number of consecutive gateway failures (502, 503, 504 status or connection
         # errors that are mapped to one of those status codes) before a consecutive
-        # gateway failure ejection occurs. Defaults to 3.
+        # gateway failure ejection occurs. Defaults to 3. Not supported when the backend
+        # service is referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `consecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :consecutive_gateway_failure
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive 5xx. This setting can be used to
-        # disable ejection or to ramp it up slowly. Defaults to 0.
+        # disable ejection or to ramp it up slowly. Defaults to 0. Not supported when
+        # the backend service is referenced by a URL map that is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveErrors`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_errors
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive gateway failures. This setting can be
-        # used to disable ejection or to ramp it up slowly. Defaults to 100.
+        # used to disable ejection or to ramp it up slowly. Defaults to 100. Not
+        # supported when the backend service is referenced by a URL map that is bound to
+        # target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_gateway_failure
@@ -27467,6 +27517,44 @@ module Google
           @metric = args[:metric] if args.key?(:metric)
           @owner = args[:owner] if args.key?(:owner)
           @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # Additional details for quota exceeded error for resource quota.
+      class QuotaExceededInfo
+        include Google::Apis::Core::Hashable
+      
+        # The map holding related quota dimensions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # Current effective quota limit. The limit's unit depends on the quota type or
+        # metric.
+        # Corresponds to the JSON property `limit`
+        # @return [Float]
+        attr_accessor :limit
+      
+        # The name of the quota limit.
+        # Corresponds to the JSON property `limitName`
+        # @return [String]
+        attr_accessor :limit_name
+      
+        # The Compute Engine quota metric name.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @limit = args[:limit] if args.key?(:limit)
+          @limit_name = args[:limit_name] if args.key?(:limit_name)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
         end
       end
       
@@ -32837,11 +32925,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # For more information about maintenance intervals, see Setting maintenance
-        # intervals.
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `PERIODIC`.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [Google::Apis::ComputeBeta::Duration]
+        attr_accessor :max_run_duration
       
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
@@ -32877,6 +32973,13 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Specifies the timestamp, when the instance will be terminated, in RFC3339 text
+        # format. If specified, the instance termination action will be performed at the
+        # termination time.
+        # Corresponds to the JSON property `terminationTime`
+        # @return [String]
+        attr_accessor :termination_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -32889,11 +32992,13 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @termination_time = args[:termination_time] if args.key?(:termination_time)
         end
       end
       
@@ -33339,9 +33444,11 @@ module Google
         attr_accessor :rule_tuple_count
       
         # A list of rules that belong to this policy. There must always be a default
-        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
-        # when creating a security policy, a default rule with action "allow" will be
-        # added.
+        # rule which is a rule with priority 2147483647 and match all condition (for the
+        # match condition this means match "*" for srcIpRanges and for the networkMatch
+        # condition every field must be either match "*" or not set). If no rules are
+        # provided when creating a security policy, a default rule with action "allow"
+        # will be added.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRule>]
         attr_accessor :rules
@@ -34199,7 +34306,11 @@ module Google
         # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
         # configured under "enforce_on_key_name". The key value is truncated to the
         # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL.
+        # request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP
+        # request. The key value is truncated to the first 128 bytes. - SNI: Server name
+        # indication in the TLS session of the HTTPS request. The key value is truncated
+        # to the first 128 bytes. The key type defaults to ALL on a HTTP session. -
+        # REGION_CODE: The country/region from which the request originates.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -37167,6 +37278,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # The URL of the reserved internal range.
+        # Corresponds to the JSON property `reservedInternalRange`
+        # @return [String]
+        attr_accessor :reserved_internal_range
+      
         # The role of subnetwork. Currently, this field is only used when purpose =
         # INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An
         # ACTIVE subnetwork is one that is currently being used for Internal HTTP(S)
@@ -37234,6 +37350,7 @@ module Google
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
+          @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
           @role = args[:role] if args.key?(:role)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -37569,6 +37686,11 @@ module Google
         # @return [String]
         attr_accessor :range_name
       
+        # The URL of the reserved internal range.
+        # Corresponds to the JSON property `reservedInternalRange`
+        # @return [String]
+        attr_accessor :reserved_internal_range
+      
         def initialize(**args)
            update!(**args)
         end
@@ -37577,6 +37699,7 @@ module Google
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
+          @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
         end
       end
       
@@ -42811,7 +42934,8 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. If not specified, IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
+        # IPV4_ONLY will be used.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
@@ -43441,7 +43565,9 @@ module Google
         attr_accessor :peer_external_gateway
       
         # The interface ID of the external VPN gateway to which this VPN tunnel is
-        # connected. Provided by the client when the VPN tunnel is created.
+        # connected. Provided by the client when the VPN tunnel is created. Possible
+        # values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the
+        # external VPN gateway redundancy type.
         # Corresponds to the JSON property `peerExternalGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_external_gateway_interface
@@ -43532,6 +43658,7 @@ module Google
         attr_accessor :vpn_gateway
       
         # The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        # Possible values are: `0`, `1`.
         # Corresponds to the JSON property `vpnGatewayInterface`
         # @return [Fixnum]
         attr_accessor :vpn_gateway_interface
