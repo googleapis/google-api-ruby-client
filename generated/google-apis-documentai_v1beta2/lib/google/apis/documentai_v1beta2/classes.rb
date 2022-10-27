@@ -2695,6 +2695,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
         attr_accessor :layout
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentProvenance]
+        attr_accessor :provenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2705,6 +2711,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @layout = args[:layout] if args.key?(:layout)
+          @provenance = args[:provenance] if args.key?(:provenance)
         end
       end
       
@@ -4667,6 +4674,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
         attr_accessor :layout
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentProvenance]
+        attr_accessor :provenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4677,6 +4690,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @layout = args[:layout] if args.key?(:layout)
+          @provenance = args[:provenance] if args.key?(:provenance)
         end
       end
       
