@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2471,6 +2477,8 @@ module Google
       
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
+          property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance::Representation
+      
         end
       end
       
@@ -2714,6 +2722,8 @@ module Google
           property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
       
           property :inactive, as: 'inactive'
+          property :schema_mutability_metadata, as: 'schemaMutabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata::Representation
+      
         end
       end
       
@@ -2894,6 +2904,8 @@ module Google
           property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
       
           property :inactive, as: 'inactive'
+          property :schema_mutability_metadata, as: 'schemaMutabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata::Representation
+      
         end
       end
       
@@ -2932,6 +2944,14 @@ module Google
           property :gcs_destination, as: 'gcsDestination'
           property :rejection_reason, as: 'rejectionReason'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :editable, as: 'editable'
+          collection :processor_versions, as: 'processorVersions'
         end
       end
       
@@ -3315,6 +3335,8 @@ module Google
           collection :header_rows, as: 'headerRows', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow::Representation
       
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
+      
+          property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
       
         end
       end
@@ -3867,6 +3889,8 @@ module Google
           collection :header_rows, as: 'headerRows', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow::Representation
       
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
+      
+          property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
       
         end
       end

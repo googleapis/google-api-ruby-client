@@ -1874,7 +1874,9 @@ module Google
       class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies which fields to include in the output documents.
+        # Specifies which fields to include in the output documents. Only supports top
+        # level document and pages field so it must be in the form of ``
+        # document_field_name`` or `pages.`page_field_name``.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
         attr_accessor :field_mask
@@ -2555,6 +2557,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout]
         attr_accessor :layout
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance]
+        attr_accessor :provenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2565,6 +2573,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @layout = args[:layout] if args.key?(:layout)
+          @provenance = args[:provenance] if args.key?(:provenance)
         end
       end
       
@@ -3430,6 +3439,12 @@ module Google
         attr_accessor :inactive
         alias_method :inactive?, :inactive
       
+        # Metadata that specifies whether a label is editable and reasons why. These
+        # fields are read-only. Changing these fields has no impact on the backend.
+        # Corresponds to the JSON property `schemaMutabilityMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata]
+        attr_accessor :schema_mutability_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3439,6 +3454,7 @@ module Google
           @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
           @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
+          @schema_mutability_metadata = args[:schema_mutability_metadata] if args.key?(:schema_mutability_metadata)
         end
       end
       
@@ -3709,7 +3725,9 @@ module Google
       class GoogleCloudDocumentaiV1ProcessRequest
         include Google::Apis::Core::Hashable
       
-        # Specifies which fields to include in ProcessResponse's document.
+        # Specifies which fields to include in ProcessResponse's document. Only supports
+        # top level document and pages field so it must be in the form of ``
+        # document_field_name`` or `pages.`page_field_name``.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
         attr_accessor :field_mask
@@ -4026,6 +4044,12 @@ module Google
         attr_accessor :inactive
         alias_method :inactive?, :inactive
       
+        # Metadata that specifies whether a label is editable and reasons why. These
+        # fields are read-only. Changing these fields has no impact on the backend.
+        # Corresponds to the JSON property `schemaMutabilityMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata]
+        attr_accessor :schema_mutability_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4035,6 +4059,7 @@ module Google
           @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
           @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
+          @schema_mutability_metadata = args[:schema_mutability_metadata] if args.key?(:schema_mutability_metadata)
         end
       end
       
@@ -4159,6 +4184,35 @@ module Google
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata that specifies whether a label is editable and reasons why. These
+      # fields are read-only. Changing these fields has no impact on the backend.
+      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Explicit flag that controls whether the label is editable.
+        # Corresponds to the JSON property `editable`
+        # @return [Boolean]
+        attr_accessor :editable
+        alias_method :editable?, :editable
+      
+        # Full resource name of processor versions that contain this label. e.g. `
+        # projects/`project`/locations/`location`/processors/`processor`/
+        # processorVersions/`processorVersion``
+        # Corresponds to the JSON property `processorVersions`
+        # @return [Array<String>]
+        attr_accessor :processor_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @editable = args[:editable] if args.key?(:editable)
+          @processor_versions = args[:processor_versions] if args.key?(:processor_versions)
         end
       end
       
@@ -5414,6 +5468,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
         attr_accessor :layout
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance]
+        attr_accessor :provenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5424,6 +5484,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @layout = args[:layout] if args.key?(:layout)
+          @provenance = args[:provenance] if args.key?(:provenance)
         end
       end
       
@@ -7346,6 +7407,12 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
         attr_accessor :layout
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance]
+        attr_accessor :provenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7356,6 +7423,7 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @layout = args[:layout] if args.key?(:layout)
+          @provenance = args[:provenance] if args.key?(:provenance)
         end
       end
       
