@@ -63,14 +63,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,7 +91,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -96,6 +99,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -116,14 +120,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -141,7 +148,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_dm(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_dm(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -149,6 +156,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -169,14 +177,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -194,7 +205,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm_conversation(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm_conversation(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -202,6 +213,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -260,14 +272,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -285,7 +300,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -293,6 +308,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -313,14 +329,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -338,7 +357,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_room(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_room(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -346,6 +365,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -366,14 +386,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,7 +414,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room_conversation(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room_conversation(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -399,6 +422,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -442,10 +466,14 @@ module Google
         # authentication](https://developers.google.com/chat/api/guides/auth/service-
         # accounts).
         # @param [Fixnum] page_size
-        #   Optional. Requested page size. The value is capped at 1000. Server may return
-        #   fewer results than requested. If unspecified, server will default to 100.
+        #   Optional. The maximum number of spaces to return. The service may return fewer
+        #   than this value. If unspecified, at most 100 spaces are returned. The maximum
+        #   value is 1000; values above 1000 are coerced to 1000. Negative values return
+        #   an INVALID_ARGUMENT error.
         # @param [String] page_token
-        #   Optional. A token identifying a page of results the server should return.
+        #   Optional. A page token, received from a previous list spaces call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -487,14 +515,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -512,7 +543,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_space(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_space(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -520,6 +551,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -566,10 +598,14 @@ module Google
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
         # @param [Fixnum] page_size
-        #   Requested page size. The value is capped at 1000. Server may return fewer
-        #   results than requested. If unspecified, server will default to 100.
+        #   The maximum number of memberships to return. The service may return fewer than
+        #   this value. If unspecified, at most 100 memberships are returned. The maximum
+        #   value is 1000; values above 1000 are coerced to 1000. Negative values return
+        #   an INVALID_ARGUMENT error.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
+        #   A page token, received from a previous list memberships call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -599,8 +635,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message. Requires [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts).
+        # [Developer Preview](https://developers.google.com/workspace/preview): Creates
+        # a message. Requires [authentication](https://developers.google.com/chat/api/
+        # guides/auth).
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAAAAAAAA
@@ -612,14 +649,17 @@ module Google
         #   message with the specified value. For example usage, see [Name a created
         #   message](https://developers.google.com/chat/api/guides/crudl/messages#
         #   name_a_created_message).
+        # @param [String] message_reply_option
+        #   Optional. Specifies whether a message starts a thread or replies to one. Only
+        #   supported in named spaces.
         # @param [String] request_id
         #   Optional. A unique request ID for this message. Specifying an existing request
         #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
-        #   Optional. Opaque thread identifier. To start or add to a thread, create a
-        #   message and specify a `threadKey` instead of thread.name. (Setting thread.name
-        #   has no effect.) The first message with a given `threadKey` starts a new thread.
-        #   Subsequent messages with the same `threadKey` post into the same thread.
+        #   Optional. Deprecated: Use thread_key instead. Opaque thread identifier. To
+        #   start or add to a thread, create a message and specify a `threadKey` or the
+        #   thread.name. For example usage, see [Start or reply to a message thread](/chat/
+        #   api/guides/crudl/messages#start_or_reply_to_a_message_thread).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -637,7 +677,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_message(parent, message_object = nil, message_id: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_message(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
@@ -645,6 +685,7 @@ module Google
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
           command.query['messageId'] = message_id unless message_id.nil?
+          command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -653,7 +694,10 @@ module Google
         end
         
         # Deletes a message. Requires [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts).
+        # developers.google.com/chat/api/guides/auth/service-accounts). [Developer
+        # Preview](https://developers.google.com/workspace/preview): Deletes a message.
+        # Requires [user authentication](https://developers.google.com/chat/api/guides/
+        # auth/users) and the `chat.messages` authorization scope.
         # @param [String] name
         #   Required. Resource name of the message to be deleted, in the form "spaces/*/
         #   messages/*" Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
@@ -685,7 +729,12 @@ module Google
         end
         
         # Returns a message. Requires [service account authentication](https://
-        # developers.google.com/chat/api/guides/auth/service-accounts).
+        # developers.google.com/chat/api/guides/auth/service-accounts). [Developer
+        # Preview](https://developers.google.com/workspace/preview): Returns a message.
+        # Requires [user authentication](https://developers.google.com/chat/api/guides/
+        # auth/users) and the `chat.messages` or `chat.messages.readonly` authorization
+        # scope. Messages from a blocked member or messages from a blocked space can
+        # also be fetched.
         # @param [String] name
         #   Required. Resource name of the message to retrieve. Format: spaces/`space`/
         #   messages/`message` If the message begins with `client-`, then it has a custom

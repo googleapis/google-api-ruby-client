@@ -2384,8 +2384,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
       
-        # Continuation token to retrieve the next page of results. It will be empty for
-        # the last page of results.
+        # A token that can be sent as `pageToken` to retrieve the next page of results.
+        # If empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2405,9 +2405,8 @@ module Google
       class ListSpacesResponse
         include Google::Apis::Core::Hashable
       
-        # Continuation token to retrieve the next page of results. It will be empty for
-        # the last page of results. Tokens expire in an hour. An error is thrown if an
-        # expired token is passed.
+        # A token that can be sent as `pageToken` to retrieve the next page of results.
+        # If empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2625,6 +2624,15 @@ module Google
         # @return [Google::Apis::ChatV1::Thread]
         attr_accessor :thread
       
+        # Output only. When `true`, the message is a response in a reply thread. When `
+        # false`, the message is visible in the space's top-level conversation as either
+        # the first message of a thread or a message with no threaded replies. If the
+        # space doesn't support reply in threads, this field is always `false`.
+        # Corresponds to the JSON property `threadReply`
+        # @return [Boolean]
+        attr_accessor :thread_reply
+        alias_method :thread_reply?, :thread_reply
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2648,6 +2656,7 @@ module Google
           @space = args[:space] if args.key?(:space)
           @text = args[:text] if args.key?(:text)
           @thread = args[:thread] if args.key?(:thread)
+          @thread_reply = args[:thread_reply] if args.key?(:thread_reply)
         end
       end
       
@@ -2814,7 +2823,13 @@ module Google
         # @return [Google::Apis::ChatV1::SpaceDetails]
         attr_accessor :space_details
       
-        # Output only. Whether messages are threaded in this space.
+        # Output only. The threading state in the Chat space.
+        # Corresponds to the JSON property `spaceThreadingState`
+        # @return [String]
+        attr_accessor :space_threading_state
+      
+        # Output only. Deprecated: Use `spaceThreadingState` instead. Whether messages
+        # are threaded in this space.
         # Corresponds to the JSON property `threaded`
         # @return [Boolean]
         attr_accessor :threaded
@@ -2836,6 +2851,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
           @space_details = args[:space_details] if args.key?(:space_details)
+          @space_threading_state = args[:space_threading_state] if args.key?(:space_threading_state)
           @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
         end
@@ -2975,11 +2991,19 @@ module Google
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAAAAAAAA/
-        # threads/TTTTTTTTTTT
+        # Resource name of the thread. Example: spaces/`space`/threads/`thread`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Opaque thread identifier. To start or add to a thread, create a
+        # message and specify a `threadKey` or the thread.name. For example usage, see [
+        # Start or reply to a message thread](/chat/api/guides/crudl/messages#
+        # start_or_reply_to_a_message_thread). For other requests, this is an output
+        # only field.
+        # Corresponds to the JSON property `threadKey`
+        # @return [String]
+        attr_accessor :thread_key
       
         def initialize(**args)
            update!(**args)
@@ -2988,6 +3012,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @thread_key = args[:thread_key] if args.key?(:thread_key)
         end
       end
       

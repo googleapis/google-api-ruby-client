@@ -1182,6 +1182,7 @@ module Google
           property :text, as: 'text'
           property :thread, as: 'thread', class: Google::Apis::ChatV1::Thread, decorator: Google::Apis::ChatV1::Thread::Representation
       
+          property :thread_reply, as: 'threadReply'
         end
       end
       
@@ -1238,6 +1239,7 @@ module Google
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
       
+          property :space_threading_state, as: 'spaceThreadingState'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
         end
@@ -1287,6 +1289,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :thread_key, as: 'threadKey'
         end
       end
       
