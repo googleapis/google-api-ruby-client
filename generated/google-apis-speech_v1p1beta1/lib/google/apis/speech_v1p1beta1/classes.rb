@@ -376,6 +376,11 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
       
+        # Information on speech adaptation use in results
+        # Corresponds to the JSON property `speechAdaptationInfo`
+        # @return [Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo]
+        attr_accessor :speech_adaptation_info
+      
         # When available, billed audio seconds for the corresponding request.
         # Corresponds to the JSON property `totalBilledTime`
         # @return [String]
@@ -391,6 +396,7 @@ module Google
           @output_error = args[:output_error] if args.key?(:output_error)
           @request_id = args[:request_id] if args.key?(:request_id)
           @results = args[:results] if args.key?(:results)
+          @speech_adaptation_info = args[:speech_adaptation_info] if args.key?(:speech_adaptation_info)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
       end
@@ -610,12 +616,11 @@ module Google
         attr_accessor :alternative_language_codes
       
         # The number of channels in the input audio data. ONLY set this for MULTI-
-        # CHANNEL recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid
-        # values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and
-        # SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel
-        # (mono). Note: We only recognize the first channel by default. To perform
-        # independent recognition on each channel set `
-        # enable_separate_recognition_per_channel` to 'true'.
+        # CHANNEL recognition. Valid values for LINEAR16, OGG_OPUS and FLAC are `1`-`8`.
+        # Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `
+        # 0` or omitted, defaults to one channel (mono). Note: We only recognize the
+        # first channel by default. To perform independent recognition on each channel
+        # set `enable_separate_recognition_per_channel` to 'true'.
         # Corresponds to the JSON property `audioChannelCount`
         # @return [Fixnum]
         attr_accessor :audio_channel_count
@@ -941,6 +946,11 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
       
+        # Information on speech adaptation use in results
+        # Corresponds to the JSON property `speechAdaptationInfo`
+        # @return [Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo]
+        attr_accessor :speech_adaptation_info
+      
         # When available, billed audio seconds for the corresponding request.
         # Corresponds to the JSON property `totalBilledTime`
         # @return [String]
@@ -954,6 +964,7 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @results = args[:results] if args.key?(:results)
+          @speech_adaptation_info = args[:speech_adaptation_info] if args.key?(:speech_adaptation_info)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
       end
@@ -1035,6 +1046,34 @@ module Google
           @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
           @phrase_set_references = args[:phrase_set_references] if args.key?(:phrase_set_references)
           @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
+        end
+      end
+      
+      # Information on speech adaptation use in results
+      class SpeechAdaptationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether there was a timeout when applying speech adaptation. If true,
+        # adaptation had no effect in the response transcript.
+        # Corresponds to the JSON property `adaptationTimeout`
+        # @return [Boolean]
+        attr_accessor :adaptation_timeout
+        alias_method :adaptation_timeout?, :adaptation_timeout
+      
+        # If set, returns a message specifying which part of the speech adaptation
+        # request timed out.
+        # Corresponds to the JSON property `timeoutMessage`
+        # @return [String]
+        attr_accessor :timeout_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptation_timeout = args[:adaptation_timeout] if args.key?(:adaptation_timeout)
+          @timeout_message = args[:timeout_message] if args.key?(:timeout_message)
         end
       end
       

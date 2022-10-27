@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpeechAdaptationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpeechContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -307,6 +313,8 @@ module Google
           property :request_id, :numeric_string => true, as: 'requestId'
           collection :results, as: 'results', class: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult::Representation
       
+          property :speech_adaptation_info, as: 'speechAdaptationInfo', class: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo, decorator: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo::Representation
+      
           property :total_billed_time, as: 'totalBilledTime'
         end
       end
@@ -413,6 +421,8 @@ module Google
           property :request_id, :numeric_string => true, as: 'requestId'
           collection :results, as: 'results', class: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult::Representation
       
+          property :speech_adaptation_info, as: 'speechAdaptationInfo', class: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo, decorator: Google::Apis::SpeechV1p1beta1::SpeechAdaptationInfo::Representation
+      
           property :total_billed_time, as: 'totalBilledTime'
         end
       end
@@ -435,6 +445,14 @@ module Google
           collection :phrase_set_references, as: 'phraseSetReferences'
           collection :phrase_sets, as: 'phraseSets', class: Google::Apis::SpeechV1p1beta1::PhraseSet, decorator: Google::Apis::SpeechV1p1beta1::PhraseSet::Representation
       
+        end
+      end
+      
+      class SpeechAdaptationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adaptation_timeout, as: 'adaptationTimeout'
+          property :timeout_message, as: 'timeoutMessage'
         end
       end
       
