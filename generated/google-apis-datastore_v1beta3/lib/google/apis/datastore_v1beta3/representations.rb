@@ -22,6 +22,30 @@ module Google
   module Apis
     module DatastoreV1beta3
       
+      class Aggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AggregationQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AggregationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AggregationResultBatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocateIdsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +89,12 @@ module Google
       end
       
       class CompositeFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Count
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunAggregationQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunAggregationQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -362,6 +404,43 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Aggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :count, as: 'count', class: Google::Apis::DatastoreV1beta3::Count, decorator: Google::Apis::DatastoreV1beta3::Count::Representation
+      
+        end
+      end
+      
+      class AggregationQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregations, as: 'aggregations', class: Google::Apis::DatastoreV1beta3::Aggregation, decorator: Google::Apis::DatastoreV1beta3::Aggregation::Representation
+      
+          property :nested_query, as: 'nestedQuery', class: Google::Apis::DatastoreV1beta3::Query, decorator: Google::Apis::DatastoreV1beta3::Query::Representation
+      
+        end
+      end
+      
+      class AggregationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :aggregate_properties, as: 'aggregateProperties', class: Google::Apis::DatastoreV1beta3::Value, decorator: Google::Apis::DatastoreV1beta3::Value::Representation
+      
+        end
+      end
+      
+      class AggregationResultBatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregation_results, as: 'aggregationResults', class: Google::Apis::DatastoreV1beta3::AggregationResult, decorator: Google::Apis::DatastoreV1beta3::AggregationResult::Representation
+      
+          property :more_results, as: 'moreResults'
+          property :read_time, as: 'readTime'
+        end
       end
       
       class AllocateIdsRequest
@@ -429,6 +508,13 @@ module Google
           collection :filters, as: 'filters', class: Google::Apis::DatastoreV1beta3::Filter, decorator: Google::Apis::DatastoreV1beta3::Filter::Representation
       
           property :op, as: 'op'
+        end
+      end
+      
+      class Count
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :up_to, :numeric_string => true, as: 'upTo'
         end
       end
       
@@ -873,6 +959,30 @@ module Google
       class RollbackResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RunAggregationQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_query, as: 'aggregationQuery', class: Google::Apis::DatastoreV1beta3::AggregationQuery, decorator: Google::Apis::DatastoreV1beta3::AggregationQuery::Representation
+      
+          property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta3::GqlQuery, decorator: Google::Apis::DatastoreV1beta3::GqlQuery::Representation
+      
+          property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta3::PartitionId, decorator: Google::Apis::DatastoreV1beta3::PartitionId::Representation
+      
+          property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1beta3::ReadOptions, decorator: Google::Apis::DatastoreV1beta3::ReadOptions::Representation
+      
+        end
+      end
+      
+      class RunAggregationQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch, as: 'batch', class: Google::Apis::DatastoreV1beta3::AggregationResultBatch, decorator: Google::Apis::DatastoreV1beta3::AggregationResultBatch::Representation
+      
+          property :query, as: 'query', class: Google::Apis::DatastoreV1beta3::AggregationQuery, decorator: Google::Apis::DatastoreV1beta3::AggregationQuery::Representation
+      
         end
       end
       
