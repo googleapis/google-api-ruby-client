@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddonComposeUiActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AffectedMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,6 +676,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -766,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarClientActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CallInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +863,12 @@ module Google
       end
       
       class CardHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChatClientActionMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -982,6 +1048,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomFunctionReturnValueMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1156,6 +1228,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveClientActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DriveFollowUpRestrict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1193,6 +1271,12 @@ module Google
       end
       
       class EditMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditorClientActionMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1414,6 +1498,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GmailClientActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChatConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1588,6 +1678,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HostAppActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HostProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1673,6 +1769,12 @@ module Google
       end
       
       class InitializeCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2014,6 +2116,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OpenCreatedDraftActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OpenLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2248,6 +2356,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Recipient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecordingEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2273,6 +2387,18 @@ module Google
       end
       
       class RepositoryError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestFileScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestFileScopeForActiveDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2500,6 +2626,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SheetsClientActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SigningKeyPossessorProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2668,6 +2800,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TaskActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextButton
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2788,13 +2926,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBccRecipients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCcRecipients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDataSourceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDraftActionMarkup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSubject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateToRecipients
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2998,6 +3172,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
+        end
+      end
+      
+      class AddonComposeUiActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -3735,6 +3916,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
       
+          property :host_app_action, as: 'hostAppAction', class: Google::Apis::CloudsearchV1::HostAppActionMarkup, decorator: Google::Apis::CloudsearchV1::HostAppActionMarkup::Representation
+      
           property :open_dynamic_link_action, as: 'openDynamicLinkAction', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedAction::Representation
       
           property :open_link, as: 'openLink', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLink, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedOpenLink::Representation
@@ -4110,6 +4293,86 @@ module Google
         end
       end
       
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addon_attachments, as: 'addonAttachments', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment::Representation
+      
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_url, as: 'iconUrl'
+          property :mime_type, as: 'mimeType'
+          property :resource_url, as: 'resourceUrl'
+          property :title, as: 'title'
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conference_id, as: 'conferenceId'
+          property :conference_solution_id, as: 'conferenceSolutionId'
+          collection :entry_points, as: 'entryPoints', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup::Representation
+      
+          property :error, as: 'error', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError::Representation
+      
+          property :note, as: 'note'
+          collection :parameters, as: 'parameters', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter::Representation
+      
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_code, as: 'accessCode'
+          collection :features, as: 'features'
+          property :label, as: 'label'
+          property :meeting_code, as: 'meetingCode'
+          property :passcode, as: 'passcode'
+          property :password, as: 'password'
+          property :pin, as: 'pin'
+          property :region_code, as: 'regionCode'
+          property :type, as: 'type'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_url, as: 'authenticationUrl'
+          property :type, as: 'type'
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_attendee_emails, as: 'addAttendeeEmails'
+        end
+      end
+      
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conference_data, as: 'conferenceData', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup::Representation
+      
+        end
+      end
+      
       class Attachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4279,6 +4542,18 @@ module Google
         end
       end
       
+      class CalendarClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_attachments_action_markup, as: 'addAttachmentsActionMarkup', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup::Representation
+      
+          property :edit_attendees_action_markup, as: 'editAttendeesActionMarkup', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup::Representation
+      
+          property :edit_conference_data_action_markup, as: 'editConferenceDataActionMarkup', class: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup, decorator: Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup::Representation
+      
+        end
+      end
+      
       class CallInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4328,6 +4603,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_lock, as: 'accessLock'
+          property :access_type, as: 'accessType'
+          property :allow_joining_before_host, as: 'allowJoiningBeforeHost'
           property :attendance_report_enabled, as: 'attendanceReportEnabled'
           property :audio_lock, as: 'audioLock'
           property :chat_lock, as: 'chatLock'
@@ -4388,6 +4665,12 @@ module Google
           property :image_url, as: 'imageUrl'
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
+        end
+      end
+      
+      class ChatClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4656,6 +4939,14 @@ module Google
         end
       end
       
+      class CustomFunctionReturnValueMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :value, as: 'value'
+        end
+      end
+      
       class CustomerId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4916,6 +5207,14 @@ module Google
         end
       end
       
+      class DriveClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_file_scope, as: 'requestFileScope', class: Google::Apis::CloudsearchV1::RequestFileScope, decorator: Google::Apis::CloudsearchV1::RequestFileScope::Representation
+      
+        end
+      end
+      
       class DriveFollowUpRestrict
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5006,6 +5305,14 @@ module Google
       class EditMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EditorClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_file_scope_for_active_document, as: 'requestFileScopeForActiveDocument', class: Google::Apis::CloudsearchV1::RequestFileScopeForActiveDocument, decorator: Google::Apis::CloudsearchV1::RequestFileScopeForActiveDocument::Representation
+      
         end
       end
       
@@ -5334,6 +5641,20 @@ module Google
         end
       end
       
+      class GmailClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :addon_compose_ui_action_markup, as: 'addonComposeUiActionMarkup', class: Google::Apis::CloudsearchV1::AddonComposeUiActionMarkup, decorator: Google::Apis::CloudsearchV1::AddonComposeUiActionMarkup::Representation
+      
+          property :open_created_draft_action_markup, as: 'openCreatedDraftActionMarkup', class: Google::Apis::CloudsearchV1::OpenCreatedDraftActionMarkup, decorator: Google::Apis::CloudsearchV1::OpenCreatedDraftActionMarkup::Representation
+      
+          property :task_action, as: 'taskAction', class: Google::Apis::CloudsearchV1::TaskActionMarkup, decorator: Google::Apis::CloudsearchV1::TaskActionMarkup::Representation
+      
+          property :update_draft_action_markup, as: 'updateDraftActionMarkup', class: Google::Apis::CloudsearchV1::UpdateDraftActionMarkup, decorator: Google::Apis::CloudsearchV1::UpdateDraftActionMarkup::Representation
+      
+        end
+      end
+      
       class GoogleChatConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5639,6 +5960,24 @@ module Google
         end
       end
       
+      class HostAppActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_action, as: 'calendarAction', class: Google::Apis::CloudsearchV1::CalendarClientActionMarkup, decorator: Google::Apis::CloudsearchV1::CalendarClientActionMarkup::Representation
+      
+          property :chat_action, as: 'chatAction', class: Google::Apis::CloudsearchV1::ChatClientActionMarkup, decorator: Google::Apis::CloudsearchV1::ChatClientActionMarkup::Representation
+      
+          property :drive_action, as: 'driveAction', class: Google::Apis::CloudsearchV1::DriveClientActionMarkup, decorator: Google::Apis::CloudsearchV1::DriveClientActionMarkup::Representation
+      
+          property :editor_action, as: 'editorAction', class: Google::Apis::CloudsearchV1::EditorClientActionMarkup, decorator: Google::Apis::CloudsearchV1::EditorClientActionMarkup::Representation
+      
+          property :gmail_action, as: 'gmailAction', class: Google::Apis::CloudsearchV1::GmailClientActionMarkup, decorator: Google::Apis::CloudsearchV1::GmailClientActionMarkup::Representation
+      
+          property :sheets_action, as: 'sheetsAction', class: Google::Apis::CloudsearchV1::SheetsClientActionMarkup, decorator: Google::Apis::CloudsearchV1::SheetsClientActionMarkup::Representation
+      
+        end
+      end
+      
       class HostProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5781,6 +6120,15 @@ module Google
       class InitializeCustomerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class InsertContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :content_type, as: 'contentType'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -6187,6 +6535,7 @@ module Google
       
           property :initiator_profile, as: 'initiatorProfile', class: Google::Apis::CloudsearchV1::User, decorator: Google::Apis::CloudsearchV1::User::Representation
       
+          property :initiator_type, as: 'initiatorType'
           property :type, as: 'type'
         end
       end
@@ -6445,6 +6794,16 @@ module Google
       
           property :open_link_action, as: 'openLinkAction', class: Google::Apis::CloudsearchV1::FormAction, decorator: Google::Apis::CloudsearchV1::FormAction::Representation
       
+        end
+      end
+      
+      class OpenCreatedDraftActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :draft_id, as: 'draftId'
+          property :draft_storage_id, as: 'draftStorageId'
+          property :draft_thread_id, as: 'draftThreadId'
+          property :draft_thread_server_perm_id, as: 'draftThreadServerPermId'
         end
       end
       
@@ -6916,6 +7275,13 @@ module Google
         end
       end
       
+      class Recipient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
       class RecordingEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6964,6 +7330,19 @@ module Google
         end
       end
       
+      class RequestFileScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :item_id, as: 'itemId'
+        end
+      end
+      
+      class RequestFileScopeForActiveDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RequestOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7003,7 +7382,6 @@ module Google
       class ResponseDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :enabled_experiments, as: 'enabledExperiments'
           property :formatted_debug_info, as: 'formattedDebugInfo'
         end
       end
@@ -7103,6 +7481,7 @@ module Google
           property :avatar_url, as: 'avatarUrl'
           property :id, as: 'id', class: Google::Apis::CloudsearchV1::RosterId, decorator: Google::Apis::CloudsearchV1::RosterId::Representation
       
+          property :is_membership_visible_to_caller, as: 'isMembershipVisibleToCaller'
           property :membership_count, as: 'membershipCount'
           property :name, as: 'name'
           property :roster_gaia_key, as: 'rosterGaiaKey'
@@ -7359,6 +7738,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_lock, as: 'accessLock'
+          property :access_type, as: 'accessType'
+          property :allow_joining_before_host, as: 'allowJoiningBeforeHost'
           property :attendance_report_enabled, as: 'attendanceReportEnabled'
           property :chat_lock, as: 'chatLock'
           property :cohost_artifact_sharing_enabled, as: 'cohostArtifactSharingEnabled'
@@ -7375,6 +7756,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
           property :scope, as: 'scope'
+        end
+      end
+      
+      class SheetsClientActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_function_return_value_markup, as: 'customFunctionReturnValueMarkup', class: Google::Apis::CloudsearchV1::CustomFunctionReturnValueMarkup, decorator: Google::Apis::CloudsearchV1::CustomFunctionReturnValueMarkup::Representation
+      
         end
       end
       
@@ -7640,6 +8029,13 @@ module Google
         end
       end
       
+      class TaskActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reload_tasks, as: 'reloadTasks'
+        end
+      end
+      
       class TextButton
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7820,6 +8216,31 @@ module Google
         end
       end
       
+      class UpdateBccRecipients
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bcc_recipients, as: 'bccRecipients', class: Google::Apis::CloudsearchV1::Recipient, decorator: Google::Apis::CloudsearchV1::Recipient::Representation
+      
+        end
+      end
+      
+      class UpdateBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insert_contents, as: 'insertContents', class: Google::Apis::CloudsearchV1::InsertContent, decorator: Google::Apis::CloudsearchV1::InsertContent::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class UpdateCcRecipients
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cc_recipients, as: 'ccRecipients', class: Google::Apis::CloudsearchV1::Recipient, decorator: Google::Apis::CloudsearchV1::Recipient::Representation
+      
+        end
+      end
+      
       class UpdateDataSourceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7831,6 +8252,22 @@ module Google
         end
       end
       
+      class UpdateDraftActionMarkup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_bcc_recipients, as: 'updateBccRecipients', class: Google::Apis::CloudsearchV1::UpdateBccRecipients, decorator: Google::Apis::CloudsearchV1::UpdateBccRecipients::Representation
+      
+          property :update_body, as: 'updateBody', class: Google::Apis::CloudsearchV1::UpdateBody, decorator: Google::Apis::CloudsearchV1::UpdateBody::Representation
+      
+          property :update_cc_recipients, as: 'updateCcRecipients', class: Google::Apis::CloudsearchV1::UpdateCcRecipients, decorator: Google::Apis::CloudsearchV1::UpdateCcRecipients::Representation
+      
+          property :update_subject, as: 'updateSubject', class: Google::Apis::CloudsearchV1::UpdateSubject, decorator: Google::Apis::CloudsearchV1::UpdateSubject::Representation
+      
+          property :update_to_recipients, as: 'updateToRecipients', class: Google::Apis::CloudsearchV1::UpdateToRecipients, decorator: Google::Apis::CloudsearchV1::UpdateToRecipients::Representation
+      
+        end
+      end
+      
       class UpdateSchemaRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7839,6 +8276,21 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::CloudsearchV1::Schema, decorator: Google::Apis::CloudsearchV1::Schema::Representation
       
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class UpdateSubject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subject, as: 'subject'
+        end
+      end
+      
+      class UpdateToRecipients
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :to_recipients, as: 'toRecipients', class: Google::Apis::CloudsearchV1::Recipient, decorator: Google::Apis::CloudsearchV1::Recipient::Representation
+      
         end
       end
       
@@ -7884,6 +8336,7 @@ module Google
           property :image_width, as: 'imageWidth'
           property :int_image_height, as: 'intImageHeight'
           property :int_image_width, as: 'intImageWidth'
+          property :link_type, as: 'linkType'
           property :mime_type, as: 'mimeType'
           property :redirect_url, as: 'redirectUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
       
