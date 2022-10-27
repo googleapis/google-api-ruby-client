@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CopyBackupMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +509,7 @@ module Google
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :source_backup, as: 'sourceBackup'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -508,6 +521,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :end_time, as: 'endTime'
+          property :source_backup, as: 'sourceBackup'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
         end
@@ -584,6 +598,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gc_rule, as: 'gcRule', class: Google::Apis::BigtableadminV2::GcRule, decorator: Google::Apis::BigtableadminV2::GcRule::Representation
       
+        end
+      end
+      
+      class CopyBackupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::BigtableadminV2::OperationProgress, decorator: Google::Apis::BigtableadminV2::OperationProgress::Representation
+      
+          property :source_backup_info, as: 'sourceBackupInfo', class: Google::Apis::BigtableadminV2::BackupInfo, decorator: Google::Apis::BigtableadminV2::BackupInfo::Representation
+      
+        end
+      end
+      
+      class CopyBackupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :expire_time, as: 'expireTime'
+          property :source_backup, as: 'sourceBackup'
         end
       end
       

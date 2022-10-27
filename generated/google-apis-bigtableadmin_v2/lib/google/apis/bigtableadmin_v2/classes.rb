@@ -245,6 +245,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
+        # Output only. Name of the backup from which this backup was copied. If a backup
+        # is not created by copying a backup, this field will be empty. Values are of
+        # the form: projects//instances//backups/.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
         # Required. Immutable. Name of the table from which this backup was created.
         # This needs to be in the same instance as the backup. Values are of the form `
         # projects/`project`/instances/`instance`/tables/`source_table``.
@@ -275,6 +282,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -296,6 +304,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. Name of the backup from which this backup was copied. If a backup
+        # is not created by copying a backup, this field will be empty. Values are of
+        # the form: projects//instances//backups/.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
         # Output only. Name of the table the backup was created from.
         # Corresponds to the JSON property `sourceTable`
         # @return [String]
@@ -315,6 +330,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -589,6 +605,81 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
+        end
+      end
+      
+      # Metadata type for the google.longrunning.Operation returned by CopyBackup.
+      class CopyBackupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup being created through the copy operation. Values are of
+        # the form `projects//instances//clusters//backups/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Bigtable long running
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::BigtableadminV2::OperationProgress]
+        attr_accessor :progress
+      
+        # Information about a backup.
+        # Corresponds to the JSON property `sourceBackupInfo`
+        # @return [Google::Apis::BigtableadminV2::BackupInfo]
+        attr_accessor :source_backup_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
+          @source_backup_info = args[:source_backup_info] if args.key?(:source_backup_info)
+        end
+      end
+      
+      # The request for CopyBackup.
+      class CopyBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the new backup. The `backup_id` along with `parent` are
+        # combined as `parent`/backups/`backup_id` to create the full backup name, of
+        # the form: `projects/`project`/instances/`instance`/clusters/`cluster`/backups/`
+        # backup_id``. This string must be between 1 and 50 characters in length and
+        # match the regex _a-zA-Z0-9*.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Required. Required. The expiration time of the copied backup with microsecond
+        # granularity that must be at least 6 hours and at most 30 days from the time
+        # the request is received. Once the `expire_time` has passed, Cloud Bigtable
+        # will delete the backup and free the resources used by the backup.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. The source backup to be copied from. The source backup needs to be
+        # in READY state for it to be copied. Copying a copied backup is not allowed.
+        # Once CopyBackup is in progress, the source backup cannot be deleted or cleaned
+        # up on expiration until CopyBackup is finished. Values are of the form: `
+        # projects//instances//clusters//backups/`.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
       
