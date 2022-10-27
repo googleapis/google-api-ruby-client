@@ -1985,14 +1985,13 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
-        # The OS affected by a vulnerability This field is deprecated and the
-        # information is in cpe_uri
+        # The OS affected by a vulnerability Used to generate the cpe_uri for OS
+        # packages
         # Corresponds to the JSON property `os`
         # @return [String]
         attr_accessor :os
       
-        # The version of the OS This field is deprecated and the information is in
-        # cpe_uri
+        # The version of the OS Used to generate the cpe_uri for OS packages
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
