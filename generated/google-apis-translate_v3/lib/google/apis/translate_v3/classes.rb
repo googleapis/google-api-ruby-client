@@ -1095,6 +1095,14 @@ module Google
         # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
       
+        # Optional. is_translate_native_pdf_only field for external customers. If true,
+        # the page limit of online native pdf translation is 300 and only native pdf
+        # pages will be translated.
+        # Corresponds to the JSON property `isTranslateNativePdfOnly`
+        # @return [Boolean]
+        attr_accessor :is_translate_native_pdf_only
+        alias_method :is_translate_native_pdf_only?, :is_translate_native_pdf_only
+      
         # Optional. The labels with user-defined metadata for the request. Label keys
         # and values can be no longer than 63 characters (Unicode codepoints), can only
         # contain lowercase letters, numeric characters, underscores and dashes.
@@ -1140,6 +1148,7 @@ module Google
           @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @is_translate_native_pdf_only = args[:is_translate_native_pdf_only] if args.key?(:is_translate_native_pdf_only)
           @labels = args[:labels] if args.key?(:labels)
           @model = args[:model] if args.key?(:model)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
