@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InternalRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedInterconnectAttachments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class ListHubsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInternalRangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -272,11 +284,31 @@ module Google
         end
       end
       
+      class InternalRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :ip_cidr_range, as: 'ipCidrRange'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :overlaps, as: 'overlaps'
+          property :peering, as: 'peering'
+          property :prefix_length, as: 'prefixLength'
+          collection :target_cidr_range, as: 'targetCidrRange'
+          property :update_time, as: 'updateTime'
+          property :usage, as: 'usage'
+          collection :users, as: 'users'
+        end
+      end
+      
       class LinkedInterconnectAttachments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
+          property :vpc_network, as: 'vpcNetwork'
         end
       end
       
@@ -286,6 +318,7 @@ module Google
           collection :instances, as: 'instances', class: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance, decorator: Google::Apis::NetworkconnectivityV1::RouterApplianceInstance::Representation
       
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
+          property :vpc_network, as: 'vpcNetwork'
         end
       end
       
@@ -294,6 +327,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site_to_site_data_transfer, as: 'siteToSiteDataTransfer'
           collection :uris, as: 'uris'
+          property :vpc_network, as: 'vpcNetwork'
         end
       end
       
@@ -301,6 +335,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :hubs, as: 'hubs', class: Google::Apis::NetworkconnectivityV1::Hub, decorator: Google::Apis::NetworkconnectivityV1::Hub::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInternalRangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :internal_ranges, as: 'internalRanges', class: Google::Apis::NetworkconnectivityV1::InternalRange, decorator: Google::Apis::NetworkconnectivityV1::InternalRange::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
