@@ -307,7 +307,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ThreatTypes found to be associated with the submitted URI after reviewing it.
-        # This may be empty if the URI was not added to any list.
+        # This might be empty if the URI was not added to any list.
         # Corresponds to the JSON property `threatTypes`
         # @return [Array<String>]
         attr_accessor :threat_types
@@ -492,12 +492,12 @@ module Google
         # @return [Google::Apis::WebriskV1::GoogleRpcStatus]
         attr_accessor :error
       
-        # This field will contain a `SubmitUriMetadata` object.
+        # Contains a `SubmitUriMetadata` object.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # This will match the pattern `/v1/`project-name`/operations/`operation-id``.
+        # Matches the `/v1/`project-name`/operations/`operation-id`` pattern.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

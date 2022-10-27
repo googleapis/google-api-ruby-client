@@ -1,5 +1,10 @@
 # Release history for google-apis-webrisk_v1
 
+### v0.17.0 (2022-10-27)
+
+* Regenerated from discovery document revision 20221016
+* Regenerated using generator version 0.11.0
+
 ### v0.16.0 (2022-09-25)
 
 * Regenerated using generator version 0.10.0
