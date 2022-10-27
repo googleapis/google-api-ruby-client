@@ -288,7 +288,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A list of GCLB targets which use this Certificate Map. A Target
+        # Output only. A list of GCLB targets that use this Certificate Map. A Target
         # Proxy is only present on this list if it's attached to a Forwarding Rule.
         # Corresponds to the JSON property `gclbTargets`
         # @return [Array<Google::Apis::CertificatemanagerV1::GclbTarget>]
@@ -419,7 +419,7 @@ module Google
         # @return [Google::Apis::CertificatemanagerV1::DnsResourceRecord]
         attr_accessor :dns_resource_record
       
-        # Required. Immutable. A domain which is being authorized. A DnsAuthorization
+        # Required. Immutable. A domain that is being authorized. A DnsAuthorization
         # resource covers a single domain and its wildcard, e.g. authorization for `
         # example.com` can be used to issue certificates for `example.com` and `*.
         # example.com`.
@@ -508,7 +508,7 @@ module Google
         end
       end
       
-      # Describes a Target Proxy which uses this Certificate Map.
+      # Describes a Target Proxy that uses this Certificate Map.
       class GclbTarget
         include Google::Apis::Core::Hashable
       
