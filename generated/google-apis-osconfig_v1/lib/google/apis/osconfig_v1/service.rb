@@ -323,7 +323,7 @@ module Google
         # osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
         # @param [String] parent
         #   Required. The parent resource name in the form: projects/`project`/locations/`
-        #   location`
+        #   location`. Note: Specify the zone of your VMs as the location.
         # @param [Google::Apis::OsconfigV1::OsPolicyAssignment] os_policy_assignment_object
         # @param [String] os_policy_assignment_id
         #   Required. The logical name of the OS policy assignment in the project with the
