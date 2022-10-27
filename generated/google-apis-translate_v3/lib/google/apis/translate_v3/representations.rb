@@ -581,6 +581,7 @@ module Google
       
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
       
+          property :is_translate_native_pdf_only, as: 'isTranslateNativePdfOnly'
           hash :labels, as: 'labels'
           property :model, as: 'model'
           property :source_language_code, as: 'sourceLanguageCode'
