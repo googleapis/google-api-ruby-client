@@ -299,12 +299,12 @@ module Google
         # @return [String]
         attr_accessor :endpoint_uri
       
-        # The subnetwork of the customer project from which an IP address is reserved
-        # and used as the Dataproc Metastore service's endpoint. It is accessible to
-        # hosts in the subnet and to all hosts in a subnet in the same region and same
-        # network. There must be at least one IP address available in the subnet's
-        # primary range. The subnet is specified in the following form:`projects/`
-        # project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
+        # Immutable. The subnetwork of the customer project from which an IP address is
+        # reserved and used as the Dataproc Metastore service's endpoint. It is
+        # accessible to hosts in the subnet and to all hosts in a subnet in the same
+        # region and same network. There must be at least one IP address available in
+        # the subnet's primary range. The subnet is specified in the following form:`
+        # projects/`project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1656,6 +1656,11 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Telemetry Configuration for the Dataproc Metastore service.
+        # Corresponds to the JSON property `telemetryConfig`
+        # @return [Google::Apis::MetastoreV1alpha::TelemetryConfig]
+        attr_accessor :telemetry_config
+      
         # The tier of the service.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -1694,6 +1699,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
           @tier = args[:tier] if args.key?(:tier)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1789,6 +1795,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Telemetry Configuration for the Dataproc Metastore service.
+      class TelemetryConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `logFormat`
+        # @return [String]
+        attr_accessor :log_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_format = args[:log_format] if args.key?(:log_format)
         end
       end
       
