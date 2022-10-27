@@ -66,11 +66,11 @@ module Google
         #   first. See [guidelines](https://cloud.google.com/retail/docs/completion-
         #   overview#generated-completion-dataset).
         # @param [String] device_type
-        #   The device type context for completion suggestions. It is useful to apply
-        #   different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If
-        #   it is empty, the suggestions are across all device types. Supported formats: *
-        #   `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with
-        #   `OTHER_`, e.g. `OTHER_IPHONE`.
+        #   The device type context for completion suggestions. We recommend that you
+        #   leave this field empty. It can apply different suggestions on different device
+        #   types, e.g. `DESKTOP`, `MOBILE`. If it is empty, the suggestions are across
+        #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
+        #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
         #   cloud-retail` dataset, setting this field has no effect. The language filters
@@ -2117,6 +2117,14 @@ module Google
         #   The event timestamp in milliseconds. This prevents browser caching of
         #   otherwise identical get requests. The name is abbreviated to reduce the
         #   payload bytes.
+        # @param [String] prebuilt_rule
+        #   The prebuilt rule name that can convert a specific type of raw_json. For
+        #   example: "default_schema/v1.0"
+        # @param [String] raw_json
+        #   An arbitrary serialized JSON string that contains necessary information that
+        #   can comprise a user event. When this field is specified, the user_event field
+        #   will be ignored. Note: line-delimited JSON is not supported, a single JSON
+        #   only.
         # @param [String] uri
         #   The URL including cgi-parameters but excluding the hash fragment with a length
         #   limit of 5,000 characters. This is often more useful than the referer URL,
@@ -2141,12 +2149,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def collect_project_location_catalog_user_event(parent, ets: nil, uri: nil, user_event: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def collect_project_location_catalog_user_event(parent, ets: nil, prebuilt_rule: nil, raw_json: nil, uri: nil, user_event: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+parent}/userEvents:collect', options)
           command.response_representation = Google::Apis::RetailV2beta::GoogleApiHttpBody::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleApiHttpBody
           command.params['parent'] = parent unless parent.nil?
           command.query['ets'] = ets unless ets.nil?
+          command.query['prebuiltRule'] = prebuilt_rule unless prebuilt_rule.nil?
+          command.query['rawJson'] = raw_json unless raw_json.nil?
           command.query['uri'] = uri unless uri.nil?
           command.query['userEvent'] = user_event unless user_event.nil?
           command.query['fields'] = fields unless fields.nil?
