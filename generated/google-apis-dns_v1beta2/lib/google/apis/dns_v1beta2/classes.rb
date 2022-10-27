@@ -1688,7 +1688,7 @@ module Google
         # @return [String]
         attr_accessor :forwarding_path
       
-        # IPv4 address to forward to.
+        # IPv4 address to forward queries to.
         # Corresponds to the JSON property `ipv4Address`
         # @return [String]
         attr_accessor :ipv4_address
@@ -2423,12 +2423,12 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ResponseHeader]
         attr_accessor :header
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you the complete
-        # contents of even very large collections one page at a time. However, if the
-        # contents of the collection change between the first and last paginated list
-        # request, the set of all elements returned are an inconsistent view of the
+        # The presence of this field indicates that more results exist following your
+        # last page of results in pagination order. To fetch them, make another list
+        # request by using this value as your page token. This lets you view the
+        # complete contents of even very large collections one page at a time. However,
+        # if the contents of the collection change between the first and last paginated
+        # list request, the set of all elements returned are an inconsistent view of the
         # collection. You cannot retrieve a consistent snapshot of a collection larger
         # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
