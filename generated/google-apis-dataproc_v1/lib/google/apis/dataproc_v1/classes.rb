@@ -1440,68 +1440,6 @@ module Google
         end
       end
       
-      # Metadata describing the Compute Engine node pool operation.
-      class GceNodePoolOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Cluster UUID associated with the Compute Engine node pool
-        # operation.
-        # Corresponds to the JSON property `clusterUuid`
-        # @return [String]
-        attr_accessor :cluster_uuid
-      
-        # Output only. Short description of operation.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. Compute Engine node pool ID for the operation.
-        # Corresponds to the JSON property `gceNodePoolId`
-        # @return [String]
-        attr_accessor :gce_node_pool_id
-      
-        # Output only. Labels associated with the operation
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The operation type.
-        # Corresponds to the JSON property `operationType`
-        # @return [String]
-        attr_accessor :operation_type
-      
-        # The status of the operation.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::DataprocV1::ClusterOperationStatus]
-        attr_accessor :status
-      
-        # Output only. The previous operation status.
-        # Corresponds to the JSON property `statusHistory`
-        # @return [Array<Google::Apis::DataprocV1::ClusterOperationStatus>]
-        attr_accessor :status_history
-      
-        # Output only. Errors encountered during operation execution.
-        # Corresponds to the JSON property `warnings`
-        # @return [Array<String>]
-        attr_accessor :warnings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
-          @description = args[:description] if args.key?(:description)
-          @gce_node_pool_id = args[:gce_node_pool_id] if args.key?(:gce_node_pool_id)
-          @labels = args[:labels] if args.key?(:labels)
-          @operation_type = args[:operation_type] if args.key?(:operation_type)
-          @status = args[:status] if args.key?(:status)
-          @status_history = args[:status_history] if args.key?(:status_history)
-          @warnings = args[:warnings] if args.key?(:warnings)
-        end
-      end
-      
       # Request message for GetIamPolicy method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -1628,18 +1566,23 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Optional. Whether the nodes are created as preemptible VM instances (https://
-        # cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot
-        # be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if
-        # the CONTROLLER role is not assigned (the DEFAULT node pool will assume the
-        # CONTROLLER role).
+        # Optional. Whether the nodes are created as legacy preemptible VM instances (
+        # https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot
+        # VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot
+        # preemptible nodes cannot be used in a node pool with the CONTROLLER role or in
+        # the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node
+        # pool will assume the CONTROLLER role).
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
-        # Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing
-        # preemptible flag.
+        # Optional. Whether the nodes are created as Spot VM instances (https://cloud.
+        # google.com/compute/docs/instances/spot). Spot VMs are the latest update to
+        # legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and
+        # Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role
+        # or in the DEFAULT node pool if the CONTROLLER role is not assigned (the
+        # DEFAULT node pool will assume the CONTROLLER role).
         # Corresponds to the JSON property `spot`
         # @return [Boolean]
         attr_accessor :spot
@@ -3133,6 +3076,67 @@ module Google
         end
       end
       
+      # Metadata describing the node group operation.
+      class NodeGroupOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Cluster UUID associated with the node group operation.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # Output only. Short description of operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Labels associated with the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Node group ID for the operation.
+        # Corresponds to the JSON property `nodeGroupId`
+        # @return [String]
+        attr_accessor :node_group_id
+      
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # The status of the operation.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1::ClusterOperationStatus]
+        attr_accessor :status
+      
+        # Output only. The previous operation status.
+        # Corresponds to the JSON property `statusHistory`
+        # @return [Array<Google::Apis::DataprocV1::ClusterOperationStatus>]
+        attr_accessor :status_history
+      
+        # Output only. Errors encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @node_group_id = args[:node_group_id] if args.key?(:node_group_id)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @status = args[:status] if args.key?(:status)
+          @status_history = args[:status_history] if args.key?(:status_history)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Specifies an executable to run on a fully configured node and a timeout period
       # for executable completion.
       class NodeInitializationAction
@@ -3942,6 +3946,11 @@ module Google
       class RuntimeInfo
         include Google::Apis::Core::Hashable
       
+        # Usage metrics represent total resources consumed by a workload.
+        # Corresponds to the JSON property `approximateUsage`
+        # @return [Google::Apis::DataprocV1::UsageMetrics]
+        attr_accessor :approximate_usage
+      
         # Output only. A URI pointing to the location of the diagnostics tarball.
         # Corresponds to the JSON property `diagnosticOutputUri`
         # @return [String]
@@ -3965,6 +3974,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approximate_usage = args[:approximate_usage] if args.key?(:approximate_usage)
           @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
@@ -4914,6 +4924,31 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @query_list = args[:query_list] if args.key?(:query_list)
+        end
+      end
+      
+      # Usage metrics represent total resources consumed by a workload.
+      class UsageMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Optional. DCU usage in milliDCU*seconds.
+        # Corresponds to the JSON property `milliDcuSeconds`
+        # @return [Fixnum]
+        attr_accessor :milli_dcu_seconds
+      
+        # Optional. Shuffle storage usage in GB*Seconds
+        # Corresponds to the JSON property `shuffleStorageGbSeconds`
+        # @return [Fixnum]
+        attr_accessor :shuffle_storage_gb_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
+          @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
         end
       end
       
