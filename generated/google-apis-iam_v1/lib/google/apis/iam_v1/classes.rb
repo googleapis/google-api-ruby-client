@@ -376,7 +376,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service account.
+        # values to create an email address that identifies the service //
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -866,7 +866,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service account.
+        # values to create an email address that identifies the service //
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -1338,7 +1338,7 @@ module Google
         # The metadata xml document should satisfy the following constraints: 1) Must
         # contain an Identity Provider Entity ID. 2) Must contain at least one non-
         # expired signing key certificate. 3) For each signing key: a) Valid from should
-        # be no more than 7 days from now. b) Valid to should be no more than 10 years
+        # be no more than 7 days from now. b) Valid to should be no more than 14 years
         # in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml.
         # When updating the provider's metadata xml, at lease one non-expired signing
         # key must overlap with the existing metadata. This requirement is skipped if
@@ -1363,7 +1363,7 @@ module Google
       # https://cloud.google.com/iam/help/service-accounts/overview). When you create
       # a service account, you specify the project ID that owns the service account,
       # as well as a name that must be unique within the project. IAM uses these
-      # values to create an email address that identifies the service account.
+      # values to create an email address that identifies the service //
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
@@ -1828,7 +1828,7 @@ module Google
         # https://cloud.google.com/iam/help/service-accounts/overview). When you create
         # a service account, you specify the project ID that owns the service account,
         # as well as a name that must be unique within the project. IAM uses these
-        # values to create an email address that identifies the service account.
+        # values to create an email address that identifies the service //
         # Corresponds to the JSON property `restoredAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :restored_account
