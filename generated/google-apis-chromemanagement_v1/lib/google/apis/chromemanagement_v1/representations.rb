@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1BootPerformanceReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1BrowserVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -403,6 +409,18 @@ module Google
           collection :sample, as: 'sample', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatterySampleReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatterySampleReport::Representation
       
           property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class GoogleChromeManagementV1BootPerformanceReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_up_duration, as: 'bootUpDuration'
+          property :boot_up_time, as: 'bootUpTime'
+          property :report_time, as: 'reportTime'
+          property :shutdown_duration, as: 'shutdownDuration'
+          property :shutdown_reason, as: 'shutdownReason'
+          property :shutdown_time, as: 'shutdownTime'
         end
       end
       
@@ -801,6 +819,8 @@ module Google
           collection :battery_info, as: 'batteryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo::Representation
       
           collection :battery_status_report, as: 'batteryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport::Representation
+      
+          collection :boot_performance_report, as: 'bootPerformanceReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BootPerformanceReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BootPerformanceReport::Representation
       
           collection :cpu_info, as: 'cpuInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo::Representation
       
