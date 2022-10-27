@@ -151,6 +151,12 @@ module Google
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class BakExportOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CsvExportOptions
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -828,6 +834,8 @@ module Google
       class ExportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bak_export_options, as: 'bakExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::BakExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::BakExportOptions::Representation
+      
           property :csv_export_options, as: 'csvExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::CsvExportOptions::Representation
       
           collection :databases, as: 'databases'
@@ -837,6 +845,14 @@ module Google
           property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions, decorator: Google::Apis::SqladminV1beta4::ExportContext::SqlExportOptions::Representation
       
           property :uri, as: 'uri'
+        end
+        
+        class BakExportOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :stripe_count, as: 'stripeCount'
+            property :striped, as: 'striped'
+          end
         end
         
         class CsvExportOptions
@@ -938,6 +954,7 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :encryption_options, as: 'encryptionOptions', class: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions::Representation
         
+            property :striped, as: 'striped'
           end
           
           class EncryptionOptions
@@ -1075,6 +1092,7 @@ module Google
           property :allocated_ip_range, as: 'allocatedIpRange'
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1beta4::AclEntry, decorator: Google::Apis::SqladminV1beta4::AclEntry::Representation
       
+          property :enable_private_path_for_google_cloud_services, as: 'enablePrivatePathForGoogleCloudServices'
           property :ipv4_enabled, as: 'ipv4Enabled'
           property :private_network, as: 'privateNetwork'
           property :require_ssl, as: 'requireSsl'
