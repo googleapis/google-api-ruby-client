@@ -217,6 +217,25 @@ module Google
         end
       end
       
+      # 
+      class AddonComposeUiActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Earlier we used to populate just the affected_members list and inferred the
       # new membership state (roles didn't exist back then) from the Type. go/dynamite-
       # finra required backend to know the previous membership state to reconstruct
@@ -370,7 +389,8 @@ module Google
         # @return [String]
         attr_accessor :local_id
       
-        # Annotation metadata to display system messages for membership changes.
+        # Annotation metadata to display system messages for membership changes. Next
+        # Tag: 8
         # Corresponds to the JSON property `membershipChanged`
         # @return [Google::Apis::CloudsearchV1::MembershipChangedMetadata]
         attr_accessor :membership_changed
@@ -2777,6 +2797,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedAction]
         attr_accessor :action
       
+        # Actions handled by individual host apps.
+        # Corresponds to the JSON property `hostAppAction`
+        # @return [Google::Apis::CloudsearchV1::HostAppActionMarkup]
+        attr_accessor :host_app_action
+      
         # An action that describes the behavior when the form is submitted. For example,
         # an Apps Script can be invoked to handle the form.
         # Corresponds to the JSON property `openDynamicLinkAction`
@@ -2795,6 +2820,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @host_app_action = args[:host_app_action] if args.key?(:host_app_action)
           @open_dynamic_link_action = args[:open_dynamic_link_action] if args.key?(:open_dynamic_link_action)
           @open_link = args[:open_link] if args.key?(:open_link)
         end
@@ -4023,6 +4049,281 @@ module Google
         end
       end
       
+      # 
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `addonAttachments`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment>]
+        attr_accessor :addon_attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addon_attachments = args[:addon_attachments] if args.key?(:addon_attachments)
+        end
+      end
+      
+      # 
+      class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Link to the resource's icon.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # MIME type of the content in resource_url.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # 
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        # Title of the attachment.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Markup that defines conference data associated to a Google Calendar event.
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier for this conference data. Maximum 512 characters long.
+        # Corresponds to the JSON property `conferenceId`
+        # @return [String]
+        attr_accessor :conference_id
+      
+        # An identifier of the conferencing solution. Must match a value from the
+        # deployment's `calendar.conferenceSolution.id` field.
+        # Corresponds to the JSON property `conferenceSolutionId`
+        # @return [String]
+        attr_accessor :conference_solution_id
+      
+        # Entry points to the conference. Maximum 300 entry points are allowed.
+        # Corresponds to the JSON property `entryPoints`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup>]
+        attr_accessor :entry_points
+      
+        # Represents an error that occurred during conference creation.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError]
+        attr_accessor :error
+      
+        # Additional notes (such as instructions from the administrator, legal notices)
+        # to display to the user. Can contain HTML. Max length 2048 characters.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        # Additional add-on parameters. Maximum 300 parameters are allowed.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conference_id = args[:conference_id] if args.key?(:conference_id)
+          @conference_solution_id = args[:conference_solution_id] if args.key?(:conference_solution_id)
+          @entry_points = args[:entry_points] if args.key?(:entry_points)
+          @error = args[:error] if args.key?(:error)
+          @note = args[:note] if args.key?(:note)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # A way to join the conference.
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup
+        include Google::Apis::Core::Hashable
+      
+        # An access code for accessing the conference. Maximum 128 characters long.
+        # Corresponds to the JSON property `accessCode`
+        # @return [String]
+        attr_accessor :access_code
+      
+        # Features of the entry point, such as being toll or toll-free. One entry point
+        # can have multiple features.
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        # The label of the entry point to display to the user. Maximum 512 characters
+        # long.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # A meeting code for accessing the conference. Maximum 128 characters long.
+        # Corresponds to the JSON property `meetingCode`
+        # @return [String]
+        attr_accessor :meeting_code
+      
+        # A passcode for accessing the conference. Maximum 128 characters long.
+        # Corresponds to the JSON property `passcode`
+        # @return [String]
+        attr_accessor :passcode
+      
+        # A password for accessing the conference. Maximum 128 characters long.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # A PIN for accessing the conference. Maximum 128 characters long.
+        # Corresponds to the JSON property `pin`
+        # @return [String]
+        attr_accessor :pin
+      
+        # The CLDR/ISO 3166 region code for the country associated with this entry point.
+        # Applicable only to `Type.PHONE`.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # The type of the entry point. Required.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # A URI for joining the conference. Supports tel: and http(s): and should be at
+        # most 1300 characters long. Required.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_code = args[:access_code] if args.key?(:access_code)
+          @features = args[:features] if args.key?(:features)
+          @label = args[:label] if args.key?(:label)
+          @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @passcode = args[:passcode] if args.key?(:passcode)
+          @password = args[:password] if args.key?(:password)
+          @pin = args[:pin] if args.key?(:pin)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @type = args[:type] if args.key?(:type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents an error that occurred during conference creation.
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError
+        include Google::Apis::Core::Hashable
+      
+        # If the error type is `AUTHENTICATION`, the add-on can provide a URL allowing
+        # users to log in. Maximum 1300 characters long.
+        # Corresponds to the JSON property `authenticationUrl`
+        # @return [String]
+        attr_accessor :authentication_url
+      
+        # The type of error. Required.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_url = args[:authentication_url] if args.key?(:authentication_url)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Solution-specific parameters that are persisted with the event data and, if an
+      # update or delete is needed, are passed to the add-on. For example: `[`key: '
+      # sessionKey', value: '123'`, `key: 'meetingId', value: '456'`]`
+      class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter
+        include Google::Apis::Core::Hashable
+      
+        # The key of the parameter. Maximum 50 characters long. Required.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the parameter. Maximum 1024 characters long. Required.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # A list of attendees to add to the Google Calendar event.
+        # Corresponds to the JSON property `addAttendeeEmails`
+        # @return [Array<String>]
+        attr_accessor :add_attendee_emails
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_attendee_emails = args[:add_attendee_emails] if args.key?(:add_attendee_emails)
+        end
+      end
+      
+      # 
+      class AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Markup that defines conference data associated to a Google Calendar event.
+        # Corresponds to the JSON property `conferenceData`
+        # @return [Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup]
+        attr_accessor :conference_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conference_data = args[:conference_data] if args.key?(:conference_data)
+        end
+      end
+      
       # Attachments that follow the message text.
       class Attachment
         include Google::Apis::Core::Hashable
@@ -4623,6 +4924,37 @@ module Google
         end
       end
       
+      # 
+      class CalendarClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # An action that adds attachments to the Google Calendar event.
+        # Corresponds to the JSON property `addAttachmentsActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup]
+        attr_accessor :add_attachments_action_markup
+      
+        # An action that adds attendees to the Google Calendar event.
+        # Corresponds to the JSON property `editAttendeesActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup]
+        attr_accessor :edit_attendees_action_markup
+      
+        # An action that adds conference data to the Google Calendar event.
+        # Corresponds to the JSON property `editConferenceDataActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup]
+        attr_accessor :edit_conference_data_action_markup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_attachments_action_markup = args[:add_attachments_action_markup] if args.key?(:add_attachments_action_markup)
+          @edit_attendees_action_markup = args[:edit_attendees_action_markup] if args.key?(:edit_attendees_action_markup)
+          @edit_conference_data_action_markup = args[:edit_conference_data_action_markup] if args.key?(:edit_conference_data_action_markup)
+        end
+      end
+      
       # Contains information regarding an ongoing conference (aka call) for a meeting
       # space.
       class CallInfo
@@ -4808,6 +5140,17 @@ module Google
         attr_accessor :access_lock
         alias_method :access_lock?, :access_lock
       
+        # The current access type of the conference.
+        # Corresponds to the JSON property `accessType`
+        # @return [String]
+        attr_accessor :access_type
+      
+        # Whether users can join this conference before a host (Host or Cohost).
+        # Corresponds to the JSON property `allowJoiningBeforeHost`
+        # @return [Boolean]
+        attr_accessor :allow_joining_before_host
+        alias_method :allow_joining_before_host?, :allow_joining_before_host
+      
         # Indicates whether the attendance report is currently enabled or disabled.
         # Corresponds to the JSON property `attendanceReportEnabled`
         # @return [Boolean]
@@ -4832,7 +5175,7 @@ module Google
         attr_accessor :cse_enabled
         alias_method :cse_enabled?, :cse_enabled
       
-        # Indicates whether the current call is moderated.
+        # Indicates whether moderation is currently on or off.
         # Corresponds to the JSON property `moderationEnabled`
         # @return [Boolean]
         attr_accessor :moderation_enabled
@@ -4863,6 +5206,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_lock = args[:access_lock] if args.key?(:access_lock)
+          @access_type = args[:access_type] if args.key?(:access_type)
+          @allow_joining_before_host = args[:allow_joining_before_host] if args.key?(:allow_joining_before_host)
           @attendance_report_enabled = args[:attendance_report_enabled] if args.key?(:attendance_report_enabled)
           @audio_lock = args[:audio_lock] if args.key?(:audio_lock)
           @chat_lock = args[:chat_lock] if args.key?(:chat_lock)
@@ -5047,6 +5392,19 @@ module Google
           @image_url = args[:image_url] if args.key?(:image_url)
           @subtitle = args[:subtitle] if args.key?(:subtitle)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Actions handled by Chat Clients.
+      class ChatClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5930,6 +6288,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
+        end
+      end
+      
+      # The result of a user running a custom function.
+      class CustomFunctionReturnValueMarkup
+        include Google::Apis::Core::Hashable
+      
+        # The error message to show to the user if something went wrong.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The value that resulted from running the custom function.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -6823,6 +7206,25 @@ module Google
         end
       end
       
+      # 
+      class DriveClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requestFileScope`
+        # @return [Google::Apis::CloudsearchV1::RequestFileScope]
+        attr_accessor :request_file_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_file_scope = args[:request_file_scope] if args.key?(:request_file_scope)
+        end
+      end
+      
       # Drive follow-up search restricts (e.g. "followup:suggestions").
       class DriveFollowUpRestrict
         include Google::Apis::Core::Hashable
@@ -7218,6 +7620,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class EditorClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requestFileScopeForActiveDocument`
+        # @return [Google::Apis::CloudsearchV1::RequestFileScopeForActiveDocument]
+        attr_accessor :request_file_scope_for_active_document
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_file_scope_for_active_document = args[:request_file_scope_for_active_document] if args.key?(:request_file_scope_for_active_document)
         end
       end
       
@@ -8355,6 +8776,43 @@ module Google
         end
       end
       
+      # 
+      class GmailClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `addonComposeUiActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::AddonComposeUiActionMarkup]
+        attr_accessor :addon_compose_ui_action_markup
+      
+        # 
+        # Corresponds to the JSON property `openCreatedDraftActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::OpenCreatedDraftActionMarkup]
+        attr_accessor :open_created_draft_action_markup
+      
+        # 
+        # Corresponds to the JSON property `taskAction`
+        # @return [Google::Apis::CloudsearchV1::TaskActionMarkup]
+        attr_accessor :task_action
+      
+        # 
+        # Corresponds to the JSON property `updateDraftActionMarkup`
+        # @return [Google::Apis::CloudsearchV1::UpdateDraftActionMarkup]
+        attr_accessor :update_draft_action_markup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addon_compose_ui_action_markup = args[:addon_compose_ui_action_markup] if args.key?(:addon_compose_ui_action_markup)
+          @open_created_draft_action_markup = args[:open_created_draft_action_markup] if args.key?(:open_created_draft_action_markup)
+          @task_action = args[:task_action] if args.key?(:task_action)
+          @update_draft_action_markup = args[:update_draft_action_markup] if args.key?(:update_draft_action_markup)
+        end
+      end
+      
       # Configuration of the Google Chat in Meet.
       class GoogleChatConfig
         include Google::Apis::Core::Hashable
@@ -8432,7 +8890,7 @@ module Google
       
       # A card action is the action associated with the card. For an invoice card, a
       # typical action would be: delete invoice, email invoice or open the invoice in
-      # browser.
+      # browser. Not supported by Google Chat apps.
       class GoogleChatV1ContextualAddOnMarkupCardCardAction
         include Google::Apis::Core::Hashable
       
@@ -9333,6 +9791,55 @@ module Google
         end
       end
       
+      # Actions handled by individual host apps.
+      class HostAppActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Actions handled by Calendar.
+        # Corresponds to the JSON property `calendarAction`
+        # @return [Google::Apis::CloudsearchV1::CalendarClientActionMarkup]
+        attr_accessor :calendar_action
+      
+        # Actions handled by Chat Clients.
+        # Corresponds to the JSON property `chatAction`
+        # @return [Google::Apis::CloudsearchV1::ChatClientActionMarkup]
+        attr_accessor :chat_action
+      
+        # Actions handled by Drive.
+        # Corresponds to the JSON property `driveAction`
+        # @return [Google::Apis::CloudsearchV1::DriveClientActionMarkup]
+        attr_accessor :drive_action
+      
+        # Actions handled by Docs, Sheets, or Slides.
+        # Corresponds to the JSON property `editorAction`
+        # @return [Google::Apis::CloudsearchV1::EditorClientActionMarkup]
+        attr_accessor :editor_action
+      
+        # Actions handled by Gmail.
+        # Corresponds to the JSON property `gmailAction`
+        # @return [Google::Apis::CloudsearchV1::GmailClientActionMarkup]
+        attr_accessor :gmail_action
+      
+        # Actions handled by Sheets.
+        # Corresponds to the JSON property `sheetsAction`
+        # @return [Google::Apis::CloudsearchV1::SheetsClientActionMarkup]
+        attr_accessor :sheets_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calendar_action = args[:calendar_action] if args.key?(:calendar_action)
+          @chat_action = args[:chat_action] if args.key?(:chat_action)
+          @drive_action = args[:drive_action] if args.key?(:drive_action)
+          @editor_action = args[:editor_action] if args.key?(:editor_action)
+          @gmail_action = args[:gmail_action] if args.key?(:gmail_action)
+          @sheets_action = args[:sheets_action] if args.key?(:sheets_action)
+        end
+      end
+      
       # Represents a single host. Optionally, the MDB owner of the host can be
       # specified.
       class HostProto
@@ -9822,6 +10329,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class InsertContent
+        include Google::Apis::Core::Hashable
+      
+        # The content to be inserted.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The type of inserted content.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # 
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -11087,8 +11625,8 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::PhoneAccess>]
         attr_accessor :phone_access
       
-        # Settings of a meeting space that can be viewed and edited by users with
-        # permissions. These settings are always populated for output.
+        # Settings of a meeting space that can be edited by users with corresponding
+        # manage privilege. These settings are always populated in responses.
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::CloudsearchV1::Settings]
         attr_accessor :settings
@@ -11204,7 +11742,8 @@ module Google
         end
       end
       
-      # Annotation metadata to display system messages for membership changes.
+      # Annotation metadata to display system messages for membership changes. Next
+      # Tag: 8
       class MembershipChangedMetadata
         include Google::Apis::Core::Hashable
       
@@ -11233,6 +11772,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::User]
         attr_accessor :initiator_profile
       
+        # The type of the user who initiated this membership change.
+        # Corresponds to the JSON property `initiatorType`
+        # @return [String]
+        attr_accessor :initiator_type
+      
         # 
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -11249,6 +11793,7 @@ module Google
           @affected_memberships = args[:affected_memberships] if args.key?(:affected_memberships)
           @initiator = args[:initiator] if args.key?(:initiator)
           @initiator_profile = args[:initiator_profile] if args.key?(:initiator_profile)
+          @initiator_type = args[:initiator_type] if args.key?(:initiator_type)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -12163,6 +12708,46 @@ module Google
           @link = args[:link] if args.key?(:link)
           @open_link = args[:open_link] if args.key?(:open_link)
           @open_link_action = args[:open_link_action] if args.key?(:open_link_action)
+        end
+      end
+      
+      # 
+      class OpenCreatedDraftActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the newly created draft in the form "r123".
+        # Corresponds to the JSON property `draftId`
+        # @return [String]
+        attr_accessor :draft_id
+      
+        # The server storage ID in hex format, for example,"15e9fa622ce1029d".
+        # Corresponds to the JSON property `draftStorageId`
+        # @return [String]
+        attr_accessor :draft_storage_id
+      
+        # The ID of the thread containing the newly created draft, for example, "
+        # 15e9fa622ce1029d".
+        # Corresponds to the JSON property `draftThreadId`
+        # @return [String]
+        attr_accessor :draft_thread_id
+      
+        # The server permanent ID for the draft's thread. This field isn't set anywhere,
+        # and it's ignored when processing OpenCreatedDraftActionMarkup. Supply and use
+        # draftThreadStorageId instead.
+        # Corresponds to the JSON property `draftThreadServerPermId`
+        # @return [String]
+        attr_accessor :draft_thread_server_perm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @draft_id = args[:draft_id] if args.key?(:draft_id)
+          @draft_storage_id = args[:draft_storage_id] if args.key?(:draft_storage_id)
+          @draft_thread_id = args[:draft_thread_id] if args.key?(:draft_thread_id)
+          @draft_thread_server_perm_id = args[:draft_thread_server_perm_id] if args.key?(:draft_thread_server_perm_id)
         end
       end
       
@@ -13946,6 +14531,25 @@ module Google
         end
       end
       
+      # 
+      class Recipient
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
       # A recording event is something that happens to the recording in a conference.
       class RecordingEvent
         include Google::Apis::Core::Hashable
@@ -14119,6 +14723,38 @@ module Google
         end
       end
       
+      # 
+      class RequestFileScope
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `itemId`
+        # @return [String]
+        attr_accessor :item_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_id = args[:item_id] if args.key?(:item_id)
+        end
+      end
+      
+      # 
+      class RequestFileScopeForActiveDocument
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Shared request options for all RPC methods.
       class RequestOptions
         include Google::Apis::Core::Hashable
@@ -14253,11 +14889,6 @@ module Google
       class ResponseDebugInfo
         include Google::Apis::Core::Hashable
       
-        # Experiments enabled in QAPI.
-        # Corresponds to the JSON property `enabledExperiments`
-        # @return [Array<Fixnum>]
-        attr_accessor :enabled_experiments
-      
         # General debug info formatted for display.
         # Corresponds to the JSON property `formattedDebugInfo`
         # @return [String]
@@ -14269,7 +14900,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enabled_experiments = args[:enabled_experiments] if args.key?(:enabled_experiments)
           @formatted_debug_info = args[:formatted_debug_info] if args.key?(:formatted_debug_info)
         end
       end
@@ -14547,6 +15177,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::RosterId]
         attr_accessor :id
       
+        # Whether caller has visibility into members of the roster.
+        # Corresponds to the JSON property `isMembershipVisibleToCaller`
+        # @return [Boolean]
+        attr_accessor :is_membership_visible_to_caller
+        alias_method :is_membership_visible_to_caller?, :is_membership_visible_to_caller
+      
         # 
         # Corresponds to the JSON property `membershipCount`
         # @return [Fixnum]
@@ -14581,6 +15217,7 @@ module Google
         def update!(**args)
           @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @id = args[:id] if args.key?(:id)
+          @is_membership_visible_to_caller = args[:is_membership_visible_to_caller] if args.key?(:is_membership_visible_to_caller)
           @membership_count = args[:membership_count] if args.key?(:membership_count)
           @name = args[:name] if args.key?(:name)
           @roster_gaia_key = args[:roster_gaia_key] if args.key?(:roster_gaia_key)
@@ -15441,17 +16078,28 @@ module Google
         end
       end
       
-      # Settings of a meeting space that can be viewed and edited by users with
-      # permissions. These settings are always populated for output.
+      # Settings of a meeting space that can be edited by users with corresponding
+      # manage privilege. These settings are always populated in responses.
       class Settings
         include Google::Apis::Core::Hashable
       
-        # The access lock of the meeting space that lets owner control who can join the
-        # meeting. True if the access lock feature is enabled for the meeting space.
+        # The access lock of the meeting space that lets hosts control who can join the
+        # meeting.
         # Corresponds to the JSON property `accessLock`
         # @return [Boolean]
         attr_accessor :access_lock
         alias_method :access_lock?, :access_lock
+      
+        # The access type of the meeting space.
+        # Corresponds to the JSON property `accessType`
+        # @return [String]
+        attr_accessor :access_type
+      
+        # Whether users can join before host in the conferences of this meeting space.
+        # Corresponds to the JSON property `allowJoiningBeforeHost`
+        # @return [Boolean]
+        attr_accessor :allow_joining_before_host
+        alias_method :allow_joining_before_host?, :allow_joining_before_host
       
         # Whether attendance report is enabled for the meeting space.
         # Corresponds to the JSON property `attendanceReportEnabled`
@@ -15460,8 +16108,7 @@ module Google
         alias_method :attendance_report_enabled?, :attendance_report_enabled
       
         # The chat lock of the meeting space that lets owner control whether the
-        # participants can send chat messages. True if the chat lock feature is enabled
-        # for the meeting space.
+        # participants can send chat messages.
         # Corresponds to the JSON property `chatLock`
         # @return [Boolean]
         attr_accessor :chat_lock
@@ -15492,16 +16139,14 @@ module Google
         alias_method :moderation_enabled?, :moderation_enabled
       
         # The present lock of the meeting space that lets owner control whether the
-        # participants can present their screen. True if the present lock feature is
-        # enabled for the meeting space.
+        # participants can present their screen.
         # Corresponds to the JSON property `presentLock`
         # @return [Boolean]
         attr_accessor :present_lock
         alias_method :present_lock?, :present_lock
       
         # The reactions lock of the meeting space that lets owner control whether the
-        # participants can send reactions. True if the reactions lock feature is enabled
-        # for the meeting space.
+        # participants can send reactions.
         # Corresponds to the JSON property `reactionsLock`
         # @return [Boolean]
         attr_accessor :reactions_lock
@@ -15514,6 +16159,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_lock = args[:access_lock] if args.key?(:access_lock)
+          @access_type = args[:access_type] if args.key?(:access_type)
+          @allow_joining_before_host = args[:allow_joining_before_host] if args.key?(:allow_joining_before_host)
           @attendance_report_enabled = args[:attendance_report_enabled] if args.key?(:attendance_report_enabled)
           @chat_lock = args[:chat_lock] if args.key?(:chat_lock)
           @cohost_artifact_sharing_enabled = args[:cohost_artifact_sharing_enabled] if args.key?(:cohost_artifact_sharing_enabled)
@@ -15548,6 +16195,25 @@ module Google
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # 
+      class SheetsClientActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # The result of a user running a custom function.
+        # Corresponds to the JSON property `customFunctionReturnValueMarkup`
+        # @return [Google::Apis::CloudsearchV1::CustomFunctionReturnValueMarkup]
+        attr_accessor :custom_function_return_value_markup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_function_return_value_markup = args[:custom_function_return_value_markup] if args.key?(:custom_function_return_value_markup)
         end
       end
       
@@ -16480,6 +17146,26 @@ module Google
       end
       
       # 
+      class TaskActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `reloadTasks`
+        # @return [Boolean]
+        attr_accessor :reload_tasks
+        alias_method :reload_tasks?, :reload_tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reload_tasks = args[:reload_tasks] if args.key?(:reload_tasks)
+        end
+      end
+      
+      # 
       class TextButton
         include Google::Apis::Core::Hashable
       
@@ -17086,6 +17772,71 @@ module Google
       end
       
       # 
+      class UpdateBccRecipients
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bccRecipients`
+        # @return [Array<Google::Apis::CloudsearchV1::Recipient>]
+        attr_accessor :bcc_recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bcc_recipients = args[:bcc_recipients] if args.key?(:bcc_recipients)
+        end
+      end
+      
+      # 
+      class UpdateBody
+        include Google::Apis::Core::Hashable
+      
+        # A repeated field that contains a series of content to insert into the draft
+        # that the user is currently editing. The content can contain HTML content or
+        # plain text content.
+        # Corresponds to the JSON property `insertContents`
+        # @return [Array<Google::Apis::CloudsearchV1::InsertContent>]
+        attr_accessor :insert_contents
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insert_contents = args[:insert_contents] if args.key?(:insert_contents)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class UpdateCcRecipients
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ccRecipients`
+        # @return [Array<Google::Apis::CloudsearchV1::Recipient>]
+        attr_accessor :cc_recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cc_recipients = args[:cc_recipients] if args.key?(:cc_recipients)
+        end
+      end
+      
+      # 
       class UpdateDataSourceRequest
         include Google::Apis::Core::Hashable
       
@@ -17101,12 +17852,14 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DataSource]
         attr_accessor :source
       
-        # Update mask to control which fields to update. If update_mask is non-empty
-        # then only the fields specified in the update_mask are updated. If you specify
-        # a field in the update_mask, but don't specify its value in the source that
-        # field will be cleared. If the update_mask is not present or empty or has the
-        # value * then all fields will be updated. Some example field paths: name,
-        # display_name
+        # Only applies to [`settings.datasources.patch`](https://developers.google.com/
+        # cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask
+        # to control which fields to update. Example field paths: `name`, `displayName`.
+        # * If `update_mask` is non-empty, then only the fields specified in the `
+        # update_mask` are updated. * If you specify a field in the `update_mask`, but
+        # don't specify its value in the source, that field is cleared. * If the `
+        # update_mask` is not present or empty or has the value `*`, then all fields are
+        # updated.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -17120,6 +17873,54 @@ module Google
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @source = args[:source] if args.key?(:source)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # 
+      class UpdateDraftActionMarkup
+        include Google::Apis::Core::Hashable
+      
+        # If set, replaces the existing Bcc recipients of the draft the user is
+        # currently editing.
+        # Corresponds to the JSON property `updateBccRecipients`
+        # @return [Google::Apis::CloudsearchV1::UpdateBccRecipients]
+        attr_accessor :update_bcc_recipients
+      
+        # A field that contains a series of update actions to perform on the draft body
+        # that the user is currently editing.
+        # Corresponds to the JSON property `updateBody`
+        # @return [Google::Apis::CloudsearchV1::UpdateBody]
+        attr_accessor :update_body
+      
+        # If set, replaces the existing Cc recipients of the draft the user is currently
+        # editing.
+        # Corresponds to the JSON property `updateCcRecipients`
+        # @return [Google::Apis::CloudsearchV1::UpdateCcRecipients]
+        attr_accessor :update_cc_recipients
+      
+        # If set, replaces the existing subject of the draft the user is currently
+        # editing.
+        # Corresponds to the JSON property `updateSubject`
+        # @return [Google::Apis::CloudsearchV1::UpdateSubject]
+        attr_accessor :update_subject
+      
+        # If set, replaces the existing To recipients of the draft the user is currently
+        # editing.
+        # Corresponds to the JSON property `updateToRecipients`
+        # @return [Google::Apis::CloudsearchV1::UpdateToRecipients]
+        attr_accessor :update_to_recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_bcc_recipients = args[:update_bcc_recipients] if args.key?(:update_bcc_recipients)
+          @update_body = args[:update_body] if args.key?(:update_body)
+          @update_cc_recipients = args[:update_cc_recipients] if args.key?(:update_cc_recipients)
+          @update_subject = args[:update_subject] if args.key?(:update_subject)
+          @update_to_recipients = args[:update_to_recipients] if args.key?(:update_to_recipients)
         end
       end
       
@@ -17153,6 +17954,44 @@ module Google
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @schema = args[:schema] if args.key?(:schema)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # 
+      class UpdateSubject
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # 
+      class UpdateToRecipients
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `toRecipients`
+        # @return [Array<Google::Apis::CloudsearchV1::Recipient>]
+        attr_accessor :to_recipients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @to_recipients = args[:to_recipients] if args.key?(:to_recipients)
         end
       end
       
@@ -17326,6 +18165,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_image_width
       
+        # NEXT TAG : 18
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
         # Mime type of the content (Currently mapped from Page Render Service ItemType)
         # Note that this is not necessarily the mime type of the http resource. For
         # example a text/html from youtube or vimeo may actually be classified as a
@@ -17366,7 +18210,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::SafeUrlProto]
         attr_accessor :url
       
-        # NEXT TAG : 17
+        # 
         # Corresponds to the JSON property `urlSource`
         # @return [String]
         attr_accessor :url_source
@@ -17385,6 +18229,7 @@ module Google
           @image_width = args[:image_width] if args.key?(:image_width)
           @int_image_height = args[:int_image_height] if args.key?(:int_image_height)
           @int_image_width = args[:int_image_width] if args.key?(:int_image_width)
+          @link_type = args[:link_type] if args.key?(:link_type)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
           @should_not_render = args[:should_not_render] if args.key?(:should_not_render)
