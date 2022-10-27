@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TelemetryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,6 +725,8 @@ module Google
           property :release_channel, as: 'releaseChannel'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          property :telemetry_config, as: 'telemetryConfig', class: Google::Apis::MetastoreV1beta::TelemetryConfig, decorator: Google::Apis::MetastoreV1beta::TelemetryConfig::Representation
+      
           property :tier, as: 'tier'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
@@ -740,6 +748,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TelemetryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_format, as: 'logFormat'
         end
       end
       
