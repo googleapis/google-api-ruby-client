@@ -163,6 +163,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Output only. The globally unique identifier of the endpoint in the UUID4
+        # format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -174,6 +180,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @port = args[:port] if args.key?(:port)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -446,6 +453,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The globally unique identifier of the namespace in the UUID4
+        # format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -454,6 +467,7 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -649,6 +663,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The globally unique identifier of the service in the UUID4 format.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -658,6 +677,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

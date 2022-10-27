@@ -160,6 +160,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :port, as: 'port'
+          property :uid, as: 'uid'
         end
       end
       
@@ -240,6 +241,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :uid, as: 'uid'
         end
       end
       
@@ -276,6 +278,7 @@ module Google
           collection :endpoints, as: 'endpoints', class: Google::Apis::ServicedirectoryV1::Endpoint, decorator: Google::Apis::ServicedirectoryV1::Endpoint::Representation
       
           property :name, as: 'name'
+          property :uid, as: 'uid'
         end
       end
       
