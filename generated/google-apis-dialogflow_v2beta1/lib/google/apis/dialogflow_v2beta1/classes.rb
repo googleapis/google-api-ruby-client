@@ -15434,6 +15434,14 @@ module Google
       class GoogleCloudDialogflowV2beta1SpeechToTextConfig
         include Google::Apis::Core::Hashable
       
+        # Which Speech model to select. Select the model best suited to your domain to
+        # get best results. If a model is not explicitly specified, then a default model
+        # is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/
+        # speech-to-text/docs/basics#select-model) for more details.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `
         # USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in
         # AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced
@@ -15449,6 +15457,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @model = args[:model] if args.key?(:model)
           @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
         end
       end
