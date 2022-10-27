@@ -1363,7 +1363,7 @@ module Google
       class HttpHeader
         include Google::Apis::Core::Hashable
       
-        # The header field name
+        # Required. The header field name
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3659,7 +3659,8 @@ module Google
         # Optional. LatestRevision may be provided to indicate that the latest ready
         # Revision of the Configuration should be used for this traffic target. When
         # provided LatestRevision must be true if RevisionName is empty; it must be
-        # false when RevisionName is non-empty.
+        # false when RevisionName is non-empty in spec. When shown in status, this
+        # indicates that the RevisionName was resolved from a spec's ConfigurationName.
         # Corresponds to the JSON property `latestRevision`
         # @return [Boolean]
         attr_accessor :latest_revision
