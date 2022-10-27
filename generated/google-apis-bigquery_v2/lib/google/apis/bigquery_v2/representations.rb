@@ -1431,6 +1431,7 @@ module Google
           property :max_time_travel_hours, :numeric_string => true, as: 'maxTimeTravelHours'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :storage_billing_model, as: 'storageBillingModel'
           collection :tags, as: 'tags', class: Google::Apis::BigqueryV2::Dataset::Tag, decorator: Google::Apis::BigqueryV2::Dataset::Tag::Representation
       
         end
@@ -1682,6 +1683,8 @@ module Google
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :max_bad_records, as: 'maxBadRecords'
+          property :metadata_cache_mode, as: 'metadataCacheMode'
+          property :object_metadata, as: 'objectMetadata'
           property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
       
           property :reference_file_schema_uri, as: 'referenceFileSchemaUri'
