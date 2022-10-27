@@ -179,16 +179,19 @@ module Google
       
         # Org policy condition/expression. For example: `resource.instanceName.matches("[
         # production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        # The max length of the condition is 1000 characters.
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
       
-        # Detailed information about this custom policy constraint.
+        # Detailed information about this custom policy constraint. The max length of
+        # the description is 2000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # One line display name for the UI.
+        # One line display name for the UI. The max length of the display_name is 200
+        # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -201,7 +204,9 @@ module Google
         # Immutable. Name of the constraint. This is unique within the organization.
         # Format of the name should be * `organizations/`organization_id`/
         # customConstraints/`custom_constraint_id`` Example : "organizations/123/
-        # customConstraints/custom.createOnlyE2TypeVms"
+        # customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters
+        # and the min length is 1. Note that the prefix "organizations/`organization_id`/
+        # customConstraints/" is not counted.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
