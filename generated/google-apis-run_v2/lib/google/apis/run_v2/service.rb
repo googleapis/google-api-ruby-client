@@ -55,7 +55,7 @@ module Google
         # Create a Job.
         # @param [String] parent
         #   Required. The location and project in which this Job should be created. Format:
-        #   projects/`projectnumber`/locations/`location`
+        #   projects/`project`/locations/`location`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Job] google_cloud_run_v2_job_object
         # @param [String] job_id
         #   Required. The unique identifier for the Job. The name of the job becomes `
@@ -96,16 +96,11 @@ module Google
         
         # Deletes a Job.
         # @param [String] name
-        #   Required. The full name of the Job. Format: projects/`projectnumber`/locations/
-        #   `location`/jobs/`job`
+        #   Required. The full name of the Job. Format: projects/`project`/locations/`
+        #   location`/jobs/`job`
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
-        # @param [Boolean] force
-        #   If set to true, the Job and its Executions will be deleted no matter whether
-        #   any Executions are still running or not. If set to false or unset, the Job and
-        #   its Executions can only be deleted if there are no running Executions. Any
-        #   running Execution will fail the deletion.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated without actually deleting any
         #   resources.
@@ -126,13 +121,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_job(name, etag: nil, force: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_job(name, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['etag'] = etag unless etag.nil?
-          command.query['force'] = force unless force.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -141,8 +135,8 @@ module Google
         
         # Gets information about a Job.
         # @param [String] name
-        #   Required. The full name of the Job. Format: projects/`projectnumber`/locations/
-        #   `location`/jobs/`job`
+        #   Required. The full name of the Job. Format: projects/`project`/locations/`
+        #   location`/jobs/`job`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -218,7 +212,7 @@ module Google
         # List Jobs.
         # @param [String] parent
         #   Required. The location and project to list resources on. Format: projects/`
-        #   projectnumber`/locations/`location`
+        #   project`/locations/`location`
         # @param [Fixnum] page_size
         #   Maximum number of Jobs to return in this call.
         # @param [String] page_token
@@ -301,8 +295,8 @@ module Google
         
         # Triggers creation of a new Execution of this Job.
         # @param [String] name
-        #   Required. The full name of the Job. Format: projects/`projectnumber`/locations/
-        #   `location`/jobs/`job`
+        #   Required. The full name of the Job. Format: projects/`project`/locations/`
+        #   location`/jobs/`job`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2RunJobRequest] google_cloud_run_v2_run_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -710,13 +704,13 @@ module Google
         # Creates a new Service in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this service should be created.
-        #   Format: projects/`projectnumber`/locations/`location` Only lowercase, digits,
-        #   and hyphens; must begin with letter, and may not end with hyphen; must contain
-        #   fewer than 50 characters.
+        #   Format: projects/`project`/locations/`location` Only lowercase characters,
+        #   digits, and hyphens.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [String] service_id
-        #   Required. The unique identifier for the Service. The name of the service
-        #   becomes `parent`/services/`service_id`.
+        #   Required. The unique identifier for the Service. It must begin with letter,
+        #   and may not end with hyphen; must contain fewer than 50 characters. The name
+        #   of the service becomes `parent`/services/`service_id`.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or creating any resources.
@@ -754,8 +748,8 @@ module Google
         # Deletes a Service. This will cause the Service to stop serving traffic and
         # will delete all revisions.
         # @param [String] name
-        #   Required. The full name of the Service. Format: projects/`projectnumber`/
-        #   locations/`location`/services/`service`
+        #   Required. The full name of the Service. Format: projects/`project`/locations/`
+        #   location`/services/`service`
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
@@ -793,8 +787,8 @@ module Google
         
         # Gets information about a Service.
         # @param [String] name
-        #   Required. The full name of the Service. Format: projects/`projectnumber`/
-        #   locations/`location`/services/`service`
+        #   Required. The full name of the Service. Format: projects/`project`/locations/`
+        #   location`/services/`service`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -870,8 +864,8 @@ module Google
         # List Services.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
-        #   valid GCP region, and may not be the "-" wildcard. Format: projects/`
-        #   projectnumber`/locations/`location`
+        #   valid GCP region, and may not be the "-" wildcard. Format: projects/`project`/
+        #   locations/`location`
         # @param [Fixnum] page_size
         #   Maximum number of Services to return in this call.
         # @param [String] page_token

@@ -82,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRunV2GrpcAction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRunV2HttpGetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -452,22 +446,12 @@ module Google
         end
       end
       
-      class GoogleCloudRunV2GrpcAction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :port, as: 'port'
-          property :service, as: 'service'
-        end
-      end
-      
       class GoogleCloudRunV2HttpGetAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :host, as: 'host'
           collection :http_headers, as: 'httpHeaders', class: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader, decorator: Google::Apis::RunV2::GoogleCloudRunV2HttpHeader::Representation
       
           property :path, as: 'path'
-          property :scheme, as: 'scheme'
         end
       end
       
@@ -562,8 +546,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure_threshold, as: 'failureThreshold'
-          property :grpc, as: 'grpc', class: Google::Apis::RunV2::GoogleCloudRunV2GrpcAction, decorator: Google::Apis::RunV2::GoogleCloudRunV2GrpcAction::Representation
-      
           property :http_get, as: 'httpGet', class: Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction, decorator: Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'
@@ -717,7 +699,6 @@ module Google
       class GoogleCloudRunV2TcpSocketAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :host, as: 'host'
           property :port, as: 'port'
         end
       end
