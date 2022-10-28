@@ -439,6 +439,11 @@ module Google
         # @return [String]
         attr_accessor :compliance_regime
       
+        # Represents the Compliance Status of this workload
+        # Corresponds to the JSON property `complianceStatus`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus]
+        attr_accessor :compliance_status
+      
         # Output only. Urls for services which are compliant for this Assured Workload,
         # but which are currently disallowed by the ResourceUsageRestriction org policy.
         # Invoke RestrictAllowedResources endpoint to allow your project developers to
@@ -535,6 +540,7 @@ module Google
         def update!(**args)
           @billing_account = args[:billing_account] if args.key?(:billing_account)
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @compliance_status = args[:compliance_status] if args.key?(:compliance_status)
           @compliant_but_disallowed_services = args[:compliant_but_disallowed_services] if args.key?(:compliant_but_disallowed_services)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -549,6 +555,31 @@ module Google
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
           @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
+        end
+      end
+      
+      # Represents the Compliance Status of this workload
+      class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Count of active Violations which are acknowledged in the Workload.
+        # Corresponds to the JSON property `acknowledgedViolationCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_violation_count
+      
+        # Count of active Violations which haven't been acknowledged.
+        # Corresponds to the JSON property `activeViolationCount`
+        # @return [Fixnum]
+        attr_accessor :active_violation_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledged_violation_count = args[:acknowledged_violation_count] if args.key?(:acknowledged_violation_count)
+          @active_violation_count = args[:active_violation_count] if args.key?(:active_violation_count)
         end
       end
       
