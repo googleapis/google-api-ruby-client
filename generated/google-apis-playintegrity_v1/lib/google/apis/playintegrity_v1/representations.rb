@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AccountRiskVerdict
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppIntegrity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,17 +88,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_activity, as: 'accountActivity', class: Google::Apis::PlayintegrityV1::AccountActivity, decorator: Google::Apis::PlayintegrityV1::AccountActivity::Representation
       
-          property :account_risk_verdict, as: 'accountRiskVerdict', class: Google::Apis::PlayintegrityV1::AccountRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AccountRiskVerdict::Representation
-      
           property :app_licensing_verdict, as: 'appLicensingVerdict'
-        end
-      end
-      
-      class AccountRiskVerdict
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :risk, as: 'risk'
-          property :risk_level, as: 'riskLevel'
         end
       end
       
