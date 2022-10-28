@@ -555,7 +555,9 @@ module Google
         end
       end
       
-      # Metadata of connection schema.
+      # ConnectionSchemaMetadata is the singleton resource of each connection. It
+      # includes the entity and action names of runtime resources exposed by a
+      # connection backend.
       class ConnectionSchemaMetadata
         include Google::Apis::Core::Hashable
       
@@ -569,6 +571,28 @@ module Google
         # @return [Array<String>]
         attr_accessor :entities
       
+        # Output only. Resource name. Format: projects/`project`/locations/`location`/
+        # connections/`connection`/connectionSchemaMetadata
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the connection runtime schema refresh was
+        # triggered.
+        # Corresponds to the JSON property `refreshTime`
+        # @return [String]
+        attr_accessor :refresh_time
+      
+        # Output only. The current state of runtime schema.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the connection runtime schema was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -577,6 +601,10 @@ module Google
         def update!(**args)
           @actions = args[:actions] if args.key?(:actions)
           @entities = args[:entities] if args.key?(:entities)
+          @name = args[:name] if args.key?(:name)
+          @refresh_time = args[:refresh_time] if args.key?(:refresh_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2176,11 +2204,6 @@ module Google
         attr_accessor :cert_type
       
         # Secret provides a reference to entries in Secret Manager.
-        # Corresponds to the JSON property `password`
-        # @return [Google::Apis::ConnectorsV1::Secret]
-        attr_accessor :password
-      
-        # Secret provides a reference to entries in Secret Manager.
         # Corresponds to the JSON property `sshClientCert`
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :ssh_client_cert
@@ -2202,7 +2225,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cert_type = args[:cert_type] if args.key?(:cert_type)
-          @password = args[:password] if args.key?(:password)
           @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
           @ssh_client_cert_pass = args[:ssh_client_cert_pass] if args.key?(:ssh_client_cert_pass)
           @username = args[:username] if args.key?(:username)
