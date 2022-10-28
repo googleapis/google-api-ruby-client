@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuiltInVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class ContainerAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContainerFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Destination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetContainerSnippetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetWorkspaceStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GtagConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDestinationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEnabledBuiltInVariablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +209,12 @@ module Google
       end
       
       class ListFoldersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGtagConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -386,6 +428,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          property :features, as: 'features', class: Google::Apis::TagmanagerV2::AccountFeatures, decorator: Google::Apis::TagmanagerV2::AccountFeatures::Representation
+      
           property :fingerprint, as: 'fingerprint'
           property :name, as: 'name'
           property :path, as: 'path'
@@ -398,6 +442,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :permission, as: 'permission'
+        end
+      end
+      
+      class AccountFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :support_multiple_containers, as: 'supportMultipleContainers'
+          property :support_user_permissions, as: 'supportUserPermissions'
         end
       end
       
@@ -448,11 +500,14 @@ module Google
           property :account_id, as: 'accountId'
           property :container_id, as: 'containerId'
           collection :domain_name, as: 'domainName'
+          property :features, as: 'features', class: Google::Apis::TagmanagerV2::ContainerFeatures, decorator: Google::Apis::TagmanagerV2::ContainerFeatures::Representation
+      
           property :fingerprint, as: 'fingerprint'
           property :name, as: 'name'
           property :notes, as: 'notes'
           property :path, as: 'path'
           property :public_id, as: 'publicId'
+          collection :tag_ids, as: 'tagIds'
           property :tag_manager_url, as: 'tagManagerUrl'
           collection :usage_context, as: 'usageContext'
         end
@@ -463,6 +518,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_id, as: 'containerId'
           property :permission, as: 'permission'
+        end
+      end
+      
+      class ContainerFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :support_built_in_variables, as: 'supportBuiltInVariables'
+          property :support_clients, as: 'supportClients'
+          property :support_environments, as: 'supportEnvironments'
+          property :support_folders, as: 'supportFolders'
+          property :support_gtag_configs, as: 'supportGtagConfigs'
+          property :support_tags, as: 'supportTags'
+          property :support_templates, as: 'supportTemplates'
+          property :support_triggers, as: 'supportTriggers'
+          property :support_user_permissions, as: 'supportUserPermissions'
+          property :support_variables, as: 'supportVariables'
+          property :support_versions, as: 'supportVersions'
+          property :support_workspaces, as: 'supportWorkspaces'
+          property :support_zones, as: 'supportZones'
         end
       end
       
@@ -484,6 +558,8 @@ module Google
           property :description, as: 'description'
           property :fingerprint, as: 'fingerprint'
           collection :folder, as: 'folder', class: Google::Apis::TagmanagerV2::Folder, decorator: Google::Apis::TagmanagerV2::Folder::Representation
+      
+          collection :gtag_config, as: 'gtagConfig', class: Google::Apis::TagmanagerV2::GtagConfig, decorator: Google::Apis::TagmanagerV2::GtagConfig::Representation
       
           property :name, as: 'name'
           property :path, as: 'path'
@@ -509,6 +585,7 @@ module Google
           property :name, as: 'name'
           property :num_clients, as: 'numClients'
           property :num_custom_templates, as: 'numCustomTemplates'
+          property :num_gtag_configs, as: 'numGtagConfigs'
           property :num_macros, as: 'numMacros'
           property :num_rules, as: 'numRules'
           property :num_tags, as: 'numTags'
@@ -561,6 +638,20 @@ module Google
           property :template_data, as: 'templateData'
           property :template_id, as: 'templateId'
           property :workspace_id, as: 'workspaceId'
+        end
+      end
+      
+      class Destination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :container_id, as: 'containerId'
+          property :destination_id, as: 'destinationId'
+          property :destination_link_id, as: 'destinationLinkId'
+          property :fingerprint, as: 'fingerprint'
+          property :name, as: 'name'
+          property :path, as: 'path'
+          property :tag_manager_url, as: 'tagManagerUrl'
         end
       end
       
@@ -642,6 +733,13 @@ module Google
         end
       end
       
+      class GetContainerSnippetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snippet, as: 'snippet'
+        end
+      end
+      
       class GetWorkspaceStatusResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -649,6 +747,22 @@ module Google
       
           collection :workspace_change, as: 'workspaceChange', class: Google::Apis::TagmanagerV2::Entity, decorator: Google::Apis::TagmanagerV2::Entity::Representation
       
+        end
+      end
+      
+      class GtagConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :gtag_config_id, as: 'gtagConfigId'
+          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :path, as: 'path'
+          property :tag_manager_url, as: 'tagManagerUrl'
+          property :type, as: 'type'
+          property :workspace_id, as: 'workspaceId'
         end
       end
       
@@ -688,6 +802,15 @@ module Google
         end
       end
       
+      class ListDestinationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination, as: 'destination', class: Google::Apis::TagmanagerV2::Destination, decorator: Google::Apis::TagmanagerV2::Destination::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListEnabledBuiltInVariablesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -710,6 +833,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :folder, as: 'folder', class: Google::Apis::TagmanagerV2::Folder, decorator: Google::Apis::TagmanagerV2::Folder::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGtagConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gtag_config, as: 'gtagConfig', class: Google::Apis::TagmanagerV2::GtagConfig, decorator: Google::Apis::TagmanagerV2::GtagConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
