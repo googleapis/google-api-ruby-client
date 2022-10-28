@@ -278,7 +278,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a device. This operation wipes the device.
+        # Deletes a device. This operation wipes the device. Deleted devices do not show
+        # up in enterprises.devices.list calls and a 404 is returned from enterprises.
+        # devices.get.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
         #   deviceId`.
@@ -317,7 +319,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a device.
+        # Gets a device. Deleted devices will respond with a 404 error.
         # @param [String] name
         #   The name of the device in the form enterprises/`enterpriseId`/devices/`
         #   deviceId`.
@@ -384,7 +386,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists devices for a given enterprise.
+        # Lists devices for a given enterprise. Deleted devices are not returned in the
+        # response.
         # @param [String] parent
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Fixnum] page_size

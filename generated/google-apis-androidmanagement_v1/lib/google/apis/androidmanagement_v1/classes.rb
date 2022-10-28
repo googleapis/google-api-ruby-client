@@ -3647,7 +3647,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :account_types_with_management_disabled
       
-        # Whether camera is disabled.
+        # If true, the camera is disabled on the personal profile.
         # Corresponds to the JSON property `cameraDisabled`
         # @return [Boolean]
         attr_accessor :camera_disabled
@@ -3670,7 +3670,7 @@ module Google
         # @return [String]
         attr_accessor :personal_play_store_mode
       
-        # Whether screen capture is disabled.
+        # If true, screen capture is disabled for all users.
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
@@ -4377,7 +4377,7 @@ module Google
         # @return [String]
         attr_accessor :setting_name
       
-        # An action to reset a fully managed device or delete a work profile. Note:
+        # An action to reset a company owned device or delete a work profile. Note:
         # blockAction must also be specified.
         # Corresponds to the JSON property `wipeAction`
         # @return [Google::Apis::AndroidmanagementV1::WipeAction]
@@ -5458,7 +5458,7 @@ module Google
         end
       end
       
-      # An action to reset a fully managed device or delete a work profile. Note:
+      # An action to reset a company owned device or delete a work profile. Note:
       # blockAction must also be specified.
       class WipeAction
         include Google::Apis::Core::Hashable
