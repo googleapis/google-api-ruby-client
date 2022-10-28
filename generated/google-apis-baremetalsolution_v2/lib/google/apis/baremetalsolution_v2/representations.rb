@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVolumeSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVolumesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreVolumeSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +347,12 @@ module Google
       end
       
       class VolumeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumeSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +563,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :ssh_keys, as: 'sshKeys', class: Google::Apis::BaremetalsolutionV2::SshKey, decorator: Google::Apis::BaremetalsolutionV2::SshKey::Representation
+      
+        end
+      end
+      
+      class ListVolumeSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_snapshots, as: 'volumeSnapshots', class: Google::Apis::BaremetalsolutionV2::VolumeSnapshot, decorator: Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
       
         end
       end
@@ -810,6 +838,12 @@ module Google
         end
       end
       
+      class RestoreVolumeSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SshKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -946,6 +980,18 @@ module Google
           property :snapshots_enabled, as: 'snapshotsEnabled'
           property :type, as: 'type'
           property :user_note, as: 'userNote'
+        end
+      end
+      
+      class VolumeSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :storage_volume, as: 'storageVolume'
+          property :type, as: 'type'
         end
       end
     end
