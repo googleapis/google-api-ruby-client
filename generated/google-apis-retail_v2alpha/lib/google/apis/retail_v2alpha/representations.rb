@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1561,11 +1567,20 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attribute_results, as: 'attributeResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult::Representation
+      
           property :attribution_token, as: 'attributionToken'
           collection :completion_results, as: 'completionResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult::Representation
       
           collection :recent_search_results, as: 'recentSearchResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :suggestions, as: 'suggestions'
         end
       end
       
