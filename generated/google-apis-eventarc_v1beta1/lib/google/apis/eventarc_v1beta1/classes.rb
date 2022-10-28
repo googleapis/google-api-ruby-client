@@ -888,8 +888,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. null The criteria by which events are filtered. Only events that
-        # match with this criteria will be sent to the destination.
+        # Required. Unordered list. The criteria by which events are filtered. Only
+        # events that match with this criteria will be sent to the destination.
         # Corresponds to the JSON property `matchingCriteria`
         # @return [Array<Google::Apis::EventarcV1beta1::MatchingCriteria>]
         attr_accessor :matching_criteria
