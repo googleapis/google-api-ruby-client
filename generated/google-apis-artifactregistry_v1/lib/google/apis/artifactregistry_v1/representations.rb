@@ -745,6 +745,7 @@ module Google
           property :maven_config, as: 'mavenConfig', class: Google::Apis::ArtifactregistryV1::MavenRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::MavenRepositoryConfig::Representation
       
           property :name, as: 'name'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :update_time, as: 'updateTime'
         end
