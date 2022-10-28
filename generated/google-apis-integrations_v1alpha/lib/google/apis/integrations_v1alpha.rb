@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see http://www.google.com
+    # @see https://cloud.google.com/application-integration
     module IntegrationsV1alpha
       # Version of the Application Integration API this client connects to.
       # This is NOT the gem version.

@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnterpriseCrmEventbusProtoCloudSchedulerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnterpriseCrmEventbusProtoCombinedCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -934,6 +940,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1679,6 +1691,16 @@ module Google
           property :component_id, :numeric_string => true, as: 'componentId'
           property :template_id, :numeric_string => true, as: 'templateId'
           property :title, as: 'title'
+        end
+      end
+      
+      class EnterpriseCrmEventbusProtoCloudSchedulerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_tab, as: 'cronTab'
+          property :error_message, as: 'errorMessage'
+          property :location, as: 'location'
+          property :service_account_email, as: 'serviceAccountEmail'
         end
       end
       
@@ -2822,6 +2844,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alert_config, as: 'alertConfig', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoWorkflowAlertConfig, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoWorkflowAlertConfig::Representation
       
+          property :cloud_scheduler_config, as: 'cloudSchedulerConfig', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudSchedulerConfig, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudSchedulerConfig::Representation
+      
           property :description, as: 'description'
           collection :enabled_clients, as: 'enabledClients'
           property :label, as: 'label'
@@ -2941,8 +2965,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cert_type, as: 'certType'
-          property :password, as: 'password', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
-      
           property :ssh_client_cert, as: 'sshClientCert', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
       
           property :ssh_client_cert_pass, as: 'sshClientCertPass', class: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret::Representation
@@ -3168,6 +3190,16 @@ module Google
           property :encrypted_private_key, as: 'encryptedPrivateKey'
           property :passphrase, as: 'passphrase'
           property :ssl_certificate, as: 'sslCertificate'
+        end
+      end
+      
+      class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_tab, as: 'cronTab'
+          property :error_message, as: 'errorMessage'
+          property :location, as: 'location'
+          property :service_account_email, as: 'serviceAccountEmail'
         end
       end
       
@@ -4075,6 +4107,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :alert_config, as: 'alertConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationAlertConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationAlertConfig::Representation
+      
+          property :cloud_scheduler_config, as: 'cloudSchedulerConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig::Representation
       
           property :description, as: 'description'
           property :label, as: 'label'
