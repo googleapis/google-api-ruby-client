@@ -421,6 +421,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a Label's permissions. If a permission for the indicated principal
+        # doesn't exist, a new Label Permission is created, otherwise the existing
+        # permission is updated. Permissions affect the Label resource as a whole, are
+        # not revisioned, and do not require publishing.
+        # @param [String] parent
+        #   Required. The parent Label resource name.
+        # @param [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission] google_apps_drive_labels_v2beta_label_permission_object
+        # @param [Boolean] use_admin_access
+        #   Set to `true` in order to use the user's admin credentials. The server will
+        #   verify the user is an admin for the Label before allowing access.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_label_permissions(parent, google_apps_drive_labels_v2beta_label_permission_object = nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+parent}/permissions', options)
+          command.request_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
+          command.request_object = google_apps_drive_labels_v2beta_label_permission_object
+          command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
+          command.response_class = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission
+          command.params['parent'] = parent unless parent.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the Locks on a Label.
         # @param [String] parent
         #   Required. Label on which Locks are applied. Format: labels/`label`
@@ -459,7 +499,10 @@ module Google
         
         # Deletes Label permissions. Permissions affect the Label resource as a whole,
         # are not revisioned, and do not require publishing.
-        # @param [String] labels_id
+        # @param [String] parent
+        #   Required. The parent Label resource name shared by all permissions being
+        #   deleted. Format: labels/`label` If this is set, the parent field in the
+        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
         # @param [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest] google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -478,13 +521,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_label_permission_delete(labels_id, google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2beta/labels/{labelsId}/permissions:batchDelete', options)
+        def batch_label_permission_delete(parent, google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/permissions:batchDelete', options)
           command.request_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest::Representation
           command.request_object = google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object
           command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DrivelabelsV2beta::GoogleProtobufEmpty
-          command.params['labelsId'] = labels_id unless labels_id.nil?
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -672,8 +715,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_label_permission(parent, google_apps_drive_labels_v2beta_label_permission_object = nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v2beta/{+parent}', options)
+        def update_label_revision_permissions(parent, google_apps_drive_labels_v2beta_label_permission_object = nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+parent}/permissions', options)
           command.request_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
           command.request_object = google_apps_drive_labels_v2beta_label_permission_object
           command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
@@ -723,8 +766,10 @@ module Google
         
         # Deletes Label permissions. Permissions affect the Label resource as a whole,
         # are not revisioned, and do not require publishing.
-        # @param [String] labels_id
-        # @param [String] revisions_id
+        # @param [String] parent
+        #   Required. The parent Label resource name shared by all permissions being
+        #   deleted. Format: labels/`label` If this is set, the parent field in the
+        #   UpdateLabelPermissionRequest messages must either be empty or match this field.
         # @param [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest] google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -743,14 +788,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_label_revision_permission_delete(labels_id, revisions_id, google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions:batchDelete', options)
+        def batch_label_revision_permission_delete(parent, google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/permissions:batchDelete', options)
           command.request_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest::Representation
           command.request_object = google_apps_drive_labels_v2beta_batch_delete_label_permissions_request_object
           command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DrivelabelsV2beta::GoogleProtobufEmpty
-          command.params['labelsId'] = labels_id unless labels_id.nil?
-          command.params['revisionsId'] = revisions_id unless revisions_id.nil?
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -905,46 +949,6 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a Label's permissions. If a permission for the indicated principal
-        # doesn't exist, a new Label Permission is created, otherwise the existing
-        # permission is updated. Permissions affect the Label resource as a whole, are
-        # not revisioned, and do not require publishing.
-        # @param [String] parent
-        #   Required. The parent Label resource name.
-        # @param [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission] google_apps_drive_labels_v2beta_label_permission_object
-        # @param [Boolean] use_admin_access
-        #   Set to `true` in order to use the user's admin credentials. The server will
-        #   verify the user is an admin for the Label before allowing access.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_label_revision_permission(parent, google_apps_drive_labels_v2beta_label_permission_object = nil, use_admin_access: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v2beta/{+parent}', options)
-          command.request_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
-          command.request_object = google_apps_drive_labels_v2beta_label_permission_object
-          command.response_representation = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission::Representation
-          command.response_class = Google::Apis::DrivelabelsV2beta::GoogleAppsDriveLabelsV2betaLabelPermission
-          command.params['parent'] = parent unless parent.nil?
           command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
