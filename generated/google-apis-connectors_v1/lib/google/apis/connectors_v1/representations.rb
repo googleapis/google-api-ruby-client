@@ -498,6 +498,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
           collection :entities, as: 'entities'
+          property :name, as: 'name'
+          property :refresh_time, as: 'refreshTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -920,8 +924,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cert_type, as: 'certType'
-          property :password, as: 'password', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
-      
           property :ssh_client_cert, as: 'sshClientCert', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
       
           property :ssh_client_cert_pass, as: 'sshClientCertPass', class: Google::Apis::ConnectorsV1::Secret, decorator: Google::Apis::ConnectorsV1::Secret::Representation
