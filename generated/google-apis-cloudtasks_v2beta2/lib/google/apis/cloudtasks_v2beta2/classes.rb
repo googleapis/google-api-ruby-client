@@ -2027,6 +2027,11 @@ module Google
         # @return [String]
         attr_accessor :scheme
       
+        # Uri Override Enforce Mode Determines the Target UriOverride mode.
+        # Corresponds to the JSON property `uriOverrideEnforceMode`
+        # @return [String]
+        attr_accessor :uri_override_enforce_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2038,6 +2043,7 @@ module Google
           @port = args[:port] if args.key?(:port)
           @query = args[:query] if args.key?(:query)
           @scheme = args[:scheme] if args.key?(:scheme)
+          @uri_override_enforce_mode = args[:uri_override_enforce_mode] if args.key?(:uri_override_enforce_mode)
         end
       end
     end
