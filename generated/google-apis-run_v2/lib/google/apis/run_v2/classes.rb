@@ -597,42 +597,9 @@ module Google
         end
       end
       
-      # GRPCAction describes an action involving a GRPC port.
-      class GoogleCloudRunV2GrpcAction
-        include Google::Apis::Core::Hashable
-      
-        # Port number of the gRPC service. Number must be in the range 1 to 65535.
-        # Corresponds to the JSON property `port`
-        # @return [Fixnum]
-        attr_accessor :port
-      
-        # Service is the name of the service to place in the gRPC HealthCheckRequest (
-        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
-        # is not specified, the default behavior is defined by gRPC.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @port = args[:port] if args.key?(:port)
-          @service = args[:service] if args.key?(:service)
-        end
-      end
-      
       # HTTPGetAction describes an action based on HTTP Get requests.
       class GoogleCloudRunV2HttpGetAction
         include Google::Apis::Core::Hashable
-      
-        # Host name to connect to, defaults to the pod IP. You probably want to set "
-        # Host" in httpHeaders instead.
-        # Corresponds to the JSON property `host`
-        # @return [String]
-        attr_accessor :host
       
         # Custom headers to set in the request. HTTP allows repeated headers.
         # Corresponds to the JSON property `httpHeaders`
@@ -644,21 +611,14 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Scheme to use for connecting to the host. Defaults to HTTP.
-        # Corresponds to the JSON property `scheme`
-        # @return [String]
-        attr_accessor :scheme
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @host = args[:host] if args.key?(:host)
           @http_headers = args[:http_headers] if args.key?(:http_headers)
           @path = args[:path] if args.key?(:path)
-          @scheme = args[:scheme] if args.key?(:scheme)
         end
       end
       
@@ -671,7 +631,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The header field value
+        # The header field value
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1021,11 +981,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
-        # GRPCAction describes an action involving a GRPC port.
-        # Corresponds to the JSON property `grpc`
-        # @return [Google::Apis::RunV2::GoogleCloudRunV2GrpcAction]
-        attr_accessor :grpc
-      
         # HTTPGetAction describes an action based on HTTP Get requests.
         # Corresponds to the JSON property `httpGet`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction]
@@ -1067,7 +1022,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
-          @grpc = args[:grpc] if args.key?(:grpc)
           @http_get = args[:http_get] if args.key?(:http_get)
           @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
@@ -1774,15 +1728,8 @@ module Google
       class GoogleCloudRunV2TcpSocketAction
         include Google::Apis::Core::Hashable
       
-        # Host name to connect to, defaults to the pod IP.
-        # Corresponds to the JSON property `host`
-        # @return [String]
-        attr_accessor :host
-      
-        # Number or name of the port to access on the container. Number must be in the
-        # range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently
-        # limited to integer types only because of proto's inability to properly support
-        # the IntOrString golang type.
+        # Port number to access on the container. Must be in the range 1 to 65535. If
+        # not specified, defaults to 8080.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -1793,7 +1740,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @host = args[:host] if args.key?(:host)
           @port = args[:port] if args.key?(:port)
         end
       end
