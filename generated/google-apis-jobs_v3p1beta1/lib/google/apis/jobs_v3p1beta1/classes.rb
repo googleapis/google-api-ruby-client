@@ -344,12 +344,13 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
-        # Optional. A list of keys of filterable Job.custom_attributes, whose
-        # corresponding `string_values` are used in keyword search. Jobs with `
-        # string_values` under these specified field keys are returned if any of the
-        # values matches the search keyword. Custom field values with parenthesis,
-        # brackets and special symbols won't be properly searchable, and those keyword
-        # queries need to be surrounded by quotes.
+        # Optional. This field is deprecated. Please set the searchability of the custom
+        # attribute in the Job.custom_attributes going forward. A list of keys of
+        # filterable Job.custom_attributes, whose corresponding `string_values` are used
+        # in keyword search. Jobs with `string_values` under these specified field keys
+        # are returned if any of the values matches the search keyword. Custom field
+        # values with parenthesis, brackets and special symbols won't be properly
+        # searchable, and those keyword queries need to be surrounded by quotes.
         # Corresponds to the JSON property `keywordSearchableJobCustomAttributes`
         # @return [Array<String>]
         attr_accessor :keyword_searchable_job_custom_attributes
@@ -1008,8 +1009,8 @@ module Google
         # positive number") or bucket(1, 10). Job histogram facets: * company_id:
         # histogram by [Job.distributor_company_id. * company_display_name: histogram by
         # Job.company_display_name. * employment_type: histogram by Job.employment_types.
-        # For example, "FULL_TIME", "PART_TIME". * company_size: histogram by
-        # CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day:
+        # For example, "FULL_TIME", "PART_TIME". * company_size (DEPRECATED): histogram
+        # by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day:
         # histogram by the Job.publish_time in days. Must specify list of numeric
         # buckets in spec. * publish_time_in_month: histogram by the Job.publish_time in
         # months. Must specify list of numeric buckets in spec. * publish_time_in_year:
