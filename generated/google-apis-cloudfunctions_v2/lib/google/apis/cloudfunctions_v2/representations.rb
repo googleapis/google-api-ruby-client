@@ -305,6 +305,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build, as: 'build'
+          property :buildpack_stack, as: 'buildpackStack'
+          property :docker_registry, as: 'dockerRegistry'
           property :docker_repository, as: 'dockerRepository'
           property :entry_point, as: 'entryPoint'
           hash :environment_variables, as: 'environmentVariables'
@@ -665,6 +667,7 @@ module Google
       
           collection :secret_volumes, as: 'secretVolumes', class: Google::Apis::CloudfunctionsV2::SecretVolume, decorator: Google::Apis::CloudfunctionsV2::SecretVolume::Representation
       
+          property :security_level, as: 'securityLevel'
           property :service, as: 'service'
           property :service_account_email, as: 'serviceAccountEmail'
           property :timeout_seconds, as: 'timeoutSeconds'
