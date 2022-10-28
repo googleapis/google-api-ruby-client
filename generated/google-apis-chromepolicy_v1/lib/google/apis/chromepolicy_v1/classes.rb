@@ -190,6 +190,32 @@ module Google
         end
       end
       
+      # Error information for removing of a specific certificate on a specific target.
+      # A reference to a certificate.
+      class GoogleChromePolicyVersionsV1CertificateReference
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the referencing network.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. The obfuscated id of the org unit the referencing network is in.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+        end
+      end
+      
       # Request object for creating a certificate.
       class GoogleChromePolicyVersionsV1DefineCertificateRequest
         include Google::Apis::Core::Hashable
@@ -926,6 +952,29 @@ module Google
         def update!(**args)
           @policy_schema = args[:policy_schema] if args.key?(:policy_schema)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details of the errors encountered during a remove certificate request. This
+      # message will be returned as part of the details of a google.rpc.Status
+      # returned to the user when there is an error in their request.
+      class GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If the certificate was not removed, a list of references to the
+        # certificate that prevented it from being removed. Only unreferenced
+        # certificates can be removed.
+        # Corresponds to the JSON property `certificateReferences`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1CertificateReference>]
+        attr_accessor :certificate_references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_references = args[:certificate_references] if args.key?(:certificate_references)
         end
       end
       

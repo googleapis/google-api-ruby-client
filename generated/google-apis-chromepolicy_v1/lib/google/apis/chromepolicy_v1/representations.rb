@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyVersionsV1CertificateReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyVersionsV1DefineCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,12 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1PolicyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -339,6 +351,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :requests, as: 'requests', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest::Representation
       
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1CertificateReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :org_unit_id, as: 'orgUnitId'
         end
       end
       
@@ -559,6 +579,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_schema, as: 'policySchema'
           hash :value, as: 'value'
+        end
+      end
+      
+      class GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificate_references, as: 'certificateReferences', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1CertificateReference, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1CertificateReference::Representation
+      
         end
       end
       
