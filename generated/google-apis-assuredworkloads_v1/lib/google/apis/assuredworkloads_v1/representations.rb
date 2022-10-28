@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -267,6 +273,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_account, as: 'billingAccount'
           property :compliance_regime, as: 'complianceRegime'
+          property :compliance_status, as: 'complianceStatus', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus::Representation
+      
           collection :compliant_but_disallowed_services, as: 'compliantButDisallowedServices'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
@@ -285,6 +293,14 @@ module Google
       
           property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_violation_count, as: 'acknowledgedViolationCount'
+          property :active_violation_count, as: 'activeViolationCount'
         end
       end
       
