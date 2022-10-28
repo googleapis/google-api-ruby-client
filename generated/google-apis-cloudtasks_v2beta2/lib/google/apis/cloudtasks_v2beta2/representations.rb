@@ -728,6 +728,7 @@ module Google
           property :port, :numeric_string => true, as: 'port'
           property :query, as: 'query'
           property :scheme, as: 'scheme'
+          property :uri_override_enforce_mode, as: 'uriOverrideEnforceMode'
         end
       end
     end
