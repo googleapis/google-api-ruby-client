@@ -1285,6 +1285,12 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # A map of matched attribute suggestions. Current supported keys: * `brands` * `
+        # categories`
+        # Corresponds to the JSON property `attributeResults`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult>]
+        attr_accessor :attribute_results
+      
         # A unique complete token. This should be included in the UserEvent.
         # completion_detail for search events resulting from this completion, which
         # enables accurate attribution of complete model performance.
@@ -1317,9 +1323,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # Resource that represents attribute results.
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult
+        include Google::Apis::Core::Hashable
+      
+        # The list of suggestions for the attribute.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<String>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
         end
       end
       
@@ -3032,7 +3058,7 @@ module Google
         # returned in the `results.metadata` field in the prediction response. * `
         # returnScore`: Boolean. If set to true, the prediction 'score' corresponding to
         # each returned product will be set in the `results.metadata` field in the
-        # prediction response. The given 'score' indicates the probability of an product
+        # prediction response. The given 'score' indicates the probability of a product
         # being clicked/purchased given the user's context and history. * `
         # strictFiltering`: Boolean. True by default. If set to false, the service will
         # return generic (unfiltered) popular products instead of empty if your filter
@@ -5025,7 +5051,7 @@ module Google
         attr_accessor :facet_key
       
         # Maximum of facet values that should be returned for this facet. If unspecified,
-        # defaults to 20. The maximum allowed value is 300. Values above 300 will be
+        # defaults to 50. The maximum allowed value is 300. Values above 300 will be
         # coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
