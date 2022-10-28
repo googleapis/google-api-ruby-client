@@ -1755,17 +1755,17 @@ module Google
         
         # Lists InboundSamlSsoProfiles for a customer.
         # @param [String] filter
-        #   A CEL expression to filter the results. The only currently-supported filter is
-        #   filtering by customer. For example: `customer==customers/C0123abc`. Omitting
-        #   the filter or specifying a filter of `customer==customers/my_customer` will
-        #   return the profiles for the customer that the caller (authenticated user)
-        #   belongs to.
+        #   A [Common Expression Language](https://github.com/google/cel-spec) expression
+        #   to filter the results. The only currently-supported filter is filtering by
+        #   customer. For example: `customer=="customers/C0123abc"`. Omitting the filter
+        #   or specifying a filter of `customer=="customers/my_customer"` will return the
+        #   profiles for the customer that the caller (authenticated user) belongs to.
         # @param [Fixnum] page_size
         #   The maximum number of InboundSamlSsoProfiles to return. The service may return
         #   fewer than this value. If omitted (or defaulted to zero) the server will use a
         #   sensible default. This default may change over time. The maximum allowed value
-        #   is 100, though requests with page_size greater than that will be silently
-        #   interpreted as having this maximum value. This may increase in the futue.
+        #   is 100. Requests with page_size greater than that will be silently interpreted
+        #   as having this maximum value.
         # @param [String] page_token
         #   A page token, received from a previous `ListInboundSamlSsoProfiles` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other

@@ -40,7 +40,8 @@ module Google
       class AddIdpCredentialRequest
         include Google::Apis::Core::Hashable
       
-        # PEM encoded x509 certificate containing the public signing key.
+        # PEM encoded x509 certificate containing the public key for verifying IdP
+        # signatures.
         # Corresponds to the JSON property `pemData`
         # @return [String]
         attr_accessor :pem_data
@@ -1962,7 +1963,7 @@ module Google
         end
       end
       
-      # The identity provider's credentials (for signing assertions, etc).
+      # Credential for verifying signatures produced by the Identity Provider.
       class IdpCredential
         include Google::Apis::Core::Hashable
       
