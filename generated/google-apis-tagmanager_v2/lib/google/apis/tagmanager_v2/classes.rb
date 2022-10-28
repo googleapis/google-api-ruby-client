@@ -31,6 +31,11 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # Read-only Account feature set
+        # Corresponds to the JSON property `features`
+        # @return [Google::Apis::TagmanagerV2::AccountFeatures]
+        attr_accessor :features
+      
         # The fingerprint of the GTM Account as computed at storage time. This value is
         # recomputed whenever the account is modified.
         # Corresponds to the JSON property `fingerprint`
@@ -71,6 +76,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @features = args[:features] if args.key?(:features)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
@@ -97,6 +103,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permission = args[:permission] if args.key?(:permission)
+        end
+      end
+      
+      # 
+      class AccountFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Whether this Account supports multiple Containers.
+        # Corresponds to the JSON property `supportMultipleContainers`
+        # @return [Boolean]
+        attr_accessor :support_multiple_containers
+        alias_method :support_multiple_containers?, :support_multiple_containers
+      
+        # Whether this Account supports user permissions managed by GTM.
+        # Corresponds to the JSON property `supportUserPermissions`
+        # @return [Boolean]
+        attr_accessor :support_user_permissions
+        alias_method :support_user_permissions?, :support_user_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @support_multiple_containers = args[:support_multiple_containers] if args.key?(:support_multiple_containers)
+          @support_user_permissions = args[:support_user_permissions] if args.key?(:support_user_permissions)
         end
       end
       
@@ -312,6 +345,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :domain_name
       
+        # Read-only Container feature set.
+        # Corresponds to the JSON property `features`
+        # @return [Google::Apis::TagmanagerV2::ContainerFeatures]
+        attr_accessor :features
+      
         # The fingerprint of the GTM Container as computed at storage time. This value
         # is recomputed whenever the account is modified.
         # Corresponds to the JSON property `fingerprint`
@@ -340,6 +378,11 @@ module Google
         # @return [String]
         attr_accessor :public_id
       
+        # All Tag IDs that refer to this Container.
+        # Corresponds to the JSON property `tagIds`
+        # @return [Array<String>]
+        attr_accessor :tag_ids
+      
         # Auto generated link to the tag manager UI
         # Corresponds to the JSON property `tagManagerUrl`
         # @return [String]
@@ -361,11 +404,13 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @container_id = args[:container_id] if args.key?(:container_id)
           @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @features = args[:features] if args.key?(:features)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
           @path = args[:path] if args.key?(:path)
           @public_id = args[:public_id] if args.key?(:public_id)
+          @tag_ids = args[:tag_ids] if args.key?(:tag_ids)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
           @usage_context = args[:usage_context] if args.key?(:usage_context)
         end
@@ -395,6 +440,110 @@ module Google
         def update!(**args)
           @container_id = args[:container_id] if args.key?(:container_id)
           @permission = args[:permission] if args.key?(:permission)
+        end
+      end
+      
+      # 
+      class ContainerFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Whether this Container supports built-in variables
+        # Corresponds to the JSON property `supportBuiltInVariables`
+        # @return [Boolean]
+        attr_accessor :support_built_in_variables
+        alias_method :support_built_in_variables?, :support_built_in_variables
+      
+        # Whether this Container supports clients.
+        # Corresponds to the JSON property `supportClients`
+        # @return [Boolean]
+        attr_accessor :support_clients
+        alias_method :support_clients?, :support_clients
+      
+        # Whether this Container supports environments.
+        # Corresponds to the JSON property `supportEnvironments`
+        # @return [Boolean]
+        attr_accessor :support_environments
+        alias_method :support_environments?, :support_environments
+      
+        # Whether this Container supports folders.
+        # Corresponds to the JSON property `supportFolders`
+        # @return [Boolean]
+        attr_accessor :support_folders
+        alias_method :support_folders?, :support_folders
+      
+        # Whether this Container supports Google tag config.
+        # Corresponds to the JSON property `supportGtagConfigs`
+        # @return [Boolean]
+        attr_accessor :support_gtag_configs
+        alias_method :support_gtag_configs?, :support_gtag_configs
+      
+        # Whether this Container supports tags.
+        # Corresponds to the JSON property `supportTags`
+        # @return [Boolean]
+        attr_accessor :support_tags
+        alias_method :support_tags?, :support_tags
+      
+        # Whether this Container supports templates.
+        # Corresponds to the JSON property `supportTemplates`
+        # @return [Boolean]
+        attr_accessor :support_templates
+        alias_method :support_templates?, :support_templates
+      
+        # Whether this Container supports triggers.
+        # Corresponds to the JSON property `supportTriggers`
+        # @return [Boolean]
+        attr_accessor :support_triggers
+        alias_method :support_triggers?, :support_triggers
+      
+        # Whether this Container supports user permissions managed by GTM.
+        # Corresponds to the JSON property `supportUserPermissions`
+        # @return [Boolean]
+        attr_accessor :support_user_permissions
+        alias_method :support_user_permissions?, :support_user_permissions
+      
+        # Whether this Container supports variables.
+        # Corresponds to the JSON property `supportVariables`
+        # @return [Boolean]
+        attr_accessor :support_variables
+        alias_method :support_variables?, :support_variables
+      
+        # Whether this Container supports Container versions.
+        # Corresponds to the JSON property `supportVersions`
+        # @return [Boolean]
+        attr_accessor :support_versions
+        alias_method :support_versions?, :support_versions
+      
+        # Whether this Container supports workspaces.
+        # Corresponds to the JSON property `supportWorkspaces`
+        # @return [Boolean]
+        attr_accessor :support_workspaces
+        alias_method :support_workspaces?, :support_workspaces
+      
+        # Whether this Container supports zones.
+        # Corresponds to the JSON property `supportZones`
+        # @return [Boolean]
+        attr_accessor :support_zones
+        alias_method :support_zones?, :support_zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @support_built_in_variables = args[:support_built_in_variables] if args.key?(:support_built_in_variables)
+          @support_clients = args[:support_clients] if args.key?(:support_clients)
+          @support_environments = args[:support_environments] if args.key?(:support_environments)
+          @support_folders = args[:support_folders] if args.key?(:support_folders)
+          @support_gtag_configs = args[:support_gtag_configs] if args.key?(:support_gtag_configs)
+          @support_tags = args[:support_tags] if args.key?(:support_tags)
+          @support_templates = args[:support_templates] if args.key?(:support_templates)
+          @support_triggers = args[:support_triggers] if args.key?(:support_triggers)
+          @support_user_permissions = args[:support_user_permissions] if args.key?(:support_user_permissions)
+          @support_variables = args[:support_variables] if args.key?(:support_variables)
+          @support_versions = args[:support_versions] if args.key?(:support_versions)
+          @support_workspaces = args[:support_workspaces] if args.key?(:support_workspaces)
+          @support_zones = args[:support_zones] if args.key?(:support_zones)
         end
       end
       
@@ -461,6 +610,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV2::Folder>]
         attr_accessor :folder
       
+        # The Google tag configs in the container that this version was taken from.
+        # Corresponds to the JSON property `gtagConfig`
+        # @return [Array<Google::Apis::TagmanagerV2::GtagConfig>]
+        attr_accessor :gtag_config
+      
         # Container version display name. @mutable tagmanager.accounts.containers.
         # versions.update
         # Corresponds to the JSON property `name`
@@ -514,6 +668,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @folder = args[:folder] if args.key?(:folder)
+          @gtag_config = args[:gtag_config] if args.key?(:gtag_config)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
           @tag = args[:tag] if args.key?(:tag)
@@ -564,6 +719,11 @@ module Google
         # @return [String]
         attr_accessor :num_custom_templates
       
+        # Number of Google tag configs in the container version.
+        # Corresponds to the JSON property `numGtagConfigs`
+        # @return [String]
+        attr_accessor :num_gtag_configs
+      
         # Number of macros in the container version.
         # Corresponds to the JSON property `numMacros`
         # @return [String]
@@ -612,6 +772,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @num_clients = args[:num_clients] if args.key?(:num_clients)
           @num_custom_templates = args[:num_custom_templates] if args.key?(:num_custom_templates)
+          @num_gtag_configs = args[:num_gtag_configs] if args.key?(:num_gtag_configs)
           @num_macros = args[:num_macros] if args.key?(:num_macros)
           @num_rules = args[:num_rules] if args.key?(:num_rules)
           @num_tags = args[:num_tags] if args.key?(:num_tags)
@@ -777,6 +938,68 @@ module Google
           @template_data = args[:template_data] if args.key?(:template_data)
           @template_id = args[:template_id] if args.key?(:template_id)
           @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
+      # Represents a Google Tag Destination.
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # Destination ID.
+        # Corresponds to the JSON property `destinationId`
+        # @return [String]
+        attr_accessor :destination_id
+      
+        # The Destination link ID uniquely identifies the Destination.
+        # Corresponds to the JSON property `destinationLinkId`
+        # @return [String]
+        attr_accessor :destination_link_id
+      
+        # The fingerprint of the Google Tag Destination as computed at storage time.
+        # This value is recomputed whenever the destination is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Destination display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Destination's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Auto generated link to the tag manager UI.
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @destination_id = args[:destination_id] if args.key?(:destination_id)
+          @destination_link_id = args[:destination_link_id] if args.key?(:destination_link_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
         end
       end
       
@@ -1106,6 +1329,25 @@ module Google
         end
       end
       
+      # 
+      class GetContainerSnippetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Tagging snippet for a Container.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
       # The changes that have occurred in the workspace since the base container
       # version.
       class GetWorkspaceStatusResponse
@@ -1129,6 +1371,80 @@ module Google
         def update!(**args)
           @merge_conflict = args[:merge_conflict] if args.key?(:merge_conflict)
           @workspace_change = args[:workspace_change] if args.key?(:workspace_change)
+        end
+      end
+      
+      # Represents a Google tag configuration.
+      class GtagConfig
+        include Google::Apis::Core::Hashable
+      
+        # Google tag account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # Google tag container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the Google tag config as computed at storage time. This
+        # value is recomputed whenever the config is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The ID uniquely identifies the Google tag config.
+        # Corresponds to the JSON property `gtagConfigId`
+        # @return [String]
+        attr_accessor :gtag_config_id
+      
+        # The Google tag config's parameters. @mutable tagmanager.accounts.containers.
+        # workspaces.gtag_config.create @mutable tagmanager.accounts.containers.
+        # workspaces.gtag_config.update
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
+        attr_accessor :parameter
+      
+        # Google tag config's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Auto generated link to the tag manager UI
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        # Google tag config type. @required tagmanager.accounts.containers.workspaces.
+        # gtag_config.create @required tagmanager.accounts.containers.workspaces.
+        # gtag_config.update @mutable tagmanager.accounts.containers.workspaces.
+        # gtag_config.create @mutable tagmanager.accounts.containers.workspaces.
+        # gtag_config.update
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Google tag workspace ID. Only used by GTM containers. Set to 0 otherwise.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [String]
+        attr_accessor :workspace_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @gtag_config_id = args[:gtag_config_id] if args.key?(:gtag_config_id)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @path = args[:path] if args.key?(:path)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @type = args[:type] if args.key?(:type)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
         end
       end
       
@@ -1232,6 +1548,31 @@ module Google
         end
       end
       
+      # 
+      class ListDestinationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All Destinations linked to a GTM Container.
+        # Corresponds to the JSON property `destination`
+        # @return [Array<Google::Apis::TagmanagerV2::Destination>]
+        attr_accessor :destination
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A list of enabled built-in variables.
       class ListEnabledBuiltInVariablesResponse
         include Google::Apis::Core::Hashable
@@ -1303,6 +1644,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @folder = args[:folder] if args.key?(:folder)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListGtagConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # All Google tag configs in a Container.
+        # Corresponds to the JSON property `gtagConfig`
+        # @return [Array<Google::Apis::TagmanagerV2::GtagConfig>]
+        attr_accessor :gtag_config
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gtag_config = args[:gtag_config] if args.key?(:gtag_config)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
