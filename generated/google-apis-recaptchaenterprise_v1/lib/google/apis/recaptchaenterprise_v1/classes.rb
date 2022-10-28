@@ -665,8 +665,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Action-based metrics. The map key is the action name which specified by the
-        # site owners at time of the "execute" client-side call. Populated only for
-        # SCORE keys.
+        # site owners at time of the "execute" client-side call.
         # Corresponds to the JSON property `actionMetrics`
         # @return [Hash<String,Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreDistribution>]
         attr_accessor :action_metrics
