@@ -386,11 +386,10 @@ module Google
         #   locations/`location`/connections/`connection`
         # @param [Google::Apis::ConnectorsV1::Connection] connection_object
         # @param [String] update_mask
-        #   Required. Field mask is used to specify the fields to be overwritten in the
-        #   Connection resource by the update. The fields specified in the update_mask are
-        #   relative to the resource, not the full request. A field will be overwritten if
-        #   it is in the mask. If the user does not provide a mask then all fields will be
-        #   overwritten.
+        #   Required. You can modify only the fields listed below. To lock/unlock a
+        #   connection: * `lock_config` To suspend/resume a connection: * `suspended` To
+        #   update the connection details: * `description` * `labels` * `connector_version`
+        #   * `config_variables` * `auth_config` * `destination_configs` * `node_config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
