@@ -234,6 +234,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new BeyondCorp Enterprise Subscription in a given organization.
+        # Location will always be global as BeyondCorp subscriptions are per
+        # organization.
+        # @param [String] parent
+        #   Required. The resource name of the subscription location using the form: `
+        #   organizations/`organization_id`/locations/`location``
+        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription] google_cloud_beyondcorp_saasplatform_subscriptions_v1alpha_subscription_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_subscription(parent, google_cloud_beyondcorp_saasplatform_subscriptions_v1alpha_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/subscriptions', options)
+          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription::Representation
+          command.request_object = google_cloud_beyondcorp_saasplatform_subscriptions_v1alpha_subscription_object
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Subscription.
+        # @param [String] name
+        #   Required. The resource name of Subscription using the form: `organizations/`
+        #   organization_id`/locations/`location`/subscriptions/`subscription_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Subscriptions in a given organization and location.
+        # @param [String] parent
+        #   Required. The resource name of Subscription using the form: `organizations/`
+        #   organization_id`/locations/`location``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 50 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous
+        #   ListSubscriptionsRequest, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_subscriptions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/subscriptions', options)
+          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -3230,139 +3339,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new NetConnection in a given project and location.
-        # @param [String] parent
-        #   Required. The resource project name of the NetConnection location using the
-        #   form: `projects/`project_id`/locations/`location_id``
-        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection] google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object
-        # @param [String] net_connection_id
-        #   Optional. User-settable NetConnection resource ID. * Must start with a letter.
-        #   * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
-        #   or a letter.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_net_connection(parent, google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object = nil, net_connection_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+parent}/netConnections', options)
-          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection::Representation
-          command.request_object = google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['netConnectionId'] = net_connection_id unless net_connection_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a single NetConnection.
-        # @param [String] name
-        #   Required. BeyondCorp Connector name using the form: `projects/`project_id`/
-        #   locations/`location_id`/netConnections/`net_connection_id``
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes after the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_net_connection(name, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets details of a single NetConnection.
-        # @param [String] name
-        #   Required. BeyondCorp NetConnection name using the form: `projects/`project_id`/
-        #   locations/`location_id`/netConnections/`net_connection_id``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_net_connection(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -3403,113 +3379,6 @@ module Google
           command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists NetConnections in a given project and location.
-        # @param [String] parent
-        #   Required. The resource name of the NetConnection location using the form: `
-        #   projects/`project_id`/locations/`location_id``
-        # @param [String] filter
-        #   Optional. A filter specifying constraints of a list operation.
-        # @param [String] order_by
-        #   Optional. Specifies the ordering of results. See [Sorting order](https://cloud.
-        #   google.com/apis/design/design_patterns#sorting_order) for more information.
-        # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return. If not specified, a default
-        #   value of 50 will be used by the service. Regardless of the page_size value,
-        #   the response may include a partial list and a caller should only rely on
-        #   response's next_page_token to determine if there are more instances left to be
-        #   queried.
-        # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous
-        #   ListNetConnectionsRequest, if any.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_net_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+parent}/netConnections', options)
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the parameters of a single NetConnection.
-        # @param [String] name
-        #   Required. Unique resource name of the NetConnection. The name is ignored when
-        #   creating a NetConnection.
-        # @param [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection] google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object
-        # @param [Boolean] allow_missing
-        #   Optional. If set as true, will create the resource if it is not found.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. The elements of the repeated paths field may only include these fields
-        #   from [BeyondCorp.NetConnection]: * `labels` * `display_name`
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_net_connection(name, google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
-          command.request_representation = Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection::Representation
-          command.request_object = google_cloud_beyondcorp_netconnections_v1alpha_net_connection_object
-          command.response_representation = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1alpha::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

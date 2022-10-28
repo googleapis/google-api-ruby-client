@@ -2122,59 +2122,6 @@ module Google
       end
       
       # Represents the metadata of the long-running operation.
-      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Represents the metadata of the long-running operation.
       class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -2254,178 +2201,6 @@ module Google
       
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # Response message for BeyondCorp.ListNetConnections.
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of BeyondCorp NetConnections in the project.
-        # Corresponds to the JSON property `netConnections`
-        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection>]
-        attr_accessor :net_connections
-      
-        # A token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @net_connections = args[:net_connections] if args.key?(:net_connections)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # A BeyondCorp NetConnection resource represents a BeyondCorp protected
-      # connection from BeyondCorp Client Connector to a remote application through a
-      # BeyondCorp AppConnector gateway.
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
-        include Google::Apis::Core::Hashable
-      
-        # Optional. List of [google.cloud.beyondcorp.v1main.AppConnector.name] that are
-        # authorized to be associated with this NetConnection. e.g. projects/`project`/
-        # locations/`location`/appConnectors/`app_connector`
-        # Corresponds to the JSON property `connectors`
-        # @return [Array<String>]
-        attr_accessor :connectors
-      
-        # Output only. Timestamp when the resource was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Required. CIDRs for the remote networks to connect to. e.g. IPv4: 198.51.100.
-        # 14/24 IPv6: 2001:db8::/48
-        # Corresponds to the JSON property `destinationCidrs`
-        # @return [Array<String>]
-        attr_accessor :destination_cidrs
-      
-        # Optional. An arbitrary user-provided name for the NetConnection. Cannot exceed
-        # 64 characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Optional. Resource labels to represent user provided metadata.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Required. Unique resource name of the NetConnection. The name is ignored when
-        # creating a NetConnection.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The full name of the VPC network connected to the applications.
-        # Client Connector will send traffic here.
-        # Corresponds to the JSON property `networkVpc`
-        # @return [String]
-        attr_accessor :network_vpc
-      
-        # Output only. The current state of the NetConnection.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. A unique identifier for the instance generated by the system.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. Timestamp when the resource was last modified.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connectors = args[:connectors] if args.key?(:connectors)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @destination_cidrs = args[:destination_cidrs] if args.key?(:destination_cidrs)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @network_vpc = args[:network_vpc] if args.key?(:network_vpc)
-          @state = args[:state] if args.key?(:state)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Represents the metadata of the long-running operation.
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
         # Corresponds to the JSON property `requestedCancellation`
@@ -2815,6 +2590,104 @@ module Google
           @filter_alias = args[:filter_alias] if args.key?(:filter_alias)
           @id = args[:id] if args.key?(:id)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Response message for BeyondCorp.ListSubscriptions.
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of BeyondCorp Subscriptions in the organization.
+        # Corresponds to the JSON property `subscriptions`
+        # @return [Array<Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>]
+        attr_accessor :subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # A BeyondCorp Subscription resource represents BeyondCorp Enterprise
+      # Subscription. BeyondCorp Enterprise Subscription enables BeyondCorp Enterprise
+      # permium features for an organization.
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Represents that, if subscription will renew or end when the term
+        # ends.
+        # Corresponds to the JSON property `autoRenewEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_renew_enabled
+        alias_method :auto_renew_enabled?, :auto_renew_enabled
+      
+        # Output only. Create time of the subscription.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. End time of the subscription.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. Unique resource name of the Subscription. The name is ignored when
+        # creating a subscription.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Number of seats in the subscription.
+        # Corresponds to the JSON property `seatCount`
+        # @return [Fixnum]
+        attr_accessor :seat_count
+      
+        # Required. SKU of subscription.
+        # Corresponds to the JSON property `sku`
+        # @return [String]
+        attr_accessor :sku
+      
+        # Output only. Start time of the subscription.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the subscription.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Type of subscription.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @seat_count = args[:seat_count] if args.key?(:seat_count)
+          @sku = args[:sku] if args.key?(:sku)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
