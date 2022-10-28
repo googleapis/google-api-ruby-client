@@ -701,6 +701,27 @@ module Google
         end
       end
       
+      # Configuration options for networking connections in the Composer 2 environment.
+      class NetworkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates the user requested specifc connection type between Tenant
+        # and Customer projects. You cannot set networking connection type in public IP
+        # environment.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+        end
+      end
+      
       # The configuration information for the Kubernetes Engine nodes running the
       # Apache Airflow software.
       class NodeConfig
@@ -1032,6 +1053,11 @@ module Google
         attr_accessor :enable_privately_used_public_ips
         alias_method :enable_privately_used_public_ips?, :enable_privately_used_public_ips
       
+        # Configuration options for networking connections in the Composer 2 environment.
+        # Corresponds to the JSON property `networkingConfig`
+        # @return [Google::Apis::ComposerV1::NetworkingConfig]
+        attr_accessor :networking_config
+      
         # Configuration options for the private GKE cluster in a Cloud Composer
         # environment.
         # Corresponds to the JSON property `privateClusterConfig`
@@ -1065,6 +1091,7 @@ module Google
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
+          @networking_config = args[:networking_config] if args.key?(:networking_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
