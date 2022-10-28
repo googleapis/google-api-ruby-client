@@ -328,12 +328,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,24 +335,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +389,18 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1159,18 +1147,6 @@ module Google
         end
       end
       
-      class GoogleCloudBeyondcorpApplicationsV1alphaApplicationOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
       class GoogleCloudBeyondcorpClientconnectorservicesV1ClientConnectorServiceOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1185,45 +1161,6 @@ module Google
       end
       
       class GoogleCloudBeyondcorpClientgatewaysV1ClientGatewayOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaListNetConnectionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :net_connections, as: 'netConnections', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnection
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connectors, as: 'connectors'
-          property :create_time, as: 'createTime'
-          collection :destination_cidrs, as: 'destinationCidrs'
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :network_vpc, as: 'networkVpc'
-          property :state, as: 'state'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudBeyondcorpNetconnectionsV1alphaNetConnectionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
@@ -1331,6 +1268,30 @@ module Google
           property :filter_alias, as: 'filterAlias'
           property :id, as: 'id'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription::Representation
+      
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_renew_enabled, as: 'autoRenewEnabled'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :seat_count, :numeric_string => true, as: 'seatCount'
+          property :sku, as: 'sku'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       
