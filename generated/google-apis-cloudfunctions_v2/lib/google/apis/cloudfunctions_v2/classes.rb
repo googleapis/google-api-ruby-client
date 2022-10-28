@@ -180,14 +180,29 @@ module Google
         # @return [String]
         attr_accessor :build
       
-        # Optional. User managed repository created in Artifact Registry optionally with
-        # a customer managed encryption key. This is the repository to which the
-        # function docker image will be pushed after it is built by Cloud Build. If
-        # unspecified, GCF will create and use a repository named 'gcf-artifacts' for
-        # every deployed region. It must match the pattern `projects/`project`/locations/
-        # `location`/repositories/`repository``. Cross-project repositories are not
-        # supported. Cross-location repositories are not supported. Repository format
-        # must be 'DOCKER'.
+        # Specifies one of the Google provided buildpack stacks.
+        # Corresponds to the JSON property `buildpackStack`
+        # @return [String]
+        attr_accessor :buildpack_stack
+      
+        # Optional. Docker Registry to use for this deployment. This configuration is
+        # only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact
+        # Registry. If `docker_repository` field is specified, this field will be
+        # automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently
+        # defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend
+        # for eligible deployments.
+        # Corresponds to the JSON property `dockerRegistry`
+        # @return [String]
+        attr_accessor :docker_registry
+      
+        # User managed repository created in Artifact Registry optionally with a
+        # customer managed encryption key. This is the repository to which the function
+        # docker image will be pushed after it is built by Cloud Build. If unspecified,
+        # GCF will create and use a repository named 'gcf-artifacts' for every deployed
+        # region. It must match the pattern `projects/`project`/locations/`location`/
+        # repositories/`repository``. Cross-project repositories are not supported.
+        # Cross-location repositories are not supported. Repository format must be '
+        # DOCKER'.
         # Corresponds to the JSON property `dockerRepository`
         # @return [String]
         attr_accessor :docker_repository
@@ -244,6 +259,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build = args[:build] if args.key?(:build)
+          @buildpack_stack = args[:buildpack_stack] if args.key?(:buildpack_stack)
+          @docker_registry = args[:docker_registry] if args.key?(:docker_registry)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
@@ -1686,6 +1703,14 @@ module Google
         # @return [Array<Google::Apis::CloudfunctionsV2::SecretVolume>]
         attr_accessor :secret_volumes
       
+        # Optional. Security level configure whether the function only accepts https.
+        # This configuration is only applicable to 1st Gen functions with Http trigger.
+        # By default https is optional for 1st Gen functions; 2nd Gen functions are
+        # https ONLY.
+        # Corresponds to the JSON property `securityLevel`
+        # @return [String]
+        attr_accessor :security_level
+      
         # Output only. Name of the service associated with a Function. The format of
         # this field is `projects/`project`/locations/`region`/services/`service``
         # Corresponds to the JSON property `service`
@@ -1737,6 +1762,7 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
           @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
+          @security_level = args[:security_level] if args.key?(:security_level)
           @service = args[:service] if args.key?(:service)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
