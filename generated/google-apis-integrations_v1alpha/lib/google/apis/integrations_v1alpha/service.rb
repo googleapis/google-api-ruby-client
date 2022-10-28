@@ -30,7 +30,7 @@ module Google
       #    Integrations = Google::Apis::IntegrationsV1alpha # Alias the module
       #    service = Integrations::IntegrationsService.new
       #
-      # @see http://www.google.com
+      # @see https://cloud.google.com/application-integration
       class IntegrationsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -854,8 +854,6 @@ module Google
         #   Start timestamp.
         # @param [Array<String>, String] filter_params_task_statuses
         #   List of possible task statuses.
-        # @param [String] filter_params_trigger_id
-        #   Trigger id.
         # @param [String] filter_params_workflow_name
         #   Workflow name.
         # @param [String] order_by
@@ -895,7 +893,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_integration_executions(parent, filter: nil, filter_params_custom_filter: nil, filter_params_end_time: nil, filter_params_event_statuses: nil, filter_params_execution_id: nil, filter_params_parameter_key: nil, filter_params_parameter_pair_key: nil, filter_params_parameter_pair_value: nil, filter_params_parameter_type: nil, filter_params_parameter_value: nil, filter_params_start_time: nil, filter_params_task_statuses: nil, filter_params_trigger_id: nil, filter_params_workflow_name: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, refresh_acl: nil, truncate_params: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_integration_executions(parent, filter: nil, filter_params_custom_filter: nil, filter_params_end_time: nil, filter_params_event_statuses: nil, filter_params_execution_id: nil, filter_params_parameter_key: nil, filter_params_parameter_pair_key: nil, filter_params_parameter_pair_value: nil, filter_params_parameter_type: nil, filter_params_parameter_value: nil, filter_params_start_time: nil, filter_params_task_statuses: nil, filter_params_workflow_name: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, refresh_acl: nil, truncate_params: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/executions', options)
           command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListExecutionsResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListExecutionsResponse
@@ -912,7 +910,6 @@ module Google
           command.query['filterParams.parameterValue'] = filter_params_parameter_value unless filter_params_parameter_value.nil?
           command.query['filterParams.startTime'] = filter_params_start_time unless filter_params_start_time.nil?
           command.query['filterParams.taskStatuses'] = filter_params_task_statuses unless filter_params_task_statuses.nil?
-          command.query['filterParams.triggerId'] = filter_params_trigger_id unless filter_params_trigger_id.nil?
           command.query['filterParams.workflowName'] = filter_params_workflow_name unless filter_params_workflow_name.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -935,8 +932,8 @@ module Google
         # released when Archiving a integration. Currently, there is no unarchive
         # mechanism.
         # @param [String] name
-        #   Required. The version to archive. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to archive. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest] google_cloud_integrations_v1alpha_archive_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -970,7 +967,7 @@ module Google
         # Create a integration with a draft version in the specified project.
         # @param [String] parent
         #   Required. The parent resource where this version will be created. Format:
-        #   projects/`project`/integrations/`integration`
+        #   projects/`project`/locations/`location`/integrations/`integration`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationVersion] google_cloud_integrations_v1alpha_integration_version_object
         # @param [Boolean] new_integration
         #   Set this flag to true, if draft version is to be created for a brand new
@@ -1012,8 +1009,8 @@ module Google
         # tags do not change. This RPC throws an exception if the version being snapshot
         # is not ACTIVE. Audit fields added include action, action_by, action_timestamp.
         # @param [String] name
-        #   Required. The version to deactivate. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to deactivate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest] google_cloud_integrations_v1alpha_deactivate_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1046,8 +1043,8 @@ module Google
         
         # Get a integration in the specified project.
         # @param [String] name
-        #   Required. The version to retrieve. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to retrieve. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1078,12 +1075,12 @@ module Google
         # Returns the list of all integration versions in the specified project.
         # @param [String] parent
         #   Required. The parent resource where this version will be created. Format:
-        #   projects/`project`/integrations/`integration` Specifically, when parent equals:
-        #   1. projects//locations//integrations/, Meaning: "List versions (with filter)
-        #   for a particular integration". 2. projects//locations//integrations/- Meaning:
-        #   "List versions (with filter) for a client within a particular region". 3.
-        #   projects//locations/-/integrations/- Meaning: "List versions (with filter) for
-        #   a client".
+        #   projects/`project`/locations/`location`/integrations/`integration`
+        #   Specifically, when parent equals: 1. projects//locations//integrations/,
+        #   Meaning: "List versions (with filter) for a particular integration". 2.
+        #   projects//locations//integrations/- Meaning: "List versions (with filter) for
+        #   a client within a particular region". 3. projects//locations/-/integrations/-
+        #   Meaning: "List versions (with filter) for a client".
         # @param [String] field_mask
         #   The field mask which specifies the particular data to be returned.
         # @param [String] filter
@@ -1183,8 +1180,8 @@ module Google
         # last_modified_timestamp, last_modified_by. Any existing lock is on this
         # integration is released.
         # @param [String] name
-        #   Required. The version to publish. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to publish. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest] google_cloud_integrations_v1alpha_publish_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1228,7 +1225,7 @@ module Google
         # fields updated include last_modified_timestamp, last_modified_by.
         # @param [String] integration_version
         #   Required. The version to take over edit lock. Format: projects/`project`/
-        #   integrations/`integration`/versions/`version`
+        #   locations/`location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest] google_cloud_integrations_v1alpha_takeover_edit_lock_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1263,8 +1260,8 @@ module Google
         # is thrown. If validation fails a CanonicalCodeException is thrown. If there
         # was no failure an empty response is returned.
         # @param [String] name
-        #   Required. The version to validate. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to validate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest] google_cloud_integrations_v1alpha_validate_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1806,8 +1803,8 @@ module Google
         # PROTECT WITH A VISIBILITY LABEL. THIS METHOD WILL BE MOVED TO A SEPARATE
         # SERVICE. Soft-deletes the bundle.
         # @param [String] name
-        #   Required. The bundle to archive. Format: projects/`project`/integrations/`
-        #   integration`
+        #   Required. The bundle to archive. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaArchiveBundleRequest] google_cloud_integrations_v1alpha_archive_bundle_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2093,8 +2090,6 @@ module Google
         #   Start timestamp.
         # @param [Array<String>, String] filter_params_task_statuses
         #   List of possible task statuses.
-        # @param [String] filter_params_trigger_id
-        #   Trigger id.
         # @param [String] filter_params_workflow_name
         #   Workflow name.
         # @param [String] order_by
@@ -2134,7 +2129,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_product_integration_executions(parent, filter: nil, filter_params_custom_filter: nil, filter_params_end_time: nil, filter_params_event_statuses: nil, filter_params_execution_id: nil, filter_params_parameter_key: nil, filter_params_parameter_pair_key: nil, filter_params_parameter_pair_value: nil, filter_params_parameter_type: nil, filter_params_parameter_value: nil, filter_params_start_time: nil, filter_params_task_statuses: nil, filter_params_trigger_id: nil, filter_params_workflow_name: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, refresh_acl: nil, truncate_params: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_product_integration_executions(parent, filter: nil, filter_params_custom_filter: nil, filter_params_end_time: nil, filter_params_event_statuses: nil, filter_params_execution_id: nil, filter_params_parameter_key: nil, filter_params_parameter_pair_key: nil, filter_params_parameter_pair_value: nil, filter_params_parameter_type: nil, filter_params_parameter_value: nil, filter_params_start_time: nil, filter_params_task_statuses: nil, filter_params_workflow_name: nil, order_by: nil, page_size: nil, page_token: nil, read_mask: nil, refresh_acl: nil, truncate_params: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/executions', options)
           command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListExecutionsResponse::Representation
           command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListExecutionsResponse
@@ -2151,7 +2146,6 @@ module Google
           command.query['filterParams.parameterValue'] = filter_params_parameter_value unless filter_params_parameter_value.nil?
           command.query['filterParams.startTime'] = filter_params_start_time unless filter_params_start_time.nil?
           command.query['filterParams.taskStatuses'] = filter_params_task_statuses unless filter_params_task_statuses.nil?
-          command.query['filterParams.triggerId'] = filter_params_trigger_id unless filter_params_trigger_id.nil?
           command.query['filterParams.workflowName'] = filter_params_workflow_name unless filter_params_workflow_name.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -2337,8 +2331,8 @@ module Google
         # released when Archiving a integration. Currently, there is no unarchive
         # mechanism.
         # @param [String] name
-        #   Required. The version to archive. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to archive. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaArchiveIntegrationVersionRequest] google_cloud_integrations_v1alpha_archive_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2372,7 +2366,7 @@ module Google
         # Create a integration with a draft version in the specified project.
         # @param [String] parent
         #   Required. The parent resource where this version will be created. Format:
-        #   projects/`project`/integrations/`integration`
+        #   projects/`project`/locations/`location`/integrations/`integration`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationVersion] google_cloud_integrations_v1alpha_integration_version_object
         # @param [Boolean] new_integration
         #   Set this flag to true, if draft version is to be created for a brand new
@@ -2414,8 +2408,8 @@ module Google
         # tags do not change. This RPC throws an exception if the version being snapshot
         # is not ACTIVE. Audit fields added include action, action_by, action_timestamp.
         # @param [String] name
-        #   Required. The version to deactivate. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to deactivate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaDeactivateIntegrationVersionRequest] google_cloud_integrations_v1alpha_deactivate_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2449,8 +2443,8 @@ module Google
         # Downloads an integration. Retrieves the `IntegrationVersion` for a given `
         # integration_id` and returns the response as a string.
         # @param [String] name
-        #   Required. The version to download. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to download. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [String] file_format
         #   File format for download request.
         # @param [String] fields
@@ -2483,8 +2477,8 @@ module Google
         
         # Get a integration in the specified project.
         # @param [String] name
-        #   Required. The version to retrieve. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to retrieve. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2546,12 +2540,12 @@ module Google
         # Returns the list of all integration versions in the specified project.
         # @param [String] parent
         #   Required. The parent resource where this version will be created. Format:
-        #   projects/`project`/integrations/`integration` Specifically, when parent equals:
-        #   1. projects//locations//integrations/, Meaning: "List versions (with filter)
-        #   for a particular integration". 2. projects//locations//integrations/- Meaning:
-        #   "List versions (with filter) for a client within a particular region". 3.
-        #   projects//locations/-/integrations/- Meaning: "List versions (with filter) for
-        #   a client".
+        #   projects/`project`/locations/`location`/integrations/`integration`
+        #   Specifically, when parent equals: 1. projects//locations//integrations/,
+        #   Meaning: "List versions (with filter) for a particular integration". 2.
+        #   projects//locations//integrations/- Meaning: "List versions (with filter) for
+        #   a client within a particular region". 3. projects//locations/-/integrations/-
+        #   Meaning: "List versions (with filter) for a client".
         # @param [String] field_mask
         #   The field mask which specifies the particular data to be returned.
         # @param [String] filter
@@ -2651,8 +2645,8 @@ module Google
         # last_modified_timestamp, last_modified_by. Any existing lock is on this
         # integration is released.
         # @param [String] name
-        #   Required. The version to publish. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to publish. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest] google_cloud_integrations_v1alpha_publish_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2696,7 +2690,7 @@ module Google
         # fields updated include last_modified_timestamp, last_modified_by.
         # @param [String] integration_version
         #   Required. The version to take over edit lock. Format: projects/`project`/
-        #   integrations/`integration`/versions/`version`
+        #   locations/`location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest] google_cloud_integrations_v1alpha_takeover_edit_lock_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2765,8 +2759,8 @@ module Google
         # input in a string format, which holds the complete representation of the
         # IntegrationVersion content.
         # @param [String] parent
-        #   Required. The version to upload. Format: projects/`project`/integrations/`
-        #   integration`
+        #   Required. The version to upload. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest] google_cloud_integrations_v1alpha_upload_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2801,8 +2795,8 @@ module Google
         # is thrown. If validation fails a CanonicalCodeException is thrown. If there
         # was no failure an empty response is returned.
         # @param [String] name
-        #   Required. The version to validate. Format: projects/`project`/integrations/`
-        #   integration`/versions/`version`
+        #   Required. The version to validate. Format: projects/`project`/locations/`
+        #   location`/integrations/`integration`/versions/`version`
         # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaValidateIntegrationVersionRequest] google_cloud_integrations_v1alpha_validate_integration_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -569,6 +569,45 @@ module Google
         end
       end
       
+      # Cloud Scheduler Trigger configuration
+      class EnterpriseCrmEventbusProtoCloudSchedulerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cron tab of cloud scheduler trigger.
+        # Corresponds to the JSON property `cronTab`
+        # @return [String]
+        attr_accessor :cron_tab
+      
+        # Optional. When the job was deleted from Pantheon UI, error_message will be
+        # populated when Get/List integrations
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Required. The location where associated cloud scheduler job will be created
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. Service account used by Cloud Scheduler to trigger the integration
+        # at scheduled time
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron_tab = args[:cron_tab] if args.key?(:cron_tab)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @location = args[:location] if args.key?(:location)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
       # This message recursively combines constituent conditions using logical AND.
       class EnterpriseCrmEventbusProtoCombinedCondition
         include Google::Apis::Core::Hashable
@@ -4561,7 +4600,7 @@ module Google
         end
       end
       
-      # Configuration detail of a trigger. Next available id: 16
+      # Configuration detail of a trigger. Next available id: 17
       class EnterpriseCrmFrontendsEventbusProtoTriggerConfig
         include Google::Apis::Core::Hashable
       
@@ -4572,6 +4611,11 @@ module Google
         # Corresponds to the JSON property `alertConfig`
         # @return [Array<Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoWorkflowAlertConfig>]
         attr_accessor :alert_config
+      
+        # Cloud Scheduler Trigger configuration
+        # Corresponds to the JSON property `cloudSchedulerConfig`
+        # @return [Google::Apis::IntegrationsV1alpha::EnterpriseCrmEventbusProtoCloudSchedulerConfig]
+        attr_accessor :cloud_scheduler_config
       
         # User-provided description intended to give more business context about the
         # task.
@@ -4657,6 +4701,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alert_config = args[:alert_config] if args.key?(:alert_config)
+          @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
           @enabled_clients = args[:enabled_clients] if args.key?(:enabled_clients)
           @label = args[:label] if args.key?(:label)
@@ -5034,11 +5079,6 @@ module Google
         attr_accessor :cert_type
       
         # Secret provides a reference to entries in Secret Manager.
-        # Corresponds to the JSON property `password`
-        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
-        attr_accessor :password
-      
-        # Secret provides a reference to entries in Secret Manager.
         # Corresponds to the JSON property `sshClientCert`
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1Secret]
         attr_accessor :ssh_client_cert
@@ -5060,7 +5100,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cert_type = args[:cert_type] if args.key?(:cert_type)
-          @password = args[:password] if args.key?(:password)
           @ssh_client_cert = args[:ssh_client_cert] if args.key?(:ssh_client_cert)
           @ssh_client_cert_pass = args[:ssh_client_cert_pass] if args.key?(:ssh_client_cert_pass)
           @username = args[:username] if args.key?(:username)
@@ -5876,6 +5915,45 @@ module Google
           @encrypted_private_key = args[:encrypted_private_key] if args.key?(:encrypted_private_key)
           @passphrase = args[:passphrase] if args.key?(:passphrase)
           @ssl_certificate = args[:ssl_certificate] if args.key?(:ssl_certificate)
+        end
+      end
+      
+      # Cloud Scheduler Trigger configuration
+      class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The cron tab of cloud scheduler trigger.
+        # Corresponds to the JSON property `cronTab`
+        # @return [String]
+        attr_accessor :cron_tab
+      
+        # Optional. When the job was deleted from Pantheon UI, error_message will be
+        # populated when Get/List integrations
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Required. The location where associated cloud scheduler job will be created
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. Service account used by Cloud Scheduler to trigger the integration
+        # at scheduled time
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron_tab = args[:cron_tab] if args.key?(:cron_tab)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @location = args[:location] if args.key?(:location)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
         end
       end
       
@@ -9008,6 +9086,11 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>]
         attr_accessor :alert_config
       
+        # Cloud Scheduler Trigger configuration
+        # Corresponds to the JSON property `cloudSchedulerConfig`
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaCloudSchedulerConfig]
+        attr_accessor :cloud_scheduler_config
+      
         # Optional. User-provided description intended to give additional business
         # context about the task.
         # Corresponds to the JSON property `description`
@@ -9062,6 +9145,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alert_config = args[:alert_config] if args.key?(:alert_config)
+          @cloud_scheduler_config = args[:cloud_scheduler_config] if args.key?(:cloud_scheduler_config)
           @description = args[:description] if args.key?(:description)
           @label = args[:label] if args.key?(:label)
           @next_tasks_execution_policy = args[:next_tasks_execution_policy] if args.key?(:next_tasks_execution_policy)
