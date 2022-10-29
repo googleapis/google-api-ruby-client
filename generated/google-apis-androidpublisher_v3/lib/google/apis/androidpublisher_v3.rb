@@ -21,7 +21,9 @@ module Google
   module Apis
     # Google Play Android Developer API
     #
-    # Lets Android application developers access their Google Play accounts.
+    # Lets Android application developers access their Google Play accounts. At a
+    # high level, the expected workflow is to "insert" an Edit, make changes as
+    # necessary, and then "commit" it.
     #
     # @see https://developers.google.com/android-publisher
     module AndroidpublisherV3

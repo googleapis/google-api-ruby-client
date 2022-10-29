@@ -1629,6 +1629,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :eligible_for_streaming_service_tax_rate, as: 'eligibleForStreamingServiceTaxRate'
+          property :streaming_tax_type, as: 'streamingTaxType'
           property :tax_tier, as: 'taxTier'
         end
       end
