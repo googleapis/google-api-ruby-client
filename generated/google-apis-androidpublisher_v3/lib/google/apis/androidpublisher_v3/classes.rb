@@ -2747,6 +2747,14 @@ module Google
         attr_accessor :eligible_for_streaming_service_tax_rate
         alias_method :eligible_for_streaming_service_tax_rate?, :eligible_for_streaming_service_tax_rate
       
+        # To collect communications or amusement taxes in the United States, choose the
+        # appropriate tax category. By default Google will determine the collected rate
+        # based on the buyer ZIP code. [Learn more](https://support.google.com/
+        # googleplay/android-developer/answer/10463498#streaming_tax).
+        # Corresponds to the JSON property `streamingTaxType`
+        # @return [String]
+        attr_accessor :streaming_tax_type
+      
         # Tax tier to specify reduced tax rate. Developers who sell digital news,
         # magazines, newspapers, books, or audiobooks in various regions may be eligible
         # for reduced tax rates. [Learn more](https://support.google.com/googleplay/
@@ -2762,6 +2770,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @eligible_for_streaming_service_tax_rate = args[:eligible_for_streaming_service_tax_rate] if args.key?(:eligible_for_streaming_service_tax_rate)
+          @streaming_tax_type = args[:streaming_tax_type] if args.key?(:streaming_tax_type)
           @tax_tier = args[:tax_tier] if args.key?(:tax_tier)
         end
       end

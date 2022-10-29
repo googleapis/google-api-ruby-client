@@ -22,7 +22,9 @@ module Google
     module AndroidpublisherV3
       # Google Play Android Developer API
       #
-      # Lets Android application developers access their Google Play accounts.
+      # Lets Android application developers access their Google Play accounts. At a
+      #  high level, the expected workflow is to "insert" an Edit, make changes as
+      #  necessary, and then "commit" it.
       #
       # @example
       #    require 'google/apis/androidpublisher_v3'
