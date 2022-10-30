@@ -22,6 +22,124 @@ module Google
   module Apis
     module DatastoreV1
       
+      # Defines a aggregation that produces a single result.
+      class Aggregation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional name of the property to store the result of the aggregation.
+        # If not provided, Datastore will pick a default name following the format `
+        # property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+        # COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) OVER ( ... ); `
+        # `` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS
+        # property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT_UP_TO(4) AS property_2 OVER
+        # ( ... ); ``` Requires: * Must be unique across all aggregation aliases. *
+        # Conform to entity property name limitations.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Count of entities that match the query. The `COUNT(*)` aggregation function
+        # operates on the entire entity so it does not require a field reference.
+        # Corresponds to the JSON property `count`
+        # @return [Google::Apis::DatastoreV1::Count]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
+      # Datastore query for running an aggregation over a Query.
+      class AggregationQuery
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Series of aggregations to apply over the results of the `
+        # nested_query`. Requires: * A minimum of one and maximum of five aggregations
+        # per query.
+        # Corresponds to the JSON property `aggregations`
+        # @return [Array<Google::Apis::DatastoreV1::Aggregation>]
+        attr_accessor :aggregations
+      
+        # A query for entities.
+        # Corresponds to the JSON property `nestedQuery`
+        # @return [Google::Apis::DatastoreV1::Query]
+        attr_accessor :nested_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregations = args[:aggregations] if args.key?(:aggregations)
+          @nested_query = args[:nested_query] if args.key?(:nested_query)
+        end
+      end
+      
+      # The result of a single bucket from a Datastore aggregation query. The keys of `
+      # aggregate_properties` are the same for all results in an aggregation query,
+      # unlike entity queries which can have different fields present for each result.
+      class AggregationResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of the aggregation functions, ex: `COUNT(*) AS total_entities`. The
+        # key is the alias assigned to the aggregation function on input and the size of
+        # this map equals the number of aggregation functions in the query.
+        # Corresponds to the JSON property `aggregateProperties`
+        # @return [Hash<String,Google::Apis::DatastoreV1::Value>]
+        attr_accessor :aggregate_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_properties = args[:aggregate_properties] if args.key?(:aggregate_properties)
+        end
+      end
+      
+      # A batch of aggregation results produced by an aggregation query.
+      class AggregationResultBatch
+        include Google::Apis::Core::Hashable
+      
+        # The aggregation results for this batch.
+        # Corresponds to the JSON property `aggregationResults`
+        # @return [Array<Google::Apis::DatastoreV1::AggregationResult>]
+        attr_accessor :aggregation_results
+      
+        # The state of the query after the current batch. Only COUNT(*) aggregations are
+        # supported in the initial launch. Therefore, expected result type is limited to
+        # `NO_MORE_RESULTS`.
+        # Corresponds to the JSON property `moreResults`
+        # @return [String]
+        attr_accessor :more_results
+      
+        # Read timestamp this batch was returned from. In a single transaction,
+        # subsequent query result batches for the same query can have a greater
+        # timestamp. Each batch's read timestamp is valid for all preceding batches.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_results = args[:aggregation_results] if args.key?(:aggregation_results)
+          @more_results = args[:more_results] if args.key?(:more_results)
+          @read_time = args[:read_time] if args.key?(:read_time)
+        end
+      end
+      
       # The request for Datastore.AllocateIds.
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
@@ -237,6 +355,31 @@ module Google
         def update!(**args)
           @filters = args[:filters] if args.key?(:filters)
           @op = args[:op] if args.key?(:op)
+        end
+      end
+      
+      # Count of entities that match the query. The `COUNT(*)` aggregation function
+      # operates on the entire entity so it does not require a field reference.
+      class Count
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional constraint on the maximum number of entities to count. This
+        # provides a way to set an upper bound on the number of entities to scan,
+        # limiting latency and cost. Unspecified is interpreted as no bound. If a zero
+        # value is provided, a count result of zero should always be expected. High-
+        # Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ```
+        # Requires: * Must be non-negative when present.
+        # Corresponds to the JSON property `upTo`
+        # @return [Fixnum]
+        attr_accessor :up_to
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @up_to = args[:up_to] if args.key?(:up_to)
         end
       end
       
@@ -2093,6 +2236,84 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The request for Datastore.RunAggregationQuery.
+      class RunAggregationQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Datastore query for running an aggregation over a Query.
+        # Corresponds to the JSON property `aggregationQuery`
+        # @return [Google::Apis::DatastoreV1::AggregationQuery]
+        attr_accessor :aggregation_query
+      
+        # The ID of the database against which to make the request. '(default)' is not
+        # allowed; please use empty string '' to refer the default database.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+        # Corresponds to the JSON property `gqlQuery`
+        # @return [Google::Apis::DatastoreV1::GqlQuery]
+        attr_accessor :gql_query
+      
+        # A partition ID identifies a grouping of entities. The grouping is always by
+        # project and namespace, however the namespace ID may be empty. A partition ID
+        # contains several dimensions: project ID and namespace ID. Partition dimensions:
+        # - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match
+        # regex `[A-Za-z\d\.\-_]`1,100`` If the value of any dimension matches regex `__.
+        # *__`, the partition is reserved/read-only. A reserved/read-only partition ID
+        # is forbidden in certain documented contexts. Foreign partition IDs (in which
+        # the project ID does not match the context project ID ) are discouraged. Reads
+        # and writes of foreign partition IDs may fail if the project is not in an
+        # active state.
+        # Corresponds to the JSON property `partitionId`
+        # @return [Google::Apis::DatastoreV1::PartitionId]
+        attr_accessor :partition_id
+      
+        # The options shared by read requests.
+        # Corresponds to the JSON property `readOptions`
+        # @return [Google::Apis::DatastoreV1::ReadOptions]
+        attr_accessor :read_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_query = args[:aggregation_query] if args.key?(:aggregation_query)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @gql_query = args[:gql_query] if args.key?(:gql_query)
+          @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @read_options = args[:read_options] if args.key?(:read_options)
+        end
+      end
+      
+      # The response for Datastore.RunAggregationQuery.
+      class RunAggregationQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A batch of aggregation results produced by an aggregation query.
+        # Corresponds to the JSON property `batch`
+        # @return [Google::Apis::DatastoreV1::AggregationResultBatch]
+        attr_accessor :batch
+      
+        # Datastore query for running an aggregation over a Query.
+        # Corresponds to the JSON property `query`
+        # @return [Google::Apis::DatastoreV1::AggregationQuery]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch = args[:batch] if args.key?(:batch)
+          @query = args[:query] if args.key?(:query)
         end
       end
       
