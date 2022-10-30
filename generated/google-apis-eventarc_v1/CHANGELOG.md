@@ -1,5 +1,9 @@
 # Release history for google-apis-eventarc_v1
 
+### v0.33.0 (2022-10-30)
+
+* Regenerated from discovery document revision 20221021
+
 ### v0.32.0 (2022-10-20)
 
 * Regenerated using generator version 0.11.0
