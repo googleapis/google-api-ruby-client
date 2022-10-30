@@ -5543,7 +5543,8 @@ module Google
         # Specifies a regular expression that matches allowed origins. For more
         # information about the regular expression syntax, see Syntax. An origin is
         # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes.
+        # allowOriginRegexes. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -11149,8 +11150,8 @@ module Google
         # For matching against a port specified in the HTTP request, use a headerMatch
         # with headerName set to PORT and a regular expression that satisfies the
         # RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch,
-        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch
-        # only applies to load balancers that have loadBalancingScheme set to
+        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular
+        # expressions can only be used when the loadBalancingScheme is set to
         # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
@@ -11469,8 +11470,8 @@ module Google
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For more information about regular
         # expression syntax, see Syntax. Only one of presentMatch, exactMatch, or
-        # regexMatch must be set. regexMatch only applies when the loadBalancingScheme
-        # is set to INTERNAL_SELF_MANAGED.
+        # regexMatch must be set. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -11851,8 +11852,8 @@ module Google
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For more information
         # about regular expression syntax, see Syntax. Only one of prefixMatch,
-        # fullPathMatch or regexMatch must be specified. regexMatch only applies to load
-        # balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # fullPathMatch or regexMatch must be specified. Regular expressions can only be
+        # used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -13547,6 +13548,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Pagination behavior of the listManagedInstances API method for this managed
+        # instance group.
+        # Corresponds to the JSON property `listManagedInstancesResults`
+        # @return [String]
+        attr_accessor :list_managed_instances_results
+      
         # The name of the managed instance group. The name must be 1-63 characters long,
         # and comply with RFC1035.
         # Corresponds to the JSON property `name`
@@ -13634,6 +13641,7 @@ module Google
           @instance_group = args[:instance_group] if args.key?(:instance_group)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
+          @list_managed_instances_results = args[:list_managed_instances_results] if args.key?(:list_managed_instances_results)
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
@@ -19465,6 +19473,11 @@ module Google
               # @return [Google::Apis::ComputeV1::LocalizedMessage]
               attr_accessor :localized_message
             
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeV1::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
               def initialize(**args)
                  update!(**args)
               end
@@ -19474,6 +19487,7 @@ module Google
                 @error_info = args[:error_info] if args.key?(:error_info)
                 @help = args[:help] if args.key?(:help)
                 @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
               end
             end
           end
@@ -23841,6 +23855,11 @@ module Google
               # @return [Google::Apis::ComputeV1::LocalizedMessage]
               attr_accessor :localized_message
             
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeV1::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
               def initialize(**args)
                  update!(**args)
               end
@@ -23850,6 +23869,7 @@ module Google
                 @error_info = args[:error_info] if args.key?(:error_info)
                 @help = args[:help] if args.key?(:help)
                 @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
               end
             end
           end
@@ -24270,28 +24290,36 @@ module Google
       
         # Number of errors before a host is ejected from the connection pool. When the
         # backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-        # Defaults to 5.
+        # Defaults to 5. Not supported when the backend service is referenced by a URL
+        # map that is bound to target gRPC proxy that has validateForProxyless field set
+        # to true.
         # Corresponds to the JSON property `consecutiveErrors`
         # @return [Fixnum]
         attr_accessor :consecutive_errors
       
         # The number of consecutive gateway failures (502, 503, 504 status or connection
         # errors that are mapped to one of those status codes) before a consecutive
-        # gateway failure ejection occurs. Defaults to 3.
+        # gateway failure ejection occurs. Defaults to 3. Not supported when the backend
+        # service is referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `consecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :consecutive_gateway_failure
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive 5xx. This setting can be used to
-        # disable ejection or to ramp it up slowly. Defaults to 0.
+        # disable ejection or to ramp it up slowly. Defaults to 0. Not supported when
+        # the backend service is referenced by a URL map that is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveErrors`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_errors
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive gateway failures. This setting can be
-        # used to disable ejection or to ramp it up slowly. Defaults to 100.
+        # used to disable ejection or to ramp it up slowly. Defaults to 100. Not
+        # supported when the backend service is referenced by a URL map that is bound to
+        # target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_gateway_failure
@@ -26454,6 +26482,44 @@ module Google
           @metric = args[:metric] if args.key?(:metric)
           @owner = args[:owner] if args.key?(:owner)
           @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # Additional details for quota exceeded error for resource quota.
+      class QuotaExceededInfo
+        include Google::Apis::Core::Hashable
+      
+        # The map holding related quota dimensions.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # Current effective quota limit. The limit's unit depends on the quota type or
+        # metric.
+        # Corresponds to the JSON property `limit`
+        # @return [Float]
+        attr_accessor :limit
+      
+        # The name of the quota limit.
+        # Corresponds to the JSON property `limitName`
+        # @return [String]
+        attr_accessor :limit_name
+      
+        # The Compute Engine quota metric name.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @limit = args[:limit] if args.key?(:limit)
+          @limit_name = args[:limit_name] if args.key?(:limit_name)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
         end
       end
       
@@ -32134,9 +32200,11 @@ module Google
         attr_accessor :region
       
         # A list of rules that belong to this policy. There must always be a default
-        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
-        # when creating a security policy, a default rule with action "allow" will be
-        # added.
+        # rule which is a rule with priority 2147483647 and match all condition (for the
+        # match condition this means match "*" for srcIpRanges and for the networkMatch
+        # condition every field must be either match "*" or not set). If no rules are
+        # provided when creating a security policy, a default rule with action "allow"
+        # will be added.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRule>]
         attr_accessor :rules
@@ -32698,7 +32766,11 @@ module Google
         # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
         # configured under "enforce_on_key_name". The key value is truncated to the
         # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL.
+        # request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP
+        # request. The key value is truncated to the first 128 bytes. - SNI: Server name
+        # indication in the TLS session of the HTTPS request. The key value is truncated
+        # to the first 128 bytes. The key type defaults to ALL on a HTTP session. -
+        # REGION_CODE: The country/region from which the request originates.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -40741,7 +40813,8 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. If not specified, IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
+        # IPV4_ONLY will be used.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
@@ -41352,7 +41425,9 @@ module Google
         attr_accessor :peer_external_gateway
       
         # The interface ID of the external VPN gateway to which this VPN tunnel is
-        # connected. Provided by the client when the VPN tunnel is created.
+        # connected. Provided by the client when the VPN tunnel is created. Possible
+        # values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the
+        # external VPN gateway redundancy type.
         # Corresponds to the JSON property `peerExternalGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_external_gateway_interface
@@ -41443,6 +41518,7 @@ module Google
         attr_accessor :vpn_gateway
       
         # The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        # Possible values are: `0`, `1`.
         # Corresponds to the JSON property `vpnGatewayInterface`
         # @return [Fixnum]
         attr_accessor :vpn_gateway_interface
