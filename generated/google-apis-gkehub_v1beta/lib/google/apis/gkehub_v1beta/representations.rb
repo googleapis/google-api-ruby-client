@@ -292,6 +292,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +473,18 @@ module Google
       end
       
       class PolicyControllerTemplateLibraryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeFeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -632,6 +668,8 @@ module Google
       
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec::Representation
       
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1beta::FleetObservabilityFeatureSpec::Representation
+      
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec::Representation
       
         end
@@ -641,6 +679,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState::Representation
+      
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
@@ -954,6 +994,10 @@ module Google
           property :name, as: 'name'
           property :resource_state, as: 'resourceState', class: Google::Apis::GkehubV1beta::FeatureResourceState, decorator: Google::Apis::GkehubV1beta::FeatureResourceState::Representation
       
+          hash :scope_specs, as: 'scopeSpecs', class: Google::Apis::GkehubV1beta::ScopeFeatureSpec, decorator: Google::Apis::GkehubV1beta::ScopeFeatureSpec::Representation
+      
+          hash :scope_states, as: 'scopeStates', class: Google::Apis::GkehubV1beta::ScopeFeatureState, decorator: Google::Apis::GkehubV1beta::ScopeFeatureState::Representation
+      
           property :spec, as: 'spec', class: Google::Apis::GkehubV1beta::CommonFeatureSpec, decorator: Google::Apis::GkehubV1beta::CommonFeatureSpec::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::CommonFeatureState, decorator: Google::Apis::GkehubV1beta::CommonFeatureState::Representation
@@ -975,6 +1019,30 @@ module Google
           property :code, as: 'code'
           property :description, as: 'description'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class FleetObservabilityFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1102,6 +1170,8 @@ module Google
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec::Representation
       
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::FleetObservabilityMembershipSpec::Representation
+      
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec::Representation
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1beta::ServiceMeshMembershipSpec::Representation
@@ -1119,6 +1189,8 @@ module Google
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipState::Representation
+      
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityMembershipState, decorator: Google::Apis::GkehubV1beta::FleetObservabilityMembershipState::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipState, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipState::Representation
       
@@ -1234,7 +1306,6 @@ module Google
       class PolicyControllerMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_name, as: 'clusterName'
           hash :component_states, as: 'componentStates', class: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1beta::PolicyControllerOnClusterState::Representation
       
           property :state, as: 'state'
@@ -1260,6 +1331,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :included, as: 'included'
+        end
+      end
+      
+      class ScopeFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ScopeFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
+      
         end
       end
       
