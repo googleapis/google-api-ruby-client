@@ -7806,11 +7806,9 @@ module Google
       
         # Retains data in interaction logging for the specified number of days. This
         # does not apply to Cloud logging, which is owned by the user - not Dialogflow.
-        # User must set a value lower than Dialogflow's default 365d TTL. Setting a
-        # value higher than that has no effect. A missing value or setting to 0 also
-        # means we use Dialogflow's default TTL. Note: Interaction logging is a limited
-        # access feature. Talk to your Google representative to check availability for
-        # you.
+        # User must set a value lower than Dialogflow's default 365d TTL (time to live).
+        # Setting a value higher than that has no effect. A missing value or setting to
+        # 0 also means we use Dialogflow's default TTL.
         # Corresponds to the JSON property `retentionWindowDays`
         # @return [Fixnum]
         attr_accessor :retention_window_days
@@ -7854,10 +7852,10 @@ module Google
         attr_accessor :enable_audio_redaction
         alias_method :enable_audio_redaction?, :enable_audio_redaction
       
-        # Cloud Storage bucket to export audio record to. Settings this field would
-        # grant the Storage Object Creator role to the Dialogflow Service Agent. API
-        # caller that tries to modify this field should have the permission of storage.
-        # buckets.setIamPolicy.
+        # Cloud Storage bucket to export audio record to. Setting this field would grant
+        # the Storage Object Creator role to the Dialogflow Service Agent. API caller
+        # that tries to modify this field should have the permission of storage.buckets.
+        # setIamPolicy.
         # Corresponds to the JSON property `gcsBucket`
         # @return [String]
         attr_accessor :gcs_bucket
