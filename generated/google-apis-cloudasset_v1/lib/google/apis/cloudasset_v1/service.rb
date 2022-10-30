@@ -1069,7 +1069,7 @@ module Google
         #   location DESC, name". Only singular primitive fields in the response are
         #   sortable: * name * assetType * project * displayName * description * location *
         #   createTime * updateTime * state * parentFullResourceName * parentAssetType
-        #   All the other fields such as repeated fields (e.g., `networkTags`, 'kmsKeys'),
+        #   All the other fields such as repeated fields (e.g., `networkTags`, `kmsKeys`),
         #   map fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`)
         #   are not supported.
         # @param [Fixnum] page_size
@@ -1097,10 +1097,10 @@ module Google
         #   prod". * `labels.env:*` to find Cloud resources that have a label "env". * `
         #   kmsKey:key` to find Cloud resources encrypted with a customer-managed
         #   encryption key whose name contains "key" as a word. This field is deprecated.
-        #   Please use the `"kmsKeys"` field to retrieve KMS key information. * `kmsKeys:
-        #   key` to find Cloud resources encrypted with customer-managed encryption keys
-        #   whose name contains the word "key". * `relationships:instance-group-1` to find
-        #   Cloud resources that have relationships with "instance-group-1" in the related
+        #   Please use the `kmsKeys` field to retrieve KMS key information. * `kmsKeys:key`
+        #   to find Cloud resources encrypted with customer-managed encryption keys whose
+        #   name contains the word "key". * `relationships:instance-group-1` to find Cloud
+        #   resources that have relationships with "instance-group-1" in the related
         #   resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find compute
         #   instances that have relationships of type "INSTANCE_TO_INSTANCEGROUP". * `
         #   relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find compute
@@ -1127,11 +1127,12 @@ module Google
         #   paths must be valid field paths listed but not limited to (both snake_case and
         #   camelCase are supported): * name * assetType * project * displayName *
         #   description * location * tagKeys * tagValues * tagValueIds * labels *
-        #   networkTags * kmsKeys * createTime * updateTime * state * additionalAttributes
-        #   * versionedResources If read_mask is not specified, all fields except
-        #   versionedResources will be returned. If only '*' is specified, all fields
-        #   including versionedResources will be returned. Any invalid field path will
-        #   trigger INVALID_ARGUMENT error.
+        #   networkTags * kmsKey (This field is deprecated. Please use the `kmsKeys` field
+        #   to retrieve KMS key information.) * kmsKeys * createTime * updateTime * state *
+        #   additionalAttributes * versionedResources If read_mask is not specified, all
+        #   fields except versionedResources will be returned. If only '*' is specified,
+        #   all fields including versionedResources will be returned. Any invalid field
+        #   path will trigger INVALID_ARGUMENT error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
