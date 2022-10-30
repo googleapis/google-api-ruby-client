@@ -3352,6 +3352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotaExceededInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8677,6 +8683,7 @@ module Google
           property :instance_group, as: 'instanceGroup'
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
+          property :list_managed_instances_results, as: 'listManagedInstancesResults'
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
@@ -10217,6 +10224,8 @@ module Google
             
                 property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
             
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeV1::QuotaExceededInfo, decorator: Google::Apis::ComputeV1::QuotaExceededInfo::Representation
+            
               end
             end
           end
@@ -11316,6 +11325,8 @@ module Google
             
                 property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeV1::LocalizedMessage, decorator: Google::Apis::ComputeV1::LocalizedMessage::Representation
             
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeV1::QuotaExceededInfo, decorator: Google::Apis::ComputeV1::QuotaExceededInfo::Representation
+            
               end
             end
           end
@@ -11971,6 +11982,16 @@ module Google
           property :metric, as: 'metric'
           property :owner, as: 'owner'
           property :usage, as: 'usage'
+        end
+      end
+      
+      class QuotaExceededInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimensions, as: 'dimensions'
+          property :limit, as: 'limit'
+          property :limit_name, as: 'limitName'
+          property :metric_name, as: 'metricName'
         end
       end
       
