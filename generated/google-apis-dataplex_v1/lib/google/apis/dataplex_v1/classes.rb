@@ -896,6 +896,145 @@ module Google
         end
       end
       
+      # These messages contain information about the execution of a datascan. The
+      # monitored resource is 'DataScan'
+      class GoogleCloudDataplexV1DataScanEvent
+        include Google::Apis::Core::Hashable
+      
+        # Data profile result for data scan job.
+        # Corresponds to the JSON property `dataProfile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult]
+        attr_accessor :data_profile
+      
+        # Data quality result for data scan job.
+        # Corresponds to the JSON property `dataQuality`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult]
+        attr_accessor :data_quality
+      
+        # The data source of the data scan
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # The time when the data scan job finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The identifier of the specific data scan job this log entry is for.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The message describing the data scan job event.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The scope of the data scan (e.g. full, incremental).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # A version identifier of the spec which was used to execute this job.
+        # Corresponds to the JSON property `specVersion`
+        # @return [String]
+        attr_accessor :spec_version
+      
+        # The time when the data scan job started to run.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The status of the data scan job.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The trigger type of the data scan job.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        # The type of the data scan.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile = args[:data_profile] if args.key?(:data_profile)
+          @data_quality = args[:data_quality] if args.key?(:data_quality)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @message = args[:message] if args.key?(:message)
+          @scope = args[:scope] if args.key?(:scope)
+          @spec_version = args[:spec_version] if args.key?(:spec_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Data profile result for data scan job.
+      class GoogleCloudDataplexV1DataScanEventDataProfileResult
+        include Google::Apis::Core::Hashable
+      
+        # The count of rows processed in the data scan job.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # Data quality result for data scan job.
+      class GoogleCloudDataplexV1DataScanEventDataQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # The result of each dimension for data quality result. The key of the map is
+        # the name of the dimension. The value is the bool value depicting whether the
+        # dimension result was pass or not.
+        # Corresponds to the JSON property `dimensionPassed`
+        # @return [Hash<String,Boolean>]
+        attr_accessor :dimension_passed
+      
+        # Whether the data quality result was pass or not.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
+        # The count of rows processed in the data scan job.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_passed = args[:dimension_passed] if args.key?(:dimension_passed)
+          @passed = args[:passed] if args.key?(:passed)
+          @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
       # The payload associated with Discovery data processing.
       class GoogleCloudDataplexV1DiscoveryEvent
         include Google::Apis::Core::Hashable
@@ -2380,6 +2519,13 @@ module Google
         attr_accessor :event_succeeded
         alias_method :event_succeeded?, :event_succeeded
       
+        # If the session is associated with an environment with fast startup enabled,
+        # and was created before being assigned to a user.
+        # Corresponds to the JSON property `fastStartupEnabled`
+        # @return [Boolean]
+        attr_accessor :fast_startup_enabled
+        alias_method :fast_startup_enabled?, :fast_startup_enabled
+      
         # The log message.
         # Corresponds to the JSON property `message`
         # @return [String]
@@ -2411,12 +2557,6 @@ module Google
         # @return [String]
         attr_accessor :user_id
       
-        # If the session is a warm pooled session.
-        # Corresponds to the JSON property `warmPoolEnabled`
-        # @return [Boolean]
-        attr_accessor :warm_pool_enabled
-        alias_method :warm_pool_enabled?, :warm_pool_enabled
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2424,13 +2564,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_succeeded = args[:event_succeeded] if args.key?(:event_succeeded)
+          @fast_startup_enabled = args[:fast_startup_enabled] if args.key?(:fast_startup_enabled)
           @message = args[:message] if args.key?(:message)
           @query = args[:query] if args.key?(:query)
           @session_id = args[:session_id] if args.key?(:session_id)
           @type = args[:type] if args.key?(:type)
           @unassigned_duration = args[:unassigned_duration] if args.key?(:unassigned_duration)
           @user_id = args[:user_id] if args.key?(:user_id)
-          @warm_pool_enabled = args[:warm_pool_enabled] if args.key?(:warm_pool_enabled)
         end
       end
       
@@ -2906,14 +3046,15 @@ module Google
       class GoogleCloudDataplexV1TaskNotebookTaskConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. GCS URIs of archives to be extracted into the working directory of
-        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Optional. Cloud Storage URIs of archives to be extracted into the working
+        # directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz,
+        # and .zip.
         # Corresponds to the JSON property `archiveUris`
         # @return [Array<String>]
         attr_accessor :archive_uris
       
-        # Optional. GCS URIs of files to be placed in the working directory of each
-        # executor.
+        # Optional. Cloud Storage URIs of files to be placed in the working directory of
+        # each executor.
         # Corresponds to the JSON property `fileUris`
         # @return [Array<String>]
         attr_accessor :file_uris
@@ -2923,9 +3064,9 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TaskInfrastructureSpec]
         attr_accessor :infrastructure_spec
       
-        # Required. Path to input notebook. This can be the GCS URI of the notebook file
-        # or the path to a Notebook Content. The execution args are accessible as
-        # environment variables (TASK_key=value).
+        # Required. Path to input notebook. This can be the Cloud Storage URI of the
+        # notebook file or the path to a Notebook Content. The execution args are
+        # accessible as environment variables (TASK_key=value).
         # Corresponds to the JSON property `notebook`
         # @return [String]
         attr_accessor :notebook

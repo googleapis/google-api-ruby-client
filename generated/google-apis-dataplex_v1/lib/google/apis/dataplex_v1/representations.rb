@@ -166,6 +166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataProfileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DiscoveryEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -838,6 +856,42 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataScanEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_profile, as: 'dataProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult::Representation
+      
+          property :data_quality, as: 'dataQuality', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataQualityResult::Representation
+      
+          property :data_source, as: 'dataSource'
+          property :end_time, as: 'endTime'
+          property :job_id, as: 'jobId'
+          property :message, as: 'message'
+          property :scope, as: 'scope'
+          property :spec_version, as: 'specVersion'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :trigger, as: 'trigger'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataProfileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :dimension_passed, as: 'dimensionPassed'
+          property :passed, as: 'passed'
+          property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
       class GoogleCloudDataplexV1DiscoveryEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1245,6 +1299,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_succeeded, as: 'eventSucceeded'
+          property :fast_startup_enabled, as: 'fastStartupEnabled'
           property :message, as: 'message'
           property :query, as: 'query', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1SessionEventQueryDetail, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1SessionEventQueryDetail::Representation
       
@@ -1252,7 +1307,6 @@ module Google
           property :type, as: 'type'
           property :unassigned_duration, as: 'unassignedDuration'
           property :user_id, as: 'userId'
-          property :warm_pool_enabled, as: 'warmPoolEnabled'
         end
       end
       
