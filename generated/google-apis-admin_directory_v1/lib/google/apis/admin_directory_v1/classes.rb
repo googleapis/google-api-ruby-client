@@ -822,7 +822,7 @@ module Google
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
       
-        # List of active time ranges (Read-only).
+        # A list of active time ranges (Read-only).
         # Corresponds to the JSON property `activeTimeRanges`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange>]
         attr_accessor :active_time_ranges
@@ -872,7 +872,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport>]
         attr_accessor :cpu_status_reports
       
-        # List of device files to download (Read-only)
+        # A list of device files to download (Read-only)
         # Corresponds to the JSON property `deviceFiles`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile>]
         attr_accessor :device_files
@@ -1026,13 +1026,13 @@ module Google
         # @return [String]
         attr_accessor :platform_version
       
-        # List of recent device users, in descending order, by last login time.
+        # A list of recent device users, in descending order, by last login time.
         # Corresponds to the JSON property `recentUsers`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser>]
         attr_accessor :recent_users
       
-        # List of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-
-        # only)
+        # A list of screenshot files to download. Type is always "SCREENSHOT_FILE". (
+        # Read-only)
         # Corresponds to the JSON property `screenshotFiles`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::ScreenshotFile>]
         attr_accessor :screenshot_files
@@ -1255,7 +1255,7 @@ module Google
         class CpuStatusReport
           include Google::Apis::Core::Hashable
         
-          # List of CPU temperature samples.
+          # A list of CPU temperature samples.
           # Corresponds to the JSON property `cpuTemperatureInfo`
           # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::CpuTemperatureInfo>]
           attr_accessor :cpu_temperature_info
@@ -1419,7 +1419,7 @@ module Google
           end
         end
         
-        # List of recent device users, in descending order, by last login time.
+        # A list of recent device users, in descending order, by last login time.
         class RecentUser
           include Google::Apis::Core::Hashable
         
@@ -1559,7 +1559,7 @@ module Google
         end
       end
       
-      # The data regarding an action to update the status of a Chrome OS device.
+      # Data about an update to the status of a Chrome OS device.
       class ChromeOsDeviceAction
         include Google::Apis::Core::Hashable
       
@@ -1590,7 +1590,7 @@ module Google
       class ChromeOsDevices
         include Google::Apis::Core::Hashable
       
-        # List of Chrome OS Device objects.
+        # A list of Chrome OS Device objects.
         # Corresponds to the JSON property `chromeosdevices`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice>]
         attr_accessor :chromeosdevices
@@ -2031,7 +2031,7 @@ module Google
       class DomainAliases
         include Google::Apis::Core::Hashable
       
-        # List of domain alias objects.
+        # A list of domain alias objects.
         # Corresponds to the JSON property `domainAliases`
         # @return [Array<Google::Apis::AdminDirectoryV1::DomainAlias>]
         attr_accessor :domain_aliases
@@ -2068,7 +2068,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
-        # List of domain alias objects. (Read-only)
+        # A list of domain alias objects. (Read-only)
         # Corresponds to the JSON property `domainAliases`
         # @return [Array<Google::Apis::AdminDirectoryV1::DomainAlias>]
         attr_accessor :domain_aliases
@@ -2120,7 +2120,7 @@ module Google
       class Domains2
         include Google::Apis::Core::Hashable
       
-        # List of domain objects.
+        # A list of domain objects.
         # Corresponds to the JSON property `domains`
         # @return [Array<Google::Apis::AdminDirectoryV1::Domains>]
         attr_accessor :domains
@@ -2321,7 +2321,7 @@ module Google
         attr_accessor :admin_created
         alias_method :admin_created?, :admin_created
       
-        # Read-only. A list of a group's alias email addresses. To add, update, or
+        # Read-only. The list of a group's alias email addresses. To add, update, or
         # remove a group's aliases, use the `groups.aliases` methods. If edited in a
         # group's POST or PUT request, the edit is ignored.
         # Corresponds to the JSON property `aliases`
@@ -2374,7 +2374,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Read-only. A list of the group's non-editable alias email addresses that are
+        # Read-only. The list of the group's non-editable alias email addresses that are
         # outside of the account's primary domain or subdomains. These are functioning
         # email addresses used by the group. This is a read-only property returned in
         # the API's response for a group. If edited in a group's POST or PUT request,
@@ -2455,7 +2455,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # List of group objects.
+        # A list of group objects.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::AdminDirectoryV1::Group>]
         attr_accessor :groups
@@ -2651,7 +2651,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of member objects.
+        # A list of member objects.
         # Corresponds to the JSON property `members`
         # @return [Array<Google::Apis::AdminDirectoryV1::Member>]
         attr_accessor :members
@@ -2765,10 +2765,10 @@ module Google
         # @return [String]
         attr_accessor :device_password_status
       
-        # List of owner's email addresses. If your application needs the current list of
-        # user emails, use the [get](/admin-sdk/directory/v1/reference/mobiledevices/get.
-        # html) method. For additional information, see the [retrieve a user](/admin-sdk/
-        # directory/v1/guides/manage-users#get_user) method.
+        # The list of the owner's email addresses. If your application needs the current
+        # list of user emails, use the [get](/admin-sdk/directory/v1/reference/
+        # mobiledevices/get.html) method. For additional information, see the [retrieve
+        # a user](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
         attr_accessor :email
@@ -2847,8 +2847,8 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # List of the owner's user names. If your application needs the current list of
-        # device owner names, use the [get](/admin-sdk/directory/v1/reference/
+        # The list of the owner's user names. If your application needs the current list
+        # of device owner names, use the [get](/admin-sdk/directory/v1/reference/
         # mobiledevices/get.html) method. For more information about retrieving mobile
         # device user information, see the [Developer's Guide](/admin-sdk/directory/v1/
         # guides/manage-users#get_user).
@@ -2869,7 +2869,7 @@ module Google
         # @return [String]
         attr_accessor :os
       
-        # List of accounts added on device (Read-only)
+        # The list of accounts added on device (Read-only)
         # Corresponds to the JSON property `otherAccountsInfo`
         # @return [Array<String>]
         attr_accessor :other_accounts_info
@@ -3063,7 +3063,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of Mobile Device objects.
+        # A list of Mobile Device objects.
         # Corresponds to the JSON property `mobiledevices`
         # @return [Array<Google::Apis::AdminDirectoryV1::MobileDevice>]
         attr_accessor :mobiledevices
@@ -3194,7 +3194,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of organizational unit objects.
+        # A list of organizational unit objects.
         # Corresponds to the JSON property `organizationUnits`
         # @return [Array<Google::Apis::AdminDirectoryV1::OrgUnit>]
         attr_accessor :organization_units
@@ -3966,7 +3966,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # List of UserSchema objects.
+        # A list of UserSchema objects.
         # Corresponds to the JSON property `schemas`
         # @return [Array<Google::Apis::AdminDirectoryV1::Schema>]
         attr_accessor :schemas
@@ -4087,7 +4087,7 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
-        # A list of the user's addresses. The maximum allowed data size for this field
+        # The list of the user's addresses. The maximum allowed data size for this field
         # is 10Kb.
         # Corresponds to the JSON property `addresses`
         # @return [Object]
@@ -4100,7 +4100,7 @@ module Google
         attr_accessor :agreed_to_terms
         alias_method :agreed_to_terms?, :agreed_to_terms
       
-        # Output only. A list of the user's alias email addresses.
+        # Output only. The list of the user's alias email addresses.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
@@ -4145,7 +4145,7 @@ module Google
         # @return [DateTime]
         attr_accessor :deletion_time
       
-        # A list of the user's email addresses. The maximum allowed data size for this
+        # The list of the user's email addresses. The maximum allowed data size for this
         # field is 10Kb.
         # Corresponds to the JSON property `emails`
         # @return [Object]
@@ -4156,7 +4156,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # A list of external IDs for the user, such as an employee or network ID. The
+        # The list of external IDs for the user, such as an employee or network ID. The
         # maximum allowed data size for this field is 2Kb.
         # Corresponds to the JSON property `externalIds`
         # @return [Object]
@@ -4184,9 +4184,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The user's Instant Messenger (IM) accounts. A user account can have multiple
-        # ims properties. But, only one of these ims properties can be the primary IM
-        # contact. The maximum allowed data size for this field is 2Kb.
+        # The list of the user's Instant Messenger (IM) accounts. A user account can
+        # have multiple ims properties. But, only one of these ims properties can be the
+        # primary IM contact. The maximum allowed data size for this field is 2Kb.
         # Corresponds to the JSON property `ims`
         # @return [Object]
         attr_accessor :ims
@@ -4248,7 +4248,8 @@ module Google
         attr_accessor :is_mailbox_setup
         alias_method :is_mailbox_setup?, :is_mailbox_setup
       
-        # The user's keywords. The maximum allowed data size for this field is 1Kb.
+        # The list of the user's keywords. The maximum allowed data size for this field
+        # is 1Kb.
         # Corresponds to the JSON property `keywords`
         # @return [Object]
         attr_accessor :keywords
@@ -4285,8 +4286,8 @@ module Google
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
       
-        # Output only. List of the user's non-editable alias email addresses. These are
-        # typically outside the account's primary domain or sub-domain.
+        # Output only. The list of the user's non-editable alias email addresses. These
+        # are typically outside the account's primary domain or sub-domain.
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
@@ -4303,8 +4304,8 @@ module Google
         # @return [String]
         attr_accessor :org_unit_path
       
-        # A list of organizations the user belongs to. The maximum allowed data size for
-        # this field is 10Kb.
+        # The list of organizations the user belongs to. The maximum allowed data size
+        # for this field is 10Kb.
         # Corresponds to the JSON property `organizations`
         # @return [Object]
         attr_accessor :organizations
@@ -4314,13 +4315,13 @@ module Google
         # @return [String]
         attr_accessor :password
       
-        # A list of the user's phone numbers. The maximum allowed data size for this
+        # The list of the user's phone numbers. The maximum allowed data size for this
         # field is 1Kb.
         # Corresponds to the JSON property `phones`
         # @return [Object]
         attr_accessor :phones
       
-        # A list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
+        # The list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
         # account information for the user.
         # Corresponds to the JSON property `posixAccounts`
         # @return [Object]
@@ -4344,7 +4345,7 @@ module Google
         # @return [String]
         attr_accessor :recovery_phone
       
-        # A list of the user's relationships to other users. The maximum allowed data
+        # The list of the user's relationships to other users. The maximum allowed data
         # size for this field is 2Kb.
         # Corresponds to the JSON property `relations`
         # @return [Object]
@@ -5373,7 +5374,7 @@ module Google
         # @return [String]
         attr_accessor :trigger_event
       
-        # List of user objects.
+        # A list of user objects.
         # Corresponds to the JSON property `users`
         # @return [Array<Google::Apis::AdminDirectoryV1::User>]
         attr_accessor :users
@@ -5431,7 +5432,7 @@ module Google
         end
       end
       
-      # JSON response template for List verification codes operation in Directory API.
+      # JSON response template for list verification codes operation in Directory API.
       class VerificationCodes
         include Google::Apis::Core::Hashable
       
