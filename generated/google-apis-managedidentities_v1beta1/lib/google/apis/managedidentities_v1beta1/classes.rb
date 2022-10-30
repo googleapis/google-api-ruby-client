@@ -535,6 +535,61 @@ module Google
         end
       end
       
+      # DomainJoinMachineRequest is the request message for DomainJoinMachine method
+      class DomainJoinMachineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. OU name to which the VM needs to be domain joined. If the field is
+        # not provided, the VM is joined to the default OU which is created. The default
+        # OU for the domain join api is created as GCE Instances under the Cloud OU.
+        # Example - OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com If the field is
+        # provided, then the custom OU is searched for under GCE Instances OU. Example -
+        # if ou_name=test_ou then the VM is domain joined to the following OU: OU=
+        # test_ou,OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com if present. If OU is
+        # not present under GCE Instances, then error is returned.
+        # Corresponds to the JSON property `ouName`
+        # @return [String]
+        attr_accessor :ou_name
+      
+        # Required. Full instance id token of compute engine VM to verify instance
+        # identity. More about this: https://cloud.google.com/compute/docs/instances/
+        # verifying-instance-identity#request_signature
+        # Corresponds to the JSON property `vmIdToken`
+        # @return [String]
+        attr_accessor :vm_id_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ou_name = args[:ou_name] if args.key?(:ou_name)
+          @vm_id_token = args[:vm_id_token] if args.key?(:vm_id_token)
+        end
+      end
+      
+      # DomainJoinMachineResponse is the response message for DomainJoinMachine method
+      class DomainJoinMachineResponse
+        include Google::Apis::Core::Hashable
+      
+        # The response is the offline domain join blob that is returned after running
+        # the djoin command. To correctly use the response of the API, please refer to
+        # the sample usage.
+        # Corresponds to the JSON property `domainJoinBlob`
+        # @return [String]
+        attr_accessor :domain_join_blob
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_join_blob = args[:domain_join_blob] if args.key?(:domain_join_blob)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
