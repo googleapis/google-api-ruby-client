@@ -421,6 +421,11 @@ module Google
         # @return [Google::Apis::GkehubV1::AppDevExperienceFeatureSpec]
         attr_accessor :appdevexperience
       
+        # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        # Corresponds to the JSON property `fleetobservability`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFeatureSpec]
+        attr_accessor :fleetobservability
+      
         # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
         # feature.
         # Corresponds to the JSON property `multiclusteringress`
@@ -434,6 +439,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
+          @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
         end
       end
@@ -446,6 +452,12 @@ module Google
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1::AppDevExperienceFeatureState]
         attr_accessor :appdevexperience
+      
+        # **FleetObservability**: An empty state left as an example Hub-wide Feature
+        # state.
+        # Corresponds to the JSON property `fleetobservability`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityFeatureState]
+        attr_accessor :fleetobservability
       
         # FeatureState describes the high-level state of a Feature. It may be used to
         # describe a Feature's state at the environ-level, or per-membershop, depending
@@ -461,6 +473,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
+          @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -1531,6 +1544,29 @@ module Google
         # @return [Google::Apis::GkehubV1::FeatureResourceState]
         attr_accessor :resource_state
       
+        # Optional. Scope-specific configuration for this Feature. If this Feature does
+        # not support any per-Scope configuration, this field may be unused. The keys
+        # indicate which Scope the configuration is for, in the form: `projects/`p`/
+        # locations/global/scopes/`s`` Where `p` is the project, `s` is a valid Scope in
+        # this project. `p` WILL match the Feature's project. `p` will always be
+        # returned as the project number, but the project ID is also accepted during
+        # input. If the same Scope is specified in the map twice (using the project ID
+        # form, and the project number form), exactly ONE of the entries will be saved,
+        # with no guarantees as to which. For this reason, it is recommended the same
+        # format be used for all entries when mutating a Feature.
+        # Corresponds to the JSON property `scopeSpecs`
+        # @return [Hash<String,Google::Apis::GkehubV1::ScopeFeatureSpec>]
+        attr_accessor :scope_specs
+      
+        # Output only. Scope-specific Feature status. If this Feature does report any
+        # per-Scope status, this field may be unused. The keys indicate which Scope the
+        # state is for, in the form: `projects/`p`/locations/global/scopes/`s`` Where `p`
+        # is the project, `s` is a valid Scope in this project. `p` WILL match the
+        # Feature's project.
+        # Corresponds to the JSON property `scopeStates`
+        # @return [Hash<String,Google::Apis::GkehubV1::ScopeFeatureState>]
+        attr_accessor :scope_states
+      
         # CommonFeatureSpec contains Hub-wide configuration information
         # Corresponds to the JSON property `spec`
         # @return [Google::Apis::GkehubV1::CommonFeatureSpec]
@@ -1559,6 +1595,8 @@ module Google
           @membership_states = args[:membership_states] if args.key?(:membership_states)
           @name = args[:name] if args.key?(:name)
           @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @scope_specs = args[:scope_specs] if args.key?(:scope_specs)
+          @scope_states = args[:scope_states] if args.key?(:scope_states)
           @spec = args[:spec] if args.key?(:spec)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1616,6 +1654,61 @@ module Google
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+      class FleetObservabilityFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **FleetObservability**: An empty state left as an example Hub-wide Feature
+      # state.
+      class FleetObservabilityFeatureState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **FleetObservability**: The membership-specific input for FleetObservability
+      # feature.
+      class FleetObservabilityMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # **FleetObservability**: An empty state left as an example membership-specific
+      # Feature state.
+      class FleetObservabilityMembershipState
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2400,6 +2493,12 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
+        # **FleetObservability**: The membership-specific input for FleetObservability
+        # feature.
+        # Corresponds to the JSON property `fleetobservability`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityMembershipSpec]
+        attr_accessor :fleetobservability
+      
         # **Anthos Identity Service**: Configuration for a single Membership.
         # Corresponds to the JSON property `identityservice`
         # @return [Google::Apis::GkehubV1::IdentityServiceMembershipSpec]
@@ -2418,6 +2517,7 @@ module Google
         def update!(**args)
           @anthosvm = args[:anthosvm] if args.key?(:anthosvm)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
         end
@@ -2444,6 +2544,12 @@ module Google
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipState]
         attr_accessor :configmanagement
+      
+        # **FleetObservability**: An empty state left as an example membership-specific
+        # Feature state.
+        # Corresponds to the JSON property `fleetobservability`
+        # @return [Google::Apis::GkehubV1::FleetObservabilityMembershipState]
+        attr_accessor :fleetobservability
       
         # **Anthos Identity Service**: State for a single Membership.
         # Corresponds to the JSON property `identityservice`
@@ -2472,6 +2578,7 @@ module Google
           @anthosvm = args[:anthosvm] if args.key?(:anthosvm)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
@@ -2898,6 +3005,40 @@ module Google
           @connect_version = args[:connect_version] if args.key?(:connect_version)
           @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
+        end
+      end
+      
+      # ScopeFeatureSpec contains feature specs for a fleet scope.
+      class ScopeFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # ScopeFeatureState contains Scope-wide Feature status information.
+      class ScopeFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # FeatureState describes the high-level state of a Feature. It may be used to
+        # describe a Feature's state at the environ-level, or per-membershop, depending
+        # on the context.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::FeatureState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
