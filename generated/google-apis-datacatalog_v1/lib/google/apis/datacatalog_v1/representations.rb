@@ -94,12 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDatacatalogV1Contacts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,18 +623,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
           property :description, as: 'description'
-          property :looker_column_spec, as: 'lookerColumnSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec::Representation
-      
           property :mode, as: 'mode'
           collection :subcolumns, as: 'subcolumns', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema::Representation
       
-          property :type, as: 'type'
-        end
-      end
-      
-      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -1265,7 +1250,6 @@ module Google
       class GoogleCloudDatacatalogV1UsageSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :favorite_count, :numeric_string => true, as: 'favoriteCount'
           property :update_time, as: 'updateTime'
           hash :usage_within_time_range, as: 'usageWithinTimeRange', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats::Representation
       
