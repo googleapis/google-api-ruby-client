@@ -1385,8 +1385,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Required. null The list of filters that applies to event attributes. Only
-        # events that match all the provided filters are sent to the destination.
+        # Required. Unordered list. The list of filters that applies to event attributes.
+        # Only events that match all the provided filters are sent to the destination.
         # Corresponds to the JSON property `eventFilters`
         # @return [Array<Google::Apis::EventarcV1::EventFilter>]
         attr_accessor :event_filters
