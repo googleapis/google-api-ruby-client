@@ -273,7 +273,7 @@ module Google
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [Boolean] include_child_orgunits
         #   Return devices from all child orgunits, as well as the specified org unit. If
-        #   this is set to true 'orgUnitPath' must be provided.
+        #   this is set to true, 'orgUnitPath' must be provided.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
