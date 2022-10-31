@@ -5904,6 +5904,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :documents_metadata_filters, as: 'documentsMetadataFilters'
           property :name, as: 'name'
+          property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :sip_recording_media_label, as: 'sipRecordingMediaLabel'
         end
