@@ -671,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # List of app events. The most recent 20 events are stored in the list.
+        # The list of app events which have occurred in the last 30 hours.
         # Corresponds to the JSON property `events`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationEvent>]
         attr_accessor :events
