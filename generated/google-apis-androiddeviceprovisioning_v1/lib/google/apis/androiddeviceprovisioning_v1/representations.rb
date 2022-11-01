@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleWorkspaceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCustomersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -270,6 +276,8 @@ module Google
       
           property :device_metadata, as: 'deviceMetadata', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata::Representation
       
+          property :google_workspace_customer_id, as: 'googleWorkspaceCustomerId'
+          property :pre_provisioning_token, as: 'preProvisioningToken'
           property :section_type, as: 'sectionType'
         end
       end
@@ -296,6 +304,8 @@ module Google
           collection :admin_emails, as: 'adminEmails'
           property :company_id, :numeric_string => true, as: 'companyId'
           property :company_name, as: 'companyName'
+          property :google_workspace_account, as: 'googleWorkspaceAccount', class: Google::Apis::AndroiddeviceprovisioningV1::GoogleWorkspaceAccount, decorator: Google::Apis::AndroiddeviceprovisioningV1::GoogleWorkspaceAccount::Representation
+      
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           collection :owner_emails, as: 'ownerEmails'
@@ -406,6 +416,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_service, as: 'additionalService'
+          property :google_workspace_customer_id, as: 'googleWorkspaceCustomerId'
           property :owner_company_id, :numeric_string => true, as: 'ownerCompanyId'
           property :reseller_id, :numeric_string => true, as: 'resellerId'
           property :section_type, as: 'sectionType'
@@ -417,6 +428,8 @@ module Google
       class DeviceIdentifier
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chrome_os_attested_device_id, as: 'chromeOsAttestedDeviceId'
+          property :device_type, as: 'deviceType'
           property :imei, as: 'imei'
           property :manufacturer, as: 'manufacturer'
           property :meid, as: 'meid'
@@ -498,6 +511,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customer_id, as: 'customerId'
+          collection :google_workspace_customer_id, as: 'googleWorkspaceCustomerId'
           property :limit, :numeric_string => true, as: 'limit'
           property :page_token, as: 'pageToken'
           property :section_type, as: 'sectionType'
@@ -511,6 +525,14 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleWorkspaceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
+          collection :pre_provisioning_tokens, as: 'preProvisioningTokens'
         end
       end
       
@@ -578,6 +600,8 @@ module Google
       
           property :device_metadata, as: 'deviceMetadata', class: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata, decorator: Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata::Representation
       
+          property :google_workspace_customer_id, as: 'googleWorkspaceCustomerId'
+          property :pre_provisioning_token, as: 'preProvisioningToken'
           property :section_type, as: 'sectionType'
         end
       end

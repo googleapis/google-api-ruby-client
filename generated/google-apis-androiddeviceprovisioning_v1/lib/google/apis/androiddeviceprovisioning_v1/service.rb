@@ -738,7 +738,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates reseller metadata associated with the device.
+        # Updates reseller metadata associated with the device. Android devices only.
         # @param [Fixnum] metadata_owner_id
         #   Required. The owner of the newly set metadata. Set this to the partner ID.
         # @param [Fixnum] device_id
@@ -845,7 +845,7 @@ module Google
         # Updates the reseller metadata attached to a batch of devices. This method
         # updates devices asynchronously and returns an `Operation` that can be used to
         # track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-
-        # works#operations).
+        # works#operations). Android Devices only.
         # @param [Fixnum] partner_id
         #   Required. The reseller partner ID.
         # @param [Google::Apis::AndroiddeviceprovisioningV1::UpdateDeviceMetadataInBatchRequest] update_device_metadata_in_batch_request_object
