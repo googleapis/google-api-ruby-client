@@ -1805,8 +1805,8 @@ module Google
         # @return [String]
         attr_accessor :publication
       
-        # Required. The name of the logical replication slot that's configured with the
-        # pgoutput plugin.
+        # Required. Immutable. The name of the logical replication slot that's
+        # configured with the pgoutput plugin.
         # Corresponds to the JSON property `replicationSlot`
         # @return [String]
         attr_accessor :replication_slot
