@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RescheduleMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +422,14 @@ module Google
           property :rdb_next_snapshot_time, as: 'rdbNextSnapshotTime'
           property :rdb_snapshot_period, as: 'rdbSnapshotPeriod'
           property :rdb_snapshot_start_time, as: 'rdbSnapshotStartTime'
+        end
+      end
+      
+      class ReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       
