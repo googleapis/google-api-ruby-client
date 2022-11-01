@@ -1,0 +1,7 @@
+{
+    "api_id": "travelimpactmodel:v1",
+    "name_pretty": "Travel Impact Model API",
+    "distribution_name": "google-apis-travelimpactmodel_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
