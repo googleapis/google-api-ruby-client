@@ -4614,6 +4614,45 @@ module Google
         end
       end
       
+      # Request message for LineItemService.DuplicateLineItem.
+      class DuplicateLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the resulting line item. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
+        # Corresponds to the JSON property `targetDisplayName`
+        # @return [String]
+        attr_accessor :target_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_display_name = args[:target_display_name] if args.key?(:target_display_name)
+        end
+      end
+      
+      # Response message for LineItemService.DuplicateLineItem.
+      class DuplicateLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the successfully created line item.
+        # Corresponds to the JSON property `duplicateLineItemId`
+        # @return [Fixnum]
+        attr_accessor :duplicate_line_item_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicate_line_item_id = args[:duplicate_line_item_id] if args.key?(:duplicate_line_item_id)
+        end
+      end
+      
       # Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
       class EditCustomerMatchMembersRequest
         include Google::Apis::Core::Hashable

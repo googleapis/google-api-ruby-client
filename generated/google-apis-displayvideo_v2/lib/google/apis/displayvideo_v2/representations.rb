@@ -724,6 +724,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DuplicateLineItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DuplicateLineItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EditCustomerMatchMembersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3003,6 +3015,20 @@ module Google
           property :player_impression_rate, as: 'playerImpressionRate'
           property :video_iab, as: 'videoIab'
           property :video_viewable_rate, as: 'videoViewableRate'
+        end
+      end
+      
+      class DuplicateLineItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_display_name, as: 'targetDisplayName'
+        end
+      end
+      
+      class DuplicateLineItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicate_line_item_id, :numeric_string => true, as: 'duplicateLineItemId'
         end
       end
       
