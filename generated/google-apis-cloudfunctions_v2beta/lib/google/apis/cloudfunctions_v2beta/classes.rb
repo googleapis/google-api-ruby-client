@@ -473,7 +473,7 @@ module Google
         attr_accessor :name
       
         # Describes the Service being deployed. Currently Supported : Cloud Run (fully
-        # managed).
+        # managed). Next tag: 23
         # Corresponds to the JSON property `serviceConfig`
         # @return [Google::Apis::CloudfunctionsV2beta::ServiceConfig]
         attr_accessor :service_config
@@ -1635,7 +1635,7 @@ module Google
       end
       
       # Describes the Service being deployed. Currently Supported : Cloud Run (fully
-      # managed).
+      # managed). Next tag: 23
       class ServiceConfig
         include Google::Apis::Core::Hashable
       
