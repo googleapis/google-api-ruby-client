@@ -2748,9 +2748,8 @@ module Google
         alias_method :eligible_for_streaming_service_tax_rate?, :eligible_for_streaming_service_tax_rate
       
         # To collect communications or amusement taxes in the United States, choose the
-        # appropriate tax category. By default Google will determine the collected rate
-        # based on the buyer ZIP code. [Learn more](https://support.google.com/
-        # googleplay/android-developer/answer/10463498#streaming_tax).
+        # appropriate tax category. [Learn more](https://support.google.com/googleplay/
+        # android-developer/answer/10463498#streaming_tax).
         # Corresponds to the JSON property `streamingTaxType`
         # @return [String]
         attr_accessor :streaming_tax_type
