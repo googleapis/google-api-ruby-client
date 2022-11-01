@@ -1714,6 +1714,119 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Assigns a targeting option to an insertion order. Returns the assigned
+        # targeting option if successful. Supported targeting types: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        # * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `
+        # TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `
+        # TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the insertion order belongs to.
+        # @param [Fixnum] insertion_order_id
+        #   Required. The ID of the insertion order the assigned targeting option will
+        #   belong to.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `
+        #   TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DEVICE_MAKE_MODEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        #   * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `
+        #   TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`
+        # @param [Google::Apis::DisplayvideoV2::AssignedTargetingOption] assigned_targeting_option_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_insertion_order_targeting_type_assigned_targeting_option(advertiser_id, insertion_order_id, targeting_type, assigned_targeting_option_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.request_representation = Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+          command.request_object = assigned_targeting_option_object
+          command.response_representation = Google::Apis::DisplayvideoV2::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::AssignedTargetingOption
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an assigned targeting option from an insertion order. Supported
+        # targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        # * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `
+        # TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `
+        # TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the insertion order belongs to.
+        # @param [Fixnum] insertion_order_id
+        #   Required. The ID of the insertion order the assigned targeting option belongs
+        #   to.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `
+        #   TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        #   TARGETING_TYPE_DEVICE_MAKE_MODEL` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        #   * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `
+        #   TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `
+        #   TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `
+        #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY`
+        # @param [String] assigned_targeting_option_id
+        #   Required. The ID of the assigned targeting option to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_insertion_order_targeting_type_assigned_targeting_option(advertiser_id, insertion_order_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV2::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['insertionOrderId'] = insertion_order_id unless insertion_order_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a single targeting option assigned to an insertion order.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the insertion order belongs to.
@@ -2100,6 +2213,42 @@ module Google
           command = make_simple_command(:delete, 'v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}', options)
           command.response_representation = Google::Apis::DisplayvideoV2::Empty::Representation
           command.response_class = Google::Apis::DisplayvideoV2::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['lineItemId'] = line_item_id unless line_item_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Duplicates a line item. Returns the newly created line item id if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this line item belongs to.
+        # @param [Fixnum] line_item_id
+        #   Required. The ID of the line item to duplicate.
+        # @param [Google::Apis::DisplayvideoV2::DuplicateLineItemRequest] duplicate_line_item_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV2::DuplicateLineItemResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV2::DuplicateLineItemResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def duplicate_line_item(advertiser_id, line_item_id, duplicate_line_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate', options)
+          command.request_representation = Google::Apis::DisplayvideoV2::DuplicateLineItemRequest::Representation
+          command.request_object = duplicate_line_item_request_object
+          command.response_representation = Google::Apis::DisplayvideoV2::DuplicateLineItemResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV2::DuplicateLineItemResponse
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.params['lineItemId'] = line_item_id unless line_item_id.nil?
           command.query['fields'] = fields unless fields.nil?
