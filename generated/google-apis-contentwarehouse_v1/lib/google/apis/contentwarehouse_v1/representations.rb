@@ -10396,6 +10396,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QualityCalypsoAppsUniversalAuLiveOpDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpsDetailInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QualityCopiaFireflySiteSignal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11092,7 +11116,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationAppTypeData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationCountryPrice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRank
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRankData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -17200,6 +17242,7 @@ module Google
           property :package_name, as: 'packageName'
           property :provider_type, as: 'providerType'
           property :shortcut_id, as: 'shortcutId'
+          property :target_class, as: 'targetClass'
           property :version_name, as: 'versionName'
         end
       end
@@ -19902,6 +19945,7 @@ module Google
           property :intent_name, as: 'intentName'
           property :intent_name_auis_score, as: 'intentNameAuisScore'
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
+          property :kscorer_rank, as: 'kscorerRank'
           property :mask_candidate_level_features, as: 'maskCandidateLevelFeatures'
           property :num_alternative_hypothesis, as: 'numAlternativeHypothesis'
           property :num_constraints, as: 'numConstraints'
@@ -19912,6 +19956,8 @@ module Google
           property :num_variables_grounded, as: 'numVariablesGrounded'
           property :pq2t_vs_assistant_ibst_cosine, as: 'pq2tVsAssistantIbstCosine'
           property :pq2t_vs_ibst_cosine, as: 'pq2tVsIbstCosine'
+          property :predicted_intent_confidence, as: 'predictedIntentConfidence'
+          property :search_dispatch, as: 'searchDispatch'
           property :top_hypothesis_confidence, as: 'topHypothesisConfidence'
           property :vertical_confidence_score, as: 'verticalConfidenceScore'
         end
@@ -26459,6 +26505,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :come_back_time, as: 'comeBackTime'
+          property :committed_until, as: 'committedUntil'
+          property :committed_until_is_mixed, as: 'committedUntilIsMixed'
           property :event_summary, as: 'eventSummary'
         end
       end
@@ -31013,6 +31061,7 @@ module Google
           property :lat_lng, as: 'latLng', class: Google::Apis::ContentwarehouseV1::GoogleTypeLatLng, decorator: Google::Apis::ContentwarehouseV1::GoogleTypeLatLng::Representation
       
           property :location_name, as: 'locationName'
+          property :mid, as: 'mid'
           property :timezone, as: 'timezone'
         end
       end
@@ -35463,6 +35512,7 @@ module Google
       
           property :spam_muppet_signals, as: 'spamMuppetSignals', class: Google::Apis::ContentwarehouseV1::SpamMuppetjoinsMuppetSignals, decorator: Google::Apis::ContentwarehouseV1::SpamMuppetjoinsMuppetSignals::Representation
       
+          property :spambrain_total_doc_spam_score, as: 'spambrainTotalDocSpamScore'
           property :spamrank, as: 'spamrank'
           property :spamtokens_content_score, as: 'spamtokensContentScore'
           property :time_sensitivity, as: 'timeSensitivity'
@@ -36493,6 +36543,55 @@ module Google
         end
       end
       
+      class QualityCalypsoAppsUniversalAuLiveOpDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :country_level_schedule_information, as: 'countryLevelScheduleInformation', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpEvent, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpEvent::Representation
+      
+          property :default_format_information, as: 'defaultFormatInformation', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpFormat, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpFormat::Representation
+      
+          property :default_schedule_information, as: 'defaultScheduleInformation', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpEvent, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpEvent::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_type, as: 'eventType'
+          property :event_url, as: 'eventUrl'
+          hash :locale_level_format_information, as: 'localeLevelFormatInformation', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpFormat, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpFormat::Representation
+      
+          property :priority, as: 'priority'
+        end
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_timestamp_millis, :numeric_string => true, as: 'endTimestampMillis'
+          property :preview_timestamp_millis, :numeric_string => true, as: 'previewTimestampMillis'
+          property :start_timestamp_millis, :numeric_string => true, as: 'startTimestampMillis'
+        end
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deeplink, as: 'deeplink'
+          property :description, as: 'description'
+          property :eyebrow, as: 'eyebrow'
+          property :image_url, as: 'imageUrl'
+          property :title, as: 'title'
+          property :video_id, as: 'videoId'
+          property :video_url, as: 'videoUrl'
+        end
+      end
+      
+      class QualityCalypsoAppsUniversalAuLiveOpsDetailInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :live_op_events, as: 'liveOpEvents', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpDetail, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpDetail::Representation
+      
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class QualityCopiaFireflySiteSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -36720,6 +36819,7 @@ module Google
           property :good_clicks, as: 'goodClicks'
           property :impressions, as: 'impressions'
           property :last_longest_clicks, as: 'lastLongestClicks'
+          property :unicorn_clicks, as: 'unicornClicks'
           property :unsquashed_clicks, as: 'unsquashedClicks'
           property :unsquashed_impressions, as: 'unsquashedImpressions'
           property :unsquashed_last_longest_clicks, as: 'unsquashedLastLongestClicks'
@@ -36874,7 +36974,7 @@ module Google
           property :nsr_variance, as: 'nsrVariance'
           property :nsrdata_from_fallback_pattern_key, as: 'nsrdataFromFallbackPatternKey'
           property :pnav, as: 'pnav'
-          collection :relative_nsr, as: 'relativeNsr', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
+          collection :prior_adjusted_nsr, as: 'priorAdjustedNsr', class: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal, decorator: Google::Apis::ContentwarehouseV1::QualityNsrVersionedFloatSignal::Representation
       
           property :secondary_site_chunk, as: 'secondarySiteChunk'
           property :shopping_score, as: 'shoppingScore'
@@ -37288,6 +37388,7 @@ module Google
           property :is_from_on_device_lookup, as: 'isFromOnDeviceLookup'
           property :is_transliterated_match, as: 'isTransliteratedMatch'
           property :is_visible_to_guests_relationship, as: 'isVisibleToGuestsRelationship'
+          property :lookup_name_source, as: 'lookupNameSource'
           property :match_signal, as: 'matchSignal', class: Google::Apis::ContentwarehouseV1::AssistantVerticalsCommonContactMatchSignal, decorator: Google::Apis::ContentwarehouseV1::AssistantVerticalsCommonContactMatchSignal::Representation
       
           property :matched_name_type, as: 'matchedNameType'
@@ -37998,6 +38099,8 @@ module Google
       class RepositoryAnnotationsRdfaRdfaRichSnippetsApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type_data, as: 'appTypeData', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationAppTypeData, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationAppTypeData::Representation
+      
           property :application_url, as: 'applicationUrl'
           property :breadcrumbs, as: 'breadcrumbs', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaBreadcrumbs, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaBreadcrumbs::Representation
       
@@ -38019,6 +38122,8 @@ module Google
           property :is_default_lang_locale, as: 'isDefaultLangLocale'
           property :lang_locale, as: 'langLocale'
           property :last_updated, as: 'lastUpdated'
+          property :live_op_details, as: 'liveOpDetails', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpsDetailInfo, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpsDetailInfo::Representation
+      
           property :marketplace, as: 'marketplace'
           property :name, as: 'name'
           property :num_downloads, as: 'numDownloads'
@@ -38029,6 +38134,8 @@ module Google
           collection :platform_tags, as: 'platformTags'
           property :popular_score, as: 'popularScore'
           property :price, as: 'price'
+          property :rank_data, as: 'rankData', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRankData, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRankData::Representation
+      
           property :rating, as: 'rating'
           property :rating_count, as: 'ratingCount'
           property :release_date, as: 'releaseDate'
@@ -38051,12 +38158,39 @@ module Google
         end
       end
       
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationAppTypeData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :play_store_app_type, as: 'playStoreAppType'
+        end
+      end
+      
       class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationCountryPrice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :currency_code, as: 'currencyCode'
           property :price, as: 'price'
+        end
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRank
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_store_link, as: 'appStoreLink'
+          property :category_id, as: 'categoryId'
+          property :category_name, as: 'categoryName'
+          property :chart_type, as: 'chartType'
+          property :rank, :numeric_string => true, as: 'rank'
+        end
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRankData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :playwright_category_id, as: 'playwrightCategoryId'
+          collection :rank, as: 'rank', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRank, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationRank::Representation
+      
         end
       end
       
@@ -42258,6 +42392,15 @@ module Google
       
           collection :legal_removal_regions, as: 'legalRemovalRegions', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
       
+          property :lms_is_editorial, as: 'lmsIsEditorial'
+          property :lms_regions_allowed, as: 'lmsRegionsAllowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
+      
+          property :lms_regions_disallowed, as: 'lmsRegionsDisallowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
+      
+          property :lms_requires_attribution, as: 'lmsRequiresAttribution'
+          property :lms_requires_first_party_only, as: 'lmsRequiresFirstPartyOnly'
+          property :lms_requires_link, as: 'lmsRequiresLink'
+          property :lms_requires_share_alike, as: 'lmsRequiresShareAlike'
           property :policy_source_type, as: 'policySourceType'
         end
       end
@@ -42507,6 +42650,8 @@ module Google
       
           property :mid, as: 'mid'
           property :names, as: 'names', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
+      
+          property :passenger_assistance_urls, as: 'passengerAssistanceUrls', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
       
           property :popularity, as: 'popularity'
           property :short_names, as: 'shortNames', class: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto, decorator: Google::Apis::ContentwarehouseV1::TravelFlightsNameCatalogProto::Representation
