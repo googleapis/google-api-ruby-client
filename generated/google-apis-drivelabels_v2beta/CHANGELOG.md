@@ -1,5 +1,9 @@
 # Release history for google-apis-drivelabels_v2beta
 
+### v0.4.0 (2022-11-02)
+
+* Regenerated from discovery document revision 20221031
+
 ### v0.3.0 (2022-10-28)
 
 * Regenerated from discovery document revision 20221024

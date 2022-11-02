@@ -461,7 +461,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Locks on a Label.
+        # Lists the LabelLocks on a Label.
         # @param [String] parent
         #   Required. Label on which Locks are applied. Format: labels/`label`
         # @param [Fixnum] page_size
@@ -728,7 +728,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Locks on a Label.
+        # Lists the LabelLocks on a Label.
         # @param [String] parent
         #   Required. Label on which Locks are applied. Format: labels/`label`
         # @param [Fixnum] page_size
