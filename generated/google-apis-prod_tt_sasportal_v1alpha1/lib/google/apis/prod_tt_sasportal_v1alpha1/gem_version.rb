@@ -16,10 +16,10 @@ module Google
   module Apis
     module ProdTtSasportalV1alpha1
       # Version of the google-apis-prod_tt_sasportal_v1alpha1 gem
-      GEM_VERSION = "0.27.0"
+      GEM_VERSION = "0.28.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.10.0"
+      GENERATOR_VERSION = "0.11.0"
 
       # Revision of the discovery document this client was generated from
       REVISION = "20221009"
