@@ -2531,11 +2531,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. A URI referring to the policy that created this Lock.
-        # Corresponds to the JSON property `policyUri`
-        # @return [String]
-        attr_accessor :policy_uri
-      
         # Output only. This LabelLock's state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2554,7 +2549,6 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @field_id = args[:field_id] if args.key?(:field_id)
           @name = args[:name] if args.key?(:name)
-          @policy_uri = args[:policy_uri] if args.key?(:policy_uri)
           @state = args[:state] if args.key?(:state)
         end
       end

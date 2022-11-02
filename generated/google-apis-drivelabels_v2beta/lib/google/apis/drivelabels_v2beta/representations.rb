@@ -1240,7 +1240,6 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :field_id, as: 'fieldId'
           property :name, as: 'name'
-          property :policy_uri, as: 'policyUri'
           property :state, as: 'state'
         end
       end
