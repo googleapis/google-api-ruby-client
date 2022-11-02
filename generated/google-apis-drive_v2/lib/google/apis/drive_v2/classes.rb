@@ -1844,7 +1844,7 @@ module Google
         attr_accessor :description
       
         # Short lived download URL for the file. This field is only populated for files
-        # with content stored in Google Drive; it is not populated for Docs Editors or
+        # with content stored in Google Drive; it isn't populated for Docs Editors or
         # shortcut files.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
@@ -1886,14 +1886,14 @@ module Google
       
         # The final component of fullFileExtension with trailing text that does not
         # appear to be part of the extension removed. This field is only populated for
-        # files with content stored in Google Drive; it is not populated for Docs
-        # Editors or shortcut files.
+        # files with content stored in Google Drive; it isn't populated for Docs Editors
+        # or shortcut files.
         # Corresponds to the JSON property `fileExtension`
         # @return [String]
         attr_accessor :file_extension
       
         # The size of the file in bytes. This field is populated for files with content
-        # stored in Google Drive and for files in Docs Editors; it is not populated for
+        # stored in Google Drive and for files in Docs Editors; it isn't populated for
         # shortcut files.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
@@ -1911,7 +1911,7 @@ module Google
         # concatenated extensions, such as "tar.gz". Removing an extension from the
         # title does not clear this field; however, changing the extension on the title
         # does update this field. This field is only populated for files with content
-        # stored in Google Drive; it is not populated for Docs Editors or shortcut files.
+        # stored in Google Drive; it isn't populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
         attr_accessor :full_file_extension
@@ -1932,7 +1932,7 @@ module Google
         alias_method :has_thumbnail?, :has_thumbnail
       
         # The ID of the file's head revision. This field is only populated for files
-        # with content stored in Google Drive; it is not populated for Docs Editors or
+        # with content stored in Google Drive; it isn't populated for Docs Editors or
         # shortcut files.
         # Corresponds to the JSON property `headRevisionId`
         # @return [String]
@@ -1954,7 +1954,8 @@ module Google
         # @return [Google::Apis::DriveV2::File::ImageMediaMetadata]
         attr_accessor :image_media_metadata
       
-        # Indexable text attributes for the file (can only be written)
+        # Indexable text attributes for the file (can only be written). For more
+        # information, see Manage file metadata.
         # Corresponds to the JSON property `indexableText`
         # @return [Google::Apis::DriveV2::File::IndexableText]
         attr_accessor :indexable_text
@@ -2007,8 +2008,8 @@ module Google
         attr_accessor :marked_viewed_by_me_date
       
         # An MD5 checksum for the content of this file. This field is only populated for
-        # files with content stored in Google Drive; it is not populated for Docs
-        # Editors or shortcut files.
+        # files with content stored in Google Drive; it isn't populated for Docs Editors
+        # or shortcut files.
         # Corresponds to the JSON property `md5Checksum`
         # @return [String]
         attr_accessor :md5_checksum
@@ -2106,14 +2107,14 @@ module Google
         attr_accessor :self_link
       
         # The SHA1 checksum associated with this file, if available. This field is only
-        # populated for files with content stored in Google Drive; it is not populated
+        # populated for files with content stored in Google Drive; it isn't populated
         # for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha1Checksum`
         # @return [String]
         attr_accessor :sha1_checksum
       
         # The SHA256 checksum associated with this file, if available. This field is
-        # only populated for files with content stored in Google Drive; it is not
+        # only populated for files with content stored in Google Drive; it isn't
         # populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha256Checksum`
         # @return [String]
@@ -2520,7 +2521,7 @@ module Google
         
           # Whether the current user can read the revisions resource of this file. For a
           # shared drive item, whether revisions of non-folder descendants of this item,
-          # or this item itself if it is not a folder, can be read.
+          # or this item itself if it isn't a folder, can be read.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
@@ -2799,7 +2800,8 @@ module Google
           end
         end
         
-        # Indexable text attributes for the file (can only be written)
+        # Indexable text attributes for the file (can only be written). For more
+        # information, see Manage file metadata.
         class IndexableText
           include Google::Apis::Core::Hashable
         
