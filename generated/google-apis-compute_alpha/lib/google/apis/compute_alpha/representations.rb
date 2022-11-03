@@ -22,6 +22,12 @@ module Google
   module Apis
     module ComputeAlpha
       
+      class Awsv4Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +563,12 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkInsertDiskResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5116,12 +5128,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SchedulingDynamicResizeProperties
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SchedulingNodeAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6844,6 +6850,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Awsv4Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key, as: 'accessKey'
+          property :access_key_id, as: 'accessKeyId'
+          property :access_key_version, as: 'accessKeyVersion'
+          property :origin_region, as: 'originRegion'
+        end
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7943,6 +7959,13 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class BulkInsertDiskResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
         end
       end
       
@@ -10033,6 +10056,7 @@ module Google
           property :ignore_case, as: 'ignoreCase'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeAlpha::MetadataFilter, decorator: Google::Apis::ComputeAlpha::MetadataFilter::Representation
       
+          property :path_template_match, as: 'pathTemplateMatch'
           property :prefix_match, as: 'prefixMatch'
           collection :query_parameter_matches, as: 'queryParameterMatches', class: Google::Apis::ComputeAlpha::HttpQueryParameterMatch, decorator: Google::Apis::ComputeAlpha::HttpQueryParameterMatch::Representation
       
@@ -12355,6 +12379,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :constraints, as: 'constraints', class: Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints, decorator: Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints::Representation
       
+          collection :names, as: 'names'
           property :preference, as: 'preference'
         end
       end
@@ -13263,6 +13288,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
           property :queue_count, as: 'queueCount'
@@ -14563,6 +14589,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeAlpha::UsageExportLocation, decorator: Google::Apis::ComputeAlpha::UsageExportLocation::Representation
       
+          property :vm_dns_setting, as: 'vmDnsSetting'
           property :xpn_project_status, as: 'xpnProjectStatus'
         end
       end
@@ -14818,7 +14845,6 @@ module Google
           property :name, as: 'name'
           property :queuing_policy, as: 'queuingPolicy', class: Google::Apis::ComputeAlpha::QueuingPolicy, decorator: Google::Apis::ComputeAlpha::QueuingPolicy::Representation
       
-          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
@@ -14831,7 +14857,6 @@ module Google
       class QueuedResourceList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeAlpha::QueuedResource, decorator: Google::Apis::ComputeAlpha::QueuedResource::Representation
       
@@ -15749,6 +15774,7 @@ module Google
           property :locality, as: 'locality'
           property :scope, as: 'scope'
           property :style, as: 'style'
+          property :tpu_topology, as: 'tpuTopology'
           property :vm_count, as: 'vmCount'
         end
       end
@@ -16469,8 +16495,6 @@ module Google
           property :availability_domain, as: 'availabilityDomain'
           property :current_cpus, as: 'currentCpus'
           property :current_memory_mb, :numeric_string => true, as: 'currentMemoryMb'
-          property :dynamic_resize_properties, as: 'dynamicResizeProperties', class: Google::Apis::ComputeAlpha::SchedulingDynamicResizeProperties, decorator: Google::Apis::ComputeAlpha::SchedulingDynamicResizeProperties::Representation
-      
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :latency_tolerant, as: 'latencyTolerant'
@@ -16486,14 +16510,6 @@ module Google
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
           property :termination_time, as: 'terminationTime'
-        end
-      end
-      
-      class SchedulingDynamicResizeProperties
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_hot_standby, as: 'enableHotStandby'
-          property :hot_standby_state, as: 'hotStandbyState'
         end
       end
       
@@ -16955,6 +16971,8 @@ module Google
           property :authentication_policy, as: 'authenticationPolicy', class: Google::Apis::ComputeAlpha::AuthenticationPolicy, decorator: Google::Apis::ComputeAlpha::AuthenticationPolicy::Representation
       
           property :authorization_config, as: 'authorizationConfig', class: Google::Apis::ComputeAlpha::AuthorizationConfig, decorator: Google::Apis::ComputeAlpha::AuthorizationConfig::Representation
+      
+          property :aws_v4_authentication, as: 'awsV4Authentication', class: Google::Apis::ComputeAlpha::Awsv4Signature, decorator: Google::Apis::ComputeAlpha::Awsv4Signature::Representation
       
           property :client_tls_policy, as: 'clientTlsPolicy'
           property :client_tls_settings, as: 'clientTlsSettings', class: Google::Apis::ComputeAlpha::ClientTlsSettings, decorator: Google::Apis::ComputeAlpha::ClientTlsSettings::Representation
@@ -19055,6 +19073,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
+          property :path_template_rewrite, as: 'pathTemplateRewrite'
         end
       end
       

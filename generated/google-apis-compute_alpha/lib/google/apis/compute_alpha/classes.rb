@@ -22,6 +22,52 @@ module Google
   module Apis
     module ComputeAlpha
       
+      # Contains the configurations necessary to generate a signature for access to
+      # private storage buckets that support Signature Version 4 for authentication.
+      # The service name for generating the authentication header will always default
+      # to 's3'.
+      class Awsv4Signature
+        include Google::Apis::Core::Hashable
+      
+        # The access key used for s3 bucket authentication. Required for updating or
+        # creating a backend that uses AWS v4 signature authentication, but will not be
+        # returned as part of the configuration when queried with a REST API GET request.
+        # @InputOnly
+        # Corresponds to the JSON property `accessKey`
+        # @return [String]
+        attr_accessor :access_key
+      
+        # The identifier of an access key used for s3 bucket authentication.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # The optional version identifier for the access key. You can use this to keep
+        # track of different iterations of your access key.
+        # Corresponds to the JSON property `accessKeyVersion`
+        # @return [String]
+        attr_accessor :access_key_version
+      
+        # The name of the cloud region of your origin. This is a free-form field with
+        # the name of the region your cloud uses to host your origin. For example, "us-
+        # east-1" for AWS or "us-ashburn-1" for OCI.
+        # Corresponds to the JSON property `originRegion`
+        # @return [String]
+        attr_accessor :origin_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key = args[:access_key] if args.key?(:access_key)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @access_key_version = args[:access_key_version] if args.key?(:access_key_version)
+          @origin_region = args[:origin_region] if args.key?(:origin_region)
+        end
+      end
+      
       # A specification of the type and number of accelerator cards attached to the
       # instance.
       class AcceleratorConfig
@@ -1282,8 +1328,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # For more information about maintenance intervals, see Setting maintenance
-        # intervals.
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `PERIODIC`.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
@@ -1582,12 +1628,14 @@ module Google
         # Specifies the disk type to use to create the instance. If not specified, the
         # default is pd-standard, specified using the full URL. For example: https://www.
         # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard
-        # For a full list of acceptable values, see Persistent disk types. If you define
-        # this field, you can provide either the full or partial URL. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/
-        # diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this
-        # is the name of the disk type, not URL.
+        # For a full list of acceptable values, see Persistent disk types. If you
+        # specify this field when creating a VM, you can provide either the full or
+        # partial URL. For example, the following values are valid: - https://www.
+        # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType -
+        # projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType
+        # If you specify this field when creating or updating an instance template or
+        # all-instances configuration, specify the type of the disk, not the URL. For
+        # example: pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -1688,10 +1736,10 @@ module Google
         attr_accessor :source_image
       
         # The customer-supplied encryption key of the source image. Required if the
-        # source image is protected by a customer-supplied encryption key. Instance
-        # templates do not store customer-supplied encryption keys, so you cannot create
-        # disks for instances in a managed instance group if the source images are
-        # encrypted with your own keys.
+        # source image is protected by a customer-supplied encryption key.
+        # InstanceTemplate and InstancePropertiesPatch do not store customer-supplied
+        # encryption keys, so you cannot create disks for instances in a managed
+        # instance group if the source images are encrypted with your own keys.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -5048,6 +5096,30 @@ module Google
         end
       end
       
+      # A transient resource used in compute.disks.bulkInsert and compute.regionDisks.
+      # bulkInsert. It is only used to process requests and is not persisted.
+      class BulkInsertDiskResource
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the DiskConsistencyGroupPolicy for the group of disks to clone.
+        # This may be a full or partial URL, such as: - https://www.googleapis.com/
+        # compute/v1/projects/project/regions/region /resourcePolicies/resourcePolicy -
+        # projects/project/regions/region/resourcePolicies/resourcePolicy - regions/
+        # region/resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `sourceConsistencyGroupPolicy`
+        # @return [String]
+        attr_accessor :source_consistency_group_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_consistency_group_policy = args[:source_consistency_group_policy] if args.key?(:source_consistency_group_policy)
+        end
+      end
+      
       # A transient resource used in compute.instances.bulkInsert and compute.
       # regionInstances.bulkInsert . This resource is not persisted anywhere, it is
       # used only for processing the requests.
@@ -6138,7 +6210,8 @@ module Google
         # Specifies a regular expression that matches allowed origins. For more
         # information about the regular expression syntax, see Syntax. An origin is
         # allowed if it matches either an item in allowOrigins or an item in
-        # allowOriginRegexes.
+        # allowOriginRegexes. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
@@ -9717,16 +9790,17 @@ module Google
         # optionally specify an IP address that references an existing static (reserved)
         # IP address resource. When omitted, Google Cloud assigns an ephemeral IP
         # address. Use one of the following formats to specify an IP address while
-        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * Full
-        # resource URL, as in https://www.googleapis.com/compute/v1/projects/project_id/
-        # regions/region /addresses/address-name * Partial URL or by name, as in: -
-        # projects/project_id/regions/region/addresses/address-name - regions/region/
-        # addresses/address-name - global/addresses/address-name - address-name The
-        # forwarding rule's target or backendService, and in most cases, also the
-        # loadBalancingScheme, determine the type of IP address that you can use. For
-        # detailed information, see [IP address specifications](https://cloud.google.com/
-        # load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When
-        # reading an IPAddress, the API always returns the IP address number.
+        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * IPv6
+        # address range, as in `2600:1234::/96` * Full resource URL, as in https://www.
+        # googleapis.com/compute/v1/projects/ project_id/regions/region/addresses/
+        # address-name * Partial URL or by name, as in: - projects/project_id/regions/
+        # region/addresses/address-name - regions/region/addresses/address-name - global/
+        # addresses/address-name - address-name The forwarding rule's target or
+        # backendService, and in most cases, also the loadBalancingScheme, determine the
+        # type of IP address that you can use. For detailed information, see [IP address
+        # specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-
+        # concepts#ip_address_specifications). When reading an IPAddress, the API always
+        # returns the IP address number.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -13240,8 +13314,8 @@ module Google
         # For matching against a port specified in the HTTP request, use a headerMatch
         # with headerName set to PORT and a regular expression that satisfies the
         # RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch,
-        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch
-        # only applies to load balancers that have loadBalancingScheme set to
+        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular
+        # expressions can only be used when the loadBalancingScheme is set to
         # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
@@ -13566,8 +13640,8 @@ module Google
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For more information about regular
         # expression syntax, see Syntax. Only one of presentMatch, exactMatch, or
-        # regexMatch must be set. regexMatch only applies when the loadBalancingScheme
-        # is set to INTERNAL_SELF_MANAGED.
+        # regexMatch must be set. Regular expressions can only be used when the
+        # loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -13957,6 +14031,16 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::MetadataFilter>]
         attr_accessor :metadata_filters
       
+        # If specified, the route is a pattern match expression that must match the :
+        # path header once the query string is removed. A pattern match allows you to
+        # match - The value must be between 1 and 1024 characters - The pattern must
+        # start with a leading slash ("/") - There may be no more than 5 operators in
+        # pattern Precisely one of prefix_match, full_path_match, regex_match or
+        # path_template_match must be set.
+        # Corresponds to the JSON property `pathTemplateMatch`
+        # @return [String]
+        attr_accessor :path_template_match
+      
         # For satisfying the matchRule condition, the request's path must begin with the
         # specified prefixMatch. prefixMatch must begin with a /. The value must be from
         # 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch
@@ -13976,8 +14060,8 @@ module Google
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For more information
         # about regular expression syntax, see Syntax. Only one of prefixMatch,
-        # fullPathMatch or regexMatch must be specified. regexMatch only applies to load
-        # balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # fullPathMatch or regexMatch must be specified. Regular expressions can only be
+        # used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -13992,6 +14076,7 @@ module Google
           @header_matches = args[:header_matches] if args.key?(:header_matches)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
+          @path_template_match = args[:path_template_match] if args.key?(:path_template_match)
           @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
           @query_parameter_matches = args[:query_parameter_matches] if args.key?(:query_parameter_matches)
           @regex_match = args[:regex_match] if args.key?(:regex_match)
@@ -23247,6 +23332,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints]
         attr_accessor :constraints
       
+        # Names of resources to be put in the location. Must contain unique, correct
+        # resource names. If used, targetShape must be left unset.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
         # Preference for a given location. Set to either ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
@@ -23259,6 +23350,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @constraints = args[:constraints] if args.key?(:constraints)
+          @names = args[:names] if args.key?(:names)
           @preference = args[:preference] if args.key?(:preference)
         end
       end
@@ -26795,6 +26887,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # The URL of the network attachment that this interface should connect to in the
+        # following format: projects/`project_number`/regions/`region_name`/
+        # networkAttachments/`network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # An IPv4 internal IP address to assign to the instance for this network
         # interface. If not specified by the user, an unused internal IP is assigned by
         # the system.
@@ -26857,6 +26956,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
           @queue_count = args[:queue_count] if args.key?(:queue_count)
@@ -30396,28 +30496,36 @@ module Google
       
         # Number of errors before a host is ejected from the connection pool. When the
         # backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-        # Defaults to 5.
+        # Defaults to 5. Not supported when the backend service is referenced by a URL
+        # map that is bound to target gRPC proxy that has validateForProxyless field set
+        # to true.
         # Corresponds to the JSON property `consecutiveErrors`
         # @return [Fixnum]
         attr_accessor :consecutive_errors
       
         # The number of consecutive gateway failures (502, 503, 504 status or connection
         # errors that are mapped to one of those status codes) before a consecutive
-        # gateway failure ejection occurs. Defaults to 3.
+        # gateway failure ejection occurs. Defaults to 3. Not supported when the backend
+        # service is referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `consecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :consecutive_gateway_failure
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive 5xx. This setting can be used to
-        # disable ejection or to ramp it up slowly. Defaults to 0.
+        # disable ejection or to ramp it up slowly. Defaults to 0. Not supported when
+        # the backend service is referenced by a URL map that is bound to target gRPC
+        # proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveErrors`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_errors
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive gateway failures. This setting can be
-        # used to disable ejection or to ramp it up slowly. Defaults to 100.
+        # used to disable ejection or to ramp it up slowly. Defaults to 100. Not
+        # supported when the backend service is referenced by a URL map that is bound to
+        # target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_gateway_failure
@@ -31894,6 +32002,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::UsageExportLocation]
         attr_accessor :usage_export_location
       
+        # [Output Only] Default internal DNS setting used by VMs running in this project.
+        # Corresponds to the JSON property `vmDnsSetting`
+        # @return [String]
+        attr_accessor :vm_dns_setting
+      
         # [Output Only] The role this project has in a shared VPC configuration.
         # Currently, only projects with the host role, which is specified by the value
         # HOST, are differentiated.
@@ -31919,6 +32032,7 @@ module Google
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @usage_export_location = args[:usage_export_location] if args.key?(:usage_export_location)
+          @vm_dns_setting = args[:vm_dns_setting] if args.key?(:vm_dns_setting)
           @xpn_project_status = args[:xpn_project_status] if args.key?(:xpn_project_status)
         end
       end
@@ -32929,13 +33043,6 @@ module Google
         # @return [Google::Apis::ComputeAlpha::QueuingPolicy]
         attr_accessor :queuing_policy
       
-        # [Output Only] URL of the region where the resource resides. Only applicable
-        # for regional resources. You must specify this field as part of the HTTP
-        # request URL. It is not settable as a field in the request body.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
         # [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -32976,7 +33083,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @queuing_policy = args[:queuing_policy] if args.key?(:queuing_policy)
-          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
@@ -32988,11 +33094,6 @@ module Google
       # 
       class QueuedResourceList
         include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
       
         # Unique identifier for the resource; defined by the server.
         # Corresponds to the JSON property `id`
@@ -33038,7 +33139,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
@@ -36286,6 +36386,11 @@ module Google
         # @return [String]
         attr_accessor :style
       
+        # Specifies the shape of the TPU slice
+        # Corresponds to the JSON property `tpuTopology`
+        # @return [String]
+        attr_accessor :tpu_topology
+      
         # Number of VMs in this placement group. Google does not recommend that you use
         # this field unless you use a compact policy and you want your policy to work
         # only if it contains this exact number of VMs.
@@ -36304,6 +36409,7 @@ module Google
           @locality = args[:locality] if args.key?(:locality)
           @scope = args[:scope] if args.key?(:scope)
           @style = args[:style] if args.key?(:style)
+          @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
           @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
       end
@@ -39286,12 +39392,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_memory_mb
       
-        # Configuration for properties related to dynamic assignment of computing
-        # resources to VM (CPU and RAM).
-        # Corresponds to the JSON property `dynamicResizeProperties`
-        # @return [Google::Apis::ComputeAlpha::SchedulingDynamicResizeProperties]
-        attr_accessor :dynamic_resize_properties
-      
         # Specify the time in seconds for host error detection, the value must be within
         # the range of [90, 330] with the increment of 30, if unset, the default
         # behavior of host error recovery will be used.
@@ -39324,8 +39424,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :maintenance_freeze_duration_hours
       
-        # For more information about maintenance intervals, see Setting maintenance
-        # intervals.
+        # Specifies the frequency of planned maintenance events. The accepted values are:
+        # `PERIODIC`.
         # Corresponds to the JSON property `maintenanceInterval`
         # @return [String]
         attr_accessor :maintenance_interval
@@ -39389,7 +39489,6 @@ module Google
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @current_cpus = args[:current_cpus] if args.key?(:current_cpus)
           @current_memory_mb = args[:current_memory_mb] if args.key?(:current_memory_mb)
-          @dynamic_resize_properties = args[:dynamic_resize_properties] if args.key?(:dynamic_resize_properties)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
@@ -39403,33 +39502,6 @@ module Google
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
-        end
-      end
-      
-      # Configuration for properties related to dynamic assignment of computing
-      # resources to VM (CPU and RAM).
-      class SchedulingDynamicResizeProperties
-        include Google::Apis::Core::Hashable
-      
-        # Set to true if this VM is supporting HotStandby modes (b/235044648).
-        # Corresponds to the JSON property `enableHotStandby`
-        # @return [Boolean]
-        attr_accessor :enable_hot_standby
-        alias_method :enable_hot_standby?, :enable_hot_standby
-      
-        # Current Hot Standby state of VM.
-        # Corresponds to the JSON property `hotStandbyState`
-        # @return [String]
-        attr_accessor :hot_standby_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable_hot_standby = args[:enable_hot_standby] if args.key?(:enable_hot_standby)
-          @hot_standby_state = args[:hot_standby_state] if args.key?(:hot_standby_state)
         end
       end
       
@@ -39901,9 +39973,11 @@ module Google
         attr_accessor :rule_tuple_count
       
         # A list of rules that belong to this policy. There must always be a default
-        # rule (rule with priority 2147483647 and match "*"). If no rules are provided
-        # when creating a security policy, a default rule with action "allow" will be
-        # added.
+        # rule which is a rule with priority 2147483647 and match all condition (for the
+        # match condition this means match "*" for srcIpRanges and for the networkMatch
+        # condition every field must be either match "*" or not set). If no rules are
+        # provided when creating a security policy, a default rule with action "allow"
+        # will be added.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRule>]
         attr_accessor :rules
@@ -40420,25 +40494,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcher]
         attr_accessor :match
       
-        # A match condition that incoming packets are evaluated against for
-        # CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding '
-        # action' is enforced. The match criteria for a rule consists of built-in match
-        # fields (like 'srcIpRanges') and potentially multiple user-defined match fields
-        # ('userDefinedFields'). Field values may be extracted directly from the packet
-        # or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in
-        # every packet (e.g. 'srcPorts'). A user-defined field is only present if the
-        # base header is found in the packet and the entire field is in bounds. Each
-        # match field may specify which values can match it, listing one or more ranges,
-        # prefixes, or exact values that are considered a match for the field. A field
-        # value must be present in order to match a specified match field. If no match
-        # values are specified for a match field, then any field value is considered to
-        # match it, and it's not required to be present. For a packet to match a rule,
-        # all specified match fields must match the corresponding field values derived
-        # from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.
-        # 51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-
-        # 0x1fff" The above match condition matches packets with a source IP in 192.0.2.
-        # 0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset"
-        # with a value between 1 and 0x1fff inclusive.
+        # Represents a match condition that incoming network traffic is evaluated
+        # against.
         # Corresponds to the JSON property `networkMatch`
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleNetworkMatcher]
         attr_accessor :network_match
@@ -40741,7 +40798,8 @@ module Google
         end
       end
       
-      # 
+      # Represents a match condition that incoming network traffic is evaluated
+      # against.
       class SecurityPolicyRuleNetworkMatcher
         include Google::Apis::Core::Hashable
       
@@ -40964,19 +41022,23 @@ module Google
       
         # Determines the key to enforce the rate_limit_threshold on. Possible values are:
         # - ALL: A single rate limit threshold is applied to all the requests matching
-        # this rule. This is the default value if this field 'enforce_on_key' is not
-        # configured. - IP: The source IP address of the request is the key. Each IP has
-        # this limit enforced separately. - HTTP_HEADER: The value of the HTTP header
-        # whose name is configured under "enforce_on_key_name". The key value is
-        # truncated to the first 128 bytes of the header value. If no such header is
-        # present in the request, the key type defaults to ALL. - XFF_IP: The first IP
-        # address (i.e. the originating client IP address) specified in the list of IPs
-        # under X-Forwarded-For HTTP header. If no such header is present or the value
-        # is not a valid IP, the key defaults to the source IP address of the request i.
-        # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
-        # configured under "enforce_on_key_name". The key value is truncated to the
-        # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL.
+        # this rule. This is the default value if "enforceOnKey" is not configured. - IP:
+        # The source IP address of the request is the key. Each IP has this limit
+        # enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is
+        # configured under "enforceOnKeyName". The key value is truncated to the first
+        # 128 bytes of the header value. If no such header is present in the request,
+        # the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the
+        # originating client IP address) specified in the list of IPs under X-Forwarded-
+        # For HTTP header. If no such header is present or the value is not a valid IP,
+        # the key defaults to the source IP address of the request i.e. key type IP. -
+        # HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "
+        # enforceOnKeyName". The key value is truncated to the first 128 bytes of the
+        # cookie value. If no such cookie is present in the request, the key type
+        # defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value
+        # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
+        # session of the HTTPS request. The key value is truncated to the first 128
+        # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
+        # country/region from which the request originates.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -41181,6 +41243,14 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AuthorizationConfig]
         attr_accessor :authorization_config
       
+        # Contains the configurations necessary to generate a signature for access to
+        # private storage buckets that support Signature Version 4 for authentication.
+        # The service name for generating the authentication header will always default
+        # to 's3'.
+        # Corresponds to the JSON property `awsV4Authentication`
+        # @return [Google::Apis::ComputeAlpha::Awsv4Signature]
+        attr_accessor :aws_v4_authentication
+      
         # Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that
         # describes how clients should authenticate with this service's backends.
         # clientTlsPolicy only applies to a global BackendService with the
@@ -41221,6 +41291,7 @@ module Google
           @authentication = args[:authentication] if args.key?(:authentication)
           @authentication_policy = args[:authentication_policy] if args.key?(:authentication_policy)
           @authorization_config = args[:authorization_config] if args.key?(:authorization_config)
+          @aws_v4_authentication = args[:aws_v4_authentication] if args.key?(:aws_v4_authentication)
           @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
           @client_tls_settings = args[:client_tls_settings] if args.key?(:client_tls_settings)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
@@ -44096,8 +44167,7 @@ module Google
         attr_accessor :enable_private_v6_access
         alias_method :enable_private_v6_access?, :enable_private_v6_access
       
-        # [Output Only] The external IPv6 address range that is assigned to this
-        # subnetwork.
+        # The external IPv6 address range that is owned by this subnetwork.
         # Corresponds to the JSON property `externalIpv6Prefix`
         # @return [String]
         attr_accessor :external_ipv6_prefix
@@ -49588,6 +49658,22 @@ module Google
         # @return [String]
         attr_accessor :path_prefix_rewrite
       
+        # If specified, the pattern rewrites the URL path (based on the :path header)
+        # using the HTTP template syntax. A corresponding path_template_match must be
+        # specified. Any template variables must exist in the path_template_match field.
+        # - -At least one variable must be specified in the path_template_match field -
+        # You can omit variables from the rewritten URL - The * and ** operators cannot
+        # be matched unless they have a corresponding variable name - e.g. `format=*` or
+        # `var=**`. For example, a path_template_match of /static/`format=**` could be
+        # rewritten as /static/content/`format` to prefix /content to the URL. Variables
+        # can also be re-ordered in a rewrite, so that /`country`/`format`/`suffix=**`
+        # can be rewritten as /content/`format`/`country`/`suffix`. At least one non-
+        # empty routeRules[].matchRules[].path_template_match is required. Only one of
+        # path_prefix_rewrite or path_template_rewrite may be specified.
+        # Corresponds to the JSON property `pathTemplateRewrite`
+        # @return [String]
+        attr_accessor :path_template_rewrite
+      
         def initialize(**args)
            update!(**args)
         end
@@ -49596,6 +49682,7 @@ module Google
         def update!(**args)
           @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
           @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
+          @path_template_rewrite = args[:path_template_rewrite] if args.key?(:path_template_rewrite)
         end
       end
       
@@ -50203,7 +50290,8 @@ module Google
         attr_accessor :self_link
       
         # The stack type for this VPN gateway to identify the IP protocols that are
-        # enabled. If not specified, IPV4_ONLY will be used.
+        # enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified,
+        # IPV4_ONLY will be used.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
@@ -50833,7 +50921,9 @@ module Google
         attr_accessor :peer_external_gateway
       
         # The interface ID of the external VPN gateway to which this VPN tunnel is
-        # connected. Provided by the client when the VPN tunnel is created.
+        # connected. Provided by the client when the VPN tunnel is created. Possible
+        # values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the
+        # external VPN gateway redundancy type.
         # Corresponds to the JSON property `peerExternalGatewayInterface`
         # @return [Fixnum]
         attr_accessor :peer_external_gateway_interface
@@ -50924,6 +51014,7 @@ module Google
         attr_accessor :vpn_gateway
       
         # The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        # Possible values are: `0`, `1`.
         # Corresponds to the JSON property `vpnGatewayInterface`
         # @return [Fixnum]
         attr_accessor :vpn_gateway_interface
