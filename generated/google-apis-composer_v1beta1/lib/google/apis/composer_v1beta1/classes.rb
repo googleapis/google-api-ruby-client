@@ -157,6 +157,26 @@ module Google
         end
       end
       
+      # Configuration for Cloud Data Lineage integration.
+      class CloudDataLineageIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not Cloud Data Lineage integration is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
@@ -663,6 +683,27 @@ module Google
       class LoadSnapshotRequest
         include Google::Apis::Core::Hashable
       
+        # Whether or not to skip setting Airflow overrides when loading the environment'
+        # s state.
+        # Corresponds to the JSON property `skipAirflowOverridesSetting`
+        # @return [Boolean]
+        attr_accessor :skip_airflow_overrides_setting
+        alias_method :skip_airflow_overrides_setting?, :skip_airflow_overrides_setting
+      
+        # Whether or not to skip setting environment variables when loading the
+        # environment's state.
+        # Corresponds to the JSON property `skipEnvironmentVariablesSetting`
+        # @return [Boolean]
+        attr_accessor :skip_environment_variables_setting
+        alias_method :skip_environment_variables_setting?, :skip_environment_variables_setting
+      
+        # Whether or not to skip copying Cloud Storage data when loading the environment'
+        # s state.
+        # Corresponds to the JSON property `skipGcsDataCopying`
+        # @return [Boolean]
+        attr_accessor :skip_gcs_data_copying
+        alias_method :skip_gcs_data_copying?, :skip_gcs_data_copying
+      
         # Whether or not to skip installing Pypi packages when loading the environment's
         # state.
         # Corresponds to the JSON property `skipPypiPackagesInstallation`
@@ -682,6 +723,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @skip_airflow_overrides_setting = args[:skip_airflow_overrides_setting] if args.key?(:skip_airflow_overrides_setting)
+          @skip_environment_variables_setting = args[:skip_environment_variables_setting] if args.key?(:skip_environment_variables_setting)
+          @skip_gcs_data_copying = args[:skip_gcs_data_copying] if args.key?(:skip_gcs_data_copying)
           @skip_pypi_packages_installation = args[:skip_pypi_packages_installation] if args.key?(:skip_pypi_packages_installation)
           @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
         end
@@ -1290,6 +1334,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides
       
+        # Configuration for Cloud Data Lineage integration.
+        # Corresponds to the JSON property `cloudDataLineageIntegration`
+        # @return [Google::Apis::ComposerV1beta1::CloudDataLineageIntegration]
+        attr_accessor :cloud_data_lineage_integration
+      
         # Optional. Additional environment variables to provide to the Apache Airflow
         # scheduler, worker, and webserver processes. Environment variable names must
         # match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow
@@ -1356,6 +1405,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @airflow_config_overrides = args[:airflow_config_overrides] if args.key?(:airflow_config_overrides)
+          @cloud_data_lineage_integration = args[:cloud_data_lineage_integration] if args.key?(:cloud_data_lineage_integration)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)

@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudDataLineageIntegration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -272,6 +278,13 @@ module Google
         end
       end
       
+      class CloudDataLineageIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class DatabaseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -400,6 +413,9 @@ module Google
       class LoadSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_airflow_overrides_setting, as: 'skipAirflowOverridesSetting'
+          property :skip_environment_variables_setting, as: 'skipEnvironmentVariablesSetting'
+          property :skip_gcs_data_copying, as: 'skipGcsDataCopying'
           property :skip_pypi_packages_installation, as: 'skipPypiPackagesInstallation'
           property :snapshot_path, as: 'snapshotPath'
         end
@@ -539,6 +555,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :airflow_config_overrides, as: 'airflowConfigOverrides'
+          property :cloud_data_lineage_integration, as: 'cloudDataLineageIntegration', class: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration, decorator: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration::Representation
+      
           hash :env_variables, as: 'envVariables'
           property :image_version, as: 'imageVersion'
           hash :pypi_packages, as: 'pypiPackages'
