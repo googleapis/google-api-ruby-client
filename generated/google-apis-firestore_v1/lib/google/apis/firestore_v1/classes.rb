@@ -988,6 +988,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :collection_ids
       
+        # An empty list represents all namespaces. This is the preferred usage for
+        # databases that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the database has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
         # The output URI. Currently only supports Google Cloud Storage URIs of the form:
         # `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the
         # Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud
@@ -1006,6 +1015,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
           @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
         end
       end
@@ -1228,6 +1238,15 @@ module Google
         # @return [String]
         attr_accessor :input_uri_prefix
       
+        # An empty list represents all namespaces. This is the preferred usage for
+        # databases that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the database has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
+        # Corresponds to the JSON property `namespaceIds`
+        # @return [Array<String>]
+        attr_accessor :namespace_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1236,6 +1255,7 @@ module Google
         def update!(**args)
           @collection_ids = args[:collection_ids] if args.key?(:collection_ids)
           @input_uri_prefix = args[:input_uri_prefix] if args.key?(:input_uri_prefix)
+          @namespace_ids = args[:namespace_ids] if args.key?(:namespace_ids)
         end
       end
       
