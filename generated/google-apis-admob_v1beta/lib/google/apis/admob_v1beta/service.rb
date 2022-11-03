@@ -240,7 +240,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates an AdMob Mediation report based on the provided report specification.
+        # Generates an AdMob mediation report based on the provided report specification.
         # Returns result of a server-side streaming RPC. The result is returned in a
         # sequence of responses.
         # @param [String] parent
