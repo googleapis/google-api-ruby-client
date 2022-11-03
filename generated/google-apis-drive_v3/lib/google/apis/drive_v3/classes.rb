@@ -1099,7 +1099,7 @@ module Google
         # The full file extension extracted from the name field. May contain multiple
         # concatenated extensions, such as "tar.gz". This is only available for files
         # with binary content in Google Drive.
-        # This is automatically updated when the name field changes, however it is not
+        # This is automatically updated when the name field changes, however it isn't
         # cleared if the new name does not contain a valid extension.
         # Corresponds to the JSON property `fullFileExtension`
         # @return [String]
@@ -1267,14 +1267,14 @@ module Google
         attr_accessor :resource_key
       
         # The SHA1 checksum associated with this file, if available. This field is only
-        # populated for files with content stored in Google Drive; it is not populated
+        # populated for files with content stored in Google Drive; it isn't populated
         # for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha1Checksum`
         # @return [String]
         attr_accessor :sha1_checksum
       
         # The SHA256 checksum associated with this file, if available. This field is
-        # only populated for files with content stored in Google Drive; it is not
+        # only populated for files with content stored in Google Drive; it isn't
         # populated for Docs Editors or shortcut files.
         # Corresponds to the JSON property `sha256Checksum`
         # @return [String]
@@ -1681,7 +1681,7 @@ module Google
         
           # Whether the current user can read the revisions resource of this file. For a
           # shared drive item, whether revisions of non-folder descendants of this item,
-          # or this item itself if it is not a folder, can be read.
+          # or this item itself if it isn't a folder, can be read.
           # Corresponds to the JSON property `canReadRevisions`
           # @return [Boolean]
           attr_accessor :can_read_revisions
@@ -1792,7 +1792,8 @@ module Google
           include Google::Apis::Core::Hashable
         
           # Text to be indexed for the file to improve fullText queries. This is limited
-          # to 128KB in length and may contain HTML elements.
+          # to 128 KB in length and may contain HTML elements. For more information, see
+          # Manage file metadata.
           # Corresponds to the JSON property `indexableText`
           # @return [String]
           attr_accessor :indexable_text
