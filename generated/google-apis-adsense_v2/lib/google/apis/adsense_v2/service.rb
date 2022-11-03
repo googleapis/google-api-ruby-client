@@ -298,10 +298,10 @@ module Google
         # Creates an ad unit. This method can only be used by projects enabled for the [
         # AdSense for Platforms](https://developers.google.com/adsense/platforms/)
         # product. Note that ad units can only be created for ad clients with an "AFC"
-        # product code. For more info see the [AdClient resource](https://developers.
-        # google.com/adsense/management/reference/rest/v2/accounts.adclients). For now,
-        # this method can only be used to create `DISPLAY` ad units. See: https://
-        # support.google.com/adsense/answer/9183566
+        # product code. For more info see the [AdClient resource](/adsense/management/
+        # reference/rest/v2/accounts.adclients). For now, this method can only be used
+        # to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/
+        # 9183566
         # @param [String] parent
         #   Required. Ad client to create an ad unit under. Format: accounts/`account`/
         #   adclients/`adclient`
@@ -908,7 +908,9 @@ module Google
         #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
         #   year.
         # @param [Array<String>, String] filters
-        #   Filters to be run on the report.
+        #   A list of [filters](/adsense/management/reporting/filtering) to apply to the
+        #   report. All provided filters must match in order for the data to be included
+        #   in the report.
         # @param [String] language_code
         #   The language to use for translating report output. If unspecified, this
         #   defaults to English ("en"). If the given language is not supported, report
@@ -1004,7 +1006,9 @@ module Google
         #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
         #   year.
         # @param [Array<String>, String] filters
-        #   Filters to be run on the report.
+        #   A list of [filters](/adsense/management/reporting/filtering) to apply to the
+        #   report. All provided filters must match in order for the data to be included
+        #   in the report.
         # @param [String] language_code
         #   The language to use for translating report output. If unspecified, this
         #   defaults to English ("en"). If the given language is not supported, report
