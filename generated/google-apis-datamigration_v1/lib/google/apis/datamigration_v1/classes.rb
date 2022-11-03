@@ -392,7 +392,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
-        # The Google Cloud Platform zone where your Cloud SQL datdabse instance is
+        # The Google Cloud Platform zone where your Cloud SQL database instance is
         # located.
         # Corresponds to the JSON property `zone`
         # @return [String]
