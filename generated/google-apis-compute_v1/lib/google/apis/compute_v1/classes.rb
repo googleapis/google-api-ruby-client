@@ -1435,12 +1435,14 @@ module Google
         # Specifies the disk type to use to create the instance. If not specified, the
         # default is pd-standard, specified using the full URL. For example: https://www.
         # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard
-        # For a full list of acceptable values, see Persistent disk types. If you define
-        # this field, you can provide either the full or partial URL. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/
-        # diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this
-        # is the name of the disk type, not URL.
+        # For a full list of acceptable values, see Persistent disk types. If you
+        # specify this field when creating a VM, you can provide either the full or
+        # partial URL. For example, the following values are valid: - https://www.
+        # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType -
+        # projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType
+        # If you specify this field when creating or updating an instance template or
+        # all-instances configuration, specify the type of the disk, not the URL. For
+        # example: pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -1502,10 +1504,10 @@ module Google
         attr_accessor :source_image
       
         # The customer-supplied encryption key of the source image. Required if the
-        # source image is protected by a customer-supplied encryption key. Instance
-        # templates do not store customer-supplied encryption keys, so you cannot create
-        # disks for instances in a managed instance group if the source images are
-        # encrypted with your own keys.
+        # source image is protected by a customer-supplied encryption key.
+        # InstanceTemplate and InstancePropertiesPatch do not store customer-supplied
+        # encryption keys, so you cannot create disks for instances in a managed
+        # instance group if the source images are encrypted with your own keys.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -8632,16 +8634,17 @@ module Google
         # optionally specify an IP address that references an existing static (reserved)
         # IP address resource. When omitted, Google Cloud assigns an ephemeral IP
         # address. Use one of the following formats to specify an IP address while
-        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * Full
-        # resource URL, as in https://www.googleapis.com/compute/v1/projects/project_id/
-        # regions/region /addresses/address-name * Partial URL or by name, as in: -
-        # projects/project_id/regions/region/addresses/address-name - regions/region/
-        # addresses/address-name - global/addresses/address-name - address-name The
-        # forwarding rule's target or backendService, and in most cases, also the
-        # loadBalancingScheme, determine the type of IP address that you can use. For
-        # detailed information, see [IP address specifications](https://cloud.google.com/
-        # load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When
-        # reading an IPAddress, the API always returns the IP address number.
+        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * IPv6
+        # address range, as in `2600:1234::/96` * Full resource URL, as in https://www.
+        # googleapis.com/compute/v1/projects/ project_id/regions/region/addresses/
+        # address-name * Partial URL or by name, as in: - projects/project_id/regions/
+        # region/addresses/address-name - regions/region/addresses/address-name - global/
+        # addresses/address-name - address-name The forwarding rule's target or
+        # backendService, and in most cases, also the loadBalancingScheme, determine the
+        # type of IP address that you can use. For detailed information, see [IP address
+        # specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-
+        # concepts#ip_address_specifications). When reading an IPAddress, the API always
+        # returns the IP address number.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -32754,23 +32757,23 @@ module Google
       
         # Determines the key to enforce the rate_limit_threshold on. Possible values are:
         # - ALL: A single rate limit threshold is applied to all the requests matching
-        # this rule. This is the default value if this field 'enforce_on_key' is not
-        # configured. - IP: The source IP address of the request is the key. Each IP has
-        # this limit enforced separately. - HTTP_HEADER: The value of the HTTP header
-        # whose name is configured under "enforce_on_key_name". The key value is
-        # truncated to the first 128 bytes of the header value. If no such header is
-        # present in the request, the key type defaults to ALL. - XFF_IP: The first IP
-        # address (i.e. the originating client IP address) specified in the list of IPs
-        # under X-Forwarded-For HTTP header. If no such header is present or the value
-        # is not a valid IP, the key defaults to the source IP address of the request i.
-        # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
-        # configured under "enforce_on_key_name". The key value is truncated to the
-        # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP
-        # request. The key value is truncated to the first 128 bytes. - SNI: Server name
-        # indication in the TLS session of the HTTPS request. The key value is truncated
-        # to the first 128 bytes. The key type defaults to ALL on a HTTP session. -
-        # REGION_CODE: The country/region from which the request originates.
+        # this rule. This is the default value if "enforceOnKey" is not configured. - IP:
+        # The source IP address of the request is the key. Each IP has this limit
+        # enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is
+        # configured under "enforceOnKeyName". The key value is truncated to the first
+        # 128 bytes of the header value. If no such header is present in the request,
+        # the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the
+        # originating client IP address) specified in the list of IPs under X-Forwarded-
+        # For HTTP header. If no such header is present or the value is not a valid IP,
+        # the key defaults to the source IP address of the request i.e. key type IP. -
+        # HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "
+        # enforceOnKeyName". The key value is truncated to the first 128 bytes of the
+        # cookie value. If no such cookie is present in the request, the key type
+        # defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value
+        # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
+        # session of the HTTPS request. The key value is truncated to the first 128
+        # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
+        # country/region from which the request originates.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -35420,8 +35423,7 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
-        # [Output Only] The external IPv6 address range that is assigned to this
-        # subnetwork.
+        # The external IPv6 address range that is owned by this subnetwork.
         # Corresponds to the JSON property `externalIpv6Prefix`
         # @return [String]
         attr_accessor :external_ipv6_prefix
@@ -38655,6 +38657,97 @@ module Google
       end
       
       # 
+      class TargetTcpProxiesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of TargetTcpProxies contained in this scope.
+        # Corresponds to the JSON property `targetTcpProxies`
+        # @return [Array<Google::Apis::ComputeV1::TargetTcpProxy>]
+        attr_accessor :target_tcp_proxies
+      
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::TargetTcpProxiesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_tcp_proxies = args[:target_tcp_proxies] if args.key?(:target_tcp_proxies)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::TargetTcpProxiesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
       class TargetTcpProxiesSetBackendServiceRequest
         include Google::Apis::Core::Hashable
       
@@ -38784,6 +38877,130 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # 
+      class TargetTcpProxyAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of TargetTcpProxiesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::TargetTcpProxiesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#targetTcpProxyAggregatedList
+        # for lists of Target TCP Proxies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::TargetTcpProxyAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::TargetTcpProxyAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
