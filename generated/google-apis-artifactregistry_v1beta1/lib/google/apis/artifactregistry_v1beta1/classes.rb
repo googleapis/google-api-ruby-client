@@ -679,6 +679,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. If set, the repository satisfies physical zone separation.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The size, in bytes, of all artifact storage in this repository.
         # Repositories that are generally available or in public preview use this to
         # calculate storage costs.
@@ -703,6 +709,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
