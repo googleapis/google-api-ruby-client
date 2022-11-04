@@ -1071,12 +1071,12 @@ module Google
       class TunnelDestGroup
         include Google::Apis::Core::Hashable
       
-        # null List of CIDRs that this group applies to.
+        # Unordered list. List of CIDRs that this group applies to.
         # Corresponds to the JSON property `cidrs`
         # @return [Array<String>]
         attr_accessor :cidrs
       
-        # null List of FQDNs that this group applies to.
+        # Unordered list. List of FQDNs that this group applies to.
         # Corresponds to the JSON property `fqdns`
         # @return [Array<String>]
         attr_accessor :fqdns
