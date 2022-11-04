@@ -241,8 +241,8 @@ module Google
         
         # Updates a contact. Note: A contact's email address cannot be changed.
         # @param [String] name
-        #   The identifier for the contact. Format: `resource_type`/`resource_id`/contacts/
-        #   `contact_id`
+        #   Output only. The identifier for the contact. Format: `resource_type`/`
+        #   resource_id`/contacts/`contact_id`
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] update_mask
         #   Optional. The update mask applied to the resource. For the `FieldMask`
@@ -507,8 +507,8 @@ module Google
         
         # Updates a contact. Note: A contact's email address cannot be changed.
         # @param [String] name
-        #   The identifier for the contact. Format: `resource_type`/`resource_id`/contacts/
-        #   `contact_id`
+        #   Output only. The identifier for the contact. Format: `resource_type`/`
+        #   resource_id`/contacts/`contact_id`
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] update_mask
         #   Optional. The update mask applied to the resource. For the `FieldMask`
@@ -773,8 +773,8 @@ module Google
         
         # Updates a contact. Note: A contact's email address cannot be changed.
         # @param [String] name
-        #   The identifier for the contact. Format: `resource_type`/`resource_id`/contacts/
-        #   `contact_id`
+        #   Output only. The identifier for the contact. Format: `resource_type`/`
+        #   resource_id`/contacts/`contact_id`
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] update_mask
         #   Optional. The update mask applied to the resource. For the `FieldMask`
