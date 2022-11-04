@@ -346,6 +346,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FleetObservabilityFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FleetObservabilityMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateConnectManifestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -587,6 +611,18 @@ module Google
       end
       
       class ResourceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeFeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -852,6 +888,8 @@ module Google
       
           property :cloudauditlogging, as: 'cloudauditlogging', class: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec::Representation
       
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureSpec::Representation
+      
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec::Representation
       
           property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::FeatureSpec, decorator: Google::Apis::GkehubV1alpha::FeatureSpec::Representation
@@ -863,6 +901,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState::Representation
+      
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityFeatureState::Representation
       
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshFeatureState::Representation
       
@@ -1194,6 +1234,10 @@ module Google
           property :name, as: 'name'
           property :resource_state, as: 'resourceState', class: Google::Apis::GkehubV1alpha::FeatureResourceState, decorator: Google::Apis::GkehubV1alpha::FeatureResourceState::Representation
       
+          hash :scope_specs, as: 'scopeSpecs', class: Google::Apis::GkehubV1alpha::ScopeFeatureSpec, decorator: Google::Apis::GkehubV1alpha::ScopeFeatureSpec::Representation
+      
+          hash :scope_states, as: 'scopeStates', class: Google::Apis::GkehubV1alpha::ScopeFeatureState, decorator: Google::Apis::GkehubV1alpha::ScopeFeatureState::Representation
+      
           property :spec, as: 'spec', class: Google::Apis::GkehubV1alpha::CommonFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CommonFeatureSpec::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::CommonFeatureState, decorator: Google::Apis::GkehubV1alpha::CommonFeatureState::Representation
@@ -1245,6 +1289,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+        end
+      end
+      
+      class FleetObservabilityFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FleetObservabilityMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1483,6 +1551,8 @@ module Google
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
       
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityMembershipSpec::Representation
+      
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec::Representation
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec::Representation
@@ -1502,6 +1572,8 @@ module Google
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState::Representation
+      
+          property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1alpha::FleetObservabilityMembershipState, decorator: Google::Apis::GkehubV1alpha::FleetObservabilityMembershipState::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipState, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipState::Representation
       
@@ -1641,7 +1713,6 @@ module Google
       class PolicyControllerMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_name, as: 'clusterName'
           hash :component_states, as: 'componentStates', class: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerOnClusterState::Representation
       
           property :state, as: 'state'
@@ -1684,6 +1755,20 @@ module Google
           property :connect_version, as: 'connectVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
+        end
+      end
+      
+      class ScopeFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ScopeFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
+      
         end
       end
       
