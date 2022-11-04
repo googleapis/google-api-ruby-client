@@ -623,6 +623,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
           property :description, as: 'description'
+          property :gc_rule, as: 'gcRule'
           property :mode, as: 'mode'
           collection :subcolumns, as: 'subcolumns', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema::Representation
       
