@@ -56,27 +56,28 @@ module Google
       class GoogleCloudEssentialcontactsV1Contact
         include Google::Apis::Core::Hashable
       
-        # Required. The email address to send notifications to. This does not need to be
-        # a Google account.
+        # Required. The email address to send notifications to. The email address does
+        # not need to be a Google Account.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # The preferred language for notifications, as a ISO 639-1 language code. See [
-        # Supported languages](https://cloud.google.com/resource-manager/docs/managing-
-        # notification-contacts#supported-languages) for a list of supported languages.
+        # Required. The preferred language for notifications, as a ISO 639-1 language
+        # code. See [Supported languages](https://cloud.google.com/resource-manager/docs/
+        # managing-notification-contacts#supported-languages) for a list of supported
+        # languages.
         # Corresponds to the JSON property `languageTag`
         # @return [String]
         attr_accessor :language_tag
       
-        # The identifier for the contact. Format: `resource_type`/`resource_id`/contacts/
-        # `contact_id`
+        # Output only. The identifier for the contact. Format: `resource_type`/`
+        # resource_id`/contacts/`contact_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The categories of notifications that the contact will receive communications
-        # for.
+        # Required. The categories of notifications that the contact will receive
+        # communications for.
         # Corresponds to the JSON property `notificationCategorySubscriptions`
         # @return [Array<String>]
         attr_accessor :notification_category_subscriptions
