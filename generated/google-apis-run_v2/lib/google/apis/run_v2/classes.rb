@@ -1844,14 +1844,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult]
         attr_accessor :last_attempt_result
       
-        # Set the launch stage to a preview stage on write to allow use of preview
-        # features in that stage. On read, describes whether the resource uses preview
-        # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
-        # https://cloud.google.com/terms/launch-stages).
-        # Corresponds to the JSON property `launchStage`
-        # @return [String]
-        attr_accessor :launch_stage
-      
         # Number of retries allowed per Task, before marking this Task failed.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
@@ -1949,7 +1941,6 @@ module Google
           @job = args[:job] if args.key?(:job)
           @labels = args[:labels] if args.key?(:labels)
           @last_attempt_result = args[:last_attempt_result] if args.key?(:last_attempt_result)
-          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)

@@ -725,7 +725,6 @@ module Google
           hash :labels, as: 'labels'
           property :last_attempt_result, as: 'lastAttemptResult', class: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult, decorator: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult::Representation
       
-          property :launch_stage, as: 'launchStage'
           property :max_retries, as: 'maxRetries'
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
