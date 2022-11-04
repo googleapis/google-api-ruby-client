@@ -414,6 +414,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Garbage collection policy for the column or column family. Applies
+        # to systems like Cloud Bigtable.
+        # Corresponds to the JSON property `gcRule`
+        # @return [String]
+        attr_accessor :gc_rule
+      
         # Optional. A column's mode indicates whether values in this column are required,
         # nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are
         # supported. Default mode is `NULLABLE`.
@@ -440,6 +446,7 @@ module Google
         def update!(**args)
           @column = args[:column] if args.key?(:column)
           @description = args[:description] if args.key?(:description)
+          @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
           @mode = args[:mode] if args.key?(:mode)
           @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
           @type = args[:type] if args.key?(:type)
