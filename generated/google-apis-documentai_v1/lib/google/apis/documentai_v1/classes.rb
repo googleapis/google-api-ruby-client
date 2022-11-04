@@ -3423,27 +3423,11 @@ module Google
       class GoogleCloudDocumentaiV1EntityTypeMetadata
         include Google::Apis::Core::Hashable
       
-        # Metadata for human review labeling config.
-        # Corresponds to the JSON property `humanReviewLabelingMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata]
-        attr_accessor :human_review_labeling_metadata
-      
-        # Metadata for Human Review config.
-        # Corresponds to the JSON property `humanReviewMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata]
-        attr_accessor :human_review_metadata
-      
         # Whether the entity type should be considered as "inactive".
         # Corresponds to the JSON property `inactive`
         # @return [Boolean]
         attr_accessor :inactive
         alias_method :inactive?, :inactive
-      
-        # Metadata that specifies whether a label is editable and reasons why. These
-        # fields are read-only. Changing these fields has no impact on the backend.
-        # Corresponds to the JSON property `schemaMutabilityMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata]
-        attr_accessor :schema_mutability_metadata
       
         def initialize(**args)
            update!(**args)
@@ -3451,10 +3435,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
-          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
-          @schema_mutability_metadata = args[:schema_mutability_metadata] if args.key?(:schema_mutability_metadata)
         end
       end
       
@@ -3540,26 +3521,6 @@ module Google
         end
       end
       
-      # Metadata for human review labeling config.
-      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Whether to enable normalization editing.
-        # Corresponds to the JSON property `enableNormalizationEditing`
-        # @return [Boolean]
-        attr_accessor :enable_normalization_editing
-        alias_method :enable_normalization_editing?, :enable_normalization_editing
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable_normalization_editing = args[:enable_normalization_editing] if args.key?(:enable_normalization_editing)
-        end
-      end
-      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -3591,32 +3552,6 @@ module Google
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
-        end
-      end
-      
-      # Metadata for Human Review config.
-      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The confidence threshold if human review validation is enabled.
-        # Corresponds to the JSON property `confidenceThreshold`
-        # @return [Float]
-        attr_accessor :confidence_threshold
-      
-        # Whether to enable human review validation.
-        # Corresponds to the JSON property `enableValidation`
-        # @return [Boolean]
-        attr_accessor :enable_validation
-        alias_method :enable_validation?, :enable_validation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
-          @enable_validation = args[:enable_validation] if args.key?(:enable_validation)
         end
       end
       
@@ -3954,6 +3889,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `documentSchema`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema]
+        attr_accessor :document_schema
+      
         # Denotes that this ProcessorVersion is managed by google.
         # Corresponds to the JSON property `googleManaged`
         # @return [Boolean]
@@ -3991,6 +3931,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @deprecation_info = args[:deprecation_info] if args.key?(:deprecation_info)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @document_schema = args[:document_schema] if args.key?(:document_schema)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
@@ -4028,27 +3969,11 @@ module Google
       class GoogleCloudDocumentaiV1PropertyMetadata
         include Google::Apis::Core::Hashable
       
-        # Metadata for human review labeling config.
-        # Corresponds to the JSON property `humanReviewLabelingMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata]
-        attr_accessor :human_review_labeling_metadata
-      
-        # Metadata for Human Review config.
-        # Corresponds to the JSON property `humanReviewMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata]
-        attr_accessor :human_review_metadata
-      
         # Whether the property should be considered as "inactive".
         # Corresponds to the JSON property `inactive`
         # @return [Boolean]
         attr_accessor :inactive
         alias_method :inactive?, :inactive
-      
-        # Metadata that specifies whether a label is editable and reasons why. These
-        # fields are read-only. Changing these fields has no impact on the backend.
-        # Corresponds to the JSON property `schemaMutabilityMetadata`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata]
-        attr_accessor :schema_mutability_metadata
       
         def initialize(**args)
            update!(**args)
@@ -4056,10 +3981,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
-          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
           @inactive = args[:inactive] if args.key?(:inactive)
-          @schema_mutability_metadata = args[:schema_mutability_metadata] if args.key?(:schema_mutability_metadata)
         end
       end
       
@@ -4184,35 +4106,6 @@ module Google
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata that specifies whether a label is editable and reasons why. These
-      # fields are read-only. Changing these fields has no impact on the backend.
-      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Explicit flag that controls whether the label is editable.
-        # Corresponds to the JSON property `editable`
-        # @return [Boolean]
-        attr_accessor :editable
-        alias_method :editable?, :editable
-      
-        # Full resource name of processor versions that contain this label. e.g. `
-        # projects/`project`/locations/`location`/processors/`processor`/
-        # processorVersions/`processorVersion``
-        # Corresponds to the JSON property `processorVersions`
-        # @return [Array<String>]
-        attr_accessor :processor_versions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @editable = args[:editable] if args.key?(:editable)
-          @processor_versions = args[:processor_versions] if args.key?(:processor_versions)
         end
       end
       

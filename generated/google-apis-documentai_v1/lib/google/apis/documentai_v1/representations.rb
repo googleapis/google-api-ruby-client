@@ -706,19 +706,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1HumanReviewStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -815,12 +803,6 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1ReviewDocumentResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2717,13 +2699,7 @@ module Google
       class GoogleCloudDocumentaiV1EntityTypeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata::Representation
-      
-          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
-      
           property :inactive, as: 'inactive'
-          property :schema_mutability_metadata, as: 'schemaMutabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata::Representation
-      
         end
       end
       
@@ -2758,27 +2734,12 @@ module Google
         end
       end
       
-      class GoogleCloudDocumentaiV1HumanReviewLabelingMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_normalization_editing, as: 'enableNormalizationEditing'
-        end
-      end
-      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :human_review_operation, as: 'humanReviewOperation'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1HumanReviewValidationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :confidence_threshold, as: 'confidenceThreshold'
-          property :enable_validation, as: 'enableValidation'
         end
       end
       
@@ -2880,6 +2841,8 @@ module Google
           property :deprecation_info, as: 'deprecationInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo::Representation
       
           property :display_name, as: 'displayName'
+          property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
+      
           property :google_managed, as: 'googleManaged'
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
@@ -2899,13 +2862,7 @@ module Google
       class GoogleCloudDocumentaiV1PropertyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewLabelingMetadata::Representation
-      
-          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1HumanReviewValidationMetadata::Representation
-      
           property :inactive, as: 'inactive'
-          property :schema_mutability_metadata, as: 'schemaMutabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaMutabilityMetadata::Representation
-      
         end
       end
       
@@ -2944,14 +2901,6 @@ module Google
           property :gcs_destination, as: 'gcsDestination'
           property :rejection_reason, as: 'rejectionReason'
           property :state, as: 'state'
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1SchemaMutabilityMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :editable, as: 'editable'
-          collection :processor_versions, as: 'processorVersions'
         end
       end
       
