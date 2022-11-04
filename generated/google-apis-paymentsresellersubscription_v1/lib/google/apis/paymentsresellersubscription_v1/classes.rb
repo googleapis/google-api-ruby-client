@@ -793,7 +793,7 @@ module Google
         end
       end
       
-      # Individual line item definition of a subscription. Next id: 8
+      # Individual line item definition of a subscription. Next id: 9
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         include Google::Apis::Core::Hashable
       
