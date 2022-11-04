@@ -1,5 +1,9 @@
 # Release history for google-apis-factchecktools_v1alpha1
 
+### v0.15.0 (2022-11-04)
+
+* Regenerated using generator version 0.11.0
+
 ### v0.14.0 (2022-09-20)
 
 * Regenerated using generator version 0.10.0
