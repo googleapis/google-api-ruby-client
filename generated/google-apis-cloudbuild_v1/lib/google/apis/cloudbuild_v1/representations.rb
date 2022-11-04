@@ -334,12 +334,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleDevtoolsCloudbuildV2OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HttpDelivery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,12 +545,6 @@ module Google
       end
       
       class RunBuildTriggerRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RunWorkflowCustomOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1322,19 +1310,6 @@ module Google
         end
       end
       
-      class GoogleDevtoolsCloudbuildV2OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
       class HttpDelivery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1673,19 +1648,6 @@ module Google
           property :source, as: 'source', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
           property :trigger_id, as: 'triggerId'
-        end
-      end
-      
-      class RunWorkflowCustomOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :pipeline_run_id, as: 'pipelineRunId'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
         end
       end
       
