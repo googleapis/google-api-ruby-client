@@ -279,6 +279,7 @@ module Google
           property :google_workspace_customer_id, as: 'googleWorkspaceCustomerId'
           property :pre_provisioning_token, as: 'preProvisioningToken'
           property :section_type, as: 'sectionType'
+          property :simlock_profile_id, :numeric_string => true, as: 'simlockProfileId'
         end
       end
       
