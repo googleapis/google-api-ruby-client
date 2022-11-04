@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayApiConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +605,12 @@ module Google
       end
       
       class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceLabels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1125,6 +1137,9 @@ module Google
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :desired_enable_private_endpoint, as: 'desiredEnablePrivateEndpoint'
+          property :desired_gateway_api_config, as: 'desiredGatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
+      
           property :desired_gcfs_config, as: 'desiredGcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
       
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
@@ -1301,6 +1316,13 @@ module Google
         end
       end
       
+      class GatewayApiConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+        end
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1451,6 +1473,7 @@ module Google
       class LinuxNodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cgroup_mode, as: 'cgroupMode'
           hash :sysctls, as: 'sysctls'
         end
       end
@@ -1566,6 +1589,7 @@ module Google
           collection :cidr_blocks, as: 'cidrBlocks', class: Google::Apis::ContainerV1::CidrBlock, decorator: Google::Apis::ContainerV1::CidrBlock::Representation
       
           property :enabled, as: 'enabled'
+          property :gcp_public_cidrs_access_enabled, as: 'gcpPublicCidrsAccessEnabled'
         end
       end
       
@@ -1620,6 +1644,8 @@ module Google
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
+          property :gateway_api_config, as: 'gatewayApiConfig', class: Google::Apis::ContainerV1::GatewayApiConfig, decorator: Google::Apis::ContainerV1::GatewayApiConfig::Representation
+      
           property :network, as: 'network'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1::ServiceExternalIPsConfig::Representation
@@ -1690,6 +1716,7 @@ module Google
           property :preemptible, as: 'preemptible'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation
       
+          hash :resource_labels, as: 'resourceLabels'
           property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1::SandboxConfig, decorator: Google::Apis::ContainerV1::SandboxConfig::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -1745,6 +1772,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_pod_range, as: 'createPodRange'
+          property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1::NetworkPerformanceConfig::Representation
       
           property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
@@ -1892,6 +1920,7 @@ module Google
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :peering_name, as: 'peeringName'
           property :private_endpoint, as: 'privateEndpoint'
+          property :private_endpoint_subnetwork, as: 'privateEndpointSubnetwork'
           property :public_endpoint, as: 'publicEndpoint'
         end
       end
@@ -1944,6 +1973,13 @@ module Google
           property :consume_reservation_type, as: 'consumeReservationType'
           property :key, as: 'key'
           collection :values, as: 'values'
+        end
+      end
+      
+      class ResourceLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
         end
       end
       
@@ -2285,6 +2321,8 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :resource_labels, as: 'resourceLabels', class: Google::Apis::ContainerV1::ResourceLabels, decorator: Google::Apis::ContainerV1::ResourceLabels::Representation
+      
           property :tags, as: 'tags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
       
           property :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaints, decorator: Google::Apis::ContainerV1::NodeTaints::Representation
