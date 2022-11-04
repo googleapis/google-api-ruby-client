@@ -13905,6 +13905,9 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to stop.
+        # @param [Boolean] discard_local_ssd
+        #   If true, discard the contents of any attached localSSD partitions. Default
+        #   value is false (== preserve localSSD data).
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -13934,13 +13937,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/stop', options)
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['discardLocalSsd'] = discard_local_ssd unless discard_local_ssd.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

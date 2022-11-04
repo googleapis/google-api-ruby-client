@@ -1490,12 +1490,14 @@ module Google
         # Specifies the disk type to use to create the instance. If not specified, the
         # default is pd-standard, specified using the full URL. For example: https://www.
         # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard
-        # For a full list of acceptable values, see Persistent disk types. If you define
-        # this field, you can provide either the full or partial URL. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/
-        # diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this
-        # is the name of the disk type, not URL.
+        # For a full list of acceptable values, see Persistent disk types. If you
+        # specify this field when creating a VM, you can provide either the full or
+        # partial URL. For example, the following values are valid: - https://www.
+        # googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType -
+        # projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType
+        # If you specify this field when creating or updating an instance template or
+        # all-instances configuration, specify the type of the disk, not the URL. For
+        # example: pd-standard.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -1572,10 +1574,10 @@ module Google
         attr_accessor :source_image
       
         # The customer-supplied encryption key of the source image. Required if the
-        # source image is protected by a customer-supplied encryption key. Instance
-        # templates do not store customer-supplied encryption keys, so you cannot create
-        # disks for instances in a managed instance group if the source images are
-        # encrypted with your own keys.
+        # source image is protected by a customer-supplied encryption key.
+        # InstanceTemplate and InstancePropertiesPatch do not store customer-supplied
+        # encryption keys, so you cannot create disks for instances in a managed
+        # instance group if the source images are encrypted with your own keys.
         # Corresponds to the JSON property `sourceImageEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
@@ -8904,16 +8906,17 @@ module Google
         # optionally specify an IP address that references an existing static (reserved)
         # IP address resource. When omitted, Google Cloud assigns an ephemeral IP
         # address. Use one of the following formats to specify an IP address while
-        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * Full
-        # resource URL, as in https://www.googleapis.com/compute/v1/projects/project_id/
-        # regions/region /addresses/address-name * Partial URL or by name, as in: -
-        # projects/project_id/regions/region/addresses/address-name - regions/region/
-        # addresses/address-name - global/addresses/address-name - address-name The
-        # forwarding rule's target or backendService, and in most cases, also the
-        # loadBalancingScheme, determine the type of IP address that you can use. For
-        # detailed information, see [IP address specifications](https://cloud.google.com/
-        # load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When
-        # reading an IPAddress, the API always returns the IP address number.
+        # creating a forwarding rule: * IP address number, as in `100.1.2.3` * IPv6
+        # address range, as in `2600:1234::/96` * Full resource URL, as in https://www.
+        # googleapis.com/compute/v1/projects/ project_id/regions/region/addresses/
+        # address-name * Partial URL or by name, as in: - projects/project_id/regions/
+        # region/addresses/address-name - regions/region/addresses/address-name - global/
+        # addresses/address-name - address-name The forwarding rule's target or
+        # backendService, and in most cases, also the loadBalancingScheme, determine the
+        # type of IP address that you can use. For detailed information, see [IP address
+        # specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-
+        # concepts#ip_address_specifications). When reading an IPAddress, the API always
+        # returns the IP address number.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -34294,23 +34297,23 @@ module Google
       
         # Determines the key to enforce the rate_limit_threshold on. Possible values are:
         # - ALL: A single rate limit threshold is applied to all the requests matching
-        # this rule. This is the default value if this field 'enforce_on_key' is not
-        # configured. - IP: The source IP address of the request is the key. Each IP has
-        # this limit enforced separately. - HTTP_HEADER: The value of the HTTP header
-        # whose name is configured under "enforce_on_key_name". The key value is
-        # truncated to the first 128 bytes of the header value. If no such header is
-        # present in the request, the key type defaults to ALL. - XFF_IP: The first IP
-        # address (i.e. the originating client IP address) specified in the list of IPs
-        # under X-Forwarded-For HTTP header. If no such header is present or the value
-        # is not a valid IP, the key defaults to the source IP address of the request i.
-        # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
-        # configured under "enforce_on_key_name". The key value is truncated to the
-        # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP
-        # request. The key value is truncated to the first 128 bytes. - SNI: Server name
-        # indication in the TLS session of the HTTPS request. The key value is truncated
-        # to the first 128 bytes. The key type defaults to ALL on a HTTP session. -
-        # REGION_CODE: The country/region from which the request originates.
+        # this rule. This is the default value if "enforceOnKey" is not configured. - IP:
+        # The source IP address of the request is the key. Each IP has this limit
+        # enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is
+        # configured under "enforceOnKeyName". The key value is truncated to the first
+        # 128 bytes of the header value. If no such header is present in the request,
+        # the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the
+        # originating client IP address) specified in the list of IPs under X-Forwarded-
+        # For HTTP header. If no such header is present or the value is not a valid IP,
+        # the key defaults to the source IP address of the request i.e. key type IP. -
+        # HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "
+        # enforceOnKeyName". The key value is truncated to the first 128 bytes of the
+        # cookie value. If no such cookie is present in the request, the key type
+        # defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value
+        # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
+        # session of the HTTPS request. The key value is truncated to the first 128
+        # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
+        # country/region from which the request originates.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -37163,8 +37166,7 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
-        # [Output Only] The external IPv6 address range that is assigned to this
-        # subnetwork.
+        # The external IPv6 address range that is owned by this subnetwork.
         # Corresponds to the JSON property `externalIpv6Prefix`
         # @return [String]
         attr_accessor :external_ipv6_prefix
