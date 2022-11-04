@@ -661,6 +661,189 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a notification config.
+        # @param [String] parent
+        #   Required. Resource name of the new notification config's parent. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
+        # @param [String] config_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must be between 1 and 128 characters, and contains alphanumeric characters,
+        #   underscores or hyphens only.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_notification_config(parent, notification_config_object = nil, config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/notificationConfigs', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.request_object = notification_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configId'] = config_id unless config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a notification config.
+        # @param [String] name
+        #   Required. Name of the notification config to delete. Its format is "
+        #   organizations/[organization_id]/notificationConfigs/[config_id]".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_notification_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a notification config.
+        # @param [String] name
+        #   Required. Name of the notification config to get. Its format is "organizations/
+        #   [organization_id]/notificationConfigs/[config_id]".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_notification_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists notification configs.
+        # @param [String] parent
+        #   Required. Name of the organization to list notification configs. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListNotificationConfigsResponse`; indicates
+        #   that this is a continuation of a prior `ListNotificationConfigs` call, and
+        #   that the system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_notification_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/notificationConfigs', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a notification config. The following update fields are allowed:
+        # description, pubsub_topic, streaming_config.filter
+        # @param [String] name
+        #   The relative resource name of this notification config. See: https://cloud.
+        #   google.com/apis/design/resource_names#relative_resource_name Example: "
+        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
+        # @param [String] update_mask
+        #   The FieldMask to use when updating the notification config. If empty all
+        #   mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_notification_config(name, notification_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.request_object = notification_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
@@ -1779,7 +1962,8 @@ module Google
         # Creates a notification config.
         # @param [String] parent
         #   Required. Resource name of the new notification config's parent. Its format is
-        #   "organizations/[organization_id]" or "projects/[project_id]".
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -1880,7 +2064,8 @@ module Google
         # Lists notification configs.
         # @param [String] parent
         #   Required. Name of the organization to list notification configs. Its format is
-        #   "organizations/[organization_id]" or "projects/[project_id]".
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -3355,6 +3540,189 @@ module Google
           command.request_object = google_cloud_securitycenter_v1_mute_config_object
           command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
           command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a notification config.
+        # @param [String] parent
+        #   Required. Resource name of the new notification config's parent. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
+        # @param [String] config_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must be between 1 and 128 characters, and contains alphanumeric characters,
+        #   underscores or hyphens only.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_notification_config(parent, notification_config_object = nil, config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/notificationConfigs', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.request_object = notification_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configId'] = config_id unless config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a notification config.
+        # @param [String] name
+        #   Required. Name of the notification config to delete. Its format is "
+        #   organizations/[organization_id]/notificationConfigs/[config_id]".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_notification_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a notification config.
+        # @param [String] name
+        #   Required. Name of the notification config to get. Its format is "organizations/
+        #   [organization_id]/notificationConfigs/[config_id]".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_notification_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists notification configs.
+        # @param [String] parent
+        #   Required. Name of the organization to list notification configs. Its format is
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return in a single response. Default is 10,
+        #   minimum is 1, maximum is 1000.
+        # @param [String] page_token
+        #   The value returned by the last `ListNotificationConfigsResponse`; indicates
+        #   that this is a continuation of a prior `ListNotificationConfigs` call, and
+        #   that the system should return the next page of data.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_notification_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/notificationConfigs', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListNotificationConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a notification config. The following update fields are allowed:
+        # description, pubsub_topic, streaming_config.filter
+        # @param [String] name
+        #   The relative resource name of this notification config. See: https://cloud.
+        #   google.com/apis/design/resource_names#relative_resource_name Example: "
+        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
+        # @param [String] update_mask
+        #   The FieldMask to use when updating the notification config. If empty all
+        #   mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::NotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::NotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_notification_config(name, notification_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.request_object = notification_config_object
+          command.response_representation = Google::Apis::SecuritycenterV1::NotificationConfig::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::NotificationConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
