@@ -1302,6 +1302,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :desired_dns_config
       
+        # Enable/Disable private endpoint for the cluster's master.
+        # Corresponds to the JSON property `desiredEnablePrivateEndpoint`
+        # @return [Boolean]
+        attr_accessor :desired_enable_private_endpoint
+        alias_method :desired_enable_private_endpoint?, :desired_enable_private_endpoint
+      
+        # GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        # Corresponds to the JSON property `desiredGatewayApiConfig`
+        # @return [Google::Apis::ContainerV1beta1::GatewayApiConfig]
+        attr_accessor :desired_gateway_api_config
+      
         # GcfsConfig contains configurations of Google Container File System.
         # Corresponds to the JSON property `desiredGcfsConfig`
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
@@ -1530,6 +1541,8 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_enable_private_endpoint = args[:desired_enable_private_endpoint] if args.key?(:desired_enable_private_endpoint)
+          @desired_gateway_api_config = args[:desired_gateway_api_config] if args.key?(:desired_gateway_api_config)
           @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
           @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
@@ -2063,6 +2076,25 @@ module Google
         def update!(**args)
           @gpu_sharing_strategy = args[:gpu_sharing_strategy] if args.key?(:gpu_sharing_strategy)
           @max_shared_clients_per_gpu = args[:max_shared_clients_per_gpu] if args.key?(:max_shared_clients_per_gpu)
+        end
+      end
+      
+      # GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+      class GatewayApiConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Gateway API release channel to use for Gateway API.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
         end
       end
       
@@ -3148,6 +3180,12 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Whether master is accessbile via Google Compute Engine Public IP addresses.
+        # Corresponds to the JSON property `gcpPublicCidrsAccessEnabled`
+        # @return [Boolean]
+        attr_accessor :gcp_public_cidrs_access_enabled
+        alias_method :gcp_public_cidrs_access_enabled?, :gcp_public_cidrs_access_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3156,6 +3194,7 @@ module Google
         def update!(**args)
           @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @gcp_public_cidrs_access_enabled = args[:gcp_public_cidrs_access_enabled] if args.key?(:gcp_public_cidrs_access_enabled)
         end
       end
       
@@ -3319,6 +3358,11 @@ module Google
         attr_accessor :enable_l4ilb_subsetting
         alias_method :enable_l4ilb_subsetting?, :enable_l4ilb_subsetting
       
+        # GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        # Corresponds to the JSON property `gatewayApiConfig`
+        # @return [Google::Apis::ContainerV1beta1::GatewayApiConfig]
+        attr_accessor :gateway_api_config
+      
         # Output only. The relative name of the Google Compute Engine network(https://
         # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -3355,6 +3399,7 @@ module Google
           @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
+          @gateway_api_config = args[:gateway_api_config] if args.key?(:gateway_api_config)
           @network = args[:network] if args.key?(:network)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @service_external_ips_config = args[:service_external_ips_config] if args.key?(:service_external_ips_config)
@@ -3628,6 +3673,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
+        # The resource labels for the node pool to use to annotate any related Google
+        # Compute Engine resources.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_labels
+      
         # SandboxConfig contains configurations of the sandbox to use for the node.
         # Corresponds to the JSON property `sandboxConfig`
         # @return [Google::Apis::ContainerV1beta1::SandboxConfig]
@@ -3701,6 +3752,7 @@ module Google
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -3861,6 +3913,14 @@ module Google
         attr_accessor :create_pod_range
         alias_method :create_pod_range?, :create_pod_range
       
+        # Whether nodes have internal IP addresses only. If enable_private_nodes is not
+        # specified, then the value is derived from cluster.privateClusterConfig.
+        # enablePrivateNodes
+        # Corresponds to the JSON property `enablePrivateNodes`
+        # @return [Boolean]
+        attr_accessor :enable_private_nodes
+        alias_method :enable_private_nodes?, :enable_private_nodes
+      
         # Configuration of all network bandwidth tiers
         # Corresponds to the JSON property `networkPerformanceConfig`
         # @return [Google::Apis::ContainerV1beta1::NetworkPerformanceConfig]
@@ -3893,6 +3953,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
           @pod_range = args[:pod_range] if args.key?(:pod_range)
@@ -4509,6 +4570,12 @@ module Google
         # @return [String]
         attr_accessor :private_endpoint
       
+        # Subnet to provision the master's private endpoint during cluster creation.
+        # Specified in projects/*/regions/*/subnetworks/* format.
+        # Corresponds to the JSON property `privateEndpointSubnetwork`
+        # @return [String]
+        attr_accessor :private_endpoint_subnetwork
+      
         # Output only. The external IP address of this cluster's master endpoint.
         # Corresponds to the JSON property `publicEndpoint`
         # @return [String]
@@ -4526,6 +4593,7 @@ module Google
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @peering_name = args[:peering_name] if args.key?(:peering_name)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
+          @private_endpoint_subnetwork = args[:private_endpoint_subnetwork] if args.key?(:private_endpoint_subnetwork)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
         end
       end
@@ -4744,6 +4812,26 @@ module Google
           @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
           @key = args[:key] if args.key?(:key)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
+      # creating-managing-labels).
+      class ResourceLabels
+        include Google::Apis::Core::Hashable
+      
+        # Map of node label keys and node label values.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -5769,7 +5857,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_node_count
       
-        # Percentage of the bool pool nodes to drain in a batch. The range of this field
+        # Percentage of the blue pool nodes to drain in a batch. The range of this field
         # should be (0.0, 1.0].
         # Corresponds to the JSON property `batchPercentage`
         # @return [Float]
@@ -6201,6 +6289,12 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels).
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Google::Apis::ContainerV1beta1::ResourceLabels]
+        attr_accessor :resource_labels
+      
         # Collection of Compute Engine network tags that can be applied to a node's
         # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
         # docs/reference/rest/v1/NodeConfig)).
@@ -6269,6 +6363,7 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
