@@ -31,7 +31,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # the accelerator type.
+        # The accelerator type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
