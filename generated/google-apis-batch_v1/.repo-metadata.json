@@ -1,0 +1,7 @@
+{
+    "api_id": "batch:v1",
+    "name_pretty": "Batch API",
+    "distribution_name": "google-apis-batch_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
