@@ -22,6 +22,81 @@ module Google
   module Apis
     module HealthcareV1beta1
       
+      # Specifies a selection of tags and an `Action` to apply to each one.
+      class Action
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how to handle de-identification of image pixels.
+        # Corresponds to the JSON property `cleanImageTag`
+        # @return [Google::Apis::HealthcareV1beta1::ImageConfig]
+        attr_accessor :clean_image_tag
+      
+        # Inspect text and transform sensitive text. Configurable using `TextConfig`.
+        # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+        # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
+        # DA, DT, AS
+        # Corresponds to the JSON property `cleanTextTag`
+        # @return [Google::Apis::HealthcareV1beta1::CleanTextTag]
+        attr_accessor :clean_text_tag
+      
+        # Delete tag.
+        # Corresponds to the JSON property `deleteTag`
+        # @return [Google::Apis::HealthcareV1beta1::DeleteTag]
+        attr_accessor :delete_tag
+      
+        # Keep tag unchanged.
+        # Corresponds to the JSON property `keepTag`
+        # @return [Google::Apis::HealthcareV1beta1::KeepTag]
+        attr_accessor :keep_tag
+      
+        # Select all tags with the listed tag IDs, names, or Value Representations (VRs).
+        # Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+        # Corresponds to the JSON property `queries`
+        # @return [Array<String>]
+        attr_accessor :queries
+      
+        # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
+        # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
+        # sect_6.2.html#table_6.2-1): SQ
+        # Corresponds to the JSON property `recurseTag`
+        # @return [Google::Apis::HealthcareV1beta1::RecurseTag]
+        attr_accessor :recurse_tag
+      
+        # Replace UID with a new generated UID. Supported [Value Representation] (http://
+        # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
+        # 1): UI
+        # Corresponds to the JSON property `regenUidTag`
+        # @return [Google::Apis::HealthcareV1beta1::RegenUidTag]
+        attr_accessor :regen_uid_tag
+      
+        # Replace with empty tag.
+        # Corresponds to the JSON property `removeTag`
+        # @return [Google::Apis::HealthcareV1beta1::RemoveTag]
+        attr_accessor :remove_tag
+      
+        # Reset tag to a placeholder value.
+        # Corresponds to the JSON property `resetTag`
+        # @return [Google::Apis::HealthcareV1beta1::ResetTag]
+        attr_accessor :reset_tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clean_image_tag = args[:clean_image_tag] if args.key?(:clean_image_tag)
+          @clean_text_tag = args[:clean_text_tag] if args.key?(:clean_text_tag)
+          @delete_tag = args[:delete_tag] if args.key?(:delete_tag)
+          @keep_tag = args[:keep_tag] if args.key?(:keep_tag)
+          @queries = args[:queries] if args.key?(:queries)
+          @recurse_tag = args[:recurse_tag] if args.key?(:recurse_tag)
+          @regen_uid_tag = args[:regen_uid_tag] if args.key?(:regen_uid_tag)
+          @remove_tag = args[:remove_tag] if args.key?(:remove_tag)
+          @reset_tag = args[:reset_tag] if args.key?(:reset_tag)
+        end
+      end
+      
       # Activates the latest revision of the specified Consent by committing a new
       # revision with `state` updated to `ACTIVE`. If the latest revision of the given
       # Consent is in the `ACTIVE` state, no new revision is committed. A
@@ -596,6 +671,21 @@ module Google
         end
       end
       
+      # Replace field value with masking character. Supported [types](https://www.hl7.
+      # org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown,
+      # Oid, String, Uri, Uuid, Xhtml
+      class CharacterMaskField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Checks if a particular data_id of a User data mapping in the given consent
       # store is consented for a given use.
       class CheckDataAccessRequest
@@ -660,6 +750,58 @@ module Google
         def update!(**args)
           @consent_details = args[:consent_details] if args.key?(:consent_details)
           @consented = args[:consented] if args.key?(:consented)
+        end
+      end
+      
+      # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
+      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+      # the `CleanText` `Action` is applied to all the specified fields. When cleaning
+      # text, the process attempts to transform phrases matching any of the tags
+      # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
+      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+      # contextual phrases are replaced with the token "[CTX]". This option uses an
+      # additional `InfoType` during inspection.
+      class CleanDescriptorsOption
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Inspect text and transform sensitive text. Configure using `TextConfig`.
+      # Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date,
+      # DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri,
+      # Uuid, Xhtml
+      class CleanTextField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Inspect text and transform sensitive text. Configurable using `TextConfig`.
+      # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+      # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
+      # DA, DT, AS
+      class CleanTextTag
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -956,6 +1098,23 @@ module Google
         end
       end
       
+      # The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are
+      # collected into a contextual phrase list. For fields marked `CleanText`, the
+      # process attempts to transform phrases matching these contextual entries. These
+      # contextual phrases are replaced with the token "[CTX]". This feature uses an
+      # additional InfoType during inspection.
+      class ContextualDeidConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Creates a new message.
       class CreateMessageRequest
         include Google::Apis::Core::Hashable
@@ -1008,6 +1167,21 @@ module Google
         def update!(**args)
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
           @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
+        end
+      end
+      
+      # Replace field value with a hash of that value. Supported [types](https://www.
+      # hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode,
+      # Markdown, Oid, String, Uri, Uuid, Xhtml
+      class CryptoHashField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1077,6 +1251,21 @@ module Google
         end
       end
       
+      # Shift the date by a randomized number of days. See [date shifting](https://
+      # cloud.google.com/dlp/docs/concepts-date-shifting) for more information.
+      # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+      class DateShiftField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Contains configuration for streaming de-identified FHIR export.
       class DeidentifiedStoreDestination
         include Google::Apis::Core::Hashable
@@ -1122,10 +1311,20 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DicomConfig]
         attr_accessor :dicom
       
+        # Specifies the parameters needed for the de-identification of DICOM stores.
+        # Corresponds to the JSON property `dicomTagConfig`
+        # @return [Google::Apis::HealthcareV1beta1::DicomTagConfig]
+        attr_accessor :dicom_tag_config
+      
         # Specifies how to handle de-identification of a FHIR store.
         # Corresponds to the JSON property `fhir`
         # @return [Google::Apis::HealthcareV1beta1::FhirConfig]
         attr_accessor :fhir
+      
+        # Specifies how to handle the de-identification of a FHIR store.
+        # Corresponds to the JSON property `fhirFieldConfig`
+        # @return [Google::Apis::HealthcareV1beta1::FhirFieldConfig]
+        attr_accessor :fhir_field_config
       
         # Specifies how to handle de-identification of image pixels.
         # Corresponds to the JSON property `image`
@@ -1150,7 +1349,9 @@ module Google
         def update!(**args)
           @annotation = args[:annotation] if args.key?(:annotation)
           @dicom = args[:dicom] if args.key?(:dicom)
+          @dicom_tag_config = args[:dicom_tag_config] if args.key?(:dicom_tag_config)
           @fhir = args[:fhir] if args.key?(:fhir)
+          @fhir_field_config = args[:fhir_field_config] if args.key?(:fhir_field_config)
           @image = args[:image] if args.key?(:image)
           @operation_metadata = args[:operation_metadata] if args.key?(:operation_metadata)
           @text = args[:text] if args.key?(:text)
@@ -1338,6 +1539,19 @@ module Google
         end
       end
       
+      # Delete tag.
+      class DeleteTag
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Contains multiple sensitive information findings for each resource slice.
       class Detail
         include Google::Apis::Core::Hashable
@@ -1473,6 +1687,38 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
+        end
+      end
+      
+      # Specifies the parameters needed for the de-identification of DICOM stores.
+      class DicomTagConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies custom tag selections and `Actions` to apply to them. Overrides `
+        # options` and `profile`. Conflicting `Actions` are applied in the order given.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Action>]
+        attr_accessor :actions
+      
+        # Specifies additional options to apply to the base profile.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::HealthcareV1beta1::Options]
+        attr_accessor :options
+      
+        # Base profile type for handling DICOM tags.
+        # Corresponds to the JSON property `profileType`
+        # @return [String]
+        attr_accessor :profile_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @options = args[:options] if args.key?(:options)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
         end
       end
       
@@ -2084,6 +2330,41 @@ module Google
         def update!(**args)
           @default_keep_extensions = args[:default_keep_extensions] if args.key?(:default_keep_extensions)
           @field_metadata_list = args[:field_metadata_list] if args.key?(:field_metadata_list)
+        end
+      end
+      
+      # Specifies how to handle the de-identification of a FHIR store.
+      class FhirFieldConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies FHIR paths to match and how to transform them. Any field that is not
+        # matched by a `FieldMetadata` is passed through to the output dataset
+        # unmodified. All extensions will be processed according to `keep_extensions`.
+        # If a field can be matched by more than one `FieldMetadata`, the first `
+        # FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        # Corresponds to the JSON property `fieldMetadataList`
+        # @return [Array<Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata>]
+        attr_accessor :field_metadata_list
+      
+        # Specifies additional options to apply to the base `profile`.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DeidentifyOptions]
+        attr_accessor :options
+      
+        # Base profile type for handling FHIR fields.
+        # Corresponds to the JSON property `profileType`
+        # @return [String]
+        attr_accessor :profile_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_metadata_list = args[:field_metadata_list] if args.key?(:field_metadata_list)
+          @options = args[:options] if args.key?(:options)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
         end
       end
       
@@ -2721,6 +3002,138 @@ module Google
         end
       end
       
+      # Specifies the FHIR paths to match and how to handle the de-identification of
+      # matching fields.
+      class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Replace field value with masking character. Supported [types](https://www.hl7.
+        # org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown,
+        # Oid, String, Uri, Uuid, Xhtml
+        # Corresponds to the JSON property `characterMaskField`
+        # @return [Google::Apis::HealthcareV1beta1::CharacterMaskField]
+        attr_accessor :character_mask_field
+      
+        # Inspect text and transform sensitive text. Configure using `TextConfig`.
+        # Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date,
+        # DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri,
+        # Uuid, Xhtml
+        # Corresponds to the JSON property `cleanTextField`
+        # @return [Google::Apis::HealthcareV1beta1::CleanTextField]
+        attr_accessor :clean_text_field
+      
+        # Replace field value with a hash of that value. Supported [types](https://www.
+        # hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode,
+        # Markdown, Oid, String, Uri, Uuid, Xhtml
+        # Corresponds to the JSON property `cryptoHashField`
+        # @return [Google::Apis::HealthcareV1beta1::CryptoHashField]
+        attr_accessor :crypto_hash_field
+      
+        # Shift the date by a randomized number of days. See [date shifting](https://
+        # cloud.google.com/dlp/docs/concepts-date-shifting) for more information.
+        # Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        # Corresponds to the JSON property `dateShiftField`
+        # @return [Google::Apis::HealthcareV1beta1::DateShiftField]
+        attr_accessor :date_shift_field
+      
+        # Keep field unchanged.
+        # Corresponds to the JSON property `keepField`
+        # @return [Google::Apis::HealthcareV1beta1::KeepField]
+        attr_accessor :keep_field
+      
+        # List of paths to FHIR fields to redact. Each path is a period-separated list
+        # where each component is either a field name or FHIR type name. All types begin
+        # with an upper case letter. For example, the resource field "Patient.Address.
+        # city", which uses a string type, can be matched by "Patient.Address.String".
+        # Path also supports partialkk matching. For example, "Patient.Address.city" can
+        # be matched by "Address.city" (Patient omitted). Partial matching and type
+        # matching can be combined, for example "Patient.Address.city" can be matched by
+        # "Address.String". For "choice" types (those defined in the FHIR spec with the
+        # form: field[x]), use two separate components. For example, "deceasedAge.unit"
+        # is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/
+        # datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
+        # Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode,
+        # Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-
+        # type for HumanName (for example HumanName.given, HumanName.family) can be
+        # omitted.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<String>]
+        attr_accessor :paths
+      
+        # Remove field.
+        # Corresponds to the JSON property `removeField`
+        # @return [Google::Apis::HealthcareV1beta1::RemoveField]
+        attr_accessor :remove_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @character_mask_field = args[:character_mask_field] if args.key?(:character_mask_field)
+          @clean_text_field = args[:clean_text_field] if args.key?(:clean_text_field)
+          @crypto_hash_field = args[:crypto_hash_field] if args.key?(:crypto_hash_field)
+          @date_shift_field = args[:date_shift_field] if args.key?(:date_shift_field)
+          @keep_field = args[:keep_field] if args.key?(:keep_field)
+          @paths = args[:paths] if args.key?(:paths)
+          @remove_field = args[:remove_field] if args.key?(:remove_field)
+        end
+      end
+      
+      # Specifies additional options to apply to the base `profile`.
+      class GoogleCloudHealthcareV1beta1DeidentifyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Mask a string by replacing its characters with a fixed character.
+        # Corresponds to the JSON property `characterMaskConfig`
+        # @return [Google::Apis::HealthcareV1beta1::CharacterMaskConfig]
+        attr_accessor :character_mask_config
+      
+        # The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are
+        # collected into a contextual phrase list. For fields marked `CleanText`, the
+        # process attempts to transform phrases matching these contextual entries. These
+        # contextual phrases are replaced with the token "[CTX]". This feature uses an
+        # additional InfoType during inspection.
+        # Corresponds to the JSON property `contextualDeid`
+        # @return [Google::Apis::HealthcareV1beta1::ContextualDeidConfig]
+        attr_accessor :contextual_deid
+      
+        # Pseudonymization method that generates surrogates via cryptographic hashing.
+        # Uses SHA-256. Outputs a base64-encoded representation of the hashed output.
+        # For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
+        # Corresponds to the JSON property `cryptoHashConfig`
+        # @return [Google::Apis::HealthcareV1beta1::CryptoHashConfig]
+        attr_accessor :crypto_hash_config
+      
+        # Shift a date forward or backward in time by a random amount which is
+        # consistent for a given patient and crypto key combination.
+        # Corresponds to the JSON property `dateShiftConfig`
+        # @return [Google::Apis::HealthcareV1beta1::DateShiftConfig]
+        attr_accessor :date_shift_config
+      
+        # The behaviour for handling FHIR extensions that aren't otherwise specified for
+        # de-identification. If provided, all extensions are preserved during de-
+        # identification by default. If unspecified, all extensions are removed during
+        # de-identification by default.
+        # Corresponds to the JSON property `keepExtensions`
+        # @return [Google::Apis::HealthcareV1beta1::KeepExtensionsConfig]
+        attr_accessor :keep_extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @character_mask_config = args[:character_mask_config] if args.key?(:character_mask_config)
+          @contextual_deid = args[:contextual_deid] if args.key?(:contextual_deid)
+          @crypto_hash_config = args[:crypto_hash_config] if args.key?(:crypto_hash_config)
+          @date_shift_config = args[:date_shift_config] if args.key?(:date_shift_config)
+          @keep_extensions = args[:keep_extensions] if args.key?(:keep_extensions)
+        end
+      end
+      
       # The BigQuery table where the server writes output.
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
@@ -3314,6 +3727,21 @@ module Google
       class ImageConfig
         include Google::Apis::Core::Hashable
       
+        # Additional InfoTypes to redact in the images in addition to those used by `
+        # text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `
+        # REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `
+        # TEXT_REDACTION_MODE_UNSPECIFIED`.
+        # Corresponds to the JSON property `additionalInfoTypes`
+        # @return [Array<String>]
+        attr_accessor :additional_info_types
+      
+        # InfoTypes to skip redacting, overriding those used by `text_redaction_mode`.
+        # Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`
+        # or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+        # Corresponds to the JSON property `excludeInfoTypes`
+        # @return [Array<String>]
+        attr_accessor :exclude_info_types
+      
         # Determines how to redact text from image.
         # Corresponds to the JSON property `textRedactionMode`
         # @return [String]
@@ -3325,6 +3753,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_info_types = args[:additional_info_types] if args.key?(:additional_info_types)
+          @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @text_redaction_mode = args[:text_redaction_mode] if args.key?(:text_redaction_mode)
         end
       end
@@ -3601,6 +4031,48 @@ module Google
         def update!(**args)
           @hl7_ack = args[:hl7_ack] if args.key?(:hl7_ack)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The behaviour for handling FHIR extensions that aren't otherwise specified for
+      # de-identification. If provided, all extensions are preserved during de-
+      # identification by default. If unspecified, all extensions are removed during
+      # de-identification by default.
+      class KeepExtensionsConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Keep field unchanged.
+      class KeepField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Keep tag unchanged.
+      class KeepTag
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4347,6 +4819,46 @@ module Google
         end
       end
       
+      # Specifies additional options to apply to the base profile.
+      class Options
+        include Google::Apis::Core::Hashable
+      
+        # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
+        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+        # the `CleanText` `Action` is applied to all the specified fields. When cleaning
+        # text, the process attempts to transform phrases matching any of the tags
+        # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
+        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+        # contextual phrases are replaced with the token "[CTX]". This option uses an
+        # additional `InfoType` during inspection.
+        # Corresponds to the JSON property `cleanDescriptors`
+        # @return [Google::Apis::HealthcareV1beta1::CleanDescriptorsOption]
+        attr_accessor :clean_descriptors
+      
+        # Specifies how to handle de-identification of image pixels.
+        # Corresponds to the JSON property `cleanImage`
+        # @return [Google::Apis::HealthcareV1beta1::ImageConfig]
+        attr_accessor :clean_image
+      
+        # Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`,
+        # and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/
+        # output/chtml/part06/chapter_6.html).
+        # Corresponds to the JSON property `primaryIds`
+        # @return [String]
+        attr_accessor :primary_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clean_descriptors = args[:clean_descriptors] if args.key?(:clean_descriptors)
+          @clean_image = args[:clean_image] if args.key?(:clean_image)
+          @primary_ids = args[:primary_ids] if args.key?(:primary_ids)
+        end
+      end
+      
       # The content of an HL7v2 message in a structured format.
       class ParsedData
         include Google::Apis::Core::Hashable
@@ -4619,9 +5131,39 @@ module Google
         end
       end
       
+      # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
+      # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
+      # sect_6.2.html#table_6.2-1): SQ
+      class RecurseTag
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Define how to redact sensitive values. Default behaviour is erase. For example,
       # "My name is Jane." becomes "My name is ."
       class RedactConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Replace UID with a new generated UID. Supported [Value Representation] (http://
+      # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
+      # 1): UI
+      class RegenUidTag
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -4658,10 +5200,49 @@ module Google
         end
       end
       
+      # Remove field.
+      class RemoveField
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Replace with empty tag.
+      class RemoveTag
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
       # name of the info_type. For example, "My name is Jane" becomes "My name is [
       # PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
       class ReplaceWithInfoTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Reset tag to a placeholder value.
+      class ResetTag
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -5318,6 +5899,21 @@ module Google
       class TextConfig
         include Google::Apis::Core::Hashable
       
+        # Additional transformations to apply to the detected data, overriding `profile`.
+        # Corresponds to the JSON property `additionalTransformations`
+        # @return [Array<Google::Apis::HealthcareV1beta1::InfoTypeTransformation>]
+        attr_accessor :additional_transformations
+      
+        # InfoTypes to skip transforming, overriding `profile`.
+        # Corresponds to the JSON property `excludeInfoTypes`
+        # @return [Array<String>]
+        attr_accessor :exclude_info_types
+      
+        # Base profile type for text transformation.
+        # Corresponds to the JSON property `profileType`
+        # @return [String]
+        attr_accessor :profile_type
+      
         # The transformations to apply to the detected data. Deprecated. Use `
         # additional_transformations` instead.
         # Corresponds to the JSON property `transformations`
@@ -5330,6 +5926,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_transformations = args[:additional_transformations] if args.key?(:additional_transformations)
+          @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
+          @profile_type = args[:profile_type] if args.key?(:profile_type)
           @transformations = args[:transformations] if args.key?(:transformations)
         end
       end
