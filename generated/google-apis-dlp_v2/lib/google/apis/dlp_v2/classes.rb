@@ -2534,6 +2534,33 @@ module Google
         end
       end
       
+      # The rule to exclude findings based on a hotword. For record inspection of
+      # tables, column names are considered hotwords. An example of this is to exclude
+      # a finding if a BigQuery column matches a specific pattern.
+      class GooglePrivacyDlpV2ExcludeByHotword
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a custom regular expression.
+        # Corresponds to the JSON property `hotwordRegex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
+        attr_accessor :hotword_regex
+      
+        # Message for specifying a window around a finding to apply a detection rule.
+        # Corresponds to the JSON property `proximity`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity]
+        attr_accessor :proximity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hotword_regex = args[:hotword_regex] if args.key?(:hotword_regex)
+          @proximity = args[:proximity] if args.key?(:proximity)
+        end
+      end
+      
       # List of excluded infoTypes.
       class GooglePrivacyDlpV2ExcludeInfoTypes
         include Google::Apis::Core::Hashable
@@ -2586,6 +2613,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
       
+        # The rule to exclude findings based on a hotword. For record inspection of
+        # tables, column names are considered hotwords. An example of this is to exclude
+        # a finding if a BigQuery column matches a specific pattern.
+        # Corresponds to the JSON property `excludeByHotword`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword]
+        attr_accessor :exclude_by_hotword
+      
         # List of excluded infoTypes.
         # Corresponds to the JSON property `excludeInfoTypes`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes]
@@ -2608,6 +2642,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dictionary = args[:dictionary] if args.key?(:dictionary)
+          @exclude_by_hotword = args[:exclude_by_hotword] if args.key?(:exclude_by_hotword)
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @matching_type = args[:matching_type] if args.key?(:matching_type)
           @regex = args[:regex] if args.key?(:regex)
