@@ -509,6 +509,7 @@ module Google
           property :public_id, as: 'publicId'
           collection :tag_ids, as: 'tagIds'
           property :tag_manager_url, as: 'tagManagerUrl'
+          collection :tagging_server_urls, as: 'taggingServerUrls'
           collection :usage_context, as: 'usageContext'
         end
       end

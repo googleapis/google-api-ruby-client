@@ -388,6 +388,12 @@ module Google
         # @return [String]
         attr_accessor :tag_manager_url
       
+        # The URLs of the cloud environment for the GTM Container. @mutable tagmanager.
+        # accounts.containers.create @mutable tagmanager.accounts.containers.update
+        # Corresponds to the JSON property `taggingServerUrls`
+        # @return [Array<String>]
+        attr_accessor :tagging_server_urls
+      
         # List of Usage Contexts for the Container. Valid values include: web, android,
         # or ios. @mutable tagmanager.accounts.containers.create @mutable tagmanager.
         # accounts.containers.update
@@ -412,6 +418,7 @@ module Google
           @public_id = args[:public_id] if args.key?(:public_id)
           @tag_ids = args[:tag_ids] if args.key?(:tag_ids)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @tagging_server_urls = args[:tagging_server_urls] if args.key?(:tagging_server_urls)
           @usage_context = args[:usage_context] if args.key?(:usage_context)
         end
       end
