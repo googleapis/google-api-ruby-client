@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssociatedFinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Edge
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -454,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PathNode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -600,7 +618,7 @@ module Google
           property :service_account_key_name, as: 'serviceAccountKeyName'
           property :service_name, as: 'serviceName'
           property :user_agent_family, as: 'userAgentFamily'
-          property :username, as: 'username'
+          property :user_name, as: 'userName'
         end
       end
       
@@ -640,6 +658,14 @@ module Google
           collection :folder_ids, as: 'folderIds'
           property :inclusion_mode, as: 'inclusionMode'
           collection :project_ids, as: 'projectIds'
+        end
+      end
+      
+      class AssociatedFinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_finding_name, as: 'canonicalFindingName'
+          property :finding_category, as: 'findingCategory'
         end
       end
       
@@ -767,6 +793,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binary, as: 'binary'
           property :percent_pages_matched, as: 'percentPagesMatched'
+        end
+      end
+      
+      class Edge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :source, as: 'source'
         end
       end
       
@@ -943,12 +977,25 @@ module Google
       class GoogleCloudSecuritycenterV1ExposedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :methods_prop, as: 'methods'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :resource_value, as: 'resourceValue'
         end
       end
       
       class GoogleCloudSecuritycenterV1ExposurePath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::SecuritycenterV1::Edge, decorator: Google::Apis::SecuritycenterV1::Edge::Representation
+      
+          property :exposed_resource, as: 'exposedResource', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExposedResource, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExposedResource::Representation
+      
+          property :name, as: 'name'
+          collection :path_nodes, as: 'pathNodes', class: Google::Apis::SecuritycenterV1::PathNode, decorator: Google::Apis::SecuritycenterV1::PathNode::Representation
+      
         end
       end
       
@@ -1006,7 +1053,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :resource_type, as: 'resourceType'
           property :resource_value, as: 'resourceValue'
+          property :scope, as: 'scope'
           collection :tag_values, as: 'tagValues'
         end
       end
@@ -1356,6 +1405,17 @@ module Google
       
           property :enable_asset_discovery, as: 'enableAssetDiscovery'
           property :name, as: 'name'
+        end
+      end
+      
+      class PathNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associated_findings, as: 'associatedFindings', class: Google::Apis::SecuritycenterV1::AssociatedFinding, decorator: Google::Apis::SecuritycenterV1::AssociatedFinding::Representation
+      
+          property :display_name, as: 'displayName'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
         end
       end
       
