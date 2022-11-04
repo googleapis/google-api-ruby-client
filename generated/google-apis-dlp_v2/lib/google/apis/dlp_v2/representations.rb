@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ExcludeByHotword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ExcludeInfoTypes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2078,6 +2084,16 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ExcludeByHotword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hotword_regex, as: 'hotwordRegex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
+      
+          property :proximity, as: 'proximity', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity::Representation
+      
+        end
+      end
+      
       class GooglePrivacyDlpV2ExcludeInfoTypes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2090,6 +2106,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
+      
+          property :exclude_by_hotword, as: 'excludeByHotword', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword::Representation
       
           property :exclude_info_types, as: 'excludeInfoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeInfoTypes::Representation
       
