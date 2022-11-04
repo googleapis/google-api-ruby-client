@@ -59,6 +59,13 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
+        # Optional. Must and can only be set when DeviceProvisioningSectionType is
+        # SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile (go/
+        # simlock/profiles).
+        # Corresponds to the JSON property `simlockProfileId`
+        # @return [Fixnum]
+        attr_accessor :simlock_profile_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -71,6 +78,7 @@ module Google
           @google_workspace_customer_id = args[:google_workspace_customer_id] if args.key?(:google_workspace_customer_id)
           @pre_provisioning_token = args[:pre_provisioning_token] if args.key?(:pre_provisioning_token)
           @section_type = args[:section_type] if args.key?(:section_type)
+          @simlock_profile_id = args[:simlock_profile_id] if args.key?(:simlock_profile_id)
         end
       end
       
