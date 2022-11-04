@@ -1264,6 +1264,11 @@ module Google
       class GoogleFirestoreAdminV1Index
         include Google::Apis::Core::Hashable
       
+        # The API scope supported by this index.
+        # Corresponds to the JSON property `apiScope`
+        # @return [String]
+        attr_accessor :api_scope
+      
         # The fields supported by this index. For composite indexes, this requires a
         # minimum of 2 and a maximum of 100 fields. The last field entry is always for
         # the field path `__name__`. If, on creation, `__name__` was not specified as
@@ -1305,6 +1310,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_scope = args[:api_scope] if args.key?(:api_scope)
           @fields = args[:fields] if args.key?(:fields)
           @name = args[:name] if args.key?(:name)
           @query_scope = args[:query_scope] if args.key?(:query_scope)
