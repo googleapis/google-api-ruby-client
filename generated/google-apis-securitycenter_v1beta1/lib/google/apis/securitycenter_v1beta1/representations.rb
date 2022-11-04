@@ -1005,7 +1005,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :resource_type, as: 'resourceType'
           property :resource_value, as: 'resourceValue'
+          property :scope, as: 'scope'
           collection :tag_values, as: 'tagValues'
         end
       end

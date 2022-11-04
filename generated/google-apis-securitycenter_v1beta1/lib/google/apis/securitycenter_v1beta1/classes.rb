@@ -1842,10 +1842,25 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Apply resource_value only to resources that match resource_type. resource_type
+        # will be checked with "AND" of other resources. E.g. "storage.googleapis.com/
+        # Bucket" with resource_value "HIGH" will apply "HIGH" value only to "storage.
+        # googleapis.com/Bucket" resources.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
         # Required. Resource value level this expression represents
         # Corresponds to the JSON property `resourceValue`
         # @return [String]
         attr_accessor :resource_value
+      
+        # Project or folder to scope this config to. For example, "project/456" would
+        # apply this config only to resources in "project/456" scope will be checked
+        # with "AND" of other resources.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
       
         # Required. Tag values combined with AND to check against. Values in the form "
         # tagValues/123" E.g. [ "tagValues/123", "tagValues/456", "tagValues/789" ]
@@ -1861,7 +1876,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_value = args[:resource_value] if args.key?(:resource_value)
+          @scope = args[:scope] if args.key?(:scope)
           @tag_values = args[:tag_values] if args.key?(:tag_values)
         end
       end
