@@ -896,6 +896,7 @@ module Google
       class GoogleFirestoreAdminV1Index
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_scope, as: 'apiScope'
           collection :fields, as: 'fields', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1IndexField::Representation
       
           property :name, as: 'name'
