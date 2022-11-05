@@ -1,5 +1,9 @@
 # Release history for google-apis-jobs_v4
 
+### v0.25.0 (2022-11-05)
+
+* Regenerated from discovery document revision 20221024
+
 ### v0.24.0 (2022-10-20)
 
 * Regenerated using generator version 0.11.0
