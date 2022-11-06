@@ -142,6 +142,260 @@ module Google
         end
       end
       
+      # AwsSecurityGroup describes a security group of an AWS VM.
+      class AwsSecurityGroup
+        include Google::Apis::Core::Hashable
+      
+        # The AWS security group id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The AWS security group name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # AwsSourceDetails message describes a specific source details for the AWS
+      # source type.
+      class AwsSourceDetails
+        include Google::Apis::Core::Hashable
+      
+        # AWS access key ID.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # Immutable. The AWS region that the source VMs will be migrated from.
+        # Corresponds to the JSON property `awsRegion`
+        # @return [String]
+        attr_accessor :aws_region
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VmmigrationV1alpha1::Status]
+        attr_accessor :error
+      
+        # AWS security group names to limit the scope of the source inventory.
+        # Corresponds to the JSON property `inventorySecurityGroupNames`
+        # @return [Array<String>]
+        attr_accessor :inventory_security_group_names
+      
+        # AWS resource tags to limit the scope of the source inventory.
+        # Corresponds to the JSON property `inventoryTags`
+        # @return [Hash<String,String>]
+        attr_accessor :inventory_tags
+      
+        # User specified tags to add to every M2VM generated resource in AWS. These tags
+        # will be set in addition to the default tags that are set as part of the
+        # migration process. The tags must not begin with the reserved prefix `m2vm`.
+        # Corresponds to the JSON property `migrationResourcesUserTags`
+        # @return [Hash<String,String>]
+        attr_accessor :migration_resources_user_tags
+      
+        # Output only. The source's public IP. All communication initiated by this
+        # source will originate from this IP.
+        # Corresponds to the JSON property `publicIp`
+        # @return [String]
+        attr_accessor :public_ip
+      
+        # Input only. AWS secret access key.
+        # Corresponds to the JSON property `secretAccessKey`
+        # @return [String]
+        attr_accessor :secret_access_key
+      
+        # Output only. State of the source as determined by the health check.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @aws_region = args[:aws_region] if args.key?(:aws_region)
+          @error = args[:error] if args.key?(:error)
+          @inventory_security_group_names = args[:inventory_security_group_names] if args.key?(:inventory_security_group_names)
+          @inventory_tags = args[:inventory_tags] if args.key?(:inventory_tags)
+          @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
+          @public_ip = args[:public_ip] if args.key?(:public_ip)
+          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represent the source AWS VM details.
+      class AwsSourceVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The total size of the disks being migrated in bytes.
+        # Corresponds to the JSON property `committedStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_bytes
+      
+        # The firmware type of the source VM.
+        # Corresponds to the JSON property `firmware`
+        # @return [String]
+        attr_accessor :firmware
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @committed_storage_bytes = args[:committed_storage_bytes] if args.key?(:committed_storage_bytes)
+          @firmware = args[:firmware] if args.key?(:firmware)
+        end
+      end
+      
+      # AwsVmDetails describes a VM in AWS.
+      class AwsVmDetails
+        include Google::Apis::Core::Hashable
+      
+        # The VM Boot Option.
+        # Corresponds to the JSON property `bootOption`
+        # @return [String]
+        attr_accessor :boot_option
+      
+        # The total size of the storage allocated to the VM in MB.
+        # Corresponds to the JSON property `committedStorageMb`
+        # @return [Fixnum]
+        attr_accessor :committed_storage_mb
+      
+        # The number of cpus the VM has.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        # The number of disks the VM has.
+        # Corresponds to the JSON property `diskCount`
+        # @return [Fixnum]
+        attr_accessor :disk_count
+      
+        # The display name of the VM. Note that this value is not necessarily unique.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The instance type of the VM.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # The memory size of the VM in MB.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # The VM's OS.
+        # Corresponds to the JSON property `osDescription`
+        # @return [String]
+        attr_accessor :os_description
+      
+        # Output only. The power state of the VM at the moment list was taken.
+        # Corresponds to the JSON property `powerState`
+        # @return [String]
+        attr_accessor :power_state
+      
+        # The security groups the VM belongs to.
+        # Corresponds to the JSON property `securityGroups`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AwsSecurityGroup>]
+        attr_accessor :security_groups
+      
+        # The descriptive name of the AWS's source this VM is connected to.
+        # Corresponds to the JSON property `sourceDescription`
+        # @return [String]
+        attr_accessor :source_description
+      
+        # The id of the AWS's source this VM is connected to.
+        # Corresponds to the JSON property `sourceId`
+        # @return [String]
+        attr_accessor :source_id
+      
+        # The tags of the VM.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # The VM ID in AWS.
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        # The VPC ID the VM belongs to.
+        # Corresponds to the JSON property `vpcId`
+        # @return [String]
+        attr_accessor :vpc_id
+      
+        # The AWS zone of the VM.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_option = args[:boot_option] if args.key?(:boot_option)
+          @committed_storage_mb = args[:committed_storage_mb] if args.key?(:committed_storage_mb)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @disk_count = args[:disk_count] if args.key?(:disk_count)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @os_description = args[:os_description] if args.key?(:os_description)
+          @power_state = args[:power_state] if args.key?(:power_state)
+          @security_groups = args[:security_groups] if args.key?(:security_groups)
+          @source_description = args[:source_description] if args.key?(:source_description)
+          @source_id = args[:source_id] if args.key?(:source_id)
+          @tags = args[:tags] if args.key?(:tags)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+          @vpc_id = args[:vpc_id] if args.key?(:vpc_id)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # AWSVmsDetails describes VMs in AWS.
+      class AwsVmsDetails
+        include Google::Apis::Core::Hashable
+      
+        # The details of the AWS VMs.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::AwsVmDetails>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+        end
+      end
+      
       # Request message for 'CancelCloneJob' request.
       class CancelCloneJobRequest
         include Google::Apis::Core::Hashable
@@ -952,6 +1206,11 @@ module Google
       class FetchInventoryResponse
         include Google::Apis::Core::Hashable
       
+        # AWSVmsDetails describes VMs in AWS.
+        # Corresponds to the JSON property `awsVms`
+        # @return [Google::Apis::VmmigrationV1alpha1::AwsVmsDetails]
+        attr_accessor :aws_vms
+      
         # Output only. A token, which can be sent as `page_token` to retrieve the next
         # page. If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
@@ -975,6 +1234,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_vms = args[:aws_vms] if args.key?(:aws_vms)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware_vms = args[:vmware_vms] if args.key?(:vmware_vms)
@@ -1506,6 +1766,11 @@ module Google
       class MigratingVm
         include Google::Apis::Core::Hashable
       
+        # Represent the source AWS VM details.
+        # Corresponds to the JSON property `awsSourceVmDetails`
+        # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails]
+        attr_accessor :aws_source_vm_details
+      
         # ComputeEngineTargetDefaults is a collection of details for creating a VM in a
         # target Compute Engine project.
         # Corresponds to the JSON property `computeEngineTargetDefaults`
@@ -1626,6 +1891,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws_source_vm_details = args[:aws_source_vm_details] if args.key?(:aws_source_vm_details)
           @compute_engine_target_defaults = args[:compute_engine_target_defaults] if args.key?(:compute_engine_target_defaults)
           @compute_engine_vm_defaults = args[:compute_engine_vm_defaults] if args.key?(:compute_engine_vm_defaults)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -2140,6 +2406,12 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
+        # AwsSourceDetails message describes a specific source details for the AWS
+        # source type.
+        # Corresponds to the JSON property `aws`
+        # @return [Google::Apis::VmmigrationV1alpha1::AwsSourceDetails]
+        attr_accessor :aws
+      
         # Output only. The create time timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2187,6 +2459,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aws = args[:aws] if args.key?(:aws)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @error = args[:error] if args.key?(:error)
