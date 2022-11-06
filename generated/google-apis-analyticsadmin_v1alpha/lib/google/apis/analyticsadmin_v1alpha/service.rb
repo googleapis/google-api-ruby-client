@@ -760,7 +760,7 @@ module Google
         # the expiration time, the Property and all child resources (eg: GoogleAdsLinks,
         # Streams, UserLinks) will be permanently purged. https://support.google.com/
         # analytics/answer/6154772 Returns an error if the target is not found, or is
-        # not an GA4 Property.
+        # not a GA4 Property.
         # @param [String] name
         #   Required. The name of the Property to soft-delete. Format: properties/`
         #   property_id` Example: "properties/1000"

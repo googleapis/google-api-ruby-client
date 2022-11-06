@@ -846,8 +846,8 @@ module Google
         # @return [String]
         attr_accessor :exclusion_duration_mode
       
-        # Required. Immutable. null Filter clauses that define the Audience. All clauses
-        # will be AND’ed together.
+        # Required. Immutable. Unordered list. Filter clauses that define the Audience.
+        # All clauses will be AND’ed together.
         # Corresponds to the JSON property `filterClauses`
         # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudienceFilterClause>]
         attr_accessor :filter_clauses
