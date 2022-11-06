@@ -52,6 +52,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AwsSecurityGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSourceVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsVmsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelCloneJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -459,6 +489,69 @@ module Google
         end
       end
       
+      class AwsSecurityGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class AwsSourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_id, as: 'accessKeyId'
+          property :aws_region, as: 'awsRegion'
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
+          collection :inventory_security_group_names, as: 'inventorySecurityGroupNames'
+          hash :inventory_tags, as: 'inventoryTags'
+          hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
+          property :public_ip, as: 'publicIp'
+          property :secret_access_key, as: 'secretAccessKey'
+          property :state, as: 'state'
+        end
+      end
+      
+      class AwsSourceVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
+          property :firmware, as: 'firmware'
+        end
+      end
+      
+      class AwsVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_option, as: 'bootOption'
+          property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
+          property :cpu_count, as: 'cpuCount'
+          property :disk_count, as: 'diskCount'
+          property :display_name, as: 'displayName'
+          property :instance_type, as: 'instanceType'
+          property :memory_mb, as: 'memoryMb'
+          property :os_description, as: 'osDescription'
+          property :power_state, as: 'powerState'
+          collection :security_groups, as: 'securityGroups', class: Google::Apis::VmmigrationV1alpha1::AwsSecurityGroup, decorator: Google::Apis::VmmigrationV1alpha1::AwsSecurityGroup::Representation
+      
+          property :source_description, as: 'sourceDescription'
+          property :source_id, as: 'sourceId'
+          hash :tags, as: 'tags'
+          property :vm_id, as: 'vmId'
+          property :vpc_id, as: 'vpcId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AwsVmsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::VmmigrationV1alpha1::AwsVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsVmDetails::Representation
+      
+        end
+      end
+      
       class CancelCloneJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -666,6 +759,8 @@ module Google
       class FetchInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_vms, as: 'awsVms', class: Google::Apis::VmmigrationV1alpha1::AwsVmsDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsVmsDetails::Representation
+      
           property :next_page_token, as: 'nextPageToken'
           property :update_time, as: 'updateTime'
           property :vmware_vms, as: 'vmwareVms', class: Google::Apis::VmmigrationV1alpha1::VmwareVmsDetails, decorator: Google::Apis::VmmigrationV1alpha1::VmwareVmsDetails::Representation
@@ -840,6 +935,8 @@ module Google
       class MigratingVm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceVmDetails::Representation
+      
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1alpha1::ComputeEngineTargetDefaults::Representation
       
           property :compute_engine_vm_defaults, as: 'computeEngineVmDefaults', class: Google::Apis::VmmigrationV1alpha1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1alpha1::TargetVmDetails::Representation
@@ -1012,6 +1109,8 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws, as: 'aws', class: Google::Apis::VmmigrationV1alpha1::AwsSourceDetails, decorator: Google::Apis::VmmigrationV1alpha1::AwsSourceDetails::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
