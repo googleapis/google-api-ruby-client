@@ -34,30 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnthosVmMembershipSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnthosVmMembershipState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnthosVmSubFeatureSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AnthosVmSubFeatureState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AppDevExperienceFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceAzureAdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IdentityServiceGoogleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -466,12 +448,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocalControllerState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,18 +491,6 @@ module Google
       end
       
       class MeteringMembershipState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MigrateSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MigrateState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,18 +634,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ServiceMeshSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceMeshState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ServiceMeshStatusDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -756,47 +708,6 @@ module Google
           property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
           property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
           property :version, as: 'version'
-        end
-      end
-      
-      class AnthosVmMembershipSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :subfeatures_spec, as: 'subfeaturesSpec', class: Google::Apis::GkehubV1alpha::AnthosVmSubFeatureSpec, decorator: Google::Apis::GkehubV1alpha::AnthosVmSubFeatureSpec::Representation
-      
-        end
-      end
-      
-      class AnthosVmMembershipState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :local_controller_state, as: 'localControllerState', class: Google::Apis::GkehubV1alpha::LocalControllerState, decorator: Google::Apis::GkehubV1alpha::LocalControllerState::Representation
-      
-          collection :subfeature_state, as: 'subfeatureState', class: Google::Apis::GkehubV1alpha::AnthosVmSubFeatureState, decorator: Google::Apis::GkehubV1alpha::AnthosVmSubFeatureState::Representation
-      
-        end
-      end
-      
-      class AnthosVmSubFeatureSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
-          property :migrate_spec, as: 'migrateSpec', class: Google::Apis::GkehubV1alpha::MigrateSpec, decorator: Google::Apis::GkehubV1alpha::MigrateSpec::Representation
-      
-          property :service_mesh_spec, as: 'serviceMeshSpec', class: Google::Apis::GkehubV1alpha::ServiceMeshSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshSpec::Representation
-      
-        end
-      end
-      
-      class AnthosVmSubFeatureState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :installation_state, as: 'installationState'
-          property :migrate_state, as: 'migrateState', class: Google::Apis::GkehubV1alpha::MigrateState, decorator: Google::Apis::GkehubV1alpha::MigrateState::Representation
-      
-          property :service_mesh_state, as: 'serviceMeshState', class: Google::Apis::GkehubV1alpha::ServiceMeshState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshState::Representation
-      
         end
       end
       
@@ -1344,12 +1255,25 @@ module Google
       class IdentityServiceAuthMethod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :azuread_config, as: 'azureadConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig::Representation
+      
           property :google_config, as: 'googleConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig::Representation
       
           property :name, as: 'name'
           property :oidc_config, as: 'oidcConfig', class: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig, decorator: Google::Apis::GkehubV1alpha::IdentityServiceOidcConfig::Representation
       
           property :proxy, as: 'proxy'
+        end
+      end
+      
+      class IdentityServiceAzureAdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
+          property :kubectl_redirect_uri, as: 'kubectlRedirectUri'
+          property :tenant, as: 'tenant'
         end
       end
       
@@ -1480,14 +1404,6 @@ module Google
         end
       end
       
-      class LocalControllerState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :installation_state, as: 'installationState'
-        end
-      end
-      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1545,8 +1461,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec::Representation
       
-          property :anthosvm, as: 'anthosvm', class: Google::Apis::GkehubV1alpha::AnthosVmMembershipSpec, decorator: Google::Apis::GkehubV1alpha::AnthosVmMembershipSpec::Representation
-      
           property :cloudbuild, as: 'cloudbuild', class: Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec, decorator: Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
@@ -1567,8 +1481,6 @@ module Google
       class MembershipFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :anthosvm, as: 'anthosvm', class: Google::Apis::GkehubV1alpha::AnthosVmMembershipState, decorator: Google::Apis::GkehubV1alpha::AnthosVmMembershipState::Representation
-      
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipState::Representation
@@ -1607,18 +1519,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :last_measurement_time, as: 'lastMeasurementTime'
           property :precise_last_measured_cluster_vcpu_capacity, as: 'preciseLastMeasuredClusterVcpuCapacity'
-        end
-      end
-      
-      class MigrateSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class MigrateState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1838,18 +1738,6 @@ module Google
       
           property :data_plane_management, as: 'dataPlaneManagement', class: Google::Apis::GkehubV1alpha::ServiceMeshDataPlaneManagement, decorator: Google::Apis::GkehubV1alpha::ServiceMeshDataPlaneManagement::Representation
       
-        end
-      end
-      
-      class ServiceMeshSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ServiceMeshState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

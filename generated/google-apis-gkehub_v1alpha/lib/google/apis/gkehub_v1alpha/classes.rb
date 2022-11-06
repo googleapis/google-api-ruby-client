@@ -76,129 +76,6 @@ module Google
         end
       end
       
-      # AnthosVMMembershipSpec contains the AnthosVM feature configuration for a
-      # membership/cluster.
-      class AnthosVmMembershipSpec
-        include Google::Apis::Core::Hashable
-      
-        # List of configurations of the Anthos For VM subfeatures that are to be enabled
-        # Corresponds to the JSON property `subfeaturesSpec`
-        # @return [Array<Google::Apis::GkehubV1alpha::AnthosVmSubFeatureSpec>]
-        attr_accessor :subfeatures_spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @subfeatures_spec = args[:subfeatures_spec] if args.key?(:subfeatures_spec)
-        end
-      end
-      
-      # AnthosVMFeatureState contains the state of the AnthosVM feature. It represents
-      # the actual state in the cluster, while the AnthosVMMembershipSpec represents
-      # the desired state.
-      class AnthosVmMembershipState
-        include Google::Apis::Core::Hashable
-      
-        # LocalControllerState contains the state of the local controller deployed in
-        # the cluster.
-        # Corresponds to the JSON property `localControllerState`
-        # @return [Google::Apis::GkehubV1alpha::LocalControllerState]
-        attr_accessor :local_controller_state
-      
-        # List of AnthosVM subfeature states
-        # Corresponds to the JSON property `subfeatureState`
-        # @return [Array<Google::Apis::GkehubV1alpha::AnthosVmSubFeatureState>]
-        attr_accessor :subfeature_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @local_controller_state = args[:local_controller_state] if args.key?(:local_controller_state)
-          @subfeature_state = args[:subfeature_state] if args.key?(:subfeature_state)
-        end
-      end
-      
-      # AnthosVMSubFeatureSpec contains the subfeature configuration for a membership/
-      # cluster.
-      class AnthosVmSubFeatureSpec
-        include Google::Apis::Core::Hashable
-      
-        # Indicates whether the subfeature should be enabled on the cluster or not. If
-        # set to true, the subfeature's control plane and resources will be installed in
-        # the cluster. If set to false, the oneof spec if present will be ignored and
-        # nothing will be installed in the cluster.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # MigrateSpec contains the migrate subfeature configuration.
-        # Corresponds to the JSON property `migrateSpec`
-        # @return [Google::Apis::GkehubV1alpha::MigrateSpec]
-        attr_accessor :migrate_spec
-      
-        # ServiceMeshSpec contains the serviceMesh subfeature configuration.
-        # Corresponds to the JSON property `serviceMeshSpec`
-        # @return [Google::Apis::GkehubV1alpha::ServiceMeshSpec]
-        attr_accessor :service_mesh_spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @migrate_spec = args[:migrate_spec] if args.key?(:migrate_spec)
-          @service_mesh_spec = args[:service_mesh_spec] if args.key?(:service_mesh_spec)
-        end
-      end
-      
-      # AnthosVMSubFeatureState contains the state of the AnthosVM subfeatures.
-      class AnthosVmSubFeatureState
-        include Google::Apis::Core::Hashable
-      
-        # Description represents human readable description of the subfeature state. If
-        # the deployment failed, this should also contain the reason for the failure.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # InstallationState represents the state of installation of the subfeature in
-        # the cluster.
-        # Corresponds to the JSON property `installationState`
-        # @return [String]
-        attr_accessor :installation_state
-      
-        # MigrateState contains the state of Migrate subfeature
-        # Corresponds to the JSON property `migrateState`
-        # @return [Google::Apis::GkehubV1alpha::MigrateState]
-        attr_accessor :migrate_state
-      
-        # ServiceMeshState contains the state of Service Mesh subfeature
-        # Corresponds to the JSON property `serviceMeshState`
-        # @return [Google::Apis::GkehubV1alpha::ServiceMeshState]
-        attr_accessor :service_mesh_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @installation_state = args[:installation_state] if args.key?(:installation_state)
-          @migrate_state = args[:migrate_state] if args.key?(:migrate_state)
-          @service_mesh_state = args[:service_mesh_state] if args.key?(:service_mesh_state)
-        end
-      end
-      
       # Spec for App Dev Experience Feature.
       class AppDevExperienceFeatureSpec
         include Google::Apis::Core::Hashable
@@ -2118,6 +1995,11 @@ module Google
       class IdentityServiceAuthMethod
         include Google::Apis::Core::Hashable
       
+        # Configuration for the AzureAD Auth flow.
+        # Corresponds to the JSON property `azureadConfig`
+        # @return [Google::Apis::GkehubV1alpha::IdentityServiceAzureAdConfig]
+        attr_accessor :azuread_config
+      
         # Configuration for the Google Plugin Auth flow.
         # Corresponds to the JSON property `googleConfig`
         # @return [Google::Apis::GkehubV1alpha::IdentityServiceGoogleConfig]
@@ -2144,10 +2026,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @azuread_config = args[:azuread_config] if args.key?(:azuread_config)
           @google_config = args[:google_config] if args.key?(:google_config)
           @name = args[:name] if args.key?(:name)
           @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
           @proxy = args[:proxy] if args.key?(:proxy)
+        end
+      end
+      
+      # Configuration for the AzureAD Auth flow.
+      class IdentityServiceAzureAdConfig
+        include Google::Apis::Core::Hashable
+      
+        # ID for the registered client application that makes authentication requests to
+        # the Azure AD identity provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub
+        # CLH.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Output only. Encrypted AzureAD client secret.
+        # Corresponds to the JSON property `encryptedClientSecret`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_client_secret
+      
+        # The redirect URL that kubectl uses for authorization.
+        # Corresponds to the JSON property `kubectlRedirectUri`
+        # @return [String]
+        attr_accessor :kubectl_redirect_uri
+      
+        # Kind of Azure AD account to be authenticated. Supported values are or for
+        # accounts belonging to a specific tenant.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
+          @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
+          @tenant = args[:tenant] if args.key?(:tenant)
         end
       end
       
@@ -2611,34 +2541,6 @@ module Google
         end
       end
       
-      # LocalControllerState contains the state of the local controller deployed in
-      # the cluster.
-      class LocalControllerState
-        include Google::Apis::Core::Hashable
-      
-        # Description represents the human readable description of the current state of
-        # the local PE controller
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # InstallationState represents the state of deployment of the local PE
-        # controller in the cluster.
-        # Corresponds to the JSON property `installationState`
-        # @return [String]
-        attr_accessor :installation_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @installation_state = args[:installation_state] if args.key?(:installation_state)
-        end
-      end
-      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -2858,12 +2760,6 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec]
         attr_accessor :anthosobservability
       
-        # AnthosVMMembershipSpec contains the AnthosVM feature configuration for a
-        # membership/cluster.
-        # Corresponds to the JSON property `anthosvm`
-        # @return [Google::Apis::GkehubV1alpha::AnthosVmMembershipSpec]
-        attr_accessor :anthosvm
-      
         # **Cloud Build**: Configurations for each Cloud Build enabled cluster.
         # Corresponds to the JSON property `cloudbuild`
         # @return [Google::Apis::GkehubV1alpha::CloudBuildMembershipSpec]
@@ -2910,7 +2806,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
-          @anthosvm = args[:anthosvm] if args.key?(:anthosvm)
           @cloudbuild = args[:cloudbuild] if args.key?(:cloudbuild)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
@@ -2925,13 +2820,6 @@ module Google
       # Membership.
       class MembershipFeatureState
         include Google::Apis::Core::Hashable
-      
-        # AnthosVMFeatureState contains the state of the AnthosVM feature. It represents
-        # the actual state in the cluster, while the AnthosVMMembershipSpec represents
-        # the desired state.
-        # Corresponds to the JSON property `anthosvm`
-        # @return [Google::Apis::GkehubV1alpha::AnthosVmMembershipState]
-        attr_accessor :anthosvm
       
         # State for App Dev Exp Feature.
         # Corresponds to the JSON property `appdevexperience`
@@ -2983,7 +2871,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @anthosvm = args[:anthosvm] if args.key?(:anthosvm)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
@@ -3058,32 +2945,6 @@ module Google
         def update!(**args)
           @last_measurement_time = args[:last_measurement_time] if args.key?(:last_measurement_time)
           @precise_last_measured_cluster_vcpu_capacity = args[:precise_last_measured_cluster_vcpu_capacity] if args.key?(:precise_last_measured_cluster_vcpu_capacity)
-        end
-      end
-      
-      # MigrateSpec contains the migrate subfeature configuration.
-      class MigrateSpec
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # MigrateState contains the state of Migrate subfeature
-      class MigrateState
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3918,32 +3779,6 @@ module Google
           @config_api_version = args[:config_api_version] if args.key?(:config_api_version)
           @control_plane_management = args[:control_plane_management] if args.key?(:control_plane_management)
           @data_plane_management = args[:data_plane_management] if args.key?(:data_plane_management)
-        end
-      end
-      
-      # ServiceMeshSpec contains the serviceMesh subfeature configuration.
-      class ServiceMeshSpec
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # ServiceMeshState contains the state of Service Mesh subfeature
-      class ServiceMeshState
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
