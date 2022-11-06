@@ -619,6 +619,11 @@ module Google
         # @return [String]
         attr_accessor :build_number
       
+        # List of the clients the device is reporting to.
+        # Corresponds to the JSON property `clientTypes`
+        # @return [Array<String>]
+        attr_accessor :client_types
+      
         # Output only. Represents whether the Device is compromised.
         # Corresponds to the JSON property `compromisedState`
         # @return [String]
@@ -662,6 +667,11 @@ module Google
         # Corresponds to the JSON property `endpointVerificationSpecificAttributes`
         # @return [Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes]
         attr_accessor :endpoint_verification_specific_attributes
+      
+        # Host name of the device.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
       
         # Output only. IMEI number of device if GSM device; empty otherwise.
         # Corresponds to the JSON property `imei`
@@ -761,6 +771,7 @@ module Google
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @brand = args[:brand] if args.key?(:brand)
           @build_number = args[:build_number] if args.key?(:build_number)
+          @client_types = args[:client_types] if args.key?(:client_types)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
           @create_time = args[:create_time] if args.key?(:create_time)
           @device_id = args[:device_id] if args.key?(:device_id)
@@ -769,6 +780,7 @@ module Google
           @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
           @endpoint_verification_specific_attributes = args[:endpoint_verification_specific_attributes] if args.key?(:endpoint_verification_specific_attributes)
+          @hostname = args[:hostname] if args.key?(:hostname)
           @imei = args[:imei] if args.key?(:imei)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
