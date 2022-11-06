@@ -875,6 +875,7 @@ module Google
           property :bootloader_version, as: 'bootloaderVersion'
           property :brand, as: 'brand'
           property :build_number, as: 'buildNumber'
+          collection :client_types, as: 'clientTypes'
           property :compromised_state, as: 'compromisedState'
           property :create_time, as: 'createTime'
           property :device_id, as: 'deviceId'
@@ -884,6 +885,7 @@ module Google
           property :encryption_state, as: 'encryptionState'
           property :endpoint_verification_specific_attributes, as: 'endpointVerificationSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes, decorator: Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes::Representation
       
+          property :hostname, as: 'hostname'
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
           property :last_sync_time, as: 'lastSyncTime'
