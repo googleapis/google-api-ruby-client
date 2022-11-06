@@ -1,0 +1,7 @@
+{
+    "api_id": "discoveryengine:v1beta",
+    "name_pretty": "Discovery Engine API",
+    "distribution_name": "google-apis-discoveryengine_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
