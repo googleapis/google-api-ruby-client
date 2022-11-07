@@ -22,6 +22,19 @@ module Google
   module Apis
     module VmmigrationV1
       
+      # AdaptingOSStep contains specific step details.
+      class AdaptingOsStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'AddGroupMigration' request.
       class AddGroupMigrationRequest
         include Google::Apis::Core::Hashable
@@ -222,6 +235,11 @@ module Google
         # @return [String]
         attr_accessor :state_time
       
+        # Output only. The clone steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1::CloneStep>]
+        attr_accessor :steps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -235,6 +253,50 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @state_time = args[:state_time] if args.key?(:state_time)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # CloneStep holds information about the clone step progress.
+      class CloneStep
+        include Google::Apis::Core::Hashable
+      
+        # AdaptingOSStep contains specific step details.
+        # Corresponds to the JSON property `adaptingOs`
+        # @return [Google::Apis::VmmigrationV1::AdaptingOsStep]
+        attr_accessor :adapting_os
+      
+        # The time the step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # InstantiatingMigratedVMStep contains specific step details.
+        # Corresponds to the JSON property `instantiatingMigratedVm`
+        # @return [Google::Apis::VmmigrationV1::InstantiatingMigratedVmStep]
+        attr_accessor :instantiating_migrated_vm
+      
+        # PreparingVMDisksStep contains specific step details.
+        # Corresponds to the JSON property `preparingVmDisks`
+        # @return [Google::Apis::VmmigrationV1::PreparingVmDisksStep]
+        attr_accessor :preparing_vm_disks
+      
+        # The time the step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapting_os = args[:adapting_os] if args.key?(:adapting_os)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @instantiating_migrated_vm = args[:instantiating_migrated_vm] if args.key?(:instantiating_migrated_vm)
+          @preparing_vm_disks = args[:preparing_vm_disks] if args.key?(:preparing_vm_disks)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -592,6 +654,11 @@ module Google
         # @return [String]
         attr_accessor :state_time
       
+        # Output only. The cutover steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1::CutoverStep>]
+        attr_accessor :steps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -607,6 +674,107 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @state_time = args[:state_time] if args.key?(:state_time)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # CutoverStep holds information about the cutover step progress.
+      class CutoverStep
+        include Google::Apis::Core::Hashable
+      
+        # The time the step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # ReplicationCycle contains information about the current replication cycle
+        # status.
+        # Corresponds to the JSON property `finalSync`
+        # @return [Google::Apis::VmmigrationV1::ReplicationCycle]
+        attr_accessor :final_sync
+      
+        # InstantiatingMigratedVMStep contains specific step details.
+        # Corresponds to the JSON property `instantiatingMigratedVm`
+        # @return [Google::Apis::VmmigrationV1::InstantiatingMigratedVmStep]
+        attr_accessor :instantiating_migrated_vm
+      
+        # PreparingVMDisksStep contains specific step details.
+        # Corresponds to the JSON property `preparingVmDisks`
+        # @return [Google::Apis::VmmigrationV1::PreparingVmDisksStep]
+        attr_accessor :preparing_vm_disks
+      
+        # ReplicationCycle contains information about the current replication cycle
+        # status.
+        # Corresponds to the JSON property `previousReplicationCycle`
+        # @return [Google::Apis::VmmigrationV1::ReplicationCycle]
+        attr_accessor :previous_replication_cycle
+      
+        # ShuttingDownSourceVMStep contains specific step details.
+        # Corresponds to the JSON property `shuttingDownSourceVm`
+        # @return [Google::Apis::VmmigrationV1::ShuttingDownSourceVmStep]
+        attr_accessor :shutting_down_source_vm
+      
+        # The time the step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @final_sync = args[:final_sync] if args.key?(:final_sync)
+          @instantiating_migrated_vm = args[:instantiating_migrated_vm] if args.key?(:instantiating_migrated_vm)
+          @preparing_vm_disks = args[:preparing_vm_disks] if args.key?(:preparing_vm_disks)
+          @previous_replication_cycle = args[:previous_replication_cycle] if args.key?(:previous_replication_cycle)
+          @shutting_down_source_vm = args[:shutting_down_source_vm] if args.key?(:shutting_down_source_vm)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # CycleStep holds information about a step progress.
+      class CycleStep
+        include Google::Apis::Core::Hashable
+      
+        # The time the cycle step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # InitializingReplicationStep contains specific step details.
+        # Corresponds to the JSON property `initializingReplication`
+        # @return [Google::Apis::VmmigrationV1::InitializingReplicationStep]
+        attr_accessor :initializing_replication
+      
+        # PostProcessingStep contains specific step details.
+        # Corresponds to the JSON property `postProcessing`
+        # @return [Google::Apis::VmmigrationV1::PostProcessingStep]
+        attr_accessor :post_processing
+      
+        # ReplicatingStep contains specific step details.
+        # Corresponds to the JSON property `replicating`
+        # @return [Google::Apis::VmmigrationV1::ReplicatingStep]
+        attr_accessor :replicating
+      
+        # The time the cycle step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @initializing_replication = args[:initializing_replication] if args.key?(:initializing_replication)
+          @post_processing = args[:post_processing] if args.key?(:post_processing)
+          @replicating = args[:replicating] if args.key?(:replicating)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -826,6 +994,32 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # InitializingReplicationStep contains specific step details.
+      class InitializingReplicationStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # InstantiatingMigratedVMStep contains specific step details.
+      class InstantiatingMigratedVmStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1619,6 +1813,32 @@ module Google
         end
       end
       
+      # PostProcessingStep contains specific step details.
+      class PostProcessingStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # PreparingVMDisksStep contains specific step details.
+      class PreparingVmDisksStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'RemoveMigration' request.
       class RemoveGroupMigrationRequest
         include Google::Apis::Core::Hashable
@@ -1638,12 +1858,75 @@ module Google
         end
       end
       
+      # ReplicatingStep contains specific step details.
+      class ReplicatingStep
+        include Google::Apis::Core::Hashable
+      
+        # The source disks replication rate for the last 30 minutes in bytes per second.
+        # Corresponds to the JSON property `lastThirtyMinutesAverageBytesPerSecond`
+        # @return [Fixnum]
+        attr_accessor :last_thirty_minutes_average_bytes_per_second
+      
+        # The source disks replication rate for the last 2 minutes in bytes per second.
+        # Corresponds to the JSON property `lastTwoMinutesAverageBytesPerSecond`
+        # @return [Fixnum]
+        attr_accessor :last_two_minutes_average_bytes_per_second
+      
+        # Replicated bytes in the step.
+        # Corresponds to the JSON property `replicatedBytes`
+        # @return [Fixnum]
+        attr_accessor :replicated_bytes
+      
+        # Total bytes to be handled in the step.
+        # Corresponds to the JSON property `totalBytes`
+        # @return [Fixnum]
+        attr_accessor :total_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_thirty_minutes_average_bytes_per_second = args[:last_thirty_minutes_average_bytes_per_second] if args.key?(:last_thirty_minutes_average_bytes_per_second)
+          @last_two_minutes_average_bytes_per_second = args[:last_two_minutes_average_bytes_per_second] if args.key?(:last_two_minutes_average_bytes_per_second)
+          @replicated_bytes = args[:replicated_bytes] if args.key?(:replicated_bytes)
+          @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
+        end
+      end
+      
       # ReplicationCycle contains information about the current replication cycle
       # status.
       class ReplicationCycle
         include Google::Apis::Core::Hashable
       
-        # The current progress in percentage of this cycle.
+        # The cycle's ordinal number.
+        # Corresponds to the JSON property `cycleNumber`
+        # @return [Fixnum]
+        attr_accessor :cycle_number
+      
+        # The time the replication cycle has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VmmigrationV1::Status]
+        attr_accessor :error
+      
+        # The identifier of the ReplicationCycle.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The current progress in percentage of this cycle. Was replaced by 'steps'
+        # field, which breaks down the cycle progression more accurately.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
@@ -1653,14 +1936,36 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # State of the ReplicationCycle.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The cycle's steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1::CycleStep>]
+        attr_accessor :steps
+      
+        # The accumulated duration the replication cycle was paused.
+        # Corresponds to the JSON property `totalPauseDuration`
+        # @return [String]
+        attr_accessor :total_pause_duration
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cycle_number = args[:cycle_number] if args.key?(:cycle_number)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error = args[:error] if args.key?(:error)
+          @name = args[:name] if args.key?(:name)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @steps = args[:steps] if args.key?(:steps)
+          @total_pause_duration = args[:total_pause_duration] if args.key?(:total_pause_duration)
         end
       end
       
@@ -1754,6 +2059,19 @@ module Google
           @key = args[:key] if args.key?(:key)
           @operator = args[:operator] if args.key?(:operator)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # ShuttingDownSourceVMStep contains specific step details.
+      class ShuttingDownSourceVmStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
