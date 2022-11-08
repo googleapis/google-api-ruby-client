@@ -969,6 +969,11 @@ module Google
         # @return [String]
         attr_accessor :external_uri
       
+        # File associated with the finding.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::File>]
+        attr_accessor :files
+      
         # The class of the finding.
         # Corresponds to the JSON property `findingClass`
         # @return [String]
@@ -1110,6 +1115,7 @@ module Google
           @exfiltration = args[:exfiltration] if args.key?(:exfiltration)
           @external_systems = args[:external_systems] if args.key?(:external_systems)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @files = args[:files] if args.key?(:files)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
