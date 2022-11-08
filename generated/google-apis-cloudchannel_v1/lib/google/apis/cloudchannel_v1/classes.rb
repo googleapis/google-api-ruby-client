@@ -1554,6 +1554,11 @@ module Google
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Constraints]
         attr_accessor :constraints
       
+        # The deal code of the offer to get a special promotion or discount.
+        # Corresponds to the JSON property `dealCode`
+        # @return [String]
+        attr_accessor :deal_code
+      
         # Output only. End of the Offer validity time.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -1604,6 +1609,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @constraints = args[:constraints] if args.key?(:constraints)
+          @deal_code = args[:deal_code] if args.key?(:deal_code)
           @end_time = args[:end_time] if args.key?(:end_time)
           @marketing_info = args[:marketing_info] if args.key?(:marketing_info)
           @name = args[:name] if args.key?(:name)
