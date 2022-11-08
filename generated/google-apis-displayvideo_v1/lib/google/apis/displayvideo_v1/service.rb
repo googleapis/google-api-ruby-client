@@ -300,7 +300,7 @@ module Google
         #   ascending. To specify descending order for a field, a suffix "desc" should be
         #   added to the field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -616,7 +616,7 @@ module Google
         #   ascending. To specify descending order for a field, a suffix "desc" should be
         #   added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -911,7 +911,7 @@ module Google
         #   descending order for a field, a suffix " desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -1358,7 +1358,7 @@ module Google
         #   order for a field, a suffix "desc" should be added to the field name. Example:
         #   `createTime desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -1832,7 +1832,7 @@ module Google
         #   Select type of invoice to retrieve for Loi Sapin advertisers. Only applicable
         #   to Loi Sapin advertisers. Will be ignored otherwise.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -2191,7 +2191,7 @@ module Google
         #   default sorting order is ascending. To specify descending order for a field, a
         #   suffix "desc" should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -2550,7 +2550,7 @@ module Google
         #   descending order for a field, a suffix "desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. Defaults to `100` if not
+        #   Requested page size. Must be between `1` and `200`. Defaults to `100` if not
         #   set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -2757,7 +2757,7 @@ module Google
         #   for a field, a suffix " desc" should be added to the field name. Example: `
         #   assignedLocationId desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -2958,7 +2958,7 @@ module Google
         #   descending order for a field, a suffix "desc" should be added to the field
         #   name. For example, `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -3146,7 +3146,7 @@ module Google
         #   Required. The ID of the DV360 advertiser to which the fetched negative keyword
         #   lists belong.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. Defaults to `100` if not
+        #   Requested page size. Must be between `1` and `200`. Defaults to `100` if not
         #   set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -3677,7 +3677,7 @@ module Google
         #   descending order for a field, a suffix "desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -3812,7 +3812,7 @@ module Google
         #   for a field, a suffix "desc" should be added to the field name. Example: `
         #   displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4024,7 +4024,7 @@ module Google
         #   default) The default sorting order is descending. To specify ascending order
         #   for a field, the suffix "desc" should be removed. Example: `createTime`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4116,7 +4116,7 @@ module Google
         #   descending order for a field, a suffix "desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4283,7 +4283,7 @@ module Google
         #   order is ascending. To specify descending order for a field, a suffix "desc"
         #   should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4497,7 +4497,7 @@ module Google
         #   descending order for a field, a suffix "desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -4670,8 +4670,8 @@ module Google
         #   for a field, a suffix "desc" should be added to the field name. For example, `
         #   displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified or greater
-        #   than `100` will default to `100`.
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
+        #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of next_page_token returned from the previous call to `
@@ -4891,7 +4891,7 @@ module Google
         #   specify descending order for a field, a suffix "desc" should be added to the
         #   field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -5299,7 +5299,7 @@ module Google
         #   for a field, a suffix "desc" should be added to the field name. For example, `
         #   displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -5550,7 +5550,7 @@ module Google
         #   suffix "desc" should be added to the field name. For example, `displayName
         #   desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
@@ -5677,7 +5677,7 @@ module Google
         #   descending order for a field, a suffix " desc" should be added to the field
         #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -6106,7 +6106,7 @@ module Google
         #   To specify descending order for a field, a suffix "desc" should be added to
         #   the field name. Example: `assignedTargetingOptionId desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -6303,7 +6303,7 @@ module Google
         #   for a field, a suffix "desc" should be added to the field name. Example: `
         #   targetingOptionId desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
@@ -6534,7 +6534,7 @@ module Google
         #   for a field, a suffix "desc" should be added to the field name. For example, `
         #   displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   Requested page size. Must be between `1` and `200`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
