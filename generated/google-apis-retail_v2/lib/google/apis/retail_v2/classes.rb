@@ -3161,7 +3161,7 @@ module Google
         attr_accessor :replacement_action
       
         # Creates a set of terms that will be treated as synonyms of each other. Example:
-        # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+        # synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes"
         # . * "shoes" will use a synonym of "sneakers".
         # Corresponds to the JSON property `twowaySynonymsAction`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2RuleTwowaySynonymsAction]
@@ -3400,7 +3400,7 @@ module Google
       end
       
       # Creates a set of terms that will be treated as synonyms of each other. Example:
-      # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+      # synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes"
       # . * "shoes" will use a synonym of "sneakers".
       class GoogleCloudRetailV2RuleTwowaySynonymsAction
         include Google::Apis::Core::Hashable
