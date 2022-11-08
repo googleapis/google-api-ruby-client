@@ -23,6 +23,7 @@ module Google
       # Transcoder API
       #
       # This API converts video files into formats suitable for consumer distribution.
+      #  For more information, see the Transcoder API overview.
       #
       # @example
       #    require 'google/apis/transcoder_v1'
