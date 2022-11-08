@@ -446,6 +446,117 @@ module Google
         end
       end
       
+      # The InternalRange resource for IPAM operations within a VPC network. Used to
+      # represent a private address range along with behavioral characterstics of that
+      # range (it's usage and peering behavior). Networking resources can link to this
+      # range if they are created as belonging to it. Next id: 14
+      class InternalRange
+        include Google::Apis::Core::Hashable
+      
+        # Time when the InternalRange was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # IP range that this InternalRange defines.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. The name of a InternalRange. Format: projects/`project`/locations/`
+        # location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
+        # fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The URL or resource ID of the network in which to reserve the Internal Range.
+        # The network cannot be deleted if there are any reserved Internal Ranges
+        # referring to it. Legacy network is not supported. This can only be specified
+        # for a global internal address. Example: - URL: /compute/v1/projects/`project`/
+        # global/networks/`resourceId` - ID: network123
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. Types of resources that are allowed to overlap with the current
+        # InternalRange.
+        # Corresponds to the JSON property `overlaps`
+        # @return [Array<String>]
+        attr_accessor :overlaps
+      
+        # The type of peering set for this InternalRange.
+        # Corresponds to the JSON property `peering`
+        # @return [String]
+        attr_accessor :peering
+      
+        # An alternate to ip_cidr_range. Can be set when trying to create a reservation
+        # that automatically finds a free range of the given size. If both ip_cidr_range
+        # and prefix_length are set, it's an error if the range sizes don't match. Can
+        # also be used during updates to change the range size.
+        # Corresponds to the JSON property `prefixLength`
+        # @return [Fixnum]
+        attr_accessor :prefix_length
+      
+        # Optional. Can be set to narrow down or pick a different address space while
+        # searching for a free range. If not set, defaults to the "10.0.0.0/8" address
+        # space. This can be used to search in other rfc-1918 address spaces like "172.
+        # 16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        # Corresponds to the JSON property `targetCidrRange`
+        # @return [Array<String>]
+        attr_accessor :target_cidr_range
+      
+        # Time when the InternalRange was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The type of usage set for this InternalRange.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        # Output only. The list of resources that refer to this internal range.
+        # Resources that use the InternalRange for their range allocation are referred
+        # to as users of the range. Other resources mark themselves as users while doing
+        # so by creating a reference to this InternalRange. Having a user, based on this
+        # reference, prevents deletion of the InternalRange referred to. Can be empty.
+        # Corresponds to the JSON property `users`
+        # @return [Array<String>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @overlaps = args[:overlaps] if args.key?(:overlaps)
+          @peering = args[:peering] if args.key?(:peering)
+          @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @target_cidr_range = args[:target_cidr_range] if args.key?(:target_cidr_range)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @usage = args[:usage] if args.key?(:usage)
+          @users = args[:users] if args.key?(:users)
+        end
+      end
+      
       # Response for HubService.ListHubs method.
       class ListHubsResponse
         include Google::Apis::Core::Hashable
@@ -473,6 +584,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @hubs = args[:hubs] if args.key?(:hubs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for InternalRange.ListInternalRanges
+      class ListInternalRangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # InternalRanges to be returned.
+        # Corresponds to the JSON property `internalRanges`
+        # @return [Array<Google::Apis::NetworkconnectivityV1alpha1::InternalRange>]
+        attr_accessor :internal_ranges
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @internal_ranges = args[:internal_ranges] if args.key?(:internal_ranges)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
