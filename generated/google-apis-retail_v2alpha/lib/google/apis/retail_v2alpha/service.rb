@@ -72,7 +72,8 @@ module Google
         #   all device types. Supported formats: * `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `
         #   MOBILE` * A customized string starts with `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Boolean] enable_attribute_suggestions
-        #   If true, attribute suggestions are enabled and provided in response.
+        #   If true, attribute suggestions are enabled and provided in response. This
+        #   field is only available for "cloud-retail" dataset.
         # @param [Array<String>, String] language_codes
         #   Note that this field applies for `user-data` dataset only. For requests with `
         #   cloud-retail` dataset, setting this field has no effect. The language filters

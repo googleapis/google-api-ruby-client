@@ -1285,8 +1285,8 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
-        # A map of matched attribute suggestions. Current supported keys: * `brands` * `
-        # categories`
+        # A map of matched attribute suggestions. This field is only available for "
+        # cloud-retail" dataset. Current supported keys: * `brands` * `categories`
         # Corresponds to the JSON property `attributeResults`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult>]
         attr_accessor :attribute_results
@@ -4432,7 +4432,7 @@ module Google
         attr_accessor :replacement_action
       
         # Creates a set of terms that will be treated as synonyms of each other. Example:
-        # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+        # synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes"
         # . * "shoes" will use a synonym of "sneakers".
         # Corresponds to the JSON property `twowaySynonymsAction`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRuleTwowaySynonymsAction]
@@ -4671,7 +4671,7 @@ module Google
       end
       
       # Creates a set of terms that will be treated as synonyms of each other. Example:
-      # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+      # synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes"
       # . * "shoes" will use a synonym of "sneakers".
       class GoogleCloudRetailV2alphaRuleTwowaySynonymsAction
         include Google::Apis::Core::Hashable
