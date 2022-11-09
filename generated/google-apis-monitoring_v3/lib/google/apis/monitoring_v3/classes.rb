@@ -157,7 +157,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A content string and a MIME type that describes the content string's format.
+        # User-defined documentation of the generated notification.
         # Corresponds to the JSON property `documentation`
         # @return [Google::Apis::MonitoringV3::Documentation]
         attr_accessor :documentation
@@ -1101,11 +1101,11 @@ module Google
         end
       end
       
-      # A content string and a MIME type that describes the content string's format.
+      # User-defined documentation of the generated notification.
       class Documentation
         include Google::Apis::Core::Hashable
       
-        # The text of the documentation, interpreted according to mime_type. The content
+        # The body of the notification, interpreted according to mime_type. The content
         # may not exceed 8,192 Unicode characters and may not exceed more than 10,240
         # bytes when encoded in UTF-8 format, whichever is smaller. This text can be
         # templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-
@@ -1121,6 +1121,12 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
+        # A public comment for an internal field, because the linter insists that all
+        # fields must have a comment. Sigh.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1129,6 +1135,7 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @subject = args[:subject] if args.key?(:subject)
         end
       end
       
