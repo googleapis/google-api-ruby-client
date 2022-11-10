@@ -36376,6 +36376,11 @@ module Google
         # @return [String]
         attr_accessor :locality
       
+        # Specifies the number of max logical switches.
+        # Corresponds to the JSON property `maxDistance`
+        # @return [Fixnum]
+        attr_accessor :max_distance
+      
         # Scope specifies the availability domain to which the VMs should be spread.
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -36407,6 +36412,7 @@ module Google
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
           @locality = args[:locality] if args.key?(:locality)
+          @max_distance = args[:max_distance] if args.key?(:max_distance)
           @scope = args[:scope] if args.key?(:scope)
           @style = args[:style] if args.key?(:style)
           @tpu_topology = args[:tpu_topology] if args.key?(:tpu_topology)
@@ -41745,6 +41751,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_limit
       
+        # The network URL for the network to set the limit for.
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
         # The project id or number for the project to set the limit for.
         # Corresponds to the JSON property `projectIdOrNum`
         # @return [String]
@@ -41757,6 +41768,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_limit = args[:connection_limit] if args.key?(:connection_limit)
+          @network_url = args[:network_url] if args.key?(:network_url)
           @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
         end
       end
