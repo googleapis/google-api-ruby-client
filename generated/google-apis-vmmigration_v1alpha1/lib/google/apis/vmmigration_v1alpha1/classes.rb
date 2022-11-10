@@ -197,7 +197,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :inventory_security_group_names
       
-        # AWS resource tags to limit the scope of the source inventory.
+        # Deprecated: AWS resource tags to limit the scope of the source inventory. Use
+        # inventory_tag_list instead.
         # Corresponds to the JSON property `inventoryTags`
         # @return [Hash<String,String>]
         attr_accessor :inventory_tags
@@ -272,6 +273,11 @@ module Google
       class AwsVmDetails
         include Google::Apis::Core::Hashable
       
+        # The CPU architecture.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # The VM Boot Option.
         # Corresponds to the JSON property `bootOption`
         # @return [String]
@@ -337,6 +343,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
+        # The virtualization type.
+        # Corresponds to the JSON property `virtualizationType`
+        # @return [String]
+        attr_accessor :virtualization_type
+      
         # The VM ID in AWS.
         # Corresponds to the JSON property `vmId`
         # @return [String]
@@ -358,6 +369,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @committed_storage_mb = args[:committed_storage_mb] if args.key?(:committed_storage_mb)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
@@ -371,6 +383,7 @@ module Google
           @source_description = args[:source_description] if args.key?(:source_description)
           @source_id = args[:source_id] if args.key?(:source_id)
           @tags = args[:tags] if args.key?(:tags)
+          @virtualization_type = args[:virtualization_type] if args.key?(:virtualization_type)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
           @vpc_id = args[:vpc_id] if args.key?(:vpc_id)
           @zone = args[:zone] if args.key?(:zone)
@@ -2251,7 +2264,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :progress
       
-        # The current progress in percentage of this cycle.
+        # The current progress in percentage of this cycle. Was replaced by 'steps'
+        # field, which breaks down the cycle progression more accurately.
         # Corresponds to the JSON property `progressPercent`
         # @return [Fixnum]
         attr_accessor :progress_percent
@@ -2261,7 +2275,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # State of the MigratingVm.
+        # State of the ReplicationCycle.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
