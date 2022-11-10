@@ -487,6 +487,40 @@ module Google
         end
       end
       
+      # The definition of a report column. Specifies the data properties in the
+      # corresponding position of the report rows.
+      class GoogleCloudChannelV1Column
+        include Google::Apis::Core::Hashable
+      
+        # The unique name of the column (for example, customer_domain, channel_partner,
+        # customer_cost). You can use column IDs in RunReportJobRequest.filter. To see
+        # all reports and their columns, call CloudChannelReportsService.ListReports.
+        # Corresponds to the JSON property `columnId`
+        # @return [String]
+        attr_accessor :column_id
+      
+        # The type of the values for this column.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # The column's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_id = args[:column_id] if args.key?(:column_id)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Commitment settings for commitment-based offers.
       class GoogleCloudChannelV1CommitmentSettings
         include Google::Apis::Core::Hashable
@@ -816,6 +850,83 @@ module Google
         end
       end
       
+      # A representation of usage or invoice date ranges.
+      class GoogleCloudChannelV1DateRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `invoiceEndDate`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :invoice_end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `invoiceStartDate`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :invoice_start_date
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `usageEndDateTime`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDateTime]
+        attr_accessor :usage_end_date_time
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `usageStartDateTime`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDateTime]
+        attr_accessor :usage_start_date_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_end_date = args[:invoice_end_date] if args.key?(:invoice_end_date)
+          @invoice_start_date = args[:invoice_start_date] if args.key?(:invoice_start_date)
+          @usage_end_date_time = args[:usage_end_date_time] if args.key?(:usage_end_date_time)
+          @usage_start_date_time = args[:usage_start_date_time] if args.key?(:usage_start_date_time)
+        end
+      end
+      
       # Required Edu Attributes
       class GoogleCloudChannelV1EduData
         include Google::Apis::Core::Hashable
@@ -965,6 +1076,71 @@ module Google
         def update!(**args)
           @entitlement = args[:entitlement] if args.key?(:entitlement)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # Request message for CloudChannelReportsService.FetchReportResults.
+      class GoogleCloudChannelV1FetchReportResultsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Requested page size of the report. The server may return fewer
+        # results than requested. If you don't specify a page size, the server uses a
+        # sensible default (may change over time). The maximum value is 30,000; the
+        # server will change larger values to 30,000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A token that specifies a page of results beyond the first page.
+        # Obtained through FetchReportResultsResponse.next_page_token of the previous
+        # CloudChannelReportsService.FetchReportResults call.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+        end
+      end
+      
+      # Response message for CloudChannelReportsService.FetchReportResults. Contains a
+      # tabular representation of the report results.
+      class GoogleCloudChannelV1FetchReportResultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pass this token to FetchReportResultsRequest.page_token to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The features describing the data. Returned by CloudChannelReportsService.
+        # RunReportJob and CloudChannelReportsService.FetchReportResults.
+        # Corresponds to the JSON property `reportMetadata`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata]
+        attr_accessor :report_metadata
+      
+        # The report's lists of values. Each row follows the settings and ordering of
+        # the columns from `report_metadata`.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @report_metadata = args[:report_metadata] if args.key?(:report_metadata)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -1253,6 +1429,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @purchasable_skus = args[:purchasable_skus] if args.key?(:purchasable_skus)
+        end
+      end
+      
+      # Response message for CloudChannelReportsService.ListReports.
+      class GoogleCloudChannelV1ListReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pass this token to FetchReportResultsRequest.page_token to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The reports available to the partner.
+        # Corresponds to the JSON property `reports`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report>]
+        attr_accessor :reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reports = args[:reports] if args.key?(:reports)
         end
       end
       
@@ -2183,6 +2385,217 @@ module Google
         end
       end
       
+      # The ID and description of a report that was used to generate report data. For
+      # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+      class GoogleCloudChannelV1Report
+        include Google::Apis::Core::Hashable
+      
+        # The list of columns included in the report. This defines the schema of the
+        # report results.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Column>]
+        attr_accessor :columns
+      
+        # A description of other aspects of the report, such as the products it supports.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A human-readable name for this report.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The report's resource name. Specifies the account and report used to
+        # generate report data. The report_id identifier is a UID (for example, `
+        # 613bf59q`). Name uses the format: accounts/`account_id`/reports/`report_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The result of a RunReportJob operation. Contains the name to use in
+      # FetchReportResultsRequest.report_job and the status of the operation.
+      class GoogleCloudChannelV1ReportJob
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of a report job. Name uses the format: `accounts/`
+        # account_id`/reportJobs/`report_job_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Status of a report generation process.
+        # Corresponds to the JSON property `reportStatus`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportStatus]
+        attr_accessor :report_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @report_status = args[:report_status] if args.key?(:report_status)
+        end
+      end
+      
+      # The features describing the data. Returned by CloudChannelReportsService.
+      # RunReportJob and CloudChannelReportsService.FetchReportResults.
+      class GoogleCloudChannelV1ReportResultsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A representation of usage or invoice date ranges.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange]
+        attr_accessor :date_range
+      
+        # A representation of usage or invoice date ranges.
+        # Corresponds to the JSON property `precedingDateRange`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange]
+        attr_accessor :preceding_date_range
+      
+        # The ID and description of a report that was used to generate report data. For
+        # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+        # Corresponds to the JSON property `report`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report]
+        attr_accessor :report
+      
+        # The total number of rows of data in the final report.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @preceding_date_range = args[:preceding_date_range] if args.key?(:preceding_date_range)
+          @report = args[:report] if args.key?(:report)
+          @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # Status of a report generation process.
+      class GoogleCloudChannelV1ReportStatus
+        include Google::Apis::Core::Hashable
+      
+        # The report generation's completion time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The report generation's start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The current state of the report generation process.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A single report value.
+      class GoogleCloudChannelV1ReportValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `dateTimeValue`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDateTime]
+        attr_accessor :date_time_value
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `dateValue`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :date_value
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `decimalValue`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDecimal]
+        attr_accessor :decimal_value
+      
+        # A value of type `int`.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `moneyValue`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeMoney]
+        attr_accessor :money_value
+      
+        # A value of type `string`.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_time_value = args[:date_time_value] if args.key?(:date_time_value)
+          @date_value = args[:date_value] if args.key?(:date_value)
+          @decimal_value = args[:decimal_value] if args.key?(:decimal_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @money_value = args[:money_value] if args.key?(:money_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # A type that represents the various adjustments you can apply to a bill.
       class GoogleCloudChannelV1RepricingAdjustment
         include Google::Apis::Core::Hashable
@@ -2285,6 +2698,89 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entitlement = args[:entitlement] if args.key?(:entitlement)
+        end
+      end
+      
+      # A row of report values.
+      class GoogleCloudChannelV1Row
+        include Google::Apis::Core::Hashable
+      
+        # The list of values in the row.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Request message for CloudChannelReportsService.RunReportJob.
+      class GoogleCloudChannelV1RunReportJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # A representation of usage or invoice date ranges.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange]
+        attr_accessor :date_range
+      
+        # Optional. A structured string that defines conditions on dimension columns to
+        # restrict the report output. Filters support logical operators (AND, OR, NOT)
+        # and conditional operators (=, !=, <, >, <=, and >=) using `column_id` as keys.
+        # For example: `(customer:"accounts/C123abc/customers/S456def" OR customer:"
+        # accounts/C123abc/customers/S789ghi") AND invoice_start_date.year >= 2022`
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The BCP-47 language code, such as "en-US". If specified, the
+        # response is localized to the corresponding language code if the original data
+        # sources support it. Default is "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @filter = args[:filter] if args.key?(:filter)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # Response message for CloudChannelReportsService.RunReportJob.
+      class GoogleCloudChannelV1RunReportJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of a RunReportJob operation. Contains the name to use in
+        # FetchReportResultsRequest.report_job and the status of the operation.
+        # Corresponds to the JSON property `reportJob`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportJob]
+        attr_accessor :report_job
+      
+        # The features describing the data. Returned by CloudChannelReportsService.
+        # RunReportJob and CloudChannelReportsService.FetchReportResults.
+        # Corresponds to the JSON property `reportMetadata`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata]
+        attr_accessor :report_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_job = args[:report_job] if args.key?(:report_job)
+          @report_metadata = args[:report_metadata] if args.key?(:report_metadata)
         end
       end
       
@@ -2768,6 +3264,40 @@ module Google
         end
       end
       
+      # The definition of a report column. Specifies the data properties in the
+      # corresponding position of the report rows.
+      class GoogleCloudChannelV1alpha1Column
+        include Google::Apis::Core::Hashable
+      
+        # The unique name of the column (for example, customer_domain, channel_partner,
+        # customer_cost). You can use column IDs in RunReportJobRequest.filter. To see
+        # all reports and their columns, call CloudChannelReportsService.ListReports.
+        # Corresponds to the JSON property `columnId`
+        # @return [String]
+        attr_accessor :column_id
+      
+        # The type of the values for this column.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # The column's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_id = args[:column_id] if args.key?(:column_id)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Commitment settings for commitment-based offers.
       class GoogleCloudChannelV1alpha1CommitmentSettings
         include Google::Apis::Core::Hashable
@@ -2822,6 +3352,83 @@ module Google
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # A representation of usage or invoice date ranges.
+      class GoogleCloudChannelV1alpha1DateRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `invoiceEndDate`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :invoice_end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `invoiceStartDate`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDate]
+        attr_accessor :invoice_start_date
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `usageEndDateTime`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDateTime]
+        attr_accessor :usage_end_date_time
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `usageStartDateTime`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeDateTime]
+        attr_accessor :usage_start_date_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoice_end_date = args[:invoice_end_date] if args.key?(:invoice_end_date)
+          @invoice_start_date = args[:invoice_start_date] if args.key?(:invoice_start_date)
+          @usage_end_date_time = args[:usage_end_date_time] if args.key?(:usage_end_date_time)
+          @usage_start_date_time = args[:usage_start_date_time] if args.key?(:usage_start_date_time)
         end
       end
       
@@ -3149,6 +3756,171 @@ module Google
         end
       end
       
+      # The ID and description of a report that was used to generate report data. For
+      # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+      class GoogleCloudChannelV1alpha1Report
+        include Google::Apis::Core::Hashable
+      
+        # The list of columns included in the report. This defines the schema of the
+        # report results.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Column>]
+        attr_accessor :columns
+      
+        # A description of other aspects of the report, such as the products it supports.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A human-readable name for this report.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The report's resource name. Specifies the account and report used to
+        # generate report data. The report_id identifier is a UID (for example, `
+        # 613bf59q`). Name uses the format: accounts/`account_id`/reports/`report_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The result of a RunReportJob operation. Contains the name to use in
+      # FetchReportResultsRequest.report_job and the status of the operation.
+      class GoogleCloudChannelV1alpha1ReportJob
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of a report job. Name uses the format: `accounts/`
+        # account_id`/reportJobs/`report_job_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Status of a report generation process.
+        # Corresponds to the JSON property `reportStatus`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportStatus]
+        attr_accessor :report_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @report_status = args[:report_status] if args.key?(:report_status)
+        end
+      end
+      
+      # The features describing the data. Returned by CloudChannelReportsService.
+      # RunReportJob and CloudChannelReportsService.FetchReportResults.
+      class GoogleCloudChannelV1alpha1ReportResultsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A representation of usage or invoice date ranges.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange]
+        attr_accessor :date_range
+      
+        # A representation of usage or invoice date ranges.
+        # Corresponds to the JSON property `precedingDateRange`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange]
+        attr_accessor :preceding_date_range
+      
+        # The ID and description of a report that was used to generate report data. For
+        # example, "GCP Daily Spend", "Google Workspace License Activity", etc.
+        # Corresponds to the JSON property `report`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Report]
+        attr_accessor :report
+      
+        # The total number of rows of data in the final report.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @preceding_date_range = args[:preceding_date_range] if args.key?(:preceding_date_range)
+          @report = args[:report] if args.key?(:report)
+          @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # Status of a report generation process.
+      class GoogleCloudChannelV1alpha1ReportStatus
+        include Google::Apis::Core::Hashable
+      
+        # The report generation's completion time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The report generation's start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The current state of the report generation process.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Response message for CloudChannelReportsService.RunReportJob.
+      class GoogleCloudChannelV1alpha1RunReportJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of a RunReportJob operation. Contains the name to use in
+        # FetchReportResultsRequest.report_job and the status of the operation.
+        # Corresponds to the JSON property `reportJob`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportJob]
+        attr_accessor :report_job
+      
+        # The features describing the data. Returned by CloudChannelReportsService.
+        # RunReportJob and CloudChannelReportsService.FetchReportResults.
+        # Corresponds to the JSON property `reportMetadata`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportResultsMetadata]
+        attr_accessor :report_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_job = args[:report_job] if args.key?(:report_job)
+          @report_metadata = args[:report_metadata] if args.key?(:report_metadata)
+        end
+      end
+      
       # Represents information which resellers will get as part of notification from
       # Pub/Sub.
       class GoogleCloudChannelV1alpha1SubscriberEvent
@@ -3470,6 +4242,95 @@ module Google
         end
       end
       
+      # Represents civil time (or occasionally physical time). This type can represent
+      # a civil time in one of a few possible ways: * When utc_offset is set and
+      # time_zone is unset: a civil time on a calendar day with a particular offset
+      # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+      # calendar day in a particular time zone. * When neither time_zone nor
+      # utc_offset is set: a civil time on a calendar day in local time. The date is
+      # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+      # the DateTime is considered not to have a specific year, month, or day
+      # respectively. This type may also be used to represent a physical time if all
+      # the date and time fields are set and either case of the `time_offset` oneof is
+      # set. Consider using `Timestamp` message for physical time instead. If your use
+      # case also would like to store the user's timezone, that can be done in another
+      # field. This type is more flexible than some applications may want. Make sure
+      # to document and validate your application's limitations.
+      class GoogleTypeDateTime
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Day of month. Must be from 1 to 31 and valid for the year and month,
+        # or 0 if specifying a datetime without a day.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to
+        # 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios
+        # like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime
+        # without a month.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999,
+        # defaults to 0.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+        # defaults to 0. An API may allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeTimeZone]
+        attr_accessor :time_zone
+      
+        # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
+        # example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime
+        # without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @month = args[:month] if args.key?(:month)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # A representation of a decimal value, such as 2.5. Clients may convert values
       # into language-native decimal formats, such as Java's BigDecimal or Python's
       # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
@@ -3693,6 +4554,32 @@ module Google
           @revision = args[:revision] if args.key?(:revision)
           @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
           @sublocality = args[:sublocality] if args.key?(:sublocality)
+        end
+      end
+      
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
+      class GoogleTypeTimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

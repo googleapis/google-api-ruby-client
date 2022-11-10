@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1CommitmentSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1DateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1EduData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,18 @@ module Google
       end
       
       class GoogleCloudChannelV1EntitlementEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1FetchReportResultsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1FetchReportResultsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -221,6 +245,12 @@ module Google
       end
       
       class GoogleCloudChannelV1ListPurchasableSkusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ListReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +418,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ReportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ReportResultsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ReportStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1ReportValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1RepricingAdjustment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +467,24 @@ module Google
       end
       
       class GoogleCloudChannelV1RepricingConfigEntitlementGranularity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RunReportJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1RunReportJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1alpha1Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1alpha1CommitmentSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +605,12 @@ module Google
       end
       
       class GoogleCloudChannelV1alpha1CustomerEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1DateRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -563,6 +653,36 @@ module Google
       end
       
       class GoogleCloudChannelV1alpha1RenewalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportResultsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1alpha1RunReportJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -628,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeDateTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeDecimal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +767,12 @@ module Google
       end
       
       class GoogleTypePostalAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeTimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -771,6 +903,15 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_id, as: 'columnId'
+          property :data_type, as: 'dataType'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudChannelV1CommitmentSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -858,6 +999,20 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1DateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_end_date, as: 'invoiceEndDate', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :invoice_start_date, as: 'invoiceStartDate', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :usage_end_date_time, as: 'usageEndDateTime', class: Google::Apis::CloudchannelV1::GoogleTypeDateTime, decorator: Google::Apis::CloudchannelV1::GoogleTypeDateTime::Representation
+      
+          property :usage_start_date_time, as: 'usageStartDateTime', class: Google::Apis::CloudchannelV1::GoogleTypeDateTime, decorator: Google::Apis::CloudchannelV1::GoogleTypeDateTime::Representation
+      
+        end
+      end
+      
       class GoogleCloudChannelV1EduData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -895,6 +1050,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entitlement, as: 'entitlement'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class GoogleCloudChannelV1FetchReportResultsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+        end
+      end
+      
+      class GoogleCloudChannelV1FetchReportResultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :report_metadata, as: 'reportMetadata', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata::Representation
+      
+          collection :rows, as: 'rows', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Row, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Row::Representation
+      
         end
       end
       
@@ -987,6 +1161,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :purchasable_skus, as: 'purchasableSkus', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1PurchasableSku, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1PurchasableSku::Representation
+      
+        end
+      end
+      
+      class GoogleCloudChannelV1ListReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reports, as: 'reports', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report::Representation
       
         end
       end
@@ -1269,6 +1452,64 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1Report
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Column, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Column::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudChannelV1ReportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :report_status, as: 'reportStatus', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportStatus, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudChannelV1ReportResultsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange::Representation
+      
+          property :preceding_date_range, as: 'precedingDateRange', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange::Representation
+      
+          property :report, as: 'report', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Report::Representation
+      
+          property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudChannelV1ReportStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudChannelV1ReportValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_time_value, as: 'dateTimeValue', class: Google::Apis::CloudchannelV1::GoogleTypeDateTime, decorator: Google::Apis::CloudchannelV1::GoogleTypeDateTime::Representation
+      
+          property :date_value, as: 'dateValue', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :decimal_value, as: 'decimalValue', class: Google::Apis::CloudchannelV1::GoogleTypeDecimal, decorator: Google::Apis::CloudchannelV1::GoogleTypeDecimal::Representation
+      
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :money_value, as: 'moneyValue', class: Google::Apis::CloudchannelV1::GoogleTypeMoney, decorator: Google::Apis::CloudchannelV1::GoogleTypeMoney::Representation
+      
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
       class GoogleCloudChannelV1RepricingAdjustment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1302,6 +1543,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entitlement, as: 'entitlement'
+        end
+      end
+      
+      class GoogleCloudChannelV1Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudChannelV1RunReportJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1DateRange::Representation
+      
+          property :filter, as: 'filter'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudChannelV1RunReportJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_job, as: 'reportJob', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportJob, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportJob::Representation
+      
+          property :report_metadata, as: 'reportMetadata', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ReportResultsMetadata::Representation
+      
         end
       end
       
@@ -1453,6 +1722,15 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1alpha1Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column_id, as: 'columnId'
+          property :data_type, as: 'dataType'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class GoogleCloudChannelV1alpha1CommitmentSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1468,6 +1746,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1DateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invoice_end_date, as: 'invoiceEndDate', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :invoice_start_date, as: 'invoiceStartDate', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
+      
+          property :usage_end_date_time, as: 'usageEndDateTime', class: Google::Apis::CloudchannelV1::GoogleTypeDateTime, decorator: Google::Apis::CloudchannelV1::GoogleTypeDateTime::Representation
+      
+          property :usage_start_date_time, as: 'usageStartDateTime', class: Google::Apis::CloudchannelV1::GoogleTypeDateTime, decorator: Google::Apis::CloudchannelV1::GoogleTypeDateTime::Representation
+      
         end
       end
       
@@ -1550,6 +1842,58 @@ module Google
           property :payment_option, as: 'paymentOption'
           property :payment_plan, as: 'paymentPlan'
           property :resize_unit_count, as: 'resizeUnitCount'
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1Report
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Column, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Column::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :report_status, as: 'reportStatus', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportStatus, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportResultsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange::Representation
+      
+          property :preceding_date_range, as: 'precedingDateRange', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1DateRange::Representation
+      
+          property :report, as: 'report', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Report, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Report::Representation
+      
+          property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1ReportStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudChannelV1alpha1RunReportJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_job, as: 'reportJob', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportJob, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportJob::Representation
+      
+          property :report_metadata, as: 'reportMetadata', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportResultsMetadata, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1ReportResultsMetadata::Representation
+      
         end
       end
       
@@ -1643,6 +1987,22 @@ module Google
         end
       end
       
+      class GoogleTypeDateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :month, as: 'month'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :time_zone, as: 'timeZone', class: Google::Apis::CloudchannelV1::GoogleTypeTimeZone, decorator: Google::Apis::CloudchannelV1::GoogleTypeTimeZone::Representation
+      
+          property :utc_offset, as: 'utcOffset'
+          property :year, as: 'year'
+        end
+      end
+      
       class GoogleTypeDecimal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1673,6 +2033,14 @@ module Google
           property :revision, as: 'revision'
           property :sorting_code, as: 'sortingCode'
           property :sublocality, as: 'sublocality'
+        end
+      end
+      
+      class GoogleTypeTimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
         end
       end
     end
