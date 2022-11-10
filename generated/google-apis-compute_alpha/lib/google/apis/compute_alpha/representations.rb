@@ -15772,6 +15772,7 @@ module Google
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
           property :locality, as: 'locality'
+          property :max_distance, as: 'maxDistance'
           property :scope, as: 'scope'
           property :style, as: 'style'
           property :tpu_topology, as: 'tpuTopology'
@@ -17090,6 +17091,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_limit, as: 'connectionLimit'
+          property :network_url, as: 'networkUrl'
           property :project_id_or_num, as: 'projectIdOrNum'
         end
       end
