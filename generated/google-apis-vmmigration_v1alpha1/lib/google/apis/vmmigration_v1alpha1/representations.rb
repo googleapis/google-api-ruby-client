@@ -524,6 +524,7 @@ module Google
       class AwsVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :boot_option, as: 'bootOption'
           property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
           property :cpu_count, as: 'cpuCount'
@@ -538,6 +539,7 @@ module Google
           property :source_description, as: 'sourceDescription'
           property :source_id, as: 'sourceId'
           hash :tags, as: 'tags'
+          property :virtualization_type, as: 'virtualizationType'
           property :vm_id, as: 'vmId'
           property :vpc_id, as: 'vpcId'
           property :zone, as: 'zone'
