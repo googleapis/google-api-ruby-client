@@ -33,6 +33,9 @@ module Google
 
       # Manage users on your domain
       AUTH_APPS_ORDER = 'https://www.googleapis.com/auth/apps.order'
+
+      # View usage reports for your G Suite domain
+      AUTH_APPS_REPORTS_USAGE_READONLY = 'https://www.googleapis.com/auth/apps.reports.usage.readonly'
     end
   end
 end
