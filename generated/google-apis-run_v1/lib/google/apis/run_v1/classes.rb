@@ -1501,8 +1501,8 @@ module Google
       class KeyToPath
         include Google::Apis::Core::Hashable
       
-        # The Cloud Secret Manager secret version. Can be 'latest' for the latest value
-        # or an integer for a specific version. The key to project.
+        # The Cloud Secret Manager secret version. Can be 'latest' for the latest value,
+        # or an integer or a secret alias for a specific version. The key to project.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2774,10 +2774,10 @@ module Google
         # ObservedGeneration is the 'Generation' of the Route that was last processed by
         # the controller. Clients polling for completed reconciliation should poll until
         # observedGeneration = metadata.generation and the Ready condition's status is
-        # True or False. Note that providing a trafficTarget that only has a
-        # configurationName will result in a Route that does not increment either its
-        # metadata.generation or its observedGeneration, as new "latest ready" revisions
-        # from the Configuration are processed without an update to the Route's spec.
+        # True or False. Note that providing a TrafficTarget that has latest_revision=
+        # True will result in a Route that does not increment either its metadata.
+        # generation or its observedGeneration, as new "latest ready" revisions from the
+        # Configuration are processed without an update to the Route's spec.
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
         attr_accessor :observed_generation
@@ -2863,8 +2863,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A Cloud Secret Manager secret version. Must be 'latest' for the
-        # latest version or an integer for a specific version. The key of the secret to
-        # select from. Must be a valid secret key.
+        # latest version, an integer for a specific version, or a version alias. The key
+        # of the secret to select from. Must be a valid secret key.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -3646,21 +3646,17 @@ module Google
       class TrafficTarget
         include Google::Apis::Core::Hashable
       
-        # ConfigurationName of a configuration to whose latest revision which will be
-        # sent this portion of traffic. When the "status.latestReadyRevisionName" of the
-        # referenced configuration changes, traffic will automatically migrate from the
-        # prior "latest ready" revision to the new one. This field is never set in Route'
-        # s status, only its spec. This is mutually exclusive with RevisionName. Cloud
-        # Run currently supports a single ConfigurationName.
+        # [Deprecated] Not supported in Cloud Run. It must be empty.
         # Corresponds to the JSON property `configurationName`
         # @return [String]
         attr_accessor :configuration_name
       
-        # Optional. LatestRevision may be provided to indicate that the latest ready
-        # Revision of the Configuration should be used for this traffic target. When
-        # provided LatestRevision must be true if RevisionName is empty; it must be
-        # false when RevisionName is non-empty in spec. When shown in status, this
-        # indicates that the RevisionName was resolved from a spec's ConfigurationName.
+        # Uses the "status.latestReadyRevisionName" of the Service to determine the
+        # traffic target. When it changes, traffic will automatically migrate from the
+        # prior "latest ready" revision to the new one. This field must be false if
+        # RevisionName is set. This field defaults to true otherwise. If the field is
+        # set to true on Status, this means that the Revision was resolved from the
+        # Service's latest ready revision.
         # Corresponds to the JSON property `latestRevision`
         # @return [Boolean]
         attr_accessor :latest_revision
@@ -3672,14 +3668,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :percent
       
-        # RevisionName of a specific revision to which to send this portion of traffic.
-        # This is mutually exclusive with ConfigurationName.
+        # Points this traffic target to a specific Revision. This field is mutually
+        # exclusive with latest_revision.
         # Corresponds to the JSON property `revisionName`
         # @return [String]
         attr_accessor :revision_name
       
-        # Optional. Tag is used to expose a dedicated url for referencing this target
-        # exclusively.
+        # Tag is used to expose a dedicated url for referencing this target exclusively.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
