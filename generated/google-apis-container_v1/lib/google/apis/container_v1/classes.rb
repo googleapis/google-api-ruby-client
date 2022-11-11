@@ -3637,6 +3637,11 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeNetworkConfig]
         attr_accessor :network_config
       
+        # PlacementPolicy defines the placement policy used by the node pool.
+        # Corresponds to the JSON property `placementPolicy`
+        # @return [Google::Apis::ContainerV1::PlacementPolicy]
+        attr_accessor :placement_policy
+      
         # [Output only] The pod CIDR block size per node in this node pool.
         # Corresponds to the JSON property `podIpv4CidrSize`
         # @return [Fixnum]
@@ -3720,6 +3725,7 @@ module Google
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -4083,6 +4089,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @stages = args[:stages] if args.key?(:stages)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # PlacementPolicy defines the placement policy used by the node pool.
+      class PlacementPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The type of placement.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
