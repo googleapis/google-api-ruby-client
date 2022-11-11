@@ -1520,7 +1520,7 @@ module Google
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
         # for the build -- the build may run with a larger disk than requested. At
-        # present, the maximum disk size is 1000GB; builds that request more than the
+        # present, the maximum disk size is 2000GB; builds that request more than the
         # maximum are rejected with an error.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
@@ -4133,32 +4133,6 @@ module Google
         end
       end
       
-      # Response for listing scan configurations.
-      class ListScanConfigsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The next pagination token in the list response. It should be used as `
-        # page_token` for the following request. An empty value means no more results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # The scan configurations requested.
-        # Corresponds to the JSON property `scanConfigs`
-        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ScanConfig>]
-        attr_accessor :scan_configs
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @scan_configs = args[:scan_configs] if args.key?(:scan_configs)
-        end
-      end
-      
       # An occurrence of a particular package installation found within a system's
       # filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
       class Location
@@ -5153,53 +5127,6 @@ module Google
           @content_hash = args[:content_hash] if args.key?(:content_hash)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # A scan configuration specifies whether Cloud components in a project have a
-      # particular type of analysis being run. For example, it can configure whether
-      # vulnerability scanning is being done on Docker images or not.
-      class ScanConfig
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time this scan config was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. A human-readable description of what the scan configuration does.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Whether the scan is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        # Output only. The name of the scan configuration in the form of `projects/[
-        # PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The time this scan config was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @enabled = args[:enabled] if args.key?(:enabled)
-          @name = args[:name] if args.key?(:name)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
