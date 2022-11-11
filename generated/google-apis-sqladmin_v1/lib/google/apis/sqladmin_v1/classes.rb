@@ -1154,11 +1154,6 @@ module Google
       class ExportContext
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `bakExportOptions`
-        # @return [Google::Apis::SqladminV1::ExportContext::BakExportOptions]
-        attr_accessor :bak_export_options
-      
         # Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::SqladminV1::ExportContext::CsvExportOptions]
@@ -1212,7 +1207,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @bak_export_options = args[:bak_export_options] if args.key?(:bak_export_options)
           @csv_export_options = args[:csv_export_options] if args.key?(:csv_export_options)
           @databases = args[:databases] if args.key?(:databases)
           @file_type = args[:file_type] if args.key?(:file_type)
@@ -1220,32 +1214,6 @@ module Google
           @offload = args[:offload] if args.key?(:offload)
           @sql_export_options = args[:sql_export_options] if args.key?(:sql_export_options)
           @uri = args[:uri] if args.key?(:uri)
-        end
-        
-        # 
-        class BakExportOptions
-          include Google::Apis::Core::Hashable
-        
-          # 
-          # Corresponds to the JSON property `stripeCount`
-          # @return [Fixnum]
-          attr_accessor :stripe_count
-        
-          # 
-          # Corresponds to the JSON property `striped`
-          # @return [Boolean]
-          attr_accessor :striped
-          alias_method :striped?, :striped
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @stripe_count = args[:stripe_count] if args.key?(:stripe_count)
-            @striped = args[:striped] if args.key?(:striped)
-          end
         end
         
         # Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.
@@ -1615,12 +1583,6 @@ module Google
           # @return [Google::Apis::SqladminV1::ImportContext::BakImportOptions::EncryptionOptions]
           attr_accessor :encryption_options
         
-          # 
-          # Corresponds to the JSON property `striped`
-          # @return [Boolean]
-          attr_accessor :striped
-          alias_method :striped?, :striped
-        
           def initialize(**args)
              update!(**args)
           end
@@ -1628,7 +1590,6 @@ module Google
           # Update properties of this object
           def update!(**args)
             @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
-            @striped = args[:striped] if args.key?(:striped)
           end
           
           # 
@@ -2047,13 +2008,6 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::AclEntry>]
         attr_accessor :authorized_networks
       
-        # Controls connectivity to private IP instances from Google services, such as
-        # BigQuery.
-        # Corresponds to the JSON property `enablePrivatePathForGoogleCloudServices`
-        # @return [Boolean]
-        attr_accessor :enable_private_path_for_google_cloud_services
-        alias_method :enable_private_path_for_google_cloud_services?, :enable_private_path_for_google_cloud_services
-      
         # Whether the instance is assigned a public IP address or not.
         # Corresponds to the JSON property `ipv4Enabled`
         # @return [Boolean]
@@ -2082,7 +2036,6 @@ module Google
         def update!(**args)
           @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
-          @enable_private_path_for_google_cloud_services = args[:enable_private_path_for_google_cloud_services] if args.key?(:enable_private_path_for_google_cloud_services)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
           @private_network = args[:private_network] if args.key?(:private_network)
           @require_ssl = args[:require_ssl] if args.key?(:require_ssl)
