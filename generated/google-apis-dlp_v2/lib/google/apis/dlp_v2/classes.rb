@@ -2075,7 +2075,8 @@ module Google
         # @return [String]
         attr_accessor :inspect_template_name
       
-        # The item to de-identify. Will be treated as text.
+        # The item to de-identify. Will be treated as text. This value must be of type
+        # Table if your deidentify_config is a RecordTransformations object.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
