@@ -622,12 +622,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListScanConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,12 +707,6 @@ module Google
       end
       
       class Resource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ScanConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1894,15 +1882,6 @@ module Google
         end
       end
       
-      class ListScanConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :scan_configs, as: 'scanConfigs', class: Google::Apis::ContaineranalysisV1beta1::ScanConfig, decorator: Google::Apis::ContaineranalysisV1beta1::ScanConfig::Representation
-      
-        end
-      end
-      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2137,17 +2116,6 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
-        end
-      end
-      
-      class ScanConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :enabled, as: 'enabled'
-          property :name, as: 'name'
-          property :update_time, as: 'updateTime'
         end
       end
       
