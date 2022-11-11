@@ -52,10 +52,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create a Job.
+        # Creates a Job.
         # @param [String] parent
         #   Required. The location and project in which this Job should be created. Format:
-        #   projects/`project`/locations/`location`
+        #   projects/`project`/locations/`location`, where `project` can be project id or
+        #   number.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Job] google_cloud_run_v2_job_object
         # @param [String] job_id
         #   Required. The unique identifier for the Job. The name of the job becomes `
@@ -97,7 +98,7 @@ module Google
         # Deletes a Job.
         # @param [String] name
         #   Required. The full name of the Job. Format: projects/`project`/locations/`
-        #   location`/jobs/`job`
+        #   location`/jobs/`job`, where `project` can be project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
@@ -136,7 +137,7 @@ module Google
         # Gets information about a Job.
         # @param [String] name
         #   Required. The full name of the Job. Format: projects/`project`/locations/`
-        #   location`/jobs/`job`
+        #   location`/jobs/`job`, where `project` can be project id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -164,7 +165,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the IAM Access Control policy currently in effect for the given Job. This
+        # Gets the IAM Access Control policy currently in effect for the given Job. This
         # result does not include any inherited policies.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -209,10 +210,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Jobs.
+        # Lists Jobs.
         # @param [String] parent
         #   Required. The location and project to list resources on. Format: projects/`
-        #   project`/locations/`location`
+        #   project`/locations/`location`, where `project` can be project id or number.
         # @param [Fixnum] page_size
         #   Maximum number of Jobs to return in this call.
         # @param [String] page_token
@@ -296,7 +297,7 @@ module Google
         # Triggers creation of a new Execution of this Job.
         # @param [String] name
         #   Required. The full name of the Job. Format: projects/`project`/locations/`
-        #   location`/jobs/`job`
+        #   location`/jobs/`job`, where `project` can be project id or number.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2RunJobRequest] google_cloud_run_v2_run_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -399,10 +400,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an Execution.
+        # Deletes an Execution.
         # @param [String] name
         #   Required. The name of the Execution to delete. Format: projects/`project`/
-        #   locations/`location`/jobs/`job`/executions/`execution`
+        #   locations/`location`/jobs/`job`/executions/`execution`, where `project` can be
+        #   project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. This may be
         #   used to detect modification conflict during updates.
@@ -438,10 +440,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets information about a Execution.
+        # Gets information about an Execution.
         # @param [String] name
         #   Required. The full name of the Execution. Format: projects/`project`/locations/
-        #   `location`/jobs/`job`/executions/`execution`
+        #   `location`/jobs/`job`/executions/`execution`, where `project` can be project
+        #   id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -469,11 +472,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Executions from a Job.
+        # Lists Executions from a Job.
         # @param [String] parent
         #   Required. The Execution from which the Executions should be listed. To list
         #   all Executions across Jobs, use "-" instead of Job name. Format: projects/`
-        #   project`/locations/`location`/jobs/`job`
+        #   project`/locations/`location`/jobs/`job`, where `project` can be project id or
+        #   number.
         # @param [Fixnum] page_size
         #   Maximum number of Executions to return in this call.
         # @param [String] page_token
@@ -542,7 +546,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Tasks from an Execution of a Job.
+        # Lists Tasks from an Execution of a Job.
         # @param [String] parent
         #   Required. The Execution from which the Tasks should be listed. To list all
         #   Tasks across Executions of a Job, use "-" instead of Execution name. To list
@@ -704,13 +708,13 @@ module Google
         # Creates a new Service in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this service should be created.
-        #   Format: projects/`project`/locations/`location` Only lowercase characters,
-        #   digits, and hyphens.
+        #   Format: projects/`project`/locations/`location`, where `project` can be
+        #   project id or number. Only lowercase characters, digits, and hyphens.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [String] service_id
         #   Required. The unique identifier for the Service. It must begin with letter,
-        #   and may not end with hyphen; must contain fewer than 50 characters. The name
-        #   of the service becomes `parent`/services/`service_id`.
+        #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
+        #   the service becomes `parent`/services/`service_id`.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or creating any resources.
@@ -749,7 +753,7 @@ module Google
         # will delete all revisions.
         # @param [String] name
         #   Required. The full name of the Service. Format: projects/`project`/locations/`
-        #   location`/services/`service`
+        #   location`/services/`service`, where `project` can be project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
@@ -788,7 +792,7 @@ module Google
         # Gets information about a Service.
         # @param [String] name
         #   Required. The full name of the Service. Format: projects/`project`/locations/`
-        #   location`/services/`service`
+        #   location`/services/`service`, where `project` can be project id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -816,7 +820,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the IAM Access Control policy currently in effect for the given Cloud Run
+        # Gets the IAM Access Control policy currently in effect for the given Cloud Run
         # Service. This result does not include any inherited policies.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -861,11 +865,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Services.
+        # Lists Services.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
-        #   valid GCP region, and may not be the "-" wildcard. Format: projects/`project`/
-        #   locations/`location`
+        #   valid GCP region, and cannot be the "-" wildcard. Format: projects/`project`/
+        #   locations/`location`, where `project` can be project id or number.
         # @param [Fixnum] page_size
         #   Maximum number of Services to return in this call.
         # @param [String] page_token
@@ -1020,7 +1024,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a Revision.
+        # Deletes a Revision.
         # @param [String] name
         #   Required. The name of the Revision to delete. Format: projects/`project`/
         #   locations/`location`/services/`service`/revisions/`revision`
@@ -1090,7 +1094,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Revisions from a given Service, or from a given location.
+        # Lists Revisions from a given Service, or from a given location.
         # @param [String] parent
         #   Required. The Service from which the Revisions should be listed. To list all
         #   Revisions across Services, use "-" instead of Service name. Format: projects/`

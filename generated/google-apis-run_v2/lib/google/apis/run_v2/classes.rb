@@ -597,6 +597,34 @@ module Google
         end
       end
       
+      # GRPCAction describes an action involving a GRPC port.
+      class GoogleCloudRunV2GrpcAction
+        include Google::Apis::Core::Hashable
+      
+        # Port number of the gRPC service. Number must be in the range 1 to 65535. If
+        # not specified, defaults to 8080.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Service is the name of the service to place in the gRPC HealthCheckRequest (
+        # see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this
+        # is not specified, the default behavior is defined by gRPC.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port = args[:port] if args.key?(:port)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
       # HTTPGetAction describes an action based on HTTP Get requests.
       class GoogleCloudRunV2HttpGetAction
         include Google::Apis::Core::Hashable
@@ -981,6 +1009,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
+        # GRPCAction describes an action involving a GRPC port.
+        # Corresponds to the JSON property `grpc`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2GrpcAction]
+        attr_accessor :grpc
+      
         # HTTPGetAction describes an action based on HTTP Get requests.
         # Corresponds to the JSON property `httpGet`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2HttpGetAction]
@@ -1022,6 +1055,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
+          @grpc = args[:grpc] if args.key?(:grpc)
           @http_get = args[:http_get] if args.key?(:http_get)
           @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
@@ -1041,9 +1075,9 @@ module Google
         alias_method :cpu_idle?, :cpu_idle
       
         # Only memory and CPU are supported. Note: The only supported values for CPU are
-        # '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values
-        # of the map is string form of the 'quantity' k8s type: https://github.com/
-        # kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/
+        # '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The
+        # values of the map is string form of the 'quantity' k8s type: https://github.
+        # com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/
         # resource/quantity.go
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
@@ -1414,8 +1448,8 @@ module Google
         # @return [String]
         attr_accessor :secret
       
-        # The Cloud Secret Manager secret version. Can be 'latest' for the latest value
-        # or an integer for a specific version.
+        # The Cloud Secret Manager secret version. Can be 'latest' for the latest
+        # version, an integer for a specific version, or a version alias.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2167,8 +2201,8 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # The Cloud Secret Manager secret version. Can be 'latest' for the latest value
-        # or an integer for a specific version.
+        # The Cloud Secret Manager secret version. Can be 'latest' for the latest value,
+        # or an integer or a secret alias for a specific version.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2255,7 +2289,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # VPC Access connector name. Format: projects/`project`/locations/`location`/
-        # connectors/`connector`
+        # connectors/`connector`, where `project` can be project id or number.
         # Corresponds to the JSON property `connector`
         # @return [String]
         attr_accessor :connector
