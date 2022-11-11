@@ -568,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlacementPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1799,6 +1805,8 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
       
+          property :placement_policy, as: 'placementPolicy', class: Google::Apis::ContainerV1::PlacementPolicy, decorator: Google::Apis::ContainerV1::PlacementPolicy::Representation
+      
           property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -1907,6 +1915,13 @@ module Google
           collection :stages, as: 'stages', class: Google::Apis::ContainerV1::OperationProgress, decorator: Google::Apis::ContainerV1::OperationProgress::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class PlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
