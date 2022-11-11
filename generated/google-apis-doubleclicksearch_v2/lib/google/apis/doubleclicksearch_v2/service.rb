@@ -51,69 +51,6 @@ module Google
         end
         
         # Retrieves a list of conversions from a DoubleClick Search engine account.
-        # @param [String] customer_id
-        #   Customer ID of a client account in the new Search Ads 360 experience.
-        # @param [Fixnum] end_date
-        #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-        # @param [Fixnum] row_count
-        #   The number of conversions to return per call.
-        # @param [Fixnum] start_date
-        #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-        # @param [Fixnum] start_row
-        #   The 0-based starting index for retrieving conversions results.
-        # @param [Fixnum] ad_group_id
-        #   Numeric ID of the ad group.
-        # @param [Fixnum] ad_id
-        #   Numeric ID of the ad.
-        # @param [Fixnum] advertiser_id
-        #   Numeric ID of the advertiser.
-        # @param [Fixnum] agency_id
-        #   Numeric ID of the agency.
-        # @param [Fixnum] campaign_id
-        #   Numeric ID of the campaign.
-        # @param [Fixnum] criterion_id
-        #   Numeric ID of the criterion.
-        # @param [Fixnum] engine_account_id
-        #   Numeric ID of the engine account.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_conversion_customer_id(customer_id, end_date, row_count, start_date, start_row, ad_group_id: nil, ad_id: nil, advertiser_id: nil, agency_id: nil, campaign_id: nil, criterion_id: nil, engine_account_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'doubleclicksearch/v2/customer/{customerId}/conversion', options)
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
-          command.params['customerId'] = customer_id unless customer_id.nil?
-          command.query['adGroupId'] = ad_group_id unless ad_group_id.nil?
-          command.query['adId'] = ad_id unless ad_id.nil?
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['agencyId'] = agency_id unless agency_id.nil?
-          command.query['campaignId'] = campaign_id unless campaign_id.nil?
-          command.query['criterionId'] = criterion_id unless criterion_id.nil?
-          command.query['endDate'] = end_date unless end_date.nil?
-          command.query['engineAccountId'] = engine_account_id unless engine_account_id.nil?
-          command.query['rowCount'] = row_count unless row_count.nil?
-          command.query['startDate'] = start_date unless start_date.nil?
-          command.query['startRow'] = start_row unless start_row.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a list of conversions from a DoubleClick Search engine account.
         # @param [Fixnum] agency_id
         #   Numeric ID of the agency.
         # @param [Fixnum] advertiser_id
@@ -168,6 +105,69 @@ module Google
           command.query['criterionId'] = criterion_id unless criterion_id.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
+          command.query['rowCount'] = row_count unless row_count.nil?
+          command.query['startDate'] = start_date unless start_date.nil?
+          command.query['startRow'] = start_row unless start_row.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of conversions from a DoubleClick Search engine account.
+        # @param [String] customer_id
+        #   Customer ID of a client account in the new Search Ads 360 experience.
+        # @param [Fixnum] end_date
+        #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
+        # @param [Fixnum] row_count
+        #   The number of conversions to return per call.
+        # @param [Fixnum] start_date
+        #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
+        # @param [Fixnum] start_row
+        #   The 0-based starting index for retrieving conversions results.
+        # @param [Fixnum] ad_group_id
+        #   Numeric ID of the ad group.
+        # @param [Fixnum] ad_id
+        #   Numeric ID of the ad.
+        # @param [Fixnum] advertiser_id
+        #   Numeric ID of the advertiser.
+        # @param [Fixnum] agency_id
+        #   Numeric ID of the agency.
+        # @param [Fixnum] campaign_id
+        #   Numeric ID of the campaign.
+        # @param [Fixnum] criterion_id
+        #   Numeric ID of the criterion.
+        # @param [Fixnum] engine_account_id
+        #   Numeric ID of the engine account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_conversion_by_customer_id(customer_id, end_date, row_count, start_date, start_row, ad_group_id: nil, ad_id: nil, advertiser_id: nil, agency_id: nil, campaign_id: nil, criterion_id: nil, engine_account_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'doubleclicksearch/v2/customer/{customerId}/conversion', options)
+          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['adGroupId'] = ad_group_id unless ad_group_id.nil?
+          command.query['adId'] = ad_id unless ad_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['agencyId'] = agency_id unless agency_id.nil?
+          command.query['campaignId'] = campaign_id unless campaign_id.nil?
+          command.query['criterionId'] = criterion_id unless criterion_id.nil?
+          command.query['endDate'] = end_date unless end_date.nil?
+          command.query['engineAccountId'] = engine_account_id unless engine_account_id.nil?
           command.query['rowCount'] = row_count unless row_count.nil?
           command.query['startDate'] = start_date unless start_date.nil?
           command.query['startRow'] = start_row unless start_row.nil?
