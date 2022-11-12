@@ -22,6 +22,52 @@ module Google
   module Apis
     module ComputeBeta
       
+      # Contains the configurations necessary to generate a signature for access to
+      # private storage buckets that support Signature Version 4 for authentication.
+      # The service name for generating the authentication header will always default
+      # to 's3'.
+      class Awsv4Signature
+        include Google::Apis::Core::Hashable
+      
+        # The access key used for s3 bucket authentication. Required for updating or
+        # creating a backend that uses AWS v4 signature authentication, but will not be
+        # returned as part of the configuration when queried with a REST API GET request.
+        # @InputOnly
+        # Corresponds to the JSON property `accessKey`
+        # @return [String]
+        attr_accessor :access_key
+      
+        # The identifier of an access key used for s3 bucket authentication.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # The optional version identifier for the access key. You can use this to keep
+        # track of different iterations of your access key.
+        # Corresponds to the JSON property `accessKeyVersion`
+        # @return [String]
+        attr_accessor :access_key_version
+      
+        # The name of the cloud region of your origin. This is a free-form field with
+        # the name of the region your cloud uses to host your origin. For example, "us-
+        # east-1" for AWS or "us-ashburn-1" for OCI.
+        # Corresponds to the JSON property `originRegion`
+        # @return [String]
+        attr_accessor :origin_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key = args[:access_key] if args.key?(:access_key)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @access_key_version = args[:access_key_version] if args.key?(:access_key_version)
+          @origin_region = args[:origin_region] if args.key?(:origin_region)
+        end
+      end
+      
       # A specification of the type and number of accelerator cards attached to the
       # instance.
       class AcceleratorConfig
@@ -12189,6 +12235,16 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::MetadataFilter>]
         attr_accessor :metadata_filters
       
+        # If specified, the route is a pattern match expression that must match the :
+        # path header once the query string is removed. A pattern match allows you to
+        # match - The value must be between 1 and 1024 characters - The pattern must
+        # start with a leading slash ("/") - There may be no more than 5 operators in
+        # pattern Precisely one of prefix_match, full_path_match, regex_match or
+        # path_template_match must be set.
+        # Corresponds to the JSON property `pathTemplateMatch`
+        # @return [String]
+        attr_accessor :path_template_match
+      
         # For satisfying the matchRule condition, the request's path must begin with the
         # specified prefixMatch. prefixMatch must begin with a /. The value must be from
         # 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch
@@ -12224,6 +12280,7 @@ module Google
           @header_matches = args[:header_matches] if args.key?(:header_matches)
           @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
+          @path_template_match = args[:path_template_match] if args.key?(:path_template_match)
           @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
           @query_parameter_matches = args[:query_parameter_matches] if args.key?(:query_parameter_matches)
           @regex_match = args[:regex_match] if args.key?(:regex_match)
@@ -30650,6 +30707,11 @@ module Google
         # @return [String]
         attr_accessor :physical_host
       
+        # 
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeBeta::ResourceStatusScheduling]
+        attr_accessor :scheduling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -30657,6 +30719,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # 
+      class ResourceStatusScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Time in future when the instance will be terminated in RFC3339 text format.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
       
@@ -34422,6 +34504,14 @@ module Google
         # @return [String]
         attr_accessor :authentication
       
+        # Contains the configurations necessary to generate a signature for access to
+        # private storage buckets that support Signature Version 4 for authentication.
+        # The service name for generating the authentication header will always default
+        # to 's3'.
+        # Corresponds to the JSON property `awsV4Authentication`
+        # @return [Google::Apis::ComputeBeta::Awsv4Signature]
+        attr_accessor :aws_v4_authentication
+      
         # Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that
         # describes how clients should authenticate with this service's backends.
         # clientTlsPolicy only applies to a global BackendService with the
@@ -34454,6 +34544,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authentication = args[:authentication] if args.key?(:authentication)
+          @aws_v4_authentication = args[:aws_v4_authentication] if args.key?(:aws_v4_authentication)
           @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
@@ -42321,6 +42412,22 @@ module Google
         # @return [String]
         attr_accessor :path_prefix_rewrite
       
+        # If specified, the pattern rewrites the URL path (based on the :path header)
+        # using the HTTP template syntax. A corresponding path_template_match must be
+        # specified. Any template variables must exist in the path_template_match field.
+        # - -At least one variable must be specified in the path_template_match field -
+        # You can omit variables from the rewritten URL - The * and ** operators cannot
+        # be matched unless they have a corresponding variable name - e.g. `format=*` or
+        # `var=**`. For example, a path_template_match of /static/`format=**` could be
+        # rewritten as /static/content/`format` to prefix /content to the URL. Variables
+        # can also be re-ordered in a rewrite, so that /`country`/`format`/`suffix=**`
+        # can be rewritten as /content/`format`/`country`/`suffix`. At least one non-
+        # empty routeRules[].matchRules[].path_template_match is required. Only one of
+        # path_prefix_rewrite or path_template_rewrite may be specified.
+        # Corresponds to the JSON property `pathTemplateRewrite`
+        # @return [String]
+        attr_accessor :path_template_rewrite
+      
         def initialize(**args)
            update!(**args)
         end
@@ -42329,6 +42436,7 @@ module Google
         def update!(**args)
           @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
           @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
+          @path_template_rewrite = args[:path_template_rewrite] if args.key?(:path_template_rewrite)
         end
       end
       
