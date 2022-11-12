@@ -431,6 +431,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1InterruptionData]
         attr_accessor :interruption_data
       
+        # The data for an issue match annotation.
+        # Corresponds to the JSON property `issueMatchData`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueMatchData]
+        attr_accessor :issue_match_data
+      
         # The data for a matched phrase matcher. Represents information identifying a
         # phrase matcher for a given match.
         # Corresponds to the JSON property `phraseMatchData`
@@ -460,6 +465,7 @@ module Google
           @hold_data = args[:hold_data] if args.key?(:hold_data)
           @intent_match_data = args[:intent_match_data] if args.key?(:intent_match_data)
           @interruption_data = args[:interruption_data] if args.key?(:interruption_data)
+          @issue_match_data = args[:issue_match_data] if args.key?(:issue_match_data)
           @phrase_match_data = args[:phrase_match_data] if args.key?(:phrase_match_data)
           @sentiment_data = args[:sentiment_data] if args.key?(:sentiment_data)
           @silence_data = args[:silence_data] if args.key?(:silence_data)
@@ -1606,6 +1612,25 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @issue = args[:issue] if args.key?(:issue)
           @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # The data for an issue match annotation.
+      class GoogleCloudContactcenterinsightsV1IssueMatchData
+        include Google::Apis::Core::Hashable
+      
+        # Information about the issue.
+        # Corresponds to the JSON property `issueAssignment`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueAssignment]
+        attr_accessor :issue_assignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_assignment = args[:issue_assignment] if args.key?(:issue_assignment)
         end
       end
       
