@@ -373,6 +373,7 @@ module Google
       class CloudSqlConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_public_ip, as: 'additionalPublicIp'
           property :cloud_sql_id, as: 'cloudSqlId'
           property :private_ip, as: 'privateIp'
           property :public_ip, as: 'publicIp'
@@ -386,6 +387,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
           property :auto_storage_increase, as: 'autoStorageIncrease'
+          property :availability_type, as: 'availabilityType'
           property :cmek_key_name, as: 'cmekKeyName'
           property :collation, as: 'collation'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
@@ -396,6 +398,7 @@ module Google
       
           property :root_password, as: 'rootPassword'
           property :root_password_set, as: 'rootPasswordSet'
+          property :secondary_zone, as: 'secondaryZone'
           property :source_id, as: 'sourceId'
           property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
