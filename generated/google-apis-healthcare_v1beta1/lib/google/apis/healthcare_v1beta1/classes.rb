@@ -5353,6 +5353,11 @@ module Google
       class SchemaConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for FHIR BigQuery time-partitioned tables.
+        # Corresponds to the JSON property `lastUpdatedPartitionConfig`
+        # @return [Google::Apis::HealthcareV1beta1::TimePartitioning]
+        attr_accessor :last_updated_partition_config
+      
         # The depth for all recursive structures in the output analytics schema. For
         # example, `concept` in the CodeSystem resource is a recursive structure; when
         # the depth is 2, the CodeSystem table will have a column called `concept.
@@ -5373,6 +5378,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_updated_partition_config = args[:last_updated_partition_config] if args.key?(:last_updated_partition_config)
           @recursive_structure_depth = args[:recursive_structure_depth] if args.key?(:recursive_structure_depth)
           @schema_type = args[:schema_type] if args.key?(:schema_type)
         end
@@ -5955,6 +5961,31 @@ module Google
         def update!(**args)
           @begin_offset = args[:begin_offset] if args.key?(:begin_offset)
           @content = args[:content] if args.key?(:content)
+        end
+      end
+      
+      # Configuration for FHIR BigQuery time-partitioned tables.
+      class TimePartitioning
+        include Google::Apis::Core::Hashable
+      
+        # Number of milliseconds for which to keep the storage for a partition.
+        # Corresponds to the JSON property `expirationMs`
+        # @return [Fixnum]
+        attr_accessor :expiration_ms
+      
+        # Type of partitioning.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_ms = args[:expiration_ms] if args.key?(:expiration_ms)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
