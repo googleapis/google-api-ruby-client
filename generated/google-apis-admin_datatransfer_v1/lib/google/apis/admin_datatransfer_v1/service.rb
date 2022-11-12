@@ -148,7 +148,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a data transfer request.
+        # Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-
+        # transfer/v1/parameters) reference for specific application requirements.
         # @param [Google::Apis::AdminDatatransferV1::DataTransfer] data_transfer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
