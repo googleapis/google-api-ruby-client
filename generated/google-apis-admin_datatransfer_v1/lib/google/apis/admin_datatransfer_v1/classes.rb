@@ -22,7 +22,7 @@ module Google
   module Apis
     module AdminDatatransferV1
       
-      # Applications resources represent applications installed on the domain that
+      # Application resources represent applications installed on the domain that
       # support transferring ownership of user data.
       class Application
         include Google::Apis::Core::Hashable
@@ -32,7 +32,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The application's ID.
+        # The application's ID. Retrievable by using the [`applications.list()`](/admin-
+        # sdk/data-transfer/reference/rest/v1/applications/list) method.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -48,8 +49,7 @@ module Google
         attr_accessor :name
       
         # The list of all possible transfer parameters for this application. These
-        # parameters can be used to select the data of the user in this application to
-        # be transferred.
+        # parameters select which categories of the user's data to transfer.
         # Corresponds to the JSON property `transferParams`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationTransferParam>]
         attr_accessor :transfer_params
@@ -78,12 +78,14 @@ module Google
         attr_accessor :application_id
       
         # The transfer parameters for the application. These parameters are used to
-        # select the data which will get transferred in context of this application.
+        # select the data which will get transferred in context of this application. For
+        # more information about the specific values available for each application, see
+        # the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference.
         # Corresponds to the JSON property `applicationTransferParams`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationTransferParam>]
         attr_accessor :application_transfer_params
       
-        # Current status of transfer for this application. (Read-only)
+        # Read-only. Current status of transfer for this application.
         # Corresponds to the JSON property `applicationTransferStatus`
         # @return [String]
         attr_accessor :application_transfer_status
@@ -104,12 +106,12 @@ module Google
       class ApplicationTransferParam
         include Google::Apis::Core::Hashable
       
-        # The type of the transfer parameter. eg: 'PRIVACY_LEVEL'
+        # The type of the transfer parameter, such as `PRIVACY_LEVEL`.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'
+        # The value of the transfer parameter, such as `PRIVATE` or `SHARED`.
         # Corresponds to the JSON property `value`
         # @return [Array<String>]
         attr_accessor :value
@@ -129,8 +131,8 @@ module Google
       class ApplicationsListResponse
         include Google::Apis::Core::Hashable
       
-        # List of applications that support data transfer and are also installed for the
-        # customer.
+        # The list of applications that support data transfer and are also installed for
+        # the customer.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AdminDatatransferV1::Application>]
         attr_accessor :applications
@@ -145,7 +147,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Continuation token which will be used to specify next page in list API.
+        # Token to specify the next page in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -168,10 +170,10 @@ module Google
       class DataTransfer
         include Google::Apis::Core::Hashable
       
-        # List of per application data transfer resources. It contains data transfer
-        # details of the applications associated with this transfer resource. Note that
-        # this list is also used to specify the applications for which data transfer has
-        # to be done at the time of the transfer resource creation.
+        # The list of per-application data transfer resources. It contains details of
+        # the applications associated with this transfer resource, and also specifies
+        # the applications for which data transfer has to be done at the time of the
+        # transfer resource creation.
         # Corresponds to the JSON property `applicationDataTransfers`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationDataTransfer>]
         attr_accessor :application_data_transfers
@@ -181,7 +183,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The transfer's ID (Read-only).
+        # Read-only. The transfer's ID.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -201,12 +203,12 @@ module Google
         # @return [String]
         attr_accessor :old_owner_user_id
       
-        # Overall transfer status (Read-only).
+        # Read-only. Overall transfer status.
         # Corresponds to the JSON property `overallTransferStatusCode`
         # @return [String]
         attr_accessor :overall_transfer_status_code
       
-        # The time at which the data transfer was requested (Read-only).
+        # Read-only. The time at which the data transfer was requested.
         # Corresponds to the JSON property `requestTime`
         # @return [DateTime]
         attr_accessor :request_time
@@ -247,7 +249,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Continuation token which will be used to specify next page in list API.
+        # Token to specify the next page in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
