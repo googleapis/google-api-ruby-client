@@ -257,6 +257,13 @@ module Google
       class CloudSqlConnectionProfile
         include Google::Apis::Core::Hashable
       
+        # Output only. The Cloud SQL database instance's additional (outgoing) public IP.
+        # Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple
+        # zones / highly available).
+        # Corresponds to the JSON property `additionalPublicIp`
+        # @return [String]
+        attr_accessor :additional_public_ip
+      
         # Output only. The Cloud SQL instance ID that this connection profile is
         # associated with.
         # Corresponds to the JSON property `cloudSqlId`
@@ -284,6 +291,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_public_ip = args[:additional_public_ip] if args.key?(:additional_public_ip)
           @cloud_sql_id = args[:cloud_sql_id] if args.key?(:cloud_sql_id)
           @private_ip = args[:private_ip] if args.key?(:private_ip)
           @public_ip = args[:public_ip] if args.key?(:public_ip)
@@ -313,6 +321,14 @@ module Google
         # @return [Boolean]
         attr_accessor :auto_storage_increase
         alias_method :auto_storage_increase?, :auto_storage_increase
+      
+        # Optional. Availability type. Potential values: * `ZONAL`: The instance serves
+        # data from only one zone. Outages in that zone affect data availability. * `
+        # REGIONAL`: The instance can serve data from more than one zone in a region (it
+        # is highly available).
+        # Corresponds to the JSON property `availabilityType`
+        # @return [String]
+        attr_accessor :availability_type
       
         # The KMS key name used for the csql instance.
         # Corresponds to the JSON property `cmekKeyName`
@@ -363,6 +379,13 @@ module Google
         attr_accessor :root_password_set
         alias_method :root_password_set?, :root_password_set
       
+        # Optional. The Google Cloud Platform zone where the failover Cloud SQL database
+        # instance is located. Used when the Cloud SQL database availability type is
+        # REGIONAL (i.e. multiple zones / highly available).
+        # Corresponds to the JSON property `secondaryZone`
+        # @return [String]
+        attr_accessor :secondary_zone
+      
         # The Database Migration Service source connection profile ID, in the format: `
         # projects/my_project_name/locations/us-central1/connectionProfiles/
         # connection_profile_ID`
@@ -406,6 +429,7 @@ module Google
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @auto_storage_increase = args[:auto_storage_increase] if args.key?(:auto_storage_increase)
+          @availability_type = args[:availability_type] if args.key?(:availability_type)
           @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @collation = args[:collation] if args.key?(:collation)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
@@ -415,6 +439,7 @@ module Google
           @ip_config = args[:ip_config] if args.key?(:ip_config)
           @root_password = args[:root_password] if args.key?(:root_password)
           @root_password_set = args[:root_password_set] if args.key?(:root_password_set)
+          @secondary_zone = args[:secondary_zone] if args.key?(:secondary_zone)
           @source_id = args[:source_id] if args.key?(:source_id)
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
