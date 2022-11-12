@@ -1120,6 +1120,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimePartitioning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2652,6 +2658,8 @@ module Google
       class SchemaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_partition_config, as: 'lastUpdatedPartitionConfig', class: Google::Apis::HealthcareV1beta1::TimePartitioning, decorator: Google::Apis::HealthcareV1beta1::TimePartitioning::Representation
+      
           property :recursive_structure_depth, :numeric_string => true, as: 'recursiveStructureDepth'
           property :schema_type, as: 'schemaType'
         end
@@ -2817,6 +2825,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :begin_offset, as: 'beginOffset'
           property :content, as: 'content'
+        end
+      end
+      
+      class TimePartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_ms, :numeric_string => true, as: 'expirationMs'
+          property :type, as: 'type'
         end
       end
       
