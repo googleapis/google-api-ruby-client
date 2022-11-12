@@ -57,8 +57,8 @@ module Google
         # might take a few minutes for billing enablement state to propagate to Firebase
         # systems.
         # @param [String] parent
-        #   The parent project for which to create a database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id``.
+        #   Required. The parent project for which to create a database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id``.
         # @param [Google::Apis::FirebasedatabaseV1beta::DatabaseInstance] database_instance_object
         # @param [String] database_id
         #   The globally unique identifier of the database instance.
@@ -101,8 +101,9 @@ module Google
         # recovered or re-used. The Database may only be deleted if it is already in a
         # DISABLED state.
         # @param [String] name
-        #   The fully qualified resource name of the database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id`/instances/`database-id``
+        #   Required. The fully qualified resource name of the database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id`/instances/`database-
+        #   id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -134,8 +135,9 @@ module Google
         # ReenableDatabaseInstance. When a database is disabled, all reads and writes
         # are denied, including view access in the Firebase console.
         # @param [String] name
-        #   The fully qualified resource name of the database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id`/instances/`database-id``
+        #   Required. The fully qualified resource name of the database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id`/instances/`database-
+        #   id``
         # @param [Google::Apis::FirebasedatabaseV1beta::DisableDatabaseInstanceRequest] disable_database_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -168,13 +170,13 @@ module Google
         
         # Gets the DatabaseInstance identified by the specified resource name.
         # @param [String] name
-        #   The fully qualified resource name of the database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id`/instances/`database-id``. `
-        #   database-id` is a globally unique identifier across all parent collections.
-        #   For convenience, this method allows you to supply `-` as a wildcard character
-        #   in place of specific collections under `projects` and `locations`. The
-        #   resulting wildcarding form of the method is: `projects/-/locations/-/instances/
-        #   `database-id``.
+        #   Required. The fully qualified resource name of the database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id`/instances/`database-
+        #   id``. `database-id` is a globally unique identifier across all parent
+        #   collections. For convenience, this method allows you to supply `-` as a
+        #   wildcard character in place of specific collections under `projects` and `
+        #   locations`. The resulting wildcarding form of the method is: `projects/-/
+        #   locations/-/instances/`database-id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -208,8 +210,8 @@ module Google
         # The resulting list contains instances in any STATE. The list results may be
         # stale by a few seconds. Use GetDatabaseInstance for consistent reads.
         # @param [String] parent
-        #   The parent project for which to list database instances, in the form: `
-        #   projects/`project-number`/locations/`location-id`` To list across all
+        #   Required. The parent project for which to list database instances, in the form:
+        #   `projects/`project-number`/locations/`location-id`` To list across all
         #   locations, use a parent in the form: `projects/`project-number`/locations/-`
         # @param [Fixnum] page_size
         #   The maximum number of database instances to return in the response. The server
@@ -254,8 +256,9 @@ module Google
         # using DisableDatabaseInstance. The state of a successfully reenabled
         # DatabaseInstance is ACTIVE.
         # @param [String] name
-        #   The fully qualified resource name of the database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id`/instances/`database-id``
+        #   Required. The fully qualified resource name of the database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id`/instances/`database-
+        #   id``
         # @param [Google::Apis::FirebasedatabaseV1beta::ReenableDatabaseInstanceRequest] reenable_database_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -293,8 +296,9 @@ module Google
         # DatabaseInstance in the DELETED state. Purged DatabaseInstances may not be
         # recovered.
         # @param [String] name
-        #   The fully qualified resource name of the database instance, in the form: `
-        #   projects/`project-number`/locations/`location-id`/instances/`database-id``
+        #   Required. The fully qualified resource name of the database instance, in the
+        #   form: `projects/`project-number`/locations/`location-id`/instances/`database-
+        #   id``
         # @param [Google::Apis::FirebasedatabaseV1beta::UndeleteDatabaseInstanceRequest] undelete_database_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
