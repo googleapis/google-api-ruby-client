@@ -419,9 +419,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :android_package_name, as: 'androidPackageName'
           property :create_time, as: 'createTime'
           property :hostname, as: 'hostname'
           property :invalid_reason, as: 'invalidReason'
+          property :ios_bundle_id, as: 'iosBundleId'
           property :valid, as: 'valid'
         end
       end
