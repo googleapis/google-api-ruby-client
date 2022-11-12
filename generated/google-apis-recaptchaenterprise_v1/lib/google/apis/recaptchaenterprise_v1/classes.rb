@@ -789,6 +789,12 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # The name of the Android package with which the token was generated (Android
+        # keys only).
+        # Corresponds to the JSON property `androidPackageName`
+        # @return [String]
+        attr_accessor :android_package_name
+      
         # The timestamp corresponding to the generation of the token.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -803,6 +809,11 @@ module Google
         # Corresponds to the JSON property `invalidReason`
         # @return [String]
         attr_accessor :invalid_reason
+      
+        # The ID of the iOS bundle with which the token was generated (iOS keys only).
+        # Corresponds to the JSON property `iosBundleId`
+        # @return [String]
+        attr_accessor :ios_bundle_id
       
         # Whether the provided user response token is valid. When valid = false, the
         # reason could be specified in invalid_reason or it could also be due to a user
@@ -820,9 +831,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hostname = args[:hostname] if args.key?(:hostname)
           @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
+          @ios_bundle_id = args[:ios_bundle_id] if args.key?(:ios_bundle_id)
           @valid = args[:valid] if args.key?(:valid)
         end
       end
