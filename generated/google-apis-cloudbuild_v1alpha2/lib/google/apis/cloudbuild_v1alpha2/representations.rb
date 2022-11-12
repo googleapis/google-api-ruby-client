@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketServerConnectedRepository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Repository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Results
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -541,6 +553,14 @@ module Google
           property :complete_time, as: 'completeTime'
           property :config, as: 'config'
           property :create_time, as: 'createTime'
+        end
+      end
+      
+      class BatchCreateRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :repositories, as: 'repositories', class: Google::Apis::CloudbuildV1alpha2::Repository, decorator: Google::Apis::CloudbuildV1alpha2::Repository::Representation
+      
         end
       end
       
@@ -987,6 +1007,18 @@ module Google
           property :repo_name, as: 'repoName'
           hash :substitutions, as: 'substitutions'
           property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class Repository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :remote_uri, as: 'remoteUri'
+          property :update_time, as: 'updateTime'
         end
       end
       
