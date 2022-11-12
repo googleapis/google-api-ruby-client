@@ -22,6 +22,12 @@ module Google
   module Apis
     module ComputeBeta
       
+      class Awsv4Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4000,6 +4006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceStatusScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RolloutPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5870,6 +5882,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Awsv4Signature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key, as: 'accessKey'
+          property :access_key_id, as: 'accessKeyId'
+          property :access_key_version, as: 'accessKeyVersion'
+          property :origin_region, as: 'originRegion'
+        end
       end
       
       class AcceleratorConfig
@@ -8609,6 +8631,7 @@ module Google
           property :ignore_case, as: 'ignoreCase'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeBeta::MetadataFilter, decorator: Google::Apis::ComputeBeta::MetadataFilter::Representation
       
+          property :path_template_match, as: 'pathTemplateMatch'
           property :prefix_match, as: 'prefixMatch'
           collection :query_parameter_matches, as: 'queryParameterMatches', class: Google::Apis::ComputeBeta::HttpQueryParameterMatch, decorator: Google::Apis::ComputeBeta::HttpQueryParameterMatch::Representation
       
@@ -13350,6 +13373,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :physical_host, as: 'physicalHost'
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::ResourceStatusScheduling, decorator: Google::Apis::ComputeBeta::ResourceStatusScheduling::Representation
+      
+        end
+      end
+      
+      class ResourceStatusScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
       
@@ -14259,6 +14291,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication, as: 'authentication'
+          property :aws_v4_authentication, as: 'awsV4Authentication', class: Google::Apis::ComputeBeta::Awsv4Signature, decorator: Google::Apis::ComputeBeta::Awsv4Signature::Representation
+      
           property :client_tls_policy, as: 'clientTlsPolicy'
           collection :subject_alt_names, as: 'subjectAltNames'
         end
@@ -16237,6 +16271,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
+          property :path_template_rewrite, as: 'pathTemplateRewrite'
         end
       end
       
