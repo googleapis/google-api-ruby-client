@@ -4088,7 +4088,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of the user's addresses. The maximum allowed data size for this field
-        # is 10Kb.
+        # is 10KB.
         # Corresponds to the JSON property `addresses`
         # @return [Object]
         attr_accessor :addresses
@@ -4146,7 +4146,7 @@ module Google
         attr_accessor :deletion_time
       
         # The list of the user's email addresses. The maximum allowed data size for this
-        # field is 10Kb.
+        # field is 10KB.
         # Corresponds to the JSON property `emails`
         # @return [Object]
         attr_accessor :emails
@@ -4157,12 +4157,12 @@ module Google
         attr_accessor :etag
       
         # The list of external IDs for the user, such as an employee or network ID. The
-        # maximum allowed data size for this field is 2Kb.
+        # maximum allowed data size for this field is 2KB.
         # Corresponds to the JSON property `externalIds`
         # @return [Object]
         attr_accessor :external_ids
       
-        # The user's gender. The maximum allowed data size for this field is 1Kb.
+        # The user's gender. The maximum allowed data size for this field is 1KB.
         # Corresponds to the JSON property `gender`
         # @return [Object]
         attr_accessor :gender
@@ -4186,7 +4186,7 @@ module Google
       
         # The list of the user's Instant Messenger (IM) accounts. A user account can
         # have multiple ims properties. But, only one of these ims properties can be the
-        # primary IM contact. The maximum allowed data size for this field is 2Kb.
+        # primary IM contact. The maximum allowed data size for this field is 2KB.
         # Corresponds to the JSON property `ims`
         # @return [Object]
         attr_accessor :ims
@@ -4249,7 +4249,7 @@ module Google
         alias_method :is_mailbox_setup?, :is_mailbox_setup
       
         # The list of the user's keywords. The maximum allowed data size for this field
-        # is 1Kb.
+        # is 1KB.
         # Corresponds to the JSON property `keywords`
         # @return [Object]
         attr_accessor :keywords
@@ -4260,7 +4260,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The user's languages. The maximum allowed data size for this field is 1Kb.
+        # The user's languages. The maximum allowed data size for this field is 1KB.
         # Corresponds to the JSON property `languages`
         # @return [Object]
         attr_accessor :languages
@@ -4270,7 +4270,7 @@ module Google
         # @return [DateTime]
         attr_accessor :last_login_time
       
-        # The user's locations. The maximum allowed data size for this field is 10Kb.
+        # The user's locations. The maximum allowed data size for this field is 10KB.
         # Corresponds to the JSON property `locations`
         # @return [Object]
         attr_accessor :locations
@@ -4281,7 +4281,7 @@ module Google
         # characters, and can contain spaces, letters (a-z), numbers (0-9), dashes (-),
         # forward slashes (/), and periods (.). For more information about character
         # usage rules, see the [administration help center](https://support.google.com/a/
-        # answer/9193374). Maximum allowed data size for this field is 1Kb.
+        # answer/9193374). Maximum allowed data size for this field is 1KB.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
@@ -4305,7 +4305,7 @@ module Google
         attr_accessor :org_unit_path
       
         # The list of organizations the user belongs to. The maximum allowed data size
-        # for this field is 10Kb.
+        # for this field is 10KB.
         # Corresponds to the JSON property `organizations`
         # @return [Object]
         attr_accessor :organizations
@@ -4316,7 +4316,7 @@ module Google
         attr_accessor :password
       
         # The list of the user's phone numbers. The maximum allowed data size for this
-        # field is 1Kb.
+        # field is 1KB.
         # Corresponds to the JSON property `phones`
         # @return [Object]
         attr_accessor :phones
@@ -4346,7 +4346,7 @@ module Google
         attr_accessor :recovery_phone
       
         # The list of the user's relationships to other users. The maximum allowed data
-        # size for this field is 2Kb.
+        # size for this field is 2KB.
         # Corresponds to the JSON property `relations`
         # @return [Object]
         attr_accessor :relations
@@ -4379,7 +4379,7 @@ module Google
         # @return [String]
         attr_accessor :thumbnail_photo_url
       
-        # The user's websites. The maximum allowed data size for this field is 2Kb.
+        # The user's websites. The maximum allowed data size for this field is 2KB.
         # Corresponds to the JSON property `websites`
         # @return [Object]
         attr_accessor :websites
@@ -4925,6 +4925,11 @@ module Google
       class UserName
         include Google::Apis::Core::Hashable
       
+        # The user's display name. Limit: 256 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # The user's last name. Required when creating a user account.
         # Corresponds to the JSON property `familyName`
         # @return [String]
@@ -4946,6 +4951,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @family_name = args[:family_name] if args.key?(:family_name)
           @full_name = args[:full_name] if args.key?(:full_name)
           @given_name = args[:given_name] if args.key?(:given_name)
