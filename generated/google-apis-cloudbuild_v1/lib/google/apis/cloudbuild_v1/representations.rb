@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepositoryEventConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Results
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1011,6 +1017,8 @@ module Google
           collection :included_files, as: 'includedFiles'
           property :name, as: 'name'
           property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::CloudbuildV1::PubsubConfig, decorator: Google::Apis::CloudbuildV1::PubsubConfig::Representation
+      
+          property :repository_event_config, as: 'repositoryEventConfig', class: Google::Apis::CloudbuildV1::RepositoryEventConfig, decorator: Google::Apis::CloudbuildV1::RepositoryEventConfig::Representation
       
           property :resource_name, as: 'resourceName'
           property :service_account, as: 'serviceAccount'
@@ -1611,6 +1619,18 @@ module Google
           property :repo_name, as: 'repoName'
           hash :substitutions, as: 'substitutions'
           property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class RepositoryEventConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pull_request, as: 'pullRequest', class: Google::Apis::CloudbuildV1::PullRequestFilter, decorator: Google::Apis::CloudbuildV1::PullRequestFilter::Representation
+      
+          property :push, as: 'push', class: Google::Apis::CloudbuildV1::PushFilter, decorator: Google::Apis::CloudbuildV1::PushFilter::Representation
+      
+          property :repository, as: 'repository'
+          property :repository_type, as: 'repositoryType'
         end
       end
       
