@@ -307,6 +307,25 @@ module Google
         end
       end
       
+      # Message for response of creating repositories in batch.
+      class BatchCreateRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Repository resources created.
+        # Corresponds to the JSON property `repositories`
+        # @return [Array<Google::Apis::CloudbuildV1alpha1::Repository>]
+        attr_accessor :repositories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repositories = args[:repositories] if args.key?(:repositories)
+        end
+      end
+      
       # / BitbucketServerConnectedRepository represents a connected Bitbucket Server /
       # repository.
       class BitbucketServerConnectedRepository
@@ -2073,6 +2092,58 @@ module Google
           @repo_name = args[:repo_name] if args.key?(:repo_name)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
+        end
+      end
+      
+      # A repository associated to a parent connection.
+      class Repository
+        include Google::Apis::Core::Hashable
+      
+        # Allows clients to store small amounts of arbitrary data.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Server assigned timestamp for when the connection was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Immutable. Resource name of the repository, in the format `projects/*/
+        # locations/*/connections/*/repositories/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Git Clone HTTPS URI.
+        # Corresponds to the JSON property `remoteUri`
+        # @return [String]
+        attr_accessor :remote_uri
+      
+        # Output only. Server assigned timestamp for when the connection was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @remote_uri = args[:remote_uri] if args.key?(:remote_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
