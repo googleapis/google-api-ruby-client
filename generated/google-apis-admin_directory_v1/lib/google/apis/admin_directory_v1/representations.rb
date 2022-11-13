@@ -1914,6 +1914,7 @@ module Google
       class UserName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :family_name, as: 'familyName'
           property :full_name, as: 'fullName'
           property :given_name, as: 'givenName'
