@@ -119,6 +119,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
+        # Billing related settings of an advertiser.
+        # Corresponds to the JSON property `billingConfig`
+        # @return [Google::Apis::DisplayvideoV2::AdvertiserBillingConfig]
+        attr_accessor :billing_config
+      
         # Creatives related settings of an advertiser.
         # Corresponds to the JSON property `creativeConfig`
         # @return [Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig]
@@ -195,6 +200,7 @@ module Google
         def update!(**args)
           @ad_server_config = args[:ad_server_config] if args.key?(:ad_server_config)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @billing_config = args[:billing_config] if args.key?(:billing_config)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -232,6 +238,25 @@ module Google
         def update!(**args)
           @cm_hybrid_config = args[:cm_hybrid_config] if args.key?(:cm_hybrid_config)
           @third_party_only_config = args[:third_party_only_config] if args.key?(:third_party_only_config)
+        end
+      end
+      
+      # Billing related settings of an advertiser.
+      class AdvertiserBillingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The ID of a billing profile assigned to the advertiser.
+        # Corresponds to the JSON property `billingProfileId`
+        # @return [Fixnum]
+        attr_accessor :billing_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_profile_id = args[:billing_profile_id] if args.key?(:billing_profile_id)
         end
       end
       
@@ -4618,8 +4643,8 @@ module Google
       class DuplicateLineItemRequest
         include Google::Apis::Core::Hashable
       
-        # The display name of the resulting line item. Must be UTF-8 encoded with a
-        # maximum size of 240 bytes.
+        # The display name of the new line item. Must be UTF-8 encoded with a maximum
+        # size of 240 bytes.
         # Corresponds to the JSON property `targetDisplayName`
         # @return [String]
         attr_accessor :target_display_name
@@ -4634,11 +4659,11 @@ module Google
         end
       end
       
-      # Response message for LineItemService.DuplicateLineItem.
+      # 
       class DuplicateLineItemResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the successfully created line item.
+        # The ID of the created line item.
         # Corresponds to the JSON property `duplicateLineItemId`
         # @return [Fixnum]
         attr_accessor :duplicate_line_item_id
@@ -6119,7 +6144,7 @@ module Google
       
         # The budget segment description. It can be used to enter Purchase Order
         # information for each budget segment and have that information printed on the
-        # invoices. Must be UTF-8 encoded with a length of no more than 80 characters.
+        # invoices. Must be UTF-8 encoded.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -7051,7 +7076,10 @@ module Google
       
         # Settings that control the targeting expansion of the line item. Targeting
         # expansion allows the line item to reach a larger audience based on the
-        # original audience list and the targeting expansion level.
+        # original audience list and the targeting expansion level. Beginning November 7,
+        # 2022, these settings may represent the [optimized targeting feature](//
+        # support.google.com/displayvideo/answer/12060859) in place of targeting
+        # expansion. This feature will be rolled out to all partners by November 9, 2022.
         # Corresponds to the JSON property `targetingExpansion`
         # @return [Google::Apis::DisplayvideoV2::TargetingExpansionConfig]
         attr_accessor :targeting_expansion
@@ -9853,7 +9881,7 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::GeoRegionSearchTerms]
         attr_accessor :geo_region_search_terms
       
-        # Requested page size. Must be between `1` and `100`. If unspecified will
+        # Requested page size. Must be between `1` and `200`. If unspecified will
         # default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         # specified.
         # Corresponds to the JSON property `pageSize`
@@ -10069,20 +10097,33 @@ module Google
       
       # Settings that control the targeting expansion of the line item. Targeting
       # expansion allows the line item to reach a larger audience based on the
-      # original audience list and the targeting expansion level.
+      # original audience list and the targeting expansion level. Beginning November 7,
+      # 2022, these settings may represent the [optimized targeting feature](//
+      # support.google.com/displayvideo/answer/12060859) in place of targeting
+      # expansion. This feature will be rolled out to all partners by November 9, 2022.
       class TargetingExpansionConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Whether to exclude first party audiences from targeting. Similar
-        # audiences of the excluded first party lists will not be excluded. Only
-        # applicable when a first-party audience is positively targeted (directly or
-        # included in a combined audience), otherwise this selection will be ignored.
+        # Required. Whether to exclude first-party audiences from use in targeting
+        # expansion or optimized targeting. Similar audiences of the excluded first-
+        # party lists will not be excluded. Only applicable when a first-party audience
+        # is positively targeted (directly or included in a combined audience),
+        # otherwise this selection will be ignored.
         # Corresponds to the JSON property `excludeFirstPartyAudience`
         # @return [Boolean]
         attr_accessor :exclude_first_party_audience
         alias_method :exclude_first_party_audience?, :exclude_first_party_audience
       
         # Required. Magnitude of expansion for applicable targeting under this line item.
+        # Beginning November 7, 2022, the behavior of this field will change in the
+        # following ways with the replacement of targeting expansion with [optimized
+        # targeting](//support.google.com/displayvideo/answer/12060859): * This field
+        # will represent the optimized targeting checkbox, with a `NO_EXPANSION` value
+        # representing optimized targeting turned off and a `LEAST_EXPANSION` value
+        # representing optimized targeting turned on. * `NO_EXPANSION` will be the
+        # default value for the field and will be automatically assigned if you do not
+        # set the field. * If you set the field to any value other than `NO_EXPANSION`,
+        # it will automatically be set to `LEAST_EXPANSION`.
         # Corresponds to the JSON property `targetingExpansionLevel`
         # @return [String]
         attr_accessor :targeting_expansion_level

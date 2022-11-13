@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvertiserBillingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvertiserCreativeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1810,6 +1816,8 @@ module Google
           property :ad_server_config, as: 'adServerConfig', class: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserAdServerConfig::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :billing_config, as: 'billingConfig', class: Google::Apis::DisplayvideoV2::AdvertiserBillingConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserBillingConfig::Representation
+      
           property :creative_config, as: 'creativeConfig', class: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserCreativeConfig::Representation
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig::Representation
@@ -1836,6 +1844,13 @@ module Google
       
           property :third_party_only_config, as: 'thirdPartyOnlyConfig', class: Google::Apis::DisplayvideoV2::ThirdPartyOnlyConfig, decorator: Google::Apis::DisplayvideoV2::ThirdPartyOnlyConfig::Representation
       
+        end
+      end
+      
+      class AdvertiserBillingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_profile_id, :numeric_string => true, as: 'billingProfileId'
         end
       end
       
