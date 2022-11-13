@@ -4507,6 +4507,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_cancellation, as: 'allowCancellation'
           property :automated_agent_reply_type, as: 'automatedAgentReplyType'
+          property :cx_current_page, as: 'cxCurrentPage'
           property :detect_intent_response, as: 'detectIntentResponse', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse::Representation
       
         end

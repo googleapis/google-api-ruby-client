@@ -6464,6 +6464,12 @@ module Google
         # @return [String]
         attr_accessor :automated_agent_reply_type
       
+        # The unique identifier of the current Dialogflow CX conversation page. Format: `
+        # projects//locations//agents//flows//pages/`.
+        # Corresponds to the JSON property `cxCurrentPage`
+        # @return [String]
+        attr_accessor :cx_current_page
+      
         # The message returned from the DetectIntent method.
         # Corresponds to the JSON property `detectIntentResponse`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse]
@@ -6477,6 +6483,7 @@ module Google
         def update!(**args)
           @allow_cancellation = args[:allow_cancellation] if args.key?(:allow_cancellation)
           @automated_agent_reply_type = args[:automated_agent_reply_type] if args.key?(:automated_agent_reply_type)
+          @cx_current_page = args[:cx_current_page] if args.key?(:cx_current_page)
           @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
         end
       end
