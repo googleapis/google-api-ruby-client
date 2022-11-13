@@ -1087,9 +1087,9 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/finding/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1124,7 +1124,7 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2781,9 +2781,9 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/finding/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2818,7 +2818,7 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3973,9 +3973,9 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/finding/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4010,7 +4010,7 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the finding. See: https://cloud.google.
         #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/finding/`finding_id`".
+        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
