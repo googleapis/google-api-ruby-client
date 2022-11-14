@@ -6592,6 +6592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageRepositoryDeepImageEngagingnessOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageRepositoryFileTruncationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10210,18 +10216,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PornStatsImage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PornStatsText
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PostalAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10331,6 +10325,18 @@ module Google
       end
       
       class QualityActionsReminder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityActionsReminderDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityActionsReminderDynamiteGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -19529,6 +19535,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ambiguous_device_index, as: 'ambiguousDeviceIndex'
+          collection :devices_after_promoters, as: 'devicesAfterPromoters', class: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog, decorator: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog::Representation
+      
           property :final_target_device, as: 'finalTargetDevice', class: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog, decorator: Google::Apis::ContentwarehouseV1::AssistantLogsDeviceInfoLog::Representation
       
           collection :playability_filtered_devices_index, as: 'playabilityFilteredDevicesIndex'
@@ -20179,6 +20187,7 @@ module Google
           property :operational_node_id, as: 'operationalNodeId'
           collection :other_device_ids, as: 'otherDeviceIds', class: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoAgentDeviceId, decorator: Google::Apis::ContentwarehouseV1::AssistantVerticalsHomeautomationProtoAgentDeviceId::Representation
       
+          collection :other_device_sources, as: 'otherDeviceSources'
           collection :parent_node, as: 'parentNode'
           collection :parent_type, as: 'parentType'
           collection :personalized_nicknames, as: 'personalizedNicknames'
@@ -20201,6 +20210,7 @@ module Google
       
           property :supports_direct_response, as: 'supportsDirectResponse'
           hash :target_device_signal_strengths, as: 'targetDeviceSignalStrengths'
+          property :tdss_update_timestamp, as: 'tdssUpdateTimestamp'
           collection :trait_routing_hints, as: 'traitRoutingHints', class: Google::Apis::ContentwarehouseV1::HomeGraphCommonTraitRoutingHints, decorator: Google::Apis::ContentwarehouseV1::HomeGraphCommonTraitRoutingHints::Representation
       
           hash :trait_routing_table, as: 'traitRoutingTable', class: Google::Apis::ContentwarehouseV1::HomeGraphCommonRoutingTable, decorator: Google::Apis::ContentwarehouseV1::HomeGraphCommonRoutingTable::Representation
@@ -25192,6 +25202,7 @@ module Google
           property :async_enabled, as: 'asyncEnabled'
           property :cloud_ai_document, as: 'cloudAiDocument', class: Google::Apis::ContentwarehouseV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudDocumentaiV1Document::Representation
       
+          property :content_category, as: 'contentCategory'
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
           property :display_name, as: 'displayName'
@@ -25689,6 +25700,7 @@ module Google
           property :request_metadata, as: 'requestMetadata', class: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RequestMetadata, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudContentwarehouseV1RequestMetadata::Representation
       
           property :require_total_size, as: 'requireTotalSize'
+          property :total_result_size, as: 'totalResultSize'
         end
       end
       
@@ -27446,6 +27458,8 @@ module Google
       
           property :deep_crop, as: 'deepCrop', class: Google::Apis::ContentwarehouseV1::DeepCropIndexing, decorator: Google::Apis::ContentwarehouseV1::DeepCropIndexing::Representation
       
+          property :deep_image_engagingness, as: 'deepImageEngagingness', class: Google::Apis::ContentwarehouseV1::ImageRepositoryDeepImageEngagingnessOutput, decorator: Google::Apis::ContentwarehouseV1::ImageRepositoryDeepImageEngagingnessOutput::Representation
+      
           property :deep_tags, as: 'deepTags', class: Google::Apis::ContentwarehouseV1::CommerceDatastoreImageDeepTags, decorator: Google::Apis::ContentwarehouseV1::CommerceDatastoreImageDeepTags::Representation
       
           property :docid, :numeric_string => true, as: 'docid'
@@ -27997,6 +28011,13 @@ module Google
         end
       end
       
+      class ImageRepositoryDeepImageEngagingnessOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
       class ImageRepositoryFileTruncationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -28159,6 +28180,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deletion_reason, as: 'deletionReason'
+          property :hide_reason, as: 'hideReason'
         end
       end
       
@@ -30910,6 +30932,7 @@ module Google
       
           property :entity_type, as: 'entityType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersEntityType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersEntityType::Representation
       
+          property :input_composition_config, as: 'inputCompositionConfig'
           property :measurement_type, as: 'measurementType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersMeasurementType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersMeasurementType::Representation
       
           property :normalized_string_type, as: 'normalizedStringType', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersNormalizedStringType, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersNormalizedStringType::Representation
@@ -31584,6 +31607,7 @@ module Google
           property :is_common_word, as: 'isCommonWord'
           property :is_deconstructible, as: 'isDeconstructible'
           property :is_directional_modifier, as: 'isDirectionalModifier'
+          property :is_distance_marker, as: 'isDistanceMarker'
           property :is_forbidden_word, as: 'isForbiddenWord'
           property :is_house_id_identifier, as: 'isHouseIdIdentifier'
           property :is_intersection_connector, as: 'isIntersectionConnector'
@@ -31831,7 +31855,11 @@ module Google
           property :browser_width, as: 'browserWidth'
           collection :candidates, as: 'candidates', class: Google::Apis::ContentwarehouseV1::MustangReposWwwSnippetsSnippetCandidate, decorator: Google::Apis::ContentwarehouseV1::MustangReposWwwSnippetsSnippetCandidate::Representation
       
+          property :display_snippet, as: 'displaySnippet', class: Google::Apis::ContentwarehouseV1::QualityPreviewRanklabSnippet, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewRanklabSnippet::Representation
+      
           property :document_language, as: 'documentLanguage'
+          property :original_query_term_coverages, as: 'originalQueryTermCoverages', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures::Representation
+      
           property :query_language, as: 'queryLanguage'
           property :snippet_data_source_type, as: 'snippetDataSourceType'
           property :snippet_query_term_coverage, as: 'snippetQueryTermCoverage'
@@ -36107,9 +36135,6 @@ module Google
       class PornFlagData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :adaboost_content_score, as: 'adaboostContentScore'
-          property :adaboost_content_score_minor_version, as: 'adaboostContentScoreMinorVersion'
-          property :adaboost_content_score_version, as: 'adaboostContentScoreVersion'
           property :coclick_brain_scores, as: 'coclickBrainScores', class: Google::Apis::ContentwarehouseV1::ImageSafesearchContentBrainPornAnnotation, decorator: Google::Apis::ContentwarehouseV1::ImageSafesearchContentBrainPornAnnotation::Representation
       
           property :csai_score, as: 'csaiScore'
@@ -36118,24 +36143,16 @@ module Google
           property :final_offensive_score, as: 'finalOffensiveScore'
           property :final_violence_score, as: 'finalViolenceScore'
           property :final_violence_score_version, as: 'finalViolenceScoreVersion'
-          collection :image_stats, as: 'imageStats', class: Google::Apis::ContentwarehouseV1::PornStatsImage, decorator: Google::Apis::ContentwarehouseV1::PornStatsImage::Representation
-      
           property :internal_signals, as: 'internalSignals', class: Google::Apis::ContentwarehouseV1::SafesearchInternalImageSignals, decorator: Google::Apis::ContentwarehouseV1::SafesearchInternalImageSignals::Representation
       
-          property :largest_face_frac, as: 'largestFaceFrac'
-          property :largest_face_fraction, as: 'largestFaceFraction'
           property :number_faces, as: 'numberFaces'
           property :ocr_annotation, as: 'ocrAnnotation', class: Google::Apis::ContentwarehouseV1::ImageSafesearchContentOcrAnnotation, decorator: Google::Apis::ContentwarehouseV1::ImageSafesearchContentOcrAnnotation::Representation
       
           property :ocr_vulgar_score, as: 'ocrVulgarScore'
           property :offensive_symbol_detection, as: 'offensiveSymbolDetection', class: Google::Apis::ContentwarehouseV1::ImageSafesearchContentOffensiveSymbolDetection, decorator: Google::Apis::ContentwarehouseV1::ImageSafesearchContentOffensiveSymbolDetection::Representation
       
-          property :overall_porn_score, as: 'overallPornScore'
           property :photodna_hash, :base64 => true, as: 'photodnaHash'
           property :porn_with_high_confidence, as: 'pornWithHighConfidence'
-          property :prop_any_porn_flag, as: 'propAnyPornFlag'
-          property :prop_porn_flag, as: 'propPornFlag'
-          property :prop_softporn_flag, as: 'propSoftpornFlag'
           property :qbst_offensive_score, as: 'qbstOffensiveScore'
           property :qbst_spoof_score, as: 'qbstSpoofScore'
           property :query_stats, as: 'queryStats', class: Google::Apis::ContentwarehouseV1::ClassifierPornQueryStats, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornQueryStats::Representation
@@ -36145,30 +36162,9 @@ module Google
           property :referrer_counts, as: 'referrerCounts', class: Google::Apis::ContentwarehouseV1::ClassifierPornReferrerCounts, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornReferrerCounts::Representation
       
           property :semantic_sexualization_score, as: 'semanticSexualizationScore'
-          collection :text_stats, as: 'textStats', class: Google::Apis::ContentwarehouseV1::PornStatsText, decorator: Google::Apis::ContentwarehouseV1::PornStatsText::Representation
-      
           property :url, as: 'url'
           property :url_porn_scores, as: 'urlPornScores', class: Google::Apis::ContentwarehouseV1::ClassifierPornAggregatedUrlPornScores, decorator: Google::Apis::ContentwarehouseV1::ClassifierPornAggregatedUrlPornScores::Representation
       
-        end
-      end
-      
-      class PornStatsImage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_count, :numeric_string => true, as: 'imageCount'
-          property :site_key, as: 'siteKey'
-          property :version, :numeric_string => true, as: 'version'
-        end
-      end
-      
-      class PornStatsText
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :any_porn_page_count, :numeric_string => true, as: 'anyPornPageCount'
-          property :page_count, :numeric_string => true, as: 'pageCount'
-          property :site_key, as: 'siteKey'
-          property :version, :numeric_string => true, as: 'version'
         end
       end
       
@@ -36393,6 +36389,10 @@ module Google
           property :datetime, as: 'datetime', class: Google::Apis::ContentwarehouseV1::AssistantApiDateTime, decorator: Google::Apis::ContentwarehouseV1::AssistantApiDateTime::Representation
       
           property :description, as: 'description'
+          property :document_assignment_source, as: 'documentAssignmentSource', class: Google::Apis::ContentwarehouseV1::QualityActionsReminderDocument, decorator: Google::Apis::ContentwarehouseV1::QualityActionsReminderDocument::Representation
+      
+          property :dynamite_group_assignment_source, as: 'dynamiteGroupAssignmentSource', class: Google::Apis::ContentwarehouseV1::QualityActionsReminderDynamiteGroup, decorator: Google::Apis::ContentwarehouseV1::QualityActionsReminderDynamiteGroup::Representation
+      
           property :id, as: 'id'
           property :location, as: 'location', class: Google::Apis::ContentwarehouseV1::QualityActionsReminderLocation, decorator: Google::Apis::ContentwarehouseV1::QualityActionsReminderLocation::Representation
       
@@ -36411,6 +36411,18 @@ module Google
           property :symbolic_time, as: 'symbolicTime'
           property :title, as: 'title'
           property :update_timestamp, as: 'updateTimestamp'
+        end
+      end
+      
+      class QualityActionsReminderDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class QualityActionsReminderDynamiteGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -36577,6 +36589,8 @@ module Google
           property :description, as: 'description'
           property :eyebrow, as: 'eyebrow'
           property :image_url, as: 'imageUrl'
+          property :square_image_url, as: 'squareImageUrl'
+          property :status, as: 'status'
           property :title, as: 'title'
           property :video_id, as: 'videoId'
           property :video_url, as: 'videoUrl'
@@ -37078,6 +37092,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_vulgar, as: 'isVulgar'
           property :leading_text_type, as: 'leadingTextType'
+          property :snippet_html, as: 'snippetHtml'
           property :snippet_type, as: 'snippetType'
           property :source, as: 'source'
           collection :tidbits, as: 'tidbits', class: Google::Apis::ContentwarehouseV1::QualityPreviewChosenSnippetInfoTidbitInfo, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewChosenSnippetInfoTidbitInfo::Representation
@@ -37105,6 +37120,10 @@ module Google
           property :document_features, as: 'documentFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetDocumentFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetDocumentFeatures::Representation
       
           property :experimental_features, as: 'experimentalFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetExperimentalFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetExperimentalFeatures::Representation
+      
+          property :final_score, as: 'finalScore'
+          property :is_muppet_selected_snippet, as: 'isMuppetSelectedSnippet'
+          property :original_query_term_coverage_features, as: 'originalQueryTermCoverageFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures::Representation
       
           property :quality_features, as: 'qualityFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQualityFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQualityFeatures::Representation
       
@@ -37585,6 +37604,7 @@ module Google
       class QualityShoppingShoppingAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_model_article_score, as: 'datasetModelArticleScore'
           property :dataset_model_buying_guide_score, as: 'datasetModelBuyingGuideScore'
           property :dataset_model_forum_list_score, as: 'datasetModelForumListScore'
           property :dataset_model_forum_single_score, as: 'datasetModelForumSingleScore'
@@ -40448,8 +40468,6 @@ module Google
           property :data_source, as: 'dataSource'
           property :display_url, as: 'displayUrl'
           property :docid, :numeric_string => true, as: 'docid'
-          collection :field_of_study_entity, as: 'fieldOfStudyEntity', class: Google::Apis::ContentwarehouseV1::ResearchScienceSearchSourceUrlDocjoinInfoWebrefEntityInfo, decorator: Google::Apis::ContentwarehouseV1::ResearchScienceSearchSourceUrlDocjoinInfoWebrefEntityInfo::Representation
-      
           collection :index_tier, as: 'indexTier'
           property :language_code, as: 'languageCode'
           property :latest_page_update_date, as: 'latestPageUpdateDate'
@@ -40467,6 +40485,8 @@ module Google
           collection :top_entity, as: 'topEntity', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntity, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntity::Representation
       
           property :url, as: 'url'
+          collection :webref_entity, as: 'webrefEntity', class: Google::Apis::ContentwarehouseV1::ResearchScienceSearchSourceUrlDocjoinInfoWebrefEntityInfo, decorator: Google::Apis::ContentwarehouseV1::ResearchScienceSearchSourceUrlDocjoinInfoWebrefEntityInfo::Representation
+      
         end
       end
       
@@ -40474,6 +40494,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :entity_type, as: 'entityType'
           property :mid, as: 'mid'
         end
       end
@@ -44279,6 +44300,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :average_bookmark_usefulness, as: 'averageBookmarkUsefulness'
           property :average_description_quality, as: 'averageDescriptionQuality'
+          collection :furball_url, as: 'furballUrl'
         end
       end
       
@@ -45687,6 +45709,8 @@ module Google
       
           property :text_length, as: 'textLength'
           property :text_quality_scores, as: 'textQualityScores', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsRankingYouTubeCommentTextQualityAnnotation, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsRankingYouTubeCommentTextQualityAnnotation::Representation
+      
+          property :text_quality_scores2, as: 'textQualityScores2', class: Google::Apis::ContentwarehouseV1::YoutubeCommentsRankingYouTubeCommentTextQualityAnnotation, decorator: Google::Apis::ContentwarehouseV1::YoutubeCommentsRankingYouTubeCommentTextQualityAnnotation::Representation
       
           property :video_id, as: 'videoId'
           collection :video_timestamps, as: 'videoTimestamps'
