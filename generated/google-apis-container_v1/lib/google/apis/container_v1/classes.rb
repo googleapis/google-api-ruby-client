@@ -390,8 +390,8 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Mode of operation for binauthz policy evaluation. Currently the only options
-        # are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        # Mode of operation for binauthz policy evaluation. If unspecified, defaults to
+        # DISABLED.
         # Corresponds to the JSON property `evaluationMode`
         # @return [String]
         attr_accessor :evaluation_mode
@@ -1790,6 +1790,26 @@ module Google
         end
       end
       
+      # Configuration of Fast Socket feature.
+      class FastSocket
+        include Google::Apis::Core::Hashable
+      
+        # Whether Fast Socket features are enabled in the node pool.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Allows filtering to one or more specific event types. If event types are
       # present, those and only those event types will be transmitted to the cluster.
       # Other types will be skipped. If no filter is specified, or no event types are
@@ -3150,6 +3170,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Configuration of Fast Socket feature.
+        # Corresponds to the JSON property `fastSocket`
+        # @return [Google::Apis::ContainerV1::FastSocket]
+        attr_accessor :fast_socket
+      
         # GcfsConfig contains configurations of Google Container File System (image
         # streaming).
         # Corresponds to the JSON property `gcfsConfig`
@@ -3334,6 +3359,7 @@ module Google
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -5712,6 +5738,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # Configuration of Fast Socket feature.
+        # Corresponds to the JSON property `fastSocket`
+        # @return [Google::Apis::ContainerV1::FastSocket]
+        attr_accessor :fast_socket
+      
         # GcfsConfig contains configurations of Google Container File System (image
         # streaming).
         # Corresponds to the JSON property `gcfsConfig`
@@ -5867,6 +5898,7 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
