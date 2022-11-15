@@ -58,6 +58,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +286,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1Intent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -466,6 +520,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +605,42 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -668,6 +776,36 @@ module Google
           property :source, as: 'source'
           property :title, as: 'title'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_analyses_count, as: 'completedAnalysesCount'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :failed_analyses_count, as: 'failedAnalysesCount'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest::Representation
+      
+          property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_percentage, as: 'analysisPercentage'
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_analysis_count, as: 'failedAnalysisCount'
+          property :successful_analysis_count, as: 'successfulAnalysisCount'
         end
       end
       
@@ -1037,6 +1175,58 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_config, as: 'conversationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+          property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_uri, as: 'bucketUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1Intent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1355,6 +1545,36 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_analyses_count, as: 'completedAnalysesCount'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :failed_analyses_count, as: 'failedAnalysesCount'
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest::Representation
+      
+          property :total_requested_analyses_count, as: 'totalRequestedAnalysesCount'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_percentage, as: 'analysisPercentage'
+          property :filter, as: 'filter'
+          property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_analysis_count, as: 'failedAnalysisCount'
+          property :successful_analysis_count, as: 'successfulAnalysisCount'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1457,6 +1677,58 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus, decorator: Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_config, as: 'conversationConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource::Representation
+      
+          property :parent, as: 'parent'
+          property :transcript_object_config, as: 'transcriptObjectConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_uri, as: 'bucketUri'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :medium, as: 'medium'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
