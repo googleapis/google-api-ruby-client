@@ -951,7 +951,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :mime_type, as: 'mimeType'
-          property :subject, as: 'subject'
         end
       end
       
