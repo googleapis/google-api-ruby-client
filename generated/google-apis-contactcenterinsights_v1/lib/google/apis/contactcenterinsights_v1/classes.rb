@@ -250,6 +250,112 @@ module Google
         end
       end
       
+      # The metadata for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of requested analyses that have completed successfully so far.
+        # Corresponds to the JSON property `completedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :completed_analyses_count
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The number of requested analyses that have failed so far.
+        # Corresponds to the JSON property `failedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_analyses_count
+      
+        # The request to analyze conversations in bulk.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest]
+        attr_accessor :request
+      
+        # Total number of analyses requested. Computed by the number of conversations
+        # returned by `filter` multiplied by `analysis_percentage` in the request.
+        # Corresponds to the JSON property `totalRequestedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :total_requested_analyses_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_analyses_count = args[:completed_analyses_count] if args.key?(:completed_analyses_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
+          @request = args[:request] if args.key?(:request)
+          @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
+        end
+      end
+      
+      # The request to analyze conversations in bulk.
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Percentage of selected conversation to analyze, between [0, 100].
+        # Corresponds to the JSON property `analysisPercentage`
+        # @return [Float]
+        attr_accessor :analysis_percentage
+      
+        # Required. Filter used to select the subset of conversations to analyze.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. The parent resource to create analyses in.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_percentage = args[:analysis_percentage] if args.key?(:analysis_percentage)
+          @filter = args[:filter] if args.key?(:filter)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The response for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Count of failed analyses.
+        # Corresponds to the JSON property `failedAnalysisCount`
+        # @return [Fixnum]
+        attr_accessor :failed_analysis_count
+      
+        # Count of successful analyses.
+        # Corresponds to the JSON property `successfulAnalysisCount`
+        # @return [Fixnum]
+        attr_accessor :successful_analysis_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_analysis_count = args[:failed_analysis_count] if args.key?(:failed_analysis_count)
+          @successful_analysis_count = args[:successful_analysis_count] if args.key?(:successful_analysis_count)
+        end
+      end
+      
       # Response of querying an issue model's statistics.
       class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse
         include Google::Apis::Core::Hashable
@@ -1483,6 +1589,152 @@ module Google
         end
       end
       
+      # The metadata for an IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Partial errors during ingest operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to ingest conversations.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to ingest conversations.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration that applies to all conversations.
+        # Corresponds to the JSON property `conversationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig]
+        attr_accessor :conversation_config
+      
+        # Configuration for Cloud Storage bucket sources.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource]
+        attr_accessor :gcs_source
+      
+        # Required. The parent resource for new conversations.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Configuration for processing transcript objects.
+        # Corresponds to the JSON property `transcriptObjectConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig]
+        attr_accessor :transcript_object_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_config = args[:conversation_config] if args.key?(:conversation_config)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @parent = args[:parent] if args.key?(:parent)
+          @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
+        end
+      end
+      
+      # Configuration that applies to all conversations.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig
+        include Google::Apis::Core::Hashable
+      
+        # An opaque, user-specified string representing the human agent who handled the
+        # conversations.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+        end
+      end
+      
+      # Configuration for Cloud Storage bucket sources.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket containing source objects.
+        # Corresponds to the JSON property `bucketUri`
+        # @return [String]
+        attr_accessor :bucket_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
+        end
+      end
+      
+      # Configuration for processing transcript objects.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The medium transcript objects represent.
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
+        end
+      end
+      
+      # The response to an IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1IngestConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The data for an intent. Represents a detected intent in the conversation, for
       # example MAKES_PROMISE.
       class GoogleCloudContactcenterinsightsV1Intent
@@ -2540,6 +2792,112 @@ module Google
         end
       end
       
+      # The metadata for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The number of requested analyses that have completed successfully so far.
+        # Corresponds to the JSON property `completedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :completed_analyses_count
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The number of requested analyses that have failed so far.
+        # Corresponds to the JSON property `failedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :failed_analyses_count
+      
+        # The request to analyze conversations in bulk.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest]
+        attr_accessor :request
+      
+        # Total number of analyses requested. Computed by the number of conversations
+        # returned by `filter` multiplied by `analysis_percentage` in the request.
+        # Corresponds to the JSON property `totalRequestedAnalysesCount`
+        # @return [Fixnum]
+        attr_accessor :total_requested_analyses_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_analyses_count = args[:completed_analyses_count] if args.key?(:completed_analyses_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @failed_analyses_count = args[:failed_analyses_count] if args.key?(:failed_analyses_count)
+          @request = args[:request] if args.key?(:request)
+          @total_requested_analyses_count = args[:total_requested_analyses_count] if args.key?(:total_requested_analyses_count)
+        end
+      end
+      
+      # The request to analyze conversations in bulk.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Percentage of selected conversation to analyze, between [0, 100].
+        # Corresponds to the JSON property `analysisPercentage`
+        # @return [Float]
+        attr_accessor :analysis_percentage
+      
+        # Required. Filter used to select the subset of conversations to analyze.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. The parent resource to create analyses in.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_percentage = args[:analysis_percentage] if args.key?(:analysis_percentage)
+          @filter = args[:filter] if args.key?(:filter)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The response for a bulk analyze conversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Count of failed analyses.
+        # Corresponds to the JSON property `failedAnalysisCount`
+        # @return [Fixnum]
+        attr_accessor :failed_analysis_count
+      
+        # Count of successful analyses.
+        # Corresponds to the JSON property `successfulAnalysisCount`
+        # @return [Fixnum]
+        attr_accessor :successful_analysis_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_analysis_count = args[:failed_analysis_count] if args.key?(:failed_analysis_count)
+          @successful_analysis_count = args[:successful_analysis_count] if args.key?(:successful_analysis_count)
+        end
+      end
+      
       # Metadata for a create analysis operation.
       class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
         include Google::Apis::Core::Hashable
@@ -2862,6 +3220,152 @@ module Google
       
       # Response for an export insights operation.
       class GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The metadata for an IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Partial errors during ingest operation that might cause the
+        # operation output to be incomplete.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
+        attr_accessor :partial_errors
+      
+        # The request to ingest conversations.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest]
+        attr_accessor :request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @request = args[:request] if args.key?(:request)
+        end
+      end
+      
+      # The request to ingest conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration that applies to all conversations.
+        # Corresponds to the JSON property `conversationConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig]
+        attr_accessor :conversation_config
+      
+        # Configuration for Cloud Storage bucket sources.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource]
+        attr_accessor :gcs_source
+      
+        # Required. The parent resource for new conversations.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Configuration for processing transcript objects.
+        # Corresponds to the JSON property `transcriptObjectConfig`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig]
+        attr_accessor :transcript_object_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation_config = args[:conversation_config] if args.key?(:conversation_config)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @parent = args[:parent] if args.key?(:parent)
+          @transcript_object_config = args[:transcript_object_config] if args.key?(:transcript_object_config)
+        end
+      end
+      
+      # Configuration that applies to all conversations.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig
+        include Google::Apis::Core::Hashable
+      
+        # An opaque, user-specified string representing the human agent who handled the
+        # conversations.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+        end
+      end
+      
+      # Configuration for Cloud Storage bucket sources.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket containing source objects.
+        # Corresponds to the JSON property `bucketUri`
+        # @return [String]
+        attr_accessor :bucket_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_uri = args[:bucket_uri] if args.key?(:bucket_uri)
+        end
+      end
+      
+      # Configuration for processing transcript objects.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The medium transcript objects represent.
+        # Corresponds to the JSON property `medium`
+        # @return [String]
+        attr_accessor :medium
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @medium = args[:medium] if args.key?(:medium)
+        end
+      end
+      
+      # The response to an IngestConversations operation.
+      class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
