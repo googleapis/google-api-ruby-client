@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Dashboard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -381,6 +387,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns', class: Google::Apis::MonitoringV1::Column, decorator: Google::Apis::MonitoringV1::Column::Representation
       
+        end
+      end
+      
+      class ColumnSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :visible, as: 'visible'
         end
       end
       
@@ -786,6 +800,8 @@ module Google
       class TimeSeriesTable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_settings, as: 'columnSettings', class: Google::Apis::MonitoringV1::ColumnSettings, decorator: Google::Apis::MonitoringV1::ColumnSettings::Representation
+      
           collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TableDataSet, decorator: Google::Apis::MonitoringV1::TableDataSet::Representation
       
           property :metric_visualization, as: 'metricVisualization'

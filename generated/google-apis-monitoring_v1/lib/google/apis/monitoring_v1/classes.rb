@@ -249,6 +249,32 @@ module Google
         end
       end
       
+      # The persistent settings for a table's columns.
+      class ColumnSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. Whether the column should be visible on page load.
+        # Corresponds to the JSON property `visible`
+        # @return [Boolean]
+        attr_accessor :visible
+        alias_method :visible?, :visible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @visible = args[:visible] if args.key?(:visible)
+        end
+      end
+      
       # A Google Stackdriver dashboard. Dashboards define the content and layout of
       # pages in the Stackdriver web application.
       class Dashboard
@@ -1840,6 +1866,11 @@ module Google
       class TimeSeriesTable
         include Google::Apis::Core::Hashable
       
+        # Optional. The list of the persistent column settings for the table.
+        # Corresponds to the JSON property `columnSettings`
+        # @return [Array<Google::Apis::MonitoringV1::ColumnSettings>]
+        attr_accessor :column_settings
+      
         # Required. The data displayed in this table.
         # Corresponds to the JSON property `dataSets`
         # @return [Array<Google::Apis::MonitoringV1::TableDataSet>]
@@ -1856,6 +1887,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @column_settings = args[:column_settings] if args.key?(:column_settings)
           @data_sets = args[:data_sets] if args.key?(:data_sets)
           @metric_visualization = args[:metric_visualization] if args.key?(:metric_visualization)
         end
