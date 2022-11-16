@@ -835,6 +835,8 @@ module Google
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1ExternalSystem::Representation
       
           property :external_uri, as: 'externalUri'
+          collection :files, as: 'files', class: Google::Apis::SecuritycenterV1beta1::File, decorator: Google::Apis::SecuritycenterV1beta1::File::Representation
+      
           property :finding_class, as: 'findingClass'
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta1::IamBinding, decorator: Google::Apis::SecuritycenterV1beta1::IamBinding::Representation
       
