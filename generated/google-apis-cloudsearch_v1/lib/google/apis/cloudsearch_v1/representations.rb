@@ -730,6 +730,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Attribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttributeRemoved
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttributeSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditLoggingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -868,13 +892,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ChatClientActionMarkup
+      class CaribouAttributeValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ChatConfig
+      class ChatClientActionMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -958,7 +982,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudPrincipalProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1378,13 +1414,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilterCreated
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilterDeleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FilterOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilterUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FixedFooter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FolderAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1409,6 +1475,24 @@ module Google
       end
       
       class FreshnessOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FuseboxItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FuseboxItemThreadMatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FuseboxPrefUpdatePreState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1499,12 +1583,6 @@ module Google
       end
       
       class GmailClientActionMarkup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleChatConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1678,6 +1756,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class History
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HistoryRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HostAppActionMarkup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1750,6 +1840,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImapSessionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImapSyncDelete
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImapUidsReassign
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImapUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImapsyncFolderAttributeFolderMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImapsyncFolderAttributeFolderMessageFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IncomingWebhookChangedMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1775,6 +1901,12 @@ module Google
       end
       
       class InsertContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntegerFacetingOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1858,6 +1990,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ItemParts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ItemStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1870,7 +2008,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ItemThread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobsettedServerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelAdded
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelCreated
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelDeleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelRemoved
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelRenamed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelUpdated
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Labels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1948,6 +2146,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MatchRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2020,7 +2224,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageAdded
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MessageAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessageDeleted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2050,6 +2266,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessageSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2057,6 +2279,12 @@ module Google
       end
       
       class Metaline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultiKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2129,6 +2357,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2212,7 +2446,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PossiblyTrimmedModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostiniUserProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrefDeleted
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrefUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrefWritten
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2332,6 +2596,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Rank
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RbacRoleProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2375,6 +2645,18 @@ module Google
       end
       
       class RecordingSessionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class References
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2500,6 +2782,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RpcOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SafeUrlProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2597,6 +2885,12 @@ module Google
       end
       
       class SelectionItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SessionContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2848,6 +3142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThreadKeySet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThreadUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimestampOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2884,6 +3190,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TopicState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TopicStateUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransactionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransactionDebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TranscriptionSessionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2891,6 +3221,30 @@ module Google
       end
       
       class TransientData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Trigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Triggers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4391,6 +4745,42 @@ module Google
         end
       end
       
+      class Attribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::CloudsearchV1::CaribouAttributeValue, decorator: Google::Apis::CloudsearchV1::CaribouAttributeValue::Representation
+      
+        end
+      end
+      
+      class AttributeRemoved
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_id, as: 'attributeId'
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+        end
+      end
+      
+      class AttributeSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_id, as: 'attributeId'
+          property :attribute_value, :base64 => true, as: 'attributeValue'
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+        end
+      end
+      
+      class Attributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attribute, as: 'attribute', class: Google::Apis::CloudsearchV1::Attribute, decorator: Google::Apis::CloudsearchV1::Attribute::Representation
+      
+        end
+      end
+      
       class AuditLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4568,8 +4958,6 @@ module Google
           property :broadcast_session_info, as: 'broadcastSessionInfo', class: Google::Apis::CloudsearchV1::BroadcastSessionInfo, decorator: Google::Apis::CloudsearchV1::BroadcastSessionInfo::Representation
       
           property :calendar_event_id, as: 'calendarEventId'
-          property :chat_config, as: 'chatConfig', class: Google::Apis::CloudsearchV1::ChatConfig, decorator: Google::Apis::CloudsearchV1::ChatConfig::Representation
-      
           property :co_activity, as: 'coActivity', class: Google::Apis::CloudsearchV1::CoActivity, decorator: Google::Apis::CloudsearchV1::CoActivity::Representation
       
           property :collaboration, as: 'collaboration', class: Google::Apis::CloudsearchV1::Collaboration, decorator: Google::Apis::CloudsearchV1::Collaboration::Representation
@@ -4668,18 +5056,20 @@ module Google
         end
       end
       
-      class ChatClientActionMarkup
+      class CaribouAttributeValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boolean_value, as: 'booleanValue'
+          property :int_value, as: 'intValue'
+          property :long_value, :numeric_string => true, as: 'longValue'
+          property :raw_byte_value, :base64 => true, as: 'rawByteValue'
+          property :string_value, as: 'stringValue'
         end
       end
       
-      class ChatConfig
+      class ChatClientActionMarkup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :chat_type, as: 'chatType'
-          property :google_chat_config, as: 'googleChatConfig', class: Google::Apis::CloudsearchV1::GoogleChatConfig, decorator: Google::Apis::CloudsearchV1::GoogleChatConfig::Representation
-      
         end
       end
       
@@ -4807,10 +5197,29 @@ module Google
         end
       end
       
+      class ClientContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          property :client_type, as: 'clientType'
+          property :session_context, as: 'sessionContext', class: Google::Apis::CloudsearchV1::SessionContext, decorator: Google::Apis::CloudsearchV1::SessionContext::Representation
+      
+          property :user_ip, as: 'userIp'
+        end
+      end
+      
       class CloudPrincipalProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class ClusterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_id, as: 'clusterId'
+          property :throttled, as: 'throttled'
         end
       end
       
@@ -5421,6 +5830,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
+          property :filter, as: 'filter', class: Google::Apis::CloudsearchV1::Filter, decorator: Google::Apis::CloudsearchV1::Filter::Representation
+      
           property :percentage, as: 'percentage'
           property :value, as: 'value', class: Google::Apis::CloudsearchV1::Value, decorator: Google::Apis::CloudsearchV1::Value::Representation
       
@@ -5430,6 +5841,8 @@ module Google
       class FacetOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :integer_faceting_options, as: 'integerFacetingOptions', class: Google::Apis::CloudsearchV1::IntegerFacetingOptions, decorator: Google::Apis::CloudsearchV1::IntegerFacetingOptions::Representation
+      
           property :num_facet_buckets, as: 'numFacetBuckets'
           property :object_type, as: 'objectType'
           property :operator_name, as: 'operatorName'
@@ -5466,12 +5879,35 @@ module Google
         end
       end
       
+      class FilterCreated
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FilterDeleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class FilterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter', class: Google::Apis::CloudsearchV1::Filter, decorator: Google::Apis::CloudsearchV1::Filter::Representation
       
           property :object_type, as: 'objectType'
+        end
+      end
+      
+      class FilterUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_created, as: 'filterCreated', class: Google::Apis::CloudsearchV1::FilterCreated, decorator: Google::Apis::CloudsearchV1::FilterCreated::Representation
+      
+          property :filter_deleted, as: 'filterDeleted', class: Google::Apis::CloudsearchV1::FilterDeleted, decorator: Google::Apis::CloudsearchV1::FilterDeleted::Representation
+      
+          property :filter_id, as: 'filterId'
         end
       end
       
@@ -5483,6 +5919,23 @@ module Google
           property :primary_button, as: 'primaryButton', class: Google::Apis::CloudsearchV1::TextButton, decorator: Google::Apis::CloudsearchV1::TextButton::Representation
       
           property :secondary_button, as: 'secondaryButton', class: Google::Apis::CloudsearchV1::TextButton, decorator: Google::Apis::CloudsearchV1::TextButton::Representation
+      
+        end
+      end
+      
+      class Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          collection :message, as: 'message', class: Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessage, decorator: Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessage::Representation
+      
+        end
+      end
+      
+      class FolderAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folder, as: 'folder', class: Google::Apis::CloudsearchV1::Folder, decorator: Google::Apis::CloudsearchV1::Folder::Representation
       
         end
       end
@@ -5523,6 +5976,59 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :freshness_duration, as: 'freshnessDuration'
           property :freshness_property, as: 'freshnessProperty'
+        end
+      end
+      
+      class FuseboxItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::CloudsearchV1::Attributes, decorator: Google::Apis::CloudsearchV1::Attributes::Representation
+      
+          property :creation_time_microseconds, :numeric_string => true, as: 'creationTimeMicroseconds'
+          property :history, as: 'history', class: Google::Apis::CloudsearchV1::History, decorator: Google::Apis::CloudsearchV1::History::Representation
+      
+          property :item_key, as: 'itemKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :labels, as: 'labels', class: Google::Apis::CloudsearchV1::Labels, decorator: Google::Apis::CloudsearchV1::Labels::Representation
+      
+          property :last_modification_time_us, :numeric_string => true, as: 'lastModificationTimeUs'
+          property :locker_references, as: 'lockerReferences', class: Google::Apis::CloudsearchV1::References, decorator: Google::Apis::CloudsearchV1::References::Representation
+      
+          property :match_info, as: 'matchInfo', class: Google::Apis::CloudsearchV1::MatchInfo, decorator: Google::Apis::CloudsearchV1::MatchInfo::Representation
+      
+          property :parts, as: 'parts', class: Google::Apis::CloudsearchV1::ItemParts, decorator: Google::Apis::CloudsearchV1::ItemParts::Representation
+      
+          property :read_ts, :numeric_string => true, as: 'readTs'
+          property :references, as: 'references', class: Google::Apis::CloudsearchV1::References, decorator: Google::Apis::CloudsearchV1::References::Representation
+      
+          property :snippet, as: 'snippet'
+          property :thread_key, as: 'threadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :thread_locator, as: 'threadLocator'
+          property :triggers, as: 'triggers', class: Google::Apis::CloudsearchV1::Triggers, decorator: Google::Apis::CloudsearchV1::Triggers::Representation
+      
+          property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class FuseboxItemThreadMatchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_id, as: 'clusterId'
+          property :last_matching_item_id, :numeric_string => true, as: 'lastMatchingItemId'
+          property :last_matching_item_key, as: 'lastMatchingItemKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          collection :matching_item_key, as: 'matchingItemKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :rank, as: 'rank', class: Google::Apis::CloudsearchV1::Rank, decorator: Google::Apis::CloudsearchV1::Rank::Representation
+      
+        end
+      end
+      
+      class FuseboxPrefUpdatePreState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, :base64 => true, as: 'value'
         end
       end
       
@@ -5652,13 +6158,6 @@ module Google
       
           property :update_draft_action_markup, as: 'updateDraftActionMarkup', class: Google::Apis::CloudsearchV1::UpdateDraftActionMarkup, decorator: Google::Apis::CloudsearchV1::UpdateDraftActionMarkup::Representation
       
-        end
-      end
-      
-      class GoogleChatConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :chat_group_id, as: 'chatGroupId'
         end
       end
       
@@ -5960,6 +6459,38 @@ module Google
         end
       end
       
+      class History
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :record, as: 'record', class: Google::Apis::CloudsearchV1::HistoryRecord, decorator: Google::Apis::CloudsearchV1::HistoryRecord::Representation
+      
+        end
+      end
+      
+      class HistoryRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_context, as: 'clientContext', class: Google::Apis::CloudsearchV1::ClientContext, decorator: Google::Apis::CloudsearchV1::ClientContext::Representation
+      
+          property :filter_update, as: 'filterUpdate', class: Google::Apis::CloudsearchV1::FilterUpdate, decorator: Google::Apis::CloudsearchV1::FilterUpdate::Representation
+      
+          property :imap_update, as: 'imapUpdate', class: Google::Apis::CloudsearchV1::ImapUpdate, decorator: Google::Apis::CloudsearchV1::ImapUpdate::Representation
+      
+          property :label_update, as: 'labelUpdate', class: Google::Apis::CloudsearchV1::LabelUpdate, decorator: Google::Apis::CloudsearchV1::LabelUpdate::Representation
+      
+          property :pref_update, as: 'prefUpdate', class: Google::Apis::CloudsearchV1::PrefUpdate, decorator: Google::Apis::CloudsearchV1::PrefUpdate::Representation
+      
+          property :record_id, :numeric_string => true, as: 'recordId'
+          property :thread_update, as: 'threadUpdate', class: Google::Apis::CloudsearchV1::ThreadUpdate, decorator: Google::Apis::CloudsearchV1::ThreadUpdate::Representation
+      
+          property :transaction_context, as: 'transactionContext', class: Google::Apis::CloudsearchV1::TransactionContext, decorator: Google::Apis::CloudsearchV1::TransactionContext::Representation
+      
+          property :txn_debug_info, as: 'txnDebugInfo', class: Google::Apis::CloudsearchV1::TransactionDebugInfo, decorator: Google::Apis::CloudsearchV1::TransactionDebugInfo::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class HostAppActionMarkup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6082,6 +6613,62 @@ module Google
         end
       end
       
+      class ImapSessionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app, as: 'app'
+          property :device_type, as: 'deviceType'
+          property :guid_fingerprint, :numeric_string => true, as: 'guidFingerprint'
+          property :os, as: 'os'
+          property :os_version, as: 'osVersion', class: Google::Apis::CloudsearchV1::OsVersion, decorator: Google::Apis::CloudsearchV1::OsVersion::Representation
+      
+          property :possibly_trimmed_model, as: 'possiblyTrimmedModel', class: Google::Apis::CloudsearchV1::PossiblyTrimmedModel, decorator: Google::Apis::CloudsearchV1::PossiblyTrimmedModel::Representation
+      
+        end
+      end
+      
+      class ImapSyncDelete
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mappings, as: 'mappings', class: Google::Apis::CloudsearchV1::FolderAttribute, decorator: Google::Apis::CloudsearchV1::FolderAttribute::Representation
+      
+          property :msg_id, :numeric_string => true, as: 'msgId'
+        end
+      end
+      
+      class ImapUidsReassign
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_id, as: 'labelId'
+          collection :message_id, as: 'messageId'
+        end
+      end
+      
+      class ImapUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :imap_uids_reassign, as: 'imapUidsReassign', class: Google::Apis::CloudsearchV1::ImapUidsReassign, decorator: Google::Apis::CloudsearchV1::ImapUidsReassign::Representation
+      
+        end
+      end
+      
+      class ImapsyncFolderAttributeFolderMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flags, as: 'flags', class: Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessageFlags, decorator: Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessageFlags::Representation
+      
+          property :uid, :numeric_string => true, as: 'uid'
+        end
+      end
+      
+      class ImapsyncFolderAttributeFolderMessageFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flagged, as: 'flagged'
+          property :seen, as: 'seen'
+        end
+      end
+      
       class IncomingWebhookChangedMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6132,6 +6719,13 @@ module Google
         end
       end
       
+      class IntegerFacetingOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :integer_buckets, as: 'integerBuckets'
+        end
+      end
+      
       class IntegerOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6144,6 +6738,8 @@ module Google
       class IntegerPropertyOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :integer_faceting_options, as: 'integerFacetingOptions', class: Google::Apis::CloudsearchV1::IntegerFacetingOptions, decorator: Google::Apis::CloudsearchV1::IntegerFacetingOptions::Representation
+      
           property :maximum_value, :numeric_string => true, as: 'maximumValue'
           property :minimum_value, :numeric_string => true, as: 'minimumValue'
           property :operator_options, as: 'operatorOptions', class: Google::Apis::CloudsearchV1::IntegerOperatorOptions, decorator: Google::Apis::CloudsearchV1::IntegerOperatorOptions::Representation
@@ -6287,6 +6883,12 @@ module Google
         end
       end
       
+      class ItemParts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ItemStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6304,6 +6906,34 @@ module Google
           property :hash_prop, as: 'hash'
           property :object, as: 'object', class: Google::Apis::CloudsearchV1::StructuredDataObject, decorator: Google::Apis::CloudsearchV1::StructuredDataObject::Representation
       
+        end
+      end
+      
+      class ItemThread
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_info, as: 'clusterInfo', class: Google::Apis::CloudsearchV1::ClusterInfo, decorator: Google::Apis::CloudsearchV1::ClusterInfo::Representation
+      
+          collection :item, as: 'item', class: Google::Apis::CloudsearchV1::FuseboxItem, decorator: Google::Apis::CloudsearchV1::FuseboxItem::Representation
+      
+          property :last_item_id, :numeric_string => true, as: 'lastItemId'
+          property :match_info, as: 'matchInfo', class: Google::Apis::CloudsearchV1::FuseboxItemThreadMatchInfo, decorator: Google::Apis::CloudsearchV1::FuseboxItemThreadMatchInfo::Representation
+      
+          property :snippet, as: 'snippet'
+          property :thread_key, as: 'threadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :thread_locator, as: 'threadLocator'
+          property :topic_state, as: 'topicState', class: Google::Apis::CloudsearchV1::TopicState, decorator: Google::Apis::CloudsearchV1::TopicState::Representation
+      
+          property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class JobsettedServerSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :port_name, as: 'portName'
+          property :server_name, as: 'serverName'
         end
       end
       
@@ -6328,6 +6958,78 @@ module Google
           property :switch_widget, as: 'switchWidget', class: Google::Apis::CloudsearchV1::SwitchWidget, decorator: Google::Apis::CloudsearchV1::SwitchWidget::Representation
       
           property :top_label, as: 'topLabel'
+        end
+      end
+      
+      class LabelAdded
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_id, as: 'labelId'
+          property :label_name, as: 'labelName'
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :sync_id, as: 'syncId'
+        end
+      end
+      
+      class LabelCreated
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LabelDeleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class LabelRemoved
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_id, as: 'labelId'
+          property :label_name, as: 'labelName'
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :sync_id, as: 'syncId'
+        end
+      end
+      
+      class LabelRenamed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :old_canonical_name, as: 'oldCanonicalName'
+        end
+      end
+      
+      class LabelUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_name, as: 'canonicalName'
+          property :label_created, as: 'labelCreated', class: Google::Apis::CloudsearchV1::LabelCreated, decorator: Google::Apis::CloudsearchV1::LabelCreated::Representation
+      
+          property :label_deleted, as: 'labelDeleted', class: Google::Apis::CloudsearchV1::LabelDeleted, decorator: Google::Apis::CloudsearchV1::LabelDeleted::Representation
+      
+          property :label_id, as: 'labelId'
+          property :label_renamed, as: 'labelRenamed', class: Google::Apis::CloudsearchV1::LabelRenamed, decorator: Google::Apis::CloudsearchV1::LabelRenamed::Representation
+      
+          property :label_updated, as: 'labelUpdated', class: Google::Apis::CloudsearchV1::LabelUpdated, decorator: Google::Apis::CloudsearchV1::LabelUpdated::Representation
+      
+          property :sync_id, as: 'syncId'
+        end
+      end
+      
+      class LabelUpdated
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Labels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :display_name, as: 'displayName'
+          collection :id, as: 'id'
         end
       end
       
@@ -6433,6 +7135,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :unmapped_identities, as: 'unmappedIdentities', class: Google::Apis::CloudsearchV1::UnmappedIdentity, decorator: Google::Apis::CloudsearchV1::UnmappedIdentity::Representation
       
+        end
+      end
+      
+      class MatchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matching_image_reference_key, as: 'matchingImageReferenceKey'
         end
       end
       
@@ -6631,10 +7340,31 @@ module Google
         end
       end
       
+      class MessageAdded
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attribute_ids, as: 'attributeIds'
+          collection :label_ids, as: 'labelIds'
+          property :message_key, as: 'messageKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          collection :sync_ids, as: 'syncIds'
+        end
+      end
+      
       class MessageAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_tombstone, as: 'isTombstone'
+        end
+      end
+      
+      class MessageDeleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :imap_sync_mappings, as: 'imapSyncMappings', class: Google::Apis::CloudsearchV1::ImapSyncDelete, decorator: Google::Apis::CloudsearchV1::ImapSyncDelete::Representation
+      
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
         end
       end
       
@@ -6672,6 +7402,12 @@ module Google
         end
       end
       
+      class MessageSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6696,6 +7432,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :properties, as: 'properties', class: Google::Apis::CloudsearchV1::DisplayedProperty, decorator: Google::Apis::CloudsearchV1::DisplayedProperty::Representation
       
+        end
+      end
+      
+      class MultiKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_assigned_perm_id, as: 'clientAssignedPermId'
+          property :server_id, :numeric_string => true, as: 'serverId'
         end
       end
       
@@ -6829,6 +7573,15 @@ module Google
         end
       end
       
+      class OsVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :major_version, as: 'majorVersion'
+          property :minor_version, as: 'minorVersion'
+          property :tertiary_version, as: 'tertiaryVersion'
+        end
+      end
+      
       class OtrChatMessageEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6952,10 +7705,56 @@ module Google
         end
       end
       
+      class PossiblyTrimmedModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_trimmed, as: 'isTrimmed'
+          property :model, as: 'model'
+        end
+      end
+      
       class PostiniUserProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :postini_user_id, :numeric_string => true, as: 'postiniUserId'
+        end
+      end
+      
+      class PreState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_ids, as: 'labelIds'
+          property :message_key, as: 'messageKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          collection :sync_ids, as: 'syncIds'
+          property :thread_key, as: 'threadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+        end
+      end
+      
+      class PrefDeleted
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PrefUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :pre_state, as: 'preState', class: Google::Apis::CloudsearchV1::FuseboxPrefUpdatePreState, decorator: Google::Apis::CloudsearchV1::FuseboxPrefUpdatePreState::Representation
+      
+          property :pref_deleted, as: 'prefDeleted', class: Google::Apis::CloudsearchV1::PrefDeleted, decorator: Google::Apis::CloudsearchV1::PrefDeleted::Representation
+      
+          property :pref_written, as: 'prefWritten', class: Google::Apis::CloudsearchV1::PrefWritten, decorator: Google::Apis::CloudsearchV1::PrefWritten::Representation
+      
+        end
+      end
+      
+      class PrefWritten
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, :base64 => true, as: 'value'
         end
       end
       
@@ -7244,6 +8043,14 @@ module Google
         end
       end
       
+      class Rank
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary, :numeric_string => true, as: 'primary'
+          property :secondary, :numeric_string => true, as: 'secondary'
+        end
+      end
+      
       class RbacRoleProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7309,6 +8116,26 @@ module Google
           property :owner_email, as: 'ownerEmail'
           property :recording_session_id, as: 'recordingSessionId'
           property :session_state_info, as: 'sessionStateInfo', class: Google::Apis::CloudsearchV1::SessionStateInfo, decorator: Google::Apis::CloudsearchV1::SessionStateInfo::Representation
+      
+        end
+      end
+      
+      class Reference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_id, as: 'blobId'
+          property :content_type, as: 'contentType'
+          property :hash_prop, as: 'hash'
+          property :key, as: 'key'
+          property :name, as: 'name'
+          property :size, :numeric_string => true, as: 'size'
+        end
+      end
+      
+      class References
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :references, as: 'references', class: Google::Apis::CloudsearchV1::Reference, decorator: Google::Apis::CloudsearchV1::Reference::Representation
       
         end
       end
@@ -7495,6 +8322,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class RpcOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_extensions, as: 'requestExtensions', class: Google::Apis::CloudsearchV1::MessageSet, decorator: Google::Apis::CloudsearchV1::MessageSet::Representation
+      
         end
       end
       
@@ -7709,6 +8544,19 @@ module Google
           property :selected, as: 'selected'
           property :text, as: 'text'
           property :value, as: 'value'
+        end
+      end
+      
+      class SessionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_time, :numeric_string => true, as: 'authTime'
+          property :delegate_user_id, :numeric_string => true, as: 'delegateUserId'
+          property :dusi, as: 'dusi'
+          property :imap_session_context, as: 'imapSessionContext', class: Google::Apis::CloudsearchV1::ImapSessionContext, decorator: Google::Apis::CloudsearchV1::ImapSessionContext::Representation
+      
+          property :oauth_login_id, as: 'oauthLoginId'
+          property :oauth_project_id, :numeric_string => true, as: 'oauthProjectId'
         end
       end
       
@@ -8110,6 +8958,46 @@ module Google
         end
       end
       
+      class ThreadKeySet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_keys, as: 'messageKeys', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :new_thread_key, as: 'newThreadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+        end
+      end
+      
+      class ThreadUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_removed, as: 'attributeRemoved', class: Google::Apis::CloudsearchV1::AttributeRemoved, decorator: Google::Apis::CloudsearchV1::AttributeRemoved::Representation
+      
+          property :attribute_set, as: 'attributeSet', class: Google::Apis::CloudsearchV1::AttributeSet, decorator: Google::Apis::CloudsearchV1::AttributeSet::Representation
+      
+          property :label_added, as: 'labelAdded', class: Google::Apis::CloudsearchV1::LabelAdded, decorator: Google::Apis::CloudsearchV1::LabelAdded::Representation
+      
+          property :label_removed, as: 'labelRemoved', class: Google::Apis::CloudsearchV1::LabelRemoved, decorator: Google::Apis::CloudsearchV1::LabelRemoved::Representation
+      
+          property :last_history_record_id, :numeric_string => true, as: 'lastHistoryRecordId'
+          property :message_added, as: 'messageAdded', class: Google::Apis::CloudsearchV1::MessageAdded, decorator: Google::Apis::CloudsearchV1::MessageAdded::Representation
+      
+          property :message_deleted, as: 'messageDeleted', class: Google::Apis::CloudsearchV1::MessageDeleted, decorator: Google::Apis::CloudsearchV1::MessageDeleted::Representation
+      
+          property :original_thread_key, as: 'originalThreadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          collection :pre_state, as: 'preState', class: Google::Apis::CloudsearchV1::PreState, decorator: Google::Apis::CloudsearchV1::PreState::Representation
+      
+          property :thread_key, as: 'threadKey', class: Google::Apis::CloudsearchV1::MultiKey, decorator: Google::Apis::CloudsearchV1::MultiKey::Representation
+      
+          property :thread_key_set, as: 'threadKeySet', class: Google::Apis::CloudsearchV1::ThreadKeySet, decorator: Google::Apis::CloudsearchV1::ThreadKeySet::Representation
+      
+          property :thread_locator, as: 'threadLocator'
+          property :topic_state_update, as: 'topicStateUpdate', class: Google::Apis::CloudsearchV1::TopicStateUpdate, decorator: Google::Apis::CloudsearchV1::TopicStateUpdate::Representation
+      
+        end
+      end
+      
       class TimestampOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8159,6 +9047,37 @@ module Google
         end
       end
       
+      class TopicState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :label_id_message_count, as: 'labelIdMessageCount'
+          property :num_constituents, as: 'numConstituents'
+        end
+      end
+      
+      class TopicStateUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic_state, as: 'topicState', class: Google::Apis::CloudsearchV1::TopicState, decorator: Google::Apis::CloudsearchV1::TopicState::Representation
+      
+        end
+      end
+      
+      class TransactionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ending_record_id, :numeric_string => true, as: 'endingRecordId'
+          property :starting_record_id, :numeric_string => true, as: 'startingRecordId'
+          property :write_timestamp_us, :numeric_string => true, as: 'writeTimestampUs'
+        end
+      end
+      
+      class TransactionDebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class TranscriptionSessionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8171,6 +9090,52 @@ module Google
       class TransientData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Trigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :batch_time_us, :numeric_string => true, as: 'batchTimeUs'
+          property :dispatch_id, as: 'dispatchId'
+          property :dispatcher, as: 'dispatcher'
+          property :fire_time_us, :numeric_string => true, as: 'fireTimeUs'
+          property :jobsetted_server_spec, as: 'jobsettedServerSpec', class: Google::Apis::CloudsearchV1::JobsettedServerSpec, decorator: Google::Apis::CloudsearchV1::JobsettedServerSpec::Representation
+      
+          property :key, as: 'key'
+          property :rpc_options, as: 'rpcOptions', class: Google::Apis::CloudsearchV1::RpcOptions, decorator: Google::Apis::CloudsearchV1::RpcOptions::Representation
+      
+          property :slice_fire_time_us, :numeric_string => true, as: 'sliceFireTimeUs'
+          property :trigger_action, as: 'triggerAction', class: Google::Apis::CloudsearchV1::TriggerAction, decorator: Google::Apis::CloudsearchV1::TriggerAction::Representation
+      
+          property :trigger_key, as: 'triggerKey', class: Google::Apis::CloudsearchV1::TriggerKey, decorator: Google::Apis::CloudsearchV1::TriggerKey::Representation
+      
+        end
+      end
+      
+      class TriggerAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :data, :base64 => true, as: 'data'
+          property :data_int, :numeric_string => true, as: 'dataInt'
+        end
+      end
+      
+      class TriggerKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class Triggers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :triggers, as: 'triggers', class: Google::Apis::CloudsearchV1::Trigger, decorator: Google::Apis::CloudsearchV1::Trigger::Representation
+      
         end
       end
       
@@ -8315,6 +9280,7 @@ module Google
           property :content_type, as: 'contentType'
           property :dlp_metrics_metadata, as: 'dlpMetricsMetadata', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata::Representation
       
+          property :latest_virus_scan_timestamp, :numeric_string => true, as: 'latestVirusScanTimestamp'
           property :local_id, as: 'localId'
           property :original_dimension, as: 'originalDimension', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedDimension::Representation
       
