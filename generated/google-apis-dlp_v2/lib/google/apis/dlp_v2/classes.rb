@@ -2537,7 +2537,7 @@ module Google
       
       # The rule to exclude findings based on a hotword. For record inspection of
       # tables, column names are considered hotwords. An example of this is to exclude
-      # a finding if a BigQuery column matches a specific pattern.
+      # a finding if it belongs to a BigQuery column that matches a specific pattern.
       class GooglePrivacyDlpV2ExcludeByHotword
         include Google::Apis::Core::Hashable
       
@@ -2616,7 +2616,7 @@ module Google
       
         # The rule to exclude findings based on a hotword. For record inspection of
         # tables, column names are considered hotwords. An example of this is to exclude
-        # a finding if a BigQuery column matches a specific pattern.
+        # a finding if it belongs to a BigQuery column that matches a specific pattern.
         # Corresponds to the JSON property `excludeByHotword`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExcludeByHotword]
         attr_accessor :exclude_by_hotword
