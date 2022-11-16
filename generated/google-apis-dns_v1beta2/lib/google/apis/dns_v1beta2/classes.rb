@@ -1020,7 +1020,7 @@ module Google
         attr_accessor :ipv4_address
       
         # IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6)
-        # being populated.
+        # being populated. Public preview as of November 2022.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -1694,7 +1694,7 @@ module Google
         attr_accessor :ipv4_address
       
         # IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being
-        # populated.
+        # populated. Public preview as of November 2022.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
