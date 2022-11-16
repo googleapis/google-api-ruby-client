@@ -58,6 +58,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeOrgPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeOrgPolicyGovernedAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeOrgPolicyGovernedContainersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzerOrgPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzerOrgPolicyConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,7 +220,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssetV1BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1BooleanConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Constraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1CustomConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssetV1GovernedContainer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssetV1Identity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,7 +292,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssetV1ListConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssetV1Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssetV1StringValues
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgPolicyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -538,7 +640,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryAssetsOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAssetsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryAssetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -617,6 +743,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableFieldSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -729,6 +867,61 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :move_analysis, as: 'moveAnalysis', class: Google::Apis::CloudassetV1::MoveAnalysis, decorator: Google::Apis::CloudassetV1::MoveAnalysis::Representation
+      
+        end
+      end
+      
+      class AnalyzeOrgPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint, as: 'constraint', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_policy_results, as: 'orgPolicyResults', class: Google::Apis::CloudassetV1::OrgPolicyResult, decorator: Google::Apis::CloudassetV1::OrgPolicyResult::Representation
+      
+        end
+      end
+      
+      class AnalyzeOrgPolicyGovernedAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint, as: 'constraint', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint::Representation
+      
+          collection :governed_assets, as: 'governedAssets', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class AnalyzeOrgPolicyGovernedContainersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraint, as: 'constraint', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicyConstraint::Representation
+      
+          collection :governed_containers, as: 'governedContainers', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1GovernedContainer, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1GovernedContainer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class AnalyzerOrgPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :applied_resource, as: 'appliedResource'
+          property :attached_resource, as: 'attachedResource'
+          property :inherit_from_parent, as: 'inheritFromParent'
+          property :reset, as: 'reset'
+          collection :rules, as: 'rules', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Rule, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Rule::Representation
+      
+        end
+      end
+      
+      class AnalyzerOrgPolicyConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_constraint, as: 'customConstraint', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1CustomConstraint, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1CustomConstraint::Representation
+      
+          property :google_defined_constraint, as: 'googleDefinedConstraint', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1Constraint, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1Constraint::Representation
       
         end
       end
@@ -957,6 +1150,43 @@ module Google
         end
       end
       
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consolidated_policy, as: 'consolidatedPolicy', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
+          property :governed_iam_policy, as: 'governedIamPolicy', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy::Representation
+      
+          property :governed_resource, as: 'governedResource', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource::Representation
+      
+          collection :policy_bundle, as: 'policyBundle', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attached_resource, as: 'attachedResource'
+          collection :folders, as: 'folders'
+          property :organization, as: 'organization'
+          property :policy, as: 'policy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
+      
+          property :project, as: 'project'
+        end
+      end
+      
+      class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :folders, as: 'folders'
+          property :full_resource_name, as: 'fullResourceName'
+          property :organization, as: 'organization'
+          property :parent, as: 'parent'
+          property :project, as: 'project'
+        end
+      end
+      
       class GoogleCloudAssetV1BigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -964,6 +1194,39 @@ module Google
           property :partition_key, as: 'partitionKey'
           property :table_prefix, as: 'tablePrefix'
           property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
+      class GoogleCloudAssetV1BooleanConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAssetV1Constraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boolean_constraint, as: 'booleanConstraint', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1BooleanConstraint, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1BooleanConstraint::Representation
+      
+          property :constraint_default, as: 'constraintDefault'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :list_constraint, as: 'listConstraint', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1ListConstraint, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1ListConstraint::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAssetV1CustomConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :method_types, as: 'methodTypes'
+          property :name, as: 'name'
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       
@@ -979,6 +1242,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudAssetV1GovernedContainer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consolidated_policy, as: 'consolidatedPolicy', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :parent, as: 'parent'
+          collection :policy_bundle, as: 'policyBundle', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
         end
       end
       
@@ -1001,12 +1276,50 @@ module Google
         end
       end
       
+      class GoogleCloudAssetV1ListConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :supports_in, as: 'supportsIn'
+          property :supports_under, as: 'supportsUnder'
+        end
+      end
+      
+      class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :table, as: 'table'
+          property :write_disposition, as: 'writeDisposition'
+        end
+      end
+      
       class GoogleCloudAssetV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analysis_state, as: 'analysisState', class: Google::Apis::CloudassetV1::IamPolicyAnalysisState, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisState::Representation
       
           property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class GoogleCloudAssetV1Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_all, as: 'allowAll'
+          property :condition, as: 'condition', class: Google::Apis::CloudassetV1::Expr, decorator: Google::Apis::CloudassetV1::Expr::Representation
+      
+          property :deny_all, as: 'denyAll'
+          property :enforce, as: 'enforce'
+          property :values, as: 'values', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1StringValues, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1StringValues::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssetV1StringValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_values, as: 'allowedValues'
+          collection :denied_values, as: 'deniedValues'
         end
       end
       
@@ -1502,6 +1815,16 @@ module Google
         end
       end
       
+      class OrgPolicyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consolidated_policy, as: 'consolidatedPolicy', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
+          collection :policy_bundle, as: 'policyBundle', class: Google::Apis::CloudassetV1::AnalyzerOrgPolicy, decorator: Google::Apis::CloudassetV1::AnalyzerOrgPolicy::Representation
+      
+        end
+      end
+      
       class OsInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1568,11 +1891,60 @@ module Google
         end
       end
       
+      class QueryAssetsOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::CloudassetV1::GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination, decorator: Google::Apis::CloudassetV1::GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination::Representation
+      
+        end
+      end
+      
+      class QueryAssetsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_reference, as: 'jobReference'
+          property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::QueryAssetsOutputConfig, decorator: Google::Apis::CloudassetV1::QueryAssetsOutputConfig::Representation
+      
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :read_time, as: 'readTime'
+          property :read_time_window, as: 'readTimeWindow', class: Google::Apis::CloudassetV1::TimeWindow, decorator: Google::Apis::CloudassetV1::TimeWindow::Representation
+      
+          property :statement, as: 'statement'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class QueryAssetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudassetV1::Status, decorator: Google::Apis::CloudassetV1::Status::Representation
+      
+          property :job_reference, as: 'jobReference'
+          property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::QueryAssetsOutputConfig, decorator: Google::Apis::CloudassetV1::QueryAssetsOutputConfig::Representation
+      
+          property :query_result, as: 'queryResult', class: Google::Apis::CloudassetV1::QueryResult, decorator: Google::Apis::CloudassetV1::QueryResult::Representation
+      
+        end
+      end
+      
       class QueryContent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :iam_policy_analysis_query, as: 'iamPolicyAnalysisQuery', class: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery::Representation
       
+        end
+      end
+      
+      class QueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows'
+          property :schema, as: 'schema', class: Google::Apis::CloudassetV1::TableSchema, decorator: Google::Apis::CloudassetV1::TableSchema::Representation
+      
+          property :total_rows, :numeric_string => true, as: 'totalRows'
         end
       end
       
@@ -1738,6 +2110,25 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TableFieldSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          collection :fields, as: 'fields', class: Google::Apis::CloudassetV1::TableFieldSchema, decorator: Google::Apis::CloudassetV1::TableFieldSchema::Representation
+      
+          property :mode, as: 'mode'
+          property :type, as: 'type'
+        end
+      end
+      
+      class TableSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::CloudassetV1::TableFieldSchema, decorator: Google::Apis::CloudassetV1::TableFieldSchema::Representation
+      
         end
       end
       

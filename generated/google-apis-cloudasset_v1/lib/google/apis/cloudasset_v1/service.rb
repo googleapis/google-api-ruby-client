@@ -821,6 +821,176 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Analyzes organization policies under a scope.
+        # @param [String] scope
+        #   Required. The organization to scope the request. Only organization policies
+        #   within the scope will be analyzed. * organizations/`ORGANIZATION_NUMBER` (e.g.,
+        #   "organizations/123456")
+        # @param [String] constraint
+        #   Required. The name of the constraint to analyze organization policies for. The
+        #   response only contains analyzed organization policies for the provided
+        #   constraint.
+        # @param [String] filter
+        #   The expression to filter AnalyzeOrgPoliciesResponse.org_policy_results. The
+        #   only supported field is `consolidated_policy.attached_resource`, and the only
+        #   supported operator is `=`. Example: consolidated_policy.attached_resource="//
+        #   cloudresourcemanager.googleapis.com/folders/001" will return the org policy
+        #   results of"folders/001".
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return per page. If unspecified,
+        #   AnalyzeOrgPoliciesResponse.org_policy_results will contain 20 items with a
+        #   maximum of 200.
+        # @param [String] page_token
+        #   The pagination token to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::AnalyzeOrgPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::AnalyzeOrgPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_org_policies(scope, constraint: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}:analyzeOrgPolicies', options)
+          command.response_representation = Google::Apis::CloudassetV1::AnalyzeOrgPoliciesResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::AnalyzeOrgPoliciesResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['constraint'] = constraint unless constraint.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes organization policies governed assets (GCP resources or policies)
+        # under a scope. This RPC supports custom constraints and the following 10
+        # canned constraints: * storage.uniformBucketLevelAccess * iam.
+        # disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.
+        # vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck * gcp.
+        # resourceLocations * compute.trustedImageProjects * compute.
+        # skipDefaultNetworkCreation * compute.requireOsLogin * compute.
+        # disableNestedVirtualization This RPC only returns either: * resources of types
+        # supported by [searchable asset types](https://cloud.google.com/asset-inventory/
+        # docs/supported-asset-types#searchable_asset_types), or * IAM policies.
+        # @param [String] scope
+        #   Required. The organization to scope the request. Only organization policies
+        #   within the scope will be analyzed. The output assets will also be limited to
+        #   the ones governed by those in-scope organization policies. * organizations/`
+        #   ORGANIZATION_NUMBER` (e.g., "organizations/123456")
+        # @param [String] constraint
+        #   Required. The name of the constraint to analyze governed assets for. The
+        #   analysis only contains analyzed organization policies for the provided
+        #   constraint.
+        # @param [String] filter
+        #   The expression to filter the governed assets in result. The only supported
+        #   fields for governed resources are `governed_resource.project` and `
+        #   governed_resource.folders`. The only supported fields for governed iam
+        #   policies are `governed_iam_policy.project` and `governed_iam_policy.folders`.
+        #   The only supported operator is `=`. Example 1: governed_resource.project="
+        #   projects/12345678" filter will return all governed resources under projects/
+        #   12345678 including the project ifself, if applicable. Example 2:
+        #   governed_iam_policy.folders="folders/12345678" filter will return all governed
+        #   iam policies under folders/12345678, if applicable.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return per page. If unspecified,
+        #   AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets will contain 100 items
+        #   with a maximum of 200.
+        # @param [String] page_token
+        #   The pagination token to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_org_policy_governed_assets(scope, constraint: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}:analyzeOrgPolicyGovernedAssets', options)
+          command.response_representation = Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedAssetsResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedAssetsResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['constraint'] = constraint unless constraint.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyzes organization policies governed containers (projects, folders or
+        # organization) under a scope.
+        # @param [String] scope
+        #   Required. The organization to scope the request. Only organization policies
+        #   within the scope will be analyzed. The output containers will also be limited
+        #   to the ones governed by those in-scope organization policies. * organizations/`
+        #   ORGANIZATION_NUMBER` (e.g., "organizations/123456")
+        # @param [String] constraint
+        #   Required. The name of the constraint to analyze governed containers for. The
+        #   analysis only contains organization policies for the provided constraint.
+        # @param [String] filter
+        #   The expression to filter the governed containers in result. The only supported
+        #   field is `parent`, and the only supported operator is `=`. Example: parent="//
+        #   cloudresourcemanager.googleapis.com/folders/001" will return all containers
+        #   under "folders/001".
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return per page. If unspecified,
+        #   AnalyzeOrgPolicyGovernedContainersResponse.governed_containers will contain
+        #   100 items with a maximum of 200.
+        # @param [String] page_token
+        #   The pagination token to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedContainersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedContainersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_org_policy_governed_containers(scope, constraint: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}:analyzeOrgPolicyGovernedContainers', options)
+          command.response_representation = Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedContainersResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::AnalyzeOrgPolicyGovernedContainersResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['constraint'] = constraint unless constraint.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Batch gets the update history of assets that overlap a time window. For
         # IAM_POLICY content, this API outputs history when the asset and its attached
         # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
@@ -925,6 +1095,51 @@ module Google
           command.request_object = export_assets_request_object
           command.response_representation = Google::Apis::CloudassetV1::Operation::Representation
           command.response_class = Google::Apis::CloudassetV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Issue a job that queries assets using a SQL statement compatible with [
+        # BigQuery Standard SQL](http://cloud/bigquery/docs/reference/standard-sql/
+        # enabling-standard-sql). If the query execution finishes within timeout and
+        # there's no pagination, the full query results will be returned in the `
+        # QueryAssetsResponse`. Otherwise, full query results can be obtained by issuing
+        # extra requests with the `job_reference` from the a previous `QueryAssets` call.
+        # Note, the query result has approximately 10 GB limitation enforced by
+        # BigQuery https://cloud.google.com/bigquery/docs/best-practices-performance-
+        # output, queries return larger results will result in errors.
+        # @param [String] parent
+        #   Required. The relative name of the root asset. This can only be an
+        #   organization number (such as "organizations/123"), a project ID (such as "
+        #   projects/my-project-id"), or a project number (such as "projects/12345"), or a
+        #   folder number (such as "folders/123"). Only assets belonging to the `parent`
+        #   will be returned.
+        # @param [Google::Apis::CloudassetV1::QueryAssetsRequest] query_assets_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::QueryAssetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::QueryAssetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_assets(parent, query_assets_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:queryAssets', options)
+          command.request_representation = Google::Apis::CloudassetV1::QueryAssetsRequest::Representation
+          command.request_object = query_assets_request_object
+          command.response_representation = Google::Apis::CloudassetV1::QueryAssetsResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::QueryAssetsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
