@@ -694,7 +694,7 @@ module Google
         # disk free"; some of the space will be used by the operating system and build
         # utilities. Also note that this is the minimum disk size that will be allocated
         # for the build -- the build may run with a larger disk than requested. At
-        # present, the maximum disk size is 1000GB; builds that request more than the
+        # present, the maximum disk size is 2000GB; builds that request more than the
         # maximum are rejected with an error.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
