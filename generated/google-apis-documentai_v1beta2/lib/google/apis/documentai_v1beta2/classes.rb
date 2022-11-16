@@ -1633,26 +1633,28 @@ module Google
       class GoogleCloudDocumentaiV1beta1Barcode
         include Google::Apis::Core::Hashable
       
-        # Format of a barcode. The supported formats are: CODE_128: Code 128 type.
-        # CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type.
-        # DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8:
-        # EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type.
-        # PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        # Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. -
+        # `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type.
+        # - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13
+        # type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A
+        # type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code
+        # type. - `DATABAR`: GS1 DataBar code type.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://
-        # www.google.com;;'.
+        # Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https:/
+        # /www.google.com;;'`.
         # Corresponds to the JSON property `rawValue`
         # @return [String]
         attr_accessor :raw_value
       
         # Value format describes the format of the value that a barcode encodes. The
-        # supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address.
-        # ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS
-        # message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-
-        # localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        # supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email
+        # address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`:
+        # Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `
+        # WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`:
+        # Calendar event. - `DRIVER_LICENSE`: Driver's license.
         # Corresponds to the JSON property `valueFormat`
         # @return [String]
         attr_accessor :value_format
@@ -1778,9 +1780,9 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Placeholder. A list of text corrections made to [Document.text]. This is
-        # usually used for annotating corrections to OCR mistakes. Text changes for a
-        # given revision may not overlap with each other.
+        # Placeholder. A list of text corrections made to Document.text. This is usually
+        # used for annotating corrections to OCR mistakes. Text changes for a given
+        # revision may not overlap with each other.
         # Corresponds to the JSON property `textChanges`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextChange>]
         attr_accessor :text_changes
@@ -1825,7 +1827,7 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentEntity
         include Google::Apis::Core::Hashable
       
-        # Optional. Confidence of detected Schema entity. Range [0, 1].
+        # Optional. Confidence of detected Schema entity. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -2188,7 +2190,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        # Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -2287,12 +2289,12 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected language. Range [0, 1].
+        # Confidence of detected language. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
         # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -2455,7 +2457,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect>]
         attr_accessor :detected_defects
       
-        # The overall quality score. Range [0, 1] where 1 is perfect quality.
+        # The overall quality score. Range `[0, 1]` where 1 is perfect quality.
         # Corresponds to the JSON property `qualityScore`
         # @return [Float]
         attr_accessor :quality_score
@@ -2475,16 +2477,16 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected defect. Range [0, 1] where 1 indicates strong
+        # Confidence of detected defect. Range `[0, 1]` where 1 indicates strong
         # confidence of that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # Name of the defect type. Supported values are "quality/defect_blurry", "
-        # quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/
-        # defect_text_too_small", "quality/defect_document_cutoff", "quality/
-        # defect_text_cutoff", "quality/defect_glare"
+        # Name of the defect type. Supported values are: - `quality/defect_blurry` - `
+        # quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `
+        # quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/
+        # defect_text_cutoff` - `quality/defect_glare`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2511,7 +2513,7 @@ module Google
       
         # Confidence of the current Layout within context of the object this layout is
         # for. e.g. confidence can be for a single token, a table, a visual element, etc.
-        # depending on context. Range [0, 1].
+        # depending on context. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -3152,7 +3154,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :color
       
-        # Font family such as "Arial", "Times New Roman". https://www.w3schools.com/
+        # Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/
         # cssref/pr_font_font-family.asp
         # Corresponds to the JSON property `fontFamily`
         # @return [String]
@@ -3549,26 +3551,28 @@ module Google
       class GoogleCloudDocumentaiV1beta2Barcode
         include Google::Apis::Core::Hashable
       
-        # Format of a barcode. The supported formats are: CODE_128: Code 128 type.
-        # CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type.
-        # DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8:
-        # EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type.
-        # PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        # Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. -
+        # `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type.
+        # - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13
+        # type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A
+        # type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code
+        # type. - `DATABAR`: GS1 DataBar code type.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://
-        # www.google.com;;'.
+        # Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https:/
+        # /www.google.com;;'`.
         # Corresponds to the JSON property `rawValue`
         # @return [String]
         attr_accessor :raw_value
       
         # Value format describes the format of the value that a barcode encodes. The
-        # supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address.
-        # ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS
-        # message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-
-        # localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        # supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email
+        # address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`:
+        # Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `
+        # WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`:
+        # Calendar event. - `DRIVER_LICENSE`: Driver's license.
         # Corresponds to the JSON property `valueFormat`
         # @return [String]
         attr_accessor :value_format
@@ -3719,9 +3723,9 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Placeholder. A list of text corrections made to [Document.text]. This is
-        # usually used for annotating corrections to OCR mistakes. Text changes for a
-        # given revision may not overlap with each other.
+        # Placeholder. A list of text corrections made to Document.text. This is usually
+        # used for annotating corrections to OCR mistakes. Text changes for a given
+        # revision may not overlap with each other.
         # Corresponds to the JSON property `textChanges`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextChange>]
         attr_accessor :text_changes
@@ -3767,7 +3771,7 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentEntity
         include Google::Apis::Core::Hashable
       
-        # Optional. Confidence of detected Schema entity. Range [0, 1].
+        # Optional. Confidence of detected Schema entity. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -4167,7 +4171,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        # Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -4266,12 +4270,12 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected language. Range [0, 1].
+        # Confidence of detected language. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information,
         # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -4434,7 +4438,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect>]
         attr_accessor :detected_defects
       
-        # The overall quality score. Range [0, 1] where 1 is perfect quality.
+        # The overall quality score. Range `[0, 1]` where 1 is perfect quality.
         # Corresponds to the JSON property `qualityScore`
         # @return [Float]
         attr_accessor :quality_score
@@ -4454,16 +4458,16 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect
         include Google::Apis::Core::Hashable
       
-        # Confidence of detected defect. Range [0, 1] where 1 indicates strong
+        # Confidence of detected defect. Range `[0, 1]` where 1 indicates strong
         # confidence of that the defect exists.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
       
-        # Name of the defect type. Supported values are "quality/defect_blurry", "
-        # quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/
-        # defect_text_too_small", "quality/defect_document_cutoff", "quality/
-        # defect_text_cutoff", "quality/defect_glare"
+        # Name of the defect type. Supported values are: - `quality/defect_blurry` - `
+        # quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `
+        # quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/
+        # defect_text_cutoff` - `quality/defect_glare`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4490,7 +4494,7 @@ module Google
       
         # Confidence of the current Layout within context of the object this layout is
         # for. e.g. confidence can be for a single token, a table, a visual element, etc.
-        # depending on context. Range [0, 1].
+        # depending on context. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -5131,7 +5135,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :color
       
-        # Font family such as "Arial", "Times New Roman". https://www.w3schools.com/
+        # Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/
         # cssref/pr_font_font-family.asp
         # Corresponds to the JSON property `fontFamily`
         # @return [String]
@@ -6058,6 +6062,44 @@ module Google
         end
       end
       
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Metadata of the EvaluateProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the created evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -6203,6 +6245,99 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata that represents a processor version being created.
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # The dataset validation information. This includes any and all errors with
+        # documents and the dataset.
+        # Corresponds to the JSON property `testDatasetValidation`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation]
+        attr_accessor :test_dataset_validation
+      
+        # The dataset validation information. This includes any and all errors with
+        # documents and the dataset.
+        # Corresponds to the JSON property `trainingDatasetValidation`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation]
+        attr_accessor :training_dataset_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @test_dataset_validation = args[:test_dataset_validation] if args.key?(:test_dataset_validation)
+          @training_dataset_validation = args[:training_dataset_validation] if args.key?(:training_dataset_validation)
+        end
+      end
+      
+      # The dataset validation information. This includes any and all errors with
+      # documents and the dataset.
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadataDatasetValidation
+        include Google::Apis::Core::Hashable
+      
+        # The total number of dataset errors.
+        # Corresponds to the JSON property `datasetErrorCount`
+        # @return [Fixnum]
+        attr_accessor :dataset_error_count
+      
+        # Error information for the dataset as a whole. A maximum of 10 dataset errors
+        # will be returned. A single dataset error is terminal for training.
+        # Corresponds to the JSON property `datasetErrors`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleRpcStatus>]
+        attr_accessor :dataset_errors
+      
+        # The total number of document errors.
+        # Corresponds to the JSON property `documentErrorCount`
+        # @return [Fixnum]
+        attr_accessor :document_error_count
+      
+        # Error information pertaining to specific documents. A maximum of 10 document
+        # errors will be returned. Any document with errors will not be used throughout
+        # training.
+        # Corresponds to the JSON property `documentErrors`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleRpcStatus>]
+        attr_accessor :document_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_error_count = args[:dataset_error_count] if args.key?(:dataset_error_count)
+          @dataset_errors = args[:dataset_errors] if args.key?(:dataset_errors)
+          @document_error_count = args[:document_error_count] if args.key?(:document_error_count)
+          @document_errors = args[:document_errors] if args.key?(:document_errors)
+        end
+      end
+      
+      # The response for the TrainProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the processor version produced by training.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
         end
       end
       
