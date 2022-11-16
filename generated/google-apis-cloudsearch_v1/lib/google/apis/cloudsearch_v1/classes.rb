@@ -4412,6 +4412,112 @@ module Google
         end
       end
       
+      # An Attribute is a piece of data attached an Item. Attributes are opaque to the
+      # Starbox and have no effect on, nor are they effected by, message storage,
+      # indexing, or search.
+      class Attribute
+        include Google::Apis::Core::Hashable
+      
+        # The name of the attribute. Required - If a write is attempted with an empty
+        # string, the server will return an error.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::CloudsearchV1::CaribouAttributeValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An attribute was deleted from some (subset of the) messages in this thread.
+      class AttributeRemoved
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attributeId`
+        # @return [String]
+        attr_accessor :attribute_id
+      
+        # 
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_id = args[:attribute_id] if args.key?(:attribute_id)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
+        end
+      end
+      
+      # An attribute was added to some (subset of the) messages in this thread.
+      class AttributeSet
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attributeId`
+        # @return [String]
+        attr_accessor :attribute_id
+      
+        # The serialized attribute_value as persisted in the storage layer. The
+        # application is responsible for deserializing it to an Attribute.Value if
+        # appropriate.
+        # Corresponds to the JSON property `attributeValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # 
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_id = args[:attribute_id] if args.key?(:attribute_id)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
+        end
+      end
+      
+      # 
+      class Attributes
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attribute`
+        # @return [Array<Google::Apis::CloudsearchV1::Attribute>]
+        attr_accessor :attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute = args[:attribute] if args.key?(:attribute)
+        end
+      end
+      
       # Represents the settings for Cloud audit logging
       class AuditLoggingSettings
         include Google::Apis::Core::Hashable
@@ -4996,11 +5102,6 @@ module Google
         # @return [String]
         attr_accessor :calendar_event_id
       
-        # Configuration of the in meeting chat.
-        # Corresponds to the JSON property `chatConfig`
-        # @return [Google::Apis::CloudsearchV1::ChatConfig]
-        attr_accessor :chat_config
-      
         # Metadata about a co-activity session.
         # Corresponds to the JSON property `coActivity`
         # @return [Google::Apis::CloudsearchV1::CoActivity]
@@ -5032,7 +5133,8 @@ module Google
         # filled in for clients that are supposed to present the information. The
         # information should be displayed in a debug panel and is only intended for
         # internal debugging purposes. If the string is empty nothing should be
-        # displayed about the media backend.
+        # displayed about the media backend. Deprecated because media backend is always
+        # MEDIA_ROUTER since Dec 2018.
         # Corresponds to the JSON property `mediaBackendInfo`
         # @return [String]
         attr_accessor :media_backend_info
@@ -5111,7 +5213,6 @@ module Google
           @available_reactions = args[:available_reactions] if args.key?(:available_reactions)
           @broadcast_session_info = args[:broadcast_session_info] if args.key?(:broadcast_session_info)
           @calendar_event_id = args[:calendar_event_id] if args.key?(:calendar_event_id)
-          @chat_config = args[:chat_config] if args.key?(:chat_config)
           @co_activity = args[:co_activity] if args.key?(:co_activity)
           @collaboration = args[:collaboration] if args.key?(:collaboration)
           @cse_info = args[:cse_info] if args.key?(:cse_info)
@@ -5395,6 +5496,56 @@ module Google
         end
       end
       
+      # 
+      class CaribouAttributeValue
+        include Google::Apis::Core::Hashable
+      
+        # Tags 1 through 15 are reserved for the most commonly used fields.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
+        # 
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # 
+        # Corresponds to the JSON property `longValue`
+        # @return [Fixnum]
+        attr_accessor :long_value
+      
+        # Generally, applications should avoid storing raw bytes and instead store
+        # structured data as protocol buffer extensions. This both reduces the amount of
+        # ad-hoc attribute parsing code as well as eliminates an intermediate copy of
+        # the data when deserializing the value. The rawByteValue field is mainly
+        # provided for compatibility with attributes stored before the introduction of
+        # the Attribute.Value.
+        # Corresponds to the JSON property `rawByteValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_byte_value
+      
+        # 
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @long_value = args[:long_value] if args.key?(:long_value)
+          @raw_byte_value = args[:raw_byte_value] if args.key?(:raw_byte_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Actions handled by Chat Clients.
       class ChatClientActionMarkup
         include Google::Apis::Core::Hashable
@@ -5405,31 +5556,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Configuration of the in meeting chat.
-      class ChatConfig
-        include Google::Apis::Core::Hashable
-      
-        # The Type of chat this Conference is currently using.
-        # Corresponds to the JSON property `chatType`
-        # @return [String]
-        attr_accessor :chat_type
-      
-        # Configuration of the Google Chat in Meet.
-        # Corresponds to the JSON property `googleChatConfig`
-        # @return [Google::Apis::CloudsearchV1::GoogleChatConfig]
-        attr_accessor :google_chat_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chat_type = args[:chat_type] if args.key?(:chat_type)
-          @google_chat_config = args[:google_chat_config] if args.key?(:google_chat_config)
         end
       end
       
@@ -5801,6 +5927,49 @@ module Google
         end
       end
       
+      # Represents the context of the client on behalf of which a HistoryRecord is
+      # produced. The ClientContext message can be used to hold context about the
+      # service client (e.g. the internal server making fusebox requests) or the user
+      # client (e.g. the IP address of the end user).
+      class ClientContext
+        include Google::Apis::Core::Hashable
+      
+        # The client operation to which this history record belongs. The notion of a
+        # client operation is provided to keep track of client operations which might
+        # span multiple transactions in the lower level.
+        # Corresponds to the JSON property `clientOperationId`
+        # @return [String]
+        attr_accessor :client_operation_id
+      
+        # E.g. "pinto", "imap", "bigtop", "upload"
+        # Corresponds to the JSON property `clientType`
+        # @return [String]
+        attr_accessor :client_type
+      
+        # Contains information about the session which created this history record. This
+        # will be empty if the history record was generated by an internal request.
+        # Corresponds to the JSON property `sessionContext`
+        # @return [Google::Apis::CloudsearchV1::SessionContext]
+        attr_accessor :session_context
+      
+        # Textual representation of the user's IP address, if available.
+        # Corresponds to the JSON property `userIp`
+        # @return [String]
+        attr_accessor :user_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
+          @client_type = args[:client_type] if args.key?(:client_type)
+          @session_context = args[:session_context] if args.key?(:session_context)
+          @user_ip = args[:user_ip] if args.key?(:user_ip)
+        end
+      end
+      
       # Principal associated with a Cloud Principal representing third party user.
       class CloudPrincipalProto
         include Google::Apis::Core::Hashable
@@ -5817,6 +5986,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # ClusterInfo contains clustering related information for a particular thread
+      # that would be sent as part of the conversation view. Today, this information
+      # would be used by iOS notification server to identify whether the thread
+      # belongs to a cluster. If the thread belongs to a grouped cluster, it would
+      # identify whether the cluster is throttled.
+      class ClusterInfo
+        include Google::Apis::Core::Hashable
+      
+        # IDs of the highest priority clusters to which the thread belongs to. If this
+        # field is not present, the thread does not belong to any cluster and would be
+        # shown in the inbox, unclustered.
+        # Corresponds to the JSON property `clusterId`
+        # @return [Array<String>]
+        attr_accessor :cluster_id
+      
+        # If the thread belongs to a grouped cluster and all of those clusters are
+        # throttled, then this field is set to true.
+        # Corresponds to the JSON property `throttled`
+        # @return [Boolean]
+        attr_accessor :throttled
+        alias_method :throttled?, :throttled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @throttled = args[:throttled] if args.key?(:throttled)
         end
       end
       
@@ -8051,6 +8253,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # A generic way of expressing filters in a query, which supports two approaches:
+        # **1. Setting a ValueFilter.** The name must match an operator_name defined in
+        # the schema for your data source. **2. Setting a CompositeFilter.** The filters
+        # are evaluated using the logical operator. The top-level operators can only be
+        # either an AND or a NOT. AND can appear only at the top-most level. OR can
+        # appear only under a top-level AND.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::CloudsearchV1::Filter]
+        attr_accessor :filter
+      
         # Percent of results that match the bucket value. The returned value is between (
         # 0-100], and is rounded down to an integer if fractional. If the value is not
         # explicitly returned, it represents a percentage value that rounds to 0.
@@ -8073,6 +8285,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @filter = args[:filter] if args.key?(:filter)
           @percentage = args[:percentage] if args.key?(:percentage)
           @value = args[:value] if args.key?(:value)
         end
@@ -8082,6 +8295,11 @@ module Google
       # for every source_name/object_type/operator_name combination.
       class FacetOptions
         include Google::Apis::Core::Hashable
+      
+        # Used to specify integer faceting options.
+        # Corresponds to the JSON property `integerFacetingOptions`
+        # @return [Google::Apis::CloudsearchV1::IntegerFacetingOptions]
+        attr_accessor :integer_faceting_options
       
         # Maximum number of facet buckets that should be returned for this facet.
         # Defaults to 10. Maximum value is 100.
@@ -8113,6 +8331,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @integer_faceting_options = args[:integer_faceting_options] if args.key?(:integer_faceting_options)
           @num_facet_buckets = args[:num_facet_buckets] if args.key?(:num_facet_buckets)
           @object_type = args[:object_type] if args.key?(:object_type)
           @operator_name = args[:operator_name] if args.key?(:operator_name)
@@ -8214,6 +8433,32 @@ module Google
         end
       end
       
+      # A filter was created.
+      class FilterCreated
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A filter was deleted.
+      class FilterDeleted
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Filter options to be applied on query.
       class FilterOptions
         include Google::Apis::Core::Hashable
@@ -8246,6 +8491,38 @@ module Google
         end
       end
       
+      # HistoryRecord for changes associated with a filter, namely: FILTER_CREATED
+      # FILTER_DELETED
+      class FilterUpdate
+        include Google::Apis::Core::Hashable
+      
+        # A filter was created.
+        # Corresponds to the JSON property `filterCreated`
+        # @return [Google::Apis::CloudsearchV1::FilterCreated]
+        attr_accessor :filter_created
+      
+        # A filter was deleted.
+        # Corresponds to the JSON property `filterDeleted`
+        # @return [Google::Apis::CloudsearchV1::FilterDeleted]
+        attr_accessor :filter_deleted
+      
+        # 
+        # Corresponds to the JSON property `filterId`
+        # @return [String]
+        attr_accessor :filter_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_created = args[:filter_created] if args.key?(:filter_created)
+          @filter_deleted = args[:filter_deleted] if args.key?(:filter_deleted)
+          @filter_id = args[:filter_id] if args.key?(:filter_id)
+        end
+      end
+      
       # A persistent (sticky) footer that is added to the bottom of the card.
       class FixedFooter
         include Google::Apis::Core::Hashable
@@ -8274,6 +8551,50 @@ module Google
           @buttons = args[:buttons] if args.key?(:buttons)
           @primary_button = args[:primary_button] if args.key?(:primary_button)
           @secondary_button = args[:secondary_button] if args.key?(:secondary_button)
+        end
+      end
+      
+      # 
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # Folder mapping id.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # One for each copy of the message in the IMAP folder.
+        # Corresponds to the JSON property `message`
+        # @return [Array<Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessage>]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # This is the content of //imapsync/folder attribute.
+      class FolderAttribute
+        include Google::Apis::Core::Hashable
+      
+        # List of all IMAP folders where the message presents.
+        # Corresponds to the JSON property `folder`
+        # @return [Array<Google::Apis::CloudsearchV1::Folder>]
+        attr_accessor :folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
         end
       end
       
@@ -8448,6 +8769,288 @@ module Google
         def update!(**args)
           @freshness_duration = args[:freshness_duration] if args.key?(:freshness_duration)
           @freshness_property = args[:freshness_property] if args.key?(:freshness_property)
+        end
+      end
+      
+      # The Item message is the read interface for user data (traditionally referred
+      # to as a "message", such as a mail message or a chat message, but generalized
+      # to encompass other types such as tasks) and stored in Tingle. Each Item is
+      # associated with a single Thread. An Item contains three classes of data. (1):
+      # Item "fields" are common to items of all message types (e.g. mail, chat, task,
+      # etc.) and are identified by the ItemFieldSpec.FetchType enum when fetching
+      # Items. (2): Item "attributes" represent data associated with an Item that is
+      # stored on behalf of the client but to which the fusebox and storage layers are
+      # otherwise agnostic. (3): Item "parts" are application-defined protocol buffers
+      # that affect how the Item is indexed. Item parts are referenced as extensions
+      # to the ItemParts message. By default the application specifies the index terms
+      # associated with an Item part. For performance sensitive applications, the
+      # storage layer can be modified to understand and index data types natively.
+      class FuseboxItem
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::CloudsearchV1::Attributes]
+        attr_accessor :attributes
+      
+        # The creation time of the Item in micro seconds.
+        # Corresponds to the JSON property `creationTimeMicroseconds`
+        # @return [Fixnum]
+        attr_accessor :creation_time_microseconds
+      
+        # The most recent history records associated with the item.
+        # Corresponds to the JSON property `history`
+        # @return [Google::Apis::CloudsearchV1::History]
+        attr_accessor :history
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `itemKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :item_key
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Google::Apis::CloudsearchV1::Labels]
+        attr_accessor :labels
+      
+        # The modification time of the Item in micro seconds. Modifications to the
+        # message include label addition, deletion, etc.
+        # Corresponds to the JSON property `lastModificationTimeUs`
+        # @return [Fixnum]
+        attr_accessor :last_modification_time_us
+      
+        # go/lockpicker Locker counterpart of references.
+        # Corresponds to the JSON property `lockerReferences`
+        # @return [Google::Apis::CloudsearchV1::References]
+        attr_accessor :locker_references
+      
+        # 
+        # Corresponds to the JSON property `matchInfo`
+        # @return [Google::Apis::CloudsearchV1::MatchInfo]
+        attr_accessor :match_info
+      
+        # Container for type-specific extensions of an Item. This protobuf is defined in
+        # a separate file to allow types to reference/extend the message without
+        # depending on other fusebox protobufs. See items.proto.
+        # Corresponds to the JSON property `parts`
+        # @return [Google::Apis::CloudsearchV1::ItemParts]
+        attr_accessor :parts
+      
+        # The read timestamp at which this item was read. This is a temporary field used
+        # to check if two items streamed during dual reading were read at the same
+        # timestamp. This will be populated by Fusebox RPCs. "DO NOT USE UNLESS YOU TALK
+        # TO FUSEBOX TEAM (gmail-fusebox@)".
+        # Corresponds to the JSON property `readTs`
+        # @return [Fixnum]
+        attr_accessor :read_ts
+      
+        # References to attachments, video attachments in Youtube and Hangout messages.
+        # Corresponds to the JSON property `references`
+        # @return [Google::Apis::CloudsearchV1::References]
+        attr_accessor :references
+      
+        # The snippet is a brief bit of text describing this item.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `threadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :thread_key
+      
+        # A base64 encoded and encrypted string generated from the Gaia Id and the
+        # thread id. Used to generate the permalink for this thread, exposed from Gmail
+        # API.
+        # Corresponds to the JSON property `threadLocator`
+        # @return [String]
+        attr_accessor :thread_locator
+      
+        # 
+        # Corresponds to the JSON property `triggers`
+        # @return [Google::Apis::CloudsearchV1::Triggers]
+        attr_accessor :triggers
+      
+        # The latest history operation id that resulted in a mutation of the item.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @creation_time_microseconds = args[:creation_time_microseconds] if args.key?(:creation_time_microseconds)
+          @history = args[:history] if args.key?(:history)
+          @item_key = args[:item_key] if args.key?(:item_key)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modification_time_us = args[:last_modification_time_us] if args.key?(:last_modification_time_us)
+          @locker_references = args[:locker_references] if args.key?(:locker_references)
+          @match_info = args[:match_info] if args.key?(:match_info)
+          @parts = args[:parts] if args.key?(:parts)
+          @read_ts = args[:read_ts] if args.key?(:read_ts)
+          @references = args[:references] if args.key?(:references)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @thread_key = args[:thread_key] if args.key?(:thread_key)
+          @thread_locator = args[:thread_locator] if args.key?(:thread_locator)
+          @triggers = args[:triggers] if args.key?(:triggers)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # In the context of a search, the MatchInfo contains information about which
+      # Items matched the query.
+      class FuseboxItemThreadMatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # If SearchQuery.Options.Clustering is present, the query will be treated as a
+        # cluster query, and this field may be populated with the cluster ID of the
+        # cluster to which this thread belongs, if any. The cluster ID will be a label
+        # on the message.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # The server id of the last item that matched the query. This is always set,
+        # regardless of the compute_matching_items_per_thread option. This is the value
+        # by which search results are sorted, in descending (i.e. newest first) order.
+        # Corresponds to the JSON property `lastMatchingItemId`
+        # @return [Fixnum]
+        attr_accessor :last_matching_item_id
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `lastMatchingItemKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :last_matching_item_key
+      
+        # If SearchQuery.Options.compute_matching_items_per_thread, this field will
+        # contain the keys of all items that matched the query, in ascending order. Note
+        # that this option requires extra computation.
+        # Corresponds to the JSON property `matchingItemKey`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :matching_item_key
+      
+        # The rank contains a tuple of numbers which may be used as a general sort order.
+        # The rank should be treated as an ordered set of numbers, where the ordering
+        # is done in descending order of the most significant rank member. For example,
+        # given the following ranks described as (primary, secondary): (1,1), (1,2), (2,
+        # 2) (2,1) The descending rank-order is: (2,2) > (2,1) > (1,2) > (1,1)
+        # Corresponds to the JSON property `rank`
+        # @return [Google::Apis::CloudsearchV1::Rank]
+        attr_accessor :rank
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @last_matching_item_id = args[:last_matching_item_id] if args.key?(:last_matching_item_id)
+          @last_matching_item_key = args[:last_matching_item_key] if args.key?(:last_matching_item_key)
+          @matching_item_key = args[:matching_item_key] if args.key?(:matching_item_key)
+          @rank = args[:rank] if args.key?(:rank)
+        end
+      end
+      
+      # If the Value field is not set this means the pref did not exist.
+      class FuseboxPrefUpdatePreState
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -8810,25 +9413,6 @@ module Google
           @open_created_draft_action_markup = args[:open_created_draft_action_markup] if args.key?(:open_created_draft_action_markup)
           @task_action = args[:task_action] if args.key?(:task_action)
           @update_draft_action_markup = args[:update_draft_action_markup] if args.key?(:update_draft_action_markup)
-        end
-      end
-      
-      # Configuration of the Google Chat in Meet.
-      class GoogleChatConfig
-        include Google::Apis::Core::Hashable
-      
-        # ID of the Chat group.
-        # Corresponds to the JSON property `chatGroupId`
-        # @return [String]
-        attr_accessor :chat_group_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chat_group_id = args[:chat_group_id] if args.key?(:chat_group_id)
         end
       end
       
@@ -9791,6 +10375,112 @@ module Google
         end
       end
       
+      # The most recent history records associated with the item.
+      class History
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `record`
+        # @return [Array<Google::Apis::CloudsearchV1::HistoryRecord>]
+        attr_accessor :record
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @record = args[:record] if args.key?(:record)
+        end
+      end
+      
+      # 
+      class HistoryRecord
+        include Google::Apis::Core::Hashable
+      
+        # Represents the context of the client on behalf of which a HistoryRecord is
+        # produced. The ClientContext message can be used to hold context about the
+        # service client (e.g. the internal server making fusebox requests) or the user
+        # client (e.g. the IP address of the end user).
+        # Corresponds to the JSON property `clientContext`
+        # @return [Google::Apis::CloudsearchV1::ClientContext]
+        attr_accessor :client_context
+      
+        # HistoryRecord for changes associated with a filter, namely: FILTER_CREATED
+        # FILTER_DELETED
+        # Corresponds to the JSON property `filterUpdate`
+        # @return [Google::Apis::CloudsearchV1::FilterUpdate]
+        attr_accessor :filter_update
+      
+        # HistoryRecord for changes associated with IMAP, namely: IMAP_UIDS_REASSIGN
+        # Corresponds to the JSON property `imapUpdate`
+        # @return [Google::Apis::CloudsearchV1::ImapUpdate]
+        attr_accessor :imap_update
+      
+        # HistoryRecord for changes associated with a label, namely: LABEL_CREATED
+        # LABEL_DELETED LABEL_RENAMED LABEL_UPDATED
+        # Corresponds to the JSON property `labelUpdate`
+        # @return [Google::Apis::CloudsearchV1::LabelUpdate]
+        attr_accessor :label_update
+      
+        # HistoryRecord for changes associated with prefs, namely: PREF_WRITTEN
+        # PREF_DELETED
+        # Corresponds to the JSON property `prefUpdate`
+        # @return [Google::Apis::CloudsearchV1::PrefUpdate]
+        attr_accessor :pref_update
+      
+        # Each HistoryRecord has a unique id. Ids are monotonically increasing, and not
+        # necessarily contiguous.
+        # Corresponds to the JSON property `recordId`
+        # @return [Fixnum]
+        attr_accessor :record_id
+      
+        # HistoryRecord for changes associated with a thread, namely: MESSAGE_ADDED
+        # MESSAGE_DELETED LABEL_ADDED LABEL_REMOVED ATTRIBUTE_SET ATTRIBUTE_REMOVED
+        # THREAD_KEY_SET All label_ids refer to the (unchanging) value as defined by the
+        # Label.id field in labels.proto. In particular, it is *not* the canonical_name.
+        # Corresponds to the JSON property `threadUpdate`
+        # @return [Google::Apis::CloudsearchV1::ThreadUpdate]
+        attr_accessor :thread_update
+      
+        # Storage information pertaining to the transaction with which a HistoryRecord
+        # is associated.
+        # Corresponds to the JSON property `transactionContext`
+        # @return [Google::Apis::CloudsearchV1::TransactionContext]
+        attr_accessor :transaction_context
+      
+        # HistoryRecord for debug info associated with the transaction, namely:
+        # TXN_DEBUG_INFO TODO(b/143845917) This is a short-term workaround for
+        # unblocking fusebox writes migration. Clean up the code or land a long-term
+        # solution after the rollout. go/diff-to-historyrecord
+        # Corresponds to the JSON property `txnDebugInfo`
+        # @return [Google::Apis::CloudsearchV1::TransactionDebugInfo]
+        attr_accessor :txn_debug_info
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_context = args[:client_context] if args.key?(:client_context)
+          @filter_update = args[:filter_update] if args.key?(:filter_update)
+          @imap_update = args[:imap_update] if args.key?(:imap_update)
+          @label_update = args[:label_update] if args.key?(:label_update)
+          @pref_update = args[:pref_update] if args.key?(:pref_update)
+          @record_id = args[:record_id] if args.key?(:record_id)
+          @thread_update = args[:thread_update] if args.key?(:thread_update)
+          @transaction_context = args[:transaction_context] if args.key?(:transaction_context)
+          @txn_debug_info = args[:txn_debug_info] if args.key?(:txn_debug_info)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Actions handled by individual host apps.
       class HostAppActionMarkup
         include Google::Apis::Core::Hashable
@@ -10198,6 +10888,181 @@ module Google
         end
       end
       
+      # 
+      class ImapSessionContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `app`
+        # @return [String]
+        attr_accessor :app
+      
+        # User agent information
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
+        # As agreed with Bond team, this holds the fingerprint of any "aguid" or "guid"
+        # provided by the ID command. The fingerprint should be calculated by
+        # fingerprint2011. Note that not all clients will provide aguid or guid through
+        # ID command.
+        # Corresponds to the JSON property `guidFingerprint`
+        # @return [Fixnum]
+        attr_accessor :guid_fingerprint
+      
+        # 
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        # 
+        # Corresponds to the JSON property `osVersion`
+        # @return [Google::Apis::CloudsearchV1::OsVersion]
+        attr_accessor :os_version
+      
+        # This message contains either the device model, or a prefix of the device model
+        # (AKA a trimmed device model). The "is_trimmed" field indicates which one it is.
+        # Corresponds to the JSON property `possiblyTrimmedModel`
+        # @return [Google::Apis::CloudsearchV1::PossiblyTrimmedModel]
+        attr_accessor :possibly_trimmed_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app = args[:app] if args.key?(:app)
+          @device_type = args[:device_type] if args.key?(:device_type)
+          @guid_fingerprint = args[:guid_fingerprint] if args.key?(:guid_fingerprint)
+          @os = args[:os] if args.key?(:os)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @possibly_trimmed_model = args[:possibly_trimmed_model] if args.key?(:possibly_trimmed_model)
+        end
+      end
+      
+      # Message delete history record extension that exports //imapsync/folder
+      # attribute of deleted messages which have ^is label.
+      class ImapSyncDelete
+        include Google::Apis::Core::Hashable
+      
+        # This is the content of //imapsync/folder attribute.
+        # Corresponds to the JSON property `mappings`
+        # @return [Google::Apis::CloudsearchV1::FolderAttribute]
+        attr_accessor :mappings
+      
+        # 
+        # Corresponds to the JSON property `msgId`
+        # @return [Fixnum]
+        attr_accessor :msg_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mappings = args[:mappings] if args.key?(:mappings)
+          @msg_id = args[:msg_id] if args.key?(:msg_id)
+        end
+      end
+      
+      # 
+      class ImapUidsReassign
+        include Google::Apis::Core::Hashable
+      
+        # Label
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        # The message Ids
+        # Corresponds to the JSON property `messageId`
+        # @return [Array<Fixnum>]
+        attr_accessor :message_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_id = args[:label_id] if args.key?(:label_id)
+          @message_id = args[:message_id] if args.key?(:message_id)
+        end
+      end
+      
+      # HistoryRecord for changes associated with IMAP, namely: IMAP_UIDS_REASSIGN
+      class ImapUpdate
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `imapUidsReassign`
+        # @return [Google::Apis::CloudsearchV1::ImapUidsReassign]
+        attr_accessor :imap_uids_reassign
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imap_uids_reassign = args[:imap_uids_reassign] if args.key?(:imap_uids_reassign)
+        end
+      end
+      
+      # 
+      class ImapsyncFolderAttributeFolderMessage
+        include Google::Apis::Core::Hashable
+      
+        # Flags of the message. Represents unseen and flagged state.
+        # Corresponds to the JSON property `flags`
+        # @return [Google::Apis::CloudsearchV1::ImapsyncFolderAttributeFolderMessageFlags]
+        attr_accessor :flags
+      
+        # UID of the message.
+        # Corresponds to the JSON property `uid`
+        # @return [Fixnum]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flags = args[:flags] if args.key?(:flags)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # 
+      class ImapsyncFolderAttributeFolderMessageFlags
+        include Google::Apis::Core::Hashable
+      
+        # Flagged state of the message.
+        # Corresponds to the JSON property `flagged`
+        # @return [Boolean]
+        attr_accessor :flagged
+        alias_method :flagged?, :flagged
+      
+        # Seen state of the message.
+        # Corresponds to the JSON property `seen`
+        # @return [Boolean]
+        attr_accessor :seen
+        alias_method :seen?, :seen
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flagged = args[:flagged] if args.key?(:flagged)
+          @seen = args[:seen] if args.key?(:seen)
+        end
+      end
+      
       # Annotation metadata to display system messages for incoming webhook events.
       # Next Tag: 7
       class IncomingWebhookChangedMetadata
@@ -10363,6 +11228,27 @@ module Google
         end
       end
       
+      # Used to specify integer faceting options.
+      class IntegerFacetingOptions
+        include Google::Apis::Core::Hashable
+      
+        # Buckets for given integer values should be in strictly ascending order. For
+        # example, if values supplied are (1,5,10,100), the following facet buckets will
+        # be formed `<1, [1,5), [5-10), [10-100), >=100`.
+        # Corresponds to the JSON property `integerBuckets`
+        # @return [Array<Fixnum>]
+        attr_accessor :integer_buckets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integer_buckets = args[:integer_buckets] if args.key?(:integer_buckets)
+        end
+      end
+      
       # Used to provide a search operator for integer properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -10419,6 +11305,11 @@ module Google
       class IntegerPropertyOptions
         include Google::Apis::Core::Hashable
       
+        # Used to specify integer faceting options.
+        # Corresponds to the JSON property `integerFacetingOptions`
+        # @return [Google::Apis::CloudsearchV1::IntegerFacetingOptions]
+        attr_accessor :integer_faceting_options
+      
         # The maximum value of the property. The minimum and maximum values for the
         # property are used to rank results according to the ordered ranking. Indexing
         # requests with values greater than the maximum are accepted and ranked with the
@@ -10454,6 +11345,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @integer_faceting_options = args[:integer_faceting_options] if args.key?(:integer_faceting_options)
           @maximum_value = args[:maximum_value] if args.key?(:maximum_value)
           @minimum_value = args[:minimum_value] if args.key?(:minimum_value)
           @operator_options = args[:operator_options] if args.key?(:operator_options)
@@ -10961,6 +11853,21 @@ module Google
         end
       end
       
+      # Container for type-specific extensions of an Item. This protobuf is defined in
+      # a separate file to allow types to reference/extend the message without
+      # depending on other fusebox protobufs. See items.proto.
+      class ItemParts
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # This contains item's status and any errors.
       class ItemStatus
         include Google::Apis::Core::Hashable
@@ -11015,6 +11922,140 @@ module Google
         def update!(**args)
           @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
           @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # An ItemThread is an ordered list of Items. An ItemThread corresponds to a "
+      # conversation" in the context of mail. An Item belongs to exactly one
+      # ItemThread.
+      class ItemThread
+        include Google::Apis::Core::Hashable
+      
+        # ClusterInfo contains clustering related information for a particular thread
+        # that would be sent as part of the conversation view. Today, this information
+        # would be used by iOS notification server to identify whether the thread
+        # belongs to a cluster. If the thread belongs to a grouped cluster, it would
+        # identify whether the cluster is throttled.
+        # Corresponds to the JSON property `clusterInfo`
+        # @return [Google::Apis::CloudsearchV1::ClusterInfo]
+        attr_accessor :cluster_info
+      
+        # The Items in the ItemThread. In the context of a search, the list of Items may
+        # be a subset of those that logically belong to the ItemThread. The details of
+        # which items are included are available in the ItemThreadView returned in the
+        # overall rpc response.
+        # Corresponds to the JSON property `item`
+        # @return [Array<Google::Apis::CloudsearchV1::FuseboxItem>]
+        attr_accessor :item
+      
+        # The server id of the last item returned in the ItemThread. This can be deduced
+        # from the [item] list but is provided for convenience. When manually
+        # constructing an ItemThreadViewSpec to perform operations on the ItemThread,
+        # this value can be used as the [high_item_id_watermark].
+        # Corresponds to the JSON property `lastItemId`
+        # @return [Fixnum]
+        attr_accessor :last_item_id
+      
+        # In the context of a search, the MatchInfo contains information about which
+        # Items matched the query.
+        # Corresponds to the JSON property `matchInfo`
+        # @return [Google::Apis::CloudsearchV1::FuseboxItemThreadMatchInfo]
+        attr_accessor :match_info
+      
+        # A snippet summarizing the thread. This field is only populated for searches.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `threadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :thread_key
+      
+        # A base64 encoded and encrypted string generated from the Gaia Id and the
+        # thread id. Used to generate the permalink for this thread, exposed from Gmail
+        # API.
+        # Corresponds to the JSON property `threadLocator`
+        # @return [String]
+        attr_accessor :thread_locator
+      
+        # State of an topic thread as maintained within Tingle.
+        # Corresponds to the JSON property `topicState`
+        # @return [Google::Apis::CloudsearchV1::TopicState]
+        attr_accessor :topic_state
+      
+        # The latest history operation id that resulted in a mutation of any item in the
+        # thread.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_info = args[:cluster_info] if args.key?(:cluster_info)
+          @item = args[:item] if args.key?(:item)
+          @last_item_id = args[:last_item_id] if args.key?(:last_item_id)
+          @match_info = args[:match_info] if args.key?(:match_info)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @thread_key = args[:thread_key] if args.key?(:thread_key)
+          @thread_locator = args[:thread_locator] if args.key?(:thread_locator)
+          @topic_state = args[:topic_state] if args.key?(:topic_state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Identifies a jobsetted server as a target for Trigger dispatch.
+      class JobsettedServerSpec
+        include Google::Apis::Core::Hashable
+      
+        # E.g. "gateway", "stubby" etc. Leave unset to use the default unnamed port.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # E.g. "satellite-server", "bigtop-sync", etc.
+        # Corresponds to the JSON property `serverName`
+        # @return [String]
+        attr_accessor :server_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @server_name = args[:server_name] if args.key?(:server_name)
         end
       end
       
@@ -11107,6 +12148,220 @@ module Google
           @start_icon = args[:start_icon] if args.key?(:start_icon)
           @switch_widget = args[:switch_widget] if args.key?(:switch_widget)
           @top_label = args[:top_label] if args.key?(:top_label)
+        end
+      end
+      
+      # A label was added to some (subset of the) messages in this thread.
+      class LabelAdded
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        # 
+        # Corresponds to the JSON property `labelName`
+        # @return [String]
+        attr_accessor :label_name
+      
+        # 
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        # 
+        # Corresponds to the JSON property `syncId`
+        # @return [Fixnum]
+        attr_accessor :sync_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_id = args[:label_id] if args.key?(:label_id)
+          @label_name = args[:label_name] if args.key?(:label_name)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
+          @sync_id = args[:sync_id] if args.key?(:sync_id)
+        end
+      end
+      
+      # A label was created.
+      class LabelCreated
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A label was deleted.
+      class LabelDeleted
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A label was removed from some (subset of the) messages in this thread.
+      class LabelRemoved
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        # 
+        # Corresponds to the JSON property `labelName`
+        # @return [String]
+        attr_accessor :label_name
+      
+        # 
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        # 
+        # Corresponds to the JSON property `syncId`
+        # @return [Fixnum]
+        attr_accessor :sync_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_id = args[:label_id] if args.key?(:label_id)
+          @label_name = args[:label_name] if args.key?(:label_name)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
+          @sync_id = args[:sync_id] if args.key?(:sync_id)
+        end
+      end
+      
+      # A label was renamed.
+      class LabelRenamed
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `oldCanonicalName`
+        # @return [String]
+        attr_accessor :old_canonical_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @old_canonical_name = args[:old_canonical_name] if args.key?(:old_canonical_name)
+        end
+      end
+      
+      # HistoryRecord for changes associated with a label, namely: LABEL_CREATED
+      # LABEL_DELETED LABEL_RENAMED LABEL_UPDATED
+      class LabelUpdate
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `canonicalName`
+        # @return [String]
+        attr_accessor :canonical_name
+      
+        # A label was created.
+        # Corresponds to the JSON property `labelCreated`
+        # @return [Google::Apis::CloudsearchV1::LabelCreated]
+        attr_accessor :label_created
+      
+        # A label was deleted.
+        # Corresponds to the JSON property `labelDeleted`
+        # @return [Google::Apis::CloudsearchV1::LabelDeleted]
+        attr_accessor :label_deleted
+      
+        # 
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        # A label was renamed.
+        # Corresponds to the JSON property `labelRenamed`
+        # @return [Google::Apis::CloudsearchV1::LabelRenamed]
+        attr_accessor :label_renamed
+      
+        # A label pref was updated outside of a rename, create, or delete.
+        # Corresponds to the JSON property `labelUpdated`
+        # @return [Google::Apis::CloudsearchV1::LabelUpdated]
+        attr_accessor :label_updated
+      
+        # 
+        # Corresponds to the JSON property `syncId`
+        # @return [Fixnum]
+        attr_accessor :sync_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
+          @label_created = args[:label_created] if args.key?(:label_created)
+          @label_deleted = args[:label_deleted] if args.key?(:label_deleted)
+          @label_id = args[:label_id] if args.key?(:label_id)
+          @label_renamed = args[:label_renamed] if args.key?(:label_renamed)
+          @label_updated = args[:label_updated] if args.key?(:label_updated)
+          @sync_id = args[:sync_id] if args.key?(:sync_id)
+        end
+      end
+      
+      # A label pref was updated outside of a rename, create, or delete.
+      class LabelUpdated
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class Labels
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the labels. This is populated (instead of the id) when the
+        # request fetch_spec has LABEL_DISPLAY_NAMES.
+        # Corresponds to the JSON property `displayName`
+        # @return [Array<String>]
+        attr_accessor :display_name
+      
+        # The ids of the labels attached to the Item, e.g. "^i", "^x_1"
+        # Corresponds to the JSON property `id`
+        # @return [Array<String>]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -11438,6 +12693,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unmapped_identities = args[:unmapped_identities] if args.key?(:unmapped_identities)
+        end
+      end
+      
+      # 
+      class MatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Reference keys for image attachments that matches search query.
+        # Corresponds to the JSON property `matchingImageReferenceKey`
+        # @return [Array<String>]
+        attr_accessor :matching_image_reference_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matching_image_reference_key = args[:matching_image_reference_key] if args.key?(:matching_image_reference_key)
         end
       end
       
@@ -12185,6 +13459,69 @@ module Google
         end
       end
       
+      # A message was added. Specifying id and initial labels.
+      class MessageAdded
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attributeIds`
+        # @return [Array<String>]
+        attr_accessor :attribute_ids
+      
+        # 
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<String>]
+        attr_accessor :label_ids
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `messageKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :message_key
+      
+        # Note that there can be fewer sync ids than label ids.
+        # Corresponds to the JSON property `syncIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :sync_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_ids = args[:attribute_ids] if args.key?(:attribute_ids)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @message_key = args[:message_key] if args.key?(:message_key)
+          @sync_ids = args[:sync_ids] if args.key?(:sync_ids)
+        end
+      end
+      
       # Stores tombstone message attributes: go/tombstone-message-attributes-overview
       class MessageAttributes
         include Google::Apis::Core::Hashable
@@ -12202,6 +13539,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_tombstone = args[:is_tombstone] if args.key?(:is_tombstone)
+        end
+      end
+      
+      # Some (subset of the) messages in this thread were deleted.
+      class MessageDeleted
+        include Google::Apis::Core::Hashable
+      
+        # Value of coproc's message delete history record extension that exports /
+        # imapsync/folder attribute of deleted messages which have ^is label.
+        # Corresponds to the JSON property `imapSyncMappings`
+        # @return [Array<Google::Apis::CloudsearchV1::ImapSyncDelete>]
+        attr_accessor :imap_sync_mappings
+      
+        # 
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imap_sync_mappings = args[:imap_sync_mappings] if args.key?(:imap_sync_mappings)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
         end
       end
       
@@ -12303,6 +13666,19 @@ module Google
         end
       end
       
+      # This is proto2's version of MessageSet.
+      class MessageSet
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata of a matched search result.
       class Metadata
         include Google::Apis::Core::Hashable
@@ -12391,6 +13767,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A union-like type for identifiying an object in storage. MultiKeys contain
+      # multiple key fields, each in a separate key space. At least one key field must
+      # be set. More than one key field may be set as long as all key values refer to
+      # the same object. All objects in storage have unique server_id keys. All
+      # MultiKeys returned from storage to storage clients will always have the
+      # server_id field set. When creating an object, if a MultiKey without a
+      # server_id is supplied to storage, the storage system will auto-assign a server
+      # ID to the new object. For all other storage requests (i.e. those not creating
+      # new objects), clients may omit server_id (as long as they supply another key).
+      # Instead of server ids, clients can specify string based
+      # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+      # kinds of objects. Each time a user saves a new version of a draft, the storage
+      # system needs to create a new object with the updated draft content and needs
+      # to delete the object containing the old content. The new object gets a new
+      # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+      # object containing the old content. Carrying forward the perm ID allows it to
+      # be used to consistently refer to the same logical object across revisions.
+      # These perm IDs save sync clients from having to deal with changing object IDs.
+      # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+      # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+      # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+      # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+      # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+      # storage. The individual keys are extracted and processed separately. Both the
+      # integer ids as well as string ids are indexed for efficient retrieval using
+      # the same fields in the backend. See go/tingle-multikeys for more information
+      # on background and motivation.
+      class MultiKey
+        include Google::Apis::Core::Hashable
+      
+        # A client-assigned string based key.
+        # Corresponds to the JSON property `clientAssignedPermId`
+        # @return [String]
+        attr_accessor :client_assigned_perm_id
+      
+        # A server-assigned ID. This ID must be used only by Gmail and is constructed
+        # using millesecond ts << 20 + randomness. The ID affects the sort order of the
+        # index.
+        # Corresponds to the JSON property `serverId`
+        # @return [Fixnum]
+        attr_accessor :server_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_assigned_perm_id = args[:client_assigned_perm_id] if args.key?(:client_assigned_perm_id)
+          @server_id = args[:server_id] if args.key?(:server_id)
         end
       end
       
@@ -12851,6 +14280,37 @@ module Google
       end
       
       # 
+      class OsVersion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `majorVersion`
+        # @return [Fixnum]
+        attr_accessor :major_version
+      
+        # 
+        # Corresponds to the JSON property `minorVersion`
+        # @return [Fixnum]
+        attr_accessor :minor_version
+      
+        # 
+        # Corresponds to the JSON property `tertiaryVersion`
+        # @return [Fixnum]
+        attr_accessor :tertiary_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @major_version = args[:major_version] if args.key?(:major_version)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
+          @tertiary_version = args[:tertiary_version] if args.key?(:tertiary_version)
+        end
+      end
+      
+      # 
       class OtrChatMessageEvent
         include Google::Apis::Core::Hashable
       
@@ -13271,6 +14731,33 @@ module Google
         end
       end
       
+      # This message contains either the device model, or a prefix of the device model
+      # (AKA a trimmed device model). The "is_trimmed" field indicates which one it is.
+      class PossiblyTrimmedModel
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `isTrimmed`
+        # @return [Boolean]
+        attr_accessor :is_trimmed
+        alias_method :is_trimmed?, :is_trimmed
+      
+        # 
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_trimmed = args[:is_trimmed] if args.key?(:is_trimmed)
+          @model = args[:model] if args.key?(:model)
+        end
+      end
+      
       # See http://s/?fileprint=//depot/google3/security/authentication/postini/
       # auth_token.proto
       class PostiniUserProto
@@ -13288,6 +14775,167 @@ module Google
         # Update properties of this object
         def update!(**args)
           @postini_user_id = args[:postini_user_id] if args.key?(:postini_user_id)
+        end
+      end
+      
+      # State of the thread previous to the update. This really just describes the
+      # label state of all messages before the update.
+      class PreState
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<String>]
+        attr_accessor :label_ids
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `messageKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :message_key
+      
+        # Note that there can be fewer sync ids than label ids.
+        # Corresponds to the JSON property `syncIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :sync_ids
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `threadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :thread_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+          @message_key = args[:message_key] if args.key?(:message_key)
+          @sync_ids = args[:sync_ids] if args.key?(:sync_ids)
+          @thread_key = args[:thread_key] if args.key?(:thread_key)
+        end
+      end
+      
+      # PREF_DELETED
+      class PrefDeleted
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # HistoryRecord for changes associated with prefs, namely: PREF_WRITTEN
+      # PREF_DELETED
+      class PrefUpdate
+        include Google::Apis::Core::Hashable
+      
+        # Name of the affected preference.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If the Value field is not set this means the pref did not exist.
+        # Corresponds to the JSON property `preState`
+        # @return [Google::Apis::CloudsearchV1::FuseboxPrefUpdatePreState]
+        attr_accessor :pre_state
+      
+        # PREF_DELETED
+        # Corresponds to the JSON property `prefDeleted`
+        # @return [Google::Apis::CloudsearchV1::PrefDeleted]
+        attr_accessor :pref_deleted
+      
+        # PREF_WRITTEN
+        # Corresponds to the JSON property `prefWritten`
+        # @return [Google::Apis::CloudsearchV1::PrefWritten]
+        attr_accessor :pref_written
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @pre_state = args[:pre_state] if args.key?(:pre_state)
+          @pref_deleted = args[:pref_deleted] if args.key?(:pref_deleted)
+          @pref_written = args[:pref_written] if args.key?(:pref_written)
+        end
+      end
+      
+      # PREF_WRITTEN
+      class PrefWritten
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -13600,7 +15248,8 @@ module Google
         end
       end
       
-      # Private message information specific to a given user.
+      # Private message information specific to a given user. DEPRECATED: Use the
+      # privateMessageViewer field in CreateMessageInfo instead.
       class PrivateMessageInfo
         include Google::Apis::Core::Hashable
       
@@ -14431,6 +16080,38 @@ module Google
         end
       end
       
+      # The rank contains a tuple of numbers which may be used as a general sort order.
+      # The rank should be treated as an ordered set of numbers, where the ordering
+      # is done in descending order of the most significant rank member. For example,
+      # given the following ranks described as (primary, secondary): (1,1), (1,2), (2,
+      # 2) (2,1) The descending rank-order is: (2,2) > (2,1) > (1,2) > (1,1)
+      class Rank
+        include Google::Apis::Core::Hashable
+      
+        # The primary rank is the most significant rank member. This rank element should
+        # always be present. Items with higher primary rank are always considered of
+        # higher rank than those of lower primary rank.
+        # Corresponds to the JSON property `primary`
+        # @return [Fixnum]
+        attr_accessor :primary
+      
+        # The secondary rank may be used to rank items of identical primary rank. This
+        # rank element should always be present.
+        # Corresponds to the JSON property `secondary`
+        # @return [Fixnum]
+        attr_accessor :secondary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary = args[:primary] if args.key?(:primary)
+          @secondary = args[:secondary] if args.key?(:secondary)
+        end
+      end
+      
       # Principal associated with a given RBAC role. This principal is used by Sphinx
       # Provisioning Service for RBAC (go/cedi-auth) provisionable (go/sphinx-rbacz-
       # design).
@@ -14663,6 +16344,76 @@ module Google
           @owner_email = args[:owner_email] if args.key?(:owner_email)
           @recording_session_id = args[:recording_session_id] if args.key?(:recording_session_id)
           @session_state_info = args[:session_state_info] if args.key?(:session_state_info)
+        end
+      end
+      
+      # All fields in this proto are now columns in spanner see google3/storage/slice/
+      # production/gmail/user_data_tables.pi for documentation.
+      class Reference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `blobId`
+        # @return [String]
+        attr_accessor :blob_id
+      
+        # 
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # 
+        # Corresponds to the JSON property `hash`
+        # @return [String]
+        attr_accessor :hash_prop
+      
+        # LINT.IfChange
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # LINT.ThenChange(//depot/google3/storage/slice/production/gmail/
+        # user_data_tables.pi)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # 
+      class References
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::CloudsearchV1::Reference>]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @references = args[:references] if args.key?(:references)
         end
       end
       
@@ -15242,6 +16993,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Options for Triggers dispatched via RPC.
+      class RpcOptions
+        include Google::Apis::Core::Hashable
+      
+        # This is proto2's version of MessageSet.
+        # Corresponds to the JSON property `requestExtensions`
+        # @return [Google::Apis::CloudsearchV1::MessageSet]
+        attr_accessor :request_extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_extensions = args[:request_extensions] if args.key?(:request_extensions)
         end
       end
       
@@ -15994,6 +17764,58 @@ module Google
           @selected = args[:selected] if args.key?(:selected)
           @text = args[:text] if args.key?(:text)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class SessionContext
+        include Google::Apis::Core::Hashable
+      
+        # Time at which this activity's session was authenticated, in seconds since the
+        # epoch.
+        # Corresponds to the JSON property `authTime`
+        # @return [Fixnum]
+        attr_accessor :auth_time
+      
+        # Gaia ID of the authenticated user when delegate access is active. In such
+        # sessions the main gaia ID is that of the delegator, i.e. the account being
+        # accessed.
+        # Corresponds to the JSON property `delegateUserId`
+        # @return [Fixnum]
+        attr_accessor :delegate_user_id
+      
+        # Device User Session ID, see go/dusi.
+        # Corresponds to the JSON property `dusi`
+        # @return [String]
+        attr_accessor :dusi
+      
+        # Imap session context for Bond/Gmail integration
+        # Corresponds to the JSON property `imapSessionContext`
+        # @return [Google::Apis::CloudsearchV1::ImapSessionContext]
+        attr_accessor :imap_session_context
+      
+        # OAuth login ID.
+        # Corresponds to the JSON property `oauthLoginId`
+        # @return [Fixnum]
+        attr_accessor :oauth_login_id
+      
+        # The devconsole project ID of the developer who authenticated with OAuth.
+        # Corresponds to the JSON property `oauthProjectId`
+        # @return [Fixnum]
+        attr_accessor :oauth_project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_time = args[:auth_time] if args.key?(:auth_time)
+          @delegate_user_id = args[:delegate_user_id] if args.key?(:delegate_user_id)
+          @dusi = args[:dusi] if args.key?(:dusi)
+          @imap_session_context = args[:imap_session_context] if args.key?(:imap_session_context)
+          @oauth_login_id = args[:oauth_login_id] if args.key?(:oauth_login_id)
+          @oauth_project_id = args[:oauth_project_id] if args.key?(:oauth_project_id)
         end
       end
       
@@ -17430,6 +19252,205 @@ module Google
         end
       end
       
+      # The ThreadKey was set on some (subset of the) messages in this thread.
+      class ThreadKeySet
+        include Google::Apis::Core::Hashable
+      
+        # Messages on which the thread_key was changed.
+        # Corresponds to the JSON property `messageKeys`
+        # @return [Array<Google::Apis::CloudsearchV1::MultiKey>]
+        attr_accessor :message_keys
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `newThreadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :new_thread_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_keys = args[:message_keys] if args.key?(:message_keys)
+          @new_thread_key = args[:new_thread_key] if args.key?(:new_thread_key)
+        end
+      end
+      
+      # HistoryRecord for changes associated with a thread, namely: MESSAGE_ADDED
+      # MESSAGE_DELETED LABEL_ADDED LABEL_REMOVED ATTRIBUTE_SET ATTRIBUTE_REMOVED
+      # THREAD_KEY_SET All label_ids refer to the (unchanging) value as defined by the
+      # Label.id field in labels.proto. In particular, it is *not* the canonical_name.
+      class ThreadUpdate
+        include Google::Apis::Core::Hashable
+      
+        # An attribute was deleted from some (subset of the) messages in this thread.
+        # Corresponds to the JSON property `attributeRemoved`
+        # @return [Google::Apis::CloudsearchV1::AttributeRemoved]
+        attr_accessor :attribute_removed
+      
+        # An attribute was added to some (subset of the) messages in this thread.
+        # Corresponds to the JSON property `attributeSet`
+        # @return [Google::Apis::CloudsearchV1::AttributeSet]
+        attr_accessor :attribute_set
+      
+        # A label was added to some (subset of the) messages in this thread.
+        # Corresponds to the JSON property `labelAdded`
+        # @return [Google::Apis::CloudsearchV1::LabelAdded]
+        attr_accessor :label_added
+      
+        # A label was removed from some (subset of the) messages in this thread.
+        # Corresponds to the JSON property `labelRemoved`
+        # @return [Google::Apis::CloudsearchV1::LabelRemoved]
+        attr_accessor :label_removed
+      
+        # Indicates the record id of the last operation that modified this thread.
+        # Corresponds to the JSON property `lastHistoryRecordId`
+        # @return [Fixnum]
+        attr_accessor :last_history_record_id
+      
+        # A message was added. Specifying id and initial labels.
+        # Corresponds to the JSON property `messageAdded`
+        # @return [Google::Apis::CloudsearchV1::MessageAdded]
+        attr_accessor :message_added
+      
+        # Some (subset of the) messages in this thread were deleted.
+        # Corresponds to the JSON property `messageDeleted`
+        # @return [Google::Apis::CloudsearchV1::MessageDeleted]
+        attr_accessor :message_deleted
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `originalThreadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :original_thread_key
+      
+        # The PreStates of all messages before the transaction. These are suppressed if
+        # the client requested that prestates not be included in the output of the
+        # GetHistoryRequest.
+        # Corresponds to the JSON property `preState`
+        # @return [Array<Google::Apis::CloudsearchV1::PreState>]
+        attr_accessor :pre_state
+      
+        # A union-like type for identifiying an object in storage. MultiKeys contain
+        # multiple key fields, each in a separate key space. At least one key field must
+        # be set. More than one key field may be set as long as all key values refer to
+        # the same object. All objects in storage have unique server_id keys. All
+        # MultiKeys returned from storage to storage clients will always have the
+        # server_id field set. When creating an object, if a MultiKey without a
+        # server_id is supplied to storage, the storage system will auto-assign a server
+        # ID to the new object. For all other storage requests (i.e. those not creating
+        # new objects), clients may omit server_id (as long as they supply another key).
+        # Instead of server ids, clients can specify string based
+        # client_assigned_perm_id keys. Mail message drafts are a prime example of these
+        # kinds of objects. Each time a user saves a new version of a draft, the storage
+        # system needs to create a new object with the updated draft content and needs
+        # to delete the object containing the old content. The new object gets a new
+        # SERVER_ID but should get the same CLIENT_ASSIGNED_PERM_ID as the now-deleted
+        # object containing the old content. Carrying forward the perm ID allows it to
+        # be used to consistently refer to the same logical object across revisions.
+        # These perm IDs save sync clients from having to deal with changing object IDs.
+        # For example, assume there's a mail message in storage with SERVER_ID = 123 and
+        # CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of
+        # addressing the object using MultiKeys: 1) MultiKey ` server_id = 123 ` 2)
+        # MultiKey ` server_id = 123, client_assigned_perm_id = "foo" ` 3) MultiKey `
+        # client_assigned_perm_id = "foo" ` Multikeys are never serialized in the
+        # storage. The individual keys are extracted and processed separately. Both the
+        # integer ids as well as string ids are indexed for efficient retrieval using
+        # the same fields in the backend. See go/tingle-multikeys for more information
+        # on background and motivation.
+        # Corresponds to the JSON property `threadKey`
+        # @return [Google::Apis::CloudsearchV1::MultiKey]
+        attr_accessor :thread_key
+      
+        # The ThreadKey was set on some (subset of the) messages in this thread.
+        # Corresponds to the JSON property `threadKeySet`
+        # @return [Google::Apis::CloudsearchV1::ThreadKeySet]
+        attr_accessor :thread_key_set
+      
+        # Thread PLID
+        # Corresponds to the JSON property `threadLocator`
+        # @return [String]
+        attr_accessor :thread_locator
+      
+        # 
+        # Corresponds to the JSON property `topicStateUpdate`
+        # @return [Google::Apis::CloudsearchV1::TopicStateUpdate]
+        attr_accessor :topic_state_update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_removed = args[:attribute_removed] if args.key?(:attribute_removed)
+          @attribute_set = args[:attribute_set] if args.key?(:attribute_set)
+          @label_added = args[:label_added] if args.key?(:label_added)
+          @label_removed = args[:label_removed] if args.key?(:label_removed)
+          @last_history_record_id = args[:last_history_record_id] if args.key?(:last_history_record_id)
+          @message_added = args[:message_added] if args.key?(:message_added)
+          @message_deleted = args[:message_deleted] if args.key?(:message_deleted)
+          @original_thread_key = args[:original_thread_key] if args.key?(:original_thread_key)
+          @pre_state = args[:pre_state] if args.key?(:pre_state)
+          @thread_key = args[:thread_key] if args.key?(:thread_key)
+          @thread_key_set = args[:thread_key_set] if args.key?(:thread_key_set)
+          @thread_locator = args[:thread_locator] if args.key?(:thread_locator)
+          @topic_state_update = args[:topic_state_update] if args.key?(:topic_state_update)
+        end
+      end
+      
       # Used to provide a search operator for timestamp properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -17602,6 +19623,105 @@ module Google
         end
       end
       
+      # State of an topic thread as maintained within Tingle.
+      class TopicState
+        include Google::Apis::Core::Hashable
+      
+        # Map of label => count of topic constituent messages with label These only
+        # contain counts of labels that are relevant for topic normalization/
+        # denormalization. Eg. If a topic thread has 5 constituents, 4 of which are in
+        # inbox, this will contain ^i => 4. Some labels of interest are archive, inbox,
+        # trash, spam, etc.
+        # Corresponds to the JSON property `labelIdMessageCount`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :label_id_message_count
+      
+        # Number of constituents for this entity.
+        # Corresponds to the JSON property `numConstituents`
+        # @return [Fixnum]
+        attr_accessor :num_constituents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_id_message_count = args[:label_id_message_count] if args.key?(:label_id_message_count)
+          @num_constituents = args[:num_constituents] if args.key?(:num_constituents)
+        end
+      end
+      
+      # 
+      class TopicStateUpdate
+        include Google::Apis::Core::Hashable
+      
+        # State of an topic thread as maintained within Tingle.
+        # Corresponds to the JSON property `topicState`
+        # @return [Google::Apis::CloudsearchV1::TopicState]
+        attr_accessor :topic_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic_state = args[:topic_state] if args.key?(:topic_state)
+        end
+      end
+      
+      # Storage information pertaining to the transaction with which a HistoryRecord
+      # is associated.
+      class TransactionContext
+        include Google::Apis::Core::Hashable
+      
+        # The last HistoryRecord of the transaction. Note that this may correspond to a
+        # record that is filtered by Tingle (and thus not returned to the client). See
+        # http://b/9513464.
+        # Corresponds to the JSON property `endingRecordId`
+        # @return [Fixnum]
+        attr_accessor :ending_record_id
+      
+        # The first HistoryRecord of the transaction. Note that this may be a record of
+        # type INTERNAL.
+        # Corresponds to the JSON property `startingRecordId`
+        # @return [Fixnum]
+        attr_accessor :starting_record_id
+      
+        # The microsecond timestamp of the transaction.
+        # Corresponds to the JSON property `writeTimestampUs`
+        # @return [Fixnum]
+        attr_accessor :write_timestamp_us
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ending_record_id = args[:ending_record_id] if args.key?(:ending_record_id)
+          @starting_record_id = args[:starting_record_id] if args.key?(:starting_record_id)
+          @write_timestamp_us = args[:write_timestamp_us] if args.key?(:write_timestamp_us)
+        end
+      end
+      
+      # HistoryRecord for debug info associated with the transaction, namely:
+      # TXN_DEBUG_INFO TODO(b/143845917) This is a short-term workaround for
+      # unblocking fusebox writes migration. Clean up the code or land a long-term
+      # solution after the rollout. go/diff-to-historyrecord
+      class TransactionDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information about a transcription session.
       class TranscriptionSessionInfo
         include Google::Apis::Core::Hashable
@@ -17638,6 +19758,180 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class Trigger
+        include Google::Apis::Core::Hashable
+      
+        # Each dispatcher should use an enum to for the actions that it supports. If a
+        # dispatcher has only one action, this does not need to be set. (It can be
+        # expanded later, defining the default behaviour as type 0.) For purposes such
+        # as batching, the type of a trigger is (dispatcher, action_type).
+        # Corresponds to the JSON property `actionType`
+        # @return [Fixnum]
+        attr_accessor :action_type
+      
+        # Maximum possible delay in micros that can be tolerated so triggers can be
+        # batched, which makes processing more efficient compared to firing triggers
+        # individually. Note that the actual fire time will be somewhere in the
+        # timerange interval [fire_time_us, fire_time_us + batch_time_us).
+        # Corresponds to the JSON property `batchTimeUs`
+        # @return [Fixnum]
+        attr_accessor :batch_time_us
+      
+        # Must be set for DISPATCHER_STUBBY_DISPATCHER.
+        # Corresponds to the JSON property `dispatchId`
+        # @return [Fixnum]
+        attr_accessor :dispatch_id
+      
+        # Which server should interpret action_type.
+        # Corresponds to the JSON property `dispatcher`
+        # @return [String]
+        attr_accessor :dispatcher
+      
+        # Earliest time to fire at in microseconds. The actual time that the trigger
+        # will fire will be in the timerange: [fire_time_us, fire_time_us +
+        # batch_time_us).
+        # Corresponds to the JSON property `fireTimeUs`
+        # @return [Fixnum]
+        attr_accessor :fire_time_us
+      
+        # Identifies a jobsetted server as a target for Trigger dispatch.
+        # Corresponds to the JSON property `jobsettedServerSpec`
+        # @return [Google::Apis::CloudsearchV1::JobsettedServerSpec]
+        attr_accessor :jobsetted_server_spec
+      
+        # The trigger key, if applicable.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Options for Triggers dispatched via RPC.
+        # Corresponds to the JSON property `rpcOptions`
+        # @return [Google::Apis::CloudsearchV1::RpcOptions]
+        attr_accessor :rpc_options
+      
+        # The slice_fire_time_us is automatically computed and stored as part of the
+        # trigger write. It represents the exact fire time at which the trigger will be
+        # queued to fire and will satisfy fire_time_us < slice_fire_time_us <=
+        # fire_time_us + batch_time_us Triggers have an index row in the slice trigger
+        # index with the row prefix matching this time. Note that this field is internal
+        # to gmail_cp and is ignored if set by external clients when adding / updating
+        # triggers.
+        # Corresponds to the JSON property `sliceFireTimeUs`
+        # @return [Fixnum]
+        attr_accessor :slice_fire_time_us
+      
+        # Trigger action to perform. This should always be set.
+        # Corresponds to the JSON property `triggerAction`
+        # @return [Google::Apis::CloudsearchV1::TriggerAction]
+        attr_accessor :trigger_action
+      
+        # A TriggerKey (type + instance_id) uniquely identifies a trigger within a
+        # message for a message-trigger and within an account for an account-trigger.
+        # Corresponds to the JSON property `triggerKey`
+        # @return [Google::Apis::CloudsearchV1::TriggerKey]
+        attr_accessor :trigger_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @batch_time_us = args[:batch_time_us] if args.key?(:batch_time_us)
+          @dispatch_id = args[:dispatch_id] if args.key?(:dispatch_id)
+          @dispatcher = args[:dispatcher] if args.key?(:dispatcher)
+          @fire_time_us = args[:fire_time_us] if args.key?(:fire_time_us)
+          @jobsetted_server_spec = args[:jobsetted_server_spec] if args.key?(:jobsetted_server_spec)
+          @key = args[:key] if args.key?(:key)
+          @rpc_options = args[:rpc_options] if args.key?(:rpc_options)
+          @slice_fire_time_us = args[:slice_fire_time_us] if args.key?(:slice_fire_time_us)
+          @trigger_action = args[:trigger_action] if args.key?(:trigger_action)
+          @trigger_key = args[:trigger_key] if args.key?(:trigger_key)
+        end
+      end
+      
+      # 
+      class TriggerAction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Clients should use extensions on the Trigger message instead.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # 
+        # Corresponds to the JSON property `dataInt`
+        # @return [Fixnum]
+        attr_accessor :data_int
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @data = args[:data] if args.key?(:data)
+          @data_int = args[:data_int] if args.key?(:data_int)
+        end
+      end
+      
+      # A TriggerKey (type + instance_id) uniquely identifies a trigger within a
+      # message for a message-trigger and within an account for an account-trigger.
+      class TriggerKey
+        include Google::Apis::Core::Hashable
+      
+        # Identifier to distinguish multiple Triggers of the same type (per message or
+        # per account).
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # A non-empty string that identifies the type of Trigger. Triggers of the same
+        # type may be batched together. The universe of values for the type field should
+        # be finite as it is used as a stats key.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class Triggers
+        include Google::Apis::Core::Hashable
+      
+        # A list of triggers.
+        # Corresponds to the JSON property `triggers`
+        # @return [Array<Google::Apis::CloudsearchV1::Trigger>]
+        attr_accessor :triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @triggers = args[:triggers] if args.key?(:triggers)
         end
       end
       
@@ -18070,6 +20364,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedDlpMetricsMetadata]
         attr_accessor :dlp_metrics_metadata
       
+        # The timestamp of the most recent virus scan completed (in microseconds).
+        # Corresponds to the JSON property `latestVirusScanTimestamp`
+        # @return [Fixnum]
+        attr_accessor :latest_virus_scan_timestamp
+      
         # A copy of the LocalId in Annotation. This field is supposed to be filled by
         # server only.
         # Corresponds to the JSON property `localId`
@@ -18106,6 +20405,7 @@ module Google
           @content_name = args[:content_name] if args.key?(:content_name)
           @content_type = args[:content_type] if args.key?(:content_type)
           @dlp_metrics_metadata = args[:dlp_metrics_metadata] if args.key?(:dlp_metrics_metadata)
+          @latest_virus_scan_timestamp = args[:latest_virus_scan_timestamp] if args.key?(:latest_virus_scan_timestamp)
           @local_id = args[:local_id] if args.key?(:local_id)
           @original_dimension = args[:original_dimension] if args.key?(:original_dimension)
           @video_reference = args[:video_reference] if args.key?(:video_reference)
