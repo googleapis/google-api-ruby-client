@@ -275,6 +275,13 @@ module Google
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig]
         attr_accessor :client
       
+        # Configuration for settings related to email privacy and public visibility.
+        # Settings in this config protect against email enumeration, but may make some
+        # trade-offs in user-friendliness.
+        # Corresponds to the JSON property `emailPrivacyConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]
+        attr_accessor :email_privacy_config
+      
         # Options related to MultiFactor Authentication for the project.
         # Corresponds to the JSON property `mfa`
         # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig]
@@ -333,6 +340,7 @@ module Google
           @autodelete_anonymous_users = args[:autodelete_anonymous_users] if args.key?(:autodelete_anonymous_users)
           @blocking_functions = args[:blocking_functions] if args.key?(:blocking_functions)
           @client = args[:client] if args.key?(:client)
+          @email_privacy_config = args[:email_privacy_config] if args.key?(:email_privacy_config)
           @mfa = args[:mfa] if args.key?(:mfa)
           @monitoring = args[:monitoring] if args.key?(:monitoring)
           @multi_tenant = args[:multi_tenant] if args.key?(:multi_tenant)
@@ -489,6 +497,34 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @password_required = args[:password_required] if args.key?(:password_required)
+        end
+      end
+      
+      # Configuration for settings related to email privacy and public visibility.
+      # Settings in this config protect against email enumeration, but may make some
+      # trade-offs in user-friendliness.
+      class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Migrates the project to a state of improved email privacy. For example certain
+        # error codes are more generic to avoid giving away information on whether the
+        # account exists. In addition, this disables certain features that as a side-
+        # effect allow user enumeration. Enabling this toggle disables the
+        # fetchSignInMethodsForEmail functionality and changing the user's email to an
+        # unverified email. It is recommended to remove dependence on this functionality
+        # and enable this toggle to improve user privacy.
+        # Corresponds to the JSON property `enableImprovedEmailPrivacy`
+        # @return [Boolean]
+        attr_accessor :enable_improved_email_privacy
+        alias_method :enable_improved_email_privacy?, :enable_improved_email_privacy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_improved_email_privacy = args[:enable_improved_email_privacy] if args.key?(:enable_improved_email_privacy)
         end
       end
       
@@ -1608,6 +1644,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Configuration for settings related to email privacy and public visibility.
+        # Settings in this config protect against email enumeration, but may make some
+        # trade-offs in user-friendliness.
+        # Corresponds to the JSON property `emailPrivacyConfig`
+        # @return [Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig]
+        attr_accessor :email_privacy_config
+      
         # Whether to enable anonymous user authentication.
         # Corresponds to the JSON property `enableAnonymousUser`
         # @return [Boolean]
@@ -1672,6 +1715,7 @@ module Google
           @client = args[:client] if args.key?(:client)
           @disable_auth = args[:disable_auth] if args.key?(:disable_auth)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @email_privacy_config = args[:email_privacy_config] if args.key?(:email_privacy_config)
           @enable_anonymous_user = args[:enable_anonymous_user] if args.key?(:enable_anonymous_user)
           @enable_email_link_signin = args[:enable_email_link_signin] if args.key?(:enable_email_link_signin)
           @hash_config = args[:hash_config] if args.key?(:hash_config)
