@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudIdentitytoolkitAdminV2EmailTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +562,8 @@ module Google
       
           property :client, as: 'client', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2ClientConfig::Representation
       
+          property :email_privacy_config, as: 'emailPrivacyConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig::Representation
+      
           property :mfa, as: 'mfa', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig::Representation
       
           property :monitoring, as: 'monitoring', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2MonitoringConfig::Representation
@@ -611,6 +619,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :password_required, as: 'passwordRequired'
+        end
+      end
+      
+      class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_improved_email_privacy, as: 'enableImprovedEmailPrivacy'
         end
       end
       
@@ -942,6 +957,8 @@ module Google
       
           property :disable_auth, as: 'disableAuth'
           property :display_name, as: 'displayName'
+          property :email_privacy_config, as: 'emailPrivacyConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig::Representation
+      
           property :enable_anonymous_user, as: 'enableAnonymousUser'
           property :enable_email_link_signin, as: 'enableEmailLinkSignin'
           property :hash_config, as: 'hashConfig', class: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2HashConfig, decorator: Google::Apis::IdentitytoolkitV2::GoogleCloudIdentitytoolkitAdminV2HashConfig::Representation
