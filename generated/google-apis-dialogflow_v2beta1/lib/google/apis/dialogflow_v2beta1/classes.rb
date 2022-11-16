@@ -9524,6 +9524,12 @@ module Google
         # @return [String]
         attr_accessor :automated_agent_reply_type
       
+        # The unique identifier of the current Dialogflow CX conversation page. Format: `
+        # projects//locations//agents//flows//pages/`.
+        # Corresponds to the JSON property `cxCurrentPage`
+        # @return [String]
+        attr_accessor :cx_current_page
+      
         # The collection of current Dialogflow CX agent session parameters at the time
         # of this response. Deprecated: Use `parameters` instead.
         # Corresponds to the JSON property `cxSessionParameters`
@@ -9574,6 +9580,7 @@ module Google
         def update!(**args)
           @allow_cancellation = args[:allow_cancellation] if args.key?(:allow_cancellation)
           @automated_agent_reply_type = args[:automated_agent_reply_type] if args.key?(:automated_agent_reply_type)
+          @cx_current_page = args[:cx_current_page] if args.key?(:cx_current_page)
           @cx_session_parameters = args[:cx_session_parameters] if args.key?(:cx_session_parameters)
           @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
           @event = args[:event] if args.key?(:event)
