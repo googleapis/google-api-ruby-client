@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApiSecurityRuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1655,6 +1661,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :expires_at, :numeric_string => true, as: 'expiresAt'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApiSecurityRuntimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location, as: 'location'
+          property :name, as: 'name'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       

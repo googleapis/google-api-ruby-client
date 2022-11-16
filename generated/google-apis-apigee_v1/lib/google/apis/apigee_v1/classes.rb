@@ -970,6 +970,53 @@ module Google
         end
       end
       
+      # Response for GetApiSecurityRuntimeConfig[EnvironmentService.
+      # GetApiSecurityRuntimeConfig].
+      class GoogleCloudApigeeV1ApiSecurityRuntimeConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of up to 5 Cloud Storage Blobs that contain SecurityActions.
+        # Corresponds to the JSON property `location`
+        # @return [Array<String>]
+        attr_accessor :location
+      
+        # Name of the environment API Security Runtime configuration resource. Format: `
+        # organizations/`org`/environments/`env`/apiSecurityRuntimeConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision ID of the API Security Runtime configuration. The higher the value,
+        # the more recently the configuration was deployed.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # Unique ID for the API Security Runtime configuration. The ID will only change
+        # if the environment is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Time that the API Security Runtime configuration was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1App
         include Google::Apis::Core::Hashable
@@ -7818,7 +7865,8 @@ module Google
         # @return [String]
         attr_accessor :self
       
-        # Query state could be "enqueued", "running", "completed", "failed".
+        # Query state could be "enqueued", "running", "completed", "expired" and "failed"
+        # .
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
