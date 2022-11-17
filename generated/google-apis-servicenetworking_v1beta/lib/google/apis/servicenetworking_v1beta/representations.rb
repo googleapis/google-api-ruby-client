@@ -112,7 +112,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientLibrarySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSqlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommonLanguageSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +161,12 @@ module Google
       end
       
       class Control
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CppSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DotnetSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Endpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +251,12 @@ module Google
       end
       
       class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +287,12 @@ module Google
       end
       
       class HttpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JavaSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,7 +334,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LongRunning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MethodProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MethodSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuthRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,7 +442,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PhpSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Publishing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PythonSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -437,6 +509,12 @@ module Google
       end
       
       class Route
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RubySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -651,6 +729,7 @@ module Google
           property :deadline, as: 'deadline'
           property :disable_auth, as: 'disableAuth'
           property :jwt_audience, as: 'jwtAudience'
+          property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
@@ -674,12 +753,45 @@ module Google
         end
       end
       
+      class ClientLibrarySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpp_settings, as: 'cppSettings', class: Google::Apis::ServicenetworkingV1beta::CppSettings, decorator: Google::Apis::ServicenetworkingV1beta::CppSettings::Representation
+      
+          property :dotnet_settings, as: 'dotnetSettings', class: Google::Apis::ServicenetworkingV1beta::DotnetSettings, decorator: Google::Apis::ServicenetworkingV1beta::DotnetSettings::Representation
+      
+          property :go_settings, as: 'goSettings', class: Google::Apis::ServicenetworkingV1beta::GoSettings, decorator: Google::Apis::ServicenetworkingV1beta::GoSettings::Representation
+      
+          property :java_settings, as: 'javaSettings', class: Google::Apis::ServicenetworkingV1beta::JavaSettings, decorator: Google::Apis::ServicenetworkingV1beta::JavaSettings::Representation
+      
+          property :launch_stage, as: 'launchStage'
+          property :node_settings, as: 'nodeSettings', class: Google::Apis::ServicenetworkingV1beta::NodeSettings, decorator: Google::Apis::ServicenetworkingV1beta::NodeSettings::Representation
+      
+          property :php_settings, as: 'phpSettings', class: Google::Apis::ServicenetworkingV1beta::PhpSettings, decorator: Google::Apis::ServicenetworkingV1beta::PhpSettings::Representation
+      
+          property :python_settings, as: 'pythonSettings', class: Google::Apis::ServicenetworkingV1beta::PythonSettings, decorator: Google::Apis::ServicenetworkingV1beta::PythonSettings::Representation
+      
+          property :rest_numeric_enums, as: 'restNumericEnums'
+          property :ruby_settings, as: 'rubySettings', class: Google::Apis::ServicenetworkingV1beta::RubySettings, decorator: Google::Apis::ServicenetworkingV1beta::RubySettings::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
       class CloudSqlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
           property :umbrella_network, as: 'umbrellaNetwork'
           property :umbrella_project, :numeric_string => true, as: 'umbrellaProject'
+        end
+      end
+      
+      class CommonLanguageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations'
+          property :reference_docs_uri, as: 'referenceDocsUri'
         end
       end
       
@@ -743,6 +855,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :environment, as: 'environment'
+        end
+      end
+      
+      class CppSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
         end
       end
       
@@ -824,9 +944,18 @@ module Google
         end
       end
       
+      class DotnetSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
+        end
+      end
+      
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aliases, as: 'aliases'
           property :allow_cors, as: 'allowCors'
           property :name, as: 'name'
           property :target, as: 'target'
@@ -871,6 +1000,14 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class GoSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
         end
       end
       
@@ -930,6 +1067,16 @@ module Google
         end
       end
       
+      class JavaSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
+          property :library_package, as: 'libraryPackage'
+          hash :service_class_names, as: 'serviceClassNames'
+        end
+      end
+      
       class JwtLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -986,6 +1133,16 @@ module Google
         end
       end
       
+      class LongRunning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initial_poll_delay, as: 'initialPollDelay'
+          property :max_poll_delay, as: 'maxPollDelay'
+          property :poll_delay_multiplier, as: 'pollDelayMultiplier'
+          property :total_poll_timeout, as: 'totalPollTimeout'
+        end
+      end
+      
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -997,6 +1154,15 @@ module Google
           property :response_streaming, as: 'responseStreaming'
           property :response_type_url, as: 'responseTypeUrl'
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class MethodSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :long_running, as: 'longRunning', class: Google::Apis::ServicenetworkingV1beta::LongRunning, decorator: Google::Apis::ServicenetworkingV1beta::LongRunning::Representation
+      
+          property :selector, as: 'selector'
         end
       end
       
@@ -1075,6 +1241,14 @@ module Google
         end
       end
       
+      class NodeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
+        end
+      end
+      
       class OAuthRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,11 +1306,44 @@ module Google
         end
       end
       
+      class PhpSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
+        end
+      end
+      
       class PolicyBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :member, as: 'member'
           property :role, as: 'role'
+        end
+      end
+      
+      class Publishing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_short_name, as: 'apiShortName'
+          collection :codeowner_github_teams, as: 'codeownerGithubTeams'
+          property :doc_tag_prefix, as: 'docTagPrefix'
+          property :documentation_uri, as: 'documentationUri'
+          property :github_label, as: 'githubLabel'
+          collection :library_settings, as: 'librarySettings', class: Google::Apis::ServicenetworkingV1beta::ClientLibrarySettings, decorator: Google::Apis::ServicenetworkingV1beta::ClientLibrarySettings::Representation
+      
+          collection :method_settings, as: 'methodSettings', class: Google::Apis::ServicenetworkingV1beta::MethodSettings, decorator: Google::Apis::ServicenetworkingV1beta::MethodSettings::Representation
+      
+          property :new_issue_uri, as: 'newIssueUri'
+          property :organization, as: 'organization'
+        end
+      end
+      
+      class PythonSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
         end
       end
       
@@ -1208,6 +1415,14 @@ module Google
         end
       end
       
+      class RubySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
+      
+        end
+      end
+      
       class SearchRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1263,6 +1478,8 @@ module Google
       
           property :name, as: 'name'
           property :producer_project_id, as: 'producerProjectId'
+          property :publishing, as: 'publishing', class: Google::Apis::ServicenetworkingV1beta::Publishing, decorator: Google::Apis::ServicenetworkingV1beta::Publishing::Representation
+      
           property :quota, as: 'quota', class: Google::Apis::ServicenetworkingV1beta::Quota, decorator: Google::Apis::ServicenetworkingV1beta::Quota::Representation
       
           property :source_info, as: 'sourceInfo', class: Google::Apis::ServicenetworkingV1beta::SourceInfo, decorator: Google::Apis::ServicenetworkingV1beta::SourceInfo::Representation
