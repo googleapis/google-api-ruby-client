@@ -22,6 +22,203 @@ module Google
   module Apis
     module DatapipelinesV1
       
+      # Represents an array of values. The elements can be of any type.
+      class GoogleCloudDatapipelinesV1ArrayValue
+        include Google::Apis::Core::Hashable
+      
+        # The elements of the array.
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldValue>]
+        attr_accessor :elements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
+        end
+      end
+      
+      # Represents a non-dividable value.
+      class GoogleCloudDatapipelinesV1AtomicValue
+        include Google::Apis::Core::Hashable
+      
+        # A boolean value.
+        # Corresponds to the JSON property `booleanValue`
+        # @return [Boolean]
+        attr_accessor :boolean_value
+        alias_method :boolean_value?, :boolean_value
+      
+        # An 8-bit signed value.
+        # Corresponds to the JSON property `byteValue`
+        # @return [Fixnum]
+        attr_accessor :byte_value
+      
+        # An array of raw bytes.
+        # Corresponds to the JSON property `bytesValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :bytes_value
+      
+        # Represents civil time (or occasionally physical time). This type can represent
+        # a civil time in one of a few possible ways: * When utc_offset is set and
+        # time_zone is unset: a civil time on a calendar day with a particular offset
+        # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+        # calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+        # the DateTime is considered not to have a specific year, month, or day
+        # respectively. This type may also be used to represent a physical time if all
+        # the date and time fields are set and either case of the `time_offset` oneof is
+        # set. Consider using `Timestamp` message for physical time instead. If your use
+        # case also would like to store the user's timezone, that can be done in another
+        # field. This type is more flexible than some applications may want. Make sure
+        # to document and validate your application's limitations.
+        # Corresponds to the JSON property `datetimeValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleTypeDateTime]
+        attr_accessor :datetime_value
+      
+        # A representation of a decimal value, such as 2.5. Clients may convert values
+        # into language-native decimal formats, such as Java's BigDecimal or Python's
+        # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+        # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+        # org/3/library/decimal.html
+        # Corresponds to the JSON property `decimalValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleTypeDecimal]
+        attr_accessor :decimal_value
+      
+        # A 64-bit floating point value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # A 32-bit floating point value.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        # A 16-bit signed value.
+        # Corresponds to the JSON property `int16Value`
+        # @return [Fixnum]
+        attr_accessor :int16_value
+      
+        # A 32-bit signed value.
+        # Corresponds to the JSON property `int32Value`
+        # @return [Fixnum]
+        attr_accessor :int32_value
+      
+        # A 64-bit signed value.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # A string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
+          @byte_value = args[:byte_value] if args.key?(:byte_value)
+          @bytes_value = args[:bytes_value] if args.key?(:bytes_value)
+          @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @decimal_value = args[:decimal_value] if args.key?(:decimal_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @int16_value = args[:int16_value] if args.key?(:int16_value)
+          @int32_value = args[:int32_value] if args.key?(:int32_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Response message for BatchGetTransformDescriptions
+      class GoogleCloudDatapipelinesV1BatchGetTransformDescriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of requested transform descriptions.
+        # Corresponds to the JSON property `transformDescriptions`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1TransformDescription>]
+        attr_accessor :transform_descriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transform_descriptions = args[:transform_descriptions] if args.key?(:transform_descriptions)
+        end
+      end
+      
+      # Request message for ComputeSchema
+      class GoogleCloudDatapipelinesV1ComputeSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # A fully configured transform that can be validated.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ConfiguredTransform]
+        attr_accessor :config
+      
+        # Optional. In relation to the full pipeline graph, the schemas of the
+        # transforms that are used as inputs to the one for `config`. If `config`
+        # represents a transform for reading from some resource, then this should be
+        # empty. For all other transforms, at least one value must be provided.
+        # Corresponds to the JSON property `inputSchemas`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Schema>]
+        attr_accessor :input_schemas
+      
+        # The raw schema and its type.
+        # Corresponds to the JSON property `rawSchema`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1RawSchemaInfo]
+        attr_accessor :raw_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @input_schemas = args[:input_schemas] if args.key?(:input_schemas)
+          @raw_schema = args[:raw_schema] if args.key?(:raw_schema)
+        end
+      end
+      
+      # A fully configured transform that can be validated.
+      class GoogleCloudDatapipelinesV1ConfiguredTransform
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Apache Beam row, though the `Any` nature of values is replaced
+        # with more concrete representations of valid values.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Row]
+        attr_accessor :config
+      
+        # Unique resource name of the transform. This should be the same as the
+        # equivalent `TransformDescription` value.
+        # Corresponds to the JSON property `uniformResourceName`
+        # @return [String]
+        attr_accessor :uniform_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @uniform_resource_name = args[:uniform_resource_name] if args.key?(:uniform_resource_name)
+        end
+      end
+      
       # Pipeline job details specific to the Dataflow API. This is encapsulated here
       # to allow for more executors to store their specific details separately.
       class GoogleCloudDatapipelinesV1DataflowJobDetails
@@ -54,6 +251,180 @@ module Google
           @current_workers = args[:current_workers] if args.key?(:current_workers)
           @resource_info = args[:resource_info] if args.key?(:resource_info)
           @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
+        end
+      end
+      
+      # Represents a selected value from an EnumerationType.
+      class GoogleCloudDatapipelinesV1EnumerationValue
+        include Google::Apis::Core::Hashable
+      
+        # Name of the enum option.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Info for a single field in the schema.
+      class GoogleCloudDatapipelinesV1Field
+        include Google::Apis::Core::Hashable
+      
+        # Name of the field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type info about a field.
+        # Corresponds to the JSON property `type`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldType]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Type info about a field.
+      class GoogleCloudDatapipelinesV1FieldType
+        include Google::Apis::Core::Hashable
+      
+        # Type info about a field.
+        # Corresponds to the JSON property `collectionElementType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldType]
+        attr_accessor :collection_element_type
+      
+        # Represents the input for creating a specified logical type.
+        # Corresponds to the JSON property `logicalType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1LogicalType]
+        attr_accessor :logical_type
+      
+        # Represents a map in a schema.
+        # Corresponds to the JSON property `mapType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1MapType]
+        attr_accessor :map_type
+      
+        # Whether or not this field is nullable.
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # Represents a simplified Apache Beam schema.
+        # Corresponds to the JSON property `rowSchema`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Schema]
+        attr_accessor :row_schema
+      
+        # Specific type of the field. For non-atomic types, the corresponding type info
+        # for that non-atomic must be set.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collection_element_type = args[:collection_element_type] if args.key?(:collection_element_type)
+          @logical_type = args[:logical_type] if args.key?(:logical_type)
+          @map_type = args[:map_type] if args.key?(:map_type)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @row_schema = args[:row_schema] if args.key?(:row_schema)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A single value in a row. The value set must correspond to the correct type
+      # from the row's schema.
+      class GoogleCloudDatapipelinesV1FieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents an array of values. The elements can be of any type.
+        # Corresponds to the JSON property `arrayValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ArrayValue]
+        attr_accessor :array_value
+      
+        # Represents a non-dividable value.
+        # Corresponds to the JSON property `atomicValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1AtomicValue]
+        attr_accessor :atomic_value
+      
+        # Represents a selected value from an EnumerationType.
+        # Corresponds to the JSON property `enumValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1EnumerationValue]
+        attr_accessor :enum_value
+      
+        # Represents a collection of bytes whose size is the same as the associated
+        # FixedBytes size value.
+        # Corresponds to the JSON property `fixedBytesValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FixedBytesValue]
+        attr_accessor :fixed_bytes_value
+      
+        # Represents an iterable of values. The elements can be of any type.
+        # Corresponds to the JSON property `iterableValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1IterableValue]
+        attr_accessor :iterable_value
+      
+        # Represents a key/value pairing.
+        # Corresponds to the JSON property `mapValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1MapValue]
+        attr_accessor :map_value
+      
+        # Represents an Apache Beam row, though the `Any` nature of values is replaced
+        # with more concrete representations of valid values.
+        # Corresponds to the JSON property `rowValue`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Row]
+        attr_accessor :row_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array_value = args[:array_value] if args.key?(:array_value)
+          @atomic_value = args[:atomic_value] if args.key?(:atomic_value)
+          @enum_value = args[:enum_value] if args.key?(:enum_value)
+          @fixed_bytes_value = args[:fixed_bytes_value] if args.key?(:fixed_bytes_value)
+          @iterable_value = args[:iterable_value] if args.key?(:iterable_value)
+          @map_value = args[:map_value] if args.key?(:map_value)
+          @row_value = args[:row_value] if args.key?(:row_value)
+        end
+      end
+      
+      # Represents a collection of bytes whose size is the same as the associated
+      # FixedBytes size value.
+      class GoogleCloudDatapipelinesV1FixedBytesValue
+        include Google::Apis::Core::Hashable
+      
+        # The raw bytes. It must be exactly the size specified in the schema.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -189,6 +560,25 @@ module Google
           @worker_region = args[:worker_region] if args.key?(:worker_region)
           @worker_zone = args[:worker_zone] if args.key?(:worker_zone)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Represents an iterable of values. The elements can be of any type.
+      class GoogleCloudDatapipelinesV1IterableValue
+        include Google::Apis::Core::Hashable
+      
+        # The elements of the iterable.
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldValue>]
+        attr_accessor :elements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
         end
       end
       
@@ -501,6 +891,140 @@ module Google
         end
       end
       
+      # Represents the input for creating a specified logical type.
+      class GoogleCloudDatapipelinesV1LogicalType
+        include Google::Apis::Core::Hashable
+      
+        # Represents the Beam EnumerationType logical type.
+        # Corresponds to the JSON property `enumerationType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1LogicalTypeEnumerationType]
+        attr_accessor :enumeration_type
+      
+        # Represents the Beam FixedBytes logical type.
+        # Corresponds to the JSON property `fixedBytes`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1LogicalTypeFixedBytes]
+        attr_accessor :fixed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enumeration_type = args[:enumeration_type] if args.key?(:enumeration_type)
+          @fixed_bytes = args[:fixed_bytes] if args.key?(:fixed_bytes)
+        end
+      end
+      
+      # Represents the Beam EnumerationType logical type.
+      class GoogleCloudDatapipelinesV1LogicalTypeEnumerationType
+        include Google::Apis::Core::Hashable
+      
+        # Names of the values. The numeric value is the same as the index.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents the Beam FixedBytes logical type.
+      class GoogleCloudDatapipelinesV1LogicalTypeFixedBytes
+        include Google::Apis::Core::Hashable
+      
+        # Number of bytes to allocate.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+        end
+      end
+      
+      # Represents a map in a schema.
+      class GoogleCloudDatapipelinesV1MapType
+        include Google::Apis::Core::Hashable
+      
+        # Type info about a field.
+        # Corresponds to the JSON property `mapKeyType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldType]
+        attr_accessor :map_key_type
+      
+        # Type info about a field.
+        # Corresponds to the JSON property `mapValueType`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldType]
+        attr_accessor :map_value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @map_key_type = args[:map_key_type] if args.key?(:map_key_type)
+          @map_value_type = args[:map_value_type] if args.key?(:map_value_type)
+        end
+      end
+      
+      # Represents a key/value pairing.
+      class GoogleCloudDatapipelinesV1MapValue
+        include Google::Apis::Core::Hashable
+      
+        # The entries in the map.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1MapValueEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # A single entry in the map. Each entry must have a unique key.
+      class GoogleCloudDatapipelinesV1MapValueEntry
+        include Google::Apis::Core::Hashable
+      
+        # A single value in a row. The value set must correspond to the correct type
+        # from the row's schema.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldValue]
+        attr_accessor :key
+      
+        # A single value in a row. The value set must correspond to the correct type
+        # from the row's schema.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The main pipeline entity and all the necessary metadata for launching and
       # managing linked jobs.
       class GoogleCloudDatapipelinesV1Pipeline
@@ -597,6 +1121,58 @@ module Google
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @workload = args[:workload] if args.key?(:workload)
+        end
+      end
+      
+      # The raw schema and its type.
+      class GoogleCloudDatapipelinesV1RawSchemaInfo
+        include Google::Apis::Core::Hashable
+      
+        # The schema.
+        # Corresponds to the JSON property `rawSchema`
+        # @return [String]
+        attr_accessor :raw_schema
+      
+        # The type of the schema.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_schema = args[:raw_schema] if args.key?(:raw_schema)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an Apache Beam row, though the `Any` nature of values is replaced
+      # with more concrete representations of valid values.
+      class GoogleCloudDatapipelinesV1Row
+        include Google::Apis::Core::Hashable
+      
+        # Holds a schema or a reference to a schema in some repository.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1SchemaSource]
+        attr_accessor :schema
+      
+        # Required. The values of this Row. A fully built row is required to hold to the
+        # schema specified by `schema`.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1FieldValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -802,6 +1378,57 @@ module Google
         end
       end
       
+      # Represents a simplified Apache Beam schema.
+      class GoogleCloudDatapipelinesV1Schema
+        include Google::Apis::Core::Hashable
+      
+        # Fields in the schema. Every field within a schema must have a unique name.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Field>]
+        attr_accessor :fields
+      
+        # An identifier of the schema for looking it up in a repository. This only needs
+        # to be set if the schema is stored in a repository.
+        # Corresponds to the JSON property `referenceId`
+        # @return [String]
+        attr_accessor :reference_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @reference_id = args[:reference_id] if args.key?(:reference_id)
+        end
+      end
+      
+      # Holds a schema or a reference to a schema in some repository.
+      class GoogleCloudDatapipelinesV1SchemaSource
+        include Google::Apis::Core::Hashable
+      
+        # Represents a simplified Apache Beam schema.
+        # Corresponds to the JSON property `localSchema`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Schema]
+        attr_accessor :local_schema
+      
+        # The `reference_id` value of a schema in a repository.
+        # Corresponds to the JSON property `referenceId`
+        # @return [String]
+        attr_accessor :reference_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_schema = args[:local_schema] if args.key?(:local_schema)
+          @reference_id = args[:reference_id] if args.key?(:reference_id)
+        end
+      end
+      
       # The version of the SDK used to run the job.
       class GoogleCloudDatapipelinesV1SdkVersion
         include Google::Apis::Core::Hashable
@@ -843,6 +1470,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Description of a schema-aware transform, which provides info on how it can be
+      # configured.
+      class GoogleCloudDatapipelinesV1TransformDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The full name of this resource formatted as: projects/`project`/
+        # locations/`location`/transformDescriptions/`transform_description` `
+        # transform_description` is the same as the `uniform_resource_name` field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a simplified Apache Beam schema.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Schema]
+        attr_accessor :options
+      
+        # Unique resource name of the transform.
+        # Corresponds to the JSON property `uniformResourceName`
+        # @return [String]
+        attr_accessor :uniform_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
+          @uniform_resource_name = args[:uniform_resource_name] if args.key?(:uniform_resource_name)
         end
       end
       
@@ -923,6 +1584,178 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents civil time (or occasionally physical time). This type can represent
+      # a civil time in one of a few possible ways: * When utc_offset is set and
+      # time_zone is unset: a civil time on a calendar day with a particular offset
+      # from UTC. * When time_zone is set and utc_offset is unset: a civil time on a
+      # calendar day in a particular time zone. * When neither time_zone nor
+      # utc_offset is set: a civil time on a calendar day in local time. The date is
+      # relative to the Proleptic Gregorian Calendar. If year, month, or day are 0,
+      # the DateTime is considered not to have a specific year, month, or day
+      # respectively. This type may also be used to represent a physical time if all
+      # the date and time fields are set and either case of the `time_offset` oneof is
+      # set. Consider using `Timestamp` message for physical time instead. If your use
+      # case also would like to store the user's timezone, that can be done in another
+      # field. This type is more flexible than some applications may want. Make sure
+      # to document and validate your application's limitations.
+      class GoogleTypeDateTime
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Day of month. Must be from 1 to 31 and valid for the year and month,
+        # or 0 if specifying a datetime without a day.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to
+        # 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios
+        # like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime
+        # without a month.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999,
+        # defaults to 0.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Optional. Seconds of minutes of the time. Must normally be from 0 to 59,
+        # defaults to 0. An API may allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::DatapipelinesV1::GoogleTypeTimeZone]
+        attr_accessor :time_zone
+      
+        # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
+        # example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime
+        # without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @month = args[:month] if args.key?(:month)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # A representation of a decimal value, such as 2.5. Clients may convert values
+      # into language-native decimal formats, such as Java's BigDecimal or Python's
+      # decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/
+      # api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.
+      # org/3/library/decimal.html
+      class GoogleTypeDecimal
+        include Google::Apis::Core::Hashable
+      
+        # The decimal value, as a string. The string representation consists of an
+        # optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of
+        # zero or more decimal digits ("the integer"), optionally followed by a fraction,
+        # optionally followed by an exponent. An empty string **should** be interpreted
+        # as `0`. The fraction consists of a decimal point followed by zero or more
+        # decimal digits. The string must contain at least one digit in either the
+        # integer or the fraction. The number formed by the sign, the integer and the
+        # fraction is referred to as the significand. The exponent consists of the
+        # character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
+        # digits. Services **should** normalize decimal values before storing them by: -
+        # Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-
+        # length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent
+        # character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing
+        # an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may**
+        # perform additional normalization based on its own needs and the internal
+        # decimal implementation selected, such as shifting the decimal point and
+        # exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services
+        # **may** preserve trailing zeroes in the fraction to indicate increased
+        # precision, but are not required to do so. Note that only the `.` character is
+        # supported to divide the integer and the fraction; `,` **should not** be
+        # supported regardless of locale. Additionally, thousand separators **should not*
+        # * be supported. If a service does support them, values **must** be normalized.
+        # The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign =
+        # '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | '
+        # E') [Sign] Digits; Digits = ` '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '
+        # 8' | '9' `; Services **should** clearly document the range of supported values,
+        # the maximum supported precision (total number of digits), and, if applicable,
+        # the scale (number of digits after the decimal point), as well as how it
+        # behaves when receiving out-of-bounds values. Services **may** choose to accept
+        # values passed as input even when the value has a higher precision or scale
+        # than the service supports, and **should** round the value to fit the supported
+        # scale. Alternatively, the service **may** error with `400 Bad Request` (`
+        # INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should**
+        # error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service
+        # receives a value outside of the supported range.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
+      class GoogleTypeTimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

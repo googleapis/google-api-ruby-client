@@ -1,5 +1,9 @@
 # Release history for google-apis-datapipelines_v1
 
+### v0.11.0 (2022-11-17)
+
+* Regenerated from discovery document revision 20221106
+
 ### v0.10.0 (2022-10-27)
 
 * Regenerated using generator version 0.11.0
