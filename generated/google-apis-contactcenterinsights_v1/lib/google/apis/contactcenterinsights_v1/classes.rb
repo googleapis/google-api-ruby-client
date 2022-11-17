@@ -1816,6 +1816,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Resource names of the sample representative utterances that match
+        # to this issue.
+        # Corresponds to the JSON property `sampleUtterances`
+        # @return [Array<String>]
+        attr_accessor :sample_utterances
+      
         # Output only. The most recent time that this issue was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1830,6 +1836,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @sample_utterances = args[:sample_utterances] if args.key?(:sample_utterances)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
