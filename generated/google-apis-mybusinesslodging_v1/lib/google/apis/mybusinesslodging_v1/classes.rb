@@ -813,6 +813,19 @@ module Google
         # @return [String]
         attr_accessor :kids_club_exception
       
+        # Kids friendly. The hotel has one or more special features for families with
+        # children, such as reduced rates, child-sized beds, kids' club, babysitting
+        # service, or suitable place to play on premises.
+        # Corresponds to the JSON property `kidsFriendly`
+        # @return [Boolean]
+        attr_accessor :kids_friendly
+        alias_method :kids_friendly?, :kids_friendly
+      
+        # Kids friendly exception.
+        # Corresponds to the JSON property `kidsFriendlyException`
+        # @return [String]
+        attr_accessor :kids_friendly_exception
+      
         def initialize(**args)
            update!(**args)
         end
@@ -825,6 +838,8 @@ module Google
           @kids_activities_exception = args[:kids_activities_exception] if args.key?(:kids_activities_exception)
           @kids_club = args[:kids_club] if args.key?(:kids_club)
           @kids_club_exception = args[:kids_club_exception] if args.key?(:kids_club_exception)
+          @kids_friendly = args[:kids_friendly] if args.key?(:kids_friendly)
+          @kids_friendly_exception = args[:kids_friendly_exception] if args.key?(:kids_friendly_exception)
         end
       end
       

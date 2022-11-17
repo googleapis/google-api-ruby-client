@@ -416,6 +416,8 @@ module Google
           property :kids_activities_exception, as: 'kidsActivitiesException'
           property :kids_club, as: 'kidsClub'
           property :kids_club_exception, as: 'kidsClubException'
+          property :kids_friendly, as: 'kidsFriendly'
+          property :kids_friendly_exception, as: 'kidsFriendlyException'
         end
       end
       
