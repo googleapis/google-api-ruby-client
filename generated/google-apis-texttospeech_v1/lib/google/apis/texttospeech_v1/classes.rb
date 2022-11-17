@@ -139,7 +139,7 @@ module Google
       
       # Contains text input to be synthesized. Either `text` or `ssml` must be
       # supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT.
-      # The input size is limited to 5000 characters.
+      # The input size is limited to 5000 bytes.
       class SynthesisInput
         include Google::Apis::Core::Hashable
       
@@ -178,7 +178,7 @@ module Google
       
         # Contains text input to be synthesized. Either `text` or `ssml` must be
         # supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT.
-        # The input size is limited to 5000 characters.
+        # The input size is limited to 5000 bytes.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::TexttospeechV1::SynthesisInput]
         attr_accessor :input
