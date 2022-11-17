@@ -1254,6 +1254,7 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          collection :sample_utterances, as: 'sampleUtterances'
           property :update_time, as: 'updateTime'
         end
       end
