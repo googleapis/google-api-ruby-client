@@ -2824,7 +2824,7 @@ module Google
       end
       
       # DocumentNote represents an SPDX Document Creation Information section: https://
-      # spdx.github.io/spdx-spec/2-document-creation-information/
+      # spdx.github.io/spdx-spec/v2.3/document-creation-information/
       class DocumentNote
         include Google::Apis::Core::Hashable
       
@@ -2852,7 +2852,7 @@ module Google
       end
       
       # DocumentOccurrence represents an SPDX Document Creation Information section:
-      # https://spdx.github.io/spdx-spec/2-document-creation-information/
+      # https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
       class DocumentOccurrence
         include Google::Apis::Core::Hashable
       
@@ -4257,7 +4257,7 @@ module Google
         attr_accessor :related_url
       
         # DocumentNote represents an SPDX Document Creation Information section: https://
-        # spdx.github.io/spdx-spec/2-document-creation-information/
+        # spdx.github.io/spdx-spec/v2.3/document-creation-information/
         # Corresponds to the JSON property `sbom`
         # @return [Google::Apis::ContaineranalysisV1beta1::DocumentNote]
         attr_accessor :sbom
@@ -4408,7 +4408,7 @@ module Google
         attr_accessor :resource
       
         # DocumentOccurrence represents an SPDX Document Creation Information section:
-        # https://spdx.github.io/spdx-spec/2-document-creation-information/
+        # https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
         # Corresponds to the JSON property `sbom`
         # @return [Google::Apis::ContaineranalysisV1beta1::DocumentOccurrence]
         attr_accessor :sbom
