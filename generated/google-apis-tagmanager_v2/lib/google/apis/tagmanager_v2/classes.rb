@@ -388,8 +388,9 @@ module Google
         # @return [String]
         attr_accessor :tag_manager_url
       
-        # The URLs of the cloud environment for the GTM Container. @mutable tagmanager.
-        # accounts.containers.create @mutable tagmanager.accounts.containers.update
+        # List of server-side container URLs for the Container. If multiple URLs are
+        # provided, all URL paths must match. @mutable tagmanager.accounts.containers.
+        # create @mutable tagmanager.accounts.containers.update
         # Corresponds to the JSON property `taggingServerUrls`
         # @return [Array<String>]
         attr_accessor :tagging_server_urls
