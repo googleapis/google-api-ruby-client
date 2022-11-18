@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FastSocket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Filter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1475,6 +1481,13 @@ module Google
         end
       end
       
+      class FastSocket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Filter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1913,6 +1926,8 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
+      
+          property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
@@ -2558,6 +2573,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
+      
+          property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
