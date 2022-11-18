@@ -7806,9 +7806,10 @@ module Google
       
         # Retains data in interaction logging for the specified number of days. This
         # does not apply to Cloud logging, which is owned by the user - not Dialogflow.
-        # User must set a value lower than Dialogflow's default 365d TTL (time to live).
-        # Setting a value higher than that has no effect. A missing value or setting to
-        # 0 also means we use Dialogflow's default TTL.
+        # User must set a value lower than Dialogflow's default 365d TTL (30 days for
+        # Agent Assist traffic), higher value will be ignored and use default. Setting a
+        # value higher than that has no effect. A missing value or setting to 0 also
+        # means we use default TTL.
         # Corresponds to the JSON property `retentionWindowDays`
         # @return [Fixnum]
         attr_accessor :retention_window_days
@@ -11907,7 +11908,9 @@ module Google
       end
       
       # The sentiment, such as positive/negative feeling or association, for a unit of
-      # analysis, such as the query text.
+      # analysis, such as the query text. See: https://cloud.google.com/natural-
+      # language/docs/basics#interpreting_sentiment_analysis_values for how to
+      # interpret the result.
       class GoogleCloudDialogflowV2Sentiment
         include Google::Apis::Core::Hashable
       
@@ -11945,7 +11948,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The sentiment, such as positive/negative feeling or association, for a unit of
-        # analysis, such as the query text.
+        # analysis, such as the query text. See: https://cloud.google.com/natural-
+        # language/docs/basics#interpreting_sentiment_analysis_values for how to
+        # interpret the result.
         # Corresponds to the JSON property `queryTextSentiment`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2Sentiment]
         attr_accessor :query_text_sentiment
@@ -15123,7 +15128,9 @@ module Google
       end
       
       # The sentiment, such as positive/negative feeling or association, for a unit of
-      # analysis, such as the query text.
+      # analysis, such as the query text. See: https://cloud.google.com/natural-
+      # language/docs/basics#interpreting_sentiment_analysis_values for how to
+      # interpret the result.
       class GoogleCloudDialogflowV2beta1Sentiment
         include Google::Apis::Core::Hashable
       
@@ -15161,7 +15168,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The sentiment, such as positive/negative feeling or association, for a unit of
-        # analysis, such as the query text.
+        # analysis, such as the query text. See: https://cloud.google.com/natural-
+        # language/docs/basics#interpreting_sentiment_analysis_values for how to
+        # interpret the result.
         # Corresponds to the JSON property `queryTextSentiment`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2beta1Sentiment]
         attr_accessor :query_text_sentiment
