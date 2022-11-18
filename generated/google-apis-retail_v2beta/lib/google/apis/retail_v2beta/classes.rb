@@ -2216,6 +2216,12 @@ module Google
         # @return [String]
         attr_accessor :recommendations_filtering_option
       
+        # If RETRIEVABLE_ENABLED, attribute values will be retrievabled in the search
+        # results.
+        # Corresponds to the JSON property `retrievableOption`
+        # @return [String]
+        attr_accessor :retrievable_option
+      
         # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
         # if SEARCHABLE_ENABLED, attribute values are searchable by text queries in
         # SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical,
@@ -2244,6 +2250,7 @@ module Google
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key = args[:key] if args.key?(:key)
           @recommendations_filtering_option = args[:recommendations_filtering_option] if args.key?(:recommendations_filtering_option)
+          @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
           @type = args[:type] if args.key?(:type)
         end
