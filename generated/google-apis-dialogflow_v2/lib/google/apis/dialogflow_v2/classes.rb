@@ -11823,7 +11823,9 @@ module Google
       end
       
       # The sentiment, such as positive/negative feeling or association, for a unit of
-      # analysis, such as the query text.
+      # analysis, such as the query text. See: https://cloud.google.com/natural-
+      # language/docs/basics#interpreting_sentiment_analysis_values for how to
+      # interpret the result.
       class GoogleCloudDialogflowV2Sentiment
         include Google::Apis::Core::Hashable
       
@@ -11882,7 +11884,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The sentiment, such as positive/negative feeling or association, for a unit of
-        # analysis, such as the query text.
+        # analysis, such as the query text. See: https://cloud.google.com/natural-
+        # language/docs/basics#interpreting_sentiment_analysis_values for how to
+        # interpret the result.
         # Corresponds to the JSON property `queryTextSentiment`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Sentiment]
         attr_accessor :query_text_sentiment
@@ -15639,7 +15643,9 @@ module Google
       end
       
       # The sentiment, such as positive/negative feeling or association, for a unit of
-      # analysis, such as the query text.
+      # analysis, such as the query text. See: https://cloud.google.com/natural-
+      # language/docs/basics#interpreting_sentiment_analysis_values for how to
+      # interpret the result.
       class GoogleCloudDialogflowV2beta1Sentiment
         include Google::Apis::Core::Hashable
       
@@ -15677,7 +15683,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The sentiment, such as positive/negative feeling or association, for a unit of
-        # analysis, such as the query text.
+        # analysis, such as the query text. See: https://cloud.google.com/natural-
+        # language/docs/basics#interpreting_sentiment_analysis_values for how to
+        # interpret the result.
         # Corresponds to the JSON property `queryTextSentiment`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment]
         attr_accessor :query_text_sentiment
