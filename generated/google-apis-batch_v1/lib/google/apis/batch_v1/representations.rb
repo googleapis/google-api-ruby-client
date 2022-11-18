@@ -795,6 +795,7 @@ module Google
       class ReportAgentStateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_report_interval, as: 'minReportInterval'
           collection :tasks, as: 'tasks', class: Google::Apis::BatchV1::AgentTask, decorator: Google::Apis::BatchV1::AgentTask::Representation
       
         end

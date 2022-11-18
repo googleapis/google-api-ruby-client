@@ -583,15 +583,15 @@ module Google
         # @return [String]
         attr_accessor :options
       
-        # Optional password for logging in to a docker registry. If password matches "
-        # projects/*/secrets/*/versions/*" then Batch will read the password from the
+        # Optional password for logging in to a docker registry. If password matches `
+        # projects/*/secrets/*/versions/*` then Batch will read the password from the
         # Secret Manager;
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
       
-        # Optional username for logging in to a docker registry. If username matches "
-        # projects/*/secrets/*/versions/*" then Batch will read the username from the
+        # Optional username for logging in to a docker registry. If username matches `
+        # projects/*/secrets/*/versions/*` then Batch will read the username from the
         # Secret Manager.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -1646,6 +1646,11 @@ module Google
       class ReportAgentStateResponse
         include Google::Apis::Core::Hashable
       
+        # Minimum report interval override
+        # Corresponds to the JSON property `minReportInterval`
+        # @return [String]
+        attr_accessor :min_report_interval
+      
         # Tasks assigned to the agent
         # Corresponds to the JSON property `tasks`
         # @return [Array<Google::Apis::BatchV1::AgentTask>]
@@ -1657,6 +1662,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @min_report_interval = args[:min_report_interval] if args.key?(:min_report_interval)
           @tasks = args[:tasks] if args.key?(:tasks)
         end
       end
@@ -2078,8 +2084,7 @@ module Google
         # @return [Google::Apis::BatchV1::Environment]
         attr_accessor :environment
       
-        # Environment variables to set before running the Task. You can set up to 100
-        # environments.
+        # Deprecated: please use environment(non-plural) instead.
         # Corresponds to the JSON property `environments`
         # @return [Hash<String,String>]
         attr_accessor :environments
