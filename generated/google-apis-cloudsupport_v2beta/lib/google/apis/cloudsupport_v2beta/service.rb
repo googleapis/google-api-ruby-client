@@ -50,7 +50,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create a file attachment on a case or Cloud resource.
+        # Create a file attachment on a case or Cloud resource. The attachment object
+        # must have the following fields set: filename.
         # @param [String] parent
         #   Required. The resource name of the case to which attachment should be attached.
         # @param [Google::Apis::CloudsupportV2beta::CreateAttachmentRequest] create_attachment_request_object
@@ -158,7 +159,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new case and associate it with the given Cloud resource.
+        # Create a new case and associate it with the given Cloud resource. The case
+        # object must have the following fields set: display_name, description,
+        # classification, and severity.
         # @param [String] parent
         #   Required. The name of the Cloud resource under which the case should be
         #   created.
@@ -452,7 +455,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Add a new comment to the specified Case.
+        # Add a new comment to the specified Case. The comment object must have the
+        # following fields set: body.
         # @param [String] parent
         #   Required. The resource name of Case to which this comment should be added.
         # @param [Google::Apis::CloudsupportV2beta::Comment] comment_object
@@ -560,7 +564,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a file attachment on a case or Cloud resource.
+        # Create a file attachment on a case or Cloud resource. The attachment object
+        # must have the following fields set: filename.
         # @param [String] parent
         #   Required. The resource name of the case to which attachment should be attached.
         # @param [Google::Apis::CloudsupportV2beta::CreateAttachmentRequest] create_attachment_request_object
