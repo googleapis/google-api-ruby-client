@@ -1205,9 +1205,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The duration to keep the session alive while it's idling. Passing
-        # this threshold will cause the session to be terminated. Minimum value is 30
+        # this threshold will cause the session to be terminated. Minimum value is 10
         # minutes; maximum value is 14 days (see JSON representation of Duration (https:/
-        # /developers.google.com/protocol-buffers/docs/proto3#json)).
+        # /developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 10
+        # minutes if not set.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -3946,7 +3947,7 @@ module Google
       class RuntimeInfo
         include Google::Apis::Core::Hashable
       
-        # Usage metrics represent total resources consumed by a workload.
+        # Usage metrics represent approximate total resources consumed by a workload.
         # Corresponds to the JSON property `approximateUsage`
         # @return [Google::Apis::DataprocV1::UsageMetrics]
         attr_accessor :approximate_usage
@@ -4927,16 +4928,19 @@ module Google
         end
       end
       
-      # Usage metrics represent total resources consumed by a workload.
+      # Usage metrics represent approximate total resources consumed by a workload.
       class UsageMetrics
         include Google::Apis::Core::Hashable
       
-        # Optional. DCU usage in milliDCU*seconds.
+        # Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
         # Corresponds to the JSON property `milliDcuSeconds`
         # @return [Fixnum]
         attr_accessor :milli_dcu_seconds
       
-        # Optional. Shuffle storage usage in GB*Seconds
+        # Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless
+        # pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         # Corresponds to the JSON property `shuffleStorageGbSeconds`
         # @return [Fixnum]
         attr_accessor :shuffle_storage_gb_seconds
