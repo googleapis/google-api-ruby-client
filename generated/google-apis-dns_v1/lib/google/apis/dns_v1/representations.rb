@@ -643,6 +643,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
+          property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
         end
       end
@@ -839,6 +840,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
+          property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
         end
       end

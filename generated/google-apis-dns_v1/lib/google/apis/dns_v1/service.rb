@@ -624,7 +624,7 @@ module Google
         end
         
         # Returns permissions that a caller has on the specified resource. If the
-        # resource does not exist, this will return an empty set of permissions, not a `
+        # resource does not exist, this returns an empty set of permissions, not a `
         # NOT_FOUND` error. Note: This operation is designed to be used for building
         # permission-aware UIs and command-line tools, not for authorization checking.
         # This operation may "fail open" without warning.
@@ -1343,7 +1343,7 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] response_policy
-        #   User assigned name of the Respones Policy addressed by this request.
+        #   User assigned name of the response policy addressed by this request.
         # @param [Google::Apis::DnsV1::ResponsePolicy] response_policy_object
         # @param [String] client_operation_id
         #   For mutating operation requests only. An optional identifier specified by the

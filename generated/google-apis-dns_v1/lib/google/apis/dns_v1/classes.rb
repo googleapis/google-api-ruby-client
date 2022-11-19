@@ -1019,6 +1019,12 @@ module Google
         # @return [String]
         attr_accessor :ipv4_address
       
+        # IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6)
+        # being populated. Public preview as of November 2022.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # 
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1032,6 +1038,7 @@ module Google
         def update!(**args)
           @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
@@ -1681,10 +1688,16 @@ module Google
         # @return [String]
         attr_accessor :forwarding_path
       
-        # IPv4 address to forward to.
+        # IPv4 address to forward queries to.
         # Corresponds to the JSON property `ipv4Address`
         # @return [String]
         attr_accessor :ipv4_address
+      
+        # IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being
+        # populated. Public preview as of November 2022.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
       
         # 
         # Corresponds to the JSON property `kind`
@@ -1699,6 +1712,7 @@ module Google
         def update!(**args)
           @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
         end
       end
@@ -2409,12 +2423,12 @@ module Google
         # @return [Google::Apis::DnsV1::ResponseHeader]
         attr_accessor :header
       
-        # The presence of this field indicates that there exist more results following
-        # your last page of results in pagination order. To fetch them, make another
-        # list request using this value as your page token. This lets you the complete
-        # contents of even very large collections one page at a time. However, if the
-        # contents of the collection change between the first and last paginated list
-        # request, the set of all elements returned are an inconsistent view of the
+        # The presence of this field indicates that more results exist following your
+        # last page of results in pagination order. To fetch them, make another list
+        # request by using this value as your page token. This lets you view the
+        # complete contents of even very large collections one page at a time. However,
+        # if the contents of the collection change between the first and last paginated
+        # list request, the set of all elements returned are an inconsistent view of the
         # collection. You cannot retrieve a consistent snapshot of a collection larger
         # than the maximum page size.
         # Corresponds to the JSON property `nextPageToken`
