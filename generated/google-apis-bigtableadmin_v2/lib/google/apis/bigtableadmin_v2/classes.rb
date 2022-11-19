@@ -245,6 +245,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_bytes
       
+        # Output only. Name of the backup from which this backup was copied. If a backup
+        # is not created by copying a backup, this field will be empty. Values are of
+        # the form: projects//instances//backups/.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
         # Required. Immutable. Name of the table from which this backup was created.
         # This needs to be in the same instance as the backup. Values are of the form `
         # projects/`project`/instances/`instance`/tables/`source_table``.
@@ -275,6 +282,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -296,6 +304,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. Name of the backup from which this backup was copied. If a backup
+        # is not created by copying a backup, this field will be empty. Values are of
+        # the form: projects//instances//backups/.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
         # Output only. Name of the table the backup was created from.
         # Corresponds to the JSON property `sourceTable`
         # @return [String]
@@ -315,6 +330,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -582,6 +598,14 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GcRule]
         attr_accessor :gc_rule
       
+        # Approximate statistics related to a single column family within a table. This
+        # information may change rapidly, interpreting these values at a point in time
+        # may already preset out-of-date information. Everything below is approximate,
+        # unless otherwise specified.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::BigtableadminV2::ColumnFamilyStats]
+        attr_accessor :stats
+      
         def initialize(**args)
            update!(**args)
         end
@@ -589,6 +613,130 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Approximate statistics related to a single column family within a table. This
+      # information may change rapidly, interpreting these values at a point in time
+      # may already preset out-of-date information. Everything below is approximate,
+      # unless otherwise specified.
+      class ColumnFamilyStats
+        include Google::Apis::Core::Hashable
+      
+        # How many cells are present per column qualifier in this column family,
+        # averaged over all rows containing any column in the column family. e.g. For
+        # column family "family" in a table with 3 rows: * A row with 3 cells in "family:
+        # col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1
+        # cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:
+        # data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0
+        # columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0)
+        # = 3.66 in this field.
+        # Corresponds to the JSON property `averageCellsPerColumn`
+        # @return [Float]
+        attr_accessor :average_cells_per_column
+      
+        # How many column qualifiers are present in this column family, averaged over
+        # all rows in the table. e.g. For column family "family" in a table with 3 rows:
+        # * A row with cells in "family:col" and "other:col" (1 column in "family") * A
+        # row with cells in "family:col", "family:other_col", and "other:data" (2
+        # columns in "family") * A row with cells in "other:col" (0 columns in "family",
+        # "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+        # Corresponds to the JSON property `averageColumnsPerRow`
+        # @return [Float]
+        attr_accessor :average_columns_per_row
+      
+        # How much space the data in the column family occupies. This is roughly how
+        # many bytes would be needed to read the contents of the entire column family (e.
+        # g. by streaming all contents out).
+        # Corresponds to the JSON property `logicalDataBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_cells_per_column = args[:average_cells_per_column] if args.key?(:average_cells_per_column)
+          @average_columns_per_row = args[:average_columns_per_row] if args.key?(:average_columns_per_row)
+          @logical_data_bytes = args[:logical_data_bytes] if args.key?(:logical_data_bytes)
+        end
+      end
+      
+      # Metadata type for the google.longrunning.Operation returned by CopyBackup.
+      class CopyBackupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The name of the backup being created through the copy operation. Values are of
+        # the form `projects//instances//clusters//backups/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Bigtable long running
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::BigtableadminV2::OperationProgress]
+        attr_accessor :progress
+      
+        # Information about a backup.
+        # Corresponds to the JSON property `sourceBackupInfo`
+        # @return [Google::Apis::BigtableadminV2::BackupInfo]
+        attr_accessor :source_backup_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
+          @source_backup_info = args[:source_backup_info] if args.key?(:source_backup_info)
+        end
+      end
+      
+      # The request for CopyBackup.
+      class CopyBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the new backup. The `backup_id` along with `parent` are
+        # combined as `parent`/backups/`backup_id` to create the full backup name, of
+        # the form: `projects/`project`/instances/`instance`/clusters/`cluster`/backups/`
+        # backup_id``. This string must be between 1 and 50 characters in length and
+        # match the regex _a-zA-Z0-9*.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Required. Required. The expiration time of the copied backup with microsecond
+        # granularity that must be at least 6 hours and at most 30 days from the time
+        # the request is received. Once the `expire_time` has passed, Cloud Bigtable
+        # will delete the backup and free the resources used by the backup.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. The source backup to be copied from. The source backup needs to be
+        # in READY state for it to be copied. Copying a copied backup is not allowed.
+        # Once CopyBackup is in progress, the source backup cannot be deleted or cleaned
+        # up on expiration until CopyBackup is finished. Values are of the form: `
+        # projects//instances//clusters//backups/`.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
       
@@ -2183,10 +2331,19 @@ module Google
         attr_accessor :cluster_states
       
         # The column families configured for this table, mapped by column family ID.
-        # Views: `SCHEMA_VIEW`, `FULL`
+        # Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         # Corresponds to the JSON property `columnFamilies`
         # @return [Hash<String,Google::Apis::BigtableadminV2::ColumnFamily>]
         attr_accessor :column_families
+      
+        # Set to true to make the table protected against data loss. i.e. deleting the
+        # following resources through Admin APIs are prohibited: - The table. - The
+        # column families in the table. - The instance containing the table. Note one
+        # can still delete the data stored in the table through Data APIs.
+        # Corresponds to the JSON property `deletionProtection`
+        # @return [Boolean]
+        attr_accessor :deletion_protection
+        alias_method :deletion_protection?, :deletion_protection
       
         # Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in
         # this table. Timestamps not matching the granularity will be rejected. If
@@ -2198,7 +2355,7 @@ module Google
       
         # The unique name of the table. Values are of the form `projects/`project`/
         # instances/`instance`/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `
-        # REPLICATION_VIEW`, `FULL`
+        # REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2208,6 +2365,16 @@ module Google
         # @return [Google::Apis::BigtableadminV2::RestoreInfo]
         attr_accessor :restore_info
       
+        # Approximate statistics related to a table. These statistics are calculated
+        # infrequently, while simultaneously, data in the table can change rapidly. Thus
+        # the values reported here (e.g. row count) are very likely out-of date, even
+        # the instant they are received in this API. Thus, only treat these values as
+        # approximate. IMPORTANT: Everything below is approximate, unless otherwise
+        # specified.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::BigtableadminV2::TableStats]
+        attr_accessor :stats
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2216,9 +2383,11 @@ module Google
         def update!(**args)
           @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @column_families = args[:column_families] if args.key?(:column_families)
+          @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @granularity = args[:granularity] if args.key?(:granularity)
           @name = args[:name] if args.key?(:name)
           @restore_info = args[:restore_info] if args.key?(:restore_info)
+          @stats = args[:stats] if args.key?(:stats)
         end
       end
       
@@ -2251,6 +2420,58 @@ module Google
           @estimated_copied_bytes = args[:estimated_copied_bytes] if args.key?(:estimated_copied_bytes)
           @estimated_size_bytes = args[:estimated_size_bytes] if args.key?(:estimated_size_bytes)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Approximate statistics related to a table. These statistics are calculated
+      # infrequently, while simultaneously, data in the table can change rapidly. Thus
+      # the values reported here (e.g. row count) are very likely out-of date, even
+      # the instant they are received in this API. Thus, only treat these values as
+      # approximate. IMPORTANT: Everything below is approximate, unless otherwise
+      # specified.
+      class TableStats
+        include Google::Apis::Core::Hashable
+      
+        # How many cells are present per column (column family, column qualifier)
+        # combinations, averaged over all columns in all rows in the table. e.g. A table
+        # with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4
+        # cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:
+        # other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4
+        # + 15)/(2 + 3) = 3.8 in this field.
+        # Corresponds to the JSON property `averageCellsPerColumn`
+        # @return [Float]
+        attr_accessor :average_cells_per_column
+      
+        # How many (column family, column qualifier) combinations are present per row in
+        # the table, averaged over all rows in the table. e.g. A table with 2 rows: * A
+        # row with cells in "family:col" and "other:col" (2 distinct columns) * A row
+        # with cells in "family:col", "family:other_col", and "other:data" (3 distinct
+        # columns) would report (2 + 3)/2 = 2.5 in this field.
+        # Corresponds to the JSON property `averageColumnsPerRow`
+        # @return [Float]
+        attr_accessor :average_columns_per_row
+      
+        # This is roughly how many bytes would be needed to read the entire table (e.g.
+        # by streaming all contents out).
+        # Corresponds to the JSON property `logicalDataBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_bytes
+      
+        # How many rows are in the table.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_cells_per_column = args[:average_cells_per_column] if args.key?(:average_cells_per_column)
+          @average_columns_per_row = args[:average_columns_per_row] if args.key?(:average_columns_per_row)
+          @logical_data_bytes = args[:logical_data_bytes] if args.key?(:logical_data_bytes)
+          @row_count = args[:row_count] if args.key?(:row_count)
         end
       end
       
@@ -2431,6 +2652,37 @@ module Google
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
           @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # Metadata type for the operation returned by UpdateTable.
+      class UpdateTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was canceled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of the table being updated.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end

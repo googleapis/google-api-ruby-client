@@ -926,6 +926,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Copy a Cloud Bigtable backup to a new backup in the destination cluster
+        # located in the destination instance and project.
+        # @param [String] parent
+        #   Required. The name of the destination cluster that will contain the backup
+        #   copy. The cluster must already exists. Values are of the form: `projects/`
+        #   project`/instances/`instance`/clusters/`cluster``.
+        # @param [Google::Apis::BigtableadminV2::CopyBackupRequest] copy_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def copy_backup(parent, copy_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/backups:copy', options)
+          command.request_representation = Google::Apis::BigtableadminV2::CopyBackupRequest::Representation
+          command.request_object = copy_backup_request_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts creating a new Cloud Bigtable Backup. The returned backup long-running
         # operation can be used to track creation of the backup. The metadata field type
         # is CreateBackupMetadata. The response field type is Backup, if successful.
@@ -1646,15 +1682,57 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new table by restoring from a completed backup. The new table must be
-        # in the same project as the instance containing the backup. The returned table
+        # Updates a specified table.
+        # @param [String] name
+        #   The unique name of the table. Values are of the form `projects/`project`/
+        #   instances/`instance`/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `
+        #   REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
+        # @param [Google::Apis::BigtableadminV2::Table] table_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. A mask specifying which fields (e.g. `
+        #   change_stream_config`) in the `table` field should be updated. This mask is
+        #   relative to the `table` field, not to the request message. The wildcard (*)
+        #   path is currently not supported. Currently UpdateTable is only supported for
+        #   the following fields: * `change_stream_config` * `change_stream_config.
+        #   retention_period` * `deletion_protection` If `column_families` is set in `
+        #   update_mask`, it will return an UNIMPLEMENTED error.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance_table(name, table_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::BigtableadminV2::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new table by restoring from a completed backup. The returned table
         # long-running operation can be used to track the progress of the operation, and
         # to cancel it. The metadata field type is RestoreTableMetadata. The response
         # type is Table, if successful.
         # @param [String] parent
-        #   Required. The name of the instance in which to create the restored table. This
-        #   instance must be in the same project as the source backup. Values are of the
-        #   form `projects//instances/`.
+        #   Required. The name of the instance in which to create the restored table.
+        #   Values are of the form `projects//instances/`.
         # @param [Google::Apis::BigtableadminV2::RestoreTableRequest] restore_table_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
