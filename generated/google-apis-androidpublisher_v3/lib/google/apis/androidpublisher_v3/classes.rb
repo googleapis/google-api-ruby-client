@@ -341,6 +341,11 @@ module Google
         attr_accessor :auto_renew_enabled
         alias_method :auto_renew_enabled?, :auto_renew_enabled
       
+        # Price change related information of a subscription item.
+        # Corresponds to the JSON property `priceChangeDetails`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails]
+        attr_accessor :price_change_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -348,6 +353,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
+          @price_change_details = args[:price_change_details] if args.key?(:price_change_details)
         end
       end
       
@@ -2195,6 +2201,38 @@ module Google
         end
       end
       
+      # Offer details information related to a purchase line item.
+      class OfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # The base plan ID. Present for all base plan and offers.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # The offer ID. Only present for discounted offers.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The latest offer tags associated with the offer. It includes tags inherited
+        # from the base plan.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<String>]
+        attr_accessor :offer_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+        end
+      end
+      
       # Represents a custom tag specified for base plans and subscription offers.
       class OfferTag
         include Google::Apis::Core::Hashable
@@ -3104,6 +3142,45 @@ module Google
         end
       end
       
+      # Price change related information of a subscription item.
+      class SubscriptionItemPriceChangeDetails
+        include Google::Apis::Core::Hashable
+      
+        # The renewal time at which the price change will become effective for the user.
+        # This is subject to change(to a future time) due to cases where the renewal
+        # time shifts like pause.
+        # Corresponds to the JSON property `expectedNewPriceChargeTime`
+        # @return [String]
+        attr_accessor :expected_new_price_charge_time
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `newPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :new_price
+      
+        # Price change mode specifies how the subscription item price is changing.
+        # Corresponds to the JSON property `priceChangeMode`
+        # @return [String]
+        attr_accessor :price_change_mode
+      
+        # State the price change is currently in.
+        # Corresponds to the JSON property `priceChangeState`
+        # @return [String]
+        attr_accessor :price_change_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expected_new_price_charge_time = args[:expected_new_price_charge_time] if args.key?(:expected_new_price_charge_time)
+          @new_price = args[:new_price] if args.key?(:new_price)
+          @price_change_mode = args[:price_change_mode] if args.key?(:price_change_mode)
+          @price_change_state = args[:price_change_state] if args.key?(:price_change_state)
+        end
+      end
+      
       # The consumer-visible metadata of a subscription.
       class SubscriptionListing
         include Google::Apis::Core::Hashable
@@ -3587,6 +3664,11 @@ module Google
         # @return [String]
         attr_accessor :expiry_time
       
+        # Offer details information related to a purchase line item.
+        # Corresponds to the JSON property `offerDetails`
+        # @return [Google::Apis::AndroidpublisherV3::OfferDetails]
+        attr_accessor :offer_details
+      
         # Information related to a prepaid plan.
         # Corresponds to the JSON property `prepaidPlan`
         # @return [Google::Apis::AndroidpublisherV3::PrepaidPlan]
@@ -3605,6 +3687,7 @@ module Google
         def update!(**args)
           @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @offer_details = args[:offer_details] if args.key?(:offer_details)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
           @product_id = args[:product_id] if args.key?(:product_id)
         end
