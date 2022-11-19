@@ -673,6 +673,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_sdk_version
       
+        # Meta-data tags defined in the manifest.
+        # Corresponds to the JSON property `metadata`
+        # @return [Array<Google::Apis::TestingV1::Metadata>]
+        attr_accessor :metadata
+      
         # Minimum API level required for the application to run.
         # Corresponds to the JSON property `minSdkVersion`
         # @return [Fixnum]
@@ -687,6 +692,11 @@ module Google
         # Corresponds to the JSON property `targetSdkVersion`
         # @return [Fixnum]
         attr_accessor :target_sdk_version
+      
+        # Feature usage tags defined in the manifest.
+        # Corresponds to the JSON property `usesFeature`
+        # @return [Array<Google::Apis::TestingV1::UsesFeature>]
+        attr_accessor :uses_feature
       
         # Permissions declared to be used by the application
         # Corresponds to the JSON property `usesPermission`
@@ -712,9 +722,11 @@ module Google
           @application_label = args[:application_label] if args.key?(:application_label)
           @intent_filters = args[:intent_filters] if args.key?(:intent_filters)
           @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
           @package_name = args[:package_name] if args.key?(:package_name)
           @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
+          @uses_feature = args[:uses_feature] if args.key?(:uses_feature)
           @uses_permission = args[:uses_permission] if args.key?(:uses_permission)
           @version_code = args[:version_code] if args.key?(:version_code)
           @version_name = args[:version_name] if args.key?(:version_name)
@@ -1633,6 +1645,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @test_targets_for_shard = args[:test_targets_for_shard] if args.key?(:test_targets_for_shard)
+        end
+      end
+      
+      # A tag within a manifest. https://developer.android.com/guide/topics/manifest/
+      # meta-data-element.html
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # The android:name value
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The android:value value
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2630,6 +2668,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @num_shards = args[:num_shards] if args.key?(:num_shards)
+        end
+      end
+      
+      # A tag within a manifest. https://developer.android.com/guide/topics/manifest/
+      # uses-feature-element.html
+      class UsesFeature
+        include Google::Apis::Core::Hashable
+      
+        # The android:required value
+        # Corresponds to the JSON property `isRequired`
+        # @return [Boolean]
+        attr_accessor :is_required
+        alias_method :is_required?, :is_required
+      
+        # The android:name value
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_required = args[:is_required] if args.key?(:is_required)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
