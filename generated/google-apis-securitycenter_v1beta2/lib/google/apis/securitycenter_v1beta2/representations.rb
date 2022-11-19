@@ -466,6 +466,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :canonical_finding_name, as: 'canonicalFindingName'
           property :finding_category, as: 'findingCategory'
+          property :name, as: 'name'
         end
       end
       
