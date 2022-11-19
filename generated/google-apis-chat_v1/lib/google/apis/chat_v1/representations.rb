@@ -721,6 +721,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function, as: 'function'
+          property :interaction, as: 'interaction'
           property :load_indicator, as: 'loadIndicator'
           collection :parameters, as: 'parameters', class: Google::Apis::ChatV1::GoogleAppsCardV1ActionParameter, decorator: Google::Apis::ChatV1::GoogleAppsCardV1ActionParameter::Representation
       
@@ -880,7 +881,6 @@ module Google
       
           property :layout, as: 'layout'
           property :subtitle, as: 'subtitle'
-          property :text_alignment, as: 'textAlignment'
           property :title, as: 'title'
         end
       end
@@ -1045,7 +1045,6 @@ module Google
       
           property :grid, as: 'grid', class: Google::Apis::ChatV1::GoogleAppsCardV1Grid, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Grid::Representation
       
-          property :horizontal_alignment, as: 'horizontalAlignment'
           property :image, as: 'image', class: Google::Apis::ChatV1::GoogleAppsCardV1Image, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Image::Representation
       
           property :selection_input, as: 'selectionInput', class: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput, decorator: Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput::Representation
@@ -1182,6 +1181,7 @@ module Google
           property :text, as: 'text'
           property :thread, as: 'thread', class: Google::Apis::ChatV1::Thread, decorator: Google::Apis::ChatV1::Thread::Representation
       
+          property :thread_reply, as: 'threadReply'
         end
       end
       
@@ -1238,6 +1238,7 @@ module Google
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :space_details, as: 'spaceDetails', class: Google::Apis::ChatV1::SpaceDetails, decorator: Google::Apis::ChatV1::SpaceDetails::Representation
       
+          property :space_threading_state, as: 'spaceThreadingState'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
         end
@@ -1287,6 +1288,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :thread_key, as: 'threadKey'
         end
       end
       
