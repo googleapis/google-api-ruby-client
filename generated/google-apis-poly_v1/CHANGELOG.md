@@ -1,5 +1,9 @@
 # Release history for google-apis-poly_v1
 
+### v0.12.0 (2022-11-19)
+
+* Regenerated using generator version 0.11.0
+
 ### v0.11.0 (2022-10-10)
 
 * Regenerated using generator version 0.10.0
