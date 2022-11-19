@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class UniformSharding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsesFeature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -613,9 +625,13 @@ module Google
           collection :intent_filters, as: 'intentFilters', class: Google::Apis::TestingV1::IntentFilter, decorator: Google::Apis::TestingV1::IntentFilter::Representation
       
           property :max_sdk_version, as: 'maxSdkVersion'
+          collection :metadata, as: 'metadata', class: Google::Apis::TestingV1::Metadata, decorator: Google::Apis::TestingV1::Metadata::Representation
+      
           property :min_sdk_version, as: 'minSdkVersion'
           property :package_name, as: 'packageName'
           property :target_sdk_version, as: 'targetSdkVersion'
+          collection :uses_feature, as: 'usesFeature', class: Google::Apis::TestingV1::UsesFeature, decorator: Google::Apis::TestingV1::UsesFeature::Representation
+      
           collection :uses_permission, as: 'usesPermission'
           property :version_code, :numeric_string => true, as: 'versionCode'
           property :version_name, as: 'versionName'
@@ -904,6 +920,14 @@ module Google
         end
       end
       
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class NetworkConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1187,6 +1211,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :num_shards, as: 'numShards'
+        end
+      end
+      
+      class UsesFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_required, as: 'isRequired'
+          property :name, as: 'name'
         end
       end
       
