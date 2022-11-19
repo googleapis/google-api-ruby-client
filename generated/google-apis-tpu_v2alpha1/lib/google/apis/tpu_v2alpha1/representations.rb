@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceptedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActiveData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +52,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BestEffort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreatingData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeletingData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FailedData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Guaranteed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +125,12 @@ module Google
       end
       
       class GuestAttributesValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -107,6 +155,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListQueuedResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +209,30 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisioningData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResourceState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueueingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,7 +292,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuspendedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuspendingData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Symptom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Tpu
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -222,10 +324,22 @@ module Google
         end
       end
       
+      class AcceptedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AccessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_ip, as: 'externalIp'
+        end
+      end
+      
+      class ActiveData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -237,9 +351,35 @@ module Google
         end
       end
       
+      class BestEffort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreatingData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeletingData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FailedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::TpuV2alpha1::Status, decorator: Google::Apis::TpuV2alpha1::Status::Representation
+      
         end
       end
       
@@ -273,6 +413,14 @@ module Google
         end
       end
       
+      class Guaranteed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_duration, as: 'minDuration'
+          property :reserved, as: 'reserved'
+        end
+      end
+      
       class GuestAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -296,6 +444,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::TpuV2alpha1::GuestAttributesEntry, decorator: Google::Apis::TpuV2alpha1::GuestAttributesEntry::Representation
       
+        end
+      end
+      
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -334,6 +490,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TpuV2alpha1::Operation, decorator: Google::Apis::TpuV2alpha1::Operation::Representation
       
+        end
+      end
+      
+      class ListQueuedResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :queued_resources, as: 'queuedResources', class: Google::Apis::TpuV2alpha1::QueuedResource, decorator: Google::Apis::TpuV2alpha1::QueuedResource::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -398,6 +564,7 @@ module Google
       
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV2alpha1::NetworkEndpoint, decorator: Google::Apis::TpuV2alpha1::NetworkEndpoint::Representation
       
+          property :queued_resource, as: 'queuedResource'
           property :runtime_version, as: 'runtimeVersion'
           property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::TpuV2alpha1::SchedulingConfig, decorator: Google::Apis::TpuV2alpha1::SchedulingConfig::Representation
       
@@ -409,6 +576,16 @@ module Google
           collection :symptoms, as: 'symptoms', class: Google::Apis::TpuV2alpha1::Symptom, decorator: Google::Apis::TpuV2alpha1::Symptom::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class NodeSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node, as: 'node', class: Google::Apis::TpuV2alpha1::Node, decorator: Google::Apis::TpuV2alpha1::Node::Representation
+      
+          property :node_id, as: 'nodeId'
+          property :parent, as: 'parent'
         end
       end
       
@@ -434,6 +611,64 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ProvisioningData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class QueuedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :best_effort, as: 'bestEffort', class: Google::Apis::TpuV2alpha1::BestEffort, decorator: Google::Apis::TpuV2alpha1::BestEffort::Representation
+      
+          property :guaranteed, as: 'guaranteed', class: Google::Apis::TpuV2alpha1::Guaranteed, decorator: Google::Apis::TpuV2alpha1::Guaranteed::Representation
+      
+          property :name, as: 'name'
+          property :queueing_policy, as: 'queueingPolicy', class: Google::Apis::TpuV2alpha1::QueueingPolicy, decorator: Google::Apis::TpuV2alpha1::QueueingPolicy::Representation
+      
+          property :state, as: 'state', class: Google::Apis::TpuV2alpha1::QueuedResourceState, decorator: Google::Apis::TpuV2alpha1::QueuedResourceState::Representation
+      
+          property :tpu, as: 'tpu', class: Google::Apis::TpuV2alpha1::Tpu, decorator: Google::Apis::TpuV2alpha1::Tpu::Representation
+      
+        end
+      end
+      
+      class QueuedResourceState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accepted_data, as: 'acceptedData', class: Google::Apis::TpuV2alpha1::AcceptedData, decorator: Google::Apis::TpuV2alpha1::AcceptedData::Representation
+      
+          property :active_data, as: 'activeData', class: Google::Apis::TpuV2alpha1::ActiveData, decorator: Google::Apis::TpuV2alpha1::ActiveData::Representation
+      
+          property :creating_data, as: 'creatingData', class: Google::Apis::TpuV2alpha1::CreatingData, decorator: Google::Apis::TpuV2alpha1::CreatingData::Representation
+      
+          property :deleting_data, as: 'deletingData', class: Google::Apis::TpuV2alpha1::DeletingData, decorator: Google::Apis::TpuV2alpha1::DeletingData::Representation
+      
+          property :failed_data, as: 'failedData', class: Google::Apis::TpuV2alpha1::FailedData, decorator: Google::Apis::TpuV2alpha1::FailedData::Representation
+      
+          property :provisioning_data, as: 'provisioningData', class: Google::Apis::TpuV2alpha1::ProvisioningData, decorator: Google::Apis::TpuV2alpha1::ProvisioningData::Representation
+      
+          property :state, as: 'state'
+          property :suspended_data, as: 'suspendedData', class: Google::Apis::TpuV2alpha1::SuspendedData, decorator: Google::Apis::TpuV2alpha1::SuspendedData::Representation
+      
+          property :suspending_data, as: 'suspendingData', class: Google::Apis::TpuV2alpha1::SuspendingData, decorator: Google::Apis::TpuV2alpha1::SuspendingData::Representation
+      
+        end
+      end
+      
+      class QueueingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :valid_after_duration, as: 'validAfterDuration'
+          property :valid_after_time, as: 'validAfterTime'
+          property :valid_interval, as: 'validInterval', class: Google::Apis::TpuV2alpha1::Interval, decorator: Google::Apis::TpuV2alpha1::Interval::Representation
+      
+          property :valid_until_duration, as: 'validUntilDuration'
+          property :valid_until_time, as: 'validUntilTime'
         end
       end
       
@@ -503,6 +738,18 @@ module Google
         end
       end
       
+      class SuspendedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SuspendingData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Symptom
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -510,6 +757,14 @@ module Google
           property :details, as: 'details'
           property :symptom_type, as: 'symptomType'
           property :worker_id, as: 'workerId'
+        end
+      end
+      
+      class Tpu
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_spec, as: 'nodeSpec', class: Google::Apis::TpuV2alpha1::NodeSpec, decorator: Google::Apis::TpuV2alpha1::NodeSpec::Representation
+      
         end
       end
     end

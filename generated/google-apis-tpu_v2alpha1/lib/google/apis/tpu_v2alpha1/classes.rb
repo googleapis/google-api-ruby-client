@@ -31,7 +31,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # the accelerator type.
+        # The accelerator type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -44,6 +44,19 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Further data for the accepted state.
+      class AcceptedData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -63,6 +76,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_ip = args[:external_ip] if args.key?(:external_ip)
+        end
+      end
+      
+      # Further data for the active state.
+      class ActiveData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -93,6 +119,45 @@ module Google
         end
       end
       
+      # BestEffort tier definition.
+      class BestEffort
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Further data for the creating state.
+      class CreatingData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Further data for the deleting state.
+      class DeletingData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -106,6 +171,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Further data for the failed state.
+      class FailedData
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::TpuV2alpha1::Status]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
         end
       end
       
@@ -186,6 +275,34 @@ module Google
         end
       end
       
+      # Guaranteed tier definition.
+      class Guaranteed
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Defines the minimum duration of the guarantee. If specified, the
+        # requested resources will only be provisioned if they can be allocated for at
+        # least the given duration.
+        # Corresponds to the JSON property `minDuration`
+        # @return [String]
+        attr_accessor :min_duration
+      
+        # Optional. Specifies the request should be scheduled on reserved capacity.
+        # Corresponds to the JSON property `reserved`
+        # @return [Boolean]
+        attr_accessor :reserved
+        alias_method :reserved?, :reserved
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_duration = args[:min_duration] if args.key?(:min_duration)
+          @reserved = args[:reserved] if args.key?(:reserved)
+        end
+      end
+      
       # A guest attributes.
       class GuestAttributes
         include Google::Apis::Core::Hashable
@@ -259,6 +376,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -371,6 +518,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response for ListQueuedResources.
+      class ListQueuedResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The next page token or empty if none.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The listed queued resources.
+        # Corresponds to the JSON property `queuedResources`
+        # @return [Array<Google::Apis::TpuV2alpha1::QueuedResource>]
+        attr_accessor :queued_resources
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @queued_resources = args[:queued_resources] if args.key?(:queued_resources)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -612,6 +790,11 @@ module Google
         # @return [Array<Google::Apis::TpuV2alpha1::NetworkEndpoint>]
         attr_accessor :network_endpoints
       
+        # Output only. The qualified name of the QueuedResource that requested this Node.
+        # Corresponds to the JSON property `queuedResource`
+        # @return [String]
+        attr_accessor :queued_resource
+      
         # Required. The runtime version running in the Node.
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
@@ -668,6 +851,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+          @queued_resource = args[:queued_resource] if args.key?(:queued_resource)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -675,6 +859,42 @@ module Google
           @state = args[:state] if args.key?(:state)
           @symptoms = args[:symptoms] if args.key?(:symptoms)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Details of the TPU node(s) being requested. Users can request either a single
+      # node or multiple nodes. NodeSpec provides the specification for node(s) to be
+      # created.
+      class NodeSpec
+        include Google::Apis::Core::Hashable
+      
+        # A TPU instance.
+        # Corresponds to the JSON property `node`
+        # @return [Google::Apis::TpuV2alpha1::Node]
+        attr_accessor :node
+      
+        # The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex
+        # format. This is only specified when requesting a single node. In case of multi-
+        # node requests, multi_node_params must be populated instead. It's an error to
+        # specify both node_id and multi_node_params.
+        # Corresponds to the JSON property `nodeId`
+        # @return [String]
+        attr_accessor :node_id
+      
+        # Required. The parent resource name.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node = args[:node] if args.key?(:node)
+          @node_id = args[:node_id] if args.key?(:node_id)
+          @parent = args[:parent] if args.key?(:parent)
         end
       end
       
@@ -794,6 +1014,184 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Further data for the provisioning state.
+      class ProvisioningData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A QueuedResource represents a request for resources that will be placed in a
+      # queue and fulfilled when the necessary resources are available.
+      class QueuedResource
+        include Google::Apis::Core::Hashable
+      
+        # BestEffort tier definition.
+        # Corresponds to the JSON property `bestEffort`
+        # @return [Google::Apis::TpuV2alpha1::BestEffort]
+        attr_accessor :best_effort
+      
+        # Guaranteed tier definition.
+        # Corresponds to the JSON property `guaranteed`
+        # @return [Google::Apis::TpuV2alpha1::Guaranteed]
+        attr_accessor :guaranteed
+      
+        # Output only. Immutable. The name of the QueuedResource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines the policy of the QueuedRequest.
+        # Corresponds to the JSON property `queueingPolicy`
+        # @return [Google::Apis::TpuV2alpha1::QueueingPolicy]
+        attr_accessor :queueing_policy
+      
+        # QueuedResourceState defines the details of the QueuedResource request.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::TpuV2alpha1::QueuedResourceState]
+        attr_accessor :state
+      
+        # Details of the TPU resource(s) being requested.
+        # Corresponds to the JSON property `tpu`
+        # @return [Google::Apis::TpuV2alpha1::Tpu]
+        attr_accessor :tpu
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @best_effort = args[:best_effort] if args.key?(:best_effort)
+          @guaranteed = args[:guaranteed] if args.key?(:guaranteed)
+          @name = args[:name] if args.key?(:name)
+          @queueing_policy = args[:queueing_policy] if args.key?(:queueing_policy)
+          @state = args[:state] if args.key?(:state)
+          @tpu = args[:tpu] if args.key?(:tpu)
+        end
+      end
+      
+      # QueuedResourceState defines the details of the QueuedResource request.
+      class QueuedResourceState
+        include Google::Apis::Core::Hashable
+      
+        # Further data for the accepted state.
+        # Corresponds to the JSON property `acceptedData`
+        # @return [Google::Apis::TpuV2alpha1::AcceptedData]
+        attr_accessor :accepted_data
+      
+        # Further data for the active state.
+        # Corresponds to the JSON property `activeData`
+        # @return [Google::Apis::TpuV2alpha1::ActiveData]
+        attr_accessor :active_data
+      
+        # Further data for the creating state.
+        # Corresponds to the JSON property `creatingData`
+        # @return [Google::Apis::TpuV2alpha1::CreatingData]
+        attr_accessor :creating_data
+      
+        # Further data for the deleting state.
+        # Corresponds to the JSON property `deletingData`
+        # @return [Google::Apis::TpuV2alpha1::DeletingData]
+        attr_accessor :deleting_data
+      
+        # Further data for the failed state.
+        # Corresponds to the JSON property `failedData`
+        # @return [Google::Apis::TpuV2alpha1::FailedData]
+        attr_accessor :failed_data
+      
+        # Further data for the provisioning state.
+        # Corresponds to the JSON property `provisioningData`
+        # @return [Google::Apis::TpuV2alpha1::ProvisioningData]
+        attr_accessor :provisioning_data
+      
+        # State of the QueuedResource request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Further data for the suspended state.
+        # Corresponds to the JSON property `suspendedData`
+        # @return [Google::Apis::TpuV2alpha1::SuspendedData]
+        attr_accessor :suspended_data
+      
+        # Further data for the suspending state.
+        # Corresponds to the JSON property `suspendingData`
+        # @return [Google::Apis::TpuV2alpha1::SuspendingData]
+        attr_accessor :suspending_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepted_data = args[:accepted_data] if args.key?(:accepted_data)
+          @active_data = args[:active_data] if args.key?(:active_data)
+          @creating_data = args[:creating_data] if args.key?(:creating_data)
+          @deleting_data = args[:deleting_data] if args.key?(:deleting_data)
+          @failed_data = args[:failed_data] if args.key?(:failed_data)
+          @provisioning_data = args[:provisioning_data] if args.key?(:provisioning_data)
+          @state = args[:state] if args.key?(:state)
+          @suspended_data = args[:suspended_data] if args.key?(:suspended_data)
+          @suspending_data = args[:suspending_data] if args.key?(:suspending_data)
+        end
+      end
+      
+      # Defines the policy of the QueuedRequest.
+      class QueueingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # A relative time after which resources may be created.
+        # Corresponds to the JSON property `validAfterDuration`
+        # @return [String]
+        attr_accessor :valid_after_duration
+      
+        # An absolute time at which resources may be created.
+        # Corresponds to the JSON property `validAfterTime`
+        # @return [String]
+        attr_accessor :valid_after_time
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `validInterval`
+        # @return [Google::Apis::TpuV2alpha1::Interval]
+        attr_accessor :valid_interval
+      
+        # A relative time after which resources should not be created. If the request
+        # cannot be fulfilled by this time the request will be failed.
+        # Corresponds to the JSON property `validUntilDuration`
+        # @return [String]
+        attr_accessor :valid_until_duration
+      
+        # An absolute time after which resources should not be created. If the request
+        # cannot be fulfilled by this time the request will be failed.
+        # Corresponds to the JSON property `validUntilTime`
+        # @return [String]
+        attr_accessor :valid_until_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @valid_after_duration = args[:valid_after_duration] if args.key?(:valid_after_duration)
+          @valid_after_time = args[:valid_after_time] if args.key?(:valid_after_time)
+          @valid_interval = args[:valid_interval] if args.key?(:valid_interval)
+          @valid_until_duration = args[:valid_until_duration] if args.key?(:valid_until_duration)
+          @valid_until_time = args[:valid_until_time] if args.key?(:valid_until_time)
         end
       end
       
@@ -1002,6 +1400,32 @@ module Google
         end
       end
       
+      # Further data for the suspended state.
+      class SuspendedData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Further data for the suspending state.
+      class SuspendingData
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A Symptom instance.
       class Symptom
         include Google::Apis::Core::Hashable
@@ -1036,6 +1460,25 @@ module Google
           @details = args[:details] if args.key?(:details)
           @symptom_type = args[:symptom_type] if args.key?(:symptom_type)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
+        end
+      end
+      
+      # Details of the TPU resource(s) being requested.
+      class Tpu
+        include Google::Apis::Core::Hashable
+      
+        # The TPU node(s) being requested.
+        # Corresponds to the JSON property `nodeSpec`
+        # @return [Array<Google::Apis::TpuV2alpha1::NodeSpec>]
+        attr_accessor :node_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_spec = args[:node_spec] if args.key?(:node_spec)
         end
       end
     end
