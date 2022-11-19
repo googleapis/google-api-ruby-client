@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OfferDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OfferTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +611,12 @@ module Google
       end
       
       class SubscriptionDeferralInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionItemPriceChangeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -910,6 +922,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_renew_enabled, as: 'autoRenewEnabled'
+          property :price_change_details, as: 'priceChangeDetails', class: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails, decorator: Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails::Representation
+      
         end
       end
       
@@ -1475,6 +1489,15 @@ module Google
         end
       end
       
+      class OfferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_plan_id, as: 'basePlanId'
+          property :offer_id, as: 'offerId'
+          collection :offer_tags, as: 'offerTags'
+        end
+      end
+      
       class OfferTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1735,6 +1758,17 @@ module Google
         end
       end
       
+      class SubscriptionItemPriceChangeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_new_price_charge_time, as: 'expectedNewPriceChargeTime'
+          property :new_price, as: 'newPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :price_change_mode, as: 'priceChangeMode'
+          property :price_change_state, as: 'priceChangeState'
+        end
+      end
+      
       class SubscriptionListing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1841,6 +1875,8 @@ module Google
           property :auto_renewing_plan, as: 'autoRenewingPlan', class: Google::Apis::AndroidpublisherV3::AutoRenewingPlan, decorator: Google::Apis::AndroidpublisherV3::AutoRenewingPlan::Representation
       
           property :expiry_time, as: 'expiryTime'
+          property :offer_details, as: 'offerDetails', class: Google::Apis::AndroidpublisherV3::OfferDetails, decorator: Google::Apis::AndroidpublisherV3::OfferDetails::Representation
+      
           property :prepaid_plan, as: 'prepaidPlan', class: Google::Apis::AndroidpublisherV3::PrepaidPlan, decorator: Google::Apis::AndroidpublisherV3::PrepaidPlan::Representation
       
           property :product_id, as: 'productId'
