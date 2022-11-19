@@ -32,6 +32,15 @@ module Google
 
       # View, add, and remove members from conversations in Google Chat
       AUTH_CHAT_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.memberships'
+
+      # View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+      AUTH_CHAT_MESSAGES = 'https://www.googleapis.com/auth/chat.messages'
+
+      # Compose and send messages in Google Chat
+      AUTH_CHAT_MESSAGES_CREATE = 'https://www.googleapis.com/auth/chat.messages.create'
+
+      # view messages and reactions in Google Chat
+      AUTH_CHAT_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.messages.readonly'
     end
   end
 end
