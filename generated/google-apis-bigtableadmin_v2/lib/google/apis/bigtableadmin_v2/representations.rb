@@ -112,6 +112,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnFamilyStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyBackupMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +461,12 @@ module Google
       end
       
       class UpdateInstanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateTableMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -497,6 +527,7 @@ module Google
           property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :source_backup, as: 'sourceBackup'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -508,6 +539,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :end_time, as: 'endTime'
+          property :source_backup, as: 'sourceBackup'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
         end
@@ -584,6 +616,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gc_rule, as: 'gcRule', class: Google::Apis::BigtableadminV2::GcRule, decorator: Google::Apis::BigtableadminV2::GcRule::Representation
       
+          property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::ColumnFamilyStats, decorator: Google::Apis::BigtableadminV2::ColumnFamilyStats::Representation
+      
+        end
+      end
+      
+      class ColumnFamilyStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cells_per_column, as: 'averageCellsPerColumn'
+          property :average_columns_per_row, as: 'averageColumnsPerRow'
+          property :logical_data_bytes, :numeric_string => true, as: 'logicalDataBytes'
+        end
+      end
+      
+      class CopyBackupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::BigtableadminV2::OperationProgress, decorator: Google::Apis::BigtableadminV2::OperationProgress::Representation
+      
+          property :source_backup_info, as: 'sourceBackupInfo', class: Google::Apis::BigtableadminV2::BackupInfo, decorator: Google::Apis::BigtableadminV2::BackupInfo::Representation
+      
+        end
+      end
+      
+      class CopyBackupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :expire_time, as: 'expireTime'
+          property :source_backup, as: 'sourceBackup'
         end
       end
       
@@ -1020,9 +1083,12 @@ module Google
       
           hash :column_families, as: 'columnFamilies', class: Google::Apis::BigtableadminV2::ColumnFamily, decorator: Google::Apis::BigtableadminV2::ColumnFamily::Representation
       
+          property :deletion_protection, as: 'deletionProtection'
           property :granularity, as: 'granularity'
           property :name, as: 'name'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::BigtableadminV2::RestoreInfo, decorator: Google::Apis::BigtableadminV2::RestoreInfo::Representation
+      
+          property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::TableStats, decorator: Google::Apis::BigtableadminV2::TableStats::Representation
       
         end
       end
@@ -1033,6 +1099,16 @@ module Google
           property :estimated_copied_bytes, :numeric_string => true, as: 'estimatedCopiedBytes'
           property :estimated_size_bytes, :numeric_string => true, as: 'estimatedSizeBytes'
           property :state, as: 'state'
+        end
+      end
+      
+      class TableStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cells_per_column, as: 'averageCellsPerColumn'
+          property :average_columns_per_row, as: 'averageColumnsPerRow'
+          property :logical_data_bytes, :numeric_string => true, as: 'logicalDataBytes'
+          property :row_count, :numeric_string => true, as: 'rowCount'
         end
       end
       
@@ -1096,6 +1172,15 @@ module Google
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::PartialUpdateInstanceRequest, decorator: Google::Apis::BigtableadminV2::PartialUpdateInstanceRequest::Representation
       
           property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class UpdateTableMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
         end
       end
     end
