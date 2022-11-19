@@ -1,5 +1,10 @@
 # Release history for google-apis-admin_reports_v1
 
+### v0.15.0 (2022-11-19)
+
+* Regenerated from discovery document revision 20221108
+* Regenerated using generator version 0.11.0
+
 ### v0.14.0 (2022-09-21)
 
 * Regenerated using generator version 0.10.0
