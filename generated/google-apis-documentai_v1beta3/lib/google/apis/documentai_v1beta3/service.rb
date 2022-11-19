@@ -757,6 +757,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Evaluates a ProcessorVersion against annotated documents, producing an
+        # Evaluation.
+        # @param [String] processor_version
+        #   Required. The resource name of the ProcessorVersion to evaluate. `projects/`
+        #   project`/locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion``
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest] google_cloud_documentai_v1beta3_evaluate_processor_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_project_location_processor_processor_version_processor_version(processor_version, google_cloud_documentai_v1beta3_evaluate_processor_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+processorVersion}:evaluateProcessorVersion', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_evaluate_processor_version_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['processorVersion'] = processor_version unless processor_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a processor version detail.
         # @param [String] name
         #   Required. The processor resource name.
@@ -864,6 +900,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Trains a new processor version. Operation metadata is returned as
+        # cloud_documentai_core.TrainProcessorVersionMetadata.
+        # @param [String] parent
+        #   Required. The parent (project, location and processor) to create the new
+        #   version for. Format: `projects/`project`/locations/`location`/processors/`
+        #   processor``.
+        # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest] google_cloud_documentai_v1beta3_train_processor_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def train_project_location_processor_processor_version(parent, google_cloud_documentai_v1beta3_train_processor_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta3/{+parent}/processorVersions:train', options)
+          command.request_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequest::Representation
+          command.request_object = google_cloud_documentai_v1beta3_train_processor_version_request_object
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undeploys the processor version.
         # @param [String] name
         #   Required. The processor version resource name to be undeployed.
@@ -892,6 +964,78 @@ module Google
           command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a specific evaluation.
+        # @param [String] name
+        #   Required. The resource name of the Evaluation to get. `projects/`project`/
+        #   locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion`/evaluations/`evaluation``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Evaluation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Evaluation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_processor_processor_version_evaluation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+name}', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Evaluation::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Evaluation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a set of evaluations for a given processor version.
+        # @param [String] parent
+        #   Required. The resource name of the ProcessorVersion to list evaluations for. `
+        #   projects/`project`/locations/`location`/processors/`processor`/
+        #   processorVersions/`processorVersion``
+        # @param [Fixnum] page_size
+        #   The standard list page size. If unspecified, at most 5 evaluations will be
+        #   returned. The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListEvaluations` call. Provide this to
+        #   retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListEvaluationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListEvaluationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_processor_processor_version_evaluations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta3/{+parent}/evaluations', options)
+          command.response_representation = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListEvaluationsResponse::Representation
+          command.response_class = Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ListEvaluationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
