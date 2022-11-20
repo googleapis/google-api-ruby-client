@@ -300,6 +300,11 @@ module Google
         # @return [String]
         attr_accessor :finding_category
       
+        # Full resource name of the finding.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -308,6 +313,7 @@ module Google
         def update!(**args)
           @canonical_finding_name = args[:canonical_finding_name] if args.key?(:canonical_finding_name)
           @finding_category = args[:finding_category] if args.key?(:finding_category)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
