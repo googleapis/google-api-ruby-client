@@ -1406,12 +1406,12 @@ module Google
       end
       
       # RestoreInstanceRequest restores an existing instance's file share from a
-      # snapshot or backup.
+      # backup.
       class RestoreInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the file share in the Filestore instance that the snapshot
-        # is being restored to.
+        # Required. Name of the file share in the Filestore instance that the backup is
+        # being restored to.
         # Corresponds to the JSON property `fileShare`
         # @return [String]
         attr_accessor :file_share
