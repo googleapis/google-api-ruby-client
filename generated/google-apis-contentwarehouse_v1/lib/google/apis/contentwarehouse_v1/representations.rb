@@ -2482,6 +2482,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssistantGroundingRankerProviderGroundingProviderFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssistantLogsAllMediaStreamLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13312,6 +13318,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageGraphBfgUmpPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuperrootPodcastsRecommendationsPodcastRecsFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -15321,6 +15333,8 @@ module Google
           property :date_ms_as_number, :numeric_string => true, as: 'dateMsAsNumber'
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
       
+          property :prompt, as: 'prompt', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt::Representation
+      
           property :value, as: 'value'
         end
       end
@@ -15660,6 +15674,8 @@ module Google
       
           property :formatted_type, as: 'formattedType'
           property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
+      
+          property :prompt, as: 'prompt', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoPrompt::Representation
       
           property :timestamp_millis, :numeric_string => true, as: 'timestampMillis'
           property :type, as: 'type'
@@ -19511,6 +19527,8 @@ module Google
       
           property :media_grounding_provider_features, as: 'mediaGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerMediaGroundingProviderFeatures::Representation
       
+          property :provider_grounding_provider_features, as: 'providerGroundingProviderFeatures', class: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerProviderGroundingProviderFeatures, decorator: Google::Apis::ContentwarehouseV1::AssistantGroundingRankerProviderGroundingProviderFeatures::Representation
+      
         end
       end
       
@@ -19518,6 +19536,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :msc_rate, as: 'mscRate'
+        end
+      end
+      
+      class AssistantGroundingRankerProviderGroundingProviderFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psl_score, as: 'pslScore'
         end
       end
       
@@ -19953,6 +19978,7 @@ module Google
           property :intent_name, as: 'intentName'
           property :intent_name_auis_score, as: 'intentNameAuisScore'
           property :intent_name_auis_score_exp, as: 'intentNameAuisScoreExp'
+          property :is_feasible, as: 'isFeasible'
           property :kscorer_rank, as: 'kscorerRank'
           property :mask_candidate_level_features, as: 'maskCandidateLevelFeatures'
           property :num_alternative_hypothesis, as: 'numAlternativeHypothesis'
@@ -37204,6 +37230,7 @@ module Google
       class QualityPreviewSnippetBrainFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_snippet_brain_bolding_triggered, as: 'isSnippetBrainBoldingTriggered'
           property :model_score, as: 'modelScore'
         end
       end
@@ -38391,10 +38418,7 @@ module Google
       class RepositoryWebrefClusterProtoRelationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_collapsible, as: 'isCollapsible'
-          property :is_cvt_rule, as: 'isCvtRule'
           property :relation, as: 'relation'
-          property :sequence_id, as: 'sequenceId'
         end
       end
       
@@ -38911,6 +38935,8 @@ module Google
       class RepositoryWebrefImageQueryIndices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_docid, :numeric_string => true, as: 'canonicalDocid'
+          property :docid, :numeric_string => true, as: 'docid'
           property :image_index, as: 'imageIndex'
           property :query_index, as: 'queryIndex', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefQueryIndices, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefQueryIndices::Representation
       
@@ -40402,6 +40428,7 @@ module Google
           property :index_in_cluster, as: 'indexInCluster'
           property :is_accessible_for_free, as: 'isAccessibleForFree'
           collection :is_based_on, as: 'isBasedOn'
+          property :is_inferred, as: 'isInferred'
           collection :keyword, as: 'keyword'
           property :language_code, as: 'languageCode'
           collection :license, as: 'license', class: Google::Apis::ContentwarehouseV1::ResearchScienceSearchLicense, decorator: Google::Apis::ContentwarehouseV1::ResearchScienceSearchLicense::Representation
@@ -42413,7 +42440,9 @@ module Google
       
           collection :legal_removal_regions, as: 'legalRemovalRegions', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
       
+          collection :lms_client_ids_allowed, as: 'lmsClientIdsAllowed'
           property :lms_is_editorial, as: 'lmsIsEditorial'
+          collection :lms_modifications_allowed, as: 'lmsModificationsAllowed'
           property :lms_regions_allowed, as: 'lmsRegionsAllowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
       
           property :lms_regions_disallowed, as: 'lmsRegionsDisallowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
@@ -42423,6 +42452,8 @@ module Google
           property :lms_requires_link, as: 'lmsRequiresLink'
           property :lms_requires_share_alike, as: 'lmsRequiresShareAlike'
           property :policy_source_type, as: 'policySourceType'
+          property :ump_policy_metadata, as: 'umpPolicyMetadata', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata::Representation
+      
         end
       end
       
@@ -42472,6 +42503,16 @@ module Google
           collection :source_category, as: 'sourceCategory'
           collection :source_doc_id, as: 'sourceDocId'
           property :spii_certification, as: 'spiiCertification', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgSpiiCertification, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgSpiiCertification::Representation
+      
+        end
+      end
+      
+      class StorageGraphBfgUmpPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_ends, as: 'availabilityEnds'
+          property :availability_starts, as: 'availabilityStarts'
+          property :regions_allowed, as: 'regionsAllowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
       
         end
       end
