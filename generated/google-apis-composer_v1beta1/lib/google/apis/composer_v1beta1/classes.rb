@@ -423,6 +423,11 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::PrivateEnvironmentConfig]
         attr_accessor :private_environment_config
       
+        # The Recovery settings of an environment.
+        # Corresponds to the JSON property `recoveryConfig`
+        # @return [Google::Apis::ComposerV1beta1::RecoveryConfig]
+        attr_accessor :recovery_config
+      
         # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1beta1::SoftwareConfig]
@@ -464,10 +469,73 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
+          @recovery_config = args[:recovery_config] if args.key?(:recovery_config)
           @software_config = args[:software_config] if args.key?(:software_config)
           @web_server_config = args[:web_server_config] if args.key?(:web_server_config)
           @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
           @workloads_config = args[:workloads_config] if args.key?(:workloads_config)
+        end
+      end
+      
+      # Response to ExecuteAirflowCommandRequest.
+      class ExecuteAirflowCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error message. Empty if there was no error.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The unique ID of the command execution for polling.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # The name of the pod where the command is executed.
+        # Corresponds to the JSON property `pod`
+        # @return [String]
+        attr_accessor :pod
+      
+        # The namespace of the pod where the command is executed.
+        # Corresponds to the JSON property `podNamespace`
+        # @return [String]
+        attr_accessor :pod_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @pod = args[:pod] if args.key?(:pod)
+          @pod_namespace = args[:pod_namespace] if args.key?(:pod_namespace)
+        end
+      end
+      
+      # Information about how a command ended.
+      class ExitInfo
+        include Google::Apis::Core::Hashable
+      
+        # Error message. Empty if there was no error.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # The exit code from the command execution.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
         end
       end
       
@@ -601,6 +669,31 @@ module Google
           @release_date = args[:release_date] if args.key?(:release_date)
           @supported_python_versions = args[:supported_python_versions] if args.key?(:supported_python_versions)
           @upgrade_disabled = args[:upgrade_disabled] if args.key?(:upgrade_disabled)
+        end
+      end
+      
+      # Contains information about a single line from logs.
+      class Line
+        include Google::Apis::Core::Hashable
+      
+        # Text content of the log line.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Number of the line.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -1088,6 +1181,39 @@ module Google
         end
       end
       
+      # Response to PollAirflowCommandRequest.
+      class PollAirflowCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        # Information about how a command ended.
+        # Corresponds to the JSON property `exitInfo`
+        # @return [Google::Apis::ComposerV1beta1::ExitInfo]
+        attr_accessor :exit_info
+      
+        # Output from the command execution. It may not contain the full output and the
+        # caller may need to poll for more lines.
+        # Corresponds to the JSON property `output`
+        # @return [Array<Google::Apis::ComposerV1beta1::Line>]
+        attr_accessor :output
+      
+        # Whether the command execution has finished and there is no more output.
+        # Corresponds to the JSON property `outputEnd`
+        # @return [Boolean]
+        attr_accessor :output_end
+        alias_method :output_end?, :output_end
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exit_info = args[:exit_info] if args.key?(:exit_info)
+          @output = args[:output] if args.key?(:output)
+          @output_end = args[:output_end] if args.key?(:output_end)
+        end
+      end
+      
       # Configuration options for the private GKE cluster in a Cloud Composer
       # environment.
       class PrivateClusterConfig
@@ -1223,6 +1349,25 @@ module Google
         end
       end
       
+      # The Recovery settings of an environment.
+      class RecoveryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for scheduled snapshot creation mechanism.
+        # Corresponds to the JSON property `scheduledSnapshotsConfig`
+        # @return [Google::Apis::ComposerV1beta1::ScheduledSnapshotsConfig]
+        attr_accessor :scheduled_snapshots_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduled_snapshots_config = args[:scheduled_snapshots_config] if args.key?(:scheduled_snapshots_config)
+        end
+      end
+      
       # Restart Airflow web server.
       class RestartWebServerRequest
         include Google::Apis::Core::Hashable
@@ -1274,6 +1419,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
+        end
+      end
+      
+      # The configuration for scheduled snapshot creation mechanism.
+      class ScheduledSnapshotsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether scheduled snapshots creation is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The cron expression representing the time when snapshots creation
+        # mechanism runs. This field is subject to additional validation around
+        # frequency of execution.
+        # Corresponds to the JSON property `snapshotCreationSchedule`
+        # @return [String]
+        attr_accessor :snapshot_creation_schedule
+      
+        # Optional. The Cloud Storage location for storing automatically created
+        # snapshots.
+        # Corresponds to the JSON property `snapshotLocation`
+        # @return [String]
+        attr_accessor :snapshot_location
+      
+        # Optional. Time zone that sets the context to interpret
+        # snapshot_creation_schedule.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @snapshot_creation_schedule = args[:snapshot_creation_schedule] if args.key?(:snapshot_creation_schedule)
+          @snapshot_location = args[:snapshot_location] if args.key?(:snapshot_location)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -1453,6 +1640,37 @@ module Google
         end
       end
       
+      # Configuration for resources used by Airflow triggerers.
+      class TriggererResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of triggerers.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. CPU request and limit for a single Airflow triggerer replica.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+        end
+      end
+      
       # The configuration settings for the Airflow web server App Engine instance.
       # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.
       # *.*.
@@ -1582,6 +1800,11 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::SchedulerResource]
         attr_accessor :scheduler
       
+        # Configuration for resources used by Airflow triggerers.
+        # Corresponds to the JSON property `triggerer`
+        # @return [Google::Apis::ComposerV1beta1::TriggererResource]
+        attr_accessor :triggerer
+      
         # Configuration for resources used by Airflow web server.
         # Corresponds to the JSON property `webServer`
         # @return [Google::Apis::ComposerV1beta1::WebServerResource]
@@ -1599,6 +1822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @scheduler = args[:scheduler] if args.key?(:scheduler)
+          @triggerer = args[:triggerer] if args.key?(:triggerer)
           @web_server = args[:web_server] if args.key?(:web_server)
           @worker = args[:worker] if args.key?(:worker)
         end
