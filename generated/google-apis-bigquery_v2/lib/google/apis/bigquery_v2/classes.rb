@@ -1693,6 +1693,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Optional] Storage billing model to be used for all tables in the dataset. Can
+        # be set to PHYSICAL. Default is LOGICAL.
+        # Corresponds to the JSON property `storageBillingModel`
+        # @return [String]
+        attr_accessor :storage_billing_model
+      
         # [Optional]The tags associated with this dataset. Tag keys are globally unique.
         # Corresponds to the JSON property `tags`
         # @return [Array<Google::Apis::BigqueryV2::Dataset::Tag>]
@@ -1723,6 +1729,7 @@ module Google
           @max_time_travel_hours = args[:max_time_travel_hours] if args.key?(:max_time_travel_hours)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @storage_billing_model = args[:storage_billing_model] if args.key?(:storage_billing_model)
           @tags = args[:tags] if args.key?(:tags)
         end
         
@@ -2690,6 +2697,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
+        # [Optional] Metadata Cache Mode for the table. Set this to enable caching of
+        # metadata from external data source.
+        # Corresponds to the JSON property `metadataCacheMode`
+        # @return [String]
+        attr_accessor :metadata_cache_mode
+      
+        # ObjectMetadata is used to create Object Tables. Object Tables contain a
+        # listing of objects (with their metadata) found at the source_uris. If
+        # ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is
+        # the only supported Object Metadata type.
+        # Corresponds to the JSON property `objectMetadata`
+        # @return [String]
+        attr_accessor :object_metadata
+      
         # Additional properties to set if sourceFormat is set to Parquet.
         # Corresponds to the JSON property `parquetOptions`
         # @return [Google::Apis::BigqueryV2::ParquetOptions]
@@ -2745,6 +2766,8 @@ module Google
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
+          @metadata_cache_mode = args[:metadata_cache_mode] if args.key?(:metadata_cache_mode)
+          @object_metadata = args[:object_metadata] if args.key?(:object_metadata)
           @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
           @reference_file_schema_uri = args[:reference_file_schema_uri] if args.key?(:reference_file_schema_uri)
           @schema = args[:schema] if args.key?(:schema)
