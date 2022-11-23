@@ -486,8 +486,9 @@ module Google
         #   an INVALID_ARGUMENT error.
         # @param [String] page_token
         #   Optional. A page token, received from a previous list spaces call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided must match the call that provided the page token.
+        #   this to retrieve the subsequent page. When paginating, the filter value should
+        #   match the call that provided the page token. Passing a different value may
+        #   lead to unexpected results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -800,8 +801,14 @@ module Google
         
         # Updates a message. For example usage, see [Update a message](https://
         # developers.google.com/chat/api/guides/crudl/messages#update_a_message).
-        # Requires [service account authentication](https://developers.google.com/chat/
-        # api/guides/auth/service-accounts).
+        # Requires [authentication](https://developers.google.com/chat/api/guides/auth/).
+        # Fully supports [service account authentication](https://developers.google.com/
+        # chat/api/guides/auth/service-accounts). Supports [user authentication](https://
+        # developers.google.com/chat/api/guides/auth/users) as part of the [Google
+        # Workspace Developer Preview Program](https://developers.google.com/workspace/
+        # preview), which grants early access to certain features. [User authentication](
+        # https://developers.google.com/chat/api/guides/auth/users) requires the `chat.
+        # messages` authorization scope.
         # @param [String] name
         #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         #   messages/BBBBBBBBBBB.BBBBBBBBBBB`

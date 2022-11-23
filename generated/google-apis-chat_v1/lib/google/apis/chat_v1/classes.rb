@@ -164,7 +164,7 @@ module Google
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # A reference to the data of an attachment.
+        # [Developer Preview](https://developers.google.com/workspace/preview).
         # Corresponds to the JSON property `attachmentDataRef`
         # @return [Google::Apis::ChatV1::AttachmentDataRef]
         attr_accessor :attachment_data_ref
@@ -226,7 +226,7 @@ module Google
         end
       end
       
-      # A reference to the data of an attachment.
+      # [Developer Preview](https://developers.google.com/workspace/preview).
       class AttachmentDataRef
         include Google::Apis::Core::Hashable
       
@@ -2601,7 +2601,7 @@ module Google
         end
       end
       
-      # The response corresponding to ListSpacesRequest.
+      # 
       class ListSpacesResponse
         include Google::Apis::Core::Hashable
       
