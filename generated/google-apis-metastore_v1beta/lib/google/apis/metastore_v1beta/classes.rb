@@ -106,7 +106,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
       
-        # Network configuration for the Dataproc Metastore service.Next available ID: 3
+        # Network configuration for the Dataproc Metastore service.
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
@@ -290,8 +290,7 @@ module Google
         end
       end
       
-      # Contains information of the customer's network configurations.Next available
-      # ID: 4
+      # Contains information of the customer's network configurations.
       class Consumer
         include Google::Apis::Core::Hashable
       
@@ -1179,7 +1178,7 @@ module Google
         end
       end
       
-      # Network configuration for the Dataproc Metastore service.Next available ID: 3
+      # Network configuration for the Dataproc Metastore service.
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -1630,7 +1629,7 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Network configuration for the Dataproc Metastore service.Next available ID: 3
+        # Network configuration for the Dataproc Metastore service.
         # Corresponds to the JSON property `networkConfig`
         # @return [Google::Apis::MetastoreV1beta::NetworkConfig]
         attr_accessor :network_config
@@ -1656,6 +1655,11 @@ module Google
         # Corresponds to the JSON property `stateMessage`
         # @return [String]
         attr_accessor :state_message
+      
+        # Telemetry Configuration for the Dataproc Metastore service.
+        # Corresponds to the JSON property `telemetryConfig`
+        # @return [Google::Apis::MetastoreV1beta::TelemetryConfig]
+        attr_accessor :telemetry_config
       
         # The tier of the service.
         # Corresponds to the JSON property `tier`
@@ -1695,6 +1699,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
           @tier = args[:tier] if args.key?(:tier)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1790,6 +1795,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Telemetry Configuration for the Dataproc Metastore service.
+      class TelemetryConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `logFormat`
+        # @return [String]
+        attr_accessor :log_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_format = args[:log_format] if args.key?(:log_format)
         end
       end
       
