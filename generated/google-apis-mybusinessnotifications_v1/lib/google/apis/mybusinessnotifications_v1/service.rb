@@ -23,7 +23,8 @@ module Google
       # My Business Notifications API
       #
       # The My Business Notification Settings API enables managing notification
-      #  settings for business accounts.
+      #  settings for business accounts. Note - If you have a quota of 0 after enabling
+      #  the API, please request for GBP API access.
       #
       # @example
       #    require 'google/apis/mybusinessnotifications_v1'
