@@ -1222,7 +1222,12 @@ module Google
         
         # Retrieves a domain alias of the customer.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] domain_alias_name
         #   Name of domain alias to be retrieved.
         # @param [String] fields
@@ -1288,7 +1293,12 @@ module Google
         
         # Lists the domain aliases of the customer.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] parent_domain_name
         #   Name of the parent domain for which domain aliases are to be fetched.
         # @param [String] fields
@@ -1352,7 +1362,12 @@ module Google
         
         # Retrieves a domain of the customer.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] domain_name
         #   Name of domain to be retrieved
         # @param [String] fields
@@ -1418,7 +1433,12 @@ module Google
         
         # Lists the domains of the customer.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1539,11 +1559,11 @@ module Google
         # Retrieves all groups of a domain or of a user given a userKey (paginated).
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
-        #   domain account, to fetch all groups for a customer, fill in this field instead
-        #   of `domain`. You can also use the `my_customer` alias to represent your
-        #   account's `customerId`. The `customerId` is also returned as part of the [
-        #   Users](/admin-sdk/directory/v1/reference/users) resource. Either the `customer`
-        #   or the `domain` parameter must be provided.
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] domain
         #   The domain name. Use this field to get groups from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
@@ -1908,7 +1928,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a paginated list of all members in a group.
+        # Retrieves a paginated list of all members in a group. This method times out
+        # after 60 minutes. For more information, see [Troubleshoot error codes](https://
+        # developers.google.com/admin-sdk/directory/v1/guides/troubleshoot-error-codes).
         # @param [String] group_key
         #   Identifies the group in the API request. The value can be the group's email
         #   address, group alias, or the unique group ID.
@@ -2146,7 +2168,9 @@ module Google
         # Retrieves a paginated list of all user-owned mobile devices for an account. To
         # retrieve a list that includes company-owned devices, use the Cloud Identity [
         # Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
-        # instead.
+        # instead. This method times out after 60 minutes. For more information, see [
+        # Troubleshoot error codes](https://developers.google.com/admin-sdk/directory/v1/
+        # guides/troubleshoot-error-codes).
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
@@ -2430,7 +2454,12 @@ module Google
         
         # Retrieves a paginated list of all privileges for a customer.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3208,7 +3237,12 @@ module Google
         
         # Retrieves a role assignment.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] role_assignment_id
         #   Immutable ID of the role assignment.
         # @param [String] fields
@@ -3274,7 +3308,12 @@ module Google
         
         # Retrieves a paginated list of all roleAssignments.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -3349,7 +3388,12 @@ module Google
         
         # Retrieves a role.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] role_id
         #   Immutable ID of the role.
         # @param [String] fields
@@ -3415,7 +3459,12 @@ module Google
         
         # Retrieves a paginated list of all the roles in a domain.
         # @param [String] customer
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token
@@ -3554,7 +3603,12 @@ module Google
         
         # Retrieves a schema.
         # @param [String] customer_id
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] schema_key
         #   Name or immutable ID of the schema.
         # @param [String] fields
@@ -3620,7 +3674,12 @@ module Google
         
         # Retrieves all schemas for a customer.
         # @param [String] customer_id
-        #   Immutable ID of the Google Workspace account.
+        #   The unique ID for the customer's Google Workspace account. In case of a multi-
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3954,11 +4013,11 @@ module Google
         #   fetched. This should only be set when `projection=custom`.
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
-        #   domain account, to fetch all groups for a customer, fill this field instead of
-        #   domain. You can also use the `my_customer` alias to represent your account's `
-        #   customerId`. The `customerId` is also returned as part of the [Users resource](
-        #   /admin-sdk/directory/v1/reference/users). Either the `customer` or the `domain`
-        #   parameter must be provided.
+        #   domain account, to fetch all groups for a customer, use this field instead of `
+        #   domain`. You can also use the `my_customer` alias to represent your account's `
+        #   customerId`. The `customerId` is also returned as part of the [Users](/admin-
+        #   sdk/directory/v1/reference/users) resource. You must provide either the `
+        #   customer` or the `domain` parameter.
         # @param [String] domain
         #   The domain name. Use this field to get groups from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
@@ -4153,9 +4212,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a user. This method supports patch semantics, meaning you only need to
-        # include the fields you wish to update. Fields that are not present in the
-        # request will be preserved, and fields set to `null` will be cleared.
+        # Updates a user. This method supports patch semantics, meaning that you only
+        # need to include the fields you wish to update. Fields that are not present in
+        # the request will be preserved, and fields set to `null` will be cleared. For
+        # repeating fields that contain arrays, individual items in the array can't be
+        # patched piecemeal; they must be supplied in the request body with the desired
+        # values for all items. See the [user accounts guide](https://developers.google.
+        # com/admin-sdk/directory/v1/guides/manage-users#update_user) for more
+        # information.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.

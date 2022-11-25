@@ -4200,8 +4200,8 @@ module Google
         attr_accessor :include_in_global_address_list
         alias_method :include_in_global_address_list?, :include_in_global_address_list
       
-        # If `true`, the user's IP address is [whitelisted](https://support.google.com/a/
-        # answer/60752).
+        # If `true`, the user's IP address is subject to a deprecated IP address [`
+        # allowlist`](https://support.google.com/a/answer/60752) configuration.
         # Corresponds to the JSON property `ipWhitelisted`
         # @return [Boolean]
         attr_accessor :ip_whitelisted

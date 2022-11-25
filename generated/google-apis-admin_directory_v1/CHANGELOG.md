@@ -1,5 +1,9 @@
 # Release history for google-apis-admin_directory_v1
 
+### v0.36.0 (2022-11-25)
+
+* Regenerated from discovery document revision 20221122
+
 ### v0.35.0 (2022-11-13)
 
 * Regenerated from discovery document revision 20221108
