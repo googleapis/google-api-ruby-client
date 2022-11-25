@@ -32,7 +32,9 @@ module Google
       #  under the "Calls from Ads" conversion. If smart bidding and call conversions
       #  are used in the optimization strategy, there could be a change in ad spend.
       #  Learn more about smart bidding. To view and perform actions on a location's
-      #  calls, you need to be a `OWNER`, `CO_OWNER` or `MANAGER` of the location.
+      #  calls, you need to be a `OWNER`, `CO_OWNER` or `MANAGER` of the location. Note
+      #  - If you have a quota of 0 after enabling the API, please request for GBP API
+      #  access.
       #
       # @example
       #    require 'google/apis/mybusinessbusinesscalls_v1'
