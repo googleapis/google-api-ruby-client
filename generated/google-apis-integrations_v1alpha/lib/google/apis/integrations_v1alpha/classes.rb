@@ -6323,8 +6323,9 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # Optional. Matched against all `@link TriggerConfig`s across all integrations.
-        # i.e. TriggerConfig.trigger_id.equals(trigger_id)
+        # Required. Matched against all `@link TriggerConfig`s across all integrations.
+        # i.e. TriggerConfig.trigger_id.equals(trigger_id). The trigger_id is in the
+        # format of `api_trigger/TRIGGER_NAME`.
         # Corresponds to the JSON property `triggerId`
         # @return [String]
         attr_accessor :trigger_id
