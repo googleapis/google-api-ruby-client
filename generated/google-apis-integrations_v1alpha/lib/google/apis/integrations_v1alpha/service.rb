@@ -822,7 +822,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the status of the integration executions.
+        # Lists the results of all the integration executions. The response includes the
+        # same information as the [execution log](https://cloud.google.com/application-
+        # integration/docs/viewing-logs) in the Integration UI.
         # @param [String] parent
         #   Required. The parent resource name of the integration execution.
         # @param [String] filter
@@ -2058,7 +2060,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the status of the integration executions.
+        # Lists the results of all the integration executions. The response includes the
+        # same information as the [execution log](https://cloud.google.com/application-
+        # integration/docs/viewing-logs) in the Integration UI.
         # @param [String] parent
         #   Required. The parent resource name of the integration execution.
         # @param [String] filter
