@@ -866,6 +866,7 @@ module Google
           property :package_name, as: 'packageName'
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
+          property :work_profile_widgets, as: 'workProfileWidgets'
         end
       end
       
@@ -1036,6 +1037,7 @@ module Google
           property :cross_profile_copy_paste, as: 'crossProfileCopyPaste'
           property :cross_profile_data_sharing, as: 'crossProfileDataSharing'
           property :show_work_contacts_in_personal_profile, as: 'showWorkContactsInPersonalProfile'
+          property :work_profile_widgets_default, as: 'workProfileWidgetsDefault'
         end
       end
       

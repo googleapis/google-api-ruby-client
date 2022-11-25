@@ -577,7 +577,14 @@ module Google
         alias_method :disabled?, :disabled
       
         # Configuration to enable an app as an extension app, with the capability of
-        # interacting with Android Device Policy offline.
+        # interacting with Android Device Policy offline. For Android versions 13 and
+        # above, extension apps are exempt from battery restrictions so will not be
+        # placed into the restricted App Standby Bucket (https://developer.android.com/
+        # topic/performance/appstandby#restricted-bucket). Extensions apps are also
+        # protected against users clearing their data or force-closing the application,
+        # although admins can continue to use the clear app data command (https://
+        # developer.android.com/management/reference/rest/v1/enterprises.devices/
+        # issueCommand#CommandType) on extension apps if needed for Android 13 and above.
         # Corresponds to the JSON property `extensionConfig`
         # @return [Google::Apis::AndroidmanagementV1::ExtensionConfig]
         attr_accessor :extension_config
@@ -588,7 +595,7 @@ module Google
         attr_accessor :install_type
       
         # Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use
-        # InstallType KIOSK or kioskCustomLauncherEnabled to to configure a dedicated
+        # InstallType KIOSK or kioskCustomLauncherEnabled to configure a dedicated
         # device.
         # Corresponds to the JSON property `lockTaskAllowed`
         # @return [Boolean]
@@ -633,6 +640,12 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PermissionGrant>]
         attr_accessor :permission_grants
       
+        # Specifies whether the app installed in the work profile is allowed to add
+        # widgets to the home screen.
+        # Corresponds to the JSON property `workProfileWidgets`
+        # @return [String]
+        attr_accessor :work_profile_widgets
+      
         def initialize(**args)
            update!(**args)
         end
@@ -654,6 +667,7 @@ module Google
           @minimum_version_code = args[:minimum_version_code] if args.key?(:minimum_version_code)
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
+          @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
         end
       end
       
@@ -1320,6 +1334,13 @@ module Google
         # @return [String]
         attr_accessor :show_work_contacts_in_personal_profile
       
+        # Specifies the default behaviour for work profile widgets. If the policy does
+        # not specify work_profile_widgets for a specific application, it will behave
+        # according to the value specified here.
+        # Corresponds to the JSON property `workProfileWidgetsDefault`
+        # @return [String]
+        attr_accessor :work_profile_widgets_default
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1329,6 +1350,7 @@ module Google
           @cross_profile_copy_paste = args[:cross_profile_copy_paste] if args.key?(:cross_profile_copy_paste)
           @cross_profile_data_sharing = args[:cross_profile_data_sharing] if args.key?(:cross_profile_data_sharing)
           @show_work_contacts_in_personal_profile = args[:show_work_contacts_in_personal_profile] if args.key?(:show_work_contacts_in_personal_profile)
+          @work_profile_widgets_default = args[:work_profile_widgets_default] if args.key?(:work_profile_widgets_default)
         end
       end
       
@@ -2016,7 +2038,14 @@ module Google
       end
       
       # Configuration to enable an app as an extension app, with the capability of
-      # interacting with Android Device Policy offline.
+      # interacting with Android Device Policy offline. For Android versions 13 and
+      # above, extension apps are exempt from battery restrictions so will not be
+      # placed into the restricted App Standby Bucket (https://developer.android.com/
+      # topic/performance/appstandby#restricted-bucket). Extensions apps are also
+      # protected against users clearing their data or force-closing the application,
+      # although admins can continue to use the clear app data command (https://
+      # developer.android.com/management/reference/rest/v1/enterprises.devices/
+      # issueCommand#CommandType) on extension apps if needed for Android 13 and above.
       class ExtensionConfig
         include Google::Apis::Core::Hashable
       
