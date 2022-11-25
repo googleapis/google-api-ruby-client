@@ -22,7 +22,8 @@ module Google
     # My Business Q&A API
     #
     # The My Business Q&A API allows questions and answers to be posted for specific
-    # listings.
+    # listings. Note - If you have a quota of 0 after enabling the API, please
+    # request for GBP API access.
     #
     # @see https://developers.google.com/my-business/
     module MybusinessqandaV1
