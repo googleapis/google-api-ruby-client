@@ -896,6 +896,892 @@ module Google
         end
       end
       
+      # DataProfileResult defines the output of DataProfileScan. Each field of the
+      # table will have field type specific profile result.
+      class GoogleCloudDataplexV1DataProfileResult
+        include Google::Apis::Core::Hashable
+      
+        # Profile information describing the structure and layout of the data and
+        # contains the profile info.
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile]
+        attr_accessor :profile
+      
+        # The count of all rows in the sampled data. Return 0, if zero rows.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # The data scanned during processing (e.g. in incremental DataScan)
+        # Corresponds to the JSON property `scannedData`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData]
+        attr_accessor :scanned_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile = args[:profile] if args.key?(:profile)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @scanned_data = args[:scanned_data] if args.key?(:scanned_data)
+        end
+      end
+      
+      # Profile information describing the structure and layout of the data and
+      # contains the profile info.
+      class GoogleCloudDataplexV1DataProfileResultProfile
+        include Google::Apis::Core::Hashable
+      
+        # The sequence of fields describing data in table entities.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # Represents a column field within a table schema.
+      class GoogleCloudDataplexV1DataProfileResultProfileField
+        include Google::Apis::Core::Hashable
+      
+        # The mode of the field. Its value will be: REQUIRED, if it is a required field.
+        # NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The name of the field.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ProfileInfo defines the profile information for each schema field type.
+        # Corresponds to the JSON property `profile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo]
+        attr_accessor :profile
+      
+        # The field data type. Possible values include: STRING BYTE INT64 INT32 INT16
+        # DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @name = args[:name] if args.key?(:name)
+          @profile = args[:profile] if args.key?(:profile)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # ProfileInfo defines the profile information for each schema field type.
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
+        include Google::Apis::Core::Hashable
+      
+        # The ratio of rows that are distinct against the rows in the sampled data.
+        # Corresponds to the JSON property `distinctRatio`
+        # @return [Float]
+        attr_accessor :distinct_ratio
+      
+        # DoubleFieldInfo defines output for any double type field.
+        # Corresponds to the JSON property `doubleProfile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo]
+        attr_accessor :double_profile
+      
+        # IntegerFieldInfo defines output for any integer type field.
+        # Corresponds to the JSON property `integerProfile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo]
+        attr_accessor :integer_profile
+      
+        # The ratio of null rows against the rows in the sampled data.
+        # Corresponds to the JSON property `nullRatio`
+        # @return [Float]
+        attr_accessor :null_ratio
+      
+        # StringFieldInfo defines output info for any string type field.
+        # Corresponds to the JSON property `stringProfile`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo]
+        attr_accessor :string_profile
+      
+        # The array of top N values of the field in the sampled data. Currently N is set
+        # as 10 or equal to distinct values in the field, whichever is smaller. This
+        # will be optional for complex non-groupable data-types such as JSON, ARRAY,
+        # JSON, STRUCT.
+        # Corresponds to the JSON property `topNValues`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>]
+        attr_accessor :top_n_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distinct_ratio = args[:distinct_ratio] if args.key?(:distinct_ratio)
+          @double_profile = args[:double_profile] if args.key?(:double_profile)
+          @integer_profile = args[:integer_profile] if args.key?(:integer_profile)
+          @null_ratio = args[:null_ratio] if args.key?(:null_ratio)
+          @string_profile = args[:string_profile] if args.key?(:string_profile)
+          @top_n_values = args[:top_n_values] if args.key?(:top_n_values)
+        end
+      end
+      
+      # DoubleFieldInfo defines output for any double type field.
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
+        include Google::Apis::Core::Hashable
+      
+        # The average of non-null values of double field in the sampled data. Return NaN,
+        # if the field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `average`
+        # @return [Float]
+        attr_accessor :average
+      
+        # The maximum value of a double field in the sampled data. Return NaN, if the
+        # field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # The minimum value of a double field in the sampled data. Return NaN, if the
+        # field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        # A quartile divide the numebr of data points into four parts, or quarters, of
+        # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
+        # splits off the lowest 25% of data from the highest 75%. It is also known as
+        # the lower or 25th empirical quartile, as 25% of the data is below this point.
+        # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
+        # below this point. The third quartile (Q3) splits off the highest 25% of data
+        # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
+        # 75% of the data lies below this point. So, here the quartiles is provided as
+        # an ordered list of quartile values, occurring in order Q1, median, Q3.
+        # Corresponds to the JSON property `quartiles`
+        # @return [Array<Float>]
+        attr_accessor :quartiles
+      
+        # The standard deviation of non-null of double field in the sampled data. Return
+        # NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `standardDeviation`
+        # @return [Float]
+        attr_accessor :standard_deviation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average = args[:average] if args.key?(:average)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @quartiles = args[:quartiles] if args.key?(:quartiles)
+          @standard_deviation = args[:standard_deviation] if args.key?(:standard_deviation)
+        end
+      end
+      
+      # IntegerFieldInfo defines output for any integer type field.
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
+        include Google::Apis::Core::Hashable
+      
+        # The average of non-null values of integer field in the sampled data. Return
+        # NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `average`
+        # @return [Float]
+        attr_accessor :average
+      
+        # The maximum value of an integer field in the sampled data. Return NaN, if the
+        # field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # The minimum value of an integer field in the sampled data. Return NaN, if the
+        # field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        # A quartile divide the number of data points into four parts, or quarters, of
+        # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
+        # splits off the lowest 25% of data from the highest 75%. It is also known as
+        # the lower or 25th empirical quartile, as 25% of the data is below this point.
+        # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
+        # below this point. The third quartile (Q3) splits off the highest 25% of data
+        # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
+        # 75% of the data lies below this point. So, here the quartiles is provided as
+        # an ordered list of quartile values, occurring in order Q1, median, Q3.
+        # Corresponds to the JSON property `quartiles`
+        # @return [Array<Fixnum>]
+        attr_accessor :quartiles
+      
+        # The standard deviation of non-null of integer field in the sampled data.
+        # Return NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Corresponds to the JSON property `standardDeviation`
+        # @return [Float]
+        attr_accessor :standard_deviation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average = args[:average] if args.key?(:average)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+          @quartiles = args[:quartiles] if args.key?(:quartiles)
+          @standard_deviation = args[:standard_deviation] if args.key?(:standard_deviation)
+        end
+      end
+      
+      # StringFieldInfo defines output info for any string type field.
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
+        include Google::Apis::Core::Hashable
+      
+        # The average length of a string field in the sampled data. Optional if zero non-
+        # null rows.
+        # Corresponds to the JSON property `averageLength`
+        # @return [Float]
+        attr_accessor :average_length
+      
+        # The maximum length of a string field in the sampled data. Optional if zero non-
+        # null rows.
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
+        # The minimum length of the string field in the sampled data. Optional if zero
+        # non-null rows.
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_length = args[:average_length] if args.key?(:average_length)
+          @max_length = args[:max_length] if args.key?(:max_length)
+          @min_length = args[:min_length] if args.key?(:min_length)
+        end
+      end
+      
+      # The TopNValue defines the structure of output of top N values of a field.
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
+        include Google::Apis::Core::Hashable
+      
+        # The frequency count of the corresponding value in the field.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The value is the string value of the actual value from the field.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # DataProfileScan related setting.
+      class GoogleCloudDataplexV1DataProfileSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # DataQualityDimensionResult provides a more detailed, per-dimension level view
+      # of the results.
+      class GoogleCloudDataplexV1DataQualityDimensionResult
+        include Google::Apis::Core::Hashable
+      
+        # Whether the dimension passed or failed.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @passed = args[:passed] if args.key?(:passed)
+        end
+      end
+      
+      # The output of a DataQualityScan.
+      class GoogleCloudDataplexV1DataQualityResult
+        include Google::Apis::Core::Hashable
+      
+        # A list of results at the dimension-level.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
+        attr_accessor :dimensions
+      
+        # Overall data quality result -- true if all rules passed.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
+        # The count of rows processed.
+        # Corresponds to the JSON property `rowCount`
+        # @return [Fixnum]
+        attr_accessor :row_count
+      
+        # A list of all the rules in a job, and their results.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult>]
+        attr_accessor :rules
+      
+        # The data scanned during processing (e.g. in incremental DataScan)
+        # Corresponds to the JSON property `scannedData`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData]
+        attr_accessor :scanned_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @passed = args[:passed] if args.key?(:passed)
+          @row_count = args[:row_count] if args.key?(:row_count)
+          @rules = args[:rules] if args.key?(:rules)
+          @scanned_data = args[:scanned_data] if args.key?(:scanned_data)
+        end
+      end
+      
+      # A rule captures data quality intent about a data source.
+      class GoogleCloudDataplexV1DataQualityRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unnested column which this rule is evaluated against.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. The dimension a rule belongs to. Results are also aggregated at the
+        # dimension-level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
+        # CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        # Corresponds to the JSON property `dimension`
+        # @return [String]
+        attr_accessor :dimension
+      
+        # Optional. Rows with null values will automatically fail a rule, unless
+        # ignore_null is true. In that case, such null rows are trivially considered
+        # passing. Only applicable to ColumnMap rules.
+        # Corresponds to the JSON property `ignoreNull`
+        # @return [Boolean]
+        attr_accessor :ignore_null
+        alias_method :ignore_null?, :ignore_null
+      
+        # Evaluates whether each column value is null.
+        # Corresponds to the JSON property `nonNullExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleNonNullExpectation]
+        attr_accessor :non_null_expectation
+      
+        # Evaluates whether each column value lies between a specified range.
+        # Corresponds to the JSON property `rangeExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRangeExpectation]
+        attr_accessor :range_expectation
+      
+        # Evaluates whether each column value matches a specified regex.
+        # Corresponds to the JSON property `regexExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRegexExpectation]
+        attr_accessor :regex_expectation
+      
+        # Evaluates whether each row passes the specified condition. The SQL expression
+        # needs to use BigQuery standard SQL syntax and should produce a boolean per row
+        # as the result. Example: col1 >= 0 AND col2 < 10
+        # Corresponds to the JSON property `rowConditionExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]
+        attr_accessor :row_condition_expectation
+      
+        # Evaluates whether each column value is contained by a specified set.
+        # Corresponds to the JSON property `setExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation]
+        attr_accessor :set_expectation
+      
+        # Evaluates whether the column aggregate statistic lies between a specified
+        # range.
+        # Corresponds to the JSON property `statisticRangeExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]
+        attr_accessor :statistic_range_expectation
+      
+        # Evaluates whether the provided expression is true. The SQL expression needs to
+        # use BigQuery standard SQL syntax and should produce a scalar boolean result.
+        # Example: MIN(col1) >= 0
+        # Corresponds to the JSON property `tableConditionExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation]
+        attr_accessor :table_condition_expectation
+      
+        # Optional. The minimum ratio of passing_rows / total_rows required to pass this
+        # rule. Default = 1.0
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        # Evaluates whether the column has duplicates.
+        # Corresponds to the JSON property `uniquenessExpectation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation]
+        attr_accessor :uniqueness_expectation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @dimension = args[:dimension] if args.key?(:dimension)
+          @ignore_null = args[:ignore_null] if args.key?(:ignore_null)
+          @non_null_expectation = args[:non_null_expectation] if args.key?(:non_null_expectation)
+          @range_expectation = args[:range_expectation] if args.key?(:range_expectation)
+          @regex_expectation = args[:regex_expectation] if args.key?(:regex_expectation)
+          @row_condition_expectation = args[:row_condition_expectation] if args.key?(:row_condition_expectation)
+          @set_expectation = args[:set_expectation] if args.key?(:set_expectation)
+          @statistic_range_expectation = args[:statistic_range_expectation] if args.key?(:statistic_range_expectation)
+          @table_condition_expectation = args[:table_condition_expectation] if args.key?(:table_condition_expectation)
+          @threshold = args[:threshold] if args.key?(:threshold)
+          @uniqueness_expectation = args[:uniqueness_expectation] if args.key?(:uniqueness_expectation)
+        end
+      end
+      
+      # Evaluates whether each column value is null.
+      class GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Evaluates whether each column value lies between a specified range.
+      class GoogleCloudDataplexV1DataQualityRuleRangeExpectation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum column value allowed for a row to pass this validation.
+        # At least one of min_value and max_value need to be provided.
+        # Corresponds to the JSON property `maxValue`
+        # @return [String]
+        attr_accessor :max_value
+      
+        # Optional. The minimum column value allowed for a row to pass this validation.
+        # At least one of min_value and max_value need to be provided.
+        # Corresponds to the JSON property `minValue`
+        # @return [String]
+        attr_accessor :min_value
+      
+        # Optional. Whether each value needs to be strictly lesser than ('<') the
+        # maximum, or if equality is allowed. Only relevant if a max_value has been
+        # defined. Default = false.
+        # Corresponds to the JSON property `strictMaxEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_max_enabled
+        alias_method :strict_max_enabled?, :strict_max_enabled
+      
+        # Optional. Whether each value needs to be strictly greater than ('>') the
+        # minimum, or if equality is allowed. Only relevant if a min_value has been
+        # defined. Default = false.
+        # Corresponds to the JSON property `strictMinEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_min_enabled
+        alias_method :strict_min_enabled?, :strict_min_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @strict_max_enabled = args[:strict_max_enabled] if args.key?(:strict_max_enabled)
+          @strict_min_enabled = args[:strict_min_enabled] if args.key?(:strict_min_enabled)
+        end
+      end
+      
+      # Evaluates whether each column value matches a specified regex.
+      class GoogleCloudDataplexV1DataQualityRuleRegexExpectation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `regex`
+        # @return [String]
+        attr_accessor :regex
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regex = args[:regex] if args.key?(:regex)
+        end
+      end
+      
+      # DataQualityRuleResult provides a more detailed, per-rule level view of the
+      # results.
+      class GoogleCloudDataplexV1DataQualityRuleResult
+        include Google::Apis::Core::Hashable
+      
+        # The number of rows a rule was evaluated against. This field is only valid for
+        # ColumnMap type rules. Evaluated count can be configured to either (1) include
+        # all rows (default) - with null rows automatically failing rule evaluation OR (
+        # 2) exclude null rows from the evaluated_count, by setting ignore_nulls = true
+        # Corresponds to the JSON property `evaluatedCount`
+        # @return [Fixnum]
+        attr_accessor :evaluated_count
+      
+        # The query to find rows that did not pass this rule. Only applies to ColumnMap
+        # and RowCondition rules.
+        # Corresponds to the JSON property `failingRowsQuery`
+        # @return [String]
+        attr_accessor :failing_rows_query
+      
+        # The number of rows with null values in the specified column.
+        # Corresponds to the JSON property `nullCount`
+        # @return [Fixnum]
+        attr_accessor :null_count
+      
+        # The ratio of passed_count / evaluated_count. This field is only valid for
+        # ColumnMap type rules.
+        # Corresponds to the JSON property `passRatio`
+        # @return [Float]
+        attr_accessor :pass_ratio
+      
+        # Whether the rule passed or failed.
+        # Corresponds to the JSON property `passed`
+        # @return [Boolean]
+        attr_accessor :passed
+        alias_method :passed?, :passed
+      
+        # The number of rows which passed a rule evaluation. This field is only valid
+        # for ColumnMap type rules.
+        # Corresponds to the JSON property `passedCount`
+        # @return [Fixnum]
+        attr_accessor :passed_count
+      
+        # A rule captures data quality intent about a data source.
+        # Corresponds to the JSON property `rule`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule]
+        attr_accessor :rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluated_count = args[:evaluated_count] if args.key?(:evaluated_count)
+          @failing_rows_query = args[:failing_rows_query] if args.key?(:failing_rows_query)
+          @null_count = args[:null_count] if args.key?(:null_count)
+          @pass_ratio = args[:pass_ratio] if args.key?(:pass_ratio)
+          @passed = args[:passed] if args.key?(:passed)
+          @passed_count = args[:passed_count] if args.key?(:passed_count)
+          @rule = args[:rule] if args.key?(:rule)
+        end
+      end
+      
+      # Evaluates whether each row passes the specified condition. The SQL expression
+      # needs to use BigQuery standard SQL syntax and should produce a boolean per row
+      # as the result. Example: col1 >= 0 AND col2 < 10
+      class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sqlExpression`
+        # @return [String]
+        attr_accessor :sql_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_expression = args[:sql_expression] if args.key?(:sql_expression)
+        end
+      end
+      
+      # Evaluates whether each column value is contained by a specified set.
+      class GoogleCloudDataplexV1DataQualityRuleSetExpectation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Evaluates whether the column aggregate statistic lies between a specified
+      # range.
+      class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
+        include Google::Apis::Core::Hashable
+      
+        # The maximum column statistic value allowed for a row to pass this validation.
+        # At least one of min_value and max_value need to be provided.
+        # Corresponds to the JSON property `maxValue`
+        # @return [String]
+        attr_accessor :max_value
+      
+        # The minimum column statistic value allowed for a row to pass this validation.
+        # At least one of min_value and max_value need to be provided.
+        # Corresponds to the JSON property `minValue`
+        # @return [String]
+        attr_accessor :min_value
+      
+        # 
+        # Corresponds to the JSON property `statistic`
+        # @return [String]
+        attr_accessor :statistic
+      
+        # Whether column statistic needs to be strictly lesser than ('<') the maximum,
+        # or if equality is allowed. Only relevant if a max_value has been defined.
+        # Default = false.
+        # Corresponds to the JSON property `strictMaxEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_max_enabled
+        alias_method :strict_max_enabled?, :strict_max_enabled
+      
+        # Whether column statistic needs to be strictly greater than ('>') the minimum,
+        # or if equality is allowed. Only relevant if a min_value has been defined.
+        # Default = false.
+        # Corresponds to the JSON property `strictMinEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_min_enabled
+        alias_method :strict_min_enabled?, :strict_min_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @statistic = args[:statistic] if args.key?(:statistic)
+          @strict_max_enabled = args[:strict_max_enabled] if args.key?(:strict_max_enabled)
+          @strict_min_enabled = args[:strict_min_enabled] if args.key?(:strict_min_enabled)
+        end
+      end
+      
+      # Evaluates whether the provided expression is true. The SQL expression needs to
+      # use BigQuery standard SQL syntax and should produce a scalar boolean result.
+      # Example: MIN(col1) >= 0
+      class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sqlExpression`
+        # @return [String]
+        attr_accessor :sql_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_expression = args[:sql_expression] if args.key?(:sql_expression)
+        end
+      end
+      
+      # Evaluates whether the column has duplicates.
+      class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # DataQualityScan related setting.
+      class GoogleCloudDataplexV1DataQualitySpec
+        include Google::Apis::Core::Hashable
+      
+        # The list of rules to evaluate against a data source. At least one rule is
+        # required.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rules = args[:rules] if args.key?(:rules)
+        end
+      end
+      
+      # Represents a user-visible job which provides the insights for the related data
+      # source. For examples: - Data Quality: generates queries based on the rules and
+      # run against the data to get data quality check results. - Data Profile:
+      # analyzes the data in table(s) and generates insights about the structure,
+      # content and relationships (such as null percent, cardinality, min/max/mean,
+      # etc).
+      class GoogleCloudDataplexV1DataScan
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the scan was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data source for DataScan.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource]
+        attr_accessor :data
+      
+        # DataProfileResult defines the output of DataProfileScan. Each field of the
+        # table will have field type specific profile result.
+        # Corresponds to the JSON property `dataProfileResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult]
+        attr_accessor :data_profile_result
+      
+        # DataProfileScan related setting.
+        # Corresponds to the JSON property `dataProfileSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec]
+        attr_accessor :data_profile_spec
+      
+        # The output of a DataQualityScan.
+        # Corresponds to the JSON property `dataQualityResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult]
+        attr_accessor :data_quality_result
+      
+        # DataQualityScan related setting.
+        # Corresponds to the JSON property `dataQualitySpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec]
+        attr_accessor :data_quality_spec
+      
+        # Optional. Description of the scan. * Must be between 1-1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User friendly display name. * Must be between 1-256 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # DataScan execution settings.
+        # Corresponds to the JSON property `executionSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec]
+        attr_accessor :execution_spec
+      
+        # Optional. User-defined labels for the scan.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The relative resource name of the scan, of the form: projects/`
+        # project`/locations/`location_id`/dataScans/`datascan_id`. where `project`
+        # refers to a project_id or project_number and location_id refers to a GCP
+        # region.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Current state of the DataScan.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of DataScan.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. System generated globally unique ID for the scan. This ID will be
+        # different if the scan is deleted and re-created with the same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the scan was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data = args[:data] if args.key?(:data)
+          @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
+          @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
+          @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
+          @data_quality_spec = args[:data_quality_spec] if args.key?(:data_quality_spec)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @execution_spec = args[:execution_spec] if args.key?(:execution_spec)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # These messages contain information about the execution of a datascan. The
       # monitored resource is 'DataScan'
       class GoogleCloudDataplexV1DataScanEvent
@@ -1032,6 +1918,136 @@ module Google
           @dimension_passed = args[:dimension_passed] if args.key?(:dimension_passed)
           @passed = args[:passed] if args.key?(:passed)
           @row_count = args[:row_count] if args.key?(:row_count)
+        end
+      end
+      
+      # DataScan execution settings.
+      class GoogleCloudDataplexV1DataScanExecutionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The unnested field (Date or Timestamp) that contains values that
+        # monotonically increase over time.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # DataScan scheduling and trigger settings.
+        # Corresponds to the JSON property `trigger`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Trigger]
+        attr_accessor :trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @trigger = args[:trigger] if args.key?(:trigger)
+        end
+      end
+      
+      # A DataScanJob represents an instance of a data scan.
+      class GoogleCloudDataplexV1DataScanJob
+        include Google::Apis::Core::Hashable
+      
+        # DataProfileResult defines the output of DataProfileScan. Each field of the
+        # table will have field type specific profile result.
+        # Corresponds to the JSON property `dataProfileResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult]
+        attr_accessor :data_profile_result
+      
+        # DataProfileScan related setting.
+        # Corresponds to the JSON property `dataProfileSpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec]
+        attr_accessor :data_profile_spec
+      
+        # The output of a DataQualityScan.
+        # Corresponds to the JSON property `dataQualityResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult]
+        attr_accessor :data_quality_result
+      
+        # DataQualityScan related setting.
+        # Corresponds to the JSON property `dataQualitySpec`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec]
+        attr_accessor :data_quality_spec
+      
+        # Output only. The time when the DataScanJob ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Additional information about the current state.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The relative resource name of the DataScanJob, of the form:
+        # projects/`project`/locations/`location_id`/dataScans/`datascan_id`/jobs/`
+        # job_id`. where `project` refers to a project_id or project_number and
+        # location_id refers to a GCP region.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the DataScanJob was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. Execution state for the DataScanJob.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of the parent DataScan.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. System generated globally unique ID for the DataScanJob.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_profile_result = args[:data_profile_result] if args.key?(:data_profile_result)
+          @data_profile_spec = args[:data_profile_spec] if args.key?(:data_profile_spec)
+          @data_quality_result = args[:data_quality_result] if args.key?(:data_quality_result)
+          @data_quality_spec = args[:data_quality_spec] if args.key?(:data_quality_spec)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # The data source for DataScan.
+      class GoogleCloudDataplexV1DataSource
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The dataplex entity that contains the data for DataScan, of the
+        # form: projects/`project_number`/locations/`location_id`/lakes/`lake_id`/zones/`
+        # zone_id`/entities/`entity_id`.
+        # Corresponds to the JSON property `entity`
+        # @return [String]
+        attr_accessor :entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
         end
       end
       
@@ -2025,6 +3041,64 @@ module Google
         end
       end
       
+      # List DataScanJobs response.
+      class GoogleCloudDataplexV1ListDataScanJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataScanJobs (metadata only) under a given dataScan.
+        # Corresponds to the JSON property `dataScanJobs`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob>]
+        attr_accessor :data_scan_jobs
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_scan_jobs = args[:data_scan_jobs] if args.key?(:data_scan_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List dataScans response.
+      class GoogleCloudDataplexV1ListDataScansResponse
+        include Google::Apis::Core::Hashable
+      
+        # DataScans (metadata only) under the given parent location.
+        # Corresponds to the JSON property `dataScans`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan>]
+        attr_accessor :data_scans
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_scans = args[:data_scans] if args.key?(:data_scans)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # List metadata entities response.
       class GoogleCloudDataplexV1ListEntitiesResponse
         include Google::Apis::Core::Hashable
@@ -2344,6 +3418,89 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Run DataScan Request
+      class GoogleCloudDataplexV1RunDataScanRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Run DataScan Response.
+      class GoogleCloudDataplexV1RunDataScanResponse
+        include Google::Apis::Core::Hashable
+      
+        # A DataScanJob represents an instance of a data scan.
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob]
+        attr_accessor :job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job = args[:job] if args.key?(:job)
+        end
+      end
+      
+      # The data scanned during processing (e.g. in incremental DataScan)
+      class GoogleCloudDataplexV1ScannedData
+        include Google::Apis::Core::Hashable
+      
+        # A data range denoted by a pair of start/end values of a field.
+        # Corresponds to the JSON property `incrementalField`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedDataIncrementalField]
+        attr_accessor :incremental_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @incremental_field = args[:incremental_field] if args.key?(:incremental_field)
+        end
+      end
+      
+      # A data range denoted by a pair of start/end values of a field.
+      class GoogleCloudDataplexV1ScannedDataIncrementalField
+        include Google::Apis::Core::Hashable
+      
+        # Value that marks the end of the range
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # The field that contains values which monotonically increases over time (e.g.
+        # timestamp).
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Value that marks the start of the range
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @field = args[:field] if args.key?(:field)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -3208,6 +4365,68 @@ module Google
           @schedule = args[:schedule] if args.key?(:schedule)
           @start_time = args[:start_time] if args.key?(:start_time)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # DataScan scheduling and trigger settings.
+      class GoogleCloudDataplexV1Trigger
+        include Google::Apis::Core::Hashable
+      
+        # The scan runs one-time via RunDataScan API.
+        # Corresponds to the JSON property `onDemand`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand]
+        attr_accessor :on_demand
+      
+        # The scan is scheduled to run periodically.
+        # Corresponds to the JSON property `schedule`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerSchedule]
+        attr_accessor :schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @on_demand = args[:on_demand] if args.key?(:on_demand)
+          @schedule = args[:schedule] if args.key?(:schedule)
+        end
+      end
+      
+      # The scan runs one-time via RunDataScan API.
+      class GoogleCloudDataplexV1TriggerOnDemand
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The scan is scheduled to run periodically.
+      class GoogleCloudDataplexV1TriggerSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running scans
+        # periodically. To explicitly set a timezone to the cron tab, apply a prefix in
+        # the cron tab: "CRON_TZ=$`IANA_TIME_ZONE`" or "TZ=$`IANA_TIME_ZONE`". The $`
+        # IANA_TIME_ZONE` may only be a valid string from IANA time zone database. For
+        # example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * *
+        # *". This field is required for Schedule scans.
+        # Corresponds to the JSON property `cron`
+        # @return [String]
+        attr_accessor :cron
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron = args[:cron] if args.key?(:cron)
         end
       end
       
