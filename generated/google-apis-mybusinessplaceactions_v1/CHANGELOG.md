@@ -1,5 +1,9 @@
 # Release history for google-apis-mybusinessplaceactions_v1
 
+### v0.15.0 (2022-11-29)
+
+* Regenerated from discovery document revision 20221124
+
 ### v0.14.0 (2022-11-06)
 
 * Regenerated from discovery document revision 20220928
