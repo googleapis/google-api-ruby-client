@@ -166,6 +166,144 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataProfileResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityDimensionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRangeExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRegexExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleSetExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +317,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1DataScanEventDataQualityResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanExecutionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1ListDataScanJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ListDataScansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ListEntitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +545,30 @@ module Google
       end
       
       class GoogleCloudDataplexV1Partition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RunDataScanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RunDataScanResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ScannedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1ScannedDataIncrementalField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -491,6 +683,24 @@ module Google
       end
       
       class GoogleCloudDataplexV1TaskTriggerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1Trigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1TriggerOnDemand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1TriggerSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -856,6 +1066,254 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataProfileResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile, as: 'profile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile::Representation
+      
+          property :row_count, :numeric_string => true, as: 'rowCount'
+          property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileField::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :name, as: 'name'
+          property :profile, as: 'profile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distinct_ratio, as: 'distinctRatio'
+          property :double_profile, as: 'doubleProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo::Representation
+      
+          property :integer_profile, as: 'integerProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo::Representation
+      
+          property :null_ratio, as: 'nullRatio'
+          property :string_profile, as: 'stringProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo::Representation
+      
+          collection :top_n_values, as: 'topNValues', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average, as: 'average'
+          property :max, as: 'max'
+          property :min, as: 'min'
+          collection :quartiles, as: 'quartiles'
+          property :standard_deviation, as: 'standardDeviation'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average, as: 'average'
+          property :max, :numeric_string => true, as: 'max'
+          property :min, :numeric_string => true, as: 'min'
+          collection :quartiles, as: 'quartiles'
+          property :standard_deviation, as: 'standardDeviation'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_length, as: 'averageLength'
+          property :max_length, :numeric_string => true, as: 'maxLength'
+          property :min_length, :numeric_string => true, as: 'minLength'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataProfileSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityDimensionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :passed, as: 'passed'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult::Representation
+      
+          property :passed, as: 'passed'
+          property :row_count, :numeric_string => true, as: 'rowCount'
+          collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleResult::Representation
+      
+          property :scanned_data, as: 'scannedData', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :dimension, as: 'dimension'
+          property :ignore_null, as: 'ignoreNull'
+          property :non_null_expectation, as: 'nonNullExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleNonNullExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleNonNullExpectation::Representation
+      
+          property :range_expectation, as: 'rangeExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRangeExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRangeExpectation::Representation
+      
+          property :regex_expectation, as: 'regexExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRegexExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRegexExpectation::Representation
+      
+          property :row_condition_expectation, as: 'rowConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation::Representation
+      
+          property :set_expectation, as: 'setExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleSetExpectation::Representation
+      
+          property :statistic_range_expectation, as: 'statisticRangeExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation::Representation
+      
+          property :table_condition_expectation, as: 'tableConditionExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation::Representation
+      
+          property :threshold, as: 'threshold'
+          property :uniqueness_expectation, as: 'uniquenessExpectation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRangeExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
+          property :strict_max_enabled, as: 'strictMaxEnabled'
+          property :strict_min_enabled, as: 'strictMinEnabled'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRegexExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :regex, as: 'regex'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluated_count, :numeric_string => true, as: 'evaluatedCount'
+          property :failing_rows_query, as: 'failingRowsQuery'
+          property :null_count, :numeric_string => true, as: 'nullCount'
+          property :pass_ratio, as: 'passRatio'
+          property :passed, as: 'passed'
+          property :passed_count, :numeric_string => true, as: 'passedCount'
+          property :rule, as: 'rule', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_expression, as: 'sqlExpression'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleSetExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
+          property :statistic, as: 'statistic'
+          property :strict_max_enabled, as: 'strictMaxEnabled'
+          property :strict_min_enabled, as: 'strictMinEnabled'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_expression, as: 'sqlExpression'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataQualitySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rules, as: 'rules', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data, as: 'data', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataSource::Representation
+      
+          property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
+      
+          property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
+      
+          property :data_quality_result, as: 'dataQualityResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult::Representation
+      
+          property :data_quality_spec, as: 'dataQualitySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :execution_spec, as: 'executionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataScanEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -889,6 +1347,43 @@ module Google
           hash :dimension_passed, as: 'dimensionPassed'
           property :passed, as: 'passed'
           property :row_count, :numeric_string => true, as: 'rowCount'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanExecutionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :trigger, as: 'trigger', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Trigger, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Trigger::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_profile_result, as: 'dataProfileResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResult::Representation
+      
+          property :data_profile_spec, as: 'dataProfileSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileSpec::Representation
+      
+          property :data_quality_result, as: 'dataQualityResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityResult::Representation
+      
+          property :data_quality_spec, as: 'dataQualitySpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec::Representation
+      
+          property :end_time, as: 'endTime'
+          property :message, as: 'message'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity'
         end
       end
       
@@ -1156,6 +1651,25 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1ListDataScanJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_scan_jobs, as: 'dataScanJobs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDataplexV1ListDataScansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_scans, as: 'dataScans', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleCloudDataplexV1ListEntitiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1250,6 +1764,37 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDataplexV1RunDataScanRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1RunDataScanResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1ScannedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :incremental_field, as: 'incrementalField', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedDataIncrementalField, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1ScannedDataIncrementalField::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1ScannedDataIncrementalField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :field, as: 'field'
+          property :start, as: 'start'
         end
       end
       
@@ -1469,6 +2014,29 @@ module Google
           property :schedule, as: 'schedule'
           property :start_time, as: 'startTime'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDataplexV1Trigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :on_demand, as: 'onDemand', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand::Representation
+      
+          property :schedule, as: 'schedule', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerSchedule, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerSchedule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1TriggerOnDemand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1TriggerSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron, as: 'cron'
         end
       end
       

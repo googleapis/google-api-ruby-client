@@ -243,6 +243,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a dataScan resource.
+        # @param [String] parent
+        #   Required. The resource name of the parent location: projects/`project`/
+        #   locations/`location_id` where `project` refers to a project_id or
+        #   project_number and location_id refers to a GCP region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
+        # @param [String] data_scan_id
+        #   Required. DataScan identifier. * Must contain only lowercase letters, numbers
+        #   and hyphens. * Must start with a letter. * Must end with a number or a letter.
+        #   * Must be between 1-63 characters. * Must be unique within the customer
+        #   project / location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_data_scan(parent, google_cloud_dataplex_v1_data_scan_object = nil, data_scan_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dataScans', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
+          command.request_object = google_cloud_dataplex_v1_data_scan_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['dataScanId'] = data_scan_id unless data_scan_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete the dataScan resource.
+        # @param [String] name
+        #   Required. The resource name of the dataScan: projects/`project`/locations/`
+        #   location_id`/dataScans/`data_scan_id` where `project` refers to a project_id
+        #   or project_number and location_id refers to a GCP region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_data_scan(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get dataScan resource.
+        # @param [String] name
+        #   Required. The resource name of the dataScan: projects/`project`/locations/`
+        #   location_id`/dataScans/`data_scan_id` where `project` refers to a project_id
+        #   or project_number and location_id refers to a GCP region.
+        # @param [String] view
+        #   Optional. Used to select the subset of DataScan information to return.
+        #   Defaults to BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_scan(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -283,6 +392,129 @@ module Google
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists dataScans.
+        # @param [String] parent
+        #   Required. projects/`project`/locations/`location_id` where `project` refers to
+        #   a project_id or project_number and location_id refers to a GCP region.
+        # @param [String] filter
+        #   Optional. Filter request.
+        # @param [String] order_by
+        #   Optional. Order by fields (name or create_time) for the result. If not
+        #   specified, the ordering is undefined.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of dataScans to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 scans will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListDataScans call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListDataScans must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScansResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScansResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_scans(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dataScans', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScansResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScansResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the dataScan resource.
+        # @param [String] name
+        #   Output only. The relative resource name of the scan, of the form: projects/`
+        #   project`/locations/`location_id`/dataScans/`datascan_id`. where `project`
+        #   refers to a project_id or project_number and location_id refers to a GCP
+        #   region.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_data_scan(name, google_cloud_dataplex_v1_data_scan_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan::Representation
+          command.request_object = google_cloud_dataplex_v1_data_scan_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run an on demand execution of a DataScan.
+        # @param [String] name
+        #   Required. The resource name of the DataScan: projects/`project`/locations/`
+        #   location_id`/dataScans/`data_scan_id`. where `project` refers to a project_id
+        #   or project_number and location_id refers to a GCP region. Only on-demand
+        #   DataScans are allowed.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanRequest] google_cloud_dataplex_v1_run_data_scan_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_project_location_data_scan(name, google_cloud_dataplex_v1_run_data_scan_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:run', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanRequest::Representation
+          command.request_object = google_cloud_dataplex_v1_run_data_scan_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -359,6 +591,85 @@ module Google
           command.response_representation = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get DataScanJob resource.
+        # @param [String] name
+        #   Required. The resource name of the DataScanJob: projects/`project`/locations/`
+        #   location_id`/dataScans/`data_scan_id`/dataScanJobs/`data_scan_job_id` where `
+        #   project` refers to a project_id or project_number and location_id refers to a
+        #   GCP region.
+        # @param [String] view
+        #   Optional. Used to select the subset of DataScan information to return.
+        #   Defaults to BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_scan_job(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DataScanJobs under the given dataScan.
+        # @param [String] parent
+        #   Required. The resource name of the parent environment: projects/`project`/
+        #   locations/`location_id`/dataScans/`data_scan_id` where `project` refers to a
+        #   project_id or project_number and location_id refers to a GCP region.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of DataScanJobs to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 DataScanJobs will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous ListDataScanJobs call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to ListDataScanJobs must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_scan_jobs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/jobs', options)
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1ListDataScanJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
