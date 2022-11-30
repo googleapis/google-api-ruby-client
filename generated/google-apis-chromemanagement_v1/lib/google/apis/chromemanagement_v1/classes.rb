@@ -1582,6 +1582,31 @@ module Google
         end
       end
       
+      # Response message for listing telemetry events for a customer.
+      class GoogleChromeManagementV1ListTelemetryEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify next page in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Telemetry events returned in the response.
+        # Corresponds to the JSON property `telemetryEvents`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEvent>]
+        attr_accessor :telemetry_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @telemetry_events = args[:telemetry_events] if args.key?(:telemetry_events)
+        end
+      end
+      
       # Memory information of a device. * This field has both telemetry and device
       # information: - `totalRamBytes` - Device information - `availableRamBytes` -
       # Telemetry information - `totalMemoryEncryption` - Device information * Data
@@ -2056,6 +2081,20 @@ module Google
         end
       end
       
+      # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
+      # of buffer data for more than 5 seconds.
+      class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Telemetry data collected from a managed device.
       class GoogleChromeManagementV1TelemetryDevice
         include Google::Apis::Core::Hashable
@@ -2235,6 +2274,176 @@ module Google
           @storage_info = args[:storage_info] if args.key?(:storage_info)
           @storage_status_report = args[:storage_status_report] if args.key?(:storage_status_report)
           @thunderbolt_info = args[:thunderbolt_info] if args.key?(:thunderbolt_info)
+        end
+      end
+      
+      # Information about a device associated with telemetry data.
+      class GoogleChromeManagementV1TelemetryDeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique Directory API ID of the device. This value is the same
+        # as the Admin Console's Directory API ID in the ChromeOS Devices tab.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Output only. Organization unit ID of the device.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+        end
+      end
+      
+      # Telemetry data reported by a managed device.
+      class GoogleChromeManagementV1TelemetryEvent
+        include Google::Apis::Core::Hashable
+      
+        # `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out
+        # of buffer data for more than 5 seconds.
+        # Corresponds to the JSON property `audioSevereUnderrunEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent]
+        attr_accessor :audio_severe_underrun_event
+      
+        # Information about a device associated with telemetry data.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo]
+        attr_accessor :device
+      
+        # The event type of the current event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Https latency routine is run periodically and `
+        # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
+        # detected or if the device has recovered from a latency problem..
+        # Corresponds to the JSON property `httpsLatencyChangeEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent]
+        attr_accessor :https_latency_change_event
+      
+        # Output only. Resource name of the event.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+        # connection state changes.
+        # Corresponds to the JSON property `networkConnectionStateChangeEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
+        attr_accessor :network_connection_state_change_event
+      
+        # Timestamp that represents when the event was reported.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Information about a user associated with telemetry data.
+        # Corresponds to the JSON property `user`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_severe_underrun_event = args[:audio_severe_underrun_event] if args.key?(:audio_severe_underrun_event)
+          @device = args[:device] if args.key?(:device)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
+          @name = args[:name] if args.key?(:name)
+          @network_connection_state_change_event = args[:network_connection_state_change_event] if args.key?(:network_connection_state_change_event)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Https latency routine is run periodically and `
+      # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
+      # detected or if the device has recovered from a latency problem..
+      class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Data that describes the result of the HTTPS latency diagnostics routine, with
+        # the HTTPS requests issued to Google websites.
+        # Corresponds to the JSON property `httpsLatencyRoutineData`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData]
+        attr_accessor :https_latency_routine_data
+      
+        # Current HTTPS latency state.
+        # Corresponds to the JSON property `httpsLatencyState`
+        # @return [String]
+        attr_accessor :https_latency_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @https_latency_routine_data = args[:https_latency_routine_data] if args.key?(:https_latency_routine_data)
+          @https_latency_state = args[:https_latency_state] if args.key?(:https_latency_state)
+        end
+      end
+      
+      # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
+      # connection state changes.
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Current connection state of the network.
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # Unique identifier of the network.
+        # Corresponds to the JSON property `guid`
+        # @return [String]
+        attr_accessor :guid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @guid = args[:guid] if args.key?(:guid)
+        end
+      end
+      
+      # Information about a user associated with telemetry data.
+      class GoogleChromeManagementV1TelemetryUserInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User's email.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. Organization unit ID of the user.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
         end
       end
       

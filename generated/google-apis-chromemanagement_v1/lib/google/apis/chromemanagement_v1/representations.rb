@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1ListTelemetryEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1MemoryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,7 +292,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1TelemetryDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryDeviceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryUserInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -702,6 +744,15 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1ListTelemetryEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :telemetry_events, as: 'telemetryEvents', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryEvent::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementV1MemoryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -811,6 +862,12 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleChromeManagementV1TelemetryDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -853,6 +910,58 @@ module Google
       
           collection :thunderbolt_info, as: 'thunderboltInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ThunderboltInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ThunderboltInfo::Representation
       
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :org_unit_id, as: 'orgUnitId'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_severe_underrun_event, as: 'audioSevereUnderrunEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent::Representation
+      
+          property :device, as: 'device', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDeviceInfo::Representation
+      
+          property :event_type, as: 'eventType'
+          property :https_latency_change_event, as: 'httpsLatencyChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent::Representation
+      
+          property :name, as: 'name'
+          property :network_connection_state_change_event, as: 'networkConnectionStateChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent::Representation
+      
+          property :report_time, as: 'reportTime'
+          property :user, as: 'user', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :https_latency_routine_data, as: 'httpsLatencyRoutineData', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1HttpsLatencyRoutineData::Representation
+      
+          property :https_latency_state, as: 'httpsLatencyState'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :guid, as: 'guid'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryUserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :org_unit_id, as: 'orgUnitId'
         end
       end
       

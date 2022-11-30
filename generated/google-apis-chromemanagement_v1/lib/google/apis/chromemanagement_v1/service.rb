@@ -552,6 +552,52 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # List telemetry events.
+        # @param [String] parent
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter. Supported filter
+        #   fields: * device_id * user_id * device_org_unit_id * user_org_unit_id *
+        #   timestamp * event_type
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Default value is 100. Maximum
+        #   value is 1000.
+        # @param [String] page_token
+        #   Optional. Token to specify next page in the list.
+        # @param [String] read_mask
+        #   Required. Read mask to specify which fields to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_telemetry_events(parent, filter: nil, page_size: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/telemetry/events', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryEventsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ListTelemetryEventsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
