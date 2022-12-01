@@ -5128,17 +5128,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_joined_devices
       
-        # Output only. Information about the media backend for the currently ongoing
-        # conference in the meeting space. The media backend information will only be
-        # filled in for clients that are supposed to present the information. The
-        # information should be displayed in a debug panel and is only intended for
-        # internal debugging purposes. If the string is empty nothing should be
-        # displayed about the media backend. Deprecated because media backend is always
-        # MEDIA_ROUTER since Dec 2018.
-        # Corresponds to the JSON property `mediaBackendInfo`
-        # @return [String]
-        attr_accessor :media_backend_info
-      
         # Output only. The name or description of the organization or domain that the
         # organizer belongs to. The expected use of this in clients is to present
         # messages like "John Doe (outside of Google.com) is trying to join this call",
@@ -5217,7 +5206,6 @@ module Google
           @collaboration = args[:collaboration] if args.key?(:collaboration)
           @cse_info = args[:cse_info] if args.key?(:cse_info)
           @max_joined_devices = args[:max_joined_devices] if args.key?(:max_joined_devices)
-          @media_backend_info = args[:media_backend_info] if args.key?(:media_backend_info)
           @organization_name = args[:organization_name] if args.key?(:organization_name)
           @paygate_info = args[:paygate_info] if args.key?(:paygate_info)
           @presenter = args[:presenter] if args.key?(:presenter)
@@ -7699,6 +7687,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # This is the proto for holding message level scoring information. This data is
+      # used for logging in query-api server and for testing purposes.
+      class DynamiteMessagesScoringInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `messageAgeInDays`
+        # @return [Float]
+        attr_accessor :message_age_in_days
+      
+        # 
+        # Corresponds to the JSON property `topicalityScore`
+        # @return [Float]
+        attr_accessor :topicality_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_age_in_days = args[:message_age_in_days] if args.key?(:message_age_in_days)
+          @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
         end
       end
       
@@ -18888,6 +18902,11 @@ module Google
         # @return [String]
         attr_accessor :deletion_policy_url
       
+        # Link to GWM page of the app. May be empty.
+        # Corresponds to the JSON property `gwmUrl`
+        # @return [String]
+        attr_accessor :gwm_url
+      
         # Link to the privacy policy webpage for the bot. May be empty.
         # Corresponds to the JSON property `privacyPolicyUrl`
         # @return [String]
@@ -18916,6 +18935,7 @@ module Google
         def update!(**args)
           @admin_config_url = args[:admin_config_url] if args.key?(:admin_config_url)
           @deletion_policy_url = args[:deletion_policy_url] if args.key?(:deletion_policy_url)
+          @gwm_url = args[:gwm_url] if args.key?(:gwm_url)
           @privacy_policy_url = args[:privacy_policy_url] if args.key?(:privacy_policy_url)
           @setup_url = args[:setup_url] if args.key?(:setup_url)
           @support_url = args[:support_url] if args.key?(:support_url)
@@ -20465,11 +20485,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_image_width
       
-        # NEXT TAG : 18
-        # Corresponds to the JSON property `linkType`
-        # @return [String]
-        attr_accessor :link_type
-      
         # Mime type of the content (Currently mapped from Page Render Service ItemType)
         # Note that this is not necessarily the mime type of the http resource. For
         # example a text/html from youtube or vimeo may actually be classified as a
@@ -20529,7 +20544,6 @@ module Google
           @image_width = args[:image_width] if args.key?(:image_width)
           @int_image_height = args[:int_image_height] if args.key?(:int_image_height)
           @int_image_width = args[:int_image_width] if args.key?(:int_image_width)
-          @link_type = args[:link_type] if args.key?(:link_type)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
           @should_not_render = args[:should_not_render] if args.key?(:should_not_render)

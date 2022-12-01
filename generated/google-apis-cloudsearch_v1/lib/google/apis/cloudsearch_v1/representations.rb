@@ -1300,6 +1300,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamiteMessagesScoringInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DynamiteSpacesScoringInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4965,7 +4971,6 @@ module Google
           property :cse_info, as: 'cseInfo', class: Google::Apis::CloudsearchV1::CseInfo, decorator: Google::Apis::CloudsearchV1::CseInfo::Representation
       
           property :max_joined_devices, as: 'maxJoinedDevices'
-          property :media_backend_info, as: 'mediaBackendInfo'
           property :organization_name, as: 'organizationName'
           property :paygate_info, as: 'paygateInfo', class: Google::Apis::CloudsearchV1::PaygateInfo, decorator: Google::Apis::CloudsearchV1::PaygateInfo::Representation
       
@@ -5686,6 +5691,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class DynamiteMessagesScoringInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_age_in_days, as: 'messageAgeInDays'
+          property :topicality_score, as: 'topicalityScore'
         end
       end
       
@@ -8858,6 +8871,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_config_url, as: 'adminConfigUrl'
           property :deletion_policy_url, as: 'deletionPolicyUrl'
+          property :gwm_url, as: 'gwmUrl'
           property :privacy_policy_url, as: 'privacyPolicyUrl'
           property :setup_url, as: 'setupUrl'
           property :support_url, as: 'supportUrl'
@@ -9302,7 +9316,6 @@ module Google
           property :image_width, as: 'imageWidth'
           property :int_image_height, as: 'intImageHeight'
           property :int_image_width, as: 'intImageWidth'
-          property :link_type, as: 'linkType'
           property :mime_type, as: 'mimeType'
           property :redirect_url, as: 'redirectUrl', class: Google::Apis::CloudsearchV1::SafeUrlProto, decorator: Google::Apis::CloudsearchV1::SafeUrlProto::Representation
       
