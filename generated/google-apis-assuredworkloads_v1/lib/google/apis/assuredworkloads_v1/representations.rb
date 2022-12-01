@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1WorkloadKmsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -193,6 +205,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :workloads, as: 'workloads', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :partner_permissions, as: 'partnerPermissions', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -309,6 +331,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_rotation_time, as: 'nextRotationTime'
           property :rotation_period, as: 'rotationPeriod'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_logs_viewer, as: 'dataLogsViewer'
+          property :remediate_folder_violations, as: 'remediateFolderViolations'
+          property :service_access_approver, as: 'serviceAccessApprover'
         end
       end
       
