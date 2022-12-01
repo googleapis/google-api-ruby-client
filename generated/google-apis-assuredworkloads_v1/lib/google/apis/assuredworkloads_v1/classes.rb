@@ -153,6 +153,39 @@ module Google
         end
       end
       
+      # Request of updating permission settings for a partner workload.
+      class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag of the workload. If this is provided, it must match the
+        # server's etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Permissions granted to the AW Partner SA account for the customer workload
+        # Corresponds to the JSON property `partnerPermissions`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions]
+        attr_accessor :partner_permissions
+      
+        # Required. The list of fields to be updated. E.g. update_mask ` paths: "
+        # partner_permissions.data_logs_viewer"`
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @partner_permissions = args[:partner_permissions] if args.key?(:partner_permissions)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # Request for restricting list of available resources in Workload environment.
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest
         include Google::Apis::Core::Hashable
@@ -611,6 +644,40 @@ module Google
         def update!(**args)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
           @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
+        end
+      end
+      
+      # Permissions granted to the AW Partner SA account for the customer workload
+      class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
+        include Google::Apis::Core::Hashable
+      
+        # Allow partner to view data and logs
+        # Corresponds to the JSON property `dataLogsViewer`
+        # @return [Boolean]
+        attr_accessor :data_logs_viewer
+        alias_method :data_logs_viewer?, :data_logs_viewer
+      
+        # Allow partner to monitor folder and remediate violations
+        # Corresponds to the JSON property `remediateFolderViolations`
+        # @return [Boolean]
+        attr_accessor :remediate_folder_violations
+        alias_method :remediate_folder_violations?, :remediate_folder_violations
+      
+        # Allow partner to approve or reject Service Access requests
+        # Corresponds to the JSON property `serviceAccessApprover`
+        # @return [Boolean]
+        attr_accessor :service_access_approver
+        alias_method :service_access_approver?, :service_access_approver
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_logs_viewer = args[:data_logs_viewer] if args.key?(:data_logs_viewer)
+          @remediate_folder_violations = args[:remediate_folder_violations] if args.key?(:remediate_folder_violations)
+          @service_access_approver = args[:service_access_approver] if args.key?(:service_access_approver)
         end
       end
       

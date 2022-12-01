@@ -279,6 +279,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update the permissions settings for an existing partner workload. For force
+        # updates don't set etag field in the Workload. Only one update operation per
+        # workload can be in progress.
+        # @param [String] name
+        #   Required. The `name` field is used to identify the workload. Format:
+        #   organizations/`org_id`/locations/`location_id`/workloads/`workload_id`
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest] google_cloud_assuredworkloads_v1_mutate_partner_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mutate_organization_location_workload_partner_permissions(name, google_cloud_assuredworkloads_v1_mutate_partner_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}:mutatePartnerPermissions', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_mutate_partner_permissions_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an existing workload. Currently allows updating of workload
         # display_name and labels. For force updates don't set etag field in the
         # Workload. Only one update operation per workload can be in progress.
