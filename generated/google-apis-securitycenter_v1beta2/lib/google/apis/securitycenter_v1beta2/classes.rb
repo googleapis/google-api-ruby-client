@@ -998,6 +998,11 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Indicator]
         attr_accessor :indicator
       
+        # Kernel mode rootkit signatures.
+        # Corresponds to the JSON property `kernelRootkit`
+        # @return [Google::Apis::SecuritycenterV1beta2::KernelRootkit]
+        attr_accessor :kernel_rootkit
+      
         # Kubernetes related attributes.
         # Corresponds to the JSON property `kubernetes`
         # @return [Google::Apis::SecuritycenterV1beta2::Kubernetes]
@@ -1125,6 +1130,7 @@ module Google
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @iam_bindings = args[:iam_bindings] if args.key?(:iam_bindings)
           @indicator = args[:indicator] if args.key?(:indicator)
+          @kernel_rootkit = args[:kernel_rootkit] if args.key?(:kernel_rootkit)
           @kubernetes = args[:kubernetes] if args.key?(:kubernetes)
           @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @mute = args[:mute] if args.key?(:mute)
@@ -2105,6 +2111,87 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @signatures = args[:signatures] if args.key?(:signatures)
           @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # Kernel mode rootkit signatures.
+      class KernelRootkit
+        include Google::Apis::Core::Hashable
+      
+        # Rootkit name when available.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Flag indicating unexpected modifications of kernel code memory.
+        # Corresponds to the JSON property `unexpectedCodeModification`
+        # @return [Boolean]
+        attr_accessor :unexpected_code_modification
+        alias_method :unexpected_code_modification?, :unexpected_code_modification
+      
+        # Flag indicating presence of ftrace points with callbacks pointing to regions
+        # that are not in the expected kernel or module code range.
+        # Corresponds to the JSON property `unexpectedFtraceHandler`
+        # @return [Boolean]
+        attr_accessor :unexpected_ftrace_handler
+        alias_method :unexpected_ftrace_handler?, :unexpected_ftrace_handler
+      
+        # Flag indicating presence of interrupt handlers that are are not in the
+        # expected kernel, module code regions.
+        # Corresponds to the JSON property `unexpectedInterruptHandler`
+        # @return [Boolean]
+        attr_accessor :unexpected_interrupt_handler
+        alias_method :unexpected_interrupt_handler?, :unexpected_interrupt_handler
+      
+        # Flag indicating presence of kernel code pages that are not in the expected
+        # kernel, module code regions.
+        # Corresponds to the JSON property `unexpectedKernelCodePages`
+        # @return [Boolean]
+        attr_accessor :unexpected_kernel_code_pages
+        alias_method :unexpected_kernel_code_pages?, :unexpected_kernel_code_pages
+      
+        # Flag indicating presence of kprobe points with callbacks pointing to regions
+        # that are not in the expected kernel or module code range.
+        # Corresponds to the JSON property `unexpectedKprobeHandler`
+        # @return [Boolean]
+        attr_accessor :unexpected_kprobe_handler
+        alias_method :unexpected_kprobe_handler?, :unexpected_kprobe_handler
+      
+        # Flag indicating unexpected process(es) in the scheduler run-queue, those that
+        # are in the run-queue, but not in the process task-list.
+        # Corresponds to the JSON property `unexpectedProcessesInRunqueue`
+        # @return [Boolean]
+        attr_accessor :unexpected_processes_in_runqueue
+        alias_method :unexpected_processes_in_runqueue?, :unexpected_processes_in_runqueue
+      
+        # Flag indicating unexpected modifications of kernel read-only data memory.
+        # Corresponds to the JSON property `unexpectedReadOnlyDataModification`
+        # @return [Boolean]
+        attr_accessor :unexpected_read_only_data_modification
+        alias_method :unexpected_read_only_data_modification?, :unexpected_read_only_data_modification
+      
+        # Flag indicating presence of system call handlers that are are not in the
+        # expected kernel, module code regions.
+        # Corresponds to the JSON property `unexpectedSystemCallHandler`
+        # @return [Boolean]
+        attr_accessor :unexpected_system_call_handler
+        alias_method :unexpected_system_call_handler?, :unexpected_system_call_handler
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @unexpected_code_modification = args[:unexpected_code_modification] if args.key?(:unexpected_code_modification)
+          @unexpected_ftrace_handler = args[:unexpected_ftrace_handler] if args.key?(:unexpected_ftrace_handler)
+          @unexpected_interrupt_handler = args[:unexpected_interrupt_handler] if args.key?(:unexpected_interrupt_handler)
+          @unexpected_kernel_code_pages = args[:unexpected_kernel_code_pages] if args.key?(:unexpected_kernel_code_pages)
+          @unexpected_kprobe_handler = args[:unexpected_kprobe_handler] if args.key?(:unexpected_kprobe_handler)
+          @unexpected_processes_in_runqueue = args[:unexpected_processes_in_runqueue] if args.key?(:unexpected_processes_in_runqueue)
+          @unexpected_read_only_data_modification = args[:unexpected_read_only_data_modification] if args.key?(:unexpected_read_only_data_modification)
+          @unexpected_system_call_handler = args[:unexpected_system_call_handler] if args.key?(:unexpected_system_call_handler)
         end
       end
       

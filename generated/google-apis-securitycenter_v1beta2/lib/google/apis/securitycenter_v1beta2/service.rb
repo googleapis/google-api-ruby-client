@@ -50,7 +50,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get the ContainerThreatDetectionSettings resource.
+        # Get the ContainerThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetContainerThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -84,7 +89,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource.
+        # Get the EventThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetEventThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -148,7 +158,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource.
+        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -213,7 +229,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource.
+        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
         #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
@@ -246,7 +267,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource.
+        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
+        # settings response, a missing field only indicates that it was not explicitly
+        # set, so no assumption should be made about these fields. In other words,
+        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -279,7 +306,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource.
+        # Get the WebSecurityScannerSettings resource. In the returned settings response,
+        # a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetWebSecurityScannerSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
@@ -545,7 +577,12 @@ module Google
         end
         
         # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings.
+        # in the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -580,7 +617,12 @@ module Google
         end
         
         # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -613,7 +655,12 @@ module Google
         end
         
         # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -647,7 +694,12 @@ module Google
         end
         
         # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
@@ -681,7 +733,12 @@ module Google
         end
         
         # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -715,7 +772,12 @@ module Google
         end
         
         # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings.
+        # resource hierarchy and its settings. Settings provided closer to the target
+        # resource take precedence over those further away (e.g. folder will override
+        # organization level settings). The default SCC setting for the detector service
+        # defaults can be overridden at organization, folder and project levels. No
+        # assumptions should be made about the SCC defaults as it is considered an
+        # internal implementation detail.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
@@ -747,7 +809,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource.
+        # Get the ContainerThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetContainerThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -781,7 +848,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource.
+        # Get the EventThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetEventThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -845,7 +917,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource.
+        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -910,7 +988,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource.
+        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
         #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
@@ -974,7 +1057,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource.
+        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
+        # settings response, a missing field only indicates that it was not explicitly
+        # set, so no assumption should be made about these fields. In other words,
+        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -1007,7 +1096,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource.
+        # Get the WebSecurityScannerSettings resource. In the returned settings response,
+        # a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetWebSecurityScannerSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
@@ -1273,7 +1367,12 @@ module Google
         end
         
         # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings.
+        # in the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -1308,7 +1407,12 @@ module Google
         end
         
         # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -1341,7 +1445,12 @@ module Google
         end
         
         # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -1375,7 +1484,12 @@ module Google
         end
         
         # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
@@ -1409,7 +1523,12 @@ module Google
         end
         
         # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -1443,7 +1562,12 @@ module Google
         end
         
         # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings.
+        # resource hierarchy and its settings. Settings provided closer to the target
+        # resource take precedence over those further away (e.g. folder will override
+        # organization level settings). The default SCC setting for the detector service
+        # defaults can be overridden at organization, folder and project levels. No
+        # assumptions should be made about the SCC defaults as it is considered an
+        # internal implementation detail.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
@@ -1475,7 +1599,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource.
+        # Get the ContainerThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetContainerThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -1509,7 +1638,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource.
+        # Get the EventThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetEventThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -1573,7 +1707,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource.
+        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -1638,7 +1778,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource.
+        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
         #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
@@ -1671,7 +1816,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource.
+        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
+        # settings response, a missing field only indicates that it was not explicitly
+        # set, so no assumption should be made about these fields. In other words,
+        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
+        # service settings for the resource, which accounts for inherited settings and
+        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
+        # purpose.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -1704,7 +1855,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource.
+        # Get the WebSecurityScannerSettings resource. In the returned settings response,
+        # a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetWebSecurityScannerSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
@@ -1970,7 +2126,12 @@ module Google
         end
         
         # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings.
+        # in the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -2005,7 +2166,12 @@ module Google
         end
         
         # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
         #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
@@ -2037,7 +2203,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource.
+        # Get the ContainerThreatDetectionSettings resource. In the returned settings
+        # response, a missing field only indicates that it was not explicitly set, so no
+        # assumption should be made about these fields. In other words,
+        # GetContainerThreatDetectionSettings does not calculate the effective service
+        # settings for the resource, which accounts for inherited settings and defaults.
+        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -2112,7 +2283,12 @@ module Google
         end
         
         # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings.
+        # in the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the ContainerThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
@@ -2147,7 +2323,12 @@ module Google
         end
         
         # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
@@ -2181,7 +2362,12 @@ module Google
         end
         
         # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings.
+        # the resource hierarchy and its settings. Settings provided closer to the
+        # target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
         #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
@@ -2215,7 +2401,12 @@ module Google
         end
         
         # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings.
+        # level in the resource hierarchy and its settings. Settings provided closer to
+        # the target resource take precedence over those further away (e.g. folder will
+        # override organization level settings). The default SCC setting for the
+        # detector service defaults can be overridden at organization, folder and
+        # project levels. No assumptions should be made about the SCC defaults as it is
+        # considered an internal implementation detail.
         # @param [String] name
         #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
         #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
@@ -2249,7 +2440,12 @@ module Google
         end
         
         # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings.
+        # resource hierarchy and its settings. Settings provided closer to the target
+        # resource take precedence over those further away (e.g. folder will override
+        # organization level settings). The default SCC setting for the detector service
+        # defaults can be overridden at organization, folder and project levels. No
+        # assumptions should be made about the SCC defaults as it is considered an
+        # internal implementation detail.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
         #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
