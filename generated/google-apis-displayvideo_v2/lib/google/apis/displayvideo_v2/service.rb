@@ -2127,7 +2127,8 @@ module Google
         # concurrently with the following requests updating the same line item: *
         # BulkEditAssignedTargetingOptions * UpdateLineItem *
         # CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
-        # @param [String] advertisers_id
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this line item belongs to.
         # @param [Google::Apis::DisplayvideoV2::BulkUpdateLineItemsRequest] bulk_update_line_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2146,13 +2147,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bulk_update_line_items(advertisers_id, bulk_update_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/advertisers/{advertisersId}/lineItems:bulkUpdate', options)
+        def bulk_update_line_items(advertiser_id, bulk_update_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/advertisers/{+advertiserId}/lineItems:bulkUpdate', options)
           command.request_representation = Google::Apis::DisplayvideoV2::BulkUpdateLineItemsRequest::Representation
           command.request_object = bulk_update_line_items_request_object
           command.response_representation = Google::Apis::DisplayvideoV2::BulkUpdateLineItemsResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV2::BulkUpdateLineItemsResponse
-          command.params['advertisersId'] = advertisers_id unless advertisers_id.nil?
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
