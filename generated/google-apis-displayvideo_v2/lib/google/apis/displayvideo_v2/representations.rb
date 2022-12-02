@@ -1982,6 +1982,7 @@ module Google
           property :app_details, as: 'appDetails', class: Google::Apis::DisplayvideoV2::AppAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::AppAssignedTargetingOptionDetails::Representation
       
           property :assigned_targeting_option_id, as: 'assignedTargetingOptionId'
+          property :assigned_targeting_option_id_alias, as: 'assignedTargetingOptionIdAlias'
           property :audience_group_details, as: 'audienceGroupDetails', class: Google::Apis::DisplayvideoV2::AudienceGroupAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::AudienceGroupAssignedTargetingOptionDetails::Representation
       
           property :audio_content_type_details, as: 'audioContentTypeDetails', class: Google::Apis::DisplayvideoV2::AudioContentTypeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV2::AudioContentTypeAssignedTargetingOptionDetails::Representation
