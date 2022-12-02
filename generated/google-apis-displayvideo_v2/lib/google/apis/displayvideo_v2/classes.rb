@@ -729,6 +729,25 @@ module Google
         # @return [String]
         attr_accessor :assigned_targeting_option_id
       
+        # Output only. An alias for the assigned targeting option id field. This field
+        # is only supported for targeting types with enum targeting enabled. This value
+        # can be used in place of the assignedTargetingOptionId required for GET and
+        # DELETE targeting methods. An alias for the assignedTargetingOptionId. This
+        # value can be used in place of `assignedTargetingOptionId` when retrieving or
+        # deleting existing targeting. This field will only be supported for assigned
+        # targeting options of the following targeting types: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
+        # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
+        # TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
+        # TARGETING_TYPE_OMID` * `TARGETING_TYPE_PARENTAL_STATUS` * `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
+        # TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+        # Corresponds to the JSON property `assignedTargetingOptionIdAlias`
+        # @return [String]
+        attr_accessor :assigned_targeting_option_id_alias
+      
         # Assigned audience group targeting option details. This will be populated in
         # the details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
@@ -1061,6 +1080,7 @@ module Google
           @app_category_details = args[:app_category_details] if args.key?(:app_category_details)
           @app_details = args[:app_details] if args.key?(:app_details)
           @assigned_targeting_option_id = args[:assigned_targeting_option_id] if args.key?(:assigned_targeting_option_id)
+          @assigned_targeting_option_id_alias = args[:assigned_targeting_option_id_alias] if args.key?(:assigned_targeting_option_id_alias)
           @audience_group_details = args[:audience_group_details] if args.key?(:audience_group_details)
           @audio_content_type_details = args[:audio_content_type_details] if args.key?(:audio_content_type_details)
           @authorized_seller_status_details = args[:authorized_seller_status_details] if args.key?(:authorized_seller_status_details)
