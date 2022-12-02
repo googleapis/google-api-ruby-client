@@ -193,6 +193,17 @@ module Google
         attr_accessor :escalated
         alias_method :escalated?, :escalated
       
+        # The language the user has requested to receive support in. This should be a
+        # BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If
+        # no language or an unsupported language is specified, this field defaults to
+        # English (en). Language selection during case creation may affect your
+        # available support options. For a list of supported languages and their support
+        # working hours, see: https://cloud.google.com/support/docs/language-working-
+        # hours
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # The resource name for the case.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -249,6 +260,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @escalated = args[:escalated] if args.key?(:escalated)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @priority = args[:priority] if args.key?(:priority)
           @severity = args[:severity] if args.key?(:severity)

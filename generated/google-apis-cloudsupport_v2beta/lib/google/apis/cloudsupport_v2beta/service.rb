@@ -53,7 +53,8 @@ module Google
         # Create a file attachment on a case or Cloud resource. The attachment object
         # must have the following fields set: filename.
         # @param [String] parent
-        #   Required. The resource name of the case to which attachment should be attached.
+        #   Required. The resource name of the case (or case parent) to which the
+        #   attachment should be attached.
         # @param [Google::Apis::CloudsupportV2beta::CreateAttachmentRequest] create_attachment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -567,7 +568,8 @@ module Google
         # Create a file attachment on a case or Cloud resource. The attachment object
         # must have the following fields set: filename.
         # @param [String] parent
-        #   Required. The resource name of the case to which attachment should be attached.
+        #   Required. The resource name of the case (or case parent) to which the
+        #   attachment should be attached.
         # @param [Google::Apis::CloudsupportV2beta::CreateAttachmentRequest] create_attachment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

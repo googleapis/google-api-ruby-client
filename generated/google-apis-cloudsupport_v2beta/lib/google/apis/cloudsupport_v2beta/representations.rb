@@ -222,6 +222,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :escalated, as: 'escalated'
+          property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :priority, as: 'priority'
           property :severity, as: 'severity'
