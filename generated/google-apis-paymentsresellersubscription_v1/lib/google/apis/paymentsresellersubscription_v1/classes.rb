@@ -318,6 +318,43 @@ module Google
         end
       end
       
+      # Payload specific to Google One products.
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+        include Google::Apis::Core::Hashable
+      
+        # Campaign attributed to sales of this subscription.
+        # Corresponds to the JSON property `campaigns`
+        # @return [Array<String>]
+        attr_accessor :campaigns
+      
+        # The type of offering the subscription was sold by the partner. e.g. VAS.
+        # Corresponds to the JSON property `offering`
+        # @return [String]
+        attr_accessor :offering
+      
+        # The type of sales channel through which the subscription was sold.
+        # Corresponds to the JSON property `salesChannel`
+        # @return [String]
+        attr_accessor :sales_channel
+      
+        # The identifier for the partner store where the subscription was sold.
+        # Corresponds to the JSON property `storeId`
+        # @return [String]
+        attr_accessor :store_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @campaigns = args[:campaigns] if args.key?(:campaigns)
+          @offering = args[:offering] if args.key?(:offering)
+          @sales_channel = args[:sales_channel] if args.key?(:sales_channel)
+          @store_id = args[:store_id] if args.key?(:store_id)
+        end
+      end
+      
       # 
       class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
         include Google::Apis::Core::Hashable
@@ -438,6 +475,31 @@ module Google
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @subscription_billing_cycle_duration = args[:subscription_billing_cycle_duration] if args.key?(:subscription_billing_cycle_duration)
           @titles = args[:titles] if args.key?(:titles)
+        end
+      end
+      
+      # Specifies product specific payload.
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
+        include Google::Apis::Core::Hashable
+      
+        # Payload specific to Google One products.
+        # Corresponds to the JSON property `googleOnePayload`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload]
+        attr_accessor :google_one_payload
+      
+        # Payload specific to Youtube products.
+        # Corresponds to the JSON property `youtubePayload`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload]
+        attr_accessor :youtube_payload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_one_payload = args[:google_one_payload] if args.key?(:google_one_payload)
+          @youtube_payload = args[:youtube_payload] if args.key?(:youtube_payload)
         end
       end
       
@@ -793,7 +855,7 @@ module Google
         end
       end
       
-      # Individual line item definition of a subscription. Next id: 9
+      # Individual line item definition of a subscription.
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
         include Google::Apis::Core::Hashable
       
@@ -829,6 +891,11 @@ module Google
         # @return [String]
         attr_accessor :product
       
+        # Specifies product specific payload.
+        # Corresponds to the JSON property `productPayload`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPayload]
+        attr_accessor :product_payload
+      
         # Output only. The recurrence type of the line item.
         # Corresponds to the JSON property `recurrenceType`
         # @return [String]
@@ -850,6 +917,7 @@ module Google
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
           @one_time_recurrence_details = args[:one_time_recurrence_details] if args.key?(:one_time_recurrence_details)
           @product = args[:product] if args.key?(:product)
+          @product_payload = args[:product_payload] if args.key?(:product_payload)
           @recurrence_type = args[:recurrence_type] if args.key?(:recurrence_type)
           @state = args[:state] if args.key?(:state)
         end
@@ -970,6 +1038,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Payload specific to Youtube products.
+      class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
+        include Google::Apis::Core::Hashable
+      
+        # The list of eligibility_ids which are applicable for the line item.
+        # Corresponds to the JSON property `partnerEligibilityIds`
+        # @return [Array<String>]
+        attr_accessor :partner_eligibility_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_eligibility_ids = args[:partner_eligibility_ids] if args.key?(:partner_eligibility_ids)
         end
       end
       

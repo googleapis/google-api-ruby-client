@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class GoogleCloudPaymentsResellerSubscriptionV1Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +197,12 @@ module Google
       end
       
       class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +305,16 @@ module Google
         end
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :campaigns, as: 'campaigns'
+          property :offering, as: 'offering'
+          property :sales_channel, as: 'salesChannel'
+          property :store_id, as: 'storeId'
+        end
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -323,6 +351,16 @@ module Google
           property :subscription_billing_cycle_duration, as: 'subscriptionBillingCycleDuration', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration::Representation
       
           collection :titles, as: 'titles', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_one_payload, as: 'googleOnePayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload::Representation
+      
+          property :youtube_payload, as: 'youtubePayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload::Representation
       
         end
       end
@@ -427,6 +465,8 @@ module Google
           property :one_time_recurrence_details, as: 'oneTimeRecurrenceDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails::Representation
       
           property :product, as: 'product'
+          property :product_payload, as: 'productPayload', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ProductPayload::Representation
+      
           property :recurrence_type, as: 'recurrenceType'
           property :state, as: 'state'
         end
@@ -471,6 +511,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partner_eligibility_ids, as: 'partnerEligibilityIds'
         end
       end
       
