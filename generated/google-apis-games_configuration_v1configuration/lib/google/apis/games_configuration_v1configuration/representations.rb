@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImageConfiguration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LeaderboardConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,16 +148,6 @@ module Google
           property :number_format_type, as: 'numberFormatType'
           property :suffix, as: 'suffix', class: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration::Representation
       
-        end
-      end
-      
-      class ImageConfiguration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_type, as: 'imageType'
-          property :kind, as: 'kind'
-          property :resource_id, as: 'resourceId'
-          property :url, as: 'url'
         end
       end
       

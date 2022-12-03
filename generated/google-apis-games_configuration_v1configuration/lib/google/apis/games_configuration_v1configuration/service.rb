@@ -212,49 +212,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads an image for a resource with the given ID and image type.
-        # @param [String] resource_id
-        #   The ID of the resource used by this method.
-        # @param [String] image_type
-        #   Selects which image in a resource for this method.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] upload_source
-        #   IO stream or filename containing content to upload
-        # @param [String] content_type
-        #   Content type of the uploaded content.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::ImageConfiguration] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GamesConfigurationV1configuration::ImageConfiguration]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_image_configuration(resource_id, image_type, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          if upload_source.nil?
-            command = make_simple_command(:post, 'games/v1configuration/images/{resourceId}/imageType/{imageType}', options)
-          else
-            command = make_upload_command(:post, 'games/v1configuration/images/{resourceId}/imageType/{imageType}', options)
-            command.upload_source = upload_source
-            command.upload_content_type = content_type
-          end
-          command.response_representation = Google::Apis::GamesConfigurationV1configuration::ImageConfiguration::Representation
-          command.response_class = Google::Apis::GamesConfigurationV1configuration::ImageConfiguration
-          command.params['resourceId'] = resource_id unless resource_id.nil?
-          command.params['imageType'] = image_type unless image_type.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Delete the leaderboard configuration with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
