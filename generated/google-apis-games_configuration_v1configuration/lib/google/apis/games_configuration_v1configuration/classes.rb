@@ -252,44 +252,6 @@ module Google
         end
       end
       
-      # An image configuration resource.
-      class ImageConfiguration
-        include Google::Apis::Core::Hashable
-      
-        # The image type for the image.
-        # Corresponds to the JSON property `imageType`
-        # @return [String]
-        attr_accessor :image_type
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string `gamesConfiguration#imageConfiguration`.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The resource ID of resource which the image belongs to.
-        # Corresponds to the JSON property `resourceId`
-        # @return [String]
-        attr_accessor :resource_id
-      
-        # The url for this image.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_type = args[:image_type] if args.key?(:image_type)
-          @kind = args[:kind] if args.key?(:kind)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-          @url = args[:url] if args.key?(:url)
-        end
-      end
-      
       # An leaderboard configuration resource.
       class LeaderboardConfiguration
         include Google::Apis::Core::Hashable
