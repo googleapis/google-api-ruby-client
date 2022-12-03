@@ -12913,6 +12913,9 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to stop.
+        # @param [Boolean] discard_local_ssd
+        #   If true, discard the contents of any attached localSSD partitions. Default
+        #   value is false.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -12942,13 +12945,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/stop', options)
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['discardLocalSsd'] = discard_local_ssd unless discard_local_ssd.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -12969,6 +12973,9 @@ module Google
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance resource to suspend.
+        # @param [Boolean] discard_local_ssd
+        #   If true, discard the contents of any attached localSSD partitions. Default
+        #   value is false.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -12998,13 +13005,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def suspend_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def suspend_instance(project, zone, instance, discard_local_ssd: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/suspend', options)
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['discardLocalSsd'] = discard_local_ssd unless discard_local_ssd.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -13914,7 +13922,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified interconnect.
+        # Deletes the specified Interconnect.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -13961,7 +13969,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified interconnect. Get a list of available interconnects by
+        # Returns the specified Interconnect. Get a list of available Interconnects by
         # making a list() request.
         # @param [String] project
         #   Project ID for this request.
@@ -13998,7 +14006,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the interconnectDiagnostics for the specified interconnect.
+        # Returns the interconnectDiagnostics for the specified Interconnect.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -14034,8 +14042,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Interconnect in the specified project using the data included in the
-        # request.
+        # Creates an Interconnect in the specified project using the data included in
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Interconnect] interconnect_object
@@ -14082,7 +14090,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of interconnect available to the specified project.
+        # Retrieves the list of Interconnects available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -14170,7 +14178,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified interconnect with the data included in the request. This
+        # Updates the specified Interconnect with the data included in the request. This
         # method supports PATCH semantics and uses the JSON merge patch format and
         # processing rules.
         # @param [String] project
@@ -15261,6 +15269,464 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of all NetworkAttachment resources, regional and global,
+        # available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. If you want to use AIP-160, your expression must specify the
+        #   field name, an operator, and the value that you want to use for filtering. The
+        #   value must be a string, a number, or a boolean. The operator must be either `=`
+        #   , `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:` operator can be used with
+        #   string fields to match substrings. For non-string fields it is equivalent to
+        #   the `=` operator. The `:*` comparison can be used to test whether a key has
+        #   been defined. For example, to find all objects with `owner` label use: ```
+        #   labels.owner:* ``` You can also filter nested fields. For example, you could
+        #   specify `scheduling.automaticRestart = false` to include instances only if
+        #   they are not scheduled for automatic restarts. You can use filtering on nested
+        #   fields to filter based on resource labels. To filter on multiple expressions,
+        #   provide each separate expression within parentheses. For example: ``` (
+        #   scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+        #   default, each expression is an `AND` expression. However, you can include `AND`
+        #   and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+        #   Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true) ``` If you want to use a regular expression, use the `
+        #   eq` (equal) or `ne` (not equal) operator against a single un-parenthesized
+        #   expression with or without quotes or against multiple parenthesized
+        #   expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single
+        #   quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq
+        #   literal) (fieldname2 ne "literal")` The literal value is interpreted as a
+        #   regular expression using Google RE2 library syntax. The literal value must
+        #   match the entire field. For example, to filter for instances that do not end
+        #   with name "instance", you would use `name ne .*instance`.
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkAttachmentAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkAttachmentAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_network_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/aggregated/networkAttachments', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified NetworkAttachment in the given scope
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region of this request.
+        # @param [String] network_attachment
+        #   Name of the NetworkAttachment resource to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_network_attachment(project, region, network_attachment, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{project}/regions/{region}/networkAttachments/{networkAttachment}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkAttachment'] = network_attachment unless network_attachment.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified NetworkAttachment resource in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region of this request.
+        # @param [String] network_attachment
+        #   Name of the NetworkAttachment resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_network_attachment(project, region, network_attachment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/networkAttachments/{networkAttachment}', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkAttachment::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkAttachment
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkAttachment'] = network_attachment unless network_attachment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such policy
+        # or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_network_attachment_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/networkAttachments/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a NetworkAttachment in the specified project in the given scope using
+        # the parameters that are included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region of this request.
+        # @param [Google::Apis::ComputeV1::NetworkAttachment] network_attachment_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
+        #   MixerMutationRequestBuilder
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_network_attachment(project, region, network_attachment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkAttachments', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworkAttachment::Representation
+          command.request_object = network_attachment_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the NetworkAttachments for a project in the given scope.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region of this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions: expressions that
+        #   support regular expressions and expressions that follow API improvement
+        #   proposal AIP-160. If you want to use AIP-160, your expression must specify the
+        #   field name, an operator, and the value that you want to use for filtering. The
+        #   value must be a string, a number, or a boolean. The operator must be either `=`
+        #   , `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute
+        #   Engine instances, you can exclude instances named `example-instance` by
+        #   specifying `name != example-instance`. The `:` operator can be used with
+        #   string fields to match substrings. For non-string fields it is equivalent to
+        #   the `=` operator. The `:*` comparison can be used to test whether a key has
+        #   been defined. For example, to find all objects with `owner` label use: ```
+        #   labels.owner:* ``` You can also filter nested fields. For example, you could
+        #   specify `scheduling.automaticRestart = false` to include instances only if
+        #   they are not scheduled for automatic restarts. You can use filtering on nested
+        #   fields to filter based on resource labels. To filter on multiple expressions,
+        #   provide each separate expression within parentheses. For example: ``` (
+        #   scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By
+        #   default, each expression is an `AND` expression. However, you can include `AND`
+        #   and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel
+        #   Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true) ``` If you want to use a regular expression, use the `
+        #   eq` (equal) or `ne` (not equal) operator against a single un-parenthesized
+        #   expression with or without quotes or against multiple parenthesized
+        #   expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single
+        #   quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq
+        #   literal) (fieldname2 ne "literal")` The literal value is interpreted as a
+        #   regular expression using Google RE2 library syntax. The literal value must
+        #   match the entire field. For example, to filter for instances that do not end
+        #   with name "instance", you would use `name ne .*instance`.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name. You can also sort results in
+        #   descending order based on the creation timestamp using `orderBy="
+        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
+        #   field in reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [Boolean] return_partial_success
+        #   Opt-in for partial success behavior which provides partial results in case of
+        #   failure. The default value is false.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkAttachmentList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkAttachmentList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_network_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/networkAttachments', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkAttachmentList::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkAttachmentList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::RegionSetPolicyRequest] region_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_network_attachment_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkAttachments/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_network_attachment_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkAttachments/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

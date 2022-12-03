@@ -2506,7 +2506,9 @@ module Google
         # group is completely drained, offering 0% of its available capacity. The valid
         # ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and
         # smaller than 0.1. You cannot configure a setting of 0 when there is only one
-        # backend attached to the backend service.
+        # backend attached to the backend service. Not available with backends that don'
+        # t support using a balancingMode. This includes backends such as global
+        # internet NEGs, regional serverless NEGs, and PSC NEGs.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -7124,7 +7126,8 @@ module Google
       
         # The reason of the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
-        # domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+        # domain of errors. This should be at most 63 characters and match a regular
+        # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -8122,8 +8125,8 @@ module Google
         attr_accessor :kind
       
         # Name of the resource. For Organization Firewall Policies it's a [Output Only]
-        # numeric ID allocated by GCP which uniquely identifies the Organization
-        # Firewall Policy.
+        # numeric ID allocated by Google Cloud which uniquely identifies the
+        # Organization Firewall Policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8658,12 +8661,13 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field is used along with the backend_service field for Internal TCP/UDP
-        # Load Balancing or Network Load Balancing, or with the target field for
-        # internal and external TargetInstance. You can only use one of ports and
-        # port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and
-        # SCTP traffic, packets addressed to any ports will be forwarded to the target
-        # or backendService.
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # internal TCP/UDP load balancers, backend service-based network load balancers,
+        # and internal and external protocol forwarding. Set this field to true to allow
+        # packets addressed to any port or packets lacking destination port information (
+        # for example, UDP fragments after the first fragment) to be forwarded to the
+        # backends configured with this forwarding rule. The ports, port_range, and
+        # allPorts fields are mutually exclusive.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -8819,27 +8823,35 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # This field can be used only if: - Load balancing scheme is one of EXTERNAL,
-        # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or
-        # SCTP. Packets addressed to ports in the specified range will be forwarded to
-        # target or backend_service. You can only use one of ports, port_range, or
-        # allPorts. The three are mutually exclusive. Forwarding rules with the same [
-        # IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding
-        # target have constraints on the acceptable ports. For more information, see [
-        # Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-
-        # rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # backend service-based network load balancers, target pool-based network load
+        # balancers, internal proxy load balancers, external proxy load balancers,
+        # Traffic Director, external protocol forwarding, and Classic VPN. Some products
+        # have restrictions on what ports can be used. See port specifications for
+        # details. Only packets addressed to ports in the specified range will be
+        # forwarded to the backends configured with this forwarding rule. The ports,
+        # port_range, and allPorts fields are mutually exclusive. For external
+        # forwarding rules, two or more forwarding rules cannot use the same [IPAddress,
+        # IPProtocol] pair, and cannot have overlapping portRanges. For internal
+        # forwarding rules within the same VPC network, two or more forwarding rules
+        # cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping
+        # portRanges. @pattern: \\d+(?:-\\d+)?
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # The ports field is only supported when the forwarding rule references a
-        # backend_service directly. Only packets addressed to the [specified list of
-        # ports]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
-        # port_specifications)) are forwarded to backends. You can only use one of ports
-        # and port_range, or allPorts. The three are mutually exclusive. You can specify
-        # a list of up to five ports, which can be non-contiguous. Forwarding rules with
-        # the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(
-        # ?:-\\d+)?
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # internal TCP/UDP load balancers, backend service-based network load balancers,
+        # and internal protocol forwarding. You can specify a list of up to five ports
+        # by number, separated by commas. The ports can be contiguous or discontiguous.
+        # Only packets addressed to these ports will be forwarded to the backends
+        # configured with this forwarding rule. For external forwarding rules, two or
+        # more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and
+        # cannot share any values defined in ports. For internal forwarding rules within
+        # the same VPC network, two or more forwarding rules cannot use the same [
+        # IPAddress, IPProtocol] pair, and cannot share any values defined in ports. The
+        # ports, port_range, and allPorts fields are mutually exclusive. @pattern: \\d+(?
+        # :-\\d+)?
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -10304,13 +10316,18 @@ module Google
         attr_accessor :fingerprint
       
         # A list of URLs to the HealthCheck resources. Must have at least one
-        # HealthCheck, and not more than 10. HealthCheck resources must have
+        # HealthCheck, and not more than 10 for regional HealthCheckService, and not
+        # more than 1 for global HealthCheckService. HealthCheck resources must have
         # portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For
         # regional HealthCheckService, the HealthCheck must be regional and in the same
         # region. For global HealthCheckService, HealthCheck must be global. Mix of
         # regional and global HealthChecks is not supported. Multiple regional
         # HealthChecks must belong to the same region. Regional HealthChecks must belong
-        # to the same region as zones of NEGs.
+        # to the same region as zones of NetworkEndpointGroups. For global
+        # HealthCheckService using global INTERNET_IP_PORT NetworkEndpointGroups, the
+        # global HealthChecks must specify sourceRegions, and HealthChecks that specify
+        # sourceRegions can only be used with global INTERNET_IP_PORT
+        # NetworkEndpointGroups.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -10320,7 +10337,8 @@ module Google
         # NO_AGGREGATION. An EndpointHealth message is returned for each pair in the
         # health check service. - AND. If any health check of an endpoint reports
         # UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health
-        # checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+        # checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is
+        # only allowed with regional HealthCheckService.
         # Corresponds to the JSON property `healthStatusAggregationPolicy`
         # @return [String]
         attr_accessor :health_status_aggregation_policy
@@ -10349,7 +10367,8 @@ module Google
       
         # A list of URLs to the NetworkEndpointGroup resources. Must not have more than
         # 100. For regional HealthCheckService, NEGs must be in zones in the region of
-        # the HealthCheckService.
+        # the HealthCheckService. For global HealthCheckServices, the
+        # NetworkEndpointGroups must be global INTERNET_IP_PORT.
         # Corresponds to the JSON property `networkEndpointGroups`
         # @return [Array<String>]
         attr_accessor :network_endpoint_groups
@@ -17217,6 +17236,16 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry>]
         attr_accessor :arp_caches
       
+        # The aggregation type of the bundle interface.
+        # Corresponds to the JSON property `bundleAggregationType`
+        # @return [String]
+        attr_accessor :bundle_aggregation_type
+      
+        # The operational status of the bundle interface.
+        # Corresponds to the JSON property `bundleOperationalStatus`
+        # @return [String]
+        attr_accessor :bundle_operational_status
+      
         # A list of InterconnectDiagnostics.LinkStatus objects, describing the status
         # for each link on the Interconnect.
         # Corresponds to the JSON property `links`
@@ -17235,6 +17264,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @arp_caches = args[:arp_caches] if args.key?(:arp_caches)
+          @bundle_aggregation_type = args[:bundle_aggregation_type] if args.key?(:bundle_aggregation_type)
+          @bundle_operational_status = args[:bundle_operational_status] if args.key?(:bundle_operational_status)
           @links = args[:links] if args.key?(:links)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
         end
@@ -17358,6 +17389,11 @@ module Google
         # @return [Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus]
         attr_accessor :lacp_status
       
+        # The operational status of the link.
+        # Corresponds to the JSON property `operationalStatus`
+        # @return [String]
+        attr_accessor :operational_status
+      
         # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
         # value and status of the received light level.
         # Corresponds to the JSON property `receivingOpticalPower`
@@ -17380,6 +17416,7 @@ module Google
           @circuit_id = args[:circuit_id] if args.key?(:circuit_id)
           @google_demarc = args[:google_demarc] if args.key?(:google_demarc)
           @lacp_status = args[:lacp_status] if args.key?(:lacp_status)
+          @operational_status = args[:operational_status] if args.key?(:operational_status)
           @receiving_optical_power = args[:receiving_optical_power] if args.key?(:receiving_optical_power)
           @transmitting_optical_power = args[:transmitting_optical_power] if args.key?(:transmitting_optical_power)
         end
@@ -19840,6 +19877,496 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # NetworkAttachments A network attachment resource ...
+      class NetworkAttachment
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] An array of connections for all the producers connected to this
+        # network attachment.
+        # Corresponds to the JSON property `connectionEndpoints`
+        # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentConnectedEndpoint>]
+        attr_accessor :connection_endpoints
+      
+        # 
+        # Corresponds to the JSON property `connectionPreference`
+        # @return [String]
+        attr_accessor :connection_preference
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] Fingerprint of this resource. A hash of the contents stored in
+        # this object. This field is used in optimistic locking. An up-to-date
+        # fingerprint must be provided in order to patch.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The URL of the network which the Network Attachment belongs to.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Projects that are allowed to connect to this network attachment. The project
+        # can be specified using its id or number.
+        # Corresponds to the JSON property `producerAcceptLists`
+        # @return [Array<String>]
+        attr_accessor :producer_accept_lists
+      
+        # Projects that are not allowed to connect to this network attachment. The
+        # project can be specified using its id or number.
+        # Corresponds to the JSON property `producerRejectLists`
+        # @return [Array<String>]
+        attr_accessor :producer_reject_lists
+      
+        # [Output Only] URL of the region where the network attachment resides. This
+        # field applies only to the region resource. You must specify this field as part
+        # of the HTTP request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL for this resource's resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # An array of URLs where each entry is the URL of a subnet provided by the
+        # service consumer to use for endpoints in the producers that connect to this
+        # network attachment.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<String>]
+        attr_accessor :subnetworks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_endpoints = args[:connection_endpoints] if args.key?(:connection_endpoints)
+          @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @producer_accept_lists = args[:producer_accept_lists] if args.key?(:producer_accept_lists)
+          @producer_reject_lists = args[:producer_reject_lists] if args.key?(:producer_reject_lists)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+        end
+      end
+      
+      # Contains a list of NetworkAttachmentsScopedList.
+      class NetworkAttachmentAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkAttachmentsScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::NetworkAttachmentsScopedList>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # [Output Only] A connection connected to this network attachment.
+      class NetworkAttachmentConnectedEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The IP address assigned to the producer instance network interface. This value
+        # will be a range in case of Serverless.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # The project id or number of the interface to which the IP was assigned.
+        # Corresponds to the JSON property `projectIdOrNum`
+        # @return [String]
+        attr_accessor :project_id_or_num
+      
+        # Alias IP ranges from the same subnetwork
+        # Corresponds to the JSON property `secondaryIpCidrRanges`
+        # @return [Array<String>]
+        attr_accessor :secondary_ip_cidr_ranges
+      
+        # The status of a connected endpoint to this network attachment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The subnetwork used to assign the IP to the producer instance network
+        # interface.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
+          @secondary_ip_cidr_ranges = args[:secondary_ip_cidr_ranges] if args.key?(:secondary_ip_cidr_ranges)
+          @status = args[:status] if args.key?(:status)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
+      # 
+      class NetworkAttachmentList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NetworkAttachment resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::NetworkAttachment>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkAttachmentList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class NetworkAttachmentsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of NetworkAttachments contained in this scope.
+        # Corresponds to the JSON property `networkAttachments`
+        # @return [Array<Google::Apis::ComputeV1::NetworkAttachment>]
+        attr_accessor :network_attachments
+      
+        # Informational warning which replaces the list of network attachments when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachments = args[:network_attachments] if args.key?(:network_attachments)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of network attachments when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -25518,6 +26045,11 @@ module Google
         # @return [Google::Apis::ComputeV1::UsageExportLocation]
         attr_accessor :usage_export_location
       
+        # [Output Only] Default internal DNS setting used by VMs running in this project.
+        # Corresponds to the JSON property `vmDnsSetting`
+        # @return [String]
+        attr_accessor :vm_dns_setting
+      
         # [Output Only] The role this project has in a shared VPC configuration.
         # Currently, only projects with the host role, which is specified by the value
         # HOST, are differentiated.
@@ -25543,6 +26075,7 @@ module Google
           @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @usage_export_location = args[:usage_export_location] if args.key?(:usage_export_location)
+          @vm_dns_setting = args[:vm_dns_setting] if args.key?(:vm_dns_setting)
           @xpn_project_status = args[:xpn_project_status] if args.key?(:xpn_project_status)
         end
       end
@@ -28156,6 +28689,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Resource policies to be added to this reservation. The key is defined by user,
+        # and the value is resource policy url. This is to define placement policy with
+        # reservation.
+        # Corresponds to the JSON property `resourcePolicies`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_policies
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -28209,6 +28749,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
@@ -28629,8 +29170,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies. Possible values are VCPU
-        # and MEMORY
+        # Type of resource for which this commitment applies. Possible values are VCPU,
+        # MEMORY, LOCAL_SSD, and ACCELERATOR.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -33323,6 +33864,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_limit
       
+        # The network URL for the network to set the limit for.
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
         # The project id or number for the project to set the limit for.
         # Corresponds to the JSON property `projectIdOrNum`
         # @return [String]
@@ -33335,6 +33881,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_limit = args[:connection_limit] if args.key?(:connection_limit)
+          @network_url = args[:network_url] if args.key?(:network_url)
           @project_id_or_num = args[:project_id_or_num] if args.key?(:project_id_or_num)
         end
       end

@@ -2458,6 +2458,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentConnectedEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEdgeSecurityService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9664,6 +9730,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsArpEntry::Representation
       
+          property :bundle_aggregation_type, as: 'bundleAggregationType'
+          property :bundle_operational_status, as: 'bundleOperationalStatus'
           collection :links, as: 'links', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkStatus::Representation
       
           property :mac_address, as: 'macAddress'
@@ -9704,6 +9772,7 @@ module Google
           property :google_demarc, as: 'googleDemarc'
           property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkLacpStatus::Representation
       
+          property :operational_status, as: 'operationalStatus'
           property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
       
           property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeV1::InterconnectDiagnosticsLinkOpticalPower::Representation
@@ -10342,6 +10411,131 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class NetworkAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connection_endpoints, as: 'connectionEndpoints', class: Google::Apis::ComputeV1::NetworkAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeV1::NetworkAttachmentConnectedEndpoint::Representation
+      
+          property :connection_preference, as: 'connectionPreference'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :producer_accept_lists, as: 'producerAcceptLists'
+          collection :producer_reject_lists, as: 'producerRejectLists'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class NetworkAttachmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::NetworkAttachmentsScopedList, decorator: Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning, decorator: Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkAttachmentConnectedEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :project_id_or_num, as: 'projectIdOrNum'
+          collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
+          property :status, as: 'status'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class NetworkAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NetworkAttachment, decorator: Google::Apis::ComputeV1::NetworkAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkAttachmentList::Warning, decorator: Google::Apis::ComputeV1::NetworkAttachmentList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkAttachmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_attachments, as: 'networkAttachments', class: Google::Apis::ComputeV1::NetworkAttachment, decorator: Google::Apis::ComputeV1::NetworkAttachment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -11779,6 +11973,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeV1::UsageExportLocation, decorator: Google::Apis::ComputeV1::UsageExportLocation::Representation
       
+          property :vm_dns_setting, as: 'vmDnsSetting'
           property :xpn_project_status, as: 'xpnProjectStatus'
         end
       end
@@ -12486,6 +12681,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          hash :resource_policies, as: 'resourcePolicies'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
@@ -13782,6 +13978,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_limit, as: 'connectionLimit'
+          property :network_url, as: 'networkUrl'
           property :project_id_or_num, as: 'projectIdOrNum'
         end
       end
