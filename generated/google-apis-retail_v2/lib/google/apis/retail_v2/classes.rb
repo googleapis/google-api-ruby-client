@@ -720,8 +720,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # If RETRIEVABLE_ENABLED, attribute values will be retrievabled in the search
-        # results.
+        # If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.
         # Corresponds to the JSON property `retrievableOption`
         # @return [String]
         attr_accessor :retrievable_option
@@ -2396,7 +2395,8 @@ module Google
         # For Type.VARIANT, the following fields are always returned in by default: *
         # name * color_info The maximum number of paths is 30. Otherwise, an
         # INVALID_ARGUMENT error is returned. Note: Returning more fields in
-        # SearchResponse can increase response payload size and serving latency.
+        # SearchResponse can increase response payload size and serving latency. This
+        # field is deprecated. Use the retrievable site-wide control instead.
         # Corresponds to the JSON property `retrievableFields`
         # @return [String]
         attr_accessor :retrievable_fields
@@ -5411,14 +5411,14 @@ module Google
       
         # Required. The type of model e.g. `home-page`. Currently supported values: `
         # recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `
-        # page-optimization`, `similar-items`, `buy-it-again`, and `recently-viewed`(
-        # readonly value). This field together with optimization_objective describe
-        # model metadata to use to control model training and serving. See https://cloud.
-        # google.com/retail/docs/models for more details on what the model metadata
-        # control and which combination of parameters are valid. For invalid
-        # combinations of parameters (e.g. type = `frequently-bought-together` and
-        # optimization_objective = `ctr`), you receive an error 400 if you try to create/
-        # update a recommendation with this set of knobs.
+        # page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `
+        # recently-viewed`(readonly value). This field together with
+        # optimization_objective describe model metadata to use to control model
+        # training and serving. See https://cloud.google.com/retail/docs/models for more
+        # details on what the model metadata control and which combination of parameters
+        # are valid. For invalid combinations of parameters (e.g. type = `frequently-
+        # bought-together` and optimization_objective = `ctr`), you receive an error 400
+        # if you try to create/update a recommendation with this set of knobs.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6405,14 +6405,14 @@ module Google
       
         # Required. The type of model e.g. `home-page`. Currently supported values: `
         # recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `
-        # page-optimization`, `similar-items`, `buy-it-again`, and `recently-viewed`(
-        # readonly value). This field together with optimization_objective describe
-        # model metadata to use to control model training and serving. See https://cloud.
-        # google.com/retail/docs/models for more details on what the model metadata
-        # control and which combination of parameters are valid. For invalid
-        # combinations of parameters (e.g. type = `frequently-bought-together` and
-        # optimization_objective = `ctr`), you receive an error 400 if you try to create/
-        # update a recommendation with this set of knobs.
+        # page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `
+        # recently-viewed`(readonly value). This field together with
+        # optimization_objective describe model metadata to use to control model
+        # training and serving. See https://cloud.google.com/retail/docs/models for more
+        # details on what the model metadata control and which combination of parameters
+        # are valid. For invalid combinations of parameters (e.g. type = `frequently-
+        # bought-together` and optimization_objective = `ctr`), you receive an error 400
+        # if you try to create/update a recommendation with this set of knobs.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
