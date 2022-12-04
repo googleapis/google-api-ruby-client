@@ -22,6 +22,31 @@ module Google
   module Apis
     module VmmigrationV1alpha1
       
+      # Message describing AWS Credentials using access key id and secret.
+      class AccessKeyCredentials
+        include Google::Apis::Core::Hashable
+      
+        # AWS access key ID.
+        # Corresponds to the JSON property `accessKeyId`
+        # @return [String]
+        attr_accessor :access_key_id
+      
+        # Input only. AWS secret access key.
+        # Corresponds to the JSON property `secretAccessKey`
+        # @return [String]
+        attr_accessor :secret_access_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
+          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
+        end
+      end
+      
       # AdaptingOSStep contains specific step details.
       class AdaptingOsStep
         include Google::Apis::Core::Hashable
@@ -172,6 +197,11 @@ module Google
       class AwsSourceDetails
         include Google::Apis::Core::Hashable
       
+        # Message describing AWS Credentials using access key id and secret.
+        # Corresponds to the JSON property `accessKeyCreds`
+        # @return [Google::Apis::VmmigrationV1alpha1::AccessKeyCredentials]
+        attr_accessor :access_key_creds
+      
         # AWS access key ID.
         # Corresponds to the JSON property `accessKeyId`
         # @return [String]
@@ -196,6 +226,11 @@ module Google
         # Corresponds to the JSON property `inventorySecurityGroupNames`
         # @return [Array<String>]
         attr_accessor :inventory_security_group_names
+      
+        # AWS resource tags to limit the scope of the source inventory.
+        # Corresponds to the JSON property `inventoryTagList`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::Tag>]
+        attr_accessor :inventory_tag_list
       
         # Deprecated: AWS resource tags to limit the scope of the source inventory. Use
         # inventory_tag_list instead.
@@ -232,10 +267,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_key_creds = args[:access_key_creds] if args.key?(:access_key_creds)
           @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
           @aws_region = args[:aws_region] if args.key?(:aws_region)
           @error = args[:error] if args.key?(:error)
           @inventory_security_group_names = args[:inventory_security_group_names] if args.key?(:inventory_security_group_names)
+          @inventory_tag_list = args[:inventory_tag_list] if args.key?(:inventory_tag_list)
           @inventory_tags = args[:inventory_tags] if args.key?(:inventory_tags)
           @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
           @public_ip = args[:public_ip] if args.key?(:public_ip)
@@ -2533,6 +2570,31 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Tag is an AWS tag representation.
+      class Tag
+        include Google::Apis::Core::Hashable
+      
+        # Key of tag.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value of tag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
