@@ -1564,6 +1564,79 @@ module Google
         end
       end
       
+      # A link between a GA4 Property and BigQuery project.
+      class GoogleAnalyticsAdminV1alphaBigQueryLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the link was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # If set true, enables daily data export to the linked Google Cloud project.
+        # Corresponds to the JSON property `dailyExportEnabled`
+        # @return [Boolean]
+        attr_accessor :daily_export_enabled
+        alias_method :daily_export_enabled?, :daily_export_enabled
+      
+        # The list of event names that will be excluded from exports.
+        # Corresponds to the JSON property `excludedEvents`
+        # @return [Array<String>]
+        attr_accessor :excluded_events
+      
+        # The list of streams under the parent property for which data will be exported.
+        # Format: properties/`property_id`/dataStreams/`stream_id` Example: ['properties/
+        # 1000/dataStreams/2000']
+        # Corresponds to the JSON property `exportStreams`
+        # @return [Array<String>]
+        attr_accessor :export_streams
+      
+        # If set true, exported data will include advertising identifiers for mobile app
+        # streams.
+        # Corresponds to the JSON property `includeAdvertisingId`
+        # @return [Boolean]
+        attr_accessor :include_advertising_id
+        alias_method :include_advertising_id?, :include_advertising_id
+      
+        # Output only. Resource name of this BigQuery link. Format: 'properties/`
+        # property_id`/bigQueryLinks/`bigquery_link_id`' Format: 'properties/1234/
+        # bigQueryLinks/abc567'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The linked Google Cloud project. When creating a BigQueryLink, you
+        # may provide this resource name using either a project number or project ID.
+        # Once this resource has been created, the returned project will always have a
+        # project that contains a project number. Format: 'projects/`project number`'
+        # Example: 'projects/1234'
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # If set true, enables streaming export to the linked Google Cloud project.
+        # Corresponds to the JSON property `streamingExportEnabled`
+        # @return [Boolean]
+        attr_accessor :streaming_export_enabled
+        alias_method :streaming_export_enabled?, :streaming_export_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @daily_export_enabled = args[:daily_export_enabled] if args.key?(:daily_export_enabled)
+          @excluded_events = args[:excluded_events] if args.key?(:excluded_events)
+          @export_streams = args[:export_streams] if args.key?(:export_streams)
+          @include_advertising_id = args[:include_advertising_id] if args.key?(:include_advertising_id)
+          @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
+          @streaming_export_enabled = args[:streaming_export_enabled] if args.key?(:streaming_export_enabled)
+        end
+      end
+      
       # Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         include Google::Apis::Core::Hashable
@@ -1631,6 +1704,11 @@ module Google
         # Corresponds to the JSON property `attributionSettings`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings]
         attr_accessor :attribution_settings
+      
+        # A link between a GA4 Property and BigQuery project.
+        # Corresponds to the JSON property `bigqueryLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink]
+        attr_accessor :bigquery_link
       
         # A conversion event in a Google Analytics property.
         # Corresponds to the JSON property `conversionEvent`
@@ -1713,6 +1791,7 @@ module Google
         def update!(**args)
           @account = args[:account] if args.key?(:account)
           @attribution_settings = args[:attribution_settings] if args.key?(:attribution_settings)
+          @bigquery_link = args[:bigquery_link] if args.key?(:bigquery_link)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
