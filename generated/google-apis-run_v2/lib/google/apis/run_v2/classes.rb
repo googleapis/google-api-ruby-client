@@ -394,9 +394,7 @@ module Google
         # s billing system, so they can be used to filter, or break down billing charges
         # by team, component, environment, state, etc. For more information, visit https:
         # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
-        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
-        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
-        # labels are read-only, and user changes will not be preserved.
+        # cloud.google.com/run/docs/configuring/labels
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -549,12 +547,19 @@ module Google
       class GoogleCloudRunV2ExecutionTemplate
         include Google::Apis::Core::Hashable
       
-        # KRM-style annotations for the resource.
+        # KRM-style annotations for the resource. Cloud Run API v2 does not support
+        # annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.
+        # knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be
+        # rejected. All system annotations in v1 now have a corresponding field in v2
+        # ExecutionTemplate.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # KRM-style labels for the resource.
+        # KRM-style labels for the resource. Cloud Run API v2 does not support labels
+        # with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        # labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -675,16 +680,18 @@ module Google
         end
       end
       
-      # Job represents the configuration of a single job. A job an immutable resource
-      # that references a container image which is run to completion.
+      # Job represents the configuration of a single job, which references a container
+      # image that is run to completion.
       class GoogleCloudRunV2Job
         include Google::Apis::Core::Hashable
       
         # KRM-style annotations for the resource. Unstructured key value map that may be
         # set by external tools to store and arbitrary metadata. They are not queryable
-        # and should be preserved when modifying objects. Cloud Run will populate some
-        # annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces.
-        # This field follows Kubernetes annotations' namespacing, limits, and rules.
+        # and should be preserved when modifying objects. Cloud Run API v2 does not
+        # support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `
+        # serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will
+        # be rejected. All system annotations in v1 now have a corresponding field in v2
+        # Job. This field follows Kubernetes annotations' namespacing, limits, and rules.
         # More info: https://kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
@@ -755,9 +762,10 @@ module Google
         # s billing system, so they can be used to filter, or break down billing charges
         # by team, component, environment, state, etc. For more information, visit https:
         # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
-        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
-        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
-        # labels are read-only, and user changes will not be preserved.
+        # cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support
+        # labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`
+        # , or `autoscaling.knative.dev` namespaces, and they will be rejected. All
+        # system labels in v1 now have a corresponding field in v2 Job.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1162,9 +1170,7 @@ module Google
         # s billing system, so they can be used to filter, or break down billing charges
         # by team, component, environment, state, etc. For more information, visit https:
         # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
-        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
-        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
-        # labels are read-only, and user changes will not be preserved.
+        # cloud.google.com/run/docs/configuring/labels
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1318,7 +1324,11 @@ module Google
       class GoogleCloudRunV2RevisionTemplate
         include Google::Apis::Core::Hashable
       
-        # KRM-style annotations for the resource.
+        # KRM-style annotations for the resource. Cloud Run API v2 does not support
+        # annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.
+        # knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be
+        # rejected. All system annotations in v1 now have a corresponding field in v2
+        # RevisionTemplate.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -1341,7 +1351,10 @@ module Google
         # @return [String]
         attr_accessor :execution_environment
       
-        # KRM-style labels for the resource.
+        # KRM-style labels for the resource. Cloud Run API v2 does not support labels
+        # with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        # labels in v1 now have a corresponding field in v2 RevisionTemplate.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1525,10 +1538,12 @@ module Google
       
         # Unstructured key value map that may be set by external tools to store and
         # arbitrary metadata. They are not queryable and should be preserved when
-        # modifying objects. Cloud Run will populate some annotations using 'run.
-        # googleapis.com' or 'serving.knative.dev' namespaces. This field follows
-        # Kubernetes annotations' namespacing, limits, and rules. More info: https://
-        # kubernetes.io/docs/user-guide/annotations
+        # modifying objects. Cloud Run API v2 does not support annotations with `run.
+        # googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        # annotations in v1 now have a corresponding field in v2 Service. This field
+        # follows Kubernetes annotations' namespacing, limits, and rules. More info:
+        # https://kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -1609,9 +1624,10 @@ module Google
         # can be used to filter, or break down billing charges by team, component,
         # environment, state, etc. For more information, visit https://cloud.google.com/
         # resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/
-        # docs/configuring/labels Cloud Run will populate some labels with 'run.
-        # googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-
-        # only, and user changes will not be preserved.
+        # docs/configuring/labels Cloud Run API v2 does not support labels with `run.
+        # googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `
+        # autoscaling.knative.dev` namespaces, and they will be rejected. All system
+        # labels in v1 now have a corresponding field in v2 Service.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1866,9 +1882,7 @@ module Google
         # s billing system, so they can be used to filter, or break down billing charges
         # by team, component, environment, state, etc. For more information, visit https:
         # //cloud.google.com/resource-manager/docs/creating-managing-labels or https://
-        # cloud.google.com/run/docs/configuring/labels Cloud Run will populate some
-        # labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those
-        # labels are read-only, and user changes will not be preserved.
+        # cloud.google.com/run/docs/configuring/labels
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

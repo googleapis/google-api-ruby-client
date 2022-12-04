@@ -868,8 +868,8 @@ module Google
         # Lists Services.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
-        #   valid GCP region, and cannot be the "-" wildcard. Format: projects/`project`/
-        #   locations/`location`, where `project` can be project id or number.
+        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/`
+        #   project`/locations/`location`, where `project` can be project id or number.
         # @param [Fixnum] page_size
         #   Maximum number of Services to return in this call.
         # @param [String] page_token
