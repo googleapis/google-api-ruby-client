@@ -367,6 +367,11 @@ module Google
         # @return [Google::Apis::ComposerV1::PrivateEnvironmentConfig]
         attr_accessor :private_environment_config
       
+        # The Recovery settings of an environment.
+        # Corresponds to the JSON property `recoveryConfig`
+        # @return [Google::Apis::ComposerV1::RecoveryConfig]
+        attr_accessor :recovery_config
+      
         # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1::SoftwareConfig]
@@ -408,6 +413,7 @@ module Google
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
+          @recovery_config = args[:recovery_config] if args.key?(:recovery_config)
           @software_config = args[:software_config] if args.key?(:software_config)
           @web_server_config = args[:web_server_config] if args.key?(:web_server_config)
           @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
@@ -616,6 +622,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Request to load a snapshot into a Cloud Composer environment.
+      class LoadSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not to skip setting Airflow overrides when loading the environment'
+        # s state.
+        # Corresponds to the JSON property `skipAirflowOverridesSetting`
+        # @return [Boolean]
+        attr_accessor :skip_airflow_overrides_setting
+        alias_method :skip_airflow_overrides_setting?, :skip_airflow_overrides_setting
+      
+        # Whether or not to skip setting environment variables when loading the
+        # environment's state.
+        # Corresponds to the JSON property `skipEnvironmentVariablesSetting`
+        # @return [Boolean]
+        attr_accessor :skip_environment_variables_setting
+        alias_method :skip_environment_variables_setting?, :skip_environment_variables_setting
+      
+        # Whether or not to skip copying Cloud Storage data when loading the environment'
+        # s state.
+        # Corresponds to the JSON property `skipGcsDataCopying`
+        # @return [Boolean]
+        attr_accessor :skip_gcs_data_copying
+        alias_method :skip_gcs_data_copying?, :skip_gcs_data_copying
+      
+        # Whether or not to skip installing Pypi packages when loading the environment's
+        # state.
+        # Corresponds to the JSON property `skipPypiPackagesInstallation`
+        # @return [Boolean]
+        attr_accessor :skip_pypi_packages_installation
+        alias_method :skip_pypi_packages_installation?, :skip_pypi_packages_installation
+      
+        # A Cloud Storage path to a snapshot to load, e.g.: "gs://my-bucket/snapshots/
+        # project_location_environment_timestamp".
+        # Corresponds to the JSON property `snapshotPath`
+        # @return [String]
+        attr_accessor :snapshot_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @skip_airflow_overrides_setting = args[:skip_airflow_overrides_setting] if args.key?(:skip_airflow_overrides_setting)
+          @skip_environment_variables_setting = args[:skip_environment_variables_setting] if args.key?(:skip_environment_variables_setting)
+          @skip_gcs_data_copying = args[:skip_gcs_data_copying] if args.key?(:skip_gcs_data_copying)
+          @skip_pypi_packages_installation = args[:skip_pypi_packages_installation] if args.key?(:skip_pypi_packages_installation)
+          @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
         end
       end
       
@@ -1098,6 +1156,45 @@ module Google
         end
       end
       
+      # The Recovery settings of an environment.
+      class RecoveryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for scheduled snapshot creation mechanism.
+        # Corresponds to the JSON property `scheduledSnapshotsConfig`
+        # @return [Google::Apis::ComposerV1::ScheduledSnapshotsConfig]
+        attr_accessor :scheduled_snapshots_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduled_snapshots_config = args[:scheduled_snapshots_config] if args.key?(:scheduled_snapshots_config)
+        end
+      end
+      
+      # Request to create a snapshot of a Cloud Composer environment.
+      class SaveSnapshotRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "
+        # gs://my-bucket/snapshots".
+        # Corresponds to the JSON property `snapshotLocation`
+        # @return [String]
+        attr_accessor :snapshot_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_location = args[:snapshot_location] if args.key?(:snapshot_location)
+        end
+      end
+      
       # Response to SaveSnapshotRequest.
       class SaveSnapshotResponse
         include Google::Apis::Core::Hashable
@@ -1116,6 +1213,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
+        end
+      end
+      
+      # The configuration for scheduled snapshot creation mechanism.
+      class ScheduledSnapshotsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether scheduled snapshots creation is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The cron expression representing the time when snapshots creation
+        # mechanism runs. This field is subject to additional validation around
+        # frequency of execution.
+        # Corresponds to the JSON property `snapshotCreationSchedule`
+        # @return [String]
+        attr_accessor :snapshot_creation_schedule
+      
+        # Optional. The Cloud Storage location for storing automatically created
+        # snapshots.
+        # Corresponds to the JSON property `snapshotLocation`
+        # @return [String]
+        attr_accessor :snapshot_location
+      
+        # Optional. Time zone that sets the context to interpret
+        # snapshot_creation_schedule.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @snapshot_creation_schedule = args[:snapshot_creation_schedule] if args.key?(:snapshot_creation_schedule)
+          @snapshot_location = args[:snapshot_location] if args.key?(:snapshot_location)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       

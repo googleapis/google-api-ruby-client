@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LoadSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,7 +166,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecoveryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SaveSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SaveSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScheduledSnapshotsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +328,8 @@ module Google
           property :node_count, as: 'nodeCount'
           property :private_environment_config, as: 'privateEnvironmentConfig', class: Google::Apis::ComposerV1::PrivateEnvironmentConfig, decorator: Google::Apis::ComposerV1::PrivateEnvironmentConfig::Representation
       
+          property :recovery_config, as: 'recoveryConfig', class: Google::Apis::ComposerV1::RecoveryConfig, decorator: Google::Apis::ComposerV1::RecoveryConfig::Representation
+      
           property :software_config, as: 'softwareConfig', class: Google::Apis::ComposerV1::SoftwareConfig, decorator: Google::Apis::ComposerV1::SoftwareConfig::Representation
       
           property :web_server_config, as: 'webServerConfig', class: Google::Apis::ComposerV1::WebServerConfig, decorator: Google::Apis::ComposerV1::WebServerConfig::Representation
@@ -363,6 +389,17 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ComposerV1::Operation, decorator: Google::Apis::ComposerV1::Operation::Representation
       
+        end
+      end
+      
+      class LoadSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_airflow_overrides_setting, as: 'skipAirflowOverridesSetting'
+          property :skip_environment_variables_setting, as: 'skipEnvironmentVariablesSetting'
+          property :skip_gcs_data_copying, as: 'skipGcsDataCopying'
+          property :skip_pypi_packages_installation, as: 'skipPypiPackagesInstallation'
+          property :snapshot_path, as: 'snapshotPath'
         end
       end
       
@@ -465,10 +502,35 @@ module Google
         end
       end
       
+      class RecoveryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduled_snapshots_config, as: 'scheduledSnapshotsConfig', class: Google::Apis::ComposerV1::ScheduledSnapshotsConfig, decorator: Google::Apis::ComposerV1::ScheduledSnapshotsConfig::Representation
+      
+        end
+      end
+      
+      class SaveSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_location, as: 'snapshotLocation'
+        end
+      end
+      
       class SaveSnapshotResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :snapshot_path, as: 'snapshotPath'
+        end
+      end
+      
+      class ScheduledSnapshotsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :snapshot_creation_schedule, as: 'snapshotCreationSchedule'
+          property :snapshot_location, as: 'snapshotLocation'
+          property :time_zone, as: 'timeZone'
         end
       end
       
