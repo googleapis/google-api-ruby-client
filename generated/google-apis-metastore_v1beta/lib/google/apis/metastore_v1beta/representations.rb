@@ -22,6 +22,12 @@ module Google
   module Apis
     module MetastoreV1beta
       
+      class AlterMetadataResourceLocationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveTableToDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +245,18 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryMetadataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -302,6 +326,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlterMetadataResourceLocationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_uri, as: 'locationUri'
+          property :resource_name, as: 'resourceName'
+        end
       end
       
       class AuditConfig
@@ -613,6 +645,15 @@ module Google
         end
       end
       
+      class MoveTableToDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :db_name, as: 'dbName'
+          property :destination_db_name, as: 'destinationDbName'
+          property :table_name, as: 'tableName'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -655,6 +696,20 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class QueryMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+        end
+      end
+      
+      class QueryMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result_manifest_uri, as: 'resultManifestUri'
         end
       end
       
