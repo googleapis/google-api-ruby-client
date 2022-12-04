@@ -2536,6 +2536,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentConnectedEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkAttachmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEdgeSecurityService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4451,6 +4517,12 @@ module Google
       end
       
       class SecurityPolicyRuleRateLimitOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7899,6 +7971,7 @@ module Google
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :backend_service, as: 'backendService'
+          property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -8825,6 +8898,8 @@ module Google
       
           property :hostname, as: 'hostname'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
@@ -10070,6 +10145,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :arp_caches, as: 'arpCaches', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsArpEntry::Representation
       
+          property :bundle_aggregation_type, as: 'bundleAggregationType'
+          property :bundle_operational_status, as: 'bundleOperationalStatus'
           collection :links, as: 'links', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkStatus::Representation
       
           property :mac_address, as: 'macAddress'
@@ -10110,6 +10187,7 @@ module Google
           property :google_demarc, as: 'googleDemarc'
           property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkLacpStatus::Representation
       
+          property :operational_status, as: 'operationalStatus'
           property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower::Representation
       
           property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeBeta::InterconnectDiagnosticsLinkOpticalPower::Representation
@@ -10749,6 +10827,131 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class NetworkAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connection_endpoints, as: 'connectionEndpoints', class: Google::Apis::ComputeBeta::NetworkAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeBeta::NetworkAttachmentConnectedEndpoint::Representation
+      
+          property :connection_preference, as: 'connectionPreference'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :producer_accept_lists, as: 'producerAcceptLists'
+          collection :producer_reject_lists, as: 'producerRejectLists'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          collection :subnetworks, as: 'subnetworks'
+        end
+      end
+      
+      class NetworkAttachmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList, decorator: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkAttachmentAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::NetworkAttachmentAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkAttachmentAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkAttachmentAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkAttachmentConnectedEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :project_id_or_num, as: 'projectIdOrNum'
+          collection :secondary_ip_cidr_ranges, as: 'secondaryIpCidrRanges'
+          property :status, as: 'status'
+          property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class NetworkAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::NetworkAttachment, decorator: Google::Apis::ComputeBeta::NetworkAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkAttachmentList::Warning, decorator: Google::Apis::ComputeBeta::NetworkAttachmentList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkAttachmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_attachments, as: 'networkAttachments', class: Google::Apis::ComputeBeta::NetworkAttachment, decorator: Google::Apis::ComputeBeta::NetworkAttachment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkAttachmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -12261,6 +12464,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeBeta::UsageExportLocation, decorator: Google::Apis::ComputeBeta::UsageExportLocation::Representation
       
+          property :vm_dns_setting, as: 'vmDnsSetting'
           property :xpn_project_status, as: 'xpnProjectStatus'
         end
       end
@@ -14262,12 +14466,22 @@ module Google
       
           property :conform_action, as: 'conformAction'
           property :enforce_on_key, as: 'enforceOnKey'
+          collection :enforce_on_key_configs, as: 'enforceOnKeyConfigs', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig::Representation
+      
           property :enforce_on_key_name, as: 'enforceOnKeyName'
           property :exceed_action, as: 'exceedAction'
           property :exceed_redirect_options, as: 'exceedRedirectOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions::Representation
       
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforce_on_key_name, as: 'enforceOnKeyName'
+          property :enforce_on_key_type, as: 'enforceOnKeyType'
         end
       end
       
@@ -14397,6 +14611,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_limit, as: 'connectionLimit'
+          property :network_url, as: 'networkUrl'
           property :project_id_or_num, as: 'projectIdOrNum'
         end
       end
