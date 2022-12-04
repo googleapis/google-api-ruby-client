@@ -2701,7 +2701,8 @@ module Google
         # @param [String] page_token
         #   A page token, received from a previous `ListFirebaseLinks` call. Provide this
         #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListProperties` must match the call that provided the page token.
+        #   provided to `ListFirebaseLinks` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -346,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaBigQueryLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1184,6 +1190,20 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaBigQueryLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :daily_export_enabled, as: 'dailyExportEnabled'
+          collection :excluded_events, as: 'excludedEvents'
+          collection :export_streams, as: 'exportStreams'
+          property :include_advertising_id, as: 'includeAdvertisingId'
+          property :name, as: 'name'
+          property :project, as: 'project'
+          property :streaming_export_enabled, as: 'streamingExportEnabled'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1208,6 +1228,8 @@ module Google
           property :account, as: 'account', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount::Representation
       
           property :attribution_settings, as: 'attributionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAttributionSettings::Representation
+      
+          property :bigquery_link, as: 'bigqueryLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
       
           property :conversion_event, as: 'conversionEvent', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent::Representation
       
