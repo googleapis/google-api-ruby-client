@@ -40,7 +40,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SynthesisInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SynthesizeLongAudioRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -104,11 +122,45 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::TexttospeechV1beta1::Status, decorator: Google::Apis::TexttospeechV1beta1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class SynthesisInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ssml, as: 'ssml'
           property :text, as: 'text'
+        end
+      end
+      
+      class SynthesizeLongAudioRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1beta1::AudioConfig, decorator: Google::Apis::TexttospeechV1beta1::AudioConfig::Representation
+      
+          property :input, as: 'input', class: Google::Apis::TexttospeechV1beta1::SynthesisInput, decorator: Google::Apis::TexttospeechV1beta1::SynthesisInput::Representation
+      
+          property :output_gcs_uri, as: 'outputGcsUri'
+          property :voice, as: 'voice', class: Google::Apis::TexttospeechV1beta1::VoiceSelectionParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceSelectionParams::Representation
+      
         end
       end
       
