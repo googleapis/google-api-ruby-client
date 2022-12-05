@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanExecutionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -617,6 +623,12 @@ module Google
       end
       
       class GoogleCloudDataplexV1StorageFormatCsvOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1StorageFormatIcebergOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1305,6 +1317,8 @@ module Google
           property :display_name, as: 'displayName'
           property :execution_spec, as: 'executionSpec', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec::Representation
       
+          property :execution_status, as: 'executionStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionStatus::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state'
@@ -1356,6 +1370,14 @@ module Google
           property :field, as: 'field'
           property :trigger, as: 'trigger', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Trigger, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Trigger::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanExecutionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :latest_job_end_time, as: 'latestJobEndTime'
+          property :latest_job_start_time, as: 'latestJobStartTime'
         end
       end
       
@@ -1874,6 +1896,8 @@ module Google
           property :csv, as: 'csv', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatCsvOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatCsvOptions::Representation
       
           property :format, as: 'format'
+          property :iceberg, as: 'iceberg', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatIcebergOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatIcebergOptions::Representation
+      
           property :json, as: 'json', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatJsonOptions, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatJsonOptions::Representation
       
           property :mime_type, as: 'mimeType'
@@ -1887,6 +1911,13 @@ module Google
           property :encoding, as: 'encoding'
           property :header_rows, as: 'headerRows'
           property :quote, as: 'quote'
+        end
+      end
+      
+      class GoogleCloudDataplexV1StorageFormatIcebergOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_location, as: 'metadataLocation'
         end
       end
       
