@@ -1437,6 +1437,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :egress_option, as: 'egressOption'
           property :peered_network, as: 'peeredNetwork'
+          property :peered_network_ip_range, as: 'peeredNetworkIpRange'
         end
       end
       
