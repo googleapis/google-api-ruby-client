@@ -7696,6 +7696,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `finalScore`
+        # @return [Float]
+        attr_accessor :final_score
+      
+        # 
+        # Corresponds to the JSON property `freshnessScore`
+        # @return [Float]
+        attr_accessor :freshness_score
+      
+        # 
+        # Corresponds to the JSON property `joinedSpaceAffinityScore`
+        # @return [Float]
+        attr_accessor :joined_space_affinity_score
+      
+        # 
         # Corresponds to the JSON property `messageAgeInDays`
         # @return [Float]
         attr_accessor :message_age_in_days
@@ -7711,6 +7726,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @final_score = args[:final_score] if args.key?(:final_score)
+          @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
+          @joined_space_affinity_score = args[:joined_space_affinity_score] if args.key?(:joined_space_affinity_score)
           @message_age_in_days = args[:message_age_in_days] if args.key?(:message_age_in_days)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
         end
@@ -13394,6 +13412,14 @@ module Google
         # @return [Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings]
         attr_accessor :retention_settings
       
+        # Used by clients to correctly log format type for message creation due to
+        # complexity with client side optimistic update (see go/content-metric-post-send-
+        # logging for details). Currently, only set by server in the message or topic
+        # creation path.
+        # Corresponds to the JSON property `richTextFormattingType`
+        # @return [String]
+        attr_accessor :rich_text_formatting_type
+      
         # A client-specified string that can be used to uniquely identify a message in a
         # space, in lieu of `id.message_id`.
         # Corresponds to the JSON property `secondaryMessageKey`
@@ -13465,6 +13491,7 @@ module Google
           @reactions = args[:reactions] if args.key?(:reactions)
           @reports = args[:reports] if args.key?(:reports)
           @retention_settings = args[:retention_settings] if args.key?(:retention_settings)
+          @rich_text_formatting_type = args[:rich_text_formatting_type] if args.key?(:rich_text_formatting_type)
           @secondary_message_key = args[:secondary_message_key] if args.key?(:secondary_message_key)
           @text_body = args[:text_body] if args.key?(:text_body)
           @tombstone_metadata = args[:tombstone_metadata] if args.key?(:tombstone_metadata)
