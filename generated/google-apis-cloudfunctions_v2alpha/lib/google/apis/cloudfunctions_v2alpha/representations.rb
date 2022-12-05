@@ -657,10 +657,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_traffic_on_latest_revision, as: 'allTrafficOnLatestRevision'
+          property :available_cpu, as: 'availableCpu'
           property :available_memory, as: 'availableMemory'
           hash :environment_variables, as: 'environmentVariables'
           property :ingress_settings, as: 'ingressSettings'
           property :max_instance_count, as: 'maxInstanceCount'
+          property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :min_instance_count, as: 'minInstanceCount'
           property :revision, as: 'revision'
           collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV2alpha::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV2alpha::SecretEnvVar::Representation
