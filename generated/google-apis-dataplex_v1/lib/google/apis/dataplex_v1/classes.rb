@@ -1352,7 +1352,7 @@ module Google
         attr_accessor :table_condition_expectation
       
         # Optional. The minimum ratio of passing_rows / total_rows required to pass this
-        # rule. Default = 1.0
+        # rule, with a range of 0.0, 1.00 indicates default value (i.e. 1.0)
         # Corresponds to the JSON property `threshold`
         # @return [Float]
         attr_accessor :threshold
@@ -1724,6 +1724,11 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionSpec]
         attr_accessor :execution_spec
       
+        # Status of the data scan execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanExecutionStatus]
+        attr_accessor :execution_status
+      
         # Optional. User-defined labels for the scan.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1773,6 +1778,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @execution_spec = args[:execution_spec] if args.key?(:execution_spec)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -1944,6 +1950,31 @@ module Google
         def update!(**args)
           @field = args[:field] if args.key?(:field)
           @trigger = args[:trigger] if args.key?(:trigger)
+        end
+      end
+      
+      # Status of the data scan execution.
+      class GoogleCloudDataplexV1DataScanExecutionStatus
+        include Google::Apis::Core::Hashable
+      
+        # The time when the latest DataScanJob ended.
+        # Corresponds to the JSON property `latestJobEndTime`
+        # @return [String]
+        attr_accessor :latest_job_end_time
+      
+        # The time when the latest DataScanJob started.
+        # Corresponds to the JSON property `latestJobStartTime`
+        # @return [String]
+        attr_accessor :latest_job_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_job_end_time = args[:latest_job_end_time] if args.key?(:latest_job_end_time)
+          @latest_job_start_time = args[:latest_job_start_time] if args.key?(:latest_job_start_time)
         end
       end
       
@@ -3801,6 +3832,11 @@ module Google
         # @return [String]
         attr_accessor :format
       
+        # Describes Iceberg data format.
+        # Corresponds to the JSON property `iceberg`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatIcebergOptions]
+        attr_accessor :iceberg
+      
         # Describes JSON data format.
         # Corresponds to the JSON property `json`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageFormatJsonOptions]
@@ -3825,6 +3861,7 @@ module Google
           @compression_format = args[:compression_format] if args.key?(:compression_format)
           @csv = args[:csv] if args.key?(:csv)
           @format = args[:format] if args.key?(:format)
+          @iceberg = args[:iceberg] if args.key?(:iceberg)
           @json = args[:json] if args.key?(:json)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
@@ -3868,6 +3905,26 @@ module Google
           @encoding = args[:encoding] if args.key?(:encoding)
           @header_rows = args[:header_rows] if args.key?(:header_rows)
           @quote = args[:quote] if args.key?(:quote)
+        end
+      end
+      
+      # Describes Iceberg data format.
+      class GoogleCloudDataplexV1StorageFormatIcebergOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location of where the iceberg metadata is present, must be
+        # within the table path
+        # Corresponds to the JSON property `metadataLocation`
+        # @return [String]
+        attr_accessor :metadata_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_location = args[:metadata_location] if args.key?(:metadata_location)
         end
       end
       
