@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KernelRootkit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Kubernetes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -843,6 +849,8 @@ module Google
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta1::Indicator, decorator: Google::Apis::SecuritycenterV1beta1::Indicator::Representation
       
+          property :kernel_rootkit, as: 'kernelRootkit', class: Google::Apis::SecuritycenterV1beta1::KernelRootkit, decorator: Google::Apis::SecuritycenterV1beta1::KernelRootkit::Representation
+      
           property :kubernetes, as: 'kubernetes', class: Google::Apis::SecuritycenterV1beta1::Kubernetes, decorator: Google::Apis::SecuritycenterV1beta1::Kubernetes::Representation
       
           property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta1::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta1::MitreAttack::Representation
@@ -1192,6 +1200,21 @@ module Google
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta1::ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta1::ProcessSignature::Representation
       
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class KernelRootkit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :unexpected_code_modification, as: 'unexpectedCodeModification'
+          property :unexpected_ftrace_handler, as: 'unexpectedFtraceHandler'
+          property :unexpected_interrupt_handler, as: 'unexpectedInterruptHandler'
+          property :unexpected_kernel_code_pages, as: 'unexpectedKernelCodePages'
+          property :unexpected_kprobe_handler, as: 'unexpectedKprobeHandler'
+          property :unexpected_processes_in_runqueue, as: 'unexpectedProcessesInRunqueue'
+          property :unexpected_read_only_data_modification, as: 'unexpectedReadOnlyDataModification'
+          property :unexpected_system_call_handler, as: 'unexpectedSystemCallHandler'
         end
       end
       
