@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuxiliaryNodeGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuxiliaryServicesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class DiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriverSchedulingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +545,12 @@ module Google
       end
       
       class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResizeNodeGroupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -682,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsageSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValueValidation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -757,6 +787,15 @@ module Google
       
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig::Representation
       
+        end
+      end
+      
+      class AuxiliaryNodeGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_group, as: 'nodeGroup', class: Google::Apis::DataprocV1::NodeGroup, decorator: Google::Apis::DataprocV1::NodeGroup::Representation
+      
+          property :node_group_id, as: 'nodeGroupId'
         end
       end
       
@@ -877,6 +916,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::DataprocV1::AutoscalingConfig, decorator: Google::Apis::DataprocV1::AutoscalingConfig::Representation
+      
+          collection :auxiliary_node_groups, as: 'auxiliaryNodeGroups', class: Google::Apis::DataprocV1::AuxiliaryNodeGroup, decorator: Google::Apis::DataprocV1::AuxiliaryNodeGroup::Representation
       
           property :config_bucket, as: 'configBucket'
           property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
@@ -1006,6 +1047,14 @@ module Google
           property :boot_disk_type, as: 'bootDiskType'
           property :local_ssd_interface, as: 'localSsdInterface'
           property :num_local_ssds, as: 'numLocalSsds'
+        end
+      end
+      
+      class DriverSchedulingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_mb, as: 'memoryMb'
+          property :vcores, as: 'vcores'
         end
       end
       
@@ -1261,6 +1310,8 @@ module Google
           property :done, as: 'done'
           property :driver_control_files_uri, as: 'driverControlFilesUri'
           property :driver_output_resource_uri, as: 'driverOutputResourceUri'
+          property :driver_scheduling_config, as: 'driverSchedulingConfig', class: Google::Apis::DataprocV1::DriverSchedulingConfig, decorator: Google::Apis::DataprocV1::DriverSchedulingConfig::Representation
+      
           property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation
       
           property :hive_job, as: 'hiveJob', class: Google::Apis::DataprocV1::HiveJob, decorator: Google::Apis::DataprocV1::HiveJob::Representation
@@ -1494,6 +1545,17 @@ module Google
         end
       end
       
+      class NodeGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :node_group_config, as: 'nodeGroupConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
+      
+          collection :roles, as: 'roles'
+        end
+      end
+      
       class NodeGroupAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1696,6 +1758,15 @@ module Google
         end
       end
       
+      class ResizeNodeGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
+          property :request_id, as: 'requestId'
+          property :size, as: 'size'
+        end
+      end
+      
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1709,6 +1780,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approximate_usage, as: 'approximateUsage', class: Google::Apis::DataprocV1::UsageMetrics, decorator: Google::Apis::DataprocV1::UsageMetrics::Representation
+      
+          property :current_usage, as: 'currentUsage', class: Google::Apis::DataprocV1::UsageSnapshot, decorator: Google::Apis::DataprocV1::UsageSnapshot::Representation
       
           property :diagnostic_output_uri, as: 'diagnosticOutputUri'
           hash :endpoints, as: 'endpoints'
@@ -1945,6 +2018,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
           property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
+        end
+      end
+      
+      class UsageSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :milli_dcu, :numeric_string => true, as: 'milliDcu'
+          property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'
+          property :snapshot_time, as: 'snapshotTime'
         end
       end
       
