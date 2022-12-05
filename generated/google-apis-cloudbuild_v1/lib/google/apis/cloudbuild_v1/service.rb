@@ -489,7 +489,8 @@ module Google
         # Delete an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
-        #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   example: "projects/`$project_id`/locations/`$location_id`/
+        #   githubEnterpriseConfigs/`$config_id`"
         # @param [String] config_id
         #   Unique identifier of the `GitHubEnterpriseConfig`
         # @param [String] project_id
@@ -526,7 +527,8 @@ module Google
         # Retrieve a GitHubEnterpriseConfig.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
-        #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   example: "projects/`$project_id`/locations/`$location_id`/
+        #   githubEnterpriseConfigs/`$config_id`"
         # @param [String] config_id
         #   Unique identifier of the `GitHubEnterpriseConfig`
         # @param [String] project_id
@@ -597,7 +599,8 @@ module Google
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
         #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        #   projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        #   config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -1506,7 +1509,8 @@ module Google
         # Delete an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
-        #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   example: "projects/`$project_id`/locations/`$location_id`/
+        #   githubEnterpriseConfigs/`$config_id`"
         # @param [String] config_id
         #   Unique identifier of the `GitHubEnterpriseConfig`
         # @param [String] project_id
@@ -1543,7 +1547,8 @@ module Google
         # Retrieve a GitHubEnterpriseConfig.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
-        #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   example: "projects/`$project_id`/locations/`$location_id`/
+        #   githubEnterpriseConfigs/`$config_id`"
         # @param [String] config_id
         #   Unique identifier of the `GitHubEnterpriseConfig`
         # @param [String] project_id
@@ -1614,7 +1619,8 @@ module Google
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
         #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        #   projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        #   projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        #   config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -1917,8 +1923,9 @@ module Google
         
         # Runs a `BuildTrigger` at a particular source revision. To run a regional or
         # global trigger, use the POST request that includes the location endpoint in
-        # the path. The POST request that does not include the location endpoint in the
-        # path can only be used when running global triggers.
+        # the path (ex. v1/projects/`projectId`/locations/`region`/triggers/`triggerId`:
+        # run). The POST request that does not include the location endpoint in the path
+        # can only be used when running global triggers.
         # @param [String] name
         #   The name of the `Trigger` to run. Format: `projects/`project`/locations/`
         #   location`/triggers/`trigger``
@@ -2386,8 +2393,9 @@ module Google
         
         # Runs a `BuildTrigger` at a particular source revision. To run a regional or
         # global trigger, use the POST request that includes the location endpoint in
-        # the path. The POST request that does not include the location endpoint in the
-        # path can only be used when running global triggers.
+        # the path (ex. v1/projects/`projectId`/locations/`region`/triggers/`triggerId`:
+        # run). The POST request that does not include the location endpoint in the path
+        # can only be used when running global triggers.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] trigger_id

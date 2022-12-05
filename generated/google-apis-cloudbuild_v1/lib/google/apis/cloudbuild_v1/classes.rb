@@ -1977,7 +1977,8 @@ module Google
         attr_accessor :host_url
       
         # Optional. The full resource name for the GitHubEnterpriseConfig For example: "
-        # projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
+        # projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        # config_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2097,8 +2098,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The resource name of the github enterprise config that should be
-        # applied to this installation. For example: "projects/`$project_id`/
-        # githubEnterpriseConfigs/`$config_id`"
+        # applied to this installation. For example: "projects/`$project_id`/locations/`$
+        # location_id`/githubEnterpriseConfigs/`$config_id`"
         # Corresponds to the JSON property `enterpriseConfigResourceName`
         # @return [String]
         attr_accessor :enterprise_config_resource_name
@@ -2870,6 +2871,18 @@ module Google
         # @return [String]
         attr_accessor :peered_network
       
+        # Immutable. Subnet IP range within the peered network. This is specified in
+        # CIDR notation. The IP and prefix size are both optional. If unspecified, the
+        # default value for IP is blank (will use an automatic value from the peered
+        # network), and the prefix size will default to 24 bits. e.g. `192.168.0.0/30`
+        # would specify a subnet mask of 192.168.0.0 with a prefix size of 30 bits. `192.
+        # 168.0.0` would specify a subnet mask of 192.168.0.0 with a prefix size of 24
+        # bits (the default prefix size). `/16` would specify a prefix size of 16 bits,
+        # with an unspecified IP.
+        # Corresponds to the JSON property `peeredNetworkIpRange`
+        # @return [String]
+        attr_accessor :peered_network_ip_range
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2878,6 +2891,7 @@ module Google
         def update!(**args)
           @egress_option = args[:egress_option] if args.key?(:egress_option)
           @peered_network = args[:peered_network] if args.key?(:peered_network)
+          @peered_network_ip_range = args[:peered_network_ip_range] if args.key?(:peered_network_ip_range)
         end
       end
       
