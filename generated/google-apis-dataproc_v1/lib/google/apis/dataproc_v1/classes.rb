@@ -146,6 +146,35 @@ module Google
         end
       end
       
+      # Node group identification and configuration information.
+      class AuxiliaryNodeGroup
+        include Google::Apis::Core::Hashable
+      
+        # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
+        # Dataproc NodeGroupAffinity resource.
+        # Corresponds to the JSON property `nodeGroup`
+        # @return [Google::Apis::DataprocV1::NodeGroup]
+        attr_accessor :node_group
+      
+        # Optional. A node group ID. Generated if not specified.The ID must contain only
+        # letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+        # begin or end with underscore or hyphen. Must consist of from 3 to 33
+        # characters.
+        # Corresponds to the JSON property `nodeGroupId`
+        # @return [String]
+        attr_accessor :node_group_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_group = args[:node_group] if args.key?(:node_group)
+          @node_group_id = args[:node_group_id] if args.key?(:node_group_id)
+        end
+      end
+      
       # Auxiliary services configuration for a Cluster.
       class AuxiliaryServicesConfig
         include Google::Apis::Core::Hashable
@@ -633,6 +662,11 @@ module Google
         # @return [Google::Apis::DataprocV1::AutoscalingConfig]
         attr_accessor :autoscaling_config
       
+        # Optional. The node group settings.
+        # Corresponds to the JSON property `auxiliaryNodeGroups`
+        # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
+        attr_accessor :auxiliary_node_groups
+      
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
         # and job driver console output. If you do not specify a staging bucket, Cloud
         # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
@@ -742,6 +776,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
+          @auxiliary_node_groups = args[:auxiliary_node_groups] if args.key?(:auxiliary_node_groups)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
@@ -1111,6 +1146,31 @@ module Google
         end
       end
       
+      # Driver scheduling configuration.
+      class DriverSchedulingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The amount of memory in MB the driver is requesting.
+        # Corresponds to the JSON property `memoryMb`
+        # @return [Fixnum]
+        attr_accessor :memory_mb
+      
+        # Required. The number of vCPUs the driver is requesting.
+        # Corresponds to the JSON property `vcores`
+        # @return [Fixnum]
+        attr_accessor :vcores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memory_mb = args[:memory_mb] if args.key?(:memory_mb)
+          @vcores = args[:vcores] if args.key?(:vcores)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1207,8 +1267,8 @@ module Google
         # Optional. The duration to keep the session alive while it's idling. Passing
         # this threshold will cause the session to be terminated. Minimum value is 10
         # minutes; maximum value is 14 days (see JSON representation of Duration (https:/
-        # /developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 10
-        # minutes if not set.
+        # /developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4
+        # hours if not set.
         # Corresponds to the JSON property `idleTtl`
         # @return [String]
         attr_accessor :idle_ttl
@@ -1348,7 +1408,8 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Node Group Affinity for clusters using sole-tenant node groups.
+        # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
+        # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
         # Corresponds to the JSON property `nodeGroupAffinity`
         # @return [Google::Apis::DataprocV1::NodeGroupAffinity]
         attr_accessor :node_group_affinity
@@ -2180,6 +2241,11 @@ module Google
         # @return [String]
         attr_accessor :driver_output_resource_uri
       
+        # Driver scheduling configuration.
+        # Corresponds to the JSON property `driverSchedulingConfig`
+        # @return [Google::Apis::DataprocV1::DriverSchedulingConfig]
+        attr_accessor :driver_scheduling_config
+      
         # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
         # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
         # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
@@ -2297,6 +2363,7 @@ module Google
           @done = args[:done] if args.key?(:done)
           @driver_control_files_uri = args[:driver_control_files_uri] if args.key?(:driver_control_files_uri)
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
+          @driver_scheduling_config = args[:driver_scheduling_config] if args.key?(:driver_scheduling_config)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
           @hive_job = args[:hive_job] if args.key?(:hive_job)
           @job_uuid = args[:job_uuid] if args.key?(:job_uuid)
@@ -2421,20 +2488,21 @@ module Google
       
         # Optional. Maximum number of times per hour a driver may be restarted as a
         # result of driver exiting with non-zero code before job is reported failed.A
-        # job may be reported as thrashing if driver exits with non-zero code 4 times
-        # within 10 minute window.Maximum value is 10.Note: Currently, this restartable
-        # job option is not supported in Dataproc workflow template (https://cloud.
-        # google.com/dataproc/docs/concepts/workflows/using-workflows#
-        # adding_jobs_to_a_template) jobs.
+        # job may be reported as thrashing if the driver exits with a non-zero code four
+        # times within a 10-minute window.Maximum value is 10.Note: This restartable job
+        # option is not supported in Dataproc workflow templates (https://cloud.google.
+        # com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
+        # .
         # Corresponds to the JSON property `maxFailuresPerHour`
         # @return [Fixnum]
         attr_accessor :max_failures_per_hour
       
-        # Optional. Maximum number of times in total a driver may be restarted as a
-        # result of driver exiting with non-zero code before job is reported failed.
-        # Maximum value is 240.Note: Currently, this restartable job option is not
-        # supported in Dataproc workflow template (https://cloud.google.com/dataproc/
-        # docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        # Optional. Maximum total number of times a driver may be restarted as a result
+        # of the driver exiting with a non-zero code. After the maximum number is
+        # reached, the job will be reported as failed.Maximum value is 240.Note:
+        # Currently, this restartable job option is not supported in Dataproc workflow
+        # templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-
+        # workflows#adding_jobs_to_a_template).
         # Corresponds to the JSON property `maxFailuresTotal`
         # @return [Fixnum]
         attr_accessor :max_failures_total
@@ -3053,7 +3121,51 @@ module Google
         end
       end
       
-      # Node Group Affinity for clusters using sole-tenant node groups.
+      # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
+      # Dataproc NodeGroupAffinity resource.
+      class NodeGroup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Node group labels. Label keys must consist of from 1 to 63
+        # characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).
+        # Label values can be empty. If specified, they must consist of from 1 to 63
+        # characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The
+        # node group must have no more than 32 labelsn.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The Node group resource name (https://aip.dev/122).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The config settings for Compute Engine resources in an instance group, such as
+        # a master or worker group.
+        # Corresponds to the JSON property `nodeGroupConfig`
+        # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
+        attr_accessor :node_group_config
+      
+        # Required. Node group roles.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<String>]
+        attr_accessor :roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @node_group_config = args[:node_group_config] if args.key?(:node_group_config)
+          @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
+      # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
+      # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
       class NodeGroupAffinity
         include Google::Apis::Core::Hashable
       
@@ -3910,6 +4022,55 @@ module Google
         end
       end
       
+      # A request to resize a node group.
+      class ResizeNodeGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning (
+        # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/scaling-
+        # clusters#graceful_decommissioning) allows the removal of nodes from the
+        # Compute Engine node group without interrupting jobs in progress. This timeout
+        # specifies how long to wait for jobs in progress to finish before forcefully
+        # removing nodes (and potentially interrupting jobs). Default timeout is 0 (for
+        # forceful decommission), and the maximum allowed timeout is 1 day. (see JSON
+        # representation of Duration (https://developers.google.com/protocol-buffers/
+        # docs/proto3#json)).Only supported on Dataproc image versions 1.2 and higher.
+        # Corresponds to the JSON property `gracefulDecommissionTimeout`
+        # @return [String]
+        attr_accessor :graceful_decommission_timeout
+      
+        # Optional. A unique ID used to identify the request. If the server receives two
+        # ResizeNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#google.cloud.dataproc.v1.ResizeNodeGroupRequests)
+        # with the same ID, the second request is ignored and the first google.
+        # longrunning.Operation created and stored in the backend is returned.
+        # Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        # Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
+        # numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        # characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The number of running instances for the node group to maintain. The
+        # group adds or removes instances to maintain the number of instances specified
+        # by this parameter.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
       # Runtime configuration for a workload.
       class RuntimeConfig
         include Google::Apis::Core::Hashable
@@ -3952,6 +4113,12 @@ module Google
         # @return [Google::Apis::DataprocV1::UsageMetrics]
         attr_accessor :approximate_usage
       
+        # The usage snaphot represents the resources consumed by a workload at a
+        # specified time.
+        # Corresponds to the JSON property `currentUsage`
+        # @return [Google::Apis::DataprocV1::UsageSnapshot]
+        attr_accessor :current_usage
+      
         # Output only. A URI pointing to the location of the diagnostics tarball.
         # Corresponds to the JSON property `diagnosticOutputUri`
         # @return [String]
@@ -3976,6 +4143,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approximate_usage = args[:approximate_usage] if args.key?(:approximate_usage)
+          @current_usage = args[:current_usage] if args.key?(:current_usage)
           @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
@@ -4953,6 +5121,40 @@ module Google
         def update!(**args)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
+        end
+      end
+      
+      # The usage snaphot represents the resources consumed by a workload at a
+      # specified time.
+      class UsageSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
+        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Corresponds to the JSON property `milliDcu`
+        # @return [Fixnum]
+        attr_accessor :milli_dcu
+      
+        # Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (
+        # https://cloud.google.com/dataproc-serverless/pricing))
+        # Corresponds to the JSON property `shuffleStorageGb`
+        # @return [Fixnum]
+        attr_accessor :shuffle_storage_gb
+      
+        # Optional. The timestamp of the usage snapshot.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
+          @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
         end
       end
       
