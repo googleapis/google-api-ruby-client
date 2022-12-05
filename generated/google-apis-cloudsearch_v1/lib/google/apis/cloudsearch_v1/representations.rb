@@ -5697,6 +5697,9 @@ module Google
       class DynamiteMessagesScoringInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :final_score, as: 'finalScore'
+          property :freshness_score, as: 'freshnessScore'
+          property :joined_space_affinity_score, as: 'joinedSpaceAffinityScore'
           property :message_age_in_days, as: 'messageAgeInDays'
           property :topicality_score, as: 'topicalityScore'
         end
@@ -7342,6 +7345,7 @@ module Google
       
           property :retention_settings, as: 'retentionSettings', class: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings, decorator: Google::Apis::CloudsearchV1::AppsDynamiteSharedRetentionSettings::Representation
       
+          property :rich_text_formatting_type, as: 'richTextFormattingType'
           property :secondary_message_key, as: 'secondaryMessageKey'
           property :text_body, as: 'textBody'
           property :tombstone_metadata, as: 'tombstoneMetadata', class: Google::Apis::CloudsearchV1::TombstoneMetadata, decorator: Google::Apis::CloudsearchV1::TombstoneMetadata::Representation
