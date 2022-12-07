@@ -1602,7 +1602,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Placeholder. Styles for the Document.text.
+        # Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentStyle>]
         attr_accessor :text_styles
@@ -1795,8 +1795,8 @@ module Google
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
-        # processors may not generate float or int normalized text by default. Below are
-        # sample formats mapped to structured values. - Money/Currency type (`
+        # processors may not generate `float` or `integer` normalized text by default.
+        # Below are sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
         # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
         # 8601 text format.
@@ -1888,6 +1888,11 @@ module Google
         # @return [String]
         attr_accessor :gcs_uri
       
+        # The sharding config for the output document.
+        # Corresponds to the JSON property `shardingConfig`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig]
+        attr_accessor :sharding_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1896,6 +1901,32 @@ module Google
         def update!(**args)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @sharding_config = args[:sharding_config] if args.key?(:sharding_config)
+        end
+      end
+      
+      # The sharding config for the output document.
+      class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of overlapping pages between consecutive shards.
+        # Corresponds to the JSON property `pagesOverlap`
+        # @return [Fixnum]
+        attr_accessor :pages_overlap
+      
+        # The number of pages per shard.
+        # Corresponds to the JSON property `pagesPerShard`
+        # @return [Fixnum]
+        attr_accessor :pages_per_shard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pages_overlap = args[:pages_overlap] if args.key?(:pages_overlap)
+          @pages_per_shard = args[:pages_per_shard] if args.key?(:pages_per_shard)
         end
       end
       
@@ -2067,10 +2098,10 @@ module Google
         # @return [String]
         attr_accessor :layout_type
       
-        # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element. This field is skipped when its value
-        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
-        # proto3#json.
+        # Required. Index into the Document.pages element, for example using `Document.
+        # pages` to locate the related page element. This field is skipped when its
+        # value is the default `0`. See https://developers.google.com/protocol-buffers/
+        # docs/proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -2249,8 +2280,8 @@ module Google
         attr_accessor :value_detected_languages
       
         # If the value is non-textual, this field represents the type. Current valid
-        # values are: - blank (this indicates the field_value is normal text) - "
-        # unfilled_checkbox" - "filled_checkbox"
+        # values are: - blank (this indicates the `field_value` is normal text) - `
+        # unfilled_checkbox` - `filled_checkbox`
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -2941,7 +2972,7 @@ module Google
       
         # Name of the type. It must be unique within the schema file and cannot be a '
         # Common Type'. Besides that we use the following naming conventions: - *use `
-        # snake_casing`* - name matching is case-insensitive - Maximum 64 characters. -
+        # snake_casing`* - name matching is case-sensitive - Maximum 64 characters. -
         # Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (
         # For backward compatibility internal infrastructure and tooling can handle any
         # ascii character) - The `/` is sometimes used to denote a property of a type.
@@ -3797,6 +3828,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A set of Cloud Storage URIs of sample documents for this processor.
+        # Corresponds to the JSON property `sampleDocumentUris`
+        # @return [Array<String>]
+        attr_accessor :sample_document_uris
+      
         # The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3813,6 +3849,7 @@ module Google
           @category = args[:category] if args.key?(:category)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
+          @sample_document_uris = args[:sample_document_uris] if args.key?(:sample_document_uris)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4403,7 +4440,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Placeholder. Styles for the Document.text.
+        # Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentStyle>]
         attr_accessor :text_styles
@@ -4596,8 +4633,8 @@ module Google
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
-        # processors may not generate float or int normalized text by default. Below are
-        # sample formats mapped to structured values. - Money/Currency type (`
+        # processors may not generate `float` or `integer` normalized text by default.
+        # Below are sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
         # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
         # 8601 text format.
@@ -4821,10 +4858,10 @@ module Google
         # @return [String]
         attr_accessor :layout_type
       
-        # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element. This field is skipped when its value
-        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
-        # proto3#json.
+        # Required. Index into the Document.pages element, for example using `Document.
+        # pages` to locate the related page element. This field is skipped when its
+        # value is the default `0`. See https://developers.google.com/protocol-buffers/
+        # docs/proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -5003,8 +5040,8 @@ module Google
         attr_accessor :value_detected_languages
       
         # If the value is non-textual, this field represents the type. Current valid
-        # values are: - blank (this indicates the field_value is normal text) - "
-        # unfilled_checkbox" - "filled_checkbox"
+        # values are: - blank (this indicates the `field_value` is normal text) - `
+        # unfilled_checkbox` - `filled_checkbox`
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -6306,7 +6343,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Placeholder. Styles for the Document.text.
+        # Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentStyle>]
         attr_accessor :text_styles
@@ -6500,8 +6537,8 @@ module Google
         # Optional. An optional field to store a normalized string. For some entity
         # types, one of respective `structured_value` fields may also be populated. Also
         # not all the types of `structured_value` will be normalized. For example, some
-        # processors may not generate float or int normalized text by default. Below are
-        # sample formats mapped to structured values. - Money/Currency type (`
+        # processors may not generate `float` or `integer` normalized text by default.
+        # Below are sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
         # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
         # 8601 text format.
@@ -6762,10 +6799,10 @@ module Google
         # @return [String]
         attr_accessor :layout_type
       
-        # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element. This field is skipped when its value
-        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
-        # proto3#json.
+        # Required. Index into the Document.pages element, for example using `Document.
+        # pages` to locate the related page element. This field is skipped when its
+        # value is the default `0`. See https://developers.google.com/protocol-buffers/
+        # docs/proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -6944,8 +6981,8 @@ module Google
         attr_accessor :value_detected_languages
       
         # If the value is non-textual, this field represents the type. Current valid
-        # values are: - blank (this indicates the field_value is normal text) - "
-        # unfilled_checkbox" - "filled_checkbox"
+        # values are: - blank (this indicates the `field_value` is normal text) - `
+        # unfilled_checkbox` - `filled_checkbox`
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
