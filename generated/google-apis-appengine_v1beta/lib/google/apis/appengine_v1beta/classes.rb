@@ -2206,6 +2206,157 @@ module Google
         end
       end
       
+      # The request sent to CLHs during project events.
+      class ProjectEvent
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID for this project event. CLHs can use this value to dedup
+        # repeated calls. required
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # 
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # ProjectsMetadata is the metadata CCFE stores about the all the relevant
+        # projects (tenant, consumer, producer).
+        # Corresponds to the JSON property `projectMetadata`
+        # @return [Google::Apis::AppengineV1beta::ProjectsMetadata]
+        attr_accessor :project_metadata
+      
+        # ProjectState contains the externally-visible project state that is used to
+        # communicate the state and reasoning for that state to the CLH. This data is
+        # not persisted by CCFE, but is instead derived from CCFE's internal
+        # representation of the project state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::AppengineV1beta::ProjectState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @phase = args[:phase] if args.key?(:phase)
+          @project_metadata = args[:project_metadata] if args.key?(:project_metadata)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # ProjectState contains the externally-visible project state that is used to
+      # communicate the state and reasoning for that state to the CLH. This data is
+      # not persisted by CCFE, but is instead derived from CCFE's internal
+      # representation of the project state.
+      class ProjectState
+        include Google::Apis::Core::Hashable
+      
+        # Projects transition between and within states based on reasons sent from
+        # various systems. CCFE will provide the CLH with reasons for the current state
+        # per system.The current systems that CCFE supports are: Service Management (
+        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
+        # Billing API)
+        # Corresponds to the JSON property `currentReasons`
+        # @return [Google::Apis::AppengineV1beta::Reasons]
+        attr_accessor :current_reasons
+      
+        # Projects transition between and within states based on reasons sent from
+        # various systems. CCFE will provide the CLH with reasons for the current state
+        # per system.The current systems that CCFE supports are: Service Management (
+        # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
+        # Billing API)
+        # Corresponds to the JSON property `previousReasons`
+        # @return [Google::Apis::AppengineV1beta::Reasons]
+        attr_accessor :previous_reasons
+      
+        # The current state of the project. This state is the culmination of all of the
+        # opinions from external systems that CCFE knows about of the project.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_reasons = args[:current_reasons] if args.key?(:current_reasons)
+          @previous_reasons = args[:previous_reasons] if args.key?(:previous_reasons)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # ProjectsMetadata is the metadata CCFE stores about the all the relevant
+      # projects (tenant, consumer, producer).
+      class ProjectsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The consumer project id.
+        # Corresponds to the JSON property `consumerProjectId`
+        # @return [String]
+        attr_accessor :consumer_project_id
+      
+        # The consumer project number.
+        # Corresponds to the JSON property `consumerProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :consumer_project_number
+      
+        # The CCFE state of the consumer project. It is the same state that is
+        # communicated to the CLH during project events. Notice that this field is not
+        # set in the DB, it is only set in this proto when communicated to CLH in the
+        # side channel.
+        # Corresponds to the JSON property `consumerProjectState`
+        # @return [String]
+        attr_accessor :consumer_project_state
+      
+        # The service account authorized to operate on the consumer project. Note: CCFE
+        # only propagates P4SA with default tag to CLH.
+        # Corresponds to the JSON property `p4ServiceAccount`
+        # @return [String]
+        attr_accessor :p4_service_account
+      
+        # The producer project id.
+        # Corresponds to the JSON property `producerProjectId`
+        # @return [String]
+        attr_accessor :producer_project_id
+      
+        # The producer project number.
+        # Corresponds to the JSON property `producerProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :producer_project_number
+      
+        # The tenant project id.
+        # Corresponds to the JSON property `tenantProjectId`
+        # @return [String]
+        attr_accessor :tenant_project_id
+      
+        # The tenant project number.
+        # Corresponds to the JSON property `tenantProjectNumber`
+        # @return [Fixnum]
+        attr_accessor :tenant_project_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_project_id = args[:consumer_project_id] if args.key?(:consumer_project_id)
+          @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
+          @consumer_project_state = args[:consumer_project_state] if args.key?(:consumer_project_state)
+          @p4_service_account = args[:p4_service_account] if args.key?(:p4_service_account)
+          @producer_project_id = args[:producer_project_id] if args.key?(:producer_project_id)
+          @producer_project_number = args[:producer_project_number] if args.key?(:producer_project_number)
+          @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
+          @tenant_project_number = args[:tenant_project_number] if args.key?(:tenant_project_number)
+        end
+      end
+      
       # Readiness checking configuration for VM instances. Unhealthy instances are
       # removed from traffic rotation.
       class ReadinessCheck
@@ -2262,6 +2413,47 @@ module Google
           @path = args[:path] if args.key?(:path)
           @success_threshold = args[:success_threshold] if args.key?(:success_threshold)
           @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Projects transition between and within states based on reasons sent from
+      # various systems. CCFE will provide the CLH with reasons for the current state
+      # per system.The current systems that CCFE supports are: Service Management (
+      # Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud
+      # Billing API)
+      class Reasons
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `abuse`
+        # @return [String]
+        attr_accessor :abuse
+      
+        # 
+        # Corresponds to the JSON property `billing`
+        # @return [String]
+        attr_accessor :billing
+      
+        # 
+        # Corresponds to the JSON property `dataGovernance`
+        # @return [String]
+        attr_accessor :data_governance
+      
+        # 
+        # Corresponds to the JSON property `serviceManagement`
+        # @return [String]
+        attr_accessor :service_management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse = args[:abuse] if args.key?(:abuse)
+          @billing = args[:billing] if args.key?(:billing)
+          @data_governance = args[:data_governance] if args.key?(:data_governance)
+          @service_management = args[:service_management] if args.key?(:service_management)
         end
       end
       
