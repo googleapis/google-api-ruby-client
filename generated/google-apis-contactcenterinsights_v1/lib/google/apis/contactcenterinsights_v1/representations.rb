@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1AnswerFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -520,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -717,6 +729,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analysis_result, as: 'analysisResult', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnalysisResult, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnalysisResult::Representation
       
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector::Representation
+      
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
@@ -758,6 +772,21 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issue_models, as: 'issueModels'
+          collection :phrase_matchers, as: 'phraseMatchers'
+          property :run_entity_annotator, as: 'runEntityAnnotator'
+          property :run_intent_annotator, as: 'runIntentAnnotator'
+          property :run_interruption_annotator, as: 'runInterruptionAnnotator'
+          property :run_issue_model_annotator, as: 'runIssueModelAnnotator'
+          property :run_phrase_matcher_annotator, as: 'runPhraseMatcherAnnotator'
+          property :run_sentiment_annotator, as: 'runSentimentAnnotator'
+          property :run_silence_annotator, as: 'runSilenceAnnotator'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1AnswerFeedback
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -796,6 +825,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analysis_percentage, as: 'analysisPercentage'
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector::Representation
+      
           property :filter, as: 'filter'
           property :parent, as: 'parent'
         end
@@ -993,6 +1024,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector::Representation
+      
           property :conversation, as: 'conversation'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -1283,6 +1316,7 @@ module Google
           property :display_name, as: 'displayName'
           property :input_data_config, as: 'inputDataConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig::Representation
       
+          property :issue_count, :numeric_string => true, as: 'issueCount'
           property :name, as: 'name'
           property :state, as: 'state'
           property :training_stats, as: 'trainingStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStats::Representation
@@ -1482,6 +1516,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector::Representation
+      
           property :runtime_integration_analysis_percentage, as: 'runtimeIntegrationAnalysisPercentage'
         end
       end
@@ -1546,6 +1582,21 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issue_models, as: 'issueModels'
+          collection :phrase_matchers, as: 'phraseMatchers'
+          property :run_entity_annotator, as: 'runEntityAnnotator'
+          property :run_intent_annotator, as: 'runIntentAnnotator'
+          property :run_interruption_annotator, as: 'runInterruptionAnnotator'
+          property :run_issue_model_annotator, as: 'runIssueModelAnnotator'
+          property :run_phrase_matcher_annotator, as: 'runPhraseMatcherAnnotator'
+          property :run_sentiment_annotator, as: 'runSentimentAnnotator'
+          property :run_silence_annotator, as: 'runSilenceAnnotator'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1563,6 +1614,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analysis_percentage, as: 'analysisPercentage'
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector::Representation
+      
           property :filter, as: 'filter'
           property :parent, as: 'parent'
         end
@@ -1579,6 +1632,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotator_selector, as: 'annotatorSelector', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector::Representation
+      
           property :conversation, as: 'conversation'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -1742,6 +1797,7 @@ module Google
           property :display_name, as: 'displayName'
           property :input_data_config, as: 'inputDataConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig::Representation
       
+          property :issue_count, :numeric_string => true, as: 'issueCount'
           property :name, as: 'name'
           property :state, as: 'state'
           property :training_stats, as: 'trainingStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats::Representation
