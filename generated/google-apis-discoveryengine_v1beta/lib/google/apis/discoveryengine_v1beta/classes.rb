@@ -140,9 +140,9 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaImportErrorConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage prefix for import errors. This must be an empty, existing
-        # Cloud Storage directory. Import errors will be written to sharded files in
-        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
+        # Storage directory. Import errors will be written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -460,7 +460,7 @@ module Google
         end
       end
       
-      # Google Cloud Storage location for input content. format.
+      # Cloud Storage location for input content.
       class GoogleCloudDiscoveryengineV1betaGcsSource
         include Google::Apis::Core::Hashable
       
@@ -472,11 +472,11 @@ module Google
         # @return [String]
         attr_accessor :data_schema
       
-        # Required. Google Cloud Storage URIs to input files. URI can be up to 2000
-        # characters long. URIs can match the full object path (for example, `gs://
-        # bucket/directory/object.json`) or a pattern matching one or more files, such
-        # as `gs://bucket/directory/*.json`. A request can contain at most 100 files,
-        # and each file can be up to 2 GB.
+        # Required. Cloud Storage URIs to input files. URI can be up to 2000 characters
+        # long. URIs can match the full object path (for example, `gs://bucket/directory/
+        # object.json`) or a pattern matching one or more files, such as `gs://bucket/
+        # directory/*.json`. A request can contain at most 100 files, and each file can
+        # be up to 2 GB.
         # Corresponds to the JSON property `inputUris`
         # @return [Array<String>]
         attr_accessor :input_uris
@@ -545,7 +545,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig]
         attr_accessor :error_config
       
-        # Google Cloud Storage location for input content. format.
+        # Cloud Storage location for input content.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
         attr_accessor :gcs_source
@@ -626,9 +626,9 @@ module Google
       class GoogleCloudDiscoveryengineV1betaImportErrorConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage prefix for import errors. This must be an empty, existing
-        # Cloud Storage directory. Import errors will be written to sharded files in
-        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Cloud Storage prefix for import errors. This must be an empty, existing Cloud
+        # Storage directory. Import errors will be written to sharded files in this
+        # directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -696,7 +696,7 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaImportErrorConfig]
         attr_accessor :error_config
       
-        # Google Cloud Storage location for input content. format.
+        # Cloud Storage location for input content.
         # Corresponds to the JSON property `gcsSource`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaGcsSource]
         attr_accessor :gcs_source
