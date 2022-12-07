@@ -306,9 +306,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used by partners to extend a subscription service for their customers on an
-        # ongoing basis for the subscription to remain active and renewable. It should
-        # be called directly by the partner using service accounts.
+        # [Deprecated] New partners should be on auto-extend by default. Used by
+        # partners to extend a subscription service for their customers on an ongoing
+        # basis for the subscription to remain active and renewable. It should be called
+        # directly by the partner using service accounts.
         # @param [String] name
         #   Required. The name of the subscription resource to be extended. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`".
