@@ -965,6 +965,30 @@ module Google
         end
       end
       
+      # Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze
+      # will suppress alerts that come from one of the AlertPolicys whose names are
+      # supplied.
+      class Criteria
+        include Google::Apis::Core::Hashable
+      
+        # The specific AlertPolicy names for the alert that should be snoozed. The
+        # format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is
+        # a limit of 10 policies per snooze. This limit is checked during snooze
+        # creation.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<String>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
       # Use a custom service to designate a service that you want to monitor when none
       # of the other service types (like App Engine, Cloud Run, or a GKE type) matches
       # your intended service.
@@ -1382,6 +1406,29 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # Options used when forecasting the time series and testing the predicted value
+      # against the threshold.
+      class ForecastOptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. The length of time into the future to forecast whether a time series
+        # will violate the threshold. If the predicted value is found to violate the
+        # threshold, and the violation is observed in all forecasts made for the
+        # configured duration, then the time series is considered to be failing.
+        # Corresponds to the JSON property `forecastHorizon`
+        # @return [String]
+        attr_accessor :forecast_horizon
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forecast_horizon = args[:forecast_horizon] if args.key?(:forecast_horizon)
         end
       end
       
@@ -2314,6 +2361,32 @@ module Google
         end
       end
       
+      # The results of a successful ListSnoozes call, containing the matching Snoozes.
+      class ListSnoozesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page token for repeated calls to ListSnoozes, to fetch additional pages of
+        # results. If this is empty or missing, there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Snoozes matching this list call.
+        # Corresponds to the JSON property `snoozes`
+        # @return [Array<Google::Apis::MonitoringV3::Snooze>]
+        attr_accessor :snoozes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @snoozes = args[:snoozes] if args.key?(:snoozes)
+        end
+      end
+      
       # The ListTimeSeries response.
       class ListTimeSeriesResponse
         include Google::Apis::Core::Hashable
@@ -2865,6 +2938,12 @@ module Google
         # @return [String]
         attr_accessor :filter
       
+        # Options used when forecasting the time series and testing the predicted value
+        # against the threshold.
+        # Corresponds to the JSON property `forecastOptions`
+        # @return [Google::Apis::MonitoringV3::ForecastOptions]
+        attr_accessor :forecast_options
+      
         # A value against which to compare the time series.
         # Corresponds to the JSON property `thresholdValue`
         # @return [Float]
@@ -2889,6 +2968,7 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @evaluation_missing_data = args[:evaluation_missing_data] if args.key?(:evaluation_missing_data)
           @filter = args[:filter] if args.key?(:filter)
+          @forecast_options = args[:forecast_options] if args.key?(:forecast_options)
           @threshold_value = args[:threshold_value] if args.key?(:threshold_value)
           @trigger = args[:trigger] if args.key?(:trigger)
         end
@@ -3988,6 +4068,79 @@ module Google
           @rolling_period = args[:rolling_period] if args.key?(:rolling_period)
           @service_level_indicator = args[:service_level_indicator] if args.key?(:service_level_indicator)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # A Snooze will prevent any alerts from being opened, and close any that are
+      # already open. The Snooze will work on alerts that match the criteria defined
+      # in the Snooze. The Snooze will be active from interval.start_time through
+      # interval.end_time.
+      class Snooze
+        include Google::Apis::Core::Hashable
+      
+        # Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze
+        # will suppress alerts that come from one of the AlertPolicys whose names are
+        # supplied.
+        # Corresponds to the JSON property `criteria`
+        # @return [Google::Apis::MonitoringV3::Criteria]
+        attr_accessor :criteria
+      
+        # Required. A display name for the Snooze. This can be, at most, 512 unicode
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Describes a time interval: Reads: A half-open time interval. It includes the
+        # end time but excludes the start time: (startTime, endTime]. The start time
+        # must be specified, must be earlier than the end time, and should be no older
+        # than the data retention period for the metric. Writes: A closed time interval.
+        # It extends from the start time to the end time, and includes both: [startTime,
+        # endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.
+        # com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of
+        # the metric value. The end time must not be earlier than the start time, and
+        # the end time must not be more than 25 hours in the past or more than five
+        # minutes in the future. For GAUGE metrics, the startTime value is technically
+        # optional; if no value is specified, the start time defaults to the value of
+        # the end time, and the interval represents a single point in time. If both
+        # start and end times are specified, they must be identical. Such an interval is
+        # valid only for GAUGE metrics, which are point-in-time measurements. The end
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval. For DELTA metrics, the start time and end time must
+        # specify a non-zero interval, with subsequent points specifying contiguous and
+        # non-overlapping intervals. For DELTA metrics, the start time of the next
+        # interval must be at least a millisecond after the end time of the previous
+        # interval. For CUMULATIVE metrics, the start time and end time must specify a
+        # non-zero interval, with subsequent points specifying the same start time and
+        # increasing end times, until an event resets the cumulative value to zero and
+        # sets a new start time for the following points. The new start time must be at
+        # least a millisecond after the end time of the previous interval. The start
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval because intervals are closed. If the start time of a new
+        # interval is the same as the end time of the previous interval, then data
+        # written at the new start time could overwrite data written at the previous end
+        # time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::MonitoringV3::TimeInterval]
+        attr_accessor :interval
+      
+        # Required. The name of the Snooze. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The ID of the Snooze will be
+        # generated by the system.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @criteria = args[:criteria] if args.key?(:criteria)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @interval = args[:interval] if args.key?(:interval)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

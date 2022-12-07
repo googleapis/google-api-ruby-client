@@ -1529,6 +1529,172 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Snooze that will prevent alerts, which match the provided criteria,
+        # from being opened. The Snooze applies for a specific time interval.
+        # @param [String] parent
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   in which a Snooze should be created. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
+        # @param [Google::Apis::MonitoringV3::Snooze] snooze_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Snooze] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Snooze]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_snooze(parent, snooze_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/snoozes', options)
+          command.request_representation = Google::Apis::MonitoringV3::Snooze::Representation
+          command.request_object = snooze_object
+          command.response_representation = Google::Apis::MonitoringV3::Snooze::Representation
+          command.response_class = Google::Apis::MonitoringV3::Snooze
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a Snooze by name.
+        # @param [String] name
+        #   Required. The ID of the Snooze to retrieve. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID]
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Snooze] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Snooze]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_snooze(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Snooze::Representation
+          command.response_class = Google::Apis::MonitoringV3::Snooze
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Snoozes associated with a project. Can optionally pass in filter,
+        # which specifies predicates to match Snoozes.
+        # @param [String] parent
+        #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
+        #   whose Snoozes should be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
+        #   
+        # @param [String] filter
+        #   Optional. Optional filter to restrict results to the given criteria. The
+        #   following fields are supported. interval.start_time interval.end_timeFor
+        #   example: ``` interval.start_time > "2022-03-11T00:00:00-08:00" AND interval.
+        #   end_time < "2022-03-12T00:00:00-08:00" ```
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return for a single query. The
+        #   server may further constrain the maximum number of results returned in a
+        #   single page. The value should be in the range 1, 1000. If the value given is
+        #   outside this range, the server will decide the number of results to be
+        #   returned.
+        # @param [String] page_token
+        #   Optional. The next_page_token from a previous call to ListSnoozesRequest to
+        #   get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListSnoozesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListSnoozesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_snoozes(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/snoozes', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListSnoozesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListSnoozesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Snooze, identified by its name, with the parameters in the given
+        # Snooze object.
+        # @param [String] name
+        #   Required. The name of the Snooze. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID] The ID of the Snooze will be
+        #   generated by the system.
+        # @param [Google::Apis::MonitoringV3::Snooze] snooze_object
+        # @param [String] update_mask
+        #   Required. The fields to update.For each field listed in update_mask: If the
+        #   Snooze object supplied in the UpdateSnoozeRequest has a value for that field,
+        #   the value of the field in the existing Snooze will be set to the value of the
+        #   field in the supplied Snooze. If the field does not have a value in the
+        #   supplied Snooze, the field in the existing Snooze is set to its default value.
+        #   Fields not listed retain their existing value.The following are the field
+        #   names that are accepted in update_mask: display_name interval.start_time
+        #   interval.end_timeThat said, the start time and end time of the Snooze
+        #   determines which fields can legally be updated. Before attempting an update,
+        #   users should consult the documentation for UpdateSnoozeRequest, which talks
+        #   about which fields can be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Snooze] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Snooze]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_snooze(name, snooze_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::Snooze::Representation
+          command.request_object = snooze_object
+          command.response_representation = Google::Apis::MonitoringV3::Snooze::Representation
+          command.response_class = Google::Apis::MonitoringV3::Snooze
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates or adds data to one or more time series. The response is empty if all
         # time series in the request were written. If any time series could not be
         # written, a corresponding failure message is included in the error response.
