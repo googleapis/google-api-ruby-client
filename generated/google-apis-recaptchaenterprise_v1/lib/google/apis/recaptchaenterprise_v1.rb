@@ -21,7 +21,8 @@ module Google
   module Apis
     # reCAPTCHA Enterprise API
     #
-    # 
+    # Help protect your website from fraudulent activity, spam, and abuse without
+    # creating friction.
     #
     # @see https://cloud.google.com/recaptcha-enterprise/
     module RecaptchaenterpriseV1

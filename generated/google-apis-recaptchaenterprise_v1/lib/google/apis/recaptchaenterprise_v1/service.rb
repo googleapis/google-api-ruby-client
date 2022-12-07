@@ -22,7 +22,8 @@ module Google
     module RecaptchaenterpriseV1
       # reCAPTCHA Enterprise API
       #
-      # 
+      # Help protect your website from fraudulent activity, spam, and abuse without
+      #  creating friction.
       #
       # @example
       #    require 'google/apis/recaptchaenterprise_v1'
