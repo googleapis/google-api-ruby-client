@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnalysisResult]
         attr_accessor :analysis_result
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Output only. The time at which the analysis was created, which occurs when the
         # long-running operation completes.
         # Corresponds to the JSON property `createTime`
@@ -55,6 +60,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_result = args[:analysis_result] if args.key?(:analysis_result)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
@@ -159,6 +165,89 @@ module Google
         def update!(**args)
           @transcript_index = args[:transcript_index] if args.key?(:transcript_index)
           @word_index = args[:word_index] if args.key?(:word_index)
+        end
+      end
+      
+      # Selector of all available annotators and phrase matchers to run.
+      class GoogleCloudContactcenterinsightsV1AnnotatorSelector
+        include Google::Apis::Core::Hashable
+      
+        # The issue model to run. If not provided, the most recently deployed topic
+        # model will be used. The provided issue model will only be used for inference
+        # if the issue model is deployed and if run_issue_model_annotator is set to true.
+        # If more than one issue model is provided, only the first provided issue model
+        # will be used for inference.
+        # Corresponds to the JSON property `issueModels`
+        # @return [Array<String>]
+        attr_accessor :issue_models
+      
+        # The list of phrase matchers to run. If not provided, all active phrase
+        # matchers will be used. If inactive phrase matchers are provided, they will not
+        # be used. Phrase matchers will be run only if run_phrase_matcher_annotator is
+        # set to true. Format: projects/`project`/locations/`location`/phraseMatchers/`
+        # phrase_matcher`
+        # Corresponds to the JSON property `phraseMatchers`
+        # @return [Array<String>]
+        attr_accessor :phrase_matchers
+      
+        # Whether to run the entity annotator.
+        # Corresponds to the JSON property `runEntityAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_entity_annotator
+        alias_method :run_entity_annotator?, :run_entity_annotator
+      
+        # Whether to run the intent annotator.
+        # Corresponds to the JSON property `runIntentAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_intent_annotator
+        alias_method :run_intent_annotator?, :run_intent_annotator
+      
+        # Whether to run the interruption annotator.
+        # Corresponds to the JSON property `runInterruptionAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_interruption_annotator
+        alias_method :run_interruption_annotator?, :run_interruption_annotator
+      
+        # Whether to run the issue model annotator. A model should have already been
+        # deployed for this to take effect.
+        # Corresponds to the JSON property `runIssueModelAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_issue_model_annotator
+        alias_method :run_issue_model_annotator?, :run_issue_model_annotator
+      
+        # Whether to run the active phrase matcher annotator(s).
+        # Corresponds to the JSON property `runPhraseMatcherAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_phrase_matcher_annotator
+        alias_method :run_phrase_matcher_annotator?, :run_phrase_matcher_annotator
+      
+        # Whether to run the sentiment annotator.
+        # Corresponds to the JSON property `runSentimentAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_sentiment_annotator
+        alias_method :run_sentiment_annotator?, :run_sentiment_annotator
+      
+        # Whether to run the silence annotator.
+        # Corresponds to the JSON property `runSilenceAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_silence_annotator
+        alias_method :run_silence_annotator?, :run_silence_annotator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_models = args[:issue_models] if args.key?(:issue_models)
+          @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
+          @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
+          @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
+          @run_issue_model_annotator = args[:run_issue_model_annotator] if args.key?(:run_issue_model_annotator)
+          @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
+          @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
+          @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
         end
       end
       
@@ -309,6 +398,11 @@ module Google
         # @return [Float]
         attr_accessor :analysis_percentage
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Required. Filter used to select the subset of conversations to analyze.
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -326,6 +420,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_percentage = args[:analysis_percentage] if args.key?(:analysis_percentage)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
         end
@@ -990,6 +1085,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Output only. The Conversation that this Analysis Operation belongs to.
         # Corresponds to the JSON property `conversation`
         # @return [String]
@@ -1011,6 +1111,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @conversation = args[:conversation] if args.key?(:conversation)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1912,6 +2013,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig]
         attr_accessor :input_data_config
       
+        # Output only. Number of issues in this issue model.
+        # Corresponds to the JSON property `issueCount`
+        # @return [Fixnum]
+        attr_accessor :issue_count
+      
         # Immutable. The resource name of the issue model. Format: projects/`project`/
         # locations/`location`/issueModels/`issue_model`
         # Corresponds to the JSON property `name`
@@ -1942,6 +2048,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_data_config = args[:input_data_config] if args.key?(:input_data_config)
+          @issue_count = args[:issue_count] if args.key?(:issue_count)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @training_stats = args[:training_stats] if args.key?(:training_stats)
@@ -2581,6 +2688,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig
         include Google::Apis::Core::Hashable
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Percentage of conversations created using Dialogflow runtime integration to
         # analyze automatically, between [0, 100].
         # Corresponds to the JSON property `runtimeIntegrationAnalysisPercentage`
@@ -2593,6 +2705,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @runtime_integration_analysis_percentage = args[:runtime_integration_analysis_percentage] if args.key?(:runtime_integration_analysis_percentage)
         end
       end
@@ -2799,6 +2912,89 @@ module Google
         end
       end
       
+      # Selector of all available annotators and phrase matchers to run.
+      class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector
+        include Google::Apis::Core::Hashable
+      
+        # The issue model to run. If not provided, the most recently deployed topic
+        # model will be used. The provided issue model will only be used for inference
+        # if the issue model is deployed and if run_issue_model_annotator is set to true.
+        # If more than one issue model is provided, only the first provided issue model
+        # will be used for inference.
+        # Corresponds to the JSON property `issueModels`
+        # @return [Array<String>]
+        attr_accessor :issue_models
+      
+        # The list of phrase matchers to run. If not provided, all active phrase
+        # matchers will be used. If inactive phrase matchers are provided, they will not
+        # be used. Phrase matchers will be run only if run_phrase_matcher_annotator is
+        # set to true. Format: projects/`project`/locations/`location`/phraseMatchers/`
+        # phrase_matcher`
+        # Corresponds to the JSON property `phraseMatchers`
+        # @return [Array<String>]
+        attr_accessor :phrase_matchers
+      
+        # Whether to run the entity annotator.
+        # Corresponds to the JSON property `runEntityAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_entity_annotator
+        alias_method :run_entity_annotator?, :run_entity_annotator
+      
+        # Whether to run the intent annotator.
+        # Corresponds to the JSON property `runIntentAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_intent_annotator
+        alias_method :run_intent_annotator?, :run_intent_annotator
+      
+        # Whether to run the interruption annotator.
+        # Corresponds to the JSON property `runInterruptionAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_interruption_annotator
+        alias_method :run_interruption_annotator?, :run_interruption_annotator
+      
+        # Whether to run the issue model annotator. A model should have already been
+        # deployed for this to take effect.
+        # Corresponds to the JSON property `runIssueModelAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_issue_model_annotator
+        alias_method :run_issue_model_annotator?, :run_issue_model_annotator
+      
+        # Whether to run the active phrase matcher annotator(s).
+        # Corresponds to the JSON property `runPhraseMatcherAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_phrase_matcher_annotator
+        alias_method :run_phrase_matcher_annotator?, :run_phrase_matcher_annotator
+      
+        # Whether to run the sentiment annotator.
+        # Corresponds to the JSON property `runSentimentAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_sentiment_annotator
+        alias_method :run_sentiment_annotator?, :run_sentiment_annotator
+      
+        # Whether to run the silence annotator.
+        # Corresponds to the JSON property `runSilenceAnnotator`
+        # @return [Boolean]
+        attr_accessor :run_silence_annotator
+        alias_method :run_silence_annotator?, :run_silence_annotator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_models = args[:issue_models] if args.key?(:issue_models)
+          @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+          @run_entity_annotator = args[:run_entity_annotator] if args.key?(:run_entity_annotator)
+          @run_intent_annotator = args[:run_intent_annotator] if args.key?(:run_intent_annotator)
+          @run_interruption_annotator = args[:run_interruption_annotator] if args.key?(:run_interruption_annotator)
+          @run_issue_model_annotator = args[:run_issue_model_annotator] if args.key?(:run_issue_model_annotator)
+          @run_phrase_matcher_annotator = args[:run_phrase_matcher_annotator] if args.key?(:run_phrase_matcher_annotator)
+          @run_sentiment_annotator = args[:run_sentiment_annotator] if args.key?(:run_sentiment_annotator)
+          @run_silence_annotator = args[:run_silence_annotator] if args.key?(:run_silence_annotator)
+        end
+      end
+      
       # The metadata for a bulk analyze conversations operation.
       class GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata
         include Google::Apis::Core::Hashable
@@ -2858,6 +3054,11 @@ module Google
         # @return [Float]
         attr_accessor :analysis_percentage
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Required. Filter used to select the subset of conversations to analyze.
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -2875,6 +3076,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analysis_percentage = args[:analysis_percentage] if args.key?(:analysis_percentage)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @filter = args[:filter] if args.key?(:filter)
           @parent = args[:parent] if args.key?(:parent)
         end
@@ -2909,6 +3111,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Selector of all available annotators and phrase matchers to run.
+        # Corresponds to the JSON property `annotatorSelector`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector]
+        attr_accessor :annotator_selector
+      
         # Output only. The Conversation that this Analysis Operation belongs to.
         # Corresponds to the JSON property `conversation`
         # @return [String]
@@ -2930,6 +3137,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotator_selector = args[:annotator_selector] if args.key?(:annotator_selector)
           @conversation = args[:conversation] if args.key?(:conversation)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -3403,6 +3611,11 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig]
         attr_accessor :input_data_config
       
+        # Output only. Number of issues in this issue model.
+        # Corresponds to the JSON property `issueCount`
+        # @return [Fixnum]
+        attr_accessor :issue_count
+      
         # Immutable. The resource name of the issue model. Format: projects/`project`/
         # locations/`location`/issueModels/`issue_model`
         # Corresponds to the JSON property `name`
@@ -3433,6 +3646,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @input_data_config = args[:input_data_config] if args.key?(:input_data_config)
+          @issue_count = args[:issue_count] if args.key?(:issue_count)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @training_stats = args[:training_stats] if args.key?(:training_stats)
