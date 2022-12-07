@@ -52,7 +52,7 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the organization to groupBy. Its format is "organizations/[
+        #   Required. Name of the parent to groupBy. Its format is "organizations/[
         #   organization_id], folders/[folder_id], or projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
@@ -86,7 +86,7 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the organization assets should belong to. Its format is "
+        #   Required. Name of the parent assets should belong to. Its format is "
         #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
         #   .
         # @param [String] compare_duration
@@ -248,9 +248,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a big query export.
+        # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   Required. Resource name of the new BigQuery export's parent. Its format is "
         #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
@@ -288,9 +288,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing big query export.
+        # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
         #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
         #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
@@ -320,11 +320,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a big query export.
+        # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to retrieve. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
+        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -669,7 +669,7 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contains alphanumeric characters,
+        #   must be between 1 and 128 characters, and contain alphanumeric characters,
         #   underscores or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -704,7 +704,9 @@ module Google
         # Deletes a notification config.
         # @param [String] name
         #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]".
+        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
+        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -735,7 +737,9 @@ module Google
         # Gets a notification config.
         # @param [String] name
         #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]".
+        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
+        #   notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -765,8 +769,8 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the organization to list notification configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   Required. Name of the parent to list notification configs. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
@@ -809,7 +813,9 @@ module Google
         # @param [String] name
         #   The relative resource name of this notification config. See: https://cloud.
         #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
+        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
+        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the notification config. If empty all
@@ -1085,9 +1091,9 @@ module Google
         
         # Updates the mute state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
         #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
         #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
@@ -1122,9 +1128,6 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1204,10 +1207,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira`
+        #   Full resource name of the external system, for example: "organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
@@ -1314,7 +1317,7 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the organization to groupBy. Its format is "organizations/[
+        #   Required. Name of the parent to groupBy. Its format is "organizations/[
         #   organization_id], folders/[folder_id], or projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
@@ -1348,7 +1351,7 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the organization assets should belong to. Its format is "
+        #   Required. Name of the parent assets should belong to. Its format is "
         #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
         #   .
         # @param [String] compare_duration
@@ -1546,9 +1549,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a big query export.
+        # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   Required. Resource name of the new BigQuery export's parent. Its format is "
         #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
@@ -1586,9 +1589,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing big query export.
+        # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
         #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
         #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
@@ -1618,11 +1621,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a big query export.
+        # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to retrieve. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
+        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1967,7 +1970,7 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contains alphanumeric characters,
+        #   must be between 1 and 128 characters, and contain alphanumeric characters,
         #   underscores or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2002,7 +2005,9 @@ module Google
         # Deletes a notification config.
         # @param [String] name
         #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]".
+        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
+        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2033,7 +2038,9 @@ module Google
         # Gets a notification config.
         # @param [String] name
         #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]".
+        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
+        #   notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2063,8 +2070,8 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the organization to list notification configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   Required. Name of the parent to list notification configs. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
@@ -2107,7 +2114,9 @@ module Google
         # @param [String] name
         #   The relative resource name of this notification config. See: https://cloud.
         #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
+        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
+        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the notification config. If empty all
@@ -2779,9 +2788,9 @@ module Google
         
         # Updates the mute state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
         #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
         #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
@@ -2816,9 +2825,6 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2898,10 +2904,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira`
+        #   Full resource name of the external system, for example: "organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
@@ -2938,7 +2944,7 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the organization to groupBy. Its format is "organizations/[
+        #   Required. Name of the parent to groupBy. Its format is "organizations/[
         #   organization_id], folders/[folder_id], or projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
@@ -2972,7 +2978,7 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the organization assets should belong to. Its format is "
+        #   Required. Name of the parent assets should belong to. Its format is "
         #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
         #   .
         # @param [String] compare_duration
@@ -3134,9 +3140,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a big query export.
+        # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   Required. Resource name of the new BigQuery export's parent. Its format is "
         #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
@@ -3174,9 +3180,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing big query export.
+        # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
         #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
         #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
@@ -3206,11 +3212,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a big query export.
+        # Gets a BigQuery export.
         # @param [String] name
-        #   Required. Name of the big query export to retrieve. Its format is
-        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
-        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. Name of the BigQuery export to retrieve. Its format is organizations/
+        #   `organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3555,7 +3561,7 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contains alphanumeric characters,
+        #   must be between 1 and 128 characters, and contain alphanumeric characters,
         #   underscores or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3590,7 +3596,9 @@ module Google
         # Deletes a notification config.
         # @param [String] name
         #   Required. Name of the notification config to delete. Its format is "
-        #   organizations/[organization_id]/notificationConfigs/[config_id]".
+        #   organizations/[organization_id]/notificationConfigs/[config_id]", "folders/[
+        #   folder_id]/notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3621,7 +3629,9 @@ module Google
         # Gets a notification config.
         # @param [String] name
         #   Required. Name of the notification config to get. Its format is "organizations/
-        #   [organization_id]/notificationConfigs/[config_id]".
+        #   [organization_id]/notificationConfigs/[config_id]", "folders/[folder_id]/
+        #   notificationConfigs/[config_id]", or "projects/[project_id]/
+        #   notificationConfigs/[config_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3651,8 +3661,8 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the organization to list notification configs. Its format is
-        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   Required. Name of the parent to list notification configs. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
@@ -3695,7 +3705,9 @@ module Google
         # @param [String] name
         #   The relative resource name of this notification config. See: https://cloud.
         #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
+        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
+        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the notification config. If empty all
@@ -3971,9 +3983,9 @@ module Google
         
         # Updates the mute state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
         #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
         #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
@@ -4008,9 +4020,6 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
-        #   Required. The relative resource name of the finding. See: https://cloud.google.
-        #   com/apis/design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4090,10 +4099,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira`
+        #   Full resource name of the external system, for example: "organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
