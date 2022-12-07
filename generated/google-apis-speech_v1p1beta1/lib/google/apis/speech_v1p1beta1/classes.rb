@@ -22,6 +22,26 @@ module Google
   module Apis
     module SpeechV1p1beta1
       
+      # 
+      class AbnfGrammar
+        include Google::Apis::Core::Hashable
+      
+        # All declarations and rules of an ABNF grammar broken up into multiple strings
+        # that will end up concatenated.
+        # Corresponds to the JSON property `abnfStrings`
+        # @return [Array<String>]
+        attr_accessor :abnf_strings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abnf_strings = args[:abnf_strings] if args.key?(:abnf_strings)
+        end
+      end
+      
       # An item of the class.
       class ClassItem
         include Google::Apis::Core::Hashable
@@ -1017,6 +1037,13 @@ module Google
       class SpeechAdaptation
         include Google::Apis::Core::Hashable
       
+        # Augmented Backus-Naur form (ABNF) is a standardized grammar notation comprised
+        # by a set of derivation rules. See specifications: https://www.w3.org/TR/speech-
+        # grammar
+        # Corresponds to the JSON property `abnfGrammar`
+        # @return [Google::Apis::SpeechV1p1beta1::AbnfGrammar]
+        attr_accessor :abnf_grammar
+      
         # A collection of custom classes. To specify the classes inline, leave the class'
         # `name` blank and fill in the rest of its fields, giving it a unique `
         # custom_class_id`. Refer to the inline defined class in phrase hints by its `
@@ -1043,6 +1070,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @abnf_grammar = args[:abnf_grammar] if args.key?(:abnf_grammar)
           @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
           @phrase_set_references = args[:phrase_set_references] if args.key?(:phrase_set_references)
           @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
