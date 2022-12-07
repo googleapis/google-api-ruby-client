@@ -1023,9 +1023,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to delete. It can be any of
         #   the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] api_version
         #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
@@ -1070,9 +1070,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to retrieve. It can be any
         #   of the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1163,9 +1163,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to replace. It can be any of
         #   the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
@@ -2061,9 +2061,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to delete. It can be any of
         #   the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] api_version
         #   Not supported, and ignored by Cloud Run.
         # @param [String] dry_run
@@ -2108,9 +2108,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to retrieve. It can be any
         #   of the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2246,9 +2246,9 @@ module Google
         # @param [String] name
         #   Required. The fully qualified name of the service to replace. It can be any of
         #   the following forms: * `namespaces/`project_id_or_number`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/locations/`region`/services/`
-        #   service_name`` * `projects/`project_id_or_number`/regions/`region`/services/`
-        #   service_name``
+        #   service_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/services/`service_name`` * `projects/`
+        #   project_id_or_number`/regions/`region`/services/`service_name``
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] dry_run
         #   Indicates that the server should validate the request and populate default
