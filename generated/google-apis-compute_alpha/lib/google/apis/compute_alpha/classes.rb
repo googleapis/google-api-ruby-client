@@ -1698,7 +1698,7 @@ module Google
         attr_accessor :provisioned_throughput
       
         # URLs of the zones where the disk should be replicated to. Only applicable for
-        # regional resources.
+        # regional resources. Replica zones must have 1 zone same as the instance zone.
         # Corresponds to the JSON property `replicaZones`
         # @return [Array<String>]
         attr_accessor :replica_zones
@@ -2871,7 +2871,9 @@ module Google
         # group is completely drained, offering 0% of its available capacity. The valid
         # ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and
         # smaller than 0.1. You cannot configure a setting of 0 when there is only one
-        # backend attached to the backend service.
+        # backend attached to the backend service. Not available with backends that don'
+        # t support using a balancingMode. This includes backends such as global
+        # internet NEGs, regional serverless NEGs, and PSC NEGs.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -4592,21 +4594,30 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # This field can only be specified if logging is enabled for this backend
-        # service. Configures whether all, none or a subset of optional fields should be
-        # added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL,
-        # CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        # Deprecated in favor of optionalMode. This field can only be specified if
+        # logging is enabled for this backend service. Configures whether all, none or a
+        # subset of optional fields should be added to the reported logs. One of [
+        # INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is
+        # EXCLUDE_ALL_OPTIONAL.
         # Corresponds to the JSON property `optional`
         # @return [String]
         attr_accessor :optional
       
         # This field can only be specified if logging is enabled for this backend
-        # service and "logConfig.optional" was set to CUSTOM. Contains a list of
+        # service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of
         # optional fields you want to include in the logs. For example: serverInstance,
         # serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
         # Corresponds to the JSON property `optionalFields`
         # @return [Array<String>]
         attr_accessor :optional_fields
+      
+        # This field can only be specified if logging is enabled for this backend
+        # service. Configures whether all, none or a subset of optional fields should be
+        # added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL,
+        # CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        # Corresponds to the JSON property `optionalMode`
+        # @return [String]
+        attr_accessor :optional_mode
       
         # This field can only be specified if logging is enabled for this backend
         # service. The value of the field must be in [0, 1]. This configures the
@@ -4626,6 +4637,7 @@ module Google
           @enable = args[:enable] if args.key?(:enable)
           @optional = args[:optional] if args.key?(:optional)
           @optional_fields = args[:optional_fields] if args.key?(:optional_fields)
+          @optional_mode = args[:optional_mode] if args.key?(:optional_mode)
           @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
         end
       end
@@ -8005,14 +8017,9 @@ module Google
       class DisksStopAsyncReplicationRequest
         include Google::Apis::Core::Hashable
       
-        # The secondary disk to stop asynchronous replication to. Supplied if and only
-        # if the target disk is a primary disk in an asynchronously replicated pair. You
-        # can provide this as a partial or full URL to the resource. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/
-        # projects/project/regions/region /disks/disk - projects/project/zones/zone/
-        # disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/
-        # disk - regions/region/disks/disk
+        # [Deprecated] The secondary disk to stop asynchronous replication to. This
+        # field will not be included in the beta or v1 APIs and will be removed from the
+        # alpha API in the near future.
         # Corresponds to the JSON property `asyncSecondaryDisk`
         # @return [String]
         attr_accessor :async_secondary_disk
@@ -8185,7 +8192,8 @@ module Google
       
         # The reason of the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
-        # domain of errors. This should be at most 63 characters and match /[A-Z0-9_]+/.
+        # domain of errors. This should be at most 63 characters and match a regular
+        # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -9198,8 +9206,8 @@ module Google
         attr_accessor :kind
       
         # Name of the resource. For Organization Firewall Policies it's a [Output Only]
-        # numeric ID allocated by GCP which uniquely identifies the Organization
-        # Firewall Policy.
+        # numeric ID allocated by Google Cloud which uniquely identifies the
+        # Organization Firewall Policy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -9814,12 +9822,13 @@ module Google
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field is used along with the backend_service field for Internal TCP/UDP
-        # Load Balancing or Network Load Balancing, or with the target field for
-        # internal and external TargetInstance. You can only use one of ports and
-        # port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and
-        # SCTP traffic, packets addressed to any ports will be forwarded to the target
-        # or backendService.
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # internal TCP/UDP load balancers, backend service-based network load balancers,
+        # and internal and external protocol forwarding. Set this field to true to allow
+        # packets addressed to any port or packets lacking destination port information (
+        # for example, UDP fragments after the first fragment) to be forwarded to the
+        # backends configured with this forwarding rule. The ports, port_range, and
+        # allPorts fields are mutually exclusive.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -9847,6 +9856,15 @@ module Google
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
+      
+        # [Output Only] The URL for the corresponding base Forwarding Rule. By base
+        # Forwarding Rule, we mean the Forwarding Rule that has the same IP address,
+        # protocol, and port settings with the current Forwarding Rule, but without
+        # sourceIPRanges specified. Always empty if the current Forwarding Rule does not
+        # have sourceIPRanges specified.
+        # Corresponds to the JSON property `baseForwardingRule`
+        # @return [String]
+        attr_accessor :base_forwarding_rule
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -9982,27 +10000,35 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # This field can be used only if: - Load balancing scheme is one of EXTERNAL,
-        # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or
-        # SCTP. Packets addressed to ports in the specified range will be forwarded to
-        # target or backend_service. You can only use one of ports, port_range, or
-        # allPorts. The three are mutually exclusive. Forwarding rules with the same [
-        # IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding
-        # target have constraints on the acceptable ports. For more information, see [
-        # Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-
-        # rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # backend service-based network load balancers, target pool-based network load
+        # balancers, internal proxy load balancers, external proxy load balancers,
+        # Traffic Director, external protocol forwarding, and Classic VPN. Some products
+        # have restrictions on what ports can be used. See port specifications for
+        # details. Only packets addressed to ports in the specified range will be
+        # forwarded to the backends configured with this forwarding rule. The ports,
+        # port_range, and allPorts fields are mutually exclusive. For external
+        # forwarding rules, two or more forwarding rules cannot use the same [IPAddress,
+        # IPProtocol] pair, and cannot have overlapping portRanges. For internal
+        # forwarding rules within the same VPC network, two or more forwarding rules
+        # cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping
+        # portRanges. @pattern: \\d+(?:-\\d+)?
         # Corresponds to the JSON property `portRange`
         # @return [String]
         attr_accessor :port_range
       
-        # The ports field is only supported when the forwarding rule references a
-        # backend_service directly. Only packets addressed to the [specified list of
-        # ports]((https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
-        # port_specifications)) are forwarded to backends. You can only use one of ports
-        # and port_range, or allPorts. The three are mutually exclusive. You can specify
-        # a list of up to five ports, which can be non-contiguous. Forwarding rules with
-        # the same [IPAddress, IPProtocol] pair must have disjoint ports. @pattern: \\d+(
-        # ?:-\\d+)?
+        # This field can only be used: - If IPProtocol is one of TCP, UDP, or SCTP. - By
+        # internal TCP/UDP load balancers, backend service-based network load balancers,
+        # and internal protocol forwarding. You can specify a list of up to five ports
+        # by number, separated by commas. The ports can be contiguous or discontiguous.
+        # Only packets addressed to these ports will be forwarded to the backends
+        # configured with this forwarding rule. For external forwarding rules, two or
+        # more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and
+        # cannot share any values defined in ports. For internal forwarding rules within
+        # the same VPC network, two or more forwarding rules cannot use the same [
+        # IPAddress, IPProtocol] pair, and cannot share any values defined in ports. The
+        # ports, port_range, and allPorts fields are mutually exclusive. @pattern: \\d+(?
+        # :-\\d+)?
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -10104,6 +10130,7 @@ module Google
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -12196,13 +12223,18 @@ module Google
         attr_accessor :fingerprint
       
         # A list of URLs to the HealthCheck resources. Must have at least one
-        # HealthCheck, and not more than 10. HealthCheck resources must have
+        # HealthCheck, and not more than 10 for regional HealthCheckService, and not
+        # more than 1 for global HealthCheckService. HealthCheck resources must have
         # portSpecification=USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For
         # regional HealthCheckService, the HealthCheck must be regional and in the same
         # region. For global HealthCheckService, HealthCheck must be global. Mix of
         # regional and global HealthChecks is not supported. Multiple regional
         # HealthChecks must belong to the same region. Regional HealthChecks must belong
-        # to the same region as zones of NEGs.
+        # to the same region as zones of NetworkEndpointGroups. For global
+        # HealthCheckService using global INTERNET_IP_PORT NetworkEndpointGroups, the
+        # global HealthChecks must specify sourceRegions, and HealthChecks that specify
+        # sourceRegions can only be used with global INTERNET_IP_PORT
+        # NetworkEndpointGroups.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -12212,7 +12244,8 @@ module Google
         # NO_AGGREGATION. An EndpointHealth message is returned for each pair in the
         # health check service. - AND. If any health check of an endpoint reports
         # UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health
-        # checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+        # checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is
+        # only allowed with regional HealthCheckService.
         # Corresponds to the JSON property `healthStatusAggregationPolicy`
         # @return [String]
         attr_accessor :health_status_aggregation_policy
@@ -12252,7 +12285,8 @@ module Google
       
         # A list of URLs to the NetworkEndpointGroup resources. Must not have more than
         # 100. For regional HealthCheckService, NEGs must be in zones in the region of
-        # the HealthCheckService.
+        # the HealthCheckService. For global HealthCheckServices, the
+        # NetworkEndpointGroups must be global INTERNET_IP_PORT.
         # Corresponds to the JSON property `networkEndpointGroups`
         # @return [Array<String>]
         attr_accessor :network_endpoint_groups
@@ -14932,17 +14966,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Encrypts or decrypts data for an instance with a customer-supplied encryption
-        # key. If you are creating a new instance, this field encrypts the local SSD and
-        # in-memory contents of the instance using a key that you provide. If you are
-        # restarting an instance protected with a customer-supplied encryption key, you
-        # must provide the correct key in order to successfully restart the instance. If
-        # you do not provide an encryption key when creating the instance, then the
-        # local SSD and in-memory contents will be encrypted using an automatically
-        # generated key and you do not need to provide a key to start the instance later.
-        # Instance templates do not store customer-supplied encryption keys, so you
-        # cannot use your own keys to encrypt local SSDs and in-memory content in a
-        # managed instance group.
+        # Encrypts suspended data for an instance with a customer-managed encryption key.
+        # If you are creating a new instance, this field will encrypt the local SSD and
+        # in-memory contents of the instance during the suspend operation. If you do not
+        # provide an encryption key when creating the instance, then the local SSD and
+        # in-memory contents will be encrypted using an automatically generated key
+        # during the suspend operation.
         # Corresponds to the JSON property `instanceEncryptionKey`
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
@@ -16392,6 +16421,11 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         include Google::Apis::Core::Hashable
       
+        # Defines behaviour for all instance or failures
+        # Corresponds to the JSON property `defaultActionOnFailure`
+        # @return [String]
+        attr_accessor :default_action_on_failure
+      
         # A bit indicating whether to forcefully apply the group's latest configuration
         # when repairing a VM. Valid options are: - NO (default): If configuration
         # updates are available, they are not forcefully applied during repair. Instead,
@@ -16421,6 +16455,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_action_on_failure = args[:default_action_on_failure] if args.key?(:default_action_on_failure)
           @force_update_on_repair = args[:force_update_on_repair] if args.key?(:force_update_on_repair)
           @metadata_based_readiness_signal = args[:metadata_based_readiness_signal] if args.key?(:metadata_based_readiness_signal)
         end
@@ -20887,12 +20922,6 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange>]
         attr_accessor :bgp_peer_asn_ranges
       
-        # [Output Only] Network Connectivity Center constraints, which can take one of
-        # the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
-        # Corresponds to the JSON property `networkConnectivityCenter`
-        # @return [String]
-        attr_accessor :network_connectivity_center
-      
         def initialize(**args)
            update!(**args)
         end
@@ -20901,7 +20930,6 @@ module Google
         def update!(**args)
           @bgp_md5 = args[:bgp_md5] if args.key?(:bgp_md5)
           @bgp_peer_asn_ranges = args[:bgp_peer_asn_ranges] if args.key?(:bgp_peer_asn_ranges)
-          @network_connectivity_center = args[:network_connectivity_center] if args.key?(:network_connectivity_center)
         end
       end
       
@@ -33373,6 +33401,221 @@ module Google
         end
       end
       
+      # 
+      class QueuedResourcesAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of QueuedResourcesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::QueuedResourcesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#queuedResourcesAggregatedList
+        # for lists of QueuedResource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class QueuedResourcesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # List of QueuedResources contained in this scope.
+        # Corresponds to the JSON property `queuedResources`
+        # @return [Array<Google::Apis::ComputeAlpha::QueuedResource>]
+        attr_accessor :queued_resources
+      
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @queued_resources = args[:queued_resources] if args.key?(:queued_resources)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of backend services when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Queuing parameters for the requested deferred capacity.
       class QueuingPolicy
         include Google::Apis::Core::Hashable
@@ -34005,14 +34248,9 @@ module Google
       class RegionDisksStopAsyncReplicationRequest
         include Google::Apis::Core::Hashable
       
-        # The secondary disk to stop asynchronous replication to. Supplied if and only
-        # if the target disk is a primary disk in an asynchronously replicated pair. You
-        # can provide this as a partial or full URL to the resource. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/
-        # projects/project/regions/region /disks/disk - projects/project/zones/zone/
-        # disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/
-        # disk - regions/region/disks/disk
+        # [Deprecated] The secondary disk to stop asynchronous replication to. This
+        # field will not be included in the beta or v1 APIs and will be removed from the
+        # alpha API in the near future.
         # Corresponds to the JSON property `asyncSecondaryDisk`
         # @return [String]
         attr_accessor :async_secondary_disk
@@ -35929,8 +36167,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :amount
       
-        # Type of resource for which this commitment applies. Possible values are VCPU
-        # and MEMORY
+        # Type of resource for which this commitment applies. Possible values are VCPU,
+        # MEMORY, LOCAL_SSD, and ACCELERATOR.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -41049,6 +41287,14 @@ module Google
         # @return [String]
         attr_accessor :enforce_on_key
       
+        # If specified, any combination of values of enforce_on_key_type/
+        # enforce_on_key_name is treated as the key on which ratelimit threshold/action
+        # is enforced. You can specify up to 3 enforce_on_key_configs. If
+        # enforce_on_key_configs is specified, enforce_on_key must not be specified.
+        # Corresponds to the JSON property `enforceOnKeyConfigs`
+        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>]
+        attr_accessor :enforce_on_key_configs
+      
         # Rate limit key name applicable only for the following key types: HTTP_HEADER --
         # Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE --
         # Name of the HTTP cookie whose value is taken as the key value.
@@ -41091,11 +41337,57 @@ module Google
           @ban_threshold = args[:ban_threshold] if args.key?(:ban_threshold)
           @conform_action = args[:conform_action] if args.key?(:conform_action)
           @enforce_on_key = args[:enforce_on_key] if args.key?(:enforce_on_key)
+          @enforce_on_key_configs = args[:enforce_on_key_configs] if args.key?(:enforce_on_key_configs)
           @enforce_on_key_name = args[:enforce_on_key_name] if args.key?(:enforce_on_key_name)
           @exceed_action = args[:exceed_action] if args.key?(:exceed_action)
           @exceed_action_rpc_status = args[:exceed_action_rpc_status] if args.key?(:exceed_action_rpc_status)
           @exceed_redirect_options = args[:exceed_redirect_options] if args.key?(:exceed_redirect_options)
           @rate_limit_threshold = args[:rate_limit_threshold] if args.key?(:rate_limit_threshold)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Rate limit key name applicable only for the following key types: HTTP_HEADER --
+        # Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE --
+        # Name of the HTTP cookie whose value is taken as the key value.
+        # Corresponds to the JSON property `enforceOnKeyName`
+        # @return [String]
+        attr_accessor :enforce_on_key_name
+      
+        # Determines the key to enforce the rate_limit_threshold on. Possible values are:
+        # - ALL: A single rate limit threshold is applied to all the requests matching
+        # this rule. This is the default value if "enforceOnKeyConfigs" is not
+        # configured. - IP: The source IP address of the request is the key. Each IP has
+        # this limit enforced separately. - HTTP_HEADER: The value of the HTTP header
+        # whose name is configured under "enforceOnKeyName". The key value is truncated
+        # to the first 128 bytes of the header value. If no such header is present in
+        # the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e.
+        # the originating client IP address) specified in the list of IPs under X-
+        # Forwarded-For HTTP header. If no such header is present or the value is not a
+        # valid IP, the key defaults to the source IP address of the request i.e. key
+        # type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured
+        # under "enforceOnKeyName". The key value is truncated to the first 128 bytes of
+        # the cookie value. If no such cookie is present in the request, the key type
+        # defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value
+        # is truncated to the first 128 bytes. - SNI: Server name indication in the TLS
+        # session of the HTTPS request. The key value is truncated to the first 128
+        # bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The
+        # country/region from which the request originates.
+        # Corresponds to the JSON property `enforceOnKeyType`
+        # @return [String]
+        attr_accessor :enforce_on_key_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforce_on_key_name = args[:enforce_on_key_name] if args.key?(:enforce_on_key_name)
+          @enforce_on_key_type = args[:enforce_on_key_type] if args.key?(:enforce_on_key_type)
         end
       end
       
