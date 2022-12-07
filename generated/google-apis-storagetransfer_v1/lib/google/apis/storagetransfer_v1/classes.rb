@@ -403,6 +403,44 @@ module Google
         end
       end
       
+      # Specifies the Event-driven transfer options. Event-driven transfers listen to
+      # an event stream to transfer updated files.
+      class EventStream
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the data and time at which Storage Transfer Service stops listening
+        # for events from this stream. After this time, any transfers in progress will
+        # complete, but no new transfers are initiated.
+        # Corresponds to the JSON property `eventStreamExpirationTime`
+        # @return [String]
+        attr_accessor :event_stream_expiration_time
+      
+        # Specifies the date and time that Storage Transfer Service starts listening for
+        # events from this stream. If no start time is specified or start time is in the
+        # past, Storage Transfer Service starts listening immediately.
+        # Corresponds to the JSON property `eventStreamStartTime`
+        # @return [String]
+        attr_accessor :event_stream_start_time
+      
+        # Required. Specifies a unique name of the resource such as AWS SQS ARN in the
+        # form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription
+        # resource name in the form 'projects/`project`/subscriptions/`sub`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_stream_expiration_time = args[:event_stream_expiration_time] if args.key?(:event_stream_expiration_time)
+          @event_stream_start_time = args[:event_stream_start_time] if args.key?(:event_stream_start_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # In a GcsData resource, an object's name is the Cloud Storage object's name and
       # its "last modification time" refers to the object's `updated` property of
       # Cloud Storage objects, which changes when the content or the metadata of the
@@ -1337,6 +1375,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Specifies the Event-driven transfer options. Event-driven transfers listen to
+        # an event stream to transfer updated files.
+        # Corresponds to the JSON property `eventStream`
+        # @return [Google::Apis::StoragetransferV1::EventStream]
+        attr_accessor :event_stream
+      
         # Output only. The time that the transfer job was last modified.
         # Corresponds to the JSON property `lastModificationTime`
         # @return [String]
@@ -1422,6 +1466,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @deletion_time = args[:deletion_time] if args.key?(:deletion_time)
           @description = args[:description] if args.key?(:description)
+          @event_stream = args[:event_stream] if args.key?(:event_stream)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
           @latest_operation_name = args[:latest_operation_name] if args.key?(:latest_operation_name)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
