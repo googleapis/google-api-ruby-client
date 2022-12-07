@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentTimingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -403,6 +409,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, as: 'creationTime'
           property :creator, as: 'creator'
+          property :image_version, as: 'imageVersion'
           property :instance, as: 'instance'
           property :instance_id, :numeric_string => true, as: 'instanceId'
           hash :os_release, as: 'osRelease'
@@ -431,6 +438,15 @@ module Google
           property :task_id, as: 'taskId'
           property :task_status, as: 'taskStatus', class: Google::Apis::BatchV1::TaskStatus, decorator: Google::Apis::BatchV1::TaskStatus::Representation
       
+        end
+      end
+      
+      class AgentTimingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_startup_time, as: 'agentStartupTime'
+          property :boot_time, as: 'bootTime'
+          property :script_startup_time, as: 'scriptStartupTime'
         end
       end
       
@@ -786,6 +802,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_info, as: 'agentInfo', class: Google::Apis::BatchV1::AgentInfo, decorator: Google::Apis::BatchV1::AgentInfo::Representation
+      
+          property :agent_timing_info, as: 'agentTimingInfo', class: Google::Apis::BatchV1::AgentTimingInfo, decorator: Google::Apis::BatchV1::AgentTimingInfo::Representation
       
           property :metadata, as: 'metadata', class: Google::Apis::BatchV1::AgentMetadata, decorator: Google::Apis::BatchV1::AgentMetadata::Representation
       
