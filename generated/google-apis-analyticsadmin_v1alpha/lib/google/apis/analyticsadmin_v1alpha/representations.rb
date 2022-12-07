@@ -538,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1550,6 +1556,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audiences, as: 'audiences', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAudience::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bigquery_links, as: 'bigqueryLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
