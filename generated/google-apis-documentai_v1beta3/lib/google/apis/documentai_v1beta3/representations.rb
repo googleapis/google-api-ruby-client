@@ -1144,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfigShardingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3DocumentPage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1487,6 +1493,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3NormalizedVertex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3OcrConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3430,6 +3448,8 @@ module Google
       
           property :output_config, as: 'outputConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig::Representation
       
+          property :process_options, as: 'processOptions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptions, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptions::Representation
+      
           property :skip_human_review, as: 'skipHumanReview'
         end
       end
@@ -3620,6 +3640,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_mask, as: 'fieldMask'
           property :gcs_uri, as: 'gcsUri'
+          property :sharding_config, as: 'shardingConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfigShardingConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfigShardingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfigShardingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pages_overlap, as: 'pagesOverlap'
+          property :pages_per_shard, as: 'pagesPerShard'
         end
       end
       
@@ -4241,6 +4271,21 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3OcrConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_native_pdf_parsing, as: 'enableNativePdfParsing'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ocr_config, as: 'ocrConfig', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3OcrConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3ProcessRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4248,6 +4293,8 @@ module Google
       
           property :field_mask, as: 'fieldMask'
           property :inline_document, as: 'inlineDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document::Representation
+      
+          property :process_options, as: 'processOptions', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptions, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessOptions::Representation
       
           property :raw_document, as: 'rawDocument', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument::Representation
       
@@ -4289,6 +4336,7 @@ module Google
           property :category, as: 'category'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
+          collection :sample_document_uris, as: 'sampleDocumentUris'
           property :type, as: 'type'
         end
       end
