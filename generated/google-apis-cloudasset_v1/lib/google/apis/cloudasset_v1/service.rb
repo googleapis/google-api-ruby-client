@@ -880,9 +880,9 @@ module Google
         # vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck * gcp.
         # resourceLocations * compute.trustedImageProjects * compute.
         # skipDefaultNetworkCreation * compute.requireOsLogin * compute.
-        # disableNestedVirtualization This RPC only returns either: * resources of types
+        # disableNestedVirtualization This RPC only returns either resources of types
         # supported by [searchable asset types](https://cloud.google.com/asset-inventory/
-        # docs/supported-asset-types#searchable_asset_types), or * IAM policies.
+        # docs/supported-asset-types#searchable_asset_types), or IAM policies.
         # @param [String] scope
         #   Required. The organization to scope the request. Only organization policies
         #   within the scope will be analyzed. The output assets will also be limited to
