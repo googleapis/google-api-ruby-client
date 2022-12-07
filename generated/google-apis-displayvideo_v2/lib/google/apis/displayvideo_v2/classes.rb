@@ -734,16 +734,18 @@ module Google
         # can be used in place of the assignedTargetingOptionId required for GET and
         # DELETE targeting methods. An alias for the assignedTargetingOptionId. This
         # value can be used in place of `assignedTargetingOptionId` when retrieving or
-        # deleting existing targeting. This field will only be supported for assigned
-        # targeting options of the following targeting types: * `
-        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
-        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `
+        # deleting existing targeting. This field will only be supported for all
+        # assigned targeting options of the following targeting types: * `
+        # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_DEVICE_TYPE` * `
         # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
         # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
         # TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_PARENTAL_STATUS` * `
         # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+        # TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` This field is
+        # also supported for line item assigned targeting options of the following
+        # targeting types: * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`
         # Corresponds to the JSON property `assignedTargetingOptionIdAlias`
         # @return [String]
         attr_accessor :assigned_targeting_option_id_alias
