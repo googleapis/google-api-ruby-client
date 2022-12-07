@@ -41,6 +41,45 @@ module Google
         end
       end
       
+      # Information about account verification, used for identity verification.
+      class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Endpoints that can be used for identity verification.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>]
+        attr_accessor :endpoints
+      
+        # Language code preference for the verification message, set as a IETF BCP 47
+        # language code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Output only. Result of the latest account verification challenge.
+        # Corresponds to the JSON property `latestVerificationResult`
+        # @return [String]
+        attr_accessor :latest_verification_result
+      
+        # Username of the account that is being verified. Deprecated. Customers should
+        # now provide the hashed account ID field in Event.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @latest_verification_result = args[:latest_verification_result] if args.key?(:latest_verification_result)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # Settings specific to keys that can be used by Android apps.
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
@@ -129,6 +168,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment]
         attr_accessor :account_defender_assessment
       
+        # Information about account verification, used for identity verification.
+        # Corresponds to the JSON property `accountVerification`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo]
+        attr_accessor :account_verification
+      
         # The event being assessed.
         # Corresponds to the JSON property `event`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event]
@@ -162,6 +206,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
+          @account_verification = args[:account_verification] if args.key?(:account_verification)
           @event = args[:event] if args.key?(:event)
           @name = args[:name] if args.key?(:name)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
@@ -207,6 +252,46 @@ module Google
           @nocaptcha_count = args[:nocaptcha_count] if args.key?(:nocaptcha_count)
           @pageload_count = args[:pageload_count] if args.key?(:pageload_count)
           @passed_count = args[:passed_count] if args.key?(:passed_count)
+        end
+      end
+      
+      # Information about a verification endpoint that can be used for 2FA.
+      class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Email address for which to trigger a verification request.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        # Output only. Timestamp of the last successful verification for the endpoint,
+        # if any.
+        # Corresponds to the JSON property `lastVerificationTime`
+        # @return [String]
+        attr_accessor :last_verification_time
+      
+        # Phone number for which to trigger a verification request. Should be given in E.
+        # 164 format.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Output only. Token to provide to the client to trigger endpoint verification.
+        # It must be used within 15 minutes.
+        # Corresponds to the JSON property `requestToken`
+        # @return [String]
+        attr_accessor :request_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @last_verification_time = args[:last_verification_time] if args.key?(:last_verification_time)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @request_token = args[:request_token] if args.key?(:request_token)
         end
       end
       
@@ -485,12 +570,26 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether or not to do billing check. A reCAPTCHA Enterprise or
+        # migrated key behaves differently than a reCAPTCHA (non-Enterprise version) key
+        # when you reach a quota limit (see https://cloud.google.com/recaptcha-
+        # enterprise/quotas#quota_limit). To avoid any disruption of your usage, we
+        # check that a billing account is present. If your usage of reCAPTCHA is under
+        # the free quota, you can safely skip the billing check and proceed with the
+        # migration. See https://cloud.google.com/recaptcha-enterprise/docs/billing-
+        # information.
+        # Corresponds to the JSON property `skipBillingCheck`
+        # @return [Boolean]
+        attr_accessor :skip_billing_check
+        alias_method :skip_billing_check?, :skip_billing_check
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @skip_billing_check = args[:skip_billing_check] if args.key?(:skip_billing_check)
         end
       end
       
