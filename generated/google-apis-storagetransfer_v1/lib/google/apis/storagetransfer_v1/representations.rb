@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,6 +362,15 @@ module Google
         end
       end
       
+      class EventStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_stream_expiration_time, as: 'eventStreamExpirationTime'
+          property :event_stream_start_time, as: 'eventStreamStartTime'
+          property :name, as: 'name'
+        end
+      end
+      
       class GcsData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -566,6 +581,8 @@ module Google
           property :creation_time, as: 'creationTime'
           property :deletion_time, as: 'deletionTime'
           property :description, as: 'description'
+          property :event_stream, as: 'eventStream', class: Google::Apis::StoragetransferV1::EventStream, decorator: Google::Apis::StoragetransferV1::EventStream::Representation
+      
           property :last_modification_time, as: 'lastModificationTime'
           property :latest_operation_name, as: 'latestOperationName'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragetransferV1::LoggingConfig, decorator: Google::Apis::StoragetransferV1::LoggingConfig::Representation
