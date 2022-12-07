@@ -322,6 +322,46 @@ module Google
         end
       end
       
+      # The top-level message sent by the client for the `SynthesizeLongAudio` method.
+      class SynthesizeLongAudioRequest
+        include Google::Apis::Core::Hashable
+      
+        # Description of audio data to be synthesized.
+        # Corresponds to the JSON property `audioConfig`
+        # @return [Google::Apis::TexttospeechV1::AudioConfig]
+        attr_accessor :audio_config
+      
+        # Contains text input to be synthesized. Either `text` or `ssml` must be
+        # supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT.
+        # The input size is limited to 5000 bytes.
+        # Corresponds to the JSON property `input`
+        # @return [Google::Apis::TexttospeechV1::SynthesisInput]
+        attr_accessor :input
+      
+        # Specifies a Cloud Storage URI for the synthesis results. Must be specified in
+        # the format: `gs://bucket_name/object_name`, and the bucket must already exist.
+        # Corresponds to the JSON property `outputGcsUri`
+        # @return [String]
+        attr_accessor :output_gcs_uri
+      
+        # Description of which voice to use for a synthesis request.
+        # Corresponds to the JSON property `voice`
+        # @return [Google::Apis::TexttospeechV1::VoiceSelectionParams]
+        attr_accessor :voice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_config = args[:audio_config] if args.key?(:audio_config)
+          @input = args[:input] if args.key?(:input)
+          @output_gcs_uri = args[:output_gcs_uri] if args.key?(:output_gcs_uri)
+          @voice = args[:voice] if args.key?(:voice)
+        end
+      end
+      
       # The top-level message sent by the client for the `SynthesizeSpeech` method.
       class SynthesizeSpeechRequest
         include Google::Apis::Core::Hashable
