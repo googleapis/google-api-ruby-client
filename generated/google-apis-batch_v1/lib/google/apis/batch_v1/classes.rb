@@ -123,7 +123,7 @@ module Google
       class AgentMetadata
         include Google::Apis::Core::Hashable
       
-        # When the VM agent started.
+        # When the VM agent started. Use agent_startup_time instead.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
@@ -134,6 +134,11 @@ module Google
         # Corresponds to the JSON property `creator`
         # @return [String]
         attr_accessor :creator
+      
+        # image version for the VM that this agent is installed on.
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
       
         # GCP instance name (go/instance-name).
         # Corresponds to the JSON property `instance`
@@ -168,6 +173,7 @@ module Google
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @creator = args[:creator] if args.key?(:creator)
+          @image_version = args[:image_version] if args.key?(:image_version)
           @instance = args[:instance] if args.key?(:instance)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @os_release = args[:os_release] if args.key?(:os_release)
@@ -249,6 +255,37 @@ module Google
           @runnable = args[:runnable] if args.key?(:runnable)
           @task_id = args[:task_id] if args.key?(:task_id)
           @task_status = args[:task_status] if args.key?(:task_status)
+        end
+      end
+      
+      # VM timing information
+      class AgentTimingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Agent startup time
+        # Corresponds to the JSON property `agentStartupTime`
+        # @return [String]
+        attr_accessor :agent_startup_time
+      
+        # Boot timestamp of the VM OS
+        # Corresponds to the JSON property `bootTime`
+        # @return [String]
+        attr_accessor :boot_time
+      
+        # Startup time of the Batch VM script.
+        # Corresponds to the JSON property `scriptStartupTime`
+        # @return [String]
+        attr_accessor :script_startup_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_startup_time = args[:agent_startup_time] if args.key?(:agent_startup_time)
+          @boot_time = args[:boot_time] if args.key?(:boot_time)
+          @script_startup_time = args[:script_startup_time] if args.key?(:script_startup_time)
         end
       end
       
@@ -1349,7 +1386,10 @@ module Google
       class NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # The URL of the network resource.
+        # The URL of an existing network resource. You can specify the network as a full
+        # or partial URL. For example, the following are all valid URLs: https://www.
+        # googleapis.com/compute/v1/projects/`project`/global/networks/`network`
+        # projects/`project`/global/networks/`network` global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1364,7 +1404,11 @@ module Google
         attr_accessor :no_external_ip_address
         alias_method :no_external_ip_address?, :no_external_ip_address
       
-        # The URL of the Subnetwork resource.
+        # The URL of an existing subnetwork resource in the network. You can specify the
+        # subnetwork as a full or partial URL. For example, the following are all valid
+        # URLs: https://www.googleapis.com/compute/v1/projects/`project`/regions/`region`
+        # /subnetworks/`subnetwork` projects/`project`/regions/`region`/subnetworks/`
+        # subnetwork` regions/`region`/subnetworks/`subnetwork`
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1626,6 +1670,11 @@ module Google
         # @return [Google::Apis::BatchV1::AgentInfo]
         attr_accessor :agent_info
       
+        # VM timing information
+        # Corresponds to the JSON property `agentTimingInfo`
+        # @return [Google::Apis::BatchV1::AgentTimingInfo]
+        attr_accessor :agent_timing_info
+      
         # AgentMetadata never changes for a single instance of VM agent.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::BatchV1::AgentMetadata]
@@ -1638,6 +1687,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_info = args[:agent_info] if args.key?(:agent_info)
+          @agent_timing_info = args[:agent_timing_info] if args.key?(:agent_timing_info)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
