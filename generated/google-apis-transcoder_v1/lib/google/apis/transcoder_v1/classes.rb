@@ -679,7 +679,11 @@ module Google
       
         # The height of the video in pixels. Must be an even integer. When not specified,
         # the height is adjusted to match the specified width and input aspect ratio.
-        # If both are omitted, the input height is used.
+        # If both are omitted, the input height is used. For portrait videos that
+        # contain horizontal ASR and rotation metadata, provide the height, in pixels,
+        # per the horizontal ASR. The API calculates the width per the horizontal ASR.
+        # The API detects any rotation metadata and swaps the requested height and width
+        # for the output.
         # Corresponds to the JSON property `heightPixels`
         # @return [Fixnum]
         attr_accessor :height_pixels
@@ -738,7 +742,11 @@ module Google
       
         # The width of the video in pixels. Must be an even integer. When not specified,
         # the width is adjusted to match the specified height and input aspect ratio. If
-        # both are omitted, the input width is used.
+        # both are omitted, the input width is used. For portrait videos that contain
+        # horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        # horizontal ASR. The API calculates the height per the horizontal ASR. The API
+        # detects any rotation metadata and swaps the requested height and width for the
+        # output.
         # Corresponds to the JSON property `widthPixels`
         # @return [Fixnum]
         attr_accessor :width_pixels
@@ -848,7 +856,11 @@ module Google
       
         # The height of the video in pixels. Must be an even integer. When not specified,
         # the height is adjusted to match the specified width and input aspect ratio.
-        # If both are omitted, the input height is used.
+        # If both are omitted, the input height is used. For portrait videos that
+        # contain horizontal ASR and rotation metadata, provide the height, in pixels,
+        # per the horizontal ASR. The API calculates the width per the horizontal ASR.
+        # The API detects any rotation metadata and swaps the requested height and width
+        # for the output.
         # Corresponds to the JSON property `heightPixels`
         # @return [Fixnum]
         attr_accessor :height_pixels
@@ -910,7 +922,11 @@ module Google
       
         # The width of the video in pixels. Must be an even integer. When not specified,
         # the width is adjusted to match the specified height and input aspect ratio. If
-        # both are omitted, the input width is used.
+        # both are omitted, the input width is used. For portrait videos that contain
+        # horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        # horizontal ASR. The API calculates the height per the horizontal ASR. The API
+        # detects any rotation metadata and swaps the requested height and width for the
+        # output.
         # Corresponds to the JSON property `widthPixels`
         # @return [Fixnum]
         attr_accessor :width_pixels
@@ -1643,7 +1659,11 @@ module Google
         # Required. The height of sprite in pixels. Must be an even integer. To preserve
         # the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the
         # SpriteSheet.sprite_width_pixels field, but not both (the API will
-        # automatically calculate the missing field).
+        # automatically calculate the missing field). For portrait videos that contain
+        # horizontal ASR and rotation metadata, provide the height, in pixels, per the
+        # horizontal ASR. The API calculates the width per the horizontal ASR. The API
+        # detects any rotation metadata and swaps the requested height and width for the
+        # output.
         # Corresponds to the JSON property `spriteHeightPixels`
         # @return [Fixnum]
         attr_accessor :sprite_height_pixels
@@ -1651,7 +1671,11 @@ module Google
         # Required. The width of sprite in pixels. Must be an even integer. To preserve
         # the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the
         # SpriteSheet.sprite_height_pixels field, but not both (the API will
-        # automatically calculate the missing field).
+        # automatically calculate the missing field). For portrait videos that contain
+        # horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        # horizontal ASR. The API calculates the height per the horizontal ASR. The API
+        # detects any rotation metadata and swaps the requested height and width for the
+        # output.
         # Corresponds to the JSON property `spriteWidthPixels`
         # @return [Fixnum]
         attr_accessor :sprite_width_pixels
@@ -1859,7 +1883,11 @@ module Google
       
         # The height of the video in pixels. Must be an even integer. When not specified,
         # the height is adjusted to match the specified width and input aspect ratio.
-        # If both are omitted, the input height is used.
+        # If both are omitted, the input height is used. For portrait videos that
+        # contain horizontal ASR and rotation metadata, provide the height, in pixels,
+        # per the horizontal ASR. The API calculates the width per the horizontal ASR.
+        # The API detects any rotation metadata and swaps the requested height and width
+        # for the output.
         # Corresponds to the JSON property `heightPixels`
         # @return [Fixnum]
         attr_accessor :height_pixels
@@ -1890,7 +1918,11 @@ module Google
       
         # The width of the video in pixels. Must be an even integer. When not specified,
         # the width is adjusted to match the specified height and input aspect ratio. If
-        # both are omitted, the input width is used.
+        # both are omitted, the input width is used. For portrait videos that contain
+        # horizontal ASR and rotation metadata, provide the width, in pixels, per the
+        # horizontal ASR. The API calculates the height per the horizontal ASR. The API
+        # detects any rotation metadata and swaps the requested height and width for the
+        # output.
         # Corresponds to the JSON property `widthPixels`
         # @return [Fixnum]
         attr_accessor :width_pixels
