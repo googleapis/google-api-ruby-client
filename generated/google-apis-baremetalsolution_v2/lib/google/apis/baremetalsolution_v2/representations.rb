@@ -449,6 +449,7 @@ module Google
           property :update_time, as: 'updateTime'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
       
+          property :workload_profile, as: 'workloadProfile'
         end
       end
       
@@ -960,6 +961,7 @@ module Google
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy'
           property :state, as: 'state'
           property :storage_type, as: 'storageType'
+          property :workload_profile, as: 'workloadProfile'
         end
       end
       

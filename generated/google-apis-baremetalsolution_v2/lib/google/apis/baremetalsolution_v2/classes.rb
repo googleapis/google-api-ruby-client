@@ -355,6 +355,11 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::Volume>]
         attr_accessor :volumes
       
+        # The workload profile for the instance.
+        # Corresponds to the JSON property `workloadProfile`
+        # @return [String]
+        attr_accessor :workload_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -378,6 +383,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
+          @workload_profile = args[:workload_profile] if args.key?(:workload_profile)
         end
       end
       
@@ -2295,6 +2301,11 @@ module Google
         # @return [String]
         attr_accessor :storage_type
       
+        # The workload profile for the volume.
+        # Corresponds to the JSON property `workloadProfile`
+        # @return [String]
+        attr_accessor :workload_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2322,6 +2333,7 @@ module Google
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
           @state = args[:state] if args.key?(:state)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
+          @workload_profile = args[:workload_profile] if args.key?(:workload_profile)
         end
       end
       
