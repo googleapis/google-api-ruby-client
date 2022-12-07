@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SynthesizeLongAudioRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SynthesizeSpeechRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -175,6 +181,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ssml, as: 'ssml'
           property :text, as: 'text'
+        end
+      end
+      
+      class SynthesizeLongAudioRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1::AudioConfig, decorator: Google::Apis::TexttospeechV1::AudioConfig::Representation
+      
+          property :input, as: 'input', class: Google::Apis::TexttospeechV1::SynthesisInput, decorator: Google::Apis::TexttospeechV1::SynthesisInput::Representation
+      
+          property :output_gcs_uri, as: 'outputGcsUri'
+          property :voice, as: 'voice', class: Google::Apis::TexttospeechV1::VoiceSelectionParams, decorator: Google::Apis::TexttospeechV1::VoiceSelectionParams::Representation
+      
         end
       end
       
