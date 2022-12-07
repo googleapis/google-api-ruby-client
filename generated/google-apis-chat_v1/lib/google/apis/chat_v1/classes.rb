@@ -164,7 +164,8 @@ module Google
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # [Developer Preview](https://developers.google.com/workspace/preview).
+        # A reference to the attachment data. This is used with the media API to
+        # download the attachment data.
         # Corresponds to the JSON property `attachmentDataRef`
         # @return [Google::Apis::ChatV1::AttachmentDataRef]
         attr_accessor :attachment_data_ref
@@ -226,7 +227,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview).
+      # 
       class AttachmentDataRef
         include Google::Apis::Core::Hashable
       
