@@ -579,7 +579,7 @@ module Google
         # @return [String]
         attr_accessor :google_workspace_customer_id
       
-        # The ID of the Customer that purchased the Android device.
+        # The ID of the Customer that purchased the device.
         # Corresponds to the JSON property `ownerCompanyId`
         # @return [Fixnum]
         attr_accessor :owner_company_id
@@ -658,7 +658,7 @@ module Google
       
         # The device model's name. Allowed values are listed in [Android models](/zero-
         # touch/resources/manufacturer-names#model-names) and [Chrome OS models](https://
-        # support.google.com/chrome/a/answer/10130175?hl=en#identify_compatible).
+        # support.google.com/chrome/a/answer/10130175#identify_compatible).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -1319,7 +1319,7 @@ module Google
       class PerDeviceStatusInBatch
         include Google::Apis::Core::Hashable
       
-        # If processing succeeds, the device ID of the Android device.
+        # If processing succeeds, the device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
