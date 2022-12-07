@@ -22,6 +22,12 @@ module Google
   module Apis
     module SpeechV1p1beta1
       
+      class AbnfGrammar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClassItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -200,6 +206,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AbnfGrammar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :abnf_strings, as: 'abnfStrings'
+        end
       end
       
       class ClassItem
@@ -440,6 +453,8 @@ module Google
       class SpeechAdaptation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :abnf_grammar, as: 'abnfGrammar', class: Google::Apis::SpeechV1p1beta1::AbnfGrammar, decorator: Google::Apis::SpeechV1p1beta1::AbnfGrammar::Representation
+      
           collection :custom_classes, as: 'customClasses', class: Google::Apis::SpeechV1p1beta1::CustomClass, decorator: Google::Apis::SpeechV1p1beta1::CustomClass::Representation
       
           collection :phrase_set_references, as: 'phraseSetReferences'
