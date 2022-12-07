@@ -4246,6 +4246,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueuedResourcesAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueuedResourcesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueuingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5351,6 +5387,12 @@ module Google
       end
       
       class SecurityPolicyRuleRateLimitOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7854,6 +7896,7 @@ module Google
           property :enable, as: 'enable'
           property :optional, as: 'optional'
           collection :optional_fields, as: 'optionalFields'
+          property :optional_mode, as: 'optionalMode'
           property :sample_rate, as: 'sampleRate'
         end
       end
@@ -9067,6 +9110,7 @@ module Google
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
           property :backend_service, as: 'backendService'
+          property :base_forwarding_rule, as: 'baseForwardingRule'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -10580,6 +10624,7 @@ module Google
       class InstanceGroupManagerInstanceLifecyclePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_action_on_failure, as: 'defaultActionOnFailure'
           property :force_update_on_repair, as: 'forceUpdateOnRepair'
           property :metadata_based_readiness_signal, as: 'metadataBasedReadinessSignal', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal::Representation
       
@@ -11743,7 +11788,6 @@ module Google
           property :bgp_md5, as: 'bgpMd5'
           collection :bgp_peer_asn_ranges, as: 'bgpPeerAsnRanges', class: Google::Apis::ComputeAlpha::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange, decorator: Google::Apis::ComputeAlpha::InterconnectAttachmentConfigurationConstraintsBgpPeerAsnRange::Representation
       
-          property :network_connectivity_center, as: 'networkConnectivityCenter'
         end
       end
       
@@ -14939,6 +14983,67 @@ module Google
         end
       end
       
+      class QueuedResourcesAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::QueuedResourcesScopedList, decorator: Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class QueuedResourcesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :queued_resources, as: 'queuedResources', class: Google::Apis::ComputeAlpha::QueuedResource, decorator: Google::Apis::ComputeAlpha::QueuedResource::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning, decorator: Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class QueuingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16919,6 +17024,8 @@ module Google
       
           property :conform_action, as: 'conformAction'
           property :enforce_on_key, as: 'enforceOnKey'
+          collection :enforce_on_key_configs, as: 'enforceOnKeyConfigs', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig::Representation
+      
           property :enforce_on_key_name, as: 'enforceOnKeyName'
           property :exceed_action, as: 'exceedAction'
           property :exceed_action_rpc_status, as: 'exceedActionRpcStatus', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsRpcStatus, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsRpcStatus::Representation
@@ -16927,6 +17034,14 @@ module Google
       
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforce_on_key_name, as: 'enforceOnKeyName'
+          property :enforce_on_key_type, as: 'enforceOnKeyType'
         end
       end
       
