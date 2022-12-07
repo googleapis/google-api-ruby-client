@@ -7170,6 +7170,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Human eval template in csv format. It tooks real-world
+        # conversations provided through input dataset, generates example suggestions
+        # for customer to verify quality of the model. For Smart Reply, the generated
+        # csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply.
+        # Context contains at most 10 latest messages in the conversation prior to the
+        # current suggestion. Q1: "Would you send it as the next message of agent?"
+        # Evaluated based on whether the suggest is appropriate to be sent by agent in
+        # current context. Q2: "Does the suggestion move the conversation closer to
+        # resolution?" Evaluated based on whether the suggestion provide solutions, or
+        # answers customer's question or collect information from customer to resolve
+        # the customer's issue. Actual reply column contains the actual agent reply sent
+        # in the context.
+        # Corresponds to the JSON property `rawHumanEvalTemplateCsv`
+        # @return [String]
+        attr_accessor :raw_human_eval_template_csv
+      
         # The evaluation metrics for smart reply model.
         # Corresponds to the JSON property `smartReplyMetrics`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetrics]
@@ -7185,6 +7201,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @evaluation_config = args[:evaluation_config] if args.key?(:evaluation_config)
           @name = args[:name] if args.key?(:name)
+          @raw_human_eval_template_csv = args[:raw_human_eval_template_csv] if args.key?(:raw_human_eval_template_csv)
           @smart_reply_metrics = args[:smart_reply_metrics] if args.key?(:smart_reply_metrics)
         end
       end

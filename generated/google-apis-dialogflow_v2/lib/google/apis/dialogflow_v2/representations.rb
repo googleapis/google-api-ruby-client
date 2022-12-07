@@ -4700,6 +4700,7 @@ module Google
           property :evaluation_config, as: 'evaluationConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfig::Representation
       
           property :name, as: 'name'
+          property :raw_human_eval_template_csv, as: 'rawHumanEvalTemplateCsv'
           property :smart_reply_metrics, as: 'smartReplyMetrics', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetrics, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetrics::Representation
       
         end
