@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +209,17 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :latest_verification_result, as: 'latestVerificationResult'
+          property :username, as: 'username'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -225,6 +248,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_defender_assessment, as: 'accountDefenderAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment::Representation
       
+          property :account_verification, as: 'accountVerification', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo::Representation
+      
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
       
           property :name, as: 'name'
@@ -244,6 +269,16 @@ module Google
           property :nocaptcha_count, :numeric_string => true, as: 'nocaptchaCount'
           property :pageload_count, :numeric_string => true, as: 'pageloadCount'
           property :passed_count, :numeric_string => true, as: 'passedCount'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+          property :last_verification_time, as: 'lastVerificationTime'
+          property :phone_number, as: 'phoneNumber'
+          property :request_token, as: 'requestToken'
         end
       end
       
@@ -329,6 +364,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_billing_check, as: 'skipBillingCheck'
         end
       end
       
