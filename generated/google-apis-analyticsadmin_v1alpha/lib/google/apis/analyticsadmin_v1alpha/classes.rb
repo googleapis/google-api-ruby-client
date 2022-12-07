@@ -2959,6 +2959,32 @@ module Google
         end
       end
       
+      # Response message for ListBigQueryLinks RPC
+      class GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of BigQueryLinks.
+        # Corresponds to the JSON property `bigqueryLinks`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaBigQueryLink>]
+        attr_accessor :bigquery_links
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_links = args[:bigquery_links] if args.key?(:bigquery_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListConversionEvents RPC.
       class GoogleAnalyticsAdminV1alphaListConversionEventsResponse
         include Google::Apis::Core::Hashable
