@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Criteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Custom
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,12 @@ module Google
       end
       
       class Field
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForecastOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +371,12 @@ module Google
       end
       
       class ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSnoozesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -569,6 +587,12 @@ module Google
       end
       
       class ServiceLevelObjective
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snooze
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -915,6 +939,13 @@ module Google
         end
       end
       
+      class Criteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policies, as: 'policies'
+        end
+      end
+      
       class Custom
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1015,6 +1046,13 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class ForecastOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forecast_horizon, as: 'forecastHorizon'
         end
       end
       
@@ -1253,6 +1291,15 @@ module Google
         end
       end
       
+      class ListSnoozesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snoozes, as: 'snoozes', class: Google::Apis::MonitoringV3::Snooze, decorator: Google::Apis::MonitoringV3::Snooze::Representation
+      
+        end
+      end
+      
       class ListTimeSeriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1370,6 +1417,8 @@ module Google
           property :duration, as: 'duration'
           property :evaluation_missing_data, as: 'evaluationMissingData'
           property :filter, as: 'filter'
+          property :forecast_options, as: 'forecastOptions', class: Google::Apis::MonitoringV3::ForecastOptions, decorator: Google::Apis::MonitoringV3::ForecastOptions::Representation
+      
           property :threshold_value, as: 'thresholdValue'
           property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
       
@@ -1636,6 +1685,18 @@ module Google
           property :service_level_indicator, as: 'serviceLevelIndicator', class: Google::Apis::MonitoringV3::ServiceLevelIndicator, decorator: Google::Apis::MonitoringV3::ServiceLevelIndicator::Representation
       
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class Snooze
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criteria, as: 'criteria', class: Google::Apis::MonitoringV3::Criteria, decorator: Google::Apis::MonitoringV3::Criteria::Representation
+      
+          property :display_name, as: 'displayName'
+          property :interval, as: 'interval', class: Google::Apis::MonitoringV3::TimeInterval, decorator: Google::Apis::MonitoringV3::TimeInterval::Representation
+      
+          property :name, as: 'name'
         end
       end
       
