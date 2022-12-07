@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1DocumentPage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2263,6 +2269,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_mask, as: 'fieldMask'
           property :gcs_uri, as: 'gcsUri'
+          property :sharding_config, as: 'shardingConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pages_overlap, as: 'pagesOverlap'
+          property :pages_per_shard, as: 'pagesPerShard'
         end
       end
       
@@ -2830,6 +2846,7 @@ module Google
           property :category, as: 'category'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
+          collection :sample_document_uris, as: 'sampleDocumentUris'
           property :type, as: 'type'
         end
       end
