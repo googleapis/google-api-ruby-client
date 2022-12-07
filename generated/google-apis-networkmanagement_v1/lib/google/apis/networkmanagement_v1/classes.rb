@@ -55,6 +55,64 @@ module Google
         end
       end
       
+      # Wrapper for app engine service version attributes.
+      class AppEngineVersionEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # An [App Engine](https://cloud.google.com/appengine) [service version](https://
+        # cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.
+        # versions) name.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with an App Engine version.
+      class AppEngineVersionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of an App Engine version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # App Engine execution environment for a version.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Runtime of the App Engine version.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        # URI of an App Engine version.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environment = args[:environment] if args.key?(:environment)
+          @runtime = args[:runtime] if args.key?(:runtime)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -271,6 +329,64 @@ module Google
         end
       end
       
+      # Wrapper for Cloud Run revision attributes.
+      class CloudRunRevisionEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.
+        # com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is:
+        # projects/`project`/locations/`location`/revisions/`revision`
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with a Cloud Run revision.
+      class CloudRunRevisionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud Run revision.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which this revision is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of Cloud Run service this revision belongs to.
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
+        # URI of a Cloud Run revision.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # For display only. Metadata associated with a Cloud SQL instance.
       class CloudSqlInstanceInfo
         include Google::Apis::Core::Hashable
@@ -473,10 +589,20 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # Wrapper for app engine service version attributes.
+        # Corresponds to the JSON property `appEngineVersion`
+        # @return [Google::Apis::NetworkmanagementV1::AppEngineVersionEndpoint]
+        attr_accessor :app_engine_version
+      
         # Wrapper for Cloud Function attributes.
         # Corresponds to the JSON property `cloudFunction`
         # @return [Google::Apis::NetworkmanagementV1::CloudFunctionEndpoint]
         attr_accessor :cloud_function
+      
+        # Wrapper for Cloud Run revision attributes.
+        # Corresponds to the JSON property `cloudRunRevision`
+        # @return [Google::Apis::NetworkmanagementV1::CloudRunRevisionEndpoint]
+        attr_accessor :cloud_run_revision
       
         # A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         # Corresponds to the JSON property `cloudSqlInstance`
@@ -535,7 +661,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
@@ -1627,6 +1755,11 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::AbortInfo]
         attr_accessor :abort
       
+        # For display only. Metadata associated with an App Engine version.
+        # Corresponds to the JSON property `appEngineVersion`
+        # @return [Google::Apis::NetworkmanagementV1::AppEngineVersionInfo]
+        attr_accessor :app_engine_version
+      
         # This is a step that leads to the final state Drop.
         # Corresponds to the JSON property `causesDrop`
         # @return [Boolean]
@@ -1637,6 +1770,11 @@ module Google
         # Corresponds to the JSON property `cloudFunction`
         # @return [Google::Apis::NetworkmanagementV1::CloudFunctionInfo]
         attr_accessor :cloud_function
+      
+        # For display only. Metadata associated with a Cloud Run revision.
+        # Corresponds to the JSON property `cloudRunRevision`
+        # @return [Google::Apis::NetworkmanagementV1::CloudRunRevisionInfo]
+        attr_accessor :cloud_run_revision
       
         # For display only. Metadata associated with a Cloud SQL instance.
         # Corresponds to the JSON property `cloudSqlInstance`
@@ -1739,8 +1877,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
+          @app_engine_version = args[:app_engine_version] if args.key?(:app_engine_version)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run_revision = args[:cloud_run_revision] if args.key?(:cloud_run_revision)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
