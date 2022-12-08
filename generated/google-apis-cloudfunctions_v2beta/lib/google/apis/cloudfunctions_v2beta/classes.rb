@@ -1648,6 +1648,14 @@ module Google
         attr_accessor :all_traffic_on_latest_revision
         alias_method :all_traffic_on_latest_revision?, :all_traffic_on_latest_revision
       
+        # The number of CPUs used in a single container instance. Default value is
+        # calculated from available memory. Supports the same values as Cloud Run, see
+        # https://cloud.google.com/run/docs/reference/rest/v1/Container#
+        # resourcerequirements Example: "1" indicates 1 vCPU
+        # Corresponds to the JSON property `availableCpu`
+        # @return [String]
+        attr_accessor :available_cpu
+      
         # The amount of memory available for a function. Defaults to 256M. Supported
         # units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as
         # bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/
@@ -1677,6 +1685,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_instance_count
       
+        # Sets the maximum number of concurrent requests that each instance can receive.
+        # Defaults to 1.
+        # Corresponds to the JSON property `maxInstanceRequestConcurrency`
+        # @return [Fixnum]
+        attr_accessor :max_instance_request_concurrency
+      
         # The limit on the minimum number of function instances that may coexist at a
         # given time. Function instances are kept in idle state for a short period after
         # they finished executing the request to reduce cold start time for subsequent
@@ -1703,10 +1717,10 @@ module Google
         # @return [Array<Google::Apis::CloudfunctionsV2beta::SecretVolume>]
         attr_accessor :secret_volumes
       
-        # Optional. Security level configure whether the function only accepts https.
-        # This configuration is only applicable to 1st Gen functions with Http trigger.
-        # By default https is optional for 1st Gen functions; 2nd Gen functions are
-        # https ONLY.
+        # Security level configure whether the function only accepts https. This
+        # configuration is only applicable to 1st Gen functions with Http trigger. By
+        # default https is optional for 1st Gen functions; 2nd Gen functions are https
+        # ONLY.
         # Corresponds to the JSON property `securityLevel`
         # @return [String]
         attr_accessor :security_level
@@ -1754,10 +1768,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @all_traffic_on_latest_revision = args[:all_traffic_on_latest_revision] if args.key?(:all_traffic_on_latest_revision)
+          @available_cpu = args[:available_cpu] if args.key?(:available_cpu)
           @available_memory = args[:available_memory] if args.key?(:available_memory)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
+          @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
           @revision = args[:revision] if args.key?(:revision)
           @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
