@@ -16,13 +16,13 @@ module Google
   module Apis
     module DatastreamV1
       # Version of the google-apis-datastream_v1 gem
-      GEM_VERSION = "0.17.0"
+      GEM_VERSION = "0.18.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.11.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221019"
+      REVISION = "20221128"
     end
   end
 end

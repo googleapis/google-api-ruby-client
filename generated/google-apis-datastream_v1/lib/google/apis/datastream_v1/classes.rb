@@ -1993,7 +1993,7 @@ module Google
       class SingleTargetDataset
         include Google::Apis::Core::Hashable
       
-        # 
+        # The dataset ID of the target dataset.
         # Corresponds to the JSON property `datasetId`
         # @return [String]
         attr_accessor :dataset_id

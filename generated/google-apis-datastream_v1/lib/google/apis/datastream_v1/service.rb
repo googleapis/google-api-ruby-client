@@ -584,6 +584,8 @@ module Google
         # @param [String] parent
         #   Required. The parent that owns the collection of PrivateConnections.
         # @param [Google::Apis::DatastreamV1::PrivateConnection] private_connection_object
+        # @param [Boolean] force
+        #   Optional. If set to true, will skip validations.
         # @param [String] private_connection_id
         #   Required. The private connectivity identifier.
         # @param [String] request_id
@@ -614,13 +616,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_private_connection(parent, private_connection_object = nil, private_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_private_connection(parent, private_connection_object = nil, force: nil, private_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/privateConnections', options)
           command.request_representation = Google::Apis::DatastreamV1::PrivateConnection::Representation
           command.request_object = private_connection_object
           command.response_representation = Google::Apis::DatastreamV1::Operation::Representation
           command.response_class = Google::Apis::DatastreamV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['force'] = force unless force.nil?
           command.query['privateConnectionId'] = private_connection_id unless private_connection_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
