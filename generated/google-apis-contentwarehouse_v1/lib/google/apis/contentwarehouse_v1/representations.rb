@@ -4408,6 +4408,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeostorePriceInfoSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeostorePriceInfoSourceDetailsSourceData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeostorePriceInfoStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7420,6 +7432,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KnowledgeAnswersIntentQueryArgumentProvenancePreviousQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8579,42 +8597,6 @@ module Google
       end
       
       class NetFabricRpcVirtualNetworkId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2EntryPayload
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsDataset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryLocaleRestrict
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryPattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10432,6 +10414,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QualityCalypsoAppsUniversalImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityCalypsoAppsUniversalImageData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QualityCopiaFireflySiteSignal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10991,6 +10985,12 @@ module Google
       end
       
       class QualityTimebasedLastSignificantUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualityTimebasedLastSignificantUpdateAdjustments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11740,25 +11740,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RepositoryWebrefPreprocessingNameSignals
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefPreprocessingNameVariantData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RepositoryWebrefPreprocessingNameVariantSignals
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefPreprocessingNormalizedNameData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11927,30 +11909,6 @@ module Google
       end
       
       class RepositoryWebrefTaskDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefToprefListMembership
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefToprefListMembershipListMember
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefToprefPageClassification
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RepositoryWebrefToprefPageClassificationRatedTitle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12334,12 +12292,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ScholarCitationPredictionSignal
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ScienceCitation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12448,31 +12400,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SciencePerDocData
+      class SdrEmbedding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SciencePerDocDataAuthor
+      class SdrPageAnchorsDocInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SciencePerDocDataReferenceDiscussion
+      class SdrPageAnchorsSitelink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SciencePerDocDataSection
+      class SdrPageAnchorsSitelinkWrapper
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SciencePerDocDataSignal
+      class SdrScrollTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdrScrollToOnPageMatches
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -13252,6 +13210,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpamBrainData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpamBrainScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpamCookbookAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13289,6 +13259,12 @@ module Google
       end
       
       class StorageGraphBfgLivegraphProvenanceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageGraphBfgLmsPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -18034,6 +18010,7 @@ module Google
       class AssistantApiLoggingOnlyData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_index, as: 'accountIndex'
           property :acp_version, as: 'acpVersion'
           property :android_id, :numeric_string => true, as: 'androidId'
           property :app_version, as: 'appVersion'
@@ -21864,6 +21841,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :category, as: 'category', class: Google::Apis::ContentwarehouseV1::FatcatCompactTaxonomicClassificationCategory, decorator: Google::Apis::ContentwarehouseV1::FatcatCompactTaxonomicClassificationCategory::Representation
       
+          property :classifier_version, as: 'classifierVersion'
           property :taxonomy, as: 'taxonomy'
           property :taxonomy_name, as: 'taxonomyName'
         end
@@ -22451,6 +22429,8 @@ module Google
           property :offered, as: 'offered'
           property :price, as: 'price', class: Google::Apis::ContentwarehouseV1::GeostorePriceRangeProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceRangeProto::Representation
       
+          property :price_format, as: 'priceFormat'
+          property :ranking_hint, as: 'rankingHint'
         end
       end
       
@@ -23575,6 +23555,24 @@ module Google
         end
       end
       
+      class GeostorePriceInfoSourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :last_update_sources, as: 'lastUpdateSources', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData::Representation
+      
+          collection :source_data, as: 'sourceData', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData::Representation
+      
+        end
+      end
+      
+      class GeostorePriceInfoSourceDetailsSourceData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_project_number, :numeric_string => true, as: 'clientProjectNumber'
+          property :source, as: 'source'
+        end
+      end
+      
       class GeostorePriceInfoStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23595,12 +23593,15 @@ module Google
       class GeostorePriceListProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregator_id, :numeric_string => true, as: 'aggregatorId'
           property :available_time, as: 'availableTime', class: Google::Apis::ContentwarehouseV1::GeostoreTimeScheduleProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreTimeScheduleProto::Representation
       
           collection :cuisines, as: 'cuisines'
           collection :name_info, as: 'nameInfo', class: Google::Apis::ContentwarehouseV1::GeostorePriceListNameInfoProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceListNameInfoProto::Representation
       
           collection :section, as: 'section', class: Google::Apis::ContentwarehouseV1::GeostorePriceListSectionProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceListSectionProto::Representation
+      
+          property :source_details, as: 'sourceDetails', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetails, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetails::Representation
       
           property :source_url, as: 'sourceUrl', class: Google::Apis::ContentwarehouseV1::GeostoreUrlListProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreUrlListProto::Representation
       
@@ -26473,6 +26474,8 @@ module Google
       class GoogleInternalAppsWaldoV1alphaCalendarBusy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_until, as: 'committedUntil'
+          property :committed_until_is_mixed, as: 'committedUntilIsMixed'
           property :event_summary, as: 'eventSummary'
           property :next_available, as: 'nextAvailable'
           property :occupied_until, as: 'occupiedUntil'
@@ -28765,6 +28768,8 @@ module Google
       
           property :chrome_counts, as: 'chromeCounts', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
+          property :instant_navboost, as: 'instantNavboost', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
+      
           property :localyp, as: 'localyp', class: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo, decorator: Google::Apis::ContentwarehouseV1::IndexingDocjoinerDataVersionVersionInfo::Representation
       
           property :localyp_version, as: 'localypVersion'
@@ -29720,10 +29725,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :eval_data, as: 'evalData', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingAnnotationEvalData, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingAnnotationEvalData::Representation
       
+          property :neural_location_annotator, as: 'neuralLocationAnnotator', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator::Representation
+      
         end
       end
       
       class KnowledgeAnswersIntentQueryArgumentProvenanceInjectedContextualSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -29737,6 +29750,8 @@ module Google
           collection :eval_data, as: 'evalData', class: Google::Apis::ContentwarehouseV1::NlpSemanticParsingAnnotationEvalData, decorator: Google::Apis::ContentwarehouseV1::NlpSemanticParsingAnnotationEvalData::Representation
       
           property :event_id, as: 'eventId', class: Google::Apis::ContentwarehouseV1::EventIdMessage, decorator: Google::Apis::ContentwarehouseV1::EventIdMessage::Representation
+      
+          property :neural_location_annotator, as: 'neuralLocationAnnotator', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenanceNeuralLocationAnnotator::Representation
       
           property :role, as: 'role', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenancePreviousQueryRole, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryArgumentProvenancePreviousQueryRole::Representation
       
@@ -31630,6 +31645,7 @@ module Google
       class MapsQualitySpecialWordsFlags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_alley_affix, as: 'isAlleyAffix'
           property :is_common_word, as: 'isCommonWord'
           property :is_deconstructible, as: 'isDeconstructible'
           property :is_directional_modifier, as: 'isDirectionalModifier'
@@ -31921,69 +31937,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2EntryPayload
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_daily_moment, as: 'isDailyMoment'
-          property :is_moment_any_flavor, as: 'isMomentAnyFlavor'
-          property :is_planned_moment, as: 'isPlannedMoment'
-          collection :lrs_types, as: 'lrsTypes'
-          property :moment_ranking_score, :numeric_string => true, as: 'momentRankingScore'
-          collection :out_kg_feature_types, as: 'outKgFeatureTypes'
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsDataset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entries, as: 'entries', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntry, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntry::Representation
-      
-          property :time_millis, :numeric_string => true, as: 'timeMillis'
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :algo_version, as: 'algoVersion'
-          property :entry_index, as: 'entryIndex'
-          property :internal_payload, as: 'internalPayload', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2EntryPayload, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2EntryPayload::Representation
-      
-          property :lrs, as: 'lrs', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity::Representation
-      
-          collection :patterns, as: 'patterns', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryPattern, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryPattern::Representation
-      
-          collection :qref_entities, as: 'qrefEntities', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity::Representation
-      
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryEntity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :debug_index, as: 'debugIndex'
-          property :debug_name, as: 'debugName'
-          property :encoded_mid, :numeric_string => true, as: 'encodedMid'
-          property :mid, as: 'mid'
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryLocaleRestrict
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :regions, as: 'regions'
-        end
-      end
-      
-      class NewsReconServiceLrsQ2lrs2QueryToLrsEntryPattern
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :only_in, as: 'onlyIn', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryLocaleRestrict, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsEntryLocaleRestrict::Representation
-      
-          property :pattern, as: 'pattern'
         end
       end
       
@@ -35451,8 +35404,6 @@ module Google
           property :scaled_link_age_spam_score, as: 'ScaledLinkAgeSpamScore'
           property :scaled_spam_score_eric, as: 'ScaledSpamScoreEric'
           property :scaled_spam_score_yoram, as: 'ScaledSpamScoreYoram'
-          property :science_data, as: 'ScienceData', class: Google::Apis::ContentwarehouseV1::SciencePerDocData, decorator: Google::Apis::ContentwarehouseV1::SciencePerDocData::Representation
-      
           property :spam_word_score, as: 'SpamWordScore'
           property :tag_page_score, as: 'TagPageScore'
           property :tool_bar_data, as: 'ToolBarData', class: Google::Apis::ContentwarehouseV1::ToolBarPerDocData, decorator: Google::Apis::ContentwarehouseV1::ToolBarPerDocData::Representation
@@ -35565,6 +35516,8 @@ module Google
           property :spam_cookbook_action, as: 'spamCookbookAction', class: Google::Apis::ContentwarehouseV1::SpamCookbookAction, decorator: Google::Apis::ContentwarehouseV1::SpamCookbookAction::Representation
       
           property :spam_muppet_signals, as: 'spamMuppetSignals', class: Google::Apis::ContentwarehouseV1::SpamMuppetjoinsMuppetSignals, decorator: Google::Apis::ContentwarehouseV1::SpamMuppetjoinsMuppetSignals::Representation
+      
+          property :spambrain_data, as: 'spambrainData', class: Google::Apis::ContentwarehouseV1::SpamBrainData, decorator: Google::Apis::ContentwarehouseV1::SpamBrainData::Representation
       
           property :spambrain_total_doc_spam_score, as: 'spambrainTotalDocSpamScore'
           property :spamrank, as: 'spamrank'
@@ -36632,6 +36585,25 @@ module Google
         end
       end
       
+      class QualityCalypsoAppsUniversalImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fife_url, as: 'fifeUrl'
+          property :height, as: 'height'
+          property :width, as: 'width'
+        end
+      end
+      
+      class QualityCalypsoAppsUniversalImageData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_graphic, as: 'featureGraphic', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImage, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImage::Representation
+      
+          collection :screenshot, as: 'screenshot', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImage, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImage::Representation
+      
+        end
+      end
+      
       class QualityCopiaFireflySiteSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -37051,7 +37023,11 @@ module Google
       class QualityNsrNsrDataMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :goldmine_lookup_key_per_field, as: 'goldmineLookupKeyPerField'
+          collection :goldmine_lookup_keys, as: 'goldmineLookupKeys'
           property :raffia_lookup_key, as: 'raffiaLookupKey'
+          hash :raffia_lookup_key_per_field, as: 'raffiaLookupKeyPerField'
+          collection :raffia_lookup_keys, as: 'raffiaLookupKeys'
         end
       end
       
@@ -37909,8 +37885,20 @@ module Google
       class QualityTimebasedLastSignificantUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_info, as: 'adjustmentInfo', class: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments, decorator: Google::Apis::ContentwarehouseV1::QualityTimebasedLastSignificantUpdateAdjustments::Representation
+      
           property :date, :numeric_string => true, as: 'date'
           property :source, as: 'source'
+        end
+      end
+      
+      class QualityTimebasedLastSignificantUpdateAdjustments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_source, as: 'adjustmentSource'
+          property :is_upperbound_timestamp_precise, as: 'isUpperboundTimestampPrecise'
+          property :unadjusted_timestamp_in_seconds, :numeric_string => true, as: 'unadjustedTimestampInSeconds'
+          property :upperbound_timestamp_in_seconds, :numeric_string => true, as: 'upperboundTimestampInSeconds'
         end
       end
       
@@ -38165,6 +38153,8 @@ module Google
           property :has_editors_choice_badge, as: 'hasEditorsChoiceBadge'
           property :icon_url_href, as: 'iconUrlHref'
           property :icon_url_thumbnail, as: 'iconUrlThumbnail'
+          property :image_data, as: 'imageData', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImageData, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalImageData::Representation
+      
           property :in_app_purchase, as: 'inAppPurchase'
           property :is_default_lang_locale, as: 'isDefaultLangLocale'
           property :lang_locale, as: 'langLocale'
@@ -38660,8 +38650,6 @@ module Google
       
           collection :name_info, as: 'nameInfo', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefGlobalNameInfo, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefGlobalNameInfo::Representation
       
-          property :name_signals, as: 'nameSignals', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameSignals, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameSignals::Representation
-      
           collection :refcon_name_info, as: 'refconNameInfo', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconNameInfo, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefRefconRefconNameInfo::Representation
       
           collection :representation, as: 'representation', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefDomainSpecificRepresentation, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefDomainSpecificRepresentation::Representation
@@ -39090,8 +39078,6 @@ module Google
           property :is_synthetic, as: 'isSynthetic'
           collection :per_vertical, as: 'perVertical', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefMdvcMetadataPerVertical, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefMdvcMetadataPerVertical::Representation
       
-          property :query_to_long_running_story_dataset, as: 'queryToLongRunningStoryDataset', class: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsDataset, decorator: Google::Apis::ContentwarehouseV1::NewsReconServiceLrsQ2lrs2QueryToLrsDataset::Representation
-      
           property :resolution_priority, as: 'resolutionPriority'
         end
       end
@@ -39327,25 +39313,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_relevant, as: 'contentRelevant'
-          property :deprecated_item_id, as: 'deprecatedItemId'
-          property :deprecated_project_id, as: 'deprecatedProjectId'
-          property :deprecated_task_id, as: 'deprecatedTaskId'
           property :display_string, as: 'displayString'
           property :furball_url, as: 'furballUrl'
-          property :item_description, as: 'itemDescription'
           property :item_id, :numeric_string => true, as: 'itemId'
-          property :language, as: 'language'
           property :page_is_about_chain, as: 'pageIsAboutChain'
-          property :page_not_loaded, as: 'pageNotLoaded'
           property :project_id, :numeric_string => true, as: 'projectId'
           property :rater_can_understand_topic, as: 'raterCanUnderstandTopic'
-          property :rating_score, as: 'ratingScore'
           property :task_details, as: 'taskDetails', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskDetails, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskDetails::Representation
       
           property :task_id, :numeric_string => true, as: 'taskId'
-          property :task_status, as: 'taskStatus'
-          property :task_user, as: 'taskUser'
-          property :template_id, as: 'templateId'
           property :topic_is_chain, as: 'topicIsChain'
         end
       end
@@ -39354,15 +39330,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :doc_fp, :numeric_string => true, as: 'docFp'
-          property :doc_level_rating, as: 'docLevelRating', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPerDocRelevanceRating, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPerDocRelevanceRating::Representation
-      
           collection :entity_name_rating, as: 'entityNameRating', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefEntityNameRatings, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefEntityNameRatings::Representation
       
-          collection :list_membership, as: 'listMembership', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefListMembership, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefListMembership::Representation
-      
           collection :mention_rating, as: 'mentionRating', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefMentionRatings, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefMentionRatings::Representation
-      
-          collection :page_classification, as: 'pageClassification', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefPageClassification, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefPageClassification::Representation
       
           collection :task_level_rating, as: 'taskLevelRating', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPerDocRelevanceRating, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPerDocRelevanceRating::Representation
       
@@ -39423,36 +39393,12 @@ module Google
         end
       end
       
-      class RepositoryWebrefPreprocessingNameSignals
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :normalized_name_data, as: 'normalizedNameData', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNormalizedNameData, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNormalizedNameData::Representation
-      
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingNameVariantData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :variant_signals, as: 'variantSignals', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameVariantSignals, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameVariantSignals::Representation
-      
-        end
-      end
-      
       class RepositoryWebrefPreprocessingNameVariantSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scores, as: 'scores', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameEntityScores, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameEntityScores::Representation
       
           property :source, as: 'source'
-        end
-      end
-      
-      class RepositoryWebrefPreprocessingNormalizedNameData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :name_variant_data, as: 'nameVariantData', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameVariantData, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefPreprocessingNameVariantData::Representation
-      
         end
       end
       
@@ -39772,48 +39718,6 @@ module Google
           property :topic_description, as: 'topicDescription'
           property :topic_name, as: 'topicName'
           property :topic_url, as: 'topicUrl'
-        end
-      end
-      
-      class RepositoryWebrefToprefListMembership
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :member, as: 'member', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefListMembershipListMember, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefListMembershipListMember::Representation
-      
-          property :task_data, as: 'taskData', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskData, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskData::Representation
-      
-        end
-      end
-      
-      class RepositoryWebrefToprefListMembershipListMember
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntityId, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefWebrefEntityId::Representation
-      
-          property :is_member, as: 'isMember'
-        end
-      end
-      
-      class RepositoryWebrefToprefPageClassification
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_list, as: 'isList'
-          property :is_list_type_correct, as: 'isListTypeCorrect'
-          property :is_ranking, as: 'isRanking'
-          property :is_toplist, as: 'isToplist'
-          property :list_type, as: 'listType'
-          collection :rated_title, as: 'ratedTitle', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefPageClassificationRatedTitle, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefToprefPageClassificationRatedTitle::Representation
-      
-          property :task_data, as: 'taskData', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskData, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefTaskData::Representation
-      
-        end
-      end
-      
-      class RepositoryWebrefToprefPageClassificationRatedTitle
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_good, as: 'isGood'
-          property :title, as: 'title'
         end
       end
       
@@ -40603,15 +40507,6 @@ module Google
         end
       end
       
-      class ScholarCitationPredictionSignal
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric_type, as: 'metricType'
-          property :signal_type, as: 'signalType'
-          property :value, as: 'value'
-        end
-      end
-      
       class ScienceCitation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -40635,6 +40530,7 @@ module Google
           property :citation_source, as: 'CitationSource'
           property :citation_source_url, as: 'CitationSourceUrl'
           property :citation_src, as: 'CitationSrc'
+          property :cleared_reason, as: 'ClearedReason'
           property :cluster_discovery_date, :numeric_string => true, as: 'ClusterDiscoveryDate'
           property :conference_id, as: 'ConferenceId'
           property :conference_number, as: 'ConferenceNumber'
@@ -40969,83 +40865,77 @@ module Google
         end
       end
       
-      class SciencePerDocData
+      class SdrEmbedding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :abstract_end_position, as: 'AbstractEndPosition'
-          property :body_end_position, as: 'BodyEndPosition'
-          collection :citation_prediction_signal, as: 'CitationPredictionSignal', class: Google::Apis::ContentwarehouseV1::ScholarCitationPredictionSignal, decorator: Google::Apis::ContentwarehouseV1::ScholarCitationPredictionSignal::Representation
-      
-          property :court_level, as: 'CourtLevel'
-          property :deprecated_crawl_time, :numeric_string => true, as: 'DEPRECATEDCrawlTime'
-          property :discovery_age_in_days, as: 'DiscoveryAgeInDays'
-          property :discovery_timestamp, :numeric_string => true, as: 'DiscoveryTimestamp'
-          property :is_citation_only, as: 'IsCitationOnly'
-          property :non_scholarliness_penalty, as: 'NonScholarlinessPenalty'
-          property :num_backward_links, as: 'NumBackwardLinks'
-          property :num_related, as: 'NumRelated'
-          property :num_title_words, as: 'NumTitleWords'
-          property :num_versions, as: 'NumVersions'
-          property :off_dom_anchors, as: 'OffDomAnchors'
-          property :on_site_anchors, as: 'OnSiteAnchors'
-          property :predicted_citations, as: 'PredictedCitations'
-          property :predicted_citations_next5_years, as: 'PredictedCitationsNext5Years'
-          property :publication_day, as: 'PublicationDay'
-          property :publication_month, as: 'PublicationMonth'
-          property :publication_year, as: 'PublicationYear'
-          property :scholar_id, :numeric_string => true, as: 'ScholarId'
-          property :subject, as: 'Subject'
-          property :title_ngrams, :base64 => true, as: 'TitleNgrams'
-          property :total_anchors, as: 'TotalAnchors'
-          property :type, as: 'Type'
-          collection :author, as: 'author', class: Google::Apis::ContentwarehouseV1::SciencePerDocDataAuthor, decorator: Google::Apis::ContentwarehouseV1::SciencePerDocDataAuthor::Representation
-      
-          collection :referencediscussion, as: 'referencediscussion', class: Google::Apis::ContentwarehouseV1::SciencePerDocDataReferenceDiscussion, decorator: Google::Apis::ContentwarehouseV1::SciencePerDocDataReferenceDiscussion::Representation
-      
-          collection :section, as: 'section', class: Google::Apis::ContentwarehouseV1::SciencePerDocDataSection, decorator: Google::Apis::ContentwarehouseV1::SciencePerDocDataSection::Representation
-      
-          collection :signal, as: 'signal', class: Google::Apis::ContentwarehouseV1::SciencePerDocDataSignal, decorator: Google::Apis::ContentwarehouseV1::SciencePerDocDataSignal::Representation
-      
+          collection :values, as: 'values'
+          property :version, as: 'version'
         end
       end
       
-      class SciencePerDocDataAuthor
+      class SdrPageAnchorsDocInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_cjk, as: 'IsCJK'
-          property :last_name, as: 'LastName'
-          property :other_names, as: 'OtherNames'
+          property :articleness, as: 'articleness'
+          collection :page_anchors, as: 'pageAnchors', class: Google::Apis::ContentwarehouseV1::SdrPageAnchorsSitelink, decorator: Google::Apis::ContentwarehouseV1::SdrPageAnchorsSitelink::Representation
+      
+          property :qscore, as: 'qscore'
+          collection :sitelink_wrapper, as: 'sitelinkWrapper', class: Google::Apis::ContentwarehouseV1::SdrPageAnchorsSitelinkWrapper, decorator: Google::Apis::ContentwarehouseV1::SdrPageAnchorsSitelinkWrapper::Representation
+      
+          property :text_richness, as: 'textRichness'
         end
       end
       
-      class SciencePerDocDataReferenceDiscussion
+      class SdrPageAnchorsSitelink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :level, as: 'Level'
-          property :target_id, :numeric_string => true, as: 'TargetID'
+          property :embedding, as: 'embedding', class: Google::Apis::ContentwarehouseV1::SdrEmbedding, decorator: Google::Apis::ContentwarehouseV1::SdrEmbedding::Representation
+      
+          property :geometry_score, as: 'geometryScore'
+          property :heading_abbrv_score, as: 'headingAbbrvScore'
+          property :hp_score, as: 'hpScore'
+          property :level, as: 'level'
+          property :scroll_to, as: 'scrollTo', class: Google::Apis::ContentwarehouseV1::SdrScrollTo, decorator: Google::Apis::ContentwarehouseV1::SdrScrollTo::Representation
+      
+          property :section_height, as: 'sectionHeight'
+          property :text, as: 'text'
         end
       end
       
-      class SciencePerDocDataSection
+      class SdrPageAnchorsSitelinkWrapper
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :begin_position, as: 'beginPosition'
-          property :num_positions, as: 'numPositions'
-          property :type, as: 'type'
+          property :abbreviated_heading_text, as: 'abbreviatedHeadingText'
+          property :abbrv_embedding, as: 'abbrvEmbedding', class: Google::Apis::ContentwarehouseV1::SdrEmbedding, decorator: Google::Apis::ContentwarehouseV1::SdrEmbedding::Representation
+      
+          property :heading_embedding, as: 'headingEmbedding', class: Google::Apis::ContentwarehouseV1::SdrEmbedding, decorator: Google::Apis::ContentwarehouseV1::SdrEmbedding::Representation
+      
+          property :normalized_heading_text, as: 'normalizedHeadingText'
+          property :passage_embedding, as: 'passageEmbedding', class: Google::Apis::ContentwarehouseV1::SdrEmbedding, decorator: Google::Apis::ContentwarehouseV1::SdrEmbedding::Representation
+      
+          property :passage_text, as: 'passageText'
         end
       end
       
-      class SciencePerDocDataSignal
+      class SdrScrollTo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :avg_citations, as: 'avgCitations'
-          property :count, as: 'count'
-          property :ge_thres1_count, as: 'geThres1Count'
-          property :ge_thres2_count, as: 'geThres2Count'
-          property :index, as: 'index'
-          property :median_citations, as: 'medianCitations'
-          property :type, as: 'type'
-          property :weight, as: 'weight'
+          property :onpage_matches, as: 'onpageMatches', class: Google::Apis::ContentwarehouseV1::SdrScrollToOnPageMatches, decorator: Google::Apis::ContentwarehouseV1::SdrScrollToOnPageMatches::Representation
+      
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+          property :text_end, as: 'textEnd'
+          property :text_start, as: 'textStart'
+        end
+      end
+      
+      class SdrScrollToOnPageMatches
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+          property :text_with_prefix, as: 'textWithPrefix'
+          property :text_with_prefix_suffix, as: 'textWithPrefixSuffix'
+          property :text_with_suffix, as: 'textWithSuffix'
         end
       end
       
@@ -41493,6 +41383,8 @@ module Google
       
           collection :deprecated_target, as: 'deprecatedTarget', class: Google::Apis::ContentwarehouseV1::SitemapDeprecatedTarget, decorator: Google::Apis::ContentwarehouseV1::SitemapDeprecatedTarget::Representation
       
+          property :page_anchors_doc_info, as: 'pageAnchorsDocInfo', class: Google::Apis::ContentwarehouseV1::SdrPageAnchorsDocInfo, decorator: Google::Apis::ContentwarehouseV1::SdrPageAnchorsDocInfo::Representation
+      
           property :search_in_site, as: 'searchInSite'
           property :sitemap_type, as: 'sitemapType'
           property :source_orgfp, :numeric_string => true, as: 'sourceOrgfp'
@@ -41642,6 +41534,7 @@ module Google
       class SnippetExtraInfoSnippetsBrainModelInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ng3_model_name, as: 'ng3ModelName'
           property :snippetsbrain_model_name, as: 'snippetsbrainModelName'
           property :snippetsbrain_model_partition, as: 'snippetsbrainModelPartition'
           property :snippetsbrain_tokenizer_type, as: 'snippetsbrainTokenizerType'
@@ -42371,6 +42264,23 @@ module Google
         end
       end
       
+      class SpamBrainData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site, as: 'site'
+          collection :versioned_data, as: 'versionedData', class: Google::Apis::ContentwarehouseV1::SpamBrainScore, decorator: Google::Apis::ContentwarehouseV1::SpamBrainScore::Representation
+      
+        end
+      end
+      
+      class SpamBrainScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sb_score, as: 'sbScore'
+          property :version_id, as: 'versionId'
+        end
+      end
+      
       class SpamCookbookAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -42431,6 +42341,23 @@ module Google
         end
       end
       
+      class StorageGraphBfgLmsPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_ids_allowed, as: 'clientIdsAllowed'
+          property :is_editorial, as: 'isEditorial'
+          collection :modifications_allowed, as: 'modificationsAllowed'
+          property :regions_allowed, as: 'regionsAllowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
+      
+          property :regions_disallowed, as: 'regionsDisallowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
+      
+          property :requires_attribution, as: 'requiresAttribution'
+          property :requires_first_party_only, as: 'requiresFirstPartyOnly'
+          property :requires_linkback, as: 'requiresLinkback'
+          property :requires_share_alike, as: 'requiresShareAlike'
+        end
+      end
+      
       class StorageGraphBfgPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -42440,17 +42367,8 @@ module Google
       
           collection :legal_removal_regions, as: 'legalRemovalRegions', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
       
-          collection :lms_client_ids_allowed, as: 'lmsClientIdsAllowed'
-          property :lms_is_editorial, as: 'lmsIsEditorial'
-          collection :lms_modifications_allowed, as: 'lmsModificationsAllowed'
-          property :lms_regions_allowed, as: 'lmsRegionsAllowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
+          property :lms_policy_metadata, as: 'lmsPolicyMetadata', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgLmsPolicyMetadata, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgLmsPolicyMetadata::Representation
       
-          property :lms_regions_disallowed, as: 'lmsRegionsDisallowed', class: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions, decorator: Google::Apis::ContentwarehouseV1::KeGovernanceTypedRegions::Representation
-      
-          property :lms_requires_attribution, as: 'lmsRequiresAttribution'
-          property :lms_requires_first_party_only, as: 'lmsRequiresFirstPartyOnly'
-          property :lms_requires_link, as: 'lmsRequiresLink'
-          property :lms_requires_share_alike, as: 'lmsRequiresShareAlike'
           property :policy_source_type, as: 'policySourceType'
           property :ump_policy_metadata, as: 'umpPolicyMetadata', class: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata, decorator: Google::Apis::ContentwarehouseV1::StorageGraphBfgUmpPolicyMetadata::Representation
       
@@ -43263,6 +43181,7 @@ module Google
           property :category_id, as: 'categoryId'
           property :id, as: 'id'
           property :level, as: 'level'
+          property :predicate_name, as: 'predicateName'
           property :query_text, as: 'queryText'
           property :score, as: 'score'
           property :title, as: 'title'
