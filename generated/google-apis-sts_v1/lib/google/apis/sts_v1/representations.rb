@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityStsV1ExchangeOauthTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1ExchangeOauthTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityStsV1ExchangeTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,30 @@ module Google
       
           collection :available_permissions, as: 'availablePermissions'
           property :available_resource, as: 'availableResource'
+        end
+      end
+      
+      class GoogleIdentityStsV1ExchangeOauthTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :code, as: 'code'
+          property :code_verifier, as: 'codeVerifier'
+          property :grant_type, as: 'grantType'
+          property :redirect_uri, as: 'redirectUri'
+          property :refresh_token, as: 'refreshToken'
+          property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleIdentityStsV1ExchangeOauthTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'access_token'
+          property :expires_in, as: 'expires_in'
+          property :refresh_token, as: 'refresh_token'
+          property :scope, as: 'scope'
+          property :token_type, as: 'token_type'
         end
       end
       

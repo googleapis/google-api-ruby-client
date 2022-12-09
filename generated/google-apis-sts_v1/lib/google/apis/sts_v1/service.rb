@@ -82,13 +82,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exchanges a credential that represents the resource owner's authorization for
+        # a Google-generated [OAuth 2.0 access token] (https://www.rfc-editor.org/rfc/
+        # rfc6749#section-5) or [refreshes an accesstoken] (https://www.rfc-editor.org/
+        # rfc/rfc6749#section-6) following [the OAuth 2.0 authorization framework] (
+        # https://tools.ietf.org/html/rfc8693) The credential can be one of the
+        # following: - An authorization code issued by the workforce identity federation
+        # authorization endpoint - A [refresh token](https://www.rfc-editor.org/rfc/
+        # rfc6749#section-10.4) issued by this endpoint This endpoint is only meant to
+        # be called by the Google Cloud CLI. Also note that this API only accepts the
+        # authorization code issued for workforce pools.
+        # @param [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenRequest] google_identity_sts_v1_exchange_oauth_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def oauthtoken(google_identity_sts_v1_exchange_oauth_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/oauthtoken', options)
+          command.request_representation = Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenRequest::Representation
+          command.request_object = google_identity_sts_v1_exchange_oauth_token_request_object
+          command.response_representation = Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenResponse::Representation
+          command.response_class = Google::Apis::StsV1::GoogleIdentityStsV1ExchangeOauthTokenResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Exchanges a credential for a Google OAuth 2.0 access token. The token asserts
         # an external identity within an identity pool, or it applies a Credential
         # Access Boundary to a Google access token. Note that workforce pools do not
-        # support Credential Access Boundary at the moment. When you call this method,
-        # do not send the `Authorization` HTTP header in the request. This method does
-        # not require the `Authorization` header, and using the header can cause the
-        # request to fail.
+        # support Credential Access Boundaries. When you call this method, do not send
+        # the `Authorization` HTTP header in the request. This method does not require
+        # the `Authorization` header, and using the header can cause the request to fail.
         # @param [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeTokenRequest] google_identity_sts_v1_exchange_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

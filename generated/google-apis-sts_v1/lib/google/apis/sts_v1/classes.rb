@@ -174,6 +174,138 @@ module Google
         end
       end
       
+      # Request message for ExchangeOauthToken
+      class GoogleIdentityStsV1ExchangeOauthTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The client identifier for the OAuth 2.0 client that requested the
+        # provided token. It is REQUIRED when the [client] (https://www.rfc-editor.org/
+        # rfc/rfc6749#section-1.1) is not authenticating with the authorization server,
+        # i.e. when authentication method is [client authentication] (https://www.rfc-
+        # editor.org/rfc/rfc6749#section-3.2.1).
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Optional. The authorization code that was previously from workforce identity
+        # federation's `authorize` endpoint. Required if the flow is authorization code
+        # flow, i.e. if grant_type is 'authorization_code'
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Optional. The code verifier for the PKCE request, Google Cloud CLI originally
+        # generates it before the authorization request. PKCE is used to protect
+        # authorization code from interception attacks. See https://www.rfc-editor.org/
+        # rfc/rfc7636#section-1.1 and https://www.rfc-editor.org/rfc/rfc7636#section-3.
+        # It is required when the flow is authorization code flow, i.e. if grant_type is
+        # 'authorization_code'
+        # Corresponds to the JSON property `codeVerifier`
+        # @return [String]
+        attr_accessor :code_verifier
+      
+        # Required. The grant types are as follows: - 'authorization_code' : an
+        # authorization code flow, i.e. exchange of authorization code for the Oauth
+        # access token - 'refresh_token' : a refresh token flow, i.e. obtain a new
+        # access token by providing the refresh token. See https://www.rfc-editor.org/
+        # rfc/rfc6749#section-6
+        # Corresponds to the JSON property `grantType`
+        # @return [String]
+        attr_accessor :grant_type
+      
+        # Optional. redirect_url is required when the flow is authorization code flow i.
+        # e. if grant_type is `authorization_code` See https://www.rfc-editor.org/rfc/
+        # rfc6749#section-4.1.3
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # Optional. The Refresh token is the credential that is used to obtain a new
+        # access token when the current access token becomes invalid or expires.
+        # Required when using refresh token flow, i.e. if `grant_type` is 'refresh_token'
+        # See https://www.rfc-editor.org/rfc/rfc6749#section-1.5 and https://www.rfc-
+        # editor.org/rfc/rfc6749#section-6
+        # Corresponds to the JSON property `refreshToken`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        # Optional. An optional list of scopes that are requested for the token to be
+        # returned. See https://www.rfc-editor.org/rfc/rfc6749#section-3.3 Must be a
+        # list of space-delimited, case-sensitive strings. Note: Currently, the scopes
+        # in the request are not supported
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @code = args[:code] if args.key?(:code)
+          @code_verifier = args[:code_verifier] if args.key?(:code_verifier)
+          @grant_type = args[:grant_type] if args.key?(:grant_type)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Response message for ExchangeOauthToken. see https://www.rfc-editor.org/rfc/
+      # rfc6749#section-5.1
+      class GoogleIdentityStsV1ExchangeOauthTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # An OAuth 2.0 security token, issued by Google, in response to the Oauth token
+        # exchange request for the authorization code and refresh token flows. The
+        # returned [access token](https://www.rfc-editor.org/rfc/rfc6749#section-4.1.4).
+        # Tokens can vary in size, depending, in part, on the size of mapped claims, up
+        # to a maximum of 12288 bytes (12 KB). Google reserves the right to change the
+        # token size and the maximum length at any time.
+        # Corresponds to the JSON property `access_token`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # The amount of time, in seconds, between the time when the access token was
+        # issued and the time when the access token will expires.
+        # Corresponds to the JSON property `expires_in`
+        # @return [Fixnum]
+        attr_accessor :expires_in
+      
+        # A refresh token, issued by Google, in response to the OAuth token exchange
+        # request for refresh token flow
+        # Corresponds to the JSON property `refresh_token`
+        # @return [String]
+        attr_accessor :refresh_token
+      
+        # A list of scopes associated with the returned token.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # The type of token. Field reserved for RFC compliance. See https://www.rfc-
+        # editor.org/rfc/rfc6749#section-5.1 Note: No token_type is returned for current
+        # implementation
+        # Corresponds to the JSON property `token_type`
+        # @return [String]
+        attr_accessor :token_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
+          @scope = args[:scope] if args.key?(:scope)
+          @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
       # Request message for ExchangeToken.
       class GoogleIdentityStsV1ExchangeTokenRequest
         include Google::Apis::Core::Hashable
