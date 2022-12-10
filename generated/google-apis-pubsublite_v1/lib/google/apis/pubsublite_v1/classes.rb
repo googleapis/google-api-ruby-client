@@ -311,6 +311,52 @@ module Google
         end
       end
       
+      # Configuration for a Pub/Sub Lite subscription that writes messages to a
+      # destination. User subscriber clients must not connect to this subscription.
+      class ExportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the export, which may be different to the
+        # desired state due to errors. This field is output only.
+        # Corresponds to the JSON property `currentState`
+        # @return [String]
+        attr_accessor :current_state
+      
+        # Optional. The name of an optional Pub/Sub Lite topic to publish messages that
+        # can not be exported to the destination. For example, the message can not be
+        # published to the Pub/Sub service because it does not satisfy the constraints
+        # documented at https://cloud.google.com/pubsub/docs/publisher. Structured like:
+        # projects/`project_number`/locations/`location`/topics/`topic_id`. Must be
+        # within the same project and location as the subscription. The topic may be
+        # changed or removed.
+        # Corresponds to the JSON property `deadLetterTopic`
+        # @return [String]
+        attr_accessor :dead_letter_topic
+      
+        # The desired state of this export. Setting this to values other than `ACTIVE`
+        # and `PAUSED` will result in an error.
+        # Corresponds to the JSON property `desiredState`
+        # @return [String]
+        attr_accessor :desired_state
+      
+        # Configuration for exporting to a Pub/Sub topic.
+        # Corresponds to the JSON property `pubsubConfig`
+        # @return [Google::Apis::PubsubliteV1::PubSubConfig]
+        attr_accessor :pubsub_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @dead_letter_topic = args[:dead_letter_topic] if args.key?(:dead_letter_topic)
+          @desired_state = args[:desired_state] if args.key?(:desired_state)
+          @pubsub_config = args[:pubsub_config] if args.key?(:pubsub_config)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -663,6 +709,26 @@ module Google
         end
       end
       
+      # Configuration for exporting to a Pub/Sub topic.
+      class PubSubConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Pub/Sub topic. Structured like: projects/`project_number`/
+        # topics/`topic_id`. The topic may be changed.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Metadata about a reservation resource.
       class Reservation
         include Google::Apis::Core::Hashable
@@ -829,6 +895,12 @@ module Google
         # @return [Google::Apis::PubsubliteV1::DeliveryConfig]
         attr_accessor :delivery_config
       
+        # Configuration for a Pub/Sub Lite subscription that writes messages to a
+        # destination. User subscriber clients must not connect to this subscription.
+        # Corresponds to the JSON property `exportConfig`
+        # @return [Google::Apis::PubsubliteV1::ExportConfig]
+        attr_accessor :export_config
+      
         # The name of the subscription. Structured like: projects/`project_number`/
         # locations/`location`/subscriptions/`subscription_id`
         # Corresponds to the JSON property `name`
@@ -848,6 +920,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @delivery_config = args[:delivery_config] if args.key?(:delivery_config)
+          @export_config = args[:export_config] if args.key?(:export_config)
           @name = args[:name] if args.key?(:name)
           @topic = args[:topic] if args.key?(:topic)
         end
