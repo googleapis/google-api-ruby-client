@@ -1,5 +1,9 @@
 # Release history for google-apis-pubsublite_v1
 
+### v0.21.0 (2022-12-10)
+
+* Regenerated from discovery document revision 20221206
+
 ### v0.20.0 (2022-10-20)
 
 * Regenerated using generator version 0.11.0

@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class PartitionCursor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSubConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +340,17 @@ module Google
         end
       end
       
+      class ExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_state, as: 'currentState'
+          property :dead_letter_topic, as: 'deadLetterTopic'
+          property :desired_state, as: 'desiredState'
+          property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::PubsubliteV1::PubSubConfig, decorator: Google::Apis::PubsubliteV1::PubSubConfig::Representation
+      
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -430,6 +453,13 @@ module Google
         end
       end
       
+      class PubSubConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic, as: 'topic'
+        end
+      end
+      
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -481,6 +511,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delivery_config, as: 'deliveryConfig', class: Google::Apis::PubsubliteV1::DeliveryConfig, decorator: Google::Apis::PubsubliteV1::DeliveryConfig::Representation
+      
+          property :export_config, as: 'exportConfig', class: Google::Apis::PubsubliteV1::ExportConfig, decorator: Google::Apis::PubsubliteV1::ExportConfig::Representation
       
           property :name, as: 'name'
           property :topic, as: 'topic'
