@@ -1792,7 +1792,7 @@ module Google
         attr_accessor :confidence
       
         # linked_entities are candidate ontological concepts that this entity mention
-        # may refer to. They are sorted by decreasing confidence.it
+        # may refer to. They are sorted by decreasing confidence.
         # Corresponds to the JSON property `linkedEntities`
         # @return [Array<Google::Apis::HealthcareV1beta1::LinkedEntity>]
         attr_accessor :linked_entities
