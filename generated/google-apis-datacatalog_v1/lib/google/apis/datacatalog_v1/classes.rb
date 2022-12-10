@@ -408,6 +408,11 @@ module Google
         # @return [String]
         attr_accessor :column
       
+        # Optional. Default value for the column.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [String]
+        attr_accessor :default_value
+      
         # Optional. Description of the column. Default value is an empty string. The
         # description must be a UTF-8 string with the maximum size of 2000 bytes.
         # Corresponds to the JSON property `description`
@@ -420,12 +425,27 @@ module Google
         # @return [String]
         attr_accessor :gc_rule
       
+        # Optional. Most important inclusion of this column.
+        # Corresponds to the JSON property `highestIndexingType`
+        # @return [String]
+        attr_accessor :highest_indexing_type
+      
+        # Column info specific to Looker System.
+        # Corresponds to the JSON property `lookerColumnSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec]
+        attr_accessor :looker_column_spec
+      
         # Optional. A column's mode indicates whether values in this column are required,
         # nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are
         # supported. Default mode is `NULLABLE`.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
+      
+        # Optional. Ordinal position
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
       
         # Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         # Corresponds to the JSON property `subcolumns`
@@ -445,11 +465,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
           @gc_rule = args[:gc_rule] if args.key?(:gc_rule)
+          @highest_indexing_type = args[:highest_indexing_type] if args.key?(:highest_indexing_type)
+          @looker_column_spec = args[:looker_column_spec] if args.key?(:looker_column_spec)
           @mode = args[:mode] if args.key?(:mode)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
           @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Column info specific to Looker System.
+      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
+        include Google::Apis::Core::Hashable
+      
+        # Looker specific column type of this column.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Common statistics on the entry's usage. They can be set on any system.
+      class GoogleCloudDatacatalogV1CommonUsageStats
+        include Google::Apis::Core::Hashable
+      
+        # View count in source system.
+        # Corresponds to the JSON property `viewCount`
+        # @return [Fixnum]
+        attr_accessor :view_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @view_count = args[:view_count] if args.key?(:view_count)
         end
       end
       
@@ -582,6 +644,11 @@ module Google
       class GoogleCloudDatacatalogV1DatabaseTableSpec
         include Google::Apis::Core::Hashable
       
+        # Specification that applies to database view.
+        # Corresponds to the JSON property `databaseViewSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]
+        attr_accessor :database_view_spec
+      
         # Entry specification for a Dataplex table.
         # Corresponds to the JSON property `dataplexTable`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec]
@@ -598,8 +665,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @database_view_spec = args[:database_view_spec] if args.key?(:database_view_spec)
           @dataplex_table = args[:dataplex_table] if args.key?(:dataplex_table)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specification that applies to database view.
+      class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of a singular table this view reflects one to one.
+        # Corresponds to the JSON property `baseTable`
+        # @return [String]
+        attr_accessor :base_table
+      
+        # SQL query used to generate this view.
+        # Corresponds to the JSON property `sqlQuery`
+        # @return [String]
+        attr_accessor :sql_query
+      
+        # Type of this view.
+        # Corresponds to the JSON property `viewType`
+        # @return [String]
+        attr_accessor :view_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table = args[:base_table] if args.key?(:base_table)
+          @sql_query = args[:sql_query] if args.key?(:sql_query)
+          @view_type = args[:view_type] if args.key?(:view_type)
         end
       end
       
@@ -793,10 +892,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name of an entry. The name must contain only Unicode letters, numbers (
-        # 0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with
-        # spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is
-        # an empty string.
+        # Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8.
+        # Default value is an empty string.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -851,6 +948,12 @@ module Google
         # @return [String]
         attr_accessor :linked_resource
       
+        # Specification that applies to entries that are part `LOOKER` system (
+        # user_specified_type)
+        # Corresponds to the JSON property `lookerSystemSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1LookerSystemSpec]
+        attr_accessor :looker_system_spec
+      
         # Output only. The resource name of an entry in URL format. Note: The entry
         # itself and its child resources might not be stored in the location specified
         # in its name.
@@ -878,6 +981,12 @@ module Google
         # Corresponds to the JSON property `sourceSystemTimestamps`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps]
         attr_accessor :source_system_timestamps
+      
+        # Specification that applies to entries that are part `SQL_DATABASE` system (
+        # user_specified_type)
+        # Corresponds to the JSON property `sqlDatabaseSystemSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec]
+        attr_accessor :sql_database_system_spec
       
         # The type of the entry. Only used for entries with types listed in the `
         # EntryType` enum. Currently, only `FILESET` enum value is allowed. All other
@@ -934,11 +1043,13 @@ module Google
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
           @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
+          @looker_system_spec = args[:looker_system_spec] if args.key?(:looker_system_spec)
           @name = args[:name] if args.key?(:name)
           @personal_details = args[:personal_details] if args.key?(:personal_details)
           @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
           @schema = args[:schema] if args.key?(:schema)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
+          @sql_database_system_spec = args[:sql_database_system_spec] if args.key?(:sql_database_system_spec)
           @type = args[:type] if args.key?(:type)
           @usage_signal = args[:usage_signal] if args.key?(:usage_signal)
           @user_specified_system = args[:user_specified_system] if args.key?(:user_specified_system)
@@ -1192,6 +1303,78 @@ module Google
         end
       end
       
+      # Metadata message for long-running operation returned by the ImportEntries.
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Partial errors that are encountered during the ImportEntries operation. There
+        # is no guarantee that all the encountered errors are reported. However, if no
+        # errors are reported, it means that no errors were encountered.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DatacatalogV1::Status>]
+        attr_accessor :errors
+      
+        # State of the import operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Request message for ImportEntries method.
+      class GoogleCloudDatacatalogV1ImportEntriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Path to a Cloud Storage bucket that contains a dump ready for ingestion.
+        # Corresponds to the JSON property `gcsBucketPath`
+        # @return [String]
+        attr_accessor :gcs_bucket_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_bucket_path = args[:gcs_bucket_path] if args.key?(:gcs_bucket_path)
+        end
+      end
+      
+      # Response message for long-running operation returned by the ImportEntries.
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of entries deleted as a result of import operation.
+        # Corresponds to the JSON property `deletedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_entries_count
+      
+        # Cumulative number of entries created and entries updated as a result of import
+        # operation.
+        # Corresponds to the JSON property `upsertedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :upserted_entries_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_entries_count = args[:deleted_entries_count] if args.key?(:deleted_entries_count)
+          @upserted_entries_count = args[:upserted_entries_count] if args.key?(:upserted_entries_count)
+        end
+      end
+      
       # Request message for ImportTaxonomies.
       class GoogleCloudDatacatalogV1ImportTaxonomiesRequest
         include Google::Apis::Core::Hashable
@@ -1383,6 +1566,57 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Specification that applies to entries that are part `LOOKER` system (
+      # user_specified_type)
+      class GoogleCloudDatacatalogV1LookerSystemSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of the parent Looker Instance. Empty if it does not exist.
+        # Corresponds to the JSON property `parentInstanceDisplayName`
+        # @return [String]
+        attr_accessor :parent_instance_display_name
+      
+        # ID of the parent Looker Instance. Empty if it does not exist. Example value: `
+        # someinstance.looker.com`
+        # Corresponds to the JSON property `parentInstanceId`
+        # @return [String]
+        attr_accessor :parent_instance_id
+      
+        # Name of the parent Model. Empty if it does not exist.
+        # Corresponds to the JSON property `parentModelDisplayName`
+        # @return [String]
+        attr_accessor :parent_model_display_name
+      
+        # ID of the parent Model. Empty if it does not exist.
+        # Corresponds to the JSON property `parentModelId`
+        # @return [String]
+        attr_accessor :parent_model_id
+      
+        # Name of the parent View. Empty if it does not exist.
+        # Corresponds to the JSON property `parentViewDisplayName`
+        # @return [String]
+        attr_accessor :parent_view_display_name
+      
+        # ID of the parent View. Empty if it does not exist.
+        # Corresponds to the JSON property `parentViewId`
+        # @return [String]
+        attr_accessor :parent_view_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent_instance_display_name = args[:parent_instance_display_name] if args.key?(:parent_instance_display_name)
+          @parent_instance_id = args[:parent_instance_id] if args.key?(:parent_instance_id)
+          @parent_model_display_name = args[:parent_model_display_name] if args.key?(:parent_model_display_name)
+          @parent_model_id = args[:parent_model_id] if args.key?(:parent_model_id)
+          @parent_view_display_name = args[:parent_view_display_name] if args.key?(:parent_view_display_name)
+          @parent_view_id = args[:parent_view_id] if args.key?(:parent_view_id)
         end
       end
       
@@ -2141,6 +2375,41 @@ module Google
         end
       end
       
+      # Specification that applies to entries that are part `SQL_DATABASE` system (
+      # user_specified_type)
+      class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
+        include Google::Apis::Core::Hashable
+      
+        # Version of the database engine.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # Host of the SQL database enum InstanceHost ` UNDEFINED = 0; SELF_HOSTED = 1;
+        # CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; ` Host of the enclousing
+        # database instance.
+        # Corresponds to the JSON property `instanceHost`
+        # @return [String]
+        attr_accessor :instance_host
+      
+        # SQL Database Engine. enum SqlEngine ` UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL =
+        # 2; SQL_SERVER = 3; ` Engine of the enclosing database instance.
+        # Corresponds to the JSON property `sqlEngine`
+        # @return [String]
+        attr_accessor :sql_engine
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @instance_host = args[:instance_host] if args.key?(:instance_host)
+          @sql_engine = args[:sql_engine] if args.key?(:sql_engine)
+        end
+      end
+      
       # Request message for StarEntry.
       class GoogleCloudDatacatalogV1StarEntryRequest
         include Google::Apis::Core::Hashable
@@ -2614,6 +2883,17 @@ module Google
       class GoogleCloudDatacatalogV1UsageSignal
         include Google::Apis::Core::Hashable
       
+        # Common usage statistics over each of the predefined time ranges. Supported
+        # time ranges are ``"24H", "7D", "30D", "Lifetime"``.
+        # Corresponds to the JSON property `commonUsageWithinTimeRange`
+        # @return [Hash<String,Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CommonUsageStats>]
+        attr_accessor :common_usage_within_time_range
+      
+        # Favorite count in the source system.
+        # Corresponds to the JSON property `favoriteCount`
+        # @return [Fixnum]
+        attr_accessor :favorite_count
+      
         # The end timestamp of the duration of usage statistics.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2631,6 +2911,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @common_usage_within_time_range = args[:common_usage_within_time_range] if args.key?(:common_usage_within_time_range)
+          @favorite_count = args[:favorite_count] if args.key?(:favorite_count)
           @update_time = args[:update_time] if args.key?(:update_time)
           @usage_within_time_range = args[:usage_within_time_range] if args.key?(:usage_within_time_range)
         end
@@ -2694,6 +2976,93 @@ module Google
         # Update properties of this object
         def update!(**args)
           @view_query = args[:view_query] if args.key?(:view_query)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DatacatalogV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DatacatalogV1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -2828,6 +3197,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

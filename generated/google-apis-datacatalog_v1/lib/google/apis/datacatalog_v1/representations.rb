@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1CommonUsageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1Contacts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1DatabaseTableSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +232,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1ImportTaxonomiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +293,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ListTaxonomiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1LookerSystemSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1StarEntryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +544,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +563,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,12 +688,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          property :default_value, as: 'defaultValue'
           property :description, as: 'description'
           property :gc_rule, as: 'gcRule'
+          property :highest_indexing_type, as: 'highestIndexingType'
+          property :looker_column_spec, as: 'lookerColumnSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec::Representation
+      
           property :mode, as: 'mode'
+          property :ordinal_position, as: 'ordinalPosition'
           collection :subcolumns, as: 'subcolumns', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1CommonUsageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :view_count, :numeric_string => true, as: 'viewCount'
         end
       end
       
@@ -676,9 +761,20 @@ module Google
       class GoogleCloudDatacatalogV1DatabaseTableSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_view_spec, as: 'databaseViewSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec::Representation
+      
           property :dataplex_table, as: 'dataplexTable', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_table, as: 'baseTable'
+          property :sql_query, as: 'sqlQuery'
+          property :view_type, as: 'viewType'
         end
       end
       
@@ -747,6 +843,8 @@ module Google
           property :integrated_system, as: 'integratedSystem'
           hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
+          property :looker_system_spec, as: 'lookerSystemSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1LookerSystemSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1LookerSystemSpec::Representation
+      
           property :name, as: 'name'
           property :personal_details, as: 'personalDetails', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails::Representation
       
@@ -755,6 +853,8 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema::Representation
       
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
+      
+          property :sql_database_system_spec, as: 'sqlDatabaseSystemSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec::Representation
       
           property :type, as: 'type'
           property :usage_signal, as: 'usageSignal', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageSignal, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageSignal::Representation
@@ -841,6 +941,30 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DatacatalogV1::Status, decorator: Google::Apis::DatacatalogV1::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_bucket_path, as: 'gcsBucketPath'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_entries_count, :numeric_string => true, as: 'deletedEntriesCount'
+          property :upserted_entries_count, :numeric_string => true, as: 'upsertedEntriesCount'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1ImportTaxonomiesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -909,6 +1033,18 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Taxonomy, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Taxonomy::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1LookerSystemSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent_instance_display_name, as: 'parentInstanceDisplayName'
+          property :parent_instance_id, as: 'parentInstanceId'
+          property :parent_model_display_name, as: 'parentModelDisplayName'
+          property :parent_model_id, as: 'parentModelId'
+          property :parent_view_display_name, as: 'parentViewDisplayName'
+          property :parent_view_id, as: 'parentViewId'
         end
       end
       
@@ -1129,6 +1265,15 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_version, as: 'databaseVersion'
+          property :instance_host, as: 'instanceHost'
+          property :sql_engine, as: 'sqlEngine'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1StarEntryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1251,6 +1396,9 @@ module Google
       class GoogleCloudDatacatalogV1UsageSignal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :common_usage_within_time_range, as: 'commonUsageWithinTimeRange', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CommonUsageStats, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CommonUsageStats::Representation
+      
+          property :favorite_count, :numeric_string => true, as: 'favoriteCount'
           property :update_time, as: 'updateTime'
           hash :usage_within_time_range, as: 'usageWithinTimeRange', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UsageStats::Representation
       
@@ -1274,6 +1422,27 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::DatacatalogV1::Operation, decorator: Google::Apis::DatacatalogV1::Operation::Representation
+      
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::DatacatalogV1::Status, decorator: Google::Apis::DatacatalogV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1289,6 +1458,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::DatacatalogV1::Policy, decorator: Google::Apis::DatacatalogV1::Policy::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
