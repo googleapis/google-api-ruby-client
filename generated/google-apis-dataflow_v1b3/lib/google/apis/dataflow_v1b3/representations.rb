@@ -1012,6 +1012,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkerThreadScalingReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerThreadScalingReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteInstruction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2803,6 +2815,8 @@ module Google
       
           property :worker_shutdown_notice, as: 'workerShutdownNotice', class: Google::Apis::DataflowV1b3::WorkerShutdownNotice, decorator: Google::Apis::DataflowV1b3::WorkerShutdownNotice::Representation
       
+          property :worker_thread_scaling_report, as: 'workerThreadScalingReport', class: Google::Apis::DataflowV1b3::WorkerThreadScalingReport, decorator: Google::Apis::DataflowV1b3::WorkerThreadScalingReport::Representation
+      
         end
       end
       
@@ -2822,6 +2836,8 @@ module Google
           property :worker_metrics_response, as: 'workerMetricsResponse', class: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReportResponse::Representation
       
           property :worker_shutdown_notice_response, as: 'workerShutdownNoticeResponse', class: Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse, decorator: Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse::Representation
+      
+          property :worker_thread_scaling_report_response, as: 'workerThreadScalingReportResponse', class: Google::Apis::DataflowV1b3::WorkerThreadScalingReportResponse, decorator: Google::Apis::DataflowV1b3::WorkerThreadScalingReportResponse::Representation
       
         end
       end
@@ -2881,6 +2897,20 @@ module Google
       class WorkerShutdownNoticeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WorkerThreadScalingReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_thread_count, as: 'currentThreadCount'
+        end
+      end
+      
+      class WorkerThreadScalingReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recommended_thread_count, as: 'recommendedThreadCount'
         end
       end
       
