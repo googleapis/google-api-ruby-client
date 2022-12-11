@@ -716,6 +716,7 @@ module Google
       class RemoveIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asynchronous, as: 'asynchronous'
         end
       end
       

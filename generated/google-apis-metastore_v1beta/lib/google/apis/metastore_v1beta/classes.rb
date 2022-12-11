@@ -330,7 +330,7 @@ module Google
         # reserved and used as the Dataproc Metastore service's endpoint. It is
         # accessible to hosts in the subnet and to all hosts in a subnet in the same
         # region and same network. There must be at least one IP address available in
-        # the subnet's primary range. The subnet is specified in the following form:`
+        # the subnet's primary range. The subnet is specified in the following form:
         # projects/`project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
@@ -1516,12 +1516,20 @@ module Google
       class RemoveIamPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Removes IAM policy attached to database or table asynchronously when
+        # it is set. The default is false.
+        # Corresponds to the JSON property `asynchronous`
+        # @return [Boolean]
+        attr_accessor :asynchronous
+        alias_method :asynchronous?, :asynchronous
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @asynchronous = args[:asynchronous] if args.key?(:asynchronous)
         end
       end
       
