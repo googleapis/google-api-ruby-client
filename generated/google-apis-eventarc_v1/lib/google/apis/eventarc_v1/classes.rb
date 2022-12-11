@@ -346,7 +346,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
-        # `projects/`project`/locations/`location`/functions/`function``
+        # `projects/`project`/locations/`location`/functions/`function`` This is a read-
+        # only field. Creating Cloud Functions V2 triggers is only supported via the
+        # Cloud Functions product. An error will be returned if the user sets this value.
         # Corresponds to the JSON property `cloudFunction`
         # @return [String]
         attr_accessor :cloud_function
