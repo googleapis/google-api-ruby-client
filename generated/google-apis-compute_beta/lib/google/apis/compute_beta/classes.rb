@@ -17207,8 +17207,9 @@ module Google
       
         # Email address to contact the customer NOC for operations and maintenance
         # notifications regarding this Interconnect. If specified, this will be used for
-        # notifications in addition to all other forms described, such as Stackdriver
-        # logs alerting and Cloud Notifications.
+        # notifications in addition to all other forms described, such as Cloud
+        # Monitoring logs alerting and Cloud Notifications. This field is required for
+        # users who sign up for Cloud Interconnect using workforce identity federation.
         # Corresponds to the JSON property `nocContactEmail`
         # @return [String]
         attr_accessor :noc_contact_email
