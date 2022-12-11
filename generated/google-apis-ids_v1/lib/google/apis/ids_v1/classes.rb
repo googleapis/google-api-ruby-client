@@ -249,6 +249,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # List of threat IDs to be excepted from generating alerts.
+        # Corresponds to the JSON property `threatExceptions`
+        # @return [Array<String>]
+        attr_accessor :threat_exceptions
+      
         # Whether the endpoint should report traffic logs in addition to threat logs.
         # Corresponds to the JSON property `trafficLogs`
         # @return [Boolean]
@@ -275,6 +280,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @severity = args[:severity] if args.key?(:severity)
           @state = args[:state] if args.key?(:state)
+          @threat_exceptions = args[:threat_exceptions] if args.key?(:threat_exceptions)
           @traffic_logs = args[:traffic_logs] if args.key?(:traffic_logs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
