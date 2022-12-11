@@ -181,6 +181,7 @@ module Google
           property :network, as: 'network'
           property :severity, as: 'severity'
           property :state, as: 'state'
+          collection :threat_exceptions, as: 'threatExceptions'
           property :traffic_logs, as: 'trafficLogs'
           property :update_time, as: 'updateTime'
         end
