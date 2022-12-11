@@ -5131,7 +5131,8 @@ module Google
       
         # Routines in the requested dataset. Unless read_mask is set in the request,
         # only the following fields are populated: etag, project_id, dataset_id,
-        # routine_id, routine_type, creation_time, last_modified_time, and language.
+        # routine_id, routine_type, creation_time, last_modified_time, language, and
+        # remote_function_options.
         # Corresponds to the JSON property `routines`
         # @return [Array<Google::Apis::BigqueryV2::Routine>]
         attr_accessor :routines
@@ -5197,6 +5198,13 @@ module Google
       class MaterializedViewDefinition
         include Google::Apis::Core::Hashable
       
+        # [Optional] Allow non incremental materialized view definition. The default
+        # value is "false".
+        # Corresponds to the JSON property `allow_non_incremental_definition`
+        # @return [Boolean]
+        attr_accessor :allow_non_incremental_definition
+        alias_method :allow_non_incremental_definition?, :allow_non_incremental_definition
+      
         # [Optional] [TrustedTester] Enable automatic refresh of the materialized view
         # when the base table is updated. The default value is "true".
         # Corresponds to the JSON property `enableRefresh`
@@ -5234,6 +5242,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_non_incremental_definition = args[:allow_non_incremental_definition] if args.key?(:allow_non_incremental_definition)
           @enable_refresh = args[:enable_refresh] if args.key?(:enable_refresh)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @max_staleness = args[:max_staleness] if args.key?(:max_staleness)
@@ -6511,7 +6520,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :imported_libraries
       
-        # Optional. Defaults to "SQL".
+        # Optional. Defaults to "SQL" if remote_function_options field is absent, not
+        # set otherwise.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
