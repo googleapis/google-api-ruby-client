@@ -819,7 +819,7 @@ module Google
         # must use UTF-8 encoding, and international characters are allowed. * The key
         # portion of a label must be unique. However, you can use the same key with
         # multiple resources. * Keys must start with a lowercase letter or international
-        # character. See [Google Cloud Document](https://cloud.google.com/resource-
+        # character. See [Requirements for labels](https://cloud.google.com/resource-
         # manager/docs/creating-managing-labels#requirements) for more details.
         # Corresponds to the JSON property `userLabels`
         # @return [Hash<String,String>]
