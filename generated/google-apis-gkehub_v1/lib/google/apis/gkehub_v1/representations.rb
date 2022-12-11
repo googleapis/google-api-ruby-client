@@ -1183,6 +1183,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipSpec::Representation
       
+          property :fleet_inherited, as: 'fleetInherited'
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1::FleetObservabilityMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1::IdentityServiceMembershipSpec::Representation

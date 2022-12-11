@@ -360,7 +360,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Set to true to allow the vertical scaling. Defaults to false which disallows
-        # vertical scaling.
+        # vertical scaling. This field is deprecated.
         # Corresponds to the JSON property `allowVerticalScale`
         # @return [Boolean]
         attr_accessor :allow_vertical_scale
@@ -2389,6 +2389,12 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
+        # True if value of `feature_spec` was inherited from a fleet-level default.
+        # Corresponds to the JSON property `fleetInherited`
+        # @return [Boolean]
+        attr_accessor :fleet_inherited
+        alias_method :fleet_inherited?, :fleet_inherited
+      
         # **FleetObservability**: The membership-specific input for FleetObservability
         # feature.
         # Corresponds to the JSON property `fleetobservability`
@@ -2412,6 +2418,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @fleet_inherited = args[:fleet_inherited] if args.key?(:fleet_inherited)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
