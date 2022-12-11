@@ -2302,6 +2302,7 @@ module Google
       class MaterializedViewDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_non_incremental_definition, as: 'allow_non_incremental_definition'
           property :enable_refresh, as: 'enableRefresh'
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
           property :max_staleness, :base64 => true, as: 'maxStaleness'
