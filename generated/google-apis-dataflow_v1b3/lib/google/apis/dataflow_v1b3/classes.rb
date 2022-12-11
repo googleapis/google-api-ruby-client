@@ -6561,6 +6561,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::WorkerShutdownNotice]
         attr_accessor :worker_shutdown_notice
       
+        # Contains information about the thread scaling information of a worker.
+        # Corresponds to the JSON property `workerThreadScalingReport`
+        # @return [Google::Apis::DataflowV1b3::WorkerThreadScalingReport]
+        attr_accessor :worker_thread_scaling_report
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6574,6 +6579,7 @@ module Google
           @worker_message_code = args[:worker_message_code] if args.key?(:worker_message_code)
           @worker_metrics = args[:worker_metrics] if args.key?(:worker_metrics)
           @worker_shutdown_notice = args[:worker_shutdown_notice] if args.key?(:worker_shutdown_notice)
+          @worker_thread_scaling_report = args[:worker_thread_scaling_report] if args.key?(:worker_thread_scaling_report)
         end
       end
       
@@ -6642,6 +6648,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::WorkerShutdownNoticeResponse]
         attr_accessor :worker_shutdown_notice_response
       
+        # Contains the thread scaling recommendation for a worker from the backend.
+        # Corresponds to the JSON property `workerThreadScalingReportResponse`
+        # @return [Google::Apis::DataflowV1b3::WorkerThreadScalingReportResponse]
+        attr_accessor :worker_thread_scaling_report_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6651,6 +6662,7 @@ module Google
           @worker_health_report_response = args[:worker_health_report_response] if args.key?(:worker_health_report_response)
           @worker_metrics_response = args[:worker_metrics_response] if args.key?(:worker_metrics_response)
           @worker_shutdown_notice_response = args[:worker_shutdown_notice_response] if args.key?(:worker_shutdown_notice_response)
+          @worker_thread_scaling_report_response = args[:worker_thread_scaling_report_response] if args.key?(:worker_thread_scaling_report_response)
         end
       end
       
@@ -6920,6 +6932,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Contains information about the thread scaling information of a worker.
+      class WorkerThreadScalingReport
+        include Google::Apis::Core::Hashable
+      
+        # Current number of active threads in a worker.
+        # Corresponds to the JSON property `currentThreadCount`
+        # @return [Fixnum]
+        attr_accessor :current_thread_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_thread_count = args[:current_thread_count] if args.key?(:current_thread_count)
+        end
+      end
+      
+      # Contains the thread scaling recommendation for a worker from the backend.
+      class WorkerThreadScalingReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # Recommended number of threads for a worker.
+        # Corresponds to the JSON property `recommendedThreadCount`
+        # @return [Fixnum]
+        attr_accessor :recommended_thread_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommended_thread_count = args[:recommended_thread_count] if args.key?(:recommended_thread_count)
         end
       end
       
