@@ -41,6 +41,12 @@ module Google
 
       # View messages and reactions in Google Chat
       AUTH_CHAT_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.messages.readonly'
+
+      # Create conversations and spaces and view or update metadata (including history settings) in Google Chat
+      AUTH_CHAT_SPACES = 'https://www.googleapis.com/auth/chat.spaces'
+
+      # View chat and spaces in Google Chat
+      AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
     end
   end
 end
