@@ -1353,6 +1353,13 @@ module Google
         # @return [Google::Apis::ContainerV1::ShieldedNodes]
         attr_accessor :desired_shielded_nodes
       
+        # The desired stack type of the cluster. If a stack type is provided and does
+        # not match the current stack type of the cluster, update will attempt to change
+        # the stack type to the new type.
+        # Corresponds to the JSON property `desiredStackType`
+        # @return [String]
+        attr_accessor :desired_stack_type
+      
         # VerticalPodAutoscaling contains global, per-cluster information required by
         # Vertical Pod Autoscaler to automatically adjust the resources of pods
         # controlled by it.
@@ -1407,6 +1414,7 @@ module Google
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
+          @desired_stack_type = args[:desired_stack_type] if args.key?(:desired_stack_type)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
