@@ -346,7 +346,9 @@ module Google
         private
 
         UNSAFE_CLASS_NAMES = [
-          "Google::Apis::CloudkmsV1::DecryptResponse"
+          "Google::Apis::CloudkmsV1::DecryptResponse",
+          "Google::Apis::SecretmanagerV1::SecretPayload",
+          "Google::Apis::SecretmanagerV1beta1::SecretPayload"
         ]
 
         def safe_object_representation obj
