@@ -16378,8 +16378,9 @@ module Google
       
         # Email address to contact the customer NOC for operations and maintenance
         # notifications regarding this Interconnect. If specified, this will be used for
-        # notifications in addition to all other forms described, such as Stackdriver
-        # logs alerting and Cloud Notifications.
+        # notifications in addition to all other forms described, such as Cloud
+        # Monitoring logs alerting and Cloud Notifications. This field is required for
+        # users who sign up for Cloud Interconnect using workforce identity federation.
         # Corresponds to the JSON property `nocContactEmail`
         # @return [String]
         attr_accessor :noc_contact_email
@@ -28689,13 +28690,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Resource policies to be added to this reservation. The key is defined by user,
-        # and the value is resource policy url. This is to define placement policy with
-        # reservation.
-        # Corresponds to the JSON property `resourcePolicies`
-        # @return [Hash<String,String>]
-        attr_accessor :resource_policies
-      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -28749,7 +28743,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
