@@ -311,11 +311,11 @@ module Google
         end
       end
       
-      # Representa a single contact's email address
+      # The email address of a contact.
       class Contact
         include Google::Apis::Core::Hashable
       
-        # An email address e.g. "person123@company.com"
+        # An email address. For example, "`person123@company.com`".
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -990,10 +990,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::IamBinding>]
         attr_accessor :iam_bindings
       
-        # Represents what's commonly known as an Indicator of compromise (IoC) in
+        # Represents what's commonly known as an _indicator of compromise_ (IoC) in
         # computer forensics. This is an artifact observed on a network or in an
         # operating system that, with high confidence, indicates a computer intrusion.
-        # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+        # For more information, see [Indicator of compromise](https://en.wikipedia.org/
+        # wiki/Indicator_of_compromise).
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1beta2::Indicator]
         attr_accessor :indicator
@@ -1003,7 +1004,7 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::KernelRootkit]
         attr_accessor :kernel_rootkit
       
-        # Kubernetes related attributes.
+        # Kubernetes-related attributes.
         # Corresponds to the JSON property `kubernetes`
         # @return [Google::Apis::SecuritycenterV1beta2::Kubernetes]
         attr_accessor :kubernetes
@@ -1297,8 +1298,8 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::Role]
         attr_accessor :role
       
-        # Represents the subjects(s) bound to the role. Not always available for PATCH
-        # requests.
+        # Represents one or more subjects that are bound to the role. Not always
+        # available for PATCH requests.
         # Corresponds to the JSON property `subjects`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Subject>]
         attr_accessor :subjects
@@ -1439,10 +1440,10 @@ module Google
         # @return [String]
         attr_accessor :external_uid
       
-        # External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
-        # sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
-        # findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
-        # 123456/externalSystems/jira`
+        # Full resource name of the external system, for example: "organizations/1234/
+        # sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
+        # findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
+        # 123456/externalSystems/jira"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2073,10 +2074,11 @@ module Google
         end
       end
       
-      # Represents what's commonly known as an Indicator of compromise (IoC) in
+      # Represents what's commonly known as an _indicator of compromise_ (IoC) in
       # computer forensics. This is an artifact observed on a network or in an
       # operating system that, with high confidence, indicates a computer intrusion.
-      # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+      # For more information, see [Indicator of compromise](https://en.wikipedia.org/
+      # wiki/Indicator_of_compromise).
       class Indicator
         include Google::Apis::Core::Hashable
       
@@ -2085,7 +2087,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :domains
       
-        # List of ip addresses associated to the Finding.
+        # The list of IP addresses that are associated with the finding.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<String>]
         attr_accessor :ip_addresses
@@ -2123,55 +2125,55 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Flag indicating unexpected modifications of kernel code memory.
+        # True when unexpected modifications of kernel code memory are present.
         # Corresponds to the JSON property `unexpectedCodeModification`
         # @return [Boolean]
         attr_accessor :unexpected_code_modification
         alias_method :unexpected_code_modification?, :unexpected_code_modification
       
-        # Flag indicating presence of ftrace points with callbacks pointing to regions
-        # that are not in the expected kernel or module code range.
+        # True when `ftrace` points are present with callbacks pointing to regions that
+        # are not in the expected kernel or module code range.
         # Corresponds to the JSON property `unexpectedFtraceHandler`
         # @return [Boolean]
         attr_accessor :unexpected_ftrace_handler
         alias_method :unexpected_ftrace_handler?, :unexpected_ftrace_handler
       
-        # Flag indicating presence of interrupt handlers that are are not in the
-        # expected kernel, module code regions.
+        # True when interrupt handlers that are are not in the expected kernel or module
+        # code regions are present.
         # Corresponds to the JSON property `unexpectedInterruptHandler`
         # @return [Boolean]
         attr_accessor :unexpected_interrupt_handler
         alias_method :unexpected_interrupt_handler?, :unexpected_interrupt_handler
       
-        # Flag indicating presence of kernel code pages that are not in the expected
-        # kernel, module code regions.
+        # True when kernel code pages that are not in the expected kernel or module code
+        # regions are present.
         # Corresponds to the JSON property `unexpectedKernelCodePages`
         # @return [Boolean]
         attr_accessor :unexpected_kernel_code_pages
         alias_method :unexpected_kernel_code_pages?, :unexpected_kernel_code_pages
       
-        # Flag indicating presence of kprobe points with callbacks pointing to regions
-        # that are not in the expected kernel or module code range.
+        # True when `kprobe` points are present with callbacks pointing to regions that
+        # are not in the expected kernel or module code range.
         # Corresponds to the JSON property `unexpectedKprobeHandler`
         # @return [Boolean]
         attr_accessor :unexpected_kprobe_handler
         alias_method :unexpected_kprobe_handler?, :unexpected_kprobe_handler
       
-        # Flag indicating unexpected process(es) in the scheduler run-queue, those that
-        # are in the run-queue, but not in the process task-list.
+        # True when unexpected processes in the scheduler run queue are present. Such
+        # processes are in the run queue, but not in the process task list.
         # Corresponds to the JSON property `unexpectedProcessesInRunqueue`
         # @return [Boolean]
         attr_accessor :unexpected_processes_in_runqueue
         alias_method :unexpected_processes_in_runqueue?, :unexpected_processes_in_runqueue
       
-        # Flag indicating unexpected modifications of kernel read-only data memory.
+        # True when unexpected modifications of kernel read-only data memory are present.
         # Corresponds to the JSON property `unexpectedReadOnlyDataModification`
         # @return [Boolean]
         attr_accessor :unexpected_read_only_data_modification
         alias_method :unexpected_read_only_data_modification?, :unexpected_read_only_data_modification
       
-        # Flag indicating presence of system call handlers that are are not in the
-        # expected kernel, module code regions.
+        # True when system call handlers that are are not in the expected kernel or
+        # module code regions are present.
         # Corresponds to the JSON property `unexpectedSystemCallHandler`
         # @return [Boolean]
         attr_accessor :unexpected_system_call_handler
@@ -2195,7 +2197,7 @@ module Google
         end
       end
       
-      # Kubernetes related attributes.
+      # Kubernetes-related attributes.
       class Kubernetes
         include Google::Apis::Core::Hashable
       
