@@ -785,6 +785,7 @@ module Google
       class AddSubnetworkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_subnet_cidr_routes_overlap, as: 'allowSubnetCidrRoutesOverlap'
           property :check_service_networking_use_permission, as: 'checkServiceNetworkingUsePermission'
           property :compute_idempotency_window, as: 'computeIdempotencyWindow'
           property :consumer, as: 'consumer'

@@ -215,6 +215,14 @@ module Google
       class AddSubnetworkRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Defines the allowSubnetCidrRoutesOverlap field of the subnet, e.g.
+        # Available in alpha and beta according to [Compute API documentation](https://
+        # cloud.google.com/compute/docs/reference/rest/beta/subnetworks/insert)
+        # Corresponds to the JSON property `allowSubnetCidrRoutesOverlap`
+        # @return [Boolean]
+        attr_accessor :allow_subnet_cidr_routes_overlap
+        alias_method :allow_subnet_cidr_routes_overlap?, :allow_subnet_cidr_routes_overlap
+      
         # Optional. The IAM permission check determines whether the consumer project has
         # 'servicenetworking.services.use' permission or not.
         # Corresponds to the JSON property `checkServiceNetworkingUsePermission`
@@ -348,6 +356,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_subnet_cidr_routes_overlap = args[:allow_subnet_cidr_routes_overlap] if args.key?(:allow_subnet_cidr_routes_overlap)
           @check_service_networking_use_permission = args[:check_service_networking_use_permission] if args.key?(:check_service_networking_use_permission)
           @compute_idempotency_window = args[:compute_idempotency_window] if args.key?(:compute_idempotency_window)
           @consumer = args[:consumer] if args.key?(:consumer)
