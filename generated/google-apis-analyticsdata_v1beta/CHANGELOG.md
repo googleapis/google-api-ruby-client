@@ -1,5 +1,9 @@
 # Release history for google-apis-analyticsdata_v1beta
 
+### v0.22.0 (2022-12-13)
+
+* Regenerated from discovery document revision 20221210
+
 ### v0.21.0 (2022-10-27)
 
 * Regenerated using generator version 0.11.0
