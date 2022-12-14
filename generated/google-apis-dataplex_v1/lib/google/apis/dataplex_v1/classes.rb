@@ -657,6 +657,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Determines how read permissions are handled for each asset and their
+        # associated tables. Only available to storage buckets assets.
+        # Corresponds to the JSON property `readAccessMode`
+        # @return [String]
+        attr_accessor :read_access_mode
+      
         # Required. Immutable. Type of resource.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -669,6 +675,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @read_access_mode = args[:read_access_mode] if args.key?(:read_access_mode)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -2264,6 +2271,11 @@ module Google
       class GoogleCloudDataplexV1Entity
         include Google::Apis::Core::Hashable
       
+        # Describes the access mechanism of the data within its storage location.
+        # Corresponds to the JSON property `access`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageAccess]
+        attr_accessor :access
+      
         # Required. Immutable. The ID of the asset associated with the storage location
         # containing the entity data. The entity must be with in the same zone with the
         # asset.
@@ -2364,6 +2376,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access = args[:access] if args.key?(:access)
           @asset = args[:asset] if args.key?(:asset)
           @catalog_entry = args[:catalog_entry] if args.key?(:catalog_entry)
           @compatibility = args[:compatibility] if args.key?(:compatibility)
@@ -3484,6 +3497,38 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudDataplexV1RunTaskRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDataplexV1RunTaskResponse
+        include Google::Apis::Core::Hashable
+      
+        # A job represents an instance of a task.
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1Job]
+        attr_accessor :job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job = args[:job] if args.key?(:job)
+        end
+      end
+      
       # The data scanned during processing (e.g. in incremental DataScan)
       class GoogleCloudDataplexV1ScannedData
         include Google::Apis::Core::Hashable
@@ -3808,6 +3853,26 @@ module Google
           @query_id = args[:query_id] if args.key?(:query_id)
           @query_text = args[:query_text] if args.key?(:query_text)
           @result_size_bytes = args[:result_size_bytes] if args.key?(:result_size_bytes)
+        end
+      end
+      
+      # Describes the access mechanism of the data within its storage location.
+      class GoogleCloudDataplexV1StorageAccess
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Describes the read access mechanism of the data. Not user
+        # settable.
+        # Corresponds to the JSON property `read`
+        # @return [String]
+        attr_accessor :read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read = args[:read] if args.key?(:read)
         end
       end
       

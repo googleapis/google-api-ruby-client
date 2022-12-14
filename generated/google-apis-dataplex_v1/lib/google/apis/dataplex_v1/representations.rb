@@ -568,6 +568,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1RunTaskRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1RunTaskResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1ScannedData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -611,6 +623,12 @@ module Google
       end
       
       class GoogleCloudDataplexV1SessionEventQueryDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1StorageAccess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1009,6 +1027,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :read_access_mode, as: 'readAccessMode'
           property :type, as: 'type'
         end
       end
@@ -1464,6 +1483,8 @@ module Google
       class GoogleCloudDataplexV1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageAccess, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1StorageAccess::Representation
+      
           property :asset, as: 'asset'
           property :catalog_entry, as: 'catalogEntry'
           property :compatibility, as: 'compatibility', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntityCompatibilityStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntityCompatibilityStatus::Representation
@@ -1803,6 +1824,20 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1RunTaskRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDataplexV1RunTaskResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Job, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Job::Representation
+      
+        end
+      end
+      
       class GoogleCloudDataplexV1ScannedData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1886,6 +1921,13 @@ module Google
           property :query_id, as: 'queryId'
           property :query_text, as: 'queryText'
           property :result_size_bytes, :numeric_string => true, as: 'resultSizeBytes'
+        end
+      end
+      
+      class GoogleCloudDataplexV1StorageAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read, as: 'read'
         end
       end
       
