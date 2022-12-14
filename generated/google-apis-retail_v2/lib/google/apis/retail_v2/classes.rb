@@ -1131,9 +1131,9 @@ module Google
       class GoogleCloudRetailV2Control
         include Google::Apis::Core::Hashable
       
-        # Output only. List of serving configuration ids that are associated with this
-        # control in the same Catalog. Note the association is managed via the
-        # ServingConfig, this is an output only denormalized view.
+        # Output only. List of serving config ids that are associated with this control
+        # in the same Catalog. Note the association is managed via the ServingConfig,
+        # this is an output only denormalized view.
         # Corresponds to the JSON property `associatedServingConfigIds`
         # @return [Array<String>]
         attr_accessor :associated_serving_config_ids
@@ -5368,8 +5368,8 @@ module Google
         attr_accessor :optimization_objective
       
         # The PageOptimizationConfig for model training. This determines how many panels
-        # to optimize for, and which serving configurations to consider for each panel.
-        # The purpose of this model is to optimize which ServingConfig to show on which
+        # to optimize for, and which serving configs to consider for each panel. The
+        # purpose of this model is to optimize which ServingConfig to show on which
         # panels in way that optimizes the visitors shopping journey.
         # Corresponds to the JSON property `pageOptimizationConfig`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2alphaModelPageOptimizationConfig]
@@ -5455,8 +5455,8 @@ module Google
       end
       
       # The PageOptimizationConfig for model training. This determines how many panels
-      # to optimize for, and which serving configurations to consider for each panel.
-      # The purpose of this model is to optimize which ServingConfig to show on which
+      # to optimize for, and which serving configs to consider for each panel. The
+      # purpose of this model is to optimize which ServingConfig to show on which
       # panels in way that optimizes the visitors shopping journey.
       class GoogleCloudRetailV2alphaModelPageOptimizationConfig
         include Google::Apis::Core::Hashable
