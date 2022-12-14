@@ -25226,7 +25226,6 @@ module Google
       class GoogleCloudContentwarehouseV1Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :async_enabled, as: 'asyncEnabled'
           property :cloud_ai_document, as: 'cloudAiDocument', class: Google::Apis::ContentwarehouseV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::ContentwarehouseV1::GoogleCloudDocumentaiV1Document::Representation
       
           property :content_category, as: 'contentCategory'
@@ -25245,6 +25244,7 @@ module Google
           property :reference_id, as: 'referenceId'
           property :structured_content_uri, as: 'structuredContentUri'
           property :text_extraction_disabled, as: 'textExtractionDisabled'
+          property :text_extraction_enabled, as: 'textExtractionEnabled'
           property :title, as: 'title'
           property :update_time, as: 'updateTime'
           property :updater, as: 'updater'
@@ -27890,6 +27890,7 @@ module Google
       class ImageRepositoryAmarnaCloudSpeechSignals
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicate_of_yt_s3_asr, as: 'duplicateOfYtS3Asr'
           property :lang_without_locale, as: 'langWithoutLocale'
           property :model_identifier, as: 'modelIdentifier'
           collection :results, as: 'results', class: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult, decorator: Google::Apis::ContentwarehouseV1::ImageRepositorySpeechRecognitionResult::Representation
@@ -30084,6 +30085,7 @@ module Google
           property :is_close_interpretation, as: 'isCloseInterpretation'
           property :is_disambiguation_card_intent, as: 'isDisambiguationCardIntent'
           property :is_disambiguation_intent, as: 'isDisambiguationIntent'
+          property :is_neural_categorical_interpretation, as: 'isNeuralCategoricalInterpretation'
           property :is_ui_composition_intent, as: 'isUiCompositionIntent'
           property :local_signals, as: 'localSignals', class: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocalSignals, decorator: Google::Apis::ContentwarehouseV1::KnowledgeAnswersIntentQueryLocalSignals::Representation
       
@@ -35621,6 +35623,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration_ms, :numeric_string => true, as: 'durationMs'
+          property :loop_count, as: 'loopCount'
           property :num_frames, :numeric_string => true, as: 'numFrames'
         end
       end
@@ -37133,6 +37136,8 @@ module Google
       
           property :query_term_coverage_features, as: 'queryTermCoverageFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetQueryTermCoverageFeatures::Representation
       
+          property :radish_features, as: 'radishFeatures', class: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetRadishFeatures, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewSnippetRadishFeatures::Representation
+      
           property :snippet_info, as: 'snippetInfo', class: Google::Apis::ContentwarehouseV1::QualityPreviewChosenSnippetInfo, decorator: Google::Apis::ContentwarehouseV1::QualityPreviewChosenSnippetInfo::Representation
       
         end
@@ -37720,6 +37725,7 @@ module Google
           property :product_popularity, as: 'productPopularity'
           collection :relevance_embedding, as: 'relevanceEmbedding', class: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfo, decorator: Google::Apis::ContentwarehouseV1::QualityRankembedMustangMustangRankEmbedInfo::Representation
       
+          property :weak_global_product_cluster_id, :numeric_string => true, as: 'weakGlobalProductClusterId'
         end
       end
       
@@ -38510,7 +38516,6 @@ module Google
           property :is_reference_page, as: 'isReferencePage'
           property :local_entity_location_confidence, as: 'localEntityLocationConfidence'
           property :nb_score, as: 'nbScore'
-          property :new_confidence_experimental_dont_use, as: 'newConfidenceExperimentalDontUse'
           property :news_topicality_score, as: 'newsTopicalityScore'
           property :normalized_topicality, as: 'normalizedTopicality'
           property :reference_page_scores, as: 'referencePageScores', class: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores, decorator: Google::Apis::ContentwarehouseV1::RepositoryWebrefReferencePageScores::Representation
@@ -44271,6 +44276,7 @@ module Google
       
           property :attachments, as: 'attachments', class: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet, decorator: Google::Apis::ContentwarehouseV1::Proto2BridgeMessageSet::Representation
       
+          property :babel_checkpoint_path, as: 'babelCheckpointPath'
           property :caption_entity_anchor_features, as: 'captionEntityAnchorFeatures', class: Google::Apis::ContentwarehouseV1::VideoContentSearchCaptionEntityAnchorFeatures, decorator: Google::Apis::ContentwarehouseV1::VideoContentSearchCaptionEntityAnchorFeatures::Representation
       
           property :caption_span_anchor_features, as: 'captionSpanAnchorFeatures', class: Google::Apis::ContentwarehouseV1::VideoContentSearchCaptionSpanAnchorFeatures, decorator: Google::Apis::ContentwarehouseV1::VideoContentSearchCaptionSpanAnchorFeatures::Representation
@@ -44296,6 +44302,7 @@ module Google
       
           property :multimodal_topic_training_features, as: 'multimodalTopicTrainingFeatures', class: Google::Apis::ContentwarehouseV1::VideoContentSearchMultimodalTopicTrainingFeatures, decorator: Google::Apis::ContentwarehouseV1::VideoContentSearchMultimodalTopicTrainingFeatures::Representation
       
+          collection :normalized_babel_embedding, as: 'normalizedBabelEmbedding'
           property :ocr_anchor_feature, as: 'ocrAnchorFeature', class: Google::Apis::ContentwarehouseV1::VideoContentSearchOnScreenTextFeature, decorator: Google::Apis::ContentwarehouseV1::VideoContentSearchOnScreenTextFeature::Representation
       
           property :ocr_description_training_data_anchor_features, as: 'ocrDescriptionTrainingDataAnchorFeatures', class: Google::Apis::ContentwarehouseV1::VideoContentSearchOcrDescriptionTrainingDataAnchorFeatures, decorator: Google::Apis::ContentwarehouseV1::VideoContentSearchOcrDescriptionTrainingDataAnchorFeatures::Representation
@@ -45675,6 +45682,7 @@ module Google
           property :video_id, as: 'videoId'
           collection :video_timestamps, as: 'videoTimestamps'
           property :word_entropy, as: 'wordEntropy'
+          property :yt_author_channel_id, as: 'ytAuthorChannelId'
           property :yt_comment_quality_score, as: 'ytCommentQualityScore'
           property :yt_comment_quality_score2, as: 'ytCommentQualityScore2'
           property :yt_comment_quality_score3, as: 'ytCommentQualityScore3'
