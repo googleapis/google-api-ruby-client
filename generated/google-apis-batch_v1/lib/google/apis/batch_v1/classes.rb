@@ -119,7 +119,7 @@ module Google
         end
       end
       
-      # AgentMetadata never changes for a single instance of VM agent.
+      # VM Agent Metadata.
       class AgentMetadata
         include Google::Apis::Core::Hashable
       
@@ -150,6 +150,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :instance_id
       
+        # If the GCP instance has received preemption notice.
+        # Corresponds to the JSON property `instancePreemptionNoticeReceived`
+        # @return [Boolean]
+        attr_accessor :instance_preemption_notice_received
+        alias_method :instance_preemption_notice_received?, :instance_preemption_notice_received
+      
         # parsed contents of /etc/os-release
         # Corresponds to the JSON property `osRelease`
         # @return [Hash<String,String>]
@@ -176,6 +182,7 @@ module Google
           @image_version = args[:image_version] if args.key?(:image_version)
           @instance = args[:instance] if args.key?(:instance)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @instance_preemption_notice_received = args[:instance_preemption_notice_received] if args.key?(:instance_preemption_notice_received)
           @os_release = args[:os_release] if args.key?(:os_release)
           @version = args[:version] if args.key?(:version)
           @zone = args[:zone] if args.key?(:zone)
@@ -729,6 +736,18 @@ module Google
       class Environment
         include Google::Apis::Core::Hashable
       
+        # An encrypted JSON dictionary where the key/value pairs correspond to
+        # environment variable names and their values.
+        # Corresponds to the JSON property `encryptedVariables`
+        # @return [Google::Apis::BatchV1::KmsEnvMap]
+        attr_accessor :encrypted_variables
+      
+        # A map of environment variable names to Secret Manager secret names. The VM
+        # will access the named secrets to set the value of each environment variable.
+        # Corresponds to the JSON property `secretVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :secret_variables
+      
         # A map of environment variable names to values.
         # Corresponds to the JSON property `variables`
         # @return [Hash<String,String>]
@@ -740,6 +759,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encrypted_variables = args[:encrypted_variables] if args.key?(:encrypted_variables)
+          @secret_variables = args[:secret_variables] if args.key?(:secret_variables)
           @variables = args[:variables] if args.key?(:variables)
         end
       end
@@ -1083,6 +1104,31 @@ module Google
           @state = args[:state] if args.key?(:state)
           @status_events = args[:status_events] if args.key?(:status_events)
           @task_groups = args[:task_groups] if args.key?(:task_groups)
+        end
+      end
+      
+      # 
+      class KmsEnvMap
+        include Google::Apis::Core::Hashable
+      
+        # The value of the cipherText response from the `encrypt` method.
+        # Corresponds to the JSON property `cipherText`
+        # @return [String]
+        attr_accessor :cipher_text
+      
+        # The name of the KMS key that will be used to decrypt the cipher text.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cipher_text = args[:cipher_text] if args.key?(:cipher_text)
+          @key_name = args[:key_name] if args.key?(:key_name)
         end
       end
       
@@ -1675,7 +1721,7 @@ module Google
         # @return [Google::Apis::BatchV1::AgentTimingInfo]
         attr_accessor :agent_timing_info
       
-        # AgentMetadata never changes for a single instance of VM agent.
+        # VM Agent Metadata.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::BatchV1::AgentMetadata]
         attr_accessor :metadata
@@ -1696,6 +1742,11 @@ module Google
       class ReportAgentStateResponse
         include Google::Apis::Core::Hashable
       
+        # Default report interval override
+        # Corresponds to the JSON property `defaultReportInterval`
+        # @return [String]
+        attr_accessor :default_report_interval
+      
         # Minimum report interval override
         # Corresponds to the JSON property `minReportInterval`
         # @return [String]
@@ -1712,6 +1763,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_report_interval = args[:default_report_interval] if args.key?(:default_report_interval)
           @min_report_interval = args[:min_report_interval] if args.key?(:min_report_interval)
           @tasks = args[:tasks] if args.key?(:tasks)
         end
