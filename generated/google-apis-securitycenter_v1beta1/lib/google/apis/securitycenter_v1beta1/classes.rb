@@ -531,11 +531,11 @@ module Google
         end
       end
       
-      # Representa a single contact's email address
+      # The email address of a contact.
       class Contact
         include Google::Apis::Core::Hashable
       
-        # An email address e.g. "person123@company.com"
+        # An email address. For example, "`person123@company.com`".
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -1155,10 +1155,11 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta1::IamBinding>]
         attr_accessor :iam_bindings
       
-        # Represents what's commonly known as an Indicator of compromise (IoC) in
+        # Represents what's commonly known as an _indicator of compromise_ (IoC) in
         # computer forensics. This is an artifact observed on a network or in an
         # operating system that, with high confidence, indicates a computer intrusion.
-        # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+        # For more information, see [Indicator of compromise](https://en.wikipedia.org/
+        # wiki/Indicator_of_compromise).
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1beta1::Indicator]
         attr_accessor :indicator
@@ -1168,7 +1169,7 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::KernelRootkit]
         attr_accessor :kernel_rootkit
       
-        # Kubernetes related attributes.
+        # Kubernetes-related attributes.
         # Corresponds to the JSON property `kubernetes`
         # @return [Google::Apis::SecuritycenterV1beta1::Kubernetes]
         attr_accessor :kubernetes
@@ -1509,8 +1510,8 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::Role]
         attr_accessor :role
       
-        # Represents the subjects(s) bound to the role. Not always available for PATCH
-        # requests.
+        # Represents one or more subjects that are bound to the role. Not always
+        # available for PATCH requests.
         # Corresponds to the JSON property `subjects`
         # @return [Array<Google::Apis::SecuritycenterV1beta1::Subject>]
         attr_accessor :subjects
@@ -2657,10 +2658,11 @@ module Google
         end
       end
       
-      # Represents what's commonly known as an Indicator of compromise (IoC) in
+      # Represents what's commonly known as an _indicator of compromise_ (IoC) in
       # computer forensics. This is an artifact observed on a network or in an
       # operating system that, with high confidence, indicates a computer intrusion.
-      # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+      # For more information, see [Indicator of compromise](https://en.wikipedia.org/
+      # wiki/Indicator_of_compromise).
       class Indicator
         include Google::Apis::Core::Hashable
       
@@ -2669,7 +2671,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :domains
       
-        # List of ip addresses associated to the Finding.
+        # The list of IP addresses that are associated with the finding.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<String>]
         attr_accessor :ip_addresses
@@ -2707,7 +2709,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # True when unexpected modifications of kernel read-only data memory are present.
+        # True when unexpected modifications of kernel code memory are present.
         # Corresponds to the JSON property `unexpectedCodeModification`
         # @return [Boolean]
         attr_accessor :unexpected_code_modification
@@ -2748,7 +2750,7 @@ module Google
         attr_accessor :unexpected_processes_in_runqueue
         alias_method :unexpected_processes_in_runqueue?, :unexpected_processes_in_runqueue
       
-        # Flag indicating unexpected modifications of kernel read-only data memory.
+        # True when unexpected modifications of kernel read-only data memory are present.
         # Corresponds to the JSON property `unexpectedReadOnlyDataModification`
         # @return [Boolean]
         attr_accessor :unexpected_read_only_data_modification
@@ -2779,7 +2781,7 @@ module Google
         end
       end
       
-      # Kubernetes related attributes.
+      # Kubernetes-related attributes.
       class Kubernetes
         include Google::Apis::Core::Hashable
       
