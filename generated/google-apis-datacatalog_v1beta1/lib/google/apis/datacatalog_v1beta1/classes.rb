@@ -215,6 +215,59 @@ module Google
         end
       end
       
+      # Metadata message for long-running operation returned by the ImportEntries.
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Partial errors that are encountered during the ImportEntries operation. There
+        # is no guarantee that all the encountered errors are reported. However, if no
+        # errors are reported, it means that no errors were encountered.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::Status>]
+        attr_accessor :errors
+      
+        # State of the import operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Response message for long-running operation returned by the ImportEntries.
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of entries deleted as a result of import operation.
+        # Corresponds to the JSON property `deletedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_entries_count
+      
+        # Cumulative number of entries created and entries updated as a result of import
+        # operation.
+        # Corresponds to the JSON property `upsertedEntriesCount`
+        # @return [Fixnum]
+        attr_accessor :upserted_entries_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_entries_count = args[:deleted_entries_count] if args.key?(:deleted_entries_count)
+          @upserted_entries_count = args[:upserted_entries_count] if args.key?(:upserted_entries_count)
+        end
+      end
+      
       # Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
       # Context: https://cloud.google.com/bigquery/docs/partitioned-tables#
       # partitioning_versus_sharding
@@ -1805,6 +1858,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
