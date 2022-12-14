@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KmsEnvMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +418,7 @@ module Google
           property :image_version, as: 'imageVersion'
           property :instance, as: 'instance'
           property :instance_id, :numeric_string => true, as: 'instanceId'
+          property :instance_preemption_notice_received, as: 'instancePreemptionNoticeReceived'
           hash :os_release, as: 'osRelease'
           property :version, as: 'version'
           property :zone, as: 'zone'
@@ -558,6 +565,9 @@ module Google
       class Environment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_variables, as: 'encryptedVariables', class: Google::Apis::BatchV1::KmsEnvMap, decorator: Google::Apis::BatchV1::KmsEnvMap::Representation
+      
+          hash :secret_variables, as: 'secretVariables'
           hash :variables, as: 'variables'
         end
       end
@@ -651,6 +661,14 @@ module Google
       
           hash :task_groups, as: 'taskGroups', class: Google::Apis::BatchV1::TaskGroupStatus, decorator: Google::Apis::BatchV1::TaskGroupStatus::Representation
       
+        end
+      end
+      
+      class KmsEnvMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cipher_text, as: 'cipherText'
+          property :key_name, as: 'keyName'
         end
       end
       
@@ -813,6 +831,7 @@ module Google
       class ReportAgentStateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_report_interval, as: 'defaultReportInterval'
           property :min_report_interval, as: 'minReportInterval'
           collection :tasks, as: 'tasks', class: Google::Apis::BatchV1::AgentTask, decorator: Google::Apis::BatchV1::AgentTask::Representation
       
