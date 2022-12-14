@@ -285,6 +285,7 @@ module Google
           property :enable_rbac, as: 'enableRbac'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
+          property :enable_zone_separation, as: 'enableZoneSeparation'
           property :event_publish_config, as: 'eventPublishConfig', class: Google::Apis::DatafusionV1::EventPublishConfig, decorator: Google::Apis::DatafusionV1::EventPublishConfig::Representation
       
           property :gcs_bucket, as: 'gcsBucket'

@@ -31,7 +31,7 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The state of the accelerator
+        # The state of the accelerator.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -443,6 +443,12 @@ module Google
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
+        # Option to enable granular zone separation.
+        # Corresponds to the JSON property `enableZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :enable_zone_separation
+        alias_method :enable_zone_separation?, :enable_zone_separation
+      
         # Confirguration of PubSubEventWriter.
         # Corresponds to the JSON property `eventPublishConfig`
         # @return [Google::Apis::DatafusionV1::EventPublishConfig]
@@ -562,6 +568,7 @@ module Google
           @enable_rbac = args[:enable_rbac] if args.key?(:enable_rbac)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
+          @enable_zone_separation = args[:enable_zone_separation] if args.key?(:enable_zone_separation)
           @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
