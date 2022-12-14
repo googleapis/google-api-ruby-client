@@ -2510,6 +2510,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Run an on demand execution of a Task.
+        # @param [String] name
+        #   Required. The resource name of the task: projects/`project_number`/locations/`
+        #   location_id`/lakes/`lake_id`/tasks/`task_id`.
+        # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskRequest] google_cloud_dataplex_v1_run_task_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def run_project_location_lake_task(name, google_cloud_dataplex_v1_run_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:run', options)
+          command.request_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskRequest::Representation
+          command.request_object = google_cloud_dataplex_v1_run_task_request_object
+          command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskResponse::Representation
+          command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1RunTaskResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
         # errors.
