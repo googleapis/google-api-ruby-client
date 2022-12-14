@@ -376,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransferError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferMisconfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteAlertRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +407,24 @@ module Google
       end
       
       class UserDefinedDetectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoiceMisconfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoicemailMisconfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VoicemailRecipientError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -985,6 +1015,25 @@ module Google
         end
       end
       
+      class TransferError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :entity_type, as: 'entityType'
+          property :id, as: 'id'
+          property :invalid_reason, as: 'invalidReason'
+          property :name, as: 'name'
+        end
+      end
+      
+      class TransferMisconfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::AlertcenterV1beta1::TransferError, decorator: Google::Apis::AlertcenterV1beta1::TransferError::Representation
+      
+        end
+      end
+      
       class UndeleteAlertRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1012,6 +1061,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class VoiceMisconfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_name, as: 'entityName'
+          property :entity_type, as: 'entityType'
+          property :fix_uri, as: 'fixUri'
+          property :members_misconfiguration, as: 'membersMisconfiguration', class: Google::Apis::AlertcenterV1beta1::TransferMisconfiguration, decorator: Google::Apis::AlertcenterV1beta1::TransferMisconfiguration::Representation
+      
+          property :transfer_misconfiguration, as: 'transferMisconfiguration', class: Google::Apis::AlertcenterV1beta1::TransferMisconfiguration, decorator: Google::Apis::AlertcenterV1beta1::TransferMisconfiguration::Representation
+      
+          property :voicemail_misconfiguration, as: 'voicemailMisconfiguration', class: Google::Apis::AlertcenterV1beta1::VoicemailMisconfiguration, decorator: Google::Apis::AlertcenterV1beta1::VoicemailMisconfiguration::Representation
+      
+        end
+      end
+      
+      class VoicemailMisconfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::AlertcenterV1beta1::VoicemailRecipientError, decorator: Google::Apis::AlertcenterV1beta1::VoicemailRecipientError::Representation
+      
+        end
+      end
+      
+      class VoicemailRecipientError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :invalid_reason, as: 'invalidReason'
         end
       end
     end
