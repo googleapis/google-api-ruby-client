@@ -1968,6 +1968,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a node group in a cluster. The returned Operation.metadata is
+        # NodeGroupOperationMetadata (https://cloud.google.com/dataproc/docs/reference/
+        # rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata).
+        # @param [String] parent
+        #   Required. The parent resource where this node group will be created. Format:
+        #   projects/`project`/regions/`region`/clusters/`cluster`
+        # @param [Google::Apis::DataprocV1::NodeGroup] node_group_object
+        # @param [String] node_group_id
+        #   Optional. An optional node group ID. Generated if not specified.The ID must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33
+        #   characters.
+        # @param [String] request_id
+        #   Optional. A unique ID used to identify the request. If the server receives two
+        #   CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
+        #   with the same ID, the second request is ignored and the first google.
+        #   longrunning.Operation created and stored in the backend is returned.
+        #   Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_region_cluster_node_group(parent, node_group_object = nil, node_group_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/nodeGroups', options)
+          command.request_representation = Google::Apis::DataprocV1::NodeGroup::Representation
+          command.request_object = node_group_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['nodeGroupId'] = node_group_id unless node_group_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the resource representation for a node group in a cluster.
         # @param [String] name
         #   Required. The name of the node group to retrieve. Format: projects/`project`/
