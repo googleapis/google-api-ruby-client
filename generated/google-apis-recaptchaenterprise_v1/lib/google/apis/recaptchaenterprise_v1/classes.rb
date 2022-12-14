@@ -570,7 +570,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether or not to do billing check. A reCAPTCHA Enterprise or
+        # Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or
         # migrated key behaves differently than a reCAPTCHA (non-Enterprise version) key
         # when you reach a quota limit (see https://cloud.google.com/recaptcha-
         # enterprise/quotas#quota_limit). To avoid any disruption of your usage, we
