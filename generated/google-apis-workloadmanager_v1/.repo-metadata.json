@@ -1,0 +1,7 @@
+{
+    "api_id": "workloadmanager:v1",
+    "name_pretty": "Workload Manager API",
+    "distribution_name": "google-apis-workloadmanager_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
