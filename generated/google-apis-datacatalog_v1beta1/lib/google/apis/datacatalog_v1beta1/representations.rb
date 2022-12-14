@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -354,6 +372,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DatacatalogV1beta1::Status, decorator: Google::Apis::DatacatalogV1beta1::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ImportEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_entries_count, :numeric_string => true, as: 'deletedEntriesCount'
+          property :upserted_entries_count, :numeric_string => true, as: 'upsertedEntriesCount'
         end
       end
       
@@ -770,6 +805,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::DatacatalogV1beta1::Policy, decorator: Google::Apis::DatacatalogV1beta1::Policy::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
