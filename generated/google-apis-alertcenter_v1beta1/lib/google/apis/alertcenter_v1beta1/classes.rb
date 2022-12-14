@@ -494,7 +494,7 @@ module Google
       class ApnsCertificateExpirationInfo
         include Google::Apis::Core::Hashable
       
-        # The Apple ID used for the certificate, may be blank if admins did not enter it.
+        # The Apple ID used for the certificate may be blank if admins didn't enter it.
         # Corresponds to the JSON property `appleId`
         # @return [String]
         attr_accessor :apple_id
@@ -2056,6 +2056,70 @@ module Google
         end
       end
       
+      # Details for an invalid transfer or forward.
+      class TransferError
+        include Google::Apis::Core::Hashable
+      
+        # User's email address. This may be unavailable if the entity was deleted.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Type of entity being transferred to. For ring group members, this should
+        # always be USER.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Ring group or auto attendant ID. Not set for users.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Reason for the error.
+        # Corresponds to the JSON property `invalidReason`
+        # @return [String]
+        attr_accessor :invalid_reason
+      
+        # User's full name, or the ring group / auto attendant name. This may be
+        # unavailable if the entity was deleted.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @id = args[:id] if args.key?(:id)
+          @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Error related to transferring or forwarding a phone call.
+      class TransferMisconfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Details for each invalid transfer or forward.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::TransferError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
       # A request to undelete a specific alert that was marked for deletion.
       class UndeleteAlertRequest
         include Google::Apis::Core::Hashable
@@ -2146,6 +2210,101 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # An alert triggered when Google Voice configuration becomes invalid, generally
+      # due to an external entity being modified or deleted.
+      class VoiceMisconfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Name of the entity whose configuration is now invalid.
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
+      
+        # Type of the entity whose configuration is now invalid.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Link that the admin can follow to fix the issue.
+        # Corresponds to the JSON property `fixUri`
+        # @return [String]
+        attr_accessor :fix_uri
+      
+        # Error related to transferring or forwarding a phone call.
+        # Corresponds to the JSON property `membersMisconfiguration`
+        # @return [Google::Apis::AlertcenterV1beta1::TransferMisconfiguration]
+        attr_accessor :members_misconfiguration
+      
+        # Error related to transferring or forwarding a phone call.
+        # Corresponds to the JSON property `transferMisconfiguration`
+        # @return [Google::Apis::AlertcenterV1beta1::TransferMisconfiguration]
+        attr_accessor :transfer_misconfiguration
+      
+        # Issue(s) with sending to voicemail.
+        # Corresponds to the JSON property `voicemailMisconfiguration`
+        # @return [Google::Apis::AlertcenterV1beta1::VoicemailMisconfiguration]
+        attr_accessor :voicemail_misconfiguration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @fix_uri = args[:fix_uri] if args.key?(:fix_uri)
+          @members_misconfiguration = args[:members_misconfiguration] if args.key?(:members_misconfiguration)
+          @transfer_misconfiguration = args[:transfer_misconfiguration] if args.key?(:transfer_misconfiguration)
+          @voicemail_misconfiguration = args[:voicemail_misconfiguration] if args.key?(:voicemail_misconfiguration)
+        end
+      end
+      
+      # Issue(s) with sending to voicemail.
+      class VoicemailMisconfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Issue(s) with voicemail recipients.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::VoicemailRecipientError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Issue(s) with a voicemail recipient.
+      class VoicemailRecipientError
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the invalid recipient. This may be unavailable if the
+        # recipient was deleted.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Reason for the error.
+        # Corresponds to the JSON property `invalidReason`
+        # @return [String]
+        attr_accessor :invalid_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
         end
       end
     end
