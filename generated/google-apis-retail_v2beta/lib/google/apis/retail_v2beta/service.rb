@@ -1689,10 +1689,10 @@ module Google
         #   the `servingConfigs` resource. `placements` is a legacy resource. The ID of
         #   the Recommendations AI serving config or placement. Before you can request
         #   predictions from your model, you must create at least one serving config or
-        #   placement for it. For more information, see [Managing serving configurations] (
-        #   https://cloud.google.com/retail/docs/manage-configs). The full list of
-        #   available serving configs can be seen at https://console.cloud.google.com/ai/
-        #   retail/catalogs/default_catalog/configs
+        #   placement for it. For more information, see [Manage serving configs] (https://
+        #   cloud.google.com/retail/docs/manage-configs). The full list of available
+        #   serving configs can be seen at https://console.cloud.google.com/ai/retail/
+        #   catalogs/default_catalog/configs
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPredictRequest] google_cloud_retail_v2beta_predict_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1731,8 +1731,8 @@ module Google
         #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
-        #   . This field is used to identify the serving configuration name and the set of
-        #   models that will be used to make the search.
+        #   . This field is used to identify the serving config name and the set of models
+        #   that will be used to make the search.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequest] google_cloud_retail_v2beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1995,10 +1995,10 @@ module Google
         #   the `servingConfigs` resource. `placements` is a legacy resource. The ID of
         #   the Recommendations AI serving config or placement. Before you can request
         #   predictions from your model, you must create at least one serving config or
-        #   placement for it. For more information, see [Managing serving configurations] (
-        #   https://cloud.google.com/retail/docs/manage-configs). The full list of
-        #   available serving configs can be seen at https://console.cloud.google.com/ai/
-        #   retail/catalogs/default_catalog/configs
+        #   placement for it. For more information, see [Manage serving configs] (https://
+        #   cloud.google.com/retail/docs/manage-configs). The full list of available
+        #   serving configs can be seen at https://console.cloud.google.com/ai/retail/
+        #   catalogs/default_catalog/configs
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPredictRequest] google_cloud_retail_v2beta_predict_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2074,8 +2074,8 @@ module Google
         #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
         #   default_serving_config` or the name of the legacy placement resource, such as `
         #   projects/*/locations/global/catalogs/default_catalog/placements/default_search`
-        #   . This field is used to identify the serving configuration name and the set of
-        #   models that will be used to make the search.
+        #   . This field is used to identify the serving config name and the set of models
+        #   that will be used to make the search.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequest] google_cloud_retail_v2beta_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2284,6 +2284,11 @@ module Google
         #   Required. The parent catalog resource name, such as `projects/1234/locations/
         #   global/catalogs/default_catalog`.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEvent] google_cloud_retail_v2beta_user_event_object
+        # @param [Boolean] write_async
+        #   If set to true, the user event will be written asynchronously after validation,
+        #   and the API will respond without waiting for the write. Therefore, silent
+        #   failures can occur even if the API returns success. In case of silent failures,
+        #   error messages can be found in Stackdriver logs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2301,13 +2306,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_project_location_catalog_user_event(parent, google_cloud_retail_v2beta_user_event_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def write_project_location_catalog_user_event(parent, google_cloud_retail_v2beta_user_event_object = nil, write_async: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta/{+parent}/userEvents:write', options)
           command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEvent::Representation
           command.request_object = google_cloud_retail_v2beta_user_event_object
           command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEvent::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaUserEvent
           command.params['parent'] = parent unless parent.nil?
+          command.query['writeAsync'] = write_async unless write_async.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
