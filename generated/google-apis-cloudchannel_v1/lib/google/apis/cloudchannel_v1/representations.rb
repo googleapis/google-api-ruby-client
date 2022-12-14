@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1ConditionalOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1Constraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1RepricingCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1RepricingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +503,12 @@ module Google
       end
       
       class GoogleCloudChannelV1Sku
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudChannelV1SkuGroupCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -919,6 +937,17 @@ module Google
           property :renewal_settings, as: 'renewalSettings', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RenewalSettings, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RenewalSettings::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudChannelV1ConditionalOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment, as: 'adjustment', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment::Representation
+      
+          property :rebilling_basis, as: 'rebillingBasis'
+          property :repricing_condition, as: 'repricingCondition', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingCondition, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingCondition::Representation
+      
         end
       end
       
@@ -1518,12 +1547,22 @@ module Google
         end
       end
       
+      class GoogleCloudChannelV1RepricingCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sku_group_condition, as: 'skuGroupCondition', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroupCondition, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroupCondition::Representation
+      
+        end
+      end
+      
       class GoogleCloudChannelV1RepricingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adjustment, as: 'adjustment', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment::Representation
       
           property :channel_partner_granularity, as: 'channelPartnerGranularity', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity::Representation
+      
+          collection :conditional_overrides, as: 'conditionalOverrides', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ConditionalOverride, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1ConditionalOverride::Representation
       
           property :effective_invoice_month, as: 'effectiveInvoiceMonth', class: Google::Apis::CloudchannelV1::GoogleTypeDate, decorator: Google::Apis::CloudchannelV1::GoogleTypeDate::Representation
       
@@ -1582,6 +1621,13 @@ module Google
           property :name, as: 'name'
           property :product, as: 'product', class: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Product, decorator: Google::Apis::CloudchannelV1::GoogleCloudChannelV1Product::Representation
       
+        end
+      end
+      
+      class GoogleCloudChannelV1SkuGroupCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sku_group, as: 'skuGroup'
         end
       end
       
