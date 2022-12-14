@@ -552,6 +552,39 @@ module Google
         end
       end
       
+      # Specifies the override to conditionally apply.
+      class GoogleCloudChannelV1ConditionalOverride
+        include Google::Apis::Core::Hashable
+      
+        # A type that represents the various adjustments you can apply to a bill.
+        # Corresponds to the JSON property `adjustment`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingAdjustment]
+        attr_accessor :adjustment
+      
+        # Required. The RebillingBasis to use for the applied override. Shows the
+        # relative cost based on your repricing costs.
+        # Corresponds to the JSON property `rebillingBasis`
+        # @return [String]
+        attr_accessor :rebilling_basis
+      
+        # Represents the various repricing conditions you can use for a conditional
+        # override.
+        # Corresponds to the JSON property `repricingCondition`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingCondition]
+        attr_accessor :repricing_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment = args[:adjustment] if args.key?(:adjustment)
+          @rebilling_basis = args[:rebilling_basis] if args.key?(:rebilling_basis)
+          @repricing_condition = args[:repricing_condition] if args.key?(:repricing_condition)
+        end
+      end
+      
       # Represents the constraints for buying the Offer.
       class GoogleCloudChannelV1Constraints
         include Google::Apis::Core::Hashable
@@ -2615,6 +2648,27 @@ module Google
         end
       end
       
+      # Represents the various repricing conditions you can use for a conditional
+      # override.
+      class GoogleCloudChannelV1RepricingCondition
+        include Google::Apis::Core::Hashable
+      
+        # A condition that applies the override if a line item SKU is found in the SKU
+        # group.
+        # Corresponds to the JSON property `skuGroupCondition`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1SkuGroupCondition]
+        attr_accessor :sku_group_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sku_group_condition = args[:sku_group_condition] if args.key?(:sku_group_condition)
+        end
+      end
+      
       # Configuration for repricing a Google bill over a period of time.
       class GoogleCloudChannelV1RepricingConfig
         include Google::Apis::Core::Hashable
@@ -2629,6 +2683,13 @@ module Google
         # Corresponds to the JSON property `channelPartnerGranularity`
         # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity]
         attr_accessor :channel_partner_granularity
+      
+        # The conditional overrides to apply for this configuration. If you list
+        # multiple overrides, only the first valid override is used. If you don't list
+        # any overrides, the API uses the normal adjustment and rebilling basis.
+        # Corresponds to the JSON property `conditionalOverrides`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1ConditionalOverride>]
+        attr_accessor :conditional_overrides
       
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
@@ -2661,6 +2722,7 @@ module Google
         def update!(**args)
           @adjustment = args[:adjustment] if args.key?(:adjustment)
           @channel_partner_granularity = args[:channel_partner_granularity] if args.key?(:channel_partner_granularity)
+          @conditional_overrides = args[:conditional_overrides] if args.key?(:conditional_overrides)
           @effective_invoice_month = args[:effective_invoice_month] if args.key?(:effective_invoice_month)
           @entitlement_granularity = args[:entitlement_granularity] if args.key?(:entitlement_granularity)
           @rebilling_basis = args[:rebilling_basis] if args.key?(:rebilling_basis)
@@ -2816,6 +2878,28 @@ module Google
           @marketing_info = args[:marketing_info] if args.key?(:marketing_info)
           @name = args[:name] if args.key?(:name)
           @product = args[:product] if args.key?(:product)
+        end
+      end
+      
+      # A condition that applies the override if a line item SKU is found in the SKU
+      # group.
+      class GoogleCloudChannelV1SkuGroupCondition
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource
+        # name of SKU group. Format: accounts/`account`/skuGroups/`sku_group`. Example: "
+        # accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        # Corresponds to the JSON property `skuGroup`
+        # @return [String]
+        attr_accessor :sku_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sku_group = args[:sku_group] if args.key?(:sku_group)
         end
       end
       
