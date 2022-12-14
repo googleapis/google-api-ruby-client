@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.2 (2022-12-13)
+
+#### Bug Fixes
+
+* Update UNSAFE_CLASS_NAMES ([#13030](https://github.com/googleapis/google-api-ruby-client/issues/13030)) 
+
 ### 0.9.1 (2022-10-18)
 
 #### Bug Fixes
