@@ -451,7 +451,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Describe whether the function is gen1 or gen2.
+        # Describe whether the function is 1st Gen or 2nd Gen.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
