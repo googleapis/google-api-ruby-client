@@ -90,6 +90,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a database.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id``
+        # @param [Boolean] allow_missing
+        #   If set to true and the Database is not found, the request will succeed but no
+        #   action will be taken.
+        # @param [String] etag
+        #   The current etag of the Database. If an etag is provided and does not match
+        #   the current etag of the database, deletion will be blocked and a
+        #   FAILED_PRECONDITION error will be returned.
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the response, but do not actually
+        #   delete the database.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_database(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Exports a copy of all or a subset of documents from Google Cloud Firestore to
         # another storage system, such as Google Cloud Storage. Recent updates to
         # documents may not be reflected in the export. The export occurs in the
@@ -822,28 +865,35 @@ module Google
         #   databases/my-database/documents` or `projects/my-project/databases/my-database/
         #   documents/chatrooms/my-chatroom`
         # @param [String] collection_id
-        #   Required. The collection ID, relative to `parent`, to list. For example: `
-        #   chatrooms` or `messages`.
+        #   Optional. The collection ID, relative to `parent`, to list. For example: `
+        #   chatrooms` or `messages`. This is optional, and when not provided, Firestore
+        #   will list documents from all collections under the provided `parent`.
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
         # @param [String] order_by
-        #   The order to sort results by. For example: `priority desc, name`.
+        #   Optional. The optional ordering of the documents to return. For example: `
+        #   priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore
+        #   queries but in a string representation. When absent, documents are ordered
+        #   based on `__name__ ASC`.
         # @param [Fixnum] page_size
-        #   The maximum number of documents to return.
+        #   Optional. The maximum number of documents to return in a single response.
+        #   Firestore may return fewer than this value.
         # @param [String] page_token
-        #   The `next_page_token` value returned from a previous List request, if any.
+        #   Optional. A page token, received from a previous `ListDocuments` response.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters (with the exception of `page_size`) must match the values set in
+        #   the request that generated the page token.
         # @param [String] read_time
-        #   Reads documents as they were at the given time. This may not be older than 270
-        #   seconds.
+        #   Perform the read at the provided time. This may not be older than 270 seconds.
         # @param [Boolean] show_missing
-        #   If the list should show missing documents. A missing document is a document
-        #   that does not exist but has sub-documents. These documents will be returned
-        #   with a key but will not have fields, Document.create_time, or Document.
-        #   update_time set. Requests with `show_missing` may not specify `where` or `
-        #   order_by`.
+        #   If the list should show missing documents. A document is missing if it does
+        #   not exist, but there are sub-documents nested underneath it. When true, such
+        #   missing documents will be returned with a key but will not have fields, `
+        #   create_time`, or `update_time` set. Requests with `show_missing` may not
+        #   specify `where` or `order_by`.
         # @param [String] transaction
-        #   Reads documents in a transaction.
+        #   Perform the read as part of an already active transaction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -922,28 +972,35 @@ module Google
         #   databases/my-database/documents` or `projects/my-project/databases/my-database/
         #   documents/chatrooms/my-chatroom`
         # @param [String] collection_id
-        #   Required. The collection ID, relative to `parent`, to list. For example: `
-        #   chatrooms` or `messages`.
+        #   Optional. The collection ID, relative to `parent`, to list. For example: `
+        #   chatrooms` or `messages`. This is optional, and when not provided, Firestore
+        #   will list documents from all collections under the provided `parent`.
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
         # @param [String] order_by
-        #   The order to sort results by. For example: `priority desc, name`.
+        #   Optional. The optional ordering of the documents to return. For example: `
+        #   priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore
+        #   queries but in a string representation. When absent, documents are ordered
+        #   based on `__name__ ASC`.
         # @param [Fixnum] page_size
-        #   The maximum number of documents to return.
+        #   Optional. The maximum number of documents to return in a single response.
+        #   Firestore may return fewer than this value.
         # @param [String] page_token
-        #   The `next_page_token` value returned from a previous List request, if any.
+        #   Optional. A page token, received from a previous `ListDocuments` response.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters (with the exception of `page_size`) must match the values set in
+        #   the request that generated the page token.
         # @param [String] read_time
-        #   Reads documents as they were at the given time. This may not be older than 270
-        #   seconds.
+        #   Perform the read at the provided time. This may not be older than 270 seconds.
         # @param [Boolean] show_missing
-        #   If the list should show missing documents. A missing document is a document
-        #   that does not exist but has sub-documents. These documents will be returned
-        #   with a key but will not have fields, Document.create_time, or Document.
-        #   update_time set. Requests with `show_missing` may not specify `where` or `
-        #   order_by`.
+        #   If the list should show missing documents. A document is missing if it does
+        #   not exist, but there are sub-documents nested underneath it. When true, such
+        #   missing documents will be returned with a key but will not have fields, `
+        #   create_time`, or `update_time` set. Requests with `show_missing` may not
+        #   specify `where` or `order_by`.
         # @param [String] transaction
-        #   Reads documents in a transaction.
+        #   Perform the read as part of an already active transaction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

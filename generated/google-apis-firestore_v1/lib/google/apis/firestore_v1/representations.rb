@@ -828,7 +828,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection_ids, as: 'collectionIds'
-          collection :namespace_ids, as: 'namespaceIds'
           property :output_uri_prefix, as: 'outputUriPrefix'
         end
       end
@@ -889,7 +888,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection_ids, as: 'collectionIds'
           property :input_uri_prefix, as: 'inputUriPrefix'
-          collection :namespace_ids, as: 'namespaceIds'
         end
       end
       
