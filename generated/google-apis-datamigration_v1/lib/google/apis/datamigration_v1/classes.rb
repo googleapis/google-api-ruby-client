@@ -92,6 +92,32 @@ module Google
         end
       end
       
+      # Request message for 'ApplyConversionWorkspace' request.
+      class ApplyConversionWorkspaceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified (Uri) name of the destination connection profile.
+        # Corresponds to the JSON property `connectionProfile`
+        # @return [String]
+        attr_accessor :connection_profile
+      
+        # Filter which entities to apply. Leaving this field empty will apply all of the
+        # entities. Supports Google AIP 160 based filtering.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_profile = args[:connection_profile] if args.key?(:connection_profile)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -160,6 +186,76 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # Execution log of a background job.
+      class BackgroundJobLogEntry
+        include Google::Apis::Core::Hashable
+      
+        # Job completion comment, such as how many entities were seeded, how many
+        # warnings were found during conversion and similar information.
+        # Corresponds to the JSON property `completionComment`
+        # @return [String]
+        attr_accessor :completion_comment
+      
+        # Job completion state, i.e. the final state after the job completed.
+        # Corresponds to the JSON property `completionState`
+        # @return [String]
+        attr_accessor :completion_state
+      
+        # The timestamp when the background job was finished.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # The background job log entry id
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Details regarding an Import Rules background job
+        # Corresponds to the JSON property `importRulesJobDetails`
+        # @return [Google::Apis::DatamigrationV1::ImportRulesJobDetails]
+        attr_accessor :import_rules_job_details
+      
+        # The type of job that was executed.
+        # Corresponds to the JSON property `jobType`
+        # @return [String]
+        attr_accessor :job_type
+      
+        # Whether the client requested the conversion workspace to be committed after a
+        # successful completion of the job.
+        # Corresponds to the JSON property `requestAutocommit`
+        # @return [Boolean]
+        attr_accessor :request_autocommit
+        alias_method :request_autocommit?, :request_autocommit
+      
+        # Details regarding a Seed background job
+        # Corresponds to the JSON property `seedJobDetails`
+        # @return [Google::Apis::DatamigrationV1::SeedJobDetails]
+        attr_accessor :seed_job_details
+      
+        # The timestamp when the background job was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_comment = args[:completion_comment] if args.key?(:completion_comment)
+          @completion_state = args[:completion_state] if args.key?(:completion_state)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @id = args[:id] if args.key?(:id)
+          @import_rules_job_details = args[:import_rules_job_details] if args.key?(:import_rules_job_details)
+          @job_type = args[:job_type] if args.key?(:job_type)
+          @request_autocommit = args[:request_autocommit] if args.key?(:request_autocommit)
+          @seed_job_details = args[:seed_job_details] if args.key?(:seed_job_details)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -448,6 +544,152 @@ module Google
         end
       end
       
+      # Column is not used as an independent entity, it is retrieved as part of a
+      # Table entity.
+      class ColumnEntity
+        include Google::Apis::Core::Hashable
+      
+        # Is the column of array type
+        # Corresponds to the JSON property `array`
+        # @return [Boolean]
+        attr_accessor :array
+        alias_method :array?, :array
+      
+        # If the column is array, of which length
+        # Corresponds to the JSON property `arrayLength`
+        # @return [Fixnum]
+        attr_accessor :array_length
+      
+        # Is the column auto-generated/identity
+        # Corresponds to the JSON property `autoGenerated`
+        # @return [Boolean]
+        attr_accessor :auto_generated
+        alias_method :auto_generated?, :auto_generated
+      
+        # Charset override - instead of table level charset
+        # Corresponds to the JSON property `charset`
+        # @return [String]
+        attr_accessor :charset
+      
+        # Collation override - instead of table level collation
+        # Corresponds to the JSON property `collation`
+        # @return [String]
+        attr_accessor :collation
+      
+        # Comment associated with the column
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Column data type
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Default value of the column
+        # Corresponds to the JSON property `defaultValue`
+        # @return [String]
+        attr_accessor :default_value
+      
+        # Column fractional second precision - used for timestamp based datatypes
+        # Corresponds to the JSON property `fractionalSecondsPrecision`
+        # @return [Fixnum]
+        attr_accessor :fractional_seconds_precision
+      
+        # Column length - e.g. varchar (50)
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Column name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Is the column nullable
+        # Corresponds to the JSON property `nullable`
+        # @return [Boolean]
+        attr_accessor :nullable
+        alias_method :nullable?, :nullable
+      
+        # Column order in the table
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        # Column precision - when relevant
+        # Corresponds to the JSON property `precision`
+        # @return [Fixnum]
+        attr_accessor :precision
+      
+        # Column scale - when relevant
+        # Corresponds to the JSON property `scale`
+        # @return [Fixnum]
+        attr_accessor :scale
+      
+        # Specifies the list of values allowed in the column. List is empty if set
+        # values is not required
+        # Corresponds to the JSON property `setValues`
+        # @return [Array<String>]
+        attr_accessor :set_values
+      
+        # Is the column a UDT
+        # Corresponds to the JSON property `udt`
+        # @return [Boolean]
+        attr_accessor :udt
+        alias_method :udt?, :udt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @array = args[:array] if args.key?(:array)
+          @array_length = args[:array_length] if args.key?(:array_length)
+          @auto_generated = args[:auto_generated] if args.key?(:auto_generated)
+          @charset = args[:charset] if args.key?(:charset)
+          @collation = args[:collation] if args.key?(:collation)
+          @comment = args[:comment] if args.key?(:comment)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @fractional_seconds_precision = args[:fractional_seconds_precision] if args.key?(:fractional_seconds_precision)
+          @length = args[:length] if args.key?(:length)
+          @name = args[:name] if args.key?(:name)
+          @nullable = args[:nullable] if args.key?(:nullable)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+          @precision = args[:precision] if args.key?(:precision)
+          @scale = args[:scale] if args.key?(:scale)
+          @set_values = args[:set_values] if args.key?(:set_values)
+          @udt = args[:udt] if args.key?(:udt)
+        end
+      end
+      
+      # Request message for 'CommitConversionWorkspace' request.
+      class CommitConversionWorkspaceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional name of the commit.
+        # Corresponds to the JSON property `commitName`
+        # @return [String]
+        attr_accessor :commit_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_name = args[:commit_name] if args.key?(:commit_name)
+        end
+      end
+      
       # A connection profile definition.
       class ConnectionProfile
         include Google::Apis::Core::Hashable
@@ -505,6 +747,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies connection parameters required specifically for Oracle databases.
+        # Corresponds to the JSON property `oracle`
+        # @return [Google::Apis::DatamigrationV1::OracleConnectionProfile]
+        attr_accessor :oracle
+      
         # Specifies connection parameters required specifically for PostgreSQL databases.
         # Corresponds to the JSON property `postgresql`
         # @return [Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile]
@@ -541,10 +788,334 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @mysql = args[:mysql] if args.key?(:mysql)
           @name = args[:name] if args.key?(:name)
+          @oracle = args[:oracle] if args.key?(:oracle)
           @postgresql = args[:postgresql] if args.key?(:postgresql)
           @provider = args[:provider] if args.key?(:provider)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Constraint is not used as an independent entity, it is retrieved as part of
+      # another entity such as Table or View.
+      class ConstraintEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The name of the table constraint
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Reference Columns which may be associated with the constraint. eg: if the
+        # constraint is a FOREIGN_KEY, this represents the list of full names of
+        # referenced columns by the foreign key.
+        # Corresponds to the JSON property `referenceColumns`
+        # @return [Array<String>]
+        attr_accessor :reference_columns
+      
+        # Reference table which may be associated with the constraint. eg: if the
+        # constraint is a FOREIGN_KEY, this represents the list of full name of the
+        # referenced table by the foreign key.
+        # Corresponds to the JSON property `referenceTable`
+        # @return [String]
+        attr_accessor :reference_table
+      
+        # Table columns used as part of the Constraint for e.g. primary key constraint
+        # should list the columns which constitutes the key
+        # Corresponds to the JSON property `tableColumns`
+        # @return [Array<String>]
+        attr_accessor :table_columns
+      
+        # Table which is associated with the constraint. In case the constraint is
+        # defined on a table, this field is left empty as this information is stored in
+        # parent_name. However, if constraint is defined on a view, this field stores
+        # the table name on which the view is defined.
+        # Corresponds to the JSON property `tableName`
+        # @return [String]
+        attr_accessor :table_name
+      
+        # Type of constraint - e.g. unique, primary key, foreign key (currently only
+        # primary key is supported)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @name = args[:name] if args.key?(:name)
+          @reference_columns = args[:reference_columns] if args.key?(:reference_columns)
+          @reference_table = args[:reference_table] if args.key?(:reference_table)
+          @table_columns = args[:table_columns] if args.key?(:table_columns)
+          @table_name = args[:table_name] if args.key?(:table_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The main conversion workspace resource entity.
+      class ConversionWorkspace
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the workspace resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The type and version of a source or destination DB.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
+        attr_accessor :destination
+      
+        # The display name for the workspace
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A generic list of settings for the workspace. The settings are database pair
+        # dependant and can indicate default behavior for the mapping rules engine or
+        # turn on or off specific features. Such examples can be:
+        # convert_foreign_key_to_interleave=true, skip_triggers=false,
+        # ignore_non_table_synonyms=true
+        # Corresponds to the JSON property `globalSettings`
+        # @return [Hash<String,String>]
+        attr_accessor :global_settings
+      
+        # Output only. Whether the workspace has uncommitted changes (changes which were
+        # made after the workspace was committed)
+        # Corresponds to the JSON property `hasUncommittedChanges`
+        # @return [Boolean]
+        attr_accessor :has_uncommitted_changes
+        alias_method :has_uncommitted_changes?, :has_uncommitted_changes
+      
+        # Output only. The latest commit id
+        # Corresponds to the JSON property `latestCommitId`
+        # @return [String]
+        attr_accessor :latest_commit_id
+      
+        # Output only. The timestamp when the workspace was committed.
+        # Corresponds to the JSON property `latestCommitTime`
+        # @return [String]
+        attr_accessor :latest_commit_time
+      
+        # Full name of the workspace resource, in the form of: projects/`project`/
+        # locations/`location`/conversionWorkspaces/`conversion_workspace`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type and version of a source or destination DB.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::DatamigrationV1::DatabaseEngineInfo]
+        attr_accessor :source
+      
+        # Output only. The timestamp when the workspace resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @destination = args[:destination] if args.key?(:destination)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @global_settings = args[:global_settings] if args.key?(:global_settings)
+          @has_uncommitted_changes = args[:has_uncommitted_changes] if args.key?(:has_uncommitted_changes)
+          @latest_commit_id = args[:latest_commit_id] if args.key?(:latest_commit_id)
+          @latest_commit_time = args[:latest_commit_time] if args.key?(:latest_commit_time)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A conversion workspace's version.
+      class ConversionWorkspaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # The commit ID of the conversion workspace.
+        # Corresponds to the JSON property `commitId`
+        # @return [String]
+        attr_accessor :commit_id
+      
+        # The resource name (URI) of the conversion workspace.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit_id = args[:commit_id] if args.key?(:commit_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Request message for 'ConvertConversionWorkspace' request.
+      class ConvertConversionWorkspaceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Should the conversion workspace be committed automatically after the
+        # conversion.
+        # Corresponds to the JSON property `autoCommit`
+        # @return [Boolean]
+        attr_accessor :auto_commit
+        alias_method :auto_commit?, :auto_commit
+      
+        # Filter the entities to convert. Leaving this field empty will convert all of
+        # the entities. Supports Google AIP-160 style filtering.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_commit = args[:auto_commit] if args.key?(:auto_commit)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # The type and version of a source or destination DB.
+      class DatabaseEngineInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Engine Type.
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
+      
+        # Required. Engine named version, for e.g. 12.c.1
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine = args[:engine] if args.key?(:engine)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The base entity type for all the database related entities The message
+      # contains the entity name, the name of its parent, its type and the specific
+      # details per its type
+      class DatabaseEntity
+        include Google::Apis::Core::Hashable
+      
+        # Function's parent is a schema.
+        # Corresponds to the JSON property `databaseFunction`
+        # @return [Google::Apis::DatamigrationV1::FunctionEntity]
+        attr_accessor :database_function
+      
+        # Package's parent is a schema.
+        # Corresponds to the JSON property `databasePackage`
+        # @return [Google::Apis::DatamigrationV1::PackageEntity]
+        attr_accessor :database_package
+      
+        # The type of the database entity (table, view, index, ...).
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Details about entity mappings. For source tree entities, this holds the draft
+        # entities which were generated by the mapping rules. For draft tree entities,
+        # this holds the source entities which were converted to form the draft entity.
+        # Destination entities will have no mapping details.
+        # Corresponds to the JSON property `mappings`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityMapping>]
+        attr_accessor :mappings
+      
+        # The full name of the parent entity (e.g. schema name).
+        # Corresponds to the JSON property `parentEntity`
+        # @return [String]
+        attr_accessor :parent_entity
+      
+        # Schema typically has no parent entity, but can have a parent entity
+        # DatabaseInstance (for database engines which supports it). For some database
+        # engines the term schema and user can be used interchangeably when they refer
+        # to a namespace or a collection of other database entities. Can store
+        # additional information which is schema specific.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DatamigrationV1::SchemaEntity]
+        attr_accessor :schema
+      
+        # Sequence's parent is a schema.
+        # Corresponds to the JSON property `sequence`
+        # @return [Google::Apis::DatamigrationV1::SequenceEntity]
+        attr_accessor :sequence
+      
+        # The short name (e.g. table name) of the entity.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
+        # Stored procedure's parent is a schema.
+        # Corresponds to the JSON property `storedProcedure`
+        # @return [Google::Apis::DatamigrationV1::StoredProcedureEntity]
+        attr_accessor :stored_procedure
+      
+        # Synonym's parent is a schema.
+        # Corresponds to the JSON property `synonym`
+        # @return [Google::Apis::DatamigrationV1::SynonymEntity]
+        attr_accessor :synonym
+      
+        # Table's parent is a schema.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DatamigrationV1::TableEntity]
+        attr_accessor :table
+      
+        # The type of tree the entity belongs to.
+        # Corresponds to the JSON property `tree`
+        # @return [String]
+        attr_accessor :tree
+      
+        # View's parent is a schema.
+        # Corresponds to the JSON property `view`
+        # @return [Google::Apis::DatamigrationV1::ViewEntity]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_function = args[:database_function] if args.key?(:database_function)
+          @database_package = args[:database_package] if args.key?(:database_package)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @mappings = args[:mappings] if args.key?(:mappings)
+          @parent_entity = args[:parent_entity] if args.key?(:parent_entity)
+          @schema = args[:schema] if args.key?(:schema)
+          @sequence = args[:sequence] if args.key?(:sequence)
+          @short_name = args[:short_name] if args.key?(:short_name)
+          @stored_procedure = args[:stored_procedure] if args.key?(:stored_procedure)
+          @synonym = args[:synonym] if args.key?(:synonym)
+          @table = args[:table] if args.key?(:table)
+          @tree = args[:tree] if args.key?(:tree)
+          @view = args[:view] if args.key?(:view)
         end
       end
       
@@ -570,6 +1141,51 @@ module Google
         def update!(**args)
           @engine = args[:engine] if args.key?(:engine)
           @provider = args[:provider] if args.key?(:provider)
+        end
+      end
+      
+      # Response message for 'DescribeConversionWorkspaceRevisions' request.
+      class DescribeConversionWorkspaceRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversion workspace revisions.
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<Google::Apis::DatamigrationV1::ConversionWorkspace>]
+        attr_accessor :revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revisions = args[:revisions] if args.key?(:revisions)
+        end
+      end
+      
+      # Response message for 'DescribeDatabaseEntities' request.
+      class DescribeDatabaseEntitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of database entities for the conversion workspace.
+        # Corresponds to the JSON property `databaseEntities`
+        # @return [Array<Google::Apis::DatamigrationV1::DatabaseEntity>]
+        attr_accessor :database_entities
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_entities = args[:database_entities] if args.key?(:database_entities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -633,6 +1249,74 @@ module Google
         end
       end
       
+      # Details of the mappings of a database entity.
+      class EntityMapping
+        include Google::Apis::Core::Hashable
+      
+        # Target entity full name. The draft entity can also include a column, index or
+        # constraint using the same naming notation schema.table.column
+        # Corresponds to the JSON property `draftEntity`
+        # @return [String]
+        attr_accessor :draft_entity
+      
+        # Entity mapping log entries. Multiple rules can be effective and contribute
+        # changes to a converted entity such as, a rule can handle the entity name,
+        # another rule can handle an entity type. In addition, rules which did not
+        # change the entity are also logged along the with the reason preventing them to
+        # do so.
+        # Corresponds to the JSON property `mappingLog`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityMappingLogEntry>]
+        attr_accessor :mapping_log
+      
+        # Source entity full name. The source entity can also be a column, index or
+        # constraint using the same naming notation schema.table.column
+        # Corresponds to the JSON property `sourceEntity`
+        # @return [String]
+        attr_accessor :source_entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @draft_entity = args[:draft_entity] if args.key?(:draft_entity)
+          @mapping_log = args[:mapping_log] if args.key?(:mapping_log)
+          @source_entity = args[:source_entity] if args.key?(:source_entity)
+        end
+      end
+      
+      # A single record of a rule which was used for a mapping.
+      class EntityMappingLogEntry
+        include Google::Apis::Core::Hashable
+      
+        # Comment.
+        # Corresponds to the JSON property `mappingComment`
+        # @return [String]
+        attr_accessor :mapping_comment
+      
+        # Which rule caused it.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        # Rule revision id
+        # Corresponds to the JSON property `ruleRevisionId`
+        # @return [String]
+        attr_accessor :rule_revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mapping_comment = args[:mapping_comment] if args.key?(:mapping_comment)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+          @rule_revision_id = args[:rule_revision_id] if args.key?(:rule_revision_id)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -684,6 +1368,74 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Forward SSH Tunnel connectivity.
+      class ForwardSshTunnelConnectivity
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hostname for the SSH tunnel.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Input only. SSH password.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Port for the SSH tunnel, default value is 22.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Input only. SSH private key.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        # Required. Username for the SSH tunnel.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @password = args[:password] if args.key?(:password)
+          @port = args[:port] if args.key?(:port)
+          @private_key = args[:private_key] if args.key?(:private_key)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Function's parent is a schema.
+      class FunctionEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the function
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
         end
       end
       
@@ -783,6 +1535,110 @@ module Google
         end
       end
       
+      # Request message for 'ImportMappingRules' request.
+      class ImportMappingRulesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Should the conversion workspace be committed automatically after the import
+        # operation.
+        # Corresponds to the JSON property `autoCommit`
+        # @return [Boolean]
+        attr_accessor :auto_commit
+        alias_method :auto_commit?, :auto_commit
+      
+        # One or more rules files
+        # Corresponds to the JSON property `rulesFiles`
+        # @return [Array<Google::Apis::DatamigrationV1::RulesFile>]
+        attr_accessor :rules_files
+      
+        # The format of the rules content file.
+        # Corresponds to the JSON property `rulesFormat`
+        # @return [String]
+        attr_accessor :rules_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_commit = args[:auto_commit] if args.key?(:auto_commit)
+          @rules_files = args[:rules_files] if args.key?(:rules_files)
+          @rules_format = args[:rules_format] if args.key?(:rules_format)
+        end
+      end
+      
+      # Details regarding an Import Rules background job
+      class ImportRulesJobDetails
+        include Google::Apis::Core::Hashable
+      
+        # The requested file format
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
+      
+        # File names used for the import rules job
+        # Corresponds to the JSON property `files`
+        # @return [Array<String>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_format = args[:file_format] if args.key?(:file_format)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
+      # Index is not used as an independent entity, it is retrieved as part of a Table
+      # entity.
+      class IndexEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The name of the index
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Table columns used as part of the Index for e.g. B-TREE index should list the
+        # columns which constitutes the index.
+        # Corresponds to the JSON property `tableColumns`
+        # @return [Array<String>]
+        attr_accessor :table_columns
+      
+        # Type of index - e.g. B-TREE
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # boolean value indicating whether the index is unique
+        # Corresponds to the JSON property `unique`
+        # @return [Boolean]
+        attr_accessor :unique
+        alias_method :unique?, :unique
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @name = args[:name] if args.key?(:name)
+          @table_columns = args[:table_columns] if args.key?(:table_columns)
+          @type = args[:type] if args.key?(:type)
+          @unique = args[:unique] if args.key?(:unique)
+        end
+      end
+      
       # Response message for 'ListConnectionProfiles' request.
       class ListConnectionProfilesResponse
         include Google::Apis::Core::Hashable
@@ -810,6 +1666,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_profiles = args[:connection_profiles] if args.key?(:connection_profiles)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for 'ListConversionWorkspaces' request.
+      class ListConversionWorkspacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversion workspace objects.
+        # Corresponds to the JSON property `conversionWorkspaces`
+        # @return [Array<Google::Apis::DatamigrationV1::ConversionWorkspace>]
+        attr_accessor :conversion_workspaces
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_workspaces = args[:conversion_workspaces] if args.key?(:conversion_workspaces)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -897,6 +1785,38 @@ module Google
         end
       end
       
+      # Response message for 'ListPrivateConnections' request.
+      class ListPrivateConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of private connections.
+        # Corresponds to the JSON property `privateConnections`
+        # @return [Array<Google::Apis::DatamigrationV1::PrivateConnection>]
+        attr_accessor :private_connections
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @private_connections = args[:private_connections] if args.key?(:private_connections)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -967,6 +1887,11 @@ module Google
       class MigrationJob
         include Google::Apis::Core::Hashable
       
+        # A conversion workspace's version.
+        # Corresponds to the JSON property `conversionWorkspace`
+        # @return [Google::Apis::DatamigrationV1::ConversionWorkspaceInfo]
+        attr_accessor :conversion_workspace
+      
         # Output only. The timestamp when the migration job resource was created. A
         # timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "
         # 2014-10-02T15:01:23.045123456Z".
@@ -1021,6 +1946,14 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DatamigrationV1::Status]
         attr_accessor :error
+      
+        # This field can be used to select the entities to migrate as part of the
+        # migration job. It uses AIP-160 notation to select a subset of the entities
+        # configured on the associated conversion-workspace. This field should not be
+        # set on migration-jobs that are not associated with a conversion workspace.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
       
         # The resource labels for migration job to use to annotate any related
         # underlying resources such as Compute Engine VMs. An object containing a list
@@ -1099,6 +2032,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @conversion_workspace = args[:conversion_workspace] if args.key?(:conversion_workspace)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @destination_database = args[:destination_database] if args.key?(:destination_database)
@@ -1108,6 +2042,7 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @phase = args[:phase] if args.key?(:phase)
@@ -1277,6 +2212,110 @@ module Google
         end
       end
       
+      # Specifies connection parameters required specifically for Oracle databases.
+      class OracleConnectionProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Database service for the Oracle connection.
+        # Corresponds to the JSON property `databaseService`
+        # @return [String]
+        attr_accessor :database_service
+      
+        # Forward SSH Tunnel connectivity.
+        # Corresponds to the JSON property `forwardSshConnectivity`
+        # @return [Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity]
+        attr_accessor :forward_ssh_connectivity
+      
+        # Required. The IP or hostname of the source Oracle database.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Required. Input only. The password for the user that Database Migration
+        # Service will be using to connect to the database. This field is not returned
+        # on request, and the value is encrypted when stored in Database Migration
+        # Service.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Output only. Indicates whether a new password is included in the request.
+        # Corresponds to the JSON property `passwordSet`
+        # @return [Boolean]
+        attr_accessor :password_set
+        alias_method :password_set?, :password_set
+      
+        # Required. The network port of the source Oracle database.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Private Connectivity.
+        # Corresponds to the JSON property `privateConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateConnectivity]
+        attr_accessor :private_connectivity
+      
+        # Static IP address connectivity configured on service project.
+        # Corresponds to the JSON property `staticServiceIpConnectivity`
+        # @return [Google::Apis::DatamigrationV1::StaticServiceIpConnectivity]
+        attr_accessor :static_service_ip_connectivity
+      
+        # Required. The username that Database Migration Service will use to connect to
+        # the database. The value is encrypted when stored in Database Migration Service.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_service = args[:database_service] if args.key?(:database_service)
+          @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
+          @host = args[:host] if args.key?(:host)
+          @password = args[:password] if args.key?(:password)
+          @password_set = args[:password_set] if args.key?(:password_set)
+          @port = args[:port] if args.key?(:port)
+          @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Package's parent is a schema.
+      class PackageEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the package body. If the package specification has
+        # cursors or subprograms, then the package body is mandatory.
+        # Corresponds to the JSON property `packageBody`
+        # @return [String]
+        attr_accessor :package_body
+      
+        # The SQL code which creates the package
+        # Corresponds to the JSON property `packageSqlCode`
+        # @return [String]
+        attr_accessor :package_sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @package_body = args[:package_body] if args.key?(:package_body)
+          @package_sql_code = args[:package_sql_code] if args.key?(:package_sql_code)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -1412,10 +2451,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
+        # private-service-connect#benefits-services)
+        # Corresponds to the JSON property `privateServiceConnectConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity]
+        attr_accessor :private_service_connect_connectivity
+      
         # SSL configuration information.
         # Corresponds to the JSON property `ssl`
         # @return [Google::Apis::DatamigrationV1::SslConfig]
         attr_accessor :ssl
+      
+        # The source database will allow incoming connections from the destination
+        # database's public IP. You can retrieve the Cloud SQL instance's public IP from
+        # the Cloud SQL console or using Cloud SQL APIs. No additional configuration is
+        # required.
+        # Corresponds to the JSON property `staticIpConnectivity`
+        # @return [Google::Apis::DatamigrationV1::StaticIpConnectivity]
+        attr_accessor :static_ip_connectivity
       
         # Required. The username that Database Migration Service will use to connect to
         # the database. The value is encrypted when stored in Database Migration Service.
@@ -1435,7 +2488,9 @@ module Google
           @password = args[:password] if args.key?(:password)
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
+          @private_service_connect_connectivity = args[:private_service_connect_connectivity] if args.key?(:private_service_connect_connectivity)
           @ssl = args[:ssl] if args.key?(:ssl)
+          @static_ip_connectivity = args[:static_ip_connectivity] if args.key?(:static_ip_connectivity)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -1484,6 +2539,118 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
           @private_ip = args[:private_ip] if args.key?(:private_ip)
+        end
+      end
+      
+      # The PrivateConnection resource is used to establish private connectivity with
+      # the customer's network.
+      class PrivateConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The create time of the resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The private connection display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DatamigrationV1::Status]
+        attr_accessor :error
+      
+        # The resource labels for private connections to use to annotate any related
+        # underlying resources such as Compute Engine VMs. An object containing a list
+        # of "key": "value" pairs. Example: `` "name": "wrench", "mass": "1.3kg", "count"
+        # : "3" ``.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The resource's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the Private Connection.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The last update time of the resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # The VPC Peering configuration is used to create VPC peering with the consumer'
+        # s VPC.
+        # Corresponds to the JSON property `vpcPeeringConfig`
+        # @return [Google::Apis::DatamigrationV1::VpcPeeringConfig]
+        attr_accessor :vpc_peering_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vpc_peering_config = args[:vpc_peering_config] if args.key?(:vpc_peering_config)
+        end
+      end
+      
+      # Private Connectivity.
+      class PrivateConnectivity
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name (URI) of the private connection.
+        # Corresponds to the JSON property `privateConnection`
+        # @return [String]
+        attr_accessor :private_connection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_connection = args[:private_connection] if args.key?(:private_connection)
+        end
+      end
+      
+      # Private Service Connect connectivity (https://cloud.google.com/vpc/docs/
+      # private-service-connect#benefits-services)
+      class PrivateServiceConnectConnectivity
+        include Google::Apis::Core::Hashable
+      
+        # Required. A service attachment that exposes a database, and has the following
+        # format: projects/`project`/regions/`region`/serviceAttachments/`
+        # service_attachment_name`
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
         end
       end
       
@@ -1568,6 +2735,202 @@ module Google
           @vm_ip = args[:vm_ip] if args.key?(:vm_ip)
           @vm_port = args[:vm_port] if args.key?(:vm_port)
           @vpc = args[:vpc] if args.key?(:vpc)
+        end
+      end
+      
+      # Request message for 'RollbackConversionWorkspace' request.
+      class RollbackConversionWorkspaceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of a single rules file
+      class RulesFile
+        include Google::Apis::Core::Hashable
+      
+        # The text content of the rules that needs to be converted
+        # Corresponds to the JSON property `rulesContent`
+        # @return [String]
+        attr_accessor :rules_content
+      
+        # The filename of the rules that needs to be converted. This is used mainly so
+        # future logs of the import rules job will contain this detail and can therefore
+        # be searched by it later
+        # Corresponds to the JSON property `rulesSourceFilename`
+        # @return [String]
+        attr_accessor :rules_source_filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rules_content = args[:rules_content] if args.key?(:rules_content)
+          @rules_source_filename = args[:rules_source_filename] if args.key?(:rules_source_filename)
+        end
+      end
+      
+      # Schema typically has no parent entity, but can have a parent entity
+      # DatabaseInstance (for database engines which supports it). For some database
+      # engines the term schema and user can be used interchangeably when they refer
+      # to a namespace or a collection of other database entities. Can store
+      # additional information which is schema specific.
+      class SchemaEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+        end
+      end
+      
+      # Response message for 'SearchBackgroundJobs' request.
+      class SearchBackgroundJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of conversion workspace mapping rules.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::DatamigrationV1::BackgroundJobLogEntry>]
+        attr_accessor :jobs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs = args[:jobs] if args.key?(:jobs)
+        end
+      end
+      
+      # Request message for 'SeedConversionWorkspace' request.
+      class SeedConversionWorkspaceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Should the conversion workspace be committed automatically after the seed
+        # operation.
+        # Corresponds to the JSON property `autoCommit`
+        # @return [Boolean]
+        attr_accessor :auto_commit
+        alias_method :auto_commit?, :auto_commit
+      
+        # Fully qualified (Uri) name of the destination connection profile.
+        # Corresponds to the JSON property `destinationConnectionProfile`
+        # @return [String]
+        attr_accessor :destination_connection_profile
+      
+        # Fully qualified (Uri) name of the source connection profile.
+        # Corresponds to the JSON property `sourceConnectionProfile`
+        # @return [String]
+        attr_accessor :source_connection_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_commit = args[:auto_commit] if args.key?(:auto_commit)
+          @destination_connection_profile = args[:destination_connection_profile] if args.key?(:destination_connection_profile)
+          @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
+        end
+      end
+      
+      # Details regarding a Seed background job
+      class SeedJobDetails
+        include Google::Apis::Core::Hashable
+      
+        # The connection profile which was used for the seed job
+        # Corresponds to the JSON property `connectionProfile`
+        # @return [String]
+        attr_accessor :connection_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_profile = args[:connection_profile] if args.key?(:connection_profile)
+        end
+      end
+      
+      # Sequence's parent is a schema.
+      class SequenceEntity
+        include Google::Apis::Core::Hashable
+      
+        # Indicates number of entries to cache / precreate
+        # Corresponds to the JSON property `cache`
+        # @return [Fixnum]
+        attr_accessor :cache
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Indicates whether the sequence value should cycle through
+        # Corresponds to the JSON property `cycle`
+        # @return [Boolean]
+        attr_accessor :cycle
+        alias_method :cycle?, :cycle
+      
+        # Increment value for the sequence
+        # Corresponds to the JSON property `increment`
+        # @return [Fixnum]
+        attr_accessor :increment
+      
+        # Maximum number for the sequence represented as bytes to accommodate large
+        # numbers
+        # Corresponds to the JSON property `maxValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :max_value
+      
+        # Minimum number for the sequence represented as bytes to accommodate large
+        # numbers
+        # Corresponds to the JSON property `minValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :min_value
+      
+        # Start number for the sequence represented as bytes to accommodate large
+        # numbers
+        # Corresponds to the JSON property `startValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :start_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache = args[:cache] if args.key?(:cache)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @cycle = args[:cycle] if args.key?(:cycle)
+          @increment = args[:increment] if args.key?(:increment)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+          @start_value = args[:start_value] if args.key?(:start_value)
         end
       end
       
@@ -1798,6 +3161,19 @@ module Google
         end
       end
       
+      # Static IP address connectivity configured on service project.
+      class StaticServiceIpConnectivity
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1850,6 +3226,112 @@ module Google
         end
       end
       
+      # Stored procedure's parent is a schema.
+      class StoredProcedureEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the stored procedure
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
+        end
+      end
+      
+      # Synonym's parent is a schema.
+      class SynonymEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The name of the entity for which the synonym is being created (the source)
+        # Corresponds to the JSON property `sourceEntity`
+        # @return [String]
+        attr_accessor :source_entity
+      
+        # The type of the entity for which the synonym is being created (usually a table
+        # or a sequence)
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @source_entity = args[:source_entity] if args.key?(:source_entity)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # Table's parent is a schema.
+      class TableEntity
+        include Google::Apis::Core::Hashable
+      
+        # Table Columns.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DatamigrationV1::ColumnEntity>]
+        attr_accessor :columns
+      
+        # Comment associated with the table
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Table Constraints.
+        # Corresponds to the JSON property `constraints`
+        # @return [Array<Google::Apis::DatamigrationV1::ConstraintEntity>]
+        attr_accessor :constraints
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # Table Indices.
+        # Corresponds to the JSON property `indices`
+        # @return [Array<Google::Apis::DatamigrationV1::IndexEntity>]
+        attr_accessor :indices
+      
+        # Table triggers.
+        # Corresponds to the JSON property `triggers`
+        # @return [Array<Google::Apis::DatamigrationV1::TriggerEntity>]
+        attr_accessor :triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @comment = args[:comment] if args.key?(:comment)
+          @constraints = args[:constraints] if args.key?(:constraints)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @indices = args[:indices] if args.key?(:indices)
+          @triggers = args[:triggers] if args.key?(:triggers)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -1887,6 +3369,50 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Trigger is not used as an independent entity, it is retrieved as part of a
+      # Table entity.
+      class TriggerEntity
+        include Google::Apis::Core::Hashable
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The name of the trigger
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The SQL code which creates the trigger
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        # Indicates when the trigger fires, e.g. BEFORE STATEMENT, AFTER EACH ROW
+        # Corresponds to the JSON property `triggerType`
+        # @return [String]
+        attr_accessor :trigger_type
+      
+        # The DML, DDL, or database events that fires the trigger, e.g. INSERT, UPDATE
+        # Corresponds to the JSON property `triggeringEvents`
+        # @return [Array<String>]
+        attr_accessor :triggering_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @name = args[:name] if args.key?(:name)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
+          @trigger_type = args[:trigger_type] if args.key?(:trigger_type)
+          @triggering_events = args[:triggering_events] if args.key?(:triggering_events)
         end
       end
       
@@ -1933,6 +3459,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # View's parent is a schema.
+      class ViewEntity
+        include Google::Apis::Core::Hashable
+      
+        # View Constraints.
+        # Corresponds to the JSON property `constraints`
+        # @return [Array<Google::Apis::DatamigrationV1::ConstraintEntity>]
+        attr_accessor :constraints
+      
+        # Custom engine specific features
+        # Corresponds to the JSON property `customFeatures`
+        # @return [Hash<String,Object>]
+        attr_accessor :custom_features
+      
+        # The SQL code which creates the view.
+        # Corresponds to the JSON property `sqlCode`
+        # @return [String]
+        attr_accessor :sql_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
+          @custom_features = args[:custom_features] if args.key?(:custom_features)
+          @sql_code = args[:sql_code] if args.key?(:sql_code)
         end
       end
       
@@ -1983,6 +3540,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @vm_zone = args[:vm_zone] if args.key?(:vm_zone)
+        end
+      end
+      
+      # The VPC Peering configuration is used to create VPC peering with the consumer'
+      # s VPC.
+      class VpcPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. A free subnet for peering. (CIDR of /29)
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        # Required. Fully qualified name of the VPC DMS will peer to.
+        # Corresponds to the JSON property `vpcName`
+        # @return [String]
+        attr_accessor :vpc_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subnet = args[:subnet] if args.key?(:subnet)
+          @vpc_name = args[:vpc_name] if args.key?(:vpc_name)
         end
       end
       
