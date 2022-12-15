@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshConnectionSchemaMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -829,6 +835,12 @@ module Google
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :web_assets_location, as: 'webAssetsLocation'
+        end
+      end
+      
+      class RefreshConnectionSchemaMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
