@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplyConversionWorkspaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackgroundJobLogEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,13 +82,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitConversionWorkspaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConstraintEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConversionWorkspace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConversionWorkspaceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConvertConversionWorkspaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseEngineInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DescribeConversionWorkspaceRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DescribeDatabaseEntitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,7 +172,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EntityMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EntityMappingLogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ForwardSshTunnelConnectivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FunctionEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +214,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportMappingRulesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportRulesJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IndexEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListConnectionProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConversionWorkspacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +257,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPrivateConnectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleConnectionProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +329,24 @@ module Google
       end
       
       class PrimaryInstanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateConnectivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateServiceConnectConnectivity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +371,48 @@ module Google
       end
       
       class ReverseSshConnectivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackConversionWorkspaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RulesFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchBackgroundJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeedConversionWorkspaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeedJobDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SequenceEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StaticServiceIpConnectivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +473,24 @@ module Google
       end
       
       class StopMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoredProcedureEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SynonymEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TriggerEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserPassword
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ViewEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmCreationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +539,12 @@ module Google
       end
       
       class VmSelectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcPeeringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -337,6 +577,14 @@ module Google
         end
       end
       
+      class ApplyConversionWorkspaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_profile, as: 'connectionProfile'
+          property :filter, as: 'filter'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -351,6 +599,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class BackgroundJobLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_comment, as: 'completionComment'
+          property :completion_state, as: 'completionState'
+          property :finish_time, as: 'finishTime'
+          property :id, as: 'id'
+          property :import_rules_job_details, as: 'importRulesJobDetails', class: Google::Apis::DatamigrationV1::ImportRulesJobDetails, decorator: Google::Apis::DatamigrationV1::ImportRulesJobDetails::Representation
+      
+          property :job_type, as: 'jobType'
+          property :request_autocommit, as: 'requestAutocommit'
+          property :seed_job_details, as: 'seedJobDetails', class: Google::Apis::DatamigrationV1::SeedJobDetails, decorator: Google::Apis::DatamigrationV1::SeedJobDetails::Representation
+      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -407,6 +672,37 @@ module Google
         end
       end
       
+      class ColumnEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :array, as: 'array'
+          property :array_length, as: 'arrayLength'
+          property :auto_generated, as: 'autoGenerated'
+          property :charset, as: 'charset'
+          property :collation, as: 'collation'
+          property :comment, as: 'comment'
+          hash :custom_features, as: 'customFeatures'
+          property :data_type, as: 'dataType'
+          property :default_value, as: 'defaultValue'
+          property :fractional_seconds_precision, as: 'fractionalSecondsPrecision'
+          property :length, :numeric_string => true, as: 'length'
+          property :name, as: 'name'
+          property :nullable, as: 'nullable'
+          property :ordinal_position, as: 'ordinalPosition'
+          property :precision, as: 'precision'
+          property :scale, as: 'scale'
+          collection :set_values, as: 'setValues'
+          property :udt, as: 'udt'
+        end
+      end
+      
+      class CommitConversionWorkspaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_name, as: 'commitName'
+        end
+      end
+      
       class ConnectionProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -422,6 +718,8 @@ module Google
           property :mysql, as: 'mysql', class: Google::Apis::DatamigrationV1::MySqlConnectionProfile, decorator: Google::Apis::DatamigrationV1::MySqlConnectionProfile::Representation
       
           property :name, as: 'name'
+          property :oracle, as: 'oracle', class: Google::Apis::DatamigrationV1::OracleConnectionProfile, decorator: Google::Apis::DatamigrationV1::OracleConnectionProfile::Representation
+      
           property :postgresql, as: 'postgresql', class: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile, decorator: Google::Apis::DatamigrationV1::PostgreSqlConnectionProfile::Representation
       
           property :provider, as: 'provider'
@@ -430,11 +728,111 @@ module Google
         end
       end
       
+      class ConstraintEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :name, as: 'name'
+          collection :reference_columns, as: 'referenceColumns'
+          property :reference_table, as: 'referenceTable'
+          collection :table_columns, as: 'tableColumns'
+          property :table_name, as: 'tableName'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ConversionWorkspace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :destination, as: 'destination', class: Google::Apis::DatamigrationV1::DatabaseEngineInfo, decorator: Google::Apis::DatamigrationV1::DatabaseEngineInfo::Representation
+      
+          property :display_name, as: 'displayName'
+          hash :global_settings, as: 'globalSettings'
+          property :has_uncommitted_changes, as: 'hasUncommittedChanges'
+          property :latest_commit_id, as: 'latestCommitId'
+          property :latest_commit_time, as: 'latestCommitTime'
+          property :name, as: 'name'
+          property :source, as: 'source', class: Google::Apis::DatamigrationV1::DatabaseEngineInfo, decorator: Google::Apis::DatamigrationV1::DatabaseEngineInfo::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ConversionWorkspaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_id, as: 'commitId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ConvertConversionWorkspaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit, as: 'autoCommit'
+          property :filter, as: 'filter'
+        end
+      end
+      
+      class DatabaseEngineInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine, as: 'engine'
+          property :version, as: 'version'
+        end
+      end
+      
+      class DatabaseEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_function, as: 'databaseFunction', class: Google::Apis::DatamigrationV1::FunctionEntity, decorator: Google::Apis::DatamigrationV1::FunctionEntity::Representation
+      
+          property :database_package, as: 'databasePackage', class: Google::Apis::DatamigrationV1::PackageEntity, decorator: Google::Apis::DatamigrationV1::PackageEntity::Representation
+      
+          property :entity_type, as: 'entityType'
+          collection :mappings, as: 'mappings', class: Google::Apis::DatamigrationV1::EntityMapping, decorator: Google::Apis::DatamigrationV1::EntityMapping::Representation
+      
+          property :parent_entity, as: 'parentEntity'
+          property :schema, as: 'schema', class: Google::Apis::DatamigrationV1::SchemaEntity, decorator: Google::Apis::DatamigrationV1::SchemaEntity::Representation
+      
+          property :sequence, as: 'sequence', class: Google::Apis::DatamigrationV1::SequenceEntity, decorator: Google::Apis::DatamigrationV1::SequenceEntity::Representation
+      
+          property :short_name, as: 'shortName'
+          property :stored_procedure, as: 'storedProcedure', class: Google::Apis::DatamigrationV1::StoredProcedureEntity, decorator: Google::Apis::DatamigrationV1::StoredProcedureEntity::Representation
+      
+          property :synonym, as: 'synonym', class: Google::Apis::DatamigrationV1::SynonymEntity, decorator: Google::Apis::DatamigrationV1::SynonymEntity::Representation
+      
+          property :table, as: 'table', class: Google::Apis::DatamigrationV1::TableEntity, decorator: Google::Apis::DatamigrationV1::TableEntity::Representation
+      
+          property :tree, as: 'tree'
+          property :view, as: 'view', class: Google::Apis::DatamigrationV1::ViewEntity, decorator: Google::Apis::DatamigrationV1::ViewEntity::Representation
+      
+        end
+      end
+      
       class DatabaseType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
           property :provider, as: 'provider'
+        end
+      end
+      
+      class DescribeConversionWorkspaceRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :revisions, as: 'revisions', class: Google::Apis::DatamigrationV1::ConversionWorkspace, decorator: Google::Apis::DatamigrationV1::ConversionWorkspace::Representation
+      
+        end
+      end
+      
+      class DescribeDatabaseEntitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_entities, as: 'databaseEntities', class: Google::Apis::DatamigrationV1::DatabaseEntity, decorator: Google::Apis::DatamigrationV1::DatabaseEntity::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -460,6 +858,25 @@ module Google
         end
       end
       
+      class EntityMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :draft_entity, as: 'draftEntity'
+          collection :mapping_log, as: 'mappingLog', class: Google::Apis::DatamigrationV1::EntityMappingLogEntry, decorator: Google::Apis::DatamigrationV1::EntityMappingLogEntry::Representation
+      
+          property :source_entity, as: 'sourceEntity'
+        end
+      end
+      
+      class EntityMappingLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mapping_comment, as: 'mappingComment'
+          property :rule_id, as: 'ruleId'
+          property :rule_revision_id, as: 'ruleRevisionId'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -467,6 +884,25 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ForwardSshTunnelConnectivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hostname, as: 'hostname'
+          property :password, as: 'password'
+          property :port, as: 'port'
+          property :private_key, as: 'privateKey'
+          property :username, as: 'username'
+        end
+      end
+      
+      class FunctionEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :sql_code, as: 'sqlCode'
         end
       end
       
@@ -495,10 +931,49 @@ module Google
         end
       end
       
+      class ImportMappingRulesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit, as: 'autoCommit'
+          collection :rules_files, as: 'rulesFiles', class: Google::Apis::DatamigrationV1::RulesFile, decorator: Google::Apis::DatamigrationV1::RulesFile::Representation
+      
+          property :rules_format, as: 'rulesFormat'
+        end
+      end
+      
+      class ImportRulesJobDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_format, as: 'fileFormat'
+          collection :files, as: 'files'
+        end
+      end
+      
+      class IndexEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :name, as: 'name'
+          collection :table_columns, as: 'tableColumns'
+          property :type, as: 'type'
+          property :unique, as: 'unique'
+        end
+      end
+      
       class ListConnectionProfilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connection_profiles, as: 'connectionProfiles', class: Google::Apis::DatamigrationV1::ConnectionProfile, decorator: Google::Apis::DatamigrationV1::ConnectionProfile::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListConversionWorkspacesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_workspaces, as: 'conversionWorkspaces', class: Google::Apis::DatamigrationV1::ConversionWorkspace, decorator: Google::Apis::DatamigrationV1::ConversionWorkspace::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -533,6 +1008,16 @@ module Google
         end
       end
       
+      class ListPrivateConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :private_connections, as: 'privateConnections', class: Google::Apis::DatamigrationV1::PrivateConnection, decorator: Google::Apis::DatamigrationV1::PrivateConnection::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +1039,8 @@ module Google
       class MigrationJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_workspace, as: 'conversionWorkspace', class: Google::Apis::DatamigrationV1::ConversionWorkspaceInfo, decorator: Google::Apis::DatamigrationV1::ConversionWorkspaceInfo::Representation
+      
           property :create_time, as: 'createTime'
           property :destination, as: 'destination'
           property :destination_database, as: 'destinationDatabase', class: Google::Apis::DatamigrationV1::DatabaseType, decorator: Google::Apis::DatamigrationV1::DatabaseType::Representation
@@ -566,6 +1053,7 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
       
+          property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :phase, as: 'phase'
@@ -619,6 +1107,33 @@ module Google
         end
       end
       
+      class OracleConnectionProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_service, as: 'databaseService'
+          property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
+      
+          property :host, as: 'host'
+          property :password, as: 'password'
+          property :password_set, as: 'passwordSet'
+          property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
+          property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity::Representation
+      
+          property :username, as: 'username'
+        end
+      end
+      
+      class PackageEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :package_body, as: 'packageBody'
+          property :package_sql_code, as: 'packageSqlCode'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -640,7 +1155,11 @@ module Google
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
+          property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
+      
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
+      
+          property :static_ip_connectivity, as: 'staticIpConnectivity', class: Google::Apis::DatamigrationV1::StaticIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticIpConnectivity::Representation
       
           property :username, as: 'username'
         end
@@ -655,6 +1174,36 @@ module Google
           property :machine_config, as: 'machineConfig', class: Google::Apis::DatamigrationV1::MachineConfig, decorator: Google::Apis::DatamigrationV1::MachineConfig::Representation
       
           property :private_ip, as: 'privateIp'
+        end
+      end
+      
+      class PrivateConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+          property :vpc_peering_config, as: 'vpcPeeringConfig', class: Google::Apis::DatamigrationV1::VpcPeeringConfig, decorator: Google::Apis::DatamigrationV1::VpcPeeringConfig::Representation
+      
+        end
+      end
+      
+      class PrivateConnectivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_connection, as: 'privateConnection'
+        end
+      end
+      
+      class PrivateServiceConnectConnectivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_attachment, as: 'serviceAttachment'
         end
       end
       
@@ -683,6 +1232,64 @@ module Google
           property :vm_ip, as: 'vmIp'
           property :vm_port, as: 'vmPort'
           property :vpc, as: 'vpc'
+        end
+      end
+      
+      class RollbackConversionWorkspaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RulesFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rules_content, as: 'rulesContent'
+          property :rules_source_filename, as: 'rulesSourceFilename'
+        end
+      end
+      
+      class SchemaEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+        end
+      end
+      
+      class SearchBackgroundJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :jobs, as: 'jobs', class: Google::Apis::DatamigrationV1::BackgroundJobLogEntry, decorator: Google::Apis::DatamigrationV1::BackgroundJobLogEntry::Representation
+      
+        end
+      end
+      
+      class SeedConversionWorkspaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit, as: 'autoCommit'
+          property :destination_connection_profile, as: 'destinationConnectionProfile'
+          property :source_connection_profile, as: 'sourceConnectionProfile'
+        end
+      end
+      
+      class SeedJobDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_profile, as: 'connectionProfile'
+        end
+      end
+      
+      class SequenceEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache, :numeric_string => true, as: 'cache'
+          hash :custom_features, as: 'customFeatures'
+          property :cycle, as: 'cycle'
+          property :increment, :numeric_string => true, as: 'increment'
+          property :max_value, :base64 => true, as: 'maxValue'
+          property :min_value, :base64 => true, as: 'minValue'
+          property :start_value, :base64 => true, as: 'startValue'
         end
       end
       
@@ -745,6 +1352,12 @@ module Google
         end
       end
       
+      class StaticServiceIpConnectivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -760,6 +1373,39 @@ module Google
         end
       end
       
+      class StoredProcedureEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :sql_code, as: 'sqlCode'
+        end
+      end
+      
+      class SynonymEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :source_entity, as: 'sourceEntity'
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class TableEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DatamigrationV1::ColumnEntity, decorator: Google::Apis::DatamigrationV1::ColumnEntity::Representation
+      
+          property :comment, as: 'comment'
+          collection :constraints, as: 'constraints', class: Google::Apis::DatamigrationV1::ConstraintEntity, decorator: Google::Apis::DatamigrationV1::ConstraintEntity::Representation
+      
+          hash :custom_features, as: 'customFeatures'
+          collection :indices, as: 'indices', class: Google::Apis::DatamigrationV1::IndexEntity, decorator: Google::Apis::DatamigrationV1::IndexEntity::Representation
+      
+          collection :triggers, as: 'triggers', class: Google::Apis::DatamigrationV1::TriggerEntity, decorator: Google::Apis::DatamigrationV1::TriggerEntity::Representation
+      
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -771,6 +1417,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TriggerEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_features, as: 'customFeatures'
+          property :name, as: 'name'
+          property :sql_code, as: 'sqlCode'
+          property :trigger_type, as: 'triggerType'
+          collection :triggering_events, as: 'triggeringEvents'
         end
       end
       
@@ -789,6 +1446,16 @@ module Google
         end
       end
       
+      class ViewEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constraints, as: 'constraints', class: Google::Apis::DatamigrationV1::ConstraintEntity, decorator: Google::Apis::DatamigrationV1::ConstraintEntity::Representation
+      
+          hash :custom_features, as: 'customFeatures'
+          property :sql_code, as: 'sqlCode'
+        end
+      end
+      
       class VmCreationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -802,6 +1469,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :vm_zone, as: 'vmZone'
+        end
+      end
+      
+      class VpcPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :subnet, as: 'subnet'
+          property :vpc_name, as: 'vpcName'
         end
       end
       

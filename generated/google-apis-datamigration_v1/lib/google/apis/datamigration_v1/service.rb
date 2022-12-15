@@ -134,6 +134,12 @@ module Google
         #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
         #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
+        # @param [Boolean] skip_validation
+        #   Optional. Create the connection profile without validating it. The default is
+        #   false. Only supported for Oracle connection profiles.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the connection profile, but don't create any resources.
+        #   The default is false. Only supported for Oracle connection profiles.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -151,7 +157,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_connection_profile(parent, connection_profile_object = nil, connection_profile_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_connection_profile(parent, connection_profile_object = nil, connection_profile_id: nil, request_id: nil, skip_validation: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/connectionProfiles', options)
           command.request_representation = Google::Apis::DatamigrationV1::ConnectionProfile::Representation
           command.request_object = connection_profile_object
@@ -160,6 +166,8 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['connectionProfileId'] = connection_profile_id unless connection_profile_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skipValidation'] = skip_validation unless skip_validation.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -347,9 +355,15 @@ module Google
         #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
         #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
+        # @param [Boolean] skip_validation
+        #   Optional. Update the connection profile without validating it. The default is
+        #   false. Only supported for Oracle connection profiles.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   connection profile resource by the update.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the connection profile, but don't update any resources.
+        #   The default is false. Only supported for Oracle connection profiles.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -367,7 +381,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_connection_profile(name, connection_profile_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_connection_profile(name, connection_profile_object = nil, request_id: nil, skip_validation: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DatamigrationV1::ConnectionProfile::Representation
           command.request_object = connection_profile_object
@@ -375,7 +389,9 @@ module Google
           command.response_class = Google::Apis::DatamigrationV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skipValidation'] = skip_validation unless skip_validation.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -452,6 +468,561 @@ module Google
           command.response_representation = Google::Apis::DatamigrationV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DatamigrationV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Apply draft tree onto a specific destination database
+        # @param [String] name
+        #   Required. Name of the conversion workspace resource to apply draft to
+        #   destination for. in the form of: projects/`project`/locations/`location`/
+        #   conversionWorkspaces/`conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::ApplyConversionWorkspaceRequest] apply_conversion_workspace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def apply_conversion_workspace(name, apply_conversion_workspace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:apply', options)
+          command.request_representation = Google::Apis::DatamigrationV1::ApplyConversionWorkspaceRequest::Representation
+          command.request_object = apply_conversion_workspace_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks all the data in the conversion workspace as committed.
+        # @param [String] name
+        #   Required. Name of the conversion workspace resource to commit.
+        # @param [Google::Apis::DatamigrationV1::CommitConversionWorkspaceRequest] commit_conversion_workspace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_conversion_workspace(name, commit_conversion_workspace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:commit', options)
+          command.request_representation = Google::Apis::DatamigrationV1::CommitConversionWorkspaceRequest::Representation
+          command.request_object = commit_conversion_workspace_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a draft tree schema for the destination database.
+        # @param [String] name
+        #   Name of the conversion workspace resource to convert in the form of: projects/`
+        #   project`/locations/`location`/conversionWorkspaces/`conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::ConvertConversionWorkspaceRequest] convert_conversion_workspace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def convert_conversion_workspace(name, convert_conversion_workspace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:convert', options)
+          command.request_representation = Google::Apis::DatamigrationV1::ConvertConversionWorkspaceRequest::Representation
+          command.request_object = convert_conversion_workspace_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new conversion workspace in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of conversion workspaces.
+        # @param [Google::Apis::DatamigrationV1::ConversionWorkspace] conversion_workspace_object
+        # @param [String] conversion_workspace_id
+        #   Required. The ID of the conversion workspace to create.
+        # @param [String] request_id
+        #   A unique id used to identify the request. If the server receives two requests
+        #   with the same id, then the second request will be ignored. It is recommended
+        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
+        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_conversion_workspace(parent, conversion_workspace_object = nil, conversion_workspace_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/conversionWorkspaces', options)
+          command.request_representation = Google::Apis::DatamigrationV1::ConversionWorkspace::Representation
+          command.request_object = conversion_workspace_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['conversionWorkspaceId'] = conversion_workspace_id unless conversion_workspace_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single conversion workspace.
+        # @param [String] name
+        #   Required. Name of the conversion workspace resource to delete.
+        # @param [String] request_id
+        #   A unique id used to identify the request. If the server receives two requests
+        #   with the same id, then the second request will be ignored. It is recommended
+        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
+        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_conversion_workspace(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of committed revisions of a specific conversion workspace.
+        # @param [String] conversion_workspace
+        #   Required. Name of the conversion workspace resource whose revisions are listed.
+        #   in the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
+        #   conversion_workspace`.
+        # @param [String] commit_id
+        #   Optional filter to request a specific commit id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::DescribeConversionWorkspaceRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::DescribeConversionWorkspaceRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def describe_project_location_conversion_workspace_conversion_workspace_revisions(conversion_workspace, commit_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+conversionWorkspace}:describeConversionWorkspaceRevisions', options)
+          command.response_representation = Google::Apis::DatamigrationV1::DescribeConversionWorkspaceRevisionsResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::DescribeConversionWorkspaceRevisionsResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
+          command.query['commitId'] = commit_id unless commit_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use this method to describe the database entities tree for a specific
+        # conversion workspace and a specific tree type. The DB Entities are not a
+        # resource like conversion workspace or mapping rule, and they can not be
+        # created, updated or deleted like one. Instead they are simple data objects
+        # describing the structure of the client database.
+        # @param [String] conversion_workspace
+        #   Required. Name of the conversion workspace resource whose DB entities are
+        #   described in the form of: projects/`project`/locations/`location`/
+        #   conversionWorkspaces/`conversion_workspace`.
+        # @param [String] commit_id
+        #   Request a specific commit id. If not specified, the entities from the latest
+        #   commit are returned.
+        # @param [String] filter
+        #   Filter the returned entities based on AIP-160 standard
+        # @param [Fixnum] page_size
+        #   The maximum number of entities to return. The service may return fewer than
+        #   this value.
+        # @param [String] page_token
+        #   The nextPageToken value received in the previous call to conversionWorkspace.
+        #   describeDatabaseEntities, used in the subsequent request to retrieve the next
+        #   page of results. On first call this should be left blank. When paginating, all
+        #   other parameters provided to conversionWorkspace.describeDatabaseEntities must
+        #   match the call that provided the page token.
+        # @param [String] tree
+        #   The tree to fetch
+        # @param [Boolean] uncommitted
+        #   Whether to retrieve the latest committed version of the entities or the latest
+        #   version. This field is ignored if a specific commit_id is specified.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def describe_project_location_conversion_workspace_database_entities(conversion_workspace, commit_id: nil, filter: nil, page_size: nil, page_token: nil, tree: nil, uncommitted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+conversionWorkspace}:describeDatabaseEntities', options)
+          command.response_representation = Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::DescribeDatabaseEntitiesResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
+          command.query['commitId'] = commit_id unless commit_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['tree'] = tree unless tree.nil?
+          command.query['uncommitted'] = uncommitted unless uncommitted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single conversion workspace.
+        # @param [String] name
+        #   Required. Name of the conversion workspace resource to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::ConversionWorkspace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::ConversionWorkspace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_conversion_workspace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::ConversionWorkspace::Representation
+          command.response_class = Google::Apis::DatamigrationV1::ConversionWorkspace
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists conversion workspaces in a given project and location.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of conversion workspaces.
+        # @param [String] filter
+        #   A filter expression that filters conversion workspaces listed in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The value must be a string, a number,
+        #   or a boolean. The comparison operator must be either =, !=, >, or <. For
+        #   example, list conversion workspaces created this year by specifying **
+        #   createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested
+        #   fields. For example, you could specify **source.version = "12.c.1"** to select
+        #   all conversion workspaces with source database version equal to 12.c.1
+        # @param [Fixnum] page_size
+        #   The maximum number of conversion workspaces to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 sets will be returned.
+        # @param [String] page_token
+        #   The nextPageToken value received in the previous call to conversionWorkspaces.
+        #   list, used in the subsequent request to retrieve the next page of results. On
+        #   first call this should be left blank. When paginating, all other parameters
+        #   provided to conversionWorkspaces.list must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::ListConversionWorkspacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::ListConversionWorkspacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_conversion_workspaces(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/conversionWorkspaces', options)
+          command.response_representation = Google::Apis::DatamigrationV1::ListConversionWorkspacesResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::ListConversionWorkspacesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single conversion workspace.
+        # @param [String] name
+        #   Full name of the workspace resource, in the form of: projects/`project`/
+        #   locations/`location`/conversionWorkspaces/`conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::ConversionWorkspace] conversion_workspace_object
+        # @param [String] request_id
+        #   A unique id used to identify the request. If the server receives two requests
+        #   with the same id, then the second request will be ignored. It is recommended
+        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
+        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] update_mask
+        #   Required. Field mask is used to specify the fields to be overwritten in the
+        #   conversion workspace resource by the update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_conversion_workspace(name, conversion_workspace_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DatamigrationV1::ConversionWorkspace::Representation
+          command.request_object = conversion_workspace_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rollbacks a conversion workspace to the last committed spanshot.
+        # @param [String] name
+        #   Required. Name of the conversion workspace resource to rollback to.
+        # @param [Google::Apis::DatamigrationV1::RollbackConversionWorkspaceRequest] rollback_conversion_workspace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_conversion_workspace(name, rollback_conversion_workspace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::DatamigrationV1::RollbackConversionWorkspaceRequest::Representation
+          command.request_object = rollback_conversion_workspace_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use this method to search/list the background jobs for a specific conversion
+        # workspace. The background jobs are not a resource like conversion workspace or
+        # mapping rule, and they can not be created, updated or deleted like one.
+        # Instead they are a way to expose the data plane jobs log.
+        # @param [String] conversion_workspace
+        #   Required. Name of the conversion workspace resource whos jobs are listed. in
+        #   the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
+        #   conversion_workspace`.
+        # @param [String] completed_until_time
+        #   Optional. If supplied, will only return jobs that completed until (not
+        #   including) the given timestamp.
+        # @param [Fixnum] max_size
+        #   Optional. The maximum number of jobs to return. The service may return fewer
+        #   than this value. If unspecified, at most 100 jobs will be returned. The
+        #   maximum value is 100; values above 100 will be coerced to 100.
+        # @param [Boolean] return_most_recent_per_job_type
+        #   Optional. Whether or not to return just the most recent job per job type
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::SearchBackgroundJobsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::SearchBackgroundJobsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_conversion_workspace_background_jobs(conversion_workspace, completed_until_time: nil, max_size: nil, return_most_recent_per_job_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+conversionWorkspace}:searchBackgroundJobs', options)
+          command.response_representation = Google::Apis::DatamigrationV1::SearchBackgroundJobsResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::SearchBackgroundJobsResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
+          command.query['completedUntilTime'] = completed_until_time unless completed_until_time.nil?
+          command.query['maxSize'] = max_size unless max_size.nil?
+          command.query['returnMostRecentPerJobType'] = return_most_recent_per_job_type unless return_most_recent_per_job_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports a snapshot of the source database into the conversion workspace.
+        # @param [String] name
+        #   Name of the conversion workspace resource to seed with new database structure.
+        #   in the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
+        #   conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::SeedConversionWorkspaceRequest] seed_conversion_workspace_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def seed_conversion_workspace(name, seed_conversion_workspace_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:seed', options)
+          command.request_representation = Google::Apis::DatamigrationV1::SeedConversionWorkspaceRequest::Representation
+          command.request_object = seed_conversion_workspace_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports the mapping rules for a given conversion workspace. Supports various
+        # formats of external rules files.
+        # @param [String] parent
+        #   Required. Name of the conversion workspace resource to import the rules to in
+        #   the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
+        #   conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::ImportMappingRulesRequest] import_mapping_rules_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_mapping_rules(parent, import_mapping_rules_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/mappingRules:import', options)
+          command.request_representation = Google::Apis::DatamigrationV1::ImportMappingRulesRequest::Representation
+          command.request_object = import_mapping_rules_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1171,6 +1742,168 @@ module Google
           command.response_class = Google::Apis::DatamigrationV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new private connection in a given project and location.
+        # @param [String] parent
+        #   Required. The parent that owns the collection of PrivateConnections.
+        # @param [Google::Apis::DatamigrationV1::PrivateConnection] private_connection_object
+        # @param [String] private_connection_id
+        #   Required. The private connection identifier.
+        # @param [String] request_id
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   requests with the same id, then the second request will be ignored. It is
+        #   recommended to always set this value to a UUID. The id must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_private_connection(parent, private_connection_object = nil, private_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/privateConnections', options)
+          command.request_representation = Google::Apis::DatamigrationV1::PrivateConnection::Representation
+          command.request_object = private_connection_object
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['privateConnectionId'] = private_connection_id unless private_connection_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single Database Migration Service private connection.
+        # @param [String] name
+        #   Required. The name of the private connection to delete.
+        # @param [String] request_id
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   requests with the same id, then the second request will be ignored. It is
+        #   recommended to always set this value to a UUID. The id must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_private_connection(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
+          command.response_class = Google::Apis::DatamigrationV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single private connection.
+        # @param [String] name
+        #   Required. The name of the private connection to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::PrivateConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::PrivateConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_private_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatamigrationV1::PrivateConnection::Representation
+          command.response_class = Google::Apis::DatamigrationV1::PrivateConnection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of private connections in a given project and location.
+        # @param [String] parent
+        #   Required. The parent that owns the collection of private connections.
+        # @param [String] filter
+        #   A filter expression that filters private connections listed in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The value must be a string, a number,
+        #   or a boolean. The comparison operator must be either =, !=, >, or <. For
+        #   example, list private connections created this year by specifying **createTime
+        #   %gt; 2021-01-01T00:00:00.000000000Z**.
+        # @param [String] order_by
+        #   Order by fields for the result.
+        # @param [Fixnum] page_size
+        #   Maximum number of private connections to return. If unspecified, at most 50
+        #   private connections that will be returned. The maximum value is 1000; values
+        #   above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Page token received from a previous `ListPrivateConnections` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListPrivateConnections` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::ListPrivateConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::ListPrivateConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_private_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/privateConnections', options)
+          command.response_representation = Google::Apis::DatamigrationV1::ListPrivateConnectionsResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::ListPrivateConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
