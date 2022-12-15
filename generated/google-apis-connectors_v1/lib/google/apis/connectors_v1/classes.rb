@@ -1861,6 +1861,19 @@ module Google
         end
       end
       
+      # Request message for ConnectorsService.RefreshConnectionSchemaMetadata.
+      class RefreshConnectionSchemaMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Resource definition
       class Resource
         include Google::Apis::Core::Hashable
