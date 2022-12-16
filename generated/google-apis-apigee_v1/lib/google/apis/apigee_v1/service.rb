@@ -3910,6 +3910,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the deployed ingress configuration for an environment group.
+        # @param [String] name
+        #   Required. Name of the deployed configuration for the environment group in the
+        #   following format: 'organizations/`org`/envgroups/`envgroup`/
+        #   deployedIngressConfig'.
+        # @param [String] view
+        #   When set to FULL, additional details about the specific deployments receiving
+        #   traffic will be included in the IngressConfig response's RoutingRules.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_envgroup_deployed_ingress_config(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all environment groups.
         # @param [String] parent
         #   Required. Name of the organization for which to list environment groups in the
