@@ -138,6 +138,38 @@ module Google
         end
       end
       
+      # A presentation of host resource usage where the workload runs.
+      class Insight
+        include Google::Apis::Core::Hashable
+      
+        # The schema of SAP system discovery data.
+        # Corresponds to the JSON property `sapDiscovery`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscovery]
+        attr_accessor :sap_discovery
+      
+        # A presentation of SAP workload insight. The schema of SAP workloads validation
+        # related data.
+        # Corresponds to the JSON property `sapValidation`
+        # @return [Google::Apis::WorkloadmanagerV1::SapValidation]
+        attr_accessor :sap_validation
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `sentTime`
+        # @return [String]
+        attr_accessor :sent_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sap_discovery = args[:sap_discovery] if args.key?(:sap_discovery)
+          @sap_validation = args[:sap_validation] if args.key?(:sap_validation)
+          @sent_time = args[:sent_time] if args.key?(:sent_time)
+        end
+      end
+      
       # Message for response to listing Evaluations
       class ListEvaluationsResponse
         include Google::Apis::Core::Hashable
@@ -449,6 +481,219 @@ module Google
         end
       end
       
+      # The schema of SAP system discovery data.
+      class SapDiscovery
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the system component.
+        # Corresponds to the JSON property `applicationLayer`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent]
+        attr_accessor :application_layer
+      
+        # Message describing the system component.
+        # Corresponds to the JSON property `databaseLayer`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent]
+        attr_accessor :database_layer
+      
+        # Message describing SAP discovery system metadata
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata]
+        attr_accessor :metadata
+      
+        # A combination of database SID, database instance URI and tenant DB name to
+        # make a unique identifier per-system.
+        # Corresponds to the JSON property `systemId`
+        # @return [String]
+        attr_accessor :system_id
+      
+        # Unix timestamp this system has been updated last.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_layer = args[:application_layer] if args.key?(:application_layer)
+          @database_layer = args[:database_layer] if args.key?(:database_layer)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @system_id = args[:system_id] if args.key?(:system_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing the system component.
+      class SapDiscoveryComponent
+        include Google::Apis::Core::Hashable
+      
+        # The component is a SAP application.
+        # Corresponds to the JSON property `applicationType`
+        # @return [String]
+        attr_accessor :application_type
+      
+        # The component is a SAP database.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
+        # Pantheon Project in which the resources reside.
+        # Corresponds to the JSON property `hostProject`
+        # @return [String]
+        attr_accessor :host_project
+      
+        # The resources in a component.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapDiscoveryResource>]
+        attr_accessor :resources
+      
+        # The sap identifier, used by the SAP software and helps differentiate systems
+        # for customers.
+        # Corresponds to the JSON property `sid`
+        # @return [String]
+        attr_accessor :sid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_type = args[:application_type] if args.key?(:application_type)
+          @database_type = args[:database_type] if args.key?(:database_type)
+          @host_project = args[:host_project] if args.key?(:host_project)
+          @resources = args[:resources] if args.key?(:resources)
+          @sid = args[:sid] if args.key?(:sid)
+        end
+      end
+      
+      # Message describing SAP discovery system metadata
+      class SapDiscoveryMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Customer region string for customer's use. Does not represent GCP region.
+        # Corresponds to the JSON property `customerRegion`
+        # @return [String]
+        attr_accessor :customer_region
+      
+        # Customer defined, something like "E-commerce pre prod"
+        # Corresponds to the JSON property `definedSystem`
+        # @return [String]
+        attr_accessor :defined_system
+      
+        # Should be "prod", "QA", "dev", "staging", etc.
+        # Corresponds to the JSON property `environmentType`
+        # @return [String]
+        attr_accessor :environment_type
+      
+        # This sap product name
+        # Corresponds to the JSON property `sapProduct`
+        # @return [String]
+        attr_accessor :sap_product
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_region = args[:customer_region] if args.key?(:customer_region)
+          @defined_system = args[:defined_system] if args.key?(:defined_system)
+          @environment_type = args[:environment_type] if args.key?(:environment_type)
+          @sap_product = args[:sap_product] if args.key?(:sap_product)
+        end
+      end
+      
+      # Message describing a resource.
+      class SapDiscoveryResource
+        include Google::Apis::Core::Hashable
+      
+        # A list of resource URIs related to this resource.
+        # Corresponds to the JSON property `relatedResources`
+        # @return [Array<String>]
+        attr_accessor :related_resources
+      
+        # ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+        # Corresponds to the JSON property `resourceKind`
+        # @return [String]
+        attr_accessor :resource_kind
+      
+        # The type of this resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # URI of the resource, includes project, location, and name.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Unix timestamp of when this resource last had its discovery data updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @related_resources = args[:related_resources] if args.key?(:related_resources)
+          @resource_kind = args[:resource_kind] if args.key?(:resource_kind)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A presentation of SAP workload insight. The schema of SAP workloads validation
+      # related data.
+      class SapValidation
+        include Google::Apis::Core::Hashable
+      
+        # A list of SAP validation metrics data.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [Array<Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail>]
+        attr_accessor :validation_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+        end
+      end
+      
+      # Message describing the SAP validation metrics.
+      class SapValidationValidationDetail
+        include Google::Apis::Core::Hashable
+      
+        # The pairs of metrics data: field name & field value.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
+        # The SAP system that the validation data is from.
+        # Corresponds to the JSON property `sapValidationType`
+        # @return [String]
+        attr_accessor :sap_validation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @sap_validation_type = args[:sap_validation_type] if args.key?(:sap_validation_type)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -485,6 +730,53 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for sending the data insights.
+      class WriteInsightRequest
+        include Google::Apis::Core::Hashable
+      
+        # A presentation of host resource usage where the workload runs.
+        # Corresponds to the JSON property `insight`
+        # @return [Google::Apis::WorkloadmanagerV1::Insight]
+        attr_accessor :insight
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. For example, consider a
+        # situation where you make an initial request and t he request times out. If you
+        # make the request again with the same request ID, the server can check if
+        # original operation with the same request ID was received, and if so, will
+        # ignore the second request. This prevents clients from accidentally creating
+        # duplicate commitments. The request ID must be a valid UUID with the exception
+        # that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insight = args[:insight] if args.key?(:insight)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # The response for write insights request.
+      class WriteInsightResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end

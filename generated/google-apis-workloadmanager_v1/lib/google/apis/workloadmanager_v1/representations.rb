@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Insight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEvaluationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,7 +100,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SapDiscovery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapDiscoveryComponent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapDiscoveryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapDiscoveryResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SapValidationValidationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteInsightRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WriteInsightResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -133,6 +187,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_accounts, as: 'serviceAccounts'
+        end
+      end
+      
+      class Insight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sap_discovery, as: 'sapDiscovery', class: Google::Apis::WorkloadmanagerV1::SapDiscovery, decorator: Google::Apis::WorkloadmanagerV1::SapDiscovery::Representation
+      
+          property :sap_validation, as: 'sapValidation', class: Google::Apis::WorkloadmanagerV1::SapValidation, decorator: Google::Apis::WorkloadmanagerV1::SapValidation::Representation
+      
+          property :sent_time, as: 'sentTime'
         end
       end
       
@@ -219,12 +284,90 @@ module Google
         end
       end
       
+      class SapDiscovery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_layer, as: 'applicationLayer', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent::Representation
+      
+          property :database_layer, as: 'databaseLayer', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryComponent::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryMetadata::Representation
+      
+          property :system_id, as: 'systemId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SapDiscoveryComponent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_type, as: 'applicationType'
+          property :database_type, as: 'databaseType'
+          property :host_project, as: 'hostProject'
+          collection :resources, as: 'resources', class: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource, decorator: Google::Apis::WorkloadmanagerV1::SapDiscoveryResource::Representation
+      
+          property :sid, as: 'sid'
+        end
+      end
+      
+      class SapDiscoveryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_region, as: 'customerRegion'
+          property :defined_system, as: 'definedSystem'
+          property :environment_type, as: 'environmentType'
+          property :sap_product, as: 'sapProduct'
+        end
+      end
+      
+      class SapDiscoveryResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :related_resources, as: 'relatedResources'
+          property :resource_kind, as: 'resourceKind'
+          property :resource_type, as: 'resourceType'
+          property :resource_uri, as: 'resourceUri'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SapValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :validation_details, as: 'validationDetails', class: Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail, decorator: Google::Apis::WorkloadmanagerV1::SapValidationValidationDetail::Representation
+      
+        end
+      end
+      
+      class SapValidationValidationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          property :sap_validation_type, as: 'sapValidationType'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class WriteInsightRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insight, as: 'insight', class: Google::Apis::WorkloadmanagerV1::Insight, decorator: Google::Apis::WorkloadmanagerV1::Insight::Representation
+      
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class WriteInsightResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end
