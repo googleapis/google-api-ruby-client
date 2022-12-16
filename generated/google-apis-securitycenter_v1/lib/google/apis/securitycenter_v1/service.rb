@@ -52,8 +52,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the parent to groupBy. Its format is "organizations/[
-        #   organization_id], folders/[folder_id], or projects/[project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -86,9 +87,9 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the parent assets should belong to. Its format is "
-        #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
-        #   .
+        #   Required. The name of the parent that the listed assets belong to. Its format
+        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -250,9 +251,9 @@ module Google
         
         # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new BigQuery export's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource of the new BigQuery export. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
+        #   projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -290,9 +291,9 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
-        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -669,8 +670,8 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contain alphanumeric characters,
-        #   underscores or hyphens only.
+        #   must be between 1 and 128 characters and contain alphanumeric characters,
+        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -769,9 +770,9 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the parent to list notification configs. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent in which to list the notification
+        #   configurations. Its format is "organizations/[organization_id]", "folders/[
+        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -853,8 +854,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], folders/[folder_id], or projects/[project_id]
-        #   ".
+        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -1128,6 +1129,11 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1317,8 +1323,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the parent to groupBy. Its format is "organizations/[
-        #   organization_id], folders/[folder_id], or projects/[project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1351,9 +1358,9 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the parent assets should belong to. Its format is "
-        #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
-        #   .
+        #   Required. The name of the parent that the listed assets belong to. Its format
+        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -1551,9 +1558,9 @@ module Google
         
         # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new BigQuery export's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource of the new BigQuery export. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
+        #   projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -1591,9 +1598,9 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
-        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1970,8 +1977,8 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contain alphanumeric characters,
-        #   underscores or hyphens only.
+        #   must be between 1 and 128 characters and contain alphanumeric characters,
+        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2070,9 +2077,9 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the parent to list notification configs. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent in which to list the notification
+        #   configurations. Its format is "organizations/[organization_id]", "folders/[
+        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -2401,8 +2408,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], folders/[folder_id], or projects/[project_id]
-        #   ".
+        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -2825,6 +2832,11 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2944,8 +2956,9 @@ module Google
         
         # Filters an organization's assets and groups them by their specified properties.
         # @param [String] parent
-        #   Required. Name of the parent to groupBy. Its format is "organizations/[
-        #   organization_id], folders/[folder_id], or projects/[project_id]".
+        #   Required. The name of the parent to group the assets by. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2978,9 +2991,9 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. Name of the parent assets should belong to. Its format is "
-        #   organizations/[organization_id], folders/[folder_id], or projects/[project_id]"
-        #   .
+        #   Required. The name of the parent that the listed assets belong to. Its format
+        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -3142,9 +3155,9 @@ module Google
         
         # Creates a BigQuery export.
         # @param [String] parent
-        #   Required. Resource name of the new BigQuery export's parent. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource of the new BigQuery export. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", or "
+        #   projects/[project_id]".
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
         #   Required. Unique identifier provided by the client within the parent scope. It
@@ -3182,9 +3195,9 @@ module Google
         
         # Deletes an existing BigQuery export.
         # @param [String] name
-        #   Required. Name of the BigQuery export to delete. Its format is organizations/`
-        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
-        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        #   Required. The name of the BigQuery export to delete. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3561,8 +3574,8 @@ module Google
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
         #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters, and contain alphanumeric characters,
-        #   underscores or hyphens only.
+        #   must be between 1 and 128 characters and contain alphanumeric characters,
+        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3661,9 +3674,9 @@ module Google
         
         # Lists notification configs.
         # @param [String] parent
-        #   Required. Name of the parent to list notification configs. Its format is "
-        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent in which to list the notification
+        #   configurations. Its format is "organizations/[organization_id]", "folders/[
+        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -3745,8 +3758,8 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], folders/[folder_id], or projects/[project_id]
-        #   ".
+        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
         #   minimum is 1, maximum is 1000.
@@ -4020,6 +4033,11 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
+        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
+        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
+        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
+        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
+        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
