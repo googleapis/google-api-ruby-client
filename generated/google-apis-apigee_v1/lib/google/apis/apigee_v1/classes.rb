@@ -2651,7 +2651,7 @@ module Google
         end
       end
       
-      # NEXT ID: 9
+      # NEXT ID: 11
       class GoogleCloudApigeeV1DeploymentConfig
         include Google::Apis::Core::Hashable
       
@@ -2664,6 +2664,18 @@ module Google
         # Corresponds to the JSON property `basePath`
         # @return [String]
         attr_accessor :base_path
+      
+        # The list of deployment groups in which this proxy should be deployed. Not
+        # currently populated for shared flows.
+        # Corresponds to the JSON property `deploymentGroups`
+        # @return [Array<String>]
+        attr_accessor :deployment_groups
+      
+        # A mapping from basepaths to proxy endpoint names in this proxy. Not populated
+        # for shared flows.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Hash<String,String>]
+        attr_accessor :endpoints
       
         # Location of the API proxy bundle as a URI.
         # Corresponds to the JSON property `location`
@@ -2701,10 +2713,47 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @base_path = args[:base_path] if args.key?(:base_path)
+          @deployment_groups = args[:deployment_groups] if args.key?(:deployment_groups)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @proxy_uid = args[:proxy_uid] if args.key?(:proxy_uid)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # DeploymentGroupConfig represents a deployment group that should be present in
+      # a particular environment.
+      class GoogleCloudApigeeV1DeploymentGroupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the deployment group in the following format: `organizations/`org`/
+        # environments/`env`/deploymentGroups/`group``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision number which can be used by the runtime to detect if the deployment
+        # group has changed between two versions.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # Unique ID. The ID will only change if the deployment group is deleted and
+        # recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -3177,6 +3226,33 @@ module Google
         end
       end
       
+      # EndpointChainingRule specifies the proxies contained in a particular
+      # deployment group, so that other deployment groups can find them in chaining
+      # calls.
+      class GoogleCloudApigeeV1EndpointChainingRule
+        include Google::Apis::Core::Hashable
+      
+        # The deployment group to target for cross-shard chaining calls to these proxies.
+        # Corresponds to the JSON property `deploymentGroup`
+        # @return [String]
+        attr_accessor :deployment_group
+      
+        # List of proxy ids which may be found in the given deployment group.
+        # Corresponds to the JSON property `proxyIds`
+        # @return [Array<String>]
+        attr_accessor :proxy_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_group = args[:deployment_group] if args.key?(:deployment_group)
+          @proxy_ids = args[:proxy_ids] if args.key?(:proxy_ids)
+        end
+      end
+      
       # Metadata common to many entities in this API.
       class GoogleCloudApigeeV1EntityMetadata
         include Google::Apis::Core::Hashable
@@ -3328,10 +3404,22 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask]
         attr_accessor :debug_mask
       
+        # List of deployment groups in the environment.
+        # Corresponds to the JSON property `deploymentGroups`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentGroupConfig>]
+        attr_accessor :deployment_groups
+      
         # List of deployments in the environment.
         # Corresponds to the JSON property `deployments`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig>]
         attr_accessor :deployments
+      
+        # Revision ID for environment-scoped resources (e.g. target servers, keystores)
+        # in this config. This ID will increment any time a resource not scoped to a
+        # deployment group changes.
+        # Corresponds to the JSON property `envScopedRevisionId`
+        # @return [Fixnum]
+        attr_accessor :env_scoped_revision_id
       
         # Feature flags inherited from the organization and environment.
         # Corresponds to the JSON property `featureFlags`
@@ -3427,7 +3515,9 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
           @debug_mask = args[:debug_mask] if args.key?(:debug_mask)
+          @deployment_groups = args[:deployment_groups] if args.key?(:deployment_groups)
           @deployments = args[:deployments] if args.key?(:deployments)
+          @env_scoped_revision_id = args[:env_scoped_revision_id] if args.key?(:env_scoped_revision_id)
           @feature_flags = args[:feature_flags] if args.key?(:feature_flags)
           @flowhooks = args[:flowhooks] if args.key?(:flowhooks)
           @forward_proxy_uri = args[:forward_proxy_uri] if args.key?(:forward_proxy_uri)
@@ -3537,10 +3627,22 @@ module Google
       class GoogleCloudApigeeV1EnvironmentGroupConfig
         include Google::Apis::Core::Hashable
       
+        # A list of proxies in each deployment group for proxy chaining calls.
+        # Corresponds to the JSON property `endpointChainingRules`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointChainingRule>]
+        attr_accessor :endpoint_chaining_rules
+      
         # Host names for the environment group.
         # Corresponds to the JSON property `hostnames`
         # @return [Array<String>]
         attr_accessor :hostnames
+      
+        # When this message appears in the top-level IngressConfig, this field will be
+        # populated in lieu of the inlined routing_rules and hostnames fields. Some URL
+        # for downloading the full EnvironmentGroupConfig for this group.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Name of the environment group in the following format: `organizations/`org`/
         # envgroups/`envgroup``.
@@ -3572,7 +3674,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @endpoint_chaining_rules = args[:endpoint_chaining_rules] if args.key?(:endpoint_chaining_rules)
           @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @routing_rules = args[:routing_rules] if args.key?(:routing_rules)
@@ -7144,6 +7248,13 @@ module Google
         # @return [String]
         attr_accessor :basepath
       
+        # Name of a deployment group in an environment bound to the environment group in
+        # the following format: `organizations/`org`/environment/`env`/deploymentGroups/`
+        # group`` Only one of environment or deployment_group will be set.
+        # Corresponds to the JSON property `deploymentGroup`
+        # @return [String]
+        attr_accessor :deployment_group
+      
         # The env group config revision_id when this rule was added or last updated.
         # This value is set when the rule is created and will only update if the the
         # environment_id changes. It is used to determine if the runtime is up to date
@@ -7154,10 +7265,17 @@ module Google
         attr_accessor :env_group_revision
       
         # Name of an environment bound to the environment group in the following format:
-        # `organizations/`org`/environments/`env``.
+        # `organizations/`org`/environments/`env``. Only one of environment or
+        # deployment_group will be set.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
+      
+        # Conflicting targets, which will be resource names specifying either deployment
+        # groups or environments.
+        # Corresponds to the JSON property `otherTargets`
+        # @return [Array<String>]
+        attr_accessor :other_targets
       
         # The resource name of the proxy revision that is receiving this basepath in the
         # following format: `organizations/`org`/apis/`api`/revisions/`rev``. This field
@@ -7181,8 +7299,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basepath = args[:basepath] if args.key?(:basepath)
+          @deployment_group = args[:deployment_group] if args.key?(:deployment_group)
           @env_group_revision = args[:env_group_revision] if args.key?(:env_group_revision)
           @environment = args[:environment] if args.key?(:environment)
+          @other_targets = args[:other_targets] if args.key?(:other_targets)
           @receiver = args[:receiver] if args.key?(:receiver)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8547,7 +8667,7 @@ module Google
         end
       end
       
-      # TargetServer configuration. TargetServers are used to decouple a proxy's
+      # TargetServer configuration. TargetServers are used to decouple a proxy
       # TargetEndpoint HTTPTargetConnections from concrete URLs for backend services.
       class GoogleCloudApigeeV1TargetServer
         include Google::Apis::Core::Hashable

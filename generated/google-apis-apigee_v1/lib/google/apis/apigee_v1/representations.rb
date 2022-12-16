@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DeploymentGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Developer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1EndpointAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EndpointChainingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2097,10 +2109,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
           property :base_path, as: 'basePath'
+          collection :deployment_groups, as: 'deploymentGroups'
+          hash :endpoints, as: 'endpoints'
           property :location, as: 'location'
           property :name, as: 'name'
           property :proxy_uid, as: 'proxyUid'
           property :service_account, as: 'serviceAccount'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeploymentGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
           property :uid, as: 'uid'
         end
       end
@@ -2220,6 +2243,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1EndpointChainingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_group, as: 'deploymentGroup'
+          collection :proxy_ids, as: 'proxyIds'
+        end
+      end
+      
       class GoogleCloudApigeeV1EntityMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2257,8 +2288,11 @@ module Google
       
           property :debug_mask, as: 'debugMask', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask::Representation
       
+          collection :deployment_groups, as: 'deploymentGroups', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentGroupConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentGroupConfig::Representation
+      
           collection :deployments, as: 'deployments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig::Representation
       
+          property :env_scoped_revision_id, :numeric_string => true, as: 'envScopedRevisionId'
           hash :feature_flags, as: 'featureFlags'
           collection :flowhooks, as: 'flowhooks', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig::Representation
       
@@ -2307,7 +2341,10 @@ module Google
       class GoogleCloudApigeeV1EnvironmentGroupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_chaining_rules, as: 'endpointChainingRules', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointChainingRule, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointChainingRule::Representation
+      
           collection :hostnames, as: 'hostnames'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :revision_id, :numeric_string => true, as: 'revisionId'
           collection :routing_rules, as: 'routingRules', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule::Representation
@@ -3329,8 +3366,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basepath, as: 'basepath'
+          property :deployment_group, as: 'deploymentGroup'
           property :env_group_revision, :numeric_string => true, as: 'envGroupRevision'
           property :environment, as: 'environment'
+          collection :other_targets, as: 'otherTargets'
           property :receiver, as: 'receiver'
           property :update_time, as: 'updateTime'
         end
