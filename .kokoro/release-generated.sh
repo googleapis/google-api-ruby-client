@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set this to a nonempty string to freeze releases.
-FREEZE_RELEASES=
+FREEZE_RELEASES=true
 
 set -eo pipefail
 
