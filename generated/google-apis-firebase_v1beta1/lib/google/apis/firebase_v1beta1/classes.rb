@@ -221,6 +221,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
+        # friendly-resources). This etag is strongly validated.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The resource name of the AndroidApp, in the format: projects/
         # PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project'
         # s [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(
@@ -270,6 +278,7 @@ module Google
           @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @package_name = args[:package_name] if args.key?(:package_name)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -490,10 +499,10 @@ module Google
       class FirebaseProject
         include Google::Apis::Core::Hashable
       
-        # Set of user-defined annotations for the FirebaseProject as per [AIP-128](https:
-        # //google.aip.dev/128#annotations). These annotations are intended solely for
-        # developers and client-side tools Firebase services will not mutate this
-        # annotation set.
+        # A set of user-defined annotations for the FirebaseProject. Learn more about
+        # annotations in Google's [AIP-128 standard](https://google.aip.dev/128#
+        # annotations). These annotations are intended solely for developers and client-
+        # side tools. Firebase services will not mutate this annotations set.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -610,6 +619,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
+        # friendly-resources). This etag is strongly validated.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /
         # iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
         # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
@@ -650,6 +667,7 @@ module Google
           @app_store_id = args[:app_store_id] if args.key?(:app_store_id)
           @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @state = args[:state] if args.key?(:state)
@@ -1501,6 +1519,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
+        # friendly-resources). This etag is strongly validated.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /
         # webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
         # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
@@ -1544,6 +1570,7 @@ module Google
           @app_id = args[:app_id] if args.key?(:app_id)
           @app_urls = args[:app_urls] if args.key?(:app_urls)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @state = args[:state] if args.key?(:state)
