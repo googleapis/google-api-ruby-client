@@ -30,7 +30,7 @@ module Google
       #    Workloadmanager = Google::Apis::WorkloadmanagerV1 # Alias the module
       #    service = Workloadmanager::WorkloadManagerService.new
       #
-      # @see https://g3doc.corp.google.com/company/teams/compute-fe/index.md?cl=head
+      # @see https://cloud.google.com/workload-manager/docs
       class WorkloadManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -241,6 +241,40 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Write the data insights to workload manager data warehouse.
+        # @param [String] location
+        #   Required. The GCP location. The format is: projects/`project`/locations/`
+        #   location`.
+        # @param [Google::Apis::WorkloadmanagerV1::WriteInsightRequest] write_insight_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkloadmanagerV1::WriteInsightResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkloadmanagerV1::WriteInsightResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def write_insight(location, write_insight_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}/insights:writeInsight', options)
+          command.request_representation = Google::Apis::WorkloadmanagerV1::WriteInsightRequest::Representation
+          command.request_object = write_insight_request_object
+          command.response_representation = Google::Apis::WorkloadmanagerV1::WriteInsightResponse::Representation
+          command.response_class = Google::Apis::WorkloadmanagerV1::WriteInsightResponse
+          command.params['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

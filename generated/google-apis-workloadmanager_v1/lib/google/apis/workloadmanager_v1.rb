@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://g3doc.corp.google.com/company/teams/compute-fe/index.md?cl=head
+    # @see https://cloud.google.com/workload-manager/docs
     module WorkloadmanagerV1
       # Version of the Workload Manager API this client connects to.
       # This is NOT the gem version.
