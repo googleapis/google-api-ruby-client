@@ -105,6 +105,128 @@ module Google
         end
       end
       
+      # [Beta](https://workspace.google.com/terms/service-terms/index.html). The
+      # client-side encryption (CSE) configuration for the email address of an
+      # authenticated user. Gmail uses CSE configurations to save drafts of client-
+      # side encrypted email messages, and to sign and send encrypted email messages.
+      class CseIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The email address for the sending identity. The email address must be the
+        # primary email address of the authenticated user.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        # If a key pair is associated, the identifier of the key pair, CseKeyPair.
+        # Corresponds to the JSON property `primaryKeyPairId`
+        # @return [String]
+        attr_accessor :primary_key_pair_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email_address = args[:email_address] if args.key?(:email_address)
+          @primary_key_pair_id = args[:primary_key_pair_id] if args.key?(:primary_key_pair_id)
+        end
+      end
+      
+      # [Beta](https://workspace.google.com/terms/service-terms/index.html). A client-
+      # side encryption S/MIME key pair, which is comprised of a public key, its
+      # certificate chain, and metadata for its paired private key. Gmail uses the key
+      # pair to complete the following tasks: - Sign outgoing client-side encrypted
+      # messages. - Save and reopen drafts of client-side encrypted messages. - Save
+      # and reopen sent messages. - Decrypt incoming or archived S/MIME messages.
+      class CseKeyPair
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If a key pair is set to `DISABLED`, the time that the key pair's
+        # state changed from `ENABLED` to `DISABLED`. This field is present only when
+        # the key pair is in state `DISABLED`.
+        # Corresponds to the JSON property `disableTime`
+        # @return [String]
+        attr_accessor :disable_time
+      
+        # Output only. The current state of the key pair.
+        # Corresponds to the JSON property `enablementState`
+        # @return [String]
+        attr_accessor :enablement_state
+      
+        # Output only. The immutable ID for the client-side encryption S/MIME key pair.
+        # Corresponds to the JSON property `keyPairId`
+        # @return [String]
+        attr_accessor :key_pair_id
+      
+        # Output only. The public key and its certificate chain, in [PEM](https://en.
+        # wikipedia.org/wiki/Privacy-Enhanced_Mail) format.
+        # Corresponds to the JSON property `pem`
+        # @return [String]
+        attr_accessor :pem
+      
+        # Input only. The public key and its certificate chain. The chain must be in [
+        # PKCS#7](https://en.wikipedia.org/wiki/PKCS_7) format and use PEM encoding and
+        # ASCII armor.
+        # Corresponds to the JSON property `pkcs7`
+        # @return [String]
+        attr_accessor :pkcs7
+      
+        # Metadata for instances of this key pair's private key.
+        # Corresponds to the JSON property `privateKeyMetadata`
+        # @return [Array<Google::Apis::GmailV1::CsePrivateKeyMetadata>]
+        attr_accessor :private_key_metadata
+      
+        # Output only. The email address identities that are specified on the leaf
+        # certificate.
+        # Corresponds to the JSON property `subjectEmailAddresses`
+        # @return [Array<String>]
+        attr_accessor :subject_email_addresses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_time = args[:disable_time] if args.key?(:disable_time)
+          @enablement_state = args[:enablement_state] if args.key?(:enablement_state)
+          @key_pair_id = args[:key_pair_id] if args.key?(:key_pair_id)
+          @pem = args[:pem] if args.key?(:pem)
+          @pkcs7 = args[:pkcs7] if args.key?(:pkcs7)
+          @private_key_metadata = args[:private_key_metadata] if args.key?(:private_key_metadata)
+          @subject_email_addresses = args[:subject_email_addresses] if args.key?(:subject_email_addresses)
+        end
+      end
+      
+      # Metadata for a private key instance.
+      class CsePrivateKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for private keys managed by an external key access control list
+        # service. For details about managing key access, see [Google Workspace CSE API
+        # Reference](https://developers.google.com/workspace/cse/reference).
+        # Corresponds to the JSON property `kaclsKeyMetadata`
+        # @return [Google::Apis::GmailV1::KaclsKeyMetadata]
+        attr_accessor :kacls_key_metadata
+      
+        # Output only. The immutable ID for the private key metadata instance.
+        # Corresponds to the JSON property `privateKeyMetadataId`
+        # @return [String]
+        attr_accessor :private_key_metadata_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kacls_key_metadata = args[:kacls_key_metadata] if args.key?(:kacls_key_metadata)
+          @private_key_metadata_id = args[:private_key_metadata_id] if args.key?(:private_key_metadata_id)
+        end
+      end
+      
       # Settings for a delegate. Delegates can read, send, and delete messages, as
       # well as view and add contacts, for the delegator's account. See "Set up mail
       # delegation" for more information about delegates.
@@ -133,6 +255,19 @@ module Google
         end
       end
       
+      # Requests to turn off a client-side encryption key pair.
+      class DisableCseKeyPairRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable
@@ -155,6 +290,19 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Requests to turn on a client-side encryption key pair.
+      class EnableCseKeyPairRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -509,6 +657,34 @@ module Google
         end
       end
       
+      # Metadata for private keys managed by an external key access control list
+      # service. For details about managing key access, see [Google Workspace CSE API
+      # Reference](https://developers.google.com/workspace/cse/reference).
+      class KaclsKeyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Opaque data generated and used by the key access control list service. Maximum
+        # size: 8 KiB.
+        # Corresponds to the JSON property `kaclsData`
+        # @return [String]
+        attr_accessor :kacls_data
+      
+        # The URI of the key access control list service that manages the private key.
+        # Corresponds to the JSON property `kaclsUri`
+        # @return [String]
+        attr_accessor :kacls_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kacls_data = args[:kacls_data] if args.key?(:kacls_data)
+          @kacls_uri = args[:kacls_uri] if args.key?(:kacls_uri)
+        end
+      end
+      
       # Labels are used to categorize messages and threads within the user's mailbox.
       # The maximum number of labels supported for a user's mailbox is 10,000.
       class Label
@@ -672,6 +848,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_language = args[:display_language] if args.key?(:display_language)
+        end
+      end
+      
+      # 
+      class ListCseIdentitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # One page of the list of CSE identities configured for the user.
+        # Corresponds to the JSON property `cseIdentities`
+        # @return [Array<Google::Apis::GmailV1::CseIdentity>]
+        attr_accessor :cse_identities
+      
+        # Pagination token to be passed to a subsequent ListCseIdentities call in order
+        # to retrieve the next page of identities. If this value is not returned or is
+        # the empty string, then no further pages remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cse_identities = args[:cse_identities] if args.key?(:cse_identities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class ListCseKeyPairsResponse
+        include Google::Apis::Core::Hashable
+      
+        # One page of the list of CSE key pairs installed for the user.
+        # Corresponds to the JSON property `cseKeyPairs`
+        # @return [Array<Google::Apis::GmailV1::CseKeyPair>]
+        attr_accessor :cse_key_pairs
+      
+        # Pagination token to be passed to a subsequent ListCseKeyPairs call in order to
+        # retrieve the next page of key pairs. If this value is not returned, then no
+        # further pages remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cse_key_pairs = args[:cse_key_pairs] if args.key?(:cse_key_pairs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1171,6 +1401,19 @@ module Google
         def update!(**args)
           @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
           @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
+        end
+      end
+      
+      # Request to obliterate a CSE key pair.
+      class ObliterateCseKeyPairRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
