@@ -497,7 +497,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :network_tags
       
-        # The Google Cloud target project ID or project name.
+        # The GCP target project ID or project name.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -778,10 +778,9 @@ module Google
         end
       end
       
-      # DatacenterConnector message describes a connector between the Source and
-      # Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
-      # by the user) to connect the Datacenter to Google Cloud and support vm
-      # migration data transfer.
+      # DatacenterConnector message describes a connector between the Source and GCP,
+      # which is installed on a vmware datacenter (an OVA vm installed by the user) to
+      # connect the Datacenter to GCP and support vm migration data transfer.
       class DatacenterConnector
         include Google::Apis::Core::Hashable
       
@@ -804,7 +803,7 @@ module Google
         attr_accessor :available_versions
       
         # Output only. The communication channel between the datacenter connector and
-        # Google Cloud.
+        # GCP.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
