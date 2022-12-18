@@ -40,13 +40,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CseIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CseKeyPair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CsePrivateKeyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Delegate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableCseKeyPairRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Draft
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableCseKeyPairRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KaclsKeyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Label
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +161,18 @@ module Google
       end
       
       class LanguageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCseIdentitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCseKeyPairsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObliterateCseKeyPairRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PopSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,11 +359,48 @@ module Google
         end
       end
       
+      class CseIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_address, as: 'emailAddress'
+          property :primary_key_pair_id, as: 'primaryKeyPairId'
+        end
+      end
+      
+      class CseKeyPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_time, as: 'disableTime'
+          property :enablement_state, as: 'enablementState'
+          property :key_pair_id, as: 'keyPairId'
+          property :pem, as: 'pem'
+          property :pkcs7, as: 'pkcs7'
+          collection :private_key_metadata, as: 'privateKeyMetadata', class: Google::Apis::GmailV1::CsePrivateKeyMetadata, decorator: Google::Apis::GmailV1::CsePrivateKeyMetadata::Representation
+      
+          collection :subject_email_addresses, as: 'subjectEmailAddresses'
+        end
+      end
+      
+      class CsePrivateKeyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kacls_key_metadata, as: 'kaclsKeyMetadata', class: Google::Apis::GmailV1::KaclsKeyMetadata, decorator: Google::Apis::GmailV1::KaclsKeyMetadata::Representation
+      
+          property :private_key_metadata_id, as: 'privateKeyMetadataId'
+        end
+      end
+      
       class Delegate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delegate_email, as: 'delegateEmail'
           property :verification_status, as: 'verificationStatus'
+        end
+      end
+      
+      class DisableCseKeyPairRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -319,6 +410,12 @@ module Google
           property :id, as: 'id'
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
+        end
+      end
+      
+      class EnableCseKeyPairRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -426,6 +523,14 @@ module Google
         end
       end
       
+      class KaclsKeyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kacls_data, as: 'kaclsData'
+          property :kacls_uri, as: 'kaclsUri'
+        end
+      end
+      
       class Label
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -455,6 +560,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_language, as: 'displayLanguage'
+        end
+      end
+      
+      class ListCseIdentitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cse_identities, as: 'cseIdentities', class: Google::Apis::GmailV1::CseIdentity, decorator: Google::Apis::GmailV1::CseIdentity::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListCseKeyPairsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cse_key_pairs, as: 'cseKeyPairs', class: Google::Apis::GmailV1::CseKeyPair, decorator: Google::Apis::GmailV1::CseKeyPair::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -607,6 +730,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :add_label_ids, as: 'addLabelIds'
           collection :remove_label_ids, as: 'removeLabelIds'
+        end
+      end
+      
+      class ObliterateCseKeyPairRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
