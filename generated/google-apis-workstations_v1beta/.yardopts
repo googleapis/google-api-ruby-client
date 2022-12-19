@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-workstations_v1beta
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/workstations_v1beta/*.rb
+lib/google/apis/workstations_v1beta.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
