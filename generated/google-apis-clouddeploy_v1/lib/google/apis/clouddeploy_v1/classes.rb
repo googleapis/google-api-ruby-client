@@ -344,8 +344,8 @@ module Google
       class Config
         include Google::Apis::Core::Hashable
       
-        # Output only. Default Skaffold version that is assigned when a Release is
-        # created without specifying a Skaffold version.
+        # Default Skaffold version that is assigned when a Release is created without
+        # specifying a Skaffold version.
         # Corresponds to the JSON property `defaultSkaffoldVersion`
         # @return [String]
         attr_accessor :default_skaffold_version
@@ -355,7 +355,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. All supported versions of Skaffold.
+        # All supported versions of Skaffold.
         # Corresponds to the JSON property `supportedVersions`
         # @return [Array<Google::Apis::ClouddeployV1::SkaffoldVersion>]
         attr_accessor :supported_versions
@@ -1462,6 +1462,12 @@ module Google
         # @return [Google::Apis::ClouddeployV1::TargetsPresentCondition]
         attr_accessor :targets_present_condition
       
+        # TargetsTypeCondition contains information on whether the Targets defined in
+        # the Delivery Pipeline are of the same type.
+        # Corresponds to the JSON property `targetsTypeCondition`
+        # @return [Google::Apis::ClouddeployV1::TargetsTypeCondition]
+        attr_accessor :targets_type_condition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1470,6 +1476,7 @@ module Google
         def update!(**args)
           @pipeline_ready_condition = args[:pipeline_ready_condition] if args.key?(:pipeline_ready_condition)
           @targets_present_condition = args[:targets_present_condition] if args.key?(:targets_present_condition)
+          @targets_type_condition = args[:targets_type_condition] if args.key?(:targets_type_condition)
         end
       end
       
@@ -2517,7 +2524,7 @@ module Google
       class TargetsPresentCondition
         include Google::Apis::Core::Hashable
       
-        # The list of Target names that are missing. For example, projects/`project_id`/
+        # The list of Target names that do not exist. For example, projects/`project_id`/
         # locations/`location_name`/targets/`target_name`.
         # Corresponds to the JSON property `missingTargets`
         # @return [Array<String>]
@@ -2543,6 +2550,35 @@ module Google
           @missing_targets = args[:missing_targets] if args.key?(:missing_targets)
           @status = args[:status] if args.key?(:status)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # TargetsTypeCondition contains information on whether the Targets defined in
+      # the Delivery Pipeline are of the same type.
+      class TargetsTypeCondition
+        include Google::Apis::Core::Hashable
+      
+        # Human readable error message.
+        # Corresponds to the JSON property `errorDetails`
+        # @return [String]
+        attr_accessor :error_details
+      
+        # True if the targets are all a comparable type. For example this is true if all
+        # targets are GKE clusters. This is false if some targets are Cloud Run targets
+        # and others are GKE clusters.
+        # Corresponds to the JSON property `status`
+        # @return [Boolean]
+        attr_accessor :status
+        alias_method :status?, :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

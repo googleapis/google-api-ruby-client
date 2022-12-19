@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetsTypeCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -816,6 +822,8 @@ module Google
       
           property :targets_present_condition, as: 'targetsPresentCondition', class: Google::Apis::ClouddeployV1::TargetsPresentCondition, decorator: Google::Apis::ClouddeployV1::TargetsPresentCondition::Representation
       
+          property :targets_type_condition, as: 'targetsTypeCondition', class: Google::Apis::ClouddeployV1::TargetsTypeCondition, decorator: Google::Apis::ClouddeployV1::TargetsTypeCondition::Representation
+      
         end
       end
       
@@ -1066,6 +1074,14 @@ module Google
           collection :missing_targets, as: 'missingTargets'
           property :status, as: 'status'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TargetsTypeCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_details, as: 'errorDetails'
+          property :status, as: 'status'
         end
       end
       
