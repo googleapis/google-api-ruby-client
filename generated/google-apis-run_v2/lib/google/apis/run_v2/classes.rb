@@ -52,7 +52,9 @@ module Google
         end
       end
       
-      # Represents a specific Cloud SQL instance.
+      # Represents a set of Cloud SQL instances. Each one will be available under /
+      # cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run
+      # for more information on how to connect Cloud SQL and Cloud Run.
       class GoogleCloudRunV2CloudSqlInstance
         include Google::Apis::Core::Hashable
       
@@ -186,7 +188,7 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Probe]
         attr_accessor :liveness_probe
       
-        # Name of the container specified as a DNS_LABEL.
+        # Name of the container specified as a DNS_LABEL (RFC 1123).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1143,6 +1145,17 @@ module Google
         # @return [String]
         attr_accessor :encryption_key
       
+        # The action to take if the encryption key is revoked.
+        # Corresponds to the JSON property `encryptionKeyRevocationAction`
+        # @return [String]
+        attr_accessor :encryption_key_revocation_action
+      
+        # If encryption_key_revocation_action is SHUTDOWN, the duration before shutting
+        # down all instances. The minimum increment is 1 hour.
+        # Corresponds to the JSON property `encryptionKeyShutdownDuration`
+        # @return [String]
+        attr_accessor :encryption_key_shutdown_duration
+      
         # Output only. A system-generated fingerprint for this version of the resource.
         # May be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
@@ -1272,6 +1285,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
+          @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
           @etag = args[:etag] if args.key?(:etag)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
@@ -2237,7 +2252,9 @@ module Google
       class GoogleCloudRunV2Volume
         include Google::Apis::Core::Hashable
       
-        # Represents a specific Cloud SQL instance.
+        # Represents a set of Cloud SQL instances. Each one will be available under /
+        # cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run
+        # for more information on how to connect Cloud SQL and Cloud Run.
         # Corresponds to the JSON property `cloudSqlInstance`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance]
         attr_accessor :cloud_sql_instance
