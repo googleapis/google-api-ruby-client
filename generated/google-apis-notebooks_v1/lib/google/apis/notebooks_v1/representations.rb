@@ -1044,6 +1044,7 @@ module Google
           property :post_startup_script, as: 'postStartupScript'
           property :post_startup_script_behavior, as: 'postStartupScriptBehavior'
           property :upgradeable, as: 'upgradeable'
+          property :version, as: 'version'
         end
       end
       

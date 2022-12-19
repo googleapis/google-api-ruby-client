@@ -248,13 +248,13 @@ module Google
         attr_accessor :copy_home_files_flag_enabled
         alias_method :copy_home_files_flag_enabled?, :copy_home_files_flag_enabled
       
-        # Required. User Cloud Storage bucket location (REQUIRED) ## Must be formatted
-        # with path prefix (gs://$GCS_BUCKET) Permissions: User Managed Notebooks: -
+        # Required. User Cloud Storage bucket location (REQUIRED). Must be formatted
+        # with path prefix (`gs://$GCS_BUCKET`). Permissions: User Managed Notebooks: -
         # storage.buckets.writer: Must be given to the project's service account
         # attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be
-        # given to the project's service account or ## user credentials attached to VM
+        # given to the project's service account or user credentials attached to VM
         # depending on authentication mode. Cloud Storage bucket Log file will be
-        # written to gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz
+        # written to `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
         # Corresponds to the JSON property `gcsBucket`
         # @return [String]
         attr_accessor :gcs_bucket
@@ -267,8 +267,8 @@ module Google
       
         # Optional. Defines the relative storage path in the Cloud Storage bucket where
         # the diagnostic logs will be written: Default path will be the root directory
-        # of the Cloud Storage bucket (gs://$GCS_BUCKET/$DATE_$TIME.tar.gz) Example of
-        # full path where Log file will be written: gs://$GCS_BUCKET/$RELATIVE_PATH/
+        # of the Cloud Storage bucket (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`) Example of
+        # full path where Log file will be written: `gs://$GCS_BUCKET/$RELATIVE_PATH/`
         # Corresponds to the JSON property `relativePath`
         # @return [String]
         attr_accessor :relative_path
@@ -2325,6 +2325,12 @@ module Google
         attr_accessor :upgradeable
         alias_method :upgradeable?, :upgradeable
       
+        # Output only. version of boot image such as M100, from release label of the
+        # image.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2342,6 +2348,7 @@ module Google
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
           @post_startup_script_behavior = args[:post_startup_script_behavior] if args.key?(:post_startup_script_behavior)
           @upgradeable = args[:upgradeable] if args.key?(:upgradeable)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
