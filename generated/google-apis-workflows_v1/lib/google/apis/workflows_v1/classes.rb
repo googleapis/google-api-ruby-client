@@ -103,7 +103,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :unreachable
       
-        # The workflows which match the request.
+        # The workflows that match the request.
         # Corresponds to the JSON property `workflows`
         # @return [Array<Google::Apis::WorkflowsV1::Workflow>]
         attr_accessor :workflows
@@ -315,7 +315,7 @@ module Google
       class Workflow
         include Google::Apis::Core::Hashable
       
-        # Output only. The timestamp of when the workflow was created.
+        # Output only. The timestamp for when the workflow was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -328,8 +328,8 @@ module Google
       
         # Labels associated with this workflow. Labels can contain at most 64 entries.
         # Keys and values can be no longer than 63 characters and can only contain
-        # lowercase letters, numeric characters, underscores and dashes. Label keys must
-        # start with a letter. International characters are allowed.
+        # lowercase letters, numeric characters, underscores, and dashes. Label keys
+        # must start with a letter. International characters are allowed.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -340,8 +340,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The timestamp that the latest revision of the workflow was
-        # created.
+        # Output only. The timestamp for the latest revision of the workflow's creation.
         # Corresponds to the JSON property `revisionCreateTime`
         # @return [String]
         attr_accessor :revision_create_time
@@ -378,7 +377,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The last update timestamp of the workflow.
+        # Output only. The timestamp for when the workflow was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
