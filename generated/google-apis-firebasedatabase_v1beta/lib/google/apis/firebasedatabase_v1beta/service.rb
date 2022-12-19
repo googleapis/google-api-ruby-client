@@ -22,8 +22,8 @@ module Google
     module FirebasedatabaseV1beta
       # Firebase Realtime Database API
       #
-      # The Firebase Realtime Database Management API enables programmatic
-      #  provisioning and management of Realtime Database instances.
+      # The Firebase Realtime Database API enables programmatic provisioning and
+      #  management of Realtime Database instances.
       #
       # @example
       #    require 'google/apis/firebasedatabase_v1beta'
