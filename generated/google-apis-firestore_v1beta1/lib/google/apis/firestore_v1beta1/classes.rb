@@ -1401,7 +1401,8 @@ module Google
         # @return [Array<Google::Apis::FirestoreV1beta1::Document>]
         attr_accessor :documents
       
-        # The next page token.
+        # A token to retrieve the next page of documents. If this field is omitted,
+        # there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
