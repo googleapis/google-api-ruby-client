@@ -7031,8 +7031,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :jar_uris
       
-        # The main file URI of the Spark application. Exactly one of the definition_body
-        # field and the main_file_uri field must be set.
+        # The main file/jar URI of the Spark application. Exactly one of the
+        # definition_body field and the main_file_uri field must be set for Python.
+        # Exactly one of main_class and main_file_uri field should be set for Java/Scala
+        # language type.
         # Corresponds to the JSON property `mainFileUri`
         # @return [String]
         attr_accessor :main_file_uri
