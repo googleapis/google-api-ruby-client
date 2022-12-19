@@ -497,7 +497,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :command
       
-        # List of environment variables to set in the container.
+        # List of environment variables to set in the container. EnvVar with duplicate
+        # names are generally allowed; if referencing a secret, the name must be unique
+        # for the container. For non-secret EnvVar names, the Container will only get
+        # the last-declared one.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::RunV1::EnvVar>]
         attr_accessor :env
@@ -527,9 +530,9 @@ module Google
         # @return [Google::Apis::RunV1::Probe]
         attr_accessor :liveness_probe
       
-        # Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run.
-        # More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/
-        # names/#dns-label-names
+        # Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://
+        # kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-
+        # names
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
