@@ -1170,6 +1170,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :numa_node_count
       
+        # Type of Performance Monitoring Unit requested on instance.
+        # Corresponds to the JSON property `performanceMonitoringUnit`
+        # @return [String]
+        attr_accessor :performance_monitoring_unit
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -1194,6 +1199,7 @@ module Google
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
           @numa_node_count = args[:numa_node_count] if args.key?(:numa_node_count)
+          @performance_monitoring_unit = args[:performance_monitoring_unit] if args.key?(:performance_monitoring_unit)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
@@ -10108,12 +10114,13 @@ module Google
         # forwarding rules, this target must be in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For more information, see the "Target" column in [Port specifications](
+        # object. - For load balancers, see the "Target" column in [Port specifications](
         # https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#
-        # ip_address_specifications). For Private Service Connect forwarding rules that
-        # forward traffic to Google APIs, provide the name of a supported Google API
-        # bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All
-        # supported Google APIs.
+        # ip_address_specifications). - For Private Service Connect forwarding rules
+        # that forward traffic to Google APIs, provide the name of a supported Google
+        # API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis -
+        # All supported Google APIs. - For Private Service Connect forwarding rules that
+        # forward traffic to managed services, the target must be a service attachment.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -29824,11 +29831,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Service-specific metadata attached to this operation.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
         # [Output Only] Name of the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -29935,7 +29937,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
           @operation_type = args[:operation_type] if args.key?(:operation_type)

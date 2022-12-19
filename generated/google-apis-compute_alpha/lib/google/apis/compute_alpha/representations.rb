@@ -7164,6 +7164,7 @@ module Google
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :numa_node_count, as: 'numaNodeCount'
+          property :performance_monitoring_unit, as: 'performanceMonitoringUnit'
           property :threads_per_core, as: 'threadsPerCore'
           property :visible_core_count, as: 'visibleCoreCount'
         end
@@ -14079,7 +14080,6 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
-          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
