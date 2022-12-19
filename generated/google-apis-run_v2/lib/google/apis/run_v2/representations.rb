@@ -591,6 +591,8 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :encryption_key, as: 'encryptionKey'
+          property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
+          property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
           property :etag, as: 'etag'
           property :execution_environment, as: 'executionEnvironment'
           property :expire_time, as: 'expireTime'
