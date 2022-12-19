@@ -21,8 +21,8 @@ module Google
   module Apis
     # Firebase Realtime Database API
     #
-    # The Firebase Realtime Database Management API enables programmatic
-    # provisioning and management of Realtime Database instances.
+    # The Firebase Realtime Database API enables programmatic provisioning and
+    # management of Realtime Database instances.
     #
     # @see https://firebase.google.com/docs/reference/rest/database/database-management/rest/
     module FirebasedatabaseV1beta
