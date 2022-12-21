@@ -50,57 +50,6 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have
-        # permission to access it.
-        # @param [String] parent
-        #   Required. The location name. For example: `projects/PROJECT_ID/locations/
-        #   LOCATION_ID`.
-        # @param [String] filter
-        #   An expression for filtering the results of the request. If unspecified, all
-        #   pipelines will be returned. Multiple filters can be applied and must be comma
-        #   separated. Fields eligible for filtering are: + `type`: The type of the
-        #   pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and `
-        #   STREAMING`. + `status`: The activity status of the pipeline. Allowed values
-        #   are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to limit results
-        #   to active batch processing pipelines: type:BATCH,status:ACTIVE
-        # @param [Fixnum] page_size
-        #   The maximum number of entities to return. The service may return fewer than
-        #   this value, even if there are additional pages. If unspecified, the max limit
-        #   is yet to be determined by the backend implementation.
-        # @param [String] page_token
-        #   A page token, received from a previous `ListPipelines` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListPipelines` must match the call that provided the page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_pipelines(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}', options)
-          command.response_representation = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse::Representation
-          command.response_class = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a pipeline. For a batch pipeline, you can pass scheduler information.
         # Data Pipelines uses the scheduler information to create an internal scheduler
         # that runs jobs periodically. If the internal scheduler is not configured, you
@@ -198,6 +147,57 @@ module Google
           command.response_representation = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Pipeline::Representation
           command.response_class = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Pipeline
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have
+        # permission to access it.
+        # @param [String] parent
+        #   Required. The location name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID`.
+        # @param [String] filter
+        #   An expression for filtering the results of the request. If unspecified, all
+        #   pipelines will be returned. Multiple filters can be applied and must be comma
+        #   separated. Fields eligible for filtering are: + `type`: The type of the
+        #   pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and `
+        #   STREAMING`. + `status`: The activity status of the pipeline. Allowed values
+        #   are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to limit results
+        #   to active batch processing pipelines: type:BATCH,status:ACTIVE
+        # @param [Fixnum] page_size
+        #   The maximum number of entities to return. The service may return fewer than
+        #   this value, even if there are additional pages. If unspecified, the max limit
+        #   is yet to be determined by the backend implementation.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListPipelines` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListPipelines` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_pipelines(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/pipelines', options)
+          command.response_representation = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse::Representation
+          command.response_class = Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ListPipelinesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
