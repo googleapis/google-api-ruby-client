@@ -118,24 +118,19 @@ module Google
         end
       end
       
-      # Metadata for response returned by the `SynthesizeLongAudio` method.
-      class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
         include Google::Apis::Core::Hashable
       
-        # Time of the most recent processing update.
-        # Corresponds to the JSON property `lastUpdateTime`
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
         # @return [String]
-        attr_accessor :last_update_time
+        attr_accessor :next_page_token
       
-        # The progress of the most recent processing update in percentage, ie. 70.0%.
-        # Corresponds to the JSON property `progressPercentage`
-        # @return [Float]
-        attr_accessor :progress_percentage
-      
-        # Time when the request was received.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::TexttospeechV1beta1::Operation>]
+        attr_accessor :operations
       
         def initialize(**args)
            update!(**args)
@@ -143,9 +138,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
-          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
-          @start_time = args[:start_time] if args.key?(:start_time)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -296,37 +290,6 @@ module Google
         def update!(**args)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Metadata for response returned by the `SynthesizeLongAudio` method.
-      class SynthesizeLongAudioMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Time of the most recent processing update.
-        # Corresponds to the JSON property `lastUpdateTime`
-        # @return [String]
-        attr_accessor :last_update_time
-      
-        # The progress of the most recent processing update in percentage, ie. 70.0%.
-        # Corresponds to the JSON property `progressPercentage`
-        # @return [Float]
-        attr_accessor :progress_percentage
-      
-        # Time when the request was received.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
-          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
-          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
