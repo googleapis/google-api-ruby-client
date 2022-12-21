@@ -224,6 +224,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
+          property :state, as: 'state'
         end
       end
       
@@ -330,6 +331,7 @@ module Google
           property :enable_rbac, as: 'enableRbac'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
+          property :enable_zone_separation, as: 'enableZoneSeparation'
           property :event_publish_config, as: 'eventPublishConfig', class: Google::Apis::DatafusionV1beta1::EventPublishConfig, decorator: Google::Apis::DatafusionV1beta1::EventPublishConfig::Representation
       
           property :gcs_bucket, as: 'gcsBucket'
@@ -450,6 +452,7 @@ module Google
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_status, as: 'additionalStatus'
           property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'

@@ -31,6 +31,11 @@ module Google
         # @return [String]
         attr_accessor :accelerator_type
       
+        # The state of the accelerator.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38,6 +43,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -494,6 +500,12 @@ module Google
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
+        # Option to enable zone separation.
+        # Corresponds to the JSON property `enableZoneSeparation`
+        # @return [Boolean]
+        attr_accessor :enable_zone_separation
+        alias_method :enable_zone_separation?, :enable_zone_separation
+      
         # Confirguration of PubSubEventWriter.
         # Corresponds to the JSON property `eventPublishConfig`
         # @return [Google::Apis::DatafusionV1beta1::EventPublishConfig]
@@ -613,6 +625,7 @@ module Google
           @enable_rbac = args[:enable_rbac] if args.key?(:enable_rbac)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
+          @enable_zone_separation = args[:enable_zone_separation] if args.key?(:enable_zone_separation)
           @event_publish_config = args[:event_publish_config] if args.key?(:event_publish_config)
           @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
@@ -967,6 +980,13 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
+        # Map to hold any additional status info for the operation If there is an
+        # accelerator being enabled/disabled/deleted, this will be populated with
+        # accelerator name as key and status as ENABLING, DISABLING or DELETING
+        # Corresponds to the JSON property `additionalStatus`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_status
+      
         # API version used to start the operation.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
@@ -1011,6 +1031,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_status = args[:additional_status] if args.key?(:additional_status)
           @api_version = args[:api_version] if args.key?(:api_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
