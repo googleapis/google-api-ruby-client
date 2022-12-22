@@ -2029,8 +2029,8 @@ module Google
         # If true, disable automatic enrollment selection (at all diversion points).
         # Automatic enrollment selection means experiment selection process based on the
         # experiment's automatic enrollment condition. This does not disable selection
-        # of forced experiments. Setting this filed to false does not change anything in
-        # experiment selection process.
+        # of forced experiments. Setting this field to false does not change anything in
+        # the experiment selection process.
         # Corresponds to the JSON property `disableAutomaticEnrollmentSelection`
         # @return [Boolean]
         attr_accessor :disable_automatic_enrollment_selection
@@ -2068,8 +2068,8 @@ module Google
         # If true, disable manual enrollment selection (at all diversion points). Manual
         # enrollment selection means experiment selection process based on the request's
         # manual enrollment states (a.k.a. opt-in experiments). This does not disable
-        # selection of forced experiments. Setting this filed to false does not change
-        # anything in experiment selection process.
+        # selection of forced experiments. Setting this field to false does not change
+        # anything in the experiment selection process.
         # Corresponds to the JSON property `disableManualEnrollmentSelection`
         # @return [Boolean]
         attr_accessor :disable_manual_enrollment_selection
@@ -2081,8 +2081,8 @@ module Google
         # of forced experiments. This is useful in cases when it is not known whether
         # experiment selection behavior is responsible for a error or breakage.
         # Disabling organic selection may help to isolate the cause of a given problem.
-        # Setting this filed to false does not change anything in experiment selection
-        # process.
+        # Setting this field to false does not change anything in the experiment
+        # selection process.
         # Corresponds to the JSON property `disableOrganicSelection`
         # @return [Boolean]
         attr_accessor :disable_organic_selection
@@ -2100,9 +2100,8 @@ module Google
         # @return [Hash<String,Boolean>]
         attr_accessor :forced_rollouts
       
-        # If set to ALL_OFF, organic selection will be disabled; if set to ALL_ON,
-        # organic selection will be disabled, and only select launch experiments will
-        # receive traffic. See go/mendel-aoao-runtime-design.
+        # Sets different testing modes. See the documentation in the TestingMode message
+        # for more information.
         # Corresponds to the JSON property `testingMode`
         # @return [String]
         attr_accessor :testing_mode
