@@ -199,7 +199,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new WorkstationCluster.
+        # Creates a new workstation cluster.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
@@ -239,16 +239,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified WorkstationCluster.
+        # Deletes the specified workstation cluster.
         # @param [String] name
         #   Required. Name of the cluster to delete.
         # @param [String] etag
         #   If set, the request will be rejected if the latest version of the cluster on
         #   the server does not have this etag.
         # @param [Boolean] force
-        #   If set, any WorkstationConfigs and Workstations in the cluster will also be
-        #   deleted. Otherwise, the request will work only if the cluster has no configs
-        #   or workstations.
+        #   If set, any workstation configurations and workstations in the cluster will
+        #   also be deleted. Otherwise, the request will work only if the cluster has no
+        #   configurations or workstations.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the review, but do not actually apply
         #   it.
@@ -282,7 +282,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the requested WorkstationCluster.
+        # Returns the requested workstation cluster.
         # @param [String] name
         #   Required. Name of the requested resource.
         # @param [String] fields
@@ -312,7 +312,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all WorkstationClusters in the specified location.
+        # Returns all workstation clusters in the specified location.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
@@ -348,7 +348,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing WorkstationCluster.
+        # Updates an existing workstation cluster.
         # @param [String] name
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
@@ -392,7 +392,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new WorkstationConfig.
+        # Creates a new workstation configuration.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
@@ -432,7 +432,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified WorkstationConfig.
+        # Deletes the specified workstation configuration.
         # @param [String] name
         #   Required. Name of the config to delete.
         # @param [String] etag
@@ -474,7 +474,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the requested WorkstationConfig.
+        # Returns the requested workstation configuration.
         # @param [String] name
         #   Required. Name of the requested resource.
         # @param [String] fields
@@ -549,7 +549,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all WorkstationConfigs in the specified cluster.
+        # Returns all workstation configurations in the specified cluster.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
@@ -585,8 +585,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all WorkstationConfigs in the specified cluster on which the caller
-        # has the "workstations.workstation.create" permission.
+        # Returns all workstation configurations in the specified cluster on which the
+        # caller has the "workstations.workstation.create" permission.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Fixnum] page_size
@@ -622,7 +622,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing WorkstationConfig.
+        # Updates an existing workstation configuration.
         # @param [String] name
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
@@ -742,7 +742,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Workstation.
+        # Creates a new workstation.
         # @param [String] parent
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
@@ -782,7 +782,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Workstation.
+        # Deletes the specified workstation.
         # @param [String] name
         #   Required. Name of the workstation to delete.
         # @param [String] etag
@@ -855,7 +855,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the requested Workstation.
+        # Returns the requested workstation.
         # @param [String] name
         #   Required. Name of the requested resource.
         # @param [String] fields
@@ -1003,7 +1003,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Workstation.
+        # Updates an existing workstation.
         # @param [String] name
         #   Full name of this resource.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object

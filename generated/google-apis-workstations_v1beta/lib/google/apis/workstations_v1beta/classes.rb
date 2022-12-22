@@ -302,7 +302,7 @@ module Google
         end
       end
       
-      # A set of Confidential Google Compute Engine Instance option.
+      # A set of Compute Engine Confidential VM instance options.
       class GceConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -322,7 +322,7 @@ module Google
         end
       end
       
-      # A runtime using a Google Compute Engine Instance.
+      # A runtime using a Compute Engine instance.
       class GceInstance
         include Google::Apis::Core::Hashable
       
@@ -331,7 +331,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # A set of Confidential Google Compute Engine Instance option.
+        # A set of Compute Engine Confidential VM instance options.
         # Corresponds to the JSON property `confidentialInstanceConfig`
         # @return [Google::Apis::WorkstationsV1beta::GceConfidentialInstanceConfig]
         attr_accessor :confidential_instance_config
@@ -342,12 +342,12 @@ module Google
         attr_accessor :disable_public_ip_addresses
         alias_method :disable_public_ip_addresses?, :disable_public_ip_addresses
       
-        # The name of a Google Compute Engine machine type.
+        # The name of a Compute Engine machine type.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # Number of instances to pool for faster Workstation starup.
+        # Number of instances to pool for faster workstation starup.
         # Corresponds to the JSON property `poolSize`
         # @return [Fixnum]
         attr_accessor :pool_size
@@ -360,13 +360,12 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # A set of Shielded Google Compute Engine Instance options.
+        # A set of Compute Engine Shielded instance options.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
-        # Network tags to add to the Google Compute Engine machines backing the
-        # Workstations.
+        # Network tags to add to the Compute Engine machines backing the Workstations.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -397,14 +396,14 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Type of file system that the disk should be formatted with. The Workstation
+        # Type of file system that the disk should be formatted with. The workstation
         # image must support this file system type. Must be empty if source_snapshot is
         # set.
         # Corresponds to the JSON property `fsType`
         # @return [String]
         attr_accessor :fs_type
       
-        # What should happen to the disk after the Workstation is deleted. Defaults to
+        # What should happen to the disk after the workstation is deleted. Defaults to
         # DELETE.
         # Corresponds to the JSON property `reclaimPolicy`
         # @return [String]
@@ -428,7 +427,7 @@ module Google
         end
       end
       
-      # A set of Shielded Google Compute Engine Instance options.
+      # A set of Compute Engine Shielded instance options.
       class GceShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -518,12 +517,11 @@ module Google
         end
       end
       
-      # The system will attempt to keep enough computational resources on standby
-      # Runtime host for a Workstation.
+      # Runtime host for a workstation.
       class Host
         include Google::Apis::Core::Hashable
       
-        # A runtime using a Google Compute Engine Instance.
+        # A runtime using a Compute Engine instance.
         # Corresponds to the JSON property `gceInstance`
         # @return [Google::Apis::WorkstationsV1beta::GceInstance]
         attr_accessor :gce_instance
@@ -844,7 +842,7 @@ module Google
         end
       end
       
-      # A directory persisted across Workstation sessions.
+      # A directory to persist across workstation sessions.
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
@@ -853,7 +851,7 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::GceRegionalPersistentDisk]
         attr_accessor :gce_pd
       
-        # Location of this directory in the running Workstation.
+        # Location of this directory in the running workstation.
         # Corresponds to the JSON property `mountPath`
         # @return [String]
         attr_accessor :mount_path
@@ -968,7 +966,7 @@ module Google
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. Hostname for the Workstation Cluster. This field will be
+        # Output only. Hostname for the workstation cluster. This field will be
         # populated only when private endpoint is enabled. To access workstations in the
         # cluster, create a new DNS zone mapping this domain name to an internal IP
         # address and a forwarding rule mapping that address to the service attachment.
@@ -982,7 +980,7 @@ module Google
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
-        # Output only. Service attachment URI for the Workstation Cluster. The service
+        # Output only. Service attachment URI for the workstation cluster. The service
         # attachemnt is created when private endpoint is enabled. To access workstations
         # in the cluster, configure access to the managed service using (Private Service
         # Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-
@@ -1276,7 +1274,8 @@ module Google
         end
       end
       
-      # A grouping of WorkstationConfigs and their associated Workstations in a region.
+      # A grouping of workstation configurations and the associated workstations in
+      # that region.
       class WorkstationCluster
         include Google::Apis::Core::Hashable
       
@@ -1383,7 +1382,8 @@ module Google
       end
       
       # A set of configuration options describing how a workstation will be run.
-      # WorkstationConfigs are intended to be shared across multiple workstations.
+      # Workstation configurations are intended to be shared across multiple
+      # workstations.
       class WorkstationConfig
         include Google::Apis::Core::Hashable
       
@@ -1431,8 +1431,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The system will attempt to keep enough computational resources on standby
-        # Runtime host for a Workstation.
+        # Runtime host for a workstation.
         # Corresponds to the JSON property `host`
         # @return [Google::Apis::WorkstationsV1beta::Host]
         attr_accessor :host
@@ -1449,7 +1448,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Directories to persist across Workstation sessions.
+        # Directories to persist across workstation sessions.
         # Corresponds to the JSON property `persistentDirectories`
         # @return [Array<Google::Apis::WorkstationsV1beta::PersistentDirectory>]
         attr_accessor :persistent_directories
