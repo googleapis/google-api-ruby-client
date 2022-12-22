@@ -1200,7 +1200,7 @@ module Google
       class GoogleCloudSecuritycenterV1BigQueryExport
         include Google::Apis::Core::Hashable
       
-        # Output only. The time at which the big query export was created. This field is
+        # Output only. The time at which the BigQuery export was created. This field is
         # set by the server and will be ignored if provided on export on creation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1232,7 +1232,7 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Output only. Email address of the user who last edited the big query export.
+        # Output only. Email address of the user who last edited the BigQuery export.
         # This field is set by the server and will be ignored if provided on export
         # creation or update.
         # Corresponds to the JSON property `mostRecentEditor`
@@ -1249,15 +1249,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The service account that needs permission to create table, upload
-        # data to the big query dataset.
+        # Output only. The service account that needs permission to create table and
+        # upload data to the BigQuery dataset.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
       
-        # Output only. The most recent time at which the big export was updated. This
-        # field is set by the server and will be ignored if provided on export creation
-        # or update.
+        # Output only. The most recent time at which the BigQuery export was updated.
+        # This field is set by the server and will be ignored if provided on export
+        # creation or update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
