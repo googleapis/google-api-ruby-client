@@ -16,13 +16,13 @@ module Google
   module Apis
     module OsconfigV1
       # Version of the google-apis-osconfig_v1 gem
-      GEM_VERSION = "0.28.0"
+      GEM_VERSION = "0.29.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.11.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221014"
+      REVISION = "20221218"
     end
   end
 end
