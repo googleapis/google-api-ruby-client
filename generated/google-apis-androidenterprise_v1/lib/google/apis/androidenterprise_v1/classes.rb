@@ -655,6 +655,25 @@ module Google
         end
       end
       
+      # Response message for create enrollment token.
+      class CreateEnrollmentTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # Enrollment token.
+        # Corresponds to the JSON property `enrollmentToken`
+        # @return [String]
+        attr_accessor :enrollment_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrollment_token = args[:enrollment_token] if args.key?(:enrollment_token)
+        end
+      end
+      
       # A Devices resource represents a mobile device managed by the EMM and belonging
       # to a specific enterprise user.
       class Device

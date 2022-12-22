@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateEnrollmentTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,6 +725,13 @@ module Google
           property :mcm_id, as: 'mcmId'
           collection :variable_set, as: 'variableSet', class: Google::Apis::AndroidenterpriseV1::VariableSet, decorator: Google::Apis::AndroidenterpriseV1::VariableSet::Representation
       
+        end
+      end
+      
+      class CreateEnrollmentTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enrollment_token, as: 'enrollmentToken'
         end
       end
       
