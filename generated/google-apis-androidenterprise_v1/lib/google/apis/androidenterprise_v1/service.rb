@@ -354,6 +354,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a token for device enrollment. The DPC can encode this token within
+        # the QR/NFC/zero-touch enrollment payload or fetch it before calling the on-
+        # device API to authenticate the user. The token can be generated for each
+        # device or reused across multiple devices.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] device_type
+        #   Whether it’s a dedicated device or a knowledge worker device.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::CreateEnrollmentTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::CreateEnrollmentTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_enterprise_enrollment_token(enterprise_id, device_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidenterprise/v1/enterprises/{enterpriseId}/createEnrollmentToken', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::CreateEnrollmentTokenResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::CreateEnrollmentTokenResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['deviceType'] = device_type unless device_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a unique token to access an embeddable UI. To generate a web UI, pass
         # the generated token into the managed Google Play javascript API. Each token
         # may only be used to start one UI session. See the javascript API documentation
@@ -613,7 +649,7 @@ module Google
         #   The request mode for pulling notifications. Specifying waitForNotifications
         #   will cause the request to block and wait until one or more notifications are
         #   present, or return an empty notification list if no notifications are present
-        #   after some time. Speciying returnImmediately will cause the request to
+        #   after some time. Specifying returnImmediately will cause the request to
         #   immediately return the pending notifications, or an empty list if no
         #   notifications are present. If omitted, defaults to waitForNotifications.
         # @param [String] fields
