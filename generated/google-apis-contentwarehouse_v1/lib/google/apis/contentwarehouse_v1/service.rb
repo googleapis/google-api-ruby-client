@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ContentwarehouseV1
-      # contentwarehouse API
+      # Document AI Warehouse API
       #
       # 
       #
