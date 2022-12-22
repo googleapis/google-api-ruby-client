@@ -1637,8 +1637,8 @@ module Google
         
         # Associates a different key pair with an existing client-side encryption
         # identity. The updated key pair must validate against Google's [S/MIME
-        # certificate profiles](https://support.google.com/a/answer/7300887?hl=en). [
-        # Beta](https://workspace.google.com/terms/service-terms/index.html).
+        # certificate profiles](https://support.google.com/a/answer/7300887). [Beta](
+        # https://workspace.google.com/terms/service-terms/index.html).
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
