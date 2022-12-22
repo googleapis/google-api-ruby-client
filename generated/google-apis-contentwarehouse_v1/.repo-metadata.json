@@ -1,6 +1,6 @@
 {
     "api_id": "contentwarehouse:v1",
-    "name_pretty": "contentwarehouse API",
+    "name_pretty": "Document AI Warehouse API",
     "distribution_name": "google-apis-contentwarehouse_v1",
     "language": "ruby",
     "library_type": "REST"

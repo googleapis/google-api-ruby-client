@@ -19,13 +19,13 @@ require 'google/apis/contentwarehouse_v1/gem_version.rb'
 
 module Google
   module Apis
-    # contentwarehouse API
+    # Document AI Warehouse API
     #
     # 
     #
     # @see https://cloud.google.com/document-warehouse
     module ContentwarehouseV1
-      # Version of the contentwarehouse API this client connects to.
+      # Version of the Document AI Warehouse API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 

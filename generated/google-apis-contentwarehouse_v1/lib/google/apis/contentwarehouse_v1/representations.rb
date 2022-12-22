@@ -418,6 +418,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsPeopleOzExternalMergedpeopleapiContactCreateContextInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppsPeopleOzExternalMergedpeopleapiContactGroupMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4403,18 +4415,6 @@ module Google
       end
       
       class GeostorePriceInfoProto
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GeostorePriceInfoSourceDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GeostorePriceInfoSourceDetailsSourceData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10984,6 +10984,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QualitySnippetsTruncationSnippetBoldedRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QualitySnippetsTruncationSnippetBoldedRangePosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QualityTimebasedLastSignificantUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11135,6 +11147,12 @@ module Google
       end
       
       class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationCountryPrice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationLocalizedTrustedGenome
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12874,7 +12892,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SocialGraphApiProtoContactCreateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SocialGraphApiProtoContactDeletionContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SocialGraphApiProtoContactEditContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -15438,6 +15468,26 @@ module Google
         end
       end
       
+      class AppsPeopleOzExternalMergedpeopleapiContactCreateContextInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_create_context, as: 'contactCreateContext', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactCreateContext, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactCreateContext::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
+      
+        end
+      end
+      
+      class AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_edit_context, as: 'contactEditContext', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactEditContext, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactEditContext::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiPersonFieldMetadata::Representation
+      
+        end
+      end
+      
       class AppsPeopleOzExternalMergedpeopleapiContactGroupMembership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16208,6 +16258,10 @@ module Google
           collection :communication_email, as: 'communicationEmail', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiCommunicationEmail, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiCommunicationEmail::Representation
       
           collection :connection_reminder, as: 'connectionReminder', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiConnectionReminder, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiConnectionReminder::Representation
+      
+          collection :contact_create_context_info, as: 'contactCreateContextInfo', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactCreateContextInfo, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactCreateContextInfo::Representation
+      
+          collection :contact_edit_context_info, as: 'contactEditContextInfo', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactEditContextInfo::Representation
       
           collection :contact_group_membership, as: 'contactGroupMembership', class: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactGroupMembership, decorator: Google::Apis::ContentwarehouseV1::AppsPeopleOzExternalMergedpeopleapiContactGroupMembership::Representation
       
@@ -18942,6 +18996,7 @@ module Google
       class AssistantApiSupportedClientOpSupportedExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :supports_partial_fulfillment, as: 'supportsPartialFulfillment'
           property :supports_synchronous_execution, as: 'supportsSynchronousExecution'
         end
       end
@@ -19512,6 +19567,8 @@ module Google
       class AssistantGroundingRankerMediaGroundingProviderFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_seed_radio, as: 'isSeedRadio'
+          property :is_seed_radio_request, as: 'isSeedRadioRequest'
           property :msc_rate, as: 'mscRate'
         end
       end
@@ -23555,24 +23612,6 @@ module Google
         end
       end
       
-      class GeostorePriceInfoSourceDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :last_update_sources, as: 'lastUpdateSources', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData::Representation
-      
-          collection :source_data, as: 'sourceData', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetailsSourceData::Representation
-      
-        end
-      end
-      
-      class GeostorePriceInfoSourceDetailsSourceData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_project_number, :numeric_string => true, as: 'clientProjectNumber'
-          property :source, as: 'source'
-        end
-      end
-      
       class GeostorePriceInfoStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23600,8 +23639,6 @@ module Google
           collection :name_info, as: 'nameInfo', class: Google::Apis::ContentwarehouseV1::GeostorePriceListNameInfoProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceListNameInfoProto::Representation
       
           collection :section, as: 'section', class: Google::Apis::ContentwarehouseV1::GeostorePriceListSectionProto, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceListSectionProto::Representation
-      
-          property :source_details, as: 'sourceDetails', class: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetails, decorator: Google::Apis::ContentwarehouseV1::GeostorePriceInfoSourceDetails::Representation
       
           property :source_url, as: 'sourceUrl', class: Google::Apis::ContentwarehouseV1::GeostoreUrlListProto, decorator: Google::Apis::ContentwarehouseV1::GeostoreUrlListProto::Representation
       
@@ -25242,7 +25279,6 @@ module Google
           property :raw_document_file_type, as: 'rawDocumentFileType'
           property :raw_document_path, as: 'rawDocumentPath'
           property :reference_id, as: 'referenceId'
-          property :structured_content_uri, as: 'structuredContentUri'
           property :text_extraction_disabled, as: 'textExtractionDisabled'
           property :text_extraction_enabled, as: 'textExtractionEnabled'
           property :title, as: 'title'
@@ -31324,8 +31360,6 @@ module Google
           property :discretized_male_confidence, as: 'discretizedMaleConfidence'
           property :discretized_predicted_age, as: 'discretizedPredictedAge'
           property :discretized_visual_saliency_score, as: 'discretizedVisualSaliencyScore'
-          property :iconic_person_bounding_box, as: 'iconicPersonBoundingBox', class: Google::Apis::ContentwarehouseV1::PhotosVisionGroundtruthdbNormalizedBoundingBox, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionGroundtruthdbNormalizedBoundingBox::Representation
-      
           property :person_bounding_box, as: 'personBoundingBox', class: Google::Apis::ContentwarehouseV1::LensDiscoveryStyleBoundingBox, decorator: Google::Apis::ContentwarehouseV1::LensDiscoveryStyleBoundingBox::Representation
       
           property :person_visibility_scores, as: 'personVisibilityScores', class: Google::Apis::ContentwarehouseV1::LensDiscoveryStylePersonAttributesPersonVisibilityScores, decorator: Google::Apis::ContentwarehouseV1::LensDiscoveryStylePersonAttributesPersonVisibilityScores::Representation
@@ -31365,8 +31399,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_box, as: 'boundingBox', class: Google::Apis::ContentwarehouseV1::LensDiscoveryStyleBoundingBox, decorator: Google::Apis::ContentwarehouseV1::LensDiscoveryStyleBoundingBox::Representation
-      
-          property :normalized_bounding_box, as: 'normalizedBoundingBox', class: Google::Apis::ContentwarehouseV1::PhotosVisionGroundtruthdbNormalizedBoundingBox, decorator: Google::Apis::ContentwarehouseV1::PhotosVisionGroundtruthdbNormalizedBoundingBox::Representation
       
         end
       end
@@ -31920,6 +31952,7 @@ module Google
       class MustangSnippetsRenderedToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bolded, as: 'bolded'
           property :byte_offset_begin, as: 'byteOffsetBegin'
           property :byte_offset_end, as: 'byteOffsetEnd'
           property :section, as: 'section'
@@ -36985,6 +37018,7 @@ module Google
       
           property :new_nsr, as: 'newNsr'
           property :nsr, as: 'nsr'
+          property :nsr_epoch, as: 'nsrEpoch'
           property :nsr_override_bid, as: 'nsrOverrideBid'
           property :nsr_variance, as: 'nsrVariance'
           property :nsrdata_from_fallback_pattern_key, as: 'nsrdataFromFallbackPatternKey'
@@ -37888,6 +37922,26 @@ module Google
         end
       end
       
+      class QualitySnippetsTruncationSnippetBoldedRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin, as: 'begin', class: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRangePosition, decorator: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRangePosition::Representation
+      
+          property :end, as: 'end', class: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRangePosition, decorator: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRangePosition::Representation
+      
+          property :text, as: 'text'
+          property :type, as: 'type'
+        end
+      end
+      
+      class QualitySnippetsTruncationSnippetBoldedRangePosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :byte_offset, as: 'byteOffset'
+          property :index, as: 'index'
+        end
+      end
+      
       class QualityTimebasedLastSignificantUpdate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -38167,6 +38221,8 @@ module Google
           property :last_updated, as: 'lastUpdated'
           property :live_op_details, as: 'liveOpDetails', class: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpsDetailInfo, decorator: Google::Apis::ContentwarehouseV1::QualityCalypsoAppsUniversalAuLiveOpsDetailInfo::Representation
       
+          property :localized_trusted_genome, as: 'localizedTrustedGenome', class: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationLocalizedTrustedGenome, decorator: Google::Apis::ContentwarehouseV1::RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationLocalizedTrustedGenome::Representation
+      
           property :marketplace, as: 'marketplace'
           property :name, as: 'name'
           property :num_downloads, as: 'numDownloads'
@@ -38214,6 +38270,15 @@ module Google
           property :country_code, as: 'countryCode'
           property :currency_code, as: 'currencyCode'
           property :price, as: 'price'
+        end
+      end
+      
+      class RepositoryAnnotationsRdfaRdfaRichSnippetsApplicationLocalizedTrustedGenome
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language, as: 'language'
+          property :localized_tg, as: 'localizedTg', class: Google::Apis::ContentwarehouseV1::VendingConsumerProtoTrustedGenomeAnnotation, decorator: Google::Apis::ContentwarehouseV1::VendingConsumerProtoTrustedGenomeAnnotation::Representation
+      
         end
       end
       
@@ -41511,6 +41576,8 @@ module Google
       class SnippetExtraInfoSnippetCandidateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bolded_ranges, as: 'boldedRanges', class: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRange, decorator: Google::Apis::ContentwarehouseV1::QualitySnippetsTruncationSnippetBoldedRange::Representation
+      
           property :id, as: 'id'
           property :is_muppet_selected_snippet, as: 'isMuppetSelectedSnippet'
           property :is_snippet_brain_bolding_triggered, as: 'isSnippetBrainBoldingTriggered'
@@ -41694,7 +41761,23 @@ module Google
         end
       end
       
+      class SocialGraphApiProtoContactCreateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutation_context, as: 'mutationContext', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext::Representation
+      
+        end
+      end
+      
       class SocialGraphApiProtoContactDeletionContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutation_context, as: 'mutationContext', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext::Representation
+      
+        end
+      end
+      
+      class SocialGraphApiProtoContactEditContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mutation_context, as: 'mutationContext', class: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext, decorator: Google::Apis::ContentwarehouseV1::SocialGraphApiProtoContactMutationContext::Representation
@@ -41851,6 +41934,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_initials_from_parsed_name, as: 'allInitialsFromParsedName'
+          property :first_initial_and_first_last_name, as: 'firstInitialAndFirstLastName'
           property :first_initial_and_very_last_name, as: 'firstInitialAndVeryLastName'
           property :knowledge_graph_name_shortening, as: 'knowledgeGraphNameShortening'
           property :truncation_indicator, as: 'truncationIndicator'
