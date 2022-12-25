@@ -161,8 +161,8 @@ module Google
         #   omits changes to files such as those in the Application Data folder or shared
         #   files which have not been added to My Drive.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query within the user corpus. Supported
-        #   values are 'drive', 'appDataFolder' and 'photos'.
+        #   A comma-separated list of spaces to query within the corpora. Supported values
+        #   are 'drive' and 'appDataFolder'.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -247,8 +247,8 @@ module Google
         #   omits changes to files such as those in the Application Data folder or shared
         #   files which have not been added to My Drive.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query within the user corpus. Supported
-        #   values are 'drive', 'appDataFolder' and 'photos'.
+        #   A comma-separated list of spaces to query within the corpora. Supported values
+        #   are 'drive' and 'appDataFolder'.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -331,7 +331,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new comment on a file.
+        # Creates a comment on a file.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Comment] comment_object
@@ -528,7 +528,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new shared drive.
+        # Creates a shared drive.
         # @param [String] request_id
         #   An ID, such as a random UUID, which uniquely identifies this user's request
         #   for idempotent creation of a shared drive. A repeated request by the same user
@@ -867,7 +867,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new file.
+        # Creates a file.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
         #   Deprecated. Creating files in multiple folders is no longer supported.
@@ -1203,7 +1203,7 @@ module Google
         #   A query for filtering the file results. See the "Search for Files" guide for
         #   supported syntax.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query within the corpus. Supported values
+        #   A comma-separated list of spaces to query within the corpora. Supported values
         #   are 'drive' and 'appDataFolder'.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
@@ -1769,7 +1769,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new reply to a comment.
+        # Creates a reply to a comment.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
