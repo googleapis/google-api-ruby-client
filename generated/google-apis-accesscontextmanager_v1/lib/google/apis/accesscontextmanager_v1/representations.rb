@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorizedOrgsDesc
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicLevel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,12 @@ module Google
       end
       
       class ListAccessPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAuthorizedOrgsDescsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -357,6 +369,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AuthorizedOrgsDesc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
+          property :authorization_direction, as: 'authorizationDirection'
+          property :authorization_type, as: 'authorizationType'
+          property :name, as: 'name'
+          collection :orgs, as: 'orgs'
         end
       end
       
@@ -558,6 +581,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_policies, as: 'accessPolicies', class: Google::Apis::AccesscontextmanagerV1::AccessPolicy, decorator: Google::Apis::AccesscontextmanagerV1::AccessPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAuthorizedOrgsDescsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_orgs_descs, as: 'authorizedOrgsDescs', class: Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc, decorator: Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
