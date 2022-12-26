@@ -248,6 +248,65 @@ module Google
         end
       end
       
+      # `AuthorizedOrgsDesc` is a resource that contains a list of organizations for a
+      # authorization type and asset type and its authorization direction.
+      class AuthorizedOrgsDesc
+        include Google::Apis::Core::Hashable
+      
+        # The asset type of this authorized orgs desc. e.g. device, credential strength.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # Authorization direction of this authorization relationship. i.e. Whether to
+        # allow specified orgs to evaluate this org's traffic, or allow specified orgs'
+        # traffic to be evaluated by this org. Orgs specified as `
+        # AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.
+        # accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `
+        # AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for
+        # this relationship to take effect. Orgs specified as `
+        # AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.
+        # accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `
+        # AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this
+        # relationship to take effect.
+        # Corresponds to the JSON property `authorizationDirection`
+        # @return [String]
+        attr_accessor :authorization_direction
+      
+        # The authorization type of this authorized orgs desc. e.g.authorization,
+        # troubleshooting or logging.
+        # Corresponds to the JSON property `authorizationType`
+        # @return [String]
+        attr_accessor :authorization_type
+      
+        # Assigned by the server during creation. The last segment has an arbitrary
+        # length and has only URI unreserved characters (as defined by [RFC 3986 Section
+        # 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be
+        # specified by the client during creation. Example: "accessPolicies/122256/
+        # authorizedOrgs/b3-BhcX_Ud5N"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The list of organization ids in this AuthorizedOrgsDesc.
+        # Corresponds to the JSON property `orgs`
+        # @return [Array<String>]
+        attr_accessor :orgs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @authorization_direction = args[:authorization_direction] if args.key?(:authorization_direction)
+          @authorization_type = args[:authorization_type] if args.key?(:authorization_type)
+          @name = args[:name] if args.key?(:name)
+          @orgs = args[:orgs] if args.key?(:orgs)
+        end
+      end
+      
       # `BasicLevel` is an `AccessLevel` using a set of recommended features.
       class BasicLevel
         include Google::Apis::Core::Hashable
@@ -1078,6 +1137,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_policies = args[:access_policies] if args.key?(:access_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A response to `ListAuthorizedOrgsDescsRequest`.
+      class ListAuthorizedOrgsDescsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of the Authorized Orgs Desc instances.
+        # Corresponds to the JSON property `authorizedOrgsDescs`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc>]
+        attr_accessor :authorized_orgs_descs
+      
+        # The pagination token to retrieve the next page of results. If the value is
+        # empty, no further results remain.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_orgs_descs = args[:authorized_orgs_descs] if args.key?(:authorized_orgs_descs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end

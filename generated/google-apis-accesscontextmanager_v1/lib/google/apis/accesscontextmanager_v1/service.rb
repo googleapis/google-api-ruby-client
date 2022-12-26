@@ -604,6 +604,191 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a authorized orgs desc. The long-running operation from this RPC has a
+        # successful status after the authorized orgs desc propagates to long-lasting
+        # storage. If a authorized orgs desc contains errors, an error response is
+        # returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
+        # will be assigned during creation.
+        # @param [String] parent
+        #   Required. Resource name for the access policy which owns this Authorized Orgs
+        #   Desc. Format: `accessPolicies/`policy_id``
+        # @param [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc] authorized_orgs_desc_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_access_policy_authorized_orgs_desc(parent, authorized_orgs_desc_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/authorizedOrgsDescs', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc::Representation
+          command.request_object = authorized_orgs_desc_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a authorized orgs desc based on the resource name. The long-running
+        # operation from this RPC has a successful status after the authorized orgs desc
+        # is removed from long-lasting storage.
+        # @param [String] name
+        #   Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/`
+        #   policy_id`/authorizedOrgsDesc/`authorized_orgs_desc_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_access_policy_authorized_orgs_desc(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a authorized orgs desc based on the resource name.
+        # @param [String] name
+        #   Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/`
+        #   policy_id`/authorizedOrgsDescs/`authorized_orgs_descs_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_access_policy_authorized_orgs_desc(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all authorized orgs descs for an access policy.
+        # @param [String] parent
+        #   Required. Resource name for the access policy to list Authorized Orgs Desc
+        #   from. Format: `accessPolicies/`policy_id``
+        # @param [Fixnum] page_size
+        #   Number of Authorized Orgs Descs to include in the list. Default 100.
+        # @param [String] page_token
+        #   Next page token for the next batch of Authorized Orgs Desc instances. Defaults
+        #   to the first page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::ListAuthorizedOrgsDescsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::ListAuthorizedOrgsDescsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_access_policy_authorized_orgs_descs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/authorizedOrgsDescs', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::ListAuthorizedOrgsDescsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::ListAuthorizedOrgsDescsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a authorized orgs desc. The long-running operation from this RPC has a
+        # successful status after the authorized orgs desc propagates to long-lasting
+        # storage. If a authorized orgs desc contains errors, an error response is
+        # returned for the first error encountered. Only the organization list in `
+        # AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type
+        # and authorization_direction cannot be updated.
+        # @param [String] name
+        #   Assigned by the server during creation. The last segment has an arbitrary
+        #   length and has only URI unreserved characters (as defined by [RFC 3986 Section
+        #   2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be
+        #   specified by the client during creation. Example: "accessPolicies/122256/
+        #   authorizedOrgs/b3-BhcX_Ud5N"
+        # @param [Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc] authorized_orgs_desc_object
+        # @param [String] update_mask
+        #   Required. Mask to control which fields get updated. Must be non-empty.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_access_policy_authorized_orgs_desc(name, authorized_orgs_desc_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::AuthorizedOrgsDesc::Representation
+          command.request_object = authorized_orgs_desc_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Commits the dry-run specification for all the service perimeters in an access
         # policy. A commit operation on a service perimeter involves copying its `spec`
         # field to the `status` field of the service perimeter. Only service perimeters
