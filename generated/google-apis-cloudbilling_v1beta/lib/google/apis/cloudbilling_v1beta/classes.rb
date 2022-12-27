@@ -22,6 +22,192 @@ module Google
   module Apis
     module CloudbillingV1beta
       
+      # Specifies the regions for Cache Fill.
+      class CacheFillRegions
+        include Google::Apis::Core::Hashable
+      
+        # The destination region for cache fill.
+        # Corresponds to the JSON property `destinationRegion`
+        # @return [String]
+        attr_accessor :destination_region
+      
+        # The source region for cache fill.
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_region = args[:destination_region] if args.key?(:destination_region)
+          @source_region = args[:source_region] if args.key?(:source_region)
+        end
+      end
+      
+      # Specifies usage for Cloud CDN egress.
+      class CloudCdnEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # The destination for the cache egress charges.
+        # Corresponds to the JSON property `cacheEgressDestination`
+        # @return [String]
+        attr_accessor :cache_egress_destination
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `cacheEgressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :cache_egress_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_egress_destination = args[:cache_egress_destination] if args.key?(:cache_egress_destination)
+          @cache_egress_rate = args[:cache_egress_rate] if args.key?(:cache_egress_rate)
+        end
+      end
+      
+      # Specifies usage for Cloud CDN resources.
+      class CloudCdnWorkload
+        include Google::Apis::Core::Hashable
+      
+        # The source service for the cache fill.
+        # Corresponds to the JSON property `cacheFillOriginService`
+        # @return [String]
+        attr_accessor :cache_fill_origin_service
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `cacheFillRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :cache_fill_rate
+      
+        # Specifies the regions for Cache Fill.
+        # Corresponds to the JSON property `cacheFillRegions`
+        # @return [Google::Apis::CloudbillingV1beta::CacheFillRegions]
+        attr_accessor :cache_fill_regions
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `cacheLookUpRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :cache_look_up_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_fill_origin_service = args[:cache_fill_origin_service] if args.key?(:cache_fill_origin_service)
+          @cache_fill_rate = args[:cache_fill_rate] if args.key?(:cache_fill_rate)
+          @cache_fill_regions = args[:cache_fill_regions] if args.key?(:cache_fill_regions)
+          @cache_look_up_rate = args[:cache_look_up_rate] if args.key?(:cache_look_up_rate)
+        end
+      end
+      
+      # The interconnect egress only includes the Interconnect Egress. Please use the
+      # standard egress traffic interface to specify your standard egress usage.
+      class CloudInterconnectEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        # Locations in the [Interconnect connection location table](https://cloud.google.
+        # com/vpc/network-pricing#interconnect-pricing). This is the interconnect egress
+        # charges.
+        # Corresponds to the JSON property `interconnectConnectionLocation`
+        # @return [String]
+        attr_accessor :interconnect_connection_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @interconnect_connection_location = args[:interconnect_connection_location] if args.key?(:interconnect_connection_location)
+        end
+      end
+      
+      # Specifies usage for Cloud Interconnect resources.
+      class CloudInterconnectWorkload
+        include Google::Apis::Core::Hashable
+      
+        # VLAN attachment used for interconnect.
+        # Corresponds to the JSON property `interconnectAttachments`
+        # @return [Array<Google::Apis::CloudbillingV1beta::VlanAttachment>]
+        attr_accessor :interconnect_attachments
+      
+        # Vlan attachment type.
+        # Corresponds to the JSON property `interconnectType`
+        # @return [String]
+        attr_accessor :interconnect_type
+      
+        # Interconnect circuit link type.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `provisionedLinkCount`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :provisioned_link_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interconnect_attachments = args[:interconnect_attachments] if args.key?(:interconnect_attachments)
+          @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
+          @link_type = args[:link_type] if args.key?(:link_type)
+          @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
+        end
+      end
+      
+      # Specification of a network type. Network egress within Google Cloud applies
+      # when you move or copy data from one Cloud Storage bucket to another or when
+      # another Google Cloud service accesses data in your Cloud Storage bucket.This
+      # includes the network egress within Google Cloud and the general network usage.
+      class CloudStorageEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Where the data is sent to.
+        # Corresponds to the JSON property `destinationContinent`
+        # @return [String]
+        attr_accessor :destination_continent
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        # Where the data comes from.
+        # Corresponds to the JSON property `sourceContinent`
+        # @return [String]
+        attr_accessor :source_continent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_continent = args[:destination_continent] if args.key?(:destination_continent)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @source_continent = args[:source_continent] if args.key?(:source_continent)
+        end
+      end
+      
       # Specifies usage of Cloud Storage resources.
       class CloudStorageWorkload
         include Google::Apis::Core::Hashable
@@ -93,7 +279,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A name for this commitment. All commitments in a CostScenario must
-        # have unique names. Each name must be a maximum of 32 characters.
+        # have unique names. Each name may be at most 128 characters long.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -661,6 +847,38 @@ module Google
         end
       end
       
+      # Specify Premium Tier Internet egress networking.
+      class PremiumTierEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Where the data is sent to.
+        # Corresponds to the JSON property `destinationContinent`
+        # @return [String]
+        attr_accessor :destination_continent
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
+        # data comes from.
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_continent = args[:destination_continent] if args.key?(:destination_continent)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @source_region = args[:source_region] if args.key?(:source_region)
+        end
+      end
+      
       # The price of a SKU at a point int time.
       class Price
         include Google::Apis::Core::Hashable
@@ -779,7 +997,10 @@ module Google
         # Time frame for the estimate. Workloads must specify usage for this duration.
         # Duration must be at least 1 hour (3,600 seconds) and at most 10 years (315,360,
         # 000 seconds). The calculations for years and months are based on a 730-hour (2,
-        # 628,000-second) month.
+        # 628,000-second) month. For durations longer than one month (2,628,000 seconds),
+        # the duration is rounded up to the next month, so the estimate shows you the
+        # costs for full months. For example, a duration of 3,232,800 seconds (roughly 5
+        # weeks) is rounded up to 2 months.
         # Corresponds to the JSON property `estimateDuration`
         # @return [String]
         attr_accessor :estimate_duration
@@ -904,6 +1125,32 @@ module Google
         end
       end
       
+      # Specify Standard Tier Internet egress networking.
+      class StandardTierEgressWorkload
+        include Google::Apis::Core::Hashable
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `egressRate`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :egress_rate
+      
+        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the egress
+        # data comes from.
+        # Corresponds to the JSON property `sourceRegion`
+        # @return [String]
+        attr_accessor :source_region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @source_region = args[:source_region] if args.key?(:source_region)
+        end
+      end
+      
       # An amount of usage over a time frame.
       class Usage
         include Google::Apis::Core::Hashable
@@ -943,23 +1190,24 @@ module Google
       class UsageRateTimeline
         include Google::Apis::Core::Hashable
       
-        # The unit for the usage rate in each timeline entry. The supported units are a
-        # subset of [The Unified Code for Units of Measure](https://ucum.org/ucum.html)
-        # standard: * **Time units (TIME-UNIT)** * `s` second * `min` minute * `h` hour *
-        # `d` day * `wk` week * `mo` month * `yr` year * `ms` millisecond * `us`
-        # microsecond * `ns` nanosecond * **Basic storage units (BASIC-STORAGE-UNIT)** *
-        # `bit` bit * `By` byte * **Count units (COUNT-UNIT)** * `count` count * **
-        # Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T`
-        # tera (10^12) * `P` peta (10^15) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi`
-        # gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also
-        # includes these connectors: * `/` division or ratio (as an infix operator). For
-        # example: `kBy/`email`` or `MiBy/10ms`. * `.` multiplication or composition (as
-        # an infix operator). For example: `GBy.d` or `k`watt`.h`. The grammar for a
-        # unit is as follows: ``` Expression = Component ` "." Component ` ` "/"
-        # Component ` ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
-        # Annotation | "1" ; UNIT = TIME-UNIT | STORAGE-UNIT | DATA-UNIT | COUNT-UNIT
-        # Annotation = "`" NAME "`" ; ``` Examples: * Request per second: `1/s` or ``
-        # requests`/s` * GibiBytes: `GiBy` * GibiBytes * seconds: `GiBy.s`
+        # The unit for the usage rate in each timeline entry. If you provide an
+        # incorrect unit for an instance, the correct unit is provided in the error
+        # message. The supported units are a subset of [The Unified Code for Units of
+        # Measure](https://ucum.org/ucum.html) standard: * **Time units (TIME-UNIT)** * `
+        # s` second * `min` minute * `h` hour * `d` day * `wk` week * `mo` month * `yr`
+        # year * `ms` millisecond * `us` microsecond * `ns` nanosecond * **Basic storage
+        # units (BASIC-STORAGE-UNIT)** * `bit` bit * `By` byte * **Count units (COUNT-
+        # UNIT)** * `count` count * **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (
+        # 10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `Ki` kibi (2^
+        # 10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50)
+        # **Grammar** The grammar also includes these connectors: * `/` division or
+        # ratio (as an infix operator). For example: `kBy/`email`` or `MiBy/10ms`. * `.`
+        # multiplication or composition (as an infix operator). For example: `GBy.d` or `
+        # k`watt`.h`. The grammar for a unit is as follows: ``` Expression = Component `
+        # "." Component ` ` "/" Component ` ; Component = ( [ PREFIX ] UNIT | "%" ) [
+        # Annotation ] | Annotation | "1" ; UNIT = TIME-UNIT | STORAGE-UNIT | DATA-UNIT |
+        # COUNT-UNIT Annotation = "`" NAME "`" ; ``` Examples: * Request per second: `1/
+        # s` or ``requests`/s` * GibiBytes: `GiBy` * GibiBytes * seconds: `GiBy.s`
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
@@ -1005,6 +1253,33 @@ module Google
         def update!(**args)
           @effective_time = args[:effective_time] if args.key?(:effective_time)
           @usage_rate = args[:usage_rate] if args.key?(:usage_rate)
+        end
+      end
+      
+      # VLAN attachment for cloud interconnect.
+      class VlanAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Capacities in the [pricing table](https://cloud.google.com/vpc/network-pricing#
+        # interconnect-pricing) Examples of capacity are: 50/100/200/300/400/500-Mbps, 1/
+        # 2/5/10/20/50-Gbps.
+        # Corresponds to the JSON property `bandwidth`
+        # @return [String]
+        attr_accessor :bandwidth
+      
+        # An amount of usage over a time frame.
+        # Corresponds to the JSON property `vlanCount`
+        # @return [Google::Apis::CloudbillingV1beta::Usage]
+        attr_accessor :vlan_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @vlan_count = args[:vlan_count] if args.key?(:vlan_count)
         end
       end
       
@@ -1071,6 +1346,35 @@ module Google
       class Workload
         include Google::Apis::Core::Hashable
       
+        # Specifies usage for Cloud CDN egress.
+        # Corresponds to the JSON property `cloudCdnEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::CloudCdnEgressWorkload]
+        attr_accessor :cloud_cdn_egress_workload
+      
+        # Specifies usage for Cloud CDN resources.
+        # Corresponds to the JSON property `cloudCdnWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::CloudCdnWorkload]
+        attr_accessor :cloud_cdn_workload
+      
+        # The interconnect egress only includes the Interconnect Egress. Please use the
+        # standard egress traffic interface to specify your standard egress usage.
+        # Corresponds to the JSON property `cloudInterconnectEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectEgressWorkload]
+        attr_accessor :cloud_interconnect_egress_workload
+      
+        # Specifies usage for Cloud Interconnect resources.
+        # Corresponds to the JSON property `cloudInterconnectWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectWorkload]
+        attr_accessor :cloud_interconnect_workload
+      
+        # Specification of a network type. Network egress within Google Cloud applies
+        # when you move or copy data from one Cloud Storage bucket to another or when
+        # another Google Cloud service accesses data in your Cloud Storage bucket.This
+        # includes the network egress within Google Cloud and the general network usage.
+        # Corresponds to the JSON property `cloudStorageEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload]
+        attr_accessor :cloud_storage_egress_workload
+      
         # Specifies usage of Cloud Storage resources.
         # Corresponds to the JSON property `cloudStorageWorkload`
         # @return [Google::Apis::CloudbillingV1beta::CloudStorageWorkload]
@@ -1082,10 +1386,20 @@ module Google
         attr_accessor :compute_vm_workload
       
         # Required. A name for this workload. All workloads in a `CostScenario` must
-        # have a unique `name`. Each `name` must be a maximum of 32 characters.
+        # have a unique `name`. Each `name` may be at most 128 characters long.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Specify Premium Tier Internet egress networking.
+        # Corresponds to the JSON property `premiumTierEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload]
+        attr_accessor :premium_tier_egress_workload
+      
+        # Specify Standard Tier Internet egress networking.
+        # Corresponds to the JSON property `standardTierEgressWorkload`
+        # @return [Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload]
+        attr_accessor :standard_tier_egress_workload
       
         def initialize(**args)
            update!(**args)
@@ -1093,9 +1407,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_cdn_egress_workload = args[:cloud_cdn_egress_workload] if args.key?(:cloud_cdn_egress_workload)
+          @cloud_cdn_workload = args[:cloud_cdn_workload] if args.key?(:cloud_cdn_workload)
+          @cloud_interconnect_egress_workload = args[:cloud_interconnect_egress_workload] if args.key?(:cloud_interconnect_egress_workload)
+          @cloud_interconnect_workload = args[:cloud_interconnect_workload] if args.key?(:cloud_interconnect_workload)
+          @cloud_storage_egress_workload = args[:cloud_storage_egress_workload] if args.key?(:cloud_storage_egress_workload)
           @cloud_storage_workload = args[:cloud_storage_workload] if args.key?(:cloud_storage_workload)
           @compute_vm_workload = args[:compute_vm_workload] if args.key?(:compute_vm_workload)
           @name = args[:name] if args.key?(:name)
+          @premium_tier_egress_workload = args[:premium_tier_egress_workload] if args.key?(:premium_tier_egress_workload)
+          @standard_tier_egress_workload = args[:standard_tier_egress_workload] if args.key?(:standard_tier_egress_workload)
         end
       end
       

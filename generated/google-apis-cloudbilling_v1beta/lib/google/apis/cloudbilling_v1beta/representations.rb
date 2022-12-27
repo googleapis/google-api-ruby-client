@@ -22,6 +22,42 @@ module Google
   module Apis
     module CloudbillingV1beta
       
+      class CacheFillRegions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudCdnEgressWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudCdnWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudInterconnectEgressWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudInterconnectWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageEgressWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudStorageWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PremiumTierEgressWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Price
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StandardTierEgressWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +257,12 @@ module Google
       end
       
       class UsageRateTimelineEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VlanAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -230,6 +284,67 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheFillRegions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_region, as: 'destinationRegion'
+          property :source_region, as: 'sourceRegion'
+        end
+      end
+      
+      class CloudCdnEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_egress_destination, as: 'cacheEgressDestination'
+          property :cache_egress_rate, as: 'cacheEgressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+        end
+      end
+      
+      class CloudCdnWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_fill_origin_service, as: 'cacheFillOriginService'
+          property :cache_fill_rate, as: 'cacheFillRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :cache_fill_regions, as: 'cacheFillRegions', class: Google::Apis::CloudbillingV1beta::CacheFillRegions, decorator: Google::Apis::CloudbillingV1beta::CacheFillRegions::Representation
+      
+          property :cache_look_up_rate, as: 'cacheLookUpRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+        end
+      end
+      
+      class CloudInterconnectEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :interconnect_connection_location, as: 'interconnectConnectionLocation'
+        end
+      end
+      
+      class CloudInterconnectWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :interconnect_attachments, as: 'interconnectAttachments', class: Google::Apis::CloudbillingV1beta::VlanAttachment, decorator: Google::Apis::CloudbillingV1beta::VlanAttachment::Representation
+      
+          property :interconnect_type, as: 'interconnectType'
+          property :link_type, as: 'linkType'
+          property :provisioned_link_count, as: 'provisionedLinkCount', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+        end
+      end
+      
+      class CloudStorageEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_continent, as: 'destinationContinent'
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :source_continent, as: 'sourceContinent'
+        end
       end
       
       class CloudStorageWorkload
@@ -444,6 +559,16 @@ module Google
         end
       end
       
+      class PremiumTierEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_continent, as: 'destinationContinent'
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :source_region, as: 'sourceRegion'
+        end
+      end
+      
       class Price
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -523,6 +648,15 @@ module Google
         end
       end
       
+      class StandardTierEgressWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_rate, as: 'egressRate', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+          property :source_region, as: 'sourceRegion'
+        end
+      end
+      
       class Usage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -549,6 +683,15 @@ module Google
         end
       end
       
+      class VlanAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth, as: 'bandwidth'
+          property :vlan_count, as: 'vlanCount', class: Google::Apis::CloudbillingV1beta::Usage, decorator: Google::Apis::CloudbillingV1beta::Usage::Representation
+      
+        end
+      end
+      
       class VmResourceBasedCud
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -565,11 +708,25 @@ module Google
       class Workload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_cdn_egress_workload, as: 'cloudCdnEgressWorkload', class: Google::Apis::CloudbillingV1beta::CloudCdnEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudCdnEgressWorkload::Representation
+      
+          property :cloud_cdn_workload, as: 'cloudCdnWorkload', class: Google::Apis::CloudbillingV1beta::CloudCdnWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudCdnWorkload::Representation
+      
+          property :cloud_interconnect_egress_workload, as: 'cloudInterconnectEgressWorkload', class: Google::Apis::CloudbillingV1beta::CloudInterconnectEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudInterconnectEgressWorkload::Representation
+      
+          property :cloud_interconnect_workload, as: 'cloudInterconnectWorkload', class: Google::Apis::CloudbillingV1beta::CloudInterconnectWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudInterconnectWorkload::Representation
+      
+          property :cloud_storage_egress_workload, as: 'cloudStorageEgressWorkload', class: Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload::Representation
+      
           property :cloud_storage_workload, as: 'cloudStorageWorkload', class: Google::Apis::CloudbillingV1beta::CloudStorageWorkload, decorator: Google::Apis::CloudbillingV1beta::CloudStorageWorkload::Representation
       
           property :compute_vm_workload, as: 'computeVmWorkload', class: Google::Apis::CloudbillingV1beta::ComputeVmWorkload, decorator: Google::Apis::CloudbillingV1beta::ComputeVmWorkload::Representation
       
           property :name, as: 'name'
+          property :premium_tier_egress_workload, as: 'premiumTierEgressWorkload', class: Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload::Representation
+      
+          property :standard_tier_egress_workload, as: 'standardTierEgressWorkload', class: Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload, decorator: Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload::Representation
+      
         end
       end
       
