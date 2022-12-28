@@ -315,9 +315,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the specified case. Only a subset of fields (display_name, description,
-        # time_zone, subscriber_email_addresses, related_resources, severity, priority,
-        # primary_contact, and labels) can be updated.
+        # Update the specified case. Only a subset of fields can be updated.
         # @param [String] name
         #   The resource name for the case.
         # @param [Google::Apis::CloudsupportV2beta::Case] case_object
