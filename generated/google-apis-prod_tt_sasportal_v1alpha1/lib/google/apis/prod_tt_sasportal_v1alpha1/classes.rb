@@ -59,7 +59,7 @@ module Google
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange]
         attr_accessor :frequency_range
       
-        # The channel score, normalized to be in [0,100].
+        # The channel score, normalized to be in the range [0,100].
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -143,7 +143,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The FRNs copied from its direct parent.
+        # Output only. The FCC Registration Numbers (FRNs) copied from its direct parent.
         # Corresponds to the JSON property `frns`
         # @return [Array<String>]
         attr_accessor :frns
@@ -201,7 +201,7 @@ module Google
         # @return [String]
         attr_accessor :fcc_id
       
-        # Only ranges within the allowlists are available for new grants.
+        # Only ranges that are within the allowlists are available for new grants.
         # Corresponds to the JSON property `grantRangeAllowlists`
         # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange>]
         attr_accessor :grant_range_allowlists
@@ -429,26 +429,30 @@ module Google
       class SasPortalDeviceMetadata
         include Google::Apis::Core::Hashable
       
-        # If populated, the Antenna Model Pattern to use. Format is: RecordCreatorId:
-        # PatternId
+        # If populated, the Antenna Model Pattern to use. Format is: `RecordCreatorId:
+        # PatternId`
         # Corresponds to the JSON property `antennaModel`
         # @return [String]
         attr_accessor :antenna_model
       
-        # CCG. A group of CBSDs in the same ICG requesting a common primary channel
-        # assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+        # Common Channel Group (CCG). A group of CBSDs in the same ICG requesting a
+        # common primary channel assignment. For more details, see [CBRSA-TS-2001 V3.0.0]
+        # (https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.
+        # 0_Approved-for-publication.pdf).
         # Corresponds to the JSON property `commonChannelGroup`
         # @return [String]
         attr_accessor :common_channel_group
       
-        # ICG. A group of CBSDs that manage their own interference with the group. See
-        # CBRSA-TS-2001 V3.0.0 for more details.
+        # Interference Coordination Group (ICG). A group of CBSDs that manage their own
+        # interference with the group. For more details, see [CBRSA-TS-2001 V3.0.0](
+        # https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.
+        # 0_Approved-for-publication.pdf).
         # Corresponds to the JSON property `interferenceCoordinationGroup`
         # @return [String]
         attr_accessor :interference_coordination_group
       
-        # Output only. Whether a CPI has validated to have coordinated with the National
-        # Quiet Zone office.
+        # Output only. Set to `true` if a CPI has validated that they have coordinated
+        # with the National Quiet Zone office.
         # Corresponds to the JSON property `nrqzValidated`
         # @return [Boolean]
         attr_accessor :nrqz_validated
@@ -668,6 +672,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :antenna_gain
       
+        # As above, but as a DoubleValue.
+        # Corresponds to the JSON property `antennaGainNewField`
+        # @return [Float]
+        attr_accessor :antenna_gain_new_field
+      
         # If an external antenna is used, the antenna model is optionally provided in
         # this field. The string has a maximum length of 128 octets.
         # Corresponds to the JSON property `antennaModel`
@@ -687,6 +696,11 @@ module Google
         # Corresponds to the JSON property `eirpCapability`
         # @return [Fixnum]
         attr_accessor :eirp_capability
+      
+        # As above, but as a DoubleValue.
+        # Corresponds to the JSON property `eirpCapabilityNewField`
+        # @return [Float]
+        attr_accessor :eirp_capability_new_field
       
         # Device antenna height in meters. When the `heightType` parameter value is "AGL"
         # , the antenna height should be given relative to ground level. When the `
@@ -745,9 +759,11 @@ module Google
           @antenna_beamwidth = args[:antenna_beamwidth] if args.key?(:antenna_beamwidth)
           @antenna_downtilt = args[:antenna_downtilt] if args.key?(:antenna_downtilt)
           @antenna_gain = args[:antenna_gain] if args.key?(:antenna_gain)
+          @antenna_gain_new_field = args[:antenna_gain_new_field] if args.key?(:antenna_gain_new_field)
           @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
           @cpe_cbsd_indication = args[:cpe_cbsd_indication] if args.key?(:cpe_cbsd_indication)
           @eirp_capability = args[:eirp_capability] if args.key?(:eirp_capability)
+          @eirp_capability_new_field = args[:eirp_capability_new_field] if args.key?(:eirp_capability_new_field)
           @height = args[:height] if args.key?(:height)
           @height_type = args[:height_type] if args.key?(:height_type)
           @horizontal_accuracy = args[:horizontal_accuracy] if args.key?(:horizontal_accuracy)
@@ -961,7 +977,7 @@ module Google
       class SasPortalNrqzValidation
         include Google::Apis::Core::Hashable
       
-        # Validation case id.
+        # Validation case ID.
         # Corresponds to the JSON property `caseId`
         # @return [String]
         attr_accessor :case_id
@@ -971,12 +987,12 @@ module Google
         # @return [String]
         attr_accessor :cpi_id
       
-        # Device latitude associated with the validation.
+        # Device latitude that's associated with the validation.
         # Corresponds to the JSON property `latitude`
         # @return [Float]
         attr_accessor :latitude
       
-        # Device longitude associated with the validation.
+        # Device longitude that's associated with the validation.
         # Corresponds to the JSON property `longitude`
         # @return [Float]
         attr_accessor :longitude
@@ -1099,8 +1115,7 @@ module Google
       class SasPortalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Set the field as true when we would like to disable the onboarding
-        # notification.
+        # Optional. Set the field as `true` to disable the onboarding notification.
         # Corresponds to the JSON property `disableNotification`
         # @return [Boolean]
         attr_accessor :disable_notification
