@@ -36,7 +36,9 @@ module Google
         # @return [Google::Apis::DriveactivityV2::ActionDetail]
         attr_accessor :detail
       
-        # Information about the target of activity.
+        # Information about the target of activity. For more information on how activity
+        # history is shared with users, see [Activity history visibility](https://
+        # developers.google.com/drive/activity/v2#activityhistory).
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::DriveactivityV2::Target]
         attr_accessor :target
@@ -1573,7 +1575,9 @@ module Google
         end
       end
       
-      # Information about the target of activity.
+      # Information about the target of activity. For more information on how activity
+      # history is shared with users, see [Activity history visibility](https://
+      # developers.google.com/drive/activity/v2#activityhistory).
       class Target
         include Google::Apis::Core::Hashable
       
