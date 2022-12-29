@@ -51,12 +51,18 @@ def run
     yoshi_utils.gh_ensure_fork remote: git_remote
   end
 
+  @errors = []
   @timestamp = Time.now.utc.strftime("%Y%m%d-%H%M%S")
   apis_versions = list_apis_versions
   apis_versions.each_with_index do |(api, version), index|
     pr_single_gem api, version, index + 1, apis_versions.size
   end
   pr_clean_old_gems if clean
+  unless @errors.empty?
+    puts "Errors:", :red, :bold
+    @errors.each { |name| puts "Error generating #{name}", :red }
+    exit 1
+  end
 end
 
 def list_apis_versions
@@ -92,6 +98,9 @@ def pr_single_gem api, version, index, total
     puts "(#{index}/#{total}) Opened pull request #{result} for google-apis-#{api}_#{version}", :green, :bold
   when :unchanged
     puts "(#{index}/#{total}) No changes for google-apis-#{api}_#{version}", :magenta
+  when :aborted
+    puts "(#{index}/#{total}) Error when generating google-apis-#{api}_#{version}", :red, :bold
+    @errors << "google-apis-#{api}_#{version}"
   else
     puts "(#{index}/#{total}) Generated google-apis-#{api}_#{version}", :cyan
   end
@@ -119,6 +128,9 @@ def pr_clean_old_gems
     puts "Opened pull request #{result} for cleaning obsolete gems", :green, :bold
   when :unchanged
     puts "No obsolete gems to clean", :magenta
+  when :aborted
+    puts "Error when cleaning obsolete gems", :red, :bold
+    @errors << "cleanup of obsolete gems"
   end
 end
 
@@ -137,7 +149,8 @@ def regen_single_gem api, version
       "--names=#{context_directory}/api_names.yaml",
       "--names-out=#{context_directory}/api_names_out.yaml"
     ]
-    exec cmd, in: [:string, "a\n"]
+    result = exec cmd, in: [:string, "a\n"], e: false
+    yoshi_pr_generator.abort_capture! unless result.success?
   end
 end
 
@@ -148,6 +161,7 @@ def clean_old_gems
       "#{context_directory}/generated",
       "--clean"
     ]
-    exec cmd
+    result = exec cmd, e: false
+    yoshi_pr_generator.abort_capture! unless result.success?
   end
 end
