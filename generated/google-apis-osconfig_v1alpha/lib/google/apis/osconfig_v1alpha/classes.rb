@@ -1872,7 +1872,7 @@ module Google
         # @return [String]
         attr_accessor :output_file_path
       
-        # An inline script. The size of the script is limited to 1024 characters.
+        # An inline script. The size of the script is limited to 32KiB.
         # Corresponds to the JSON property `script`
         # @return [String]
         attr_accessor :script
@@ -1992,8 +1992,7 @@ module Google
       class OsPolicyResourceFileResource
         include Google::Apis::Core::Hashable
       
-        # A a file with this content. The size of the content is limited to 1024
-        # characters.
+        # A a file with this content. The size of the content is limited to 32KiB.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
