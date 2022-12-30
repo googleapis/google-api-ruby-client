@@ -3002,8 +3002,9 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
-        # The space's display name. For direct messages between humans, this field might
-        # be empty.
+        # The space's display name. Required when [creating a space](https://developers.
+        # google.com/chat/api/reference/rest/v1/spaces/create). For direct messages,
+        # this field may be empty.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
