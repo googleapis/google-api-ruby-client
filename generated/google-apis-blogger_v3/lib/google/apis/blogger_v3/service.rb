@@ -469,6 +469,8 @@ module Google
         # Deletes a page by blog id and page id.
         # @param [String] blog_id
         # @param [String] page_id
+        # @param [Boolean] use_trash
+        #   Move to Trash if possible
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -486,10 +488,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_page(blog_id, page_id, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_page(blog_id, page_id, use_trash: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v3/blogs/{blogId}/pages/{pageId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
+          command.query['useTrash'] = use_trash unless use_trash.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -826,6 +829,8 @@ module Google
         # Deletes a post by blog id and post id.
         # @param [String] blog_id
         # @param [String] post_id
+        # @param [Boolean] use_trash
+        #   Move to Trash if possible
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -843,10 +848,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_post(blog_id, post_id, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_post(blog_id, post_id, use_trash: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v3/blogs/{blogId}/posts/{postId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
+          command.query['useTrash'] = use_trash unless use_trash.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -973,6 +979,8 @@ module Google
         # @param [Fixnum] max_results
         # @param [String] order_by
         # @param [String] page_token
+        # @param [String] sort_option
+        #   Sort direction applied to post list.
         # @param [String] start_date
         # @param [Array<String>, String] status
         # @param [String] view
@@ -993,7 +1001,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, sort_option: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v3/blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
@@ -1005,6 +1013,7 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['sortOption'] = sort_option unless sort_option.nil?
           command.query['startDate'] = start_date unless start_date.nil?
           command.query['status'] = status unless status.nil?
           command.query['view'] = view unless view.nil?
