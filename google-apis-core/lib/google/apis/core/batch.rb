@@ -169,7 +169,6 @@ module Google
           parts = []
           parts << build_head(call)
           parts << build_body(call) unless call.body.nil?
-          length = parts.inject(0) { |a, e| a + e.length }
           Google::Apis::Core::CompositeIO.new(*parts)
         end
 
