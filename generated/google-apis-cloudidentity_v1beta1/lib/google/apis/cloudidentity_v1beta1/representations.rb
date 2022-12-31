@@ -708,6 +708,7 @@ module Google
       class ApproveDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -722,6 +723,7 @@ module Google
       class BlockDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -742,6 +744,7 @@ module Google
       class CancelWipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -756,6 +759,7 @@ module Google
       class CancelWipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       
@@ -821,6 +825,7 @@ module Google
       class CreateDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
           property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
       
         end
@@ -1665,6 +1670,7 @@ module Google
       class WipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
           property :remove_reset_lock, as: 'removeResetLock'
         end
       end
@@ -1680,6 +1686,7 @@ module Google
       class WipeDeviceUserRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
         end
       end
       

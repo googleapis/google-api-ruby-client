@@ -104,12 +104,22 @@ module Google
       class ApproveDeviceUserRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -137,12 +147,22 @@ module Google
       class BlockDeviceUserRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -183,12 +203,22 @@ module Google
       class CancelWipeDeviceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -217,12 +247,22 @@ module Google
       class CancelWipeDeviceUserRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -465,6 +505,15 @@ module Google
       class CreateDeviceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
         # assigned or in use by a user.
@@ -478,6 +527,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
           @device = args[:device] if args.key?(:device)
         end
       end
@@ -1887,9 +1937,11 @@ module Google
       
         # Required. Immutable. The resource name of the entity under which this `Group`
         # resides in the Cloud Identity resource hierarchy. Must be of the form `
-        # identitysources/`identity_source_id`` for external- identity-mapped groups or `
-        # customers/`customer_id`` for Google Groups. The `customer_id` must begin with "
-        # C" (for example, 'C046psxkn').
+        # identitysources/`identity_source`` for external [identity-mapped groups](https:
+        # //support.google.com/a/answer/9039510) or `customers/`customer_id`` for Google
+        # Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [
+        # Find your customer ID.] (https://support.google.com/cloudidentity/answer/
+        # 10070793)
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2448,8 +2500,8 @@ module Google
       class LookupSelfDeviceUsersResponse
         include Google::Apis::Core::Hashable
       
-        # The obfuscated customer Id that may be passed back to other Devices API
-        # methods such as List, Get, etc.
+        # The customer Id that may be passed back to other Devices API methods such as
+        # List, Get, etc.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -3384,6 +3436,15 @@ module Google
       class WipeDeviceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Optional. Specifies if a user is able to factory reset a device after a Device
         # Wipe. On iOS, this is called "Activation Lock", while on Android, this is
         # known as "Factory Reset Protection". If true, this protection will be removed
@@ -3400,6 +3461,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
           @remove_reset_lock = args[:remove_reset_lock] if args.key?(:remove_reset_lock)
         end
       end
@@ -3429,12 +3491,22 @@ module Google
       class WipeDeviceUserRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       

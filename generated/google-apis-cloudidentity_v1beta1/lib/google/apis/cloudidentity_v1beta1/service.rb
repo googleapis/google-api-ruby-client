@@ -322,6 +322,12 @@ module Google
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the Device in format: `devices/`device_id``, where device_id is the unique
         #   ID assigned to the Device.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -339,11 +345,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -354,6 +361,10 @@ module Google
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the Device in format: `devices/`device_id``, where device_id is the unique
         #   ID assigned to the Device.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the Customer in format: `customers/`customer_id``, where customer_id is the
+        #   customer to whom the device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -371,17 +382,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_device(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_device(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Device::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Device
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists/Searches devices.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
         #   search fields, refer to [Mobile device search fields](https://developers.
@@ -420,10 +435,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_devices(filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_devices(customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/devices', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::ListDevicesResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::ListDevicesResponse
+          command.query['customer'] = customer unless customer.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -587,6 +603,12 @@ module Google
         #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
         #   where device_id is the unique ID assigned to the Device, and device_user_id is
         #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -604,11 +626,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_device_device_user(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -620,6 +643,12 @@ module Google
         #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
         #   where device_id is the unique ID assigned to the Device, and device_user_id is
         #   the unique ID assigned to the User.
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -637,11 +666,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_device_device_user(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_device_device_user(name, customer: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::DeviceUser
           command.params['name'] = name unless name.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -652,6 +682,12 @@ module Google
         #   Required. To list all DeviceUsers, set this to "devices/-". To list all
         #   DeviceUsers owned by a device, set this to the resource name of the device.
         #   Format: devices/`device`
+        # @param [String] customer
+        #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the customer. If you're using this API for your own organization, use `
+        #   customers/my_customer` If you're using this API to manage another organization,
+        #   use `customers/`customer_id``, where customer_id is the customer to whom the
+        #   device belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
         #   search fields, refer to [Mobile device search fields](https://developers.
@@ -685,11 +721,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_device_device_users(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_device_device_users(parent, customer: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/deviceUsers', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::ListDeviceUsersResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::ListDeviceUsersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['customer'] = customer unless customer.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1049,7 +1086,8 @@ module Google
         #   Required. The parent resource under which to list all `Group` resources. Must
         #   be of the form `identitysources/`identity_source_id`` for external- identity-
         #   mapped groups or `customers/`customer_id`` for Google Groups. The `customer_id`
-        #   must begin with "C" (for example, 'C046psxkn').
+        #   must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (
+        #   https://support.google.com/cloudidentity/answer/10070793)
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1163,6 +1201,12 @@ module Google
         end
         
         # Searches for `Group` resources matching a specified query.
+        # @param [String] order_by
+        #   The ordering of groups for the display name or email in the search groups
+        #   response. The syntax for this field can be found at https://cloud.google.com/
+        #   apis/design/design_patterns#sorting_order. Example: Sort by the ascending name:
+        #   order_by="display_name" Sort by the descending group key email: order_by="
+        #   group_key desc"
         # @param [Fixnum] page_size
         #   The maximum number of results to return. Note that the number of results
         #   returned may be less than this value even if there are more available results.
@@ -1173,11 +1217,18 @@ module Google
         # @param [String] page_token
         #   The `next_page_token` value returned from a previous search request, if any.
         # @param [String] query
-        #   Required. The search query. Must be specified in [Common Expression Language](
-        #   https://opensource.google/projects/cel). May only contain equality operators
-        #   on the parent and inclusion operators on labels (e.g., `parent == 'customers/`
-        #   customer_id`' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
-        #   labels`). The `customer_id` must begin with "C" (for example, 'C046psxkn').
+        #   Required. The search query. * Must be specified in [Common Expression Language]
+        #   (https://opensource.google/projects/cel). * Must contain equality operators on
+        #   the parent, e.g. `parent == 'customers/`customer_id`'`. The `customer_id` must
+        #   begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://
+        #   support.google.com/cloudidentity/answer/10070793) * Can contain optional
+        #   inclusion operators on `labels` such as `cloudidentity.googleapis.com/groups.
+        #   discussion_forum' in labels`). * Can contain an optional equality operator on `
+        #   domain_name` or `startsWith/contains/equality` operator on `group_key`, e.g. `
+        #   domain_name == 'abc.com'`, `group_key.startsWith('dev')`, `group_key.contains('
+        #   dev'), group_key == 'dev@abc.com'` * Can contain an optional `startsWith/
+        #   contains/equality` operator on `display_name`, such as `display_name.
+        #   startsWith('dev')` , `display_name.contains('dev')`, `display_name == 'dev'`
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1197,10 +1248,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_groups(page_size: nil, page_token: nil, query: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_groups(order_by: nil, page_size: nil, page_token: nil, query: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/groups:search', options)
           command.response_representation = Google::Apis::CloudidentityV1beta1::SearchGroupsResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::SearchGroupsResponse
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
