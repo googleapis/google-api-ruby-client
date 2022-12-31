@@ -222,9 +222,10 @@ module Google
         attr_accessor :display_name
       
         # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update requests to ensure the client has an up-to-date
-        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
-        # friendly-resources). This etag is strongly validated.
+        # and it may be sent with update requests to ensure the client has an up-to-date
+        # value before proceeding. Learn more about `etag` in Google's [AIP-154 standard]
+        # (https://google.aip.dev/154#declarative-friendly-resources). This etag is
+        # strongly validated.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -513,9 +514,10 @@ module Google
         attr_accessor :display_name
       
         # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update requests to ensure the client has an up-to-date
-        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
-        # friendly-resources). This etag is strongly validated.
+        # and it may be sent with update requests to ensure the client has an up-to-date
+        # value before proceeding. Learn more about `etag` in Google's [AIP-154 standard]
+        # (https://google.aip.dev/154#declarative-friendly-resources). This etag is
+        # strongly validated.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -620,9 +622,10 @@ module Google
         attr_accessor :display_name
       
         # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update requests to ensure the client has an up-to-date
-        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
-        # friendly-resources). This etag is strongly validated.
+        # and it may be sent with update requests to ensure the client has an up-to-date
+        # value before proceeding. Learn more about `etag` in Google's [AIP-154 standard]
+        # (https://google.aip.dev/154#declarative-friendly-resources). This etag is
+        # strongly validated.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1079,8 +1082,8 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
-        # Checksum provided in the AndroidApp entity, which if provided ensures the
-        # client has an up-to-date value before proceeding.
+        # Checksum provided in the AndroidApp resource. If provided, this checksum
+        # ensures that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1124,8 +1127,8 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
-        # Checksum provided in the IosApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
+        # Checksum provided in the IosApp resource. If provided, this checksum ensures
+        # that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1169,8 +1172,8 @@ module Google
         attr_accessor :allow_missing
         alias_method :allow_missing?, :allow_missing
       
-        # Checksum provided in the WebApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
+        # Checksum provided in the WebApp resource. If provided, this checksum ensures
+        # that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1403,8 +1406,8 @@ module Google
       class UndeleteAndroidAppRequest
         include Google::Apis::Core::Hashable
       
-        # Checksum provided in the AndroidApp entity, which if provided ensures the
-        # client has an up-to-date value before proceeding.
+        # Checksum provided in the AndroidApp resource. If provided, this checksum
+        # ensures that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1430,8 +1433,8 @@ module Google
       class UndeleteIosAppRequest
         include Google::Apis::Core::Hashable
       
-        # Checksum provided in the IosApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
+        # Checksum provided in the IosApp resource. If provided, this checksum ensures
+        # that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1457,8 +1460,8 @@ module Google
       class UndeleteWebAppRequest
         include Google::Apis::Core::Hashable
       
-        # Checksum provided in the WebApp entity, which if provided ensures the client
-        # has an up-to-date value before proceeding.
+        # Checksum provided in the WebApp resource. If provided, this checksum ensures
+        # that the client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1520,9 +1523,10 @@ module Google
         attr_accessor :display_name
       
         # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update requests to ensure the client has an up-to-date
-        # value before proceeding. [AIP-154](https://google.aip.dev/154#declarative-
-        # friendly-resources). This etag is strongly validated.
+        # and it may be sent with update requests to ensure the client has an up-to-date
+        # value before proceeding. Learn more about `etag` in Google's [AIP-154 standard]
+        # (https://google.aip.dev/154#declarative-friendly-resources). This etag is
+        # strongly validated.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
