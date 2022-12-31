@@ -125,18 +125,19 @@ module Google
         
         # Returns the spreadsheet at the given ID. The caller must specify the
         # spreadsheet ID. By default, data within grids is not returned. You can include
-        # grid data in one of 2 ways: * Specify a field mask listing your desired fields
-        # using the `fields` URL parameter in HTTP * Set the includeGridData URL
-        # parameter to true. If a field mask is set, the `includeGridData` parameter is
-        # ignored For large spreadsheets, as a best practice, retrieve only the specific
-        # spreadsheet fields that you want. To retrieve only subsets of spreadsheet data,
-        # use the ranges URL parameter. Ranges are specified using [A1 notation](/
-        # sheets/api/guides/concepts#cell). You can define a single cell (for example, `
-        # A1`) or multiple cells (for example, `A1:D5`). You can also get cells from
-        # other sheets within the same spreadsheet (for example, `Sheet2!A1:C4`) or
-        # retrieve multiple ranges at once (for example, `?ranges=A1:D5&ranges=Sheet2!A1:
-        # C4`). Limiting the range returns only the portions of the spreadsheet that
-        # intersect the requested ranges.
+        # grid data in one of 2 ways: * Specify a [field mask](https://developers.google.
+        # com/sheets/api/guides/field-masks) listing your desired fields using the `
+        # fields` URL parameter in HTTP * Set the includeGridData URL parameter to true.
+        # If a field mask is set, the `includeGridData` parameter is ignored For large
+        # spreadsheets, as a best practice, retrieve only the specific spreadsheet
+        # fields that you want. To retrieve only subsets of spreadsheet data, use the
+        # ranges URL parameter. Ranges are specified using [A1 notation](/sheets/api/
+        # guides/concepts#cell). You can define a single cell (for example, `A1`) or
+        # multiple cells (for example, `A1:D5`). You can also get cells from other
+        # sheets within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve
+        # multiple ranges at once (for example, `?ranges=A1:D5&ranges=Sheet2!A1:C4`).
+        # Limiting the range returns only the portions of the spreadsheet that intersect
+        # the requested ranges.
         # @param [String] spreadsheet_id
         #   The spreadsheet to request.
         # @param [Boolean] include_grid_data
@@ -179,8 +180,9 @@ module Google
         # dataFilters parameter. Multiple DataFilters can be specified. Specifying one
         # or more data filters returns the portions of the spreadsheet that intersect
         # ranges matched by any of the filters. By default, data within grids is not
-        # returned. You can include grid data one of 2 ways: * Specify a field mask
-        # listing your desired fields using the `fields` URL parameter in HTTP * Set the
+        # returned. You can include grid data one of 2 ways: * Specify a [field mask](
+        # https://developers.google.com/sheets/api/guides/field-masks) listing your
+        # desired fields using the `fields` URL parameter in HTTP * Set the
         # includeGridData parameter to true. If a field mask is set, the `
         # includeGridData` parameter is ignored For large spreadsheets, as a best
         # practice, retrieve only the specific spreadsheet fields that you want.
