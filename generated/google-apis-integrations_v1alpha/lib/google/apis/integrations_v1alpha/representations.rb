@@ -2347,6 +2347,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resolved_by, as: 'resolvedBy'
+          property :resolved_by_cpi, as: 'resolvedByCpi'
           property :timestamp, as: 'timestamp'
         end
       end
