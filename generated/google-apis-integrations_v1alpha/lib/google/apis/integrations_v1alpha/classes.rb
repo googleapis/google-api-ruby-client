@@ -2711,6 +2711,11 @@ module Google
         attr_accessor :resolved_by
       
         # 
+        # Corresponds to the JSON property `resolvedByCpi`
+        # @return [String]
+        attr_accessor :resolved_by_cpi
+      
+        # 
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -2722,6 +2727,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resolved_by = args[:resolved_by] if args.key?(:resolved_by)
+          @resolved_by_cpi = args[:resolved_by_cpi] if args.key?(:resolved_by_cpi)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
@@ -5244,7 +5250,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration for the connection.
+        # Node configuration for the connection.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudConnectorsV1NodeConfig]
         attr_accessor :node_config
@@ -5418,7 +5424,7 @@ module Google
         end
       end
       
-      # Configuration for the connection.
+      # Node configuration for the connection.
       class GoogleCloudConnectorsV1NodeConfig
         include Google::Apis::Core::Hashable
       
