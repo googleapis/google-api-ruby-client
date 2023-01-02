@@ -1,7 +1,7 @@
-name: Daily-Generate-Updates
+name: Weekly-Generate-Updates
 on:
   schedule:
-    - cron: '02 11 * * *'
+    - cron: '02 9 * * 0'
 
 jobs:
   generate-updates:
@@ -19,6 +19,6 @@ jobs:
           ruby-version: "3.0"
       - name: Install tools
         run: "gem install --no-document toys"
-      - name: execute
+      - name: Execute
         run: |
           toys generate-updates -v --fork --all --clean
