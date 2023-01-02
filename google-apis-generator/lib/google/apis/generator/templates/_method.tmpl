@@ -6,7 +6,7 @@
 #   <%=  block_comment(param.description, 0, 3) %>
 <%   end -%>
 <% end -%>
-<% if api_method.request -%>
+<% if api.schemas[api_method.request&._ref] -%>
 # @param [<%= api.schemas[api_method.request._ref].generated_type %>] <%= api.schemas[api_method.request._ref].generated_name %>_object
 <% end -%>
 <% for param in api_method.optional_query_parameters -%>
@@ -34,7 +34,7 @@
 #   Request-specific options
 #
 # @yield [result, err] Result & error if block supplied
-<% if api_method.response -%>
+<% if api.schemas[api_method.response&._ref] -%>
 # @yieldparam result [<%= api.schemas[api_method.response._ref].generated_type %>] parsed result object
 # @yieldparam err [StandardError] error object if request failed
 #
@@ -49,7 +49,7 @@
 # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
 # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
 # @raise [Google::Apis::AuthorizationError] Authorization is required
-def <%= api_method.generated_name %>(<% for param in api_method.required_parameters %><%= param.generated_name %>, <% end %><% if api_method.request %><%= api.schemas[api_method.request._ref].generated_name %>_object = nil, <% end %><% for param in api_method.optional_query_parameters %><%= param.generated_name %>: nil, <% end %><% for param in api.parameters.values.reject {|p| p.name == 'key'} %><%= param.generated_name %>: nil, <% end %><% if api_method.supports_media_upload? %>upload_source: nil, content_type: nil, <% elsif api_method.supports_media_download? %>download_dest: nil, <%  end  %>options: nil, &block)
+def <%= api_method.generated_name %>(<% for param in api_method.required_parameters %><%= param.generated_name %>, <% end %><% if api.schemas[api_method.request&._ref] %><%= api.schemas[api_method.request._ref].generated_name %>_object = nil, <% end %><% for param in api_method.optional_query_parameters %><%= param.generated_name %>: nil, <% end %><% for param in api.parameters.values.reject {|p| p.name == 'key'} %><%= param.generated_name %>: nil, <% end %><% if api_method.supports_media_upload? %>upload_source: nil, content_type: nil, <% elsif api_method.supports_media_download? %>download_dest: nil, <%  end  %>options: nil, &block)
 <% if api_method.supports_media_upload? && api.name == 'Storage' %>
   if upload_source.nil?
     command = make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
@@ -83,11 +83,11 @@ def <%= api_method.generated_name %>(<% for param in api_method.required_paramet
 <% else -%>
   command = make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
 <% end -%>
-<% if api_method.request -%>
+<% if api.schemas[api_method.request&._ref] -%>
   command.request_representation = <%= api.schemas[api_method.request._ref].generated_type %>::Representation
   command.request_object = <%= api.schemas[api_method.request._ref].generated_name %>_object
 <% end -%>
-<% if api_method.response -%>
+<% if api.schemas[api_method.response&._ref] -%>
 <%   if api.force_alt_json? -%>
   command.query['alt'] = 'json'
 <%   end -%>
