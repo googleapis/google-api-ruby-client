@@ -1,5 +1,9 @@
 # Release history for google-apis-chromemanagement_v1
 
+### v0.32.0 (2023-01-04)
+
+* Regenerated from discovery document revision 20230102
+
 ### v0.31.0 (2022-11-30)
 
 * Regenerated from discovery document revision 20221126

@@ -322,7 +322,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+      class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +341,12 @@ module Google
       end
       
       class GoogleChromeManagementV1TotalMemoryEncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1UsbPeripheralReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -492,6 +498,7 @@ module Google
           collection :site_access, as: 'siteAccess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppSiteAccess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppSiteAccess::Representation
       
           property :support_enabled, as: 'supportEnabled'
+          property :type, as: 'type'
         end
       end
       
@@ -932,9 +939,9 @@ module Google
           property :https_latency_change_event, as: 'httpsLatencyChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent::Representation
       
           property :name, as: 'name'
-          property :network_connection_state_change_event, as: 'networkConnectionStateChangeEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent::Representation
-      
           property :report_time, as: 'reportTime'
+          property :usb_peripherals_event, as: 'usbPeripheralsEvent', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent::Representation
+      
           property :user, as: 'user', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUserInfo::Representation
       
         end
@@ -949,11 +956,11 @@ module Google
         end
       end
       
-      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+      class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :connection_state, as: 'connectionState'
-          property :guid, as: 'guid'
+          collection :usb_peripheral_report, as: 'usbPeripheralReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport::Representation
+      
         end
       end
       
@@ -979,6 +986,20 @@ module Google
           property :encryption_state, as: 'encryptionState'
           property :key_length, :numeric_string => true, as: 'keyLength'
           property :max_keys, :numeric_string => true, as: 'maxKeys'
+        end
+      end
+      
+      class GoogleChromeManagementV1UsbPeripheralReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories'
+          property :class_id, as: 'classId'
+          property :firmware_version, as: 'firmwareVersion'
+          property :name, as: 'name'
+          property :pid, as: 'pid'
+          property :subclass_id, as: 'subclassId'
+          property :vendor, as: 'vendor'
+          property :vid, as: 'vid'
         end
       end
       
