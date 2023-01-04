@@ -1365,7 +1365,7 @@ module Google
         # 1 and 63 characters long and must conform to the following regular expression:
         # \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63
         # characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]
-        # *\[a-z0-9\])?)?. No more than 256 labels can be associated with a given
+        # *\[a-z0-9\])?)?. No more than 64 labels can be associated with a given
         # resource. Clients should store labels in a representation such as JSON that
         # does not depend on specific characters being disallowed. Example: `"
         # myBusinessDimension" : "businessValue"`
