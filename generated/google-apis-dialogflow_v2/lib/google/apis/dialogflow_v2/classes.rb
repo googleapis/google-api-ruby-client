@@ -131,6 +131,27 @@ module Google
         end
       end
       
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowCxV3ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
+        end
+      end
+      
       # One interaction between a human and virtual agent. The human provides some
       # input and the virtual agent provides a response.
       class GoogleCloudDialogflowCxV3ConversationTurn
@@ -2501,6 +2522,74 @@ module Google
         end
       end
       
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowCxV3TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
+        end
+      end
+      
       # Metadata for UpdateDocument operation.
       class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3056,6 +3145,27 @@ module Google
           @result = args[:result] if args.key?(:result)
           @run_time = args[:run_time] if args.key?(:run_time)
           @test_case_results = args[:test_case_results] if args.key?(:test_case_results)
+        end
+      end
+      
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowCxV3beta1ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
         end
       end
       
@@ -5429,6 +5539,74 @@ module Google
         end
       end
       
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowCxV3beta1TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
+        end
+      end
+      
       # Metadata for UpdateDocument operation.
       class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -6015,6 +6193,11 @@ module Google
         # @return [String]
         attr_accessor :document_efficiency
       
+        # Feedback for conversation summarization.
+        # Corresponds to the JSON property `summarizationFeedback`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback]
+        attr_accessor :summarization_feedback
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6024,6 +6207,38 @@ module Google
           @answer_relevance = args[:answer_relevance] if args.key?(:answer_relevance)
           @document_correctness = args[:document_correctness] if args.key?(:document_correctness)
           @document_efficiency = args[:document_efficiency] if args.key?(:document_efficiency)
+          @summarization_feedback = args[:summarization_feedback] if args.key?(:summarization_feedback)
+        end
+      end
+      
+      # Feedback for conversation summarization.
+      class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when composing of the summary starts.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Timestamp when the summary was submitted.
+        # Corresponds to the JSON property `submitTime`
+        # @return [String]
+        attr_accessor :submit_time
+      
+        # Text of actual submitted summary.
+        # Corresponds to the JSON property `summaryText`
+        # @return [String]
+        attr_accessor :summary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @submit_time = args[:submit_time] if args.key?(:submit_time)
+          @summary_text = args[:summary_text] if args.key?(:summary_text)
         end
       end
       
@@ -12277,6 +12492,102 @@ module Google
         end
       end
       
+      # The request message for Conversations.SuggestConversationSummary.
+      class GoogleCloudDialogflowV2SuggestConversationSummaryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Max number of messages prior to and including [latest_message] to use as
+        # context when compiling the suggestion. By default 500 and at most 1000.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. If empty, the latest message of the conversation will be used.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+        end
+      end
+      
+      # The response message for Conversations.SuggestConversationSummary.
+      class GoogleCloudDialogflowV2SuggestConversationSummaryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including last_conversation_message used to
+        # compile the suggestion. It may be smaller than the SuggestSummaryRequest.
+        # context_size field in the request if there weren't that many messages in the
+        # conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used as context for compiling
+        # suggestion. Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # Generated summary for a conversation.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Generated summary for a conversation.
+      class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary
+        include Google::Apis::Core::Hashable
+      
+        # The name of the answer record. Format: "projects//answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # The summary content that is concatenated into one string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The summary content that is divided into sections. The key is the section's
+        # name and the value is the section's content. There is no specific format for
+        # the key or value.
+        # Corresponds to the JSON property `textSections`
+        # @return [Hash<String,String>]
+        attr_accessor :text_sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @text = args[:text] if args.key?(:text)
+          @text_sections = args[:text_sections] if args.key?(:text_sections)
+        end
+      end
+      
       # The request message for Participants.SuggestFaqAnswers.
       class GoogleCloudDialogflowV2SuggestFaqAnswersRequest
         include Google::Apis::Core::Hashable
@@ -16136,6 +16447,27 @@ module Google
         end
       end
       
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowV3alpha1ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV3alpha1TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
+        end
+      end
+      
       # Metadata for CreateDocument operation.
       class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -16247,6 +16579,82 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowV3alpha1TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether agent has triggered the event corresponding to user abandoning the
+        # conversation.
+        # Corresponds to the JSON property `triggeredAbandonmentEvent`
+        # @return [Boolean]
+        attr_accessor :triggered_abandonment_event
+        alias_method :triggered_abandonment_event?, :triggered_abandonment_event
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @triggered_abandonment_event = args[:triggered_abandonment_event] if args.key?(:triggered_abandonment_event)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
       end
       
