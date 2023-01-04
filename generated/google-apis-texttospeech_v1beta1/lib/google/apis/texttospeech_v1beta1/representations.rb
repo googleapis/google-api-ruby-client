@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class SynthesisInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SynthesizeLongAudioMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -120,6 +132,14 @@ module Google
         end
       end
       
+      class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :progress_percentage, as: 'progressPercentage'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -163,6 +183,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ssml, as: 'ssml'
           property :text, as: 'text'
+        end
+      end
+      
+      class SynthesizeLongAudioMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :progress_percentage, as: 'progressPercentage'
+          property :start_time, as: 'startTime'
         end
       end
       
