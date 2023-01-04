@@ -2893,7 +2893,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # String with specific view properties.
+        # String with specific view properties, must be non-empty.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
