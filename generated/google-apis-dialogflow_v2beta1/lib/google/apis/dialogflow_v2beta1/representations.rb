@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ConversationSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ConversationTurn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3TurnSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +551,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -947,6 +965,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1TransitionRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TurnSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2692,6 +2716,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV3alpha1ConversationSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2723,6 +2753,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV3alpha1TurnSignals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2808,6 +2844,14 @@ module Google
           property :result, as: 'result'
           property :run_time, as: 'runTime'
           collection :test_case_results, as: 'testCaseResults'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ConversationSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :turn_signals, as: 'turnSignals', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3TurnSignals, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3TurnSignals::Representation
+      
         end
       end
       
@@ -3465,6 +3509,20 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3TurnSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_escalated, as: 'agentEscalated'
+          property :dtmf_used, as: 'dtmfUsed'
+          collection :failure_reasons, as: 'failureReasons'
+          property :no_match, as: 'noMatch'
+          property :no_user_input, as: 'noUserInput'
+          property :reached_end_page, as: 'reachedEndPage'
+          property :user_escalated, as: 'userEscalated'
+          collection :webhook_statuses, as: 'webhookStatuses'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3622,6 +3680,14 @@ module Google
           property :result, as: 'result'
           property :run_time, as: 'runTime'
           collection :test_case_results, as: 'testCaseResults'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ConversationSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :turn_signals, as: 'turnSignals', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1TurnSignals, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1TurnSignals::Representation
+      
         end
       end
       
@@ -4276,6 +4342,20 @@ module Google
           property :target_page, as: 'targetPage'
           property :trigger_fulfillment, as: 'triggerFulfillment', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1Fulfillment::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1TurnSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_escalated, as: 'agentEscalated'
+          property :dtmf_used, as: 'dtmfUsed'
+          collection :failure_reasons, as: 'failureReasons'
+          property :no_match, as: 'noMatch'
+          property :no_user_input, as: 'noUserInput'
+          property :reached_end_page, as: 'reachedEndPage'
+          property :user_escalated, as: 'userEscalated'
+          collection :webhook_statuses, as: 'webhookStatuses'
         end
       end
       
@@ -7278,6 +7358,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV3alpha1ConversationSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :turn_signals, as: 'turnSignals', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV3alpha1TurnSignals, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV3alpha1TurnSignals::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7322,6 +7410,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1TurnSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_escalated, as: 'agentEscalated'
+          property :dtmf_used, as: 'dtmfUsed'
+          collection :failure_reasons, as: 'failureReasons'
+          property :no_match, as: 'noMatch'
+          property :no_user_input, as: 'noUserInput'
+          property :reached_end_page, as: 'reachedEndPage'
+          property :triggered_abandonment_event, as: 'triggeredAbandonmentEvent'
+          property :user_escalated, as: 'userEscalated'
+          collection :webhook_statuses, as: 'webhookStatuses'
         end
       end
       
