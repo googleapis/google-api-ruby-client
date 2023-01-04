@@ -682,7 +682,8 @@ module Google
       
         # If EXACT_SEARCHABLE_ENABLED, attribute values will be exact searchable. This
         # property only applies to textual custom attributes and requires indexable set
-        # to enabled to enable exact-searchable.
+        # to enabled to enable exact-searchable. If unset, the server behavior defaults
+        # to EXACT_SEARCHABLE_DISABLED.
         # Corresponds to the JSON property `exactSearchableOption`
         # @return [String]
         attr_accessor :exact_searchable_option
@@ -715,12 +716,15 @@ module Google
         # custom_attribute`, such as `attributes.xyz`. To be indexable, the attribute
         # name can contain only alpha-numeric characters and underscores. For example,
         # an attribute named `attributes.abc_xyz` can be indexed, but an attribute named
-        # `attributes.abc-xyz` cannot be indexed.
+        # `attributes.abc-xyz` cannot be indexed. For attributes whoes key start with `
+        # attributes.`, we refer them as custom attributes. Otherwise they are built-in
+        # attributes such as `color` and `brands`.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
         # If RETRIEVABLE_ENABLED, attribute values are retrievable in the search results.
+        # If unset, the server behavior defaults to RETRIEVABLE_DISABLED.
         # Corresponds to the JSON property `retrievableOption`
         # @return [String]
         attr_accessor :retrievable_option
@@ -4273,7 +4277,8 @@ module Google
         # @return [String]
         attr_accessor :diversity_level
       
-        # What kind of diversity to use - data driven or rule based.
+        # What kind of diversity to use - data driven or rule based. If unset, the
+        # server behavior defaults to RULE_BASED_DIVERSITY.
         # Corresponds to the JSON property `diversityType`
         # @return [String]
         attr_accessor :diversity_type
@@ -4361,7 +4366,7 @@ module Google
         # product items with a similar recommendation probability to be ordered by price,
         # with the highest-priced items first. This setting could result in a decrease
         # in click-through and conversion rates. Allowed values are: * `no-price-
-        # reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-
+        # reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-
         # reranking` If not specified, we choose default based on model type. Default
         # value: `no-price-reranking`. Can only be set if solution_types is
         # SOLUTION_TYPE_RECOMMENDATION.
