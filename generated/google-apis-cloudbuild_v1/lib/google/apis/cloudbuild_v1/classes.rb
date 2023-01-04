@@ -2872,13 +2872,12 @@ module Google
         attr_accessor :peered_network
       
         # Immutable. Subnet IP range within the peered network. This is specified in
-        # CIDR notation. The IP and prefix size are both optional. If unspecified, the
-        # default value for IP is blank (will use an automatic value from the peered
-        # network), and the prefix size will default to 24 bits. e.g. `192.168.0.0/30`
-        # would specify a subnet mask of 192.168.0.0 with a prefix size of 30 bits. `192.
-        # 168.0.0` would specify a subnet mask of 192.168.0.0 with a prefix size of 24
-        # bits (the default prefix size). `/16` would specify a prefix size of 16 bits,
-        # with an unspecified IP.
+        # CIDR notation with a slash and the subnet prefix size. You can optionally
+        # specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29`
+        # would specify an IP range starting at 192.168.0.0 with a prefix size of 29
+        # bits. `/16` would specify a prefix size of 16 bits, with an automatically
+        # determined IP within the peered VPC. If unspecified, a value of `/24` will be
+        # used.
         # Corresponds to the JSON property `peeredNetworkIpRange`
         # @return [String]
         attr_accessor :peered_network_ip_range
