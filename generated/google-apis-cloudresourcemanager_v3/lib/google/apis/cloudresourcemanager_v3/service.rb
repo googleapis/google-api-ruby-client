@@ -259,10 +259,12 @@ module Google
         #   Optional. A pagination token returned from a previous call to `ListFolders`
         #   that indicates where this listing should continue from.
         # @param [String] parent
-        #   Required. The resource name of the organization or folder whose folders are
-        #   being listed. Must be of the form `folders/`folder_id`` or `organizations/`
-        #   org_id``. Access to this method is controlled by checking the `resourcemanager.
-        #   folders.list` permission on the `parent`.
+        #   Required. The name of the parent resource whose folders are being listed. Only
+        #   children of this parent resource are listed; descendants are not listed. If
+        #   the parent is a folder, use the value `folders/`folder_id``. If the parent is
+        #   an organization, use the value `organizations/`org_id``. Access to this method
+        #   is controlled by checking the `resourcemanager.folders.list` permission on the
+        #   `parent`.
         # @param [Boolean] show_deleted
         #   Optional. Controls whether folders in the DELETE_REQUESTED state should be
         #   returned. Defaults to false.
@@ -1090,9 +1092,10 @@ module Google
         #   Optional. A pagination token returned from a previous call to ListProjects
         #   that indicates from where listing should continue.
         # @param [String] parent
-        #   Required. The name of the parent resource to list projects under. For example,
-        #   setting this field to 'folders/1234' would list all projects directly under
-        #   that folder.
+        #   Required. The name of the parent resource whose projects are being listed.
+        #   Only children of this parent resource are listed; descendants are not listed.
+        #   If the parent is a folder, use the value `folders/`folder_id``. If the parent
+        #   is an organization, use the value `organizations/`org_id``.
         # @param [Boolean] show_deleted
         #   Optional. Indicate that projects in the `DELETE_REQUESTED` state should also
         #   be returned. Normally only `ACTIVE` projects are returned.
@@ -1972,8 +1975,7 @@ module Google
         #   Optional. A pagination token returned from a previous call to `ListTagValues`
         #   that indicates where this listing should continue from.
         # @param [String] parent
-        #   Required. Resource name for TagKey, parent of the TagValues to be listed, in
-        #   the format `tagKeys/123`.
+        #   Required.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
