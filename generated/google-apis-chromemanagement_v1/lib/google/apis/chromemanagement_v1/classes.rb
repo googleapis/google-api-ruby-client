@@ -622,6 +622,11 @@ module Google
         attr_accessor :support_enabled
         alias_method :support_enabled?, :support_enabled
       
+        # Output only. Types of an item in the Chrome Web Store
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -638,6 +643,7 @@ module Google
           @permissions = args[:permissions] if args.key?(:permissions)
           @site_access = args[:site_access] if args.key?(:site_access)
           @support_enabled = args[:support_enabled] if args.key?(:support_enabled)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2335,16 +2341,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
-        # connection state changes.
-        # Corresponds to the JSON property `networkConnectionStateChangeEvent`
-        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
-        attr_accessor :network_connection_state_change_event
-      
         # Timestamp that represents when the event was reported.
         # Corresponds to the JSON property `reportTime`
         # @return [String]
         attr_accessor :report_time
+      
+        # `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
+        # removed.
+        # Corresponds to the JSON property `usbPeripheralsEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryUsbPeripheralsEvent]
+        attr_accessor :usb_peripherals_event
       
         # Information about a user associated with telemetry data.
         # Corresponds to the JSON property `user`
@@ -2362,8 +2368,8 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
           @name = args[:name] if args.key?(:name)
-          @network_connection_state_change_event = args[:network_connection_state_change_event] if args.key?(:network_connection_state_change_event)
           @report_time = args[:report_time] if args.key?(:report_time)
+          @usb_peripherals_event = args[:usb_peripherals_event] if args.key?(:usb_peripherals_event)
           @user = args[:user] if args.key?(:user)
         end
       end
@@ -2396,20 +2402,15 @@ module Google
         end
       end
       
-      # `TelemetryNetworkConnectionStateChangeEvent` is triggered on network
-      # connection state changes.
-      class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent
+      # `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
+      # removed.
+      class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
         include Google::Apis::Core::Hashable
       
-        # Current connection state of the network.
-        # Corresponds to the JSON property `connectionState`
-        # @return [String]
-        attr_accessor :connection_state
-      
-        # Unique identifier of the network.
-        # Corresponds to the JSON property `guid`
-        # @return [String]
-        attr_accessor :guid
+        # List of usb devices that were either added or removed.
+        # Corresponds to the JSON property `usbPeripheralReport`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1UsbPeripheralReport>]
+        attr_accessor :usb_peripheral_report
       
         def initialize(**args)
            update!(**args)
@@ -2417,8 +2418,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @connection_state = args[:connection_state] if args.key?(:connection_state)
-          @guid = args[:guid] if args.key?(:guid)
+          @usb_peripheral_report = args[:usb_peripheral_report] if args.key?(:usb_peripheral_report)
         end
       end
       
@@ -2514,6 +2514,68 @@ module Google
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
           @key_length = args[:key_length] if args.key?(:key_length)
           @max_keys = args[:max_keys] if args.key?(:max_keys)
+        end
+      end
+      
+      # USB connected peripheral report.
+      class GoogleChromeManagementV1UsbPeripheralReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Categories the device belongs to https://www.usb.org/defined-
+        # class-codes
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # Output only. Class ID https://www.usb.org/defined-class-codes
+        # Corresponds to the JSON property `classId`
+        # @return [Fixnum]
+        attr_accessor :class_id
+      
+        # Output only. Firmware version
+        # Corresponds to the JSON property `firmwareVersion`
+        # @return [String]
+        attr_accessor :firmware_version
+      
+        # Output only. Device name, model name, or product name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Product ID
+        # Corresponds to the JSON property `pid`
+        # @return [Fixnum]
+        attr_accessor :pid
+      
+        # Output only. Subclass ID https://www.usb.org/defined-class-codes
+        # Corresponds to the JSON property `subclassId`
+        # @return [Fixnum]
+        attr_accessor :subclass_id
+      
+        # Output only. Vendor name
+        # Corresponds to the JSON property `vendor`
+        # @return [String]
+        attr_accessor :vendor
+      
+        # Output only. Vendor ID
+        # Corresponds to the JSON property `vid`
+        # @return [Fixnum]
+        attr_accessor :vid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+          @class_id = args[:class_id] if args.key?(:class_id)
+          @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
+          @name = args[:name] if args.key?(:name)
+          @pid = args[:pid] if args.key?(:pid)
+          @subclass_id = args[:subclass_id] if args.key?(:subclass_id)
+          @vendor = args[:vendor] if args.key?(:vendor)
+          @vid = args[:vid] if args.key?(:vid)
         end
       end
       
