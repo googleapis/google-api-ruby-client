@@ -118,6 +118,31 @@ module Google
         end
       end
       
+      # Metadata for response returned by the `SynthesizeLongAudio` method.
+      class GoogleCloudTexttospeechV1beta1SynthesizeLongAudioMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The progress of the most recent processing update in percentage, ie. 70.0%.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Float]
+        attr_accessor :progress_percentage
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -290,6 +315,31 @@ module Google
         def update!(**args)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Metadata for response returned by the `SynthesizeLongAudio` method.
+      class SynthesizeLongAudioMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The progress of the most recent processing update in percentage, ie. 70.0%.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Float]
+        attr_accessor :progress_percentage
+      
+        # Time when the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
