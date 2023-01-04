@@ -1,5 +1,11 @@
 # Release History
 
+### 0.11.1 (2023-01-04)
+
+#### Bug Fixes
+
+* Fix crash when a response doesn't reference a type ([#13150](https://github.com/googleapis/google-api-ruby-client/issues/13150)) 
+
 ### 0.11.0 (2022-10-18)
 
 #### Features
