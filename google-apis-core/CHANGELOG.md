@@ -1,5 +1,12 @@
 # Release History
 
+### 0.9.3 (2023-01-04)
+
+#### Bug Fixes
+
+* Removed some dead code ([#13099](https://github.com/googleapis/google-api-ruby-client/issues/13099)) 
+* Replace `File.exists?` with `File.exist?` for compatibility with Ruby 3.2 ([#13161](https://github.com/googleapis/google-api-ruby-client/issues/13161)) 
+
 ### 0.9.2 (2022-12-13)
 
 #### Bug Fixes

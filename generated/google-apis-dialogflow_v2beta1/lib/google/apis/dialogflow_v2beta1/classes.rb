@@ -131,6 +131,27 @@ module Google
         end
       end
       
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowCxV3ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
+        end
+      end
+      
       # One interaction between a human and virtual agent. The human provides some
       # input and the virtual agent provides a response.
       class GoogleCloudDialogflowCxV3ConversationTurn
@@ -2501,6 +2522,74 @@ module Google
         end
       end
       
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowCxV3TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
+        end
+      end
+      
       # Metadata for UpdateDocument operation.
       class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -3056,6 +3145,27 @@ module Google
           @result = args[:result] if args.key?(:result)
           @run_time = args[:run_time] if args.key?(:run_time)
           @test_case_results = args[:test_case_results] if args.key?(:test_case_results)
+        end
+      end
+      
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowCxV3beta1ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
         end
       end
       
@@ -5426,6 +5536,74 @@ module Google
           @target_flow = args[:target_flow] if args.key?(:target_flow)
           @target_page = args[:target_page] if args.key?(:target_page)
           @trigger_fulfillment = args[:trigger_fulfillment] if args.key?(:trigger_fulfillment)
+        end
+      end
+      
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowCxV3beta1TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
       end
       
@@ -16474,6 +16652,27 @@ module Google
         end
       end
       
+      # This message is used to hold all the Conversation Signals data, which will be
+      # converted to JSON and exported to BigQuery.
+      class GoogleCloudDialogflowV3alpha1ConversationSignals
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all signals that were extracted for a single turn of the
+        # conversation.
+        # Corresponds to the JSON property `turnSignals`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV3alpha1TurnSignals]
+        attr_accessor :turn_signals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_signals = args[:turn_signals] if args.key?(:turn_signals)
+        end
+      end
+      
       # Metadata for CreateDocument operation.
       class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata
         include Google::Apis::Core::Hashable
@@ -16585,6 +16784,82 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Collection of all signals that were extracted for a single turn of the
+      # conversation.
+      class GoogleCloudDialogflowV3alpha1TurnSignals
+        include Google::Apis::Core::Hashable
+      
+        # Whether agent responded with LiveAgentHandoff fulfillment.
+        # Corresponds to the JSON property `agentEscalated`
+        # @return [Boolean]
+        attr_accessor :agent_escalated
+        alias_method :agent_escalated?, :agent_escalated
+      
+        # Whether user was using DTMF input.
+        # Corresponds to the JSON property `dtmfUsed`
+        # @return [Boolean]
+        attr_accessor :dtmf_used
+        alias_method :dtmf_used?, :dtmf_used
+      
+        # Failure reasons of the turn.
+        # Corresponds to the JSON property `failureReasons`
+        # @return [Array<String>]
+        attr_accessor :failure_reasons
+      
+        # Whether NLU predicted NO_MATCH.
+        # Corresponds to the JSON property `noMatch`
+        # @return [Boolean]
+        attr_accessor :no_match
+        alias_method :no_match?, :no_match
+      
+        # Whether user provided no input.
+        # Corresponds to the JSON property `noUserInput`
+        # @return [Boolean]
+        attr_accessor :no_user_input
+        alias_method :no_user_input?, :no_user_input
+      
+        # Whether turn resulted in End Session page.
+        # Corresponds to the JSON property `reachedEndPage`
+        # @return [Boolean]
+        attr_accessor :reached_end_page
+        alias_method :reached_end_page?, :reached_end_page
+      
+        # Whether agent has triggered the event corresponding to user abandoning the
+        # conversation.
+        # Corresponds to the JSON property `triggeredAbandonmentEvent`
+        # @return [Boolean]
+        attr_accessor :triggered_abandonment_event
+        alias_method :triggered_abandonment_event?, :triggered_abandonment_event
+      
+        # Whether user was specifically asking for a live agent.
+        # Corresponds to the JSON property `userEscalated`
+        # @return [Boolean]
+        attr_accessor :user_escalated
+        alias_method :user_escalated?, :user_escalated
+      
+        # Human-readable statuses of the webhooks triggered during this turn.
+        # Corresponds to the JSON property `webhookStatuses`
+        # @return [Array<String>]
+        attr_accessor :webhook_statuses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_escalated = args[:agent_escalated] if args.key?(:agent_escalated)
+          @dtmf_used = args[:dtmf_used] if args.key?(:dtmf_used)
+          @failure_reasons = args[:failure_reasons] if args.key?(:failure_reasons)
+          @no_match = args[:no_match] if args.key?(:no_match)
+          @no_user_input = args[:no_user_input] if args.key?(:no_user_input)
+          @reached_end_page = args[:reached_end_page] if args.key?(:reached_end_page)
+          @triggered_abandonment_event = args[:triggered_abandonment_event] if args.key?(:triggered_abandonment_event)
+          @user_escalated = args[:user_escalated] if args.key?(:user_escalated)
+          @webhook_statuses = args[:webhook_statuses] if args.key?(:webhook_statuses)
         end
       end
       

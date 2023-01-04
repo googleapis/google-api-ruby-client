@@ -2986,6 +2986,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupsSimulateMaintenanceEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11657,6 +11663,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :node_template, as: 'nodeTemplate'
+        end
+      end
+      
+      class NodeGroupsSimulateMaintenanceEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :nodes, as: 'nodes'
         end
       end
       
