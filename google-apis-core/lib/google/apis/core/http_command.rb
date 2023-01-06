@@ -264,7 +264,7 @@ module Google
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
         def success(result, &block)
-          logger.debug { sprintf('Success - %s', safe_object_representation(result)) }
+          logger.debug { sprintf('Success - %s', safe_pretty_representation(result)) }
           block.call(result, nil) if block_given?
           result
         end
@@ -317,7 +317,7 @@ module Google
                                        header: request_header,
                                        follow_redirect: true)
             logger.debug { @http_res.status }
-            logger.debug { safe_response_representation @http_res }
+            logger.debug { safe_single_line_representation @http_res }
             response = process_response(@http_res.status.to_i, @http_res.header, @http_res.body)
             success(response)
           rescue => e
@@ -351,21 +351,37 @@ module Google
           "Google::Apis::SecretmanagerV1beta1::SecretPayload"
         ]
 
-        def safe_object_representation obj
-          name = obj.class.name
-          if UNSAFE_CLASS_NAMES.include? name
-            "#<#{name} (fields redacted)>"
-          else
-            PP.pp(obj, "")
+        module RedactingPPMethods
+          def pp_object obj
+            return super unless UNSAFE_CLASS_NAMES.include? obj.class.name
+            object_address_group obj do
+              text "(fields redacted)"
+            end
           end
         end
 
-        def safe_response_representation http_res
-          if respond_to?(:response_class) && response_class.is_a?(Class) &&
-             UNSAFE_CLASS_NAMES.include?(response_class.name)
-            return "#<#{http_res.class.name} (fields redacted)>"
-          end
-          http_res.inspect
+        class RedactingPP < PP
+          include RedactingPPMethods
+        end
+
+        class RedactingSingleLine < PP::SingleLine
+          include RedactingPPMethods
+        end
+
+        def safe_pretty_representation obj
+          out = ""
+          printer = RedactingPP.new out, 79
+          printer.guard_inspect_key { printer.pp obj }
+          printer.flush
+          out << "\n"
+        end
+
+        def safe_single_line_representation obj
+          out = ""
+          printer = RedactingSingleLine.new out
+          printer.guard_inspect_key { printer.pp obj }
+          printer.flush
+          out
         end
 
         def opencensus_begin_span
