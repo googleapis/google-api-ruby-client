@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.4 (2023-01-07)
+
+#### Bug Fixes
+
+* Recursively redact unsafe payloads from logs ([#13189](https://github.com/googleapis/google-api-ruby-client/issues/13189)) 
+
 ### 0.9.3 (2023-01-04)
 
 #### Bug Fixes
