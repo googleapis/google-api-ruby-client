@@ -675,7 +675,7 @@ module Google
       class CommitConversionWorkspaceRequest
         include Google::Apis::Core::Hashable
       
-        # Optional name of the commit.
+        # Optional. Optional name of the commit.
         # Corresponds to the JSON property `commitName`
         # @return [String]
         attr_accessor :commit_name
