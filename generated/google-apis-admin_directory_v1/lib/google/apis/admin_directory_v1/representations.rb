@@ -930,6 +930,7 @@ module Google
       
           collection :cpu_status_reports, as: 'cpuStatusReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::Representation
       
+          property :deprovision_reason, as: 'deprovisionReason'
           collection :device_files, as: 'deviceFiles', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile::Representation
       
           property :device_id, as: 'deviceId'
@@ -942,6 +943,7 @@ module Google
           property :firmware_version, as: 'firmwareVersion'
           property :first_enrollment_time, as: 'firstEnrollmentTime'
           property :kind, as: 'kind'
+          property :last_deprovision_timestamp, as: 'lastDeprovisionTimestamp'
           property :last_enrollment_time, as: 'lastEnrollmentTime', type: DateTime
       
           collection :last_known_network, as: 'lastKnownNetwork', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork::Representation
@@ -1204,6 +1206,7 @@ module Google
       class DirectoryChromeosdevicesCommandResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :command_result_payload, as: 'commandResultPayload'
           property :error_message, as: 'errorMessage'
           property :execute_time, as: 'executeTime'
           property :result, as: 'result'
