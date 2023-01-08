@@ -128,6 +128,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nonce, as: 'nonce'
+          property :request_hash, as: 'requestHash'
           property :request_package_name, as: 'requestPackageName'
           property :timestamp_millis, :numeric_string => true, as: 'timestampMillis'
         end
