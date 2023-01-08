@@ -1021,8 +1021,8 @@ module Google
         # genders * names Mutate requests for the same user should be sent sequentially
         # to avoid increased latency and failures.
         # @param [String] resource_name
-        #   The resource name for the person, assigned by the server. An ASCII string with
-        #   a max length of 27 characters, in the form of `people/`person_id``.
+        #   The resource name for the person, assigned by the server. An ASCII string in
+        #   the form of `people/`person_id``.
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] person_fields
         #   Optional. A field mask to restrict which fields on each person are returned.
