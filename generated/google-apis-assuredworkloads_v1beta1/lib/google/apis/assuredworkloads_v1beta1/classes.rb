@@ -168,7 +168,7 @@ module Google
         end
       end
       
-      # Workload monitoring Violation.
+      # Workload monitoring Violation. Next Id: 22
       class GoogleCloudAssuredworkloadsV1beta1Violation
         include Google::Apis::Core::Hashable
       
