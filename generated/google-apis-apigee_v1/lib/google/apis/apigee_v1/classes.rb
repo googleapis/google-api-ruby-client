@@ -5164,7 +5164,7 @@ module Google
       class GoogleCloudApigeeV1ListOrganizationsResponse
         include Google::Apis::Core::Hashable
       
-        # List of Apigee organizations and associated GCP projects.
+        # List of Apigee organizations and associated Google Cloud projects.
         # Corresponds to the JSON property `organizations`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1OrganizationProjectMapping>]
         attr_accessor :organizations
@@ -5793,9 +5793,9 @@ module Google
         attr_accessor :addons_config
       
         # Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ.
-        # Primary GCP region for analytics data storage. For valid values, see [Create
-        # an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-
-        # started/create-org).
+        # Primary Google Cloud region for analytics data storage. For valid values, see [
+        # Create an Apigee organization](https://cloud.google.com/apigee/docs/api-
+        # platform/get-started/create-org).
         # Corresponds to the JSON property `analyticsRegion`
         # @return [String]
         attr_accessor :analytics_region
@@ -5983,7 +5983,7 @@ module Google
         # @return [String]
         attr_accessor :organization
       
-        # GCP project associated with the Apigee organization
+        # Google Cloud project associated with the Apigee organization
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
