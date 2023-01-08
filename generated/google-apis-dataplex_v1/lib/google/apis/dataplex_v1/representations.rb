@@ -1503,6 +1503,7 @@ module Google
       
           property :system, as: 'system'
           property :type, as: 'type'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end

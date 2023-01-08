@@ -471,8 +471,8 @@ module Google
         # 60 minutes apart. The default value is to run discovery every 60 minutes. To
         # explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
         # CRON_TZ=$`IANA_TIME_ZONE`" or TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE` may
-        # only be a valid string from IANA time zone database. For example, "CRON_TZ=
-        # America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        # only be a valid string from IANA time zone database. For example, CRON_TZ=
+        # America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -908,13 +908,12 @@ module Google
       class GoogleCloudDataplexV1DataProfileResult
         include Google::Apis::Core::Hashable
       
-        # Profile information describing the structure and layout of the data and
-        # contains the profile info.
+        # Contains name, type, mode and field type specific profile information.
         # Corresponds to the JSON property `profile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfile]
         attr_accessor :profile
       
-        # The count of all rows in the sampled data. Return 0, if zero rows.
+        # The count of rows scanned.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
@@ -936,12 +935,11 @@ module Google
         end
       end
       
-      # Profile information describing the structure and layout of the data and
-      # contains the profile info.
+      # Contains name, type, mode and field type specific profile information.
       class GoogleCloudDataplexV1DataProfileResultProfile
         include Google::Apis::Core::Hashable
       
-        # The sequence of fields describing data in table entities.
+        # List of fields with structural and profile information for each field.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileField>]
         attr_accessor :fields
@@ -956,12 +954,13 @@ module Google
         end
       end
       
-      # Represents a column field within a table schema.
+      # A field within a table.
       class GoogleCloudDataplexV1DataProfileResultProfileField
         include Google::Apis::Core::Hashable
       
-        # The mode of the field. Its value will be: REQUIRED, if it is a required field.
-        # NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
+        # The mode of the field. Possible values include: REQUIRED, if it is a required
+        # field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated
+        # field.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -971,7 +970,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # ProfileInfo defines the profile information for each schema field type.
+        # The profile information for each field type.
         # Corresponds to the JSON property `profile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo]
         attr_accessor :profile
@@ -995,39 +994,40 @@ module Google
         end
       end
       
-      # ProfileInfo defines the profile information for each schema field type.
+      # The profile information for each field type.
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo
         include Google::Apis::Core::Hashable
       
-        # The ratio of rows that are distinct against the rows in the sampled data.
+        # Ratio of rows with distinct values against total scanned rows. Not available
+        # for complex non-groupable field type RECORD and fields with REPEATABLE mode.
         # Corresponds to the JSON property `distinctRatio`
         # @return [Float]
         attr_accessor :distinct_ratio
       
-        # DoubleFieldInfo defines output for any double type field.
+        # The profile information for a double type field.
         # Corresponds to the JSON property `doubleProfile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo]
         attr_accessor :double_profile
       
-        # IntegerFieldInfo defines output for any integer type field.
+        # The profile information for an integer type field.
         # Corresponds to the JSON property `integerProfile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo]
         attr_accessor :integer_profile
       
-        # The ratio of null rows against the rows in the sampled data.
+        # Ratio of rows with null value against total scanned rows.
         # Corresponds to the JSON property `nullRatio`
         # @return [Float]
         attr_accessor :null_ratio
       
-        # StringFieldInfo defines output info for any string type field.
+        # The profile information for a string type field.
         # Corresponds to the JSON property `stringProfile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo]
         attr_accessor :string_profile
       
-        # The array of top N values of the field in the sampled data. Currently N is set
-        # as 10 or equal to distinct values in the field, whichever is smaller. This
-        # will be optional for complex non-groupable data-types such as JSON, ARRAY,
-        # JSON, STRUCT.
+        # The list of top N non-null values and number of times they occur in the
+        # scanned data. N is 10 or equal to the number of distinct values in the field,
+        # whichever is smaller. Not available for complex non-groupable field type
+        # RECORD and fields with REPEATABLE mode.
         # Corresponds to the JSON property `topNValues`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>]
         attr_accessor :top_n_values
@@ -1047,43 +1047,41 @@ module Google
         end
       end
       
-      # DoubleFieldInfo defines output for any double type field.
+      # The profile information for a double type field.
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo
         include Google::Apis::Core::Hashable
       
-        # The average of non-null values of double field in the sampled data. Return NaN,
-        # if the field has a NaN. Optional if zero non-null rows.
+        # Average of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `average`
         # @return [Float]
         attr_accessor :average
       
-        # The maximum value of a double field in the sampled data. Return NaN, if the
-        # field has a NaN. Optional if zero non-null rows.
+        # Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `max`
         # @return [Float]
         attr_accessor :max
       
-        # The minimum value of a double field in the sampled data. Return NaN, if the
-        # field has a NaN. Optional if zero non-null rows.
+        # Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `min`
         # @return [Float]
         attr_accessor :min
       
-        # A quartile divide the numebr of data points into four parts, or quarters, of
+        # A quartile divides the number of data points into four parts, or quarters, of
         # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
         # splits off the lowest 25% of data from the highest 75%. It is also known as
         # the lower or 25th empirical quartile, as 25% of the data is below this point.
         # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
         # below this point. The third quartile (Q3) splits off the highest 25% of data
         # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
-        # 75% of the data lies below this point. So, here the quartiles is provided as
-        # an ordered list of quartile values, occurring in order Q1, median, Q3.
+        # 75% of the data lies below this point. Here, the quartiles is provided as an
+        # ordered list of quartile values for the scanned data, occurring in order Q1,
+        # median, Q3.
         # Corresponds to the JSON property `quartiles`
         # @return [Array<Float>]
         attr_accessor :quartiles
       
-        # The standard deviation of non-null of double field in the sampled data. Return
-        # NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Standard deviation of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `standardDeviation`
         # @return [Float]
         attr_accessor :standard_deviation
@@ -1102,43 +1100,41 @@ module Google
         end
       end
       
-      # IntegerFieldInfo defines output for any integer type field.
+      # The profile information for an integer type field.
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo
         include Google::Apis::Core::Hashable
       
-        # The average of non-null values of integer field in the sampled data. Return
-        # NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Average of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `average`
         # @return [Float]
         attr_accessor :average
       
-        # The maximum value of an integer field in the sampled data. Return NaN, if the
-        # field has a NaN. Optional if zero non-null rows.
+        # Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `max`
         # @return [Fixnum]
         attr_accessor :max
       
-        # The minimum value of an integer field in the sampled data. Return NaN, if the
-        # field has a NaN. Optional if zero non-null rows.
+        # Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
         # Corresponds to the JSON property `min`
         # @return [Fixnum]
         attr_accessor :min
       
-        # A quartile divide the number of data points into four parts, or quarters, of
+        # A quartile divides the number of data points into four parts, or quarters, of
         # more-or-less equal size. Three main quartiles used are: The first quartile (Q1)
         # splits off the lowest 25% of data from the highest 75%. It is also known as
         # the lower or 25th empirical quartile, as 25% of the data is below this point.
         # The second quartile (Q2) is the median of a data set. So, 50% of the data lies
         # below this point. The third quartile (Q3) splits off the highest 25% of data
         # from the lowest 75%. It is known as the upper or 75th empirical quartile, as
-        # 75% of the data lies below this point. So, here the quartiles is provided as
-        # an ordered list of quartile values, occurring in order Q1, median, Q3.
+        # 75% of the data lies below this point. Here, the quartiles is provided as an
+        # ordered list of quartile values for the scanned data, occurring in order Q1,
+        # median, Q3.
         # Corresponds to the JSON property `quartiles`
         # @return [Array<Fixnum>]
         attr_accessor :quartiles
       
-        # The standard deviation of non-null of integer field in the sampled data.
-        # Return NaN, if the field has a NaN. Optional if zero non-null rows.
+        # Standard deviation of non-null values in the scanned data. NaN, if the field
+        # has a NaN.
         # Corresponds to the JSON property `standardDeviation`
         # @return [Float]
         attr_accessor :standard_deviation
@@ -1157,24 +1153,21 @@ module Google
         end
       end
       
-      # StringFieldInfo defines output info for any string type field.
+      # The profile information for a string type field.
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo
         include Google::Apis::Core::Hashable
       
-        # The average length of a string field in the sampled data. Optional if zero non-
-        # null rows.
+        # Average length of non-null values in the scanned data.
         # Corresponds to the JSON property `averageLength`
         # @return [Float]
         attr_accessor :average_length
       
-        # The maximum length of a string field in the sampled data. Optional if zero non-
-        # null rows.
+        # Maximum length of non-null values in the scanned data.
         # Corresponds to the JSON property `maxLength`
         # @return [Fixnum]
         attr_accessor :max_length
       
-        # The minimum length of the string field in the sampled data. Optional if zero
-        # non-null rows.
+        # Minimum length of non-null values in the scanned data.
         # Corresponds to the JSON property `minLength`
         # @return [Fixnum]
         attr_accessor :min_length
@@ -1191,16 +1184,16 @@ module Google
         end
       end
       
-      # The TopNValue defines the structure of output of top N values of a field.
+      # Top N non-null values in the scanned data.
       class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
         include Google::Apis::Core::Hashable
       
-        # The frequency count of the corresponding value in the field.
+        # Count of the corresponding value in the scanned data.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # The value is the string value of the actual value from the field.
+        # String value of a top N non-null value.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1229,8 +1222,8 @@ module Google
         end
       end
       
-      # DataQualityDimensionResult provides a more detailed, per-dimension level view
-      # of the results.
+      # DataQualityDimensionResult provides a more detailed, per-dimension view of the
+      # results.
       class GoogleCloudDataplexV1DataQualityDimensionResult
         include Google::Apis::Core::Hashable
       
@@ -1254,7 +1247,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityResult
         include Google::Apis::Core::Hashable
       
-        # A list of results at the dimension-level.
+        # A list of results at the dimension level.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityDimensionResult>]
         attr_accessor :dimensions
@@ -1304,7 +1297,7 @@ module Google
         attr_accessor :column
       
         # Required. The dimension a rule belongs to. Results are also aggregated at the
-        # dimension-level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
+        # dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "
         # CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
         # Corresponds to the JSON property `dimension`
         # @return [String]
@@ -1312,7 +1305,7 @@ module Google
       
         # Optional. Rows with null values will automatically fail a rule, unless
         # ignore_null is true. In that case, such null rows are trivially considered
-        # passing. Only applicable to ColumnMap rules.
+        # passing.Only applicable to ColumnMap rules.
         # Corresponds to the JSON property `ignoreNull`
         # @return [Boolean]
         attr_accessor :ignore_null
@@ -1333,9 +1326,9 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRegexExpectation]
         attr_accessor :regex_expectation
       
-        # Evaluates whether each row passes the specified condition. The SQL expression
-        # needs to use BigQuery standard SQL syntax and should produce a boolean per row
-        # as the result. Example: col1 >= 0 AND col2 < 10
+        # Evaluates whether each row passes the specified condition.The SQL expression
+        # needs to use BigQuery standard SQL syntax and should produce a boolean value
+        # per row as the result.Example: col1 >= 0 AND col2 < 10
         # Corresponds to the JSON property `rowConditionExpectation`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation]
         attr_accessor :row_condition_expectation
@@ -1351,7 +1344,7 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation]
         attr_accessor :statistic_range_expectation
       
-        # Evaluates whether the provided expression is true. The SQL expression needs to
+        # Evaluates whether the provided expression is true.The SQL expression needs to
         # use BigQuery standard SQL syntax and should produce a scalar boolean result.
         # Example: MIN(col1) >= 0
         # Corresponds to the JSON property `tableConditionExpectation`
@@ -1359,7 +1352,7 @@ module Google
         attr_accessor :table_condition_expectation
       
         # Optional. The minimum ratio of passing_rows / total_rows required to pass this
-        # rule, with a range of 0.0, 1.00 indicates default value (i.e. 1.0)
+        # rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
         # Corresponds to the JSON property `threshold`
         # @return [Float]
         attr_accessor :threshold
@@ -1420,7 +1413,7 @@ module Google
         attr_accessor :min_value
       
         # Optional. Whether each value needs to be strictly lesser than ('<') the
-        # maximum, or if equality is allowed. Only relevant if a max_value has been
+        # maximum, or if equality is allowed.Only relevant if a max_value has been
         # defined. Default = false.
         # Corresponds to the JSON property `strictMaxEnabled`
         # @return [Boolean]
@@ -1428,7 +1421,7 @@ module Google
         alias_method :strict_max_enabled?, :strict_max_enabled
       
         # Optional. Whether each value needs to be strictly greater than ('>') the
-        # minimum, or if equality is allowed. Only relevant if a min_value has been
+        # minimum, or if equality is allowed.Only relevant if a min_value has been
         # defined. Default = false.
         # Corresponds to the JSON property `strictMinEnabled`
         # @return [Boolean]
@@ -1452,7 +1445,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleRegexExpectation
         include Google::Apis::Core::Hashable
       
-        # 
+        # A regular expression the column value is expected to match.
         # Corresponds to the JSON property `regex`
         # @return [String]
         attr_accessor :regex
@@ -1467,15 +1460,14 @@ module Google
         end
       end
       
-      # DataQualityRuleResult provides a more detailed, per-rule level view of the
-      # results.
+      # DataQualityRuleResult provides a more detailed, per-rule view of the results.
       class GoogleCloudDataplexV1DataQualityRuleResult
         include Google::Apis::Core::Hashable
       
         # The number of rows a rule was evaluated against. This field is only valid for
-        # ColumnMap type rules. Evaluated count can be configured to either (1) include
-        # all rows (default) - with null rows automatically failing rule evaluation OR (
-        # 2) exclude null rows from the evaluated_count, by setting ignore_nulls = true
+        # ColumnMap type rules.Evaluated count can be configured to either include all
+        # rows (default) - with null rows automatically failing rule evaluation, or
+        # exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         # Corresponds to the JSON property `evaluatedCount`
         # @return [Fixnum]
         attr_accessor :evaluated_count
@@ -1530,13 +1522,13 @@ module Google
         end
       end
       
-      # Evaluates whether each row passes the specified condition. The SQL expression
-      # needs to use BigQuery standard SQL syntax and should produce a boolean per row
-      # as the result. Example: col1 >= 0 AND col2 < 10
+      # Evaluates whether each row passes the specified condition.The SQL expression
+      # needs to use BigQuery standard SQL syntax and should produce a boolean value
+      # per row as the result.Example: col1 >= 0 AND col2 < 10
       class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
         include Google::Apis::Core::Hashable
       
-        # 
+        # The SQL expression.
         # Corresponds to the JSON property `sqlExpression`
         # @return [String]
         attr_accessor :sql_expression
@@ -1555,7 +1547,7 @@ module Google
       class GoogleCloudDataplexV1DataQualityRuleSetExpectation
         include Google::Apis::Core::Hashable
       
-        # 
+        # Expected values for the column value.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -1593,7 +1585,7 @@ module Google
         attr_accessor :statistic
       
         # Whether column statistic needs to be strictly lesser than ('<') the maximum,
-        # or if equality is allowed. Only relevant if a max_value has been defined.
+        # or if equality is allowed.Only relevant if a max_value has been defined.
         # Default = false.
         # Corresponds to the JSON property `strictMaxEnabled`
         # @return [Boolean]
@@ -1601,7 +1593,7 @@ module Google
         alias_method :strict_max_enabled?, :strict_max_enabled
       
         # Whether column statistic needs to be strictly greater than ('>') the minimum,
-        # or if equality is allowed. Only relevant if a min_value has been defined.
+        # or if equality is allowed.Only relevant if a min_value has been defined.
         # Default = false.
         # Corresponds to the JSON property `strictMinEnabled`
         # @return [Boolean]
@@ -1622,13 +1614,13 @@ module Google
         end
       end
       
-      # Evaluates whether the provided expression is true. The SQL expression needs to
+      # Evaluates whether the provided expression is true.The SQL expression needs to
       # use BigQuery standard SQL syntax and should produce a scalar boolean result.
       # Example: MIN(col1) >= 0
       class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
         include Google::Apis::Core::Hashable
       
-        # 
+        # The SQL expression.
         # Corresponds to the JSON property `sqlExpression`
         # @return [String]
         attr_accessor :sql_expression
@@ -1677,8 +1669,8 @@ module Google
       end
       
       # Represents a user-visible job which provides the insights for the related data
-      # source. For examples: - Data Quality: generates queries based on the rules and
-      # run against the data to get data quality check results. - Data Profile:
+      # source.For example: Data Quality: generates queries based on the rules and
+      # runs against the data to get data quality check results. Data Profile:
       # analyzes the data in table(s) and generates insights about the structure,
       # content and relationships (such as null percent, cardinality, min/max/mean,
       # etc).
@@ -1716,12 +1708,12 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataQualitySpec]
         attr_accessor :data_quality_spec
       
-        # Optional. Description of the scan. * Must be between 1-1024 characters.
+        # Optional. Description of the scan. Must be between 1-1024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. User friendly display name. * Must be between 1-256 characters.
+        # Optional. User friendly display name. Must be between 1-256 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1742,9 +1734,8 @@ module Google
         attr_accessor :labels
       
         # Output only. The relative resource name of the scan, of the form: projects/`
-        # project`/locations/`location_id`/dataScans/`datascan_id`. where `project`
-        # refers to a project_id or project_number and location_id refers to a GCP
-        # region.
+        # project`/locations/`location_id`/dataScans/`datascan_id`, where project refers
+        # to a project_id or project_number and location_id refers to a GCP region.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1938,8 +1929,9 @@ module Google
       class GoogleCloudDataplexV1DataScanExecutionSpec
         include Google::Apis::Core::Hashable
       
-        # Immutable. The unnested field (Date or Timestamp) that contains values that
-        # monotonically increase over time.
+        # Immutable. The unnested field (of type Date or Timestamp) that contains values
+        # which monotonically increase over time.If not specified, a data scan will run
+        # for all data in the table.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
@@ -1985,7 +1977,7 @@ module Google
         end
       end
       
-      # A DataScanJob represents an instance of a data scan.
+      # A DataScanJob represents an instance of DataScan execution.
       class GoogleCloudDataplexV1DataScanJob
         include Google::Apis::Core::Hashable
       
@@ -2022,7 +2014,7 @@ module Google
       
         # Output only. The relative resource name of the DataScanJob, of the form:
         # projects/`project`/locations/`location_id`/dataScans/`datascan_id`/jobs/`
-        # job_id`. where `project` refers to a project_id or project_number and
+        # job_id`, where project refers to a project_id or project_number and
         # location_id refers to a GCP region.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2072,9 +2064,9 @@ module Google
       class GoogleCloudDataplexV1DataSource
         include Google::Apis::Core::Hashable
       
-        # Immutable. The dataplex entity that contains the data for DataScan, of the
-        # form: projects/`project_number`/locations/`location_id`/lakes/`lake_id`/zones/`
-        # zone_id`/entities/`entity_id`.
+        # Immutable. The Dataplex entity that represents the data source (e.g. BigQuery
+        # table) for DataScan, of the form: projects/`project_number`/locations/`
+        # location_id`/lakes/`lake_id`/zones/`zone_id`/entities/`entity_id`.
         # Corresponds to the JSON property `entity`
         # @return [String]
         attr_accessor :entity
@@ -2365,6 +2357,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Output only. System generated unique ID for the Entity. This ID will be
+        # different if the Entity is deleted and re-created with the same name.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. The time when the entity was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2392,6 +2390,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @system = args[:system] if args.key?(:system)
           @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3089,7 +3088,7 @@ module Google
       class GoogleCloudDataplexV1ListDataScanJobsResponse
         include Google::Apis::Core::Hashable
       
-        # DataScanJobs (metadata only) under a given dataScan.
+        # DataScanJobs (BASIC view only) under a given dataScan.
         # Corresponds to the JSON property `dataScanJobs`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob>]
         attr_accessor :data_scan_jobs
@@ -3115,7 +3114,7 @@ module Google
       class GoogleCloudDataplexV1ListDataScansResponse
         include Google::Apis::Core::Hashable
       
-        # DataScans (metadata only) under the given parent location.
+        # DataScans (BASIC view only) under the given parent location.
         # Corresponds to the JSON property `dataScans`
         # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan>]
         attr_accessor :data_scans
@@ -3482,7 +3481,7 @@ module Google
       class GoogleCloudDataplexV1RunDataScanResponse
         include Google::Apis::Core::Hashable
       
-        # A DataScanJob represents an instance of a data scan.
+        # A DataScanJob represents an instance of DataScan execution.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanJob]
         attr_accessor :job
@@ -3552,18 +3551,18 @@ module Google
       class GoogleCloudDataplexV1ScannedDataIncrementalField
         include Google::Apis::Core::Hashable
       
-        # Value that marks the end of the range
+        # Value that marks the end of the range.
         # Corresponds to the JSON property `end`
         # @return [String]
         attr_accessor :end
       
-        # The field that contains values which monotonically increases over time (e.g.
-        # timestamp).
+        # The field that contains values which monotonically increases over time (e.g. a
+        # timestamp column).
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
       
-        # Value that marks the start of the range
+        # Value that marks the start of the range.
         # Corresponds to the JSON property `start`
         # @return [String]
         attr_accessor :start
@@ -4458,8 +4457,8 @@ module Google
         # periodically. To explicitly set a timezone to the cron tab, apply a prefix in
         # the cron tab: "CRON_TZ=$`IANA_TIME_ZONE`" or "TZ=$`IANA_TIME_ZONE`". The $`
         # IANA_TIME_ZONE` may only be a valid string from IANA time zone database. For
-        # example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * *
-        # *". This field is required for RECURRING tasks.
+        # example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
+        # This field is required for RECURRING tasks.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -4494,7 +4493,7 @@ module Google
       class GoogleCloudDataplexV1Trigger
         include Google::Apis::Core::Hashable
       
-        # The scan runs one-time via RunDataScan API.
+        # The scan runs once via RunDataScan API.
         # Corresponds to the JSON property `onDemand`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1TriggerOnDemand]
         attr_accessor :on_demand
@@ -4515,7 +4514,7 @@ module Google
         end
       end
       
-      # The scan runs one-time via RunDataScan API.
+      # The scan runs once via RunDataScan API.
       class GoogleCloudDataplexV1TriggerOnDemand
         include Google::Apis::Core::Hashable
       
@@ -4532,12 +4531,13 @@ module Google
       class GoogleCloudDataplexV1TriggerSchedule
         include Google::Apis::Core::Hashable
       
-        # Required. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running scans
-        # periodically. To explicitly set a timezone to the cron tab, apply a prefix in
+        # Required. Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans
+        # periodically.To explicitly set a timezone in the cron tab, apply a prefix in
         # the cron tab: "CRON_TZ=$`IANA_TIME_ZONE`" or "TZ=$`IANA_TIME_ZONE`". The $`
-        # IANA_TIME_ZONE` may only be a valid string from IANA time zone database. For
-        # example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * *
-        # *". This field is required for Schedule scans.
+        # IANA_TIME_ZONE` may only be a valid string from IANA time zone database (
+        # wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)).
+        # For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * *
+        # * *.This field is required for Schedule scans.
         # Corresponds to the JSON property `cron`
         # @return [String]
         attr_accessor :cron
@@ -4684,8 +4684,8 @@ module Google
         # 60 minutes apart. The default value is to run discovery every 60 minutes. To
         # explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "
         # CRON_TZ=$`IANA_TIME_ZONE`" or TZ=$`IANA_TIME_ZONE`". The $`IANA_TIME_ZONE` may
-        # only be a valid string from IANA time zone database. For example, "CRON_TZ=
-        # America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        # only be a valid string from IANA time zone database. For example, CRON_TZ=
+        # America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule

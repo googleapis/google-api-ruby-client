@@ -243,17 +243,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a dataScan resource.
+        # Creates a DataScan resource.
         # @param [String] parent
         #   Required. The resource name of the parent location: projects/`project`/
-        #   locations/`location_id` where `project` refers to a project_id or
-        #   project_number and location_id refers to a GCP region.
+        #   locations/`location_id` where project refers to a project_id or project_number
+        #   and location_id refers to a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] data_scan_id
-        #   Required. DataScan identifier. * Must contain only lowercase letters, numbers
-        #   and hyphens. * Must start with a letter. * Must end with a number or a letter.
-        #   * Must be between 1-63 characters. * Must be unique within the customer
-        #   project / location.
+        #   Required. DataScan identifier. Must contain only lowercase letters, numbers
+        #   and hyphens. Must start with a letter. Must end with a number or a letter.
+        #   Must be between 1-63 characters. Must be unique within the customer project /
+        #   location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -284,11 +284,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete the dataScan resource.
+        # Deletes a DataScan resource.
         # @param [String] name
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
-        #   location_id`/dataScans/`data_scan_id` where `project` refers to a project_id
-        #   or project_number and location_id refers to a GCP region.
+        #   location_id`/dataScans/`data_scan_id` where project refers to a project_id or
+        #   project_number and location_id refers to a GCP region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -316,14 +316,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get dataScan resource.
+        # Gets a DataScan resource.
         # @param [String] name
         #   Required. The resource name of the dataScan: projects/`project`/locations/`
-        #   location_id`/dataScans/`data_scan_id` where `project` refers to a project_id
-        #   or project_number and location_id refers to a GCP region.
+        #   location_id`/dataScans/`data_scan_id` where project refers to a project_id or
+        #   project_number and location_id refers to a GCP region.
         # @param [String] view
-        #   Optional. Used to select the subset of DataScan information to return.
-        #   Defaults to BASIC.
+        #   Optional. Select the DataScan view to return. Defaults to BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -397,10 +396,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists dataScans.
+        # Lists DataScans.
         # @param [String] parent
-        #   Required. projects/`project`/locations/`location_id` where `project` refers to
-        #   a project_id or project_number and location_id refers to a GCP region.
+        #   Required. The resource name of the parent location: projects/`project`/
+        #   locations/`location_id` where project refers to a project_id or project_number
+        #   and location_id refers to a GCP region.
         # @param [String] filter
         #   Optional. Filter request.
         # @param [String] order_by
@@ -445,12 +445,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the dataScan resource.
+        # Updates a DataScan resource.
         # @param [String] name
         #   Output only. The relative resource name of the scan, of the form: projects/`
-        #   project`/locations/`location_id`/dataScans/`datascan_id`. where `project`
-        #   refers to a project_id or project_number and location_id refers to a GCP
-        #   region.
+        #   project`/locations/`location_id`/dataScans/`datascan_id`, where project refers
+        #   to a project_id or project_number and location_id refers to a GCP region.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScan] google_cloud_dataplex_v1_data_scan_object
         # @param [String] update_mask
         #   Required. Mask of fields to update.
@@ -484,12 +483,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Run an on demand execution of a DataScan.
+        # Runs an on-demand execution of a DataScan
         # @param [String] name
         #   Required. The resource name of the DataScan: projects/`project`/locations/`
-        #   location_id`/dataScans/`data_scan_id`. where `project` refers to a project_id
-        #   or project_number and location_id refers to a GCP region. Only on-demand
-        #   DataScans are allowed.
+        #   location_id`/dataScans/`data_scan_id`. where project refers to a project_id or
+        #   project_number and location_id refers to a GCP region.Only OnDemand data scans
+        #   are allowed.
         # @param [Google::Apis::DataplexV1::GoogleCloudDataplexV1RunDataScanRequest] google_cloud_dataplex_v1_run_data_scan_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -596,15 +595,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get DataScanJob resource.
+        # Gets a DataScanJob resource.
         # @param [String] name
         #   Required. The resource name of the DataScanJob: projects/`project`/locations/`
-        #   location_id`/dataScans/`data_scan_id`/dataScanJobs/`data_scan_job_id` where `
-        #   project` refers to a project_id or project_number and location_id refers to a
+        #   location_id`/dataScans/`data_scan_id`/dataScanJobs/`data_scan_job_id` where
+        #   project refers to a project_id or project_number and location_id refers to a
         #   GCP region.
         # @param [String] view
-        #   Optional. Used to select the subset of DataScan information to return.
-        #   Defaults to BASIC.
+        #   Optional. Select the DataScanJob view to return. Defaults to BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -633,10 +631,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DataScanJobs under the given dataScan.
+        # Lists DataScanJobs under the given DataScan.
         # @param [String] parent
         #   Required. The resource name of the parent environment: projects/`project`/
-        #   locations/`location_id`/dataScans/`data_scan_id` where `project` refers to a
+        #   locations/`location_id`/dataScans/`data_scan_id` where project refers to a
         #   project_id or project_number and location_id refers to a GCP region.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of DataScanJobs to return. The service may return
