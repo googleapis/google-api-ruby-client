@@ -759,6 +759,13 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
+        # This checksum is computed by the server based on the value of cluster fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # [Output only] The time the cluster will be automatically deleted in [RFC3339](
         # https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `expireTime`
@@ -1121,6 +1128,7 @@ module Google
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
           @enable_tpu = args[:enable_tpu] if args.key?(:enable_tpu)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
           @identity_service_config = args[:identity_service_config] if args.key?(:identity_service_config)
@@ -1532,6 +1540,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadIdentityConfig]
         attr_accessor :desired_workload_identity_config
       
+        # The current etag of the cluster. If an etag is provided and does not match the
+        # current etag of the cluster, update will be blocked and an ABORTED error will
+        # be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1584,6 +1599,7 @@ module Google
           @desired_workload_alts_config = args[:desired_workload_alts_config] if args.key?(:desired_workload_alts_config)
           @desired_workload_certificates = args[:desired_workload_certificates] if args.key?(:desired_workload_certificates)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
+          @etag = args[:etag] if args.key?(:etag)
         end
       end
       
@@ -2025,6 +2041,30 @@ module Google
         # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces.
         # Each local SSD is 375 GB in size. If zero, it means to disable using local
         # SSDs as ephemeral storage.
+        # Corresponds to the JSON property `localSsdCount`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+        end
+      end
+      
+      # EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
+      # storage using Local SSDs.
+      class EphemeralStorageLocalSsdConfig
+        include Google::Apis::Core::Hashable
+      
+        # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces.
+        # Each local SSD is 375 GB in size. If zero, it means to disable using local
+        # SSDs as ephemeral storage. The limit for this value is dependent upon the
+        # maximum number of disks available on a machine per zone. See: https://cloud.
+        # google.com/compute/docs/disks/local-ssd for more information.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
         attr_accessor :local_ssd_count
@@ -2920,6 +2960,30 @@ module Google
         end
       end
       
+      # LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe
+      # SSDs
+      class LocalNvmeSsdBlockConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of raw-block local NVMe SSD disks to be attached to the node. Each
+        # local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD
+        # disks to be attached to the node. The limit for this value is dependent upon
+        # the maximum number of disks available on a machine per zone. See: https://
+        # cloud.google.com/compute/docs/disks/local-ssd for more information.
+        # Corresponds to the JSON property `localSsdCount`
+        # @return [Fixnum]
+        attr_accessor :local_ssd_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
+        end
+      end
+      
       # Location returns the location name, and if the location is recommended for GKE
       # cluster scheduling.
       class Location
@@ -3581,6 +3645,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::EphemeralStorageConfig]
         attr_accessor :ephemeral_storage_config
       
+        # EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
+        # storage using Local SSDs.
+        # Corresponds to the JSON property `ephemeralStorageLocalSsdConfig`
+        # @return [Google::Apis::ContainerV1beta1::EphemeralStorageLocalSsdConfig]
+        attr_accessor :ephemeral_storage_local_ssd_config
+      
         # Configuration of Fast Socket feature.
         # Corresponds to the JSON property `fastSocket`
         # @return [Google::Apis::ContainerV1beta1::FastSocket]
@@ -3622,6 +3692,12 @@ module Google
         # Corresponds to the JSON property `linuxNodeConfig`
         # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
         attr_accessor :linux_node_config
+      
+        # LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe
+        # SSDs
+        # Corresponds to the JSON property `localNvmeSsdBlockConfig`
+        # @return [Google::Apis::ContainerV1beta1::LocalNvmeSsdBlockConfig]
+        attr_accessor :local_nvme_ssd_block_config
       
         # The number of local SSD disks to be attached to the node. The limit for this
         # value is dependent upon the maximum number of disks available on a machine per
@@ -3751,6 +3827,13 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::NodeTaint>]
         attr_accessor :taints
       
+        # Parameters that can be configured on Windows nodes. Windows Node Config that
+        # define the parameters that will be used to configure the Windows node pool
+        # settings
+        # Corresponds to the JSON property `windowsNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::WindowsNodeConfig]
+        attr_accessor :windows_node_config
+      
         # WorkloadMetadataConfig defines the metadata configuration to expose to
         # workloads on the node pool.
         # Corresponds to the JSON property `workloadMetadataConfig`
@@ -3770,6 +3853,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
+          @ephemeral_storage_local_ssd_config = args[:ephemeral_storage_local_ssd_config] if args.key?(:ephemeral_storage_local_ssd_config)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
@@ -3777,6 +3861,7 @@ module Google
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @labels = args[:labels] if args.key?(:labels)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
+          @local_nvme_ssd_block_config = args[:local_nvme_ssd_block_config] if args.key?(:local_nvme_ssd_block_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -3793,6 +3878,7 @@ module Google
           @spot = args[:spot] if args.key?(:spot)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
+          @windows_node_config = args[:windows_node_config] if args.key?(:windows_node_config)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
         end
       end
@@ -4034,6 +4120,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
         attr_accessor :config
       
+        # This checksum is computed by the server based on the value of node pool fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The initial node count for the pool. You must ensure that your Compute Engine [
         # resource quota](https://cloud.google.com/compute/quotas) is sufficient for
         # this number of instances. You must also have available firewall and routes
@@ -4148,6 +4241,7 @@ module Google
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @conditions = args[:conditions] if args.key?(:conditions)
           @config = args[:config] if args.key?(:config)
+          @etag = args[:etag] if args.key?(:etag)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
           @locations = args[:locations] if args.key?(:locations)
@@ -6243,6 +6337,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
         attr_accessor :confidential_nodes
       
+        # The current etag of the node pool. If an etag is provided and does not match
+        # the current etag of the node pool, update will be blocked and an ABORTED error
+        # will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Configuration of Fast Socket feature.
         # Corresponds to the JSON property `fastSocket`
         # @return [Google::Apis::ContainerV1beta1::FastSocket]
@@ -6368,6 +6469,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::UpgradeSettings]
         attr_accessor :upgrade_settings
       
+        # Parameters that can be configured on Windows nodes. Windows Node Config that
+        # define the parameters that will be used to configure the Windows node pool
+        # settings
+        # Corresponds to the JSON property `windowsNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::WindowsNodeConfig]
+        attr_accessor :windows_node_config
+      
         # WorkloadMetadataConfig defines the metadata configuration to expose to
         # workloads on the node pool.
         # Corresponds to the JSON property `workloadMetadataConfig`
@@ -6389,6 +6497,7 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
+          @etag = args[:etag] if args.key?(:etag)
           @fast_socket = args[:fast_socket] if args.key?(:fast_socket)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
@@ -6407,6 +6516,7 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
+          @windows_node_config = args[:windows_node_config] if args.key?(:windows_node_config)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -6685,6 +6795,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Parameters that can be configured on Windows nodes. Windows Node Config that
+      # define the parameters that will be used to configure the Windows node pool
+      # settings
+      class WindowsNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # OSVersion specifies the Windows node config to be used on the node
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @os_version = args[:os_version] if args.key?(:os_version)
         end
       end
       
