@@ -1632,7 +1632,7 @@ module Google
         # manually-created shard. You must specify at least one shard if this field is
         # present. When you select one or more physical devices, the number of repeated
         # test_targets_for_shard must be <= 50. When you select one or more ARM virtual
-        # devices, it must be <= 50. When you select only x86 virtual devices, it must
+        # devices, it must be <= 100. When you select only x86 virtual devices, it must
         # be <= 500.
         # Corresponds to the JSON property `testTargetsForShard`
         # @return [Array<Google::Apis::TestingV1::TestTargetsForShard>]
@@ -2655,8 +2655,8 @@ module Google
         # Required. The total number of shards to create. This must always be a positive
         # number that is no greater than the total number of test cases. When you select
         # one or more physical devices, the number of shards must be <= 50. When you
-        # select one or more ARM virtual devices, it must be <= 50. When you select only
-        # x86 virtual devices, it must be <= 500.
+        # select one or more ARM virtual devices, it must be <= 100. When you select
+        # only x86 virtual devices, it must be <= 500.
         # Corresponds to the JSON property `numShards`
         # @return [Fixnum]
         attr_accessor :num_shards
