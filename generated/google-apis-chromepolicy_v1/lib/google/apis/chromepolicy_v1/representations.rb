@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyVersionsV1FieldConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class GoogleChromePolicyVersionsV1NetworkSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromePolicyVersionsV1NumericRangeConstraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,6 +424,14 @@ module Google
         end
       end
       
+      class GoogleChromePolicyVersionsV1FieldConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :numeric_range_constraint, as: 'numericRangeConstraint', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint::Representation
+      
+        end
+      end
+      
       class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -479,6 +499,14 @@ module Google
         end
       end
       
+      class GoogleChromePolicyVersionsV1NumericRangeConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum, :numeric_string => true, as: 'maximum'
+          property :minimum, :numeric_string => true, as: 'minimum'
+        end
+      end
+      
       class GoogleChromePolicyVersionsV1PolicyModificationFieldError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -526,6 +554,8 @@ module Google
           property :default_value, as: 'defaultValue'
           property :description, as: 'description'
           property :field, as: 'field'
+          property :field_constraints, as: 'fieldConstraints', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1FieldConstraints, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1FieldConstraints::Representation
+      
           collection :field_dependencies, as: 'fieldDependencies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies::Representation
       
           property :field_description, as: 'fieldDescription'
