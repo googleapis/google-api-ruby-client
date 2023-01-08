@@ -10866,6 +10866,69 @@ module Google
         end
       end
       
+      # Settings related to VideoAdSequence.
+      class VideoAdSequenceSettings
+        include Google::Apis::Core::Hashable
+      
+        # The minimum time interval before the same user sees this sequence again.
+        # Corresponds to the JSON property `minimumDuration`
+        # @return [String]
+        attr_accessor :minimum_duration
+      
+        # The steps of which the sequence consists.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::DisplayvideoV2::VideoAdSequenceStep>]
+        attr_accessor :steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @minimum_duration = args[:minimum_duration] if args.key?(:minimum_duration)
+          @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # The detail of a single step in a VideoAdSequence.
+      class VideoAdSequenceStep
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the corresponding ad group of the step.
+        # Corresponds to the JSON property `adGroupId`
+        # @return [Fixnum]
+        attr_accessor :ad_group_id
+      
+        # The interaction on the previous step that will lead the viewer to this step.
+        # The first step does not have interaction_type.
+        # Corresponds to the JSON property `interactionType`
+        # @return [String]
+        attr_accessor :interaction_type
+      
+        # The ID of the previous step. The first step does not have previous step.
+        # Corresponds to the JSON property `previousStepId`
+        # @return [Fixnum]
+        attr_accessor :previous_step_id
+      
+        # The ID of the step.
+        # Corresponds to the JSON property `stepId`
+        # @return [Fixnum]
+        attr_accessor :step_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_group_id = args[:ad_group_id] if args.key?(:ad_group_id)
+          @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
+          @previous_step_id = args[:previous_step_id] if args.key?(:previous_step_id)
+          @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
       # Video player size targeting option details. This will be populated in the
       # video_player_size_details field when targeting_type is `
       # TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not
@@ -11049,6 +11112,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings]
         attr_accessor :third_party_measurement_settings
       
+        # Settings related to VideoAdSequence.
+        # Corresponds to the JSON property `videoAdSequenceSettings`
+        # @return [Google::Apis::DisplayvideoV2::VideoAdSequenceSettings]
+        attr_accessor :video_ad_sequence_settings
+      
         # Settings that control the number of times a user may be shown with the same ad
         # during a given time period.
         # Corresponds to the JSON property `viewFrequencyCap`
@@ -11065,6 +11133,7 @@ module Google
           @content_category = args[:content_category] if args.key?(:content_category)
           @inventory_source_settings = args[:inventory_source_settings] if args.key?(:inventory_source_settings)
           @third_party_measurement_settings = args[:third_party_measurement_settings] if args.key?(:third_party_measurement_settings)
+          @video_ad_sequence_settings = args[:video_ad_sequence_settings] if args.key?(:video_ad_sequence_settings)
           @view_frequency_cap = args[:view_frequency_cap] if args.key?(:view_frequency_cap)
         end
       end

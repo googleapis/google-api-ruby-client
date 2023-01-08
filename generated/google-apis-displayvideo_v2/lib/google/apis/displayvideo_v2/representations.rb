@@ -1738,6 +1738,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoAdSequenceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoAdSequenceStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoPlayerSizeAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4725,6 +4737,25 @@ module Google
         end
       end
       
+      class VideoAdSequenceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :minimum_duration, as: 'minimumDuration'
+          collection :steps, as: 'steps', class: Google::Apis::DisplayvideoV2::VideoAdSequenceStep, decorator: Google::Apis::DisplayvideoV2::VideoAdSequenceStep::Representation
+      
+        end
+      end
+      
+      class VideoAdSequenceStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_id, :numeric_string => true, as: 'adGroupId'
+          property :interaction_type, as: 'interactionType'
+          property :previous_step_id, :numeric_string => true, as: 'previousStepId'
+          property :step_id, :numeric_string => true, as: 'stepId'
+        end
+      end
+      
       class VideoPlayerSizeAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4779,6 +4810,8 @@ module Google
           property :inventory_source_settings, as: 'inventorySourceSettings', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersInventorySourceConfig::Representation
       
           property :third_party_measurement_settings, as: 'thirdPartyMeasurementSettings', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersThirdPartyMeasurementSettings::Representation
+      
+          property :video_ad_sequence_settings, as: 'videoAdSequenceSettings', class: Google::Apis::DisplayvideoV2::VideoAdSequenceSettings, decorator: Google::Apis::DisplayvideoV2::VideoAdSequenceSettings::Representation
       
           property :view_frequency_cap, as: 'viewFrequencyCap', class: Google::Apis::DisplayvideoV2::FrequencyCap, decorator: Google::Apis::DisplayvideoV2::FrequencyCap::Representation
       
