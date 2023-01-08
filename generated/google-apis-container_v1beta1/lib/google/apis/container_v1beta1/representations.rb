@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EphemeralStorageLocalSsdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FastSocket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +407,12 @@ module Google
       end
       
       class ListUsableSubnetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalNvmeSsdBlockConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -922,6 +934,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WindowsNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WindowsVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1165,6 +1183,7 @@ module Google
           property :enable_kubernetes_alpha, as: 'enableKubernetesAlpha'
           property :enable_tpu, as: 'enableTpu'
           property :endpoint, as: 'endpoint'
+          property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :id, as: 'id'
           property :identity_service_config, as: 'identityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
@@ -1351,6 +1370,7 @@ module Google
       
           property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadIdentityConfig::Representation
       
+          property :etag, as: 'etag'
         end
       end
       
@@ -1476,6 +1496,13 @@ module Google
       end
       
       class EphemeralStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_ssd_count, as: 'localSsdCount'
+        end
+      end
+      
+      class EphemeralStorageLocalSsdConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_ssd_count, as: 'localSsdCount'
@@ -1728,6 +1755,13 @@ module Google
         end
       end
       
+      class LocalNvmeSsdBlockConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_ssd_count, as: 'localSsdCount'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1928,6 +1962,8 @@ module Google
           property :disk_type, as: 'diskType'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
       
+          property :ephemeral_storage_local_ssd_config, as: 'ephemeralStorageLocalSsdConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageLocalSsdConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageLocalSsdConfig::Representation
+      
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
@@ -1939,6 +1975,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1beta1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1beta1::LinuxNodeConfig::Representation
+      
+          property :local_nvme_ssd_block_config, as: 'localNvmeSsdBlockConfig', class: Google::Apis::ContainerV1beta1::LocalNvmeSsdBlockConfig, decorator: Google::Apis::ContainerV1beta1::LocalNvmeSsdBlockConfig::Representation
       
           property :local_ssd_count, as: 'localSsdCount'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolLoggingConfig::Representation
@@ -1960,6 +1998,8 @@ module Google
           property :spot, as: 'spot'
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
+      
+          property :windows_node_config, as: 'windowsNodeConfig', class: Google::Apis::ContainerV1beta1::WindowsNodeConfig, decorator: Google::Apis::ContainerV1beta1::WindowsNodeConfig::Representation
       
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
@@ -2024,6 +2064,7 @@ module Google
       
           property :config, as: 'config', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
       
+          property :etag, as: 'etag'
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
           collection :locations, as: 'locations'
@@ -2575,6 +2616,7 @@ module Google
           property :cluster_id, as: 'clusterId'
           property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
       
+          property :etag, as: 'etag'
           property :fast_socket, as: 'fastSocket', class: Google::Apis::ContainerV1beta1::FastSocket, decorator: Google::Apis::ContainerV1beta1::FastSocket::Representation
       
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
@@ -2604,6 +2646,8 @@ module Google
           property :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaints, decorator: Google::Apis::ContainerV1beta1::NodeTaints::Representation
       
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
+      
+          property :windows_node_config, as: 'windowsNodeConfig', class: Google::Apis::ContainerV1beta1::WindowsNodeConfig, decorator: Google::Apis::ContainerV1beta1::WindowsNodeConfig::Representation
       
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
@@ -2679,6 +2723,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class WindowsNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :os_version, as: 'osVersion'
         end
       end
       
