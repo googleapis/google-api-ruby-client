@@ -88,7 +88,7 @@ module Google
         # cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Organization] google_cloud_apigee_v1_organization_object
         # @param [String] parent
-        #   Required. Name of the GCP project in which to associate the Apigee
+        #   Required. Name of the Google Cloud project in which to associate the Apigee
         #   organization. Pass the information as a query parameter using the following
         #   structure in your request: `projects/`
         # @param [String] fields
@@ -334,9 +334,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the Apigee organizations and associated GCP projects that you have
-        # permission to access. See [Understanding organizations](https://cloud.google.
-        # com/apigee/docs/api-platform/fundamentals/organization-structure).
+        # Lists the Apigee organizations and associated Google Cloud projects that you
+        # have permission to access. See [Understanding organizations](https://cloud.
+        # google.com/apigee/docs/api-platform/fundamentals/organization-structure).
         # @param [String] parent
         #   Required. Use the following structure in your request: `organizations`
         # @param [String] fields
