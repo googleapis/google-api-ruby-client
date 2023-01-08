@@ -378,6 +378,25 @@ module Google
         end
       end
       
+      # Information about any range constraints.
+      class GoogleChromePolicyVersionsV1FieldConstraints
+        include Google::Apis::Core::Hashable
+      
+        # A constraint on upper and/or lower bounds, with at least one being set.
+        # Corresponds to the JSON property `numericRangeConstraint`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1NumericRangeConstraint]
+        attr_accessor :numeric_range_constraint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @numeric_range_constraint = args[:numeric_range_constraint] if args.key?(:numeric_range_constraint)
+        end
+      end
+      
       # Request parameters for inheriting policy value of a specific org unit target
       # from the policy value of its parent org unit.
       class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
@@ -576,6 +595,31 @@ module Google
         end
       end
       
+      # A constraint on upper and/or lower bounds, with at least one being set.
+      class GoogleChromePolicyVersionsV1NumericRangeConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Maximum value.
+        # Corresponds to the JSON property `maximum`
+        # @return [Fixnum]
+        attr_accessor :maximum
+      
+        # Minimum value.
+        # Corresponds to the JSON property `minimum`
+        # @return [Fixnum]
+        attr_accessor :minimum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+        end
+      end
+      
       # Error information for a modification request of a specific field on a specific
       # policy.
       class GoogleChromePolicyVersionsV1PolicyModificationFieldError
@@ -746,6 +790,11 @@ module Google
         # @return [String]
         attr_accessor :field
       
+        # Information about any range constraints.
+        # Corresponds to the JSON property `fieldConstraints`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyVersionsV1FieldConstraints]
+        attr_accessor :field_constraints
+      
         # Output only. Provides a list of fields and values. At least one of the fields
         # must have the corresponding value in order for this field to be allowed to be
         # set.
@@ -795,6 +844,7 @@ module Google
           @default_value = args[:default_value] if args.key?(:default_value)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
+          @field_constraints = args[:field_constraints] if args.key?(:field_constraints)
           @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
           @field_description = args[:field_description] if args.key?(:field_description)
           @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
