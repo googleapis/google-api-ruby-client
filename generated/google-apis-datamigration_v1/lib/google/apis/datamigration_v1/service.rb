@@ -661,7 +661,7 @@ module Google
         #   in the form of: projects/`project`/locations/`location`/conversionWorkspaces/`
         #   conversion_workspace`.
         # @param [String] commit_id
-        #   Optional filter to request a specific commit id
+        #   Optional. Optional filter to request a specific commit id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
