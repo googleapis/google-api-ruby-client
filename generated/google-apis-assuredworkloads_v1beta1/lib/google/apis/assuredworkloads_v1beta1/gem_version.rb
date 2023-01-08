@@ -16,13 +16,13 @@ module Google
   module Apis
     module AssuredworkloadsV1beta1
       # Version of the google-apis-assuredworkloads_v1beta1 gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.11.0"
+      GENERATOR_VERSION = "0.11.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221110"
+      REVISION = "20221229"
     end
   end
 end
