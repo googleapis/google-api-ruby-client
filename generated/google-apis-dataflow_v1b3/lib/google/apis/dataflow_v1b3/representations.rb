@@ -808,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Straggler
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StragglerDebuggingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -875,6 +881,12 @@ module Google
       end
       
       class StreamingStageLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamingStragglerInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2456,6 +2468,16 @@ module Google
         end
       end
       
+      class Straggler
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_straggler, as: 'batchStraggler', class: Google::Apis::DataflowV1b3::StragglerInfo, decorator: Google::Apis::DataflowV1b3::StragglerInfo::Representation
+      
+          property :streaming_straggler, as: 'streamingStraggler', class: Google::Apis::DataflowV1b3::StreamingStragglerInfo, decorator: Google::Apis::DataflowV1b3::StreamingStragglerInfo::Representation
+      
+        end
+      end
+      
       class StragglerDebuggingInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2476,6 +2498,8 @@ module Google
       class StragglerSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :recent_stragglers, as: 'recentStragglers', class: Google::Apis::DataflowV1b3::Straggler, decorator: Google::Apis::DataflowV1b3::Straggler::Representation
+      
           hash :straggler_cause_count, as: 'stragglerCauseCount'
           property :total_straggler_count, :numeric_string => true, as: 'totalStragglerCount'
         end
@@ -2574,6 +2598,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stream_id, as: 'streamId'
+        end
+      end
+      
+      class StreamingStragglerInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_watermark_lag, as: 'dataWatermarkLag'
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :system_watermark_lag, as: 'systemWatermarkLag'
+          property :worker_name, as: 'workerName'
         end
       end
       

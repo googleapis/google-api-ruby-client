@@ -5252,6 +5252,31 @@ module Google
         end
       end
       
+      # Information for a straggler.
+      class Straggler
+        include Google::Apis::Core::Hashable
+      
+        # Information useful for straggler identification and debugging.
+        # Corresponds to the JSON property `batchStraggler`
+        # @return [Google::Apis::DataflowV1b3::StragglerInfo]
+        attr_accessor :batch_straggler
+      
+        # Information useful for streaming straggler identification and debugging.
+        # Corresponds to the JSON property `streamingStraggler`
+        # @return [Google::Apis::DataflowV1b3::StreamingStragglerInfo]
+        attr_accessor :streaming_straggler
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_straggler = args[:batch_straggler] if args.key?(:batch_straggler)
+          @streaming_straggler = args[:streaming_straggler] if args.key?(:streaming_straggler)
+        end
+      end
+      
       # Information useful for debugging a straggler. Each type will provide
       # specialized debugging information relevant for a particular cause. The
       # StragglerDebuggingInfo will be 1:1 mapping to the StragglerCause enum.
@@ -5303,6 +5328,11 @@ module Google
       class StragglerSummary
         include Google::Apis::Core::Hashable
       
+        # The most recent stragglers.
+        # Corresponds to the JSON property `recentStragglers`
+        # @return [Array<Google::Apis::DataflowV1b3::Straggler>]
+        attr_accessor :recent_stragglers
+      
         # Aggregated counts of straggler causes, keyed by the string representation of
         # the StragglerCause enum.
         # Corresponds to the JSON property `stragglerCauseCount`
@@ -5320,6 +5350,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @recent_stragglers = args[:recent_stragglers] if args.key?(:recent_stragglers)
           @straggler_cause_count = args[:straggler_cause_count] if args.key?(:straggler_cause_count)
           @total_straggler_count = args[:total_straggler_count] if args.key?(:total_straggler_count)
         end
@@ -5638,6 +5669,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stream_id = args[:stream_id] if args.key?(:stream_id)
+        end
+      end
+      
+      # Information useful for streaming straggler identification and debugging.
+      class StreamingStragglerInfo
+        include Google::Apis::Core::Hashable
+      
+        # The event-time watermark lag at the time of the straggler detection.
+        # Corresponds to the JSON property `dataWatermarkLag`
+        # @return [String]
+        attr_accessor :data_watermark_lag
+      
+        # End time of this straggler.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start time of this straggler.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The system watermark lag at the time of the straggler detection.
+        # Corresponds to the JSON property `systemWatermarkLag`
+        # @return [String]
+        attr_accessor :system_watermark_lag
+      
+        # Name of the worker where the straggler was detected.
+        # Corresponds to the JSON property `workerName`
+        # @return [String]
+        attr_accessor :worker_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_watermark_lag = args[:data_watermark_lag] if args.key?(:data_watermark_lag)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @system_watermark_lag = args[:system_watermark_lag] if args.key?(:system_watermark_lag)
+          @worker_name = args[:worker_name] if args.key?(:worker_name)
         end
       end
       
