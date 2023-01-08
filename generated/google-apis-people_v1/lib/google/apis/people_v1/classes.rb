@@ -2083,8 +2083,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Residence>]
         attr_accessor :residences
       
-        # The resource name for the person, assigned by the server. An ASCII string with
-        # a max length of 27 characters, in the form of `people/`person_id``.
+        # The resource name for the person, assigned by the server. An ASCII string in
+        # the form of `people/`person_id``.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
