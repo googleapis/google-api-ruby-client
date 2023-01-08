@@ -1,0 +1,7 @@
+{
+    "api_id": "contactcenteraiplatform:v1alpha1",
+    "name_pretty": "Contact Center AI Platform API",
+    "distribution_name": "google-apis-contactcenteraiplatform_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
