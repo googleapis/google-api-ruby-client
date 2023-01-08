@@ -176,11 +176,15 @@ module Google
       class RequestDetails
         include Google::Apis::Core::Hashable
       
-        # Required. Nonce that was provided in the request (which is base64 web-safe no-
-        # wrap).
+        # Nonce that was provided in the request (which is base64 web-safe no-wrap).
         # Corresponds to the JSON property `nonce`
         # @return [String]
         attr_accessor :nonce
+      
+        # Request hash that was provided in the request.
+        # Corresponds to the JSON property `requestHash`
+        # @return [String]
+        attr_accessor :request_hash
       
         # Required. Application package name this attestation was requested for. Note:
         # This field makes no guarantees or promises on the caller integrity. For
@@ -201,6 +205,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @nonce = args[:nonce] if args.key?(:nonce)
+          @request_hash = args[:request_hash] if args.key?(:request_hash)
           @request_package_name = args[:request_package_name] if args.key?(:request_package_name)
           @timestamp_millis = args[:timestamp_millis] if args.key?(:timestamp_millis)
         end
