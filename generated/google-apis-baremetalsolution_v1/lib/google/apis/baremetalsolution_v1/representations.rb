@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +94,27 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class ReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       
