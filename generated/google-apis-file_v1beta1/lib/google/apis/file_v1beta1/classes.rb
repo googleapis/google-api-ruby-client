@@ -800,6 +800,13 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
         attr_accessor :networks
       
+        # Immutable. The protocol indicates the access protocol for all shares in the
+        # instance. This field is immutable and it cannot be changed after the instance
+        # has been created. Default value: `NFS_V3`.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -846,6 +853,7 @@ module Google
           @multi_share_enabled = args[:multi_share_enabled] if args.key?(:multi_share_enabled)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
+          @protocol = args[:protocol] if args.key?(:protocol)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)

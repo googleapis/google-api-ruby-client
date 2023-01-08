@@ -447,6 +447,7 @@ module Google
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
       
+          property :protocol, as: 'protocol'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
