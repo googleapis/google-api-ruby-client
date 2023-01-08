@@ -339,6 +339,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. The number of tasks which reached phase Cancelled.
+        # Corresponds to the JSON property `cancelledCount`
+        # @return [Fixnum]
+        attr_accessor :cancelled_count
+      
         # Output only. Represents time when the execution was completed. It is not
         # guaranteed to be set in happens-before order across separate operations.
         # Corresponds to the JSON property `completionTime`
@@ -409,6 +414,11 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
+        # Output only. URI where logs for this execution can be found in Cloud Console.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
         # Output only. The unique name of this Execution.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -437,6 +447,11 @@ module Google
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
+      
+        # Output only. The number of tasks which have retried at least once.
+        # Corresponds to the JSON property `retriedCount`
+        # @return [Fixnum]
+        attr_accessor :retried_count
       
         # Output only. The number of actively running tasks.
         # Corresponds to the JSON property `runningCount`
@@ -487,6 +502,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @cancelled_count = args[:cancelled_count] if args.key?(:cancelled_count)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -498,10 +514,12 @@ module Google
           @job = args[:job] if args.key?(:job)
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @retried_count = args[:retried_count] if args.key?(:retried_count)
           @running_count = args[:running_count] if args.key?(:running_count)
           @start_time = args[:start_time] if args.key?(:start_time)
           @succeeded_count = args[:succeeded_count] if args.key?(:succeeded_count)
@@ -1907,6 +1925,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult]
         attr_accessor :last_attempt_result
       
+        # Output only. URI where logs for this execution can be found in Cloud Console.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
         # Number of retries allowed per Task, before marking this Task failed.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
@@ -2004,6 +2027,7 @@ module Google
           @job = args[:job] if args.key?(:job)
           @labels = args[:labels] if args.key?(:labels)
           @last_attempt_result = args[:last_attempt_result] if args.key?(:last_attempt_result)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)

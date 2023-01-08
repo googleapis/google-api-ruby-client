@@ -404,6 +404,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :cancelled_count, as: 'cancelledCount'
           property :completion_time, as: 'completionTime'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
@@ -416,10 +417,12 @@ module Google
           property :job, as: 'job'
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
+          property :log_uri, as: 'logUri'
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :parallelism, as: 'parallelism'
           property :reconciling, as: 'reconciling'
+          property :retried_count, as: 'retriedCount'
           property :running_count, as: 'runningCount'
           property :start_time, as: 'startTime'
           property :succeeded_count, as: 'succeededCount'
@@ -743,6 +746,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_attempt_result, as: 'lastAttemptResult', class: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult, decorator: Google::Apis::RunV2::GoogleCloudRunV2TaskAttemptResult::Representation
       
+          property :log_uri, as: 'logUri'
           property :max_retries, as: 'maxRetries'
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
