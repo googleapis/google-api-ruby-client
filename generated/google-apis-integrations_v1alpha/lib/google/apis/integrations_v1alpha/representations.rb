@@ -28,48 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EnterpriseCrmCardsCellValue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsRow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsTabularData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesDataRow
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesListData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1234,54 +1192,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudIntegrationsV1alphaNextTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1526,70 +1436,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_error_code, as: 'commonErrorCode'
-        end
-      end
-      
-      class EnterpriseCrmCardsCellValue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :boolean_value, as: 'booleanValue'
-          property :double_value, as: 'doubleValue'
-          property :empty, as: 'empty', class: Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty, decorator: Google::Apis::IntegrationsV1alpha::GoogleProtobufEmpty::Representation
-      
-          property :long_value, :numeric_string => true, as: 'longValue'
-          property :string_value, as: 'stringValue'
-        end
-      end
-      
-      class EnterpriseCrmCardsRow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :cells, as: 'cells', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue::Representation
-      
-        end
-      end
-      
-      class EnterpriseCrmCardsTabularData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :headers, as: 'headers'
-          collection :rows, as: 'rows', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsRow, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsRow::Representation
-      
-        end
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :rows, as: 'rows', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesDataRow, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesDataRow::Representation
-      
-        end
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesDataRow
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :x, as: 'x', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue::Representation
-      
-          property :y, as: 'y', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsCellValue::Representation
-      
-        end
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesListData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :series, as: 'series', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries::Representation
-      
-        end
-      end
-      
-      class EnterpriseCrmCardsTemplatesAplosSeriesListDataSeries
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, as: 'data', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesData, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesData::Representation
-      
-          property :name, as: 'name'
         end
       end
       
@@ -3706,86 +3552,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :task_entities, as: 'taskEntities', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoTaskEntity, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmFrontendsEventbusProtoTaskEntity::Representation
-      
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration, as: 'duration'
-          property :end_time, as: 'endTime'
-          property :mash_query, as: 'mashQuery', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery::Representation
-      
-          property :metric_field_table, as: 'metricFieldTable'
-          property :output_period, as: 'outputPeriod'
-          property :response_template, as: 'responseTemplate'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :fields, as: 'fields'
-          property :reducer, as: 'reducer'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQuery
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :first_query, as: 'firstQuery', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent::Representation
-      
-          property :operation_mode, as: 'operationMode', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode::Representation
-      
-          property :second_query, as: 'secondQuery', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent::Representation
-      
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryComponent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :borg_task_metric, as: 'borgTaskMetric'
-          collection :data_filters, as: 'dataFilters'
-          collection :fetch_filters, as: 'fetchFilters'
-          property :group_by, as: 'groupBy', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestGroupBy::Representation
-      
-          property :point_operation, as: 'pointOperation'
-          property :time_delta, as: 'timeDelta'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationMode
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :join_config, as: 'joinConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig::Representation
-      
-          property :operation_type, as: 'operationType'
-          property :union_config, as: 'unionConfig', class: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig, decorator: Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig::Representation
-      
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeJoinConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsRequestMashQueryOperationModeUnionConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :reducer, as: 'reducer'
-        end
-      end
-      
-      class GoogleCloudIntegrationsV1alphaMonitorExecutionStatsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :aplos_series_list_data, as: 'aplosSeriesListData', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesListData, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTemplatesAplosSeriesListData::Representation
-      
-          property :table_data, as: 'tableData', class: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTabularData, decorator: Google::Apis::IntegrationsV1alpha::EnterpriseCrmCardsTabularData::Representation
       
         end
       end
