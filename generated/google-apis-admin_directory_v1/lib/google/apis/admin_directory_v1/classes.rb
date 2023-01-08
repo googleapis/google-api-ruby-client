@@ -872,6 +872,11 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport>]
         attr_accessor :cpu_status_reports
       
+        # (Read-only) Deprovision reason.
+        # Corresponds to the JSON property `deprovisionReason`
+        # @return [String]
+        attr_accessor :deprovision_reason
+      
         # A list of device files to download (Read-only)
         # Corresponds to the JSON property `deviceFiles`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile>]
@@ -929,6 +934,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # (Read-only) Date and time for the last deprovision of the device.
+        # Corresponds to the JSON property `lastDeprovisionTimestamp`
+        # @return [String]
+        attr_accessor :last_deprovision_timestamp
       
         # Date and time the device was last enrolled (Read-only)
         # Corresponds to the JSON property `lastEnrollmentTime`
@@ -1090,6 +1100,7 @@ module Google
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
+          @deprovision_reason = args[:deprovision_reason] if args.key?(:deprovision_reason)
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
           @disk_volume_reports = args[:disk_volume_reports] if args.key?(:disk_volume_reports)
@@ -1100,6 +1111,7 @@ module Google
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @first_enrollment_time = args[:first_enrollment_time] if args.key?(:first_enrollment_time)
           @kind = args[:kind] if args.key?(:kind)
+          @last_deprovision_timestamp = args[:last_deprovision_timestamp] if args.key?(:last_deprovision_timestamp)
           @last_enrollment_time = args[:last_enrollment_time] if args.key?(:last_enrollment_time)
           @last_known_network = args[:last_known_network] if args.key?(:last_known_network)
           @last_sync = args[:last_sync] if args.key?(:last_sync)
@@ -1901,6 +1913,13 @@ module Google
       class DirectoryChromeosdevicesCommandResult
         include Google::Apis::Core::Hashable
       
+        # The payload for the command result. The following commands respond with a
+        # payload: - DEVICE_START_CRD_SESSION: Payload is a stringified JSON object in
+        # the form: ` "url": url `. The URL provides a link to the CRD session.
+        # Corresponds to the JSON property `commandResultPayload`
+        # @return [String]
+        attr_accessor :command_result_payload
+      
         # The error message with a short explanation as to why the command failed. Only
         # present if the command failed.
         # Corresponds to the JSON property `errorMessage`
@@ -1923,6 +1942,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @command_result_payload = args[:command_result_payload] if args.key?(:command_result_payload)
           @error_message = args[:error_message] if args.key?(:error_message)
           @execute_time = args[:execute_time] if args.key?(:execute_time)
           @result = args[:result] if args.key?(:result)
@@ -1941,7 +1961,12 @@ module Google
         # The payload for the command, provide it only if command supports it. The
         # following commands support adding payload: - SET_VOLUME: Payload is a
         # stringified JSON object in the form: ` "volume": 50 `. The volume has to be an
-        # integer in the range [0,100].
+        # integer in the range [0,100]. - DEVICE_START_CRD_SESSION: Payload is
+        # optionally a stringified JSON object in the form: ` "ackedUserPresence": true `
+        # . ackedUserPresence is a boolean. If a device is being used, ackedUserPresence
+        # must be set to true to acknowledge that you want to start a CRD session
+        # anyways. It is false by default, so a CRD command will fail if used on an
+        # active device without this field.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -2309,8 +2334,13 @@ module Google
       
       # Google Groups provide your users the ability to send messages to groups of
       # people using the group's email address. For more information about common
-      # tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-
-      # groups).
+      # tasks, see the [Developer's Guide](https://developers.google.com/admin-sdk/
+      # directory/v1/guides/manage-groups). For information about other types of
+      # groups, see the [Cloud Identity Groups API documentation](https://cloud.google.
+      # com/identity/docs/groups). Note: The user calling the API (or being
+      # impersonated by a service account) must have an assigned [role](https://
+      # developers.google.com/admin-sdk/directory/v1/guides/manage-roles) that
+      # includes Admin API Groups permissions, such as Super Admin or Groups Admin.
       class Group
         include Google::Apis::Core::Hashable
       
