@@ -1,5 +1,11 @@
 # Release History
 
+### 0.9.5 (2023-01-12)
+
+#### Bug Fixes
+
+* Improve upload performance for Cloud Storage ([#13213](https://github.com/googleapis/google-api-ruby-client/issues/13213)) 
+
 ### 0.9.4 (2023-01-07)
 
 #### Bug Fixes
