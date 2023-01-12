@@ -15,6 +15,7 @@
 require 'google/apis/core/http_command'
 require 'google/apis/core/api_command'
 require 'google/apis/errors'
+require 'stringio'
 require 'tempfile'
 require 'mini_mime'
 
@@ -141,7 +142,7 @@ module Google
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = get_content_range_header current_chunk_size
           request_header[CONTENT_LENGTH_HEADER] = current_chunk_size
-          chunk_body = upload_io.read(current_chunk_size)
+          chunk_body = StringIO.new(upload_io.read(current_chunk_size))
 
           response = client.put(@upload_url, body: chunk_body, header: request_header, follow_redirect: true)
 

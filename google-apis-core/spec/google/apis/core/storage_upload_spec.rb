@@ -39,12 +39,15 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
 
     it 'should send upload command' do
+      allow(client).to receive(:put).and_call_original
+      expect(client).to receive(:put).with(anything, hash_including(body: kind_of(StringIO)))
+
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
         .with { |req| req.headers['Content-Length'].include?('11') }).to have_been_made
 
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
-        .with { |req| req.headers['Content-Type'].include?('application/json') }).to have_been_made      
+        .with { |req| req.headers['Content-Type'].include?('application/json') }).to have_been_made
 
       expect(a_request(:put, 'https://www.googleapis.com/zoo/animals')
         .with{ |req| req.headers['Content-Length'].include?('11')}).to have_been_made
