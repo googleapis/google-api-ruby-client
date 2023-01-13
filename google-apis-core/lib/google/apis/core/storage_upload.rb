@@ -32,7 +32,7 @@ module Google
         CONTENT_RANGE_HEADER = "Content-Range"
         RESUMABLE = "resumable"
         OK_STATUS = 200
-        CHUNK_SIZE = 8 * 1024 * 1024 # 8 MB
+        CHUNK_SIZE = 100 * 1024 * 1024 # 100 MB
 
         # File name or IO containing the content to upload
         # @return [String, File, #read]
