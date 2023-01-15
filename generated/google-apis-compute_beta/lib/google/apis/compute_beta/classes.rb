@@ -1190,6 +1190,44 @@ module Google
         end
       end
       
+      # [Output Only] Contains output only fields.
+      class AllocationResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Contains Properties set for the reservation.
+        # Corresponds to the JSON property `specificSkuAllocation`
+        # @return [Google::Apis::ComputeBeta::AllocationResourceStatusSpecificSkuAllocation]
+        attr_accessor :specific_sku_allocation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
+        end
+      end
+      
+      # Contains Properties set for the reservation.
+      class AllocationResourceStatusSpecificSkuAllocation
+        include Google::Apis::Core::Hashable
+      
+        # ID of the instance template used to populate reservation properties.
+        # Corresponds to the JSON property `sourceInstanceTemplateId`
+        # @return [String]
+        attr_accessor :source_instance_template_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
+        end
+      end
+      
       # 
       class AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk
         include Google::Apis::Core::Hashable
@@ -1303,6 +1341,16 @@ module Google
         # @return [Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
       
+        # Specifies the instance template to create the reservation. If you use this
+        # field, you must exclude the instanceProperties field. This field is optional,
+        # and it can be a full or partial URL. For example, the following are all valid
+        # URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/
+        # project /global/instanceTemplates/instanceTemplate - projects/project/global/
+        # instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+        # Corresponds to the JSON property `sourceInstanceTemplate`
+        # @return [String]
+        attr_accessor :source_instance_template
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1313,6 +1361,7 @@ module Google
           @count = args[:count] if args.key?(:count)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
         end
       end
       
@@ -8626,9 +8675,8 @@ module Google
       class FirewallPolicyRule
         include Google::Apis::Core::Hashable
       
-        # The Action to perform when the client connection triggers the rule. Can
-        # currently be either "allow" or "deny()" where valid values for status are 403,
-        # 404, and 502.
+        # The Action to perform when the client connection triggers the rule. Valid
+        # actions are "allow", "deny" and "goto_next".
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -9000,6 +9048,13 @@ module Google
         attr_accessor :allow_global_access
         alias_method :allow_global_access?, :allow_global_access
       
+        # This is used in PSC consumer ForwardingRule to control whether the PSC
+        # endpoint can be accessed from another region.
+        # Corresponds to the JSON property `allowPscGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_psc_global_access
+        alias_method :allow_psc_global_access?, :allow_psc_global_access
+      
         # Identifies the backend service to which the forwarding rule sends traffic.
         # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
         # be omitted for all other load balancer types.
@@ -9274,6 +9329,7 @@ module Google
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
+          @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -22640,6 +22696,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # The URL of the network attachment that this interface should connect to in the
+        # following format: projects/`project_number`/regions/`region_name`/
+        # networkAttachments/`network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # An IPv4 internal IP address to assign to the instance for this network
         # interface. If not specified by the user, an unused internal IP is assigned by
         # the system.
@@ -22694,6 +22757,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
           @queue_count = args[:queue_count] if args.key?(:queue_count)
@@ -29909,6 +29973,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Contains output only fields.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeBeta::AllocationResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -29963,6 +30032,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @share_settings = args[:share_settings] if args.key?(:share_settings)
