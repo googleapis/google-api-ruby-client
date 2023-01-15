@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1MarkRecommendationFailedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -289,6 +295,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           hash :state_metadata, as: 'stateMetadata'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
         end
       end
       
