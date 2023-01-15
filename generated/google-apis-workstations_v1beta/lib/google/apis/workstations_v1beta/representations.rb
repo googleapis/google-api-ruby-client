@@ -524,6 +524,7 @@ module Google
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
@@ -543,6 +544,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::WorkstationsV1beta::PrivateClusterConfig, decorator: Google::Apis::WorkstationsV1beta::PrivateClusterConfig::Representation
@@ -570,6 +572,7 @@ module Google
           property :host, as: 'host', class: Google::Apis::WorkstationsV1beta::Host, decorator: Google::Apis::WorkstationsV1beta::Host::Representation
       
           property :idle_timeout, as: 'idleTimeout'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1beta::PersistentDirectory, decorator: Google::Apis::WorkstationsV1beta::PersistentDirectory::Representation
       
