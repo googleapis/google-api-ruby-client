@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlterMetadataResourceLocationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveTableToDatabaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -333,6 +345,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location_uri, as: 'locationUri'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class AlterMetadataResourceLocationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -651,6 +669,12 @@ module Google
           property :db_name, as: 'dbName'
           property :destination_db_name, as: 'destinationDbName'
           property :table_name, as: 'tableName'
+        end
+      end
+      
+      class MoveTableToDatabaseResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

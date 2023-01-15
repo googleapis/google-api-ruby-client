@@ -49,6 +49,19 @@ module Google
         end
       end
       
+      # Response message for DataprocMetastore.AlterMetadataResourceLocation.
+      class AlterMetadataResourceLocationResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs.If there
@@ -1233,6 +1246,19 @@ module Google
           @db_name = args[:db_name] if args.key?(:db_name)
           @destination_db_name = args[:destination_db_name] if args.key?(:destination_db_name)
           @table_name = args[:table_name] if args.key?(:table_name)
+        end
+      end
+      
+      # Response message for DataprocMetastore.MoveTableToDatabase.
+      class MoveTableToDatabaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
