@@ -446,14 +446,14 @@ module Google
         end
       end
       
-      # The InternalRange resource for IPAM operations within a VPC network. Used to
+      # The internal range resource for IPAM operations within a VPC network. Used to
       # represent a private address range along with behavioral characterstics of that
-      # range (it's usage and peering behavior). Networking resources can link to this
-      # range if they are created as belonging to it. Next id: 14
+      # range (its usage and peering behavior). Networking resources can link to this
+      # range if they are created as belonging to it.
       class InternalRange
         include Google::Apis::Core::Hashable
       
-        # Time when the InternalRange was created.
+        # Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -463,7 +463,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # IP range that this InternalRange defines.
+        # IP range that this internal range defines.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -473,16 +473,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. The name of a InternalRange. Format: projects/`project`/locations/`
-        # location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
+        # Immutable. The name of an internal range. Format: projects/`project`/locations/
+        # `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
         # fields-representing-resource-names
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The URL or resource ID of the network in which to reserve the Internal Range.
-        # The network cannot be deleted if there are any reserved Internal Ranges
-        # referring to it. Legacy network is not supported. This can only be specified
+        # The URL or resource ID of the network in which to reserve the internal range.
+        # The network cannot be deleted if there are any reserved internal ranges
+        # referring to it. Legacy networks are not supported. This can only be specified
         # for a global internal address. Example: - URL: /compute/v1/projects/`project`/
         # global/networks/`resourceId` - ID: network123
         # Corresponds to the JSON property `network`
@@ -490,20 +490,20 @@ module Google
         attr_accessor :network
       
         # Optional. Types of resources that are allowed to overlap with the current
-        # InternalRange.
+        # internal range.
         # Corresponds to the JSON property `overlaps`
         # @return [Array<String>]
         attr_accessor :overlaps
       
-        # The type of peering set for this InternalRange.
+        # The type of peering set for this internal range.
         # Corresponds to the JSON property `peering`
         # @return [String]
         attr_accessor :peering
       
-        # An alternate to ip_cidr_range. Can be set when trying to create a reservation
-        # that automatically finds a free range of the given size. If both ip_cidr_range
-        # and prefix_length are set, it's an error if the range sizes don't match. Can
-        # also be used during updates to change the range size.
+        # An alternative to ip_cidr_range. Can be set when trying to create a
+        # reservation that automatically finds a free range of the given size. If both
+        # ip_cidr_range and prefix_length are set, there is an error if the range sizes
+        # do not match. Can also be used during updates to change the range size.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
@@ -516,21 +516,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_cidr_range
       
-        # Time when the InternalRange was updated.
+        # Time when the internal range was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # The type of usage set for this InternalRange.
+        # The type of usage set for this internal range.
         # Corresponds to the JSON property `usage`
         # @return [String]
         attr_accessor :usage
       
         # Output only. The list of resources that refer to this internal range.
-        # Resources that use the InternalRange for their range allocation are referred
+        # Resources that use the internal range for their range allocation are referred
         # to as users of the range. Other resources mark themselves as users while doing
-        # so by creating a reference to this InternalRange. Having a user, based on this
-        # reference, prevents deletion of the InternalRange referred to. Can be empty.
+        # so by creating a reference to this internal range. Having a user, based on
+        # this reference, prevents deletion of the internal range that is referred to.
+        # Can be empty.
         # Corresponds to the JSON property `users`
         # @return [Array<String>]
         attr_accessor :users
@@ -593,7 +594,7 @@ module Google
       class ListInternalRangesResponse
         include Google::Apis::Core::Hashable
       
-        # InternalRanges to be returned.
+        # Internal range to be returned.
         # Corresponds to the JSON property `internalRanges`
         # @return [Array<Google::Apis::NetworkconnectivityV1alpha1::InternalRange>]
         attr_accessor :internal_ranges

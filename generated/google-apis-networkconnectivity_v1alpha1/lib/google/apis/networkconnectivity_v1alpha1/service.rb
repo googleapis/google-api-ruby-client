@@ -457,7 +457,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new InternalRange in a given project and location.
+        # Creates a new internal range in a given project and location.
         # @param [String] parent
         #   Required. The parent resource's name of the InternalRange.
         # @param [Google::Apis::NetworkconnectivityV1alpha1::InternalRange] internal_range_object
@@ -471,7 +471,7 @@ module Google
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes since the first request. For example, consider a
         #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
+        #   make the request again with the same request ID, the server can check if the
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
         #   duplicate commitments. The request ID must be a valid UUID with the exception
@@ -507,7 +507,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single InternalRange.
+        # Deletes a single internal range.
         # @param [String] name
         #   Required. The name of the InternalRange to delete.
         # @param [String] request_id
@@ -516,7 +516,7 @@ module Google
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes after the first request. For example, consider a
         #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
+        #   make the request again with the same request ID, the server can check if the
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
         #   duplicate commitments. The request ID must be a valid UUID with the exception
@@ -549,7 +549,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single InternalRange.
+        # Gets details of a single internal range.
         # @param [String] name
         #   Required. Name of the InternalRange to get.
         # @param [String] fields
@@ -624,7 +624,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InternalRanges in a given project and location.
+        # Lists internal ranges in a given project and location.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
@@ -666,10 +666,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single InternalRange.
+        # Updates the parameters of a single internal range.
         # @param [String] name
-        #   Immutable. The name of a InternalRange. Format: projects/`project`/locations/`
-        #   location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
+        #   Immutable. The name of an internal range. Format: projects/`project`/locations/
+        #   `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
         #   fields-representing-resource-names
         # @param [Google::Apis::NetworkconnectivityV1alpha1::InternalRange] internal_range_object
         # @param [String] request_id
@@ -678,14 +678,14 @@ module Google
         #   ignore the request if it has already been completed. The server will guarantee
         #   that for at least 60 minutes since the first request. For example, consider a
         #   situation where you make an initial request and t he request times out. If you
-        #   make the request again with the same request ID, the server can check if
+        #   make the request again with the same request ID, the server can check if the
         #   original operation with the same request ID was received, and if so, will
         #   ignore the second request. This prevents clients from accidentally creating
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   InternalRange resource by the update. The fields specified in the update_mask
+        #   internal range resource by the update. The fields specified in the update_mask
         #   are relative to the resource, not the full request. A field will be
         #   overwritten if it is in the mask. If the user does not provide a mask then all
         #   fields will be overwritten.
