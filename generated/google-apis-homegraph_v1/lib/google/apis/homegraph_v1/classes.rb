@@ -76,11 +76,11 @@ module Google
         attr_accessor :attributes
       
         # Custom device attributes stored in Home Graph and provided to your smart home
-        # Action in each [QUERY](https://developers.google.com/assistant/smarthome/
-        # reference/intent/query) and [EXECUTE](https://developers.google.com/assistant/
-        # smarthome/reference/intent/execute) intent. Data in this object has a few
-        # constraints: No sensitive information, including but not limited to Personally
-        # Identifiable Information.
+        # Action in each [QUERY](https://developers.home.google.com/cloud-to-cloud/
+        # intents/query) and [EXECUTE](https://developers.home.google.com/cloud-to-cloud/
+        # intents/execute) intent. Data in this object has a few constraints: No
+        # sensitive information, including but not limited to Personally Identifiable
+        # Information.
         # Corresponds to the JSON property `customData`
         # @return [Hash<String,Object>]
         attr_accessor :custom_data
@@ -110,8 +110,8 @@ module Google
         alias_method :notification_supported_by_agent?, :notification_supported_by_agent
       
         # Alternate IDs associated with this device. This is used to identify cloud
-        # synced devices enabled for [local fulfillment](https://developers.google.com/
-        # assistant/smarthome/concepts/local).
+        # synced devices enabled for [local fulfillment](https://developers.home.google.
+        # com/local-home/overview).
         # Corresponds to the JSON property `otherDeviceIds`
         # @return [Array<Google::Apis::HomegraphV1::AgentOtherDeviceId>]
         attr_accessor :other_device_ids
@@ -128,14 +128,14 @@ module Google
         # @return [String]
         attr_accessor :structure_hint
       
-        # Traits supported by the device. See [device traits](https://developers.google.
-        # com/assistant/smarthome/traits).
+        # Traits supported by the device. See [device traits](https://developers.home.
+        # google.com/cloud-to-cloud/traits).
         # Corresponds to the JSON property `traits`
         # @return [Array<String>]
         attr_accessor :traits
       
-        # Hardware type of the device. See [device types](https://developers.google.com/
-        # assistant/smarthome/guides).
+        # Hardware type of the device. See [device types](https://developers.home.google.
+        # com/cloud-to-cloud/guides).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -326,11 +326,11 @@ module Google
       
       # Response type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.
       # Query) call. This should follow the same format as the Google smart home `
-      # action.devices.QUERY` [response](https://developers.google.com/assistant/
-      # smarthome/reference/intent/query). # Example ```json ` "requestId": "ff36a3cc-
-      # ec34-11e6-b1a0-64510650abcf", "payload": ` "devices": ` "123": ` "on": true, "
-      # online": true `, "456": ` "on": true, "online": true, "brightness": 80, "color"
-      # : ` "name": "cerulean", "spectrumRGB": 31655 ` ` ` ` ` ```
+      # action.devices.QUERY` [response](https://developers.home.google.com/cloud-to-
+      # cloud/intents/query). Example: ```json ` "requestId": "ff36a3cc-ec34-11e6-b1a0-
+      # 64510650abcf", "payload": ` "devices": ` "123": ` "on": true, "online": true `,
+      # "456": ` "on": true, "online": true, "brightness": 80, "color": ` "name": "
+      # cerulean", "spectrumRGB": 31655 ` ` ` ` ` ```
       class QueryResponse
         include Google::Apis::Core::Hashable
       
@@ -379,15 +379,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Notifications metadata for devices. See the **Device NOTIFICATIONS** section
-        # of the individual trait [reference guides](https://developers.google.com/
-        # assistant/smarthome/traits).
+        # of the individual trait [reference guides](https://developers.home.google.com/
+        # cloud-to-cloud/traits).
         # Corresponds to the JSON property `notifications`
         # @return [Hash<String,Object>]
         attr_accessor :notifications
       
         # States of devices to update. See the **Device STATES** section of the
-        # individual trait [reference guides](https://developers.google.com/assistant/
-        # smarthome/traits).
+        # individual trait [reference guides](https://developers.home.google.com/cloud-
+        # to-cloud/traits).
         # Corresponds to the JSON property `states`
         # @return [Hash<String,Object>]
         attr_accessor :states
@@ -406,7 +406,7 @@ module Google
       # Request type for the [`ReportStateAndNotification`](#google.home.graph.v1.
       # HomeGraphApiService.ReportStateAndNotification) call. It may include states,
       # notifications, or both. States and notifications are defined per `device_id` (
-      # for example, "123" and "456" in the following example). # Example ```json ` "
+      # for example, "123" and "456" in the following example). Example: ```json ` "
       # requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "
       # payload": ` "devices": ` "states": ` "123": ` "on": true `, "456": ` "on":
       # true, "brightness": 10 ` `, ` ` ` ```
@@ -563,15 +563,15 @@ module Google
       
       # Response type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync)
       # call. This should follow the same format as the Google smart home `action.
-      # devices.SYNC` [response](https://developers.google.com/assistant/smarthome/
-      # reference/intent/sync). # Example ```json ` "requestId": "ff36a3cc-ec34-11e6-
-      # b1a0-64510650abcf", "payload": ` "agentUserId": "1836.15267389", "devices": [`
-      # "id": "123", "type": "action.devices.types.OUTLET", "traits": [ "action.
-      # devices.traits.OnOff" ], "name": ` "defaultNames": ["My Outlet 1234"], "name":
-      # "Night light", "nicknames": ["wall plug"] `, "willReportState": false, "
-      # deviceInfo": ` "manufacturer": "lights-out-inc", "model": "hs1234", "hwVersion"
-      # : "3.2", "swVersion": "11.4" `, "customData": ` "fooValue": 74, "barValue":
-      # true, "bazValue": "foo" ` `] ` ` ```
+      # devices.SYNC` [response](https://developers.home.google.com/cloud-to-cloud/
+      # intents/sync). Example: ```json ` "requestId": "ff36a3cc-ec34-11e6-b1a0-
+      # 64510650abcf", "payload": ` "agentUserId": "1836.15267389", "devices": [` "id":
+      # "123", "type": "action.devices.types.OUTLET", "traits": [ "action.devices.
+      # traits.OnOff" ], "name": ` "defaultNames": ["My Outlet 1234"], "name": "Night
+      # light", "nicknames": ["wall plug"] `, "willReportState": false, "deviceInfo": `
+      # "manufacturer": "lights-out-inc", "model": "hs1234", "hwVersion": "3.2", "
+      # swVersion": "11.4" `, "customData": ` "fooValue": 74, "barValue": true, "
+      # bazValue": "foo" ` `] ` ` ```
       class SyncResponse
         include Google::Apis::Core::Hashable
       
