@@ -87,9 +87,10 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. The name of the parent that the listed assets belong to. Its format
-        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource that contains the assets. The value
+        #   that you can specify on parent depends on the method in which you specify
+        #   parent. You can specify one of the following values: "organizations/[
+        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -854,7 +855,7 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
@@ -1358,9 +1359,10 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. The name of the parent that the listed assets belong to. Its format
-        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource that contains the assets. The value
+        #   that you can specify on parent depends on the method in which you specify
+        #   parent. You can specify one of the following values: "organizations/[
+        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -2408,7 +2410,7 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
@@ -2991,9 +2993,10 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Required. The name of the parent that the listed assets belong to. Its format
-        #   is "organizations/[organization_id], "folders/[folder_id]", or "projects/[
-        #   project_id]".
+        #   Required. The name of the parent resource that contains the assets. The value
+        #   that you can specify on parent depends on the method in which you specify
+        #   parent. You can specify one of the following values: "organizations/[
+        #   organization_id]", "folders/[folder_id]", or "projects/[project_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
         #   is updated to indicate whether the asset was added, removed, or remained
@@ -3758,7 +3761,7 @@ module Google
         # Lists all sources belonging to an organization.
         # @param [String] parent
         #   Required. Resource name of the parent of sources to list. Its format should be
-        #   "organizations/[organization_id], "folders/[folder_id]", or "projects/[
+        #   "organizations/[organization_id]", "folders/[folder_id]", or "projects/[
         #   project_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is 10,
