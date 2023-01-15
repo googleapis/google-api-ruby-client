@@ -1,6 +1,6 @@
 {
     "api_id": "vmmigration:v1",
-    "name_pretty": "Migrate to Virtual Machines API",
+    "name_pretty": "VM Migration API",
     "distribution_name": "google-apis-vmmigration_v1",
     "language": "ruby",
     "library_type": "REST"
