@@ -320,13 +320,13 @@ module Google
         #   The resource name for the case.
         # @param [Google::Apis::CloudsupportV2beta::Case] case_object
         # @param [String] update_mask
-        #   A field that represents attributes of a case object that should be updated as
-        #   part of this request. Supported values are severity, display_name, and
+        #   A list of attributes of the case object that should be updated as part of this
+        #   request. Supported values are severity, display_name, and
         #   subscriber_email_addresses. If no fields are specified, all supported fields
-        #   will be updated. WARNING: If you do not provide a field mask then you may
+        #   are updated. WARNING: If you do not provide a field mask, then you may
         #   accidentally clear some fields. For example, if you leave field mask empty and
-        #   do not provide a value for subscriber_email_addresses then
-        #   subscriber_email_addresses will be updated to empty.
+        #   do not provide a value for subscriber_email_addresses, then
+        #   subscriber_email_addresses is updated to empty.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
