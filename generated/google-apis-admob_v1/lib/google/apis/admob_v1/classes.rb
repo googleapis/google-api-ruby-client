@@ -90,6 +90,11 @@ module Google
       class App
         include Google::Apis::Core::Hashable
       
+        # Output only. The approval state for the app.
+        # Corresponds to the JSON property `appApprovalState`
+        # @return [String]
+        attr_accessor :app_approval_state
+      
         # The externally visible ID of the app which can be used to integrate with the
         # AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~
         # 0123456789
@@ -125,6 +130,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_approval_state = args[:app_approval_state] if args.key?(:app_approval_state)
           @app_id = args[:app_id] if args.key?(:app_id)
           @linked_app_info = args[:linked_app_info] if args.key?(:linked_app_info)
           @manual_app_info = args[:manual_app_info] if args.key?(:manual_app_info)
