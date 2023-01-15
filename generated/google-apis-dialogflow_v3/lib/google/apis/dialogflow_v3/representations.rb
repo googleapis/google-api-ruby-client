@@ -3728,6 +3728,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
+          property :channel, as: 'channel'
           property :current_page, as: 'currentPage'
           property :disable_webhook, as: 'disableWebhook'
           collection :flow_versions, as: 'flowVersions'
@@ -3790,6 +3791,7 @@ module Google
       class GoogleCloudDialogflowCxV3ResponseMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           property :conversation_success, as: 'conversationSuccess', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess::Representation
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction::Representation
@@ -4913,6 +4915,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           property :conversation_success, as: 'conversationSuccess', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess::Representation
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction::Representation
