@@ -268,12 +268,12 @@ module Google
         # @param [String] name
         #   Output only. The fully-qualified resource name of the Hosting site, in the
         #   format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
-        #   Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/
-        #   api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(
-        #   recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/
-        #   api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn
-        #   more about using project identifiers in Google's [AIP 2510 standard](https://
-        #   google.aip.dev/cloud/2510).
+        #   Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/
+        #   reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.
+        #   project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.
+        #   google.com/docs/reference/firebase-management/rest/v1beta1/projects#
+        #   FirebaseProject.FIELDS.project_id). Learn more about using project identifiers
+        #   in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         # @param [Google::Apis::FirebasehostingV1beta1::Site] site_object
         # @param [String] update_mask
         #   A set of field names from your Site that you want to update.
