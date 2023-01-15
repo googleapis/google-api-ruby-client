@@ -70,6 +70,210 @@ module Google
         end
       end
       
+      # A description of the context in which an error occurred.
+      class GoogleCloudDiscoveryengineLoggingErrorContext
+        include Google::Apis::Core::Hashable
+      
+        # HTTP request data that is related to a reported error.
+        # Corresponds to the JSON property `httpRequest`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingHttpRequestContext]
+        attr_accessor :http_request
+      
+        # Indicates a location in the source code of the service for which errors are
+        # reported.
+        # Corresponds to the JSON property `reportLocation`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingSourceLocation]
+        attr_accessor :report_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_request = args[:http_request] if args.key?(:http_request)
+          @report_location = args[:report_location] if args.key?(:report_location)
+        end
+      end
+      
+      # An error log which is reported to the Error Reporting system.
+      class GoogleCloudDiscoveryengineLoggingErrorLog
+        include Google::Apis::Core::Hashable
+      
+        # A description of the context in which an error occurred.
+        # Corresponds to the JSON property `context`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingErrorContext]
+        attr_accessor :context
+      
+        # The error payload that is populated on LRO import APIs. Including: "google.
+        # cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments" "google.cloud.
+        # discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+        # Corresponds to the JSON property `importPayload`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingImportErrorContext]
+        attr_accessor :import_payload
+      
+        # A message describing the error.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The API request payload, represented as a protocol buffer. Most API request
+        # types are supported. For example: "type.googleapis.com/google.cloud.
+        # discoveryengine.v1alpha.DocumentService.CreateDocumentRequest" "type.
+        # googleapis.com/google.cloud.discoveryengine.v1alpha.UserEventService.
+        # WriteUserEventRequest"
+        # Corresponds to the JSON property `requestPayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_payload
+      
+        # The API response payload, represented as a protocol buffer. This is used to
+        # log some "soft errors", where the response is valid but we consider there are
+        # some quality issues like unjoined events. The following API responses are
+        # supported and no PII is included: "google.cloud.discoveryengine.v1alpha.
+        # RecommendationService.Recommend" "google.cloud.discoveryengine.v1alpha.
+        # UserEventService.WriteUserEvent" "google.cloud.discoveryengine.v1alpha.
+        # UserEventService.CollectUserEvent"
+        # Corresponds to the JSON property `responsePayload`
+        # @return [Hash<String,Object>]
+        attr_accessor :response_payload
+      
+        # Describes a running service that sends errors.
+        # Corresponds to the JSON property `serviceContext`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineLoggingServiceContext]
+        attr_accessor :service_context
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @import_payload = args[:import_payload] if args.key?(:import_payload)
+          @message = args[:message] if args.key?(:message)
+          @request_payload = args[:request_payload] if args.key?(:request_payload)
+          @response_payload = args[:response_payload] if args.key?(:response_payload)
+          @service_context = args[:service_context] if args.key?(:service_context)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # HTTP request data that is related to a reported error.
+      class GoogleCloudDiscoveryengineLoggingHttpRequestContext
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP response status code for the request.
+        # Corresponds to the JSON property `responseStatusCode`
+        # @return [Fixnum]
+        attr_accessor :response_status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @response_status_code = args[:response_status_code] if args.key?(:response_status_code)
+        end
+      end
+      
+      # The error payload that is populated on LRO import APIs. Including: "google.
+      # cloud.discoveryengine.v1alpha.DocumentService.ImportDocuments" "google.cloud.
+      # discoveryengine.v1alpha.UserEventService.ImportUserEvents"
+      class GoogleCloudDiscoveryengineLoggingImportErrorContext
+        include Google::Apis::Core::Hashable
+      
+        # The detailed content which caused the error on importing a document.
+        # Corresponds to the JSON property `document`
+        # @return [String]
+        attr_accessor :document
+      
+        # Google Cloud Storage file path of the import source. Can be set for batch
+        # operation error.
+        # Corresponds to the JSON property `gcsPath`
+        # @return [String]
+        attr_accessor :gcs_path
+      
+        # Line number of the content in file. Should be empty for permission or batch
+        # operation error.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [String]
+        attr_accessor :line_number
+      
+        # The operation resource name of the LRO.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # The detailed content which caused the error on importing a user event.
+        # Corresponds to the JSON property `userEvent`
+        # @return [String]
+        attr_accessor :user_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document = args[:document] if args.key?(:document)
+          @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+          @line_number = args[:line_number] if args.key?(:line_number)
+          @operation = args[:operation] if args.key?(:operation)
+          @user_event = args[:user_event] if args.key?(:user_event)
+        end
+      end
+      
+      # Describes a running service that sends errors.
+      class GoogleCloudDiscoveryengineLoggingServiceContext
+        include Google::Apis::Core::Hashable
+      
+        # An identifier of the service. For example, "discoveryengine.googleapis.com".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Indicates a location in the source code of the service for which errors are
+      # reported.
+      class GoogleCloudDiscoveryengineLoggingSourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable name of a function or method. For example, " google.cloud.
+        # discoveryengine.v1alpha.RecommendationService.Recommend".
+        # Corresponds to the JSON property `functionName`
+        # @return [String]
+        attr_accessor :function_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function_name = args[:function_name] if args.key?(:function_name)
+        end
+      end
+      
       # Metadata related to the progress of the ImportDocuments operation. This will
       # be returned by the google.longrunning.Operation.metadata field.
       class GoogleCloudDiscoveryengineV1alphaImportDocumentsMetadata
