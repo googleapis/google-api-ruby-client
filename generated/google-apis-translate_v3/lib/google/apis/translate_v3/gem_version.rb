@@ -16,13 +16,13 @@ module Google
   module Apis
     module TranslateV3
       # Version of the google-apis-translate_v3 gem
-      GEM_VERSION = "0.21.0"
+      GEM_VERSION = "0.22.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.11.0"
+      GENERATOR_VERSION = "0.11.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20221021"
+      REVISION = "20230106"
     end
   end
 end

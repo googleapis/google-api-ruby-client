@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatasetInputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatasetOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DetectLanguageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,7 +112,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Example
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsInputSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsOutputDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,7 +184,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InputFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +209,18 @@ module Google
       end
       
       class LanguageCodesSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatasetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExamplesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListModelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +257,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Model
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -281,6 +359,7 @@ module Google
       class BatchTranslateDocumentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :customized_attribution, as: 'customizedAttribution'
           hash :format_conversions, as: 'formatConversions'
           hash :glossaries, as: 'glossaries', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
       
@@ -313,6 +392,38 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Dataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :example_count, as: 'exampleCount'
+          property :name, as: 'name'
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+          property :test_example_count, as: 'testExampleCount'
+          property :train_example_count, as: 'trainExampleCount'
+          property :update_time, as: 'updateTime'
+          property :validate_example_count, as: 'validateExampleCount'
+        end
+      end
+      
+      class DatasetInputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :input_files, as: 'inputFiles', class: Google::Apis::TranslateV3::InputFile, decorator: Google::Apis::TranslateV3::InputFile::Representation
+      
+        end
+      end
+      
+      class DatasetOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::TranslateV3::GcsOutputDestination, decorator: Google::Apis::TranslateV3::GcsOutputDestination::Representation
+      
         end
       end
       
@@ -376,7 +487,39 @@ module Google
         end
       end
       
+      class Example
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :source_text, as: 'sourceText'
+          property :target_text, as: 'targetText'
+          property :usage, as: 'usage'
+        end
+      end
+      
+      class ExportDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::TranslateV3::DatasetOutputConfig, decorator: Google::Apis::TranslateV3::DatasetOutputConfig::Representation
+      
+        end
+      end
+      
       class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri_prefix, as: 'outputUriPrefix'
+        end
+      end
+      
+      class GcsInputSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_uri, as: 'inputUri'
+        end
+      end
+      
+      class GcsOutputDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_uri_prefix, as: 'outputUriPrefix'
@@ -453,12 +596,29 @@ module Google
         end
       end
       
+      class ImportDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_config, as: 'inputConfig', class: Google::Apis::TranslateV3::DatasetInputConfig, decorator: Google::Apis::TranslateV3::DatasetInputConfig::Representation
+      
+        end
+      end
+      
       class InputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::TranslateV3::GcsSource, decorator: Google::Apis::TranslateV3::GcsSource::Representation
       
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class InputFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::TranslateV3::GcsInputSource, decorator: Google::Apis::TranslateV3::GcsInputSource::Representation
+      
+          property :usage, as: 'usage'
         end
       end
       
@@ -474,6 +634,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :language_codes, as: 'languageCodes'
+        end
+      end
+      
+      class ListDatasetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::TranslateV3::Dataset, decorator: Google::Apis::TranslateV3::Dataset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListExamplesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :examples, as: 'examples', class: Google::Apis::TranslateV3::Example, decorator: Google::Apis::TranslateV3::Example::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -504,6 +682,15 @@ module Google
         end
       end
       
+      class ListModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :models, as: 'models', class: Google::Apis::TranslateV3::Model, decorator: Google::Apis::TranslateV3::Model::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -521,6 +708,23 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class Model
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dataset, as: 'dataset'
+          property :deploy_time, as: 'deployTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+          property :test_example_count, as: 'testExampleCount'
+          property :train_example_count, as: 'trainExampleCount'
+          property :update_time, as: 'updateTime'
+          property :validate_example_count, as: 'validateExampleCount'
         end
       end
       
@@ -579,6 +783,7 @@ module Google
       
           property :document_output_config, as: 'documentOutputConfig', class: Google::Apis::TranslateV3::DocumentOutputConfig, decorator: Google::Apis::TranslateV3::DocumentOutputConfig::Representation
       
+          property :enable_shadow_removal_native_pdf, as: 'enableShadowRemovalNativePdf'
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3::TranslateTextGlossaryConfig::Representation
       
           property :is_translate_native_pdf_only, as: 'isTranslateNativePdfOnly'

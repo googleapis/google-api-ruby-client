@@ -496,6 +496,251 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Dataset.
+        # @param [String] parent
+        #   Required. The project name.
+        # @param [Google::Apis::TranslateV3::Dataset] dataset_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset(parent, dataset_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/datasets', options)
+          command.request_representation = Google::Apis::TranslateV3::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a dataset and all of its contents.
+        # @param [String] name
+        #   Required. The name of the dataset to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports dataset's data to the provided output location.
+        # @param [String] dataset
+        #   Required. Name of the dataset. In form of `projects/`project-number-or-id`/
+        #   locations/`location-id`/datasets/`dataset-id``
+        # @param [Google::Apis::TranslateV3::ExportDataRequest] export_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_dataset_data(dataset, export_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+dataset}:exportData', options)
+          command.request_representation = Google::Apis::TranslateV3::ExportDataRequest::Representation
+          command.request_object = export_data_request_object
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['dataset'] = dataset unless dataset.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Dataset.
+        # @param [String] name
+        #   Required. The resource name of the dataset to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Dataset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Dataset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Dataset::Representation
+          command.response_class = Google::Apis::TranslateV3::Dataset
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Import sentence pairs into translation Dataset.
+        # @param [String] dataset
+        #   Required. Name of the dataset. In form of `projects/`project-number-or-id`/
+        #   locations/`location-id`/datasets/`dataset-id``
+        # @param [Google::Apis::TranslateV3::ImportDataRequest] import_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_dataset_data(dataset, import_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+dataset}:importData', options)
+          command.request_representation = Google::Apis::TranslateV3::ImportDataRequest::Representation
+          command.request_object = import_data_request_object
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['dataset'] = dataset unless dataset.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists datasets.
+        # @param [String] parent
+        #   Required. Name of the parent project. In form of `projects/`project-number-or-
+        #   id`/locations/`location-id``
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server can return fewer results than
+        #   requested.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results for the server to return.
+        #   Typically obtained from next_page_token field in the response of a
+        #   ListDatasets call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListDatasetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListDatasetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_datasets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/datasets', options)
+          command.response_representation = Google::Apis::TranslateV3::ListDatasetsResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListDatasetsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists sentence pairs in the dataset.
+        # @param [String] parent
+        #   Required. Name of the parent dataset. In form of `projects/`project-number-or-
+        #   id`/locations/`location-id`/datasets/`dataset-id``
+        # @param [String] filter
+        #   Optional. An expression for filtering the examples that will be returned.
+        #   Example filter: * `usage=TRAIN`
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server can return fewer results than
+        #   requested.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results for the server to return.
+        #   Typically obtained from next_page_token field in the response of a
+        #   ListExamples call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListExamplesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListExamplesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_examples(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/examples', options)
+          command.response_representation = Google::Apis::TranslateV3::ListExamplesResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListExamplesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a glossary and returns the long-running operation. Returns NOT_FOUND,
         # if the project doesn't exist.
         # @param [String] parent
@@ -849,6 +1094,144 @@ module Google
           command.response_representation = Google::Apis::TranslateV3::GlossaryEntry::Representation
           command.response_class = Google::Apis::TranslateV3::GlossaryEntry
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Model.
+        # @param [String] parent
+        #   Required. The project name, in form of `projects/`project`/locations/`location`
+        #   `
+        # @param [Google::Apis::TranslateV3::Model] model_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_model(parent, model_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/models', options)
+          command.request_representation = Google::Apis::TranslateV3::Model::Representation
+          command.request_object = model_object
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a model.
+        # @param [String] name
+        #   Required. The name of the model to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a model.
+        # @param [String] name
+        #   Required. The resource name of the model to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Model] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Model]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_model(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::TranslateV3::Model::Representation
+          command.response_class = Google::Apis::TranslateV3::Model
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists models.
+        # @param [String] parent
+        #   Required. Name of the parent project. In form of `projects/`project-number-or-
+        #   id`/locations/`location-id``
+        # @param [String] filter
+        #   Optional. An expression for filtering the models that will be returned.
+        #   Supported filter: `dataset_id=$`dataset_id``
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server can return fewer results than
+        #   requested.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results for the server to return.
+        #   Typically obtained from next_page_token field in the response of a ListModels
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::ListModelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::ListModelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_models(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/models', options)
+          command.response_representation = Google::Apis::TranslateV3::ListModelsResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::ListModelsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

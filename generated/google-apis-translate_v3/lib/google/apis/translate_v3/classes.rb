@@ -64,6 +64,14 @@ module Google
       class BatchTranslateDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. This flag is to support user customized attribution. If not provided,
+        # the default is `Machine Translated by Google`. Customized attribution should
+        # follow rules in https://cloud.google.com/translate/attribution#
+        # attribution_and_logos
+        # Corresponds to the JSON property `customizedAttribution`
+        # @return [String]
+        attr_accessor :customized_attribution
+      
         # Optional.
         # Corresponds to the JSON property `formatConversions`
         # @return [Hash<String,String>]
@@ -117,6 +125,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
@@ -210,6 +219,120 @@ module Google
         end
       end
       
+      # A dataset that hosts the examples (sentence pairs) used for translation models.
+      class Dataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when this dataset was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The name of the dataset to show in the interface. The name can be up to 32
+        # characters long and can consist only of ASCII Latin letters A-Z and a-z,
+        # underscores (_), and ASCII digits 0-9.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The number of examples in the dataset.
+        # Corresponds to the JSON property `exampleCount`
+        # @return [Fixnum]
+        attr_accessor :example_count
+      
+        # The resource name of the dataset, in form of `projects/`project-number-or-id`/
+        # locations/`location_id`/datasets/`dataset_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The BCP-47 language code of the source language.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # The BCP-47 language code of the target language.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        # Output only. Number of test examples (sentence pairs).
+        # Corresponds to the JSON property `testExampleCount`
+        # @return [Fixnum]
+        attr_accessor :test_example_count
+      
+        # Output only. Number of training examples (sentence pairs).
+        # Corresponds to the JSON property `trainExampleCount`
+        # @return [Fixnum]
+        attr_accessor :train_example_count
+      
+        # Output only. Timestamp when this dataset was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. Number of validation examples (sentence pairs).
+        # Corresponds to the JSON property `validateExampleCount`
+        # @return [Fixnum]
+        attr_accessor :validate_example_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @example_count = args[:example_count] if args.key?(:example_count)
+          @name = args[:name] if args.key?(:name)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+          @test_example_count = args[:test_example_count] if args.key?(:test_example_count)
+          @train_example_count = args[:train_example_count] if args.key?(:train_example_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @validate_example_count = args[:validate_example_count] if args.key?(:validate_example_count)
+        end
+      end
+      
+      # Input configuration for datasets.
+      class DatasetInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Files containing the sentence pairs to be imported to the dataset.
+        # Corresponds to the JSON property `inputFiles`
+        # @return [Array<Google::Apis::TranslateV3::InputFile>]
+        attr_accessor :input_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_files = args[:input_files] if args.key?(:input_files)
+        end
+      end
+      
+      # Output configuration for datasets.
+      class DatasetOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the output content.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::TranslateV3::GcsOutputDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
       # The request message for language detection.
       class DetectLanguageRequest
         include Google::Apis::Core::Hashable
@@ -286,7 +409,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code of source content in the request, detected
+        # The BCP-47 language code of the source content in the request, detected
         # automatically.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
@@ -424,6 +547,64 @@ module Google
         end
       end
       
+      # A sentence pair.
+      class Example
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the example, in form of `projects/`project-
+        # number-or-id`/locations/`location_id`/datasets/`dataset_id`/examples/`
+        # example_id`'
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Sentence in source language.
+        # Corresponds to the JSON property `sourceText`
+        # @return [String]
+        attr_accessor :source_text
+      
+        # Sentence in target language.
+        # Corresponds to the JSON property `targetText`
+        # @return [String]
+        attr_accessor :target_text
+      
+        # Output only. Usage of the sentence pair. Options are TRAIN|VALIDATION|TEST.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @source_text = args[:source_text] if args.key?(:source_text)
+          @target_text = args[:target_text] if args.key?(:target_text)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # Request message for ExportData.
+      class ExportDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Output configuration for datasets.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::TranslateV3::DatasetOutputConfig]
+        attr_accessor :output_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+        end
+      end
+      
       # The Google Cloud Storage location for the output content.
       class GcsDestination
         include Google::Apis::Core::Hashable
@@ -433,6 +614,46 @@ module Google
         # start with "gs://". One 'output_uri_prefix' can only be used by one batch
         # translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is
         # returned.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
+        end
+      end
+      
+      # The Google Cloud Storage location for the input content.
+      class GcsInputSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        # Corresponds to the JSON property `inputUri`
+        # @return [String]
+        attr_accessor :input_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_uri = args[:input_uri] if args.key?(:input_uri)
+        end
+      end
+      
+      # The Google Cloud Storage location for the output content.
+      class GcsOutputDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. Google Cloud Storage URI to output directory. For example, `gs://
+        # bucket/directory`. The requesting user must have write permission to the
+        # bucket. The directory will be created if it doesn't exist.
         # Corresponds to the JSON property `outputUriPrefix`
         # @return [String]
         attr_accessor :output_uri_prefix
@@ -466,7 +687,7 @@ module Google
         end
       end
       
-      # Represents a glossary built from user provided data.
+      # Represents a glossary built from user-provided data.
       class Glossary
         include Google::Apis::Core::Hashable
       
@@ -659,6 +880,25 @@ module Google
         end
       end
       
+      # Request message for ImportData.
+      class ImportDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Input configuration for datasets.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::TranslateV3::DatasetInputConfig]
+        attr_accessor :input_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+        end
+      end
+      
       # Input configuration for BatchTranslateText request.
       class InputConfig
         include Google::Apis::Core::Hashable
@@ -683,6 +923,32 @@ module Google
         def update!(**args)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # An input file.
+      class InputFile
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::TranslateV3::GcsInputSource]
+        attr_accessor :gcs_source
+      
+        # Optional. Usage of the file contents. Options are TRAIN|VALIDATION|TEST, or
+        # UNASSIGNED (by default) for auto split.
+        # Corresponds to the JSON property `usage`
+        # @return [String]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @usage = args[:usage] if args.key?(:usage)
         end
       end
       
@@ -731,6 +997,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
+        end
+      end
+      
+      # Response message for ListDatasets.
+      class ListDatasetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The datasets read.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::TranslateV3::Dataset>]
+        attr_accessor :datasets
+      
+        # A token to retrieve next page of results. Pass this token to the page_token
+        # field in the ListDatasetsRequest to obtain the corresponding page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListExamples.
+      class ListExamplesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The sentence pairs.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<Google::Apis::TranslateV3::Example>]
+        attr_accessor :examples
+      
+        # A token to retrieve next page of results. Pass this token to the page_token
+        # field in the ListExamplesRequest to obtain the corresponding page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @examples = args[:examples] if args.key?(:examples)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -812,6 +1130,32 @@ module Google
         end
       end
       
+      # Response message for ListModels.
+      class ListModelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The models read.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::TranslateV3::Model>]
+        attr_accessor :models
+      
+        # A token to retrieve next page of results. Pass this token to the page_token
+        # field in the ListModelsRequest to obtain the corresponding page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @models = args[:models] if args.key?(:models)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -881,6 +1225,91 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A trained translation model.
+      class Model
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the model resource was created, which is also when
+        # the training started.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The dataset from which the model is trained, in form of `projects/`project-
+        # number-or-id`/locations/`location_id`/datasets/`dataset_id``
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # Output only. Timestamp when the model training finished and ready to be used
+        # for translation.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # The name of the model to show in the interface. The name can be up to 32
+        # characters long and can consist only of ASCII Latin letters A-Z and a-z,
+        # underscores (_), and ASCII digits 0-9.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the model, in form of `projects/`project-number-or-id`/
+        # locations/`location_id`/models/`model_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The BCP-47 language code of the source language.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # Output only. The BCP-47 language code of the target language.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        # Output only. Number of examples (sentence pairs) used to test the model.
+        # Corresponds to the JSON property `testExampleCount`
+        # @return [Fixnum]
+        attr_accessor :test_example_count
+      
+        # Output only. Number of examples (sentence pairs) used to train the model.
+        # Corresponds to the JSON property `trainExampleCount`
+        # @return [Fixnum]
+        attr_accessor :train_example_count
+      
+        # Output only. Timestamp when this model was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. Number of examples (sentence pairs) used to validate the model.
+        # Corresponds to the JSON property `validateExampleCount`
+        # @return [Fixnum]
+        attr_accessor :validate_example_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+          @test_example_count = args[:test_example_count] if args.key?(:test_example_count)
+          @train_example_count = args[:train_example_count] if args.key?(:train_example_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @validate_example_count = args[:validate_example_count] if args.key?(:validate_example_count)
         end
       end
       
@@ -1009,7 +1438,7 @@ module Google
       class SupportedLanguage
         include Google::Apis::Core::Hashable
       
-        # Human readable name of the language localized in the display language
+        # Human-readable name of the language localized in the display language
         # specified in the request.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1017,18 +1446,18 @@ module Google
       
         # Supported language code, generally consisting of its ISO 639-1 identifier, for
         # example, 'en', 'ja'. In certain cases, BCP-47 codes including language and
-        # region identifiers are returned (for example, 'zh-TW' and 'zh-CN')
+        # region identifiers are returned (for example, 'zh-TW' and 'zh-CN').
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Can be used as source language.
+        # Can be used as a source language.
         # Corresponds to the JSON property `supportSource`
         # @return [Boolean]
         attr_accessor :support_source
         alias_method :support_source?, :support_source
       
-        # Can be used as target language.
+        # Can be used as a target language.
         # Corresponds to the JSON property `supportTarget`
         # @return [Boolean]
         attr_accessor :support_target
@@ -1089,8 +1518,15 @@ module Google
         # @return [Google::Apis::TranslateV3::DocumentOutputConfig]
         attr_accessor :document_output_config
       
-        # Configures which glossary should be used for a specific target language, and
-        # defines options for applying that glossary.
+        # Optional. If true, use the text removal server to remove the shadow text on
+        # background image for native pdf translation.
+        # Corresponds to the JSON property `enableShadowRemovalNativePdf`
+        # @return [Boolean]
+        attr_accessor :enable_shadow_removal_native_pdf
+        alias_method :enable_shadow_removal_native_pdf?, :enable_shadow_removal_native_pdf
+      
+        # Configures which glossary is used for a specific target language and defines
+        # options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
         # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
@@ -1147,6 +1583,7 @@ module Google
           @customized_attribution = args[:customized_attribution] if args.key?(:customized_attribution)
           @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
           @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
+          @enable_shadow_removal_native_pdf = args[:enable_shadow_removal_native_pdf] if args.key?(:enable_shadow_removal_native_pdf)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
           @is_translate_native_pdf_only = args[:is_translate_native_pdf_only] if args.key?(:is_translate_native_pdf_only)
           @labels = args[:labels] if args.key?(:labels)
@@ -1165,8 +1602,8 @@ module Google
         # @return [Google::Apis::TranslateV3::DocumentTranslation]
         attr_accessor :document_translation
       
-        # Configures which glossary should be used for a specific target language, and
-        # defines options for applying that glossary.
+        # Configures which glossary is used for a specific target language and defines
+        # options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
         # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
@@ -1198,19 +1635,19 @@ module Google
         end
       end
       
-      # Configures which glossary should be used for a specific target language, and
-      # defines options for applying that glossary.
+      # Configures which glossary is used for a specific target language and defines
+      # options for applying that glossary.
       class TranslateTextGlossaryConfig
         include Google::Apis::Core::Hashable
       
         # Required. The `glossary` to be applied for this translation. The format
-        # depends on glossary: - User provided custom glossary: `projects/`project-
+        # depends on the glossary: - User-provided custom glossary: `projects/`project-
         # number-or-id`/locations/`location-id`/glossaries/`glossary-id``
         # Corresponds to the JSON property `glossary`
         # @return [String]
         attr_accessor :glossary
       
-        # Optional. Indicates match is case-insensitive. Default value is false if
+        # Optional. Indicates match is case insensitive. The default value is `false` if
         # missing.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
@@ -1233,14 +1670,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The content of the input in string format. We recommend the total
-        # content be less than 30k codepoints. The max length of this field is 1024. Use
-        # BatchTranslateText for larger text.
+        # content be less than 30,000 codepoints. The max length of this field is 1024.
+        # Use BatchTranslateText for larger text.
         # Corresponds to the JSON property `contents`
         # @return [Array<String>]
         attr_accessor :contents
       
-        # Configures which glossary should be used for a specific target language, and
-        # defines options for applying that glossary.
+        # Configures which glossary is used for a specific target language and defines
+        # options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
         # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
@@ -1343,8 +1780,8 @@ module Google
         # @return [String]
         attr_accessor :detected_language_code
       
-        # Configures which glossary should be used for a specific target language, and
-        # defines options for applying that glossary.
+        # Configures which glossary is used for a specific target language and defines
+        # options for applying that glossary.
         # Corresponds to the JSON property `glossaryConfig`
         # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
