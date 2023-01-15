@@ -974,7 +974,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_hostname
       
-        # Whether Workstations endpoint is private.
+        # Immutable. Whether Workstations endpoint is private.
         # Corresponds to the JSON property `enablePrivateEndpoint`
         # @return [Boolean]
         attr_accessor :enable_private_endpoint
@@ -1227,6 +1227,12 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Client-specified labels that are applied to the resource and that are also
+        # propagated to the underlying Compute Engine resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Full name of this resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1266,6 +1272,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
@@ -1318,13 +1325,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Client-specified labels that are applied to the resource and that are also
+        # propagated to the underlying Compute Engine resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Full name of this resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Name of the Compute Engine network in which instances associated with this
-        # cluster will be created.
+        # Immutable. Name of the Compute Engine network in which instances associated
+        # with this cluster will be created.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1341,9 +1354,9 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Name of the Compute Engine subnetwork in which instances associated with this
-        # cluster will be created. Must be part of the subnetwork specified for this
-        # cluster.
+        # Immutable. Name of the Compute Engine subnetwork in which instances associated
+        # with this cluster will be created. Must be part of the subnetwork specified
+        # for this cluster.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -1371,6 +1384,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
@@ -1443,6 +1457,12 @@ module Google
         # @return [String]
         attr_accessor :idle_timeout
       
+        # Client-specified labels that are applied to the resource and that are also
+        # propagated to the underlying Compute Engine resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Full name of this resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1494,6 +1514,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @host = args[:host] if args.key?(:host)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
