@@ -22,6 +22,12 @@ module Google
   module Apis
     module VmmigrationV1
       
+      class AccessKeyCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdaptingOsStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,36 @@ module Google
       end
       
       class AvailableUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSecurityGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSourceVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsVmDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsVmsDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetProject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +454,14 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessKeyCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_id, as: 'accessKeyId'
+          property :secret_access_key, as: 'secretAccessKey'
+        end
+      end
+      
       class AdaptingOsStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -449,6 +499,72 @@ module Google
           property :in_place_update, as: 'inPlaceUpdate', class: Google::Apis::VmmigrationV1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1::ApplianceVersion::Representation
       
           property :new_deployable_appliance, as: 'newDeployableAppliance', class: Google::Apis::VmmigrationV1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1::ApplianceVersion::Representation
+      
+        end
+      end
+      
+      class AwsSecurityGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :name, as: 'name'
+        end
+      end
+      
+      class AwsSourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_key_creds, as: 'accessKeyCreds', class: Google::Apis::VmmigrationV1::AccessKeyCredentials, decorator: Google::Apis::VmmigrationV1::AccessKeyCredentials::Representation
+      
+          property :aws_region, as: 'awsRegion'
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
+      
+          collection :inventory_security_group_names, as: 'inventorySecurityGroupNames'
+          collection :inventory_tag_list, as: 'inventoryTagList', class: Google::Apis::VmmigrationV1::Tag, decorator: Google::Apis::VmmigrationV1::Tag::Representation
+      
+          hash :migration_resources_user_tags, as: 'migrationResourcesUserTags'
+          property :public_ip, as: 'publicIp'
+          property :state, as: 'state'
+        end
+      end
+      
+      class AwsSourceVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :committed_storage_bytes, :numeric_string => true, as: 'committedStorageBytes'
+          property :firmware, as: 'firmware'
+        end
+      end
+      
+      class AwsVmDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :boot_option, as: 'bootOption'
+          property :committed_storage_mb, :numeric_string => true, as: 'committedStorageMb'
+          property :cpu_count, as: 'cpuCount'
+          property :disk_count, as: 'diskCount'
+          property :display_name, as: 'displayName'
+          property :instance_type, as: 'instanceType'
+          property :memory_mb, as: 'memoryMb'
+          property :os_description, as: 'osDescription'
+          property :power_state, as: 'powerState'
+          collection :security_groups, as: 'securityGroups', class: Google::Apis::VmmigrationV1::AwsSecurityGroup, decorator: Google::Apis::VmmigrationV1::AwsSecurityGroup::Representation
+      
+          property :source_description, as: 'sourceDescription'
+          property :source_id, as: 'sourceId'
+          hash :tags, as: 'tags'
+          property :virtualization_type, as: 'virtualizationType'
+          property :vm_id, as: 'vmId'
+          property :vpc_id, as: 'vpcId'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AwsVmsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :details, as: 'details', class: Google::Apis::VmmigrationV1::AwsVmDetails, decorator: Google::Apis::VmmigrationV1::AwsVmDetails::Representation
       
         end
       end
@@ -650,6 +766,8 @@ module Google
       class FetchInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_vms, as: 'awsVms', class: Google::Apis::VmmigrationV1::AwsVmsDetails, decorator: Google::Apis::VmmigrationV1::AwsVmsDetails::Representation
+      
           property :next_page_token, as: 'nextPageToken'
           property :update_time, as: 'updateTime'
           property :vmware_vms, as: 'vmwareVms', class: Google::Apis::VmmigrationV1::VmwareVmsDetails, decorator: Google::Apis::VmmigrationV1::VmwareVmsDetails::Representation
@@ -824,6 +942,8 @@ module Google
       class MigratingVm
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_source_vm_details, as: 'awsSourceVmDetails', class: Google::Apis::VmmigrationV1::AwsSourceVmDetails, decorator: Google::Apis::VmmigrationV1::AwsSourceVmDetails::Representation
+      
           property :compute_engine_target_defaults, as: 'computeEngineTargetDefaults', class: Google::Apis::VmmigrationV1::ComputeEngineTargetDefaults, decorator: Google::Apis::VmmigrationV1::ComputeEngineTargetDefaults::Representation
       
           property :create_time, as: 'createTime'
@@ -991,6 +1111,8 @@ module Google
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws, as: 'aws', class: Google::Apis::VmmigrationV1::AwsSourceDetails, decorator: Google::Apis::VmmigrationV1::AwsSourceDetails::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
@@ -1013,6 +1135,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Tag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       

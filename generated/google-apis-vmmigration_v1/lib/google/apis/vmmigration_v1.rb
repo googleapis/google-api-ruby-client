@@ -19,13 +19,13 @@ require 'google/apis/vmmigration_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Migrate to Virtual Machines API
+    # VM Migration API
     #
     # Use the Migrate to Virtual Machines API to programmatically migrate workloads.
     #
     # @see https://cloud.google.com/migrate/virtual-machines
     module VmmigrationV1
-      # Version of the Migrate to Virtual Machines API this client connects to.
+      # Version of the VM Migration API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 
