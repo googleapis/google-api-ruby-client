@@ -582,9 +582,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new InternalRange in a given project and location.
+        # Creates a new internal range in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource's name of the InternalRange.
+        #   Required. The parent resource's name of the internal range.
         # @param [Google::Apis::NetworkconnectivityV1::InternalRange] internal_range_object
         # @param [String] internal_range_id
         #   Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/
@@ -632,9 +632,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single InternalRange.
+        # Deletes a single internal range.
         # @param [String] name
-        #   Required. The name of the InternalRange to delete.
+        #   Required. The name of the internal range to delete.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -674,7 +674,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single InternalRange.
+        # Gets details of a single internal range.
         # @param [String] name
         #   Required. Name of the InternalRange to get.
         # @param [String] fields
@@ -704,7 +704,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InternalRanges in a given project and location.
+        # Lists internal ranges in a given project and location.
         # @param [String] parent
         #   Required. The parent resource's name.
         # @param [String] filter
@@ -746,10 +746,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single InternalRange.
+        # Updates the parameters of a single internal range.
         # @param [String] name
-        #   Immutable. The name of a InternalRange. Format: projects/`project`/locations/`
-        #   location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
+        #   Immutable. The name of an internal range. Format: projects/`project`/locations/
+        #   `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
         #   fields-representing-resource-names
         # @param [Google::Apis::NetworkconnectivityV1::InternalRange] internal_range_object
         # @param [String] request_id
