@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PathOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PauseQueueRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class PurgeQueueRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -546,6 +558,13 @@ module Google
         end
       end
       
+      class PathOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
       class PauseQueueRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -579,6 +598,13 @@ module Google
       class PurgeQueueRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class QueryOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_params, as: 'queryParams'
         end
       end
       
@@ -724,9 +750,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
-          property :path, as: 'path'
+          property :path_override, as: 'pathOverride', class: Google::Apis::CloudtasksV2beta2::PathOverride, decorator: Google::Apis::CloudtasksV2beta2::PathOverride::Representation
+      
           property :port, :numeric_string => true, as: 'port'
-          property :query, as: 'query'
+          property :query_override, as: 'queryOverride', class: Google::Apis::CloudtasksV2beta2::QueryOverride, decorator: Google::Apis::CloudtasksV2beta2::QueryOverride::Representation
+      
           property :scheme, as: 'scheme'
           property :uri_override_enforce_mode, as: 'uriOverrideEnforceMode'
         end
