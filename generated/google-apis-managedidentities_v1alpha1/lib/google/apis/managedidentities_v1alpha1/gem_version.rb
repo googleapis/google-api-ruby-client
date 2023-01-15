@@ -16,13 +16,13 @@ module Google
   module Apis
     module ManagedidentitiesV1alpha1
       # Version of the google-apis-managedidentities_v1alpha1 gem
-      GEM_VERSION = "0.27.0"
+      GEM_VERSION = "0.28.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.11.0"
+      GENERATOR_VERSION = "0.11.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220926"
+      REVISION = "20221227"
     end
   end
 end
