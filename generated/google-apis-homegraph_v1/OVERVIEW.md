@@ -79,7 +79,7 @@ Gem names for modern clients are often of the form `google-cloud-<service_name>`
 
 **For most users, we recommend the modern client, if one is available.** Compared with simple clients, modern clients are generally much easier to use and more Ruby-like, support more advanced features such as streaming and long-running operations, and often provide much better performance. You may consider using a simple client instead, if a modern client is not yet available for the service you want to use, or if you are not able to use gRPC on your infrastructure.
 
-The [product documentation](https://developers.google.com/actions/smarthome/create-app#request-sync) may provide guidance regarding the preferred client library to use.
+The [product documentation](https://developers.home.google.com/cloud-to-cloud/get-started) may provide guidance regarding the preferred client library to use.
 
 ## Supported Ruby versions
 

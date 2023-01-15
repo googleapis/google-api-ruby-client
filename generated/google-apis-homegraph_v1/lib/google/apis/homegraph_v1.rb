@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://developers.google.com/actions/smarthome/create-app#request-sync
+    # @see https://developers.home.google.com/cloud-to-cloud/get-started
     module HomegraphV1
       # Version of the HomeGraph API this client connects to.
       # This is NOT the gem version.
