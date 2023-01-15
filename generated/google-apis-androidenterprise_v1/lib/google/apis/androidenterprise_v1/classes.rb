@@ -844,6 +844,11 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::Administrator>]
         attr_accessor :administrator
       
+        # Contains settings for Google-provided user authentication.
+        # Corresponds to the JSON property `googleAuthenticationSettings`
+        # @return [Google::Apis::AndroidenterpriseV1::GoogleAuthenticationSettings]
+        attr_accessor :google_authentication_settings
+      
         # The unique ID for the enterprise.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -866,6 +871,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @administrator = args[:administrator] if args.key?(:administrator)
+          @google_authentication_settings = args[:google_authentication_settings] if args.key?(:google_authentication_settings)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
@@ -1020,6 +1026,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entitlement = args[:entitlement] if args.key?(:entitlement)
+        end
+      end
+      
+      # Contains settings for Google-provided user authentication.
+      class GoogleAuthenticationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether dedicated devices are allowed.
+        # Corresponds to the JSON property `dedicatedDevicesAllowed`
+        # @return [String]
+        attr_accessor :dedicated_devices_allowed
+      
+        # Whether Google authentication is required.
+        # Corresponds to the JSON property `googleAuthenticationRequired`
+        # @return [String]
+        attr_accessor :google_authentication_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dedicated_devices_allowed = args[:dedicated_devices_allowed] if args.key?(:dedicated_devices_allowed)
+          @google_authentication_required = args[:google_authentication_required] if args.key?(:google_authentication_required)
         end
       end
       
