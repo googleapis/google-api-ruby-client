@@ -3826,9 +3826,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # An identifier that uniquely identifies the operation. You can use this
-        # identifier to retrieve the Operations resource that has information about the
-        # operation.
+        # Unused.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
