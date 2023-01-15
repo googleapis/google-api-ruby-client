@@ -1,5 +1,10 @@
 # Release history for google-apis-admob_v1beta
 
+### v0.20.0 (2023-01-15)
+
+* Regenerated from discovery document revision 20230112
+* Regenerated using generator version 0.11.1
+
 ### v0.19.0 (2022-11-03)
 
 * Regenerated from discovery document revision 20221026
