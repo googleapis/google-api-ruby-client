@@ -129,11 +129,11 @@ module Google
         # @param [String] connection_profile_id
         #   Required. The connection profile identifier.
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   requests with the same id, then the second request will be ignored. It is
+        #   recommended to always set this value to a UUID. The id must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [Boolean] skip_validation
         #   Optional. Create the connection profile without validating it. The default is
         #   false. Only supported for Oracle connection profiles.
@@ -350,11 +350,11 @@ module Google
         #   locations/`location`/connectionProfiles/`connectionProfile`.
         # @param [Google::Apis::DatamigrationV1::ConnectionProfile] connection_profile_object
         # @param [String] request_id
-        #   A unique id used to identify the request. If the server receives two requests
-        #   with the same id, then the second request will be ignored. It is recommended
-        #   to always set this value to a UUID. The id must contain only letters (a-z, A-Z)
-        #   , numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   Optional. A unique id used to identify the request. If the server receives two
+        #   requests with the same id, then the second request will be ignored. It is
+        #   recommended to always set this value to a UUID. The id must contain only
+        #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
+        #   maximum length is 40 characters.
         # @param [Boolean] skip_validation
         #   Optional. Update the connection profile without validating it. The default is
         #   false. Only supported for Oracle connection profiles.
@@ -1761,6 +1761,8 @@ module Google
         #   recommended to always set this value to a UUID. The id must contain only
         #   letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
         #   maximum length is 40 characters.
+        # @param [Boolean] skip_validation
+        #   Optional. If set to true, will skip validations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1778,7 +1780,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_private_connection(parent, private_connection_object = nil, private_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_private_connection(parent, private_connection_object = nil, private_connection_id: nil, request_id: nil, skip_validation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/privateConnections', options)
           command.request_representation = Google::Apis::DatamigrationV1::PrivateConnection::Representation
           command.request_object = private_connection_object
@@ -1787,6 +1789,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['privateConnectionId'] = private_connection_id unless private_connection_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skipValidation'] = skip_validation unless skip_validation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
