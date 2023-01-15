@@ -1038,10 +1038,11 @@ module Google
       
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
-        # projects are allowed. Format: `projects/`project_number`` The project may be
-        # in any Google Cloud organization, not just the organization that the perimeter
-        # is defined in. `*` is not allowed, the case of allowing all Google Cloud
-        # resources only is not supported.
+        # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
+        # format: `//compute.googleapis.com/projects/`PROJECT_ID`/global/networks/`NAME``
+        # . The project may be in any Google Cloud organization, not just the
+        # organization that the perimeter is defined in. `*` is not allowed, the case of
+        # allowing all Google Cloud resources only is not supported.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -1681,7 +1682,9 @@ module Google
         attr_accessor :ingress_policies
       
         # A list of Google Cloud resources that are inside of the service perimeter.
-        # Currently only projects are allowed. Format: `projects/`project_number``
+        # Currently only projects and VPCs are allowed. Project format: `projects/`
+        # project_number`` VPC format: `//compute.googleapis.com/projects/`PROJECT_ID`/
+        # global/networks/`NAME``.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources

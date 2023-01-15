@@ -1,5 +1,10 @@
 # Release history for google-apis-accesscontextmanager_v1
 
+### v0.26.0 (2023-01-15)
+
+* Regenerated from discovery document revision 20230109
+* Regenerated using generator version 0.11.1
+
 ### v0.25.0 (2022-12-26)
 
 * Regenerated from discovery document revision 20221213
