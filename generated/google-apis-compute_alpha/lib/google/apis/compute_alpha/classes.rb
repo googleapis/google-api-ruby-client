@@ -1235,6 +1235,85 @@ module Google
         end
       end
       
+      # This reservation type is specified by total resource amounts (e.g. total count
+      # of CPUs) and can account for multiple instance SKUs. In other words, one can
+      # create instances of varying shapes against this reservation.
+      class AllocationAggregateReservation
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] List of resources currently in use.
+        # Corresponds to the JSON property `inUseResources`
+        # @return [Array<Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo>]
+        attr_accessor :in_use_resources
+      
+        # List of reserved resources (CPUs, memory, accelerators).
+        # Corresponds to the JSON property `reservedResources`
+        # @return [Array<Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfo>]
+        attr_accessor :reserved_resources
+      
+        # The VM family that all instances scheduled against this reservation must
+        # belong to.
+        # Corresponds to the JSON property `vmFamily`
+        # @return [String]
+        attr_accessor :vm_family
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @in_use_resources = args[:in_use_resources] if args.key?(:in_use_resources)
+          @reserved_resources = args[:reserved_resources] if args.key?(:reserved_resources)
+          @vm_family = args[:vm_family] if args.key?(:vm_family)
+        end
+      end
+      
+      # 
+      class AllocationAggregateReservationReservedResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Properties of accelerator resources in this reservation.
+        # Corresponds to the JSON property `accelerator`
+        # @return [Google::Apis::ComputeAlpha::AllocationAggregateReservationReservedResourceInfoAccelerator]
+        attr_accessor :accelerator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator = args[:accelerator] if args.key?(:accelerator)
+        end
+      end
+      
+      # 
+      class AllocationAggregateReservationReservedResourceInfoAccelerator
+        include Google::Apis::Core::Hashable
+      
+        # Number of accelerators of specified type.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # Full or partial URL to accelerator type. e.g. "projects/`PROJECT`/zones/`ZONE`/
+        # acceleratorTypes/ct4l"
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+        end
+      end
+      
       # [Output Only] Contains output only fields.
       class AllocationResourceStatus
         include Google::Apis::Core::Hashable
@@ -1386,7 +1465,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
       
-        # Specific URL of the instance template used in the reservation
+        # Specifies the instance template to create the reservation. If you use this
+        # field, you must exclude the instanceProperties field. This field is optional,
+        # and it can be a full or partial URL. For example, the following are all valid
+        # URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/
+        # project /global/instanceTemplates/instanceTemplate - projects/project/global/
+        # instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
         # Corresponds to the JSON property `sourceInstanceTemplate`
         # @return [String]
         attr_accessor :source_instance_template
@@ -9466,9 +9550,8 @@ module Google
       class FirewallPolicyRule
         include Google::Apis::Core::Hashable
       
-        # The Action to perform when the client connection triggers the rule. Can
-        # currently be either "allow" or "deny()" where valid values for status are 403,
-        # 404, and 502.
+        # The Action to perform when the client connection triggers the rule. Valid
+        # actions are "allow", "deny" and "goto_next".
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -11977,6 +12060,20 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # The list of cloud regions from which health checks are performed. If any
+        # regions are specified, then exactly 3 regions should be specified. The region
+        # names must be valid names of GCP regions. This can only be set for global
+        # health check. If this list is non-empty, then there are restrictions on what
+        # other health check fields are supported and what other resources can use this
+        # health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP
+        # request field is not supported. - The proxyHeader field for HTTP, HTTPS, and
+        # TCP is not supported. - The checkIntervalSec field must be at least 30. - The
+        # health check cannot be used with BackendService nor with managed instance
+        # group auto-healing.
+        # Corresponds to the JSON property `sourceRegions`
+        # @return [Array<String>]
+        attr_accessor :source_regions
+      
         # 
         # Corresponds to the JSON property `sslHealthCheck`
         # @return [Google::Apis::ComputeAlpha::SslHealthCheck]
@@ -12033,6 +12130,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @source_regions = args[:source_regions] if args.key?(:source_regions)
           @ssl_health_check = args[:ssl_health_check] if args.key?(:ssl_health_check)
           @tcp_health_check = args[:tcp_health_check] if args.key?(:tcp_health_check)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
@@ -15150,6 +15248,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # Mapping of user-defined keys to specifications for service integrations.
+        # Currently only a single key-value pair is supported.
+        # Corresponds to the JSON property `serviceIntegrationSpecs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ServiceIntegrationSpec>]
+        attr_accessor :service_integration_specs
+      
         # A set of Shielded Instance options.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::ComputeAlpha::ShieldedInstanceConfig]
@@ -15269,6 +15373,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @service_integration_specs = args[:service_integration_specs] if args.key?(:service_integration_specs)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_instance_integrity_policy = args[:shielded_instance_integrity_policy] if args.key?(:shielded_instance_integrity_policy)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
@@ -18768,6 +18873,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ServiceAccount>]
         attr_accessor :service_accounts
       
+        # Mapping of user defined keys to ServiceIntegrationSpec.
+        # Corresponds to the JSON property `serviceIntegrationSpecs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ServiceIntegrationSpec>]
+        attr_accessor :service_integration_specs
+      
         # A set of Shielded Instance options.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::ComputeAlpha::ShieldedInstanceConfig]
@@ -18811,6 +18921,7 @@ module Google
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @secure_tags = args[:secure_tags] if args.key?(:secure_tags)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @service_integration_specs = args[:service_integration_specs] if args.key?(:service_integration_specs)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
@@ -18958,6 +19069,123 @@ module Google
         end
       end
       
+      # Contains a list of InstanceTemplatesScopedList.
+      class InstanceTemplateAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of InstanceTemplatesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceTemplatesScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A list of instance templates.
       class InstanceTemplateList
         include Google::Apis::Core::Hashable
@@ -19025,6 +19253,98 @@ module Google
           # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplateList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class InstanceTemplatesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of instance templates that are contained within the
+        # specified project and zone.
+        # Corresponds to the JSON property `instanceTemplates`
+        # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplate>]
+        attr_accessor :instance_templates
+      
+        # [Output Only] An informational warning that replaces the list of instance
+        # templates when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_templates = args[:instance_templates] if args.key?(:instance_templates)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] An informational warning that replaces the list of instance
+        # templates when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example: "
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -35636,6 +35956,13 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # This reservation type is specified by total resource amounts (e.g. total count
+        # of CPUs) and can account for multiple instance SKUs. In other words, one can
+        # create instances of varying shapes against this reservation.
+        # Corresponds to the JSON property `aggregateReservation`
+        # @return [Google::Apis::ComputeAlpha::AllocationAggregateReservation]
+        attr_accessor :aggregate_reservation
+      
         # [Output Only] Full or partial URL to a parent commitment. This field displays
         # for reservations that are tied to a commitment.
         # Corresponds to the JSON property `commitment`
@@ -35740,6 +36067,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aggregate_reservation = args[:aggregate_reservation] if args.key?(:aggregate_reservation)
           @commitment = args[:commitment] if args.key?(:commitment)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -37213,6 +37541,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ResourceStatusScheduling]
         attr_accessor :scheduling
       
+        # [Output Only] Represents the status of the service integration specs defined
+        # by the user in instance.serviceIntegrationSpecs.
+        # Corresponds to the JSON property `serviceIntegrationStatuses`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatus>]
+        attr_accessor :service_integration_statuses
+      
         # 
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance]
@@ -37226,6 +37560,7 @@ module Google
         def update!(**args)
           @physical_host = args[:physical_host] if args.key?(:physical_host)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @service_integration_statuses = args[:service_integration_statuses] if args.key?(:service_integration_statuses)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
@@ -37256,6 +37591,57 @@ module Google
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
+        end
+      end
+      
+      # Represents the status of integration between instance and another service. See
+      # go/gce-backupdr-design for more details.
+      class ResourceStatusServiceIntegrationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Message defining compute perspective of the result of integration with Backup
+        # and DR. FAILED status indicates that the operation specified did not complete
+        # correctly and should be retried with the same value.
+        # Corresponds to the JSON property `backupDr`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatusServiceIntegrationStatusBackupDrStatus]
+        attr_accessor :backup_dr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_dr = args[:backup_dr] if args.key?(:backup_dr)
+        end
+      end
+      
+      # Message defining compute perspective of the result of integration with Backup
+      # and DR. FAILED status indicates that the operation specified did not complete
+      # correctly and should be retried with the same value.
+      class ResourceStatusServiceIntegrationStatusBackupDrStatus
+        include Google::Apis::Core::Hashable
+      
+        # The PlanReference object created by Backup and DR to maintain the actual
+        # status of backups. May still be present if removing the backup plan fails.
+        # Corresponds to the JSON property `integrationDetails`
+        # @return [String]
+        attr_accessor :integration_details
+      
+        # Enum representing the registration state of a Backup and DR backup plan for
+        # the instance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integration_details = args[:integration_details] if args.key?(:integration_details)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -40785,7 +41171,8 @@ module Google
         # @return [String]
         attr_accessor :redirect_target
       
-        # [Output Only] The minimum managed protection tier required for this rule.
+        # [Output Only] The minimum managed protection tier required for this rule. [
+        # Deprecated] Use requiredManagedProtectionTiers instead.
         # Corresponds to the JSON property `ruleManagedProtectionTier`
         # @return [String]
         attr_accessor :rule_managed_protection_tier
@@ -42273,6 +42660,48 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Specifies the parameters to configure an integration with instances.
+      class ServiceIntegrationSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specifies parameters to Backup and DR to attach a BackupPlan to a compute
+        # instance for managed VM backup.
+        # Corresponds to the JSON property `backupDr`
+        # @return [Google::Apis::ComputeAlpha::ServiceIntegrationSpecBackupDrSpec]
+        attr_accessor :backup_dr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_dr = args[:backup_dr] if args.key?(:backup_dr)
+        end
+      end
+      
+      # Specifies parameters to Backup and DR to attach a BackupPlan to a compute
+      # instance for managed VM backup.
+      class ServiceIntegrationSpecBackupDrSpec
+        include Google::Apis::Core::Hashable
+      
+        # The BackupPlan resource to attach to the instance. Specified as a resource
+        # reference in instances, and regional instance templates, and as just the plan
+        # name in global instance templates
+        # Corresponds to the JSON property `plan`
+        # @return [String]
+        attr_accessor :plan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plan = args[:plan] if args.key?(:plan)
         end
       end
       
