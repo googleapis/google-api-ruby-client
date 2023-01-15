@@ -1966,6 +1966,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. The name of the workflow config to invoke. Must be in the format `
+        # projects/*/locations/*/repositories/*/workflowConfigs/*`.
+        # Corresponds to the JSON property `workflowConfig`
+        # @return [String]
+        attr_accessor :workflow_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1977,6 +1983,7 @@ module Google
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
+          @workflow_config = args[:workflow_config] if args.key?(:workflow_config)
         end
       end
       

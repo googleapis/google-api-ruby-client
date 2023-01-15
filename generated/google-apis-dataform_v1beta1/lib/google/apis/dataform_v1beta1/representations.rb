@@ -969,6 +969,7 @@ module Google
       
           property :name, as: 'name'
           property :state, as: 'state'
+          property :workflow_config, as: 'workflowConfig'
         end
       end
       
