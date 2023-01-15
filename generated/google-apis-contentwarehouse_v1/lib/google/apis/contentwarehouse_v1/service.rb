@@ -87,6 +87,15 @@ module Google
         end
         
         # Sets the access control policy for a resource. Replaces any existing policy.
+        # You can set ACL with condition for projects only. Supported operators are: `=`,
+        # `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is `
+        # DocumentSchemaId` or property name and the right of the operator is a number
+        # or a quoted string. You must escape backslash (\\) and quote (\") characters.
+        # Boolean expressions (AND/OR) are supported up to 3 levels of nesting (for
+        # example, "((A AND B AND C) OR D) AND E"), a maximum of 10 comparisons are
+        # allowed in the expression. The expression must be < 6000 bytes in length.
+        # Sample condition: `"DocumentSchemaId = \"some schema id\" " OR SchemaId.
+        # floatPropertyName >= 10`
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
@@ -615,6 +624,15 @@ module Google
         end
         
         # Sets the access control policy for a resource. Replaces any existing policy.
+        # You can set ACL with condition for projects only. Supported operators are: `=`,
+        # `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is `
+        # DocumentSchemaId` or property name and the right of the operator is a number
+        # or a quoted string. You must escape backslash (\\) and quote (\") characters.
+        # Boolean expressions (AND/OR) are supported up to 3 levels of nesting (for
+        # example, "((A AND B AND C) OR D) AND E"), a maximum of 10 comparisons are
+        # allowed in the expression. The expression must be < 6000 bytes in length.
+        # Sample condition: `"DocumentSchemaId = \"some schema id\" " OR SchemaId.
+        # floatPropertyName >= 10`
         # @param [String] resource
         #   Required. REQUIRED: The resource for which the policy is being requested.
         #   Format for document: projects/`project_number`/locations/`location`/documents/`
