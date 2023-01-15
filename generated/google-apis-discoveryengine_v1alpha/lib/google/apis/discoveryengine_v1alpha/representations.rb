@@ -28,6 +28,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineLoggingErrorContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingErrorLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingHttpRequestContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingImportErrorContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingServiceContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingSourceLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1alphaBigQuerySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +286,65 @@ module Google
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingErrorContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_request, as: 'httpRequest', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingHttpRequestContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingHttpRequestContext::Representation
+      
+          property :report_location, as: 'reportLocation', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingSourceLocation, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingSourceLocation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingErrorLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingErrorContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingErrorContext::Representation
+      
+          property :import_payload, as: 'importPayload', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingImportErrorContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingImportErrorContext::Representation
+      
+          property :message, as: 'message'
+          hash :request_payload, as: 'requestPayload'
+          hash :response_payload, as: 'responsePayload'
+          property :service_context, as: 'serviceContext', class: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingServiceContext, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleCloudDiscoveryengineLoggingServiceContext::Representation
+      
+          property :status, as: 'status', class: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus, decorator: Google::Apis::DiscoveryengineV1alpha::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingHttpRequestContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response_status_code, as: 'responseStatusCode'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingImportErrorContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document, as: 'document'
+          property :gcs_path, as: 'gcsPath'
+          property :line_number, as: 'lineNumber'
+          property :operation, as: 'operation'
+          property :user_event, as: 'userEvent'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingServiceContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineLoggingSourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function_name, as: 'functionName'
         end
       end
       
