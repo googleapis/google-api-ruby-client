@@ -3278,6 +3278,7 @@ module Google
       class GoogleCloudDialogflowCxV3ResponseMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           property :conversation_success, as: 'conversationSuccess', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess::Representation
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessageEndInteraction::Representation
@@ -4114,6 +4115,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
           property :conversation_success, as: 'conversationSuccess', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess::Representation
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction::Representation
