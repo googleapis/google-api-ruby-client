@@ -1485,10 +1485,16 @@ module Google
         # hours and watch for unintended consequences. If there are no unintended
         # consequences, you can delete the service account.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format: `
-        #   projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for
-        #   the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value
-        #   can be the `email` address or the `unique_id` of the service account.
+        #   Required. The resource name of the service account. Use one of the following
+        #   formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/
+        #   `PROJECT_ID`/serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-
+        #   ` wildcard character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1528,10 +1534,16 @@ module Google
         # consequences. If there are no unintended consequences, you can delete the
         # service account with DeleteServiceAccount.
         # @param [String] name
-        #   The resource name of the service account in the following format: `projects/`
-        #   PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `
-        #   PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can
-        #   be the `email` address or the `unique_id` of the service account.
+        #   The resource name of the service account. Use one of the following formats: * `
+        #   projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`
+        #   /serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-` wildcard
+        #   character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::DisableServiceAccountRequest] disable_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1568,10 +1580,16 @@ module Google
         # the service account because it was compromised—you cannot use this method to
         # enable the service account.
         # @param [String] name
-        #   The resource name of the service account in the following format: `projects/`
-        #   PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `
-        #   PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can
-        #   be the `email` address or the `unique_id` of the service account.
+        #   The resource name of the service account. Use one of the following formats: * `
+        #   projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`
+        #   /serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-` wildcard
+        #   character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::EnableServiceAccountRequest] enable_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1604,10 +1622,16 @@ module Google
         
         # Gets a ServiceAccount.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format: `
-        #   projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for
-        #   the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value
-        #   can be the `email` address or the `unique_id` of the service account.
+        #   Required. The resource name of the service account. Use one of the following
+        #   formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/
+        #   `PROJECT_ID`/serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-
+        #   ` wildcard character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1735,10 +1759,10 @@ module Google
         #   character instead of the project ID: * `projects/-/serviceAccounts/`
         #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
         #   avoid using the `-` wildcard character, because it can cause response messages
-        #   to contain misleading error codes. For example, if you try to get the service
-        #   account `projects/-/serviceAccounts/fake@example.com`, which does not exist,
-        #   the response contains an HTTP `403 Forbidden` error instead of a `404 Not
-        #   Found` error.
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::PatchServiceAccountRequest] patch_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1824,10 +1848,15 @@ module Google
         # @param [String] name
         #   Required. Deprecated. [Migrate to Service Account Credentials API](https://
         #   cloud.google.com/iam/help/credentials/migrate-api). The resource name of the
-        #   service account in the following format: `projects/`PROJECT_ID`/
-        #   serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `PROJECT_ID` will
-        #   infer the project from the account. The `ACCOUNT` value can be the `email`
-        #   address or the `unique_id` of the service account.
+        #   service account. Use one of the following formats: * `projects/`PROJECT_ID`/
+        #   serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`/serviceAccounts/`
+        #   UNIQUE_ID`` As an alternative, you can use the `-` wildcard character instead
+        #   of the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`` * `projects/-
+        #   /serviceAccounts/`UNIQUE_ID`` When possible, avoid using the `-` wildcard
+        #   character, because it can cause response messages to contain misleading error
+        #   codes. For example, if you try to access the service account `projects/-/
+        #   serviceAccounts/fake@example.com`, which does not exist, the response contains
+        #   an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         # @param [Google::Apis::IamV1::SignBlobRequest] sign_blob_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1867,10 +1896,15 @@ module Google
         # @param [String] name
         #   Required. Deprecated. [Migrate to Service Account Credentials API](https://
         #   cloud.google.com/iam/help/credentials/migrate-api). The resource name of the
-        #   service account in the following format: `projects/`PROJECT_ID`/
-        #   serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `PROJECT_ID` will
-        #   infer the project from the account. The `ACCOUNT` value can be the `email`
-        #   address or the `unique_id` of the service account.
+        #   service account. Use one of the following formats: * `projects/`PROJECT_ID`/
+        #   serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`/serviceAccounts/`
+        #   UNIQUE_ID`` As an alternative, you can use the `-` wildcard character instead
+        #   of the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`` * `projects/-
+        #   /serviceAccounts/`UNIQUE_ID`` When possible, avoid using the `-` wildcard
+        #   character, because it can cause response messages to contain misleading error
+        #   codes. For example, if you try to access the service account `projects/-/
+        #   serviceAccounts/fake@example.com`, which does not exist, the response contains
+        #   an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         # @param [Google::Apis::IamV1::SignJwtRequest] sign_jwt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1942,9 +1976,16 @@ module Google
         # account 30 days later. There is no way to restore a deleted service account
         # that has been permanently removed.
         # @param [String] name
-        #   The resource name of the service account in the following format: `projects/`
-        #   PROJECT_ID`/serviceAccounts/`ACCOUNT_UNIQUE_ID``. Using `-` as a wildcard for
-        #   the `PROJECT_ID` will infer the project from the account.
+        #   The resource name of the service account. Use one of the following formats: * `
+        #   projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`
+        #   /serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-` wildcard
+        #   character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::UndeleteServiceAccountRequest] undelete_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1985,10 +2026,10 @@ module Google
         #   character instead of the project ID: * `projects/-/serviceAccounts/`
         #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
         #   avoid using the `-` wildcard character, because it can cause response messages
-        #   to contain misleading error codes. For example, if you try to get the service
-        #   account `projects/-/serviceAccounts/fake@example.com`, which does not exist,
-        #   the response contains an HTTP `403 Forbidden` error instead of a `404 Not
-        #   Found` error.
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::ServiceAccount] service_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2021,10 +2062,16 @@ module Google
         
         # Creates a ServiceAccountKey.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format: `
-        #   projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for
-        #   the `PROJECT_ID` will infer the project from the account. The `ACCOUNT` value
-        #   can be the `email` address or the `unique_id` of the service account.
+        #   Required. The resource name of the service account. Use one of the following
+        #   formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/
+        #   `PROJECT_ID`/serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-
+        #   ` wildcard character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::CreateServiceAccountKeyRequest] create_service_account_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2058,11 +2105,17 @@ module Google
         # Deletes a ServiceAccountKey. Deleting a service account key does not revoke
         # short-lived credentials that have been issued based on the service account key.
         # @param [String] name
-        #   Required. The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
-        #   wildcard for the `PROJECT_ID` will infer the project from the account. The `
-        #   ACCOUNT` value can be the `email` address or the `unique_id` of the service
-        #   account.
+        #   Required. The resource name of the service account key. Use one of the
+        #   following formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`/
+        #   keys/`KEY_ID`` * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID`/keys/`
+        #   KEY_ID`` As an alternative, you can use the `-` wildcard character instead of
+        #   the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`/keys/`KEY_ID`` *
+        #   `projects/-/serviceAccounts/`UNIQUE_ID`/keys/`KEY_ID`` When possible, avoid
+        #   using the `-` wildcard character, because it can cause response messages to
+        #   contain misleading error codes. For example, if you try to access the service
+        #   account key `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which
+        #   does not exist, the response contains an HTTP `403 Forbidden` error instead of
+        #   a `404 Not Found` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2093,11 +2146,17 @@ module Google
         # Disable a ServiceAccountKey. A disabled service account key can be re-enabled
         # with EnableServiceAccountKey.
         # @param [String] name
-        #   Required. The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
-        #   wildcard for the `PROJECT_ID` will infer the project from the account. The `
-        #   ACCOUNT` value can be the `email` address or the `unique_id` of the service
-        #   account.
+        #   Required. The resource name of the service account key. Use one of the
+        #   following formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`/
+        #   keys/`KEY_ID`` * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID`/keys/`
+        #   KEY_ID`` As an alternative, you can use the `-` wildcard character instead of
+        #   the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`/keys/`KEY_ID`` *
+        #   `projects/-/serviceAccounts/`UNIQUE_ID`/keys/`KEY_ID`` When possible, avoid
+        #   using the `-` wildcard character, because it can cause response messages to
+        #   contain misleading error codes. For example, if you try to access the service
+        #   account key `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which
+        #   does not exist, the response contains an HTTP `403 Forbidden` error instead of
+        #   a `404 Not Found` error.
         # @param [Google::Apis::IamV1::DisableServiceAccountKeyRequest] disable_service_account_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2130,11 +2189,17 @@ module Google
         
         # Enable a ServiceAccountKey.
         # @param [String] name
-        #   Required. The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
-        #   wildcard for the `PROJECT_ID` will infer the project from the account. The `
-        #   ACCOUNT` value can be the `email` address or the `unique_id` of the service
-        #   account.
+        #   Required. The resource name of the service account key. Use one of the
+        #   following formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`/
+        #   keys/`KEY_ID`` * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID`/keys/`
+        #   KEY_ID`` As an alternative, you can use the `-` wildcard character instead of
+        #   the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`/keys/`KEY_ID`` *
+        #   `projects/-/serviceAccounts/`UNIQUE_ID`/keys/`KEY_ID`` When possible, avoid
+        #   using the `-` wildcard character, because it can cause response messages to
+        #   contain misleading error codes. For example, if you try to access the service
+        #   account key `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which
+        #   does not exist, the response contains an HTTP `403 Forbidden` error instead of
+        #   a `404 Not Found` error.
         # @param [Google::Apis::IamV1::EnableServiceAccountKeyRequest] enable_service_account_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2167,11 +2232,17 @@ module Google
         
         # Gets a ServiceAccountKey.
         # @param [String] name
-        #   Required. The resource name of the service account key in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
-        #   wildcard for the `PROJECT_ID` will infer the project from the account. The `
-        #   ACCOUNT` value can be the `email` address or the `unique_id` of the service
-        #   account.
+        #   Required. The resource name of the service account key. Use one of the
+        #   following formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`/
+        #   keys/`KEY_ID`` * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID`/keys/`
+        #   KEY_ID`` As an alternative, you can use the `-` wildcard character instead of
+        #   the project ID: * `projects/-/serviceAccounts/`EMAIL_ADDRESS`/keys/`KEY_ID`` *
+        #   `projects/-/serviceAccounts/`UNIQUE_ID`/keys/`KEY_ID`` When possible, avoid
+        #   using the `-` wildcard character, because it can cause response messages to
+        #   contain misleading error codes. For example, if you try to access the service
+        #   account key `projects/-/serviceAccounts/fake@example.com/keys/fake-key`, which
+        #   does not exist, the response contains an HTTP `403 Forbidden` error instead of
+        #   a `404 Not Found` error.
         # @param [String] public_key_type
         #   Optional. The output format of the public key. The default is `TYPE_NONE`,
         #   which means that the public key is not returned.
@@ -2205,10 +2276,16 @@ module Google
         
         # Lists every ServiceAccountKey for a service account.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format: `
-        #   projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for
-        #   the `PROJECT_ID`, will infer the project from the account. The `ACCOUNT` value
-        #   can be the `email` address or the `unique_id` of the service account.
+        #   Required. The resource name of the service account. Use one of the following
+        #   formats: * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/
+        #   `PROJECT_ID`/serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-
+        #   ` wildcard character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Array<String>, String] key_types
         #   Filters the types of keys the user wants to include in the list response.
         #   Duplicate key types are not allowed. If no key type is provided, all keys are
@@ -2245,10 +2322,16 @@ module Google
         # the public key with a ServiceAccount. After you upload the public key, you can
         # use the private key from the key pair as a service account key.
         # @param [String] name
-        #   The resource name of the service account in the following format: `projects/`
-        #   PROJECT_ID`/serviceAccounts/`ACCOUNT``. Using `-` as a wildcard for the `
-        #   PROJECT_ID` will infer the project from the account. The `ACCOUNT` value can
-        #   be the `email` address or the `unique_id` of the service account.
+        #   The resource name of the service account key. Use one of the following formats:
+        #   * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/`
+        #   PROJECT_ID`/serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-`
+        #   wildcard character instead of the project ID: * `projects/-/serviceAccounts/`
+        #   EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        #   avoid using the `-` wildcard character, because it can cause response messages
+        #   to contain misleading error codes. For example, if you try to access the
+        #   service account `projects/-/serviceAccounts/fake@example.com`, which does not
+        #   exist, the response contains an HTTP `403 Forbidden` error instead of a `404
+        #   Not Found` error.
         # @param [Google::Apis::IamV1::UploadServiceAccountKeyRequest] upload_service_account_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
