@@ -85,16 +85,18 @@ module Google
         # @return [String]
         attr_accessor :service_name
       
-        # What kind of user agent is associated, e.g. operating system shells, embedded
-        # or stand-alone applications, etc.
+        # What kind of user agent is associated, for example operating system shells,
+        # embedded or stand-alone applications, etc.
         # Corresponds to the JSON property `userAgentFamily`
         # @return [String]
         attr_accessor :user_agent_family
       
-        # A string representing a username. This is likely not an IAM principal. For
-        # instance, this may be the system user name if the finding is VM-related, or
-        # this may be some type of application login user name, depending on the type of
-        # finding.
+        # A string that represents the username of a user, user account, or other entity
+        # involved in the access event. What the entity is and what its role in the
+        # access event is depends on the finding that this field appears in. The entity
+        # is likely not an IAM principal, but could be a user that is logged into an
+        # operating system, if the finding is VM-related, or a user that is logged into
+        # some type of application that is involved in the access event.
         # Corresponds to the JSON property `userName`
         # @return [String]
         attr_accessor :user_name
