@@ -1764,6 +1764,13 @@ module Google
       class GoogleCloudDialogflowCxV3ResponseMessage
         include Google::Apis::Core::Hashable
       
+        # The channel which the response is associated with. Clients can specify the
+        # channel via QueryParameters.channel, and only associated channel response will
+        # be returned.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Indicates that the conversation succeeded, i.e., the bot handled the issue
         # that the customer talked to it about. Dialogflow only uses this to determine
         # which conversations should be counted as successful and doesn't process the
@@ -1835,6 +1842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
@@ -6956,6 +6964,15 @@ module Google
         attr_accessor :analyze_query_text_sentiment
         alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
       
+        # The channel which this query is for. If specified, only the ResponseMessage
+        # associated with the channel will be returned. If no ResponseMessage is
+        # associated with the channel, it falls back to the ResponseMessage with
+        # unspecified channel. If unspecified, the ResponseMessage with unspecified
+        # channel will be returned.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # The unique identifier of the page to override the current page in the session.
         # Format: `projects//locations//agents//flows//pages/`. If `current_page` is
         # specified, the previous state of the session will be ignored by Dialogflow,
@@ -7047,6 +7064,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
+          @channel = args[:channel] if args.key?(:channel)
           @current_page = args[:current_page] if args.key?(:current_page)
           @disable_webhook = args[:disable_webhook] if args.key?(:disable_webhook)
           @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
@@ -7277,6 +7295,13 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessage
         include Google::Apis::Core::Hashable
       
+        # The channel which the response is associated with. Clients can specify the
+        # channel via QueryParameters.channel, and only associated channel response will
+        # be returned.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # Indicates that the conversation succeeded, i.e., the bot handled the issue
         # that the customer talked to it about. Dialogflow only uses this to determine
         # which conversations should be counted as successful and doesn't process the
@@ -7348,6 +7373,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
