@@ -1,5 +1,10 @@
 # Release history for google-apis-driveactivity_v2
 
+### v0.16.0 (2023-01-15)
+
+* Regenerated from discovery document revision 20230110
+* Regenerated using generator version 0.11.1
+
 ### v0.15.0 (2022-12-29)
 
 * Regenerated from discovery document revision 20221218
