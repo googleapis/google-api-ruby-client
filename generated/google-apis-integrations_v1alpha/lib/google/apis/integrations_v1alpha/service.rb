@@ -891,6 +891,124 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # * Lifts suspension for advanced suspension task. Fetch corresponding
+        # suspension with provided suspension Id, resolve suspension, and set up
+        # suspension result for the Suspension Task.
+        # @param [String] name
+        #   Required. The resource that the suspension belongs to. "projects/`project`/
+        #   locations/`location`/products/`product`/integrations/`integration`/executions/`
+        #   execution`/suspensions/`suspenion`" format.
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionRequest] google_cloud_integrations_v1alpha_lift_suspension_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lift_project_location_integration_execution_suspension(name, google_cloud_integrations_v1alpha_lift_suspension_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:lift', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_lift_suspension_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaLiftSuspensionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # * Lists suspensions associated with a specific execution. Only those with
+        # permissions to resolve the relevant suspensions will be able to view them.
+        # @param [String] parent
+        #   Required. projects/`gcp_project_id`/locations/`location`/products/`product`/
+        #   integrations/`integration_name`/executions/`execution_name`
+        # @param [String] filter
+        #   Standard filter field.
+        # @param [String] order_by
+        #   Field name to order by.
+        # @param [Fixnum] page_size
+        #   Maximum number of entries in the response.
+        # @param [String] page_token
+        #   Token to retrieve a specific page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListSuspensionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListSuspensionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_integration_execution_suspensions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/suspensions', options)
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListSuspensionsResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaListSuspensionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # * Resolves (lifts/rejects) any number of suspensions. If the integration is
+        # already running, only the status of the suspension is updated. Otherwise, the
+        # suspended integration will begin execution again.
+        # @param [String] name
+        #   Required. projects/`gcp_project_id`/locations/`location`/products/`product`/
+        #   integrations/`integration_name`/executions/`execution_name`/suspensions/`
+        #   suspension_id`
+        # @param [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionRequest] google_cloud_integrations_v1alpha_resolve_suspension_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_project_location_integration_execution_suspension(name, google_cloud_integrations_v1alpha_resolve_suspension_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:resolve', options)
+          command.request_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionRequest::Representation
+          command.request_object = google_cloud_integrations_v1alpha_resolve_suspension_request_object
+          command.response_representation = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionResponse::Representation
+          command.response_class = Google::Apis::IntegrationsV1alpha::GoogleCloudIntegrationsV1alphaResolveSuspensionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Soft-deletes the integration. Changes the status of the integration to
         # ARCHIVED. If the integration being ARCHIVED is tagged as "HEAD", the tag is
         # removed from this snapshot and set to the previous non-ARCHIVED snapshot. The
