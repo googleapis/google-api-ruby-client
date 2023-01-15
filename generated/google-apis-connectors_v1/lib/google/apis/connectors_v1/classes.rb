@@ -495,7 +495,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration for the connection.
+        # Node configuration for the connection.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ConnectorsV1::NodeConfig]
         attr_accessor :node_config
@@ -1490,7 +1490,7 @@ module Google
         end
       end
       
-      # Configuration for the connection.
+      # Node configuration for the connection.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
