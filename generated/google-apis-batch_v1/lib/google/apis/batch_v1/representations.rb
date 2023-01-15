@@ -594,6 +594,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::BatchV1::Accelerator, decorator: Google::Apis::BatchV1::Accelerator::Representation
       
+          property :boot_disk, as: 'bootDisk', class: Google::Apis::BatchV1::Disk, decorator: Google::Apis::BatchV1::Disk::Representation
+      
           collection :disks, as: 'disks', class: Google::Apis::BatchV1::AttachedDisk, decorator: Google::Apis::BatchV1::AttachedDisk::Representation
       
           property :machine_type, as: 'machineType'

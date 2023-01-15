@@ -678,14 +678,25 @@ module Google
         # @return [String]
         attr_accessor :disk_interface
       
-        # Name of a public or custom image used as the data source.
+        # Name of a public or custom image used as the data source. For example, the
+        # following are all valid URLs: (1) Specify the image by its family name:
+        # projects/`project`/global/images/family/`image_family` (2) Specify the image
+        # version: projects/`project`/global/images/`image_version` You can also use
+        # Batch customized image in short names. The following image values are
+        # supported for a boot disk: "batch-debian": use Batch Debian images. "batch-
+        # centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized
+        # images.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
       
-        # Disk size in GB. This field is ignored if `data_source` is `disk` or `image`.
-        # If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise,
-        # the final size will be the next greater multiple of 375 GB.
+        # Disk size in GB. For persistent disk, this field is ignored if `data_source`
+        # is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB,
+        # otherwise, the final size will be the next greater multiple of 375 GB. For
+        # boot disk, Batch will calculate the boot disk size based on source image and
+        # task requirements if you do not speicify the size. If both this field and the
+        # boot_disk_mib field in task spec's compute_resource are defined, Batch will
+        # only honor this field.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -695,8 +706,9 @@ module Google
         # @return [String]
         attr_accessor :snapshot
       
-        # Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "
-        # pd-standard", "pd-balanced", "local-ssd".
+        # Disk type as shown in `gcloud compute disk-types list`. For example, local SSD
+        # uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-
+        # extreme", "pd-ssd" or "pd-standard".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -849,6 +861,13 @@ module Google
         # @return [Array<Google::Apis::BatchV1::Accelerator>]
         attr_accessor :accelerators
       
+        # A new persistent disk or a local ssd. A VM can only have one local SSD setting
+        # but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#
+        # pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Google::Apis::BatchV1::Disk]
+        attr_accessor :boot_disk
+      
         # Non-boot disks to be attached for each VM created by this InstancePolicy. New
         # disks will be deleted when the VM is deleted.
         # Corresponds to the JSON property `disks`
@@ -878,6 +897,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
           @disks = args[:disks] if args.key?(:disks)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
