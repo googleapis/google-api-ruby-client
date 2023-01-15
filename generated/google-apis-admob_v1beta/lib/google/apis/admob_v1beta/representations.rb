@@ -226,6 +226,7 @@ module Google
       class App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_approval_state, as: 'appApprovalState'
           property :app_id, as: 'appId'
           property :linked_app_info, as: 'linkedAppInfo', class: Google::Apis::AdmobV1beta::AppLinkedAppInfo, decorator: Google::Apis::AdmobV1beta::AppLinkedAppInfo::Representation
       
