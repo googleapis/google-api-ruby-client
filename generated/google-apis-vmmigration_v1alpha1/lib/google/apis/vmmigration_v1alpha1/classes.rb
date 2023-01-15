@@ -202,11 +202,6 @@ module Google
         # @return [Google::Apis::VmmigrationV1alpha1::AccessKeyCredentials]
         attr_accessor :access_key_creds
       
-        # AWS access key ID.
-        # Corresponds to the JSON property `accessKeyId`
-        # @return [String]
-        attr_accessor :access_key_id
-      
         # Immutable. The AWS region that the source VMs will be migrated from.
         # Corresponds to the JSON property `awsRegion`
         # @return [String]
@@ -232,12 +227,6 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1alpha1::Tag>]
         attr_accessor :inventory_tag_list
       
-        # Deprecated: AWS resource tags to limit the scope of the source inventory. Use
-        # inventory_tag_list instead.
-        # Corresponds to the JSON property `inventoryTags`
-        # @return [Hash<String,String>]
-        attr_accessor :inventory_tags
-      
         # User specified tags to add to every M2VM generated resource in AWS. These tags
         # will be set in addition to the default tags that are set as part of the
         # migration process. The tags must not begin with the reserved prefix `m2vm`.
@@ -251,11 +240,6 @@ module Google
         # @return [String]
         attr_accessor :public_ip
       
-        # Input only. AWS secret access key.
-        # Corresponds to the JSON property `secretAccessKey`
-        # @return [String]
-        attr_accessor :secret_access_key
-      
         # Output only. State of the source as determined by the health check.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -268,15 +252,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_key_creds = args[:access_key_creds] if args.key?(:access_key_creds)
-          @access_key_id = args[:access_key_id] if args.key?(:access_key_id)
           @aws_region = args[:aws_region] if args.key?(:aws_region)
           @error = args[:error] if args.key?(:error)
           @inventory_security_group_names = args[:inventory_security_group_names] if args.key?(:inventory_security_group_names)
           @inventory_tag_list = args[:inventory_tag_list] if args.key?(:inventory_tag_list)
-          @inventory_tags = args[:inventory_tags] if args.key?(:inventory_tags)
           @migration_resources_user_tags = args[:migration_resources_user_tags] if args.key?(:migration_resources_user_tags)
           @public_ip = args[:public_ip] if args.key?(:public_ip)
-          @secret_access_key = args[:secret_access_key] if args.key?(:secret_access_key)
           @state = args[:state] if args.key?(:state)
         end
       end
